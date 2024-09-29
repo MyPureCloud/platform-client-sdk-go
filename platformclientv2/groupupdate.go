@@ -41,6 +41,9 @@ type Groupupdate struct {
 	// RolesEnabled - Allow roles to be assigned to this group
 	RolesEnabled *bool `json:"rolesEnabled,omitempty"`
 
+	// IncludeOwners - Allow owners to be included as members of the group
+	IncludeOwners *bool `json:"includeOwners,omitempty"`
+
 	// OwnerIds - Owners of the group
 	OwnerIds *[]string `json:"ownerIds,omitempty"`
 
@@ -131,6 +134,8 @@ func (o Groupupdate) MarshalJSON() ([]byte, error) {
 		
 		RolesEnabled *bool `json:"rolesEnabled,omitempty"`
 		
+		IncludeOwners *bool `json:"includeOwners,omitempty"`
+		
 		OwnerIds *[]string `json:"ownerIds,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -155,6 +160,8 @@ func (o Groupupdate) MarshalJSON() ([]byte, error) {
 		Visibility: o.Visibility,
 		
 		RolesEnabled: o.RolesEnabled,
+		
+		IncludeOwners: o.IncludeOwners,
 		
 		OwnerIds: o.OwnerIds,
 		
@@ -211,6 +218,10 @@ func (o *Groupupdate) UnmarshalJSON(b []byte) error {
     
 	if RolesEnabled, ok := GroupupdateMap["rolesEnabled"].(bool); ok {
 		o.RolesEnabled = &RolesEnabled
+	}
+    
+	if IncludeOwners, ok := GroupupdateMap["includeOwners"].(bool); ok {
+		o.IncludeOwners = &IncludeOwners
 	}
     
 	if OwnerIds, ok := GroupupdateMap["ownerIds"].([]interface{}); ok {

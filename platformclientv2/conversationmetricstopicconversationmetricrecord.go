@@ -165,6 +165,9 @@ type Conversationmetricstopicconversationmetricrecord struct {
 	// OriginatingDirection - The original direction of the conversation
 	OriginatingDirection *string `json:"originatingDirection,omitempty"`
 
+	// OriginatingSocialMediaPublic - Indicates that the conversation originated from a public message on social media
+	OriginatingSocialMediaPublic *bool `json:"originatingSocialMediaPublic,omitempty"`
+
 	// OutboundCampaignId - (Dialer) Unique identifier of the outbound campaign
 	OutboundCampaignId *string `json:"outboundCampaignId,omitempty"`
 
@@ -435,6 +438,8 @@ func (o Conversationmetricstopicconversationmetricrecord) MarshalJSON() ([]byte,
 		
 		OriginatingDirection *string `json:"originatingDirection,omitempty"`
 		
+		OriginatingSocialMediaPublic *bool `json:"originatingSocialMediaPublic,omitempty"`
+		
 		OutboundCampaignId *string `json:"outboundCampaignId,omitempty"`
 		
 		OutboundContactId *string `json:"outboundContactId,omitempty"`
@@ -601,6 +606,8 @@ func (o Conversationmetricstopicconversationmetricrecord) MarshalJSON() ([]byte,
 		MessageType: o.MessageType,
 		
 		OriginatingDirection: o.OriginatingDirection,
+		
+		OriginatingSocialMediaPublic: o.OriginatingSocialMediaPublic,
 		
 		OutboundCampaignId: o.OutboundCampaignId,
 		
@@ -889,6 +896,10 @@ func (o *Conversationmetricstopicconversationmetricrecord) UnmarshalJSON(b []byt
     
 	if OriginatingDirection, ok := ConversationmetricstopicconversationmetricrecordMap["originatingDirection"].(string); ok {
 		o.OriginatingDirection = &OriginatingDirection
+	}
+    
+	if OriginatingSocialMediaPublic, ok := ConversationmetricstopicconversationmetricrecordMap["originatingSocialMediaPublic"].(bool); ok {
+		o.OriginatingSocialMediaPublic = &OriginatingSocialMediaPublic
 	}
     
 	if OutboundCampaignId, ok := ConversationmetricstopicconversationmetricrecordMap["outboundCampaignId"].(string); ok {

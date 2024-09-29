@@ -128,6 +128,9 @@ docs/DeleteKnowledgeKnowledgebaseLabel-example.txt
 docs/DeleteKnowledgeKnowledgebaseLanguageCategory-example.txt
 docs/DeleteKnowledgeKnowledgebaseLanguageDocument-example.txt
 docs/DeleteKnowledgeKnowledgebaseLanguageDocumentsImport-example.txt
+docs/DeleteKnowledgeKnowledgebaseSourcesSalesforceSourceId-example.txt
+docs/DeleteKnowledgeKnowledgebaseSourcesServicenowSourceId-example.txt
+docs/DeleteKnowledgeKnowledgebaseSynchronizeJob-example.txt
 docs/DeleteLanguage-example.txt
 docs/DeleteLanguageunderstandingDomain-example.txt
 docs/DeleteLanguageunderstandingDomainFeedbackFeedbackId-example.txt
@@ -247,6 +250,7 @@ docs/DeleteTeamMembers-example.txt
 docs/DeleteTelephonyProvidersEdge-example.txt
 docs/DeleteTelephonyProvidersEdgeLogicalinterface-example.txt
 docs/DeleteTelephonyProvidersEdgeSoftwareupdate-example.txt
+docs/DeleteTelephonyProvidersEdgesAlertablepresences-example.txt
 docs/DeleteTelephonyProvidersEdgesCertificateauthority-example.txt
 docs/DeleteTelephonyProvidersEdgesDidpool-example.txt
 docs/DeleteTelephonyProvidersEdgesEdgegroup-example.txt
@@ -512,6 +516,7 @@ docs/GetConversationRecordings-example.txt
 docs/GetConversationSecureattributes-example.txt
 docs/GetConversationSuggestion-example.txt
 docs/GetConversationSuggestions-example.txt
+docs/GetConversationSummaries-example.txt
 docs/GetConversations-example.txt
 docs/GetConversationsCall-example.txt
 docs/GetConversationsCallParticipantCommunicationWrapup-example.txt
@@ -843,6 +848,7 @@ docs/GetJourneyViewsJobs-example.txt
 docs/GetKnowledgeGuestSessionCategories-example.txt
 docs/GetKnowledgeGuestSessionDocument-example.txt
 docs/GetKnowledgeGuestSessionDocuments-example.txt
+docs/GetKnowledgeIntegrationOptions-example.txt
 docs/GetKnowledgeKnowledgebase-example.txt
 docs/GetKnowledgeKnowledgebaseCategories-example.txt
 docs/GetKnowledgeKnowledgebaseCategory-example.txt
@@ -871,6 +877,10 @@ docs/GetKnowledgeKnowledgebaseLanguageTrainings-example.txt
 docs/GetKnowledgeKnowledgebaseOperations-example.txt
 docs/GetKnowledgeKnowledgebaseOperationsUsersQuery-example.txt
 docs/GetKnowledgeKnowledgebaseParseJob-example.txt
+docs/GetKnowledgeKnowledgebaseSources-example.txt
+docs/GetKnowledgeKnowledgebaseSourcesSalesforceSourceId-example.txt
+docs/GetKnowledgeKnowledgebaseSourcesServicenowSourceId-example.txt
+docs/GetKnowledgeKnowledgebaseSynchronizeJob-example.txt
 docs/GetKnowledgeKnowledgebaseUnansweredGroup-example.txt
 docs/GetKnowledgeKnowledgebaseUnansweredGroupPhrasegroup-example.txt
 docs/GetKnowledgeKnowledgebaseUnansweredGroups-example.txt
@@ -991,6 +1001,7 @@ docs/GetOutboundCampaignDiagnostics-example.txt
 docs/GetOutboundCampaignInteractions-example.txt
 docs/GetOutboundCampaignLinedistribution-example.txt
 docs/GetOutboundCampaignProgress-example.txt
+docs/GetOutboundCampaignSkillcombinations-example.txt
 docs/GetOutboundCampaignStats-example.txt
 docs/GetOutboundCampaignrule-example.txt
 docs/GetOutboundCampaignrules-example.txt
@@ -1241,6 +1252,8 @@ docs/GetSpeechandtextanalyticsTopicsDialects-example.txt
 docs/GetSpeechandtextanalyticsTopicsGeneral-example.txt
 docs/GetSpeechandtextanalyticsTopicsGeneralStatus-example.txt
 docs/GetSpeechandtextanalyticsTopicsPublishjob-example.txt
+docs/GetSpeechandtextanalyticsTranslationsLanguageConversation-example.txt
+docs/GetSpeechandtextanalyticsTranslationsLanguages-example.txt
 docs/GetStation-example.txt
 docs/GetStations-example.txt
 docs/GetSystempresences-example.txt
@@ -1286,6 +1299,7 @@ docs/GetTelephonyProvidersEdgeSoftwareupdate-example.txt
 docs/GetTelephonyProvidersEdgeSoftwareversions-example.txt
 docs/GetTelephonyProvidersEdgeTrunks-example.txt
 docs/GetTelephonyProvidersEdges-example.txt
+docs/GetTelephonyProvidersEdgesAlertablepresences-example.txt
 docs/GetTelephonyProvidersEdgesCertificateauthorities-example.txt
 docs/GetTelephonyProvidersEdgesCertificateauthority-example.txt
 docs/GetTelephonyProvidersEdgesDid-example.txt
@@ -1649,6 +1663,7 @@ docs/PatchKnowledgeKnowledgebaseLanguageDocument-example.txt
 docs/PatchKnowledgeKnowledgebaseLanguageDocuments-example.txt
 docs/PatchKnowledgeKnowledgebaseLanguageDocumentsImport-example.txt
 docs/PatchKnowledgeKnowledgebaseParseJob-example.txt
+docs/PatchKnowledgeKnowledgebaseSynchronizeJob-example.txt
 docs/PatchKnowledgeKnowledgebaseUnansweredGroupPhrasegroup-example.txt
 docs/PatchLanguageunderstandingDomain-example.txt
 docs/PatchLanguageunderstandingMinerDraft-example.txt
@@ -2104,6 +2119,11 @@ docs/PostKnowledgeKnowledgebaseParseJobImport-example.txt
 docs/PostKnowledgeKnowledgebaseParseJobs-example.txt
 docs/PostKnowledgeKnowledgebaseSearch-example.txt
 docs/PostKnowledgeKnowledgebaseSearch-example.txt
+docs/PostKnowledgeKnowledgebaseSourcesSalesforce-example.txt
+docs/PostKnowledgeKnowledgebaseSourcesSalesforceSourceIdSync-example.txt
+docs/PostKnowledgeKnowledgebaseSourcesServicenow-example.txt
+docs/PostKnowledgeKnowledgebaseSourcesServicenowSourceIdSync-example.txt
+docs/PostKnowledgeKnowledgebaseSynchronizeJobs-example.txt
 docs/PostKnowledgeKnowledgebaseUploadsUrlsJobs-example.txt
 docs/PostKnowledgeKnowledgebaseUploadsUrlsJobs-example.txt
 docs/PostKnowledgeKnowledgebases-example.txt
@@ -2527,6 +2547,8 @@ docs/PutIntegrationsCredential-example.txt
 docs/PutIntegrationsSpeechNuanceNuanceIntegrationIdBotsLaunchSettings-example.txt
 docs/PutIntegrationsSpeechTtsSettings-example.txt
 docs/PutIntegrationsUnifiedcommunicationThirdpartypresences-example.txt
+docs/PutKnowledgeKnowledgebaseSourcesSalesforceSourceId-example.txt
+docs/PutKnowledgeKnowledgebaseSourcesServicenowSourceId-example.txt
 docs/PutLanguageunderstandingDomainVersion-example.txt
 docs/PutLearningModule-example.txt
 docs/PutLearningModulePreview-example.txt
@@ -2623,6 +2645,7 @@ docs/PutSpeechandtextanalyticsTopic-example.txt
 docs/PutTaskmanagementWorkitemsSchema-example.txt
 docs/PutTelephonyProvidersEdge-example.txt
 docs/PutTelephonyProvidersEdgeLogicalinterface-example.txt
+docs/PutTelephonyProvidersEdgesAlertablepresences-example.txt
 docs/PutTelephonyProvidersEdgesCertificateauthority-example.txt
 docs/PutTelephonyProvidersEdgesDidpool-example.txt
 docs/PutTelephonyProvidersEdgesEdgegroup-example.txt
@@ -2865,6 +2888,7 @@ platformclientv2/aianswer.go
 platformclientv2/aiscoring.go
 platformclientv2/aiscoringsetting.go
 platformclientv2/aiscoringsettings.go
+platformclientv2/alertablepresences.go
 platformclientv2/alertingapi.go
 platformclientv2/alertingunreadstatus.go
 platformclientv2/alertlisting.go
@@ -3314,6 +3338,7 @@ platformclientv2/campaignrulecondition.go
 platformclientv2/campaignruleconditiongroup.go
 platformclientv2/campaignruleentities.go
 platformclientv2/campaignruleentitylisting.go
+platformclientv2/campaignruleexecutionsettings.go
 platformclientv2/campaignruleparameters.go
 platformclientv2/campaignschedule.go
 platformclientv2/campaignsequence.go
@@ -3394,6 +3419,10 @@ platformclientv2/cobrowsemediaparticipant.go
 platformclientv2/cobrowsesession.go
 platformclientv2/cobrowsesettings.go
 platformclientv2/cobrowsewebmessagingsession.go
+platformclientv2/collaboratechatadhocmessageeventtopiccollaboratechatentity.go
+platformclientv2/collaboratechatadhocmessageeventtopiccollaboratechatmessage.go
+platformclientv2/collaboratechatgroupmessageeventtopiccollaboratechatentity.go
+platformclientv2/collaboratechatgroupmessageeventtopiccollaboratechatmessage.go
 platformclientv2/column.go
 platformclientv2/columndatatypespecification.go
 platformclientv2/columnstatus.go
@@ -3415,6 +3444,8 @@ platformclientv2/commonrulepredicateentity.go
 platformclientv2/communicationansweredevent.go
 platformclientv2/communicationdispositionappliedevent.go
 platformclientv2/communicationendedevent.go
+platformclientv2/communicationtranslation.go
+platformclientv2/communicationtranslationlist.go
 platformclientv2/comparisonperiod.go
 platformclientv2/comparisonperiodlisting.go
 platformclientv2/complexvariableinfo.go
@@ -3628,6 +3659,7 @@ platformclientv2/conversationdetailquerypredicate.go
 platformclientv2/conversationdetailsdatalakeavailabilitytopicdataavailabilitychangenotification.go
 platformclientv2/conversationdisconnectsettings.go
 platformclientv2/conversationdivisionmembership.go
+platformclientv2/conversationeditedsummary.go
 platformclientv2/conversationemaileventtopicattachment.go
 platformclientv2/conversationemaileventtopicconversationroutingdata.go
 platformclientv2/conversationemaileventtopicdetail.go
@@ -3760,6 +3792,7 @@ platformclientv2/conversationscreenshareeventtopicscreensharemediaparticipant.go
 platformclientv2/conversationscreenshareeventtopicurireference.go
 platformclientv2/conversationscreenshareeventtopicwrapup.go
 platformclientv2/conversationsecureattributes.go
+platformclientv2/conversationsessionsummary.go
 platformclientv2/conversationsocialexpressioneventtopicconversationroutingdata.go
 platformclientv2/conversationsocialexpressioneventtopicdetail.go
 platformclientv2/conversationsocialexpressioneventtopicerrorbody.go
@@ -3774,6 +3807,12 @@ platformclientv2/conversationsocialexpressioneventtopicsocialconversation.go
 platformclientv2/conversationsocialexpressioneventtopicsocialmediaparticipant.go
 platformclientv2/conversationsocialexpressioneventtopicurireference.go
 platformclientv2/conversationsocialexpressioneventtopicwrapup.go
+platformclientv2/conversationsummariesgetresponse.go
+platformclientv2/conversationsummary.go
+platformclientv2/conversationsummaryfollowup.go
+platformclientv2/conversationsummaryreason.go
+platformclientv2/conversationsummaryresolution.go
+platformclientv2/conversationsummarywrapupcode.go
 platformclientv2/conversationtagsupdate.go
 platformclientv2/conversationthreadingwindow.go
 platformclientv2/conversationthreadingwindowsetting.go
@@ -3801,6 +3840,7 @@ platformclientv2/copilotfallbackaction.go
 platformclientv2/copilotnludomain.go
 platformclientv2/copilotnludomainversion.go
 platformclientv2/copilotrule.go
+platformclientv2/copilottranscriptionconfig.go
 platformclientv2/copyattachmentsrequest.go
 platformclientv2/copybuforecastrequest.go
 platformclientv2/copyvoicemailmessage.go
@@ -4663,6 +4703,7 @@ platformclientv2/grammarlanguage.go
 platformclientv2/grammarlanguagefilemetadata.go
 platformclientv2/grammarlanguageupdate.go
 platformclientv2/grammarlisting.go
+platformclientv2/graphapisettings.go
 platformclientv2/greeting.go
 platformclientv2/greetingaudiofile.go
 platformclientv2/greetinglisting.go
@@ -4797,6 +4838,8 @@ platformclientv2/interactionstatsalert.go
 platformclientv2/interactionstatsalertcontainer.go
 platformclientv2/interactionstatsrule.go
 platformclientv2/interactionstatsrulecontainer.go
+platformclientv2/internalmessage.go
+platformclientv2/internalmessagedetails.go
 platformclientv2/intradayperformancepredictiondata.go
 platformclientv2/intradayplanninggrouprequest.go
 platformclientv2/invalidassignment.go
@@ -5070,6 +5113,10 @@ platformclientv2/knowledgeimportjobrequest.go
 platformclientv2/knowledgeimportjobresponse.go
 platformclientv2/knowledgeimportjobsettings.go
 platformclientv2/knowledgeimportjobstatistics.go
+platformclientv2/knowledgeintegrationfilter.go
+platformclientv2/knowledgeintegrationfiltervalue.go
+platformclientv2/knowledgeintegrationoptionsresponse.go
+platformclientv2/knowledgeintegrationreference.go
 platformclientv2/knowledgeoperationsource.go
 platformclientv2/knowledgeparseimportresult.go
 platformclientv2/knowledgeparsejobrequest.go
@@ -5083,6 +5130,10 @@ platformclientv2/knowledgesearchdocumentv1.go
 platformclientv2/knowledgesearchrequest.go
 platformclientv2/knowledgesearchresponse.go
 platformclientv2/knowledgesuggestionconfig.go
+platformclientv2/knowledgesyncjobreport.go
+platformclientv2/knowledgesyncjobrequest.go
+platformclientv2/knowledgesyncjobresponse.go
+platformclientv2/knowledgesyncjobstatistics.go
 platformclientv2/knowledgetraining.go
 platformclientv2/kpiresult.go
 platformclientv2/label.go
@@ -5543,6 +5594,20 @@ platformclientv2/outboundmessagingcampaignprecontactemaileventtopicemailattribut
 platformclientv2/outboundmessagingcampaignprecontactemaileventtopicoutboundmessagingcampaignprecontactemailevent.go
 platformclientv2/outboundmessagingcampaignprecontactsmseventtopicoutboundmessagingcampaignprecontactsmsevent.go
 platformclientv2/outboundmessagingcampaignprecontactsmseventtopicsmsattributes.go
+platformclientv2/outboundmessagingemailcampaignconfigchangecontactsort.go
+platformclientv2/outboundmessagingemailcampaignconfigchangeemailconfig.go
+platformclientv2/outboundmessagingemailcampaignconfigchangeerrordetail.go
+platformclientv2/outboundmessagingemailcampaignconfigchangefromemailaddress.go
+platformclientv2/outboundmessagingemailcampaignconfigchangemessagingcampaign.go
+platformclientv2/outboundmessagingemailcampaignconfigchangeobject.go
+platformclientv2/outboundmessagingemailcampaignconfigchangereplytoemailaddress.go
+platformclientv2/outboundmessagingemailcampaignconfigchangeresponseref.go
+platformclientv2/outboundmessagingemailcampaignconfigchangesmsconfig.go
+platformclientv2/outboundmessagingemailcampaignconfigchangesmsphonenumberref.go
+platformclientv2/outboundmessagingemailcampaignconfigchangeurireference.go
+platformclientv2/outboundmessagingemailcampaignprogresseventcampaignprogress.go
+platformclientv2/outboundmessagingemailcampaignprogresseventobject.go
+platformclientv2/outboundmessagingemailcampaignprogresseventurireference.go
 platformclientv2/outboundmessagingmessagingcampaignconfigchangecontactsort.go
 platformclientv2/outboundmessagingmessagingcampaignconfigchangeemailconfig.go
 platformclientv2/outboundmessagingmessagingcampaignconfigchangeerrordetail.go
@@ -5593,6 +5658,7 @@ platformclientv2/overallbestpoints.go
 platformclientv2/overallbestpointsitem.go
 platformclientv2/page.go
 platformclientv2/pagednamespacelisting.go
+platformclientv2/pagedskillcombinationlisting.go
 platformclientv2/pagelessdomainentitylistingevaluationversion.go
 platformclientv2/pagelessentitylisting.go
 platformclientv2/pagingspec.go
@@ -5679,6 +5745,7 @@ platformclientv2/phonestatus.go
 platformclientv2/phonetransferevent.go
 platformclientv2/phrase.go
 platformclientv2/phraseassociations.go
+platformclientv2/phrasetranslation.go
 platformclientv2/physicalinterfaceentitylisting.go
 platformclientv2/pinconfiguration.go
 platformclientv2/pingidentity.go
@@ -6216,6 +6283,9 @@ platformclientv2/ruleset.go
 platformclientv2/rulesetdiagnostic.go
 platformclientv2/rulesetentitylisting.go
 platformclientv2/salesforce.go
+platformclientv2/salesforcesettings.go
+platformclientv2/salesforcesourcerequest.go
+platformclientv2/salesforcesourceresponse.go
 platformclientv2/schedule.go
 platformclientv2/scheduleactivity.go
 platformclientv2/scheduledivisionviewentitylisting.go
@@ -6330,6 +6400,9 @@ platformclientv2/servicegoaltemplateimpactoverride.go
 platformclientv2/servicegoaltemplatelist.go
 platformclientv2/servicegoaltemplatereference.go
 platformclientv2/servicelevel.go
+platformclientv2/servicenowsettings.go
+platformclientv2/servicenowsourcerequest.go
+platformclientv2/servicenowsourceresponse.go
 platformclientv2/session.go
 platformclientv2/sessionenddetails.go
 platformclientv2/sessionlastevent.go
@@ -6381,6 +6454,7 @@ platformclientv2/site.go
 platformclientv2/siteconnection.go
 platformclientv2/siteconnections.go
 platformclientv2/siteentitylisting.go
+platformclientv2/skillcombinationinfo.go
 platformclientv2/skillentitylisting.go
 platformclientv2/skillgroup.go
 platformclientv2/skillgroupcondition.go
@@ -6410,10 +6484,13 @@ platformclientv2/socialexpression.go
 platformclientv2/socialhandle.go
 platformclientv2/sortitem.go
 platformclientv2/source.go
+platformclientv2/sourcebaseresponse.go
 platformclientv2/sourceconfiguration.go
 platformclientv2/sourceentity.go
 platformclientv2/sourceentitylisting.go
+platformclientv2/sourcelastsync.go
 platformclientv2/sourceplanninggrouprequest.go
+platformclientv2/sourcesyncresponse.go
 platformclientv2/speechtextanalyticsapi.go
 platformclientv2/speechtextanalyticssettingsrequest.go
 platformclientv2/speechtextanalyticssettingsresponse.go
@@ -6518,6 +6595,7 @@ platformclientv2/surveyquestiongroup.go
 platformclientv2/surveyquestiongroupscore.go
 platformclientv2/surveyquestionscore.go
 platformclientv2/surveyscoringset.go
+platformclientv2/syncstatusrequest.go
 platformclientv2/systemmessageobject.go
 platformclientv2/systemmessagesystemmessage.go
 platformclientv2/systempresence.go
@@ -6672,6 +6750,7 @@ platformclientv2/transcriptsearchcriteria.go
 platformclientv2/transcriptsearchrequest.go
 platformclientv2/transcripttopic.go
 platformclientv2/transcripttopics.go
+platformclientv2/transcripttranslation.go
 platformclientv2/transcripturl.go
 platformclientv2/transcripturls.go
 platformclientv2/transferdestination.go
@@ -6682,6 +6761,8 @@ platformclientv2/transferresponsemodifiedby.go
 platformclientv2/transfertoagentrequest.go
 platformclientv2/transfertoexternalrequest.go
 platformclientv2/transfertoqueuerequest.go
+platformclientv2/translatesupportedlanguage.go
+platformclientv2/translatesupportedlanguagelist.go
 platformclientv2/trenddata.go
 platformclientv2/trigger.go
 platformclientv2/triggerentitylisting.go
@@ -6955,6 +7036,9 @@ platformclientv2/v2flowexecutiondataflowidtopicinvokingcontext.go
 platformclientv2/v2flowexecutiondataflowidtopicjourneyactionmap.go
 platformclientv2/v2flowexecutiondataflowidtopicprocessautomation.go
 platformclientv2/v2flowexecutiondataflowidtopicquality.go
+platformclientv2/v2flowexecutiondataflowidtopicworkitem.go
+platformclientv2/v2integrationpresenceeventorganizationpresence.go
+platformclientv2/v2integrationpresenceeventpresenceactivityevent.go
 platformclientv2/v2mobiusalertstopicaddressableentityref.go
 platformclientv2/v2mobiusalertstopicalert.go
 platformclientv2/v2mobiusalertstopicalertingaddressableentityref.go

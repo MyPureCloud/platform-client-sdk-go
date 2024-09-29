@@ -87,6 +87,9 @@ type Queuerequest struct {
 	// AutoAnswerOnly - Specifies whether the configured whisper should play for all ACD calls, or only for those which are auto-answered.
 	AutoAnswerOnly *bool `json:"autoAnswerOnly,omitempty"`
 
+	// CannedResponseLibraries - Canned response library IDs and mode with which they are associated with the queue
+	CannedResponseLibraries *Cannedresponselibraries `json:"cannedResponseLibraries,omitempty"`
+
 	// EnableTranscription - Indicates whether voice transcription is enabled for this queue.
 	EnableTranscription *bool `json:"enableTranscription,omitempty"`
 
@@ -256,6 +259,8 @@ func (o Queuerequest) MarshalJSON() ([]byte, error) {
 		
 		AutoAnswerOnly *bool `json:"autoAnswerOnly,omitempty"`
 		
+		CannedResponseLibraries *Cannedresponselibraries `json:"cannedResponseLibraries,omitempty"`
+		
 		EnableTranscription *bool `json:"enableTranscription,omitempty"`
 		
 		EnableAudioMonitoring *bool `json:"enableAudioMonitoring,omitempty"`
@@ -332,6 +337,8 @@ func (o Queuerequest) MarshalJSON() ([]byte, error) {
 		OnHoldPrompt: o.OnHoldPrompt,
 		
 		AutoAnswerOnly: o.AutoAnswerOnly,
+		
+		CannedResponseLibraries: o.CannedResponseLibraries,
 		
 		EnableTranscription: o.EnableTranscription,
 		
@@ -486,6 +493,11 @@ func (o *Queuerequest) UnmarshalJSON(b []byte) error {
 		o.AutoAnswerOnly = &AutoAnswerOnly
 	}
     
+	if CannedResponseLibraries, ok := QueuerequestMap["cannedResponseLibraries"].(map[string]interface{}); ok {
+		CannedResponseLibrariesString, _ := json.Marshal(CannedResponseLibraries)
+		json.Unmarshal(CannedResponseLibrariesString, &o.CannedResponseLibraries)
+	}
+	
 	if EnableTranscription, ok := QueuerequestMap["enableTranscription"].(bool); ok {
 		o.EnableTranscription = &EnableTranscription
 	}

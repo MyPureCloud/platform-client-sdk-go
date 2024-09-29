@@ -13,6 +13,9 @@ type Intent struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// Name
 	Name *string `json:"name,omitempty"`
+
+	// Description
+	Description *string `json:"description,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +82,13 @@ func (o Intent) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
+		
+		Description: o.Description,
 		Alias:    (Alias)(o),
 	})
 }
@@ -95,6 +102,10 @@ func (o *Intent) UnmarshalJSON(b []byte) error {
 	
 	if Name, ok := IntentMap["name"].(string); ok {
 		o.Name = &Name
+	}
+    
+	if Description, ok := IntentMap["description"].(string); ok {
+		o.Description = &Description
 	}
     
 

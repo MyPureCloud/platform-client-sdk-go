@@ -33,6 +33,9 @@ type Flowexecutiondataqueryresult struct {
 	// ConversationId - The id of the conversation that executed this flow.
 	ConversationId *string `json:"conversationId,omitempty"`
 
+	// WorkitemId - The id of the workitem that executed this flow.
+	WorkitemId *string `json:"workitemId,omitempty"`
+
 	// FlowType - The type of flow.
 	FlowType *string `json:"flowType,omitempty"`
 
@@ -142,6 +145,8 @@ func (o Flowexecutiondataqueryresult) MarshalJSON() ([]byte, error) {
 		
 		ConversationId *string `json:"conversationId,omitempty"`
 		
+		WorkitemId *string `json:"workitemId,omitempty"`
+		
 		FlowType *string `json:"flowType,omitempty"`
 		
 		FlowErrorReason *string `json:"flowErrorReason,omitempty"`
@@ -166,6 +171,8 @@ func (o Flowexecutiondataqueryresult) MarshalJSON() ([]byte, error) {
 		FlowVersion: o.FlowVersion,
 		
 		ConversationId: o.ConversationId,
+		
+		WorkitemId: o.WorkitemId,
 		
 		FlowType: o.FlowType,
 		
@@ -215,6 +222,10 @@ func (o *Flowexecutiondataqueryresult) UnmarshalJSON(b []byte) error {
     
 	if ConversationId, ok := FlowexecutiondataqueryresultMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
+	}
+    
+	if WorkitemId, ok := FlowexecutiondataqueryresultMap["workitemId"].(string); ok {
+		o.WorkitemId = &WorkitemId
 	}
     
 	if FlowType, ok := FlowexecutiondataqueryresultMap["flowType"].(string); ok {

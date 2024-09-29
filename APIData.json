@@ -9001,6 +9001,20 @@
     "return": "Suggestionlisting",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewConversationsApiWithConfig(config)\n\nvar conversationId string // Conversation ID\nvar before string // The cursor that points to the start of the set of entities that has been returned.\nvar after string // The cursor that points to the end of the set of entities that has been returned.\nvar pageSize string // Number of entities to return. Maximum of 200.\nvar varType string // Suggestion type to filter by.\nvar state string // Suggestion state to filter Copilot suggestions.\n// Get all suggestions for a conversation.\ndata, response, err := apiInstance.GetConversationSuggestions(conversationId, before, after, pageSize, varType, state)\nif err != nil {\n\tfmt.Printf(\"Error calling GetConversationSuggestions: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
+  "getconversationsummaries": {
+    "operationId": "getconversationsummaries",
+    "functionName": "GetConversationSummaries",
+    "signature": "GetConversationSummaries(conversationId)",
+    "parameters": [
+      {
+        "name": "conversationId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Conversationsummariesgetresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewConversationsApiWithConfig(config)\n\nvar conversationId string // Conversation ID\n// Get the summaries of the conversation.\ndata, response, err := apiInstance.GetConversationSummaries(conversationId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetConversationSummaries: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
   "getconversations": {
     "operationId": "getconversations",
     "functionName": "GetConversations",
@@ -20564,6 +20578,60 @@
     ],
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)\n\nvar knowledgeBaseId string // Knowledge base ID\nvar languageCode string // Language code, format: iso2-LOCALE\nvar importId string // Import ID\n// Delete import operation\nresponse, err := apiInstance.DeleteKnowledgeKnowledgebaseLanguageDocumentsImport(knowledgeBaseId, languageCode, importId)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteKnowledgeKnowledgebaseLanguageDocumentsImport: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
   },
+  "deleteknowledgeknowledgebasesourcessalesforcesourceid": {
+    "operationId": "deleteknowledgeknowledgebasesourcessalesforcesourceid",
+    "functionName": "DeleteKnowledgeKnowledgebaseSourcesSalesforceSourceId",
+    "signature": "DeleteKnowledgeKnowledgebaseSourcesSalesforceSourceId(knowledgeBaseId, sourceId)",
+    "parameters": [
+      {
+        "name": "knowledgeBaseId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "sourceId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)\n\nvar knowledgeBaseId string // Knowledge base ID\nvar sourceId string // Source ID\n// Delete Salesforce Knowledge integration source\nresponse, err := apiInstance.DeleteKnowledgeKnowledgebaseSourcesSalesforceSourceId(knowledgeBaseId, sourceId)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteKnowledgeKnowledgebaseSourcesSalesforceSourceId: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
+  },
+  "deleteknowledgeknowledgebasesourcesservicenowsourceid": {
+    "operationId": "deleteknowledgeknowledgebasesourcesservicenowsourceid",
+    "functionName": "DeleteKnowledgeKnowledgebaseSourcesServicenowSourceId",
+    "signature": "DeleteKnowledgeKnowledgebaseSourcesServicenowSourceId(knowledgeBaseId, sourceId)",
+    "parameters": [
+      {
+        "name": "knowledgeBaseId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "sourceId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)\n\nvar knowledgeBaseId string // Knowledge base ID\nvar sourceId string // Source ID\n// Delete ServiceNow Knowledge integration source\nresponse, err := apiInstance.DeleteKnowledgeKnowledgebaseSourcesServicenowSourceId(knowledgeBaseId, sourceId)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteKnowledgeKnowledgebaseSourcesServicenowSourceId: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
+  },
+  "deleteknowledgeknowledgebasesynchronizejob": {
+    "operationId": "deleteknowledgeknowledgebasesynchronizejob",
+    "functionName": "DeleteKnowledgeKnowledgebaseSynchronizeJob",
+    "signature": "DeleteKnowledgeKnowledgebaseSynchronizeJob(knowledgeBaseId, syncJobId)",
+    "parameters": [
+      {
+        "name": "knowledgeBaseId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "syncJobId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)\n\nvar knowledgeBaseId string // Knowledge base ID\nvar syncJobId string // Synchronization job ID\n// Delete synchronization job\nresponse, err := apiInstance.DeleteKnowledgeKnowledgebaseSynchronizeJob(knowledgeBaseId, syncJobId)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteKnowledgeKnowledgebaseSynchronizeJob: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
+  },
   "getknowledgeguestsessioncategories": {
     "operationId": "getknowledgeguestsessioncategories",
     "functionName": "GetKnowledgeGuestSessionCategories",
@@ -20665,6 +20733,20 @@
     ],
     "return": "Knowledgeguestdocumentresponselisting",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)\n\nvar sessionId string // Knowledge guest session ID.\nvar categoryId []string // If specified, retrieves documents associated with category ids, comma separated values expected.\nvar pageSize int // Number of entities to return. Maximum of 200.\n// Get documents.\ndata, response, err := apiInstance.GetKnowledgeGuestSessionDocuments(sessionId, categoryId, pageSize)\nif err != nil {\n\tfmt.Printf(\"Error calling GetKnowledgeGuestSessionDocuments: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getknowledgeintegrationoptions": {
+    "operationId": "getknowledgeintegrationoptions",
+    "functionName": "GetKnowledgeIntegrationOptions",
+    "signature": "GetKnowledgeIntegrationOptions(integrationId)",
+    "parameters": [
+      {
+        "name": "integrationId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Knowledgeintegrationoptionsresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)\n\nvar integrationId string // Integration ID\n// Get sync options available for a knowledge-connect integration\ndata, response, err := apiInstance.GetKnowledgeIntegrationOptions(integrationId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetKnowledgeIntegrationOptions: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getknowledgeknowledgebase": {
     "operationId": "getknowledgeknowledgebase",
@@ -21628,6 +21710,102 @@
     "return": "Knowledgeparsejobresponse",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)\n\nvar knowledgeBaseId string // Knowledge base ID\nvar parseJobId string // Parse job ID\nvar expand []string // If expand contains 'urls' downloadURL and failedEntitiesURL will be filled.\n// Get parse job report\ndata, response, err := apiInstance.GetKnowledgeKnowledgebaseParseJob(knowledgeBaseId, parseJobId, expand)\nif err != nil {\n\tfmt.Printf(\"Error calling GetKnowledgeKnowledgebaseParseJob: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
+  "getknowledgeknowledgebasesources": {
+    "operationId": "getknowledgeknowledgebasesources",
+    "functionName": "GetKnowledgeKnowledgebaseSources",
+    "signature": "GetKnowledgeKnowledgebaseSources(knowledgeBaseId, varType, expand, ids)",
+    "parameters": [
+      {
+        "name": "knowledgeBaseId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "varType",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "expand",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "ids",
+        "type": "[]string",
+        "required": "false"
+      }
+    ],
+    "return": "[]Sourcebaseresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)\n\nvar knowledgeBaseId string // Knowledge base ID\nvar varType string // If specified, retrieves integration sources with specified integration type.\nvar expand []string // The specified entity attributes will be filled. Comma separated values expected.\nvar ids []string // If specified, retrieves integration sources with specified IDs.\n// Get Knowledge integration sources\ndata, response, err := apiInstance.GetKnowledgeKnowledgebaseSources(knowledgeBaseId, varType, expand, ids)\nif err != nil {\n\tfmt.Printf(\"Error calling GetKnowledgeKnowledgebaseSources: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getknowledgeknowledgebasesourcessalesforcesourceid": {
+    "operationId": "getknowledgeknowledgebasesourcessalesforcesourceid",
+    "functionName": "GetKnowledgeKnowledgebaseSourcesSalesforceSourceId",
+    "signature": "GetKnowledgeKnowledgebaseSourcesSalesforceSourceId(knowledgeBaseId, sourceId, expand)",
+    "parameters": [
+      {
+        "name": "knowledgeBaseId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "sourceId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "expand",
+        "type": "[]string",
+        "required": "false"
+      }
+    ],
+    "return": "Salesforcesourceresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)\n\nvar knowledgeBaseId string // Knowledge base ID\nvar sourceId string // Source ID\nvar expand []string // The specified entity attributes will be filled. Comma separated values expected.\n// Get Salesforce Knowledge integration source\ndata, response, err := apiInstance.GetKnowledgeKnowledgebaseSourcesSalesforceSourceId(knowledgeBaseId, sourceId, expand)\nif err != nil {\n\tfmt.Printf(\"Error calling GetKnowledgeKnowledgebaseSourcesSalesforceSourceId: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getknowledgeknowledgebasesourcesservicenowsourceid": {
+    "operationId": "getknowledgeknowledgebasesourcesservicenowsourceid",
+    "functionName": "GetKnowledgeKnowledgebaseSourcesServicenowSourceId",
+    "signature": "GetKnowledgeKnowledgebaseSourcesServicenowSourceId(knowledgeBaseId, sourceId, expand)",
+    "parameters": [
+      {
+        "name": "knowledgeBaseId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "sourceId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "expand",
+        "type": "[]string",
+        "required": "false"
+      }
+    ],
+    "return": "Servicenowsourceresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)\n\nvar knowledgeBaseId string // Knowledge base ID\nvar sourceId string // Source ID\nvar expand []string // The specified entity attributes will be filled. Comma separated values expected.\n// Get ServiceNow Knowledge integration source\ndata, response, err := apiInstance.GetKnowledgeKnowledgebaseSourcesServicenowSourceId(knowledgeBaseId, sourceId, expand)\nif err != nil {\n\tfmt.Printf(\"Error calling GetKnowledgeKnowledgebaseSourcesServicenowSourceId: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getknowledgeknowledgebasesynchronizejob": {
+    "operationId": "getknowledgeknowledgebasesynchronizejob",
+    "functionName": "GetKnowledgeKnowledgebaseSynchronizeJob",
+    "signature": "GetKnowledgeKnowledgebaseSynchronizeJob(knowledgeBaseId, syncJobId)",
+    "parameters": [
+      {
+        "name": "knowledgeBaseId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "syncJobId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Knowledgesyncjobresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)\n\nvar knowledgeBaseId string // Knowledge base ID\nvar syncJobId string // Synchronization job ID\n// Get synchronization job report\ndata, response, err := apiInstance.GetKnowledgeKnowledgebaseSynchronizeJob(knowledgeBaseId, syncJobId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetKnowledgeKnowledgebaseSynchronizeJob: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
   "getknowledgeknowledgebaseunansweredgroup": {
     "operationId": "getknowledgeknowledgebaseunansweredgroup",
     "functionName": "GetKnowledgeKnowledgebaseUnansweredGroup",
@@ -22155,6 +22333,30 @@
       }
     ],
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)\n\nvar knowledgeBaseId string // Knowledge base ID\nvar parseJobId string // Parse job ID\nvar body platformclientv2.Knowledgeparsejobrequestpatch // \n// Send update to the parse operation\nresponse, err := apiInstance.PatchKnowledgeKnowledgebaseParseJob(knowledgeBaseId, parseJobId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchKnowledgeKnowledgebaseParseJob: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
+  },
+  "patchknowledgeknowledgebasesynchronizejob": {
+    "operationId": "patchknowledgeknowledgebasesynchronizejob",
+    "functionName": "PatchKnowledgeKnowledgebaseSynchronizeJob",
+    "signature": "PatchKnowledgeKnowledgebaseSynchronizeJob(knowledgeBaseId, syncJobId, body)",
+    "parameters": [
+      {
+        "name": "knowledgeBaseId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "syncJobId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Syncstatusrequest",
+        "required": "true"
+      }
+    ],
+    "return": "Knowledgesyncjobresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)\n\nvar knowledgeBaseId string // Knowledge base ID\nvar syncJobId string // Synchronization job ID\nvar body platformclientv2.Syncstatusrequest // \n// Update synchronization job\ndata, response, err := apiInstance.PatchKnowledgeKnowledgebaseSynchronizeJob(knowledgeBaseId, syncJobId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchKnowledgeKnowledgebaseSynchronizeJob: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "patchknowledgeknowledgebaseunansweredgroupphrasegroup": {
     "operationId": "patchknowledgeknowledgebaseunansweredgroupphrasegroup",
@@ -22942,6 +23144,101 @@
     "return": "Knowledgesearchresponse",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSearchApiWithConfig(config)\n\nvar knowledgeBaseId string // Knowledge base ID\nvar body platformclientv2.Knowledgesearchrequest // \n// Search Documents\ndata, response, err := apiInstance.PostKnowledgeKnowledgebaseSearch(knowledgeBaseId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostKnowledgeKnowledgebaseSearch: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
+  "postknowledgeknowledgebasesourcessalesforce": {
+    "operationId": "postknowledgeknowledgebasesourcessalesforce",
+    "functionName": "PostKnowledgeKnowledgebaseSourcesSalesforce",
+    "signature": "PostKnowledgeKnowledgebaseSourcesSalesforce(knowledgeBaseId, body)",
+    "parameters": [
+      {
+        "name": "knowledgeBaseId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Salesforcesourcerequest",
+        "required": "true"
+      }
+    ],
+    "return": "Knowledgesyncjobresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)\n\nvar knowledgeBaseId string // Knowledge base ID\nvar body platformclientv2.Salesforcesourcerequest // \n// Create Salesforce Knowledge integration source\ndata, response, err := apiInstance.PostKnowledgeKnowledgebaseSourcesSalesforce(knowledgeBaseId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostKnowledgeKnowledgebaseSourcesSalesforce: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "postknowledgeknowledgebasesourcessalesforcesourceidsync": {
+    "operationId": "postknowledgeknowledgebasesourcessalesforcesourceidsync",
+    "functionName": "PostKnowledgeKnowledgebaseSourcesSalesforceSourceIdSync",
+    "signature": "PostKnowledgeKnowledgebaseSourcesSalesforceSourceIdSync(knowledgeBaseId, sourceId)",
+    "parameters": [
+      {
+        "name": "knowledgeBaseId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "sourceId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Sourcesyncresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)\n\nvar knowledgeBaseId string // Knowledge base ID\nvar sourceId string // Source ID\n// Start sync on Salesforce Knowledge integration source\ndata, response, err := apiInstance.PostKnowledgeKnowledgebaseSourcesSalesforceSourceIdSync(knowledgeBaseId, sourceId)\nif err != nil {\n\tfmt.Printf(\"Error calling PostKnowledgeKnowledgebaseSourcesSalesforceSourceIdSync: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "postknowledgeknowledgebasesourcesservicenow": {
+    "operationId": "postknowledgeknowledgebasesourcesservicenow",
+    "functionName": "PostKnowledgeKnowledgebaseSourcesServicenow",
+    "signature": "PostKnowledgeKnowledgebaseSourcesServicenow(knowledgeBaseId, body)",
+    "parameters": [
+      {
+        "name": "knowledgeBaseId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Servicenowsourcerequest",
+        "required": "true"
+      }
+    ],
+    "return": "Knowledgesyncjobresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)\n\nvar knowledgeBaseId string // Knowledge base ID\nvar body platformclientv2.Servicenowsourcerequest // \n// Create ServiceNow Knowledge integration source\ndata, response, err := apiInstance.PostKnowledgeKnowledgebaseSourcesServicenow(knowledgeBaseId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostKnowledgeKnowledgebaseSourcesServicenow: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "postknowledgeknowledgebasesourcesservicenowsourceidsync": {
+    "operationId": "postknowledgeknowledgebasesourcesservicenowsourceidsync",
+    "functionName": "PostKnowledgeKnowledgebaseSourcesServicenowSourceIdSync",
+    "signature": "PostKnowledgeKnowledgebaseSourcesServicenowSourceIdSync(knowledgeBaseId, sourceId)",
+    "parameters": [
+      {
+        "name": "knowledgeBaseId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "sourceId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Sourcesyncresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)\n\nvar knowledgeBaseId string // Knowledge base ID\nvar sourceId string // Source ID\n// Start synchronization on ServiceNow Knowledge integration source\ndata, response, err := apiInstance.PostKnowledgeKnowledgebaseSourcesServicenowSourceIdSync(knowledgeBaseId, sourceId)\nif err != nil {\n\tfmt.Printf(\"Error calling PostKnowledgeKnowledgebaseSourcesServicenowSourceIdSync: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "postknowledgeknowledgebasesynchronizejobs": {
+    "operationId": "postknowledgeknowledgebasesynchronizejobs",
+    "functionName": "PostKnowledgeKnowledgebaseSynchronizeJobs",
+    "signature": "PostKnowledgeKnowledgebaseSynchronizeJobs(knowledgeBaseId, body)",
+    "parameters": [
+      {
+        "name": "knowledgeBaseId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Knowledgesyncjobrequest",
+        "required": "true"
+      }
+    ],
+    "return": "Knowledgesyncjobresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)\n\nvar knowledgeBaseId string // Knowledge base ID\nvar body platformclientv2.Knowledgesyncjobrequest // \n// Create synchronization job\ndata, response, err := apiInstance.PostKnowledgeKnowledgebaseSynchronizeJobs(knowledgeBaseId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostKnowledgeKnowledgebaseSynchronizeJobs: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
   "postknowledgeknowledgebaseuploadsurlsjobs": {
     "operationId": "postknowledgeknowledgebaseuploadsurlsjobs",
     "functionName": "PostKnowledgeKnowledgebaseUploadsUrlsJobs",
@@ -22974,6 +23271,54 @@
     ],
     "return": "Knowledgebase",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)\n\nvar body platformclientv2.Knowledgebasecreaterequest // \n// Create new knowledge base\ndata, response, err := apiInstance.PostKnowledgeKnowledgebases(body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostKnowledgeKnowledgebases: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "putknowledgeknowledgebasesourcessalesforcesourceid": {
+    "operationId": "putknowledgeknowledgebasesourcessalesforcesourceid",
+    "functionName": "PutKnowledgeKnowledgebaseSourcesSalesforceSourceId",
+    "signature": "PutKnowledgeKnowledgebaseSourcesSalesforceSourceId(knowledgeBaseId, sourceId, body)",
+    "parameters": [
+      {
+        "name": "knowledgeBaseId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "sourceId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Salesforcesourcerequest",
+        "required": "true"
+      }
+    ],
+    "return": "Salesforcesourceresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)\n\nvar knowledgeBaseId string // Knowledge base ID\nvar sourceId string // Source ID\nvar body platformclientv2.Salesforcesourcerequest // \n// Update Salesforce Knowledge integration source\ndata, response, err := apiInstance.PutKnowledgeKnowledgebaseSourcesSalesforceSourceId(knowledgeBaseId, sourceId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PutKnowledgeKnowledgebaseSourcesSalesforceSourceId: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "putknowledgeknowledgebasesourcesservicenowsourceid": {
+    "operationId": "putknowledgeknowledgebasesourcesservicenowsourceid",
+    "functionName": "PutKnowledgeKnowledgebaseSourcesServicenowSourceId",
+    "signature": "PutKnowledgeKnowledgebaseSourcesServicenowSourceId(knowledgeBaseId, sourceId, body)",
+    "parameters": [
+      {
+        "name": "knowledgeBaseId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "sourceId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Servicenowsourcerequest",
+        "required": "true"
+      }
+    ],
+    "return": "Servicenowsourceresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)\n\nvar knowledgeBaseId string // Knowledge base ID\nvar sourceId string // Source ID\nvar body platformclientv2.Servicenowsourcerequest // \n// Update ServiceNow Knowledge integration source\ndata, response, err := apiInstance.PutKnowledgeKnowledgebaseSourcesServicenowSourceId(knowledgeBaseId, sourceId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PutKnowledgeKnowledgebaseSourcesServicenowSourceId: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "deletelanguageunderstandingdomain": {
     "operationId": "deletelanguageunderstandingdomain",
@@ -27480,6 +27825,30 @@
     ],
     "return": "Campaignprogress",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewOutboundApiWithConfig(config)\n\nvar campaignId string // Campaign ID\n// Get campaign progress\ndata, response, err := apiInstance.GetOutboundCampaignProgress(campaignId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetOutboundCampaignProgress: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getoutboundcampaignskillcombinations": {
+    "operationId": "getoutboundcampaignskillcombinations",
+    "functionName": "GetOutboundCampaignSkillcombinations",
+    "signature": "GetOutboundCampaignSkillcombinations(campaignId, pageNumber, pageSize)",
+    "parameters": [
+      {
+        "name": "campaignId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "pageNumber",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "pageSize",
+        "type": "int",
+        "required": "false"
+      }
+    ],
+    "return": "Pagedskillcombinationlisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewOutboundApiWithConfig(config)\n\nvar campaignId string // Campaign ID\nvar pageNumber int // Page number\nvar pageSize int // Page size\n// Get the remaining and total contact count for each skill combination in a skills campaign\ndata, response, err := apiInstance.GetOutboundCampaignSkillcombinations(campaignId, pageNumber, pageSize)\nif err != nil {\n\tfmt.Printf(\"Error calling GetOutboundCampaignSkillcombinations: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getoutboundcampaignstats": {
     "operationId": "getoutboundcampaignstats",
@@ -38292,6 +38661,42 @@
     "return": "Topicjob",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSpeechTextAnalyticsApiWithConfig(config)\n\nvar jobId string // The id of the publish topics job\n// Get a Speech & Text Analytics publish topics job by id\ndata, response, err := apiInstance.GetSpeechandtextanalyticsTopicsPublishjob(jobId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetSpeechandtextanalyticsTopicsPublishjob: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
+  "getspeechandtextanalyticstranslationslanguageconversation": {
+    "operationId": "getspeechandtextanalyticstranslationslanguageconversation",
+    "functionName": "GetSpeechandtextanalyticsTranslationsLanguageConversation",
+    "signature": "GetSpeechandtextanalyticsTranslationsLanguageConversation(languageId, conversationId, communicationId, recordingId)",
+    "parameters": [
+      {
+        "name": "languageId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "conversationId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "communicationId",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "recordingId",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Communicationtranslationlist",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSpeechTextAnalyticsApiWithConfig(config)\n\nvar languageId string // Target translation language\nvar conversationId string // Conversation id\nvar communicationId string // Communication id associated with the conversation\nvar recordingId string // Recording id associated with the communication\n// Translate all communication(s) for an interaction.\ndata, response, err := apiInstance.GetSpeechandtextanalyticsTranslationsLanguageConversation(languageId, conversationId, communicationId, recordingId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetSpeechandtextanalyticsTranslationsLanguageConversation: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getspeechandtextanalyticstranslationslanguages": {
+    "operationId": "getspeechandtextanalyticstranslationslanguages",
+    "functionName": "GetSpeechandtextanalyticsTranslationsLanguages",
+    "signature": "GetSpeechandtextanalyticsTranslationsLanguages()",
+    "return": "Translatesupportedlanguagelist",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSpeechTextAnalyticsApiWithConfig(config)\n\n// Get supported translation languages\ndata, response, err := apiInstance.GetSpeechandtextanalyticsTranslationsLanguages()\nif err != nil {\n\tfmt.Printf(\"Error calling GetSpeechandtextanalyticsTranslationsLanguages: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
   "patchspeechandtextanalyticssettings": {
     "operationId": "patchspeechandtextanalyticssettings",
     "functionName": "PatchSpeechandtextanalyticsSettings",
@@ -39823,6 +40228,12 @@
     ],
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\nvar edgeId string // Edge ID\n// Cancels any in-progress update for this edge.\nresponse, err := apiInstance.DeleteTelephonyProvidersEdgeSoftwareupdate(edgeId)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteTelephonyProvidersEdgeSoftwareupdate: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
   },
+  "deletetelephonyprovidersedgesalertablepresences": {
+    "operationId": "deletetelephonyprovidersedgesalertablepresences",
+    "functionName": "DeleteTelephonyProvidersEdgesAlertablepresences",
+    "signature": "DeleteTelephonyProvidersEdgesAlertablepresences()",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\n// Deletes alertable presences overrides.\nresponse, err := apiInstance.DeleteTelephonyProvidersEdgesAlertablepresences()\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteTelephonyProvidersEdgesAlertablepresences: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
+  },
   "deletetelephonyprovidersedgescertificateauthority": {
     "operationId": "deletetelephonyprovidersedgescertificateauthority",
     "functionName": "DeleteTelephonyProvidersEdgesCertificateauthority",
@@ -40263,6 +40674,20 @@
     ],
     "return": "Edgeentitylisting",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar name string // Name\nvar siteId string // Filter by site.id\nvar edgeGroupId string // Filter by edgeGroup.id\nvar sortBy string // Sort by\nvar managed bool // Filter by managed\nvar showCloudMedia bool // True to show the cloud media devices in the result.\n// Get the list of edges.\ndata, response, err := apiInstance.GetTelephonyProvidersEdges(pageSize, pageNumber, name, siteId, edgeGroupId, sortBy, managed, showCloudMedia)\nif err != nil {\n\tfmt.Printf(\"Error calling GetTelephonyProvidersEdges: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "gettelephonyprovidersedgesalertablepresences": {
+    "operationId": "gettelephonyprovidersedgesalertablepresences",
+    "functionName": "GetTelephonyProvidersEdgesAlertablepresences",
+    "signature": "GetTelephonyProvidersEdgesAlertablepresences(varType)",
+    "parameters": [
+      {
+        "name": "varType",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Alertablepresences",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\nvar varType string // \n// Get the list alertable presences. The 'type' query parameter can be used to If there are any overrides, this is the list of overrides; if there are no overrides, it is the default list.\ndata, response, err := apiInstance.GetTelephonyProvidersEdgesAlertablepresences(varType)\nif err != nil {\n\tfmt.Printf(\"Error calling GetTelephonyProvidersEdgesAlertablepresences: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "gettelephonyprovidersedgescertificateauthorities": {
     "operationId": "gettelephonyprovidersedgescertificateauthorities",
@@ -41959,6 +42384,19 @@
     ],
     "return": "Domainlogicalinterface",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\nvar edgeId string // Edge ID\nvar interfaceId string // Interface ID\nvar body platformclientv2.Domainlogicalinterface // Logical interface\n// Update an edge logical interface.\ndata, response, err := apiInstance.PutTelephonyProvidersEdgeLogicalinterface(edgeId, interfaceId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PutTelephonyProvidersEdgeLogicalinterface: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "puttelephonyprovidersedgesalertablepresences": {
+    "operationId": "puttelephonyprovidersedgesalertablepresences",
+    "functionName": "PutTelephonyProvidersEdgesAlertablepresences",
+    "signature": "PutTelephonyProvidersEdgesAlertablepresences(body)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Alertablepresences",
+        "required": "true"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\nvar body platformclientv2.Alertablepresences // Alertable Presences Overrides\n// Creates or updates alertable presences overrides.\nresponse, err := apiInstance.PutTelephonyProvidersEdgesAlertablepresences(body)\nif err != nil {\n\tfmt.Printf(\"Error calling PutTelephonyProvidersEdgesAlertablepresences: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
   },
   "puttelephonyprovidersedgescertificateauthority": {
     "operationId": "puttelephonyprovidersedgescertificateauthority",
@@ -44418,7 +44856,7 @@
       }
     ],
     "return": "Expandablewebdeploymententitylisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWebDeploymentsApiWithConfig(config)\n\nvar expand []string // The specified entity attributes will be filled. Comma separated values expected.\n// Get deployments\ndata, response, err := apiInstance.GetWebdeploymentsDeployments(expand)\nif err != nil {\n\tfmt.Printf(\"Error calling GetWebdeploymentsDeployments: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWebDeploymentsApiWithConfig(config)\n\nvar expand []string // The specified entity attributes will be filled. Comma separated values expected. \n// Get deployments\ndata, response, err := apiInstance.GetWebdeploymentsDeployments(expand)\nif err != nil {\n\tfmt.Printf(\"Error calling GetWebdeploymentsDeployments: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "postwebdeploymentsconfigurationversionsdraftpublish": {
     "operationId": "postwebdeploymentsconfigurationversionsdraftpublish",

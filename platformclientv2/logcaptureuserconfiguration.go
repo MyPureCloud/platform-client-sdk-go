@@ -15,6 +15,9 @@ type Logcaptureuserconfiguration struct {
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
+	// DateStarted - Indicates when log capture was enabled for the user. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateStarted *time.Time `json:"dateStarted,omitempty"`
+
 	// DateExpired - Indicates when log capture will be turned off for the user. (Must be within 24 hours). Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateExpired *time.Time `json:"dateExpired,omitempty"`
 
@@ -51,7 +54,7 @@ func (o Logcaptureuserconfiguration) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "DateExpired", }
+		dateTimeFields := []string{ "DateStarted","DateExpired", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -84,6 +87,14 @@ func (o Logcaptureuserconfiguration) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Logcaptureuserconfiguration
 	
+	DateStarted := new(string)
+	if o.DateStarted != nil {
+		
+		*DateStarted = timeutil.Strftime(o.DateStarted, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateStarted = nil
+	}
+	
 	DateExpired := new(string)
 	if o.DateExpired != nil {
 		
@@ -95,12 +106,16 @@ func (o Logcaptureuserconfiguration) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
+		DateStarted *string `json:"dateStarted,omitempty"`
+		
 		DateExpired *string `json:"dateExpired,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
+		
+		DateStarted: DateStarted,
 		
 		DateExpired: DateExpired,
 		
@@ -120,6 +135,11 @@ func (o *Logcaptureuserconfiguration) UnmarshalJSON(b []byte) error {
 		o.Id = &Id
 	}
     
+	if dateStartedString, ok := LogcaptureuserconfigurationMap["dateStarted"].(string); ok {
+		DateStarted, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateStartedString)
+		o.DateStarted = &DateStarted
+	}
+	
 	if dateExpiredString, ok := LogcaptureuserconfigurationMap["dateExpired"].(string); ok {
 		DateExpired, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateExpiredString)
 		o.DateExpired = &DateExpired

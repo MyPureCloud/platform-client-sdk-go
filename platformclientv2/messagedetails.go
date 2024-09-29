@@ -36,6 +36,9 @@ type Messagedetails struct {
 	// MessageMetadata - Information that describes the content of the message, if any
 	MessageMetadata *Conversationmessagemetadata `json:"messageMetadata,omitempty"`
 
+	// SocialVisibility - For social media messages, the visibility of the message in the originating social platform
+	SocialVisibility *string `json:"socialVisibility,omitempty"`
+
 	// ErrorInfo - Provider specific error information for a communication.
 	ErrorInfo *Errorbody `json:"errorInfo,omitempty"`
 }
@@ -127,6 +130,8 @@ func (o Messagedetails) MarshalJSON() ([]byte, error) {
 		
 		MessageMetadata *Conversationmessagemetadata `json:"messageMetadata,omitempty"`
 		
+		SocialVisibility *string `json:"socialVisibility,omitempty"`
+		
 		ErrorInfo *Errorbody `json:"errorInfo,omitempty"`
 		Alias
 	}{ 
@@ -145,6 +150,8 @@ func (o Messagedetails) MarshalJSON() ([]byte, error) {
 		Stickers: o.Stickers,
 		
 		MessageMetadata: o.MessageMetadata,
+		
+		SocialVisibility: o.SocialVisibility,
 		
 		ErrorInfo: o.ErrorInfo,
 		Alias:    (Alias)(o),
@@ -195,6 +202,10 @@ func (o *Messagedetails) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(MessageMetadataString, &o.MessageMetadata)
 	}
 	
+	if SocialVisibility, ok := MessagedetailsMap["socialVisibility"].(string); ok {
+		o.SocialVisibility = &SocialVisibility
+	}
+    
 	if ErrorInfo, ok := MessagedetailsMap["errorInfo"].(map[string]interface{}); ok {
 		ErrorInfoString, _ := json.Marshal(ErrorInfo)
 		json.Unmarshal(ErrorInfoString, &o.ErrorInfo)

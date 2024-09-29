@@ -22,6 +22,9 @@ type V2flowexecutiondataflowidtopicinvokingcontext struct {
 
 	// Quality
 	Quality *V2flowexecutiondataflowidtopicquality `json:"quality,omitempty"`
+
+	// Workitem
+	Workitem *V2flowexecutiondataflowidtopicworkitem `json:"workitem,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +97,8 @@ func (o V2flowexecutiondataflowidtopicinvokingcontext) MarshalJSON() ([]byte, er
 		ProcessAutomation *V2flowexecutiondataflowidtopicprocessautomation `json:"processAutomation,omitempty"`
 		
 		Quality *V2flowexecutiondataflowidtopicquality `json:"quality,omitempty"`
+		
+		Workitem *V2flowexecutiondataflowidtopicworkitem `json:"workitem,omitempty"`
 		Alias
 	}{ 
 		Flow: o.Flow,
@@ -103,6 +108,8 @@ func (o V2flowexecutiondataflowidtopicinvokingcontext) MarshalJSON() ([]byte, er
 		ProcessAutomation: o.ProcessAutomation,
 		
 		Quality: o.Quality,
+		
+		Workitem: o.Workitem,
 		Alias:    (Alias)(o),
 	})
 }
@@ -132,6 +139,11 @@ func (o *V2flowexecutiondataflowidtopicinvokingcontext) UnmarshalJSON(b []byte) 
 	if Quality, ok := V2flowexecutiondataflowidtopicinvokingcontextMap["quality"].(map[string]interface{}); ok {
 		QualityString, _ := json.Marshal(Quality)
 		json.Unmarshal(QualityString, &o.Quality)
+	}
+	
+	if Workitem, ok := V2flowexecutiondataflowidtopicinvokingcontextMap["workitem"].(map[string]interface{}); ok {
+		WorkitemString, _ := json.Marshal(Workitem)
+		json.Unmarshal(WorkitemString, &o.Workitem)
 	}
 	
 

@@ -144,6 +144,9 @@ type Flowmetricstopicflowmetricrecord struct {
 	// FlowOutType - Type of flow out that occurred when emitting tFlowOut.
 	FlowOutType *string `json:"flowOutType,omitempty"`
 
+	// FlowSubType - Represents the subtype of the flow. For example a Digital Bot Flow that has been upgraded with Virtual Agent capabilities.
+	FlowSubType *string `json:"flowSubType,omitempty"`
+
 	// FlowType - The type of this flow
 	FlowType *string `json:"flowType,omitempty"`
 
@@ -466,6 +469,8 @@ func (o Flowmetricstopicflowmetricrecord) MarshalJSON() ([]byte, error) {
 		
 		FlowOutType *string `json:"flowOutType,omitempty"`
 		
+		FlowSubType *string `json:"flowSubType,omitempty"`
+		
 		FlowType *string `json:"flowType,omitempty"`
 		
 		FlowVersion *string `json:"flowVersion,omitempty"`
@@ -662,6 +667,8 @@ func (o Flowmetricstopicflowmetricrecord) MarshalJSON() ([]byte, error) {
 		FlowName: o.FlowName,
 		
 		FlowOutType: o.FlowOutType,
+		
+		FlowSubType: o.FlowSubType,
 		
 		FlowType: o.FlowType,
 		
@@ -964,6 +971,10 @@ func (o *Flowmetricstopicflowmetricrecord) UnmarshalJSON(b []byte) error {
     
 	if FlowOutType, ok := FlowmetricstopicflowmetricrecordMap["flowOutType"].(string); ok {
 		o.FlowOutType = &FlowOutType
+	}
+    
+	if FlowSubType, ok := FlowmetricstopicflowmetricrecordMap["flowSubType"].(string); ok {
+		o.FlowSubType = &FlowSubType
 	}
     
 	if FlowType, ok := FlowmetricstopicflowmetricrecordMap["flowType"].(string); ok {

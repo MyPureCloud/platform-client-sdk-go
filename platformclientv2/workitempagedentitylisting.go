@@ -14,11 +14,17 @@ type Workitempagedentitylisting struct {
 	// Entities
 	Entities *[]Workitem `json:"entities,omitempty"`
 
-	// PageSize - The total page size requested
+	// PageSize
 	PageSize *int `json:"pageSize,omitempty"`
 
-	// PageNumber - The page number requested
+	// PageNumber
 	PageNumber *int `json:"pageNumber,omitempty"`
+
+	// Total
+	Total *int `json:"total,omitempty"`
+
+	// PageCount
+	PageCount *int `json:"pageCount,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +95,10 @@ func (o Workitempagedentitylisting) MarshalJSON() ([]byte, error) {
 		PageSize *int `json:"pageSize,omitempty"`
 		
 		PageNumber *int `json:"pageNumber,omitempty"`
+		
+		Total *int `json:"total,omitempty"`
+		
+		PageCount *int `json:"pageCount,omitempty"`
 		Alias
 	}{ 
 		Entities: o.Entities,
@@ -96,6 +106,10 @@ func (o Workitempagedentitylisting) MarshalJSON() ([]byte, error) {
 		PageSize: o.PageSize,
 		
 		PageNumber: o.PageNumber,
+		
+		Total: o.Total,
+		
+		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
 	})
 }
@@ -120,6 +134,16 @@ func (o *Workitempagedentitylisting) UnmarshalJSON(b []byte) error {
 	if PageNumber, ok := WorkitempagedentitylistingMap["pageNumber"].(float64); ok {
 		PageNumberInt := int(PageNumber)
 		o.PageNumber = &PageNumberInt
+	}
+	
+	if Total, ok := WorkitempagedentitylistingMap["total"].(float64); ok {
+		TotalInt := int(Total)
+		o.Total = &TotalInt
+	}
+	
+	if PageCount, ok := WorkitempagedentitylistingMap["pageCount"].(float64); ok {
+		PageCountInt := int(PageCount)
+		o.PageCount = &PageCountInt
 	}
 	
 

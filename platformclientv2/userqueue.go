@@ -84,6 +84,9 @@ type Userqueue struct {
 	// OnHoldPrompt - The audio to be played when calls on this queue are on hold. If not configured, the default on-hold music will play.
 	OnHoldPrompt *Domainentityref `json:"onHoldPrompt,omitempty"`
 
+	// CannedResponseLibraries - Canned response library IDs and mode with which they are associated with the queue
+	CannedResponseLibraries *Cannedresponselibraries `json:"cannedResponseLibraries,omitempty"`
+
 	// EnableTranscription - Indicates whether voice transcription is enabled for this queue.
 	EnableTranscription *bool `json:"enableTranscription,omitempty"`
 
@@ -254,6 +257,8 @@ func (o Userqueue) MarshalJSON() ([]byte, error) {
 		
 		OnHoldPrompt *Domainentityref `json:"onHoldPrompt,omitempty"`
 		
+		CannedResponseLibraries *Cannedresponselibraries `json:"cannedResponseLibraries,omitempty"`
+		
 		EnableTranscription *bool `json:"enableTranscription,omitempty"`
 		
 		EnableAudioMonitoring *bool `json:"enableAudioMonitoring,omitempty"`
@@ -330,6 +335,8 @@ func (o Userqueue) MarshalJSON() ([]byte, error) {
 		WhisperPrompt: o.WhisperPrompt,
 		
 		OnHoldPrompt: o.OnHoldPrompt,
+		
+		CannedResponseLibraries: o.CannedResponseLibraries,
 		
 		EnableTranscription: o.EnableTranscription,
 		
@@ -480,6 +487,11 @@ func (o *Userqueue) UnmarshalJSON(b []byte) error {
 	if OnHoldPrompt, ok := UserqueueMap["onHoldPrompt"].(map[string]interface{}); ok {
 		OnHoldPromptString, _ := json.Marshal(OnHoldPrompt)
 		json.Unmarshal(OnHoldPromptString, &o.OnHoldPrompt)
+	}
+	
+	if CannedResponseLibraries, ok := UserqueueMap["cannedResponseLibraries"].(map[string]interface{}); ok {
+		CannedResponseLibrariesString, _ := json.Marshal(CannedResponseLibraries)
+		json.Unmarshal(CannedResponseLibrariesString, &o.CannedResponseLibraries)
 	}
 	
 	if EnableTranscription, ok := UserqueueMap["enableTranscription"].(bool); ok {

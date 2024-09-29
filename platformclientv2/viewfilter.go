@@ -598,6 +598,9 @@ type Viewfilter struct {
 
 	// DashboardAccessFilter - The type of dashboard access being filtered
 	DashboardAccessFilter *string `json:"dashboardAccessFilter,omitempty"`
+
+	// TranscriptDurationMilliseconds - The transcript durations in milliseconds used to filter the view
+	TranscriptDurationMilliseconds *[]Numericrange `json:"transcriptDurationMilliseconds,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -1054,6 +1057,8 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		DashboardType *string `json:"dashboardType,omitempty"`
 		
 		DashboardAccessFilter *string `json:"dashboardAccessFilter,omitempty"`
+		
+		TranscriptDurationMilliseconds *[]Numericrange `json:"transcriptDurationMilliseconds,omitempty"`
 		Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -1447,6 +1452,8 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		DashboardType: o.DashboardType,
 		
 		DashboardAccessFilter: o.DashboardAccessFilter,
+		
+		TranscriptDurationMilliseconds: o.TranscriptDurationMilliseconds,
 		Alias:    (Alias)(o),
 	})
 }
@@ -2394,6 +2401,11 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 		o.DashboardAccessFilter = &DashboardAccessFilter
 	}
     
+	if TranscriptDurationMilliseconds, ok := ViewfilterMap["transcriptDurationMilliseconds"].([]interface{}); ok {
+		TranscriptDurationMillisecondsString, _ := json.Marshal(TranscriptDurationMilliseconds)
+		json.Unmarshal(TranscriptDurationMillisecondsString, &o.TranscriptDurationMilliseconds)
+	}
+	
 
 	return nil
 }
