@@ -28,6 +28,9 @@ type Openmessagenormalizedmessage struct {
 
 	// Metadata - Additional metadata about this message.
 	Metadata *map[string]string `json:"metadata,omitempty"`
+
+	// ConversationId - The conversationId context for the message
+	ConversationId *string `json:"conversationId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -104,6 +107,8 @@ func (o Openmessagenormalizedmessage) MarshalJSON() ([]byte, error) {
 		Content *[]Openmessagecontent `json:"content,omitempty"`
 		
 		Metadata *map[string]string `json:"metadata,omitempty"`
+		
+		ConversationId *string `json:"conversationId,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -117,6 +122,8 @@ func (o Openmessagenormalizedmessage) MarshalJSON() ([]byte, error) {
 		Content: o.Content,
 		
 		Metadata: o.Metadata,
+		
+		ConversationId: o.ConversationId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -155,6 +162,10 @@ func (o *Openmessagenormalizedmessage) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(MetadataString, &o.Metadata)
 	}
 	
+	if ConversationId, ok := OpenmessagenormalizedmessageMap["conversationId"].(string); ok {
+		o.ConversationId = &ConversationId
+	}
+    
 
 	return nil
 }

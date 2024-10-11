@@ -17,6 +17,9 @@ type Intentdefinition struct {
 	// Name - The name of the intent.
 	Name *string `json:"name,omitempty"`
 
+	// Description - The description of the intent.
+	Description *string `json:"description,omitempty"`
+
 	// EntityTypeBindings - The bindings for the named entity types used in this intent.This field is mutually exclusive with entityNameReferences and entities
 	EntityTypeBindings *[]Namedentitytypebinding `json:"entityTypeBindings,omitempty"`
 
@@ -97,6 +100,8 @@ func (o Intentdefinition) MarshalJSON() ([]byte, error) {
 		
 		Name *string `json:"name,omitempty"`
 		
+		Description *string `json:"description,omitempty"`
+		
 		EntityTypeBindings *[]Namedentitytypebinding `json:"entityTypeBindings,omitempty"`
 		
 		EntityNameReferences *[]string `json:"entityNameReferences,omitempty"`
@@ -109,6 +114,8 @@ func (o Intentdefinition) MarshalJSON() ([]byte, error) {
 		Id: o.Id,
 		
 		Name: o.Name,
+		
+		Description: o.Description,
 		
 		EntityTypeBindings: o.EntityTypeBindings,
 		
@@ -134,6 +141,10 @@ func (o *Intentdefinition) UnmarshalJSON(b []byte) error {
     
 	if Name, ok := IntentdefinitionMap["name"].(string); ok {
 		o.Name = &Name
+	}
+    
+	if Description, ok := IntentdefinitionMap["description"].(string); ok {
+		o.Description = &Description
 	}
     
 	if EntityTypeBindings, ok := IntentdefinitionMap["entityTypeBindings"].([]interface{}); ok {

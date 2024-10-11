@@ -35,6 +35,9 @@ type Conversationeventtopicmessagedetails struct {
 
 	// MessageMetadata
 	MessageMetadata *Conversationeventtopicmessagemetadata `json:"messageMetadata,omitempty"`
+
+	// SocialVisibility - For social media messages, the visibility of the message in the originating social platform
+	SocialVisibility *string `json:"socialVisibility,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -123,6 +126,8 @@ func (o Conversationeventtopicmessagedetails) MarshalJSON() ([]byte, error) {
 		Stickers *[]Conversationeventtopicmessagesticker `json:"stickers,omitempty"`
 		
 		MessageMetadata *Conversationeventtopicmessagemetadata `json:"messageMetadata,omitempty"`
+		
+		SocialVisibility *string `json:"socialVisibility,omitempty"`
 		Alias
 	}{ 
 		MessageId: o.MessageId,
@@ -140,6 +145,8 @@ func (o Conversationeventtopicmessagedetails) MarshalJSON() ([]byte, error) {
 		Stickers: o.Stickers,
 		
 		MessageMetadata: o.MessageMetadata,
+		
+		SocialVisibility: o.SocialVisibility,
 		Alias:    (Alias)(o),
 	})
 }
@@ -189,6 +196,10 @@ func (o *Conversationeventtopicmessagedetails) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(MessageMetadataString, &o.MessageMetadata)
 	}
 	
+	if SocialVisibility, ok := ConversationeventtopicmessagedetailsMap["socialVisibility"].(string); ok {
+		o.SocialVisibility = &SocialVisibility
+	}
+    
 
 	return nil
 }

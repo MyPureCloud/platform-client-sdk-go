@@ -10,7 +10,13 @@ import (
 // Campaignruleexecutionsettings
 type Campaignruleexecutionsettings struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// Frequency - Execution control frequency
+	Frequency *string `json:"frequency,omitempty"`
+
+	// TimeZoneId - The time zone for the execution control frequency=\"oncePerDay\"; for example, Africa/Abidjan. This property is ignored when frequency is not \"oncePerDay\"
+	TimeZoneId *string `json:"timeZoneId,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Campaignruleexecutionsettings) SetField(field string, fieldValue interface{}) {
@@ -74,8 +80,16 @@ func (o Campaignruleexecutionsettings) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Campaignruleexecutionsettings
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		Frequency *string `json:"frequency,omitempty"`
+		
+		TimeZoneId *string `json:"timeZoneId,omitempty"`
+		Alias
+	}{ 
+		Frequency: o.Frequency,
+		
+		TimeZoneId: o.TimeZoneId,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -86,6 +100,14 @@ func (o *Campaignruleexecutionsettings) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if Frequency, ok := CampaignruleexecutionsettingsMap["frequency"].(string); ok {
+		o.Frequency = &Frequency
+	}
+    
+	if TimeZoneId, ok := CampaignruleexecutionsettingsMap["timeZoneId"].(string); ok {
+		o.TimeZoneId = &TimeZoneId
+	}
+    
 
 	return nil
 }

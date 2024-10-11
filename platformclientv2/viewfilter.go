@@ -601,6 +601,42 @@ type Viewfilter struct {
 
 	// TranscriptDurationMilliseconds - The transcript durations in milliseconds used to filter the view
 	TranscriptDurationMilliseconds *[]Numericrange `json:"transcriptDurationMilliseconds,omitempty"`
+
+	// SocialCountries - List of countries for social filtering
+	SocialCountries *[]string `json:"socialCountries,omitempty"`
+
+	// SocialLanguages - List of languages for social filtering
+	SocialLanguages *[]string `json:"socialLanguages,omitempty"`
+
+	// SocialChannels - List of channels for social filtering
+	SocialChannels *[]string `json:"socialChannels,omitempty"`
+
+	// SocialSentimentCategory - The sentiment of the social post
+	SocialSentimentCategory *[]string `json:"socialSentimentCategory,omitempty"`
+
+	// SocialTopicIds - The list of topicIds for social filtering
+	SocialTopicIds *[]string `json:"socialTopicIds,omitempty"`
+
+	// SocialIngestionRuleIds - The list of ingestion ruleIds for social filtering
+	SocialIngestionRuleIds *[]string `json:"socialIngestionRuleIds,omitempty"`
+
+	// SocialConversationCreated - Filter to indicate if the post has created a conversation
+	SocialConversationCreated *bool `json:"socialConversationCreated,omitempty"`
+
+	// SocialContentType - The list of content Type for social filtering
+	SocialContentType *[]string `json:"socialContentType,omitempty"`
+
+	// SocialKeywords - The list of keywords for social filtering
+	SocialKeywords *[]Socialkeyword `json:"socialKeywords,omitempty"`
+
+	// SocialPostEscalated - Filter to indicate if the post is escalated
+	SocialPostEscalated *bool `json:"socialPostEscalated,omitempty"`
+
+	// SocialClassifications - Indicates if a social message was public or private
+	SocialClassifications *[]string `json:"socialClassifications,omitempty"`
+
+	// FilterUsersByManagerIds - The manager ids used to fetch associated users for the view
+	FilterUsersByManagerIds *[]string `json:"filterUsersByManagerIds,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -1059,6 +1095,30 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		DashboardAccessFilter *string `json:"dashboardAccessFilter,omitempty"`
 		
 		TranscriptDurationMilliseconds *[]Numericrange `json:"transcriptDurationMilliseconds,omitempty"`
+		
+		SocialCountries *[]string `json:"socialCountries,omitempty"`
+		
+		SocialLanguages *[]string `json:"socialLanguages,omitempty"`
+		
+		SocialChannels *[]string `json:"socialChannels,omitempty"`
+		
+		SocialSentimentCategory *[]string `json:"socialSentimentCategory,omitempty"`
+		
+		SocialTopicIds *[]string `json:"socialTopicIds,omitempty"`
+		
+		SocialIngestionRuleIds *[]string `json:"socialIngestionRuleIds,omitempty"`
+		
+		SocialConversationCreated *bool `json:"socialConversationCreated,omitempty"`
+		
+		SocialContentType *[]string `json:"socialContentType,omitempty"`
+		
+		SocialKeywords *[]Socialkeyword `json:"socialKeywords,omitempty"`
+		
+		SocialPostEscalated *bool `json:"socialPostEscalated,omitempty"`
+		
+		SocialClassifications *[]string `json:"socialClassifications,omitempty"`
+		
+		FilterUsersByManagerIds *[]string `json:"filterUsersByManagerIds,omitempty"`
 		Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -1454,6 +1514,30 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		DashboardAccessFilter: o.DashboardAccessFilter,
 		
 		TranscriptDurationMilliseconds: o.TranscriptDurationMilliseconds,
+		
+		SocialCountries: o.SocialCountries,
+		
+		SocialLanguages: o.SocialLanguages,
+		
+		SocialChannels: o.SocialChannels,
+		
+		SocialSentimentCategory: o.SocialSentimentCategory,
+		
+		SocialTopicIds: o.SocialTopicIds,
+		
+		SocialIngestionRuleIds: o.SocialIngestionRuleIds,
+		
+		SocialConversationCreated: o.SocialConversationCreated,
+		
+		SocialContentType: o.SocialContentType,
+		
+		SocialKeywords: o.SocialKeywords,
+		
+		SocialPostEscalated: o.SocialPostEscalated,
+		
+		SocialClassifications: o.SocialClassifications,
+		
+		FilterUsersByManagerIds: o.FilterUsersByManagerIds,
 		Alias:    (Alias)(o),
 	})
 }
@@ -2404,6 +2488,64 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if TranscriptDurationMilliseconds, ok := ViewfilterMap["transcriptDurationMilliseconds"].([]interface{}); ok {
 		TranscriptDurationMillisecondsString, _ := json.Marshal(TranscriptDurationMilliseconds)
 		json.Unmarshal(TranscriptDurationMillisecondsString, &o.TranscriptDurationMilliseconds)
+	}
+	
+	if SocialCountries, ok := ViewfilterMap["socialCountries"].([]interface{}); ok {
+		SocialCountriesString, _ := json.Marshal(SocialCountries)
+		json.Unmarshal(SocialCountriesString, &o.SocialCountries)
+	}
+	
+	if SocialLanguages, ok := ViewfilterMap["socialLanguages"].([]interface{}); ok {
+		SocialLanguagesString, _ := json.Marshal(SocialLanguages)
+		json.Unmarshal(SocialLanguagesString, &o.SocialLanguages)
+	}
+	
+	if SocialChannels, ok := ViewfilterMap["socialChannels"].([]interface{}); ok {
+		SocialChannelsString, _ := json.Marshal(SocialChannels)
+		json.Unmarshal(SocialChannelsString, &o.SocialChannels)
+	}
+	
+	if SocialSentimentCategory, ok := ViewfilterMap["socialSentimentCategory"].([]interface{}); ok {
+		SocialSentimentCategoryString, _ := json.Marshal(SocialSentimentCategory)
+		json.Unmarshal(SocialSentimentCategoryString, &o.SocialSentimentCategory)
+	}
+	
+	if SocialTopicIds, ok := ViewfilterMap["socialTopicIds"].([]interface{}); ok {
+		SocialTopicIdsString, _ := json.Marshal(SocialTopicIds)
+		json.Unmarshal(SocialTopicIdsString, &o.SocialTopicIds)
+	}
+	
+	if SocialIngestionRuleIds, ok := ViewfilterMap["socialIngestionRuleIds"].([]interface{}); ok {
+		SocialIngestionRuleIdsString, _ := json.Marshal(SocialIngestionRuleIds)
+		json.Unmarshal(SocialIngestionRuleIdsString, &o.SocialIngestionRuleIds)
+	}
+	
+	if SocialConversationCreated, ok := ViewfilterMap["socialConversationCreated"].(bool); ok {
+		o.SocialConversationCreated = &SocialConversationCreated
+	}
+    
+	if SocialContentType, ok := ViewfilterMap["socialContentType"].([]interface{}); ok {
+		SocialContentTypeString, _ := json.Marshal(SocialContentType)
+		json.Unmarshal(SocialContentTypeString, &o.SocialContentType)
+	}
+	
+	if SocialKeywords, ok := ViewfilterMap["socialKeywords"].([]interface{}); ok {
+		SocialKeywordsString, _ := json.Marshal(SocialKeywords)
+		json.Unmarshal(SocialKeywordsString, &o.SocialKeywords)
+	}
+	
+	if SocialPostEscalated, ok := ViewfilterMap["socialPostEscalated"].(bool); ok {
+		o.SocialPostEscalated = &SocialPostEscalated
+	}
+    
+	if SocialClassifications, ok := ViewfilterMap["socialClassifications"].([]interface{}); ok {
+		SocialClassificationsString, _ := json.Marshal(SocialClassifications)
+		json.Unmarshal(SocialClassificationsString, &o.SocialClassifications)
+	}
+	
+	if FilterUsersByManagerIds, ok := ViewfilterMap["filterUsersByManagerIds"].([]interface{}); ok {
+		FilterUsersByManagerIdsString, _ := json.Marshal(FilterUsersByManagerIds)
+		json.Unmarshal(FilterUsersByManagerIdsString, &o.FilterUsersByManagerIds)
 	}
 	
 

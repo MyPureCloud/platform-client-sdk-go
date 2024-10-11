@@ -14,6 +14,9 @@ type Nluutterance struct {
 	// Id - ID of the utterance.
 	Id *string `json:"id,omitempty"`
 
+	// Source - The source of the utterance.
+	Source *string `json:"source,omitempty"`
+
 	// Segments - The list of segments that that constitute this utterance for the given intent.
 	Segments *[]Nluutterancesegment `json:"segments,omitempty"`
 }
@@ -83,10 +86,14 @@ func (o Nluutterance) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
+		Source *string `json:"source,omitempty"`
+		
 		Segments *[]Nluutterancesegment `json:"segments,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
+		
+		Source: o.Source,
 		
 		Segments: o.Segments,
 		Alias:    (Alias)(o),
@@ -102,6 +109,10 @@ func (o *Nluutterance) UnmarshalJSON(b []byte) error {
 	
 	if Id, ok := NluutteranceMap["id"].(string); ok {
 		o.Id = &Id
+	}
+    
+	if Source, ok := NluutteranceMap["source"].(string); ok {
+		o.Source = &Source
 	}
     
 	if Segments, ok := NluutteranceMap["segments"].([]interface{}); ok {

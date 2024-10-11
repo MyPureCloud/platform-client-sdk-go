@@ -38,6 +38,12 @@ type Wfmhistoricaldatauploadrequeststatustopichistoricaldatauploadrequestupdate 
 
 	// VarType
 	VarType *string `json:"type,omitempty"`
+
+	// FileName
+	FileName *string `json:"fileName,omitempty"`
+
+	// FileSize
+	FileSize *int `json:"fileSize,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -152,6 +158,10 @@ func (o Wfmhistoricaldatauploadrequeststatustopichistoricaldatauploadrequestupda
 		Active *bool `json:"active,omitempty"`
 		
 		VarType *string `json:"type,omitempty"`
+		
+		FileName *string `json:"fileName,omitempty"`
+		
+		FileSize *int `json:"fileSize,omitempty"`
 		Alias
 	}{ 
 		RequestId: o.RequestId,
@@ -171,6 +181,10 @@ func (o Wfmhistoricaldatauploadrequeststatustopichistoricaldatauploadrequestupda
 		Active: o.Active,
 		
 		VarType: o.VarType,
+		
+		FileName: o.FileName,
+		
+		FileSize: o.FileSize,
 		Alias:    (Alias)(o),
 	})
 }
@@ -222,6 +236,15 @@ func (o *Wfmhistoricaldatauploadrequeststatustopichistoricaldatauploadrequestupd
 		o.VarType = &VarType
 	}
     
+	if FileName, ok := WfmhistoricaldatauploadrequeststatustopichistoricaldatauploadrequestupdateMap["fileName"].(string); ok {
+		o.FileName = &FileName
+	}
+    
+	if FileSize, ok := WfmhistoricaldatauploadrequeststatustopichistoricaldatauploadrequestupdateMap["fileSize"].(float64); ok {
+		FileSizeInt := int(FileSize)
+		o.FileSize = &FileSizeInt
+	}
+	
 
 	return nil
 }

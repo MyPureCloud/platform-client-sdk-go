@@ -36,6 +36,9 @@ type Participantbasic struct {
 	// ExternalContactId - If this participant represents an external contact, then this will be the globally unique identifier for the external contact.
 	ExternalContactId *string `json:"externalContactId,omitempty"`
 
+	// ExternalContactInitialDivisionId - If this participant represents an external contact, then this will be the initial division for the external contact. This value will not be updated if the external contact is reassigned.
+	ExternalContactInitialDivisionId *string `json:"externalContactInitialDivisionId,omitempty"`
+
 	// ExternalOrganizationId - If this participant represents an external org, then this will be the globally unique identifier for the external org.
 	ExternalOrganizationId *string `json:"externalOrganizationId,omitempty"`
 
@@ -276,6 +279,8 @@ func (o Participantbasic) MarshalJSON() ([]byte, error) {
 		
 		ExternalContactId *string `json:"externalContactId,omitempty"`
 		
+		ExternalContactInitialDivisionId *string `json:"externalContactInitialDivisionId,omitempty"`
+		
 		ExternalOrganizationId *string `json:"externalOrganizationId,omitempty"`
 		
 		QueueId *string `json:"queueId,omitempty"`
@@ -372,6 +377,8 @@ func (o Participantbasic) MarshalJSON() ([]byte, error) {
 		UserId: o.UserId,
 		
 		ExternalContactId: o.ExternalContactId,
+		
+		ExternalContactInitialDivisionId: o.ExternalContactInitialDivisionId,
 		
 		ExternalOrganizationId: o.ExternalOrganizationId,
 		
@@ -496,6 +503,10 @@ func (o *Participantbasic) UnmarshalJSON(b []byte) error {
     
 	if ExternalContactId, ok := ParticipantbasicMap["externalContactId"].(string); ok {
 		o.ExternalContactId = &ExternalContactId
+	}
+    
+	if ExternalContactInitialDivisionId, ok := ParticipantbasicMap["externalContactInitialDivisionId"].(string); ok {
+		o.ExternalContactInitialDivisionId = &ExternalContactInitialDivisionId
 	}
     
 	if ExternalOrganizationId, ok := ParticipantbasicMap["externalOrganizationId"].(string); ok {

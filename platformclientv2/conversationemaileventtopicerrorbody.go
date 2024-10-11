@@ -40,6 +40,9 @@ type Conversationemaileventtopicerrorbody struct {
 
 	// Errors
 	Errors *[]Conversationemaileventtopicerrorbody `json:"errors,omitempty"`
+
+	// Limit
+	Limit *Conversationemaileventtopiclimit `json:"limit,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -124,6 +127,8 @@ func (o Conversationemaileventtopicerrorbody) MarshalJSON() ([]byte, error) {
 		Details *[]Conversationemaileventtopicdetail `json:"details,omitempty"`
 		
 		Errors *[]Conversationemaileventtopicerrorbody `json:"errors,omitempty"`
+		
+		Limit *Conversationemaileventtopiclimit `json:"limit,omitempty"`
 		Alias
 	}{ 
 		Message: o.Message,
@@ -145,6 +150,8 @@ func (o Conversationemaileventtopicerrorbody) MarshalJSON() ([]byte, error) {
 		Details: o.Details,
 		
 		Errors: o.Errors,
+		
+		Limit: o.Limit,
 		Alias:    (Alias)(o),
 	})
 }
@@ -198,6 +205,11 @@ func (o *Conversationemaileventtopicerrorbody) UnmarshalJSON(b []byte) error {
 	if Errors, ok := ConversationemaileventtopicerrorbodyMap["errors"].([]interface{}); ok {
 		ErrorsString, _ := json.Marshal(Errors)
 		json.Unmarshal(ErrorsString, &o.Errors)
+	}
+	
+	if Limit, ok := ConversationemaileventtopicerrorbodyMap["limit"].(map[string]interface{}); ok {
+		LimitString, _ := json.Marshal(Limit)
+		json.Unmarshal(LimitString, &o.Limit)
 	}
 	
 

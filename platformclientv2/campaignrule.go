@@ -42,6 +42,15 @@ type Campaignrule struct {
 	// Enabled - Whether or not this CampaignRule is currently enabled. Required on updates.
 	Enabled *bool `json:"enabled,omitempty"`
 
+	// CampaignRuleProcessing - CampaignRule processing algorithm
+	CampaignRuleProcessing *string `json:"campaignRuleProcessing,omitempty"`
+
+	// ConditionGroups - List of condition groups that are evaluated, used only with campaignRuleProcessing=\"v2\"
+	ConditionGroups *[]Campaignruleconditiongroup `json:"conditionGroups,omitempty"`
+
+	// ExecutionSettings - CampaignRule execution settings
+	ExecutionSettings *Campaignruleexecutionsettings `json:"executionSettings,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -145,6 +154,12 @@ func (o Campaignrule) MarshalJSON() ([]byte, error) {
 		
 		Enabled *bool `json:"enabled,omitempty"`
 		
+		CampaignRuleProcessing *string `json:"campaignRuleProcessing,omitempty"`
+		
+		ConditionGroups *[]Campaignruleconditiongroup `json:"conditionGroups,omitempty"`
+		
+		ExecutionSettings *Campaignruleexecutionsettings `json:"executionSettings,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -167,6 +182,12 @@ func (o Campaignrule) MarshalJSON() ([]byte, error) {
 		MatchAnyConditions: o.MatchAnyConditions,
 		
 		Enabled: o.Enabled,
+		
+		CampaignRuleProcessing: o.CampaignRuleProcessing,
+		
+		ConditionGroups: o.ConditionGroups,
+		
+		ExecutionSettings: o.ExecutionSettings,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -226,6 +247,20 @@ func (o *Campaignrule) UnmarshalJSON(b []byte) error {
 		o.Enabled = &Enabled
 	}
     
+	if CampaignRuleProcessing, ok := CampaignruleMap["campaignRuleProcessing"].(string); ok {
+		o.CampaignRuleProcessing = &CampaignRuleProcessing
+	}
+    
+	if ConditionGroups, ok := CampaignruleMap["conditionGroups"].([]interface{}); ok {
+		ConditionGroupsString, _ := json.Marshal(ConditionGroups)
+		json.Unmarshal(ConditionGroupsString, &o.ConditionGroups)
+	}
+	
+	if ExecutionSettings, ok := CampaignruleMap["executionSettings"].(map[string]interface{}); ok {
+		ExecutionSettingsString, _ := json.Marshal(ExecutionSettings)
+		json.Unmarshal(ExecutionSettingsString, &o.ExecutionSettings)
+	}
+	
 	if SelfUri, ok := CampaignruleMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

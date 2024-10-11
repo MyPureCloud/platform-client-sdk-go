@@ -11,6 +11,9 @@ import (
 type Freetrialnamespace struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
+	// Name
+	Name *string `json:"name,omitempty"`
+
 	// FriendlyName
 	FriendlyName *string `json:"friendlyName,omitempty"`
 
@@ -81,11 +84,15 @@ func (o Freetrialnamespace) MarshalJSON() ([]byte, error) {
 	type Alias Freetrialnamespace
 	
 	return json.Marshal(&struct { 
+		Name *string `json:"name,omitempty"`
+		
 		FriendlyName *string `json:"friendlyName,omitempty"`
 		
 		Limits *[]Freetriallimit `json:"limits,omitempty"`
 		Alias
 	}{ 
+		Name: o.Name,
+		
 		FriendlyName: o.FriendlyName,
 		
 		Limits: o.Limits,
@@ -100,6 +107,10 @@ func (o *Freetrialnamespace) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if Name, ok := FreetrialnamespaceMap["name"].(string); ok {
+		o.Name = &Name
+	}
+    
 	if FriendlyName, ok := FreetrialnamespaceMap["friendlyName"].(string); ok {
 		o.FriendlyName = &FriendlyName
 	}

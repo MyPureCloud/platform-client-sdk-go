@@ -117,6 +117,9 @@ type Queueconversationsocialexpressioneventtopicparticipant struct {
 	// Messages
 	Messages *[]Queueconversationsocialexpressioneventtopicmessage `json:"messages,omitempty"`
 
+	// InternalMessages
+	InternalMessages *[]Queueconversationsocialexpressioneventtopicinternalmessage `json:"internalMessages,omitempty"`
+
 	// Screenshares
 	Screenshares *[]Queueconversationsocialexpressioneventtopicscreenshare `json:"screenshares,omitempty"`
 
@@ -295,6 +298,8 @@ func (o Queueconversationsocialexpressioneventtopicparticipant) MarshalJSON() ([
 		
 		Messages *[]Queueconversationsocialexpressioneventtopicmessage `json:"messages,omitempty"`
 		
+		InternalMessages *[]Queueconversationsocialexpressioneventtopicinternalmessage `json:"internalMessages,omitempty"`
+		
 		Screenshares *[]Queueconversationsocialexpressioneventtopicscreenshare `json:"screenshares,omitempty"`
 		
 		SocialExpressions *[]Queueconversationsocialexpressioneventtopicsocialexpression `json:"socialExpressions,omitempty"`
@@ -373,6 +378,8 @@ func (o Queueconversationsocialexpressioneventtopicparticipant) MarshalJSON() ([
 		Emails: o.Emails,
 		
 		Messages: o.Messages,
+		
+		InternalMessages: o.InternalMessages,
 		
 		Screenshares: o.Screenshares,
 		
@@ -546,6 +553,11 @@ func (o *Queueconversationsocialexpressioneventtopicparticipant) UnmarshalJSON(b
 	if Messages, ok := QueueconversationsocialexpressioneventtopicparticipantMap["messages"].([]interface{}); ok {
 		MessagesString, _ := json.Marshal(Messages)
 		json.Unmarshal(MessagesString, &o.Messages)
+	}
+	
+	if InternalMessages, ok := QueueconversationsocialexpressioneventtopicparticipantMap["internalMessages"].([]interface{}); ok {
+		InternalMessagesString, _ := json.Marshal(InternalMessages)
+		json.Unmarshal(InternalMessagesString, &o.InternalMessages)
 	}
 	
 	if Screenshares, ok := QueueconversationsocialexpressioneventtopicparticipantMap["screenshares"].([]interface{}); ok {

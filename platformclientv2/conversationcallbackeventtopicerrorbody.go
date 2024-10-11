@@ -40,6 +40,9 @@ type Conversationcallbackeventtopicerrorbody struct {
 
 	// Errors
 	Errors *[]Conversationcallbackeventtopicerrorbody `json:"errors,omitempty"`
+
+	// Limit
+	Limit *Conversationcallbackeventtopiclimit `json:"limit,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -124,6 +127,8 @@ func (o Conversationcallbackeventtopicerrorbody) MarshalJSON() ([]byte, error) {
 		Details *[]Conversationcallbackeventtopicdetail `json:"details,omitempty"`
 		
 		Errors *[]Conversationcallbackeventtopicerrorbody `json:"errors,omitempty"`
+		
+		Limit *Conversationcallbackeventtopiclimit `json:"limit,omitempty"`
 		Alias
 	}{ 
 		Message: o.Message,
@@ -145,6 +150,8 @@ func (o Conversationcallbackeventtopicerrorbody) MarshalJSON() ([]byte, error) {
 		Details: o.Details,
 		
 		Errors: o.Errors,
+		
+		Limit: o.Limit,
 		Alias:    (Alias)(o),
 	})
 }
@@ -198,6 +205,11 @@ func (o *Conversationcallbackeventtopicerrorbody) UnmarshalJSON(b []byte) error 
 	if Errors, ok := ConversationcallbackeventtopicerrorbodyMap["errors"].([]interface{}); ok {
 		ErrorsString, _ := json.Marshal(Errors)
 		json.Unmarshal(ErrorsString, &o.Errors)
+	}
+	
+	if Limit, ok := ConversationcallbackeventtopicerrorbodyMap["limit"].(map[string]interface{}); ok {
+		LimitString, _ := json.Marshal(Limit)
+		json.Unmarshal(LimitString, &o.Limit)
 	}
 	
 

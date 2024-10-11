@@ -32,6 +32,9 @@ type Conversationmessagingfromrecipient struct {
 	// Email - E-mail address of the recipient.
 	Email *string `json:"email,omitempty"`
 
+	// ExternalContactId - The identifier of the external contact.
+	ExternalContactId *string `json:"externalContactId,omitempty"`
+
 	// AdditionalIds - List of recipient additional identifiers
 	AdditionalIds *[]Conversationrecipientadditionalidentifier `json:"additionalIds,omitempty"`
 }
@@ -113,6 +116,8 @@ func (o Conversationmessagingfromrecipient) MarshalJSON() ([]byte, error) {
 		
 		Email *string `json:"email,omitempty"`
 		
+		ExternalContactId *string `json:"externalContactId,omitempty"`
+		
 		AdditionalIds *[]Conversationrecipientadditionalidentifier `json:"additionalIds,omitempty"`
 		Alias
 	}{ 
@@ -129,6 +134,8 @@ func (o Conversationmessagingfromrecipient) MarshalJSON() ([]byte, error) {
 		LastName: o.LastName,
 		
 		Email: o.Email,
+		
+		ExternalContactId: o.ExternalContactId,
 		
 		AdditionalIds: o.AdditionalIds,
 		Alias:    (Alias)(o),
@@ -168,6 +175,10 @@ func (o *Conversationmessagingfromrecipient) UnmarshalJSON(b []byte) error {
     
 	if Email, ok := ConversationmessagingfromrecipientMap["email"].(string); ok {
 		o.Email = &Email
+	}
+    
+	if ExternalContactId, ok := ConversationmessagingfromrecipientMap["externalContactId"].(string); ok {
+		o.ExternalContactId = &ExternalContactId
 	}
     
 	if AdditionalIds, ok := ConversationmessagingfromrecipientMap["additionalIds"].([]interface{}); ok {

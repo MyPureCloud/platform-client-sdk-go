@@ -44,7 +44,7 @@ type Annotation struct {
 	// Description - Text of annotation. Maximum character limit is 500.
 	Description *string `json:"description,omitempty"`
 
-	// Reason - Reason for a pause annotation. Valid values: Hold,SecurePause,FlowOrQueue
+	// Reason - Reason for a pause annotation. Valid values: Hold,SecurePause,FlowOrQueue,Pause
 	Reason *string `json:"reason,omitempty"`
 
 	// Annotations - List of annotations

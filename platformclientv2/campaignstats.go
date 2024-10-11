@@ -35,8 +35,17 @@ type Campaignstats struct {
 	// FilteredOutContactsCount - Number of contacts that don't match filter. This is currently supported only for Campaigns with dynamic filter on.
 	FilteredOutContactsCount *int `json:"filteredOutContactsCount,omitempty"`
 
+	// RightPartyContactsCount - Information on the campaign's number of Right Party Contacts
+	RightPartyContactsCount *int `json:"rightPartyContactsCount,omitempty"`
+
+	// ValidAttempts - Information on the campaign's valid attempts
+	ValidAttempts *int `json:"validAttempts,omitempty"`
+
 	// LinesUtilization - Information on the campaign's lines utilization
 	LinesUtilization *Campaignlinesutilization `json:"linesUtilization,omitempty"`
+
+	// BusinessCategoryMetrics - Information on the campaign's business category metrics
+	BusinessCategoryMetrics *Campaignbusinesscategorymetrics `json:"businessCategoryMetrics,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -118,7 +127,13 @@ func (o Campaignstats) MarshalJSON() ([]byte, error) {
 		
 		FilteredOutContactsCount *int `json:"filteredOutContactsCount,omitempty"`
 		
+		RightPartyContactsCount *int `json:"rightPartyContactsCount,omitempty"`
+		
+		ValidAttempts *int `json:"validAttempts,omitempty"`
+		
 		LinesUtilization *Campaignlinesutilization `json:"linesUtilization,omitempty"`
+		
+		BusinessCategoryMetrics *Campaignbusinesscategorymetrics `json:"businessCategoryMetrics,omitempty"`
 		Alias
 	}{ 
 		ContactRate: o.ContactRate,
@@ -137,7 +152,13 @@ func (o Campaignstats) MarshalJSON() ([]byte, error) {
 		
 		FilteredOutContactsCount: o.FilteredOutContactsCount,
 		
+		RightPartyContactsCount: o.RightPartyContactsCount,
+		
+		ValidAttempts: o.ValidAttempts,
+		
 		LinesUtilization: o.LinesUtilization,
+		
+		BusinessCategoryMetrics: o.BusinessCategoryMetrics,
 		Alias:    (Alias)(o),
 	})
 }
@@ -187,9 +208,24 @@ func (o *Campaignstats) UnmarshalJSON(b []byte) error {
 		o.FilteredOutContactsCount = &FilteredOutContactsCountInt
 	}
 	
+	if RightPartyContactsCount, ok := CampaignstatsMap["rightPartyContactsCount"].(float64); ok {
+		RightPartyContactsCountInt := int(RightPartyContactsCount)
+		o.RightPartyContactsCount = &RightPartyContactsCountInt
+	}
+	
+	if ValidAttempts, ok := CampaignstatsMap["validAttempts"].(float64); ok {
+		ValidAttemptsInt := int(ValidAttempts)
+		o.ValidAttempts = &ValidAttemptsInt
+	}
+	
 	if LinesUtilization, ok := CampaignstatsMap["linesUtilization"].(map[string]interface{}); ok {
 		LinesUtilizationString, _ := json.Marshal(LinesUtilization)
 		json.Unmarshal(LinesUtilizationString, &o.LinesUtilization)
+	}
+	
+	if BusinessCategoryMetrics, ok := CampaignstatsMap["businessCategoryMetrics"].(map[string]interface{}); ok {
+		BusinessCategoryMetricsString, _ := json.Marshal(BusinessCategoryMetrics)
+		json.Unmarshal(BusinessCategoryMetricsString, &o.BusinessCategoryMetrics)
 	}
 	
 

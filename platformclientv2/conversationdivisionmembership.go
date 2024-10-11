@@ -15,7 +15,7 @@ type Conversationdivisionmembership struct {
 	Division *Domainentityref `json:"division,omitempty"`
 
 	// Entities - The entities on the conversation within the division. These are the users, queues, work flows, etc. that can be on conversations and and be assigned to different divisions.
-	Entities *[]Domainentityref `json:"entities,omitempty"`
+	Entities *[]Divisionentityref `json:"entities,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -83,7 +83,7 @@ func (o Conversationdivisionmembership) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Division *Domainentityref `json:"division,omitempty"`
 		
-		Entities *[]Domainentityref `json:"entities,omitempty"`
+		Entities *[]Divisionentityref `json:"entities,omitempty"`
 		Alias
 	}{ 
 		Division: o.Division,

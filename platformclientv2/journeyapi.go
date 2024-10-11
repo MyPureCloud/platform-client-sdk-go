@@ -2598,6 +2598,202 @@ func (a JourneyApi) GetJourneyViewVersion(viewId string, versionId string) (*Jou
 	return successPayload, response, err
 }
 
+// GetJourneyViewVersionChart invokes GET /api/v2/journey/views/{viewId}/versions/{journeyViewVersion}/charts/{chartId}
+//
+// Get a Chart by ID
+//
+// returns the latest version
+func (a JourneyApi) GetJourneyViewVersionChart(viewId string, journeyViewVersion string, chartId string) (*Journeyviewchart, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/journey/views/{viewId}/versions/{journeyViewVersion}/charts/{chartId}"
+	path = strings.Replace(path, "{viewId}", url.PathEscape(fmt.Sprintf("%v", viewId)), -1)
+	path = strings.Replace(path, "{journeyViewVersion}", url.PathEscape(fmt.Sprintf("%v", journeyViewVersion)), -1)
+	path = strings.Replace(path, "{chartId}", url.PathEscape(fmt.Sprintf("%v", chartId)), -1)
+	defaultReturn := new(Journeyviewchart)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'viewId' is set
+	if &viewId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'viewId' when calling JourneyApi->GetJourneyViewVersionChart")
+	}
+	// verify the required parameter 'journeyViewVersion' is set
+	if &journeyViewVersion == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'journeyViewVersion' when calling JourneyApi->GetJourneyViewVersionChart")
+	}
+	// verify the required parameter 'chartId' is set
+	if &chartId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'chartId' when calling JourneyApi->GetJourneyViewVersionChart")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Journeyviewchart
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Journeyviewchart" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetJourneyViewVersionChartVersion invokes GET /api/v2/journey/views/{viewId}/versions/{journeyViewVersion}/charts/{chartId}/versions/{chartVersion}
+//
+// Get a Chart by ID and version
+func (a JourneyApi) GetJourneyViewVersionChartVersion(viewId string, journeyViewVersion string, chartId string, chartVersion string) (*Journeyviewchart, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/journey/views/{viewId}/versions/{journeyViewVersion}/charts/{chartId}/versions/{chartVersion}"
+	path = strings.Replace(path, "{viewId}", url.PathEscape(fmt.Sprintf("%v", viewId)), -1)
+	path = strings.Replace(path, "{journeyViewVersion}", url.PathEscape(fmt.Sprintf("%v", journeyViewVersion)), -1)
+	path = strings.Replace(path, "{chartId}", url.PathEscape(fmt.Sprintf("%v", chartId)), -1)
+	path = strings.Replace(path, "{chartVersion}", url.PathEscape(fmt.Sprintf("%v", chartVersion)), -1)
+	defaultReturn := new(Journeyviewchart)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'viewId' is set
+	if &viewId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'viewId' when calling JourneyApi->GetJourneyViewVersionChartVersion")
+	}
+	// verify the required parameter 'journeyViewVersion' is set
+	if &journeyViewVersion == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'journeyViewVersion' when calling JourneyApi->GetJourneyViewVersionChartVersion")
+	}
+	// verify the required parameter 'chartId' is set
+	if &chartId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'chartId' when calling JourneyApi->GetJourneyViewVersionChartVersion")
+	}
+	// verify the required parameter 'chartVersion' is set
+	if &chartVersion == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'chartVersion' when calling JourneyApi->GetJourneyViewVersionChartVersion")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Journeyviewchart
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Journeyviewchart" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // GetJourneyViewVersionJob invokes GET /api/v2/journey/views/{viewId}/versions/{journeyVersionId}/jobs/{jobId}
 //
 // Get the job for a journey view version.
@@ -2782,6 +2978,106 @@ func (a JourneyApi) GetJourneyViewVersionJobResults(viewId string, journeyViewVe
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Journeyviewresult" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetJourneyViewVersionJobResultsChart invokes GET /api/v2/journey/views/{viewId}/versions/{journeyVersionId}/jobs/{jobId}/results/charts/{chartId}
+//
+// Get the chart result associated with a journey view job.
+func (a JourneyApi) GetJourneyViewVersionJobResultsChart(viewId string, journeyVersionId string, jobId string, chartId string) (*Journeyviewchartresult, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/journey/views/{viewId}/versions/{journeyVersionId}/jobs/{jobId}/results/charts/{chartId}"
+	path = strings.Replace(path, "{viewId}", url.PathEscape(fmt.Sprintf("%v", viewId)), -1)
+	path = strings.Replace(path, "{journeyVersionId}", url.PathEscape(fmt.Sprintf("%v", journeyVersionId)), -1)
+	path = strings.Replace(path, "{jobId}", url.PathEscape(fmt.Sprintf("%v", jobId)), -1)
+	path = strings.Replace(path, "{chartId}", url.PathEscape(fmt.Sprintf("%v", chartId)), -1)
+	defaultReturn := new(Journeyviewchartresult)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'viewId' is set
+	if &viewId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'viewId' when calling JourneyApi->GetJourneyViewVersionJobResultsChart")
+	}
+	// verify the required parameter 'journeyVersionId' is set
+	if &journeyVersionId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'journeyVersionId' when calling JourneyApi->GetJourneyViewVersionJobResultsChart")
+	}
+	// verify the required parameter 'jobId' is set
+	if &jobId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'jobId' when calling JourneyApi->GetJourneyViewVersionJobResultsChart")
+	}
+	// verify the required parameter 'chartId' is set
+	if &chartId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'chartId' when calling JourneyApi->GetJourneyViewVersionJobResultsChart")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Journeyviewchartresult
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Journeyviewchartresult" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -3629,6 +3925,110 @@ func (a JourneyApi) PatchJourneySegment(segmentId string, body Patchsegment) (*J
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Journeysegment" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PatchJourneyViewVersionJob invokes PATCH /api/v2/journey/views/{viewId}/versions/{journeyVersionId}/jobs/{jobId}
+//
+// Update the job for a journey view version. Only the status can be changed and only to Cancelled
+//
+// used for long descriptions
+func (a JourneyApi) PatchJourneyViewVersionJob(viewId string, journeyVersionId string, jobId string, body Journeyviewjob) (*Journeyviewjob, *APIResponse, error) {
+	var httpMethod = "PATCH"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/journey/views/{viewId}/versions/{journeyVersionId}/jobs/{jobId}"
+	path = strings.Replace(path, "{viewId}", url.PathEscape(fmt.Sprintf("%v", viewId)), -1)
+	path = strings.Replace(path, "{journeyVersionId}", url.PathEscape(fmt.Sprintf("%v", journeyVersionId)), -1)
+	path = strings.Replace(path, "{jobId}", url.PathEscape(fmt.Sprintf("%v", jobId)), -1)
+	defaultReturn := new(Journeyviewjob)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'viewId' is set
+	if &viewId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'viewId' when calling JourneyApi->PatchJourneyViewVersionJob")
+	}
+	// verify the required parameter 'journeyVersionId' is set
+	if &journeyVersionId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'journeyVersionId' when calling JourneyApi->PatchJourneyViewVersionJob")
+	}
+	// verify the required parameter 'jobId' is set
+	if &jobId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'jobId' when calling JourneyApi->PatchJourneyViewVersionJob")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling JourneyApi->PatchJourneyViewVersionJob")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Journeyviewjob
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Journeyviewjob" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -5025,6 +5425,104 @@ func (a JourneyApi) PostJourneyViewsEncodingsValidate(body []Label) (*Entitylist
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Entitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PutJourneyViewVersion invokes PUT /api/v2/journey/views/{viewId}/versions/{versionId}
+//
+// Update a Journey View by ID and version
+//
+// does not create a new version
+func (a JourneyApi) PutJourneyViewVersion(viewId string, versionId string, body Journeyview) (*Journeyview, *APIResponse, error) {
+	var httpMethod = "PUT"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/journey/views/{viewId}/versions/{versionId}"
+	path = strings.Replace(path, "{viewId}", url.PathEscape(fmt.Sprintf("%v", viewId)), -1)
+	path = strings.Replace(path, "{versionId}", url.PathEscape(fmt.Sprintf("%v", versionId)), -1)
+	defaultReturn := new(Journeyview)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'viewId' is set
+	if &viewId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'viewId' when calling JourneyApi->PutJourneyViewVersion")
+	}
+	// verify the required parameter 'versionId' is set
+	if &versionId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'versionId' when calling JourneyApi->PutJourneyViewVersion")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling JourneyApi->PutJourneyViewVersion")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Journeyview
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Journeyview" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

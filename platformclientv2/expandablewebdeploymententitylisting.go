@@ -11,14 +11,20 @@ import (
 type Expandablewebdeploymententitylisting struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Total
-	Total *int `json:"total,omitempty"`
-
 	// Entities
 	Entities *[]Expandablewebdeployment `json:"entities,omitempty"`
 
+	// NextUri
+	NextUri *string `json:"nextUri,omitempty"`
+
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
+
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
+
+	// Total
+	Total *int `json:"total,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,18 +90,26 @@ func (o Expandablewebdeploymententitylisting) MarshalJSON() ([]byte, error) {
 	type Alias Expandablewebdeploymententitylisting
 	
 	return json.Marshal(&struct { 
-		Total *int `json:"total,omitempty"`
-		
 		Entities *[]Expandablewebdeployment `json:"entities,omitempty"`
 		
+		NextUri *string `json:"nextUri,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
+		
+		PreviousUri *string `json:"previousUri,omitempty"`
+		
+		Total *int `json:"total,omitempty"`
 		Alias
 	}{ 
-		Total: o.Total,
-		
 		Entities: o.Entities,
 		
+		NextUri: o.NextUri,
+		
 		SelfUri: o.SelfUri,
+		
+		PreviousUri: o.PreviousUri,
+		
+		Total: o.Total,
 		Alias:    (Alias)(o),
 	})
 }
@@ -107,20 +121,28 @@ func (o *Expandablewebdeploymententitylisting) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
-	if Total, ok := ExpandablewebdeploymententitylistingMap["total"].(float64); ok {
-		TotalInt := int(Total)
-		o.Total = &TotalInt
-	}
-	
 	if Entities, ok := ExpandablewebdeploymententitylistingMap["entities"].([]interface{}); ok {
 		EntitiesString, _ := json.Marshal(Entities)
 		json.Unmarshal(EntitiesString, &o.Entities)
 	}
 	
+	if NextUri, ok := ExpandablewebdeploymententitylistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
+	}
+    
 	if SelfUri, ok := ExpandablewebdeploymententitylistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
     
+	if PreviousUri, ok := ExpandablewebdeploymententitylistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
+	}
+    
+	if Total, ok := ExpandablewebdeploymententitylistingMap["total"].(float64); ok {
+		TotalInt := int(Total)
+		o.Total = &TotalInt
+	}
+	
 
 	return nil
 }

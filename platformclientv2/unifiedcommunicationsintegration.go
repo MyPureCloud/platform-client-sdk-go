@@ -41,6 +41,9 @@ type Unifiedcommunicationsintegration struct {
 	// PollIntervalSec - pollIntervalSec
 	PollIntervalSec *int `json:"pollIntervalSec,omitempty"`
 
+	// IncludeBadge - includeBadge
+	IncludeBadge *bool `json:"includeBadge,omitempty"`
+
 	// UserPermissions - userPermissions
 	UserPermissions *[]string `json:"userPermissions,omitempty"`
 
@@ -134,6 +137,8 @@ func (o Unifiedcommunicationsintegration) MarshalJSON() ([]byte, error) {
 		
 		PollIntervalSec *int `json:"pollIntervalSec,omitempty"`
 		
+		IncludeBadge *bool `json:"includeBadge,omitempty"`
+		
 		UserPermissions *[]string `json:"userPermissions,omitempty"`
 		
 		OauthScopes *[]string `json:"oauthScopes,omitempty"`
@@ -160,6 +165,8 @@ func (o Unifiedcommunicationsintegration) MarshalJSON() ([]byte, error) {
 		PolledPresence: o.PolledPresence,
 		
 		PollIntervalSec: o.PollIntervalSec,
+		
+		IncludeBadge: o.IncludeBadge,
 		
 		UserPermissions: o.UserPermissions,
 		
@@ -222,6 +229,10 @@ func (o *Unifiedcommunicationsintegration) UnmarshalJSON(b []byte) error {
 		o.PollIntervalSec = &PollIntervalSecInt
 	}
 	
+	if IncludeBadge, ok := UnifiedcommunicationsintegrationMap["includeBadge"].(bool); ok {
+		o.IncludeBadge = &IncludeBadge
+	}
+    
 	if UserPermissions, ok := UnifiedcommunicationsintegrationMap["userPermissions"].([]interface{}); ok {
 		UserPermissionsString, _ := json.Marshal(UserPermissions)
 		json.Unmarshal(UserPermissionsString, &o.UserPermissions)

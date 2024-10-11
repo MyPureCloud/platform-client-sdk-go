@@ -10992,8 +10992,6 @@ func (a ConversationsApi) PatchConversationsEmailParticipantCommunication(conver
 // PatchConversationsEmailParticipantParkingstate invokes PATCH /api/v2/conversations/emails/{conversationId}/participants/{participantId}/parkingstate
 //
 // Update conversation by setting its parking state
-//
-// Preview: PatchConversationsEmailParticipantParkingstate is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) PatchConversationsEmailParticipantParkingstate(conversationId string, participantId string, body Parkingstaterequest) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -17328,7 +17326,7 @@ func (a ConversationsApi) PostConversationsMessageInboundOpenEvent(integrationId
 // Send inbound Open Message
 //
 // Send an inbound message to an Open Messaging integration. In order to call this endpoint you will need OAuth token generated using OAuth client credentials authorized with at least messaging scope. This will either generate a new Conversation, or be a part of an existing conversation. See https://developer.genesys.cloud/api/digital/openmessaging/ for example usage.
-func (a ConversationsApi) PostConversationsMessageInboundOpenMessage(integrationId string, body Openinboundnormalizedmessage) (*Openmessagenormalizedmessage, *APIResponse, error) {
+func (a ConversationsApi) PostConversationsMessageInboundOpenMessage(integrationId string, body Openinboundnormalizedmessage, prefetchConversationId bool) (*Openmessagenormalizedmessage, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messages/{integrationId}/inbound/open/message"
@@ -17365,6 +17363,8 @@ func (a ConversationsApi) PostConversationsMessageInboundOpenMessage(integration
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["prefetchConversationId"] = a.Configuration.APIClient.ParameterToString(prefetchConversationId, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

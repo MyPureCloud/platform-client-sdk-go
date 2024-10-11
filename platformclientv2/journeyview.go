@@ -39,6 +39,9 @@ type Journeyview struct {
 	// Elements - The elements within the journey view
 	Elements *[]Journeyviewelement `json:"elements,omitempty"`
 
+	// Charts - A list of charts to measure within context of the elements of the the journey view
+	Charts *[]Journeyviewchart `json:"charts,omitempty"`
+
 	// DateCreated - The date when the journey view was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
@@ -146,6 +149,8 @@ func (o Journeyview) MarshalJSON() ([]byte, error) {
 		
 		Elements *[]Journeyviewelement `json:"elements,omitempty"`
 		
+		Charts *[]Journeyviewchart `json:"charts,omitempty"`
+		
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
 		DateModified *string `json:"dateModified,omitempty"`
@@ -170,6 +175,8 @@ func (o Journeyview) MarshalJSON() ([]byte, error) {
 		Duration: o.Duration,
 		
 		Elements: o.Elements,
+		
+		Charts: o.Charts,
 		
 		DateCreated: DateCreated,
 		
@@ -225,6 +232,11 @@ func (o *Journeyview) UnmarshalJSON(b []byte) error {
 	if Elements, ok := JourneyviewMap["elements"].([]interface{}); ok {
 		ElementsString, _ := json.Marshal(Elements)
 		json.Unmarshal(ElementsString, &o.Elements)
+	}
+	
+	if Charts, ok := JourneyviewMap["charts"].([]interface{}); ok {
+		ChartsString, _ := json.Marshal(Charts)
+		json.Unmarshal(ChartsString, &o.Charts)
 	}
 	
 	if dateCreatedString, ok := JourneyviewMap["dateCreated"].(string); ok {
