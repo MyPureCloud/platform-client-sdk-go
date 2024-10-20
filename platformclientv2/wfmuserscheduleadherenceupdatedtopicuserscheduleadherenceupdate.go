@@ -65,6 +65,12 @@ type Wfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdate struct {
 
 	// RemovedFromManagementUnit
 	RemovedFromManagementUnit *bool `json:"removedFromManagementUnit,omitempty"`
+
+	// SuppressOnTimeReminder
+	SuppressOnTimeReminder *bool `json:"suppressOnTimeReminder,omitempty"`
+
+	// NextActivityReminders
+	NextActivityReminders *[]Wfmuserscheduleadherenceupdatedtopicusernextactivityreminder `json:"nextActivityReminders,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -189,6 +195,10 @@ func (o Wfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdate) Marshal
 		ActiveQueuesModifiedTime *string `json:"activeQueuesModifiedTime,omitempty"`
 		
 		RemovedFromManagementUnit *bool `json:"removedFromManagementUnit,omitempty"`
+		
+		SuppressOnTimeReminder *bool `json:"suppressOnTimeReminder,omitempty"`
+		
+		NextActivityReminders *[]Wfmuserscheduleadherenceupdatedtopicusernextactivityreminder `json:"nextActivityReminders,omitempty"`
 		Alias
 	}{ 
 		User: o.User,
@@ -226,6 +236,10 @@ func (o Wfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdate) Marshal
 		ActiveQueuesModifiedTime: ActiveQueuesModifiedTime,
 		
 		RemovedFromManagementUnit: o.RemovedFromManagementUnit,
+		
+		SuppressOnTimeReminder: o.SuppressOnTimeReminder,
+		
+		NextActivityReminders: o.NextActivityReminders,
 		Alias:    (Alias)(o),
 	})
 }
@@ -317,6 +331,15 @@ func (o *Wfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdate) Unmars
 		o.RemovedFromManagementUnit = &RemovedFromManagementUnit
 	}
     
+	if SuppressOnTimeReminder, ok := WfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdateMap["suppressOnTimeReminder"].(bool); ok {
+		o.SuppressOnTimeReminder = &SuppressOnTimeReminder
+	}
+    
+	if NextActivityReminders, ok := WfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdateMap["nextActivityReminders"].([]interface{}); ok {
+		NextActivityRemindersString, _ := json.Marshal(NextActivityReminders)
+		json.Unmarshal(NextActivityRemindersString, &o.NextActivityReminders)
+	}
+	
 
 	return nil
 }

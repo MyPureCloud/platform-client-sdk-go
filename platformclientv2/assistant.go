@@ -30,7 +30,7 @@ type Assistant struct {
 	// ModifiedBy - The user who last modified the assistant.
 	ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
 
-	// GoogleDialogflowConfig - Configuration of Dialogflow used to assist the agent with transcriptions and knowledge suggestions.
+	// GoogleDialogflowConfig - (Deprecated: use the 'knowledgeSuggestionConfig' for genesys knowledge suggestions) Configuration of Dialogflow used to assist the agent with transcriptions and knowledge suggestions.
 	GoogleDialogflowConfig *Googledialogflowconfig `json:"googleDialogflowConfig,omitempty"`
 
 	// TranscriptionConfig - Configuration for speech transcription used to assist the agent.

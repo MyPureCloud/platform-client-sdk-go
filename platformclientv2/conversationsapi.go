@@ -13715,6 +13715,10 @@ func (a ConversationsApi) PostConversationSuggestionEngagement(conversationId st
 // PostConversationSuggestionsFeedback invokes POST /api/v2/conversations/{conversationId}/suggestions/feedback
 //
 // Suggestion feedback.
+//
+// Google Agent Assist offering within Genesys will no longer be supported
+//
+// Deprecated: PostConversationSuggestionsFeedback is deprecated
 func (a ConversationsApi) PostConversationSuggestionsFeedback(conversationId string, body Feedback) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

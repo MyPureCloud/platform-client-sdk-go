@@ -1406,12 +1406,12 @@ func (a AuthorizationApi) GetAuthorizationRoleSubjectgrants(roleId string, pageS
 // Get a list of the users in a specified role.
 //
 // Get an array of the UUIDs of the users in the specified role.
-func (a AuthorizationApi) GetAuthorizationRoleUsers(roleId string, pageSize int, pageNumber int) (*Userentitylisting, *APIResponse, error) {
+func (a AuthorizationApi) GetAuthorizationRoleUsers(roleId string, pageSize int, pageNumber int) (*Userreferenceentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/roles/{roleId}/users"
 	path = strings.Replace(path, "{roleId}", url.PathEscape(fmt.Sprintf("%v", roleId)), -1)
-	defaultReturn := new(Userentitylisting)
+	defaultReturn := new(Userreferenceentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -1473,14 +1473,14 @@ func (a AuthorizationApi) GetAuthorizationRoleUsers(roleId string, pageSize int,
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Userentitylisting
+	var successPayload *Userreferenceentitylisting
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Userentitylisting" == "string" {
+		if "Userreferenceentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

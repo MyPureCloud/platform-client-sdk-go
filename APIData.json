@@ -3972,7 +3972,7 @@
       }
     ],
     "return": "interface{}",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewArchitectApiWithConfig(config)\n\nvar flowId string // Flow ID\nvar versionId string // Version ID\nvar deleted string // Deleted flows\n// Create flow version configuration\ndata, response, err := apiInstance.GetFlowVersionConfiguration(flowId, versionId, deleted)\nif err != nil {\n\tfmt.Printf(\"Error calling GetFlowVersionConfiguration: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewArchitectApiWithConfig(config)\n\nvar flowId string // Flow ID\nvar versionId string // Version ID\nvar deleted string // Deleted flows\n// Get flow version configuration\ndata, response, err := apiInstance.GetFlowVersionConfiguration(flowId, versionId, deleted)\nif err != nil {\n\tfmt.Printf(\"Error calling GetFlowVersionConfiguration: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getflowversionhealth": {
     "operationId": "getflowversionhealth",
@@ -6254,7 +6254,7 @@
         "required": "false"
       }
     ],
-    "return": "Userentitylisting",
+    "return": "Userreferenceentitylisting",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewAuthorizationApiWithConfig(config)\n\nvar roleId string // Role ID\nvar pageSize int // Page size\nvar pageNumber int // Page number\n// Get a list of the users in a specified role.\ndata, response, err := apiInstance.GetAuthorizationRoleUsers(roleId, pageSize, pageNumber)\nif err != nil {\n\tfmt.Printf(\"Error calling GetAuthorizationRoleUsers: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getauthorizationroles": {
@@ -8117,17 +8117,12 @@
   "getcontentmanagementsharedsharedid": {
     "operationId": "getcontentmanagementsharedsharedid",
     "functionName": "GetContentmanagementSharedSharedId",
-    "signature": "GetContentmanagementSharedSharedId(sharedId, redirect, disposition, contentType, expand)",
+    "signature": "GetContentmanagementSharedSharedId(sharedId, disposition, contentType, expand)",
     "parameters": [
       {
         "name": "sharedId",
         "type": "string",
         "required": "true"
-      },
-      {
-        "name": "redirect",
-        "type": "bool",
-        "required": "false"
       },
       {
         "name": "disposition",
@@ -8146,7 +8141,7 @@
       }
     ],
     "return": "Sharedresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewContentManagementApiWithConfig(config)\n\nvar sharedId string // Shared ID\nvar redirect bool // Turn on or off redirect\nvar disposition string // Request how the share content will be downloaded: attached as a file or inline. Default is attachment.\nvar contentType string // The requested format for the specified document. If supported, the document will be returned in that format. Example contentType=audio/wav\nvar expand string // Expand some document fields\n// Get shared documents. Securely download a shared document.\ndata, response, err := apiInstance.GetContentmanagementSharedSharedId(sharedId, redirect, disposition, contentType, expand)\nif err != nil {\n\tfmt.Printf(\"Error calling GetContentmanagementSharedSharedId: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewContentManagementApiWithConfig(config)\n\nvar sharedId string // Shared ID\nvar disposition string // Request how the share content will be downloaded: attached as a file or inline. Default is attachment.\nvar contentType string // The requested format for the specified document. If supported, the document will be returned in that format. Example contentType=audio/wav\nvar expand string // Expand some document fields\n// Get shared documents. Securely download a shared document.\ndata, response, err := apiInstance.GetContentmanagementSharedSharedId(sharedId, disposition, contentType, expand)\nif err != nil {\n\tfmt.Printf(\"Error calling GetContentmanagementSharedSharedId: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getcontentmanagementshares": {
     "operationId": "getcontentmanagementshares",
@@ -13305,6 +13300,19 @@
     "return": "interface{}",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewExternalContactsApiWithConfig(config)\n\nvar externalSourceId string // External Source ID\n// Delete an External Source. WARNING: Any records that reference this External Source will not be automatically cleaned up. Those records will still be editable, but their External IDs may not be fully viewable.\ndata, response, err := apiInstance.DeleteExternalcontactsExternalsource(externalSourceId)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteExternalcontactsExternalsource: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
+  "deleteexternalcontactsimportcsvsetting": {
+    "operationId": "deleteexternalcontactsimportcsvsetting",
+    "functionName": "DeleteExternalcontactsImportCsvSetting",
+    "signature": "DeleteExternalcontactsImportCsvSetting(settingsId)",
+    "parameters": [
+      {
+        "name": "settingsId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewExternalContactsApiWithConfig(config)\n\nvar settingsId string // Settings id\n// Delete settings for CSV import\nresponse, err := apiInstance.DeleteExternalcontactsImportCsvSetting(settingsId)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteExternalcontactsImportCsvSetting: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
+  },
   "deleteexternalcontactsorganization": {
     "operationId": "deleteexternalcontactsorganization",
     "functionName": "DeleteExternalcontactsOrganization",
@@ -13634,6 +13642,72 @@
     ],
     "return": "Cursorexternalsourcelisting",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewExternalContactsApiWithConfig(config)\n\nvar cursor string // Indicates where to resume query results (not required for first page), each page returns a new cursor with a 24h TTL\nvar limit int // The number of ExternalSources per page; must be between 10 and 200, default is 100\nvar name string // Filter by external source name. Filtering is prefix filtering and not an exact match\nvar active bool // Filter by active status of external source\n// Fetch a list of External Sources\ndata, response, err := apiInstance.GetExternalcontactsExternalsources(cursor, limit, name, active)\nif err != nil {\n\tfmt.Printf(\"Error calling GetExternalcontactsExternalsources: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getexternalcontactsimportcsvsetting": {
+    "operationId": "getexternalcontactsimportcsvsetting",
+    "functionName": "GetExternalcontactsImportCsvSetting",
+    "signature": "GetExternalcontactsImportCsvSetting(settingsId)",
+    "parameters": [
+      {
+        "name": "settingsId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Csvsettings",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewExternalContactsApiWithConfig(config)\n\nvar settingsId string // Settings id\n// Get settings for CSV import\ndata, response, err := apiInstance.GetExternalcontactsImportCsvSetting(settingsId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetExternalcontactsImportCsvSetting: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getexternalcontactsimportcsvsettings": {
+    "operationId": "getexternalcontactsimportcsvsettings",
+    "functionName": "GetExternalcontactsImportCsvSettings",
+    "signature": "GetExternalcontactsImportCsvSettings(after, pageSize, externalSettingsId)",
+    "parameters": [
+      {
+        "name": "after",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "pageSize",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "externalSettingsId",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Listing",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewExternalContactsApiWithConfig(config)\n\nvar after string // The cursor that points to the end of the set of entities that has been returned.\nvar pageSize string // Number of entities to return. Maximum of 200.\nvar externalSettingsId string // External Settings Id to filter the list.\n// Retrieve all settings for organization filtered by externalSettingsId if provided\ndata, response, err := apiInstance.GetExternalcontactsImportCsvSettings(after, pageSize, externalSettingsId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetExternalcontactsImportCsvSettings: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getexternalcontactsimportcsvuploaddetails": {
+    "operationId": "getexternalcontactsimportcsvuploaddetails",
+    "functionName": "GetExternalcontactsImportCsvUploadDetails",
+    "signature": "GetExternalcontactsImportCsvUploadDetails(uploadId)",
+    "parameters": [
+      {
+        "name": "uploadId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Csvuploaddetailsresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewExternalContactsApiWithConfig(config)\n\nvar uploadId string // Upload id\n// Get details for CSV upload\ndata, response, err := apiInstance.GetExternalcontactsImportCsvUploadDetails(uploadId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetExternalcontactsImportCsvUploadDetails: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getexternalcontactsimportcsvuploadpreview": {
+    "operationId": "getexternalcontactsimportcsvuploadpreview",
+    "functionName": "GetExternalcontactsImportCsvUploadPreview",
+    "signature": "GetExternalcontactsImportCsvUploadPreview(uploadId)",
+    "parameters": [
+      {
+        "name": "uploadId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Csvuploadpreviewresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewExternalContactsApiWithConfig(config)\n\nvar uploadId string // Upload id\n// Get preview for CSV upload\ndata, response, err := apiInstance.GetExternalcontactsImportCsvUploadPreview(uploadId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetExternalcontactsImportCsvUploadPreview: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getexternalcontactsorganization": {
     "operationId": "getexternalcontactsorganization",
@@ -14353,6 +14427,48 @@
     "return": "Externalcontact",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewExternalContactsApiWithConfig(config)\n\nvar identifier platformclientv2.Contactidentifier // \nvar expand []string // which field, if any, to expand\n// Fetch a contact using an identifier type and value.\ndata, response, err := apiInstance.PostExternalcontactsIdentifierlookup(identifier, expand)\nif err != nil {\n\tfmt.Printf(\"Error calling PostExternalcontactsIdentifierlookup: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
+  "postexternalcontactsimportcsvjobs": {
+    "operationId": "postexternalcontactsimportcsvjobs",
+    "functionName": "PostExternalcontactsImportCsvJobs",
+    "signature": "PostExternalcontactsImportCsvJobs(body)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Csvjobrequest",
+        "required": "true"
+      }
+    ],
+    "return": "Csvjobresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewExternalContactsApiWithConfig(config)\n\nvar body platformclientv2.Csvjobrequest // ImportRequest\n// Create CSV import job\ndata, response, err := apiInstance.PostExternalcontactsImportCsvJobs(body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostExternalcontactsImportCsvJobs: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "postexternalcontactsimportcsvsettings": {
+    "operationId": "postexternalcontactsimportcsvsettings",
+    "functionName": "PostExternalcontactsImportCsvSettings",
+    "signature": "PostExternalcontactsImportCsvSettings(body)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Csvsettings",
+        "required": "true"
+      }
+    ],
+    "return": "Csvsettings",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewExternalContactsApiWithConfig(config)\n\nvar body platformclientv2.Csvsettings // Settings\n// Create settings for CSV import\ndata, response, err := apiInstance.PostExternalcontactsImportCsvSettings(body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostExternalcontactsImportCsvSettings: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "postexternalcontactsimportcsvuploads": {
+    "operationId": "postexternalcontactsimportcsvuploads",
+    "functionName": "PostExternalcontactsImportCsvUploads",
+    "signature": "PostExternalcontactsImportCsvUploads(body)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Csvuploadrequest",
+        "required": "true"
+      }
+    ],
+    "return": "Csvuploadresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewExternalContactsApiWithConfig(config)\n\nvar body platformclientv2.Csvuploadrequest // UploadRequest\n// Get url for CSV upload\ndata, response, err := apiInstance.PostExternalcontactsImportCsvUploads(body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostExternalcontactsImportCsvUploads: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
   "postexternalcontactsmergecontacts": {
     "operationId": "postexternalcontactsmergecontacts",
     "functionName": "PostExternalcontactsMergeContacts",
@@ -14526,6 +14642,25 @@
     ],
     "return": "Externalsource",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewExternalContactsApiWithConfig(config)\n\nvar externalSourceId string // External Source ID\nvar body platformclientv2.Externalsource // External Source\n// Update an External Source\ndata, response, err := apiInstance.PutExternalcontactsExternalsource(externalSourceId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PutExternalcontactsExternalsource: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "putexternalcontactsimportcsvsetting": {
+    "operationId": "putexternalcontactsimportcsvsetting",
+    "functionName": "PutExternalcontactsImportCsvSetting",
+    "signature": "PutExternalcontactsImportCsvSetting(settingsId, body)",
+    "parameters": [
+      {
+        "name": "settingsId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Csvsettings",
+        "required": "true"
+      }
+    ],
+    "return": "Csvsettings",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewExternalContactsApiWithConfig(config)\n\nvar settingsId string // Settings id\nvar body platformclientv2.Csvsettings // Settings\n// Update settings for CSV import\ndata, response, err := apiInstance.PutExternalcontactsImportCsvSetting(settingsId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PutExternalcontactsImportCsvSetting: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "putexternalcontactsorganization": {
     "operationId": "putexternalcontactsorganization",
@@ -26777,6 +26912,13 @@
     "return": "Trustentitylisting",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewOrganizationAuthorizationApiWithConfig(config)\n\nvar pageSize int // Page size\nvar pageNumber int // Page number\n// The list of trustees for this organization (i.e. organizations granted access to this organization).\ndata, response, err := apiInstance.GetOrgauthorizationTrustees(pageSize, pageNumber)\nif err != nil {\n\tfmt.Printf(\"Error calling GetOrgauthorizationTrustees: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
+  "getorgauthorizationtrusteescare": {
+    "operationId": "getorgauthorizationtrusteescare",
+    "functionName": "GetOrgauthorizationTrusteesCare",
+    "signature": "GetOrgauthorizationTrusteesCare()",
+    "return": "Trusteereferencelist",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewOrganizationAuthorizationApiWithConfig(config)\n\n// Get Customer Care organization ids.\ndata, response, err := apiInstance.GetOrgauthorizationTrusteesCare()\nif err != nil {\n\tfmt.Printf(\"Error calling GetOrgauthorizationTrusteesCare: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
   "getorgauthorizationtrusteesdefault": {
     "operationId": "getorgauthorizationtrusteesdefault",
     "functionName": "GetOrgauthorizationTrusteesDefault",
@@ -27035,6 +27177,35 @@
     ],
     "return": "interface{}",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewOrganizationAuthorizationApiWithConfig(config)\n\nvar body platformclientv2.Trusteeauditqueryrequest // Values to scope the request.\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar sortBy string // Sort by\nvar sortOrder string // Sort order\n// Get Org Trustee Audits\ndata, response, err := apiInstance.PostOrgauthorizationTrusteesAudits(body, pageSize, pageNumber, sortBy, sortOrder)\nif err != nil {\n\tfmt.Printf(\"Error calling PostOrgauthorizationTrusteesAudits: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "postorgauthorizationtrusteescare": {
+    "operationId": "postorgauthorizationtrusteescare",
+    "functionName": "PostOrgauthorizationTrusteesCare",
+    "signature": "PostOrgauthorizationTrusteesCare(assignDefaultRole, autoExpire, assignFullAccess, allowTrustedUserAccess)",
+    "parameters": [
+      {
+        "name": "assignDefaultRole",
+        "type": "bool",
+        "required": "false"
+      },
+      {
+        "name": "autoExpire",
+        "type": "bool",
+        "required": "false"
+      },
+      {
+        "name": "assignFullAccess",
+        "type": "bool",
+        "required": "false"
+      },
+      {
+        "name": "allowTrustedUserAccess",
+        "type": "bool",
+        "required": "false"
+      }
+    ],
+    "return": "Trustentitylisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewOrganizationAuthorizationApiWithConfig(config)\n\nvar assignDefaultRole bool // Assign Admin role to default pairing with Customer Care\nvar autoExpire bool // Automatically expire pairing after 30 days\nvar assignFullAccess bool // Grant Customer Care full access to the organization\nvar allowTrustedUserAccess bool // Make Customer Care a Trusted User\n// Create a new organization authorization trust with Customer Care. This is required to grant your regional Customer Care organization access to your organization.\ndata, response, err := apiInstance.PostOrgauthorizationTrusteesCare(assignDefaultRole, autoExpire, assignFullAccess, allowTrustedUserAccess)\nif err != nil {\n\tfmt.Printf(\"Error calling PostOrgauthorizationTrusteesCare: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "postorgauthorizationtrusteesdefault": {
     "operationId": "postorgauthorizationtrusteesdefault",

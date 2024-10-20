@@ -37,6 +37,15 @@ type Campaignruleparameters struct {
 
 	// Queue - The queue a campaign to. Required for the 'changeCampaignQueue' action.
 	Queue *Domainentityref `json:"queue,omitempty"`
+
+	// MessagesPerMinute - The number of messages per minute to set a messaging campaign to.
+	MessagesPerMinute *int `json:"messagesPerMinute,omitempty"`
+
+	// SmsContentTemplate - The content template to set a SMS campaign to.
+	SmsContentTemplate *Domainentityref `json:"smsContentTemplate,omitempty"`
+
+	// EmailContentTemplate - The content template to set a Email campaign to.
+	EmailContentTemplate *Domainentityref `json:"emailContentTemplate,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -119,6 +128,12 @@ func (o Campaignruleparameters) MarshalJSON() ([]byte, error) {
 		MaxCallsPerAgent *float32 `json:"maxCallsPerAgent,omitempty"`
 		
 		Queue *Domainentityref `json:"queue,omitempty"`
+		
+		MessagesPerMinute *int `json:"messagesPerMinute,omitempty"`
+		
+		SmsContentTemplate *Domainentityref `json:"smsContentTemplate,omitempty"`
+		
+		EmailContentTemplate *Domainentityref `json:"emailContentTemplate,omitempty"`
 		Alias
 	}{ 
 		Operator: o.Operator,
@@ -138,6 +153,12 @@ func (o Campaignruleparameters) MarshalJSON() ([]byte, error) {
 		MaxCallsPerAgent: o.MaxCallsPerAgent,
 		
 		Queue: o.Queue,
+		
+		MessagesPerMinute: o.MessagesPerMinute,
+		
+		SmsContentTemplate: o.SmsContentTemplate,
+		
+		EmailContentTemplate: o.EmailContentTemplate,
 		Alias:    (Alias)(o),
 	})
 }
@@ -188,6 +209,21 @@ func (o *Campaignruleparameters) UnmarshalJSON(b []byte) error {
 	if Queue, ok := CampaignruleparametersMap["queue"].(map[string]interface{}); ok {
 		QueueString, _ := json.Marshal(Queue)
 		json.Unmarshal(QueueString, &o.Queue)
+	}
+	
+	if MessagesPerMinute, ok := CampaignruleparametersMap["messagesPerMinute"].(float64); ok {
+		MessagesPerMinuteInt := int(MessagesPerMinute)
+		o.MessagesPerMinute = &MessagesPerMinuteInt
+	}
+	
+	if SmsContentTemplate, ok := CampaignruleparametersMap["smsContentTemplate"].(map[string]interface{}); ok {
+		SmsContentTemplateString, _ := json.Marshal(SmsContentTemplate)
+		json.Unmarshal(SmsContentTemplateString, &o.SmsContentTemplate)
+	}
+	
+	if EmailContentTemplate, ok := CampaignruleparametersMap["emailContentTemplate"].(map[string]interface{}); ok {
+		EmailContentTemplateString, _ := json.Marshal(EmailContentTemplate)
+		json.Unmarshal(EmailContentTemplateString, &o.EmailContentTemplate)
 	}
 	
 

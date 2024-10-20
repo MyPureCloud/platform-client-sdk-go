@@ -20,14 +20,14 @@ type Documentbodyblockwithhighlight struct {
 	// Video - Video. It must contain a value if the type of the block is Video.
 	Video *Documentbodyvideo `json:"video,omitempty"`
 
-	// List - List. It must contain a value if the type of the block is UnorderedList or OrderedList.
-	List *Documentbodylist `json:"list,omitempty"`
-
-	// Table - Table. It must contain a value if type of the block is Table.
-	Table *Documentbodytable `json:"table,omitempty"`
-
 	// Paragraph - Paragraph. It must contain a value if the type of the block is Paragraph.
 	Paragraph *Documentbodyparagraphwithhighlight `json:"paragraph,omitempty"`
+
+	// List - List. It must contain a value if the type of the block is UnorderedList or OrderedList.
+	List *Documentbodylistwithhighlight `json:"list,omitempty"`
+
+	// Table - Table. It must contain a value if type of the block is Table.
+	Table *Documentbodytablewithhighlight `json:"table,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -99,11 +99,11 @@ func (o Documentbodyblockwithhighlight) MarshalJSON() ([]byte, error) {
 		
 		Video *Documentbodyvideo `json:"video,omitempty"`
 		
-		List *Documentbodylist `json:"list,omitempty"`
-		
-		Table *Documentbodytable `json:"table,omitempty"`
-		
 		Paragraph *Documentbodyparagraphwithhighlight `json:"paragraph,omitempty"`
+		
+		List *Documentbodylistwithhighlight `json:"list,omitempty"`
+		
+		Table *Documentbodytablewithhighlight `json:"table,omitempty"`
 		Alias
 	}{ 
 		VarType: o.VarType,
@@ -112,11 +112,11 @@ func (o Documentbodyblockwithhighlight) MarshalJSON() ([]byte, error) {
 		
 		Video: o.Video,
 		
+		Paragraph: o.Paragraph,
+		
 		List: o.List,
 		
 		Table: o.Table,
-		
-		Paragraph: o.Paragraph,
 		Alias:    (Alias)(o),
 	})
 }
@@ -142,6 +142,11 @@ func (o *Documentbodyblockwithhighlight) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(VideoString, &o.Video)
 	}
 	
+	if Paragraph, ok := DocumentbodyblockwithhighlightMap["paragraph"].(map[string]interface{}); ok {
+		ParagraphString, _ := json.Marshal(Paragraph)
+		json.Unmarshal(ParagraphString, &o.Paragraph)
+	}
+	
 	if List, ok := DocumentbodyblockwithhighlightMap["list"].(map[string]interface{}); ok {
 		ListString, _ := json.Marshal(List)
 		json.Unmarshal(ListString, &o.List)
@@ -150,11 +155,6 @@ func (o *Documentbodyblockwithhighlight) UnmarshalJSON(b []byte) error {
 	if Table, ok := DocumentbodyblockwithhighlightMap["table"].(map[string]interface{}); ok {
 		TableString, _ := json.Marshal(Table)
 		json.Unmarshal(TableString, &o.Table)
-	}
-	
-	if Paragraph, ok := DocumentbodyblockwithhighlightMap["paragraph"].(map[string]interface{}); ok {
-		ParagraphString, _ := json.Marshal(Paragraph)
-		json.Unmarshal(ParagraphString, &o.Paragraph)
 	}
 	
 

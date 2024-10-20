@@ -26,11 +26,11 @@ type Outboundroutebaseentitylisting struct {
 	// TotalNumberOfEntities - The total organization-wide number of entities.
 	TotalNumberOfEntities *int `json:"totalNumberOfEntities,omitempty"`
 
-	// FirstUri
-	FirstUri *string `json:"firstUri,omitempty"`
-
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
+
+	// FirstUri
+	FirstUri *string `json:"firstUri,omitempty"`
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -118,9 +118,9 @@ func (o Outboundroutebaseentitylisting) MarshalJSON() ([]byte, error) {
 		
 		TotalNumberOfEntities *int `json:"totalNumberOfEntities,omitempty"`
 		
-		FirstUri *string `json:"firstUri,omitempty"`
-		
 		LastUri *string `json:"lastUri,omitempty"`
+		
+		FirstUri *string `json:"firstUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
@@ -141,9 +141,9 @@ func (o Outboundroutebaseentitylisting) MarshalJSON() ([]byte, error) {
 		
 		TotalNumberOfEntities: o.TotalNumberOfEntities,
 		
-		FirstUri: o.FirstUri,
-		
 		LastUri: o.LastUri,
+		
+		FirstUri: o.FirstUri,
 		
 		SelfUri: o.SelfUri,
 		
@@ -188,12 +188,12 @@ func (o *Outboundroutebaseentitylisting) UnmarshalJSON(b []byte) error {
 		o.TotalNumberOfEntities = &TotalNumberOfEntitiesInt
 	}
 	
-	if FirstUri, ok := OutboundroutebaseentitylistingMap["firstUri"].(string); ok {
-		o.FirstUri = &FirstUri
-	}
-    
 	if LastUri, ok := OutboundroutebaseentitylistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
+	}
+    
+	if FirstUri, ok := OutboundroutebaseentitylistingMap["firstUri"].(string); ok {
+		o.FirstUri = &FirstUri
 	}
     
 	if SelfUri, ok := OutboundroutebaseentitylistingMap["selfUri"].(string); ok {

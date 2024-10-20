@@ -26,11 +26,11 @@ type Divspermittedentitylisting struct {
 	// AllDivsPermitted
 	AllDivsPermitted *bool `json:"allDivsPermitted,omitempty"`
 
-	// FirstUri
-	FirstUri *string `json:"firstUri,omitempty"`
-
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
+
+	// FirstUri
+	FirstUri *string `json:"firstUri,omitempty"`
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -118,9 +118,9 @@ func (o Divspermittedentitylisting) MarshalJSON() ([]byte, error) {
 		
 		AllDivsPermitted *bool `json:"allDivsPermitted,omitempty"`
 		
-		FirstUri *string `json:"firstUri,omitempty"`
-		
 		LastUri *string `json:"lastUri,omitempty"`
+		
+		FirstUri *string `json:"firstUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
@@ -141,9 +141,9 @@ func (o Divspermittedentitylisting) MarshalJSON() ([]byte, error) {
 		
 		AllDivsPermitted: o.AllDivsPermitted,
 		
-		FirstUri: o.FirstUri,
-		
 		LastUri: o.LastUri,
+		
+		FirstUri: o.FirstUri,
 		
 		SelfUri: o.SelfUri,
 		
@@ -187,12 +187,12 @@ func (o *Divspermittedentitylisting) UnmarshalJSON(b []byte) error {
 		o.AllDivsPermitted = &AllDivsPermitted
 	}
     
-	if FirstUri, ok := DivspermittedentitylistingMap["firstUri"].(string); ok {
-		o.FirstUri = &FirstUri
-	}
-    
 	if LastUri, ok := DivspermittedentitylistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
+	}
+    
+	if FirstUri, ok := DivspermittedentitylistingMap["firstUri"].(string); ok {
+		o.FirstUri = &FirstUri
 	}
     
 	if SelfUri, ok := DivspermittedentitylistingMap["selfUri"].(string); ok {

@@ -1106,7 +1106,7 @@ func (a ContentManagementApi) GetContentmanagementShare(shareId string, expand [
 // Get shared documents. Securely download a shared document.
 //
 // This method requires the download sharing URI obtained in the get document response (downloadSharingUri). Documents may be shared between users in the same workspace. Documents may also be shared between any user by creating a content management share.
-func (a ContentManagementApi) GetContentmanagementSharedSharedId(sharedId string, redirect bool, disposition string, contentType string, expand string) (*Sharedresponse, *APIResponse, error) {
+func (a ContentManagementApi) GetContentmanagementSharedSharedId(sharedId string, disposition string, contentType string, expand string) (*Sharedresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/contentmanagement/shared/{sharedId}"
@@ -1138,8 +1138,6 @@ func (a ContentManagementApi) GetContentmanagementSharedSharedId(sharedId string
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["redirect"] = a.Configuration.APIClient.ParameterToString(redirect, "")
 	
 	queryParams["disposition"] = a.Configuration.APIClient.ParameterToString(disposition, "")
 	

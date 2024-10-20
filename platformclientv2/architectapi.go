@@ -5102,7 +5102,7 @@ func (a ArchitectApi) GetFlowVersion(flowId string, versionId string, deleted st
 
 // GetFlowVersionConfiguration invokes GET /api/v2/flows/{flowId}/versions/{versionId}/configuration
 //
-// Create flow version configuration
+// Get flow version configuration
 func (a ArchitectApi) GetFlowVersionConfiguration(flowId string, versionId string, deleted string) (*interface{}, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -20,6 +21,9 @@ type Workitemqueryjobcreate struct {
 	// Filters - List of filter objects to be used in the search.
 	Filters *[]Workitemqueryjobfilter `json:"filters,omitempty"`
 
+	// QueryFilters - Query filters for nested attributes.
+	QueryFilters *[]Workitemqueryjobqueryfilters `json:"queryFilters,omitempty"`
+
 	// Expands - List of entity attributes to be expanded in the result.
 	Expands *[]string `json:"expands,omitempty"`
 
@@ -28,6 +32,12 @@ type Workitemqueryjobcreate struct {
 
 	// Sort - Sort
 	Sort *Workitemqueryjobsort `json:"sort,omitempty"`
+
+	// DateIntervalStart - Interval start date to use to filter results based on create date. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateIntervalStart *time.Time `json:"dateIntervalStart,omitempty"`
+
+	// DateIntervalEnd - Interval end date to use to filter results based on create date. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateIntervalEnd *time.Time `json:"dateIntervalEnd,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -59,7 +69,7 @@ func (o Workitemqueryjobcreate) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
+		dateTimeFields := []string{ "DateIntervalStart","DateIntervalEnd", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -92,6 +102,22 @@ func (o Workitemqueryjobcreate) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Workitemqueryjobcreate
 	
+	DateIntervalStart := new(string)
+	if o.DateIntervalStart != nil {
+		
+		*DateIntervalStart = timeutil.Strftime(o.DateIntervalStart, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateIntervalStart = nil
+	}
+	
+	DateIntervalEnd := new(string)
+	if o.DateIntervalEnd != nil {
+		
+		*DateIntervalEnd = timeutil.Strftime(o.DateIntervalEnd, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateIntervalEnd = nil
+	}
+	
 	return json.Marshal(&struct { 
 		PageSize *int `json:"pageSize,omitempty"`
 		
@@ -99,11 +125,17 @@ func (o Workitemqueryjobcreate) MarshalJSON() ([]byte, error) {
 		
 		Filters *[]Workitemqueryjobfilter `json:"filters,omitempty"`
 		
+		QueryFilters *[]Workitemqueryjobqueryfilters `json:"queryFilters,omitempty"`
+		
 		Expands *[]string `json:"expands,omitempty"`
 		
 		Attributes *[]string `json:"attributes,omitempty"`
 		
 		Sort *Workitemqueryjobsort `json:"sort,omitempty"`
+		
+		DateIntervalStart *string `json:"dateIntervalStart,omitempty"`
+		
+		DateIntervalEnd *string `json:"dateIntervalEnd,omitempty"`
 		Alias
 	}{ 
 		PageSize: o.PageSize,
@@ -112,11 +144,17 @@ func (o Workitemqueryjobcreate) MarshalJSON() ([]byte, error) {
 		
 		Filters: o.Filters,
 		
+		QueryFilters: o.QueryFilters,
+		
 		Expands: o.Expands,
 		
 		Attributes: o.Attributes,
 		
 		Sort: o.Sort,
+		
+		DateIntervalStart: DateIntervalStart,
+		
+		DateIntervalEnd: DateIntervalEnd,
 		Alias:    (Alias)(o),
 	})
 }
@@ -143,6 +181,11 @@ func (o *Workitemqueryjobcreate) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(FiltersString, &o.Filters)
 	}
 	
+	if QueryFilters, ok := WorkitemqueryjobcreateMap["queryFilters"].([]interface{}); ok {
+		QueryFiltersString, _ := json.Marshal(QueryFilters)
+		json.Unmarshal(QueryFiltersString, &o.QueryFilters)
+	}
+	
 	if Expands, ok := WorkitemqueryjobcreateMap["expands"].([]interface{}); ok {
 		ExpandsString, _ := json.Marshal(Expands)
 		json.Unmarshal(ExpandsString, &o.Expands)
@@ -156,6 +199,16 @@ func (o *Workitemqueryjobcreate) UnmarshalJSON(b []byte) error {
 	if Sort, ok := WorkitemqueryjobcreateMap["sort"].(map[string]interface{}); ok {
 		SortString, _ := json.Marshal(Sort)
 		json.Unmarshal(SortString, &o.Sort)
+	}
+	
+	if dateIntervalStartString, ok := WorkitemqueryjobcreateMap["dateIntervalStart"].(string); ok {
+		DateIntervalStart, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateIntervalStartString)
+		o.DateIntervalStart = &DateIntervalStart
+	}
+	
+	if dateIntervalEndString, ok := WorkitemqueryjobcreateMap["dateIntervalEnd"].(string); ok {
+		DateIntervalEnd, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateIntervalEndString)
+		o.DateIntervalEnd = &DateIntervalEnd
 	}
 	
 

@@ -3265,8 +3265,6 @@ func (a JourneyApi) GetJourneyViews(pageNumber int, pageSize int, nameOrCreatedB
 // GetJourneyViewsEventdefinition invokes GET /api/v2/journey/views/eventdefinitions/{eventDefinitionId}
 //
 // Get an Event Definition
-//
-// Preview: GetJourneyViewsEventdefinition is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a JourneyApi) GetJourneyViewsEventdefinition(eventDefinitionId string) (*Journeyeventdefinition, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3349,8 +3347,6 @@ func (a JourneyApi) GetJourneyViewsEventdefinition(eventDefinitionId string) (*J
 // GetJourneyViewsEventdefinitions invokes GET /api/v2/journey/views/eventdefinitions
 //
 // Get a list of Event Definitions
-//
-// Preview: GetJourneyViewsEventdefinitions is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a JourneyApi) GetJourneyViewsEventdefinitions() (*Journeyeventdefinitionlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5355,8 +5351,6 @@ func (a JourneyApi) PostJourneyViews(body Journeyview) (*Journeyview, *APIRespon
 // Validate whether an encoding exist for a label/value combination.
 //
 // True indicates a valid encoding
-//
-// Preview: PostJourneyViewsEncodingsValidate is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a JourneyApi) PostJourneyViewsEncodingsValidate(body []Label) (*Entitylisting, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

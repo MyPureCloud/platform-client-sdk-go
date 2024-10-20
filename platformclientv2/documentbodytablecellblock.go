@@ -11,11 +11,11 @@ import (
 type Documentbodytablecellblock struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Blocks - The list of content blocks for the table.
-	Blocks *[]Documenttablecontentblock `json:"blocks,omitempty"`
-
 	// Properties - The properties for the table cell.
 	Properties *Documentbodytablecellblockproperties `json:"properties,omitempty"`
+
+	// Blocks - The list of content blocks for the table.
+	Blocks *[]Documenttablecontentblock `json:"blocks,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -81,14 +81,14 @@ func (o Documentbodytablecellblock) MarshalJSON() ([]byte, error) {
 	type Alias Documentbodytablecellblock
 	
 	return json.Marshal(&struct { 
-		Blocks *[]Documenttablecontentblock `json:"blocks,omitempty"`
-		
 		Properties *Documentbodytablecellblockproperties `json:"properties,omitempty"`
+		
+		Blocks *[]Documenttablecontentblock `json:"blocks,omitempty"`
 		Alias
 	}{ 
-		Blocks: o.Blocks,
-		
 		Properties: o.Properties,
+		
+		Blocks: o.Blocks,
 		Alias:    (Alias)(o),
 	})
 }
@@ -100,14 +100,14 @@ func (o *Documentbodytablecellblock) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
-	if Blocks, ok := DocumentbodytablecellblockMap["blocks"].([]interface{}); ok {
-		BlocksString, _ := json.Marshal(Blocks)
-		json.Unmarshal(BlocksString, &o.Blocks)
-	}
-	
 	if Properties, ok := DocumentbodytablecellblockMap["properties"].(map[string]interface{}); ok {
 		PropertiesString, _ := json.Marshal(Properties)
 		json.Unmarshal(PropertiesString, &o.Properties)
+	}
+	
+	if Blocks, ok := DocumentbodytablecellblockMap["blocks"].([]interface{}); ok {
+		BlocksString, _ := json.Marshal(Blocks)
+		json.Unmarshal(BlocksString, &o.Blocks)
 	}
 	
 

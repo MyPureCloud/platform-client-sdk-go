@@ -14,9 +14,6 @@ type Documenttablecontentblock struct {
 	// VarType - The type of the block for the table cell. This determines which body block object (paragraph, list, video, image or table) would have a value.
 	VarType *string `json:"type,omitempty"`
 
-	// Paragraph - Paragraph. It must contain a value if the type of the block is Paragraph.
-	Paragraph *Documentbodyparagraph `json:"paragraph,omitempty"`
-
 	// Text - Text. It must contain a value if the type of the block is Text.
 	Text *Documenttext `json:"text,omitempty"`
 
@@ -25,6 +22,9 @@ type Documenttablecontentblock struct {
 
 	// Video - Video. It must contain a value if the type of the block is Video.
 	Video *Documentbodyvideo `json:"video,omitempty"`
+
+	// Paragraph - Paragraph. It must contain a value if the type of the block is Paragraph.
+	Paragraph *Documentbodyparagraph `json:"paragraph,omitempty"`
 
 	// List - List. It must contain a value if the type of the block is UnorderedList or OrderedList.
 	List *Documentbodylist `json:"list,omitempty"`
@@ -98,13 +98,13 @@ func (o Documenttablecontentblock) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
-		Paragraph *Documentbodyparagraph `json:"paragraph,omitempty"`
-		
 		Text *Documenttext `json:"text,omitempty"`
 		
 		Image *Documentbodyimage `json:"image,omitempty"`
 		
 		Video *Documentbodyvideo `json:"video,omitempty"`
+		
+		Paragraph *Documentbodyparagraph `json:"paragraph,omitempty"`
 		
 		List *Documentbodylist `json:"list,omitempty"`
 		
@@ -113,13 +113,13 @@ func (o Documenttablecontentblock) MarshalJSON() ([]byte, error) {
 	}{ 
 		VarType: o.VarType,
 		
-		Paragraph: o.Paragraph,
-		
 		Text: o.Text,
 		
 		Image: o.Image,
 		
 		Video: o.Video,
+		
+		Paragraph: o.Paragraph,
 		
 		List: o.List,
 		
@@ -139,11 +139,6 @@ func (o *Documenttablecontentblock) UnmarshalJSON(b []byte) error {
 		o.VarType = &VarType
 	}
     
-	if Paragraph, ok := DocumenttablecontentblockMap["paragraph"].(map[string]interface{}); ok {
-		ParagraphString, _ := json.Marshal(Paragraph)
-		json.Unmarshal(ParagraphString, &o.Paragraph)
-	}
-	
 	if Text, ok := DocumenttablecontentblockMap["text"].(map[string]interface{}); ok {
 		TextString, _ := json.Marshal(Text)
 		json.Unmarshal(TextString, &o.Text)
@@ -157,6 +152,11 @@ func (o *Documenttablecontentblock) UnmarshalJSON(b []byte) error {
 	if Video, ok := DocumenttablecontentblockMap["video"].(map[string]interface{}); ok {
 		VideoString, _ := json.Marshal(Video)
 		json.Unmarshal(VideoString, &o.Video)
+	}
+	
+	if Paragraph, ok := DocumenttablecontentblockMap["paragraph"].(map[string]interface{}); ok {
+		ParagraphString, _ := json.Marshal(Paragraph)
+		json.Unmarshal(ParagraphString, &o.Paragraph)
 	}
 	
 	if List, ok := DocumenttablecontentblockMap["list"].(map[string]interface{}); ok {

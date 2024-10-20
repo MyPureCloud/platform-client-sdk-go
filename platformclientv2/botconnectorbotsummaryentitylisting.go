@@ -23,11 +23,11 @@ type Botconnectorbotsummaryentitylisting struct {
 	// Total
 	Total *int `json:"total,omitempty"`
 
-	// FirstUri
-	FirstUri *string `json:"firstUri,omitempty"`
-
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
+
+	// FirstUri
+	FirstUri *string `json:"firstUri,omitempty"`
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -113,9 +113,9 @@ func (o Botconnectorbotsummaryentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
-		FirstUri *string `json:"firstUri,omitempty"`
-		
 		LastUri *string `json:"lastUri,omitempty"`
+		
+		FirstUri *string `json:"firstUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
@@ -134,9 +134,9 @@ func (o Botconnectorbotsummaryentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
-		FirstUri: o.FirstUri,
-		
 		LastUri: o.LastUri,
+		
+		FirstUri: o.FirstUri,
 		
 		SelfUri: o.SelfUri,
 		
@@ -176,12 +176,12 @@ func (o *Botconnectorbotsummaryentitylisting) UnmarshalJSON(b []byte) error {
 		o.Total = &TotalInt
 	}
 	
-	if FirstUri, ok := BotconnectorbotsummaryentitylistingMap["firstUri"].(string); ok {
-		o.FirstUri = &FirstUri
-	}
-    
 	if LastUri, ok := BotconnectorbotsummaryentitylistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
+	}
+    
+	if FirstUri, ok := BotconnectorbotsummaryentitylistingMap["firstUri"].(string); ok {
+		o.FirstUri = &FirstUri
 	}
     
 	if SelfUri, ok := BotconnectorbotsummaryentitylistingMap["selfUri"].(string); ok {

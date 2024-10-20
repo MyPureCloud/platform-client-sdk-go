@@ -111,6 +111,9 @@ type Campaign struct {
 	// DynamicContactQueueingSettings - Settings for dynamic queueing of contacts.
 	DynamicContactQueueingSettings *Dynamiccontactqueueingsettings `json:"dynamicContactQueueingSettings,omitempty"`
 
+	// SkillColumns - The skill columns on the ContactList that this Campaign should take into account when dialing
+	SkillColumns *[]string `json:"skillColumns,omitempty"`
+
 	// MaxCallsPerAgent - The maximum number of calls that can be placed per agent on this campaign
 	MaxCallsPerAgent *int `json:"maxCallsPerAgent,omitempty"`
 
@@ -269,6 +272,8 @@ func (o Campaign) MarshalJSON() ([]byte, error) {
 		
 		DynamicContactQueueingSettings *Dynamiccontactqueueingsettings `json:"dynamicContactQueueingSettings,omitempty"`
 		
+		SkillColumns *[]string `json:"skillColumns,omitempty"`
+		
 		MaxCallsPerAgent *int `json:"maxCallsPerAgent,omitempty"`
 		
 		CallbackAutoAnswer *bool `json:"callbackAutoAnswer,omitempty"`
@@ -343,6 +348,8 @@ func (o Campaign) MarshalJSON() ([]byte, error) {
 		Division: o.Division,
 		
 		DynamicContactQueueingSettings: o.DynamicContactQueueingSettings,
+		
+		SkillColumns: o.SkillColumns,
 		
 		MaxCallsPerAgent: o.MaxCallsPerAgent,
 		
@@ -515,6 +522,11 @@ func (o *Campaign) UnmarshalJSON(b []byte) error {
 	if DynamicContactQueueingSettings, ok := CampaignMap["dynamicContactQueueingSettings"].(map[string]interface{}); ok {
 		DynamicContactQueueingSettingsString, _ := json.Marshal(DynamicContactQueueingSettings)
 		json.Unmarshal(DynamicContactQueueingSettingsString, &o.DynamicContactQueueingSettings)
+	}
+	
+	if SkillColumns, ok := CampaignMap["skillColumns"].([]interface{}); ok {
+		SkillColumnsString, _ := json.Marshal(SkillColumns)
+		json.Unmarshal(SkillColumnsString, &o.SkillColumns)
 	}
 	
 	if MaxCallsPerAgent, ok := CampaignMap["maxCallsPerAgent"].(float64); ok {

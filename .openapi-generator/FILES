@@ -80,6 +80,7 @@ docs/DeleteExternalcontactsContact-example.txt
 docs/DeleteExternalcontactsContactNote-example.txt
 docs/DeleteExternalcontactsContactsSchema-example.txt
 docs/DeleteExternalcontactsExternalsource-example.txt
+docs/DeleteExternalcontactsImportCsvSetting-example.txt
 docs/DeleteExternalcontactsOrganization-example.txt
 docs/DeleteExternalcontactsOrganizationNote-example.txt
 docs/DeleteExternalcontactsOrganizationTrustor-example.txt
@@ -619,6 +620,10 @@ docs/GetExternalcontactsContactsSchemaVersions-example.txt
 docs/GetExternalcontactsContactsSchemas-example.txt
 docs/GetExternalcontactsExternalsource-example.txt
 docs/GetExternalcontactsExternalsources-example.txt
+docs/GetExternalcontactsImportCsvSetting-example.txt
+docs/GetExternalcontactsImportCsvSettings-example.txt
+docs/GetExternalcontactsImportCsvUploadDetails-example.txt
+docs/GetExternalcontactsImportCsvUploadPreview-example.txt
 docs/GetExternalcontactsOrganization-example.txt
 docs/GetExternalcontactsOrganizationContacts-example.txt
 docs/GetExternalcontactsOrganizationNote-example.txt
@@ -982,6 +987,7 @@ docs/GetOrgauthorizationTrusteeUser-example.txt
 docs/GetOrgauthorizationTrusteeUserRoles-example.txt
 docs/GetOrgauthorizationTrusteeUsers-example.txt
 docs/GetOrgauthorizationTrustees-example.txt
+docs/GetOrgauthorizationTrusteesCare-example.txt
 docs/GetOrgauthorizationTrusteesDefault-example.txt
 docs/GetOrgauthorizationTrustor-example.txt
 docs/GetOrgauthorizationTrustorCloneduser-example.txt
@@ -2021,6 +2027,9 @@ docs/PostExternalcontactsContacts-example.txt
 docs/PostExternalcontactsContactsSchemas-example.txt
 docs/PostExternalcontactsExternalsources-example.txt
 docs/PostExternalcontactsIdentifierlookup-example.txt
+docs/PostExternalcontactsImportCsvJobs-example.txt
+docs/PostExternalcontactsImportCsvSettings-example.txt
+docs/PostExternalcontactsImportCsvUploads-example.txt
 docs/PostExternalcontactsMergeContacts-example.txt
 docs/PostExternalcontactsOrganizationNotes-example.txt
 docs/PostExternalcontactsOrganizations-example.txt
@@ -2185,6 +2194,7 @@ docs/PostOrgauthorizationTrusteeGroups-example.txt
 docs/PostOrgauthorizationTrusteeUsers-example.txt
 docs/PostOrgauthorizationTrustees-example.txt
 docs/PostOrgauthorizationTrusteesAudits-example.txt
+docs/PostOrgauthorizationTrusteesCare-example.txt
 docs/PostOrgauthorizationTrusteesDefault-example.txt
 docs/PostOrgauthorizationTrustorAudits-example.txt
 docs/PostOutboundAttemptlimits-example.txt
@@ -2522,6 +2532,7 @@ docs/PutExternalcontactsContactNote-example.txt
 docs/PutExternalcontactsContactsSchema-example.txt
 docs/PutExternalcontactsConversation-example.txt
 docs/PutExternalcontactsExternalsource-example.txt
+docs/PutExternalcontactsImportCsvSetting-example.txt
 docs/PutExternalcontactsOrganization-example.txt
 docs/PutExternalcontactsOrganizationNote-example.txt
 docs/PutExternalcontactsOrganizationTrustorTrustorId-example.txt
@@ -3289,6 +3300,7 @@ platformclientv2/butimeofflimitvaluerange.go
 platformclientv2/butimeofflimitvaluesresponse.go
 platformclientv2/butimeoffplanlisting.go
 platformclientv2/butimeoffplanresponse.go
+platformclientv2/button.go
 platformclientv2/buttoncomponent.go
 platformclientv2/buttonresponse.go
 platformclientv2/buupdateagentscheduleshift.go
@@ -3359,6 +3371,8 @@ platformclientv2/campaignruleentities.go
 platformclientv2/campaignruleentitylisting.go
 platformclientv2/campaignruleexecutionsettings.go
 platformclientv2/campaignruleparameters.go
+platformclientv2/campaignrulewarning.go
+platformclientv2/campaignrulewarningparameters.go
 platformclientv2/campaignschedule.go
 platformclientv2/campaignsequence.go
 platformclientv2/campaignsequenceentitylisting.go
@@ -3841,6 +3855,14 @@ platformclientv2/conversationsummary.go
 platformclientv2/conversationsummaryfollowup.go
 platformclientv2/conversationsummaryreason.go
 platformclientv2/conversationsummaryresolution.go
+platformclientv2/conversationsummarytopicvirtualagentsconversationheadline.go
+platformclientv2/conversationsummarytopicvirtualagentsconversationreason.go
+platformclientv2/conversationsummarytopicvirtualagentsconversationresolution.go
+platformclientv2/conversationsummarytopicvirtualagentsconversationsummary.go
+platformclientv2/conversationsummarytopicvirtualagentsconversationsummaryevent.go
+platformclientv2/conversationsummarytopicvirtualagentsconversationsummaryparticipant.go
+platformclientv2/conversationsummarytopicvirtualagentsconversationwrapupcode.go
+platformclientv2/conversationsummarytopicvirtualagentstriggersource.go
 platformclientv2/conversationsummarywrapupcode.go
 platformclientv2/conversationtagsupdate.go
 platformclientv2/conversationthreadingwindow.go
@@ -3957,6 +3979,14 @@ platformclientv2/crossplatformpolicy.go
 platformclientv2/crossplatformpolicyactions.go
 platformclientv2/crossplatformpolicycreate.go
 platformclientv2/crossplatformpolicyupdate.go
+platformclientv2/csvjobrequest.go
+platformclientv2/csvjobresponse.go
+platformclientv2/csvmappingentry.go
+platformclientv2/csvsettings.go
+platformclientv2/csvuploaddetailsresponse.go
+platformclientv2/csvuploadpreviewresponse.go
+platformclientv2/csvuploadrequest.go
+platformclientv2/csvuploadresponse.go
 platformclientv2/ctabuttonstyleproperties.go
 platformclientv2/currentuserschedulerequestbody.go
 platformclientv2/currentusertimeoffintegrationstatusrequest.go
@@ -4181,7 +4211,9 @@ platformclientv2/documentbodyimageproperties.go
 platformclientv2/documentbodylist.go
 platformclientv2/documentbodylistblock.go
 platformclientv2/documentbodylistblockproperties.go
+platformclientv2/documentbodylistblockwithhighlight.go
 platformclientv2/documentbodylistitemproperties.go
+platformclientv2/documentbodylistwithhighlight.go
 platformclientv2/documentbodyparagraph.go
 platformclientv2/documentbodyparagraphproperties.go
 platformclientv2/documentbodyparagraphwithhighlight.go
@@ -4190,9 +4222,12 @@ platformclientv2/documentbodytablecaptionblock.go
 platformclientv2/documentbodytablecaptionitem.go
 platformclientv2/documentbodytablecellblock.go
 platformclientv2/documentbodytablecellblockproperties.go
+platformclientv2/documentbodytablecellblockwithhighlight.go
 platformclientv2/documentbodytableproperties.go
 platformclientv2/documentbodytablerowblock.go
 platformclientv2/documentbodytablerowblockproperties.go
+platformclientv2/documentbodytablerowblockwithhighlight.go
+platformclientv2/documentbodytablewithhighlight.go
 platformclientv2/documentbodyvideo.go
 platformclientv2/documentbodyvideoproperties.go
 platformclientv2/documentbodywithhighlight.go
@@ -4204,6 +4239,7 @@ platformclientv2/documentelementlength.go
 platformclientv2/documententitylisting.go
 platformclientv2/documentfaq.go
 platformclientv2/documentlistcontentblock.go
+platformclientv2/documentlistcontentblockwithhighlight.go
 platformclientv2/documentlisting.go
 platformclientv2/documentquery.go
 platformclientv2/documentqueryclause.go
@@ -4211,6 +4247,7 @@ platformclientv2/documentqueryinterval.go
 platformclientv2/documentquerypredicate.go
 platformclientv2/documentreference.go
 platformclientv2/documenttablecontentblock.go
+platformclientv2/documenttablecontentblockwithhighlight.go
 platformclientv2/documenttext.go
 platformclientv2/documenttextproperties.go
 platformclientv2/documentthumbnail.go
@@ -4767,6 +4804,7 @@ platformclientv2/guestmemberinfo.go
 platformclientv2/guestresponsecategory.go
 platformclientv2/headcountforecast.go
 platformclientv2/headcountinterval.go
+platformclientv2/header.go
 platformclientv2/healthinfo.go
 platformclientv2/helplink.go
 platformclientv2/helpsettings.go
@@ -5306,6 +5344,7 @@ platformclientv2/listalternativeshifttradesresponse.go
 platformclientv2/listeddictionaryfeedback.go
 platformclientv2/listedprogram.go
 platformclientv2/listedtopic.go
+platformclientv2/listing.go
 platformclientv2/listitemcomponent.go
 platformclientv2/listwrapperagentworkplanfield.go
 platformclientv2/listwrapperalternativeshiftbusettingsactivitycategory.go
@@ -5399,6 +5438,8 @@ platformclientv2/messageconversationentitylisting.go
 platformclientv2/messagedata.go
 platformclientv2/messagedetails.go
 platformclientv2/messageevaluation.go
+platformclientv2/messagefooter.go
+platformclientv2/messageheader.go
 platformclientv2/messageinfo.go
 platformclientv2/messagemedia.go
 platformclientv2/messagemediaattachment.go
@@ -6850,6 +6891,7 @@ platformclientv2/trustee.go
 platformclientv2/trusteeauditqueryrequest.go
 platformclientv2/trusteeauthorization.go
 platformclientv2/trusteebillingoverview.go
+platformclientv2/trusteereferencelist.go
 platformclientv2/trustentitylisting.go
 platformclientv2/trustgroup.go
 platformclientv2/trustgroupentitylisting.go
@@ -7015,6 +7057,7 @@ platformclientv2/userrecording.go
 platformclientv2/userrecordingentitylisting.go
 platformclientv2/userrecordingsapi.go
 platformclientv2/userreference.go
+platformclientv2/userreferenceentitylisting.go
 platformclientv2/userreferencewithname.go
 platformclientv2/userroutinglanguage.go
 platformclientv2/userroutinglanguagepost.go
@@ -7121,7 +7164,9 @@ platformclientv2/validateaddressresponse.go
 platformclientv2/validateassignusers.go
 platformclientv2/validateworkplanmessages.go
 platformclientv2/validateworkplanresponse.go
+platformclientv2/validationerror.go
 platformclientv2/validationlimits.go
+platformclientv2/validationresult.go
 platformclientv2/validationservicerequest.go
 platformclientv2/valuewrapperactivityplanservicegoalimpactoverrides.go
 platformclientv2/valuewrapperdate.go
@@ -7388,6 +7433,7 @@ platformclientv2/wfmuserscheduleadherenceupdatedmutopicqueuereference.go
 platformclientv2/wfmuserscheduleadherenceupdatedmutopicrealtimeadherenceexplanation.go
 platformclientv2/wfmuserscheduleadherenceupdatedmutopicsecondarypresencereference.go
 platformclientv2/wfmuserscheduleadherenceupdatedmutopicurireference.go
+platformclientv2/wfmuserscheduleadherenceupdatedmutopicusernextactivityreminder.go
 platformclientv2/wfmuserscheduleadherenceupdatedmutopicuserreference.go
 platformclientv2/wfmuserscheduleadherenceupdatedmutopicuserscheduleadherenceupdate.go
 platformclientv2/wfmuserscheduleadherenceupdatedteamtopicactivitycodereference.go
@@ -7395,6 +7441,7 @@ platformclientv2/wfmuserscheduleadherenceupdatedteamtopicqueuereference.go
 platformclientv2/wfmuserscheduleadherenceupdatedteamtopicrealtimeadherenceexplanation.go
 platformclientv2/wfmuserscheduleadherenceupdatedteamtopicsecondarypresencereference.go
 platformclientv2/wfmuserscheduleadherenceupdatedteamtopicurireference.go
+platformclientv2/wfmuserscheduleadherenceupdatedteamtopicusernextactivityreminder.go
 platformclientv2/wfmuserscheduleadherenceupdatedteamtopicuserreference.go
 platformclientv2/wfmuserscheduleadherenceupdatedteamtopicuserscheduleadherenceupdate.go
 platformclientv2/wfmuserscheduleadherenceupdatedtopicactivitycodereference.go
@@ -7402,6 +7449,7 @@ platformclientv2/wfmuserscheduleadherenceupdatedtopicqueuereference.go
 platformclientv2/wfmuserscheduleadherenceupdatedtopicrealtimeadherenceexplanation.go
 platformclientv2/wfmuserscheduleadherenceupdatedtopicsecondarypresencereference.go
 platformclientv2/wfmuserscheduleadherenceupdatedtopicurireference.go
+platformclientv2/wfmuserscheduleadherenceupdatedtopicusernextactivityreminder.go
 platformclientv2/wfmuserscheduleadherenceupdatedtopicuserreference.go
 platformclientv2/wfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdate.go
 platformclientv2/wfmversionedentitymetadata.go
@@ -7467,6 +7515,9 @@ platformclientv2/workitempostqueryentitylisting.go
 platformclientv2/workitemqueryjobcreate.go
 platformclientv2/workitemqueryjoberror.go
 platformclientv2/workitemqueryjobfilter.go
+platformclientv2/workitemqueryjobqueryfilters.go
+platformclientv2/workitemqueryjobqueryfilterscriteria.go
+platformclientv2/workitemqueryjobqueryfilterspredicate.go
 platformclientv2/workitemqueryjobresponse.go
 platformclientv2/workitemqueryjobsort.go
 platformclientv2/workitemquerypostrequest.go

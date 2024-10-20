@@ -902,8 +902,6 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseLanguageDocumentsImport(knowle
 // DeleteKnowledgeKnowledgebaseSourcesSalesforceSourceId invokes DELETE /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/sources/salesforce/{sourceId}
 //
 // Delete Salesforce Knowledge integration source
-//
-// Preview: DeleteKnowledgeKnowledgebaseSourcesSalesforceSourceId is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseSourcesSalesforceSourceId(knowledgeBaseId string, sourceId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -985,8 +983,6 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseSourcesSalesforceSourceId(know
 // DeleteKnowledgeKnowledgebaseSourcesServicenowSourceId invokes DELETE /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/sources/servicenow/{sourceId}
 //
 // Delete ServiceNow Knowledge integration source
-//
-// Preview: DeleteKnowledgeKnowledgebaseSourcesServicenowSourceId is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseSourcesServicenowSourceId(knowledgeBaseId string, sourceId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -1068,8 +1064,6 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseSourcesServicenowSourceId(know
 // DeleteKnowledgeKnowledgebaseSynchronizeJob invokes DELETE /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/synchronize/jobs/{syncJobId}
 //
 // Delete synchronization job
-//
-// Preview: DeleteKnowledgeKnowledgebaseSynchronizeJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseSynchronizeJob(knowledgeBaseId string, syncJobId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -1410,8 +1404,6 @@ func (a KnowledgeApi) GetKnowledgeGuestSessionDocuments(sessionId string, catego
 // GetKnowledgeIntegrationOptions invokes GET /api/v2/knowledge/integrations/{integrationId}/options
 //
 // Get sync options available for a knowledge-connect integration
-//
-// Preview: GetKnowledgeIntegrationOptions is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a KnowledgeApi) GetKnowledgeIntegrationOptions(integrationId string) (*Knowledgeintegrationoptionsresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3902,8 +3894,6 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageTrainings(knowledgeBaseId
 // GetKnowledgeKnowledgebaseOperations invokes GET /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/operations
 //
 // Get operations
-//
-// Preview: GetKnowledgeKnowledgebaseOperations is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a KnowledgeApi) GetKnowledgeKnowledgebaseOperations(knowledgeBaseId string, before string, after string, pageSize string, userId []string, varType []string, status []string, interval string, sourceId []string) (*Operationlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4002,8 +3992,6 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseOperations(knowledgeBaseId string
 // GetKnowledgeKnowledgebaseOperationsUsersQuery invokes GET /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/operations/users/query
 //
 // Get ids of operation creator users and oauth clients
-//
-// Preview: GetKnowledgeKnowledgebaseOperationsUsersQuery is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a KnowledgeApi) GetKnowledgeKnowledgebaseOperationsUsersQuery(knowledgeBaseId string) (*Operationcreatoruserresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4178,8 +4166,6 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseParseJob(knowledgeBaseId string, 
 // GetKnowledgeKnowledgebaseSources invokes GET /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/sources
 //
 // Get Knowledge integration sources
-//
-// Preview: GetKnowledgeKnowledgebaseSources is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a KnowledgeApi) GetKnowledgeKnowledgebaseSources(knowledgeBaseId string, varType string, expand []string, ids []string) ([]Sourcebaseresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4268,8 +4254,6 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseSources(knowledgeBaseId string, v
 // GetKnowledgeKnowledgebaseSourcesSalesforceSourceId invokes GET /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/sources/salesforce/{sourceId}
 //
 // Get Salesforce Knowledge integration source
-//
-// Preview: GetKnowledgeKnowledgebaseSourcesSalesforceSourceId is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a KnowledgeApi) GetKnowledgeKnowledgebaseSourcesSalesforceSourceId(knowledgeBaseId string, sourceId string, expand []string) (*Salesforcesourceresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4360,8 +4344,6 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseSourcesSalesforceSourceId(knowled
 // GetKnowledgeKnowledgebaseSourcesServicenowSourceId invokes GET /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/sources/servicenow/{sourceId}
 //
 // Get ServiceNow Knowledge integration source
-//
-// Preview: GetKnowledgeKnowledgebaseSourcesServicenowSourceId is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a KnowledgeApi) GetKnowledgeKnowledgebaseSourcesServicenowSourceId(knowledgeBaseId string, sourceId string, expand []string) (*Servicenowsourceresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4452,8 +4434,6 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseSourcesServicenowSourceId(knowled
 // GetKnowledgeKnowledgebaseSynchronizeJob invokes GET /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/synchronize/jobs/{syncJobId}
 //
 // Get synchronization job report
-//
-// Preview: GetKnowledgeKnowledgebaseSynchronizeJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a KnowledgeApi) GetKnowledgeKnowledgebaseSynchronizeJob(knowledgeBaseId string, syncJobId string) (*Knowledgesyncjobresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -6350,8 +6330,6 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseParseJob(knowledgeBaseId string
 // PatchKnowledgeKnowledgebaseSynchronizeJob invokes PATCH /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/synchronize/jobs/{syncJobId}
 //
 // Update synchronization job
-//
-// Preview: PatchKnowledgeKnowledgebaseSynchronizeJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a KnowledgeApi) PatchKnowledgeKnowledgebaseSynchronizeJob(knowledgeBaseId string, syncJobId string, body Syncstatusrequest) (*Knowledgesyncjobresponse, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -9737,8 +9715,6 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseSearch(knowledgeBaseId string, b
 // PostKnowledgeKnowledgebaseSourcesSalesforce invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/sources/salesforce
 //
 // Create Salesforce Knowledge integration source
-//
-// Preview: PostKnowledgeKnowledgebaseSourcesSalesforce is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a KnowledgeApi) PostKnowledgeKnowledgebaseSourcesSalesforce(knowledgeBaseId string, body Salesforcesourcerequest) (*Knowledgesyncjobresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -9829,8 +9805,6 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseSourcesSalesforce(knowledgeBaseI
 // PostKnowledgeKnowledgebaseSourcesSalesforceSourceIdSync invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/sources/salesforce/{sourceId}/sync
 //
 // Start sync on Salesforce Knowledge integration source
-//
-// Preview: PostKnowledgeKnowledgebaseSourcesSalesforceSourceIdSync is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a KnowledgeApi) PostKnowledgeKnowledgebaseSourcesSalesforceSourceIdSync(knowledgeBaseId string, sourceId string) (*Sourcesyncresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -9919,8 +9893,6 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseSourcesSalesforceSourceIdSync(kn
 // PostKnowledgeKnowledgebaseSourcesServicenow invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/sources/servicenow
 //
 // Create ServiceNow Knowledge integration source
-//
-// Preview: PostKnowledgeKnowledgebaseSourcesServicenow is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a KnowledgeApi) PostKnowledgeKnowledgebaseSourcesServicenow(knowledgeBaseId string, body Servicenowsourcerequest) (*Knowledgesyncjobresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -10011,8 +9983,6 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseSourcesServicenow(knowledgeBaseI
 // PostKnowledgeKnowledgebaseSourcesServicenowSourceIdSync invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/sources/servicenow/{sourceId}/sync
 //
 // Start synchronization on ServiceNow Knowledge integration source
-//
-// Preview: PostKnowledgeKnowledgebaseSourcesServicenowSourceIdSync is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a KnowledgeApi) PostKnowledgeKnowledgebaseSourcesServicenowSourceIdSync(knowledgeBaseId string, sourceId string) (*Sourcesyncresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -10101,8 +10071,6 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseSourcesServicenowSourceIdSync(kn
 // PostKnowledgeKnowledgebaseSynchronizeJobs invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/synchronize/jobs
 //
 // Create synchronization job
-//
-// Preview: PostKnowledgeKnowledgebaseSynchronizeJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a KnowledgeApi) PostKnowledgeKnowledgebaseSynchronizeJobs(knowledgeBaseId string, body Knowledgesyncjobrequest) (*Knowledgesyncjobresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -10369,8 +10337,6 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebases(body Knowledgebasecreatereques
 // PutKnowledgeKnowledgebaseSourcesSalesforceSourceId invokes PUT /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/sources/salesforce/{sourceId}
 //
 // Update Salesforce Knowledge integration source
-//
-// Preview: PutKnowledgeKnowledgebaseSourcesSalesforceSourceId is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a KnowledgeApi) PutKnowledgeKnowledgebaseSourcesSalesforceSourceId(knowledgeBaseId string, sourceId string, body Salesforcesourcerequest) (*Salesforcesourceresponse, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -10467,8 +10433,6 @@ func (a KnowledgeApi) PutKnowledgeKnowledgebaseSourcesSalesforceSourceId(knowled
 // PutKnowledgeKnowledgebaseSourcesServicenowSourceId invokes PUT /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/sources/servicenow/{sourceId}
 //
 // Update ServiceNow Knowledge integration source
-//
-// Preview: PutKnowledgeKnowledgebaseSourcesServicenowSourceId is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a KnowledgeApi) PutKnowledgeKnowledgebaseSourcesServicenowSourceId(knowledgeBaseId string, sourceId string, body Servicenowsourcerequest) (*Servicenowsourceresponse, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

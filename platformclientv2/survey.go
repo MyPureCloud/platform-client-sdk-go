@@ -45,6 +45,15 @@ type Survey struct {
 	// AgentTeam - The team that the agent belongs to
 	AgentTeam *Team `json:"agentTeam,omitempty"`
 
+	// SurveyType - Type of the survey
+	SurveyType *string `json:"surveyType,omitempty"`
+
+	// MissingRequiredAnswer - True if any of the required questions for the survey form have not been answered. Null if survey is not finished.
+	MissingRequiredAnswer *bool `json:"missingRequiredAnswer,omitempty"`
+
+	// Flow - An Architect flow that executed in order to collect the answers for this survey.
+	Flow *Addressableentityref `json:"flow,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -142,6 +151,12 @@ func (o Survey) MarshalJSON() ([]byte, error) {
 		
 		AgentTeam *Team `json:"agentTeam,omitempty"`
 		
+		SurveyType *string `json:"surveyType,omitempty"`
+		
+		MissingRequiredAnswer *bool `json:"missingRequiredAnswer,omitempty"`
+		
+		Flow *Addressableentityref `json:"flow,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -166,6 +181,12 @@ func (o Survey) MarshalJSON() ([]byte, error) {
 		SurveyErrorDetails: o.SurveyErrorDetails,
 		
 		AgentTeam: o.AgentTeam,
+		
+		SurveyType: o.SurveyType,
+		
+		MissingRequiredAnswer: o.MissingRequiredAnswer,
+		
+		Flow: o.Flow,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -229,6 +250,19 @@ func (o *Survey) UnmarshalJSON(b []byte) error {
 	if AgentTeam, ok := SurveyMap["agentTeam"].(map[string]interface{}); ok {
 		AgentTeamString, _ := json.Marshal(AgentTeam)
 		json.Unmarshal(AgentTeamString, &o.AgentTeam)
+	}
+	
+	if SurveyType, ok := SurveyMap["surveyType"].(string); ok {
+		o.SurveyType = &SurveyType
+	}
+    
+	if MissingRequiredAnswer, ok := SurveyMap["missingRequiredAnswer"].(bool); ok {
+		o.MissingRequiredAnswer = &MissingRequiredAnswer
+	}
+    
+	if Flow, ok := SurveyMap["flow"].(map[string]interface{}); ok {
+		FlowString, _ := json.Marshal(Flow)
+		json.Unmarshal(FlowString, &o.Flow)
 	}
 	
 	if SelfUri, ok := SurveyMap["selfUri"].(string); ok {

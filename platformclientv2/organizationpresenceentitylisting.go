@@ -23,11 +23,11 @@ type Organizationpresenceentitylisting struct {
 	// Total
 	Total *int `json:"total,omitempty"`
 
-	// FirstUri
-	FirstUri *string `json:"firstUri,omitempty"`
-
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
+
+	// FirstUri
+	FirstUri *string `json:"firstUri,omitempty"`
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -113,9 +113,9 @@ func (o Organizationpresenceentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
-		FirstUri *string `json:"firstUri,omitempty"`
-		
 		LastUri *string `json:"lastUri,omitempty"`
+		
+		FirstUri *string `json:"firstUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
@@ -134,9 +134,9 @@ func (o Organizationpresenceentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
-		FirstUri: o.FirstUri,
-		
 		LastUri: o.LastUri,
+		
+		FirstUri: o.FirstUri,
 		
 		SelfUri: o.SelfUri,
 		
@@ -176,12 +176,12 @@ func (o *Organizationpresenceentitylisting) UnmarshalJSON(b []byte) error {
 		o.Total = &TotalInt
 	}
 	
-	if FirstUri, ok := OrganizationpresenceentitylistingMap["firstUri"].(string); ok {
-		o.FirstUri = &FirstUri
-	}
-    
 	if LastUri, ok := OrganizationpresenceentitylistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
+	}
+    
+	if FirstUri, ok := OrganizationpresenceentitylistingMap["firstUri"].(string); ok {
+		o.FirstUri = &FirstUri
 	}
     
 	if SelfUri, ok := OrganizationpresenceentitylistingMap["selfUri"].(string); ok {
