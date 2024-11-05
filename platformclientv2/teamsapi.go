@@ -189,7 +189,7 @@ func (a TeamsApi) DeleteTeamMembers(teamId string, id string) (*APIResponse, err
 // GetTeam invokes GET /api/v2/teams/{teamId}
 //
 // Get team
-func (a TeamsApi) GetTeam(teamId string) (*Team, *APIResponse, error) {
+func (a TeamsApi) GetTeam(teamId string, expand string) (*Team, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/teams/{teamId}"
@@ -221,6 +221,8 @@ func (a TeamsApi) GetTeam(teamId string) (*Team, *APIResponse, error) {
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

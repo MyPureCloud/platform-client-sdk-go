@@ -73,7 +73,7 @@ type Knowledgedocumentresponse struct {
 	Readonly *bool `json:"readonly,omitempty"`
 
 	// Variations - Variations of the document.
-	Variations *[]Documentvariation `json:"variations,omitempty"`
+	Variations *[]Documentvariationresponse `json:"variations,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -214,7 +214,7 @@ func (o Knowledgedocumentresponse) MarshalJSON() ([]byte, error) {
 		
 		Readonly *bool `json:"readonly,omitempty"`
 		
-		Variations *[]Documentvariation `json:"variations,omitempty"`
+		Variations *[]Documentvariationresponse `json:"variations,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias

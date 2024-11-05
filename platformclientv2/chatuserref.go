@@ -7,19 +7,34 @@ import (
 	"strings"
 )
 
-// Queueconversationsocialexpressioneventtopicdestination - Fields identifying the destination of a given conversation command.
-type Queueconversationsocialexpressioneventtopicdestination struct { 
+// Chatuserref
+type Chatuserref struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// UserId - The id of the user if the command destination is a user.
-	UserId *string `json:"userId,omitempty"`
+	// Id
+	Id *string `json:"id,omitempty"`
 
-	// Address - The destination address if the command destination is an endpoint.
-	Address *string `json:"address,omitempty"`
+	// Name
+	Name *string `json:"name,omitempty"`
+
+	// SelfUri
+	SelfUri *string `json:"selfUri,omitempty"`
+
+	// Jid
+	Jid *string `json:"jid,omitempty"`
+
+	// Inactive
+	Inactive *bool `json:"inactive,omitempty"`
+
+	// Integrations
+	Integrations *[]Contact `json:"integrations,omitempty"`
+
+	// Presence
+	Presence *Chatpresence `json:"presence,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Queueconversationsocialexpressioneventtopicdestination) SetField(field string, fieldValue interface{}) {
+func (o *Chatuserref) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -40,7 +55,7 @@ func (o *Queueconversationsocialexpressioneventtopicdestination) SetField(field 
 	o.SetFieldNames[field] = true
 }
 
-func (o Queueconversationsocialexpressioneventtopicdestination) MarshalJSON() ([]byte, error) {
+func (o Chatuserref) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -78,42 +93,84 @@ func (o Queueconversationsocialexpressioneventtopicdestination) MarshalJSON() ([
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Queueconversationsocialexpressioneventtopicdestination
+	type Alias Chatuserref
 	
 	return json.Marshal(&struct { 
-		UserId *string `json:"userId,omitempty"`
+		Id *string `json:"id,omitempty"`
 		
-		Address *string `json:"address,omitempty"`
+		Name *string `json:"name,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		
+		Jid *string `json:"jid,omitempty"`
+		
+		Inactive *bool `json:"inactive,omitempty"`
+		
+		Integrations *[]Contact `json:"integrations,omitempty"`
+		
+		Presence *Chatpresence `json:"presence,omitempty"`
 		Alias
 	}{ 
-		UserId: o.UserId,
+		Id: o.Id,
 		
-		Address: o.Address,
+		Name: o.Name,
+		
+		SelfUri: o.SelfUri,
+		
+		Jid: o.Jid,
+		
+		Inactive: o.Inactive,
+		
+		Integrations: o.Integrations,
+		
+		Presence: o.Presence,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Queueconversationsocialexpressioneventtopicdestination) UnmarshalJSON(b []byte) error {
-	var QueueconversationsocialexpressioneventtopicdestinationMap map[string]interface{}
-	err := json.Unmarshal(b, &QueueconversationsocialexpressioneventtopicdestinationMap)
+func (o *Chatuserref) UnmarshalJSON(b []byte) error {
+	var ChatuserrefMap map[string]interface{}
+	err := json.Unmarshal(b, &ChatuserrefMap)
 	if err != nil {
 		return err
 	}
 	
-	if UserId, ok := QueueconversationsocialexpressioneventtopicdestinationMap["userId"].(string); ok {
-		o.UserId = &UserId
+	if Id, ok := ChatuserrefMap["id"].(string); ok {
+		o.Id = &Id
 	}
     
-	if Address, ok := QueueconversationsocialexpressioneventtopicdestinationMap["address"].(string); ok {
-		o.Address = &Address
+	if Name, ok := ChatuserrefMap["name"].(string); ok {
+		o.Name = &Name
 	}
     
+	if SelfUri, ok := ChatuserrefMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+    
+	if Jid, ok := ChatuserrefMap["jid"].(string); ok {
+		o.Jid = &Jid
+	}
+    
+	if Inactive, ok := ChatuserrefMap["inactive"].(bool); ok {
+		o.Inactive = &Inactive
+	}
+    
+	if Integrations, ok := ChatuserrefMap["integrations"].([]interface{}); ok {
+		IntegrationsString, _ := json.Marshal(Integrations)
+		json.Unmarshal(IntegrationsString, &o.Integrations)
+	}
+	
+	if Presence, ok := ChatuserrefMap["presence"].(map[string]interface{}); ok {
+		PresenceString, _ := json.Marshal(Presence)
+		json.Unmarshal(PresenceString, &o.Presence)
+	}
+	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Queueconversationsocialexpressioneventtopicdestination) String() string {
+func (o *Chatuserref) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

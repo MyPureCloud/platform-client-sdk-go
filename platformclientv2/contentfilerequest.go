@@ -7,19 +7,19 @@ import (
 	"strings"
 )
 
-// Queueconversationvideoeventtopicdestination - Fields identifying the destination of a given conversation command.
-type Queueconversationvideoeventtopicdestination struct { 
+// Contentfilerequest
+type Contentfilerequest struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// UserId - The id of the user if the command destination is a user.
-	UserId *string `json:"userId,omitempty"`
+	// UploadKey - Key that identifies the file in the storage including the file name
+	UploadKey *string `json:"uploadKey,omitempty"`
 
-	// Address - The destination address if the command destination is an endpoint.
-	Address *string `json:"address,omitempty"`
+	// Name - The name of the file
+	Name *string `json:"name,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Queueconversationvideoeventtopicdestination) SetField(field string, fieldValue interface{}) {
+func (o *Contentfilerequest) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -40,7 +40,7 @@ func (o *Queueconversationvideoeventtopicdestination) SetField(field string, fie
 	o.SetFieldNames[field] = true
 }
 
-func (o Queueconversationvideoeventtopicdestination) MarshalJSON() ([]byte, error) {
+func (o Contentfilerequest) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -78,34 +78,34 @@ func (o Queueconversationvideoeventtopicdestination) MarshalJSON() ([]byte, erro
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Queueconversationvideoeventtopicdestination
+	type Alias Contentfilerequest
 	
 	return json.Marshal(&struct { 
-		UserId *string `json:"userId,omitempty"`
+		UploadKey *string `json:"uploadKey,omitempty"`
 		
-		Address *string `json:"address,omitempty"`
+		Name *string `json:"name,omitempty"`
 		Alias
 	}{ 
-		UserId: o.UserId,
+		UploadKey: o.UploadKey,
 		
-		Address: o.Address,
+		Name: o.Name,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Queueconversationvideoeventtopicdestination) UnmarshalJSON(b []byte) error {
-	var QueueconversationvideoeventtopicdestinationMap map[string]interface{}
-	err := json.Unmarshal(b, &QueueconversationvideoeventtopicdestinationMap)
+func (o *Contentfilerequest) UnmarshalJSON(b []byte) error {
+	var ContentfilerequestMap map[string]interface{}
+	err := json.Unmarshal(b, &ContentfilerequestMap)
 	if err != nil {
 		return err
 	}
 	
-	if UserId, ok := QueueconversationvideoeventtopicdestinationMap["userId"].(string); ok {
-		o.UserId = &UserId
+	if UploadKey, ok := ContentfilerequestMap["uploadKey"].(string); ok {
+		o.UploadKey = &UploadKey
 	}
     
-	if Address, ok := QueueconversationvideoeventtopicdestinationMap["address"].(string); ok {
-		o.Address = &Address
+	if Name, ok := ContentfilerequestMap["name"].(string); ok {
+		o.Name = &Name
 	}
     
 
@@ -113,7 +113,7 @@ func (o *Queueconversationvideoeventtopicdestination) UnmarshalJSON(b []byte) er
 }
 
 // String returns a JSON representation of the model
-func (o *Queueconversationvideoeventtopicdestination) String() string {
+func (o *Contentfilerequest) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

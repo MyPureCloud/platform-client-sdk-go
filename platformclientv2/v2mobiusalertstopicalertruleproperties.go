@@ -107,11 +107,10 @@ func (o *V2mobiusalertstopicalertruleproperties) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
-	if Id, ok := V2mobiusalertstopicalertrulepropertiesMap["id"].(map[string]interface{}); ok {
-		IdString, _ := json.Marshal(Id)
-		json.Unmarshal(IdString, &o.Id)
+	if Id, ok := V2mobiusalertstopicalertrulepropertiesMap["id"].(string); ok {
+		o.Id = &Id
 	}
-	
+    
 	if Name, ok := V2mobiusalertstopicalertrulepropertiesMap["name"].(string); ok {
 		o.Name = &Name
 	}

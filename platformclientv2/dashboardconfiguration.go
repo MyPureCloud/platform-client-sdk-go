@@ -45,6 +45,9 @@ type Dashboardconfiguration struct {
 	// DateModified - The last modified date of the dashboard. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
+	// DateDeleted - The deleted date of the dashboard. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateDeleted *time.Time `json:"dateDeleted,omitempty"`
+
 	// CreatedBy - The id of user who created the dashboard
 	CreatedBy *Addressableentityref `json:"createdBy,omitempty"`
 
@@ -87,7 +90,7 @@ func (o Dashboardconfiguration) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "DateCreated","DateModified", }
+		dateTimeFields := []string{ "DateCreated","DateModified","DateDeleted", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -136,6 +139,14 @@ func (o Dashboardconfiguration) MarshalJSON() ([]byte, error) {
 		DateModified = nil
 	}
 	
+	DateDeleted := new(string)
+	if o.DateDeleted != nil {
+		
+		*DateDeleted = timeutil.Strftime(o.DateDeleted, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateDeleted = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -158,6 +169,8 @@ func (o Dashboardconfiguration) MarshalJSON() ([]byte, error) {
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
 		DateModified *string `json:"dateModified,omitempty"`
+		
+		DateDeleted *string `json:"dateDeleted,omitempty"`
 		
 		CreatedBy *Addressableentityref `json:"createdBy,omitempty"`
 		
@@ -189,6 +202,8 @@ func (o Dashboardconfiguration) MarshalJSON() ([]byte, error) {
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
+		
+		DateDeleted: DateDeleted,
 		
 		CreatedBy: o.CreatedBy,
 		
@@ -255,6 +270,11 @@ func (o *Dashboardconfiguration) UnmarshalJSON(b []byte) error {
 	if dateModifiedString, ok := DashboardconfigurationMap["dateModified"].(string); ok {
 		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
 		o.DateModified = &DateModified
+	}
+	
+	if dateDeletedString, ok := DashboardconfigurationMap["dateDeleted"].(string); ok {
+		DateDeleted, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateDeletedString)
+		o.DateDeleted = &DateDeleted
 	}
 	
 	if CreatedBy, ok := DashboardconfigurationMap["createdBy"].(map[string]interface{}); ok {

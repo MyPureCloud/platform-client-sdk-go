@@ -149,11 +149,10 @@ func (o *V2mobiusalertstopicconditionrulepredicate) UnmarshalJSON(b []byte) erro
 		return err
 	}
 	
-	if Id, ok := V2mobiusalertstopicconditionrulepredicateMap["id"].(map[string]interface{}); ok {
-		IdString, _ := json.Marshal(Id)
-		json.Unmarshal(IdString, &o.Id)
+	if Id, ok := V2mobiusalertstopicconditionrulepredicateMap["id"].(string); ok {
+		o.Id = &Id
 	}
-	
+    
 	if Entity, ok := V2mobiusalertstopicconditionrulepredicateMap["entity"].(map[string]interface{}); ok {
 		EntityString, _ := json.Marshal(Entity)
 		json.Unmarshal(EntityString, &o.Entity)

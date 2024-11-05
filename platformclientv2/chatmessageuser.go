@@ -24,7 +24,7 @@ type Chatmessageuser struct {
 	Username *string `json:"username,omitempty"`
 
 	// Images
-	Images *[]Userimage `json:"images,omitempty"`
+	Images *[]Image `json:"images,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -98,7 +98,7 @@ func (o Chatmessageuser) MarshalJSON() ([]byte, error) {
 		
 		Username *string `json:"username,omitempty"`
 		
-		Images *[]Userimage `json:"images,omitempty"`
+		Images *[]Image `json:"images,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,

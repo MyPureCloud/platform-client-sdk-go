@@ -243,16 +243,14 @@ func (o *V2mobiusalertstopicalert) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(RuleString, &o.Rule)
 	}
 	
-	if Id, ok := V2mobiusalertstopicalertMap["id"].(map[string]interface{}); ok {
-		IdString, _ := json.Marshal(Id)
-		json.Unmarshal(IdString, &o.Id)
+	if Id, ok := V2mobiusalertstopicalertMap["id"].(string); ok {
+		o.Id = &Id
 	}
-	
-	if UserId, ok := V2mobiusalertstopicalertMap["userId"].(map[string]interface{}); ok {
-		UserIdString, _ := json.Marshal(UserId)
-		json.Unmarshal(UserIdString, &o.UserId)
+    
+	if UserId, ok := V2mobiusalertstopicalertMap["userId"].(string); ok {
+		o.UserId = &UserId
 	}
-	
+    
 	if Notifications, ok := V2mobiusalertstopicalertMap["notifications"].([]interface{}); ok {
 		NotificationsString, _ := json.Marshal(Notifications)
 		json.Unmarshal(NotificationsString, &o.Notifications)

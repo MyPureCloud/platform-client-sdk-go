@@ -7,19 +7,16 @@ import (
 	"strings"
 )
 
-// Conversationeventtopicdestination - Fields identifying the destination of a given conversation command.
-type Conversationeventtopicdestination struct { 
+// Queueconversationvideoeventtopictransferinitiator - Fields identifying the initiator of a given conversation command.
+type Queueconversationvideoeventtopictransferinitiator struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// UserId - The id of the user if the command destination is a user.
+	// UserId - The id of the user who initiated the command if it was initiated by a user.
 	UserId *string `json:"userId,omitempty"`
-
-	// Address - The destination address if the command destination is an endpoint.
-	Address *string `json:"address,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Conversationeventtopicdestination) SetField(field string, fieldValue interface{}) {
+func (o *Queueconversationvideoeventtopictransferinitiator) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -40,7 +37,7 @@ func (o *Conversationeventtopicdestination) SetField(field string, fieldValue in
 	o.SetFieldNames[field] = true
 }
 
-func (o Conversationeventtopicdestination) MarshalJSON() ([]byte, error) {
+func (o Queueconversationvideoeventtopictransferinitiator) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -78,34 +75,26 @@ func (o Conversationeventtopicdestination) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Conversationeventtopicdestination
+	type Alias Queueconversationvideoeventtopictransferinitiator
 	
 	return json.Marshal(&struct { 
 		UserId *string `json:"userId,omitempty"`
-		
-		Address *string `json:"address,omitempty"`
 		Alias
 	}{ 
 		UserId: o.UserId,
-		
-		Address: o.Address,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Conversationeventtopicdestination) UnmarshalJSON(b []byte) error {
-	var ConversationeventtopicdestinationMap map[string]interface{}
-	err := json.Unmarshal(b, &ConversationeventtopicdestinationMap)
+func (o *Queueconversationvideoeventtopictransferinitiator) UnmarshalJSON(b []byte) error {
+	var QueueconversationvideoeventtopictransferinitiatorMap map[string]interface{}
+	err := json.Unmarshal(b, &QueueconversationvideoeventtopictransferinitiatorMap)
 	if err != nil {
 		return err
 	}
 	
-	if UserId, ok := ConversationeventtopicdestinationMap["userId"].(string); ok {
+	if UserId, ok := QueueconversationvideoeventtopictransferinitiatorMap["userId"].(string); ok {
 		o.UserId = &UserId
-	}
-    
-	if Address, ok := ConversationeventtopicdestinationMap["address"].(string); ok {
-		o.Address = &Address
 	}
     
 
@@ -113,7 +102,7 @@ func (o *Conversationeventtopicdestination) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Conversationeventtopicdestination) String() string {
+func (o *Queueconversationvideoeventtopictransferinitiator) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

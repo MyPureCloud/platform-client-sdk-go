@@ -11,7 +11,7 @@ import (
 type Conversationenrichmentlanguage struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Language - The ISO 639-3 detected language code of this message.
+	// Language - The IETF detected language code of this message.
 	Language *string `json:"language,omitempty"`
 }
 

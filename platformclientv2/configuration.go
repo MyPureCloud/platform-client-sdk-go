@@ -16,8 +16,8 @@ import (
 	"os"
 	"log"
 	"path/filepath"
-	"regexp"
 	"strings"
+	"regexp"
 	"sync"
 	"time"
 )
@@ -41,7 +41,7 @@ type Configuration struct {
 	RefreshInProgress        int64                 `json:"refreshInProgress,omitempty"`
 	RefreshTokenWaitTime     int                   `json:"refreshTokenWaitTime,omitempty"`
 	AccessTokenExpiresIn     int                   `json:"accessTokenExpiresIn,omitempty"`
-    	AutomaticTokenRefresh    bool                  `json:"automaticTokenRefresh,omitempty"`
+	AutomaticTokenRefresh    bool                  `json:"automaticTokenRefresh,omitempty"`
 	DefaultHeader            map[string]string     `json:"defaultHeader,omitempty"`
 	UserAgent                string                `json:"userAgent,omitempty"`
 	APIClient                APIClient             `json:"APIClient,omitempty"`
@@ -50,6 +50,7 @@ type Configuration struct {
 	ConfigFilePath           string                `json:"configFilePath,omitempty"`
 	AutoReloadConfig         bool                  `json:"autoReloadConfig,omitempty"`
 	ProxyConfiguration       *ProxyConfiguration   `json:"proxyConfiguration,omitempty"`
+	GateWayConfiguration	 *GateWayConfiguration `json:"gateWayConfiguration,omitempty"`
 }
 
 const (
@@ -81,6 +82,14 @@ type RetryConfiguration struct {
 
 // ProxyConfiguration has settings to configure the SDK Proxy logic
 type ProxyConfiguration struct {
+	Protocol    string   `json:"protocol,omitempty"`
+	Host        string   `json:"host,omitempty"`
+	Port        string   `json:"port,omitempty"`
+	Auth  		*Auth     `json:"auth,omitempty"`
+	PathParams  []*PathParams `json:"pathParams,omitempty"`
+}
+
+type GateWayConfiguration struct {
 	Protocol    string   `json:"protocol,omitempty"`
 	Host        string   `json:"host,omitempty"`
 	Port        string   `json:"port,omitempty"`
@@ -309,6 +318,59 @@ func (c *Configuration) updateConfigFromFile() error {
                 }
         }
 
+	// Gateway
+	if getConfigString("gateway", "host") != "" {
+		if isJson {
+			gatewayI := getObject("gateway")
+			jsonbody, err := json.Marshal(gatewayI)
+			if err != nil {
+				return err
+			}
+			gatewayConf := GateWayConfiguration{}
+			if err := json.Unmarshal(jsonbody, &gatewayConf); err != nil {
+				return err
+			}
+			c.GateWayConfiguration = &gatewayConf
+		} else {
+			gatewayConf := GateWayConfiguration{}
+			c.GateWayConfiguration = &gatewayConf
+
+			gatewayHost := getConfigString("gateway", "host")
+			if gatewayHost != "" {
+				c.GateWayConfiguration.Host = gatewayHost
+			}
+
+			port := getConfigString("gateway", "port")
+			if port != "" {
+				c.GateWayConfiguration.Port = port
+			}
+
+			protocol := getConfigString("gateway", "protocol")
+			if protocol != "" {
+				c.GateWayConfiguration.Protocol = protocol
+			}
+
+			userName := getConfigString("gateway", "auth-username")
+			password := getConfigString("gateway", "auth-password")
+
+			pathParamString := getConfigString("gateway", "path-params")
+
+			if pathParamString != "" {
+				pathParam, err := ConvertStringToPathParams(pathParamString)
+				if err == nil {
+					c.GateWayConfiguration.PathParams = pathParam
+				}
+			}
+
+			if userName != "" && password != "" {
+				auth := Auth{}
+				c.GateWayConfiguration.Auth = &auth
+				c.GateWayConfiguration.Auth.UserName = userName
+				c.GateWayConfiguration.Auth.Password = password
+			}
+
+		}
+	}
 
 	// logging
 	logLevel := getConfigString("logging", "log_level")
@@ -456,6 +518,7 @@ func (c *Configuration) setAutomaticTokenRefresh(value bool) {
 func (c *Configuration) AuthorizeClientCredentials(clientID string, clientSecret string) error {
 	authHostRegex := regexp.MustCompile(`(?i)\/\/api\.`)
 	authHost := authHostRegex.ReplaceAllString(c.BasePath, "//login.")
+
 	headerParams := make(map[string]string)
 	headerParams["Authorization"] = "Basic " + base64.StdEncoding.EncodeToString([]byte(clientID+":"+clientSecret))
 	formParams := url.Values{}
@@ -508,6 +571,7 @@ func (c *Configuration) AuthorizeCodeGrant(clientID string, clientSecret string,
 	c.ClientSecret = clientSecret
 	authHostRegex := regexp.MustCompile(`(?i)\/\/api\.`)
 	authHost := authHostRegex.ReplaceAllString(c.BasePath, "//login.")
+
 	headerParams := make(map[string]string)
 	headerParams["Authorization"] = "Basic " + base64.StdEncoding.EncodeToString([]byte(clientID+":"+clientSecret))
 	headerParams["Content-Type"] = "application/x-www-form-urlencoded"
@@ -551,6 +615,7 @@ func (c *Configuration) AuthorizeCodeGrant(clientID string, clientSecret string,
 func (c *Configuration) RefreshAuthorizationCodeGrant(clientID string, clientSecret string, refreshToken string) (*AuthResponse, error) {
 	authHostRegex := regexp.MustCompile(`(?i)\/\/api\.`)
 	authHost := authHostRegex.ReplaceAllString(c.BasePath, "//login.")
+
 	headerParams := make(map[string]string)
 	headerParams["Authorization"] = "Basic " + base64.StdEncoding.EncodeToString([]byte(clientID+":"+clientSecret))
 	headerParams["Content-Type"] = "application/x-www-form-urlencoded"
@@ -627,6 +692,7 @@ func (c *Configuration) AuthorizePKCEGrant(clientID string, codeVerifier string,
 	c.ClientID = clientID
 	authHostRegex := regexp.MustCompile(`(?i)\/\/api\.`)
 	authHost := authHostRegex.ReplaceAllString(c.BasePath, "//login.")
+
 	headerParams := make(map[string]string)
 	headerParams["Content-Type"] = "application/x-www-form-urlencoded"
 	formParams := url.Values{}

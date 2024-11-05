@@ -96,6 +96,34 @@ func getPathValue(pc *ProxyConfiguration, key string) (string, bool) {
 	return "", false
 }
 
+func getConfUrl(c *Configuration, path string, extendedPath string) *url.URL {
+	var uri *url.URL
+	gateWayConfiguration := c.GateWayConfiguration
+
+	pathValue := ""
+	if len(gateWayConfiguration.PathParams) > 0 {
+		for _, param := range gateWayConfiguration.PathParams {
+			if param.PathName == path {
+				tempValue := param.PathValue
+
+				if !strings.HasPrefix(tempValue, "/") {
+					pathValue = fmt.Sprintf("/%v", tempValue)
+				} else {
+					pathValue = fmt.Sprintf("%v", tempValue)
+				}
+				break
+			}
+		}
+	}
+	if gateWayConfiguration.Port == "80" || gateWayConfiguration.Port == "443" {
+		uri, _ = url.Parse(fmt.Sprintf("%s://%s%s%s", gateWayConfiguration.Protocol, gateWayConfiguration.Host, pathValue, extendedPath))
+	} else {
+		uri, _ = url.Parse(fmt.Sprintf("%s://%s:%s/%s%s", gateWayConfiguration.Protocol, gateWayConfiguration.Host, gateWayConfiguration.Port, pathValue, extendedPath))
+	}
+	
+	return uri
+}
+
 // CallAPI invokes an API endpoint
 func (c *APIClient) CallAPI(path string, method string,
 	postBody interface{},
@@ -105,20 +133,29 @@ func (c *APIClient) CallAPI(path string, method string,
 	fileName string,
 	fileBytes []byte,
 	pathName string) (*APIResponse, error) {
+	var u *url.URL
 
-	// Build request URL w/query params
 	urlString := path + "?"
 	if queryParams != nil {
 		for k, v := range queryParams {
 			if v != "" {
-				urlString += fmt.Sprintf("%v=%v&", url.QueryEscape(strings.TrimSpace(k)), url.QueryEscape(strings.TrimSpace(v)))
+				urlString += fmt.Sprintf("%s=%s&", url.QueryEscape(strings.TrimSpace(k)), url.QueryEscape(strings.TrimSpace(v)))
 			}
 		}
 	}
-	urlString = urlString[:len(urlString)-1]
-	u, err := url.Parse(urlString)
-	if err != nil {
-		return nil, err
+	urlString = urlString[:len(urlString)-1] // Remove the trailing '&'
+
+	if c.configuration.GateWayConfiguration != nil && c.configuration.GateWayConfiguration.Host != "" {
+		if index := strings.Index(urlString, "/api/v2"); index != -1 {
+			urlString = urlString[index:] // Get substring from /api onward
+		}
+		if pathName == "login" {
+			u = getConfUrl(c.configuration, pathName, "/oauth/token")
+		} else {
+			u = getConfUrl(c.configuration, "api", urlString)
+		}
+	} else {
+		u, _ = url.Parse(urlString)
 	}
 
 	request := retryablehttp.Request{

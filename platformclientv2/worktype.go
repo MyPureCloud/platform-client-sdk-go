@@ -75,6 +75,12 @@ type Worktype struct {
 	// ServiceLevelTarget - The target service level for Workitems created from the Worktype. The default value is 100.
 	ServiceLevelTarget *int `json:"serviceLevelTarget,omitempty"`
 
+	// RuleSettings - Settings for the worktypes rules.
+	RuleSettings *Workitemrulesettings `json:"ruleSettings,omitempty"`
+
+	// Flow - The flow associated with the Worktype.
+	Flow *Workitemflowreference `json:"flow,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -200,6 +206,10 @@ func (o Worktype) MarshalJSON() ([]byte, error) {
 		
 		ServiceLevelTarget *int `json:"serviceLevelTarget,omitempty"`
 		
+		RuleSettings *Workitemrulesettings `json:"ruleSettings,omitempty"`
+		
+		Flow *Workitemflowreference `json:"flow,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -244,6 +254,10 @@ func (o Worktype) MarshalJSON() ([]byte, error) {
 		Schema: o.Schema,
 		
 		ServiceLevelTarget: o.ServiceLevelTarget,
+		
+		RuleSettings: o.RuleSettings,
+		
+		Flow: o.Flow,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -356,6 +370,16 @@ func (o *Worktype) UnmarshalJSON(b []byte) error {
 	if ServiceLevelTarget, ok := WorktypeMap["serviceLevelTarget"].(float64); ok {
 		ServiceLevelTargetInt := int(ServiceLevelTarget)
 		o.ServiceLevelTarget = &ServiceLevelTargetInt
+	}
+	
+	if RuleSettings, ok := WorktypeMap["ruleSettings"].(map[string]interface{}); ok {
+		RuleSettingsString, _ := json.Marshal(RuleSettings)
+		json.Unmarshal(RuleSettingsString, &o.RuleSettings)
+	}
+	
+	if Flow, ok := WorktypeMap["flow"].(map[string]interface{}); ok {
+		FlowString, _ := json.Marshal(Flow)
+		json.Unmarshal(FlowString, &o.Flow)
 	}
 	
 	if SelfUri, ok := WorktypeMap["selfUri"].(string); ok {

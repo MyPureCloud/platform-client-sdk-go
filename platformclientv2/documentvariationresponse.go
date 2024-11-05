@@ -8,8 +8,8 @@ import (
 	"strings"
 )
 
-// Documentvariation
-type Documentvariation struct { 
+// Documentvariationresponse
+type Documentvariationresponse struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Id - The globally unique identifier for the variation.
@@ -37,14 +37,14 @@ type Documentvariation struct {
 	Name *string `json:"name,omitempty"`
 
 	// Body - The content for the variation.
-	Body *Documentbody `json:"body,omitempty"`
+	Body *Documentbodyresponse `json:"body,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Documentvariation) SetField(field string, fieldValue interface{}) {
+func (o *Documentvariationresponse) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -65,7 +65,7 @@ func (o *Documentvariation) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Documentvariation) MarshalJSON() ([]byte, error) {
+func (o Documentvariationresponse) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -103,7 +103,7 @@ func (o Documentvariation) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Documentvariation
+	type Alias Documentvariationresponse
 	
 	DateCreated := new(string)
 	if o.DateCreated != nil {
@@ -138,7 +138,7 @@ func (o Documentvariation) MarshalJSON() ([]byte, error) {
 		
 		Name *string `json:"name,omitempty"`
 		
-		Body *Documentbody `json:"body,omitempty"`
+		Body *Documentbodyresponse `json:"body,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
@@ -166,57 +166,57 @@ func (o Documentvariation) MarshalJSON() ([]byte, error) {
 	})
 }
 
-func (o *Documentvariation) UnmarshalJSON(b []byte) error {
-	var DocumentvariationMap map[string]interface{}
-	err := json.Unmarshal(b, &DocumentvariationMap)
+func (o *Documentvariationresponse) UnmarshalJSON(b []byte) error {
+	var DocumentvariationresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &DocumentvariationresponseMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := DocumentvariationMap["id"].(string); ok {
+	if Id, ok := DocumentvariationresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
     
-	if dateCreatedString, ok := DocumentvariationMap["dateCreated"].(string); ok {
+	if dateCreatedString, ok := DocumentvariationresponseMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
 	}
 	
-	if dateModifiedString, ok := DocumentvariationMap["dateModified"].(string); ok {
+	if dateModifiedString, ok := DocumentvariationresponseMap["dateModified"].(string); ok {
 		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
 		o.DateModified = &DateModified
 	}
 	
-	if DocumentVersion, ok := DocumentvariationMap["documentVersion"].(map[string]interface{}); ok {
+	if DocumentVersion, ok := DocumentvariationresponseMap["documentVersion"].(map[string]interface{}); ok {
 		DocumentVersionString, _ := json.Marshal(DocumentVersion)
 		json.Unmarshal(DocumentVersionString, &o.DocumentVersion)
 	}
 	
-	if Contexts, ok := DocumentvariationMap["contexts"].([]interface{}); ok {
+	if Contexts, ok := DocumentvariationresponseMap["contexts"].([]interface{}); ok {
 		ContextsString, _ := json.Marshal(Contexts)
 		json.Unmarshal(ContextsString, &o.Contexts)
 	}
 	
-	if Document, ok := DocumentvariationMap["document"].(map[string]interface{}); ok {
+	if Document, ok := DocumentvariationresponseMap["document"].(map[string]interface{}); ok {
 		DocumentString, _ := json.Marshal(Document)
 		json.Unmarshal(DocumentString, &o.Document)
 	}
 	
-	if Priority, ok := DocumentvariationMap["priority"].(float64); ok {
+	if Priority, ok := DocumentvariationresponseMap["priority"].(float64); ok {
 		PriorityInt := int(Priority)
 		o.Priority = &PriorityInt
 	}
 	
-	if Name, ok := DocumentvariationMap["name"].(string); ok {
+	if Name, ok := DocumentvariationresponseMap["name"].(string); ok {
 		o.Name = &Name
 	}
     
-	if Body, ok := DocumentvariationMap["body"].(map[string]interface{}); ok {
+	if Body, ok := DocumentvariationresponseMap["body"].(map[string]interface{}); ok {
 		BodyString, _ := json.Marshal(Body)
 		json.Unmarshal(BodyString, &o.Body)
 	}
 	
-	if SelfUri, ok := DocumentvariationMap["selfUri"].(string); ok {
+	if SelfUri, ok := DocumentvariationresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
     
@@ -225,7 +225,7 @@ func (o *Documentvariation) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Documentvariation) String() string {
+func (o *Documentvariationresponse) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

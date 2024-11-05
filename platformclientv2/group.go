@@ -37,7 +37,7 @@ type Group struct {
 	VarType *string `json:"type,omitempty"`
 
 	// Images
-	Images *[]Userimage `json:"images,omitempty"`
+	Images *[]Image `json:"images,omitempty"`
 
 	// Addresses
 	Addresses *[]Groupcontact `json:"addresses,omitempty"`
@@ -151,7 +151,7 @@ func (o Group) MarshalJSON() ([]byte, error) {
 		
 		VarType *string `json:"type,omitempty"`
 		
-		Images *[]Userimage `json:"images,omitempty"`
+		Images *[]Image `json:"images,omitempty"`
 		
 		Addresses *[]Groupcontact `json:"addresses,omitempty"`
 		

@@ -7,16 +7,25 @@ import (
 	"strings"
 )
 
-// Conversationeventtopicinitiator - Fields identifying the initiator of a given conversation command.
-type Conversationeventtopicinitiator struct { 
+// Journeyappeventsnotificationactionmap
+type Journeyappeventsnotificationactionmap struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// UserId - The id of the user who initiated the command if it was initiated by a user.
-	UserId *string `json:"userId,omitempty"`
+	// Id
+	Id *string `json:"id,omitempty"`
+
+	// SelfUri
+	SelfUri *string `json:"selfUri,omitempty"`
+
+	// DisplayName
+	DisplayName *string `json:"displayName,omitempty"`
+
+	// Version
+	Version *int `json:"version,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Conversationeventtopicinitiator) SetField(field string, fieldValue interface{}) {
+func (o *Journeyappeventsnotificationactionmap) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -37,7 +46,7 @@ func (o *Conversationeventtopicinitiator) SetField(field string, fieldValue inte
 	o.SetFieldNames[field] = true
 }
 
-func (o Conversationeventtopicinitiator) MarshalJSON() ([]byte, error) {
+func (o Journeyappeventsnotificationactionmap) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -75,34 +84,59 @@ func (o Conversationeventtopicinitiator) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Conversationeventtopicinitiator
+	type Alias Journeyappeventsnotificationactionmap
 	
 	return json.Marshal(&struct { 
-		UserId *string `json:"userId,omitempty"`
+		Id *string `json:"id,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		
+		DisplayName *string `json:"displayName,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
 		Alias
 	}{ 
-		UserId: o.UserId,
+		Id: o.Id,
+		
+		SelfUri: o.SelfUri,
+		
+		DisplayName: o.DisplayName,
+		
+		Version: o.Version,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Conversationeventtopicinitiator) UnmarshalJSON(b []byte) error {
-	var ConversationeventtopicinitiatorMap map[string]interface{}
-	err := json.Unmarshal(b, &ConversationeventtopicinitiatorMap)
+func (o *Journeyappeventsnotificationactionmap) UnmarshalJSON(b []byte) error {
+	var JourneyappeventsnotificationactionmapMap map[string]interface{}
+	err := json.Unmarshal(b, &JourneyappeventsnotificationactionmapMap)
 	if err != nil {
 		return err
 	}
 	
-	if UserId, ok := ConversationeventtopicinitiatorMap["userId"].(string); ok {
-		o.UserId = &UserId
+	if Id, ok := JourneyappeventsnotificationactionmapMap["id"].(string); ok {
+		o.Id = &Id
 	}
     
+	if SelfUri, ok := JourneyappeventsnotificationactionmapMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+    
+	if DisplayName, ok := JourneyappeventsnotificationactionmapMap["displayName"].(string); ok {
+		o.DisplayName = &DisplayName
+	}
+    
+	if Version, ok := JourneyappeventsnotificationactionmapMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Conversationeventtopicinitiator) String() string {
+func (o *Journeyappeventsnotificationactionmap) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

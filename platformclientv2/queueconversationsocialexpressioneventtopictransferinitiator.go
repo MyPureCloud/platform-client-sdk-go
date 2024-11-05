@@ -7,19 +7,16 @@ import (
 	"strings"
 )
 
-// Userimage
-type Userimage struct { 
+// Queueconversationsocialexpressioneventtopictransferinitiator - Fields identifying the initiator of a given conversation command.
+type Queueconversationsocialexpressioneventtopictransferinitiator struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Resolution - Height and/or width of image. ex: 640x480 or x128
-	Resolution *string `json:"resolution,omitempty"`
-
-	// ImageUri
-	ImageUri *string `json:"imageUri,omitempty"`
+	// UserId - The id of the user who initiated the command if it was initiated by a user.
+	UserId *string `json:"userId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Userimage) SetField(field string, fieldValue interface{}) {
+func (o *Queueconversationsocialexpressioneventtopictransferinitiator) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -40,7 +37,7 @@ func (o *Userimage) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Userimage) MarshalJSON() ([]byte, error) {
+func (o Queueconversationsocialexpressioneventtopictransferinitiator) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -78,34 +75,26 @@ func (o Userimage) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Userimage
+	type Alias Queueconversationsocialexpressioneventtopictransferinitiator
 	
 	return json.Marshal(&struct { 
-		Resolution *string `json:"resolution,omitempty"`
-		
-		ImageUri *string `json:"imageUri,omitempty"`
+		UserId *string `json:"userId,omitempty"`
 		Alias
 	}{ 
-		Resolution: o.Resolution,
-		
-		ImageUri: o.ImageUri,
+		UserId: o.UserId,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Userimage) UnmarshalJSON(b []byte) error {
-	var UserimageMap map[string]interface{}
-	err := json.Unmarshal(b, &UserimageMap)
+func (o *Queueconversationsocialexpressioneventtopictransferinitiator) UnmarshalJSON(b []byte) error {
+	var QueueconversationsocialexpressioneventtopictransferinitiatorMap map[string]interface{}
+	err := json.Unmarshal(b, &QueueconversationsocialexpressioneventtopictransferinitiatorMap)
 	if err != nil {
 		return err
 	}
 	
-	if Resolution, ok := UserimageMap["resolution"].(string); ok {
-		o.Resolution = &Resolution
-	}
-    
-	if ImageUri, ok := UserimageMap["imageUri"].(string); ok {
-		o.ImageUri = &ImageUri
+	if UserId, ok := QueueconversationsocialexpressioneventtopictransferinitiatorMap["userId"].(string); ok {
+		o.UserId = &UserId
 	}
     
 
@@ -113,7 +102,7 @@ func (o *Userimage) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Userimage) String() string {
+func (o *Queueconversationsocialexpressioneventtopictransferinitiator) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

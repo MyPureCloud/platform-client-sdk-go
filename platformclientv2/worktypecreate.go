@@ -41,6 +41,9 @@ type Worktypecreate struct {
 	// ServiceLevelTarget - The target service level for Workitems created from the Worktype. The default value is 100.
 	ServiceLevelTarget *int `json:"serviceLevelTarget,omitempty"`
 
+	// RuleSettings - Settings for the worktypes rules.
+	RuleSettings *Workitemrulesettings `json:"ruleSettings,omitempty"`
+
 	// Description - The description of the Worktype. Maximum length of 512 characters.
 	Description *string `json:"description,omitempty"`
 
@@ -146,6 +149,8 @@ func (o Worktypecreate) MarshalJSON() ([]byte, error) {
 		
 		ServiceLevelTarget *int `json:"serviceLevelTarget,omitempty"`
 		
+		RuleSettings *Workitemrulesettings `json:"ruleSettings,omitempty"`
+		
 		Description *string `json:"description,omitempty"`
 		
 		DivisionId *string `json:"divisionId,omitempty"`
@@ -180,6 +185,8 @@ func (o Worktypecreate) MarshalJSON() ([]byte, error) {
 		SchemaId: o.SchemaId,
 		
 		ServiceLevelTarget: o.ServiceLevelTarget,
+		
+		RuleSettings: o.RuleSettings,
 		
 		Description: o.Description,
 		
@@ -249,6 +256,11 @@ func (o *Worktypecreate) UnmarshalJSON(b []byte) error {
 	if ServiceLevelTarget, ok := WorktypecreateMap["serviceLevelTarget"].(float64); ok {
 		ServiceLevelTargetInt := int(ServiceLevelTarget)
 		o.ServiceLevelTarget = &ServiceLevelTargetInt
+	}
+	
+	if RuleSettings, ok := WorktypecreateMap["ruleSettings"].(map[string]interface{}); ok {
+		RuleSettingsString, _ := json.Marshal(RuleSettings)
+		json.Unmarshal(RuleSettingsString, &o.RuleSettings)
 	}
 	
 	if Description, ok := WorktypecreateMap["description"].(string); ok {

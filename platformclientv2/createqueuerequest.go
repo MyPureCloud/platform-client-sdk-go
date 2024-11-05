@@ -117,7 +117,7 @@ type Createqueuerequest struct {
 	// OutboundMessagingAddresses - The messaging addresses for the queue.
 	OutboundMessagingAddresses *Queuemessagingaddresses `json:"outboundMessagingAddresses,omitempty"`
 
-	// OutboundEmailAddress
+	// OutboundEmailAddress - The default email address to use for outbound email from this queue.
 	OutboundEmailAddress *Queueemailaddress `json:"outboundEmailAddress,omitempty"`
 
 	// PeerId - The ID of an associated external queue.

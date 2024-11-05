@@ -3,13 +3,13 @@ package platformclientv2
 import (
 	"encoding/json"
 	"fmt"
-	"os"
-	"reflect"
-	"testing"
-	"time"
-	"strings"
 	"net/http"
 	"net/url"
+	"os"
+	"reflect"
+	"strings"
+	"testing"
+	"time"
 
 	"github.com/google/uuid"
 )
@@ -371,9 +371,9 @@ func TestGetUser(t *testing.T) {
 
 func TestDeleteUser(t *testing.T) {
 	/*
-	* DEVTOOLING-815: There is a difference between the internal swagger and public swagger for this api. 
+	* DEVTOOLING-815: There is a difference between the internal swagger and public swagger for this api.
 	* We need to call the api directly until the change is available in prod
-	*/ 
+	 */
 
 	// Delete user
 
@@ -420,8 +420,8 @@ func deleteUserDirectly(api *UsersApi, userId string) (*APIResponse, error) {
 		// Nothing special to do here, but do avoid processing the response
 	} else if response.Error != nil {
 		err = fmt.Errorf(response.ErrorMessage)
-	} 
-	
+	}
+
 	return response, err
 }
 
@@ -465,4 +465,48 @@ func Example_authorizeNewConfiguration() {
 	// Output: Users API type: UsersAPI
 
 	// Make requests using usersAPI
+}
+
+func TestApiGateway(t *testing.T) {
+	config := GetDefaultConfiguration()
+	config.BasePath = "https://api." + os.Getenv("PURECLOUD_ENVIRONMENT") // e.g. PURECLOUD_ENVIRONMENT=mypurecloud.com
+	clientID := os.Getenv("PURECLOUD_CLIENT_ID")
+	clientSecret := os.Getenv("PURECLOUD_CLIENT_SECRET")
+
+	// Gateway
+	login := PathParams{
+		PathName:  "login",
+		PathValue: "nonxml/cce.uat.com/login",
+	}
+	api := PathParams{
+		PathName:  "api",
+		PathValue: "nonxml/cce.uat.com/apis",
+	}
+	params := []*PathParams{
+		&api,
+		&login,
+	}
+	config.GateWayConfiguration = &GateWayConfiguration{
+		Protocol:   "https",
+		Host:       "serviceproxy.net",
+		Port:       "443",
+		Auth:       nil,
+		PathParams: params,
+	}
+
+	// Authorize Credentials
+	err := config.AuthorizeClientCredentials(clientID, clientSecret)
+	if err != nil {
+		if !strings.Contains(err.Error(), "Auth Error: 400 - Not found ()") {
+			t.Errorf("Failed to authorize client credentials: %v", err)
+		}
+	}
+
+	outboundApi := NewOutboundApiWithConfig(config)
+	_, _, err = outboundApi.GetOutboundCallabletimesets(1, 1, true, "", "", "", "")
+	if err != nil {
+		if !strings.Contains(err.Error(), "API Error: 400 -  ()") {
+			t.Errorf("Failed to Retrieve Timesets: %v", err)
+		}
+	}
 }

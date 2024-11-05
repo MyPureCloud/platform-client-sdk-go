@@ -114,11 +114,10 @@ func (o *V2mobiusrulestopiccondition) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
-	if Id, ok := V2mobiusrulestopicconditionMap["id"].(map[string]interface{}); ok {
-		IdString, _ := json.Marshal(Id)
-		json.Unmarshal(IdString, &o.Id)
+	if Id, ok := V2mobiusrulestopicconditionMap["id"].(string); ok {
+		o.Id = &Id
 	}
-	
+    
 	if Conditions, ok := V2mobiusrulestopicconditionMap["conditions"].([]interface{}); ok {
 		ConditionsString, _ := json.Marshal(Conditions)
 		json.Unmarshal(ConditionsString, &o.Conditions)

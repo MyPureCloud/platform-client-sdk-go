@@ -8,8 +8,8 @@ import (
 	"strings"
 )
 
-// Conversationeventtopicrecenttransfer
-type Conversationeventtopicrecenttransfer struct { 
+// Queueconversationeventtopictransferresponse
+type Queueconversationeventtopictransferresponse struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Id - The id of the command.
@@ -22,20 +22,20 @@ type Conversationeventtopicrecenttransfer struct {
 	DateIssued *time.Time `json:"dateIssued,omitempty"`
 
 	// Initiator
-	Initiator *Conversationeventtopicinitiator `json:"initiator,omitempty"`
+	Initiator *Queueconversationeventtopictransferinitiator `json:"initiator,omitempty"`
 
 	// ModifiedBy
-	ModifiedBy *Conversationeventtopicmodifiedby `json:"modifiedBy,omitempty"`
+	ModifiedBy *Queueconversationeventtopictransfermodifedby `json:"modifiedBy,omitempty"`
 
 	// Destination
-	Destination *Conversationeventtopicdestination `json:"destination,omitempty"`
+	Destination *Queueconversationeventtopictransferdestination `json:"destination,omitempty"`
 
 	// TransferType - The type of transfer to perform.
 	TransferType *string `json:"transferType,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Conversationeventtopicrecenttransfer) SetField(field string, fieldValue interface{}) {
+func (o *Queueconversationeventtopictransferresponse) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -56,7 +56,7 @@ func (o *Conversationeventtopicrecenttransfer) SetField(field string, fieldValue
 	o.SetFieldNames[field] = true
 }
 
-func (o Conversationeventtopicrecenttransfer) MarshalJSON() ([]byte, error) {
+func (o Queueconversationeventtopictransferresponse) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -94,7 +94,7 @@ func (o Conversationeventtopicrecenttransfer) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Conversationeventtopicrecenttransfer
+	type Alias Queueconversationeventtopictransferresponse
 	
 	DateIssued := new(string)
 	if o.DateIssued != nil {
@@ -111,11 +111,11 @@ func (o Conversationeventtopicrecenttransfer) MarshalJSON() ([]byte, error) {
 		
 		DateIssued *string `json:"dateIssued,omitempty"`
 		
-		Initiator *Conversationeventtopicinitiator `json:"initiator,omitempty"`
+		Initiator *Queueconversationeventtopictransferinitiator `json:"initiator,omitempty"`
 		
-		ModifiedBy *Conversationeventtopicmodifiedby `json:"modifiedBy,omitempty"`
+		ModifiedBy *Queueconversationeventtopictransfermodifedby `json:"modifiedBy,omitempty"`
 		
-		Destination *Conversationeventtopicdestination `json:"destination,omitempty"`
+		Destination *Queueconversationeventtopictransferdestination `json:"destination,omitempty"`
 		
 		TransferType *string `json:"transferType,omitempty"`
 		Alias
@@ -137,42 +137,42 @@ func (o Conversationeventtopicrecenttransfer) MarshalJSON() ([]byte, error) {
 	})
 }
 
-func (o *Conversationeventtopicrecenttransfer) UnmarshalJSON(b []byte) error {
-	var ConversationeventtopicrecenttransferMap map[string]interface{}
-	err := json.Unmarshal(b, &ConversationeventtopicrecenttransferMap)
+func (o *Queueconversationeventtopictransferresponse) UnmarshalJSON(b []byte) error {
+	var QueueconversationeventtopictransferresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &QueueconversationeventtopictransferresponseMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := ConversationeventtopicrecenttransferMap["id"].(string); ok {
+	if Id, ok := QueueconversationeventtopictransferresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
     
-	if State, ok := ConversationeventtopicrecenttransferMap["state"].(string); ok {
+	if State, ok := QueueconversationeventtopictransferresponseMap["state"].(string); ok {
 		o.State = &State
 	}
     
-	if dateIssuedString, ok := ConversationeventtopicrecenttransferMap["dateIssued"].(string); ok {
+	if dateIssuedString, ok := QueueconversationeventtopictransferresponseMap["dateIssued"].(string); ok {
 		DateIssued, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateIssuedString)
 		o.DateIssued = &DateIssued
 	}
 	
-	if Initiator, ok := ConversationeventtopicrecenttransferMap["initiator"].(map[string]interface{}); ok {
+	if Initiator, ok := QueueconversationeventtopictransferresponseMap["initiator"].(map[string]interface{}); ok {
 		InitiatorString, _ := json.Marshal(Initiator)
 		json.Unmarshal(InitiatorString, &o.Initiator)
 	}
 	
-	if ModifiedBy, ok := ConversationeventtopicrecenttransferMap["modifiedBy"].(map[string]interface{}); ok {
+	if ModifiedBy, ok := QueueconversationeventtopictransferresponseMap["modifiedBy"].(map[string]interface{}); ok {
 		ModifiedByString, _ := json.Marshal(ModifiedBy)
 		json.Unmarshal(ModifiedByString, &o.ModifiedBy)
 	}
 	
-	if Destination, ok := ConversationeventtopicrecenttransferMap["destination"].(map[string]interface{}); ok {
+	if Destination, ok := QueueconversationeventtopictransferresponseMap["destination"].(map[string]interface{}); ok {
 		DestinationString, _ := json.Marshal(Destination)
 		json.Unmarshal(DestinationString, &o.Destination)
 	}
 	
-	if TransferType, ok := ConversationeventtopicrecenttransferMap["transferType"].(string); ok {
+	if TransferType, ok := QueueconversationeventtopictransferresponseMap["transferType"].(string); ok {
 		o.TransferType = &TransferType
 	}
     
@@ -181,7 +181,7 @@ func (o *Conversationeventtopicrecenttransfer) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Conversationeventtopicrecenttransfer) String() string {
+func (o *Queueconversationeventtopictransferresponse) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

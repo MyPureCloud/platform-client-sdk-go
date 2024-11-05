@@ -21,7 +21,7 @@ type Queueconversationsocialexpressioneventtopicconversation struct {
 	Participants *[]Queueconversationsocialexpressioneventtopicparticipant `json:"participants,omitempty"`
 
 	// RecentTransfers
-	RecentTransfers *[]Queueconversationsocialexpressioneventtopicrecenttransfer `json:"recentTransfers,omitempty"`
+	RecentTransfers *[]Queueconversationsocialexpressioneventtopictransferresponse `json:"recentTransfers,omitempty"`
 
 	// RecordingState
 	RecordingState *string `json:"recordingState,omitempty"`
@@ -108,7 +108,7 @@ func (o Queueconversationsocialexpressioneventtopicconversation) MarshalJSON() (
 		
 		Participants *[]Queueconversationsocialexpressioneventtopicparticipant `json:"participants,omitempty"`
 		
-		RecentTransfers *[]Queueconversationsocialexpressioneventtopicrecenttransfer `json:"recentTransfers,omitempty"`
+		RecentTransfers *[]Queueconversationsocialexpressioneventtopictransferresponse `json:"recentTransfers,omitempty"`
 		
 		RecordingState *string `json:"recordingState,omitempty"`
 		

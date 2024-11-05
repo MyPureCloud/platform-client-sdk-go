@@ -2052,14 +2052,14 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseDocumentFeedbackFeedbackId(knowle
 // GetKnowledgeKnowledgebaseDocumentVariation invokes GET /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/{documentId}/variations/{documentVariationId}
 //
 // Get a variation for a document.
-func (a KnowledgeApi) GetKnowledgeKnowledgebaseDocumentVariation(documentVariationId string, documentId string, knowledgeBaseId string, documentState string) (*Documentvariation, *APIResponse, error) {
+func (a KnowledgeApi) GetKnowledgeKnowledgebaseDocumentVariation(documentVariationId string, documentId string, knowledgeBaseId string, documentState string) (*Documentvariationresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/{documentId}/variations/{documentVariationId}"
 	path = strings.Replace(path, "{documentVariationId}", url.PathEscape(fmt.Sprintf("%v", documentVariationId)), -1)
 	path = strings.Replace(path, "{documentId}", url.PathEscape(fmt.Sprintf("%v", documentId)), -1)
 	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
-	defaultReturn := new(Documentvariation)
+	defaultReturn := new(Documentvariationresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -2129,14 +2129,14 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseDocumentVariation(documentVariati
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Documentvariation
+	var successPayload *Documentvariationresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Documentvariation" == "string" {
+		if "Documentvariationresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -2148,13 +2148,13 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseDocumentVariation(documentVariati
 // GetKnowledgeKnowledgebaseDocumentVariations invokes GET /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/{documentId}/variations
 //
 // Get variations for a document.
-func (a KnowledgeApi) GetKnowledgeKnowledgebaseDocumentVariations(knowledgeBaseId string, documentId string, before string, after string, pageSize string, documentState string) (*Documentvariationlisting, *APIResponse, error) {
+func (a KnowledgeApi) GetKnowledgeKnowledgebaseDocumentVariations(knowledgeBaseId string, documentId string, before string, after string, pageSize string, documentState string) (*Documentvariationresponselisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/{documentId}/variations"
 	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
 	path = strings.Replace(path, "{documentId}", url.PathEscape(fmt.Sprintf("%v", documentId)), -1)
-	defaultReturn := new(Documentvariationlisting)
+	defaultReturn := new(Documentvariationresponselisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -2225,14 +2225,14 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseDocumentVariations(knowledgeBaseI
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Documentvariationlisting
+	var successPayload *Documentvariationresponselisting
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Documentvariationlisting" == "string" {
+		if "Documentvariationresponselisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -5451,14 +5451,14 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseDocumentFeedbackFeedbackId(know
 // PatchKnowledgeKnowledgebaseDocumentVariation invokes PATCH /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/{documentId}/variations/{documentVariationId}
 //
 // Update a variation for a document.
-func (a KnowledgeApi) PatchKnowledgeKnowledgebaseDocumentVariation(documentVariationId string, documentId string, knowledgeBaseId string, body Documentvariation) (*Documentvariation, *APIResponse, error) {
+func (a KnowledgeApi) PatchKnowledgeKnowledgebaseDocumentVariation(documentVariationId string, documentId string, knowledgeBaseId string, body Documentvariationrequest) (*Documentvariationresponse, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/{documentId}/variations/{documentVariationId}"
 	path = strings.Replace(path, "{documentVariationId}", url.PathEscape(fmt.Sprintf("%v", documentVariationId)), -1)
 	path = strings.Replace(path, "{documentId}", url.PathEscape(fmt.Sprintf("%v", documentId)), -1)
 	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
-	defaultReturn := new(Documentvariation)
+	defaultReturn := new(Documentvariationresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -5534,14 +5534,14 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseDocumentVariation(documentVaria
 	// body params
 	postBody = &body
 
-	var successPayload *Documentvariation
+	var successPayload *Documentvariationresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Documentvariation" == "string" {
+		if "Documentvariationresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -7520,13 +7520,13 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseDocumentFeedback(knowledgeBaseId
 // PostKnowledgeKnowledgebaseDocumentVariations invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/{documentId}/variations
 //
 // Create a variation for a document.
-func (a KnowledgeApi) PostKnowledgeKnowledgebaseDocumentVariations(knowledgeBaseId string, documentId string, body Documentvariation) (*Documentvariation, *APIResponse, error) {
+func (a KnowledgeApi) PostKnowledgeKnowledgebaseDocumentVariations(knowledgeBaseId string, documentId string, body Documentvariationrequest) (*Documentvariationresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/{documentId}/variations"
 	path = strings.Replace(path, "{knowledgeBaseId}", url.PathEscape(fmt.Sprintf("%v", knowledgeBaseId)), -1)
 	path = strings.Replace(path, "{documentId}", url.PathEscape(fmt.Sprintf("%v", documentId)), -1)
-	defaultReturn := new(Documentvariation)
+	defaultReturn := new(Documentvariationresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -7597,14 +7597,14 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseDocumentVariations(knowledgeBase
 	// body params
 	postBody = &body
 
-	var successPayload *Documentvariation
+	var successPayload *Documentvariationresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Documentvariation" == "string" {
+		if "Documentvariationresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -7796,7 +7796,7 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseDocumentViews(knowledgeBaseId st
 // PostKnowledgeKnowledgebaseDocuments invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents
 //
 // Create document.
-func (a KnowledgeApi) PostKnowledgeKnowledgebaseDocuments(knowledgeBaseId string, body Knowledgedocumentreq) (*Knowledgedocumentresponse, *APIResponse, error) {
+func (a KnowledgeApi) PostKnowledgeKnowledgebaseDocuments(knowledgeBaseId string, body Knowledgedocumentcreaterequest) (*Knowledgedocumentresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents"

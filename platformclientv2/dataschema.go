@@ -21,7 +21,7 @@ type Dataschema struct {
 	// Version - The schema's version, a positive integer. Required for updates.
 	Version *int `json:"version,omitempty"`
 
-	// AppliesTo - One of \"CONTACT\" or \"EXTERNAL_ORGANIZATION\".  Indicates the built-in entity type to which this schema applies.
+	// AppliesTo - Indicates the built-in entity type to which this schema applies.
 	AppliesTo *[]string `json:"appliesTo,omitempty"`
 
 	// Enabled - The schema's enabled/disabled status. A disabled schema cannot be assigned to any other entities, but the data on those entities from the schema still exists.

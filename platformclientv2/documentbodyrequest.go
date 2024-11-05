@@ -7,19 +7,16 @@ import (
 	"strings"
 )
 
-// Conversationeventtopicmodifiedby - Fields identifying the entity that updated the command.
-type Conversationeventtopicmodifiedby struct { 
+// Documentbodyrequest
+type Documentbodyrequest struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The id of the user if the updater is an internal user.
-	Id *string `json:"id,omitempty"`
-
-	// SelfUri - The URI for the user if the updater is an internal user.
-	SelfUri *string `json:"selfUri,omitempty"`
+	// Blocks - The list of building blocks for the document body.
+	Blocks *[]Documentbodyblock `json:"blocks,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Conversationeventtopicmodifiedby) SetField(field string, fieldValue interface{}) {
+func (o *Documentbodyrequest) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -40,7 +37,7 @@ func (o *Conversationeventtopicmodifiedby) SetField(field string, fieldValue int
 	o.SetFieldNames[field] = true
 }
 
-func (o Conversationeventtopicmodifiedby) MarshalJSON() ([]byte, error) {
+func (o Documentbodyrequest) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -78,42 +75,35 @@ func (o Conversationeventtopicmodifiedby) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Conversationeventtopicmodifiedby
+	type Alias Documentbodyrequest
 	
 	return json.Marshal(&struct { 
-		Id *string `json:"id,omitempty"`
-		
-		SelfUri *string `json:"selfUri,omitempty"`
+		Blocks *[]Documentbodyblock `json:"blocks,omitempty"`
 		Alias
 	}{ 
-		Id: o.Id,
-		
-		SelfUri: o.SelfUri,
+		Blocks: o.Blocks,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Conversationeventtopicmodifiedby) UnmarshalJSON(b []byte) error {
-	var ConversationeventtopicmodifiedbyMap map[string]interface{}
-	err := json.Unmarshal(b, &ConversationeventtopicmodifiedbyMap)
+func (o *Documentbodyrequest) UnmarshalJSON(b []byte) error {
+	var DocumentbodyrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &DocumentbodyrequestMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := ConversationeventtopicmodifiedbyMap["id"].(string); ok {
-		o.Id = &Id
+	if Blocks, ok := DocumentbodyrequestMap["blocks"].([]interface{}); ok {
+		BlocksString, _ := json.Marshal(Blocks)
+		json.Unmarshal(BlocksString, &o.Blocks)
 	}
-    
-	if SelfUri, ok := ConversationeventtopicmodifiedbyMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
-	}
-    
+	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Conversationeventtopicmodifiedby) String() string {
+func (o *Documentbodyrequest) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

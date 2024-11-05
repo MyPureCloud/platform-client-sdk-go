@@ -2566,7 +2566,7 @@ func (a AnalyticsApi) GetAnalyticsReportingDashboardsUser(userId string) (*Dashb
 // GetAnalyticsReportingDashboardsUsers invokes GET /api/v2/analytics/reporting/dashboards/users
 //
 // Get dashboards summary for users in a org
-func (a AnalyticsApi) GetAnalyticsReportingDashboardsUsers(sortBy string, pageNumber int, pageSize int, id []string, state string) (*Dashboarduserlisting, *APIResponse, error) {
+func (a AnalyticsApi) GetAnalyticsReportingDashboardsUsers(sortBy string, pageNumber int, pageSize int, id []string, state string, deletedOnly bool) (*Dashboarduserlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/analytics/reporting/dashboards/users"
@@ -2602,6 +2602,8 @@ func (a AnalyticsApi) GetAnalyticsReportingDashboardsUsers(sortBy string, pageNu
 	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
 	
 	queryParams["state"] = a.Configuration.APIClient.ParameterToString(state, "")
+	
+	queryParams["deletedOnly"] = a.Configuration.APIClient.ParameterToString(deletedOnly, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -2982,7 +2984,7 @@ func (a AnalyticsApi) GetAnalyticsReportingSettingsDashboardsQuery(dashboardType
 // GetAnalyticsReportingSettingsUserDashboards invokes GET /api/v2/analytics/reporting/settings/users/{userId}/dashboards
 //
 // Get list of dashboards for an user
-func (a AnalyticsApi) GetAnalyticsReportingSettingsUserDashboards(userId string, sortBy string, pageNumber int, pageSize int, publicOnly bool, favoriteOnly bool, name string) (*Dashboardconfigurationlisting, *APIResponse, error) {
+func (a AnalyticsApi) GetAnalyticsReportingSettingsUserDashboards(userId string, sortBy string, pageNumber int, pageSize int, publicOnly bool, favoriteOnly bool, deletedOnly bool, name string) (*Dashboardconfigurationlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/analytics/reporting/settings/users/{userId}/dashboards"
@@ -3024,6 +3026,8 @@ func (a AnalyticsApi) GetAnalyticsReportingSettingsUserDashboards(userId string,
 	queryParams["publicOnly"] = a.Configuration.APIClient.ParameterToString(publicOnly, "")
 	
 	queryParams["favoriteOnly"] = a.Configuration.APIClient.ParameterToString(favoriteOnly, "")
+	
+	queryParams["deletedOnly"] = a.Configuration.APIClient.ParameterToString(deletedOnly, "")
 	
 	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
@@ -6555,7 +6559,7 @@ func (a AnalyticsApi) PostAnalyticsRatelimitsAggregatesQuery(body Ratelimitaggre
 
 // PostAnalyticsReportingDashboardsUsersBulkRemove invokes POST /api/v2/analytics/reporting/dashboards/users/bulk/remove
 //
-// Bulk delete dashboards owned by other user(s)
+// Bulk soft delete dashboards owned by other user(s)
 func (a AnalyticsApi) PostAnalyticsReportingDashboardsUsersBulkRemove(body []string) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6718,7 +6722,7 @@ func (a AnalyticsApi) PostAnalyticsReportingExports(body Reportingexportjobreque
 
 // PostAnalyticsReportingSettingsDashboardsBulkRemove invokes POST /api/v2/analytics/reporting/settings/dashboards/bulk/remove
 //
-// Bulk remove dashboard configurations
+// Bulk soft delete dashboard configurations
 func (a AnalyticsApi) PostAnalyticsReportingSettingsDashboardsBulkRemove(body Dashboardconfigurationbulkrequest) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7310,8 +7314,6 @@ func (a AnalyticsApi) PostAnalyticsTaskmanagementAggregatesJobs(body Taskmanagem
 // PostAnalyticsTaskmanagementAggregatesQuery invokes POST /api/v2/analytics/taskmanagement/aggregates/query
 //
 // Query for task management aggregates
-//
-// Preview: PostAnalyticsTaskmanagementAggregatesQuery is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) PostAnalyticsTaskmanagementAggregatesQuery(body Taskmanagementaggregationquery) (*Taskmanagementaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

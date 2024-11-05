@@ -19,6 +19,15 @@ type Namedentitytypemechanism struct {
 
 	// VarType - The type of the mechanism.
 	VarType *string `json:"type,omitempty"`
+
+	// SubType - Subtype of detection mechanism
+	SubType *string `json:"subType,omitempty"`
+
+	// MaxLength - The maximum length of the entity resolved value
+	MaxLength *int `json:"maxLength,omitempty"`
+
+	// Examples - Examples for entity detection
+	Examples *[]Namedentitytypemechanismexample `json:"examples,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +98,12 @@ func (o Namedentitytypemechanism) MarshalJSON() ([]byte, error) {
 		Restricted *bool `json:"restricted,omitempty"`
 		
 		VarType *string `json:"type,omitempty"`
+		
+		SubType *string `json:"subType,omitempty"`
+		
+		MaxLength *int `json:"maxLength,omitempty"`
+		
+		Examples *[]Namedentitytypemechanismexample `json:"examples,omitempty"`
 		Alias
 	}{ 
 		Items: o.Items,
@@ -96,6 +111,12 @@ func (o Namedentitytypemechanism) MarshalJSON() ([]byte, error) {
 		Restricted: o.Restricted,
 		
 		VarType: o.VarType,
+		
+		SubType: o.SubType,
+		
+		MaxLength: o.MaxLength,
+		
+		Examples: o.Examples,
 		Alias:    (Alias)(o),
 	})
 }
@@ -120,6 +141,20 @@ func (o *Namedentitytypemechanism) UnmarshalJSON(b []byte) error {
 		o.VarType = &VarType
 	}
     
+	if SubType, ok := NamedentitytypemechanismMap["subType"].(string); ok {
+		o.SubType = &SubType
+	}
+    
+	if MaxLength, ok := NamedentitytypemechanismMap["maxLength"].(float64); ok {
+		MaxLengthInt := int(MaxLength)
+		o.MaxLength = &MaxLengthInt
+	}
+	
+	if Examples, ok := NamedentitytypemechanismMap["examples"].([]interface{}); ok {
+		ExamplesString, _ := json.Marshal(Examples)
+		json.Unmarshal(ExamplesString, &o.Examples)
+	}
+	
 
 	return nil
 }

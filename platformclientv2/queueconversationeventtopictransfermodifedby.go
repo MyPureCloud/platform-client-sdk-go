@@ -7,16 +7,19 @@ import (
 	"strings"
 )
 
-// Queueconversationvideoeventtopicinitiator - Fields identifying the initiator of a given conversation command.
-type Queueconversationvideoeventtopicinitiator struct { 
+// Queueconversationeventtopictransfermodifedby - Fields identifying the entity that updated the command.
+type Queueconversationeventtopictransfermodifedby struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// UserId - The id of the user who initiated the command if it was initiated by a user.
-	UserId *string `json:"userId,omitempty"`
+	// Id - The id of the user if the updater is an internal user.
+	Id *string `json:"id,omitempty"`
+
+	// SelfUri - The URI for the user if the updater is an internal user.
+	SelfUri *string `json:"selfUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Queueconversationvideoeventtopicinitiator) SetField(field string, fieldValue interface{}) {
+func (o *Queueconversationeventtopictransfermodifedby) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -37,7 +40,7 @@ func (o *Queueconversationvideoeventtopicinitiator) SetField(field string, field
 	o.SetFieldNames[field] = true
 }
 
-func (o Queueconversationvideoeventtopicinitiator) MarshalJSON() ([]byte, error) {
+func (o Queueconversationeventtopictransfermodifedby) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -75,26 +78,34 @@ func (o Queueconversationvideoeventtopicinitiator) MarshalJSON() ([]byte, error)
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Queueconversationvideoeventtopicinitiator
+	type Alias Queueconversationeventtopictransfermodifedby
 	
 	return json.Marshal(&struct { 
-		UserId *string `json:"userId,omitempty"`
+		Id *string `json:"id,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
-		UserId: o.UserId,
+		Id: o.Id,
+		
+		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Queueconversationvideoeventtopicinitiator) UnmarshalJSON(b []byte) error {
-	var QueueconversationvideoeventtopicinitiatorMap map[string]interface{}
-	err := json.Unmarshal(b, &QueueconversationvideoeventtopicinitiatorMap)
+func (o *Queueconversationeventtopictransfermodifedby) UnmarshalJSON(b []byte) error {
+	var QueueconversationeventtopictransfermodifedbyMap map[string]interface{}
+	err := json.Unmarshal(b, &QueueconversationeventtopictransfermodifedbyMap)
 	if err != nil {
 		return err
 	}
 	
-	if UserId, ok := QueueconversationvideoeventtopicinitiatorMap["userId"].(string); ok {
-		o.UserId = &UserId
+	if Id, ok := QueueconversationeventtopictransfermodifedbyMap["id"].(string); ok {
+		o.Id = &Id
+	}
+    
+	if SelfUri, ok := QueueconversationeventtopictransfermodifedbyMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
 	}
     
 
@@ -102,7 +113,7 @@ func (o *Queueconversationvideoeventtopicinitiator) UnmarshalJSON(b []byte) erro
 }
 
 // String returns a JSON representation of the model
-func (o *Queueconversationvideoeventtopicinitiator) String() string {
+func (o *Queueconversationeventtopictransfermodifedby) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

@@ -7,25 +7,31 @@ import (
 	"strings"
 )
 
-// Documentvariationlisting
-type Documentvariationlisting struct { 
+// Recordingnotificationtemplate
+type Recordingnotificationtemplate struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Entities
-	Entities *[]Documentvariation `json:"entities,omitempty"`
+	// Id - The globally unique identifier for the object.
+	Id *string `json:"id,omitempty"`
 
-	// NextUri
-	NextUri *string `json:"nextUri,omitempty"`
+	// Language - Template language.
+	Language *string `json:"language,omitempty"`
 
-	// SelfUri
-	SelfUri *string `json:"selfUri,omitempty"`
+	// Header - The template header.
+	Header *Recordingtemplateheader `json:"header,omitempty"`
 
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
+	// Body - The template body.
+	Body *Recordingtemplatebody `json:"body,omitempty"`
+
+	// Buttons - Template buttons
+	Buttons *[]Recordingtemplatebutton `json:"buttons,omitempty"`
+
+	// Footer - The template footer.
+	Footer *Recordingtemplatefooter `json:"footer,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Documentvariationlisting) SetField(field string, fieldValue interface{}) {
+func (o *Recordingnotificationtemplate) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -46,7 +52,7 @@ func (o *Documentvariationlisting) SetField(field string, fieldValue interface{}
 	o.SetFieldNames[field] = true
 }
 
-func (o Documentvariationlisting) MarshalJSON() ([]byte, error) {
+func (o Recordingnotificationtemplate) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -84,59 +90,78 @@ func (o Documentvariationlisting) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Documentvariationlisting
+	type Alias Recordingnotificationtemplate
 	
 	return json.Marshal(&struct { 
-		Entities *[]Documentvariation `json:"entities,omitempty"`
+		Id *string `json:"id,omitempty"`
 		
-		NextUri *string `json:"nextUri,omitempty"`
+		Language *string `json:"language,omitempty"`
 		
-		SelfUri *string `json:"selfUri,omitempty"`
+		Header *Recordingtemplateheader `json:"header,omitempty"`
 		
-		PreviousUri *string `json:"previousUri,omitempty"`
+		Body *Recordingtemplatebody `json:"body,omitempty"`
+		
+		Buttons *[]Recordingtemplatebutton `json:"buttons,omitempty"`
+		
+		Footer *Recordingtemplatefooter `json:"footer,omitempty"`
 		Alias
 	}{ 
-		Entities: o.Entities,
+		Id: o.Id,
 		
-		NextUri: o.NextUri,
+		Language: o.Language,
 		
-		SelfUri: o.SelfUri,
+		Header: o.Header,
 		
-		PreviousUri: o.PreviousUri,
+		Body: o.Body,
+		
+		Buttons: o.Buttons,
+		
+		Footer: o.Footer,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Documentvariationlisting) UnmarshalJSON(b []byte) error {
-	var DocumentvariationlistingMap map[string]interface{}
-	err := json.Unmarshal(b, &DocumentvariationlistingMap)
+func (o *Recordingnotificationtemplate) UnmarshalJSON(b []byte) error {
+	var RecordingnotificationtemplateMap map[string]interface{}
+	err := json.Unmarshal(b, &RecordingnotificationtemplateMap)
 	if err != nil {
 		return err
 	}
 	
-	if Entities, ok := DocumentvariationlistingMap["entities"].([]interface{}); ok {
-		EntitiesString, _ := json.Marshal(Entities)
-		json.Unmarshal(EntitiesString, &o.Entities)
+	if Id, ok := RecordingnotificationtemplateMap["id"].(string); ok {
+		o.Id = &Id
+	}
+    
+	if Language, ok := RecordingnotificationtemplateMap["language"].(string); ok {
+		o.Language = &Language
+	}
+    
+	if Header, ok := RecordingnotificationtemplateMap["header"].(map[string]interface{}); ok {
+		HeaderString, _ := json.Marshal(Header)
+		json.Unmarshal(HeaderString, &o.Header)
 	}
 	
-	if NextUri, ok := DocumentvariationlistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
+	if Body, ok := RecordingnotificationtemplateMap["body"].(map[string]interface{}); ok {
+		BodyString, _ := json.Marshal(Body)
+		json.Unmarshal(BodyString, &o.Body)
 	}
-    
-	if SelfUri, ok := DocumentvariationlistingMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
+	
+	if Buttons, ok := RecordingnotificationtemplateMap["buttons"].([]interface{}); ok {
+		ButtonsString, _ := json.Marshal(Buttons)
+		json.Unmarshal(ButtonsString, &o.Buttons)
 	}
-    
-	if PreviousUri, ok := DocumentvariationlistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
+	
+	if Footer, ok := RecordingnotificationtemplateMap["footer"].(map[string]interface{}); ok {
+		FooterString, _ := json.Marshal(Footer)
+		json.Unmarshal(FooterString, &o.Footer)
 	}
-    
+	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Documentvariationlisting) String() string {
+func (o *Recordingnotificationtemplate) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

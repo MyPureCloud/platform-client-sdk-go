@@ -27,7 +27,7 @@ type Integrationtype struct {
 	Category *string `json:"category,omitempty"`
 
 	// Images - Collection of logos.
-	Images *[]Userimage `json:"images,omitempty"`
+	Images *[]Image `json:"images,omitempty"`
 
 	// ConfigPropertiesSchemaUri - URI of the schema describing the key-value properties needed to configure an integration of this type.
 	ConfigPropertiesSchemaUri *string `json:"configPropertiesSchemaUri,omitempty"`
@@ -157,7 +157,7 @@ func (o Integrationtype) MarshalJSON() ([]byte, error) {
 		
 		Category *string `json:"category,omitempty"`
 		
-		Images *[]Userimage `json:"images,omitempty"`
+		Images *[]Image `json:"images,omitempty"`
 		
 		ConfigPropertiesSchemaUri *string `json:"configPropertiesSchemaUri,omitempty"`
 		

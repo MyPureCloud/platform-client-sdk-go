@@ -7,19 +7,19 @@ import (
 	"strings"
 )
 
-// Queueconversationeventtopicmodifiedby - Fields identifying the entity that updated the command.
-type Queueconversationeventtopicmodifiedby struct { 
+// Articlesfilter
+type Articlesfilter struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The id of the user if the updater is an internal user.
-	Id *string `json:"id,omitempty"`
+	// Labels - The labels filter.
+	Labels *Labelsfilter `json:"labels,omitempty"`
 
-	// SelfUri - The URI for the user if the updater is an internal user.
-	SelfUri *string `json:"selfUri,omitempty"`
+	// Categories - The categories filter.
+	Categories *Categoriesfilter `json:"categories,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Queueconversationeventtopicmodifiedby) SetField(field string, fieldValue interface{}) {
+func (o *Articlesfilter) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -40,7 +40,7 @@ func (o *Queueconversationeventtopicmodifiedby) SetField(field string, fieldValu
 	o.SetFieldNames[field] = true
 }
 
-func (o Queueconversationeventtopicmodifiedby) MarshalJSON() ([]byte, error) {
+func (o Articlesfilter) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -78,42 +78,44 @@ func (o Queueconversationeventtopicmodifiedby) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Queueconversationeventtopicmodifiedby
+	type Alias Articlesfilter
 	
 	return json.Marshal(&struct { 
-		Id *string `json:"id,omitempty"`
+		Labels *Labelsfilter `json:"labels,omitempty"`
 		
-		SelfUri *string `json:"selfUri,omitempty"`
+		Categories *Categoriesfilter `json:"categories,omitempty"`
 		Alias
 	}{ 
-		Id: o.Id,
+		Labels: o.Labels,
 		
-		SelfUri: o.SelfUri,
+		Categories: o.Categories,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Queueconversationeventtopicmodifiedby) UnmarshalJSON(b []byte) error {
-	var QueueconversationeventtopicmodifiedbyMap map[string]interface{}
-	err := json.Unmarshal(b, &QueueconversationeventtopicmodifiedbyMap)
+func (o *Articlesfilter) UnmarshalJSON(b []byte) error {
+	var ArticlesfilterMap map[string]interface{}
+	err := json.Unmarshal(b, &ArticlesfilterMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := QueueconversationeventtopicmodifiedbyMap["id"].(string); ok {
-		o.Id = &Id
+	if Labels, ok := ArticlesfilterMap["labels"].(map[string]interface{}); ok {
+		LabelsString, _ := json.Marshal(Labels)
+		json.Unmarshal(LabelsString, &o.Labels)
 	}
-    
-	if SelfUri, ok := QueueconversationeventtopicmodifiedbyMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
+	
+	if Categories, ok := ArticlesfilterMap["categories"].(map[string]interface{}); ok {
+		CategoriesString, _ := json.Marshal(Categories)
+		json.Unmarshal(CategoriesString, &o.Categories)
 	}
-    
+	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Queueconversationeventtopicmodifiedby) String() string {
+func (o *Articlesfilter) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

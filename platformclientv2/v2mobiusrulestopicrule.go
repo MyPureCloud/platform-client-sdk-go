@@ -179,16 +179,14 @@ func (o *V2mobiusrulestopicrule) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
-	if Id, ok := V2mobiusrulestopicruleMap["id"].(map[string]interface{}); ok {
-		IdString, _ := json.Marshal(Id)
-		json.Unmarshal(IdString, &o.Id)
+	if Id, ok := V2mobiusrulestopicruleMap["id"].(string); ok {
+		o.Id = &Id
 	}
-	
-	if UserId, ok := V2mobiusrulestopicruleMap["userId"].(map[string]interface{}); ok {
-		UserIdString, _ := json.Marshal(UserId)
-		json.Unmarshal(UserIdString, &o.UserId)
+    
+	if UserId, ok := V2mobiusrulestopicruleMap["userId"].(string); ok {
+		o.UserId = &UserId
 	}
-	
+    
 	if Name, ok := V2mobiusrulestopicruleMap["name"].(string); ok {
 		o.Name = &Name
 	}

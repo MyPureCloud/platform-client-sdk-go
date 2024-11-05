@@ -45,7 +45,7 @@ type Updateuser struct {
 	Manager *string `json:"manager,omitempty"`
 
 	// Images
-	Images *[]Userimage `json:"images,omitempty"`
+	Images *[]Image `json:"images,omitempty"`
 
 	// Version - This value should be the current version of the user. The current version can be obtained with a GET on the user before doing a PATCH.
 	Version *int `json:"version,omitempty"`
@@ -163,7 +163,7 @@ func (o Updateuser) MarshalJSON() ([]byte, error) {
 		
 		Manager *string `json:"manager,omitempty"`
 		
-		Images *[]Userimage `json:"images,omitempty"`
+		Images *[]Image `json:"images,omitempty"`
 		
 		Version *int `json:"version,omitempty"`
 		

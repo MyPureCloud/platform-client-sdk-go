@@ -43,7 +43,7 @@ type Expandablewebdeployment struct {
 	LastModifiedUser *Addressableentityref `json:"lastModifiedUser,omitempty"`
 
 	// Flow - A reference to the inboundshortmessage flow used by this deployment
-	Flow *Domainentityref `json:"flow,omitempty"`
+	Flow *Webdeploymentflowentityref `json:"flow,omitempty"`
 
 	// Status - The current status of the deployment
 	Status *string `json:"status,omitempty"`
@@ -154,7 +154,7 @@ func (o Expandablewebdeployment) MarshalJSON() ([]byte, error) {
 		
 		LastModifiedUser *Addressableentityref `json:"lastModifiedUser,omitempty"`
 		
-		Flow *Domainentityref `json:"flow,omitempty"`
+		Flow *Webdeploymentflowentityref `json:"flow,omitempty"`
 		
 		Status *string `json:"status,omitempty"`
 		

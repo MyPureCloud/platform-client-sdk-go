@@ -44,6 +44,9 @@ type Journeyappeventsnotificationappeventsnotification struct {
 
 	// SegmentAssignmentEvent
 	SegmentAssignmentEvent *Journeyappeventsnotificationsegmentassignmentmessage `json:"segmentAssignmentEvent,omitempty"`
+
+	// WebActionEvent
+	WebActionEvent *Journeyappeventsnotificationwebactionmessage `json:"webActionEvent,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -138,6 +141,8 @@ func (o Journeyappeventsnotificationappeventsnotification) MarshalJSON() ([]byte
 		OutcomeAchievedEvent *Journeyappeventsnotificationoutcomeachievedmessage `json:"outcomeAchievedEvent,omitempty"`
 		
 		SegmentAssignmentEvent *Journeyappeventsnotificationsegmentassignmentmessage `json:"segmentAssignmentEvent,omitempty"`
+		
+		WebActionEvent *Journeyappeventsnotificationwebactionmessage `json:"webActionEvent,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -161,6 +166,8 @@ func (o Journeyappeventsnotificationappeventsnotification) MarshalJSON() ([]byte
 		OutcomeAchievedEvent: o.OutcomeAchievedEvent,
 		
 		SegmentAssignmentEvent: o.SegmentAssignmentEvent,
+		
+		WebActionEvent: o.WebActionEvent,
 		Alias:    (Alias)(o),
 	})
 }
@@ -220,6 +227,11 @@ func (o *Journeyappeventsnotificationappeventsnotification) UnmarshalJSON(b []by
 	if SegmentAssignmentEvent, ok := JourneyappeventsnotificationappeventsnotificationMap["segmentAssignmentEvent"].(map[string]interface{}); ok {
 		SegmentAssignmentEventString, _ := json.Marshal(SegmentAssignmentEvent)
 		json.Unmarshal(SegmentAssignmentEventString, &o.SegmentAssignmentEvent)
+	}
+	
+	if WebActionEvent, ok := JourneyappeventsnotificationappeventsnotificationMap["webActionEvent"].(map[string]interface{}); ok {
+		WebActionEventString, _ := json.Marshal(WebActionEvent)
+		json.Unmarshal(WebActionEventString, &o.WebActionEvent)
 	}
 	
 

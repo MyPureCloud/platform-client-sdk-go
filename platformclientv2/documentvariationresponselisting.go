@@ -7,16 +7,25 @@ import (
 	"strings"
 )
 
-// Queueconversationsocialexpressioneventtopicinitiator - Fields identifying the initiator of a given conversation command.
-type Queueconversationsocialexpressioneventtopicinitiator struct { 
+// Documentvariationresponselisting
+type Documentvariationresponselisting struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// UserId - The id of the user who initiated the command if it was initiated by a user.
-	UserId *string `json:"userId,omitempty"`
+	// Entities
+	Entities *[]Documentvariationresponse `json:"entities,omitempty"`
+
+	// NextUri
+	NextUri *string `json:"nextUri,omitempty"`
+
+	// SelfUri
+	SelfUri *string `json:"selfUri,omitempty"`
+
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Queueconversationsocialexpressioneventtopicinitiator) SetField(field string, fieldValue interface{}) {
+func (o *Documentvariationresponselisting) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -37,7 +46,7 @@ func (o *Queueconversationsocialexpressioneventtopicinitiator) SetField(field st
 	o.SetFieldNames[field] = true
 }
 
-func (o Queueconversationsocialexpressioneventtopicinitiator) MarshalJSON() ([]byte, error) {
+func (o Documentvariationresponselisting) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -75,26 +84,51 @@ func (o Queueconversationsocialexpressioneventtopicinitiator) MarshalJSON() ([]b
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Queueconversationsocialexpressioneventtopicinitiator
+	type Alias Documentvariationresponselisting
 	
 	return json.Marshal(&struct { 
-		UserId *string `json:"userId,omitempty"`
+		Entities *[]Documentvariationresponse `json:"entities,omitempty"`
+		
+		NextUri *string `json:"nextUri,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		
+		PreviousUri *string `json:"previousUri,omitempty"`
 		Alias
 	}{ 
-		UserId: o.UserId,
+		Entities: o.Entities,
+		
+		NextUri: o.NextUri,
+		
+		SelfUri: o.SelfUri,
+		
+		PreviousUri: o.PreviousUri,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Queueconversationsocialexpressioneventtopicinitiator) UnmarshalJSON(b []byte) error {
-	var QueueconversationsocialexpressioneventtopicinitiatorMap map[string]interface{}
-	err := json.Unmarshal(b, &QueueconversationsocialexpressioneventtopicinitiatorMap)
+func (o *Documentvariationresponselisting) UnmarshalJSON(b []byte) error {
+	var DocumentvariationresponselistingMap map[string]interface{}
+	err := json.Unmarshal(b, &DocumentvariationresponselistingMap)
 	if err != nil {
 		return err
 	}
 	
-	if UserId, ok := QueueconversationsocialexpressioneventtopicinitiatorMap["userId"].(string); ok {
-		o.UserId = &UserId
+	if Entities, ok := DocumentvariationresponselistingMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+	if NextUri, ok := DocumentvariationresponselistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
+	}
+    
+	if SelfUri, ok := DocumentvariationresponselistingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+    
+	if PreviousUri, ok := DocumentvariationresponselistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
 	}
     
 
@@ -102,7 +136,7 @@ func (o *Queueconversationsocialexpressioneventtopicinitiator) UnmarshalJSON(b [
 }
 
 // String returns a JSON representation of the model
-func (o *Queueconversationsocialexpressioneventtopicinitiator) String() string {
+func (o *Documentvariationresponselisting) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

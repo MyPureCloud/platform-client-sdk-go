@@ -14,6 +14,7 @@ func TestExampleUsersApi_GetUsers_OnProxy(t *testing.T) {
         config.BasePath = "https://api." + os.Getenv("PURECLOUD_ENVIRONMENT") // e.g. PURECLOUD_ENVIRONMENT=mypurecloud.com
         clientID := os.Getenv("PURECLOUD_CLIENT_ID")
         clientSecret := os.Getenv("PURECLOUD_CLIENT_SECRET")
+        config.GateWayConfiguration = nil
 
         err := config.AuthorizeClientCredentials(clientID, clientSecret)
         if err != nil {

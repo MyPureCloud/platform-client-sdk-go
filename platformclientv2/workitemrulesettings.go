@@ -10,7 +10,10 @@ import (
 // Workitemrulesettings
 type Workitemrulesettings struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// FlowRulesEnabled - When set to true, the worktypes flow rules will be processed. Default value is false.
+	FlowRulesEnabled *bool `json:"flowRulesEnabled,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Workitemrulesettings) SetField(field string, fieldValue interface{}) {
@@ -74,8 +77,12 @@ func (o Workitemrulesettings) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Workitemrulesettings
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		FlowRulesEnabled *bool `json:"flowRulesEnabled,omitempty"`
+		Alias
+	}{ 
+		FlowRulesEnabled: o.FlowRulesEnabled,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -86,6 +93,10 @@ func (o *Workitemrulesettings) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if FlowRulesEnabled, ok := WorkitemrulesettingsMap["flowRulesEnabled"].(bool); ok {
+		o.FlowRulesEnabled = &FlowRulesEnabled
+	}
+    
 
 	return nil
 }

@@ -7,19 +7,19 @@ import (
 	"strings"
 )
 
-// Queueconversationeventtopicdestination - Fields identifying the destination of a given conversation command.
-type Queueconversationeventtopicdestination struct { 
+// Queueconversationvideoeventtopictransfermodifedby - Fields identifying the entity that updated the command.
+type Queueconversationvideoeventtopictransfermodifedby struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// UserId - The id of the user if the command destination is a user.
-	UserId *string `json:"userId,omitempty"`
+	// Id - The id of the user if the updater is an internal user.
+	Id *string `json:"id,omitempty"`
 
-	// Address - The destination address if the command destination is an endpoint.
-	Address *string `json:"address,omitempty"`
+	// SelfUri - The URI for the user if the updater is an internal user.
+	SelfUri *string `json:"selfUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Queueconversationeventtopicdestination) SetField(field string, fieldValue interface{}) {
+func (o *Queueconversationvideoeventtopictransfermodifedby) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -40,7 +40,7 @@ func (o *Queueconversationeventtopicdestination) SetField(field string, fieldVal
 	o.SetFieldNames[field] = true
 }
 
-func (o Queueconversationeventtopicdestination) MarshalJSON() ([]byte, error) {
+func (o Queueconversationvideoeventtopictransfermodifedby) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -78,34 +78,34 @@ func (o Queueconversationeventtopicdestination) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Queueconversationeventtopicdestination
+	type Alias Queueconversationvideoeventtopictransfermodifedby
 	
 	return json.Marshal(&struct { 
-		UserId *string `json:"userId,omitempty"`
+		Id *string `json:"id,omitempty"`
 		
-		Address *string `json:"address,omitempty"`
+		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
-		UserId: o.UserId,
+		Id: o.Id,
 		
-		Address: o.Address,
+		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Queueconversationeventtopicdestination) UnmarshalJSON(b []byte) error {
-	var QueueconversationeventtopicdestinationMap map[string]interface{}
-	err := json.Unmarshal(b, &QueueconversationeventtopicdestinationMap)
+func (o *Queueconversationvideoeventtopictransfermodifedby) UnmarshalJSON(b []byte) error {
+	var QueueconversationvideoeventtopictransfermodifedbyMap map[string]interface{}
+	err := json.Unmarshal(b, &QueueconversationvideoeventtopictransfermodifedbyMap)
 	if err != nil {
 		return err
 	}
 	
-	if UserId, ok := QueueconversationeventtopicdestinationMap["userId"].(string); ok {
-		o.UserId = &UserId
+	if Id, ok := QueueconversationvideoeventtopictransfermodifedbyMap["id"].(string); ok {
+		o.Id = &Id
 	}
     
-	if Address, ok := QueueconversationeventtopicdestinationMap["address"].(string); ok {
-		o.Address = &Address
+	if SelfUri, ok := QueueconversationvideoeventtopictransfermodifedbyMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
 	}
     
 
@@ -113,7 +113,7 @@ func (o *Queueconversationeventtopicdestination) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Queueconversationeventtopicdestination) String() string {
+func (o *Queueconversationvideoeventtopictransfermodifedby) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

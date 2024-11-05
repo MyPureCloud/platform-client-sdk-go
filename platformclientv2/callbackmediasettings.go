@@ -29,6 +29,9 @@ type Callbackmediasettings struct {
 	// SubTypeSettings - Map of media subtype to media subtype specific settings.
 	SubTypeSettings *map[string]Basemediasettings `json:"subTypeSettings,omitempty"`
 
+	// Mode - The mode callbacks will use on this queue.
+	Mode *string `json:"mode,omitempty"`
+
 	// EnableAutoDialAndEnd - Flag to enable Auto-Dial and Auto-End automation for callbacks on this queue.
 	EnableAutoDialAndEnd *bool `json:"enableAutoDialAndEnd,omitempty"`
 
@@ -37,6 +40,21 @@ type Callbackmediasettings struct {
 
 	// AutoEndDelaySeconds - Time in seconds after agent disconnects from the outgoing call before the encasing callback is auto-ended. Allowable values in range 0 - 1200 seconds. Defaults to 300 seconds.
 	AutoEndDelaySeconds *int `json:"autoEndDelaySeconds,omitempty"`
+
+	// PacingModifier - Controls the maximum number of outbound calls at one time when mode is CustomerFirst.
+	PacingModifier *float64 `json:"pacingModifier,omitempty"`
+
+	// LiveVoiceReactionType - The action to take if a live voice is detected during the outbound call of a customer first callback.
+	LiveVoiceReactionType *string `json:"liveVoiceReactionType,omitempty"`
+
+	// LiveVoiceFlow - The inbound flow to transfer to if a live voice is detected during the outbound call of a customer first callback.
+	LiveVoiceFlow *Domainentityref `json:"liveVoiceFlow,omitempty"`
+
+	// AnsweringMachineReactionType - The action to take if an answering machine is detected during the outbound call of a customer first callback.
+	AnsweringMachineReactionType *string `json:"answeringMachineReactionType,omitempty"`
+
+	// AnsweringMachineFlow - The inbound flow to transfer to if an answering machine is detected during the outbound call of a customer first callback when answeringMachineReactionType is set to TransferToFlow.
+	AnsweringMachineFlow *Domainentityref `json:"answeringMachineFlow,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -114,11 +132,23 @@ func (o Callbackmediasettings) MarshalJSON() ([]byte, error) {
 		
 		SubTypeSettings *map[string]Basemediasettings `json:"subTypeSettings,omitempty"`
 		
+		Mode *string `json:"mode,omitempty"`
+		
 		EnableAutoDialAndEnd *bool `json:"enableAutoDialAndEnd,omitempty"`
 		
 		AutoDialDelaySeconds *int `json:"autoDialDelaySeconds,omitempty"`
 		
 		AutoEndDelaySeconds *int `json:"autoEndDelaySeconds,omitempty"`
+		
+		PacingModifier *float64 `json:"pacingModifier,omitempty"`
+		
+		LiveVoiceReactionType *string `json:"liveVoiceReactionType,omitempty"`
+		
+		LiveVoiceFlow *Domainentityref `json:"liveVoiceFlow,omitempty"`
+		
+		AnsweringMachineReactionType *string `json:"answeringMachineReactionType,omitempty"`
+		
+		AnsweringMachineFlow *Domainentityref `json:"answeringMachineFlow,omitempty"`
 		Alias
 	}{ 
 		EnableAutoAnswer: o.EnableAutoAnswer,
@@ -133,11 +163,23 @@ func (o Callbackmediasettings) MarshalJSON() ([]byte, error) {
 		
 		SubTypeSettings: o.SubTypeSettings,
 		
+		Mode: o.Mode,
+		
 		EnableAutoDialAndEnd: o.EnableAutoDialAndEnd,
 		
 		AutoDialDelaySeconds: o.AutoDialDelaySeconds,
 		
 		AutoEndDelaySeconds: o.AutoEndDelaySeconds,
+		
+		PacingModifier: o.PacingModifier,
+		
+		LiveVoiceReactionType: o.LiveVoiceReactionType,
+		
+		LiveVoiceFlow: o.LiveVoiceFlow,
+		
+		AnsweringMachineReactionType: o.AnsweringMachineReactionType,
+		
+		AnsweringMachineFlow: o.AnsweringMachineFlow,
 		Alias:    (Alias)(o),
 	})
 }
@@ -176,6 +218,10 @@ func (o *Callbackmediasettings) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(SubTypeSettingsString, &o.SubTypeSettings)
 	}
 	
+	if Mode, ok := CallbackmediasettingsMap["mode"].(string); ok {
+		o.Mode = &Mode
+	}
+    
 	if EnableAutoDialAndEnd, ok := CallbackmediasettingsMap["enableAutoDialAndEnd"].(bool); ok {
 		o.EnableAutoDialAndEnd = &EnableAutoDialAndEnd
 	}
@@ -188,6 +234,28 @@ func (o *Callbackmediasettings) UnmarshalJSON(b []byte) error {
 	if AutoEndDelaySeconds, ok := CallbackmediasettingsMap["autoEndDelaySeconds"].(float64); ok {
 		AutoEndDelaySecondsInt := int(AutoEndDelaySeconds)
 		o.AutoEndDelaySeconds = &AutoEndDelaySecondsInt
+	}
+	
+	if PacingModifier, ok := CallbackmediasettingsMap["pacingModifier"].(float64); ok {
+		o.PacingModifier = &PacingModifier
+	}
+    
+	if LiveVoiceReactionType, ok := CallbackmediasettingsMap["liveVoiceReactionType"].(string); ok {
+		o.LiveVoiceReactionType = &LiveVoiceReactionType
+	}
+    
+	if LiveVoiceFlow, ok := CallbackmediasettingsMap["liveVoiceFlow"].(map[string]interface{}); ok {
+		LiveVoiceFlowString, _ := json.Marshal(LiveVoiceFlow)
+		json.Unmarshal(LiveVoiceFlowString, &o.LiveVoiceFlow)
+	}
+	
+	if AnsweringMachineReactionType, ok := CallbackmediasettingsMap["answeringMachineReactionType"].(string); ok {
+		o.AnsweringMachineReactionType = &AnsweringMachineReactionType
+	}
+    
+	if AnsweringMachineFlow, ok := CallbackmediasettingsMap["answeringMachineFlow"].(map[string]interface{}); ok {
+		AnsweringMachineFlowString, _ := json.Marshal(AnsweringMachineFlow)
+		json.Unmarshal(AnsweringMachineFlowString, &o.AnsweringMachineFlow)
 	}
 	
 
