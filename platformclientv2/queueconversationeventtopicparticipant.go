@@ -27,6 +27,9 @@ type Queueconversationeventtopicparticipant struct {
 	// ExternalContactId - If this participant represents an external contact, then this will be the globally unique identifier for the external contact.
 	ExternalContactId *string `json:"externalContactId,omitempty"`
 
+	// ExternalContactInitialDivisionId - If this participant represents an external contact, then this will be the initial division for the external contact. This value will not be updated if the external contact is reassigned.
+	ExternalContactInitialDivisionId *string `json:"externalContactInitialDivisionId,omitempty"`
+
 	// ExternalOrganizationId - If this participant represents an external org, then this will be the globally unique identifier for the external org.
 	ExternalOrganizationId *string `json:"externalOrganizationId,omitempty"`
 
@@ -238,6 +241,8 @@ func (o Queueconversationeventtopicparticipant) MarshalJSON() ([]byte, error) {
 		
 		ExternalContactId *string `json:"externalContactId,omitempty"`
 		
+		ExternalContactInitialDivisionId *string `json:"externalContactInitialDivisionId,omitempty"`
+		
 		ExternalOrganizationId *string `json:"externalOrganizationId,omitempty"`
 		
 		Name *string `json:"name,omitempty"`
@@ -318,6 +323,8 @@ func (o Queueconversationeventtopicparticipant) MarshalJSON() ([]byte, error) {
 		UserId: o.UserId,
 		
 		ExternalContactId: o.ExternalContactId,
+		
+		ExternalContactInitialDivisionId: o.ExternalContactInitialDivisionId,
 		
 		ExternalOrganizationId: o.ExternalOrganizationId,
 		
@@ -419,6 +426,10 @@ func (o *Queueconversationeventtopicparticipant) UnmarshalJSON(b []byte) error {
     
 	if ExternalContactId, ok := QueueconversationeventtopicparticipantMap["externalContactId"].(string); ok {
 		o.ExternalContactId = &ExternalContactId
+	}
+    
+	if ExternalContactInitialDivisionId, ok := QueueconversationeventtopicparticipantMap["externalContactInitialDivisionId"].(string); ok {
+		o.ExternalContactInitialDivisionId = &ExternalContactInitialDivisionId
 	}
     
 	if ExternalOrganizationId, ok := QueueconversationeventtopicparticipantMap["externalOrganizationId"].(string); ok {

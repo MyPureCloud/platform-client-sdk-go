@@ -602,6 +602,9 @@ type Viewfilter struct {
 	// TranscriptDurationMilliseconds - The transcript durations in milliseconds used to filter the view
 	TranscriptDurationMilliseconds *[]Numericrange `json:"transcriptDurationMilliseconds,omitempty"`
 
+	// WorkitemsStatuses - The list of workitem status with worktype
+	WorkitemsStatuses *[]Workitemstatusfilter `json:"workitemsStatuses,omitempty"`
+
 	// SocialCountries - List of countries for social filtering
 	SocialCountries *[]string `json:"socialCountries,omitempty"`
 
@@ -637,6 +640,9 @@ type Viewfilter struct {
 
 	// FilterUsersByManagerIds - The manager ids used to fetch associated users for the view
 	FilterUsersByManagerIds *[]string `json:"filterUsersByManagerIds,omitempty"`
+
+	// SlideshowIds - List of Dashboard slideshowIds to be filtered
+	SlideshowIds *[]string `json:"slideshowIds,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -1096,6 +1102,8 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		
 		TranscriptDurationMilliseconds *[]Numericrange `json:"transcriptDurationMilliseconds,omitempty"`
 		
+		WorkitemsStatuses *[]Workitemstatusfilter `json:"workitemsStatuses,omitempty"`
+		
 		SocialCountries *[]string `json:"socialCountries,omitempty"`
 		
 		SocialLanguages *[]string `json:"socialLanguages,omitempty"`
@@ -1119,6 +1127,8 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		SocialClassifications *[]string `json:"socialClassifications,omitempty"`
 		
 		FilterUsersByManagerIds *[]string `json:"filterUsersByManagerIds,omitempty"`
+		
+		SlideshowIds *[]string `json:"slideshowIds,omitempty"`
 		Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -1515,6 +1525,8 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		
 		TranscriptDurationMilliseconds: o.TranscriptDurationMilliseconds,
 		
+		WorkitemsStatuses: o.WorkitemsStatuses,
+		
 		SocialCountries: o.SocialCountries,
 		
 		SocialLanguages: o.SocialLanguages,
@@ -1538,6 +1550,8 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		SocialClassifications: o.SocialClassifications,
 		
 		FilterUsersByManagerIds: o.FilterUsersByManagerIds,
+		
+		SlideshowIds: o.SlideshowIds,
 		Alias:    (Alias)(o),
 	})
 }
@@ -2490,6 +2504,11 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(TranscriptDurationMillisecondsString, &o.TranscriptDurationMilliseconds)
 	}
 	
+	if WorkitemsStatuses, ok := ViewfilterMap["workitemsStatuses"].([]interface{}); ok {
+		WorkitemsStatusesString, _ := json.Marshal(WorkitemsStatuses)
+		json.Unmarshal(WorkitemsStatusesString, &o.WorkitemsStatuses)
+	}
+	
 	if SocialCountries, ok := ViewfilterMap["socialCountries"].([]interface{}); ok {
 		SocialCountriesString, _ := json.Marshal(SocialCountries)
 		json.Unmarshal(SocialCountriesString, &o.SocialCountries)
@@ -2546,6 +2565,11 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if FilterUsersByManagerIds, ok := ViewfilterMap["filterUsersByManagerIds"].([]interface{}); ok {
 		FilterUsersByManagerIdsString, _ := json.Marshal(FilterUsersByManagerIds)
 		json.Unmarshal(FilterUsersByManagerIdsString, &o.FilterUsersByManagerIds)
+	}
+	
+	if SlideshowIds, ok := ViewfilterMap["slideshowIds"].([]interface{}); ok {
+		SlideshowIdsString, _ := json.Marshal(SlideshowIds)
+		json.Unmarshal(SlideshowIdsString, &o.SlideshowIds)
 	}
 	
 

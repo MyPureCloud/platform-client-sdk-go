@@ -859,7 +859,7 @@ func (a IntegrationsApi) GetIntegrationsActionDraftFunction(actionId string) (*F
 // GetIntegrationsActionDraftSchema invokes GET /api/v2/integrations/actions/{actionId}/draft/schemas/{fileName}
 //
 // Retrieve schema for a Draft based on filename.
-func (a IntegrationsApi) GetIntegrationsActionDraftSchema(actionId string, fileName string) (*Jsonschemadocument, *APIResponse, error) {
+func (a IntegrationsApi) GetIntegrationsActionDraftSchema(actionId string, fileName string, flatten bool) (*Jsonschemadocument, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/actions/{actionId}/draft/schemas/{fileName}"
@@ -897,6 +897,8 @@ func (a IntegrationsApi) GetIntegrationsActionDraftSchema(actionId string, fileN
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["flatten"] = a.Configuration.APIClient.ParameterToString(flatten, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -1201,7 +1203,7 @@ func (a IntegrationsApi) GetIntegrationsActionFunction(actionId string) (*Functi
 // GetIntegrationsActionSchema invokes GET /api/v2/integrations/actions/{actionId}/schemas/{fileName}
 //
 // Retrieve schema for an action based on filename.
-func (a IntegrationsApi) GetIntegrationsActionSchema(actionId string, fileName string) (*Jsonschemadocument, *APIResponse, error) {
+func (a IntegrationsApi) GetIntegrationsActionSchema(actionId string, fileName string, flatten bool) (*Jsonschemadocument, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/actions/{actionId}/schemas/{fileName}"
@@ -1239,6 +1241,8 @@ func (a IntegrationsApi) GetIntegrationsActionSchema(actionId string, fileName s
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["flatten"] = a.Configuration.APIClient.ParameterToString(flatten, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -5935,7 +5939,7 @@ func (a IntegrationsApi) PostIntegrationsActionDraftPublish(actionId string, bod
 // PostIntegrationsActionDraftTest invokes POST /api/v2/integrations/actions/{actionId}/draft/test
 //
 // Test the execution of a draft. Responses will show execution steps broken out with intermediate results to help in debugging.
-func (a IntegrationsApi) PostIntegrationsActionDraftTest(actionId string, body interface{}) (*Testexecutionresult, *APIResponse, error) {
+func (a IntegrationsApi) PostIntegrationsActionDraftTest(actionId string, body interface{}, flatten bool) (*Testexecutionresult, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/actions/{actionId}/draft/test"
@@ -5972,6 +5976,8 @@ func (a IntegrationsApi) PostIntegrationsActionDraftTest(actionId string, body i
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["flatten"] = a.Configuration.APIClient.ParameterToString(flatten, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -6025,7 +6031,7 @@ func (a IntegrationsApi) PostIntegrationsActionDraftTest(actionId string, body i
 // PostIntegrationsActionExecute invokes POST /api/v2/integrations/actions/{actionId}/execute
 //
 // Execute Action and return response from 3rd party.  Responses will follow the schemas defined on the Action for success and error.
-func (a IntegrationsApi) PostIntegrationsActionExecute(actionId string, body interface{}) (*interface{}, *APIResponse, error) {
+func (a IntegrationsApi) PostIntegrationsActionExecute(actionId string, body interface{}, flatten bool) (*interface{}, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/actions/{actionId}/execute"
@@ -6062,6 +6068,8 @@ func (a IntegrationsApi) PostIntegrationsActionExecute(actionId string, body int
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["flatten"] = a.Configuration.APIClient.ParameterToString(flatten, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -6115,7 +6123,7 @@ func (a IntegrationsApi) PostIntegrationsActionExecute(actionId string, body int
 // PostIntegrationsActionTest invokes POST /api/v2/integrations/actions/{actionId}/test
 //
 // Test the execution of an action. Responses will show execution steps broken out with intermediate results to help in debugging.
-func (a IntegrationsApi) PostIntegrationsActionTest(actionId string, body interface{}) (*Testexecutionresult, *APIResponse, error) {
+func (a IntegrationsApi) PostIntegrationsActionTest(actionId string, body interface{}, flatten bool) (*Testexecutionresult, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/actions/{actionId}/test"
@@ -6152,6 +6160,8 @@ func (a IntegrationsApi) PostIntegrationsActionTest(actionId string, body interf
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["flatten"] = a.Configuration.APIClient.ParameterToString(flatten, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

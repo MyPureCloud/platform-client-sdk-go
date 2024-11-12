@@ -13520,7 +13520,7 @@
       }
     ],
     "return": "Externalcontact",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewExternalContactsApiWithConfig(config)\n\nvar contactId string // ExternalContact ID\nvar expand []string // which fields, if any, to expand (externalOrganization,externalDataSources,identifiers)\n// Fetch an unresolved external contact\ndata, response, err := apiInstance.GetExternalcontactsContactUnresolved(contactId, expand)\nif err != nil {\n\tfmt.Printf(\"Error calling GetExternalcontactsContactUnresolved: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewExternalContactsApiWithConfig(config)\n\nvar contactId string // ExternalContact ID\nvar expand []string // which fields, if any, to expand\n// Fetch an unresolved external contact\ndata, response, err := apiInstance.GetExternalcontactsContactUnresolved(contactId, expand)\nif err != nil {\n\tfmt.Printf(\"Error calling GetExternalcontactsContactUnresolved: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getexternalcontactscontacts": {
     "operationId": "getexternalcontactscontacts",
@@ -13741,7 +13741,7 @@
       }
     ],
     "return": "Externalorganization",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewExternalContactsApiWithConfig(config)\n\nvar externalOrganizationId string // External Organization ID\nvar expand []string // which fields, if any, to expand (externalDataSources)\nvar includeTrustors bool // (true or false) whether or not to include trustor information embedded in the externalOrganization\n// Fetch an external organization\ndata, response, err := apiInstance.GetExternalcontactsOrganization(externalOrganizationId, expand, includeTrustors)\nif err != nil {\n\tfmt.Printf(\"Error calling GetExternalcontactsOrganization: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewExternalContactsApiWithConfig(config)\n\nvar externalOrganizationId string // External Organization ID\nvar expand []string // which fields, if any, to expand\nvar includeTrustors bool // (true or false) whether or not to include trustor information embedded in the externalOrganization\n// Fetch an external organization\ndata, response, err := apiInstance.GetExternalcontactsOrganization(externalOrganizationId, expand, includeTrustors)\nif err != nil {\n\tfmt.Printf(\"Error calling GetExternalcontactsOrganization: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getexternalcontactsorganizationcontacts": {
     "operationId": "getexternalcontactsorganizationcontacts",
@@ -17813,7 +17813,7 @@
   "getintegrationsactiondraftschema": {
     "operationId": "getintegrationsactiondraftschema",
     "functionName": "GetIntegrationsActionDraftSchema",
-    "signature": "GetIntegrationsActionDraftSchema(actionId, fileName)",
+    "signature": "GetIntegrationsActionDraftSchema(actionId, fileName, flatten)",
     "parameters": [
       {
         "name": "actionId",
@@ -17824,10 +17824,15 @@
         "name": "fileName",
         "type": "string",
         "required": "true"
+      },
+      {
+        "name": "flatten",
+        "type": "bool",
+        "required": "false"
       }
     ],
     "return": "Jsonschemadocument",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewIntegrationsApiWithConfig(config)\n\nvar actionId string // actionId\nvar fileName string // Name of schema file to be retrieved for this draft.\n// Retrieve schema for a Draft based on filename.\ndata, response, err := apiInstance.GetIntegrationsActionDraftSchema(actionId, fileName)\nif err != nil {\n\tfmt.Printf(\"Error calling GetIntegrationsActionDraftSchema: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewIntegrationsApiWithConfig(config)\n\nvar actionId string // actionId\nvar fileName string // Name of schema file to be retrieved for this draft.\nvar flatten bool // Indicates the response should be reformatted, based on Architect's flattening format.\n// Retrieve schema for a Draft based on filename.\ndata, response, err := apiInstance.GetIntegrationsActionDraftSchema(actionId, fileName, flatten)\nif err != nil {\n\tfmt.Printf(\"Error calling GetIntegrationsActionDraftSchema: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getintegrationsactiondrafttemplate": {
     "operationId": "getintegrationsactiondrafttemplate",
@@ -17879,7 +17884,7 @@
   "getintegrationsactionschema": {
     "operationId": "getintegrationsactionschema",
     "functionName": "GetIntegrationsActionSchema",
-    "signature": "GetIntegrationsActionSchema(actionId, fileName)",
+    "signature": "GetIntegrationsActionSchema(actionId, fileName, flatten)",
     "parameters": [
       {
         "name": "actionId",
@@ -17890,10 +17895,15 @@
         "name": "fileName",
         "type": "string",
         "required": "true"
+      },
+      {
+        "name": "flatten",
+        "type": "bool",
+        "required": "false"
       }
     ],
     "return": "Jsonschemadocument",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewIntegrationsApiWithConfig(config)\n\nvar actionId string // actionId\nvar fileName string // Name of schema file to be retrieved for this action.\n// Retrieve schema for an action based on filename.\ndata, response, err := apiInstance.GetIntegrationsActionSchema(actionId, fileName)\nif err != nil {\n\tfmt.Printf(\"Error calling GetIntegrationsActionSchema: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewIntegrationsApiWithConfig(config)\n\nvar actionId string // actionId\nvar fileName string // Name of schema file to be retrieved for this action.\nvar flatten bool // Indicates the response should be reformatted, based on Architect's flattening format.\n// Retrieve schema for an action based on filename.\ndata, response, err := apiInstance.GetIntegrationsActionSchema(actionId, fileName, flatten)\nif err != nil {\n\tfmt.Printf(\"Error calling GetIntegrationsActionSchema: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getintegrationsactiontemplate": {
     "operationId": "getintegrationsactiontemplate",
@@ -19191,7 +19201,7 @@
   "postintegrationsactiondrafttest": {
     "operationId": "postintegrationsactiondrafttest",
     "functionName": "PostIntegrationsActionDraftTest",
-    "signature": "PostIntegrationsActionDraftTest(actionId, body)",
+    "signature": "PostIntegrationsActionDraftTest(actionId, body, flatten)",
     "parameters": [
       {
         "name": "actionId",
@@ -19202,15 +19212,20 @@
         "name": "body",
         "type": "interface{}",
         "required": "true"
+      },
+      {
+        "name": "flatten",
+        "type": "bool",
+        "required": "false"
       }
     ],
     "return": "Testexecutionresult",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewIntegrationsApiWithConfig(config)\n\nvar actionId string // actionId\nvar body platformclientv2.interface{} // Map of parameters used for variable substitution.\n// Test the execution of a draft. Responses will show execution steps broken out with intermediate results to help in debugging.\ndata, response, err := apiInstance.PostIntegrationsActionDraftTest(actionId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostIntegrationsActionDraftTest: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewIntegrationsApiWithConfig(config)\n\nvar actionId string // actionId\nvar body platformclientv2.interface{} // Map of parameters used for variable substitution.\nvar flatten bool // Indicates the response should be reformatted, based on Architect's flattening format.\n// Test the execution of a draft. Responses will show execution steps broken out with intermediate results to help in debugging.\ndata, response, err := apiInstance.PostIntegrationsActionDraftTest(actionId, body, flatten)\nif err != nil {\n\tfmt.Printf(\"Error calling PostIntegrationsActionDraftTest: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "postintegrationsactionexecute": {
     "operationId": "postintegrationsactionexecute",
     "functionName": "PostIntegrationsActionExecute",
-    "signature": "PostIntegrationsActionExecute(actionId, body)",
+    "signature": "PostIntegrationsActionExecute(actionId, body, flatten)",
     "parameters": [
       {
         "name": "actionId",
@@ -19221,15 +19236,20 @@
         "name": "body",
         "type": "interface{}",
         "required": "true"
+      },
+      {
+        "name": "flatten",
+        "type": "bool",
+        "required": "false"
       }
     ],
     "return": "interface{}",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewIntegrationsApiWithConfig(config)\n\nvar actionId string // actionId\nvar body platformclientv2.interface{} // Map of parameters used for variable substitution.\n// Execute Action and return response from 3rd party.  Responses will follow the schemas defined on the Action for success and error.\ndata, response, err := apiInstance.PostIntegrationsActionExecute(actionId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostIntegrationsActionExecute: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewIntegrationsApiWithConfig(config)\n\nvar actionId string // actionId\nvar body platformclientv2.interface{} // Map of parameters used for variable substitution.\nvar flatten bool // Indicates the response should be reformatted, based on Architect's flattening format.\n// Execute Action and return response from 3rd party.  Responses will follow the schemas defined on the Action for success and error.\ndata, response, err := apiInstance.PostIntegrationsActionExecute(actionId, body, flatten)\nif err != nil {\n\tfmt.Printf(\"Error calling PostIntegrationsActionExecute: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "postintegrationsactiontest": {
     "operationId": "postintegrationsactiontest",
     "functionName": "PostIntegrationsActionTest",
-    "signature": "PostIntegrationsActionTest(actionId, body)",
+    "signature": "PostIntegrationsActionTest(actionId, body, flatten)",
     "parameters": [
       {
         "name": "actionId",
@@ -19240,10 +19260,15 @@
         "name": "body",
         "type": "interface{}",
         "required": "true"
+      },
+      {
+        "name": "flatten",
+        "type": "bool",
+        "required": "false"
       }
     ],
     "return": "Testexecutionresult",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewIntegrationsApiWithConfig(config)\n\nvar actionId string // actionId\nvar body platformclientv2.interface{} // Map of parameters used for variable substitution.\n// Test the execution of an action. Responses will show execution steps broken out with intermediate results to help in debugging.\ndata, response, err := apiInstance.PostIntegrationsActionTest(actionId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostIntegrationsActionTest: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewIntegrationsApiWithConfig(config)\n\nvar actionId string // actionId\nvar body platformclientv2.interface{} // Map of parameters used for variable substitution.\nvar flatten bool // Indicates the response should be reformatted, based on Architect's flattening format.\n// Test the execution of an action. Responses will show execution steps broken out with intermediate results to help in debugging.\ndata, response, err := apiInstance.PostIntegrationsActionTest(actionId, body, flatten)\nif err != nil {\n\tfmt.Printf(\"Error calling PostIntegrationsActionTest: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "postintegrationsactions": {
     "operationId": "postintegrationsactions",
@@ -19571,6 +19596,20 @@
       }
     ],
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewJourneyApiWithConfig(config)\n\nvar viewId string // viewId\n// Delete a Journey View by ID\nresponse, err := apiInstance.DeleteJourneyView(viewId)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteJourneyView: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
+  },
+  "deletejourneyviewschedules": {
+    "operationId": "deletejourneyviewschedules",
+    "functionName": "DeleteJourneyViewSchedules",
+    "signature": "DeleteJourneyViewSchedules(viewId)",
+    "parameters": [
+      {
+        "name": "viewId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Journeyviewschedule",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewJourneyApiWithConfig(config)\n\nvar viewId string // Journey View Id\n// Delete the Schedule of a JourneyView\ndata, response, err := apiInstance.DeleteJourneyViewSchedules(viewId)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteJourneyViewSchedules: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getjourneyactionmap": {
     "operationId": "getjourneyactionmap",
@@ -20029,6 +20068,20 @@
     "return": "Journeyview",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewJourneyApiWithConfig(config)\n\nvar viewId string // viewId\n// Get a Journey View by ID\ndata, response, err := apiInstance.GetJourneyView(viewId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetJourneyView: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
+  "getjourneyviewschedules": {
+    "operationId": "getjourneyviewschedules",
+    "functionName": "GetJourneyViewSchedules",
+    "signature": "GetJourneyViewSchedules(viewId)",
+    "parameters": [
+      {
+        "name": "viewId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Journeyviewschedule",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewJourneyApiWithConfig(config)\n\nvar viewId string // Journey View Id\n// Get the Schedule for a JourneyView\ndata, response, err := apiInstance.GetJourneyViewSchedules(viewId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetJourneyViewSchedules: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
   "getjourneyviewversion": {
     "operationId": "getjourneyviewversion",
     "functionName": "GetJourneyViewVersion",
@@ -20280,6 +20333,25 @@
     ],
     "return": "Journeyviewjoblisting",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewJourneyApiWithConfig(config)\n\nvar pageNumber int // The number of the page to return\nvar pageSize int // Max number of entities to return\nvar interval string // An absolute timeframe for filtering the jobs, expressed as an ISO 8601 interval.\nvar statuses string // Job statuses to filter for\n// Get the jobs for an organization.\ndata, response, err := apiInstance.GetJourneyViewsJobs(pageNumber, pageSize, interval, statuses)\nif err != nil {\n\tfmt.Printf(\"Error calling GetJourneyViewsJobs: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getjourneyviewsschedules": {
+    "operationId": "getjourneyviewsschedules",
+    "functionName": "GetJourneyViewsSchedules",
+    "signature": "GetJourneyViewsSchedules(pageNumber, pageSize)",
+    "parameters": [
+      {
+        "name": "pageNumber",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "pageSize",
+        "type": "int",
+        "required": "false"
+      }
+    ],
+    "return": "Journeyviewschedulelisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewJourneyApiWithConfig(config)\n\nvar pageNumber int // The number of the page to return\nvar pageSize int // Max number of entities to return\n// Get the journey schedules for an organization.\ndata, response, err := apiInstance.GetJourneyViewsSchedules(pageNumber, pageSize)\nif err != nil {\n\tfmt.Printf(\"Error calling GetJourneyViewsSchedules: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "patchjourneyactionmap": {
     "operationId": "patchjourneyactionmap",
@@ -20573,6 +20645,25 @@
     "return": "Journeysegment",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewJourneyApiWithConfig(config)\n\nvar body platformclientv2.Journeysegmentrequest // \n// Create a segment.\ndata, response, err := apiInstance.PostJourneySegments(body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostJourneySegments: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
+  "postjourneyviewschedules": {
+    "operationId": "postjourneyviewschedules",
+    "functionName": "PostJourneyViewSchedules",
+    "signature": "PostJourneyViewSchedules(viewId, body)",
+    "parameters": [
+      {
+        "name": "viewId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Journeyviewschedule",
+        "required": "true"
+      }
+    ],
+    "return": "Journeyviewschedule",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewJourneyApiWithConfig(config)\n\nvar viewId string // Journey View Id\nvar body platformclientv2.Journeyviewschedule // journeyViewSchedule\n// Add a new Schedule to a JourneyView\ndata, response, err := apiInstance.PostJourneyViewSchedules(viewId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostJourneyViewSchedules: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
   "postjourneyviewversionjobs": {
     "operationId": "postjourneyviewversionjobs",
     "functionName": "PostJourneyViewVersionJobs",
@@ -20638,6 +20729,25 @@
     ],
     "return": "Entitylisting",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewJourneyApiWithConfig(config)\n\nvar body platformclientv2.[]Label // \n// Validate whether an encoding exist for a label/value combination.\ndata, response, err := apiInstance.PostJourneyViewsEncodingsValidate(body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostJourneyViewsEncodingsValidate: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "putjourneyviewschedules": {
+    "operationId": "putjourneyviewschedules",
+    "functionName": "PutJourneyViewSchedules",
+    "signature": "PutJourneyViewSchedules(viewId, body)",
+    "parameters": [
+      {
+        "name": "viewId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Journeyviewschedule",
+        "required": "true"
+      }
+    ],
+    "return": "Journeyviewschedule",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewJourneyApiWithConfig(config)\n\nvar viewId string // Journey View Id\nvar body platformclientv2.Journeyviewschedule // journeyViewSchedule\n// Update the Schedule for a JourneyView\ndata, response, err := apiInstance.PutJourneyViewSchedules(viewId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PutJourneyViewSchedules: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "putjourneyviewversion": {
     "operationId": "putjourneyviewversion",
@@ -21255,7 +21365,7 @@
   "getknowledgeknowledgebasedocumentvariation": {
     "operationId": "getknowledgeknowledgebasedocumentvariation",
     "functionName": "GetKnowledgeKnowledgebaseDocumentVariation",
-    "signature": "GetKnowledgeKnowledgebaseDocumentVariation(documentVariationId, documentId, knowledgeBaseId, documentState)",
+    "signature": "GetKnowledgeKnowledgebaseDocumentVariation(documentVariationId, documentId, knowledgeBaseId, documentState, expand)",
     "parameters": [
       {
         "name": "documentVariationId",
@@ -21276,15 +21386,20 @@
         "name": "documentState",
         "type": "string",
         "required": "false"
+      },
+      {
+        "name": "expand",
+        "type": "[]string",
+        "required": "false"
       }
     ],
     "return": "Documentvariationresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)\n\nvar documentVariationId string // Globally unique identifier for a document variation.\nvar documentId string // Globally unique identifier for a document.\nvar knowledgeBaseId string // Globally unique identifier for a knowledge base.\nvar documentState string // The state of the document.\n// Get a variation for a document.\ndata, response, err := apiInstance.GetKnowledgeKnowledgebaseDocumentVariation(documentVariationId, documentId, knowledgeBaseId, documentState)\nif err != nil {\n\tfmt.Printf(\"Error calling GetKnowledgeKnowledgebaseDocumentVariation: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)\n\nvar documentVariationId string // Globally unique identifier for a document variation.\nvar documentId string // Globally unique identifier for a document.\nvar knowledgeBaseId string // Globally unique identifier for a knowledge base.\nvar documentState string // The state of the document.\nvar expand []string // The specified entity attributes will be filled. Comma separated values expected.\n// Get a variation for a document.\ndata, response, err := apiInstance.GetKnowledgeKnowledgebaseDocumentVariation(documentVariationId, documentId, knowledgeBaseId, documentState, expand)\nif err != nil {\n\tfmt.Printf(\"Error calling GetKnowledgeKnowledgebaseDocumentVariation: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getknowledgeknowledgebasedocumentvariations": {
     "operationId": "getknowledgeknowledgebasedocumentvariations",
     "functionName": "GetKnowledgeKnowledgebaseDocumentVariations",
-    "signature": "GetKnowledgeKnowledgebaseDocumentVariations(knowledgeBaseId, documentId, before, after, pageSize, documentState)",
+    "signature": "GetKnowledgeKnowledgebaseDocumentVariations(knowledgeBaseId, documentId, before, after, pageSize, documentState, expand)",
     "parameters": [
       {
         "name": "knowledgeBaseId",
@@ -21315,10 +21430,15 @@
         "name": "documentState",
         "type": "string",
         "required": "false"
+      },
+      {
+        "name": "expand",
+        "type": "[]string",
+        "required": "false"
       }
     ],
     "return": "Documentvariationresponselisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)\n\nvar knowledgeBaseId string // Globally unique identifier for the knowledge base.\nvar documentId string // Globally unique identifier for the document.\nvar before string // The cursor that points to the start of the set of entities that has been returned.\nvar after string // The cursor that points to the end of the set of entities that has been returned.\nvar pageSize string // Number of entities to return. Maximum of 200.\nvar documentState string // The state of the document.\n// Get variations for a document.\ndata, response, err := apiInstance.GetKnowledgeKnowledgebaseDocumentVariations(knowledgeBaseId, documentId, before, after, pageSize, documentState)\nif err != nil {\n\tfmt.Printf(\"Error calling GetKnowledgeKnowledgebaseDocumentVariations: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)\n\nvar knowledgeBaseId string // Globally unique identifier for the knowledge base.\nvar documentId string // Globally unique identifier for the document.\nvar before string // The cursor that points to the start of the set of entities that has been returned.\nvar after string // The cursor that points to the end of the set of entities that has been returned.\nvar pageSize string // Number of entities to return. Maximum of 200.\nvar documentState string // The state of the document.\nvar expand []string // The specified entity attributes will be filled. Comma separated values expected.\n// Get variations for a document.\ndata, response, err := apiInstance.GetKnowledgeKnowledgebaseDocumentVariations(knowledgeBaseId, documentId, before, after, pageSize, documentState, expand)\nif err != nil {\n\tfmt.Printf(\"Error calling GetKnowledgeKnowledgebaseDocumentVariations: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getknowledgeknowledgebasedocumentversion": {
     "operationId": "getknowledgeknowledgebasedocumentversion",
@@ -34556,7 +34676,7 @@
         "required": "true"
       }
     ],
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewUsersApiWithConfig(config)\n\nvar userId string // User ID\nvar languageId string // languageId\n// Remove routing language from user\nresponse, err := apiInstance.DeleteUserRoutinglanguage(userId, languageId)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteUserRoutinglanguage: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewUsersApiWithConfig(config)\n\nvar userId string // User ID\nvar languageId string // languageId\n// Remove a routing language from a user\nresponse, err := apiInstance.DeleteUserRoutinglanguage(userId, languageId)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteUserRoutinglanguage: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
   },
   "deleteuserroutingskill": {
     "operationId": "deleteuserroutingskill",
@@ -34574,7 +34694,7 @@
         "required": "true"
       }
     ],
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewUsersApiWithConfig(config)\n\nvar userId string // User ID\nvar skillId string // skillId\n// Remove routing skill from user\nresponse, err := apiInstance.DeleteUserRoutingskill(userId, skillId)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteUserRoutingskill: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewUsersApiWithConfig(config)\n\nvar userId string // User ID\nvar skillId string // skillId\n// Remove a routing skill from a user\nresponse, err := apiInstance.DeleteUserRoutingskill(userId, skillId)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteUserRoutingskill: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
   },
   "getroutingassessment": {
     "operationId": "getroutingassessment",
@@ -36074,7 +36194,7 @@
       }
     ],
     "return": "Userlanguageentitylisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewUsersApiWithConfig(config)\n\nvar userId string // User ID\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar sortOrder string // Ascending or descending sort order\n// List routing language for user\ndata, response, err := apiInstance.GetUserRoutinglanguages(userId, pageSize, pageNumber, sortOrder)\nif err != nil {\n\tfmt.Printf(\"Error calling GetUserRoutinglanguages: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewUsersApiWithConfig(config)\n\nvar userId string // User ID\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar sortOrder string // Ascending or descending sort order\n// List routing languages assigned to a user\ndata, response, err := apiInstance.GetUserRoutinglanguages(userId, pageSize, pageNumber, sortOrder)\nif err != nil {\n\tfmt.Printf(\"Error calling GetUserRoutinglanguages: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getuserroutingskills": {
     "operationId": "getuserroutingskills",
@@ -36103,7 +36223,7 @@
       }
     ],
     "return": "Userskillentitylisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewUsersApiWithConfig(config)\n\nvar userId string // User ID\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar sortOrder string // Ascending or descending sort order\n// List routing skills for user\ndata, response, err := apiInstance.GetUserRoutingskills(userId, pageSize, pageNumber, sortOrder)\nif err != nil {\n\tfmt.Printf(\"Error calling GetUserRoutingskills: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewUsersApiWithConfig(config)\n\nvar userId string // User ID\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar sortOrder string // Ascending or descending sort order\n// List routing skills assigned to a user\ndata, response, err := apiInstance.GetUserRoutingskills(userId, pageSize, pageNumber, sortOrder)\nif err != nil {\n\tfmt.Printf(\"Error calling GetUserRoutingskills: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getuserskillgroups": {
     "operationId": "getuserskillgroups",
@@ -36410,7 +36530,7 @@
       }
     ],
     "return": "Userroutinglanguage",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewUsersApiWithConfig(config)\n\nvar userId string // User ID\nvar languageId string // languageId\nvar body platformclientv2.Userroutinglanguage // Language\n// Update routing language proficiency or state.\ndata, response, err := apiInstance.PatchUserRoutinglanguage(userId, languageId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchUserRoutinglanguage: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewUsersApiWithConfig(config)\n\nvar userId string // User ID\nvar languageId string // languageId\nvar body platformclientv2.Userroutinglanguage // Language\n// Update an assigned routing language's proficiency\ndata, response, err := apiInstance.PatchUserRoutinglanguage(userId, languageId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchUserRoutinglanguage: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "patchuserroutinglanguagesbulk": {
     "operationId": "patchuserroutinglanguagesbulk",
@@ -36429,7 +36549,7 @@
       }
     ],
     "return": "Userlanguageentitylisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewUsersApiWithConfig(config)\n\nvar userId string // User ID\nvar body platformclientv2.[]Userroutinglanguagepost // Language\n// Add bulk routing language to user. Max limit 50 languages\ndata, response, err := apiInstance.PatchUserRoutinglanguagesBulk(userId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchUserRoutinglanguagesBulk: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewUsersApiWithConfig(config)\n\nvar userId string // User ID\nvar body platformclientv2.[]Userroutinglanguagepost // Language\n// Assign multiple routing languages to a user. Max 50 routing languages in request body\ndata, response, err := apiInstance.PatchUserRoutinglanguagesBulk(userId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchUserRoutinglanguagesBulk: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "patchuserroutingskillsbulk": {
     "operationId": "patchuserroutingskillsbulk",
@@ -36448,7 +36568,7 @@
       }
     ],
     "return": "Userskillentitylisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewUsersApiWithConfig(config)\n\nvar userId string // User ID\nvar body platformclientv2.[]Userroutingskillpost // Skill\n// Bulk add routing skills to user\ndata, response, err := apiInstance.PatchUserRoutingskillsBulk(userId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchUserRoutingskillsBulk: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewUsersApiWithConfig(config)\n\nvar userId string // User ID\nvar body platformclientv2.[]Userroutingskillpost // Skill\n// Assign multiple routing skills to a user\ndata, response, err := apiInstance.PatchUserRoutingskillsBulk(userId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchUserRoutingskillsBulk: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "postroutingassessments": {
     "operationId": "postroutingassessments",
@@ -36826,7 +36946,7 @@
       }
     ],
     "return": "Userroutinglanguage",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewUsersApiWithConfig(config)\n\nvar userId string // User ID\nvar body platformclientv2.Userroutinglanguagepost // Language\n// Add routing language to user\ndata, response, err := apiInstance.PostUserRoutinglanguages(userId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostUserRoutinglanguages: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewUsersApiWithConfig(config)\n\nvar userId string // User ID\nvar body platformclientv2.Userroutinglanguagepost // Language\n// Assign a routing language to a user\ndata, response, err := apiInstance.PostUserRoutinglanguages(userId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostUserRoutinglanguages: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "postuserroutingskills": {
     "operationId": "postuserroutingskills",
@@ -36845,7 +36965,7 @@
       }
     ],
     "return": "Userroutingskill",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewUsersApiWithConfig(config)\n\nvar userId string // User ID\nvar body platformclientv2.Userroutingskillpost // Skill\n// Add routing skill to user\ndata, response, err := apiInstance.PostUserRoutingskills(userId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostUserRoutingskills: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewUsersApiWithConfig(config)\n\nvar userId string // User ID\nvar body platformclientv2.Userroutingskillpost // Skill\n// Assign a routing skill to a user\ndata, response, err := apiInstance.PostUserRoutingskills(userId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostUserRoutingskills: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "putroutingdirectroutingbackupsettingsme": {
     "operationId": "putroutingdirectroutingbackupsettingsme",
@@ -37096,7 +37216,7 @@
       }
     ],
     "return": "Userroutingskill",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewUsersApiWithConfig(config)\n\nvar userId string // User ID\nvar skillId string // skillId\nvar body platformclientv2.Userroutingskill // Skill\n// Update routing skill proficiency or state.\ndata, response, err := apiInstance.PutUserRoutingskill(userId, skillId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PutUserRoutingskill: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewUsersApiWithConfig(config)\n\nvar userId string // User ID\nvar skillId string // skillId\nvar body platformclientv2.Userroutingskill // Skill\n// Update an assigned routing skill's proficiency\ndata, response, err := apiInstance.PutUserRoutingskill(userId, skillId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PutUserRoutingskill: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "putuserroutingskillsbulk": {
     "operationId": "putuserroutingskillsbulk",
@@ -37115,7 +37235,7 @@
       }
     ],
     "return": "Userskillentitylisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewUsersApiWithConfig(config)\n\nvar userId string // User ID\nvar body platformclientv2.[]Userroutingskillpost // Skill\n// Replace all routing skills assigned to a user\ndata, response, err := apiInstance.PutUserRoutingskillsBulk(userId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PutUserRoutingskillsBulk: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewUsersApiWithConfig(config)\n\nvar userId string // User ID\nvar body platformclientv2.[]Userroutingskillpost // Skill\n// Assign multiple routing skills to a user, replacing any current assignments\ndata, response, err := apiInstance.PutUserRoutingskillsBulk(userId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PutUserRoutingskillsBulk: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "deletescimuser": {
     "operationId": "deletescimuser",
@@ -38269,6 +38389,25 @@
     "return": "Jsonnodesearchresponse",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSuggestApiWithConfig(config)\n\nvar q64 string // q64\nvar expand []string // Which fields, if any, to expand\nvar profile bool // profile\n// Suggest resources using the q64 value returned from a previous suggest query.\ndata, response, err := apiInstance.GetSearchSuggest(q64, expand, profile)\nif err != nil {\n\tfmt.Printf(\"Error calling GetSearchSuggest: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
+  "gettelephonyprovidersedgessitessearch": {
+    "operationId": "gettelephonyprovidersedgessitessearch",
+    "functionName": "GetTelephonyProvidersEdgesSitesSearch",
+    "signature": "GetTelephonyProvidersEdgesSitesSearch(q64, expand)",
+    "parameters": [
+      {
+        "name": "q64",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "expand",
+        "type": "[]string",
+        "required": "false"
+      }
+    ],
+    "return": "Sitessearchresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\nvar q64 string // q64\nvar expand []string // expand\n// Search sites using the q64 value returned from a previous search\ndata, response, err := apiInstance.GetTelephonyProvidersEdgesSitesSearch(q64, expand)\nif err != nil {\n\tfmt.Printf(\"Error calling GetTelephonyProvidersEdgesSitesSearch: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
   "getuserssearch": {
     "operationId": "getuserssearch",
     "functionName": "GetUsersSearch",
@@ -38419,6 +38558,20 @@
     ],
     "return": "Teamssearchresponse",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewTeamsApiWithConfig(config)\n\nvar body platformclientv2.Teamsearchrequest // Search request options\n// Search resources.\ndata, response, err := apiInstance.PostTeamsSearch(body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostTeamsSearch: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "posttelephonyprovidersedgessitessearch": {
+    "operationId": "posttelephonyprovidersedgessitessearch",
+    "functionName": "PostTelephonyProvidersEdgesSitesSearch",
+    "signature": "PostTelephonyProvidersEdgesSitesSearch(body)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Sitesearchrequest",
+        "required": "true"
+      }
+    ],
+    "return": "Sitessearchresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\nvar body platformclientv2.Sitesearchrequest // Search request options\n// Search sites\ndata, response, err := apiInstance.PostTelephonyProvidersEdgesSitesSearch(body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostTelephonyProvidersEdgesSitesSearch: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "postuserssearch": {
     "operationId": "postuserssearch",
@@ -39061,7 +39214,7 @@
       }
     ],
     "return": "Communicationtranslationlist",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSpeechTextAnalyticsApiWithConfig(config)\n\nvar languageId string // Target translation language\nvar conversationId string // Conversation id\nvar communicationId string // Communication id associated with the conversation\nvar recordingId string // Recording id associated with the communication\n// Translate all communication(s) for an interaction.\ndata, response, err := apiInstance.GetSpeechandtextanalyticsTranslationsLanguageConversation(languageId, conversationId, communicationId, recordingId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetSpeechandtextanalyticsTranslationsLanguageConversation: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSpeechTextAnalyticsApiWithConfig(config)\n\nvar languageId string // Target translation language\nvar conversationId string // Conversation id\nvar communicationId string // Communication id associated with the conversation. Please provide a valid communicationId when requesting non-email interactions.\nvar recordingId string // Recording id associated with the communication. Please provide a valid recordingId when requesting voice interactions.\n// Translate a single interaction recording (or an email conversation)\ndata, response, err := apiInstance.GetSpeechandtextanalyticsTranslationsLanguageConversation(languageId, conversationId, communicationId, recordingId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetSpeechandtextanalyticsTranslationsLanguageConversation: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getspeechandtextanalyticstranslationslanguages": {
     "operationId": "getspeechandtextanalyticstranslationslanguages",

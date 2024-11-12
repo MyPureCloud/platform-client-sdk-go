@@ -21,7 +21,7 @@ type Additionalmessage struct {
 	StickerIds *[]string `json:"stickerIds,omitempty"`
 
 	// MessagingTemplate - The messaging template use to send a predefined canned response with the message
-	MessagingTemplate *Messagingtemplaterequest `json:"messagingTemplate,omitempty"`
+	MessagingTemplate *Sendmessagingtemplaterequest `json:"messagingTemplate,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -93,7 +93,7 @@ func (o Additionalmessage) MarshalJSON() ([]byte, error) {
 		
 		StickerIds *[]string `json:"stickerIds,omitempty"`
 		
-		MessagingTemplate *Messagingtemplaterequest `json:"messagingTemplate,omitempty"`
+		MessagingTemplate *Sendmessagingtemplaterequest `json:"messagingTemplate,omitempty"`
 		Alias
 	}{ 
 		TextBody: o.TextBody,

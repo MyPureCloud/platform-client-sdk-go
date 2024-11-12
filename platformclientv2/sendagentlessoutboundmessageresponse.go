@@ -27,11 +27,11 @@ type Sendagentlessoutboundmessageresponse struct {
 	// MessengerType - Type of messenger.
 	MessengerType *string `json:"messengerType,omitempty"`
 
-	// TextBody - The body of the text message.
+	// TextBody - The body of the text message. (Deprecated - Instead use message.normalizedMessage.text)
 	TextBody *string `json:"textBody,omitempty"`
 
-	// MessagingTemplate - The messaging template sent
-	MessagingTemplate *Messagingtemplaterequest `json:"messagingTemplate,omitempty"`
+	// MessagingTemplate - The messaging template sent. (Deprecated - Instead use message.normalizedMessage.content[#].template)
+	MessagingTemplate *Sendmessagingtemplaterequest `json:"messagingTemplate,omitempty"`
 
 	// UseExistingActiveConversation - Use an existing active conversation to send the agentless outbound message. Set this parameter to 'true' to use active conversation. Default value: false
 	UseExistingActiveConversation *bool `json:"useExistingActiveConversation,omitempty"`
@@ -132,7 +132,7 @@ func (o Sendagentlessoutboundmessageresponse) MarshalJSON() ([]byte, error) {
 		
 		TextBody *string `json:"textBody,omitempty"`
 		
-		MessagingTemplate *Messagingtemplaterequest `json:"messagingTemplate,omitempty"`
+		MessagingTemplate *Sendmessagingtemplaterequest `json:"messagingTemplate,omitempty"`
 		
 		UseExistingActiveConversation *bool `json:"useExistingActiveConversation,omitempty"`
 		

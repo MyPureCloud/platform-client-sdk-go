@@ -277,8 +277,6 @@ func (a ExternalContactsApi) DeleteExternalcontactsContactsSchema(schemaId strin
 // DeleteExternalcontactsExternalsource invokes DELETE /api/v2/externalcontacts/externalsources/{externalSourceId}
 //
 // Delete an External Source. WARNING: Any records that reference this External Source will not be automatically cleaned up. Those records will still be editable, but their External IDs may not be fully viewable.
-//
-// Preview: DeleteExternalcontactsExternalsource is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ExternalContactsApi) DeleteExternalcontactsExternalsource(externalSourceId string) (*interface{}, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -1695,8 +1693,6 @@ func (a ExternalContactsApi) GetExternalcontactsContactsSchemas() (*Dataschemali
 // GetExternalcontactsExternalsource invokes GET /api/v2/externalcontacts/externalsources/{externalSourceId}
 //
 // Fetch an External Source
-//
-// Preview: GetExternalcontactsExternalsource is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ExternalContactsApi) GetExternalcontactsExternalsource(externalSourceId string) (*Externalsource, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1779,8 +1775,6 @@ func (a ExternalContactsApi) GetExternalcontactsExternalsource(externalSourceId 
 // GetExternalcontactsExternalsources invokes GET /api/v2/externalcontacts/externalsources
 //
 // Fetch a list of External Sources
-//
-// Preview: GetExternalcontactsExternalsources is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ExternalContactsApi) GetExternalcontactsExternalsources(cursor string, limit int, name string, active bool) (*Cursorexternalsourcelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5406,8 +5400,6 @@ func (a ExternalContactsApi) PostExternalcontactsContactsSchemas(body Dataschema
 // PostExternalcontactsExternalsources invokes POST /api/v2/externalcontacts/externalsources
 //
 // Create an External Source
-//
-// Preview: PostExternalcontactsExternalsources is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ExternalContactsApi) PostExternalcontactsExternalsources(body Externalsource) (*Externalsource, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6621,8 +6613,6 @@ func (a ExternalContactsApi) PutExternalcontactsConversation(conversationId stri
 // PutExternalcontactsExternalsource invokes PUT /api/v2/externalcontacts/externalsources/{externalSourceId}
 //
 // Update an External Source
-//
-// Preview: PutExternalcontactsExternalsource is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ExternalContactsApi) PutExternalcontactsExternalsource(externalSourceId string, body Externalsource) (*Externalsource, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

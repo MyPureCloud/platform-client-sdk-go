@@ -7,19 +7,19 @@ import (
 	"strings"
 )
 
-// Messagingtemplaterequest
-type Messagingtemplaterequest struct { 
+// Conversationsocialexpressioneventtopicconversationdivisionmembership
+type Conversationsocialexpressioneventtopicconversationdivisionmembership struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// ResponseId - A Response Management response identifier for a messaging template defined response
-	ResponseId *string `json:"responseId,omitempty"`
+	// Division
+	Division *Conversationsocialexpressioneventtopicdomainentityref `json:"division,omitempty"`
 
-	// Parameters - A list of Response Management response substitutions for the response's messaging template
-	Parameters *[]Templateparameter `json:"parameters,omitempty"`
+	// Entities
+	Entities *[]Conversationsocialexpressioneventtopicdivisionentityref `json:"entities,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Messagingtemplaterequest) SetField(field string, fieldValue interface{}) {
+func (o *Conversationsocialexpressioneventtopicconversationdivisionmembership) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -40,7 +40,7 @@ func (o *Messagingtemplaterequest) SetField(field string, fieldValue interface{}
 	o.SetFieldNames[field] = true
 }
 
-func (o Messagingtemplaterequest) MarshalJSON() ([]byte, error) {
+func (o Conversationsocialexpressioneventtopicconversationdivisionmembership) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -78,35 +78,36 @@ func (o Messagingtemplaterequest) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Messagingtemplaterequest
+	type Alias Conversationsocialexpressioneventtopicconversationdivisionmembership
 	
 	return json.Marshal(&struct { 
-		ResponseId *string `json:"responseId,omitempty"`
+		Division *Conversationsocialexpressioneventtopicdomainentityref `json:"division,omitempty"`
 		
-		Parameters *[]Templateparameter `json:"parameters,omitempty"`
+		Entities *[]Conversationsocialexpressioneventtopicdivisionentityref `json:"entities,omitempty"`
 		Alias
 	}{ 
-		ResponseId: o.ResponseId,
+		Division: o.Division,
 		
-		Parameters: o.Parameters,
+		Entities: o.Entities,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Messagingtemplaterequest) UnmarshalJSON(b []byte) error {
-	var MessagingtemplaterequestMap map[string]interface{}
-	err := json.Unmarshal(b, &MessagingtemplaterequestMap)
+func (o *Conversationsocialexpressioneventtopicconversationdivisionmembership) UnmarshalJSON(b []byte) error {
+	var ConversationsocialexpressioneventtopicconversationdivisionmembershipMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationsocialexpressioneventtopicconversationdivisionmembershipMap)
 	if err != nil {
 		return err
 	}
 	
-	if ResponseId, ok := MessagingtemplaterequestMap["responseId"].(string); ok {
-		o.ResponseId = &ResponseId
+	if Division, ok := ConversationsocialexpressioneventtopicconversationdivisionmembershipMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
 	}
-    
-	if Parameters, ok := MessagingtemplaterequestMap["parameters"].([]interface{}); ok {
-		ParametersString, _ := json.Marshal(Parameters)
-		json.Unmarshal(ParametersString, &o.Parameters)
+	
+	if Entities, ok := ConversationsocialexpressioneventtopicconversationdivisionmembershipMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
 	}
 	
 
@@ -114,7 +115,7 @@ func (o *Messagingtemplaterequest) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Messagingtemplaterequest) String() string {
+func (o *Conversationsocialexpressioneventtopicconversationdivisionmembership) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

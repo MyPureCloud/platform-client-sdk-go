@@ -38,6 +38,9 @@ type Workitemstatus struct {
 	// Worktype - The Worktype containing the Status.
 	Worktype *Worktypereference `json:"worktype,omitempty"`
 
+	// AutoTerminateWorkitem - Terminate workitem on selection of status. Applicable only for statuses in the Closed category.
+	AutoTerminateWorkitem *bool `json:"autoTerminateWorkitem,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -123,6 +126,8 @@ func (o Workitemstatus) MarshalJSON() ([]byte, error) {
 		
 		Worktype *Worktypereference `json:"worktype,omitempty"`
 		
+		AutoTerminateWorkitem *bool `json:"autoTerminateWorkitem,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -143,6 +148,8 @@ func (o Workitemstatus) MarshalJSON() ([]byte, error) {
 		StatusTransitionTime: o.StatusTransitionTime,
 		
 		Worktype: o.Worktype,
+		
+		AutoTerminateWorkitem: o.AutoTerminateWorkitem,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -196,6 +203,10 @@ func (o *Workitemstatus) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(WorktypeString, &o.Worktype)
 	}
 	
+	if AutoTerminateWorkitem, ok := WorkitemstatusMap["autoTerminateWorkitem"].(bool); ok {
+		o.AutoTerminateWorkitem = &AutoTerminateWorkitem
+	}
+    
 	if SelfUri, ok := WorkitemstatusMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

@@ -26,6 +26,9 @@ type Stationentitylisting struct {
 	// TotalNumberOfEntities - The total organization-wide number of entities.
 	TotalNumberOfEntities *int `json:"totalNumberOfEntities,omitempty"`
 
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
+
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
 
@@ -37,9 +40,6 @@ type Stationentitylisting struct {
 
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
-
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
 
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
@@ -118,6 +118,8 @@ func (o Stationentitylisting) MarshalJSON() ([]byte, error) {
 		
 		TotalNumberOfEntities *int `json:"totalNumberOfEntities,omitempty"`
 		
+		PreviousUri *string `json:"previousUri,omitempty"`
+		
 		LastUri *string `json:"lastUri,omitempty"`
 		
 		FirstUri *string `json:"firstUri,omitempty"`
@@ -125,8 +127,6 @@ func (o Stationentitylisting) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		
 		NextUri *string `json:"nextUri,omitempty"`
-		
-		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		Alias
@@ -141,6 +141,8 @@ func (o Stationentitylisting) MarshalJSON() ([]byte, error) {
 		
 		TotalNumberOfEntities: o.TotalNumberOfEntities,
 		
+		PreviousUri: o.PreviousUri,
+		
 		LastUri: o.LastUri,
 		
 		FirstUri: o.FirstUri,
@@ -148,8 +150,6 @@ func (o Stationentitylisting) MarshalJSON() ([]byte, error) {
 		SelfUri: o.SelfUri,
 		
 		NextUri: o.NextUri,
-		
-		PreviousUri: o.PreviousUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
@@ -188,6 +188,10 @@ func (o *Stationentitylisting) UnmarshalJSON(b []byte) error {
 		o.TotalNumberOfEntities = &TotalNumberOfEntitiesInt
 	}
 	
+	if PreviousUri, ok := StationentitylistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
+	}
+    
 	if LastUri, ok := StationentitylistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
 	}
@@ -202,10 +206,6 @@ func (o *Stationentitylisting) UnmarshalJSON(b []byte) error {
     
 	if NextUri, ok := StationentitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
-	}
-    
-	if PreviousUri, ok := StationentitylistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
 	}
     
 	if PageCount, ok := StationentitylistingMap["pageCount"].(float64); ok {

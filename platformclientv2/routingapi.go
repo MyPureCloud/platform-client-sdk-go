@@ -1697,7 +1697,7 @@ func (a RoutingApi) DeleteRoutingWrapupcode(codeId string) (*APIResponse, error)
 
 // DeleteUserRoutinglanguage invokes DELETE /api/v2/users/{userId}/routinglanguages/{languageId}
 //
-// Remove routing language from user
+// Remove a routing language from a user
 func (a RoutingApi) DeleteUserRoutinglanguage(userId string, languageId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -1778,7 +1778,7 @@ func (a RoutingApi) DeleteUserRoutinglanguage(userId string, languageId string) 
 
 // DeleteUserRoutingskill invokes DELETE /api/v2/users/{userId}/routingskills/{skillId}
 //
-// Remove routing skill from user
+// Remove a routing skill from a user
 func (a RoutingApi) DeleteUserRoutingskill(userId string, skillId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -7345,7 +7345,7 @@ func (a RoutingApi) GetUserQueues(userId string, pageSize int, pageNumber int, j
 
 // GetUserRoutinglanguages invokes GET /api/v2/users/{userId}/routinglanguages
 //
-// List routing language for user
+// List routing languages assigned to a user
 func (a RoutingApi) GetUserRoutinglanguages(userId string, pageSize int, pageNumber int, sortOrder string) (*Userlanguageentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -7433,7 +7433,7 @@ func (a RoutingApi) GetUserRoutinglanguages(userId string, pageSize int, pageNum
 
 // GetUserRoutingskills invokes GET /api/v2/users/{userId}/routingskills
 //
-// List routing skills for user
+// List routing skills assigned to a user
 func (a RoutingApi) GetUserRoutingskills(userId string, pageSize int, pageNumber int, sortOrder string) (*Userskillentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -8767,7 +8767,7 @@ func (a RoutingApi) PatchUserQueues(userId string, body []Userqueue, divisionId 
 
 // PatchUserRoutinglanguage invokes PATCH /api/v2/users/{userId}/routinglanguages/{languageId}
 //
-// Update routing language proficiency or state.
+// Update an assigned routing language's proficiency
 func (a RoutingApi) PatchUserRoutinglanguage(userId string, languageId string, body Userroutinglanguage) (*Userroutinglanguage, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -8863,7 +8863,7 @@ func (a RoutingApi) PatchUserRoutinglanguage(userId string, languageId string, b
 
 // PatchUserRoutinglanguagesBulk invokes PATCH /api/v2/users/{userId}/routinglanguages/bulk
 //
-// Add bulk routing language to user. Max limit 50 languages
+// Assign multiple routing languages to a user. Max 50 routing languages in request body
 func (a RoutingApi) PatchUserRoutinglanguagesBulk(userId string, body []Userroutinglanguagepost) (*Userlanguageentitylisting, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -8953,7 +8953,7 @@ func (a RoutingApi) PatchUserRoutinglanguagesBulk(userId string, body []Userrout
 
 // PatchUserRoutingskillsBulk invokes PATCH /api/v2/users/{userId}/routingskills/bulk
 //
-// Bulk add routing skills to user
+// Assign multiple routing skills to a user
 func (a RoutingApi) PatchUserRoutingskillsBulk(userId string, body []Userroutingskillpost) (*Userskillentitylisting, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -11149,7 +11149,7 @@ func (a RoutingApi) PostRoutingWrapupcodes(body Wrapupcoderequest) (*Wrapupcode,
 
 // PostUserRoutinglanguages invokes POST /api/v2/users/{userId}/routinglanguages
 //
-// Add routing language to user
+// Assign a routing language to a user
 func (a RoutingApi) PostUserRoutinglanguages(userId string, body Userroutinglanguagepost) (*Userroutinglanguage, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -11239,7 +11239,7 @@ func (a RoutingApi) PostUserRoutinglanguages(userId string, body Userroutinglang
 
 // PostUserRoutingskills invokes POST /api/v2/users/{userId}/routingskills
 //
-// Add routing skill to user
+// Assign a routing skill to a user
 func (a RoutingApi) PostUserRoutingskills(userId string, body Userroutingskillpost) (*Userroutingskill, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -12473,7 +12473,7 @@ func (a RoutingApi) PutRoutingWrapupcode(codeId string, body Wrapupcoderequest) 
 
 // PutUserRoutingskill invokes PUT /api/v2/users/{userId}/routingskills/{skillId}
 //
-// Update routing skill proficiency or state.
+// Update an assigned routing skill's proficiency
 func (a RoutingApi) PutUserRoutingskill(userId string, skillId string, body Userroutingskill) (*Userroutingskill, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -12569,7 +12569,7 @@ func (a RoutingApi) PutUserRoutingskill(userId string, skillId string, body User
 
 // PutUserRoutingskillsBulk invokes PUT /api/v2/users/{userId}/routingskills/bulk
 //
-// Replace all routing skills assigned to a user
+// Assign multiple routing skills to a user, replacing any current assignments
 func (a RoutingApi) PutUserRoutingskillsBulk(userId string, body []Userroutingskillpost) (*Userskillentitylisting, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

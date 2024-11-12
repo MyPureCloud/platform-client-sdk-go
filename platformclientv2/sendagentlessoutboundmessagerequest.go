@@ -24,7 +24,7 @@ type Sendagentlessoutboundmessagerequest struct {
 	TextBody *string `json:"textBody,omitempty"`
 
 	// MessagingTemplate - The messaging template to use in the case of WhatsApp messenger type. This field is required when using WhatsApp messenger type
-	MessagingTemplate *Messagingtemplaterequest `json:"messagingTemplate,omitempty"`
+	MessagingTemplate *Sendmessagingtemplaterequest `json:"messagingTemplate,omitempty"`
 
 	// UseExistingActiveConversation - Use an existing active conversation to send the agentless outbound message. Set this parameter to 'true' to use active conversation. Default value: false
 	UseExistingActiveConversation *bool `json:"useExistingActiveConversation,omitempty"`
@@ -101,7 +101,7 @@ func (o Sendagentlessoutboundmessagerequest) MarshalJSON() ([]byte, error) {
 		
 		TextBody *string `json:"textBody,omitempty"`
 		
-		MessagingTemplate *Messagingtemplaterequest `json:"messagingTemplate,omitempty"`
+		MessagingTemplate *Sendmessagingtemplaterequest `json:"messagingTemplate,omitempty"`
 		
 		UseExistingActiveConversation *bool `json:"useExistingActiveConversation,omitempty"`
 		Alias

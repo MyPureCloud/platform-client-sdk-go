@@ -108,6 +108,9 @@ type Campaign struct {
 	// Division - The division this campaign belongs to.
 	Division *Domainentityref `json:"division,omitempty"`
 
+	// AgentOwnedColumn - Name of the contact list column containing the id of the agent who owns the record. Only applicable to preview campaigns.
+	AgentOwnedColumn *string `json:"agentOwnedColumn,omitempty"`
+
 	// DynamicContactQueueingSettings - Settings for dynamic queueing of contacts.
 	DynamicContactQueueingSettings *Dynamiccontactqueueingsettings `json:"dynamicContactQueueingSettings,omitempty"`
 
@@ -270,6 +273,8 @@ func (o Campaign) MarshalJSON() ([]byte, error) {
 		
 		Division *Domainentityref `json:"division,omitempty"`
 		
+		AgentOwnedColumn *string `json:"agentOwnedColumn,omitempty"`
+		
 		DynamicContactQueueingSettings *Dynamiccontactqueueingsettings `json:"dynamicContactQueueingSettings,omitempty"`
 		
 		SkillColumns *[]string `json:"skillColumns,omitempty"`
@@ -346,6 +351,8 @@ func (o Campaign) MarshalJSON() ([]byte, error) {
 		ContactListFilters: o.ContactListFilters,
 		
 		Division: o.Division,
+		
+		AgentOwnedColumn: o.AgentOwnedColumn,
 		
 		DynamicContactQueueingSettings: o.DynamicContactQueueingSettings,
 		
@@ -519,6 +526,10 @@ func (o *Campaign) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(DivisionString, &o.Division)
 	}
 	
+	if AgentOwnedColumn, ok := CampaignMap["agentOwnedColumn"].(string); ok {
+		o.AgentOwnedColumn = &AgentOwnedColumn
+	}
+    
 	if DynamicContactQueueingSettings, ok := CampaignMap["dynamicContactQueueingSettings"].(map[string]interface{}); ok {
 		DynamicContactQueueingSettingsString, _ := json.Marshal(DynamicContactQueueingSettings)
 		json.Unmarshal(DynamicContactQueueingSettingsString, &o.DynamicContactQueueingSettings)

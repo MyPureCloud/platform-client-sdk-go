@@ -23,6 +23,9 @@ type Managementunitlisting struct {
 	// Total - Deprecated, paging is not supported
 	Total *int `json:"total,omitempty"`
 
+	// PreviousUri - Deprecated, paging is not supported
+	PreviousUri *string `json:"previousUri,omitempty"`
+
 	// LastUri - Deprecated, paging is not supported
 	LastUri *string `json:"lastUri,omitempty"`
 
@@ -34,9 +37,6 @@ type Managementunitlisting struct {
 
 	// PageCount - Deprecated, paging is not supported
 	PageCount *int `json:"pageCount,omitempty"`
-
-	// PreviousUri - Deprecated, paging is not supported
-	PreviousUri *string `json:"previousUri,omitempty"`
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -113,6 +113,8 @@ func (o Managementunitlisting) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
+		PreviousUri *string `json:"previousUri,omitempty"`
+		
 		LastUri *string `json:"lastUri,omitempty"`
 		
 		FirstUri *string `json:"firstUri,omitempty"`
@@ -120,8 +122,6 @@ func (o Managementunitlisting) MarshalJSON() ([]byte, error) {
 		NextUri *string `json:"nextUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
-		
-		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
@@ -134,6 +134,8 @@ func (o Managementunitlisting) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
+		PreviousUri: o.PreviousUri,
+		
 		LastUri: o.LastUri,
 		
 		FirstUri: o.FirstUri,
@@ -141,8 +143,6 @@ func (o Managementunitlisting) MarshalJSON() ([]byte, error) {
 		NextUri: o.NextUri,
 		
 		PageCount: o.PageCount,
-		
-		PreviousUri: o.PreviousUri,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -176,6 +176,10 @@ func (o *Managementunitlisting) UnmarshalJSON(b []byte) error {
 		o.Total = &TotalInt
 	}
 	
+	if PreviousUri, ok := ManagementunitlistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
+	}
+    
 	if LastUri, ok := ManagementunitlistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
 	}
@@ -193,10 +197,6 @@ func (o *Managementunitlisting) UnmarshalJSON(b []byte) error {
 		o.PageCount = &PageCountInt
 	}
 	
-	if PreviousUri, ok := ManagementunitlistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
-	}
-    
 	if SelfUri, ok := ManagementunitlistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

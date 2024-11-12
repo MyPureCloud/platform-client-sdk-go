@@ -37,6 +37,9 @@ type Queueconversationeventtopicconversation struct {
 
 	// SecurePause
 	SecurePause *bool `json:"securePause,omitempty"`
+
+	// Divisions
+	Divisions *[]Queueconversationeventtopicconversationdivisionmembership `json:"divisions,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -119,6 +122,8 @@ func (o Queueconversationeventtopicconversation) MarshalJSON() ([]byte, error) {
 		UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
 		
 		SecurePause *bool `json:"securePause,omitempty"`
+		
+		Divisions *[]Queueconversationeventtopicconversationdivisionmembership `json:"divisions,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -138,6 +143,8 @@ func (o Queueconversationeventtopicconversation) MarshalJSON() ([]byte, error) {
 		UtilizationLabelId: o.UtilizationLabelId,
 		
 		SecurePause: o.SecurePause,
+		
+		Divisions: o.Divisions,
 		Alias:    (Alias)(o),
 	})
 }
@@ -188,6 +195,11 @@ func (o *Queueconversationeventtopicconversation) UnmarshalJSON(b []byte) error 
 		o.SecurePause = &SecurePause
 	}
     
+	if Divisions, ok := QueueconversationeventtopicconversationMap["divisions"].([]interface{}); ok {
+		DivisionsString, _ := json.Marshal(Divisions)
+		json.Unmarshal(DivisionsString, &o.Divisions)
+	}
+	
 
 	return nil
 }

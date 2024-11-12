@@ -29,6 +29,9 @@ type Queueconversationcalleventtopiccallconversation struct {
 	// UtilizationLabelId
 	UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
 
+	// Divisions
+	Divisions *[]Queueconversationcalleventtopicconversationdivisionmembership `json:"divisions,omitempty"`
+
 	// RecordingState
 	RecordingState *string `json:"recordingState,omitempty"`
 
@@ -114,6 +117,8 @@ func (o Queueconversationcalleventtopiccallconversation) MarshalJSON() ([]byte, 
 		
 		UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
 		
+		Divisions *[]Queueconversationcalleventtopicconversationdivisionmembership `json:"divisions,omitempty"`
+		
 		RecordingState *string `json:"recordingState,omitempty"`
 		
 		SecurePause *bool `json:"securePause,omitempty"`
@@ -132,6 +137,8 @@ func (o Queueconversationcalleventtopiccallconversation) MarshalJSON() ([]byte, 
 		Address: o.Address,
 		
 		UtilizationLabelId: o.UtilizationLabelId,
+		
+		Divisions: o.Divisions,
 		
 		RecordingState: o.RecordingState,
 		
@@ -175,6 +182,11 @@ func (o *Queueconversationcalleventtopiccallconversation) UnmarshalJSON(b []byte
 		o.UtilizationLabelId = &UtilizationLabelId
 	}
     
+	if Divisions, ok := QueueconversationcalleventtopiccallconversationMap["divisions"].([]interface{}); ok {
+		DivisionsString, _ := json.Marshal(Divisions)
+		json.Unmarshal(DivisionsString, &o.Divisions)
+	}
+	
 	if RecordingState, ok := QueueconversationcalleventtopiccallconversationMap["recordingState"].(string); ok {
 		o.RecordingState = &RecordingState
 	}

@@ -66,6 +66,9 @@ type Externalcontact struct {
 	// FacebookId
 	FacebookId *Facebookid `json:"facebookId,omitempty"`
 
+	// ExternalIds - A list of external identifiers that identify this contact in an external system
+	ExternalIds *[]Externalid `json:"externalIds,omitempty"`
+
 	// ModifyDate - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ModifyDate *time.Time `json:"modifyDate,omitempty"`
 
@@ -221,6 +224,8 @@ func (o Externalcontact) MarshalJSON() ([]byte, error) {
 		
 		FacebookId *Facebookid `json:"facebookId,omitempty"`
 		
+		ExternalIds *[]Externalid `json:"externalIds,omitempty"`
+		
 		ModifyDate *string `json:"modifyDate,omitempty"`
 		
 		CreateDate *string `json:"createDate,omitempty"`
@@ -283,6 +288,8 @@ func (o Externalcontact) MarshalJSON() ([]byte, error) {
 		WhatsAppId: o.WhatsAppId,
 		
 		FacebookId: o.FacebookId,
+		
+		ExternalIds: o.ExternalIds,
 		
 		ModifyDate: ModifyDate,
 		
@@ -399,6 +406,11 @@ func (o *Externalcontact) UnmarshalJSON(b []byte) error {
 	if FacebookId, ok := ExternalcontactMap["facebookId"].(map[string]interface{}); ok {
 		FacebookIdString, _ := json.Marshal(FacebookId)
 		json.Unmarshal(FacebookIdString, &o.FacebookId)
+	}
+	
+	if ExternalIds, ok := ExternalcontactMap["externalIds"].([]interface{}); ok {
+		ExternalIdsString, _ := json.Marshal(ExternalIds)
+		json.Unmarshal(ExternalIdsString, &o.ExternalIds)
 	}
 	
 	if modifyDateString, ok := ExternalcontactMap["modifyDate"].(string); ok {

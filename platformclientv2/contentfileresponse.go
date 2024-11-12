@@ -22,6 +22,9 @@ type Contentfileresponse struct {
 
 	// Size - The size of the file in bytes
 	Size *int `json:"size,omitempty"`
+
+	// ContentUrl - Public download url for content. Needs to be expanded
+	ContentUrl *string `json:"contentUrl,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +97,8 @@ func (o Contentfileresponse) MarshalJSON() ([]byte, error) {
 		Checksum *string `json:"checksum,omitempty"`
 		
 		Size *int `json:"size,omitempty"`
+		
+		ContentUrl *string `json:"contentUrl,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -103,6 +108,8 @@ func (o Contentfileresponse) MarshalJSON() ([]byte, error) {
 		Checksum: o.Checksum,
 		
 		Size: o.Size,
+		
+		ContentUrl: o.ContentUrl,
 		Alias:    (Alias)(o),
 	})
 }
@@ -131,6 +138,10 @@ func (o *Contentfileresponse) UnmarshalJSON(b []byte) error {
 		o.Size = &SizeInt
 	}
 	
+	if ContentUrl, ok := ContentfileresponseMap["contentUrl"].(string); ok {
+		o.ContentUrl = &ContentUrl
+	}
+    
 
 	return nil
 }

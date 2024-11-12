@@ -90,6 +90,9 @@ type Conversationmessageeventtopicmessagemediaparticipant struct {
 	// ExternalContact
 	ExternalContact *Conversationmessageeventtopicurireference `json:"externalContact,omitempty"`
 
+	// ExternalContactInitialDivisionId
+	ExternalContactInitialDivisionId *string `json:"externalContactInitialDivisionId,omitempty"`
+
 	// ExternalOrganization
 	ExternalOrganization *Conversationmessageeventtopicurireference `json:"externalOrganization,omitempty"`
 
@@ -327,6 +330,8 @@ func (o Conversationmessageeventtopicmessagemediaparticipant) MarshalJSON() ([]b
 		
 		ExternalContact *Conversationmessageeventtopicurireference `json:"externalContact,omitempty"`
 		
+		ExternalContactInitialDivisionId *string `json:"externalContactInitialDivisionId,omitempty"`
+		
 		ExternalOrganization *Conversationmessageeventtopicurireference `json:"externalOrganization,omitempty"`
 		
 		Wrapup *Conversationmessageeventtopicwrapup `json:"wrapup,omitempty"`
@@ -417,6 +422,8 @@ func (o Conversationmessageeventtopicmessagemediaparticipant) MarshalJSON() ([]b
 		Provider: o.Provider,
 		
 		ExternalContact: o.ExternalContact,
+		
+		ExternalContactInitialDivisionId: o.ExternalContactInitialDivisionId,
 		
 		ExternalOrganization: o.ExternalOrganization,
 		
@@ -583,6 +590,10 @@ func (o *Conversationmessageeventtopicmessagemediaparticipant) UnmarshalJSON(b [
 		json.Unmarshal(ExternalContactString, &o.ExternalContact)
 	}
 	
+	if ExternalContactInitialDivisionId, ok := ConversationmessageeventtopicmessagemediaparticipantMap["externalContactInitialDivisionId"].(string); ok {
+		o.ExternalContactInitialDivisionId = &ExternalContactInitialDivisionId
+	}
+    
 	if ExternalOrganization, ok := ConversationmessageeventtopicmessagemediaparticipantMap["externalOrganization"].(map[string]interface{}); ok {
 		ExternalOrganizationString, _ := json.Marshal(ExternalOrganization)
 		json.Unmarshal(ExternalOrganizationString, &o.ExternalOrganization)

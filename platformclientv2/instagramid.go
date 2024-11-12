@@ -16,6 +16,9 @@ type Instagramid struct {
 
 	// DisplayName - The displayName of the person who owns this Instagram account
 	DisplayName *string `json:"displayName,omitempty"`
+
+	// Handle - The handle of the person who owns this Instagram account
+	Handle *string `json:"handle,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Instagramid) MarshalJSON() ([]byte, error) {
 		Ids *[]Instagramscopedid `json:"ids,omitempty"`
 		
 		DisplayName *string `json:"displayName,omitempty"`
+		
+		Handle *string `json:"handle,omitempty"`
 		Alias
 	}{ 
 		Ids: o.Ids,
 		
 		DisplayName: o.DisplayName,
+		
+		Handle: o.Handle,
 		Alias:    (Alias)(o),
 	})
 }
@@ -107,6 +114,10 @@ func (o *Instagramid) UnmarshalJSON(b []byte) error {
 	
 	if DisplayName, ok := InstagramidMap["displayName"].(string); ok {
 		o.DisplayName = &DisplayName
+	}
+    
+	if Handle, ok := InstagramidMap["handle"].(string); ok {
+		o.Handle = &Handle
 	}
     
 

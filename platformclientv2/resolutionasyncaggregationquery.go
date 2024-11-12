@@ -35,7 +35,7 @@ type Resolutionasyncaggregationquery struct {
 	// Views - Custom derived metric views
 	Views *[]Resolutionaggregationview `json:"views,omitempty"`
 
-	// AlternateTimeDimension - Dimension to use as the alternative timestamp for data in the aggregate.  Choosing \"eventTime\" uses the actual time of the data event.
+	// AlternateTimeDimension - Dimension to use as the alternative timestamp for data in the aggregate.  Choosing \"eventTime\" uses the actual time of the data event and choosing \"wrapUpDate\" uses the date when conversation is ended
 	AlternateTimeDimension *string `json:"alternateTimeDimension,omitempty"`
 
 	// PageSize - The number of results per page

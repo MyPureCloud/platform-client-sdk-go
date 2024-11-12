@@ -44,6 +44,12 @@ type Wfmtimeoffrequestupdatetopictimeoffrequestupdate struct {
 	// DailyDurationMinutes
 	DailyDurationMinutes *int `json:"dailyDurationMinutes,omitempty"`
 
+	// DurationMinutes
+	DurationMinutes *[]int `json:"durationMinutes,omitempty"`
+
+	// PayableMinutes
+	PayableMinutes *[]int `json:"payableMinutes,omitempty"`
+
 	// Notes
 	Notes *string `json:"notes,omitempty"`
 
@@ -151,6 +157,10 @@ func (o Wfmtimeoffrequestupdatetopictimeoffrequestupdate) MarshalJSON() ([]byte,
 		
 		DailyDurationMinutes *int `json:"dailyDurationMinutes,omitempty"`
 		
+		DurationMinutes *[]int `json:"durationMinutes,omitempty"`
+		
+		PayableMinutes *[]int `json:"payableMinutes,omitempty"`
+		
 		Notes *string `json:"notes,omitempty"`
 		
 		ReviewedDate *string `json:"reviewedDate,omitempty"`
@@ -187,6 +197,10 @@ func (o Wfmtimeoffrequestupdatetopictimeoffrequestupdate) MarshalJSON() ([]byte,
 		FullDayManagementUnitDates: o.FullDayManagementUnitDates,
 		
 		DailyDurationMinutes: o.DailyDurationMinutes,
+		
+		DurationMinutes: o.DurationMinutes,
+		
+		PayableMinutes: o.PayableMinutes,
 		
 		Notes: o.Notes,
 		
@@ -258,6 +272,16 @@ func (o *Wfmtimeoffrequestupdatetopictimeoffrequestupdate) UnmarshalJSON(b []byt
 	if DailyDurationMinutes, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["dailyDurationMinutes"].(float64); ok {
 		DailyDurationMinutesInt := int(DailyDurationMinutes)
 		o.DailyDurationMinutes = &DailyDurationMinutesInt
+	}
+	
+	if DurationMinutes, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["durationMinutes"].([]interface{}); ok {
+		DurationMinutesString, _ := json.Marshal(DurationMinutes)
+		json.Unmarshal(DurationMinutesString, &o.DurationMinutes)
+	}
+	
+	if PayableMinutes, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["payableMinutes"].([]interface{}); ok {
+		PayableMinutesString, _ := json.Marshal(PayableMinutes)
+		json.Unmarshal(PayableMinutesString, &o.PayableMinutes)
 	}
 	
 	if Notes, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["notes"].(string); ok {

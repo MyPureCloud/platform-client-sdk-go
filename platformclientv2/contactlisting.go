@@ -35,11 +35,11 @@ type Contactlisting struct {
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
 	// PreviousUri
 	PreviousUri *string `json:"previousUri,omitempty"`
+
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
 
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
@@ -124,9 +124,9 @@ func (o Contactlisting) MarshalJSON() ([]byte, error) {
 		
 		NextUri *string `json:"nextUri,omitempty"`
 		
-		LastUri *string `json:"lastUri,omitempty"`
-		
 		PreviousUri *string `json:"previousUri,omitempty"`
+		
+		LastUri *string `json:"lastUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		Alias
@@ -147,9 +147,9 @@ func (o Contactlisting) MarshalJSON() ([]byte, error) {
 		
 		NextUri: o.NextUri,
 		
-		LastUri: o.LastUri,
-		
 		PreviousUri: o.PreviousUri,
+		
+		LastUri: o.LastUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
@@ -199,12 +199,12 @@ func (o *Contactlisting) UnmarshalJSON(b []byte) error {
 		o.NextUri = &NextUri
 	}
     
-	if LastUri, ok := ContactlistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
 	if PreviousUri, ok := ContactlistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
+	}
+    
+	if LastUri, ok := ContactlistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
 	}
     
 	if PageCount, ok := ContactlistingMap["pageCount"].(float64); ok {

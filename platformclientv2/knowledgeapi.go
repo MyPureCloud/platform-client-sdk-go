@@ -2052,7 +2052,7 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseDocumentFeedbackFeedbackId(knowle
 // GetKnowledgeKnowledgebaseDocumentVariation invokes GET /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/{documentId}/variations/{documentVariationId}
 //
 // Get a variation for a document.
-func (a KnowledgeApi) GetKnowledgeKnowledgebaseDocumentVariation(documentVariationId string, documentId string, knowledgeBaseId string, documentState string) (*Documentvariationresponse, *APIResponse, error) {
+func (a KnowledgeApi) GetKnowledgeKnowledgebaseDocumentVariation(documentVariationId string, documentId string, knowledgeBaseId string, documentState string, expand []string) (*Documentvariationresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/{documentId}/variations/{documentVariationId}"
@@ -2098,6 +2098,8 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseDocumentVariation(documentVariati
 	}
 	
 	queryParams["documentState"] = a.Configuration.APIClient.ParameterToString(documentState, "")
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -2148,7 +2150,7 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseDocumentVariation(documentVariati
 // GetKnowledgeKnowledgebaseDocumentVariations invokes GET /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/{documentId}/variations
 //
 // Get variations for a document.
-func (a KnowledgeApi) GetKnowledgeKnowledgebaseDocumentVariations(knowledgeBaseId string, documentId string, before string, after string, pageSize string, documentState string) (*Documentvariationresponselisting, *APIResponse, error) {
+func (a KnowledgeApi) GetKnowledgeKnowledgebaseDocumentVariations(knowledgeBaseId string, documentId string, before string, after string, pageSize string, documentState string, expand []string) (*Documentvariationresponselisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/{documentId}/variations"
@@ -2194,6 +2196,8 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseDocumentVariations(knowledgeBaseI
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 	queryParams["documentState"] = a.Configuration.APIClient.ParameterToString(documentState, "")
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

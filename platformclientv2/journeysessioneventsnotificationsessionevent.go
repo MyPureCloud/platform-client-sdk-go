@@ -134,6 +134,9 @@ type Journeysessioneventsnotificationsessionevent struct {
 
 	// DivisionIds
 	DivisionIds *[]string `json:"divisionIds,omitempty"`
+
+	// LastScreen
+	LastScreen *string `json:"lastScreen,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -312,6 +315,8 @@ func (o Journeysessioneventsnotificationsessionevent) MarshalJSON() ([]byte, err
 		NetworkConnectivity *Journeysessioneventsnotificationnetworkconnectivity `json:"networkConnectivity,omitempty"`
 		
 		DivisionIds *[]string `json:"divisionIds,omitempty"`
+		
+		LastScreen *string `json:"lastScreen,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -395,6 +400,8 @@ func (o Journeysessioneventsnotificationsessionevent) MarshalJSON() ([]byte, err
 		NetworkConnectivity: o.NetworkConnectivity,
 		
 		DivisionIds: o.DivisionIds,
+		
+		LastScreen: o.LastScreen,
 		Alias:    (Alias)(o),
 	})
 }
@@ -598,6 +605,10 @@ func (o *Journeysessioneventsnotificationsessionevent) UnmarshalJSON(b []byte) e
 		json.Unmarshal(DivisionIdsString, &o.DivisionIds)
 	}
 	
+	if LastScreen, ok := JourneysessioneventsnotificationsessioneventMap["lastScreen"].(string); ok {
+		o.LastScreen = &LastScreen
+	}
+    
 
 	return nil
 }

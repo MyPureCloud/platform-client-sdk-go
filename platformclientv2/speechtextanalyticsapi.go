@@ -2608,7 +2608,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTopicsPublishjob(jobId 
 
 // GetSpeechandtextanalyticsTranslationsLanguageConversation invokes GET /api/v2/speechandtextanalytics/translations/languages/{languageId}/conversations/{conversationId}
 //
-// Translate all communication(s) for an interaction.
+// Translate a single interaction recording (or an email conversation)
 //
 // Preview: GetSpeechandtextanalyticsTranslationsLanguageConversation is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTranslationsLanguageConversation(languageId string, conversationId string, communicationId string, recordingId string) (*Communicationtranslationlist, *APIResponse, error) {

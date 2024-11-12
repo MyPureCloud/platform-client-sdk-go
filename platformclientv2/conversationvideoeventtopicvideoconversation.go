@@ -28,6 +28,9 @@ type Conversationvideoeventtopicvideoconversation struct {
 
 	// UtilizationLabelId
 	UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
+
+	// Divisions
+	Divisions *[]Conversationvideoeventtopicconversationdivisionmembership `json:"divisions,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -104,6 +107,8 @@ func (o Conversationvideoeventtopicvideoconversation) MarshalJSON() ([]byte, err
 		Address *string `json:"address,omitempty"`
 		
 		UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
+		
+		Divisions *[]Conversationvideoeventtopicconversationdivisionmembership `json:"divisions,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -117,6 +122,8 @@ func (o Conversationvideoeventtopicvideoconversation) MarshalJSON() ([]byte, err
 		Address: o.Address,
 		
 		UtilizationLabelId: o.UtilizationLabelId,
+		
+		Divisions: o.Divisions,
 		Alias:    (Alias)(o),
 	})
 }
@@ -154,6 +161,11 @@ func (o *Conversationvideoeventtopicvideoconversation) UnmarshalJSON(b []byte) e
 		o.UtilizationLabelId = &UtilizationLabelId
 	}
     
+	if Divisions, ok := ConversationvideoeventtopicvideoconversationMap["divisions"].([]interface{}); ok {
+		DivisionsString, _ := json.Marshal(Divisions)
+		json.Unmarshal(DivisionsString, &o.Divisions)
+	}
+	
 
 	return nil
 }

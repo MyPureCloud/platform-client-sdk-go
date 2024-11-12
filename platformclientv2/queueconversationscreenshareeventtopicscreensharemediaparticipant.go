@@ -90,6 +90,9 @@ type Queueconversationscreenshareeventtopicscreensharemediaparticipant struct {
 	// ExternalContact
 	ExternalContact *Queueconversationscreenshareeventtopicurireference `json:"externalContact,omitempty"`
 
+	// ExternalContactInitialDivisionId
+	ExternalContactInitialDivisionId *string `json:"externalContactInitialDivisionId,omitempty"`
+
 	// ExternalOrganization
 	ExternalOrganization *Queueconversationscreenshareeventtopicurireference `json:"externalOrganization,omitempty"`
 
@@ -318,6 +321,8 @@ func (o Queueconversationscreenshareeventtopicscreensharemediaparticipant) Marsh
 		
 		ExternalContact *Queueconversationscreenshareeventtopicurireference `json:"externalContact,omitempty"`
 		
+		ExternalContactInitialDivisionId *string `json:"externalContactInitialDivisionId,omitempty"`
+		
 		ExternalOrganization *Queueconversationscreenshareeventtopicurireference `json:"externalOrganization,omitempty"`
 		
 		Wrapup *Queueconversationscreenshareeventtopicwrapup `json:"wrapup,omitempty"`
@@ -402,6 +407,8 @@ func (o Queueconversationscreenshareeventtopicscreensharemediaparticipant) Marsh
 		Provider: o.Provider,
 		
 		ExternalContact: o.ExternalContact,
+		
+		ExternalContactInitialDivisionId: o.ExternalContactInitialDivisionId,
 		
 		ExternalOrganization: o.ExternalOrganization,
 		
@@ -562,6 +569,10 @@ func (o *Queueconversationscreenshareeventtopicscreensharemediaparticipant) Unma
 		json.Unmarshal(ExternalContactString, &o.ExternalContact)
 	}
 	
+	if ExternalContactInitialDivisionId, ok := QueueconversationscreenshareeventtopicscreensharemediaparticipantMap["externalContactInitialDivisionId"].(string); ok {
+		o.ExternalContactInitialDivisionId = &ExternalContactInitialDivisionId
+	}
+    
 	if ExternalOrganization, ok := QueueconversationscreenshareeventtopicscreensharemediaparticipantMap["externalOrganization"].(map[string]interface{}); ok {
 		ExternalOrganizationString, _ := json.Marshal(ExternalOrganization)
 		json.Unmarshal(ExternalOrganizationString, &o.ExternalOrganization)
