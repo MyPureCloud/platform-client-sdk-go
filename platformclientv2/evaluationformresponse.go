@@ -33,6 +33,9 @@ type Evaluationformresponse struct {
 	// WeightMode - Mode for evaluation form weight
 	WeightMode *string `json:"weightMode,omitempty"`
 
+	// EvaluationSettings - Settings for evaluations associated with this form
+	EvaluationSettings *Evaluationsettings `json:"evaluationSettings,omitempty"`
+
 	// PublishedVersions - A list of the published versions of this form. Not populated by default, its availability depends on the endpoint. Use the 'expand=publishHistory' query parameter to retrieve this data where applicable (refer to the endpoint description to see if it is applicable).
 	PublishedVersions *Domainentitylistingevaluationform `json:"publishedVersions,omitempty"`
 
@@ -125,6 +128,8 @@ func (o Evaluationformresponse) MarshalJSON() ([]byte, error) {
 		
 		WeightMode *string `json:"weightMode,omitempty"`
 		
+		EvaluationSettings *Evaluationsettings `json:"evaluationSettings,omitempty"`
+		
 		PublishedVersions *Domainentitylistingevaluationform `json:"publishedVersions,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -143,6 +148,8 @@ func (o Evaluationformresponse) MarshalJSON() ([]byte, error) {
 		QuestionGroups: o.QuestionGroups,
 		
 		WeightMode: o.WeightMode,
+		
+		EvaluationSettings: o.EvaluationSettings,
 		
 		PublishedVersions: o.PublishedVersions,
 		
@@ -188,6 +195,11 @@ func (o *Evaluationformresponse) UnmarshalJSON(b []byte) error {
 		o.WeightMode = &WeightMode
 	}
     
+	if EvaluationSettings, ok := EvaluationformresponseMap["evaluationSettings"].(map[string]interface{}); ok {
+		EvaluationSettingsString, _ := json.Marshal(EvaluationSettings)
+		json.Unmarshal(EvaluationSettingsString, &o.EvaluationSettings)
+	}
+	
 	if PublishedVersions, ok := EvaluationformresponseMap["publishedVersions"].(map[string]interface{}); ok {
 		PublishedVersionsString, _ := json.Marshal(PublishedVersions)
 		json.Unmarshal(PublishedVersionsString, &o.PublishedVersions)

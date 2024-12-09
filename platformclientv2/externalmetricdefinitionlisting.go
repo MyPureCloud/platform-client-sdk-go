@@ -23,6 +23,9 @@ type Externalmetricdefinitionlisting struct {
 	// Total
 	Total *int `json:"total,omitempty"`
 
+	// NextUri
+	NextUri *string `json:"nextUri,omitempty"`
+
 	// PreviousUri
 	PreviousUri *string `json:"previousUri,omitempty"`
 
@@ -34,9 +37,6 @@ type Externalmetricdefinitionlisting struct {
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
-
-	// NextUri
-	NextUri *string `json:"nextUri,omitempty"`
 
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
@@ -113,6 +113,8 @@ func (o Externalmetricdefinitionlisting) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
+		NextUri *string `json:"nextUri,omitempty"`
+		
 		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		LastUri *string `json:"lastUri,omitempty"`
@@ -120,8 +122,6 @@ func (o Externalmetricdefinitionlisting) MarshalJSON() ([]byte, error) {
 		FirstUri *string `json:"firstUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		
-		NextUri *string `json:"nextUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		Alias
@@ -134,6 +134,8 @@ func (o Externalmetricdefinitionlisting) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
+		NextUri: o.NextUri,
+		
 		PreviousUri: o.PreviousUri,
 		
 		LastUri: o.LastUri,
@@ -141,8 +143,6 @@ func (o Externalmetricdefinitionlisting) MarshalJSON() ([]byte, error) {
 		FirstUri: o.FirstUri,
 		
 		SelfUri: o.SelfUri,
-		
-		NextUri: o.NextUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
@@ -176,6 +176,10 @@ func (o *Externalmetricdefinitionlisting) UnmarshalJSON(b []byte) error {
 		o.Total = &TotalInt
 	}
 	
+	if NextUri, ok := ExternalmetricdefinitionlistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
+	}
+    
 	if PreviousUri, ok := ExternalmetricdefinitionlistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
 	}
@@ -190,10 +194,6 @@ func (o *Externalmetricdefinitionlisting) UnmarshalJSON(b []byte) error {
     
 	if SelfUri, ok := ExternalmetricdefinitionlistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
-	}
-    
-	if NextUri, ok := ExternalmetricdefinitionlistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
 	}
     
 	if PageCount, ok := ExternalmetricdefinitionlistingMap["pageCount"].(float64); ok {

@@ -126,6 +126,9 @@ type Session struct {
 	// Authenticated - Indicates whether or not the session is authenticated.
 	Authenticated *bool `json:"authenticated,omitempty"`
 
+	// DivisionIds - List of division IDs associated with the session.
+	DivisionIds *[]string `json:"divisionIds,omitempty"`
+
 	// LastScreen - The app screen name where the customer's last app interaction occurred.
 	LastScreen *string `json:"lastScreen,omitempty"`
 
@@ -322,6 +325,8 @@ func (o Session) MarshalJSON() ([]byte, error) {
 		
 		Authenticated *bool `json:"authenticated,omitempty"`
 		
+		DivisionIds *[]string `json:"divisionIds,omitempty"`
+		
 		LastScreen *string `json:"lastScreen,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -414,6 +419,8 @@ func (o Session) MarshalJSON() ([]byte, error) {
 		LastAcdOutcome: o.LastAcdOutcome,
 		
 		Authenticated: o.Authenticated,
+		
+		DivisionIds: o.DivisionIds,
 		
 		LastScreen: o.LastScreen,
 		
@@ -616,6 +623,11 @@ func (o *Session) UnmarshalJSON(b []byte) error {
 		o.Authenticated = &Authenticated
 	}
     
+	if DivisionIds, ok := SessionMap["divisionIds"].([]interface{}); ok {
+		DivisionIdsString, _ := json.Marshal(DivisionIds)
+		json.Unmarshal(DivisionIdsString, &o.DivisionIds)
+	}
+	
 	if LastScreen, ok := SessionMap["lastScreen"].(string); ok {
 		o.LastScreen = &LastScreen
 	}

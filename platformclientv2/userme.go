@@ -111,6 +111,9 @@ type Userme struct {
 	// Languages - Routing (ACD) languages possessed by the user
 	Languages *[]Userroutinglanguage `json:"languages,omitempty"`
 
+	// AutoAnswerSettings - Auto answer settings for this user
+	AutoAnswerSettings *Autoanswersettings `json:"autoAnswerSettings,omitempty"`
+
 	// AcdAutoAnswer - acd auto answer
 	AcdAutoAnswer *bool `json:"acdAutoAnswer,omitempty"`
 
@@ -312,6 +315,8 @@ func (o Userme) MarshalJSON() ([]byte, error) {
 		
 		Languages *[]Userroutinglanguage `json:"languages,omitempty"`
 		
+		AutoAnswerSettings *Autoanswersettings `json:"autoAnswerSettings,omitempty"`
+		
 		AcdAutoAnswer *bool `json:"acdAutoAnswer,omitempty"`
 		
 		LanguagePreference *string `json:"languagePreference,omitempty"`
@@ -420,6 +425,8 @@ func (o Userme) MarshalJSON() ([]byte, error) {
 		Skills: o.Skills,
 		
 		Languages: o.Languages,
+		
+		AutoAnswerSettings: o.AutoAnswerSettings,
 		
 		AcdAutoAnswer: o.AcdAutoAnswer,
 		
@@ -628,6 +635,11 @@ func (o *Userme) UnmarshalJSON(b []byte) error {
 	if Languages, ok := UsermeMap["languages"].([]interface{}); ok {
 		LanguagesString, _ := json.Marshal(Languages)
 		json.Unmarshal(LanguagesString, &o.Languages)
+	}
+	
+	if AutoAnswerSettings, ok := UsermeMap["autoAnswerSettings"].(map[string]interface{}); ok {
+		AutoAnswerSettingsString, _ := json.Marshal(AutoAnswerSettings)
+		json.Unmarshal(AutoAnswerSettingsString, &o.AutoAnswerSettings)
 	}
 	
 	if AcdAutoAnswer, ok := UsermeMap["acdAutoAnswer"].(bool); ok {

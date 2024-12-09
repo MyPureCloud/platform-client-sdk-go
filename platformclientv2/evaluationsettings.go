@@ -10,7 +10,19 @@ import (
 // Evaluationsettings
 type Evaluationsettings struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// RevisionsEnabled - Whether revisions are allowed for evaluations. When enabled, rescoring creates a new version of the evaluation and retracts the existing evaluation version. Does not apply for calibration evaluations.
+	RevisionsEnabled *bool `json:"revisionsEnabled,omitempty"`
+
+	// DisputesEnabled - Whether disputes are allowed for evaluations. Does not apply for calibration evaluations.
+	DisputesEnabled *bool `json:"disputesEnabled,omitempty"`
+
+	// DisputesAllowedPerEvaluation - The maximum number of disputes allowed for an evaluation.
+	DisputesAllowedPerEvaluation *int `json:"disputesAllowedPerEvaluation,omitempty"`
+
+	// DisputesAssignees - A list of assignees responsible for handling each dispute. This list size needs to be equal to disputesAllowedPerEvaluation.
+	DisputesAssignees *[]Evaluationsettingsassignee `json:"disputesAssignees,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Evaluationsettings) SetField(field string, fieldValue interface{}) {
@@ -74,8 +86,24 @@ func (o Evaluationsettings) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Evaluationsettings
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		RevisionsEnabled *bool `json:"revisionsEnabled,omitempty"`
+		
+		DisputesEnabled *bool `json:"disputesEnabled,omitempty"`
+		
+		DisputesAllowedPerEvaluation *int `json:"disputesAllowedPerEvaluation,omitempty"`
+		
+		DisputesAssignees *[]Evaluationsettingsassignee `json:"disputesAssignees,omitempty"`
+		Alias
+	}{ 
+		RevisionsEnabled: o.RevisionsEnabled,
+		
+		DisputesEnabled: o.DisputesEnabled,
+		
+		DisputesAllowedPerEvaluation: o.DisputesAllowedPerEvaluation,
+		
+		DisputesAssignees: o.DisputesAssignees,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -84,6 +112,24 @@ func (o *Evaluationsettings) UnmarshalJSON(b []byte) error {
 	err := json.Unmarshal(b, &EvaluationsettingsMap)
 	if err != nil {
 		return err
+	}
+	
+	if RevisionsEnabled, ok := EvaluationsettingsMap["revisionsEnabled"].(bool); ok {
+		o.RevisionsEnabled = &RevisionsEnabled
+	}
+    
+	if DisputesEnabled, ok := EvaluationsettingsMap["disputesEnabled"].(bool); ok {
+		o.DisputesEnabled = &DisputesEnabled
+	}
+    
+	if DisputesAllowedPerEvaluation, ok := EvaluationsettingsMap["disputesAllowedPerEvaluation"].(float64); ok {
+		DisputesAllowedPerEvaluationInt := int(DisputesAllowedPerEvaluation)
+		o.DisputesAllowedPerEvaluation = &DisputesAllowedPerEvaluationInt
+	}
+	
+	if DisputesAssignees, ok := EvaluationsettingsMap["disputesAssignees"].([]interface{}); ok {
+		DisputesAssigneesString, _ := json.Marshal(DisputesAssignees)
+		json.Unmarshal(DisputesAssigneesString, &o.DisputesAssignees)
 	}
 	
 

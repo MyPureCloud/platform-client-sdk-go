@@ -21132,16 +21132,21 @@
   "getknowledgeintegrationoptions": {
     "operationId": "getknowledgeintegrationoptions",
     "functionName": "GetKnowledgeIntegrationOptions",
-    "signature": "GetKnowledgeIntegrationOptions(integrationId)",
+    "signature": "GetKnowledgeIntegrationOptions(integrationId, knowledgeBaseIds)",
     "parameters": [
       {
         "name": "integrationId",
         "type": "string",
         "required": "true"
+      },
+      {
+        "name": "knowledgeBaseIds",
+        "type": "[]string",
+        "required": "false"
       }
     ],
     "return": "Knowledgeintegrationoptionsresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)\n\nvar integrationId string // Integration ID\n// Get sync options available for a knowledge-connect integration\ndata, response, err := apiInstance.GetKnowledgeIntegrationOptions(integrationId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetKnowledgeIntegrationOptions: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)\n\nvar integrationId string // Integration ID\nvar knowledgeBaseIds []string // Narrowing down filtering option results by knowledge base.\n// Get sync options available for a knowledge-connect integration\ndata, response, err := apiInstance.GetKnowledgeIntegrationOptions(integrationId, knowledgeBaseIds)\nif err != nil {\n\tfmt.Printf(\"Error calling GetKnowledgeIntegrationOptions: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getknowledgeknowledgebase": {
     "operationId": "getknowledgeknowledgebase",
@@ -26364,6 +26369,49 @@
     "signature": "GetUsageEventsDefinitions()",
     "return": "Eventdefinitionlisting",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewOperationalEventsApiWithConfig(config)\n\n// Get all operational event definitions\ndata, response, err := apiInstance.GetUsageEventsDefinitions()\nif err != nil {\n\tfmt.Printf(\"Error calling GetUsageEventsDefinitions: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "postusageeventsaggregatesquery": {
+    "operationId": "postusageeventsaggregatesquery",
+    "functionName": "PostUsageEventsAggregatesQuery",
+    "signature": "PostUsageEventsAggregatesQuery(body)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Eventaggregatesqueryrequest",
+        "required": "false"
+      }
+    ],
+    "return": "Eventaggregatesresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewOperationalEventsApiWithConfig(config)\n\nvar body platformclientv2.Eventaggregatesqueryrequest // \n// Get aggregates for operational events in a timeframe.\ndata, response, err := apiInstance.PostUsageEventsAggregatesQuery(body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostUsageEventsAggregatesQuery: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "postusageeventsquery": {
+    "operationId": "postusageeventsquery",
+    "functionName": "PostUsageEventsQuery",
+    "signature": "PostUsageEventsQuery(before, after, pageSize, body)",
+    "parameters": [
+      {
+        "name": "before",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "after",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "pageSize",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "body",
+        "type": "Eventqueryrequest",
+        "required": "false"
+      }
+    ],
+    "return": "Eventqueryresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewOperationalEventsApiWithConfig(config)\n\nvar before string // The cursor that points to the start of the set of entities that has been returned.\nvar after string // The cursor that points to the end of the set of entities that has been returned.\nvar pageSize string // Number of entities to return. Maximum of 200.\nvar body platformclientv2.Eventqueryrequest // \n// Query operational events in a timeframe.\ndata, response, err := apiInstance.PostUsageEventsQuery(before, after, pageSize, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostUsageEventsQuery: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getorganizationsauthenticationsettings": {
     "operationId": "getorganizationsauthenticationsettings",
@@ -31605,7 +31653,7 @@
   "getqualityagentsactivity": {
     "operationId": "getqualityagentsactivity",
     "functionName": "GetQualityAgentsActivity",
-    "signature": "GetQualityAgentsActivity(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, startTime, endTime, agentUserId, evaluatorUserId, name, group, agentTeamId, formContextId)",
+    "signature": "GetQualityAgentsActivity(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, startTime, endTime, agentUserId, evaluatorUserId, name, group, agentTeamId, formContextId, userState)",
     "parameters": [
       {
         "name": "pageSize",
@@ -31676,10 +31724,15 @@
         "name": "formContextId",
         "type": "string",
         "required": "false"
+      },
+      {
+        "name": "userState",
+        "type": "string",
+        "required": "false"
       }
     ],
     "return": "Agentactivityentitylisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewQualityApiWithConfig(config)\n\nvar pageSize int // The total page size requested\nvar pageNumber int // The page number requested\nvar sortBy string // variable name requested to sort by\nvar expand []string // variable name requested by expand list\nvar nextPage string // next page token\nvar previousPage string // Previous page token\nvar startTime time.Time // Start time of agent activity based on assigned date. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z\nvar endTime time.Time // End time of agent activity based on assigned date. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z\nvar agentUserId []string // user id of agent requested\nvar evaluatorUserId string // user id of the evaluator\nvar name string // name\nvar group string // group id\nvar agentTeamId string // team id of agents requested\nvar formContextId string // shared id between form versions\n// Gets a list of Agent Activities\ndata, response, err := apiInstance.GetQualityAgentsActivity(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, startTime, endTime, agentUserId, evaluatorUserId, name, group, agentTeamId, formContextId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetQualityAgentsActivity: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewQualityApiWithConfig(config)\n\nvar pageSize int // The total page size requested\nvar pageNumber int // The page number requested\nvar sortBy string // variable name requested to sort by\nvar expand []string // variable name requested by expand list\nvar nextPage string // next page token\nvar previousPage string // Previous page token\nvar startTime time.Time // Start time of agent activity based on assigned date. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z\nvar endTime time.Time // End time of agent activity based on assigned date. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z\nvar agentUserId []string // user id of agent requested\nvar evaluatorUserId string // user id of the evaluator\nvar name string // name\nvar group string // group id\nvar agentTeamId string // team id of agents requested\nvar formContextId string // shared id between form versions\nvar userState string // 'Legacy' fetches active and inactive users when evaluatorUserId or no user filters are supplied; otherwise fetches active users.  'Any' fetches users of 'active', 'inactive' and 'deleted' states.\n// Gets a list of Agent Activities\ndata, response, err := apiInstance.GetQualityAgentsActivity(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, startTime, endTime, agentUserId, evaluatorUserId, name, group, agentTeamId, formContextId, userState)\nif err != nil {\n\tfmt.Printf(\"Error calling GetQualityAgentsActivity: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getqualitycalibration": {
     "operationId": "getqualitycalibration",
@@ -31848,7 +31901,7 @@
   "getqualityevaluationsquery": {
     "operationId": "getqualityevaluationsquery",
     "functionName": "GetQualityEvaluationsQuery",
-    "signature": "GetQualityEvaluationsQuery(pageSize, pageNumber, expand, previousPage, conversationId, agentUserId, agentTeamId, evaluatorUserId, assigneeUserId, queueId, startTime, endTime, formContextId, evaluationState, isReleased, agentHasRead, expandAnswerTotalScores, maximum, sortOrder)",
+    "signature": "GetQualityEvaluationsQuery(pageSize, pageNumber, expand, previousPage, conversationId, agentUserId, agentTeamId, evaluatorUserId, assigneeUserId, queueId, startTime, endTime, formContextId, evaluationState, isReleased, agentHasRead, expandAnswerTotalScores, maximum, sortOrder, includeDeletedUsers)",
     "parameters": [
       {
         "name": "pageSize",
@@ -31944,10 +31997,15 @@
         "name": "sortOrder",
         "type": "string",
         "required": "false"
+      },
+      {
+        "name": "includeDeletedUsers",
+        "type": "bool",
+        "required": "false"
       }
     ],
     "return": "Evaluationentitylisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewQualityApiWithConfig(config)\n\nvar pageSize int // The total page size requested\nvar pageNumber int // The page number requested\nvar expand []string // variable name requested by expand list\nvar previousPage string // Previous page token\nvar conversationId string // conversationId specified\nvar agentUserId string // user id of the agent\nvar agentTeamId string // team id of the agent\nvar evaluatorUserId string // evaluator user id\nvar assigneeUserId string // assignee user id\nvar queueId string // queue id\nvar startTime string // start time of the evaluation query\nvar endTime string // end time of the evaluation query\nvar formContextId string // shared id between form versions\nvar evaluationState []string // \nvar isReleased bool // the evaluation has been released\nvar agentHasRead bool // agent has the evaluation\nvar expandAnswerTotalScores bool // get the total scores for evaluations. NOTE: The answers will only be populated if this parameter is set to true in the request.\nvar maximum int // the maximum number of results to return\nvar sortOrder string // NOTE: Does not work when conversationId is supplied.\n// Queries Evaluations and returns a paged list\ndata, response, err := apiInstance.GetQualityEvaluationsQuery(pageSize, pageNumber, expand, previousPage, conversationId, agentUserId, agentTeamId, evaluatorUserId, assigneeUserId, queueId, startTime, endTime, formContextId, evaluationState, isReleased, agentHasRead, expandAnswerTotalScores, maximum, sortOrder)\nif err != nil {\n\tfmt.Printf(\"Error calling GetQualityEvaluationsQuery: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewQualityApiWithConfig(config)\n\nvar pageSize int // The total page size requested\nvar pageNumber int // The page number requested\nvar expand []string // variable name requested by expand list\nvar previousPage string // Previous page token\nvar conversationId string // conversationId specified\nvar agentUserId string // user id of the agent\nvar agentTeamId string // team id of the agent\nvar evaluatorUserId string // evaluator user id\nvar assigneeUserId string // assignee user id\nvar queueId string // queue id\nvar startTime string // start time of the evaluation query\nvar endTime string // end time of the evaluation query\nvar formContextId string // shared id between form versions\nvar evaluationState []string // \nvar isReleased bool // the evaluation has been released\nvar agentHasRead bool // agent has the evaluation\nvar expandAnswerTotalScores bool // get the total scores for evaluations. NOTE: The answers will only be populated if this parameter is set to true in the request.\nvar maximum int // the maximum number of results to return\nvar sortOrder string // NOTE: Does not work when conversationId is supplied.\nvar includeDeletedUsers bool // Allow returning an agent or evaluator user with a 'delete' status. Defaults to false.\n// Queries Evaluations and returns a paged list\ndata, response, err := apiInstance.GetQualityEvaluationsQuery(pageSize, pageNumber, expand, previousPage, conversationId, agentUserId, agentTeamId, evaluatorUserId, assigneeUserId, queueId, startTime, endTime, formContextId, evaluationState, isReleased, agentHasRead, expandAnswerTotalScores, maximum, sortOrder, includeDeletedUsers)\nif err != nil {\n\tfmt.Printf(\"Error calling GetQualityEvaluationsQuery: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getqualityevaluatorsactivity": {
     "operationId": "getqualityevaluatorsactivity",
@@ -34569,15 +34627,15 @@
   "deleteroutingsmsphonenumber": {
     "operationId": "deleteroutingsmsphonenumber",
     "functionName": "DeleteRoutingSmsPhonenumber",
-    "signature": "DeleteRoutingSmsPhonenumber(addressId)",
+    "signature": "DeleteRoutingSmsPhonenumber(phoneNumberId)",
     "parameters": [
       {
-        "name": "addressId",
+        "name": "phoneNumberId",
         "type": "string",
         "required": "true"
       }
     ],
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewRoutingApiWithConfig(config)\n\nvar addressId string // Address ID\n// Delete a phone number provisioned for SMS.\nresponse, err := apiInstance.DeleteRoutingSmsPhonenumber(addressId)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteRoutingSmsPhonenumber: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewRoutingApiWithConfig(config)\n\nvar phoneNumberId string // phone number\n// Delete a phone number provisioned for SMS.\nresponse, err := apiInstance.DeleteRoutingSmsPhonenumber(phoneNumberId)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteRoutingSmsPhonenumber: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
   },
   "deleteroutinguserdirectroutingbackupsettings": {
     "operationId": "deleteroutinguserdirectroutingbackupsettings",
@@ -35219,7 +35277,7 @@
   "getroutingqueuemediatypeestimatedwaittime": {
     "operationId": "getroutingqueuemediatypeestimatedwaittime",
     "functionName": "GetRoutingQueueMediatypeEstimatedwaittime",
-    "signature": "GetRoutingQueueMediatypeEstimatedwaittime(queueId, mediaType)",
+    "signature": "GetRoutingQueueMediatypeEstimatedwaittime(queueId, mediaType, labelId)",
     "parameters": [
       {
         "name": "queueId",
@@ -35230,10 +35288,15 @@
         "name": "mediaType",
         "type": "string",
         "required": "true"
+      },
+      {
+        "name": "labelId",
+        "type": "string",
+        "required": "false"
       }
     ],
     "return": "Estimatedwaittimepredictions",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewRoutingApiWithConfig(config)\n\nvar queueId string // queueId\nvar mediaType string // mediaType\n// Get Estimated Wait Time\ndata, response, err := apiInstance.GetRoutingQueueMediatypeEstimatedwaittime(queueId, mediaType)\nif err != nil {\n\tfmt.Printf(\"Error calling GetRoutingQueueMediatypeEstimatedwaittime: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewRoutingApiWithConfig(config)\n\nvar queueId string // queueId\nvar mediaType string // mediaType\nvar labelId string // Unique id that represents the interaction label used with media type for EWT calculation\n// Get Estimated Wait Time\ndata, response, err := apiInstance.GetRoutingQueueMediatypeEstimatedwaittime(queueId, mediaType, labelId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetRoutingQueueMediatypeEstimatedwaittime: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getroutingqueuemembers": {
     "operationId": "getroutingqueuemembers",
@@ -35793,10 +35856,10 @@
   "getroutingsmsphonenumber": {
     "operationId": "getroutingsmsphonenumber",
     "functionName": "GetRoutingSmsPhonenumber",
-    "signature": "GetRoutingSmsPhonenumber(addressId, expand)",
+    "signature": "GetRoutingSmsPhonenumber(phoneNumberId, expand)",
     "parameters": [
       {
-        "name": "addressId",
+        "name": "phoneNumberId",
         "type": "string",
         "required": "true"
       },
@@ -35807,7 +35870,7 @@
       }
     ],
     "return": "Smsphonenumber",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewRoutingApiWithConfig(config)\n\nvar addressId string // Address ID\nvar expand string // Expand response with additional information\n// Get a phone number provisioned for SMS.\ndata, response, err := apiInstance.GetRoutingSmsPhonenumber(addressId, expand)\nif err != nil {\n\tfmt.Printf(\"Error calling GetRoutingSmsPhonenumber: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewRoutingApiWithConfig(config)\n\nvar phoneNumberId string // phone number\nvar expand string // Expand response with additional information\n// Get a phone number provisioned for SMS.\ndata, response, err := apiInstance.GetRoutingSmsPhonenumber(phoneNumberId, expand)\nif err != nil {\n\tfmt.Printf(\"Error calling GetRoutingSmsPhonenumber: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getroutingsmsphonenumbers": {
     "operationId": "getroutingsmsphonenumbers",
@@ -37088,10 +37151,10 @@
   "putroutingsmsphonenumber": {
     "operationId": "putroutingsmsphonenumber",
     "functionName": "PutRoutingSmsPhonenumber",
-    "signature": "PutRoutingSmsPhonenumber(addressId, body)",
+    "signature": "PutRoutingSmsPhonenumber(phoneNumberId, body)",
     "parameters": [
       {
-        "name": "addressId",
+        "name": "phoneNumberId",
         "type": "string",
         "required": "true"
       },
@@ -37102,7 +37165,7 @@
       }
     ],
     "return": "Smsphonenumber",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewRoutingApiWithConfig(config)\n\nvar addressId string // Address ID\nvar body platformclientv2.Smsphonenumber // SmsPhoneNumber\n// Update a phone number provisioned for SMS.\ndata, response, err := apiInstance.PutRoutingSmsPhonenumber(addressId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PutRoutingSmsPhonenumber: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewRoutingApiWithConfig(config)\n\nvar phoneNumberId string // phone number\nvar body platformclientv2.Smsphonenumber // SmsPhoneNumber\n// Update a phone number provisioned for SMS.\ndata, response, err := apiInstance.PutRoutingSmsPhonenumber(phoneNumberId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PutRoutingSmsPhonenumber: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "putroutinguserdirectroutingbackupsettings": {
     "operationId": "putroutinguserdirectroutingbackupsettings",
@@ -38663,6 +38726,636 @@
     ],
     "return": "Executiondataglobalsettingsresponse",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSettingsApiWithConfig(config)\n\nvar body platformclientv2.Executiondatasettingsrequest // New Execution Data Setting\n// Edit the execution history on off setting.\ndata, response, err := apiInstance.PatchSettingsExecutiondata(body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchSettingsExecutiondata: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "deletesocialmediatopic": {
+    "operationId": "deletesocialmediatopic",
+    "functionName": "DeleteSocialmediaTopic",
+    "signature": "DeleteSocialmediaTopic(topicId, hardDelete)",
+    "parameters": [
+      {
+        "name": "topicId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "hardDelete",
+        "type": "bool",
+        "required": "false"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSocialMediaApiWithConfig(config)\n\nvar topicId string // topicId\nvar hardDelete bool // Determines whether a Social topic should be soft-deleted or hard-deleted (permanently removed). Set to false (soft-delete) by default.\n// Delete a social topic.\nresponse, err := apiInstance.DeleteSocialmediaTopic(topicId, hardDelete)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteSocialmediaTopic: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
+  },
+  "deletesocialmediatopicdataingestionrulesfacebookfacebookingestionruleid": {
+    "operationId": "deletesocialmediatopicdataingestionrulesfacebookfacebookingestionruleid",
+    "functionName": "DeleteSocialmediaTopicDataingestionrulesFacebookFacebookIngestionRuleId",
+    "signature": "DeleteSocialmediaTopicDataingestionrulesFacebookFacebookIngestionRuleId(topicId, facebookIngestionRuleId, hardDelete)",
+    "parameters": [
+      {
+        "name": "topicId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "facebookIngestionRuleId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "hardDelete",
+        "type": "bool",
+        "required": "false"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSocialMediaApiWithConfig(config)\n\nvar topicId string // topicId\nvar facebookIngestionRuleId string // facebookIngestionRuleId\nvar hardDelete bool // Determines whether a Facebook data ingestion rule should be soft-deleted (have it's state set to deleted) or hard-deleted (permanently removed). Set to false (soft-delete) by default.\n// Delete a Facebook data ingestion rule.\nresponse, err := apiInstance.DeleteSocialmediaTopicDataingestionrulesFacebookFacebookIngestionRuleId(topicId, facebookIngestionRuleId, hardDelete)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteSocialmediaTopicDataingestionrulesFacebookFacebookIngestionRuleId: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
+  },
+  "deletesocialmediatopicdataingestionrulesopenopenid": {
+    "operationId": "deletesocialmediatopicdataingestionrulesopenopenid",
+    "functionName": "DeleteSocialmediaTopicDataingestionrulesOpenOpenId",
+    "signature": "DeleteSocialmediaTopicDataingestionrulesOpenOpenId(topicId, openId, hardDelete)",
+    "parameters": [
+      {
+        "name": "topicId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "openId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "hardDelete",
+        "type": "bool",
+        "required": "false"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSocialMediaApiWithConfig(config)\n\nvar topicId string // topicId\nvar openId string // openId\nvar hardDelete bool // Determines whether a open data ingestion rule should be soft-deleted (have it's state set to deleted) or hard-deleted (permanently removed). Set to false (soft-delete) by default.\n// Delete a open data ingestion rule.\nresponse, err := apiInstance.DeleteSocialmediaTopicDataingestionrulesOpenOpenId(topicId, openId, hardDelete)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteSocialmediaTopicDataingestionrulesOpenOpenId: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
+  },
+  "deletesocialmediatopicdataingestionrulestwittertwitteringestionruleid": {
+    "operationId": "deletesocialmediatopicdataingestionrulestwittertwitteringestionruleid",
+    "functionName": "DeleteSocialmediaTopicDataingestionrulesTwitterTwitterIngestionRuleId",
+    "signature": "DeleteSocialmediaTopicDataingestionrulesTwitterTwitterIngestionRuleId(topicId, twitterIngestionRuleId, hardDelete)",
+    "parameters": [
+      {
+        "name": "topicId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "twitterIngestionRuleId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "hardDelete",
+        "type": "bool",
+        "required": "false"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSocialMediaApiWithConfig(config)\n\nvar topicId string // topicId\nvar twitterIngestionRuleId string // twitterIngestionRuleId\nvar hardDelete bool // Determines whether a X (formally Twitter) data ingestion rule should be soft-deleted (have it's state set to deleted) or hard-deleted (permanently removed). Set to false (soft-delete) by default.\n// Delete a X (formally Twitter) data ingestion rule.\nresponse, err := apiInstance.DeleteSocialmediaTopicDataingestionrulesTwitterTwitterIngestionRuleId(topicId, twitterIngestionRuleId, hardDelete)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteSocialmediaTopicDataingestionrulesTwitterTwitterIngestionRuleId: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
+  },
+  "getsocialmediatopic": {
+    "operationId": "getsocialmediatopic",
+    "functionName": "GetSocialmediaTopic",
+    "signature": "GetSocialmediaTopic(topicId, includeDeleted)",
+    "parameters": [
+      {
+        "name": "topicId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "includeDeleted",
+        "type": "bool",
+        "required": "false"
+      }
+    ],
+    "return": "Socialtopicresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSocialMediaApiWithConfig(config)\n\nvar topicId string // topicId\nvar includeDeleted bool // Determines whether to include soft-deleted items in the result.\n// Get a single social topic.\ndata, response, err := apiInstance.GetSocialmediaTopic(topicId, includeDeleted)\nif err != nil {\n\tfmt.Printf(\"Error calling GetSocialmediaTopic: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getsocialmediatopicdataingestionrulesfacebookfacebookingestionruleid": {
+    "operationId": "getsocialmediatopicdataingestionrulesfacebookfacebookingestionruleid",
+    "functionName": "GetSocialmediaTopicDataingestionrulesFacebookFacebookIngestionRuleId",
+    "signature": "GetSocialmediaTopicDataingestionrulesFacebookFacebookIngestionRuleId(topicId, facebookIngestionRuleId, includeDeleted)",
+    "parameters": [
+      {
+        "name": "topicId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "facebookIngestionRuleId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "includeDeleted",
+        "type": "bool",
+        "required": "false"
+      }
+    ],
+    "return": "Facebookdataingestionruleresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSocialMediaApiWithConfig(config)\n\nvar topicId string // topicId\nvar facebookIngestionRuleId string // facebookIngestionRuleId\nvar includeDeleted bool // Determines whether to include soft-deleted items in the result.\n// Get a single Facebook data ingestion rule.\ndata, response, err := apiInstance.GetSocialmediaTopicDataingestionrulesFacebookFacebookIngestionRuleId(topicId, facebookIngestionRuleId, includeDeleted)\nif err != nil {\n\tfmt.Printf(\"Error calling GetSocialmediaTopicDataingestionrulesFacebookFacebookIngestionRuleId: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getsocialmediatopicdataingestionrulesfacebookfacebookingestionruleidversion": {
+    "operationId": "getsocialmediatopicdataingestionrulesfacebookfacebookingestionruleidversion",
+    "functionName": "GetSocialmediaTopicDataingestionrulesFacebookFacebookIngestionRuleIdVersion",
+    "signature": "GetSocialmediaTopicDataingestionrulesFacebookFacebookIngestionRuleIdVersion(topicId, facebookIngestionRuleId, dataIngestionRuleVersion, includeDeleted)",
+    "parameters": [
+      {
+        "name": "topicId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "facebookIngestionRuleId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "dataIngestionRuleVersion",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "includeDeleted",
+        "type": "bool",
+        "required": "false"
+      }
+    ],
+    "return": "Facebookdataingestionruleversionresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSocialMediaApiWithConfig(config)\n\nvar topicId string // topicId\nvar facebookIngestionRuleId string // facebookIngestionRuleId\nvar dataIngestionRuleVersion string // version\nvar includeDeleted bool // Determines whether to include soft-deleted item in the result.\n// Get a single Facebook data ingestion rule version.\ndata, response, err := apiInstance.GetSocialmediaTopicDataingestionrulesFacebookFacebookIngestionRuleIdVersion(topicId, facebookIngestionRuleId, dataIngestionRuleVersion, includeDeleted)\nif err != nil {\n\tfmt.Printf(\"Error calling GetSocialmediaTopicDataingestionrulesFacebookFacebookIngestionRuleIdVersion: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getsocialmediatopicdataingestionrulesfacebookfacebookingestionruleidversions": {
+    "operationId": "getsocialmediatopicdataingestionrulesfacebookfacebookingestionruleidversions",
+    "functionName": "GetSocialmediaTopicDataingestionrulesFacebookFacebookIngestionRuleIdVersions",
+    "signature": "GetSocialmediaTopicDataingestionrulesFacebookFacebookIngestionRuleIdVersions(topicId, facebookIngestionRuleId, pageNumber, pageSize, includeDeleted)",
+    "parameters": [
+      {
+        "name": "topicId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "facebookIngestionRuleId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "pageNumber",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "pageSize",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "includeDeleted",
+        "type": "bool",
+        "required": "false"
+      }
+    ],
+    "return": "Facebookdataingestionruleversionresponseentitylisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSocialMediaApiWithConfig(config)\n\nvar topicId string // topicId\nvar facebookIngestionRuleId string // facebookIngestionRuleId\nvar pageNumber int // Page number\nvar pageSize int // Page size\nvar includeDeleted bool // Determines whether to include soft-deleted items in the result.\n// Get the Facebook data ingestion rule versions.\ndata, response, err := apiInstance.GetSocialmediaTopicDataingestionrulesFacebookFacebookIngestionRuleIdVersions(topicId, facebookIngestionRuleId, pageNumber, pageSize, includeDeleted)\nif err != nil {\n\tfmt.Printf(\"Error calling GetSocialmediaTopicDataingestionrulesFacebookFacebookIngestionRuleIdVersions: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getsocialmediatopicdataingestionrulesopenopenid": {
+    "operationId": "getsocialmediatopicdataingestionrulesopenopenid",
+    "functionName": "GetSocialmediaTopicDataingestionrulesOpenOpenId",
+    "signature": "GetSocialmediaTopicDataingestionrulesOpenOpenId(topicId, openId, includeDeleted)",
+    "parameters": [
+      {
+        "name": "topicId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "openId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "includeDeleted",
+        "type": "bool",
+        "required": "false"
+      }
+    ],
+    "return": "Opendataingestionruleresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSocialMediaApiWithConfig(config)\n\nvar topicId string // topicId\nvar openId string // openId\nvar includeDeleted bool // Determines whether to include soft-deleted items in the result.\n// Get a single open data ingestion rule.\ndata, response, err := apiInstance.GetSocialmediaTopicDataingestionrulesOpenOpenId(topicId, openId, includeDeleted)\nif err != nil {\n\tfmt.Printf(\"Error calling GetSocialmediaTopicDataingestionrulesOpenOpenId: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getsocialmediatopicdataingestionrulesopenopenidversion": {
+    "operationId": "getsocialmediatopicdataingestionrulesopenopenidversion",
+    "functionName": "GetSocialmediaTopicDataingestionrulesOpenOpenIdVersion",
+    "signature": "GetSocialmediaTopicDataingestionrulesOpenOpenIdVersion(topicId, openId, dataIngestionRuleVersion, includeDeleted)",
+    "parameters": [
+      {
+        "name": "topicId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "openId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "dataIngestionRuleVersion",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "includeDeleted",
+        "type": "bool",
+        "required": "false"
+      }
+    ],
+    "return": "Opendataingestionruleversionresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSocialMediaApiWithConfig(config)\n\nvar topicId string // topicId\nvar openId string // openId\nvar dataIngestionRuleVersion string // version\nvar includeDeleted bool // Determines whether to include soft-deleted item in the result.\n// Get a single Open data ingestion rule version.\ndata, response, err := apiInstance.GetSocialmediaTopicDataingestionrulesOpenOpenIdVersion(topicId, openId, dataIngestionRuleVersion, includeDeleted)\nif err != nil {\n\tfmt.Printf(\"Error calling GetSocialmediaTopicDataingestionrulesOpenOpenIdVersion: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getsocialmediatopicdataingestionrulesopenopenidversions": {
+    "operationId": "getsocialmediatopicdataingestionrulesopenopenidversions",
+    "functionName": "GetSocialmediaTopicDataingestionrulesOpenOpenIdVersions",
+    "signature": "GetSocialmediaTopicDataingestionrulesOpenOpenIdVersions(topicId, openId, pageNumber, pageSize, includeDeleted)",
+    "parameters": [
+      {
+        "name": "topicId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "openId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "pageNumber",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "pageSize",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "includeDeleted",
+        "type": "bool",
+        "required": "false"
+      }
+    ],
+    "return": "Opendataingestionruleversionresponseentitylisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSocialMediaApiWithConfig(config)\n\nvar topicId string // topicId\nvar openId string // openId\nvar pageNumber int // Page number\nvar pageSize int // Page size\nvar includeDeleted bool // Determines whether to include soft-deleted items in the result.\n// Get the Open data ingestion rule versions.\ndata, response, err := apiInstance.GetSocialmediaTopicDataingestionrulesOpenOpenIdVersions(topicId, openId, pageNumber, pageSize, includeDeleted)\nif err != nil {\n\tfmt.Printf(\"Error calling GetSocialmediaTopicDataingestionrulesOpenOpenIdVersions: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getsocialmediatopicdataingestionrulestwittertwitteringestionruleid": {
+    "operationId": "getsocialmediatopicdataingestionrulestwittertwitteringestionruleid",
+    "functionName": "GetSocialmediaTopicDataingestionrulesTwitterTwitterIngestionRuleId",
+    "signature": "GetSocialmediaTopicDataingestionrulesTwitterTwitterIngestionRuleId(topicId, twitterIngestionRuleId, includeDeleted)",
+    "parameters": [
+      {
+        "name": "topicId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "twitterIngestionRuleId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "includeDeleted",
+        "type": "bool",
+        "required": "false"
+      }
+    ],
+    "return": "Twitterdataingestionruleresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSocialMediaApiWithConfig(config)\n\nvar topicId string // topicId\nvar twitterIngestionRuleId string // twitterIngestionRuleId\nvar includeDeleted bool // Determines whether to include soft-deleted items in the result.\n// Get a single X (formally Twitter) data ingestion rule.\ndata, response, err := apiInstance.GetSocialmediaTopicDataingestionrulesTwitterTwitterIngestionRuleId(topicId, twitterIngestionRuleId, includeDeleted)\nif err != nil {\n\tfmt.Printf(\"Error calling GetSocialmediaTopicDataingestionrulesTwitterTwitterIngestionRuleId: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getsocialmediatopicdataingestionrulestwittertwitteringestionruleidversion": {
+    "operationId": "getsocialmediatopicdataingestionrulestwittertwitteringestionruleidversion",
+    "functionName": "GetSocialmediaTopicDataingestionrulesTwitterTwitterIngestionRuleIdVersion",
+    "signature": "GetSocialmediaTopicDataingestionrulesTwitterTwitterIngestionRuleIdVersion(topicId, twitterIngestionRuleId, dataIngestionRuleVersion, includeDeleted)",
+    "parameters": [
+      {
+        "name": "topicId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "twitterIngestionRuleId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "dataIngestionRuleVersion",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "includeDeleted",
+        "type": "bool",
+        "required": "false"
+      }
+    ],
+    "return": "Twitterdataingestionruleversionresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSocialMediaApiWithConfig(config)\n\nvar topicId string // topicId\nvar twitterIngestionRuleId string // twitterIngestionRuleId\nvar dataIngestionRuleVersion string // version\nvar includeDeleted bool // Determines whether to include soft-deleted item in the result.\n// Get a single X (formally Twitter) data ingestion rule version.\ndata, response, err := apiInstance.GetSocialmediaTopicDataingestionrulesTwitterTwitterIngestionRuleIdVersion(topicId, twitterIngestionRuleId, dataIngestionRuleVersion, includeDeleted)\nif err != nil {\n\tfmt.Printf(\"Error calling GetSocialmediaTopicDataingestionrulesTwitterTwitterIngestionRuleIdVersion: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getsocialmediatopicdataingestionrulestwittertwitteringestionruleidversions": {
+    "operationId": "getsocialmediatopicdataingestionrulestwittertwitteringestionruleidversions",
+    "functionName": "GetSocialmediaTopicDataingestionrulesTwitterTwitterIngestionRuleIdVersions",
+    "signature": "GetSocialmediaTopicDataingestionrulesTwitterTwitterIngestionRuleIdVersions(topicId, twitterIngestionRuleId, pageNumber, pageSize, includeDeleted)",
+    "parameters": [
+      {
+        "name": "topicId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "twitterIngestionRuleId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "pageNumber",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "pageSize",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "includeDeleted",
+        "type": "bool",
+        "required": "false"
+      }
+    ],
+    "return": "Twitterdataingestionruleversionresponseentitylisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSocialMediaApiWithConfig(config)\n\nvar topicId string // topicId\nvar twitterIngestionRuleId string // twitterIngestionRuleId\nvar pageNumber int // Page number\nvar pageSize int // Page size\nvar includeDeleted bool // Determines whether to include soft-deleted items in the result.\n// Get the Open data ingestion rule versions.\ndata, response, err := apiInstance.GetSocialmediaTopicDataingestionrulesTwitterTwitterIngestionRuleIdVersions(topicId, twitterIngestionRuleId, pageNumber, pageSize, includeDeleted)\nif err != nil {\n\tfmt.Printf(\"Error calling GetSocialmediaTopicDataingestionrulesTwitterTwitterIngestionRuleIdVersions: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getsocialmediatopics": {
+    "operationId": "getsocialmediatopics",
+    "functionName": "GetSocialmediaTopics",
+    "signature": "GetSocialmediaTopics(pageNumber, pageSize, divisionIds, includeDeleted)",
+    "parameters": [
+      {
+        "name": "pageNumber",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "pageSize",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "divisionIds",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "includeDeleted",
+        "type": "bool",
+        "required": "false"
+      }
+    ],
+    "return": "Socialtopicresponseentitylisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSocialMediaApiWithConfig(config)\n\nvar pageNumber int // Page number\nvar pageSize int // Page size\nvar divisionIds []string // One or more division IDs. If nothing is provided, the social topics associated withthe list of divisions that the user has access to will be returned.\nvar includeDeleted bool // Determines whether to include soft-deleted items in the result.\n// Retrieve all social topics.\ndata, response, err := apiInstance.GetSocialmediaTopics(pageNumber, pageSize, divisionIds, includeDeleted)\nif err != nil {\n\tfmt.Printf(\"Error calling GetSocialmediaTopics: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "patchsocialmediatopic": {
+    "operationId": "patchsocialmediatopic",
+    "functionName": "PatchSocialmediaTopic",
+    "signature": "PatchSocialmediaTopic(topicId, body)",
+    "parameters": [
+      {
+        "name": "topicId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Socialtopicpatchrequest",
+        "required": "false"
+      }
+    ],
+    "return": "Socialtopicresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSocialMediaApiWithConfig(config)\n\nvar topicId string // topicId\nvar body platformclientv2.Socialtopicpatchrequest // \n// Update a social topic.\ndata, response, err := apiInstance.PatchSocialmediaTopic(topicId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchSocialmediaTopic: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "patchsocialmediatopicdataingestionrulesfacebookfacebookingestionruleid": {
+    "operationId": "patchsocialmediatopicdataingestionrulesfacebookfacebookingestionruleid",
+    "functionName": "PatchSocialmediaTopicDataingestionrulesFacebookFacebookIngestionRuleId",
+    "signature": "PatchSocialmediaTopicDataingestionrulesFacebookFacebookIngestionRuleId(topicId, facebookIngestionRuleId, body)",
+    "parameters": [
+      {
+        "name": "topicId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "facebookIngestionRuleId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Dataingestionrulestatuspatchrequest",
+        "required": "false"
+      }
+    ],
+    "return": "Facebookdataingestionruleresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSocialMediaApiWithConfig(config)\n\nvar topicId string // topicId\nvar facebookIngestionRuleId string // facebookIngestionRuleId\nvar body platformclientv2.Dataingestionrulestatuspatchrequest // \n// Update the status of a Facebook data ingestion rule.\ndata, response, err := apiInstance.PatchSocialmediaTopicDataingestionrulesFacebookFacebookIngestionRuleId(topicId, facebookIngestionRuleId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchSocialmediaTopicDataingestionrulesFacebookFacebookIngestionRuleId: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "patchsocialmediatopicdataingestionrulesopenopenid": {
+    "operationId": "patchsocialmediatopicdataingestionrulesopenopenid",
+    "functionName": "PatchSocialmediaTopicDataingestionrulesOpenOpenId",
+    "signature": "PatchSocialmediaTopicDataingestionrulesOpenOpenId(topicId, openId, body)",
+    "parameters": [
+      {
+        "name": "topicId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "openId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Dataingestionrulestatuspatchrequest",
+        "required": "false"
+      }
+    ],
+    "return": "Opendataingestionruleresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSocialMediaApiWithConfig(config)\n\nvar topicId string // topicId\nvar openId string // openId\nvar body platformclientv2.Dataingestionrulestatuspatchrequest // \n// Update the status of a open data ingestion rule.\ndata, response, err := apiInstance.PatchSocialmediaTopicDataingestionrulesOpenOpenId(topicId, openId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchSocialmediaTopicDataingestionrulesOpenOpenId: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "patchsocialmediatopicdataingestionrulestwittertwitteringestionruleid": {
+    "operationId": "patchsocialmediatopicdataingestionrulestwittertwitteringestionruleid",
+    "functionName": "PatchSocialmediaTopicDataingestionrulesTwitterTwitterIngestionRuleId",
+    "signature": "PatchSocialmediaTopicDataingestionrulesTwitterTwitterIngestionRuleId(topicId, twitterIngestionRuleId, body)",
+    "parameters": [
+      {
+        "name": "topicId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "twitterIngestionRuleId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Dataingestionrulestatuspatchrequest",
+        "required": "false"
+      }
+    ],
+    "return": "Twitterdataingestionruleresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSocialMediaApiWithConfig(config)\n\nvar topicId string // topicId\nvar twitterIngestionRuleId string // twitterIngestionRuleId\nvar body platformclientv2.Dataingestionrulestatuspatchrequest // \n// Update the status of a X (formally Twitter) data ingestion rule.\ndata, response, err := apiInstance.PatchSocialmediaTopicDataingestionrulesTwitterTwitterIngestionRuleId(topicId, twitterIngestionRuleId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchSocialmediaTopicDataingestionrulesTwitterTwitterIngestionRuleId: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "postsocialmediatopicdataingestionrulesfacebook": {
+    "operationId": "postsocialmediatopicdataingestionrulesfacebook",
+    "functionName": "PostSocialmediaTopicDataingestionrulesFacebook",
+    "signature": "PostSocialmediaTopicDataingestionrulesFacebook(topicId, body)",
+    "parameters": [
+      {
+        "name": "topicId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Facebookdataingestionrulerequest",
+        "required": "false"
+      }
+    ],
+    "return": "Facebookdataingestionruleresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSocialMediaApiWithConfig(config)\n\nvar topicId string // topicId\nvar body platformclientv2.Facebookdataingestionrulerequest // \n// Create an Facebook data ingestion rule.\ndata, response, err := apiInstance.PostSocialmediaTopicDataingestionrulesFacebook(topicId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostSocialmediaTopicDataingestionrulesFacebook: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "postsocialmediatopicdataingestionrulesopen": {
+    "operationId": "postsocialmediatopicdataingestionrulesopen",
+    "functionName": "PostSocialmediaTopicDataingestionrulesOpen",
+    "signature": "PostSocialmediaTopicDataingestionrulesOpen(topicId, body)",
+    "parameters": [
+      {
+        "name": "topicId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Opendataingestionrulerequest",
+        "required": "false"
+      }
+    ],
+    "return": "Opendataingestionruleresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSocialMediaApiWithConfig(config)\n\nvar topicId string // topicId\nvar body platformclientv2.Opendataingestionrulerequest // \n// Create an open data ingestion rule.\ndata, response, err := apiInstance.PostSocialmediaTopicDataingestionrulesOpen(topicId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostSocialmediaTopicDataingestionrulesOpen: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "postsocialmediatopicdataingestionrulestwitter": {
+    "operationId": "postsocialmediatopicdataingestionrulestwitter",
+    "functionName": "PostSocialmediaTopicDataingestionrulesTwitter",
+    "signature": "PostSocialmediaTopicDataingestionrulesTwitter(topicId, body)",
+    "parameters": [
+      {
+        "name": "topicId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Twitterdataingestionrulerequest",
+        "required": "false"
+      }
+    ],
+    "return": "Twitterdataingestionruleresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSocialMediaApiWithConfig(config)\n\nvar topicId string // topicId\nvar body platformclientv2.Twitterdataingestionrulerequest // \n// Create an twitter data ingestion rule.\ndata, response, err := apiInstance.PostSocialmediaTopicDataingestionrulesTwitter(topicId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostSocialmediaTopicDataingestionrulesTwitter: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "postsocialmediatopics": {
+    "operationId": "postsocialmediatopics",
+    "functionName": "PostSocialmediaTopics",
+    "signature": "PostSocialmediaTopics(body)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Socialtopicrequest",
+        "required": "false"
+      }
+    ],
+    "return": "Socialtopicresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSocialMediaApiWithConfig(config)\n\nvar body platformclientv2.Socialtopicrequest // \n// Create a social topic.\ndata, response, err := apiInstance.PostSocialmediaTopics(body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostSocialmediaTopics: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "putsocialmediatopicdataingestionrulesfacebookfacebookingestionruleid": {
+    "operationId": "putsocialmediatopicdataingestionrulesfacebookfacebookingestionruleid",
+    "functionName": "PutSocialmediaTopicDataingestionrulesFacebookFacebookIngestionRuleId",
+    "signature": "PutSocialmediaTopicDataingestionrulesFacebookFacebookIngestionRuleId(topicId, facebookIngestionRuleId, body)",
+    "parameters": [
+      {
+        "name": "topicId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "facebookIngestionRuleId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Facebookdataingestionrulerequest",
+        "required": "false"
+      }
+    ],
+    "return": "Facebookdataingestionruleresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSocialMediaApiWithConfig(config)\n\nvar topicId string // topicId\nvar facebookIngestionRuleId string // facebookIngestionRuleId\nvar body platformclientv2.Facebookdataingestionrulerequest // \n// Update the Facebook data ingestion rule.\ndata, response, err := apiInstance.PutSocialmediaTopicDataingestionrulesFacebookFacebookIngestionRuleId(topicId, facebookIngestionRuleId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PutSocialmediaTopicDataingestionrulesFacebookFacebookIngestionRuleId: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "putsocialmediatopicdataingestionrulesopenopenid": {
+    "operationId": "putsocialmediatopicdataingestionrulesopenopenid",
+    "functionName": "PutSocialmediaTopicDataingestionrulesOpenOpenId",
+    "signature": "PutSocialmediaTopicDataingestionrulesOpenOpenId(topicId, openId, body)",
+    "parameters": [
+      {
+        "name": "topicId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "openId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Opendataingestionrulerequest",
+        "required": "false"
+      }
+    ],
+    "return": "Opendataingestionruleresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSocialMediaApiWithConfig(config)\n\nvar topicId string // topicId\nvar openId string // openId\nvar body platformclientv2.Opendataingestionrulerequest // \n// Update the open data ingestion rule.\ndata, response, err := apiInstance.PutSocialmediaTopicDataingestionrulesOpenOpenId(topicId, openId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PutSocialmediaTopicDataingestionrulesOpenOpenId: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "putsocialmediatopicdataingestionrulestwittertwitteringestionruleid": {
+    "operationId": "putsocialmediatopicdataingestionrulestwittertwitteringestionruleid",
+    "functionName": "PutSocialmediaTopicDataingestionrulesTwitterTwitterIngestionRuleId",
+    "signature": "PutSocialmediaTopicDataingestionrulesTwitterTwitterIngestionRuleId(topicId, twitterIngestionRuleId, body)",
+    "parameters": [
+      {
+        "name": "topicId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "twitterIngestionRuleId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Twitterdataingestionrulerequest",
+        "required": "false"
+      }
+    ],
+    "return": "Twitterdataingestionruleresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSocialMediaApiWithConfig(config)\n\nvar topicId string // topicId\nvar twitterIngestionRuleId string // twitterIngestionRuleId\nvar body platformclientv2.Twitterdataingestionrulerequest // \n// Update the X (formally Twitter) data ingestion rule.\ndata, response, err := apiInstance.PutSocialmediaTopicDataingestionrulesTwitterTwitterIngestionRuleId(topicId, twitterIngestionRuleId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PutSocialmediaTopicDataingestionrulesTwitterTwitterIngestionRuleId: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "deletespeechandtextanalyticscategory": {
     "operationId": "deletespeechandtextanalyticscategory",
@@ -47802,7 +48495,7 @@
       }
     ],
     "return": "Weekshifttradelistresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit, or 'mine' for the management unit of the logged-in user.\nvar weekDateId time.Time // The start date of the week schedule in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar evaluateMatches bool // Whether to evaluate the matches for violations\nvar forceDownloadService bool // Force the result of this operation to be sent via download service. For testing/app development purposes\n// Gets all the shift trades for a given week\ndata, response, err := apiInstance.GetWorkforcemanagementManagementunitWeekShifttrades(managementUnitId, weekDateId, evaluateMatches, forceDownloadService)\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementManagementunitWeekShifttrades: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit, or 'mine' for the management unit of the logged-in user.\nvar weekDateId time.Time // The start week date of the initiating shift in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar evaluateMatches bool // Whether to evaluate the matches for violations\nvar forceDownloadService bool // Force the result of this operation to be sent via download service. For testing/app development purposes\n// Gets all the shift trades for a given week\ndata, response, err := apiInstance.GetWorkforcemanagementManagementunitWeekShifttrades(managementUnitId, weekDateId, evaluateMatches, forceDownloadService)\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementManagementunitWeekShifttrades: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getworkforcemanagementmanagementunitworkplan": {
     "operationId": "getworkforcemanagementmanagementunitworkplan",
@@ -48618,7 +49311,7 @@
       }
     ],
     "return": "Shifttraderesponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit, or 'mine' for the management unit of the logged-in user.\nvar weekDateId time.Time // The start date of the week schedule in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar tradeId string // The ID of the shift trade to update\nvar body platformclientv2.Patchshifttraderequest // body\n// Updates a shift trade. This route can only be called by the initiating agent\ndata, response, err := apiInstance.PatchWorkforcemanagementManagementunitWeekShifttrade(managementUnitId, weekDateId, tradeId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchWorkforcemanagementManagementunitWeekShifttrade: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit, or 'mine' for the management unit of the logged-in user.\nvar weekDateId time.Time // The start week date of the initiating shift in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar tradeId string // The ID of the shift trade to update\nvar body platformclientv2.Patchshifttraderequest // body\n// Updates a shift trade. This route can only be called by the initiating agent\ndata, response, err := apiInstance.PatchWorkforcemanagementManagementunitWeekShifttrade(managementUnitId, weekDateId, tradeId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchWorkforcemanagementManagementunitWeekShifttrade: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "patchworkforcemanagementmanagementunitworkplan": {
     "operationId": "patchworkforcemanagementmanagementunitworkplan",
@@ -50167,7 +50860,7 @@
       }
     ],
     "return": "Matchshifttraderesponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit, or 'mine' for the management unit of the logged-in user.\nvar weekDateId time.Time // The start date of the week schedule in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar tradeId string // The ID of the shift trade to update\nvar body platformclientv2.Matchshifttraderequest // body\n// Matches a shift trade. This route can only be called by the receiving agent\ndata, response, err := apiInstance.PostWorkforcemanagementManagementunitWeekShifttradeMatch(managementUnitId, weekDateId, tradeId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementManagementunitWeekShifttradeMatch: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit, or 'mine' for the management unit of the logged-in user.\nvar weekDateId time.Time // The start week date of the initiating shift in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar tradeId string // The ID of the shift trade to update\nvar body platformclientv2.Matchshifttraderequest // body\n// Matches a shift trade. This route can only be called by the receiving agent\ndata, response, err := apiInstance.PostWorkforcemanagementManagementunitWeekShifttradeMatch(managementUnitId, weekDateId, tradeId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementManagementunitWeekShifttradeMatch: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "postworkforcemanagementmanagementunitweekshifttrades": {
     "operationId": "postworkforcemanagementmanagementunitweekshifttrades",
@@ -50191,7 +50884,7 @@
       }
     ],
     "return": "Shifttraderesponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit, or 'mine' for the management unit of the logged-in user.\nvar weekDateId time.Time // The start date of the week schedule in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar body platformclientv2.Addshifttraderequest // body\n// Adds a shift trade\ndata, response, err := apiInstance.PostWorkforcemanagementManagementunitWeekShifttrades(managementUnitId, weekDateId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementManagementunitWeekShifttrades: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit, or 'mine' for the management unit of the logged-in user.\nvar weekDateId time.Time // The start week date of the initiating shift in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar body platformclientv2.Addshifttraderequest // body\n// Adds a shift trade\ndata, response, err := apiInstance.PostWorkforcemanagementManagementunitWeekShifttrades(managementUnitId, weekDateId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementManagementunitWeekShifttrades: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "postworkforcemanagementmanagementunitweekshifttradessearch": {
     "operationId": "postworkforcemanagementmanagementunitweekshifttradessearch",
@@ -50220,7 +50913,7 @@
       }
     ],
     "return": "Searchshifttradesresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit, or 'mine' for the management unit of the logged-in user.\nvar weekDateId time.Time // The start date of the week schedule in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar body platformclientv2.Searchshifttradesrequest // body\nvar forceDownloadService bool // Force the result of this operation to be sent via download service. For testing/app development purposes\n// Searches for potential shift trade matches for the current agent\ndata, response, err := apiInstance.PostWorkforcemanagementManagementunitWeekShifttradesSearch(managementUnitId, weekDateId, body, forceDownloadService)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementManagementunitWeekShifttradesSearch: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit, or 'mine' for the management unit of the logged-in user.\nvar weekDateId time.Time // The start week date of the initiating shift in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar body platformclientv2.Searchshifttradesrequest // body\nvar forceDownloadService bool // Force the result of this operation to be sent via download service. For testing/app development purposes\n// Searches for potential shift trade matches for the current agent\ndata, response, err := apiInstance.PostWorkforcemanagementManagementunitWeekShifttradesSearch(managementUnitId, weekDateId, body, forceDownloadService)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementManagementunitWeekShifttradesSearch: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "postworkforcemanagementmanagementunitweekshifttradesstatebulk": {
     "operationId": "postworkforcemanagementmanagementunitweekshifttradesstatebulk",
@@ -50249,7 +50942,7 @@
       }
     ],
     "return": "Bulkupdateshifttradestateresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit, or 'mine' for the management unit of the logged-in user.\nvar weekDateId time.Time // The start date of the week schedule in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar body platformclientv2.Bulkshifttradestateupdaterequest // body\nvar forceAsync bool // Force the result of this operation to be sent asynchronously via notification.  For testing/app development purposes\n// Updates the state of a batch of shift trades\ndata, response, err := apiInstance.PostWorkforcemanagementManagementunitWeekShifttradesStateBulk(managementUnitId, weekDateId, body, forceAsync)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementManagementunitWeekShifttradesStateBulk: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit, or 'mine' for the management unit of the logged-in user.\nvar weekDateId time.Time // The start week date of the initiating shift in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar body platformclientv2.Bulkshifttradestateupdaterequest // body\nvar forceAsync bool // Force the result of this operation to be sent asynchronously via notification.  For testing/app development purposes\n// Updates the state of a batch of shift trades\ndata, response, err := apiInstance.PostWorkforcemanagementManagementunitWeekShifttradesStateBulk(managementUnitId, weekDateId, body, forceAsync)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementManagementunitWeekShifttradesStateBulk: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "postworkforcemanagementmanagementunitworkplancopy": {
     "operationId": "postworkforcemanagementmanagementunitworkplancopy",

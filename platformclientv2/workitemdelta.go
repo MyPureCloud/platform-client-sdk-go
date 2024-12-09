@@ -88,6 +88,9 @@ type Workitemdelta struct {
 
 	// StatusCategory
 	StatusCategory *Workitemsattributechangeworkitemstatuscategory `json:"statusCategory,omitempty"`
+
+	// ScriptId
+	ScriptId *Workitemsattributechangestring `json:"scriptId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -204,6 +207,8 @@ func (o Workitemdelta) MarshalJSON() ([]byte, error) {
 		ModifiedBy *Workitemsattributechangestring `json:"modifiedBy,omitempty"`
 		
 		StatusCategory *Workitemsattributechangeworkitemstatuscategory `json:"statusCategory,omitempty"`
+		
+		ScriptId *Workitemsattributechangestring `json:"scriptId,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -257,6 +262,8 @@ func (o Workitemdelta) MarshalJSON() ([]byte, error) {
 		ModifiedBy: o.ModifiedBy,
 		
 		StatusCategory: o.StatusCategory,
+		
+		ScriptId: o.ScriptId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -396,6 +403,11 @@ func (o *Workitemdelta) UnmarshalJSON(b []byte) error {
 	if StatusCategory, ok := WorkitemdeltaMap["statusCategory"].(map[string]interface{}); ok {
 		StatusCategoryString, _ := json.Marshal(StatusCategory)
 		json.Unmarshal(StatusCategoryString, &o.StatusCategory)
+	}
+	
+	if ScriptId, ok := WorkitemdeltaMap["scriptId"].(map[string]interface{}); ok {
+		ScriptIdString, _ := json.Marshal(ScriptId)
+		json.Unmarshal(ScriptIdString, &o.ScriptId)
 	}
 	
 

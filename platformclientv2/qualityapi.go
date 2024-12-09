@@ -781,7 +781,7 @@ func (a QualityApi) GetAnalyticsSurveysAggregatesJobResults(jobId string, cursor
 // Gets a list of Agent Activities
 //
 // Each item on the list shows one agent&#39;s evaluation activity comprised of the number of evaluations and the highest, average, and lowest standard and critical scores, as well as a sub list showing the number and average score of evaluations for each evaluator for that agent.  evaluatorUserId, startTime, and endTime are all filtering criteria. If specified, the only evaluations used to compile the agent activity response will be ones that match the filtering criteria. agentUserId, name, group, and agentTeamId are all agent selection criteria. criteria.  If one or more agent selection criteria are specified, then the returned activity will include users that match the criteria even if those users did not have any agent activity or evaluations that do not match any filtering criteria.  If no agent selection criteria are specified but an evaluatorUserId is, then the returned activity will be only for those agents that had evaluations where the evaluator is the evaluatorUserId.  If no agent selection criteria are specified and no evaluatorUserId is specified, then the returned activity will be for all users
-func (a QualityApi) GetQualityAgentsActivity(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, startTime time.Time, endTime time.Time, agentUserId []string, evaluatorUserId string, name string, group string, agentTeamId string, formContextId string) (*Agentactivityentitylisting, *APIResponse, error) {
+func (a QualityApi) GetQualityAgentsActivity(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, startTime time.Time, endTime time.Time, agentUserId []string, evaluatorUserId string, name string, group string, agentTeamId string, formContextId string, userState string) (*Agentactivityentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/agents/activity"
@@ -835,6 +835,8 @@ func (a QualityApi) GetQualityAgentsActivity(pageSize int, pageNumber int, sortB
 	queryParams["agentTeamId"] = a.Configuration.APIClient.ParameterToString(agentTeamId, "")
 	
 	queryParams["formContextId"] = a.Configuration.APIClient.ParameterToString(formContextId, "")
+	
+	queryParams["userState"] = a.Configuration.APIClient.ParameterToString(userState, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -1418,7 +1420,7 @@ func (a QualityApi) GetQualityConversationsAuditsQueryTransactionIdResults(trans
 // Queries Evaluations and returns a paged list
 //
 // Query params must include one of conversationId, evaluatorUserId, agentUserId or assigneeUserId. When querying by agentUserId (and not conversationId or evaluatorUserId), the results are sorted by release date. Evaluations set to &#39;Never Release&#39; are omitted in this case. When querying by evaluatorUserId or conversationId (including when combined with agentUserId), the results are sorted by assigned date. NOTE: The count for total and pageCount might not be accurate when querying for a large number of evaluations. nextUri, if present, will indicate that there are more evaluations to fetch. The evaluation entities contained in the response might only contain a subset of all the properties listed below. It is often because a given property&#39;s value has not yet been populated or is not applicable in the current state of the evaluation. It might also be because the missing property in the response was not requested by the user.
-func (a QualityApi) GetQualityEvaluationsQuery(pageSize int, pageNumber int, expand []string, previousPage string, conversationId string, agentUserId string, agentTeamId string, evaluatorUserId string, assigneeUserId string, queueId string, startTime string, endTime string, formContextId string, evaluationState []string, isReleased bool, agentHasRead bool, expandAnswerTotalScores bool, maximum int, sortOrder string) (*Evaluationentitylisting, *APIResponse, error) {
+func (a QualityApi) GetQualityEvaluationsQuery(pageSize int, pageNumber int, expand []string, previousPage string, conversationId string, agentUserId string, agentTeamId string, evaluatorUserId string, assigneeUserId string, queueId string, startTime string, endTime string, formContextId string, evaluationState []string, isReleased bool, agentHasRead bool, expandAnswerTotalScores bool, maximum int, sortOrder string, includeDeletedUsers bool) (*Evaluationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/evaluations/query"
@@ -1482,6 +1484,8 @@ func (a QualityApi) GetQualityEvaluationsQuery(pageSize int, pageNumber int, exp
 	queryParams["maximum"] = a.Configuration.APIClient.ParameterToString(maximum, "")
 	
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
+	
+	queryParams["includeDeletedUsers"] = a.Configuration.APIClient.ParameterToString(includeDeletedUsers, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

@@ -26,6 +26,9 @@ type Notelisting struct {
 	// PartialResults
 	PartialResults *bool `json:"partialResults,omitempty"`
 
+	// NextUri
+	NextUri *string `json:"nextUri,omitempty"`
+
 	// PreviousUri
 	PreviousUri *string `json:"previousUri,omitempty"`
 
@@ -37,9 +40,6 @@ type Notelisting struct {
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
-
-	// NextUri
-	NextUri *string `json:"nextUri,omitempty"`
 
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
@@ -118,6 +118,8 @@ func (o Notelisting) MarshalJSON() ([]byte, error) {
 		
 		PartialResults *bool `json:"partialResults,omitempty"`
 		
+		NextUri *string `json:"nextUri,omitempty"`
+		
 		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		LastUri *string `json:"lastUri,omitempty"`
@@ -125,8 +127,6 @@ func (o Notelisting) MarshalJSON() ([]byte, error) {
 		FirstUri *string `json:"firstUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		
-		NextUri *string `json:"nextUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		Alias
@@ -141,6 +141,8 @@ func (o Notelisting) MarshalJSON() ([]byte, error) {
 		
 		PartialResults: o.PartialResults,
 		
+		NextUri: o.NextUri,
+		
 		PreviousUri: o.PreviousUri,
 		
 		LastUri: o.LastUri,
@@ -148,8 +150,6 @@ func (o Notelisting) MarshalJSON() ([]byte, error) {
 		FirstUri: o.FirstUri,
 		
 		SelfUri: o.SelfUri,
-		
-		NextUri: o.NextUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
@@ -187,6 +187,10 @@ func (o *Notelisting) UnmarshalJSON(b []byte) error {
 		o.PartialResults = &PartialResults
 	}
     
+	if NextUri, ok := NotelistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
+	}
+    
 	if PreviousUri, ok := NotelistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
 	}
@@ -201,10 +205,6 @@ func (o *Notelisting) UnmarshalJSON(b []byte) error {
     
 	if SelfUri, ok := NotelistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
-	}
-    
-	if NextUri, ok := NotelistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
 	}
     
 	if PageCount, ok := NotelistingMap["pageCount"].(float64); ok {

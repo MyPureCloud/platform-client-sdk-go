@@ -29,6 +29,9 @@ type Supportcentersettings struct {
 	// EnabledCategories - Featured categories for knowledge portal (previously support center) home screen
 	EnabledCategories *[]Supportcentercategory `json:"enabledCategories,omitempty"`
 
+	// LabelFilter - Document label filter. If set, only documents having at least one of the specified labels will be returned by knowledge document query operations.
+	LabelFilter *Supportcenterlabelfilter `json:"labelFilter,omitempty"`
+
 	// StyleSetting - Style attributes for knowledge portal (previously support center)
 	StyleSetting *Supportcenterstylesetting `json:"styleSetting,omitempty"`
 
@@ -111,6 +114,8 @@ func (o Supportcentersettings) MarshalJSON() ([]byte, error) {
 		
 		EnabledCategories *[]Supportcentercategory `json:"enabledCategories,omitempty"`
 		
+		LabelFilter *Supportcenterlabelfilter `json:"labelFilter,omitempty"`
+		
 		StyleSetting *Supportcenterstylesetting `json:"styleSetting,omitempty"`
 		
 		Feedback *Supportcenterfeedbacksettings `json:"feedback,omitempty"`
@@ -127,6 +132,8 @@ func (o Supportcentersettings) MarshalJSON() ([]byte, error) {
 		Screens: o.Screens,
 		
 		EnabledCategories: o.EnabledCategories,
+		
+		LabelFilter: o.LabelFilter,
 		
 		StyleSetting: o.StyleSetting,
 		
@@ -168,6 +175,11 @@ func (o *Supportcentersettings) UnmarshalJSON(b []byte) error {
 	if EnabledCategories, ok := SupportcentersettingsMap["enabledCategories"].([]interface{}); ok {
 		EnabledCategoriesString, _ := json.Marshal(EnabledCategories)
 		json.Unmarshal(EnabledCategoriesString, &o.EnabledCategories)
+	}
+	
+	if LabelFilter, ok := SupportcentersettingsMap["labelFilter"].(map[string]interface{}); ok {
+		LabelFilterString, _ := json.Marshal(LabelFilter)
+		json.Unmarshal(LabelFilterString, &o.LabelFilter)
 	}
 	
 	if StyleSetting, ok := SupportcentersettingsMap["styleSetting"].(map[string]interface{}); ok {

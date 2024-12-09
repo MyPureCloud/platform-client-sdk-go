@@ -25,6 +25,9 @@ type Knowledgeguestsession struct {
 
 	// Contexts - The session contexts.
 	Contexts *[]Knowledgeguestsessioncontext `json:"contexts,omitempty"`
+
+	// JourneySessionId - Journey session ID. Used to get the segments of the customer to filter search results.
+	JourneySessionId *string `json:"journeySessionId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -99,6 +102,8 @@ func (o Knowledgeguestsession) MarshalJSON() ([]byte, error) {
 		PageUrl *string `json:"pageUrl,omitempty"`
 		
 		Contexts *[]Knowledgeguestsessioncontext `json:"contexts,omitempty"`
+		
+		JourneySessionId *string `json:"journeySessionId,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -110,6 +115,8 @@ func (o Knowledgeguestsession) MarshalJSON() ([]byte, error) {
 		PageUrl: o.PageUrl,
 		
 		Contexts: o.Contexts,
+		
+		JourneySessionId: o.JourneySessionId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -143,6 +150,10 @@ func (o *Knowledgeguestsession) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ContextsString, &o.Contexts)
 	}
 	
+	if JourneySessionId, ok := KnowledgeguestsessionMap["journeySessionId"].(string); ok {
+		o.JourneySessionId = &JourneySessionId
+	}
+    
 
 	return nil
 }

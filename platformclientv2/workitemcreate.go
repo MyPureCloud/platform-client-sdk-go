@@ -54,17 +54,11 @@ type Workitemcreate struct {
 	// AssigneeId - The ID of the assignee of the Workitem. Must be a valid UUID.
 	AssigneeId *string `json:"assigneeId,omitempty"`
 
-	// WrapupCode - The ID of the wrapup. Must be a valid UUID.
-	WrapupCode *string `json:"wrapupCode,omitempty"`
-
 	// ScoredAgents - A list of scored agents for the Workitem. A workitem can have a maximum of 20 scored agents.
 	ScoredAgents *[]Workitemscoredagentrequest `json:"scoredAgents,omitempty"`
 
 	// LanguageId - The ID of language of the Workitem. Must be a valid UUID.
 	LanguageId *string `json:"languageId,omitempty"`
-
-	// UtilizationLabelId - The ID of utilization label of the Workitem. Must be a valid UUID.
-	UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
 
 	// ExternalContactId - The ID of the external contact of the Workitem. Must be a valid UUID.
 	ExternalContactId *string `json:"externalContactId,omitempty"`
@@ -77,6 +71,12 @@ type Workitemcreate struct {
 
 	// PreferredAgentIds - The preferred agent IDs of the Workitem. Must be valid UUIDs.
 	PreferredAgentIds *[]string `json:"preferredAgentIds,omitempty"`
+
+	// WrapupCode - The ID of the wrapup. Must be a valid UUID.
+	WrapupCode *string `json:"wrapupCode,omitempty"`
+
+	// UtilizationLabelId - The ID of utilization label of the Workitem. Must be a valid UUID.
+	UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -186,13 +186,9 @@ func (o Workitemcreate) MarshalJSON() ([]byte, error) {
 		
 		AssigneeId *string `json:"assigneeId,omitempty"`
 		
-		WrapupCode *string `json:"wrapupCode,omitempty"`
-		
 		ScoredAgents *[]Workitemscoredagentrequest `json:"scoredAgents,omitempty"`
 		
 		LanguageId *string `json:"languageId,omitempty"`
-		
-		UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
 		
 		ExternalContactId *string `json:"externalContactId,omitempty"`
 		
@@ -201,6 +197,10 @@ func (o Workitemcreate) MarshalJSON() ([]byte, error) {
 		SkillIds *[]string `json:"skillIds,omitempty"`
 		
 		PreferredAgentIds *[]string `json:"preferredAgentIds,omitempty"`
+		
+		WrapupCode *string `json:"wrapupCode,omitempty"`
+		
+		UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -231,13 +231,9 @@ func (o Workitemcreate) MarshalJSON() ([]byte, error) {
 		
 		AssigneeId: o.AssigneeId,
 		
-		WrapupCode: o.WrapupCode,
-		
 		ScoredAgents: o.ScoredAgents,
 		
 		LanguageId: o.LanguageId,
-		
-		UtilizationLabelId: o.UtilizationLabelId,
 		
 		ExternalContactId: o.ExternalContactId,
 		
@@ -246,6 +242,10 @@ func (o Workitemcreate) MarshalJSON() ([]byte, error) {
 		SkillIds: o.SkillIds,
 		
 		PreferredAgentIds: o.PreferredAgentIds,
+		
+		WrapupCode: o.WrapupCode,
+		
+		UtilizationLabelId: o.UtilizationLabelId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -319,10 +319,6 @@ func (o *Workitemcreate) UnmarshalJSON(b []byte) error {
 		o.AssigneeId = &AssigneeId
 	}
     
-	if WrapupCode, ok := WorkitemcreateMap["wrapupCode"].(string); ok {
-		o.WrapupCode = &WrapupCode
-	}
-    
 	if ScoredAgents, ok := WorkitemcreateMap["scoredAgents"].([]interface{}); ok {
 		ScoredAgentsString, _ := json.Marshal(ScoredAgents)
 		json.Unmarshal(ScoredAgentsString, &o.ScoredAgents)
@@ -330,10 +326,6 @@ func (o *Workitemcreate) UnmarshalJSON(b []byte) error {
 	
 	if LanguageId, ok := WorkitemcreateMap["languageId"].(string); ok {
 		o.LanguageId = &LanguageId
-	}
-    
-	if UtilizationLabelId, ok := WorkitemcreateMap["utilizationLabelId"].(string); ok {
-		o.UtilizationLabelId = &UtilizationLabelId
 	}
     
 	if ExternalContactId, ok := WorkitemcreateMap["externalContactId"].(string); ok {
@@ -354,6 +346,14 @@ func (o *Workitemcreate) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(PreferredAgentIdsString, &o.PreferredAgentIds)
 	}
 	
+	if WrapupCode, ok := WorkitemcreateMap["wrapupCode"].(string); ok {
+		o.WrapupCode = &WrapupCode
+	}
+    
+	if UtilizationLabelId, ok := WorkitemcreateMap["utilizationLabelId"].(string); ok {
+		o.UtilizationLabelId = &UtilizationLabelId
+	}
+    
 
 	return nil
 }

@@ -25,6 +25,9 @@ type Orgauthsettings struct {
 
 	// PasswordRequirements - The password requirements for the organization.
 	PasswordRequirements *Passwordrequirements `json:"passwordRequirements,omitempty"`
+
+	// InactivityTimeoutExclusions - The list of exempt apis from inactivity timeout.
+	InactivityTimeoutExclusions *[]string `json:"inactivityTimeoutExclusions,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -99,6 +102,8 @@ func (o Orgauthsettings) MarshalJSON() ([]byte, error) {
 		IpAddressAllowlist *[]string `json:"ipAddressAllowlist,omitempty"`
 		
 		PasswordRequirements *Passwordrequirements `json:"passwordRequirements,omitempty"`
+		
+		InactivityTimeoutExclusions *[]string `json:"inactivityTimeoutExclusions,omitempty"`
 		Alias
 	}{ 
 		MultifactorAuthenticationRequired: o.MultifactorAuthenticationRequired,
@@ -110,6 +115,8 @@ func (o Orgauthsettings) MarshalJSON() ([]byte, error) {
 		IpAddressAllowlist: o.IpAddressAllowlist,
 		
 		PasswordRequirements: o.PasswordRequirements,
+		
+		InactivityTimeoutExclusions: o.InactivityTimeoutExclusions,
 		Alias:    (Alias)(o),
 	})
 }
@@ -142,6 +149,11 @@ func (o *Orgauthsettings) UnmarshalJSON(b []byte) error {
 	if PasswordRequirements, ok := OrgauthsettingsMap["passwordRequirements"].(map[string]interface{}); ok {
 		PasswordRequirementsString, _ := json.Marshal(PasswordRequirements)
 		json.Unmarshal(PasswordRequirementsString, &o.PasswordRequirements)
+	}
+	
+	if InactivityTimeoutExclusions, ok := OrgauthsettingsMap["inactivityTimeoutExclusions"].([]interface{}); ok {
+		InactivityTimeoutExclusionsString, _ := json.Marshal(InactivityTimeoutExclusions)
+		json.Unmarshal(InactivityTimeoutExclusionsString, &o.InactivityTimeoutExclusions)
 	}
 	
 

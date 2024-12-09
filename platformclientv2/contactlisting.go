@@ -26,14 +26,14 @@ type Contactlisting struct {
 	// PartialResults
 	PartialResults *bool `json:"partialResults,omitempty"`
 
+	// NextUri
+	NextUri *string `json:"nextUri,omitempty"`
+
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
-
-	// NextUri
-	NextUri *string `json:"nextUri,omitempty"`
 
 	// PreviousUri
 	PreviousUri *string `json:"previousUri,omitempty"`
@@ -118,11 +118,11 @@ func (o Contactlisting) MarshalJSON() ([]byte, error) {
 		
 		PartialResults *bool `json:"partialResults,omitempty"`
 		
+		NextUri *string `json:"nextUri,omitempty"`
+		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		
-		NextUri *string `json:"nextUri,omitempty"`
 		
 		PreviousUri *string `json:"previousUri,omitempty"`
 		
@@ -141,11 +141,11 @@ func (o Contactlisting) MarshalJSON() ([]byte, error) {
 		
 		PartialResults: o.PartialResults,
 		
+		NextUri: o.NextUri,
+		
 		FirstUri: o.FirstUri,
 		
 		SelfUri: o.SelfUri,
-		
-		NextUri: o.NextUri,
 		
 		PreviousUri: o.PreviousUri,
 		
@@ -187,16 +187,16 @@ func (o *Contactlisting) UnmarshalJSON(b []byte) error {
 		o.PartialResults = &PartialResults
 	}
     
+	if NextUri, ok := ContactlistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
+	}
+    
 	if FirstUri, ok := ContactlistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
     
 	if SelfUri, ok := ContactlistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
-	}
-    
-	if NextUri, ok := ContactlistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
 	}
     
 	if PreviousUri, ok := ContactlistingMap["previousUri"].(string); ok {

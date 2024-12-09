@@ -22,6 +22,9 @@ type Scimv2enterpriseuser struct {
 
 	// EmployeeNumber - The user's employee number.
 	EmployeeNumber *string `json:"employeeNumber,omitempty"`
+
+	// DateHire - The user's hire date. Format in JSON will be YYYY-MM-DD.
+	DateHire *string `json:"dateHire,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +97,8 @@ func (o Scimv2enterpriseuser) MarshalJSON() ([]byte, error) {
 		Manager *Manager `json:"manager,omitempty"`
 		
 		EmployeeNumber *string `json:"employeeNumber,omitempty"`
+		
+		DateHire *string `json:"dateHire,omitempty"`
 		Alias
 	}{ 
 		Division: o.Division,
@@ -103,6 +108,8 @@ func (o Scimv2enterpriseuser) MarshalJSON() ([]byte, error) {
 		Manager: o.Manager,
 		
 		EmployeeNumber: o.EmployeeNumber,
+		
+		DateHire: o.DateHire,
 		Alias:    (Alias)(o),
 	})
 }
@@ -129,6 +136,10 @@ func (o *Scimv2enterpriseuser) UnmarshalJSON(b []byte) error {
 	
 	if EmployeeNumber, ok := Scimv2enterpriseuserMap["employeeNumber"].(string); ok {
 		o.EmployeeNumber = &EmployeeNumber
+	}
+    
+	if DateHire, ok := Scimv2enterpriseuserMap["dateHire"].(string); ok {
+		o.DateHire = &DateHire
 	}
     
 

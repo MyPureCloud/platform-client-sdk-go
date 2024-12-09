@@ -10,7 +10,13 @@ import (
 // Evaluationsettingsassignee
 type Evaluationsettingsassignee struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// User - The user the dispute should be assigned to
+	User *Userreferencewithname `json:"user,omitempty"`
+
+	// VarType - The assignee type. Valid values: Original, Individual, None
+	VarType *string `json:"type,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Evaluationsettingsassignee) SetField(field string, fieldValue interface{}) {
@@ -74,8 +80,16 @@ func (o Evaluationsettingsassignee) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Evaluationsettingsassignee
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		User *Userreferencewithname `json:"user,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
+		Alias
+	}{ 
+		User: o.User,
+		
+		VarType: o.VarType,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -86,6 +100,15 @@ func (o *Evaluationsettingsassignee) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if User, ok := EvaluationsettingsassigneeMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if VarType, ok := EvaluationsettingsassigneeMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+    
 
 	return nil
 }

@@ -15,7 +15,7 @@ type Shifttraderesponse struct {
 	// Id - The ID of this shift trade
 	Id *string `json:"id,omitempty"`
 
-	// WeekDate - The start week date of the associated schedule in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
+	// WeekDate - The start week date of the initiating shift in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
 	WeekDate *time.Time `json:"weekDate,omitempty"`
 
 	// Schedule - A reference to the associated schedule

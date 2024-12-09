@@ -12,7 +12,7 @@ import (
 type Shifttradenotification struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// WeekDate - The start date of the schedule with which this trade is associated
+	// WeekDate - The start week date of the initiating shift of the shift trade in yyyy-MM-dd format
 	WeekDate *string `json:"weekDate,omitempty"`
 
 	// TradeId - The ID of the shift trade

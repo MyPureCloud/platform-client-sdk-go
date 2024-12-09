@@ -16,6 +16,9 @@ type Externalcontactscontactchangedtopicinstagramid struct {
 
 	// DisplayName
 	DisplayName *string `json:"displayName,omitempty"`
+
+	// Handle
+	Handle *string `json:"handle,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Externalcontactscontactchangedtopicinstagramid) MarshalJSON() ([]byte, e
 		Ids *[]Externalcontactscontactchangedtopicinstagramscopedid `json:"ids,omitempty"`
 		
 		DisplayName *string `json:"displayName,omitempty"`
+		
+		Handle *string `json:"handle,omitempty"`
 		Alias
 	}{ 
 		Ids: o.Ids,
 		
 		DisplayName: o.DisplayName,
+		
+		Handle: o.Handle,
 		Alias:    (Alias)(o),
 	})
 }
@@ -107,6 +114,10 @@ func (o *Externalcontactscontactchangedtopicinstagramid) UnmarshalJSON(b []byte)
 	
 	if DisplayName, ok := ExternalcontactscontactchangedtopicinstagramidMap["displayName"].(string); ok {
 		o.DisplayName = &DisplayName
+	}
+    
+	if Handle, ok := ExternalcontactscontactchangedtopicinstagramidMap["handle"].(string); ok {
+		o.Handle = &Handle
 	}
     
 

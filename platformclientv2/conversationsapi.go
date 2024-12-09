@@ -2320,8 +2320,6 @@ func (a ConversationsApi) GetConversationSuggestions(conversationId string, befo
 // GetConversationSummaries invokes GET /api/v2/conversations/{conversationId}/summaries
 //
 // Get the summaries of the conversation.
-//
-// Preview: GetConversationSummaries is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) GetConversationSummaries(conversationId string) (*Conversationsummariesgetresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

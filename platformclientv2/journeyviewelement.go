@@ -20,6 +20,9 @@ type Journeyviewelement struct {
 	// Attributes - Required attributes of the element
 	Attributes *Journeyviewelementattributes `json:"attributes,omitempty"`
 
+	// DisplayAttributes - Attributes that defines the visualization of the element in the journey view
+	DisplayAttributes *Journeyviewelementdisplayattributes `json:"displayAttributes,omitempty"`
+
 	// Filter - Any filters applied to this element
 	Filter *Journeyviewelementfilter `json:"filter,omitempty"`
 
@@ -96,6 +99,8 @@ func (o Journeyviewelement) MarshalJSON() ([]byte, error) {
 		
 		Attributes *Journeyviewelementattributes `json:"attributes,omitempty"`
 		
+		DisplayAttributes *Journeyviewelementdisplayattributes `json:"displayAttributes,omitempty"`
+		
 		Filter *Journeyviewelementfilter `json:"filter,omitempty"`
 		
 		FollowedBy *[]Journeyviewlink `json:"followedBy,omitempty"`
@@ -106,6 +111,8 @@ func (o Journeyviewelement) MarshalJSON() ([]byte, error) {
 		Name: o.Name,
 		
 		Attributes: o.Attributes,
+		
+		DisplayAttributes: o.DisplayAttributes,
 		
 		Filter: o.Filter,
 		
@@ -132,6 +139,11 @@ func (o *Journeyviewelement) UnmarshalJSON(b []byte) error {
 	if Attributes, ok := JourneyviewelementMap["attributes"].(map[string]interface{}); ok {
 		AttributesString, _ := json.Marshal(Attributes)
 		json.Unmarshal(AttributesString, &o.Attributes)
+	}
+	
+	if DisplayAttributes, ok := JourneyviewelementMap["displayAttributes"].(map[string]interface{}); ok {
+		DisplayAttributesString, _ := json.Marshal(DisplayAttributes)
+		json.Unmarshal(DisplayAttributesString, &o.DisplayAttributes)
 	}
 	
 	if Filter, ok := JourneyviewelementMap["filter"].(map[string]interface{}); ok {

@@ -23,6 +23,9 @@ type Managementunitlisting struct {
 	// Total - Deprecated, paging is not supported
 	Total *int `json:"total,omitempty"`
 
+	// NextUri - Deprecated, paging is not supported
+	NextUri *string `json:"nextUri,omitempty"`
+
 	// PreviousUri - Deprecated, paging is not supported
 	PreviousUri *string `json:"previousUri,omitempty"`
 
@@ -31,9 +34,6 @@ type Managementunitlisting struct {
 
 	// FirstUri - Deprecated, paging is not supported
 	FirstUri *string `json:"firstUri,omitempty"`
-
-	// NextUri - Deprecated, paging is not supported
-	NextUri *string `json:"nextUri,omitempty"`
 
 	// PageCount - Deprecated, paging is not supported
 	PageCount *int `json:"pageCount,omitempty"`
@@ -113,13 +113,13 @@ func (o Managementunitlisting) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
+		NextUri *string `json:"nextUri,omitempty"`
+		
 		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		LastUri *string `json:"lastUri,omitempty"`
 		
 		FirstUri *string `json:"firstUri,omitempty"`
-		
-		NextUri *string `json:"nextUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		
@@ -134,13 +134,13 @@ func (o Managementunitlisting) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
+		NextUri: o.NextUri,
+		
 		PreviousUri: o.PreviousUri,
 		
 		LastUri: o.LastUri,
 		
 		FirstUri: o.FirstUri,
-		
-		NextUri: o.NextUri,
 		
 		PageCount: o.PageCount,
 		
@@ -176,6 +176,10 @@ func (o *Managementunitlisting) UnmarshalJSON(b []byte) error {
 		o.Total = &TotalInt
 	}
 	
+	if NextUri, ok := ManagementunitlistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
+	}
+    
 	if PreviousUri, ok := ManagementunitlistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
 	}
@@ -186,10 +190,6 @@ func (o *Managementunitlisting) UnmarshalJSON(b []byte) error {
     
 	if FirstUri, ok := ManagementunitlistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
-	}
-    
-	if NextUri, ok := ManagementunitlistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
 	}
     
 	if PageCount, ok := ManagementunitlistingMap["pageCount"].(float64); ok {

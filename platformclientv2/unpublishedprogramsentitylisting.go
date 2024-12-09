@@ -17,11 +17,11 @@ type Unpublishedprogramsentitylisting struct {
 	// PageSize
 	PageSize *int `json:"pageSize,omitempty"`
 
-	// SelfUri
-	SelfUri *string `json:"selfUri,omitempty"`
-
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
+
+	// SelfUri
+	SelfUri *string `json:"selfUri,omitempty"`
 
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
@@ -94,9 +94,9 @@ func (o Unpublishedprogramsentitylisting) MarshalJSON() ([]byte, error) {
 		
 		PageSize *int `json:"pageSize,omitempty"`
 		
-		SelfUri *string `json:"selfUri,omitempty"`
-		
 		NextUri *string `json:"nextUri,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		Alias
@@ -105,9 +105,9 @@ func (o Unpublishedprogramsentitylisting) MarshalJSON() ([]byte, error) {
 		
 		PageSize: o.PageSize,
 		
-		SelfUri: o.SelfUri,
-		
 		NextUri: o.NextUri,
+		
+		SelfUri: o.SelfUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
@@ -131,12 +131,12 @@ func (o *Unpublishedprogramsentitylisting) UnmarshalJSON(b []byte) error {
 		o.PageSize = &PageSizeInt
 	}
 	
-	if SelfUri, ok := UnpublishedprogramsentitylistingMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
-	}
-    
 	if NextUri, ok := UnpublishedprogramsentitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
+	}
+    
+	if SelfUri, ok := UnpublishedprogramsentitylistingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
 	}
     
 	if PageCount, ok := UnpublishedprogramsentitylistingMap["pageCount"].(float64); ok {

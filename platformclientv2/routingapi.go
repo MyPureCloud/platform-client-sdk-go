@@ -1170,22 +1170,22 @@ func (a RoutingApi) DeleteRoutingSmsAddress(addressId string) (*APIResponse, err
 	return response, err
 }
 
-// DeleteRoutingSmsPhonenumber invokes DELETE /api/v2/routing/sms/phonenumbers/{addressId}
+// DeleteRoutingSmsPhonenumber invokes DELETE /api/v2/routing/sms/phonenumbers/{phoneNumberId}
 //
 // Delete a phone number provisioned for SMS.
-func (a RoutingApi) DeleteRoutingSmsPhonenumber(addressId string) (*APIResponse, error) {
+func (a RoutingApi) DeleteRoutingSmsPhonenumber(phoneNumberId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/routing/sms/phonenumbers/{addressId}"
-	path = strings.Replace(path, "{addressId}", url.PathEscape(fmt.Sprintf("%v", addressId)), -1)
+	path := a.Configuration.BasePath + "/api/v2/routing/sms/phonenumbers/{phoneNumberId}"
+	path = strings.Replace(path, "{phoneNumberId}", url.PathEscape(fmt.Sprintf("%v", phoneNumberId)), -1)
 	if true == false {
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
-	// verify the required parameter 'addressId' is set
-	if &addressId == nil {
+	// verify the required parameter 'phoneNumberId' is set
+	if &phoneNumberId == nil {
 		// false
-		return nil, errors.New("Missing required parameter 'addressId' when calling RoutingApi->DeleteRoutingSmsPhonenumber")
+		return nil, errors.New("Missing required parameter 'phoneNumberId' when calling RoutingApi->DeleteRoutingSmsPhonenumber")
 	}
 
 	headerParams := make(map[string]string)
@@ -4254,7 +4254,7 @@ func (a RoutingApi) GetRoutingQueueEstimatedwaittime(queueId string, conversatio
 // GetRoutingQueueMediatypeEstimatedwaittime invokes GET /api/v2/routing/queues/{queueId}/mediatypes/{mediaType}/estimatedwaittime
 //
 // Get Estimated Wait Time
-func (a RoutingApi) GetRoutingQueueMediatypeEstimatedwaittime(queueId string, mediaType string) (*Estimatedwaittimepredictions, *APIResponse, error) {
+func (a RoutingApi) GetRoutingQueueMediatypeEstimatedwaittime(queueId string, mediaType string, labelId string) (*Estimatedwaittimepredictions, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/mediatypes/{mediaType}/estimatedwaittime"
@@ -4292,6 +4292,8 @@ func (a RoutingApi) GetRoutingQueueMediatypeEstimatedwaittime(queueId string, me
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["labelId"] = a.Configuration.APIClient.ParameterToString(labelId, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -5985,23 +5987,23 @@ func (a RoutingApi) GetRoutingSmsAvailablephonenumbers(countryCode string, phone
 	return successPayload, response, err
 }
 
-// GetRoutingSmsPhonenumber invokes GET /api/v2/routing/sms/phonenumbers/{addressId}
+// GetRoutingSmsPhonenumber invokes GET /api/v2/routing/sms/phonenumbers/{phoneNumberId}
 //
 // Get a phone number provisioned for SMS.
-func (a RoutingApi) GetRoutingSmsPhonenumber(addressId string, expand string) (*Smsphonenumber, *APIResponse, error) {
+func (a RoutingApi) GetRoutingSmsPhonenumber(phoneNumberId string, expand string) (*Smsphonenumber, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/routing/sms/phonenumbers/{addressId}"
-	path = strings.Replace(path, "{addressId}", url.PathEscape(fmt.Sprintf("%v", addressId)), -1)
+	path := a.Configuration.BasePath + "/api/v2/routing/sms/phonenumbers/{phoneNumberId}"
+	path = strings.Replace(path, "{phoneNumberId}", url.PathEscape(fmt.Sprintf("%v", phoneNumberId)), -1)
 	defaultReturn := new(Smsphonenumber)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
-	// verify the required parameter 'addressId' is set
-	if &addressId == nil {
+	// verify the required parameter 'phoneNumberId' is set
+	if &phoneNumberId == nil {
 		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'addressId' when calling RoutingApi->GetRoutingSmsPhonenumber")
+		return defaultReturn, nil, errors.New("Missing required parameter 'phoneNumberId' when calling RoutingApi->GetRoutingSmsPhonenumber")
 	}
 
 	headerParams := make(map[string]string)
@@ -11937,23 +11939,23 @@ func (a RoutingApi) PutRoutingSettingsTranscription(body Transcriptionsettings) 
 	return successPayload, response, err
 }
 
-// PutRoutingSmsPhonenumber invokes PUT /api/v2/routing/sms/phonenumbers/{addressId}
+// PutRoutingSmsPhonenumber invokes PUT /api/v2/routing/sms/phonenumbers/{phoneNumberId}
 //
 // Update a phone number provisioned for SMS.
-func (a RoutingApi) PutRoutingSmsPhonenumber(addressId string, body Smsphonenumber) (*Smsphonenumber, *APIResponse, error) {
+func (a RoutingApi) PutRoutingSmsPhonenumber(phoneNumberId string, body Smsphonenumber) (*Smsphonenumber, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/routing/sms/phonenumbers/{addressId}"
-	path = strings.Replace(path, "{addressId}", url.PathEscape(fmt.Sprintf("%v", addressId)), -1)
+	path := a.Configuration.BasePath + "/api/v2/routing/sms/phonenumbers/{phoneNumberId}"
+	path = strings.Replace(path, "{phoneNumberId}", url.PathEscape(fmt.Sprintf("%v", phoneNumberId)), -1)
 	defaultReturn := new(Smsphonenumber)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
-	// verify the required parameter 'addressId' is set
-	if &addressId == nil {
+	// verify the required parameter 'phoneNumberId' is set
+	if &phoneNumberId == nil {
 		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'addressId' when calling RoutingApi->PutRoutingSmsPhonenumber")
+		return defaultReturn, nil, errors.New("Missing required parameter 'phoneNumberId' when calling RoutingApi->PutRoutingSmsPhonenumber")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {

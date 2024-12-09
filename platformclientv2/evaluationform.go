@@ -33,6 +33,9 @@ type Evaluationform struct {
 	// PublishedVersions - A list of the published versions of this form. Not populated by default, its availability depends on the endpoint. Use the 'expand=publishHistory' query parameter to retrieve this data where applicable (refer to the endpoint description to see if it is applicable).
 	PublishedVersions *Domainentitylistingevaluationform `json:"publishedVersions,omitempty"`
 
+	// EvaluationSettings - Settings for evaluations associated with this form
+	EvaluationSettings *Evaluationsettings `json:"evaluationSettings,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -122,6 +125,8 @@ func (o Evaluationform) MarshalJSON() ([]byte, error) {
 		
 		PublishedVersions *Domainentitylistingevaluationform `json:"publishedVersions,omitempty"`
 		
+		EvaluationSettings *Evaluationsettings `json:"evaluationSettings,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -138,6 +143,8 @@ func (o Evaluationform) MarshalJSON() ([]byte, error) {
 		QuestionGroups: o.QuestionGroups,
 		
 		PublishedVersions: o.PublishedVersions,
+		
+		EvaluationSettings: o.EvaluationSettings,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -180,6 +187,11 @@ func (o *Evaluationform) UnmarshalJSON(b []byte) error {
 	if PublishedVersions, ok := EvaluationformMap["publishedVersions"].(map[string]interface{}); ok {
 		PublishedVersionsString, _ := json.Marshal(PublishedVersions)
 		json.Unmarshal(PublishedVersionsString, &o.PublishedVersions)
+	}
+	
+	if EvaluationSettings, ok := EvaluationformMap["evaluationSettings"].(map[string]interface{}); ok {
+		EvaluationSettingsString, _ := json.Marshal(EvaluationSettings)
+		json.Unmarshal(EvaluationSettingsString, &o.EvaluationSettings)
 	}
 	
 	if SelfUri, ok := EvaluationformMap["selfUri"].(string); ok {

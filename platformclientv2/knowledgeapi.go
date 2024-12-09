@@ -1404,7 +1404,7 @@ func (a KnowledgeApi) GetKnowledgeGuestSessionDocuments(sessionId string, catego
 // GetKnowledgeIntegrationOptions invokes GET /api/v2/knowledge/integrations/{integrationId}/options
 //
 // Get sync options available for a knowledge-connect integration
-func (a KnowledgeApi) GetKnowledgeIntegrationOptions(integrationId string) (*Knowledgeintegrationoptionsresponse, *APIResponse, error) {
+func (a KnowledgeApi) GetKnowledgeIntegrationOptions(integrationId string, knowledgeBaseIds []string) (*Knowledgeintegrationoptionsresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/integrations/{integrationId}/options"
@@ -1436,6 +1436,8 @@ func (a KnowledgeApi) GetKnowledgeIntegrationOptions(integrationId string) (*Kno
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["knowledgeBaseIds"] = a.Configuration.APIClient.ParameterToString(knowledgeBaseIds, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

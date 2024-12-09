@@ -17,6 +17,9 @@ type Knowledgeintegrationfilter struct {
 	// VarType - Filter type.
 	VarType *string `json:"type,omitempty"`
 
+	// Action - Filter action.
+	Action *string `json:"action,omitempty"`
+
 	// Values - Available options of the filter setting.
 	Values *[]Knowledgeintegrationfiltervalue `json:"values,omitempty"`
 }
@@ -88,12 +91,16 @@ func (o Knowledgeintegrationfilter) MarshalJSON() ([]byte, error) {
 		
 		VarType *string `json:"type,omitempty"`
 		
+		Action *string `json:"action,omitempty"`
+		
 		Values *[]Knowledgeintegrationfiltervalue `json:"values,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
 		
 		VarType: o.VarType,
+		
+		Action: o.Action,
 		
 		Values: o.Values,
 		Alias:    (Alias)(o),
@@ -113,6 +120,10 @@ func (o *Knowledgeintegrationfilter) UnmarshalJSON(b []byte) error {
     
 	if VarType, ok := KnowledgeintegrationfilterMap["type"].(string); ok {
 		o.VarType = &VarType
+	}
+    
+	if Action, ok := KnowledgeintegrationfilterMap["action"].(string); ok {
+		o.Action = &Action
 	}
     
 	if Values, ok := KnowledgeintegrationfilterMap["values"].([]interface{}); ok {

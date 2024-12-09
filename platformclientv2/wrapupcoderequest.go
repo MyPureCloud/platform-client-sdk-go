@@ -21,6 +21,9 @@ type Wrapupcoderequest struct {
 	// Division - The division to which this entity belongs.
 	Division *Writablestarrabledivision `json:"division,omitempty"`
 
+	// Description - The wrap-up code description.
+	Description *string `json:"description,omitempty"`
+
 	// DateCreated - Date when the wrap-up code was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
@@ -122,6 +125,8 @@ func (o Wrapupcoderequest) MarshalJSON() ([]byte, error) {
 		
 		Division *Writablestarrabledivision `json:"division,omitempty"`
 		
+		Description *string `json:"description,omitempty"`
+		
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
 		DateModified *string `json:"dateModified,omitempty"`
@@ -138,6 +143,8 @@ func (o Wrapupcoderequest) MarshalJSON() ([]byte, error) {
 		Name: o.Name,
 		
 		Division: o.Division,
+		
+		Description: o.Description,
 		
 		DateCreated: DateCreated,
 		
@@ -172,6 +179,10 @@ func (o *Wrapupcoderequest) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(DivisionString, &o.Division)
 	}
 	
+	if Description, ok := WrapupcoderequestMap["description"].(string); ok {
+		o.Description = &Description
+	}
+    
 	if dateCreatedString, ok := WrapupcoderequestMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated

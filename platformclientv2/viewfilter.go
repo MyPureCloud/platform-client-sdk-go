@@ -643,6 +643,9 @@ type Viewfilter struct {
 
 	// SlideshowIds - List of Dashboard slideshowIds to be filtered
 	SlideshowIds *[]string `json:"slideshowIds,omitempty"`
+
+	// Conferenced - Filter to indicate if the conversation has conference
+	Conferenced *bool `json:"conferenced,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -1129,6 +1132,8 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		FilterUsersByManagerIds *[]string `json:"filterUsersByManagerIds,omitempty"`
 		
 		SlideshowIds *[]string `json:"slideshowIds,omitempty"`
+		
+		Conferenced *bool `json:"conferenced,omitempty"`
 		Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -1552,6 +1557,8 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		FilterUsersByManagerIds: o.FilterUsersByManagerIds,
 		
 		SlideshowIds: o.SlideshowIds,
+		
+		Conferenced: o.Conferenced,
 		Alias:    (Alias)(o),
 	})
 }
@@ -2572,6 +2579,10 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(SlideshowIdsString, &o.SlideshowIds)
 	}
 	
+	if Conferenced, ok := ViewfilterMap["conferenced"].(bool); ok {
+		o.Conferenced = &Conferenced
+	}
+    
 
 	return nil
 }

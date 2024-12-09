@@ -19,6 +19,9 @@ type Predictionresults struct {
 
 	// EstimatedWaitTimeSeconds - Estimated wait time in seconds
 	EstimatedWaitTimeSeconds *int `json:"estimatedWaitTimeSeconds,omitempty"`
+
+	// Label - This specifies the interaction label scoped to this estimated wait time calculation
+	Label *Addressableentityref `json:"label,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +92,8 @@ func (o Predictionresults) MarshalJSON() ([]byte, error) {
 		Formula *string `json:"formula,omitempty"`
 		
 		EstimatedWaitTimeSeconds *int `json:"estimatedWaitTimeSeconds,omitempty"`
+		
+		Label *Addressableentityref `json:"label,omitempty"`
 		Alias
 	}{ 
 		Intent: o.Intent,
@@ -96,6 +101,8 @@ func (o Predictionresults) MarshalJSON() ([]byte, error) {
 		Formula: o.Formula,
 		
 		EstimatedWaitTimeSeconds: o.EstimatedWaitTimeSeconds,
+		
+		Label: o.Label,
 		Alias:    (Alias)(o),
 	})
 }
@@ -118,6 +125,11 @@ func (o *Predictionresults) UnmarshalJSON(b []byte) error {
 	if EstimatedWaitTimeSeconds, ok := PredictionresultsMap["estimatedWaitTimeSeconds"].(float64); ok {
 		EstimatedWaitTimeSecondsInt := int(EstimatedWaitTimeSeconds)
 		o.EstimatedWaitTimeSeconds = &EstimatedWaitTimeSecondsInt
+	}
+	
+	if Label, ok := PredictionresultsMap["label"].(map[string]interface{}); ok {
+		LabelString, _ := json.Marshal(Label)
+		json.Unmarshal(LabelString, &o.Label)
 	}
 	
 

@@ -17,9 +17,6 @@ type Validationservicerequest struct {
 
 	// UploadKey - S3 key for the uploaded file
 	UploadKey *string `json:"uploadKey,omitempty"`
-
-	// FileName - Name of the uploaded file
-	FileName *string `json:"fileName,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -96,15 +93,11 @@ func (o Validationservicerequest) MarshalJSON() ([]byte, error) {
 		DateImportEnded *string `json:"dateImportEnded,omitempty"`
 		
 		UploadKey *string `json:"uploadKey,omitempty"`
-		
-		FileName *string `json:"fileName,omitempty"`
 		Alias
 	}{ 
 		DateImportEnded: DateImportEnded,
 		
 		UploadKey: o.UploadKey,
-		
-		FileName: o.FileName,
 		Alias:    (Alias)(o),
 	})
 }
@@ -123,10 +116,6 @@ func (o *Validationservicerequest) UnmarshalJSON(b []byte) error {
 	
 	if UploadKey, ok := ValidationservicerequestMap["uploadKey"].(string); ok {
 		o.UploadKey = &UploadKey
-	}
-    
-	if FileName, ok := ValidationservicerequestMap["fileName"].(string); ok {
-		o.FileName = &FileName
 	}
     
 

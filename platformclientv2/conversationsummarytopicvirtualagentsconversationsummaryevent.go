@@ -56,6 +56,12 @@ type Conversationsummarytopicvirtualagentsconversationsummaryevent struct {
 
 	// LastEditedBy
 	LastEditedBy *Conversationsummarytopicvirtualagentsconversationsummaryparticipant `json:"lastEditedBy,omitempty"`
+
+	// ErrorType
+	ErrorType *string `json:"errorType,omitempty"`
+
+	// DurationMs
+	DurationMs *int `json:"durationMs,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -158,6 +164,10 @@ func (o Conversationsummarytopicvirtualagentsconversationsummaryevent) MarshalJS
 		TriggerSource *Conversationsummarytopicvirtualagentstriggersource `json:"triggerSource,omitempty"`
 		
 		LastEditedBy *Conversationsummarytopicvirtualagentsconversationsummaryparticipant `json:"lastEditedBy,omitempty"`
+		
+		ErrorType *string `json:"errorType,omitempty"`
+		
+		DurationMs *int `json:"durationMs,omitempty"`
 		Alias
 	}{ 
 		ConversationId: o.ConversationId,
@@ -189,6 +199,10 @@ func (o Conversationsummarytopicvirtualagentsconversationsummaryevent) MarshalJS
 		TriggerSource: o.TriggerSource,
 		
 		LastEditedBy: o.LastEditedBy,
+		
+		ErrorType: o.ErrorType,
+		
+		DurationMs: o.DurationMs,
 		Alias:    (Alias)(o),
 	})
 }
@@ -268,6 +282,15 @@ func (o *Conversationsummarytopicvirtualagentsconversationsummaryevent) Unmarsha
 	if LastEditedBy, ok := ConversationsummarytopicvirtualagentsconversationsummaryeventMap["lastEditedBy"].(map[string]interface{}); ok {
 		LastEditedByString, _ := json.Marshal(LastEditedBy)
 		json.Unmarshal(LastEditedByString, &o.LastEditedBy)
+	}
+	
+	if ErrorType, ok := ConversationsummarytopicvirtualagentsconversationsummaryeventMap["errorType"].(string); ok {
+		o.ErrorType = &ErrorType
+	}
+    
+	if DurationMs, ok := ConversationsummarytopicvirtualagentsconversationsummaryeventMap["durationMs"].(float64); ok {
+		DurationMsInt := int(DurationMs)
+		o.DurationMs = &DurationMsInt
 	}
 	
 

@@ -67,6 +67,9 @@ type Worktypedelta struct {
 
 	// ModifiedBy
 	ModifiedBy *Workitemsattributechangestring `json:"modifiedBy,omitempty"`
+
+	// DefaultScriptId
+	DefaultScriptId *Workitemsattributechangestring `json:"defaultScriptId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -169,6 +172,8 @@ func (o Worktypedelta) MarshalJSON() ([]byte, error) {
 		DateModified *Workitemsattributechangeinstant `json:"dateModified,omitempty"`
 		
 		ModifiedBy *Workitemsattributechangestring `json:"modifiedBy,omitempty"`
+		
+		DefaultScriptId *Workitemsattributechangestring `json:"defaultScriptId,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -208,6 +213,8 @@ func (o Worktypedelta) MarshalJSON() ([]byte, error) {
 		DateModified: o.DateModified,
 		
 		ModifiedBy: o.ModifiedBy,
+		
+		DefaultScriptId: o.DefaultScriptId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -312,6 +319,11 @@ func (o *Worktypedelta) UnmarshalJSON(b []byte) error {
 	if ModifiedBy, ok := WorktypedeltaMap["modifiedBy"].(map[string]interface{}); ok {
 		ModifiedByString, _ := json.Marshal(ModifiedBy)
 		json.Unmarshal(ModifiedByString, &o.ModifiedBy)
+	}
+	
+	if DefaultScriptId, ok := WorktypedeltaMap["defaultScriptId"].(map[string]interface{}); ok {
+		DefaultScriptIdString, _ := json.Marshal(DefaultScriptId)
+		json.Unmarshal(DefaultScriptIdString, &o.DefaultScriptId)
 	}
 	
 

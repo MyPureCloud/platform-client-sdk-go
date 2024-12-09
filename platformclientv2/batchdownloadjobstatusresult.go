@@ -26,6 +26,9 @@ type Batchdownloadjobstatusresult struct {
 	// ErrorCount - Current number of error results.
 	ErrorCount *int `json:"errorCount,omitempty"`
 
+	// Status - Current status of the job. This could be either IN_PROGRESS or COMPLETED. A job is considered completed when all the submitted requests have been processed and fulfilled.
+	Status *string `json:"status,omitempty"`
+
 	// Results - Current set of results for the job.
 	Results *[]Batchdownloadjobresult `json:"results,omitempty"`
 
@@ -106,6 +109,8 @@ func (o Batchdownloadjobstatusresult) MarshalJSON() ([]byte, error) {
 		
 		ErrorCount *int `json:"errorCount,omitempty"`
 		
+		Status *string `json:"status,omitempty"`
+		
 		Results *[]Batchdownloadjobresult `json:"results,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -120,6 +125,8 @@ func (o Batchdownloadjobstatusresult) MarshalJSON() ([]byte, error) {
 		ResultCount: o.ResultCount,
 		
 		ErrorCount: o.ErrorCount,
+		
+		Status: o.Status,
 		
 		Results: o.Results,
 		
@@ -158,6 +165,10 @@ func (o *Batchdownloadjobstatusresult) UnmarshalJSON(b []byte) error {
 		o.ErrorCount = &ErrorCountInt
 	}
 	
+	if Status, ok := BatchdownloadjobstatusresultMap["status"].(string); ok {
+		o.Status = &Status
+	}
+    
 	if Results, ok := BatchdownloadjobstatusresultMap["results"].([]interface{}); ok {
 		ResultsString, _ := json.Marshal(Results)
 		json.Unmarshal(ResultsString, &o.Results)

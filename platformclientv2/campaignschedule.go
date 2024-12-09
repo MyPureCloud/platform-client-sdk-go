@@ -34,7 +34,7 @@ type Campaignschedule struct {
 	TimeZone *string `json:"timeZone,omitempty"`
 
 	// Campaign - The Campaign that this CampaignSchedule is for.
-	Campaign *Domainentityref `json:"campaign,omitempty"`
+	Campaign *Divisioneddomainentityref `json:"campaign,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -133,7 +133,7 @@ func (o Campaignschedule) MarshalJSON() ([]byte, error) {
 		
 		TimeZone *string `json:"timeZone,omitempty"`
 		
-		Campaign *Domainentityref `json:"campaign,omitempty"`
+		Campaign *Divisioneddomainentityref `json:"campaign,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
