@@ -26,20 +26,20 @@ type Relationshiplisting struct {
 	// PartialResults
 	PartialResults *bool `json:"partialResults,omitempty"`
 
+	// FirstUri
+	FirstUri *string `json:"firstUri,omitempty"`
+
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
+
+	// SelfUri
+	SelfUri *string `json:"selfUri,omitempty"`
+
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
 
 	// PreviousUri
 	PreviousUri *string `json:"previousUri,omitempty"`
-
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
-	// FirstUri
-	FirstUri *string `json:"firstUri,omitempty"`
-
-	// SelfUri
-	SelfUri *string `json:"selfUri,omitempty"`
 
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
@@ -118,15 +118,15 @@ func (o Relationshiplisting) MarshalJSON() ([]byte, error) {
 		
 		PartialResults *bool `json:"partialResults,omitempty"`
 		
-		NextUri *string `json:"nextUri,omitempty"`
-		
-		PreviousUri *string `json:"previousUri,omitempty"`
+		FirstUri *string `json:"firstUri,omitempty"`
 		
 		LastUri *string `json:"lastUri,omitempty"`
 		
-		FirstUri *string `json:"firstUri,omitempty"`
-		
 		SelfUri *string `json:"selfUri,omitempty"`
+		
+		NextUri *string `json:"nextUri,omitempty"`
+		
+		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		Alias
@@ -141,15 +141,15 @@ func (o Relationshiplisting) MarshalJSON() ([]byte, error) {
 		
 		PartialResults: o.PartialResults,
 		
-		NextUri: o.NextUri,
-		
-		PreviousUri: o.PreviousUri,
+		FirstUri: o.FirstUri,
 		
 		LastUri: o.LastUri,
 		
-		FirstUri: o.FirstUri,
-		
 		SelfUri: o.SelfUri,
+		
+		NextUri: o.NextUri,
+		
+		PreviousUri: o.PreviousUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
@@ -187,24 +187,24 @@ func (o *Relationshiplisting) UnmarshalJSON(b []byte) error {
 		o.PartialResults = &PartialResults
 	}
     
-	if NextUri, ok := RelationshiplistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
-	}
-    
-	if PreviousUri, ok := RelationshiplistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
+	if FirstUri, ok := RelationshiplistingMap["firstUri"].(string); ok {
+		o.FirstUri = &FirstUri
 	}
     
 	if LastUri, ok := RelationshiplistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
 	}
     
-	if FirstUri, ok := RelationshiplistingMap["firstUri"].(string); ok {
-		o.FirstUri = &FirstUri
-	}
-    
 	if SelfUri, ok := RelationshiplistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
+	}
+    
+	if NextUri, ok := RelationshiplistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
+	}
+    
+	if PreviousUri, ok := RelationshiplistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
 	}
     
 	if PageCount, ok := RelationshiplistingMap["pageCount"].(float64); ok {

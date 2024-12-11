@@ -23,20 +23,20 @@ type Managementunitlisting struct {
 	// Total - Deprecated, paging is not supported
 	Total *int `json:"total,omitempty"`
 
+	// FirstUri - Deprecated, paging is not supported
+	FirstUri *string `json:"firstUri,omitempty"`
+
+	// LastUri - Deprecated, paging is not supported
+	LastUri *string `json:"lastUri,omitempty"`
+
+	// PageCount - Deprecated, paging is not supported
+	PageCount *int `json:"pageCount,omitempty"`
+
 	// NextUri - Deprecated, paging is not supported
 	NextUri *string `json:"nextUri,omitempty"`
 
 	// PreviousUri - Deprecated, paging is not supported
 	PreviousUri *string `json:"previousUri,omitempty"`
-
-	// LastUri - Deprecated, paging is not supported
-	LastUri *string `json:"lastUri,omitempty"`
-
-	// FirstUri - Deprecated, paging is not supported
-	FirstUri *string `json:"firstUri,omitempty"`
-
-	// PageCount - Deprecated, paging is not supported
-	PageCount *int `json:"pageCount,omitempty"`
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -113,15 +113,15 @@ func (o Managementunitlisting) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
-		NextUri *string `json:"nextUri,omitempty"`
-		
-		PreviousUri *string `json:"previousUri,omitempty"`
+		FirstUri *string `json:"firstUri,omitempty"`
 		
 		LastUri *string `json:"lastUri,omitempty"`
 		
-		FirstUri *string `json:"firstUri,omitempty"`
-		
 		PageCount *int `json:"pageCount,omitempty"`
+		
+		NextUri *string `json:"nextUri,omitempty"`
+		
+		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
@@ -134,15 +134,15 @@ func (o Managementunitlisting) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
-		NextUri: o.NextUri,
-		
-		PreviousUri: o.PreviousUri,
+		FirstUri: o.FirstUri,
 		
 		LastUri: o.LastUri,
 		
-		FirstUri: o.FirstUri,
-		
 		PageCount: o.PageCount,
+		
+		NextUri: o.NextUri,
+		
+		PreviousUri: o.PreviousUri,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -176,6 +176,19 @@ func (o *Managementunitlisting) UnmarshalJSON(b []byte) error {
 		o.Total = &TotalInt
 	}
 	
+	if FirstUri, ok := ManagementunitlistingMap["firstUri"].(string); ok {
+		o.FirstUri = &FirstUri
+	}
+    
+	if LastUri, ok := ManagementunitlistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
+	}
+    
+	if PageCount, ok := ManagementunitlistingMap["pageCount"].(float64); ok {
+		PageCountInt := int(PageCount)
+		o.PageCount = &PageCountInt
+	}
+	
 	if NextUri, ok := ManagementunitlistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
@@ -184,19 +197,6 @@ func (o *Managementunitlisting) UnmarshalJSON(b []byte) error {
 		o.PreviousUri = &PreviousUri
 	}
     
-	if LastUri, ok := ManagementunitlistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
-	if FirstUri, ok := ManagementunitlistingMap["firstUri"].(string); ok {
-		o.FirstUri = &FirstUri
-	}
-    
-	if PageCount, ok := ManagementunitlistingMap["pageCount"].(float64); ok {
-		PageCountInt := int(PageCount)
-		o.PageCount = &PageCountInt
-	}
-	
 	if SelfUri, ok := ManagementunitlistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

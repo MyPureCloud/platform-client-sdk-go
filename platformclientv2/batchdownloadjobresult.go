@@ -11,12 +11,6 @@ import (
 type Batchdownloadjobresult struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The globally unique identifier for the object.
-	Id *string `json:"id,omitempty"`
-
-	// Name
-	Name *string `json:"name,omitempty"`
-
 	// ConversationId - Conversation id of the result
 	ConversationId *string `json:"conversationId,omitempty"`
 
@@ -31,9 +25,6 @@ type Batchdownloadjobresult struct {
 
 	// ErrorMsg - An error message, in case of failed processing will indicate the cause of the failure
 	ErrorMsg *string `json:"errorMsg,omitempty"`
-
-	// SelfUri - The URI for this object
-	SelfUri *string `json:"selfUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -99,10 +90,6 @@ func (o Batchdownloadjobresult) MarshalJSON() ([]byte, error) {
 	type Alias Batchdownloadjobresult
 	
 	return json.Marshal(&struct { 
-		Id *string `json:"id,omitempty"`
-		
-		Name *string `json:"name,omitempty"`
-		
 		ConversationId *string `json:"conversationId,omitempty"`
 		
 		RecordingId *string `json:"recordingId,omitempty"`
@@ -112,14 +99,8 @@ func (o Batchdownloadjobresult) MarshalJSON() ([]byte, error) {
 		ContentType *string `json:"contentType,omitempty"`
 		
 		ErrorMsg *string `json:"errorMsg,omitempty"`
-		
-		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
-		Id: o.Id,
-		
-		Name: o.Name,
-		
 		ConversationId: o.ConversationId,
 		
 		RecordingId: o.RecordingId,
@@ -129,8 +110,6 @@ func (o Batchdownloadjobresult) MarshalJSON() ([]byte, error) {
 		ContentType: o.ContentType,
 		
 		ErrorMsg: o.ErrorMsg,
-		
-		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
 	})
 }
@@ -142,14 +121,6 @@ func (o *Batchdownloadjobresult) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
-	if Id, ok := BatchdownloadjobresultMap["id"].(string); ok {
-		o.Id = &Id
-	}
-    
-	if Name, ok := BatchdownloadjobresultMap["name"].(string); ok {
-		o.Name = &Name
-	}
-    
 	if ConversationId, ok := BatchdownloadjobresultMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
 	}
@@ -168,10 +139,6 @@ func (o *Batchdownloadjobresult) UnmarshalJSON(b []byte) error {
     
 	if ErrorMsg, ok := BatchdownloadjobresultMap["errorMsg"].(string); ok {
 		o.ErrorMsg = &ErrorMsg
-	}
-    
-	if SelfUri, ok := BatchdownloadjobresultMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
 	}
     
 

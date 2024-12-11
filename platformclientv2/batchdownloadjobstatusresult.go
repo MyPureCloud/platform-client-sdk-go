@@ -26,7 +26,7 @@ type Batchdownloadjobstatusresult struct {
 	// ErrorCount - Current number of error results.
 	ErrorCount *int `json:"errorCount,omitempty"`
 
-	// Status - Current status of the job. This could be either IN_PROGRESS or COMPLETED. A job is considered completed when all the submitted requests have been processed and fulfilled.
+	// Status - Current status of the job. A job is considered completed when all the submitted requests have been processed and fulfilled.
 	Status *string `json:"status,omitempty"`
 
 	// Results - Current set of results for the job.

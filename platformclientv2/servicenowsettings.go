@@ -19,6 +19,9 @@ type Servicenowsettings struct {
 
 	// Categories - Filter source by categories.
 	Categories *[]string `json:"categories,omitempty"`
+
+	// BaseUrl - The base URL to resources.
+	BaseUrl *string `json:"baseUrl,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +92,8 @@ func (o Servicenowsettings) MarshalJSON() ([]byte, error) {
 		Language *string `json:"language,omitempty"`
 		
 		Categories *[]string `json:"categories,omitempty"`
+		
+		BaseUrl *string `json:"baseUrl,omitempty"`
 		Alias
 	}{ 
 		KnowledgeBaseIds: o.KnowledgeBaseIds,
@@ -96,6 +101,8 @@ func (o Servicenowsettings) MarshalJSON() ([]byte, error) {
 		Language: o.Language,
 		
 		Categories: o.Categories,
+		
+		BaseUrl: o.BaseUrl,
 		Alias:    (Alias)(o),
 	})
 }
@@ -121,6 +128,10 @@ func (o *Servicenowsettings) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(CategoriesString, &o.Categories)
 	}
 	
+	if BaseUrl, ok := ServicenowsettingsMap["baseUrl"].(string); ok {
+		o.BaseUrl = &BaseUrl
+	}
+    
 
 	return nil
 }

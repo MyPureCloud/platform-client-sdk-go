@@ -18,6 +18,7 @@ docs/CoachingApi.json
 docs/ContentManagementApi.json
 docs/ConversationsApi.json
 docs/DataExtensionsApi.json
+docs/DataPrivacyApi.json
 docs/DeleteAlertingAlert-example.txt
 docs/DeleteAlertingInteractionstatsAlert-example.txt
 docs/DeleteAlertingInteractionstatsRule-example.txt
@@ -73,6 +74,7 @@ docs/DeleteConversationsMessagingIntegrationsWhatsappIntegrationId-example.txt
 docs/DeleteConversationsMessagingSetting-example.txt
 docs/DeleteConversationsMessagingSettingsDefault-example.txt
 docs/DeleteConversationsMessagingSupportedcontentSupportedContentId-example.txt
+docs/DeleteDataprivacyMaskingrule-example.txt
 docs/DeleteDiagnosticsLogcaptureBrowserUser-example.txt
 docs/DeleteEmployeeengagementCelebration-example.txt
 docs/DeleteEmployeeperformanceExternalmetricsDefinition-example.txt
@@ -81,6 +83,7 @@ docs/DeleteExternalcontactsContactNote-example.txt
 docs/DeleteExternalcontactsContactsSchema-example.txt
 docs/DeleteExternalcontactsExternalsource-example.txt
 docs/DeleteExternalcontactsImportCsvSetting-example.txt
+docs/DeleteExternalcontactsImportSetting-example.txt
 docs/DeleteExternalcontactsOrganization-example.txt
 docs/DeleteExternalcontactsOrganizationNote-example.txt
 docs/DeleteExternalcontactsOrganizationTrustor-example.txt
@@ -598,6 +601,8 @@ docs/GetConversationsVideosMeeting-example.txt
 docs/GetDataextensionsCoretype-example.txt
 docs/GetDataextensionsCoretypes-example.txt
 docs/GetDataextensionsLimits-example.txt
+docs/GetDataprivacyMaskingrule-example.txt
+docs/GetDataprivacyMaskingrules-example.txt
 docs/GetDate-example.txt
 docs/GetDiagnosticsLogcaptureBrowserEntriesDownloadJob-example.txt
 docs/GetDiagnosticsLogcaptureBrowserUser-example.txt
@@ -629,6 +634,10 @@ docs/GetExternalcontactsImportCsvSetting-example.txt
 docs/GetExternalcontactsImportCsvSettings-example.txt
 docs/GetExternalcontactsImportCsvUploadDetails-example.txt
 docs/GetExternalcontactsImportCsvUploadPreview-example.txt
+docs/GetExternalcontactsImportJob-example.txt
+docs/GetExternalcontactsImportJobs-example.txt
+docs/GetExternalcontactsImportSetting-example.txt
+docs/GetExternalcontactsImportSettings-example.txt
 docs/GetExternalcontactsOrganization-example.txt
 docs/GetExternalcontactsOrganizationContacts-example.txt
 docs/GetExternalcontactsOrganizationNote-example.txt
@@ -1672,6 +1681,7 @@ docs/PatchConversationsMessagingIntegrationsWhatsappIntegrationId-example.txt
 docs/PatchConversationsMessagingSetting-example.txt
 docs/PatchConversationsMessagingSupportedcontentSupportedContentId-example.txt
 docs/PatchConversationsSettings-example.txt
+docs/PatchDataprivacyMaskingrule-example.txt
 docs/PatchEmailsSettings-example.txt
 docs/PatchEmailsSettings-example.txt
 docs/PatchEmployeeengagementCelebration-example.txt
@@ -2019,6 +2029,8 @@ docs/PostConversationsScreenshareParticipantCommunicationWrapup-example.txt
 docs/PostConversationsSocialParticipantCommunicationWrapup-example.txt
 docs/PostConversationsVideoParticipantCommunicationWrapup-example.txt
 docs/PostConversationsVideosMeetings-example.txt
+docs/PostDataprivacyMaskingrules-example.txt
+docs/PostDataprivacyMaskingrulesValidate-example.txt
 docs/PostDiagnosticsLogcaptureBrowserEntriesDownloadJobs-example.txt
 docs/PostDiagnosticsLogcaptureBrowserEntriesQuery-example.txt
 docs/PostDiagnosticsLogcaptureBrowserUser-example.txt
@@ -2057,6 +2069,8 @@ docs/PostExternalcontactsIdentifierlookup-example.txt
 docs/PostExternalcontactsImportCsvJobs-example.txt
 docs/PostExternalcontactsImportCsvSettings-example.txt
 docs/PostExternalcontactsImportCsvUploads-example.txt
+docs/PostExternalcontactsImportJobs-example.txt
+docs/PostExternalcontactsImportSettings-example.txt
 docs/PostExternalcontactsMergeContacts-example.txt
 docs/PostExternalcontactsOrganizationNotes-example.txt
 docs/PostExternalcontactsOrganizations-example.txt
@@ -2573,6 +2587,8 @@ docs/PutExternalcontactsContactsSchema-example.txt
 docs/PutExternalcontactsConversation-example.txt
 docs/PutExternalcontactsExternalsource-example.txt
 docs/PutExternalcontactsImportCsvSetting-example.txt
+docs/PutExternalcontactsImportJob-example.txt
+docs/PutExternalcontactsImportSetting-example.txt
 docs/PutExternalcontactsOrganization-example.txt
 docs/PutExternalcontactsOrganizationNote-example.txt
 docs/PutExternalcontactsOrganizationTrustorTrustorId-example.txt
@@ -3577,6 +3593,16 @@ platformclientv2/contactcolumntimezone.go
 platformclientv2/contactcolumntodataactionfieldmapping.go
 platformclientv2/contactdetaileventtopiccontactupdateevent.go
 platformclientv2/contactidentifier.go
+platformclientv2/contactidentifierlisting.go
+platformclientv2/contactimportfield.go
+platformclientv2/contactimportjobentitylisting.go
+platformclientv2/contactimportjobmetadata.go
+platformclientv2/contactimportjobrequest.go
+platformclientv2/contactimportjobresponse.go
+platformclientv2/contactimportjobstatusupdaterequest.go
+platformclientv2/contactimportjobstatusupdateresponse.go
+platformclientv2/contactimportsettings.go
+platformclientv2/contactimportsettingsentitylisting.go
 platformclientv2/contactlist.go
 platformclientv2/contactlistdivisionview.go
 platformclientv2/contactlistdivisionviewlisting.go
@@ -3749,6 +3775,8 @@ platformclientv2/conversationcontentbuttonresponse.go
 platformclientv2/conversationcontentcard.go
 platformclientv2/conversationcontentcardaction.go
 platformclientv2/conversationcontentcarousel.go
+platformclientv2/conversationcontentdatepicker.go
+platformclientv2/conversationcontentdatepickeravailabletime.go
 platformclientv2/conversationcontentlocation.go
 platformclientv2/conversationcontentnotificationtemplate.go
 platformclientv2/conversationcontentquickreply.go
@@ -4105,6 +4133,7 @@ platformclientv2/dataavailabilityresponse.go
 platformclientv2/dataextensionsapi.go
 platformclientv2/dataingestionrules.go
 platformclientv2/dataingestionrulestatuspatchrequest.go
+platformclientv2/dataprivacyapi.go
 platformclientv2/dataschema.go
 platformclientv2/dataschemalisting.go
 platformclientv2/datatable.go
@@ -5298,6 +5327,7 @@ platformclientv2/knowledgeimportjobrequest.go
 platformclientv2/knowledgeimportjobresponse.go
 platformclientv2/knowledgeimportjobsettings.go
 platformclientv2/knowledgeimportjobstatistics.go
+platformclientv2/knowledgeintegrationdefaultsettings.go
 platformclientv2/knowledgeintegrationfilter.go
 platformclientv2/knowledgeintegrationfiltervalue.go
 platformclientv2/knowledgeintegrationoptionsresponse.go
@@ -5512,6 +5542,10 @@ platformclientv2/manager.go
 platformclientv2/markcontactaddressuncontactableactionsettings.go
 platformclientv2/markcontactuncontactableactionsettings.go
 platformclientv2/markdown.go
+platformclientv2/maskingrule.go
+platformclientv2/maskingrulelisting.go
+platformclientv2/maskingrulevalidaterequest.go
+platformclientv2/maskingrulevalidateresponse.go
 platformclientv2/matchcriteria.go
 platformclientv2/matchcriteriatestresult.go
 platformclientv2/matchshifttraderequest.go
@@ -7710,6 +7744,7 @@ platformclientv2/workitemsattributechangelist.go
 platformclientv2/workitemsattributechangemap.go
 platformclientv2/workitemsattributechangestring.go
 platformclientv2/workitemsattributechangeworkitemstatuscategory.go
+platformclientv2/workitemsattributechangewrapupdelta.go
 platformclientv2/workitemschangeworkbindelta.go
 platformclientv2/workitemschangeworkitemdelta.go
 platformclientv2/workitemschangeworktypedelta.go
@@ -7805,6 +7840,7 @@ platformclientv2/wrapupcodemapping.go
 platformclientv2/wrapupcodepredictionconfig.go
 platformclientv2/wrapupcodereference.go
 platformclientv2/wrapupcoderequest.go
+platformclientv2/wrapupdelta.go
 platformclientv2/wrapupdetaileventtopicwrapupevent.go
 platformclientv2/wrapupidreference.go
 platformclientv2/wrapupinput.go

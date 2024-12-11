@@ -20,6 +20,9 @@ type Regiontimezone struct {
 	// Offset
 	Offset *int `json:"offset,omitempty"`
 
+	// CanonicalId - Canonical identifier for this time zone, if applicable
+	CanonicalId *string `json:"canonicalId,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -93,6 +96,8 @@ func (o Regiontimezone) MarshalJSON() ([]byte, error) {
 		
 		Offset *int `json:"offset,omitempty"`
 		
+		CanonicalId *string `json:"canonicalId,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -101,6 +106,8 @@ func (o Regiontimezone) MarshalJSON() ([]byte, error) {
 		Name: o.Name,
 		
 		Offset: o.Offset,
+		
+		CanonicalId: o.CanonicalId,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -127,6 +134,10 @@ func (o *Regiontimezone) UnmarshalJSON(b []byte) error {
 		o.Offset = &OffsetInt
 	}
 	
+	if CanonicalId, ok := RegiontimezoneMap["canonicalId"].(string); ok {
+		o.CanonicalId = &CanonicalId
+	}
+    
 	if SelfUri, ok := RegiontimezoneMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

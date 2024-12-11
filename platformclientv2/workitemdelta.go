@@ -65,6 +65,9 @@ type Workitemdelta struct {
 	// WrapupId
 	WrapupId *Workitemsattributechangestring `json:"wrapupId,omitempty"`
 
+	// Wrapup
+	Wrapup *Workitemsattributechangewrapupdelta `json:"wrapup,omitempty"`
+
 	// Ttl
 	Ttl *Workitemsattributechangeinteger `json:"ttl,omitempty"`
 
@@ -192,6 +195,8 @@ func (o Workitemdelta) MarshalJSON() ([]byte, error) {
 		
 		WrapupId *Workitemsattributechangestring `json:"wrapupId,omitempty"`
 		
+		Wrapup *Workitemsattributechangewrapupdelta `json:"wrapup,omitempty"`
+		
 		Ttl *Workitemsattributechangeinteger `json:"ttl,omitempty"`
 		
 		DateClosed *Workitemsattributechangeinstant `json:"dateClosed,omitempty"`
@@ -246,6 +251,8 @@ func (o Workitemdelta) MarshalJSON() ([]byte, error) {
 		ExternalTag: o.ExternalTag,
 		
 		WrapupId: o.WrapupId,
+		
+		Wrapup: o.Wrapup,
 		
 		Ttl: o.Ttl,
 		
@@ -363,6 +370,11 @@ func (o *Workitemdelta) UnmarshalJSON(b []byte) error {
 	if WrapupId, ok := WorkitemdeltaMap["wrapupId"].(map[string]interface{}); ok {
 		WrapupIdString, _ := json.Marshal(WrapupId)
 		json.Unmarshal(WrapupIdString, &o.WrapupId)
+	}
+	
+	if Wrapup, ok := WorkitemdeltaMap["wrapup"].(map[string]interface{}); ok {
+		WrapupString, _ := json.Marshal(Wrapup)
+		json.Unmarshal(WrapupString, &o.Wrapup)
 	}
 	
 	if Ttl, ok := WorkitemdeltaMap["ttl"].(map[string]interface{}); ok {

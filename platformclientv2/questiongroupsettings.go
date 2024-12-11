@@ -11,9 +11,6 @@ import (
 type Questiongroupsettings struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// QuestionGroupIndex - This field represents the location of the Question Group in the form. Note: Indexes are zero-based
-	QuestionGroupIndex *int `json:"questionGroupIndex,omitempty"`
-
 	// QuestionGroupContextId - The context id of the question group in the form.
 	QuestionGroupContextId *string `json:"questionGroupContextId,omitempty"`
 
@@ -84,15 +81,11 @@ func (o Questiongroupsettings) MarshalJSON() ([]byte, error) {
 	type Alias Questiongroupsettings
 	
 	return json.Marshal(&struct { 
-		QuestionGroupIndex *int `json:"questionGroupIndex,omitempty"`
-		
 		QuestionGroupContextId *string `json:"questionGroupContextId,omitempty"`
 		
 		QuestionSettings *[]Questionsettings `json:"questionSettings,omitempty"`
 		Alias
 	}{ 
-		QuestionGroupIndex: o.QuestionGroupIndex,
-		
 		QuestionGroupContextId: o.QuestionGroupContextId,
 		
 		QuestionSettings: o.QuestionSettings,
@@ -105,11 +98,6 @@ func (o *Questiongroupsettings) UnmarshalJSON(b []byte) error {
 	err := json.Unmarshal(b, &QuestiongroupsettingsMap)
 	if err != nil {
 		return err
-	}
-	
-	if QuestionGroupIndex, ok := QuestiongroupsettingsMap["questionGroupIndex"].(float64); ok {
-		QuestionGroupIndexInt := int(QuestionGroupIndex)
-		o.QuestionGroupIndex = &QuestionGroupIndexInt
 	}
 	
 	if QuestionGroupContextId, ok := QuestiongroupsettingsMap["questionGroupContextId"].(string); ok {

@@ -486,8 +486,6 @@ func (a JourneyApi) DeleteJourneyView(viewId string) (*APIResponse, error) {
 // DeleteJourneyViewSchedules invokes DELETE /api/v2/journey/views/{viewId}/schedules
 //
 // Delete the Schedule of a JourneyView
-//
-// used for long descriptions
 func (a JourneyApi) DeleteJourneyViewSchedules(viewId string) (*Journeyviewschedule, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -2597,8 +2595,6 @@ func (a JourneyApi) GetJourneyView(viewId string) (*Journeyview, *APIResponse, e
 // GetJourneyViewSchedules invokes GET /api/v2/journey/views/{viewId}/schedules
 //
 // Get the Schedule for a JourneyView
-//
-// used for long descriptions
 func (a JourneyApi) GetJourneyViewSchedules(viewId string) (*Journeyviewschedule, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2965,8 +2961,6 @@ func (a JourneyApi) GetJourneyViewVersionChartVersion(viewId string, journeyView
 // GetJourneyViewVersionJob invokes GET /api/v2/journey/views/{viewId}/versions/{journeyVersionId}/jobs/{jobId}
 //
 // Get the job for a journey view version.
-//
-// used for long descriptions
 func (a JourneyApi) GetJourneyViewVersionJob(viewId string, journeyVersionId string, jobId string) (*Journeyviewjob, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3061,8 +3055,6 @@ func (a JourneyApi) GetJourneyViewVersionJob(viewId string, journeyVersionId str
 // GetJourneyViewVersionJobResults invokes GET /api/v2/journey/views/{viewId}/versions/{journeyViewVersion}/jobs/{jobId}/results
 //
 // Get the result of a job for a journey view version.
-//
-// used for long descriptions
 func (a JourneyApi) GetJourneyViewVersionJobResults(viewId string, journeyViewVersion string, jobId string) (*Journeyviewresult, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3257,8 +3249,6 @@ func (a JourneyApi) GetJourneyViewVersionJobResultsChart(viewId string, journeyV
 // GetJourneyViewVersionJobsLatest invokes GET /api/v2/journey/views/{viewId}/versions/{journeyVersionId}/jobs/latest
 //
 // Get the latest job of a journey view version.
-//
-// used for long descriptions
 func (a JourneyApi) GetJourneyViewVersionJobsLatest(viewId string, journeyVersionId string) (*Journeyviewjob, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4180,8 +4170,6 @@ func (a JourneyApi) PatchJourneySegment(segmentId string, body Patchsegment) (*J
 // PatchJourneyViewVersionJob invokes PATCH /api/v2/journey/views/{viewId}/versions/{journeyVersionId}/jobs/{jobId}
 //
 // Update the job for a journey view version. Only the status can be changed and only to Cancelled
-//
-// used for long descriptions
 func (a JourneyApi) PatchJourneyViewVersionJob(viewId string, journeyVersionId string, jobId string, body Journeyviewjob) (*Journeyviewjob, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -5421,8 +5409,6 @@ func (a JourneyApi) PostJourneyViewSchedules(viewId string, body Journeyviewsche
 // PostJourneyViewVersionJobs invokes POST /api/v2/journey/views/{viewId}/versions/{journeyVersionId}/jobs
 //
 // Submit a job request for a journey view version.
-//
-// used for long descriptions
 func (a JourneyApi) PostJourneyViewVersionJobs(viewId string, journeyVersionId string) (*Journeyviewjob, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -5768,8 +5754,6 @@ func (a JourneyApi) PostJourneyViewsEncodingsValidate(body []Label) (*Entitylist
 // PutJourneyViewSchedules invokes PUT /api/v2/journey/views/{viewId}/schedules
 //
 // Update the Schedule for a JourneyView
-//
-// used for long descriptions
 func (a JourneyApi) PutJourneyViewSchedules(viewId string, body Journeyviewschedule) (*Journeyviewschedule, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

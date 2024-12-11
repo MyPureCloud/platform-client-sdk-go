@@ -20,6 +20,9 @@ type Cobrowsesettings struct {
 	// AllowAgentNavigation - Whether the viewer should have option to request navigation
 	AllowAgentNavigation *bool `json:"allowAgentNavigation,omitempty"`
 
+	// AllowDraw - Should cobrowse draw be enabled
+	AllowDraw *bool `json:"allowDraw,omitempty"`
+
 	// MaskSelectors - Mask patterns that will apply to pages being shared
 	MaskSelectors *[]string `json:"maskSelectors,omitempty"`
 
@@ -102,6 +105,8 @@ func (o Cobrowsesettings) MarshalJSON() ([]byte, error) {
 		
 		AllowAgentNavigation *bool `json:"allowAgentNavigation,omitempty"`
 		
+		AllowDraw *bool `json:"allowDraw,omitempty"`
+		
 		MaskSelectors *[]string `json:"maskSelectors,omitempty"`
 		
 		Channels *[]string `json:"channels,omitempty"`
@@ -116,6 +121,8 @@ func (o Cobrowsesettings) MarshalJSON() ([]byte, error) {
 		AllowAgentControl: o.AllowAgentControl,
 		
 		AllowAgentNavigation: o.AllowAgentNavigation,
+		
+		AllowDraw: o.AllowDraw,
 		
 		MaskSelectors: o.MaskSelectors,
 		
@@ -145,6 +152,10 @@ func (o *Cobrowsesettings) UnmarshalJSON(b []byte) error {
     
 	if AllowAgentNavigation, ok := CobrowsesettingsMap["allowAgentNavigation"].(bool); ok {
 		o.AllowAgentNavigation = &AllowAgentNavigation
+	}
+    
+	if AllowDraw, ok := CobrowsesettingsMap["allowDraw"].(bool); ok {
+		o.AllowDraw = &AllowDraw
 	}
     
 	if MaskSelectors, ok := CobrowsesettingsMap["maskSelectors"].([]interface{}); ok {

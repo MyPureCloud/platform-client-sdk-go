@@ -8448,7 +8448,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitUserTimeoffr
 // GetWorkforcemanagementManagementunitUserTimeoffrequests invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/users/{userId}/timeoffrequests
 //
 // Get a list of time off requests for a given user
-func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitUserTimeoffrequests(managementUnitId string, userId string, recentlyReviewed bool) (*Timeoffrequestlist, *APIResponse, error) {
+func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitUserTimeoffrequests(managementUnitId string, userId string) (*Timeoffrequestlist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/users/{userId}/timeoffrequests"
@@ -8486,8 +8486,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitUserTimeoffr
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["recentlyReviewed"] = a.Configuration.APIClient.ParameterToString(recentlyReviewed, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -9986,7 +9984,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementTimeoffrequestWaitlistposi
 // GetWorkforcemanagementTimeoffrequests invokes GET /api/v2/workforcemanagement/timeoffrequests
 //
 // Get a list of time off requests for the current user
-func (a WorkforceManagementApi) GetWorkforcemanagementTimeoffrequests(recentlyReviewed bool) (*Timeoffrequestlist, *APIResponse, error) {
+func (a WorkforceManagementApi) GetWorkforcemanagementTimeoffrequests() (*Timeoffrequestlist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/timeoffrequests"
@@ -10012,8 +10010,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementTimeoffrequests(recentlyRe
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["recentlyReviewed"] = a.Configuration.APIClient.ParameterToString(recentlyReviewed, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
