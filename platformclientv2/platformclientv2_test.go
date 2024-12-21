@@ -467,46 +467,30 @@ func Example_authorizeNewConfiguration() {
 	// Make requests using usersAPI
 }
 
-func TestApiGateway(t *testing.T) {
-	config := GetDefaultConfiguration()
-	config.BasePath = "https://api." + os.Getenv("PURECLOUD_ENVIRONMENT") // e.g. PURECLOUD_ENVIRONMENT=mypurecloud.com
-	clientID := os.Getenv("PURECLOUD_CLIENT_ID")
-	clientSecret := os.Getenv("PURECLOUD_CLIENT_SECRET")
-
-	// Gateway
-	login := PathParams{
-		PathName:  "login",
-		PathValue: "nonxml/cce.uat.com/login",
-	}
-	api := PathParams{
-		PathName:  "api",
-		PathValue: "nonxml/cce.uat.com/apis",
-	}
-	params := []*PathParams{
-		&api,
-		&login,
-	}
-	config.GateWayConfiguration = &GateWayConfiguration{
-		Protocol:   "https",
-		Host:       "serviceproxy.net",
-		Port:       "443",
-		Auth:       nil,
-		PathParams: params,
-	}
-
-	// Authorize Credentials
-	err := config.AuthorizeClientCredentials(clientID, clientSecret)
-	if err != nil {
-		if !strings.Contains(err.Error(), "Auth Error: 400 - Not found ()") {
-			t.Errorf("Failed to authorize client credentials: %v", err)
-		}
-	}
-
-	outboundApi := NewOutboundApiWithConfig(config)
-	_, _, err = outboundApi.GetOutboundCallabletimesets(1, 1, true, "", "", "", "")
-	if err != nil {
-		if !strings.Contains(err.Error(), "API Error: 400 -  ()") {
-			t.Errorf("Failed to Retrieve Timesets: %v", err)
-		}
-	}
-}
+// disable this test case until Gateway with MTLS certs is done in GO SDK
+//func TestApiGateway(t *testing.T) {
+//	config := GetDefaultConfiguration()
+//	config.BasePath = "https://api." + os.Getenv("PURECLOUD_ENVIRONMENT") // e.g. PURECLOUD_ENVIRONMENT=mypurecloud.com
+//	clientID := os.Getenv("PURECLOUD_CLIENT_ID")
+//	clientSecret := os.Getenv("PURECLOUD_CLIENT_SECRET")
+//
+//	config.GateWayConfiguration = &GateWayConfiguration{
+//		Protocol: "https",
+//		Host:     "localhost",
+//		Port:     "4027",
+//		Auth:     nil,
+//	}
+//
+//	// Authorize Credentials
+//	err := config.AuthorizeClientCredentials(clientID, clientSecret)
+//	if err != nil {
+//		t.Errorf("Failed to authorize client credentials: %v", err)
+//	}
+//
+//	outboundApi := NewOutboundApiWithConfig(config)
+//	_, _, err = outboundApi.GetOutboundCallabletimesets(1, 1, true, "", "", "", "")
+//
+//	if err != nil {
+//		t.Errorf("Failed to Retrieve Timesets: %v", err)
+//	}
+//}

@@ -253,6 +253,7 @@ docs/DeleteTaskmanagementWorkbin-example.txt
 docs/DeleteTaskmanagementWorkitem-example.txt
 docs/DeleteTaskmanagementWorkitemsSchema-example.txt
 docs/DeleteTaskmanagementWorktype-example.txt
+docs/DeleteTaskmanagementWorktypeFlowsDatebasedRule-example.txt
 docs/DeleteTaskmanagementWorktypeFlowsOnattributechangeRule-example.txt
 docs/DeleteTaskmanagementWorktypeFlowsOncreateRule-example.txt
 docs/DeleteTaskmanagementWorktypeStatus-example.txt
@@ -332,6 +333,7 @@ docs/GetAlertingInteractionstatsRules-example.txt
 docs/GetAlertingRule-example.txt
 docs/GetAnalyticsActionsAggregatesJob-example.txt
 docs/GetAnalyticsActionsAggregatesJobResults-example.txt
+docs/GetAnalyticsAgentStatus-example.txt
 docs/GetAnalyticsAgentcopilotsAggregatesJob-example.txt
 docs/GetAnalyticsAgentcopilotsAggregatesJobResults-example.txt
 docs/GetAnalyticsBotflowDivisionsReportingturns-example.txt
@@ -379,6 +381,8 @@ docs/GetAnalyticsReportingSettingsDashboardsQuery-example.txt
 docs/GetAnalyticsReportingSettingsUserDashboards-example.txt
 docs/GetAnalyticsResolutionsAggregatesJob-example.txt
 docs/GetAnalyticsResolutionsAggregatesJobResults-example.txt
+docs/GetAnalyticsSummariesAggregatesJob-example.txt
+docs/GetAnalyticsSummariesAggregatesJobResults-example.txt
 docs/GetAnalyticsSurveysAggregatesJob-example.txt
 docs/GetAnalyticsSurveysAggregatesJob-example.txt
 docs/GetAnalyticsSurveysAggregatesJobResults-example.txt
@@ -1312,6 +1316,8 @@ docs/GetTaskmanagementWorkitemsSchemaVersion-example.txt
 docs/GetTaskmanagementWorkitemsSchemaVersions-example.txt
 docs/GetTaskmanagementWorkitemsSchemas-example.txt
 docs/GetTaskmanagementWorktype-example.txt
+docs/GetTaskmanagementWorktypeFlowsDatebasedRule-example.txt
+docs/GetTaskmanagementWorktypeFlowsDatebasedRules-example.txt
 docs/GetTaskmanagementWorktypeFlowsOnattributechangeRule-example.txt
 docs/GetTaskmanagementWorktypeFlowsOnattributechangeRules-example.txt
 docs/GetTaskmanagementWorktypeFlowsOncreateRule-example.txt
@@ -1761,6 +1767,7 @@ docs/PatchTaskmanagementWorkitemAssignment-example.txt
 docs/PatchTaskmanagementWorkitemUserWrapups-example.txt
 docs/PatchTaskmanagementWorkitemUsersMeWrapups-example.txt
 docs/PatchTaskmanagementWorktype-example.txt
+docs/PatchTaskmanagementWorktypeFlowsDatebasedRule-example.txt
 docs/PatchTaskmanagementWorktypeFlowsOnattributechangeRule-example.txt
 docs/PatchTaskmanagementWorktypeFlowsOncreateRule-example.txt
 docs/PatchTaskmanagementWorktypeStatus-example.txt
@@ -1828,6 +1835,8 @@ docs/PostAnalyticsActionsAggregatesJobs-example.txt
 docs/PostAnalyticsActionsAggregatesQuery-example.txt
 docs/PostAnalyticsAgentcopilotsAggregatesJobs-example.txt
 docs/PostAnalyticsAgentcopilotsAggregatesQuery-example.txt
+docs/PostAnalyticsAgentsStatusCounts-example.txt
+docs/PostAnalyticsAgentsStatusQuery-example.txt
 docs/PostAnalyticsBotsAggregatesJobs-example.txt
 docs/PostAnalyticsBotsAggregatesQuery-example.txt
 docs/PostAnalyticsConversationDetailsProperties-example.txt
@@ -1874,6 +1883,8 @@ docs/PostAnalyticsReportingSettingsDashboardsQuery-example.txt
 docs/PostAnalyticsResolutionsAggregatesJobs-example.txt
 docs/PostAnalyticsRoutingActivityQuery-example.txt
 docs/PostAnalyticsRoutingActivityQuery-example.txt
+docs/PostAnalyticsSummariesAggregatesJobs-example.txt
+docs/PostAnalyticsSummariesAggregatesQuery-example.txt
 docs/PostAnalyticsSurveysAggregatesJobs-example.txt
 docs/PostAnalyticsSurveysAggregatesJobs-example.txt
 docs/PostAnalyticsSurveysAggregatesQuery-example.txt
@@ -2369,6 +2380,7 @@ docs/PostTaskmanagementWorkitems-example.txt
 docs/PostTaskmanagementWorkitemsQuery-example.txt
 docs/PostTaskmanagementWorkitemsQueryJobs-example.txt
 docs/PostTaskmanagementWorkitemsSchemas-example.txt
+docs/PostTaskmanagementWorktypeFlowsDatebasedRules-example.txt
 docs/PostTaskmanagementWorktypeFlowsOnattributechangeRules-example.txt
 docs/PostTaskmanagementWorktypeFlowsOncreateRules-example.txt
 docs/PostTaskmanagementWorktypeStatuses-example.txt
@@ -2955,6 +2967,15 @@ platformclientv2/agentqueryadherenceexplanationsresponse.go
 platformclientv2/agentqueuetimerequest.go
 platformclientv2/agentsbidassignedworkplanoverriderequest.go
 platformclientv2/agentsintegrationslisting.go
+platformclientv2/agentstateagentqueryclause.go
+platformclientv2/agentstateagentquerypredicate.go
+platformclientv2/agentstatecountsrequest.go
+platformclientv2/agentstatequeryrequest.go
+platformclientv2/agentstatesegmenttypecount.go
+platformclientv2/agentstatesessionfilter.go
+platformclientv2/agentstatesessionqueryclause.go
+platformclientv2/agentstatesessionquerypredicate.go
+platformclientv2/agentstateuserfilter.go
 platformclientv2/agentsworkplansresponse.go
 platformclientv2/agenttimeoffrequestpatch.go
 platformclientv2/agentuiapi.go
@@ -3007,6 +3028,10 @@ platformclientv2/alternativeshifttraderesponse.go
 platformclientv2/alternativeshifttradesviewresponsetemplate.go
 platformclientv2/amazonlexrequest.go
 platformclientv2/analyticsagentgroup.go
+platformclientv2/analyticsagentstateagentresponse.go
+platformclientv2/analyticsagentstateagentsessionresult.go
+platformclientv2/analyticsagentstatecountsresponse.go
+platformclientv2/analyticsagentstatequeryresponse.go
 platformclientv2/analyticsapi.go
 platformclientv2/analyticsconversation.go
 platformclientv2/analyticsconversationasyncqueryresponse.go
@@ -4477,7 +4502,6 @@ platformclientv2/emailcolumn.go
 platformclientv2/emailcommunicationansweredevent.go
 platformclientv2/emailcommunicationdispositionappliedevent.go
 platformclientv2/emailcommunicationendedevent.go
-platformclientv2/emailcommunicationrepliedevent.go
 platformclientv2/emailcommunicationsentmessageevent.go
 platformclientv2/emailconfig.go
 platformclientv2/emailconversation.go
@@ -4698,6 +4722,7 @@ platformclientv2/externalmetricdefinitioncreaterequest.go
 platformclientv2/externalmetricdefinitionlisting.go
 platformclientv2/externalmetricdefinitionupdaterequest.go
 platformclientv2/externalorganization.go
+platformclientv2/externalorganizationidentifier.go
 platformclientv2/externalorganizationlisting.go
 platformclientv2/externalorganizationtrustorlink.go
 platformclientv2/externalsegment.go
@@ -6844,6 +6869,15 @@ platformclientv2/suggestionlisting.go
 platformclientv2/suggestionscript.go
 platformclientv2/suggestsearchcriteria.go
 platformclientv2/suggestsearchrequest.go
+platformclientv2/summaryaggregatedatacontainer.go
+platformclientv2/summaryaggregatequeryclause.go
+platformclientv2/summaryaggregatequeryfilter.go
+platformclientv2/summaryaggregatequerypredicate.go
+platformclientv2/summaryaggregatequeryresponse.go
+platformclientv2/summaryaggregationquery.go
+platformclientv2/summaryaggregationview.go
+platformclientv2/summaryasyncaggregatequeryresponse.go
+platformclientv2/summaryasyncaggregationquery.go
 platformclientv2/summarygenerationconfig.go
 platformclientv2/supportcentercategory.go
 platformclientv2/supportcentercompactcategorymoduletemplate.go
@@ -7666,6 +7700,7 @@ platformclientv2/wfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdate
 platformclientv2/wfmversionedentitymetadata.go
 platformclientv2/whatsappavailablephonenumberdetails.go
 platformclientv2/whatsappavailablephonenumberdetailslisting.go
+platformclientv2/whatsappconfig.go
 platformclientv2/whatsappdefinition.go
 platformclientv2/whatsappembeddedsignupintegrationactivationrequest.go
 platformclientv2/whatsappembeddedsignupintegrationrequest.go
@@ -7707,6 +7742,12 @@ platformclientv2/workforcemanagementapi.go
 platformclientv2/workitem.go
 platformclientv2/workitemchangelisting.go
 platformclientv2/workitemcreate.go
+platformclientv2/workitemdatebasedcondition.go
+platformclientv2/workitemdatebasedconditionupdate.go
+platformclientv2/workitemdatebasedrule.go
+platformclientv2/workitemdatebasedrulecreate.go
+platformclientv2/workitemdatebasedrulelisting.go
+platformclientv2/workitemdatebasedruleupdate.go
 platformclientv2/workitemdelta.go
 platformclientv2/workitemfilter.go
 platformclientv2/workitemflowreference.go

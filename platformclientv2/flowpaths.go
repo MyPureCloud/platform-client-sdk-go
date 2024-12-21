@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -13,6 +14,12 @@ type Flowpaths struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// Category - Category (use case) of the paths within a given domain.
 	Category *string `json:"category,omitempty"`
+
+	// DateStart - Start date of the date range included in the flow paths data. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateStart *time.Time `json:"dateStart,omitempty"`
+
+	// DateEnd - End date of the date range included in the flow paths data. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateEnd *time.Time `json:"dateEnd,omitempty"`
 
 	// Elements - Unique element identifiers and their corresponding elements in the trie data structure representing the paths.
 	Elements *map[string]Flowpathselement `json:"elements,omitempty"`
@@ -47,7 +54,7 @@ func (o Flowpaths) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
+		dateTimeFields := []string{ "DateStart","DateEnd", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -80,13 +87,37 @@ func (o Flowpaths) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Flowpaths
 	
+	DateStart := new(string)
+	if o.DateStart != nil {
+		
+		*DateStart = timeutil.Strftime(o.DateStart, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateStart = nil
+	}
+	
+	DateEnd := new(string)
+	if o.DateEnd != nil {
+		
+		*DateEnd = timeutil.Strftime(o.DateEnd, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateEnd = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Category *string `json:"category,omitempty"`
+		
+		DateStart *string `json:"dateStart,omitempty"`
+		
+		DateEnd *string `json:"dateEnd,omitempty"`
 		
 		Elements *map[string]Flowpathselement `json:"elements,omitempty"`
 		Alias
 	}{ 
 		Category: o.Category,
+		
+		DateStart: DateStart,
+		
+		DateEnd: DateEnd,
 		
 		Elements: o.Elements,
 		Alias:    (Alias)(o),
@@ -104,6 +135,16 @@ func (o *Flowpaths) UnmarshalJSON(b []byte) error {
 		o.Category = &Category
 	}
     
+	if dateStartString, ok := FlowpathsMap["dateStart"].(string); ok {
+		DateStart, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateStartString)
+		o.DateStart = &DateStart
+	}
+	
+	if dateEndString, ok := FlowpathsMap["dateEnd"].(string); ok {
+		DateEnd, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateEndString)
+		o.DateEnd = &DateEnd
+	}
+	
 	if Elements, ok := FlowpathsMap["elements"].(map[string]interface{}); ok {
 		ElementsString, _ := json.Marshal(Elements)
 		json.Unmarshal(ElementsString, &o.Elements)

@@ -30,7 +30,7 @@ type Campaignschedule struct {
 	// Intervals - A list of intervals during which to run the associated Campaign.
 	Intervals *[]Scheduleinterval `json:"intervals,omitempty"`
 
-	// TimeZone - The time zone for this CampaignSchedule. For example, Africa/Abidjan.
+	// TimeZone - The time zone for this CampaignSchedule. Defaults to UTC if empty or not provided. See here for a list of valid time zones https://www.iana.org/time-zones
 	TimeZone *string `json:"timeZone,omitempty"`
 
 	// Campaign - The Campaign that this CampaignSchedule is for.

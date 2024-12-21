@@ -329,6 +329,87 @@ func (a TaskManagementApi) DeleteTaskmanagementWorktype(worktypeId string) (*API
 	return response, err
 }
 
+// DeleteTaskmanagementWorktypeFlowsDatebasedRule invokes DELETE /api/v2/taskmanagement/worktypes/{worktypeId}/flows/datebased/rules/{ruleId}
+//
+// Delete a date based rule
+func (a TaskManagementApi) DeleteTaskmanagementWorktypeFlowsDatebasedRule(worktypeId string, ruleId string) (*APIResponse, error) {
+	var httpMethod = "DELETE"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/taskmanagement/worktypes/{worktypeId}/flows/datebased/rules/{ruleId}"
+	path = strings.Replace(path, "{worktypeId}", url.PathEscape(fmt.Sprintf("%v", worktypeId)), -1)
+	path = strings.Replace(path, "{ruleId}", url.PathEscape(fmt.Sprintf("%v", ruleId)), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'worktypeId' is set
+	if &worktypeId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'worktypeId' when calling TaskManagementApi->DeleteTaskmanagementWorktypeFlowsDatebasedRule")
+	}
+	// verify the required parameter 'ruleId' is set
+	if &ruleId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'ruleId' when calling TaskManagementApi->DeleteTaskmanagementWorktypeFlowsDatebasedRule")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
 // DeleteTaskmanagementWorktypeFlowsOnattributechangeRule invokes DELETE /api/v2/taskmanagement/worktypes/{worktypeId}/flows/onattributechange/rules/{ruleId}
 //
 // Delete a rule
@@ -2040,6 +2121,180 @@ func (a TaskManagementApi) GetTaskmanagementWorktype(worktypeId string, expands 
 	return successPayload, response, err
 }
 
+// GetTaskmanagementWorktypeFlowsDatebasedRule invokes GET /api/v2/taskmanagement/worktypes/{worktypeId}/flows/datebased/rules/{ruleId}
+//
+// Get a date based rule
+func (a TaskManagementApi) GetTaskmanagementWorktypeFlowsDatebasedRule(worktypeId string, ruleId string) (*Workitemdatebasedrule, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/taskmanagement/worktypes/{worktypeId}/flows/datebased/rules/{ruleId}"
+	path = strings.Replace(path, "{worktypeId}", url.PathEscape(fmt.Sprintf("%v", worktypeId)), -1)
+	path = strings.Replace(path, "{ruleId}", url.PathEscape(fmt.Sprintf("%v", ruleId)), -1)
+	defaultReturn := new(Workitemdatebasedrule)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'worktypeId' is set
+	if &worktypeId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'worktypeId' when calling TaskManagementApi->GetTaskmanagementWorktypeFlowsDatebasedRule")
+	}
+	// verify the required parameter 'ruleId' is set
+	if &ruleId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'ruleId' when calling TaskManagementApi->GetTaskmanagementWorktypeFlowsDatebasedRule")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Workitemdatebasedrule
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Workitemdatebasedrule" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetTaskmanagementWorktypeFlowsDatebasedRules invokes GET /api/v2/taskmanagement/worktypes/{worktypeId}/flows/datebased/rules
+//
+// Get all date based rules for a worktype
+func (a TaskManagementApi) GetTaskmanagementWorktypeFlowsDatebasedRules(worktypeId string, after string, pageSize int) (*Workitemdatebasedrulelisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/taskmanagement/worktypes/{worktypeId}/flows/datebased/rules"
+	path = strings.Replace(path, "{worktypeId}", url.PathEscape(fmt.Sprintf("%v", worktypeId)), -1)
+	defaultReturn := new(Workitemdatebasedrulelisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'worktypeId' is set
+	if &worktypeId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'worktypeId' when calling TaskManagementApi->GetTaskmanagementWorktypeFlowsDatebasedRules")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Workitemdatebasedrulelisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Workitemdatebasedrulelisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // GetTaskmanagementWorktypeFlowsOnattributechangeRule invokes GET /api/v2/taskmanagement/worktypes/{worktypeId}/flows/onattributechange/rules/{ruleId}
 //
 // Get an attribute change rule
@@ -3369,6 +3624,102 @@ func (a TaskManagementApi) PatchTaskmanagementWorktype(worktypeId string, body W
 	return successPayload, response, err
 }
 
+// PatchTaskmanagementWorktypeFlowsDatebasedRule invokes PATCH /api/v2/taskmanagement/worktypes/{worktypeId}/flows/datebased/rules/{ruleId}
+//
+// Update the attributes of a date based rule
+func (a TaskManagementApi) PatchTaskmanagementWorktypeFlowsDatebasedRule(worktypeId string, ruleId string, body Workitemdatebasedruleupdate) (*Workitemdatebasedrule, *APIResponse, error) {
+	var httpMethod = "PATCH"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/taskmanagement/worktypes/{worktypeId}/flows/datebased/rules/{ruleId}"
+	path = strings.Replace(path, "{worktypeId}", url.PathEscape(fmt.Sprintf("%v", worktypeId)), -1)
+	path = strings.Replace(path, "{ruleId}", url.PathEscape(fmt.Sprintf("%v", ruleId)), -1)
+	defaultReturn := new(Workitemdatebasedrule)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'worktypeId' is set
+	if &worktypeId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'worktypeId' when calling TaskManagementApi->PatchTaskmanagementWorktypeFlowsDatebasedRule")
+	}
+	// verify the required parameter 'ruleId' is set
+	if &ruleId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'ruleId' when calling TaskManagementApi->PatchTaskmanagementWorktypeFlowsDatebasedRule")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TaskManagementApi->PatchTaskmanagementWorktypeFlowsDatebasedRule")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Workitemdatebasedrule
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Workitemdatebasedrule" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // PatchTaskmanagementWorktypeFlowsOnattributechangeRule invokes PATCH /api/v2/taskmanagement/worktypes/{worktypeId}/flows/onattributechange/rules/{ruleId}
 //
 // Update the attributes of a rule
@@ -4406,6 +4757,96 @@ func (a TaskManagementApi) PostTaskmanagementWorkitemsSchemas(body Dataschema) (
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Dataschema" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostTaskmanagementWorktypeFlowsDatebasedRules invokes POST /api/v2/taskmanagement/worktypes/{worktypeId}/flows/datebased/rules
+//
+// Add a date based rule to a worktype
+func (a TaskManagementApi) PostTaskmanagementWorktypeFlowsDatebasedRules(worktypeId string, body Workitemdatebasedrulecreate) (*Workitemdatebasedrule, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/taskmanagement/worktypes/{worktypeId}/flows/datebased/rules"
+	path = strings.Replace(path, "{worktypeId}", url.PathEscape(fmt.Sprintf("%v", worktypeId)), -1)
+	defaultReturn := new(Workitemdatebasedrule)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'worktypeId' is set
+	if &worktypeId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'worktypeId' when calling TaskManagementApi->PostTaskmanagementWorktypeFlowsDatebasedRules")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TaskManagementApi->PostTaskmanagementWorktypeFlowsDatebasedRules")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Workitemdatebasedrule
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Workitemdatebasedrule" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

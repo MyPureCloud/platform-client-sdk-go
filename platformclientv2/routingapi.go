@@ -8057,7 +8057,7 @@ func (a RoutingApi) PatchRoutingQueueMember(queueId string, memberId string, bod
 
 // PatchRoutingQueueMembers invokes PATCH /api/v2/routing/queues/{queueId}/members
 //
-// Join or unjoin a set of users for a queue
+// Join or unjoin a set of up to 100 users for a queue
 func (a RoutingApi) PatchRoutingQueueMembers(queueId string, body []Queuemember) (*Queuememberentitylisting, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables

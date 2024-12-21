@@ -30,7 +30,7 @@ type Sequenceschedule struct {
 	// Intervals - A list of intervals during which to run the associated CampaignSequence.
 	Intervals *[]Scheduleinterval `json:"intervals,omitempty"`
 
-	// TimeZone - The time zone for this SequenceSchedule. For example, Africa/Abidjan.
+	// TimeZone - The time zone for this SequenceSchedule. Defaults to UTC if empty or not provided. See here for a list of valid time zones https://www.iana.org/time-zones
 	TimeZone *string `json:"timeZone,omitempty"`
 
 	// Sequence - The CampaignSequence that this SequenceSchedule is for.

@@ -5892,7 +5892,9 @@ func (a ExternalContactsApi) PostExternalcontactsExternalsources(body Externalso
 //
 // Fetch a contact using an identifier type and value.
 //
-// Phone number identifier values must be provided with the country code and a leading &#39;+&#39; symbol. Example: \&quot;+1 704 298 4733\&quot;
+// NOTE: Deprecated. Please use /api/v2/externalcontacts/identifierlookup/contacts as an alternative endpoint instead. Phone number identifier values must be provided with the country code and a leading &#39;+&#39; symbol. Example: \&quot;+1 704 298 4733\&quot;
+//
+// Deprecated: PostExternalcontactsIdentifierlookup is deprecated
 func (a ExternalContactsApi) PostExternalcontactsIdentifierlookup(identifier Contactidentifier, expand []string) (*Externalcontact, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

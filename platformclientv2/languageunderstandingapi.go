@@ -1824,8 +1824,6 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingMiners(minerType strin
 // GetLanguageunderstandingSettings invokes GET /api/v2/languageunderstanding/settings
 //
 // Get Organization Configuration
-//
-// Preview: GetLanguageunderstandingSettings is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a LanguageUnderstandingApi) GetLanguageunderstandingSettings() (*Nluorganization, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

@@ -17949,7 +17949,7 @@ func (a ConversationsApi) PostConversationsMessages(body Createoutboundmessaging
 // Send an agentless outbound message
 //
 // Send an agentless (api participant) outbound message using a client credential grant. In order to call this endpoint you will need OAuth token generated using OAuth client credentials authorized with at least messaging scope. If there is already a connected conversation between the &#39;fromAddress&#39; and &#39;toAddress&#39; specified, the &#39;useExistingActiveConversation&#39; param can be used to barge in to the ongoing conversation.
-func (a ConversationsApi) PostConversationsMessagesAgentless(body Sendagentlessoutboundmessagerequest) (*Sendagentlessoutboundmessageresponse, *APIResponse, error) {
+func (a ConversationsApi) PostConversationsMessagesAgentless(body Sendagentlessoutboundmessagerequest, useNormalizedMessage bool) (*Sendagentlessoutboundmessageresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messages/agentless"
@@ -17980,6 +17980,8 @@ func (a ConversationsApi) PostConversationsMessagesAgentless(body Sendagentlesso
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["useNormalizedMessage"] = a.Configuration.APIClient.ParameterToString(useNormalizedMessage, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

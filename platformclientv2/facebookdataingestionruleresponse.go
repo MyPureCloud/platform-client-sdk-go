@@ -27,7 +27,7 @@ type Facebookdataingestionruleresponse struct {
 	// Version - The version number of the data ingestion rule.
 	Version *int `json:"version,omitempty"`
 
-	// IntegrationId - The Integration Id from which to ingest public social posts. This entity is created using the /conversations/messaging/integrations/facebook resource
+	// IntegrationId - The Integration Id from which public social posts are ingested. This entity is created using the /conversations/messaging/integrations/facebook resource
 	IntegrationId *string `json:"integrationId,omitempty"`
 
 	// DateCreated - Date this ingestion rule was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z

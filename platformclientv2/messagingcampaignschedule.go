@@ -30,7 +30,7 @@ type Messagingcampaignschedule struct {
 	// Intervals - A list of intervals during which to run the associated Campaign.
 	Intervals *[]Scheduleinterval `json:"intervals,omitempty"`
 
-	// TimeZone - The time zone for this messaging campaign schedule.
+	// TimeZone - The time zone for this messaging campaign schedule. Defaults to UTC if empty or not provided. See here for a list of valid time zones https://www.iana.org/time-zones
 	TimeZone *string `json:"timeZone,omitempty"`
 
 	// MessagingCampaign - The Campaign that this messaging campaign schedule is for.
