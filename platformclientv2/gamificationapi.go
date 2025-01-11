@@ -855,6 +855,130 @@ func (a GamificationApi) GetGamificationInsightsMembers(filterType string, filte
 	return successPayload, response, err
 }
 
+// GetGamificationInsightsRankings invokes GET /api/v2/gamification/insights/rankings
+//
+// Get insights rankings
+func (a GamificationApi) GetGamificationInsightsRankings(filterType string, filterId string, granularity string, comparativePeriodStartWorkday time.Time, primaryPeriodStartWorkday time.Time, sortKey string, sortMetricId string, sectionSize int, userIds string) (*Insightsrankings, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/gamification/insights/rankings"
+	defaultReturn := new(Insightsrankings)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'filterType' is set
+	if &filterType == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'filterType' when calling GamificationApi->GetGamificationInsightsRankings")
+	}
+	// verify the required parameter 'filterId' is set
+	if &filterId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'filterId' when calling GamificationApi->GetGamificationInsightsRankings")
+	}
+	// verify the required parameter 'granularity' is set
+	if &granularity == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'granularity' when calling GamificationApi->GetGamificationInsightsRankings")
+	}
+	// verify the required parameter 'comparativePeriodStartWorkday' is set
+	if &comparativePeriodStartWorkday == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'comparativePeriodStartWorkday' when calling GamificationApi->GetGamificationInsightsRankings")
+	}
+	// verify the required parameter 'primaryPeriodStartWorkday' is set
+	if &primaryPeriodStartWorkday == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'primaryPeriodStartWorkday' when calling GamificationApi->GetGamificationInsightsRankings")
+	}
+	// verify the required parameter 'sortKey' is set
+	if &sortKey == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'sortKey' when calling GamificationApi->GetGamificationInsightsRankings")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, "")
+	
+	queryParams["filterId"] = a.Configuration.APIClient.ParameterToString(filterId, "")
+	
+	queryParams["granularity"] = a.Configuration.APIClient.ParameterToString(granularity, "")
+	
+	queryParams["comparativePeriodStartWorkday"] = a.Configuration.APIClient.ParameterToString(comparativePeriodStartWorkday, "")
+	
+	queryParams["primaryPeriodStartWorkday"] = a.Configuration.APIClient.ParameterToString(primaryPeriodStartWorkday, "")
+	
+	queryParams["sortKey"] = a.Configuration.APIClient.ParameterToString(sortKey, "")
+	
+	queryParams["sortMetricId"] = a.Configuration.APIClient.ParameterToString(sortMetricId, "")
+	
+	queryParams["sectionSize"] = a.Configuration.APIClient.ParameterToString(sectionSize, "")
+	
+	queryParams["userIds"] = a.Configuration.APIClient.ParameterToString(userIds, "")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Insightsrankings
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Insightsrankings" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // GetGamificationInsightsTrends invokes GET /api/v2/gamification/insights/trends
 //
 // Get insights user trend for the current user

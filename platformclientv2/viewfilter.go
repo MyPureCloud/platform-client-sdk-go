@@ -646,6 +646,15 @@ type Viewfilter struct {
 
 	// Conferenced - Filter to indicate if the conversation has conference
 	Conferenced *bool `json:"conferenced,omitempty"`
+
+	// Video - Filter to indicate if the conversation has video
+	Video *bool `json:"video,omitempty"`
+
+	// LinkedInteraction - Filter to indicate if the conversation has linked interaction
+	LinkedInteraction *bool `json:"linkedInteraction,omitempty"`
+
+	// RecommendationSources - List of recommendation sources for filtering recommendation details pane
+	RecommendationSources *[]string `json:"recommendationSources,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -1134,6 +1143,12 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		SlideshowIds *[]string `json:"slideshowIds,omitempty"`
 		
 		Conferenced *bool `json:"conferenced,omitempty"`
+		
+		Video *bool `json:"video,omitempty"`
+		
+		LinkedInteraction *bool `json:"linkedInteraction,omitempty"`
+		
+		RecommendationSources *[]string `json:"recommendationSources,omitempty"`
 		Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -1559,6 +1574,12 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		SlideshowIds: o.SlideshowIds,
 		
 		Conferenced: o.Conferenced,
+		
+		Video: o.Video,
+		
+		LinkedInteraction: o.LinkedInteraction,
+		
+		RecommendationSources: o.RecommendationSources,
 		Alias:    (Alias)(o),
 	})
 }
@@ -2583,6 +2604,19 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 		o.Conferenced = &Conferenced
 	}
     
+	if Video, ok := ViewfilterMap["video"].(bool); ok {
+		o.Video = &Video
+	}
+    
+	if LinkedInteraction, ok := ViewfilterMap["linkedInteraction"].(bool); ok {
+		o.LinkedInteraction = &LinkedInteraction
+	}
+    
+	if RecommendationSources, ok := ViewfilterMap["recommendationSources"].([]interface{}); ok {
+		RecommendationSourcesString, _ := json.Marshal(RecommendationSources)
+		json.Unmarshal(RecommendationSourcesString, &o.RecommendationSources)
+	}
+	
 
 	return nil
 }

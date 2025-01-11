@@ -16,6 +16,9 @@ type Journeyviewelementfilter struct {
 
 	// Predicates - predicates
 	Predicates *[]Journeyviewelementfilterpredicate `json:"predicates,omitempty"`
+
+	// NumberPredicates - numberPredicates
+	NumberPredicates *[]Journeyviewelementfilternumberpredicate `json:"numberPredicates,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Journeyviewelementfilter) MarshalJSON() ([]byte, error) {
 		VarType *string `json:"type,omitempty"`
 		
 		Predicates *[]Journeyviewelementfilterpredicate `json:"predicates,omitempty"`
+		
+		NumberPredicates *[]Journeyviewelementfilternumberpredicate `json:"numberPredicates,omitempty"`
 		Alias
 	}{ 
 		VarType: o.VarType,
 		
 		Predicates: o.Predicates,
+		
+		NumberPredicates: o.NumberPredicates,
 		Alias:    (Alias)(o),
 	})
 }
@@ -107,6 +114,11 @@ func (o *Journeyviewelementfilter) UnmarshalJSON(b []byte) error {
 	if Predicates, ok := JourneyviewelementfilterMap["predicates"].([]interface{}); ok {
 		PredicatesString, _ := json.Marshal(Predicates)
 		json.Unmarshal(PredicatesString, &o.Predicates)
+	}
+	
+	if NumberPredicates, ok := JourneyviewelementfilterMap["numberPredicates"].([]interface{}); ok {
+		NumberPredicatesString, _ := json.Marshal(NumberPredicates)
+		json.Unmarshal(NumberPredicatesString, &o.NumberPredicates)
 	}
 	
 

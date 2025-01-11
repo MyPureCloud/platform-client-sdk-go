@@ -17,6 +17,9 @@ type Sourceentity struct {
 	// VarType - The type of the source entity
 	VarType *string `json:"type,omitempty"`
 
+	// ContestCompleteData - The contest data - Only supplied when celebration is of type ContestComplete
+	ContestCompleteData *Contestcompletedata `json:"contestCompleteData,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -88,12 +91,16 @@ func (o Sourceentity) MarshalJSON() ([]byte, error) {
 		
 		VarType *string `json:"type,omitempty"`
 		
+		ContestCompleteData *Contestcompletedata `json:"contestCompleteData,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
 		
 		VarType: o.VarType,
+		
+		ContestCompleteData: o.ContestCompleteData,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -115,6 +122,11 @@ func (o *Sourceentity) UnmarshalJSON(b []byte) error {
 		o.VarType = &VarType
 	}
     
+	if ContestCompleteData, ok := SourceentityMap["contestCompleteData"].(map[string]interface{}); ok {
+		ContestCompleteDataString, _ := json.Marshal(ContestCompleteData)
+		json.Unmarshal(ContestCompleteDataString, &o.ContestCompleteData)
+	}
+	
 	if SelfUri, ok := SourceentityMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

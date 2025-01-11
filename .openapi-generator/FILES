@@ -251,6 +251,8 @@ docs/DeleteSpeechandtextanalyticsTopic-example.txt
 docs/DeleteStationAssociateduser-example.txt
 docs/DeleteTaskmanagementWorkbin-example.txt
 docs/DeleteTaskmanagementWorkitem-example.txt
+docs/DeleteTaskmanagementWorkitemsBulkAddJob-example.txt
+docs/DeleteTaskmanagementWorkitemsBulkTerminateJob-example.txt
 docs/DeleteTaskmanagementWorkitemsSchema-example.txt
 docs/DeleteTaskmanagementWorktype-example.txt
 docs/DeleteTaskmanagementWorktypeFlowsDatebasedRule-example.txt
@@ -707,6 +709,7 @@ docs/GetGamificationInsightsDetails-example.txt
 docs/GetGamificationInsightsGroupsTrends-example.txt
 docs/GetGamificationInsightsGroupsTrendsAll-example.txt
 docs/GetGamificationInsightsMembers-example.txt
+docs/GetGamificationInsightsRankings-example.txt
 docs/GetGamificationInsightsTrends-example.txt
 docs/GetGamificationInsightsUserDetails-example.txt
 docs/GetGamificationInsightsUserTrends-example.txt
@@ -1309,6 +1312,11 @@ docs/GetTaskmanagementWorkitemUserWrapups-example.txt
 docs/GetTaskmanagementWorkitemVersion-example.txt
 docs/GetTaskmanagementWorkitemVersions-example.txt
 docs/GetTaskmanagementWorkitemWrapups-example.txt
+docs/GetTaskmanagementWorkitemsBulkAddJob-example.txt
+docs/GetTaskmanagementWorkitemsBulkAddJobResults-example.txt
+docs/GetTaskmanagementWorkitemsBulkJobsUsersMe-example.txt
+docs/GetTaskmanagementWorkitemsBulkTerminateJob-example.txt
+docs/GetTaskmanagementWorkitemsBulkTerminateJobResults-example.txt
 docs/GetTaskmanagementWorkitemsQueryJob-example.txt
 docs/GetTaskmanagementWorkitemsQueryJobResults-example.txt
 docs/GetTaskmanagementWorkitemsSchema-example.txt
@@ -1525,6 +1533,9 @@ docs/GetWorkforcemanagementBusinessunitAlternativeshiftsSettings-example.txt
 docs/GetWorkforcemanagementBusinessunitAlternativeshiftsTrade-example.txt
 docs/GetWorkforcemanagementBusinessunitAlternativeshiftsTradesSearchJob-example.txt
 docs/GetWorkforcemanagementBusinessunitIntradayPlanninggroups-example.txt
+docs/GetWorkforcemanagementBusinessunitMainforecastContinuousforecastSession-example.txt
+docs/GetWorkforcemanagementBusinessunitMainforecastContinuousforecastSessionSessionId-example.txt
+docs/GetWorkforcemanagementBusinessunitMainforecastContinuousforecastSessionSessionIdSnapshotSnapshotId-example.txt
 docs/GetWorkforcemanagementBusinessunitManagementunits-example.txt
 docs/GetWorkforcemanagementBusinessunitPlanninggroup-example.txt
 docs/GetWorkforcemanagementBusinessunitPlanninggroups-example.txt
@@ -1766,6 +1777,8 @@ docs/PatchTaskmanagementWorkitem-example.txt
 docs/PatchTaskmanagementWorkitemAssignment-example.txt
 docs/PatchTaskmanagementWorkitemUserWrapups-example.txt
 docs/PatchTaskmanagementWorkitemUsersMeWrapups-example.txt
+docs/PatchTaskmanagementWorkitemsBulkAddJob-example.txt
+docs/PatchTaskmanagementWorkitemsBulkTerminateJob-example.txt
 docs/PatchTaskmanagementWorktype-example.txt
 docs/PatchTaskmanagementWorktypeFlowsDatebasedRule-example.txt
 docs/PatchTaskmanagementWorktypeFlowsOnattributechangeRule-example.txt
@@ -1881,6 +1894,7 @@ docs/PostAnalyticsReportingExports-example.txt
 docs/PostAnalyticsReportingSettingsDashboardsBulkRemove-example.txt
 docs/PostAnalyticsReportingSettingsDashboardsQuery-example.txt
 docs/PostAnalyticsResolutionsAggregatesJobs-example.txt
+docs/PostAnalyticsResolutionsAggregatesQuery-example.txt
 docs/PostAnalyticsRoutingActivityQuery-example.txt
 docs/PostAnalyticsRoutingActivityQuery-example.txt
 docs/PostAnalyticsSummariesAggregatesJobs-example.txt
@@ -2377,6 +2391,8 @@ docs/PostTaskmanagementWorkitemAcdCancel-example.txt
 docs/PostTaskmanagementWorkitemDisconnect-example.txt
 docs/PostTaskmanagementWorkitemTerminate-example.txt
 docs/PostTaskmanagementWorkitems-example.txt
+docs/PostTaskmanagementWorkitemsBulkAddJobs-example.txt
+docs/PostTaskmanagementWorkitemsBulkTerminateJobs-example.txt
 docs/PostTaskmanagementWorkitemsQuery-example.txt
 docs/PostTaskmanagementWorkitemsQueryJobs-example.txt
 docs/PostTaskmanagementWorkitemsSchemas-example.txt
@@ -2991,6 +3007,7 @@ platformclientv2/agentworkplanbids.go
 platformclientv2/agentworkplanlistresponse.go
 platformclientv2/agentworkplans.go
 platformclientv2/agentworkplanshift.go
+platformclientv2/aggregatehistoricalavailability.go
 platformclientv2/aggregatemetricdata.go
 platformclientv2/aggregateviewdata.go
 platformclientv2/aggregationrange.go
@@ -3318,6 +3335,19 @@ platformclientv2/bulkfetchnotesresponse.go
 platformclientv2/bulkfetchorganizationsresponse.go
 platformclientv2/bulkfetchrelationshipsresponse.go
 platformclientv2/bulkidsrequest.go
+platformclientv2/bulkjob.go
+platformclientv2/bulkjobaddrequest.go
+platformclientv2/bulkjobaddresponse.go
+platformclientv2/bulkjobaddresult.go
+platformclientv2/bulkjobaddworkitemsummary.go
+platformclientv2/bulkjobentity.go
+platformclientv2/bulkjoberror.go
+platformclientv2/bulkjobslisting.go
+platformclientv2/bulkjobterminaterequest.go
+platformclientv2/bulkjobterminateresult.go
+platformclientv2/bulkjobterminateresultentity.go
+platformclientv2/bulkjobterminateresultsresponse.go
+platformclientv2/bulkjobupdate.go
 platformclientv2/bulknotesrequest.go
 platformclientv2/bulknotesresponse.go
 platformclientv2/bulkorganizationsrequest.go
@@ -3578,6 +3608,7 @@ platformclientv2/comparisonperiodlisting.go
 platformclientv2/complexvariableinfo.go
 platformclientv2/compliance.go
 platformclientv2/complianceresponse.go
+platformclientv2/computeddata.go
 platformclientv2/condition.go
 platformclientv2/conditionalgrouprouting.go
 platformclientv2/conditionalgrouproutingrule.go
@@ -3686,10 +3717,19 @@ platformclientv2/contentreaction.go
 platformclientv2/contentsetting.go
 platformclientv2/contentstory.go
 platformclientv2/contenttext.go
+platformclientv2/contestcompletedata.go
+platformclientv2/contestcompletedatascore.go
+platformclientv2/contestdatametrics.go
+platformclientv2/contestdataprizes.go
+platformclientv2/contestdatawinners.go
+platformclientv2/contestdatawinnersusers.go
 platformclientv2/context.go
 platformclientv2/contextentity.go
 platformclientv2/contextintent.go
 platformclientv2/contextpattern.go
+platformclientv2/continuousforecastgetsessionresponse.go
+platformclientv2/continuousforecastsessionresponse.go
+platformclientv2/continuousforecastsnapshotresponse.go
 platformclientv2/conversation.go
 platformclientv2/conversationactivitydata.go
 platformclientv2/conversationactivityentitydata.go
@@ -4143,6 +4183,7 @@ platformclientv2/customeventattribute.go
 platformclientv2/customeventattributelist.go
 platformclientv2/customi18nlabels.go
 platformclientv2/customprovider.go
+platformclientv2/daily.go
 platformclientv2/dailypossibleshift.go
 platformclientv2/dashboardconfiguration.go
 platformclientv2/dashboardconfigurationbulkrequest.go
@@ -4612,6 +4653,7 @@ platformclientv2/event.go
 platformclientv2/eventaction.go
 platformclientv2/eventaggregatesqueryrequest.go
 platformclientv2/eventaggregatesresponse.go
+platformclientv2/eventcobrowse.go
 platformclientv2/eventcondition.go
 platformclientv2/eventdefinition.go
 platformclientv2/eventdefinitionaggregates.go
@@ -4620,11 +4662,14 @@ platformclientv2/eventerror.go
 platformclientv2/eventlisting.go
 platformclientv2/eventlog.go
 platformclientv2/eventmessage.go
+platformclientv2/eventpresence.go
 platformclientv2/eventqueryrequest.go
 platformclientv2/eventqueryresponse.go
 platformclientv2/eventsapi.go
 platformclientv2/eventsession.go
 platformclientv2/eventsetting.go
+platformclientv2/eventtyping.go
+platformclientv2/eventvideo.go
 platformclientv2/executerecordingjobsquery.go
 platformclientv2/executiondataentity.go
 platformclientv2/executiondataflowsettingsresponse.go
@@ -4969,6 +5014,7 @@ platformclientv2/historicaladherenceactuals.go
 platformclientv2/historicaladherencedaymetrics.go
 platformclientv2/historicaladherenceexceptioninfo.go
 platformclientv2/historicaladherencequeryresult.go
+platformclientv2/historicaldata.go
 platformclientv2/historicalimportdeletejobresponse.go
 platformclientv2/historicalimportstatus.go
 platformclientv2/historicalimportstatuslisting.go
@@ -5034,6 +5080,7 @@ platformclientv2/insightsdetailsmetricitem.go
 platformclientv2/insightsdetailsmetricperiodpoints.go
 platformclientv2/insightsdetailsoverallitem.go
 platformclientv2/insightsdetailsoverallperiodpoints.go
+platformclientv2/insightsrankings.go
 platformclientv2/insightssummary.go
 platformclientv2/insightssummarymetricitem.go
 platformclientv2/insightssummarymetricperiodpoints.go
@@ -5044,6 +5091,7 @@ platformclientv2/insightstrend.go
 platformclientv2/insightstrendmetricitem.go
 platformclientv2/insightstrends.go
 platformclientv2/insightstrendtotalitem.go
+platformclientv2/instagramdataingestionruleresponse.go
 platformclientv2/instagramid.go
 platformclientv2/instagramintegration.go
 platformclientv2/instagramintegrationentitylisting.go
@@ -5612,6 +5660,7 @@ platformclientv2/messageconversationentitylisting.go
 platformclientv2/messagedata.go
 platformclientv2/messagedetails.go
 platformclientv2/messageevaluation.go
+platformclientv2/messageevent.go
 platformclientv2/messagefooter.go
 platformclientv2/messageheader.go
 platformclientv2/messageinfo.go
@@ -5689,6 +5738,9 @@ platformclientv2/minlength.go
 platformclientv2/mobiledevicesapi.go
 platformclientv2/mobilenotificationsettings.go
 platformclientv2/mobilesettings.go
+platformclientv2/modeldata.go
+platformclientv2/modelmetadata.go
+platformclientv2/modelmetadataresult.go
 platformclientv2/modifiableruleproperties.go
 platformclientv2/monthlyplanningperiodsettings.go
 platformclientv2/moveagentresponse.go
@@ -6013,6 +6065,7 @@ platformclientv2/pingidentity.go
 platformclientv2/pinnedmessagerequest.go
 platformclientv2/planninggroup.go
 platformclientv2/planninggrouplist.go
+platformclientv2/planninggroupmodel.go
 platformclientv2/planninggroupoutputs.go
 platformclientv2/planninggroupreference.go
 platformclientv2/planningperiodsettings.go
@@ -6093,6 +6146,7 @@ platformclientv2/qualityauditqueryexecutionresultsresponse.go
 platformclientv2/qualityauditqueryexecutionstatusresponse.go
 platformclientv2/qualityauditqueryfilter.go
 platformclientv2/qualityevaluationscoreitem.go
+platformclientv2/quarterhourly.go
 platformclientv2/queryadherenceexplanationsresponse.go
 platformclientv2/queryagentsintegrationsrequest.go
 platformclientv2/querycriteria.go
@@ -6518,6 +6572,8 @@ platformclientv2/resolutionaggregatedatacontainer.go
 platformclientv2/resolutionaggregatequeryclause.go
 platformclientv2/resolutionaggregatequeryfilter.go
 platformclientv2/resolutionaggregatequerypredicate.go
+platformclientv2/resolutionaggregatequeryresponse.go
+platformclientv2/resolutionaggregationquery.go
 platformclientv2/resolutionaggregationview.go
 platformclientv2/resolutionasyncaggregatequeryresponse.go
 platformclientv2/resolutionasyncaggregationquery.go
@@ -6716,8 +6772,13 @@ platformclientv2/servicenowsourcerequest.go
 platformclientv2/servicenowsourceresponse.go
 platformclientv2/session.go
 platformclientv2/sessionenddetails.go
+platformclientv2/sessionfiles.go
+platformclientv2/sessioninfo.go
 platformclientv2/sessionlastevent.go
 platformclientv2/sessionlisting.go
+platformclientv2/sessionmetadata.go
+platformclientv2/sessionmetadataresult.go
+platformclientv2/sessionmetricdata.go
 platformclientv2/sessionsegmentassignment.go
 platformclientv2/sessionsresponse.go
 platformclientv2/setcontenttemplateactionsettings.go
@@ -6794,6 +6855,12 @@ platformclientv2/smsphonenumberimport.go
 platformclientv2/smsphonenumberprovision.go
 platformclientv2/smsphonenumberref.go
 platformclientv2/smsprovisioningstatus.go
+platformclientv2/snapshotfiles.go
+platformclientv2/snapshotinfo.go
+platformclientv2/snapshotmetadata.go
+platformclientv2/snapshotmetadataresult.go
+platformclientv2/snapshotmetricdata.go
+platformclientv2/snapshots.go
 platformclientv2/socialexpression.go
 platformclientv2/socialhandle.go
 platformclientv2/socialkeyword.go
@@ -7038,6 +7105,7 @@ platformclientv2/timeoffrequestquerybody.go
 platformclientv2/timeoffrequestreference.go
 platformclientv2/timeoffrequestresponse.go
 platformclientv2/timeoffrequestsettings.go
+platformclientv2/timeseries.go
 platformclientv2/timeslot.go
 platformclientv2/timezoneentitylisting.go
 platformclientv2/timezonemappingpreview.go
@@ -7506,6 +7574,8 @@ platformclientv2/webmessagingofferfields.go
 platformclientv2/webmessagingofferproperties.go
 platformclientv2/webmessagingquickreply.go
 platformclientv2/webmessagingrecipient.go
+platformclientv2/weekly.go
+platformclientv2/weeks.go
 platformclientv2/weekschedule.go
 platformclientv2/weekschedulegenerationresult.go
 platformclientv2/weekschedulelistitemresponse.go
@@ -7700,6 +7770,7 @@ platformclientv2/wfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdate
 platformclientv2/wfmversionedentitymetadata.go
 platformclientv2/whatsappavailablephonenumberdetails.go
 platformclientv2/whatsappavailablephonenumberdetailslisting.go
+platformclientv2/whatsappcolumn.go
 platformclientv2/whatsappconfig.go
 platformclientv2/whatsappdefinition.go
 platformclientv2/whatsappembeddedsignupintegrationactivationrequest.go
@@ -7741,6 +7812,7 @@ platformclientv2/workflowtargetsettings.go
 platformclientv2/workforcemanagementapi.go
 platformclientv2/workitem.go
 platformclientv2/workitemchangelisting.go
+platformclientv2/workitemcommoncreate.go
 platformclientv2/workitemcreate.go
 platformclientv2/workitemdatebasedcondition.go
 platformclientv2/workitemdatebasedconditionupdate.go

@@ -17,7 +17,7 @@ type Journeyviewchartmetric struct {
 	// ElementId - The element in the list of elements which the metric is measuring
 	ElementId *string `json:"elementId,omitempty"`
 
-	// Aggregate - How to aggregate the given element, defaults to EventCount
+	// Aggregate - How to aggregate the given element, defaults to CustomerCount
 	Aggregate *string `json:"aggregate,omitempty"`
 
 	// DisplayLabel - A display label for the metric
