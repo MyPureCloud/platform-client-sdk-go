@@ -30,6 +30,9 @@ type Messagingcampaignschedule struct {
 	// Intervals - A list of intervals during which to run the associated Campaign.
 	Intervals *[]Scheduleinterval `json:"intervals,omitempty"`
 
+	// Recurrences - Recurring schedules of the campaign
+	Recurrences *[]Reoccurrence `json:"recurrences,omitempty"`
+
 	// TimeZone - The time zone for this messaging campaign schedule. Defaults to UTC if empty or not provided. See here for a list of valid time zones https://www.iana.org/time-zones
 	TimeZone *string `json:"timeZone,omitempty"`
 
@@ -131,6 +134,8 @@ func (o Messagingcampaignschedule) MarshalJSON() ([]byte, error) {
 		
 		Intervals *[]Scheduleinterval `json:"intervals,omitempty"`
 		
+		Recurrences *[]Reoccurrence `json:"recurrences,omitempty"`
+		
 		TimeZone *string `json:"timeZone,omitempty"`
 		
 		MessagingCampaign *Divisioneddomainentityref `json:"messagingCampaign,omitempty"`
@@ -149,6 +154,8 @@ func (o Messagingcampaignschedule) MarshalJSON() ([]byte, error) {
 		Version: o.Version,
 		
 		Intervals: o.Intervals,
+		
+		Recurrences: o.Recurrences,
 		
 		TimeZone: o.TimeZone,
 		
@@ -192,6 +199,11 @@ func (o *Messagingcampaignschedule) UnmarshalJSON(b []byte) error {
 	if Intervals, ok := MessagingcampaignscheduleMap["intervals"].([]interface{}); ok {
 		IntervalsString, _ := json.Marshal(Intervals)
 		json.Unmarshal(IntervalsString, &o.Intervals)
+	}
+	
+	if Recurrences, ok := MessagingcampaignscheduleMap["recurrences"].([]interface{}); ok {
+		RecurrencesString, _ := json.Marshal(Recurrences)
+		json.Unmarshal(RecurrencesString, &o.Recurrences)
 	}
 	
 	if TimeZone, ok := MessagingcampaignscheduleMap["timeZone"].(string); ok {

@@ -3504,6 +3504,10 @@ func (a ConversationsApi) GetConversationsCallsMaximumconferenceparties() (*Maxp
 // GetConversationsChat invokes GET /api/v2/conversations/chats/{conversationId}
 //
 // Get chat conversation
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-removal-of-acd-web-chat-version-2/.
+//
+// Deprecated: GetConversationsChat is deprecated
 func (a ConversationsApi) GetConversationsChat(conversationId string) (*Chatconversation, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3587,7 +3591,9 @@ func (a ConversationsApi) GetConversationsChat(conversationId string) (*Chatconv
 //
 // Get a web chat conversation message
 //
-// The current user must be involved with the conversation to get its messages.
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-removal-of-acd-web-chat-version-2/. The current user must be involved with the conversation to get its messages.
+//
+// Deprecated: GetConversationsChatMessage is deprecated
 func (a ConversationsApi) GetConversationsChatMessage(conversationId string, messageId string) (*Webchatmessage, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3677,7 +3683,9 @@ func (a ConversationsApi) GetConversationsChatMessage(conversationId string, mes
 //
 // Get the messages of a chat conversation.
 //
-// The current user must be involved with the conversation to get its messages.
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-removal-of-acd-web-chat-version-2/. The current user must be involved with the conversation to get its messages.
+//
+// Deprecated: GetConversationsChatMessages is deprecated
 func (a ConversationsApi) GetConversationsChatMessages(conversationId string, after string, before string, sortOrder string, maxResults int) (*Webchatmessageentitylist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3768,6 +3776,10 @@ func (a ConversationsApi) GetConversationsChatMessages(conversationId string, af
 // GetConversationsChatParticipantCommunicationWrapup invokes GET /api/v2/conversations/chats/{conversationId}/participants/{participantId}/communications/{communicationId}/wrapup
 //
 // Get the wrap-up for this conversation communication. 
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-removal-of-acd-web-chat-version-2/.
+//
+// Deprecated: GetConversationsChatParticipantCommunicationWrapup is deprecated
 func (a ConversationsApi) GetConversationsChatParticipantCommunicationWrapup(conversationId string, participantId string, communicationId string, provisional bool) (*Assignedwrapupcode, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3864,6 +3876,10 @@ func (a ConversationsApi) GetConversationsChatParticipantCommunicationWrapup(con
 // GetConversationsChatParticipantWrapup invokes GET /api/v2/conversations/chats/{conversationId}/participants/{participantId}/wrapup
 //
 // Get the wrap-up for this conversation participant. 
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-removal-of-acd-web-chat-version-2/.
+//
+// Deprecated: GetConversationsChatParticipantWrapup is deprecated
 func (a ConversationsApi) GetConversationsChatParticipantWrapup(conversationId string, participantId string, provisional bool) (*Assignedwrapupcode, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3954,6 +3970,10 @@ func (a ConversationsApi) GetConversationsChatParticipantWrapup(conversationId s
 // GetConversationsChatParticipantWrapupcodes invokes GET /api/v2/conversations/chats/{conversationId}/participants/{participantId}/wrapupcodes
 //
 // Get list of wrapup codes for this conversation participant
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-removal-of-acd-web-chat-version-2/.
+//
+// Deprecated: GetConversationsChatParticipantWrapupcodes is deprecated
 func (a ConversationsApi) GetConversationsChatParticipantWrapupcodes(conversationId string, participantId string) ([]Wrapupcode, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4042,6 +4062,10 @@ func (a ConversationsApi) GetConversationsChatParticipantWrapupcodes(conversatio
 // GetConversationsChats invokes GET /api/v2/conversations/chats
 //
 // Get active chat conversations for the logged in user
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-removal-of-acd-web-chat-version-2/.
+//
+// Deprecated: GetConversationsChats is deprecated
 func (a ConversationsApi) GetConversationsChats() (*Chatconversationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -9764,6 +9788,10 @@ func (a ConversationsApi) PatchConversationsCallbacks(body Patchcallbackrequest)
 // PatchConversationsChat invokes PATCH /api/v2/conversations/chats/{conversationId}
 //
 // Update a conversation by disconnecting all of the participants
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-removal-of-acd-web-chat-version-2/.
+//
+// Deprecated: PatchConversationsChat is deprecated
 func (a ConversationsApi) PatchConversationsChat(conversationId string, body Conversation) (*Conversation, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -9854,6 +9882,10 @@ func (a ConversationsApi) PatchConversationsChat(conversationId string, body Con
 // PatchConversationsChatParticipant invokes PATCH /api/v2/conversations/chats/{conversationId}/participants/{participantId}
 //
 // Update conversation participant
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-removal-of-acd-web-chat-version-2/.
+//
+// Deprecated: PatchConversationsChatParticipant is deprecated
 func (a ConversationsApi) PatchConversationsChatParticipant(conversationId string, participantId string, body Mediaparticipantrequest) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -9943,6 +9975,10 @@ func (a ConversationsApi) PatchConversationsChatParticipant(conversationId strin
 // PatchConversationsChatParticipantAttributes invokes PATCH /api/v2/conversations/chats/{conversationId}/participants/{participantId}/attributes
 //
 // Update the attributes on a conversation participant.
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-removal-of-acd-web-chat-version-2/.
+//
+// Deprecated: PatchConversationsChatParticipantAttributes is deprecated
 func (a ConversationsApi) PatchConversationsChatParticipantAttributes(conversationId string, participantId string, body Participantattributes) (*Participantattributes, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -10039,6 +10075,10 @@ func (a ConversationsApi) PatchConversationsChatParticipantAttributes(conversati
 // PatchConversationsChatParticipantCommunication invokes PATCH /api/v2/conversations/chats/{conversationId}/participants/{participantId}/communications/{communicationId}
 //
 // Update conversation participant's communication by disconnecting it.
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-removal-of-acd-web-chat-version-2/.
+//
+// Deprecated: PatchConversationsChatParticipantCommunication is deprecated
 func (a ConversationsApi) PatchConversationsChatParticipantCommunication(conversationId string, participantId string, communicationId string, body Mediaparticipantrequest) (*interface{}, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -15378,6 +15418,10 @@ func (a ConversationsApi) PostConversationsCalls(body Createcallrequest) (*Creat
 // PostConversationsChatCommunicationMessages invokes POST /api/v2/conversations/chats/{conversationId}/communications/{communicationId}/messages
 //
 // Send a message on behalf of a communication in a chat conversation.
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-removal-of-acd-web-chat-version-2/.
+//
+// Deprecated: PostConversationsChatCommunicationMessages is deprecated
 func (a ConversationsApi) PostConversationsChatCommunicationMessages(conversationId string, communicationId string, body Createwebchatmessagerequest) (*Webchatmessage, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -15474,6 +15518,10 @@ func (a ConversationsApi) PostConversationsChatCommunicationMessages(conversatio
 // PostConversationsChatCommunicationTyping invokes POST /api/v2/conversations/chats/{conversationId}/communications/{communicationId}/typing
 //
 // Send a typing-indicator on behalf of a communication in a chat conversation.
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-removal-of-acd-web-chat-version-2/.
+//
+// Deprecated: PostConversationsChatCommunicationTyping is deprecated
 func (a ConversationsApi) PostConversationsChatCommunicationTyping(conversationId string, communicationId string) (*Webchattyping, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -15562,6 +15610,10 @@ func (a ConversationsApi) PostConversationsChatCommunicationTyping(conversationI
 // PostConversationsChatParticipantCommunicationWrapup invokes POST /api/v2/conversations/chats/{conversationId}/participants/{participantId}/communications/{communicationId}/wrapup
 //
 // Apply wrap-up for this conversation communication
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-removal-of-acd-web-chat-version-2/.
+//
+// Deprecated: PostConversationsChatParticipantCommunicationWrapup is deprecated
 func (a ConversationsApi) PostConversationsChatParticipantCommunicationWrapup(conversationId string, participantId string, communicationId string, body Wrapupinput) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -15652,6 +15704,10 @@ func (a ConversationsApi) PostConversationsChatParticipantCommunicationWrapup(co
 // PostConversationsChatParticipantReplace invokes POST /api/v2/conversations/chats/{conversationId}/participants/{participantId}/replace
 //
 // Replace this participant with the specified user and/or address
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-removal-of-acd-web-chat-version-2/.
+//
+// Deprecated: PostConversationsChatParticipantReplace is deprecated
 func (a ConversationsApi) PostConversationsChatParticipantReplace(conversationId string, participantId string, body Transferrequest) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -15741,6 +15797,10 @@ func (a ConversationsApi) PostConversationsChatParticipantReplace(conversationId
 // PostConversationsChats invokes POST /api/v2/conversations/chats
 //
 // Create a web chat conversation
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-removal-of-acd-web-chat-version-2/.
+//
+// Deprecated: PostConversationsChats is deprecated
 func (a ConversationsApi) PostConversationsChats(body Createwebchatrequest) (*Chatconversation, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -19706,6 +19766,10 @@ func (a ConversationsApi) PutConversationsCallbackRecordingstate(conversationId 
 // PutConversationsChatRecordingstate invokes PUT /api/v2/conversations/chats/{conversationId}/recordingstate
 //
 // Update a conversation by setting its recording state
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-removal-of-acd-web-chat-version-2/.
+//
+// Deprecated: PutConversationsChatRecordingstate is deprecated
 func (a ConversationsApi) PutConversationsChatRecordingstate(conversationId string, body Setrecordingstate) (*string, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

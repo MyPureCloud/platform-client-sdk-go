@@ -1575,6 +1575,7 @@ docs/GetWorkforcemanagementCalendarDataIcs-example.txt
 docs/GetWorkforcemanagementCalendarUrlIcs-example.txt
 docs/GetWorkforcemanagementHistoricaldataDeletejob-example.txt
 docs/GetWorkforcemanagementHistoricaldataImportstatus-example.txt
+docs/GetWorkforcemanagementHistoricaldataImportstatusJobId-example.txt
 docs/GetWorkforcemanagementIntegrationsHris-example.txt
 docs/GetWorkforcemanagementIntegrationsHrisTimeofftypesJob-example.txt
 docs/GetWorkforcemanagementManagementunit-example.txt
@@ -3796,6 +3797,7 @@ platformclientv2/conversationcalleventtopicwrapup.go
 platformclientv2/conversationcategoriesentitylisting.go
 platformclientv2/conversationcategory.go
 platformclientv2/conversationchannel.go
+platformclientv2/conversationchannellocation.go
 platformclientv2/conversationchannelmetadata.go
 platformclientv2/conversationchat.go
 platformclientv2/conversationchateventtopicchatconversation.go
@@ -5017,6 +5019,7 @@ platformclientv2/historicaladherencequeryresult.go
 platformclientv2/historicaldata.go
 platformclientv2/historicalimportdeletejobresponse.go
 platformclientv2/historicalimportstatus.go
+platformclientv2/historicalimportstatusjobresponse.go
 platformclientv2/historicalimportstatuslisting.go
 platformclientv2/historicalshrinkageactivitycategoryresponse.go
 platformclientv2/historicalshrinkageactivitycoderesponse.go
@@ -6139,6 +6142,7 @@ platformclientv2/publishtopictopicsdefinitionsjob.go
 platformclientv2/punctualityevent.go
 platformclientv2/purecloud.go
 platformclientv2/pureengage.go
+platformclientv2/pushintegration.go
 platformclientv2/qmauditqueryrequest.go
 platformclientv2/qualityapi.go
 platformclientv2/qualityauditlogmessage.go
@@ -7478,6 +7482,7 @@ platformclientv2/validateworkplanresponse.go
 platformclientv2/validationerror.go
 platformclientv2/validationlimits.go
 platformclientv2/validationresult.go
+platformclientv2/validationserviceasyncresponse.go
 platformclientv2/validationservicerequest.go
 platformclientv2/valuewrapperactivityplanservicegoalimpactoverrides.go
 platformclientv2/valuewrapperdate.go

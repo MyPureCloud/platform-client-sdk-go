@@ -35,6 +35,9 @@ type Bufulldaytimeoffmarker struct {
 
 	// TimeOffRequestSyncVersion - The sync version of the full day time off request for which the scheduled activity is associated
 	TimeOffRequestSyncVersion *int `json:"timeOffRequestSyncVersion,omitempty"`
+
+	// Delete - Set to 'true' to delete this time off marker. Will always be null on responses, only has an effect on schedule update
+	Delete *bool `json:"delete,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -122,6 +125,8 @@ func (o Bufulldaytimeoffmarker) MarshalJSON() ([]byte, error) {
 		TimeOffRequestId *string `json:"timeOffRequestId,omitempty"`
 		
 		TimeOffRequestSyncVersion *int `json:"timeOffRequestSyncVersion,omitempty"`
+		
+		Delete *bool `json:"delete,omitempty"`
 		Alias
 	}{ 
 		BusinessUnitDate: BusinessUnitDate,
@@ -139,6 +144,8 @@ func (o Bufulldaytimeoffmarker) MarshalJSON() ([]byte, error) {
 		TimeOffRequestId: o.TimeOffRequestId,
 		
 		TimeOffRequestSyncVersion: o.TimeOffRequestSyncVersion,
+		
+		Delete: o.Delete,
 		Alias:    (Alias)(o),
 	})
 }
@@ -186,6 +193,10 @@ func (o *Bufulldaytimeoffmarker) UnmarshalJSON(b []byte) error {
 		o.TimeOffRequestSyncVersion = &TimeOffRequestSyncVersionInt
 	}
 	
+	if Delete, ok := BufulldaytimeoffmarkerMap["delete"].(bool); ok {
+		o.Delete = &Delete
+	}
+    
 
 	return nil
 }

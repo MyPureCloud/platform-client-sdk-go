@@ -10,7 +10,13 @@ import (
 // Messageheader
 type Messageheader struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// VarType - Defines the content type of the Header in message
+	VarType *string `json:"type,omitempty"`
+
+	// Content - Content associated with the header in the message
+	Content *string `json:"content,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Messageheader) SetField(field string, fieldValue interface{}) {
@@ -74,8 +80,16 @@ func (o Messageheader) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Messageheader
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		VarType *string `json:"type,omitempty"`
+		
+		Content *string `json:"content,omitempty"`
+		Alias
+	}{ 
+		VarType: o.VarType,
+		
+		Content: o.Content,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -86,6 +100,14 @@ func (o *Messageheader) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if VarType, ok := MessageheaderMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+    
+	if Content, ok := MessageheaderMap["content"].(string); ok {
+		o.Content = &Content
+	}
+    
 
 	return nil
 }

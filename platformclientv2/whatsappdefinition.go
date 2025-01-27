@@ -19,6 +19,15 @@ type Whatsappdefinition struct {
 
 	// Language - The messaging template language configured for this template. This is a WhatsApp specific value. For example, 'en_US'
 	Language *string `json:"language,omitempty"`
+
+	// Buttons - List of buttons to be included in the WhatsApp messages channel
+	Buttons *[]Button `json:"buttons,omitempty"`
+
+	// MessageFooter - Footer for the message in the WhatsApp messages channel
+	MessageFooter *Messagefooter `json:"messageFooter,omitempty"`
+
+	// Header - Header for the message in the WhatsApp messages channel
+	Header *Messageheader `json:"header,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +98,12 @@ func (o Whatsappdefinition) MarshalJSON() ([]byte, error) {
 		Namespace *string `json:"namespace,omitempty"`
 		
 		Language *string `json:"language,omitempty"`
+		
+		Buttons *[]Button `json:"buttons,omitempty"`
+		
+		MessageFooter *Messagefooter `json:"messageFooter,omitempty"`
+		
+		Header *Messageheader `json:"header,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -96,6 +111,12 @@ func (o Whatsappdefinition) MarshalJSON() ([]byte, error) {
 		Namespace: o.Namespace,
 		
 		Language: o.Language,
+		
+		Buttons: o.Buttons,
+		
+		MessageFooter: o.MessageFooter,
+		
+		Header: o.Header,
 		Alias:    (Alias)(o),
 	})
 }
@@ -119,6 +140,21 @@ func (o *Whatsappdefinition) UnmarshalJSON(b []byte) error {
 		o.Language = &Language
 	}
     
+	if Buttons, ok := WhatsappdefinitionMap["buttons"].([]interface{}); ok {
+		ButtonsString, _ := json.Marshal(Buttons)
+		json.Unmarshal(ButtonsString, &o.Buttons)
+	}
+	
+	if MessageFooter, ok := WhatsappdefinitionMap["messageFooter"].(map[string]interface{}); ok {
+		MessageFooterString, _ := json.Marshal(MessageFooter)
+		json.Unmarshal(MessageFooterString, &o.MessageFooter)
+	}
+	
+	if Header, ok := WhatsappdefinitionMap["header"].(map[string]interface{}); ok {
+		HeaderString, _ := json.Marshal(Header)
+		json.Unmarshal(HeaderString, &o.Header)
+	}
+	
 
 	return nil
 }

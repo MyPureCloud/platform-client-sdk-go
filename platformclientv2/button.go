@@ -10,7 +10,16 @@ import (
 // Button
 type Button struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// VarType - Type of button to include in whatsApp template
+	VarType *string `json:"type,omitempty"`
+
+	// Content - Content of the button. Use for 'Url' or 'PhoneNumber' button type
+	Content *string `json:"content,omitempty"`
+
+	// ContentText - The text label that will be displayed on the button
+	ContentText *string `json:"contentText,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Button) SetField(field string, fieldValue interface{}) {
@@ -74,8 +83,20 @@ func (o Button) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Button
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		VarType *string `json:"type,omitempty"`
+		
+		Content *string `json:"content,omitempty"`
+		
+		ContentText *string `json:"contentText,omitempty"`
+		Alias
+	}{ 
+		VarType: o.VarType,
+		
+		Content: o.Content,
+		
+		ContentText: o.ContentText,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -86,6 +107,18 @@ func (o *Button) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if VarType, ok := ButtonMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+    
+	if Content, ok := ButtonMap["content"].(string); ok {
+		o.Content = &Content
+	}
+    
+	if ContentText, ok := ButtonMap["contentText"].(string); ok {
+		o.ContentText = &ContentText
+	}
+    
 
 	return nil
 }

@@ -6923,7 +6923,7 @@ func (a OutboundApi) GetOutboundMessagingcampaignProgress(messagingCampaignId st
 // GetOutboundMessagingcampaigns invokes GET /api/v2/outbound/messagingcampaigns
 //
 // Query a list of Messaging Campaigns
-func (a OutboundApi) GetOutboundMessagingcampaigns(pageSize int, pageNumber int, sortBy string, sortOrder string, name string, contactListId string, divisionId []string, varType string, senderSmsPhoneNumber string, id []string) (*Messagingcampaignentitylisting, *APIResponse, error) {
+func (a OutboundApi) GetOutboundMessagingcampaigns(pageSize int, pageNumber int, sortBy string, sortOrder string, name string, contactListId string, divisionId []string, varType string, senderSmsPhoneNumber string, id []string, contentTemplateId string, campaignStatus string) (*Messagingcampaignentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/messagingcampaigns"
@@ -6969,6 +6969,10 @@ func (a OutboundApi) GetOutboundMessagingcampaigns(pageSize int, pageNumber int,
 	queryParams["senderSmsPhoneNumber"] = a.Configuration.APIClient.ParameterToString(senderSmsPhoneNumber, "")
 	
 	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
+	
+	queryParams["contentTemplateId"] = a.Configuration.APIClient.ParameterToString(contentTemplateId, "")
+	
+	queryParams["campaignStatus"] = a.Configuration.APIClient.ParameterToString(campaignStatus, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -7105,7 +7109,7 @@ func (a OutboundApi) GetOutboundMessagingcampaignsDivisionview(messagingCampaign
 // Query a list of basic Messaging Campaign information objects
 //
 // This returns a listing of simplified Messaging Campaigns, each consisting of id, name, and division.
-func (a OutboundApi) GetOutboundMessagingcampaignsDivisionviews(pageSize int, pageNumber int, sortOrder string, name string, varType string, id []string, senderSmsPhoneNumber string) (*Messagingcampaigndivisionviewentitylisting, *APIResponse, error) {
+func (a OutboundApi) GetOutboundMessagingcampaignsDivisionviews(pageSize int, pageNumber int, sortOrder string, name string, varType string, id []string, senderSmsPhoneNumber string, contentTemplateId string, campaignStatus string) (*Messagingcampaigndivisionviewentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/messagingcampaigns/divisionviews"
@@ -7145,6 +7149,10 @@ func (a OutboundApi) GetOutboundMessagingcampaignsDivisionviews(pageSize int, pa
 	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
 	
 	queryParams["senderSmsPhoneNumber"] = a.Configuration.APIClient.ParameterToString(senderSmsPhoneNumber, "")
+	
+	queryParams["contentTemplateId"] = a.Configuration.APIClient.ParameterToString(contentTemplateId, "")
+	
+	queryParams["campaignStatus"] = a.Configuration.APIClient.ParameterToString(campaignStatus, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

@@ -23,11 +23,11 @@ type Opendataingestionruleversionresponseentitylisting struct {
 	// Total
 	Total *int `json:"total,omitempty"`
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
+
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -113,9 +113,9 @@ func (o Opendataingestionruleversionresponseentitylisting) MarshalJSON() ([]byte
 		
 		Total *int `json:"total,omitempty"`
 		
-		LastUri *string `json:"lastUri,omitempty"`
-		
 		FirstUri *string `json:"firstUri,omitempty"`
+		
+		LastUri *string `json:"lastUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
@@ -134,9 +134,9 @@ func (o Opendataingestionruleversionresponseentitylisting) MarshalJSON() ([]byte
 		
 		Total: o.Total,
 		
-		LastUri: o.LastUri,
-		
 		FirstUri: o.FirstUri,
+		
+		LastUri: o.LastUri,
 		
 		SelfUri: o.SelfUri,
 		
@@ -176,12 +176,12 @@ func (o *Opendataingestionruleversionresponseentitylisting) UnmarshalJSON(b []by
 		o.Total = &TotalInt
 	}
 	
-	if LastUri, ok := OpendataingestionruleversionresponseentitylistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
 	if FirstUri, ok := OpendataingestionruleversionresponseentitylistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
+	}
+    
+	if LastUri, ok := OpendataingestionruleversionresponseentitylistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
 	}
     
 	if SelfUri, ok := OpendataingestionruleversionresponseentitylistingMap["selfUri"].(string); ok {

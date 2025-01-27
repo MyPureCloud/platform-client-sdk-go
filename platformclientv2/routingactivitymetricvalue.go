@@ -11,10 +11,19 @@ import (
 type Routingactivitymetricvalue struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Metric - metric
+	// Metric - Metric
 	Metric *string `json:"metric,omitempty"`
 
-	// Count - metric count
+	// Qualifier - Metric qualifier
+	Qualifier *string `json:"qualifier,omitempty"`
+
+	// SecondaryQualifier - Secondary metric qualifier
+	SecondaryQualifier *string `json:"secondaryQualifier,omitempty"`
+
+	// EntityIds - Entity ids for matching entities if details were requested
+	EntityIds *[]string `json:"entityIds,omitempty"`
+
+	// Count - Metric count
 	Count *int `json:"count,omitempty"`
 }
 
@@ -83,10 +92,22 @@ func (o Routingactivitymetricvalue) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Metric *string `json:"metric,omitempty"`
 		
+		Qualifier *string `json:"qualifier,omitempty"`
+		
+		SecondaryQualifier *string `json:"secondaryQualifier,omitempty"`
+		
+		EntityIds *[]string `json:"entityIds,omitempty"`
+		
 		Count *int `json:"count,omitempty"`
 		Alias
 	}{ 
 		Metric: o.Metric,
+		
+		Qualifier: o.Qualifier,
+		
+		SecondaryQualifier: o.SecondaryQualifier,
+		
+		EntityIds: o.EntityIds,
 		
 		Count: o.Count,
 		Alias:    (Alias)(o),
@@ -104,6 +125,19 @@ func (o *Routingactivitymetricvalue) UnmarshalJSON(b []byte) error {
 		o.Metric = &Metric
 	}
     
+	if Qualifier, ok := RoutingactivitymetricvalueMap["qualifier"].(string); ok {
+		o.Qualifier = &Qualifier
+	}
+    
+	if SecondaryQualifier, ok := RoutingactivitymetricvalueMap["secondaryQualifier"].(string); ok {
+		o.SecondaryQualifier = &SecondaryQualifier
+	}
+    
+	if EntityIds, ok := RoutingactivitymetricvalueMap["entityIds"].([]interface{}); ok {
+		EntityIdsString, _ := json.Marshal(EntityIds)
+		json.Unmarshal(EntityIdsString, &o.EntityIds)
+	}
+	
 	if Count, ok := RoutingactivitymetricvalueMap["count"].(float64); ok {
 		CountInt := int(Count)
 		o.Count = &CountInt

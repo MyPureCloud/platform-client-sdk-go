@@ -2970,7 +2970,7 @@ func (a AnalyticsApi) GetAnalyticsReportingSettings() (*Analyticsreportingsettin
 // GetAnalyticsReportingSettingsDashboardsQuery invokes GET /api/v2/analytics/reporting/settings/dashboards/query
 //
 // Get list of dashboard configurations
-func (a AnalyticsApi) GetAnalyticsReportingSettingsDashboardsQuery(dashboardType string, dashboardAccessFilter string, name string, sortBy string, pageNumber int, pageSize int) (*Dashboardconfigurationlisting, *APIResponse, error) {
+func (a AnalyticsApi) GetAnalyticsReportingSettingsDashboardsQuery(dashboardType string, dashboardAccessFilter string, name string, dashboardState string, sortBy string, pageNumber int, pageSize int) (*Dashboardconfigurationlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/analytics/reporting/settings/dashboards/query"
@@ -3010,6 +3010,8 @@ func (a AnalyticsApi) GetAnalyticsReportingSettingsDashboardsQuery(dashboardType
 	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
 	queryParams["dashboardType"] = a.Configuration.APIClient.ParameterToString(dashboardType, "")
+	
+	queryParams["dashboardState"] = a.Configuration.APIClient.ParameterToString(dashboardState, "")
 	
 	queryParams["dashboardAccessFilter"] = a.Configuration.APIClient.ParameterToString(dashboardAccessFilter, "")
 	

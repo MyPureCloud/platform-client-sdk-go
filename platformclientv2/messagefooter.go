@@ -10,7 +10,13 @@ import (
 // Messagefooter
 type Messagefooter struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// VarType - Defines the content type of the footer in message
+	VarType *string `json:"type,omitempty"`
+
+	// Content - Content associated with the footer in the message
+	Content *string `json:"content,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Messagefooter) SetField(field string, fieldValue interface{}) {
@@ -74,8 +80,16 @@ func (o Messagefooter) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Messagefooter
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		VarType *string `json:"type,omitempty"`
+		
+		Content *string `json:"content,omitempty"`
+		Alias
+	}{ 
+		VarType: o.VarType,
+		
+		Content: o.Content,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -86,6 +100,14 @@ func (o *Messagefooter) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if VarType, ok := MessagefooterMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+    
+	if Content, ok := MessagefooterMap["content"].(string); ok {
+		o.Content = &Content
+	}
+    
 
 	return nil
 }
