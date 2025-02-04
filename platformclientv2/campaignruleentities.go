@@ -16,6 +16,12 @@ type Campaignruleentities struct {
 
 	// Sequences - The list of sequences for a CampaignRule to monitor. Required if the CampaignRule has any conditions that run on a sequence.
 	Sequences *[]Domainentityref `json:"sequences,omitempty"`
+
+	// EmailCampaigns - The list of Email campaigns for a CampaignRule to monitor. Required if the CampaignRule has any conditions that run on a Email campaign.
+	EmailCampaigns *[]Domainentityref `json:"emailCampaigns,omitempty"`
+
+	// SmsCampaigns - The list of SMS campaigns for a CampaignRule to monitor. Required if the CampaignRule has any conditions that run on a SMS campaign.
+	SmsCampaigns *[]Domainentityref `json:"smsCampaigns,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +90,19 @@ func (o Campaignruleentities) MarshalJSON() ([]byte, error) {
 		Campaigns *[]Domainentityref `json:"campaigns,omitempty"`
 		
 		Sequences *[]Domainentityref `json:"sequences,omitempty"`
+		
+		EmailCampaigns *[]Domainentityref `json:"emailCampaigns,omitempty"`
+		
+		SmsCampaigns *[]Domainentityref `json:"smsCampaigns,omitempty"`
 		Alias
 	}{ 
 		Campaigns: o.Campaigns,
 		
 		Sequences: o.Sequences,
+		
+		EmailCampaigns: o.EmailCampaigns,
+		
+		SmsCampaigns: o.SmsCampaigns,
 		Alias:    (Alias)(o),
 	})
 }
@@ -108,6 +122,16 @@ func (o *Campaignruleentities) UnmarshalJSON(b []byte) error {
 	if Sequences, ok := CampaignruleentitiesMap["sequences"].([]interface{}); ok {
 		SequencesString, _ := json.Marshal(Sequences)
 		json.Unmarshal(SequencesString, &o.Sequences)
+	}
+	
+	if EmailCampaigns, ok := CampaignruleentitiesMap["emailCampaigns"].([]interface{}); ok {
+		EmailCampaignsString, _ := json.Marshal(EmailCampaigns)
+		json.Unmarshal(EmailCampaignsString, &o.EmailCampaigns)
+	}
+	
+	if SmsCampaigns, ok := CampaignruleentitiesMap["smsCampaigns"].([]interface{}); ok {
+		SmsCampaignsString, _ := json.Marshal(SmsCampaigns)
+		json.Unmarshal(SmsCampaignsString, &o.SmsCampaigns)
 	}
 	
 

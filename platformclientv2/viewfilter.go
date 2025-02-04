@@ -655,6 +655,12 @@ type Viewfilter struct {
 
 	// RecommendationSources - List of recommendation sources for filtering recommendation details pane
 	RecommendationSources *[]string `json:"recommendationSources,omitempty"`
+
+	// EvaluationRole - Sets the role when viewing agent evaluations
+	EvaluationRole *string `json:"evaluationRole,omitempty"`
+
+	// ComparisonQueueIds - The queue ids are used to for comparison to the primary queue filter in reporting
+	ComparisonQueueIds *[]string `json:"comparisonQueueIds,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -1149,6 +1155,10 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		LinkedInteraction *bool `json:"linkedInteraction,omitempty"`
 		
 		RecommendationSources *[]string `json:"recommendationSources,omitempty"`
+		
+		EvaluationRole *string `json:"evaluationRole,omitempty"`
+		
+		ComparisonQueueIds *[]string `json:"comparisonQueueIds,omitempty"`
 		Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -1580,6 +1590,10 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		LinkedInteraction: o.LinkedInteraction,
 		
 		RecommendationSources: o.RecommendationSources,
+		
+		EvaluationRole: o.EvaluationRole,
+		
+		ComparisonQueueIds: o.ComparisonQueueIds,
 		Alias:    (Alias)(o),
 	})
 }
@@ -2615,6 +2629,15 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if RecommendationSources, ok := ViewfilterMap["recommendationSources"].([]interface{}); ok {
 		RecommendationSourcesString, _ := json.Marshal(RecommendationSources)
 		json.Unmarshal(RecommendationSourcesString, &o.RecommendationSources)
+	}
+	
+	if EvaluationRole, ok := ViewfilterMap["evaluationRole"].(string); ok {
+		o.EvaluationRole = &EvaluationRole
+	}
+    
+	if ComparisonQueueIds, ok := ViewfilterMap["comparisonQueueIds"].([]interface{}); ok {
+		ComparisonQueueIdsString, _ := json.Marshal(ComparisonQueueIds)
+		json.Unmarshal(ComparisonQueueIdsString, &o.ComparisonQueueIds)
 	}
 	
 

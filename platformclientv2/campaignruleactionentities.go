@@ -17,6 +17,12 @@ type Campaignruleactionentities struct {
 	// Sequences - The list of sequences for a CampaignRule to monitor. Required if the CampaignRule has any conditions that run on a sequence.
 	Sequences *[]Domainentityref `json:"sequences,omitempty"`
 
+	// EmailCampaigns - The list of Email campaigns for a CampaignRule to monitor. Required if the CampaignRule has any conditions that run on a Email campaign.
+	EmailCampaigns *[]Domainentityref `json:"emailCampaigns,omitempty"`
+
+	// SmsCampaigns - The list of SMS campaigns for a CampaignRule to monitor. Required if the CampaignRule has any conditions that run on a SMS campaign.
+	SmsCampaigns *[]Domainentityref `json:"smsCampaigns,omitempty"`
+
 	// UseTriggeringEntity - If true, the CampaignRuleAction will apply to the same entity that triggered the CampaignRuleCondition.
 	UseTriggeringEntity *bool `json:"useTriggeringEntity,omitempty"`
 }
@@ -88,12 +94,20 @@ func (o Campaignruleactionentities) MarshalJSON() ([]byte, error) {
 		
 		Sequences *[]Domainentityref `json:"sequences,omitempty"`
 		
+		EmailCampaigns *[]Domainentityref `json:"emailCampaigns,omitempty"`
+		
+		SmsCampaigns *[]Domainentityref `json:"smsCampaigns,omitempty"`
+		
 		UseTriggeringEntity *bool `json:"useTriggeringEntity,omitempty"`
 		Alias
 	}{ 
 		Campaigns: o.Campaigns,
 		
 		Sequences: o.Sequences,
+		
+		EmailCampaigns: o.EmailCampaigns,
+		
+		SmsCampaigns: o.SmsCampaigns,
 		
 		UseTriggeringEntity: o.UseTriggeringEntity,
 		Alias:    (Alias)(o),
@@ -115,6 +129,16 @@ func (o *Campaignruleactionentities) UnmarshalJSON(b []byte) error {
 	if Sequences, ok := CampaignruleactionentitiesMap["sequences"].([]interface{}); ok {
 		SequencesString, _ := json.Marshal(Sequences)
 		json.Unmarshal(SequencesString, &o.Sequences)
+	}
+	
+	if EmailCampaigns, ok := CampaignruleactionentitiesMap["emailCampaigns"].([]interface{}); ok {
+		EmailCampaignsString, _ := json.Marshal(EmailCampaigns)
+		json.Unmarshal(EmailCampaignsString, &o.EmailCampaigns)
+	}
+	
+	if SmsCampaigns, ok := CampaignruleactionentitiesMap["smsCampaigns"].([]interface{}); ok {
+		SmsCampaignsString, _ := json.Marshal(SmsCampaigns)
+		json.Unmarshal(SmsCampaignsString, &o.SmsCampaigns)
 	}
 	
 	if UseTriggeringEntity, ok := CampaignruleactionentitiesMap["useTriggeringEntity"].(bool); ok {

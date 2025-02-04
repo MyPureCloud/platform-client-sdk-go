@@ -31,6 +31,9 @@ type Collaboratechatadhocmessageeventtopiccollaboratechatmessage struct {
 
 	// Mentions
 	Mentions *[]Collaboratechatadhocmessageeventtopiccollaboratechatentity `json:"mentions,omitempty"`
+
+	// NotifyAll
+	NotifyAll *bool `json:"notifyAll,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -109,6 +112,8 @@ func (o Collaboratechatadhocmessageeventtopiccollaboratechatmessage) MarshalJSON
 		To *Collaboratechatadhocmessageeventtopiccollaboratechatentity `json:"to,omitempty"`
 		
 		Mentions *[]Collaboratechatadhocmessageeventtopiccollaboratechatentity `json:"mentions,omitempty"`
+		
+		NotifyAll *bool `json:"notifyAll,omitempty"`
 		Alias
 	}{ 
 		MessageId: o.MessageId,
@@ -124,6 +129,8 @@ func (o Collaboratechatadhocmessageeventtopiccollaboratechatmessage) MarshalJSON
 		To: o.To,
 		
 		Mentions: o.Mentions,
+		
+		NotifyAll: o.NotifyAll,
 		Alias:    (Alias)(o),
 	})
 }
@@ -166,6 +173,10 @@ func (o *Collaboratechatadhocmessageeventtopiccollaboratechatmessage) UnmarshalJ
 		json.Unmarshal(MentionsString, &o.Mentions)
 	}
 	
+	if NotifyAll, ok := CollaboratechatadhocmessageeventtopiccollaboratechatmessageMap["notifyAll"].(bool); ok {
+		o.NotifyAll = &NotifyAll
+	}
+    
 
 	return nil
 }

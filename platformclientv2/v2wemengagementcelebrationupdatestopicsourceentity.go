@@ -16,6 +16,9 @@ type V2wemengagementcelebrationupdatestopicsourceentity struct {
 
 	// VarType
 	VarType *string `json:"type,omitempty"`
+
+	// ContestCompleteData
+	ContestCompleteData *V2wemengagementcelebrationupdatestopiccontestcompletedata `json:"contestCompleteData,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o V2wemengagementcelebrationupdatestopicsourceentity) MarshalJSON() ([]byt
 		Id *string `json:"id,omitempty"`
 		
 		VarType *string `json:"type,omitempty"`
+		
+		ContestCompleteData *V2wemengagementcelebrationupdatestopiccontestcompletedata `json:"contestCompleteData,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
 		
 		VarType: o.VarType,
+		
+		ContestCompleteData: o.ContestCompleteData,
 		Alias:    (Alias)(o),
 	})
 }
@@ -108,6 +115,11 @@ func (o *V2wemengagementcelebrationupdatestopicsourceentity) UnmarshalJSON(b []b
 		o.VarType = &VarType
 	}
     
+	if ContestCompleteData, ok := V2wemengagementcelebrationupdatestopicsourceentityMap["contestCompleteData"].(map[string]interface{}); ok {
+		ContestCompleteDataString, _ := json.Marshal(ContestCompleteData)
+		json.Unmarshal(ContestCompleteDataString, &o.ContestCompleteData)
+	}
+	
 
 	return nil
 }

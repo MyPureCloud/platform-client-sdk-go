@@ -15,6 +15,9 @@ type Conversationsummarytopicvirtualagentsconversationsummaryevent struct {
 	// ConversationId
 	ConversationId *string `json:"conversationId,omitempty"`
 
+	// QueueId
+	QueueId *string `json:"queueId,omitempty"`
+
 	// Participants
 	Participants *[]Conversationsummarytopicvirtualagentsconversationsummaryparticipant `json:"participants,omitempty"`
 
@@ -137,6 +140,8 @@ func (o Conversationsummarytopicvirtualagentsconversationsummaryevent) MarshalJS
 	return json.Marshal(&struct { 
 		ConversationId *string `json:"conversationId,omitempty"`
 		
+		QueueId *string `json:"queueId,omitempty"`
+		
 		Participants *[]Conversationsummarytopicvirtualagentsconversationsummaryparticipant `json:"participants,omitempty"`
 		
 		CommunicationIds *[]string `json:"communicationIds,omitempty"`
@@ -171,6 +176,8 @@ func (o Conversationsummarytopicvirtualagentsconversationsummaryevent) MarshalJS
 		Alias
 	}{ 
 		ConversationId: o.ConversationId,
+		
+		QueueId: o.QueueId,
 		
 		Participants: o.Participants,
 		
@@ -216,6 +223,10 @@ func (o *Conversationsummarytopicvirtualagentsconversationsummaryevent) Unmarsha
 	
 	if ConversationId, ok := ConversationsummarytopicvirtualagentsconversationsummaryeventMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
+	}
+    
+	if QueueId, ok := ConversationsummarytopicvirtualagentsconversationsummaryeventMap["queueId"].(string); ok {
+		o.QueueId = &QueueId
 	}
     
 	if Participants, ok := ConversationsummarytopicvirtualagentsconversationsummaryeventMap["participants"].([]interface{}); ok {

@@ -775,8 +775,6 @@ func (a IntegrationsApi) GetIntegrationsActionDraft(actionId string, expand stri
 // GetIntegrationsActionDraftFunction invokes GET /api/v2/integrations/actions/{actionId}/draft/function
 //
 // Get draft function settings for Action
-//
-// Preview: GetIntegrationsActionDraftFunction is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a IntegrationsApi) GetIntegrationsActionDraftFunction(actionId string) (*Functionconfig, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1119,8 +1117,6 @@ func (a IntegrationsApi) GetIntegrationsActionDraftValidation(actionId string) (
 // GetIntegrationsActionFunction invokes GET /api/v2/integrations/actions/{actionId}/function
 //
 // Get published function settings for Action
-//
-// Preview: GetIntegrationsActionFunction is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a IntegrationsApi) GetIntegrationsActionFunction(actionId string) (*Functionconfig, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1823,8 +1819,6 @@ func (a IntegrationsApi) GetIntegrationsActionsDrafts(pageSize int, pageNumber i
 // GetIntegrationsActionsFunctionsRuntimes invokes GET /api/v2/integrations/actions/functions/runtimes
 //
 // Get action function settings for Action
-//
-// Preview: GetIntegrationsActionsFunctionsRuntimes is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a IntegrationsApi) GetIntegrationsActionsFunctionsRuntimes() ([]Functionruntime, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5757,8 +5751,6 @@ func (a IntegrationsApi) PostIntegrationsActionDraft(actionId string) (*Action, 
 // PostIntegrationsActionDraftFunctionUpload invokes POST /api/v2/integrations/actions/{actionId}/draft/function/upload
 //
 // Create upload presigned URL for draft function package file.
-//
-// Preview: PostIntegrationsActionDraftFunctionUpload is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a IntegrationsApi) PostIntegrationsActionDraftFunctionUpload(actionId string, body Functionuploadrequest) (*Functionuploadresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6811,8 +6803,6 @@ func (a IntegrationsApi) PutIntegrationConfigCurrent(integrationId string, body 
 // PutIntegrationsActionDraftFunction invokes PUT /api/v2/integrations/actions/{actionId}/draft/function
 //
 // Update draft function settings.
-//
-// Preview: PutIntegrationsActionDraftFunction is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a IntegrationsApi) PutIntegrationsActionDraftFunction(actionId string, body Function) (*Functionconfig, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

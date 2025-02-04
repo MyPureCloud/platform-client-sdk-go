@@ -35,6 +35,9 @@ type V2mobiusalertstopicconditionrulepredicate struct {
 	// MediaType
 	MediaType *string `json:"mediaType,omitempty"`
 
+	// Topic
+	Topic *string `json:"topic,omitempty"`
+
 	// ComparisonOperator
 	ComparisonOperator *string `json:"comparisonOperator,omitempty"`
 }
@@ -118,6 +121,8 @@ func (o V2mobiusalertstopicconditionrulepredicate) MarshalJSON() ([]byte, error)
 		
 		MediaType *string `json:"mediaType,omitempty"`
 		
+		Topic *string `json:"topic,omitempty"`
+		
 		ComparisonOperator *string `json:"comparisonOperator,omitempty"`
 		Alias
 	}{ 
@@ -136,6 +141,8 @@ func (o V2mobiusalertstopicconditionrulepredicate) MarshalJSON() ([]byte, error)
 		Status: o.Status,
 		
 		MediaType: o.MediaType,
+		
+		Topic: o.Topic,
 		
 		ComparisonOperator: o.ComparisonOperator,
 		Alias:    (Alias)(o),
@@ -181,6 +188,10 @@ func (o *V2mobiusalertstopicconditionrulepredicate) UnmarshalJSON(b []byte) erro
     
 	if MediaType, ok := V2mobiusalertstopicconditionrulepredicateMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
+	}
+    
+	if Topic, ok := V2mobiusalertstopicconditionrulepredicateMap["topic"].(string); ok {
+		o.Topic = &Topic
 	}
     
 	if ComparisonOperator, ok := V2mobiusalertstopicconditionrulepredicateMap["comparisonOperator"].(string); ok {

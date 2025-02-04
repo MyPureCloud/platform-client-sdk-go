@@ -122,8 +122,6 @@ func (a UploadsApi) GetKnowledgeKnowledgebaseUploadsUrlsJob(knowledgeBaseId stri
 // PostIntegrationsActionDraftFunctionUpload invokes POST /api/v2/integrations/actions/{actionId}/draft/function/upload
 //
 // Create upload presigned URL for draft function package file.
-//
-// Preview: PostIntegrationsActionDraftFunctionUpload is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UploadsApi) PostIntegrationsActionDraftFunctionUpload(actionId string, body Functionuploadrequest) (*Functionuploadresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

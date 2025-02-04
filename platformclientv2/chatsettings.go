@@ -13,6 +13,9 @@ type Chatsettings struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// MessageRetentionPeriodDays - Retention time for messages in days, expressed as int in the range [10,3650]
 	MessageRetentionPeriodDays *int `json:"messageRetentionPeriodDays,omitempty"`
+
+	// ReactionsEnabled - Reactions enabled for org
+	ReactionsEnabled *bool `json:"reactionsEnabled,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +82,13 @@ func (o Chatsettings) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		MessageRetentionPeriodDays *int `json:"messageRetentionPeriodDays,omitempty"`
+		
+		ReactionsEnabled *bool `json:"reactionsEnabled,omitempty"`
 		Alias
 	}{ 
 		MessageRetentionPeriodDays: o.MessageRetentionPeriodDays,
+		
+		ReactionsEnabled: o.ReactionsEnabled,
 		Alias:    (Alias)(o),
 	})
 }
@@ -98,6 +105,10 @@ func (o *Chatsettings) UnmarshalJSON(b []byte) error {
 		o.MessageRetentionPeriodDays = &MessageRetentionPeriodDaysInt
 	}
 	
+	if ReactionsEnabled, ok := ChatsettingsMap["reactionsEnabled"].(bool); ok {
+		o.ReactionsEnabled = &ReactionsEnabled
+	}
+    
 
 	return nil
 }

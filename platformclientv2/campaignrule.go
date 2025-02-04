@@ -51,6 +51,9 @@ type Campaignrule struct {
 	// ExecutionSettings - CampaignRule execution settings
 	ExecutionSettings *Campaignruleexecutionsettings `json:"executionSettings,omitempty"`
 
+	// Warnings - A list of current warning conditions associated with the campaign rule.
+	Warnings *[]Campaignrulewarning `json:"warnings,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -160,6 +163,8 @@ func (o Campaignrule) MarshalJSON() ([]byte, error) {
 		
 		ExecutionSettings *Campaignruleexecutionsettings `json:"executionSettings,omitempty"`
 		
+		Warnings *[]Campaignrulewarning `json:"warnings,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -188,6 +193,8 @@ func (o Campaignrule) MarshalJSON() ([]byte, error) {
 		ConditionGroups: o.ConditionGroups,
 		
 		ExecutionSettings: o.ExecutionSettings,
+		
+		Warnings: o.Warnings,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -259,6 +266,11 @@ func (o *Campaignrule) UnmarshalJSON(b []byte) error {
 	if ExecutionSettings, ok := CampaignruleMap["executionSettings"].(map[string]interface{}); ok {
 		ExecutionSettingsString, _ := json.Marshal(ExecutionSettings)
 		json.Unmarshal(ExecutionSettingsString, &o.ExecutionSettings)
+	}
+	
+	if Warnings, ok := CampaignruleMap["warnings"].([]interface{}); ok {
+		WarningsString, _ := json.Marshal(Warnings)
+		json.Unmarshal(WarningsString, &o.Warnings)
 	}
 	
 	if SelfUri, ok := CampaignruleMap["selfUri"].(string); ok {

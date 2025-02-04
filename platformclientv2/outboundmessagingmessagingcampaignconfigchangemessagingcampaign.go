@@ -45,6 +45,9 @@ type Outboundmessagingmessagingcampaignconfigchangemessagingcampaign struct {
 	// EmailConfig
 	EmailConfig *Outboundmessagingmessagingcampaignconfigchangeemailconfig `json:"emailConfig,omitempty"`
 
+	// WhatsAppConfig
+	WhatsAppConfig *Outboundmessagingmessagingcampaignconfigchangewhatsappconfig `json:"whatsAppConfig,omitempty"`
+
 	// Errors - A list of current error conditions associated with this messaging campaign
 	Errors *[]Outboundmessagingmessagingcampaignconfigchangeerrordetail `json:"errors,omitempty"`
 
@@ -168,6 +171,8 @@ func (o Outboundmessagingmessagingcampaignconfigchangemessagingcampaign) Marshal
 		
 		EmailConfig *Outboundmessagingmessagingcampaignconfigchangeemailconfig `json:"emailConfig,omitempty"`
 		
+		WhatsAppConfig *Outboundmessagingmessagingcampaignconfigchangewhatsappconfig `json:"whatsAppConfig,omitempty"`
+		
 		Errors *[]Outboundmessagingmessagingcampaignconfigchangeerrordetail `json:"errors,omitempty"`
 		
 		Id *string `json:"id,omitempty"`
@@ -204,6 +209,8 @@ func (o Outboundmessagingmessagingcampaignconfigchangemessagingcampaign) Marshal
 		SmsConfig: o.SmsConfig,
 		
 		EmailConfig: o.EmailConfig,
+		
+		WhatsAppConfig: o.WhatsAppConfig,
 		
 		Errors: o.Errors,
 		
@@ -280,6 +287,11 @@ func (o *Outboundmessagingmessagingcampaignconfigchangemessagingcampaign) Unmars
 	if EmailConfig, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["emailConfig"].(map[string]interface{}); ok {
 		EmailConfigString, _ := json.Marshal(EmailConfig)
 		json.Unmarshal(EmailConfigString, &o.EmailConfig)
+	}
+	
+	if WhatsAppConfig, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["whatsAppConfig"].(map[string]interface{}); ok {
+		WhatsAppConfigString, _ := json.Marshal(WhatsAppConfig)
+		json.Unmarshal(WhatsAppConfigString, &o.WhatsAppConfig)
 	}
 	
 	if Errors, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["errors"].([]interface{}); ok {

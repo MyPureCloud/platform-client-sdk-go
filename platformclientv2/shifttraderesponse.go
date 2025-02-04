@@ -36,7 +36,7 @@ type Shifttraderesponse struct {
 	// InitiatingShiftEnd - The end date/time of the shift being offered for trade. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	InitiatingShiftEnd *time.Time `json:"initiatingShiftEnd,omitempty"`
 
-	// ReceivingUser - The user matching the trade, or if the state is not Matched, the user to whom the trade request was sent
+	// ReceivingUser - The user matching the trade, or if the state is not 'Matched', the user to whom the trade request was sent
 	ReceivingUser *Userreference `json:"receivingUser,omitempty"`
 
 	// ReceivingShiftId - The ID of the shift being exchanged for the initiating shift, null if the receiving user is picking up a shift
@@ -54,7 +54,7 @@ type Shifttraderesponse struct {
 	// OneSided - Whether this is a one-sided shift trade (e.g. the initiating user is not asking for a shift in return)
 	OneSided *bool `json:"oneSided,omitempty"`
 
-	// AcceptableIntervals - Time frames when the initiating user is willing to accept trades.  Empty means giving up the shift. Intervals are represented as an ISO-8601 string. For example: YYYY-MM-DDThh:mm:ss/YYYY-MM-DDThh:mm:ss
+	// AcceptableIntervals - Time frames when the initiating user is willing to accept trades. Empty means giving up the shift. Intervals are represented as an ISO-8601 string. For example: YYYY-MM-DDThh:mm:ss/YYYY-MM-DDThh:mm:ss
 	AcceptableIntervals *[]string `json:"acceptableIntervals,omitempty"`
 
 	// ReviewedBy - The user who reviewed this shift trade

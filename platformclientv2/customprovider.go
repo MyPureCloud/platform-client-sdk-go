@@ -59,6 +59,9 @@ type Customprovider struct {
 	// ProviderName
 	ProviderName *string `json:"providerName,omitempty"`
 
+	// DisplayOnLogin
+	DisplayOnLogin *bool `json:"displayOnLogin,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -158,6 +161,8 @@ func (o Customprovider) MarshalJSON() ([]byte, error) {
 		
 		ProviderName *string `json:"providerName,omitempty"`
 		
+		DisplayOnLogin *bool `json:"displayOnLogin,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -192,6 +197,8 @@ func (o Customprovider) MarshalJSON() ([]byte, error) {
 		SignAuthnRequests: o.SignAuthnRequests,
 		
 		ProviderName: o.ProviderName,
+		
+		DisplayOnLogin: o.DisplayOnLogin,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -268,6 +275,10 @@ func (o *Customprovider) UnmarshalJSON(b []byte) error {
     
 	if ProviderName, ok := CustomproviderMap["providerName"].(string); ok {
 		o.ProviderName = &ProviderName
+	}
+    
+	if DisplayOnLogin, ok := CustomproviderMap["displayOnLogin"].(bool); ok {
+		o.DisplayOnLogin = &DisplayOnLogin
 	}
     
 	if SelfUri, ok := CustomproviderMap["selfUri"].(string); ok {
