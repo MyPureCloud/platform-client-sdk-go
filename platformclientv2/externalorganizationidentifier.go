@@ -24,6 +24,9 @@ type Externalorganizationidentifier struct {
 	// DateCreated - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
+	// ExternalSource - The External Source ID of the identifier
+	ExternalSource *Externalsource `json:"externalSource,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -107,6 +110,8 @@ func (o Externalorganizationidentifier) MarshalJSON() ([]byte, error) {
 		
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
+		ExternalSource *Externalsource `json:"externalSource,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -117,6 +122,8 @@ func (o Externalorganizationidentifier) MarshalJSON() ([]byte, error) {
 		Value: o.Value,
 		
 		DateCreated: DateCreated,
+		
+		ExternalSource: o.ExternalSource,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -145,6 +152,11 @@ func (o *Externalorganizationidentifier) UnmarshalJSON(b []byte) error {
 	if dateCreatedString, ok := ExternalorganizationidentifierMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
+	}
+	
+	if ExternalSource, ok := ExternalorganizationidentifierMap["externalSource"].(map[string]interface{}); ok {
+		ExternalSourceString, _ := json.Marshal(ExternalSource)
+		json.Unmarshal(ExternalSourceString, &o.ExternalSource)
 	}
 	
 	if SelfUri, ok := ExternalorganizationidentifierMap["selfUri"].(string); ok {

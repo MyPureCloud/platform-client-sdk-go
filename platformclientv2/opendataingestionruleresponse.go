@@ -21,17 +21,20 @@ type Opendataingestionruleresponse struct {
 	// Description - A description of the data ingestion rule.
 	Description *string `json:"description,omitempty"`
 
+	// Status - The status of the data ingestion rule.
+	Status *string `json:"status,omitempty"`
+
+	// Version - The version number of the data ingestion rule.
+	Version *int `json:"version,omitempty"`
+
 	// DateCreated - Timestamp indicating when the data ingestion rule was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
 	// DateModified - Timestamp indicating when the data ingestion rule was last updated. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
-	// Status - The status of the data ingestion rule.
-	Status *string `json:"status,omitempty"`
-
-	// Version - The version number of the data ingestion rule.
-	Version *int `json:"version,omitempty"`
+	// Platform - The platform of the data ingestion rule.
+	Platform *string `json:"platform,omitempty"`
 
 	// ExternalSource - The external source associated with this open data ingestion rule, which is used when performing identity resolution
 	ExternalSource *Domainentityref `json:"externalSource,omitempty"`
@@ -125,13 +128,15 @@ func (o Opendataingestionruleresponse) MarshalJSON() ([]byte, error) {
 		
 		Description *string `json:"description,omitempty"`
 		
+		Status *string `json:"status,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
+		
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
 		DateModified *string `json:"dateModified,omitempty"`
 		
-		Status *string `json:"status,omitempty"`
-		
-		Version *int `json:"version,omitempty"`
+		Platform *string `json:"platform,omitempty"`
 		
 		ExternalSource *Domainentityref `json:"externalSource,omitempty"`
 		
@@ -144,13 +149,15 @@ func (o Opendataingestionruleresponse) MarshalJSON() ([]byte, error) {
 		
 		Description: o.Description,
 		
+		Status: o.Status,
+		
+		Version: o.Version,
+		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		Status: o.Status,
-		
-		Version: o.Version,
+		Platform: o.Platform,
 		
 		ExternalSource: o.ExternalSource,
 		
@@ -178,6 +185,15 @@ func (o *Opendataingestionruleresponse) UnmarshalJSON(b []byte) error {
 		o.Description = &Description
 	}
     
+	if Status, ok := OpendataingestionruleresponseMap["status"].(string); ok {
+		o.Status = &Status
+	}
+    
+	if Version, ok := OpendataingestionruleresponseMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
 	if dateCreatedString, ok := OpendataingestionruleresponseMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -188,15 +204,10 @@ func (o *Opendataingestionruleresponse) UnmarshalJSON(b []byte) error {
 		o.DateModified = &DateModified
 	}
 	
-	if Status, ok := OpendataingestionruleresponseMap["status"].(string); ok {
-		o.Status = &Status
+	if Platform, ok := OpendataingestionruleresponseMap["platform"].(string); ok {
+		o.Platform = &Platform
 	}
     
-	if Version, ok := OpendataingestionruleresponseMap["version"].(float64); ok {
-		VersionInt := int(Version)
-		o.Version = &VersionInt
-	}
-	
 	if ExternalSource, ok := OpendataingestionruleresponseMap["externalSource"].(map[string]interface{}); ok {
 		ExternalSourceString, _ := json.Marshal(ExternalSource)
 		json.Unmarshal(ExternalSourceString, &o.ExternalSource)

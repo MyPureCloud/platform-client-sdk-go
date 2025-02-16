@@ -16,9 +16,6 @@ type Whatsappcolumn struct {
 
 	// VarType - Indicates the type of the whatsApp column. For example, 'work' or 'personal'.
 	VarType *string `json:"type,omitempty"`
-
-	// ContactableTimeColumn - A column that indicates the timezone to use for a given contact when checking contactable times.
-	ContactableTimeColumn *string `json:"contactableTimeColumn,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -87,15 +84,11 @@ func (o Whatsappcolumn) MarshalJSON() ([]byte, error) {
 		ColumnName *string `json:"columnName,omitempty"`
 		
 		VarType *string `json:"type,omitempty"`
-		
-		ContactableTimeColumn *string `json:"contactableTimeColumn,omitempty"`
 		Alias
 	}{ 
 		ColumnName: o.ColumnName,
 		
 		VarType: o.VarType,
-		
-		ContactableTimeColumn: o.ContactableTimeColumn,
 		Alias:    (Alias)(o),
 	})
 }
@@ -113,10 +106,6 @@ func (o *Whatsappcolumn) UnmarshalJSON(b []byte) error {
     
 	if VarType, ok := WhatsappcolumnMap["type"].(string); ok {
 		o.VarType = &VarType
-	}
-    
-	if ContactableTimeColumn, ok := WhatsappcolumnMap["contactableTimeColumn"].(string); ok {
-		o.ContactableTimeColumn = &ContactableTimeColumn
 	}
     
 

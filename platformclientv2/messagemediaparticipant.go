@@ -117,6 +117,9 @@ type Messagemediaparticipant struct {
 	// ParkTime - The time when this participant's communication was last parked.  Does not reset on resume. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ParkTime *time.Time `json:"parkTime,omitempty"`
 
+	// ResumeTime - The time when this participant's communications will resume. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	ResumeTime *time.Time `json:"resumeTime,omitempty"`
+
 	// ToAddress - Address for the participant on receiving side of the message conversation. If the address is a phone number, E.164 format is recommended.
 	ToAddress *Address `json:"toAddress,omitempty"`
 
@@ -174,7 +177,7 @@ func (o Messagemediaparticipant) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "StartTime","ConnectedTime","EndTime","StartHoldTime","StartAcwTime","EndAcwTime","ParkTime", }
+		dateTimeFields := []string{ "StartTime","ConnectedTime","EndTime","StartHoldTime","StartAcwTime","EndAcwTime","ParkTime","ResumeTime", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -263,6 +266,14 @@ func (o Messagemediaparticipant) MarshalJSON() ([]byte, error) {
 		ParkTime = nil
 	}
 	
+	ResumeTime := new(string)
+	if o.ResumeTime != nil {
+		
+		*ResumeTime = timeutil.Strftime(o.ResumeTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ResumeTime = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -333,6 +344,8 @@ func (o Messagemediaparticipant) MarshalJSON() ([]byte, error) {
 		EndAcwTime *string `json:"endAcwTime,omitempty"`
 		
 		ParkTime *string `json:"parkTime,omitempty"`
+		
+		ResumeTime *string `json:"resumeTime,omitempty"`
 		
 		ToAddress *Address `json:"toAddress,omitempty"`
 		
@@ -422,6 +435,8 @@ func (o Messagemediaparticipant) MarshalJSON() ([]byte, error) {
 		EndAcwTime: EndAcwTime,
 		
 		ParkTime: ParkTime,
+		
+		ResumeTime: ResumeTime,
 		
 		ToAddress: o.ToAddress,
 		
@@ -610,6 +625,11 @@ func (o *Messagemediaparticipant) UnmarshalJSON(b []byte) error {
 	if parkTimeString, ok := MessagemediaparticipantMap["parkTime"].(string); ok {
 		ParkTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", parkTimeString)
 		o.ParkTime = &ParkTime
+	}
+	
+	if resumeTimeString, ok := MessagemediaparticipantMap["resumeTime"].(string); ok {
+		ResumeTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", resumeTimeString)
+		o.ResumeTime = &ResumeTime
 	}
 	
 	if ToAddress, ok := MessagemediaparticipantMap["toAddress"].(map[string]interface{}); ok {

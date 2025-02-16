@@ -23,11 +23,11 @@ type Callbackconversationentitylisting struct {
 	// Total
 	Total *int `json:"total,omitempty"`
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
+
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -113,9 +113,9 @@ func (o Callbackconversationentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
-		LastUri *string `json:"lastUri,omitempty"`
-		
 		FirstUri *string `json:"firstUri,omitempty"`
+		
+		LastUri *string `json:"lastUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
@@ -134,9 +134,9 @@ func (o Callbackconversationentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
-		LastUri: o.LastUri,
-		
 		FirstUri: o.FirstUri,
+		
+		LastUri: o.LastUri,
 		
 		SelfUri: o.SelfUri,
 		
@@ -176,12 +176,12 @@ func (o *Callbackconversationentitylisting) UnmarshalJSON(b []byte) error {
 		o.Total = &TotalInt
 	}
 	
-	if LastUri, ok := CallbackconversationentitylistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
 	if FirstUri, ok := CallbackconversationentitylistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
+	}
+    
+	if LastUri, ok := CallbackconversationentitylistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
 	}
     
 	if SelfUri, ok := CallbackconversationentitylistingMap["selfUri"].(string); ok {

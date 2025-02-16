@@ -66,6 +66,9 @@ type Workitemcreate struct {
 	// SkillIds - The skill IDs of the Workitem. Must be valid UUIDs.
 	SkillIds *[]string `json:"skillIds,omitempty"`
 
+	// ScriptId - The ID of the Workitems script. Must be a valid UUID.
+	ScriptId *string `json:"scriptId,omitempty"`
+
 	// WrapupCode - The ID of the wrapup. Must be a valid UUID.
 	WrapupCode *string `json:"wrapupCode,omitempty"`
 
@@ -194,6 +197,8 @@ func (o Workitemcreate) MarshalJSON() ([]byte, error) {
 		
 		SkillIds *[]string `json:"skillIds,omitempty"`
 		
+		ScriptId *string `json:"scriptId,omitempty"`
+		
 		WrapupCode *string `json:"wrapupCode,omitempty"`
 		
 		UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
@@ -238,6 +243,8 @@ func (o Workitemcreate) MarshalJSON() ([]byte, error) {
 		ExternalTag: o.ExternalTag,
 		
 		SkillIds: o.SkillIds,
+		
+		ScriptId: o.ScriptId,
 		
 		WrapupCode: o.WrapupCode,
 		
@@ -336,6 +343,10 @@ func (o *Workitemcreate) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(SkillIdsString, &o.SkillIds)
 	}
 	
+	if ScriptId, ok := WorkitemcreateMap["scriptId"].(string); ok {
+		o.ScriptId = &ScriptId
+	}
+    
 	if WrapupCode, ok := WorkitemcreateMap["wrapupCode"].(string); ok {
 		o.WrapupCode = &WrapupCode
 	}

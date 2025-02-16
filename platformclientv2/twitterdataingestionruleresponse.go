@@ -21,11 +21,11 @@ type Twitterdataingestionruleresponse struct {
 	// Description - A description of the data ingestion rule.
 	Description *string `json:"description,omitempty"`
 
-	// SearchTerms - Search terms for X (formally Twitter).
-	SearchTerms *string `json:"searchTerms,omitempty"`
+	// Status - The status of the data ingestion rule.
+	Status *string `json:"status,omitempty"`
 
-	// Countries - ISO 3166-1 alpha-2 country codes where Data Ingestion Rules should apply. Defaults to worldwide.
-	Countries *[]string `json:"countries,omitempty"`
+	// Version - The version number of the data ingestion rule.
+	Version *int `json:"version,omitempty"`
 
 	// DateCreated - Timestamp indicating when the data ingestion rule was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
@@ -33,11 +33,14 @@ type Twitterdataingestionruleresponse struct {
 	// DateModified - Timestamp indicating when the data ingestion rule was last updated. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
-	// Status - The status of the data ingestion rule.
-	Status *string `json:"status,omitempty"`
+	// Platform - The platform of the data ingestion rule.
+	Platform *string `json:"platform,omitempty"`
 
-	// Version - The version number of the data ingestion rule.
-	Version *int `json:"version,omitempty"`
+	// SearchTerms - Search terms for X (formally Twitter).
+	SearchTerms *string `json:"searchTerms,omitempty"`
+
+	// Countries - ISO 3166-1 alpha-2 country codes where Data Ingestion Rules should apply. Defaults to worldwide.
+	Countries *[]string `json:"countries,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -128,17 +131,19 @@ func (o Twitterdataingestionruleresponse) MarshalJSON() ([]byte, error) {
 		
 		Description *string `json:"description,omitempty"`
 		
-		SearchTerms *string `json:"searchTerms,omitempty"`
+		Status *string `json:"status,omitempty"`
 		
-		Countries *[]string `json:"countries,omitempty"`
+		Version *int `json:"version,omitempty"`
 		
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
 		DateModified *string `json:"dateModified,omitempty"`
 		
-		Status *string `json:"status,omitempty"`
+		Platform *string `json:"platform,omitempty"`
 		
-		Version *int `json:"version,omitempty"`
+		SearchTerms *string `json:"searchTerms,omitempty"`
+		
+		Countries *[]string `json:"countries,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
@@ -149,17 +154,19 @@ func (o Twitterdataingestionruleresponse) MarshalJSON() ([]byte, error) {
 		
 		Description: o.Description,
 		
-		SearchTerms: o.SearchTerms,
+		Status: o.Status,
 		
-		Countries: o.Countries,
+		Version: o.Version,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		Status: o.Status,
+		Platform: o.Platform,
 		
-		Version: o.Version,
+		SearchTerms: o.SearchTerms,
+		
+		Countries: o.Countries,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -185,13 +192,13 @@ func (o *Twitterdataingestionruleresponse) UnmarshalJSON(b []byte) error {
 		o.Description = &Description
 	}
     
-	if SearchTerms, ok := TwitterdataingestionruleresponseMap["searchTerms"].(string); ok {
-		o.SearchTerms = &SearchTerms
+	if Status, ok := TwitterdataingestionruleresponseMap["status"].(string); ok {
+		o.Status = &Status
 	}
     
-	if Countries, ok := TwitterdataingestionruleresponseMap["countries"].([]interface{}); ok {
-		CountriesString, _ := json.Marshal(Countries)
-		json.Unmarshal(CountriesString, &o.Countries)
+	if Version, ok := TwitterdataingestionruleresponseMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
 	}
 	
 	if dateCreatedString, ok := TwitterdataingestionruleresponseMap["dateCreated"].(string); ok {
@@ -204,13 +211,17 @@ func (o *Twitterdataingestionruleresponse) UnmarshalJSON(b []byte) error {
 		o.DateModified = &DateModified
 	}
 	
-	if Status, ok := TwitterdataingestionruleresponseMap["status"].(string); ok {
-		o.Status = &Status
+	if Platform, ok := TwitterdataingestionruleresponseMap["platform"].(string); ok {
+		o.Platform = &Platform
 	}
     
-	if Version, ok := TwitterdataingestionruleresponseMap["version"].(float64); ok {
-		VersionInt := int(Version)
-		o.Version = &VersionInt
+	if SearchTerms, ok := TwitterdataingestionruleresponseMap["searchTerms"].(string); ok {
+		o.SearchTerms = &SearchTerms
+	}
+    
+	if Countries, ok := TwitterdataingestionruleresponseMap["countries"].([]interface{}); ok {
+		CountriesString, _ := json.Marshal(Countries)
+		json.Unmarshal(CountriesString, &o.Countries)
 	}
 	
 	if SelfUri, ok := TwitterdataingestionruleresponseMap["selfUri"].(string); ok {

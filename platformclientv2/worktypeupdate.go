@@ -61,6 +61,9 @@ type Worktypeupdate struct {
 
 	// DefaultQueueId - The ID of the default queue for Workitems created from the Worktype. Must be a valid UUID.
 	DefaultQueueId *string `json:"defaultQueueId,omitempty"`
+
+	// DefaultScriptId - The default script for Workitems created from the Worktype. Must be a valid UUID.
+	DefaultScriptId *string `json:"defaultScriptId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -159,6 +162,8 @@ func (o Worktypeupdate) MarshalJSON() ([]byte, error) {
 		DefaultSkillIds *[]string `json:"defaultSkillIds,omitempty"`
 		
 		DefaultQueueId *string `json:"defaultQueueId,omitempty"`
+		
+		DefaultScriptId *string `json:"defaultScriptId,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -194,6 +199,8 @@ func (o Worktypeupdate) MarshalJSON() ([]byte, error) {
 		DefaultSkillIds: o.DefaultSkillIds,
 		
 		DefaultQueueId: o.DefaultQueueId,
+		
+		DefaultScriptId: o.DefaultScriptId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -280,6 +287,10 @@ func (o *Worktypeupdate) UnmarshalJSON(b []byte) error {
 	
 	if DefaultQueueId, ok := WorktypeupdateMap["defaultQueueId"].(string); ok {
 		o.DefaultQueueId = &DefaultQueueId
+	}
+    
+	if DefaultScriptId, ok := WorktypeupdateMap["defaultScriptId"].(string); ok {
+		o.DefaultScriptId = &DefaultScriptId
 	}
     
 

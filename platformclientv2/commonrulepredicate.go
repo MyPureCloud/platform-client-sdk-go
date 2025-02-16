@@ -26,6 +26,9 @@ type Commonrulepredicate struct {
 	// Status - The status of the entity corresponding to the metric.
 	Status *string `json:"status,omitempty"`
 
+	// Topic - The operational console topic corresponding to the metric.
+	Topic *string `json:"topic,omitempty"`
+
 	// Entity - The entity whose metric is being represented.
 	Entity *Commonrulepredicateentity `json:"entity,omitempty"`
 
@@ -109,6 +112,8 @@ func (o Commonrulepredicate) MarshalJSON() ([]byte, error) {
 		
 		Status *string `json:"status,omitempty"`
 		
+		Topic *string `json:"topic,omitempty"`
+		
 		Entity *Commonrulepredicateentity `json:"entity,omitempty"`
 		
 		MediaType *string `json:"mediaType,omitempty"`
@@ -125,6 +130,8 @@ func (o Commonrulepredicate) MarshalJSON() ([]byte, error) {
 		Value: o.Value,
 		
 		Status: o.Status,
+		
+		Topic: o.Topic,
 		
 		Entity: o.Entity,
 		
@@ -160,6 +167,10 @@ func (o *Commonrulepredicate) UnmarshalJSON(b []byte) error {
     
 	if Status, ok := CommonrulepredicateMap["status"].(string); ok {
 		o.Status = &Status
+	}
+    
+	if Topic, ok := CommonrulepredicateMap["topic"].(string); ok {
+		o.Topic = &Topic
 	}
     
 	if Entity, ok := CommonrulepredicateMap["entity"].(map[string]interface{}); ok {

@@ -46,6 +46,7 @@ docs/DeleteAssistantQueue-example.txt
 docs/DeleteAssistantQueues-example.txt
 docs/DeleteAuthorizationDivision-example.txt
 docs/DeleteAuthorizationDivision-example.txt
+docs/DeleteAuthorizationPoliciesTargetSubjectSubjectId-example.txt
 docs/DeleteAuthorizationRole-example.txt
 docs/DeleteAuthorizationSubjectDivisionRole-example.txt
 docs/DeleteAuthorizationSubjectDivisionRole-example.txt
@@ -465,6 +466,13 @@ docs/GetAuthorizationDivisionspermittedPagedMe-example.txt
 docs/GetAuthorizationDivisionspermittedPagedSubjectId-example.txt
 docs/GetAuthorizationDivisionspermittedPagedSubjectId-example.txt
 docs/GetAuthorizationPermissions-example.txt
+docs/GetAuthorizationPolicies-example.txt
+docs/GetAuthorizationPoliciesSubjectSubjectId-example.txt
+docs/GetAuthorizationPoliciesTarget-example.txt
+docs/GetAuthorizationPoliciesTargetSubjectSubjectId-example.txt
+docs/GetAuthorizationPoliciesTargets-example.txt
+docs/GetAuthorizationPolicy-example.txt
+docs/GetAuthorizationPolicyAttributes-example.txt
 docs/GetAuthorizationProducts-example.txt
 docs/GetAuthorizationRole-example.txt
 docs/GetAuthorizationRoleComparedefaultRightRoleId-example.txt
@@ -876,6 +884,7 @@ docs/GetJourneyViewVersionJobResults-example.txt
 docs/GetJourneyViewVersionJobResultsChart-example.txt
 docs/GetJourneyViewVersionJobsLatest-example.txt
 docs/GetJourneyViews-example.txt
+docs/GetJourneyViewsDataDetails-example.txt
 docs/GetJourneyViewsEventdefinition-example.txt
 docs/GetJourneyViewsEventdefinitions-example.txt
 docs/GetJourneyViewsJobs-example.txt
@@ -1581,6 +1590,8 @@ docs/GetWorkforcemanagementBusinessunits-example.txt
 docs/GetWorkforcemanagementBusinessunitsDivisionviews-example.txt
 docs/GetWorkforcemanagementCalendarDataIcs-example.txt
 docs/GetWorkforcemanagementCalendarUrlIcs-example.txt
+docs/GetWorkforcemanagementHistoricaldataBulkRemoveJob-example.txt
+docs/GetWorkforcemanagementHistoricaldataBulkRemoveJobs-example.txt
 docs/GetWorkforcemanagementHistoricaldataDeletejob-example.txt
 docs/GetWorkforcemanagementHistoricaldataImportstatus-example.txt
 docs/GetWorkforcemanagementHistoricaldataImportstatusJobId-example.txt
@@ -1760,7 +1771,6 @@ docs/PatchOutboundSettings-example.txt
 docs/PatchQualityFormsSurvey-example.txt
 docs/PatchRecordingCrossplatformMediaretentionpolicy-example.txt
 docs/PatchRecordingMediaretentionpolicy-example.txt
-docs/PatchRecordingsScreensession-example.txt
 docs/PatchRoutingConversation-example.txt
 docs/PatchRoutingEmailDomain-example.txt
 docs/PatchRoutingEmailDomainValidate-example.txt
@@ -1955,6 +1965,9 @@ docs/PostAuthorizationDivisionRestore-example.txt
 docs/PostAuthorizationDivisionRestore-example.txt
 docs/PostAuthorizationDivisions-example.txt
 docs/PostAuthorizationDivisions-example.txt
+docs/PostAuthorizationPoliciesTarget-example.txt
+docs/PostAuthorizationPoliciesTargetValidate-example.txt
+docs/PostAuthorizationPolicySimulate-example.txt
 docs/PostAuthorizationRole-example.txt
 docs/PostAuthorizationRoleComparedefaultRightRoleId-example.txt
 docs/PostAuthorizationRoles-example.txt
@@ -2533,6 +2546,7 @@ docs/PostWorkforcemanagementBusinessunitWorkplanbidGroups-example.txt
 docs/PostWorkforcemanagementBusinessunitWorkplanbids-example.txt
 docs/PostWorkforcemanagementBusinessunits-example.txt
 docs/PostWorkforcemanagementCalendarUrlIcs-example.txt
+docs/PostWorkforcemanagementHistoricaldataBulkRemoveJobs-example.txt
 docs/PostWorkforcemanagementHistoricaldataDeletejob-example.txt
 docs/PostWorkforcemanagementHistoricaldataValidate-example.txt
 docs/PostWorkforcemanagementIntegrationsHriTimeofftypesJobs-example.txt
@@ -2589,6 +2603,8 @@ docs/PutAssistantCopilot-example.txt
 docs/PutAssistantQueue-example.txt
 docs/PutAuthorizationDivision-example.txt
 docs/PutAuthorizationDivision-example.txt
+docs/PutAuthorizationPoliciesTarget-example.txt
+docs/PutAuthorizationPolicy-example.txt
 docs/PutAuthorizationRole-example.txt
 docs/PutAuthorizationRoleUsersAdd-example.txt
 docs/PutAuthorizationRoleUsersRemove-example.txt
@@ -3209,6 +3225,8 @@ platformclientv2/audittopicmessageinfo.go
 platformclientv2/audittopicpropertychange.go
 platformclientv2/authenticationsettings.go
 platformclientv2/authorizationapi.go
+platformclientv2/authorizationpolicy.go
+platformclientv2/authorizationpolicyentitylisting.go
 platformclientv2/authorizationsettings.go
 platformclientv2/authzdivision.go
 platformclientv2/authzdivisionentitylisting.go
@@ -3945,6 +3963,7 @@ platformclientv2/conversationeventtopicworkflow.go
 platformclientv2/conversationeventtopicwrapup.go
 platformclientv2/conversationeventtyping.go
 platformclientv2/conversationeventvideo.go
+platformclientv2/conversationinsight.go
 platformclientv2/conversationmessagecontent.go
 platformclientv2/conversationmessageevent.go
 platformclientv2/conversationmessageeventtopicconversationdivisionmembership.go
@@ -4210,8 +4229,10 @@ platformclientv2/dataactioncontactcolumnfieldmapping.go
 platformclientv2/dataavailabilityresponse.go
 platformclientv2/dataextensionsapi.go
 platformclientv2/dataingestionrules.go
+platformclientv2/dataingestionrulesmetadata.go
 platformclientv2/dataingestionrulestatuspatchrequest.go
 platformclientv2/dataprivacyapi.go
+platformclientv2/datarange.go
 platformclientv2/dataschema.go
 platformclientv2/dataschemalisting.go
 platformclientv2/datatable.go
@@ -4220,6 +4241,8 @@ platformclientv2/datatableimportentitylisting.go
 platformclientv2/datatableimportjob.go
 platformclientv2/datatablerowentitylisting.go
 platformclientv2/datatablesdomainentitylisting.go
+platformclientv2/datepicker.go
+platformclientv2/datepickeravailabledatetime.go
 platformclientv2/daterange.go
 platformclientv2/daterangewithoptionalend.go
 platformclientv2/defaultgreetinglist.go
@@ -4979,6 +5002,7 @@ platformclientv2/gkndocumentationresult.go
 platformclientv2/gkndocumentationsearchcriteria.go
 platformclientv2/gkndocumentationsearchrequest.go
 platformclientv2/gkndocumentationsearchresponse.go
+platformclientv2/googlebusinessprofiledataingestionruleresponse.go
 platformclientv2/googledialogflowconfig.go
 platformclientv2/googledialogflowcustomsettings.go
 platformclientv2/grammar.go
@@ -5027,7 +5051,13 @@ platformclientv2/historicaladherencedaymetrics.go
 platformclientv2/historicaladherenceexceptioninfo.go
 platformclientv2/historicaladherencequeryresult.go
 platformclientv2/historicaldata.go
+platformclientv2/historicaldatadeleteentity.go
+platformclientv2/historicaldatadisalloweddeleteentity.go
+platformclientv2/historicaldatajobentitystatus.go
+platformclientv2/historicalimportdeletefilesjobrequest.go
+platformclientv2/historicalimportdeletefilesjobresponse.go
 platformclientv2/historicalimportdeletejobresponse.go
+platformclientv2/historicalimportoveralldeletestatusresponse.go
 platformclientv2/historicalimportstatus.go
 platformclientv2/historicalimportstatusjobresponse.go
 platformclientv2/historicalimportstatuslisting.go
@@ -6089,11 +6119,17 @@ platformclientv2/planninggroupreference.go
 platformclientv2/planningperiodsettings.go
 platformclientv2/policy.go
 platformclientv2/policyactions.go
+platformclientv2/policyattribute.go
+platformclientv2/policyattributeset.go
+platformclientv2/policycondition.go
+platformclientv2/policyconditionresult.go
 platformclientv2/policyconditions.go
 platformclientv2/policycreate.go
 platformclientv2/policyentitylisting.go
 platformclientv2/policyerrormessage.go
 platformclientv2/policyerrors.go
+platformclientv2/policytestpayload.go
+platformclientv2/policytestresult.go
 platformclientv2/policyupdate.go
 platformclientv2/positionsettings.go
 platformclientv2/possibleworkshiftsforweek.go
@@ -6740,7 +6776,6 @@ platformclientv2/screenrecordingmetadata.go
 platformclientv2/screenrecordingmetadatarequest.go
 platformclientv2/screenrecordingsession.go
 platformclientv2/screenrecordingsessionlisting.go
-platformclientv2/screenrecordingsessionrequest.go
 platformclientv2/screenrecordinguserauthenticatedinfo.go
 platformclientv2/screenshare.go
 platformclientv2/script.go
@@ -6940,6 +6975,7 @@ platformclientv2/storysetting.go
 platformclientv2/streetaddress.go
 platformclientv2/sttengineentity.go
 platformclientv2/sttengineentitylisting.go
+platformclientv2/subject.go
 platformclientv2/subjectdivisiongrants.go
 platformclientv2/subjectdivisiongrantsentitylisting.go
 platformclientv2/subjectdivisions.go
@@ -7026,6 +7062,8 @@ platformclientv2/systempromptentitylisting.go
 platformclientv2/tagqueryrequest.go
 platformclientv2/tagvalue.go
 platformclientv2/tagvalueentitylisting.go
+platformclientv2/targetattributes.go
+platformclientv2/targetattributevalue.go
 platformclientv2/targetperformanceprofile.go
 platformclientv2/taskmanagementaggregatedatacontainer.go
 platformclientv2/taskmanagementaggregatequeryclause.go
@@ -7246,6 +7284,7 @@ platformclientv2/twitterdataingestionruleresponse.go
 platformclientv2/twitterdataingestionruleversionresponse.go
 platformclientv2/twitterdataingestionruleversionresponseentitylisting.go
 platformclientv2/twitterid.go
+platformclientv2/typedattribute.go
 platformclientv2/typingsetting.go
 platformclientv2/uci10n.go
 platformclientv2/ucicon.go
@@ -7505,6 +7544,8 @@ platformclientv2/validateassignusers.go
 platformclientv2/validateworkplanmessages.go
 platformclientv2/validateworkplanresponse.go
 platformclientv2/validationerror.go
+platformclientv2/validationerrorlisting.go
+platformclientv2/validationerrorresponse.go
 platformclientv2/validationlimits.go
 platformclientv2/validationresult.go
 platformclientv2/validationserviceasyncresponse.go

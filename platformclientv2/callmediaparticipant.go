@@ -117,6 +117,9 @@ type Callmediaparticipant struct {
 	// ParkTime - The time when this participant's communication was last parked.  Does not reset on resume. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ParkTime *time.Time `json:"parkTime,omitempty"`
 
+	// ResumeTime - The time when this participant's communications will resume. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	ResumeTime *time.Time `json:"resumeTime,omitempty"`
+
 	// Muted - Value is true when the call is muted.
 	Muted *bool `json:"muted,omitempty"`
 
@@ -198,7 +201,7 @@ func (o Callmediaparticipant) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "StartTime","ConnectedTime","EndTime","StartHoldTime","StartAcwTime","EndAcwTime","ParkTime","BargedTime", }
+		dateTimeFields := []string{ "StartTime","ConnectedTime","EndTime","StartHoldTime","StartAcwTime","EndAcwTime","ParkTime","ResumeTime","BargedTime", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -287,6 +290,14 @@ func (o Callmediaparticipant) MarshalJSON() ([]byte, error) {
 		ParkTime = nil
 	}
 	
+	ResumeTime := new(string)
+	if o.ResumeTime != nil {
+		
+		*ResumeTime = timeutil.Strftime(o.ResumeTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ResumeTime = nil
+	}
+	
 	BargedTime := new(string)
 	if o.BargedTime != nil {
 		
@@ -365,6 +376,8 @@ func (o Callmediaparticipant) MarshalJSON() ([]byte, error) {
 		EndAcwTime *string `json:"endAcwTime,omitempty"`
 		
 		ParkTime *string `json:"parkTime,omitempty"`
+		
+		ResumeTime *string `json:"resumeTime,omitempty"`
 		
 		Muted *bool `json:"muted,omitempty"`
 		
@@ -470,6 +483,8 @@ func (o Callmediaparticipant) MarshalJSON() ([]byte, error) {
 		EndAcwTime: EndAcwTime,
 		
 		ParkTime: ParkTime,
+		
+		ResumeTime: ResumeTime,
 		
 		Muted: o.Muted,
 		
@@ -674,6 +689,11 @@ func (o *Callmediaparticipant) UnmarshalJSON(b []byte) error {
 	if parkTimeString, ok := CallmediaparticipantMap["parkTime"].(string); ok {
 		ParkTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", parkTimeString)
 		o.ParkTime = &ParkTime
+	}
+	
+	if resumeTimeString, ok := CallmediaparticipantMap["resumeTime"].(string); ok {
+		ResumeTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", resumeTimeString)
+		o.ResumeTime = &ResumeTime
 	}
 	
 	if Muted, ok := CallmediaparticipantMap["muted"].(bool); ok {

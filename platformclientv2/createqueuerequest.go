@@ -57,8 +57,11 @@ type Createqueuerequest struct {
 	// Bullseye - The bullseye settings for the queue.
 	Bullseye *Bullseye `json:"bullseye,omitempty"`
 
-	// ScoringMethod - The Scoring Method for the queue
+	// ScoringMethod - The Scoring Method for the queue.
 	ScoringMethod *string `json:"scoringMethod,omitempty"`
+
+	// LastAgentRoutingMode - The Last Agent Routing Mode for the queue.
+	LastAgentRoutingMode *string `json:"lastAgentRoutingMode,omitempty"`
 
 	// AcwSettings - The ACW settings for the queue.
 	AcwSettings *Acwsettings `json:"acwSettings,omitempty"`
@@ -244,6 +247,8 @@ func (o Createqueuerequest) MarshalJSON() ([]byte, error) {
 		
 		ScoringMethod *string `json:"scoringMethod,omitempty"`
 		
+		LastAgentRoutingMode *string `json:"lastAgentRoutingMode,omitempty"`
+		
 		AcwSettings *Acwsettings `json:"acwSettings,omitempty"`
 		
 		SkillEvaluationMethod *string `json:"skillEvaluationMethod,omitempty"`
@@ -324,6 +329,8 @@ func (o Createqueuerequest) MarshalJSON() ([]byte, error) {
 		Bullseye: o.Bullseye,
 		
 		ScoringMethod: o.ScoringMethod,
+		
+		LastAgentRoutingMode: o.LastAgentRoutingMode,
 		
 		AcwSettings: o.AcwSettings,
 		
@@ -455,6 +462,10 @@ func (o *Createqueuerequest) UnmarshalJSON(b []byte) error {
 	
 	if ScoringMethod, ok := CreatequeuerequestMap["scoringMethod"].(string); ok {
 		o.ScoringMethod = &ScoringMethod
+	}
+    
+	if LastAgentRoutingMode, ok := CreatequeuerequestMap["lastAgentRoutingMode"].(string); ok {
+		o.LastAgentRoutingMode = &LastAgentRoutingMode
 	}
     
 	if AcwSettings, ok := CreatequeuerequestMap["acwSettings"].(map[string]interface{}); ok {

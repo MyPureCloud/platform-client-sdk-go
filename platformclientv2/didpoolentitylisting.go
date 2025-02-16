@@ -26,11 +26,11 @@ type Didpoolentitylisting struct {
 	// TotalNumberOfEntities - The total organization-wide number of entities.
 	TotalNumberOfEntities *int `json:"totalNumberOfEntities,omitempty"`
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
+
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -118,9 +118,9 @@ func (o Didpoolentitylisting) MarshalJSON() ([]byte, error) {
 		
 		TotalNumberOfEntities *int `json:"totalNumberOfEntities,omitempty"`
 		
-		LastUri *string `json:"lastUri,omitempty"`
-		
 		FirstUri *string `json:"firstUri,omitempty"`
+		
+		LastUri *string `json:"lastUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
@@ -141,9 +141,9 @@ func (o Didpoolentitylisting) MarshalJSON() ([]byte, error) {
 		
 		TotalNumberOfEntities: o.TotalNumberOfEntities,
 		
-		LastUri: o.LastUri,
-		
 		FirstUri: o.FirstUri,
+		
+		LastUri: o.LastUri,
 		
 		SelfUri: o.SelfUri,
 		
@@ -188,12 +188,12 @@ func (o *Didpoolentitylisting) UnmarshalJSON(b []byte) error {
 		o.TotalNumberOfEntities = &TotalNumberOfEntitiesInt
 	}
 	
-	if LastUri, ok := DidpoolentitylistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
 	if FirstUri, ok := DidpoolentitylistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
+	}
+    
+	if LastUri, ok := DidpoolentitylistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
 	}
     
 	if SelfUri, ok := DidpoolentitylistingMap["selfUri"].(string); ok {

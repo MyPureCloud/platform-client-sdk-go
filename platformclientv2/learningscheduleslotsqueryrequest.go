@@ -14,7 +14,7 @@ type Learningscheduleslotsqueryrequest struct {
 	// Interval - Range of time to get slots for scheduling learning activities. Intervals are represented as an ISO-8601 string. For example: YYYY-MM-DDThh:mm:ss/YYYY-MM-DDThh:mm:ss
 	Interval *string `json:"interval,omitempty"`
 
-	// LengthInMinutes - The duration of coaching appointment to schedule in 15 minutes granularity
+	// LengthInMinutes - The duration of Learning Assignment to schedule in 15 minutes granularity
 	LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
 
 	// UserIds - The user IDs for which to fetch schedules. Must be only 1.

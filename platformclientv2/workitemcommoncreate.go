@@ -65,6 +65,9 @@ type Workitemcommoncreate struct {
 
 	// SkillIds - The skill IDs of the Workitem. Must be valid UUIDs.
 	SkillIds *[]string `json:"skillIds,omitempty"`
+
+	// ScriptId - The ID of the Workitems script. Must be a valid UUID.
+	ScriptId *string `json:"scriptId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -181,6 +184,8 @@ func (o Workitemcommoncreate) MarshalJSON() ([]byte, error) {
 		ExternalTag *string `json:"externalTag,omitempty"`
 		
 		SkillIds *[]string `json:"skillIds,omitempty"`
+		
+		ScriptId *string `json:"scriptId,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -218,6 +223,8 @@ func (o Workitemcommoncreate) MarshalJSON() ([]byte, error) {
 		ExternalTag: o.ExternalTag,
 		
 		SkillIds: o.SkillIds,
+		
+		ScriptId: o.ScriptId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -308,6 +315,10 @@ func (o *Workitemcommoncreate) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(SkillIdsString, &o.SkillIds)
 	}
 	
+	if ScriptId, ok := WorkitemcommoncreateMap["scriptId"].(string); ok {
+		o.ScriptId = &ScriptId
+	}
+    
 
 	return nil
 }

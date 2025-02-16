@@ -75,7 +75,7 @@ type Analyticssession struct {
 	// CobrowseRole - Describes side of the cobrowse (sharer or viewer)
 	CobrowseRole *string `json:"cobrowseRole,omitempty"`
 
-	// CobrowseRoomId - A unique identifier for a PureCloud cobrowse room
+	// CobrowseRoomId - A unique identifier for a Genesys Cloud cobrowse room
 	CobrowseRoomId *string `json:"cobrowseRoomId,omitempty"`
 
 	// DeliveryStatus - The email or SMS delivery status
@@ -201,10 +201,10 @@ type Analyticssession struct {
 	// RoutingRuleType - Routing rule type
 	RoutingRuleType *string `json:"routingRuleType,omitempty"`
 
-	// ScreenShareAddressSelf - Direct ScreenShare address
+	// ScreenShareAddressSelf - Direct screen share address
 	ScreenShareAddressSelf *string `json:"screenShareAddressSelf,omitempty"`
 
-	// ScreenShareRoomId - A unique identifier for a PureCloud ScreenShare room
+	// ScreenShareRoomId - A unique identifier for a Genesys Cloud screen share room
 	ScreenShareRoomId *string `json:"screenShareRoomId,omitempty"`
 
 	// ScriptId - A unique identifier for a script
@@ -222,13 +222,13 @@ type Analyticssession struct {
 	// SessionId - The unique identifier of this session
 	SessionId *string `json:"sessionId,omitempty"`
 
-	// SharingScreen - Flag determining if screenShare is started or not (true/false)
+	// SharingScreen - Flag determining if screen share is started or not (true/false)
 	SharingScreen *bool `json:"sharingScreen,omitempty"`
 
 	// SkipEnabled - (Dialer) Whether the agent can skip the dialer contact
 	SkipEnabled *bool `json:"skipEnabled,omitempty"`
 
-	// TimeoutSeconds - The number of seconds before PureCloud begins the call for a call back (0 disables automatic calling)
+	// TimeoutSeconds - The number of seconds before Genesys Cloud begins the call for a call back (0 disables automatic calling)
 	TimeoutSeconds *int `json:"timeoutSeconds,omitempty"`
 
 	// UsedRouting - Complete routing method
@@ -237,7 +237,7 @@ type Analyticssession struct {
 	// VideoAddressSelf - Direct Video address
 	VideoAddressSelf *string `json:"videoAddressSelf,omitempty"`
 
-	// VideoRoomId - A unique identifier for a PureCloud video room
+	// VideoRoomId - A unique identifier for a Genesys Cloud video room
 	VideoRoomId *string `json:"videoRoomId,omitempty"`
 
 	// WaitingInteractionCounts - Number of waiting interactions for each predictive routing attempt

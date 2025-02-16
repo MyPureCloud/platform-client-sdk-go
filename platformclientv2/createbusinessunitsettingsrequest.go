@@ -22,6 +22,9 @@ type Createbusinessunitsettingsrequest struct {
 
 	// Scheduling - Scheduling settings
 	Scheduling *Buschedulingsettingsrequest `json:"scheduling,omitempty"`
+
+	// Notifications - Notification settings
+	Notifications *Bunotificationsettingsrequest `json:"notifications,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +97,8 @@ func (o Createbusinessunitsettingsrequest) MarshalJSON() ([]byte, error) {
 		ShortTermForecasting *Bushorttermforecastingsettings `json:"shortTermForecasting,omitempty"`
 		
 		Scheduling *Buschedulingsettingsrequest `json:"scheduling,omitempty"`
+		
+		Notifications *Bunotificationsettingsrequest `json:"notifications,omitempty"`
 		Alias
 	}{ 
 		StartDayOfWeek: o.StartDayOfWeek,
@@ -103,6 +108,8 @@ func (o Createbusinessunitsettingsrequest) MarshalJSON() ([]byte, error) {
 		ShortTermForecasting: o.ShortTermForecasting,
 		
 		Scheduling: o.Scheduling,
+		
+		Notifications: o.Notifications,
 		Alias:    (Alias)(o),
 	})
 }
@@ -130,6 +137,11 @@ func (o *Createbusinessunitsettingsrequest) UnmarshalJSON(b []byte) error {
 	if Scheduling, ok := CreatebusinessunitsettingsrequestMap["scheduling"].(map[string]interface{}); ok {
 		SchedulingString, _ := json.Marshal(Scheduling)
 		json.Unmarshal(SchedulingString, &o.Scheduling)
+	}
+	
+	if Notifications, ok := CreatebusinessunitsettingsrequestMap["notifications"].(map[string]interface{}); ok {
+		NotificationsString, _ := json.Marshal(Notifications)
+		json.Unmarshal(NotificationsString, &o.Notifications)
 	}
 	
 

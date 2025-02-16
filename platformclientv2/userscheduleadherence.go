@@ -75,6 +75,12 @@ type Userscheduleadherence struct {
 	// RemovedFromManagementUnit - For notification purposes. Used to indicate that a user was removed from the management unit
 	RemovedFromManagementUnit *bool `json:"removedFromManagementUnit,omitempty"`
 
+	// NextActivityReminders - A list of upcoming activities for which the user is scheduled
+	NextActivityReminders *[]Usernextactivityreminder `json:"nextActivityReminders,omitempty"`
+
+	// SuppressOnTimeReminder - Indicates whether the on-time adherence notification should be suppressed for the user
+	SuppressOnTimeReminder *bool `json:"suppressOnTimeReminder,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -208,6 +214,10 @@ func (o Userscheduleadherence) MarshalJSON() ([]byte, error) {
 		
 		RemovedFromManagementUnit *bool `json:"removedFromManagementUnit,omitempty"`
 		
+		NextActivityReminders *[]Usernextactivityreminder `json:"nextActivityReminders,omitempty"`
+		
+		SuppressOnTimeReminder *bool `json:"suppressOnTimeReminder,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -252,6 +262,10 @@ func (o Userscheduleadherence) MarshalJSON() ([]byte, error) {
 		ActiveQueuesModifiedTime: ActiveQueuesModifiedTime,
 		
 		RemovedFromManagementUnit: o.RemovedFromManagementUnit,
+		
+		NextActivityReminders: o.NextActivityReminders,
+		
+		SuppressOnTimeReminder: o.SuppressOnTimeReminder,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -357,6 +371,15 @@ func (o *Userscheduleadherence) UnmarshalJSON(b []byte) error {
 	
 	if RemovedFromManagementUnit, ok := UserscheduleadherenceMap["removedFromManagementUnit"].(bool); ok {
 		o.RemovedFromManagementUnit = &RemovedFromManagementUnit
+	}
+    
+	if NextActivityReminders, ok := UserscheduleadherenceMap["nextActivityReminders"].([]interface{}); ok {
+		NextActivityRemindersString, _ := json.Marshal(NextActivityReminders)
+		json.Unmarshal(NextActivityRemindersString, &o.NextActivityReminders)
+	}
+	
+	if SuppressOnTimeReminder, ok := UserscheduleadherenceMap["suppressOnTimeReminder"].(bool); ok {
+		o.SuppressOnTimeReminder = &SuppressOnTimeReminder
 	}
     
 	if SelfUri, ok := UserscheduleadherenceMap["selfUri"].(string); ok {

@@ -80,6 +80,9 @@ type Workitemupdate struct {
 
 	// PreferredAgentIds - The preferred agent IDs of the Workitem. Must be valid UUIDs.
 	PreferredAgentIds *[]string `json:"preferredAgentIds,omitempty"`
+
+	// ScriptId - The ID of the Workitems script. Must be a valid UUID.
+	ScriptId *string `json:"scriptId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -214,6 +217,8 @@ func (o Workitemupdate) MarshalJSON() ([]byte, error) {
 		UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
 		
 		PreferredAgentIds *[]string `json:"preferredAgentIds,omitempty"`
+		
+		ScriptId *string `json:"scriptId,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -261,6 +266,8 @@ func (o Workitemupdate) MarshalJSON() ([]byte, error) {
 		UtilizationLabelId: o.UtilizationLabelId,
 		
 		PreferredAgentIds: o.PreferredAgentIds,
+		
+		ScriptId: o.ScriptId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -374,6 +381,10 @@ func (o *Workitemupdate) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(PreferredAgentIdsString, &o.PreferredAgentIds)
 	}
 	
+	if ScriptId, ok := WorkitemupdateMap["scriptId"].(string); ok {
+		o.ScriptId = &ScriptId
+	}
+    
 
 	return nil
 }

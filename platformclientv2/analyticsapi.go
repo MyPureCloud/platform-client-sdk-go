@@ -7656,8 +7656,6 @@ func (a AnalyticsApi) PostAnalyticsSummariesAggregatesJobs(body Summaryasyncaggr
 // PostAnalyticsSummariesAggregatesQuery invokes POST /api/v2/analytics/summaries/aggregates/query
 //
 // Query for summary aggregates
-//
-// Preview: PostAnalyticsSummariesAggregatesQuery is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) PostAnalyticsSummariesAggregatesQuery(body Summaryaggregationquery) (*Summaryaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

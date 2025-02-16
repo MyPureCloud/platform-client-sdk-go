@@ -26,7 +26,7 @@ type Agentstatequeryrequest struct {
 	// SessionOrderBy - Search session order dimension names; default to segmentStart
 	SessionOrderBy *string `json:"sessionOrderBy,omitempty"`
 
-	// SessionOrder - Search session order direction; default to desc
+	// SessionOrder - Search session order direction; default to asc
 	SessionOrder *string `json:"sessionOrder,omitempty"`
 }
 

@@ -117,6 +117,9 @@ type Workitem struct {
 	// ScoredAgents - A list of scored agents for the Workitem.
 	ScoredAgents *[]Workitemscoredagent `json:"scoredAgents,omitempty"`
 
+	// Script - The script that will be executed for the Workitem.
+	Script *Workitemscriptreference `json:"script,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -310,6 +313,8 @@ func (o Workitem) MarshalJSON() ([]byte, error) {
 		
 		ScoredAgents *[]Workitemscoredagent `json:"scoredAgents,omitempty"`
 		
+		Script *Workitemscriptreference `json:"script,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -382,6 +387,8 @@ func (o Workitem) MarshalJSON() ([]byte, error) {
 		AutoStatusTransitionDetail: o.AutoStatusTransitionDetail,
 		
 		ScoredAgents: o.ScoredAgents,
+		
+		Script: o.Script,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -561,6 +568,11 @@ func (o *Workitem) UnmarshalJSON(b []byte) error {
 	if ScoredAgents, ok := WorkitemMap["scoredAgents"].([]interface{}); ok {
 		ScoredAgentsString, _ := json.Marshal(ScoredAgents)
 		json.Unmarshal(ScoredAgentsString, &o.ScoredAgents)
+	}
+	
+	if Script, ok := WorkitemMap["script"].(map[string]interface{}); ok {
+		ScriptString, _ := json.Marshal(Script)
+		json.Unmarshal(ScriptString, &o.Script)
 	}
 	
 	if SelfUri, ok := WorkitemMap["selfUri"].(string); ok {

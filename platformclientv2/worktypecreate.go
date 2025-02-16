@@ -64,6 +64,9 @@ type Worktypecreate struct {
 
 	// DefaultSkillIds - The IDs of the default skills for Workitems created from the Worktype. Must be valid UUIDs. Maximum of 20 IDs
 	DefaultSkillIds *[]string `json:"defaultSkillIds,omitempty"`
+
+	// DefaultScriptId - The default script for Workitems created from the Worktype. Must be a valid UUID.
+	DefaultScriptId *string `json:"defaultScriptId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -164,6 +167,8 @@ func (o Worktypecreate) MarshalJSON() ([]byte, error) {
 		DefaultLanguageId *string `json:"defaultLanguageId,omitempty"`
 		
 		DefaultSkillIds *[]string `json:"defaultSkillIds,omitempty"`
+		
+		DefaultScriptId *string `json:"defaultScriptId,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -201,6 +206,8 @@ func (o Worktypecreate) MarshalJSON() ([]byte, error) {
 		DefaultLanguageId: o.DefaultLanguageId,
 		
 		DefaultSkillIds: o.DefaultSkillIds,
+		
+		DefaultScriptId: o.DefaultScriptId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -293,6 +300,10 @@ func (o *Worktypecreate) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(DefaultSkillIdsString, &o.DefaultSkillIds)
 	}
 	
+	if DefaultScriptId, ok := WorktypecreateMap["defaultScriptId"].(string); ok {
+		o.DefaultScriptId = &DefaultScriptId
+	}
+    
 
 	return nil
 }

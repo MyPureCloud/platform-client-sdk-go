@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -10,7 +11,13 @@ import (
 // Usernextactivityreminder
 type Usernextactivityreminder struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// ActivityCategory - Upcoming activity for which the user is scheduled
+	ActivityCategory *string `json:"activityCategory,omitempty"`
+
+	// StartDate - The start timestamp of the scheduled activity in ISO-8601 format
+	StartDate *time.Time `json:"startDate,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Usernextactivityreminder) SetField(field string, fieldValue interface{}) {
@@ -41,7 +48,7 @@ func (o Usernextactivityreminder) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
+		dateTimeFields := []string{ "StartDate", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -74,8 +81,24 @@ func (o Usernextactivityreminder) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Usernextactivityreminder
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	StartDate := new(string)
+	if o.StartDate != nil {
+		
+		*StartDate = timeutil.Strftime(o.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartDate = nil
+	}
+	
+	return json.Marshal(&struct { 
+		ActivityCategory *string `json:"activityCategory,omitempty"`
+		
+		StartDate *string `json:"startDate,omitempty"`
+		Alias
+	}{ 
+		ActivityCategory: o.ActivityCategory,
+		
+		StartDate: StartDate,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -84,6 +107,15 @@ func (o *Usernextactivityreminder) UnmarshalJSON(b []byte) error {
 	err := json.Unmarshal(b, &UsernextactivityreminderMap)
 	if err != nil {
 		return err
+	}
+	
+	if ActivityCategory, ok := UsernextactivityreminderMap["activityCategory"].(string); ok {
+		o.ActivityCategory = &ActivityCategory
+	}
+    
+	if startDateString, ok := UsernextactivityreminderMap["startDate"].(string); ok {
+		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
+		o.StartDate = &StartDate
 	}
 	
 

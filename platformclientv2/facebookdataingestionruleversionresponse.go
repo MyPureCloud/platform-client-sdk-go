@@ -27,14 +27,17 @@ type Facebookdataingestionruleversionresponse struct {
 	// Version - The version number of the data ingestion rule.
 	Version *int `json:"version,omitempty"`
 
-	// IntegrationId - The Integration Id from which public social posts are ingested. This entity is created using the /conversations/messaging/integrations/facebook resource
-	IntegrationId *string `json:"integrationId,omitempty"`
-
-	// DateCreated - Date this ingestion rule was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	// DateCreated - Timestamp indicating when the data ingestion rule was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
-	// DateModified - Date this ingestion rule was modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	// DateModified - Timestamp indicating when the data ingestion rule was last updated. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateModified *time.Time `json:"dateModified,omitempty"`
+
+	// Platform - The platform of the data ingestion rule.
+	Platform *string `json:"platform,omitempty"`
+
+	// IntegrationId - The Integration Id from which public social posts are ingested. This entity is created using the /conversations/messaging/integrations/facebook resource
+	IntegrationId *string `json:"integrationId,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -129,11 +132,13 @@ func (o Facebookdataingestionruleversionresponse) MarshalJSON() ([]byte, error) 
 		
 		Version *int `json:"version,omitempty"`
 		
-		IntegrationId *string `json:"integrationId,omitempty"`
-		
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
 		DateModified *string `json:"dateModified,omitempty"`
+		
+		Platform *string `json:"platform,omitempty"`
+		
+		IntegrationId *string `json:"integrationId,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
@@ -148,11 +153,13 @@ func (o Facebookdataingestionruleversionresponse) MarshalJSON() ([]byte, error) 
 		
 		Version: o.Version,
 		
-		IntegrationId: o.IntegrationId,
-		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
+		
+		Platform: o.Platform,
+		
+		IntegrationId: o.IntegrationId,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -187,10 +194,6 @@ func (o *Facebookdataingestionruleversionresponse) UnmarshalJSON(b []byte) error
 		o.Version = &VersionInt
 	}
 	
-	if IntegrationId, ok := FacebookdataingestionruleversionresponseMap["integrationId"].(string); ok {
-		o.IntegrationId = &IntegrationId
-	}
-    
 	if dateCreatedString, ok := FacebookdataingestionruleversionresponseMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -201,6 +204,14 @@ func (o *Facebookdataingestionruleversionresponse) UnmarshalJSON(b []byte) error
 		o.DateModified = &DateModified
 	}
 	
+	if Platform, ok := FacebookdataingestionruleversionresponseMap["platform"].(string); ok {
+		o.Platform = &Platform
+	}
+    
+	if IntegrationId, ok := FacebookdataingestionruleversionresponseMap["integrationId"].(string); ok {
+		o.IntegrationId = &IntegrationId
+	}
+    
 	if SelfUri, ok := FacebookdataingestionruleversionresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

@@ -38,6 +38,12 @@ type Historicalimportstatus struct {
 
 	// VarType - Whether this historical import is of type csv or json
 	VarType *string `json:"type,omitempty"`
+
+	// FileName - Name of the file that you are importing.
+	FileName *string `json:"fileName,omitempty"`
+
+	// FileSize - Size of the file that you are importing.
+	FileSize *int `json:"fileSize,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -152,6 +158,10 @@ func (o Historicalimportstatus) MarshalJSON() ([]byte, error) {
 		Active *bool `json:"active,omitempty"`
 		
 		VarType *string `json:"type,omitempty"`
+		
+		FileName *string `json:"fileName,omitempty"`
+		
+		FileSize *int `json:"fileSize,omitempty"`
 		Alias
 	}{ 
 		RequestId: o.RequestId,
@@ -171,6 +181,10 @@ func (o Historicalimportstatus) MarshalJSON() ([]byte, error) {
 		Active: o.Active,
 		
 		VarType: o.VarType,
+		
+		FileName: o.FileName,
+		
+		FileSize: o.FileSize,
 		Alias:    (Alias)(o),
 	})
 }
@@ -222,6 +236,15 @@ func (o *Historicalimportstatus) UnmarshalJSON(b []byte) error {
 		o.VarType = &VarType
 	}
     
+	if FileName, ok := HistoricalimportstatusMap["fileName"].(string); ok {
+		o.FileName = &FileName
+	}
+    
+	if FileSize, ok := HistoricalimportstatusMap["fileSize"].(float64); ok {
+		FileSizeInt := int(FileSize)
+		o.FileSize = &FileSizeInt
+	}
+	
 
 	return nil
 }

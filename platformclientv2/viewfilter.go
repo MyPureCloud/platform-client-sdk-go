@@ -593,6 +593,9 @@ type Viewfilter struct {
 	// ScreenMonitorUserIds - The list of Screen Monitor User Ids
 	ScreenMonitorUserIds *[]string `json:"screenMonitorUserIds,omitempty"`
 
+	// DashboardState - The state of dashboard being filtered
+	DashboardState *string `json:"dashboardState,omitempty"`
+
 	// DashboardType - The type of dashboard being filtered
 	DashboardType *string `json:"dashboardType,omitempty"`
 
@@ -661,6 +664,12 @@ type Viewfilter struct {
 
 	// ComparisonQueueIds - The queue ids are used to for comparison to the primary queue filter in reporting
 	ComparisonQueueIds *[]string `json:"comparisonQueueIds,omitempty"`
+
+	// ViewMetrics - A list of metrics selected for the view
+	ViewMetrics *[]string `json:"viewMetrics,omitempty"`
+
+	// TimelineCategories - A list of timeline categories
+	TimelineCategories *[]string `json:"timelineCategories,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -1114,6 +1123,8 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		
 		ScreenMonitorUserIds *[]string `json:"screenMonitorUserIds,omitempty"`
 		
+		DashboardState *string `json:"dashboardState,omitempty"`
+		
 		DashboardType *string `json:"dashboardType,omitempty"`
 		
 		DashboardAccessFilter *string `json:"dashboardAccessFilter,omitempty"`
@@ -1159,6 +1170,10 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		EvaluationRole *string `json:"evaluationRole,omitempty"`
 		
 		ComparisonQueueIds *[]string `json:"comparisonQueueIds,omitempty"`
+		
+		ViewMetrics *[]string `json:"viewMetrics,omitempty"`
+		
+		TimelineCategories *[]string `json:"timelineCategories,omitempty"`
 		Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -1549,6 +1564,8 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		
 		ScreenMonitorUserIds: o.ScreenMonitorUserIds,
 		
+		DashboardState: o.DashboardState,
+		
 		DashboardType: o.DashboardType,
 		
 		DashboardAccessFilter: o.DashboardAccessFilter,
@@ -1594,6 +1611,10 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		EvaluationRole: o.EvaluationRole,
 		
 		ComparisonQueueIds: o.ComparisonQueueIds,
+		
+		ViewMetrics: o.ViewMetrics,
+		
+		TimelineCategories: o.TimelineCategories,
 		Alias:    (Alias)(o),
 	})
 }
@@ -2533,6 +2554,10 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ScreenMonitorUserIdsString, &o.ScreenMonitorUserIds)
 	}
 	
+	if DashboardState, ok := ViewfilterMap["dashboardState"].(string); ok {
+		o.DashboardState = &DashboardState
+	}
+    
 	if DashboardType, ok := ViewfilterMap["dashboardType"].(string); ok {
 		o.DashboardType = &DashboardType
 	}
@@ -2638,6 +2663,16 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if ComparisonQueueIds, ok := ViewfilterMap["comparisonQueueIds"].([]interface{}); ok {
 		ComparisonQueueIdsString, _ := json.Marshal(ComparisonQueueIds)
 		json.Unmarshal(ComparisonQueueIdsString, &o.ComparisonQueueIds)
+	}
+	
+	if ViewMetrics, ok := ViewfilterMap["viewMetrics"].([]interface{}); ok {
+		ViewMetricsString, _ := json.Marshal(ViewMetrics)
+		json.Unmarshal(ViewMetricsString, &o.ViewMetrics)
+	}
+	
+	if TimelineCategories, ok := ViewfilterMap["timelineCategories"].([]interface{}); ok {
+		TimelineCategoriesString, _ := json.Marshal(TimelineCategories)
+		json.Unmarshal(TimelineCategoriesString, &o.TimelineCategories)
 	}
 	
 

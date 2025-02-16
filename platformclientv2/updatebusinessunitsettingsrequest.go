@@ -23,6 +23,9 @@ type Updatebusinessunitsettingsrequest struct {
 	// Scheduling - Scheduling settings
 	Scheduling *Buschedulingsettingsrequest `json:"scheduling,omitempty"`
 
+	// Notifications - Notification settings
+	Notifications *Bunotificationsettingsrequest `json:"notifications,omitempty"`
+
 	// Metadata - Version metadata for this business unit
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 }
@@ -98,6 +101,8 @@ func (o Updatebusinessunitsettingsrequest) MarshalJSON() ([]byte, error) {
 		
 		Scheduling *Buschedulingsettingsrequest `json:"scheduling,omitempty"`
 		
+		Notifications *Bunotificationsettingsrequest `json:"notifications,omitempty"`
+		
 		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 		Alias
 	}{ 
@@ -108,6 +113,8 @@ func (o Updatebusinessunitsettingsrequest) MarshalJSON() ([]byte, error) {
 		ShortTermForecasting: o.ShortTermForecasting,
 		
 		Scheduling: o.Scheduling,
+		
+		Notifications: o.Notifications,
 		
 		Metadata: o.Metadata,
 		Alias:    (Alias)(o),
@@ -137,6 +144,11 @@ func (o *Updatebusinessunitsettingsrequest) UnmarshalJSON(b []byte) error {
 	if Scheduling, ok := UpdatebusinessunitsettingsrequestMap["scheduling"].(map[string]interface{}); ok {
 		SchedulingString, _ := json.Marshal(Scheduling)
 		json.Unmarshal(SchedulingString, &o.Scheduling)
+	}
+	
+	if Notifications, ok := UpdatebusinessunitsettingsrequestMap["notifications"].(map[string]interface{}); ok {
+		NotificationsString, _ := json.Marshal(Notifications)
+		json.Unmarshal(NotificationsString, &o.Notifications)
 	}
 	
 	if Metadata, ok := UpdatebusinessunitsettingsrequestMap["metadata"].(map[string]interface{}); ok {

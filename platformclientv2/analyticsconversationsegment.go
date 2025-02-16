@@ -30,7 +30,7 @@ type Analyticsconversationsegment struct {
 	// ErrorCode - A code corresponding to the error that occurred
 	ErrorCode *string `json:"errorCode,omitempty"`
 
-	// GroupId - Unique identifier for a PureCloud group
+	// GroupId - Unique identifier for a Genesys Cloud group
 	GroupId *string `json:"groupId,omitempty"`
 
 	// Q850ResponseCodes - Q.850 response code(s)

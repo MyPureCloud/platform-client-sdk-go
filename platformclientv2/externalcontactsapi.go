@@ -2262,7 +2262,7 @@ func (a ExternalContactsApi) GetExternalcontactsImportCsvUploadPreview(uploadId 
 // GetExternalcontactsImportJob invokes GET /api/v2/externalcontacts/import/jobs/{jobId}
 //
 // Get job based on id
-func (a ExternalContactsApi) GetExternalcontactsImportJob(jobId string) (*Contactimportjobresponse, *APIResponse, error) {
+func (a ExternalContactsApi) GetExternalcontactsImportJob(jobId string, expand []string) (*Contactimportjobresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/import/jobs/{jobId}"
@@ -2294,6 +2294,8 @@ func (a ExternalContactsApi) GetExternalcontactsImportJob(jobId string) (*Contac
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -2344,7 +2346,7 @@ func (a ExternalContactsApi) GetExternalcontactsImportJob(jobId string) (*Contac
 // GetExternalcontactsImportJobs invokes GET /api/v2/externalcontacts/import/jobs
 //
 // List jobs for organization
-func (a ExternalContactsApi) GetExternalcontactsImportJobs(after string, pageSize string, sortOrder string, jobStatus string) (*Contactimportjobentitylisting, *APIResponse, error) {
+func (a ExternalContactsApi) GetExternalcontactsImportJobs(expand []string, after string, pageSize string, sortOrder string, jobStatus string) (*Contactimportjobentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/import/jobs"
@@ -2370,6 +2372,8 @@ func (a ExternalContactsApi) GetExternalcontactsImportJobs(after string, pageSiz
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
 	

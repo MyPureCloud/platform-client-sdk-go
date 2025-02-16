@@ -54,6 +54,9 @@ type Webdeploymentconfigurationversion struct {
 	// AuthenticationSettings - The settings for authenticated deployments
 	AuthenticationSettings *Authenticationsettings `json:"authenticationSettings,omitempty"`
 
+	// Video - The settings for video
+	Video *Videosettings `json:"video,omitempty"`
+
 	// DateCreated - The date the configuration version was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
@@ -194,6 +197,8 @@ func (o Webdeploymentconfigurationversion) MarshalJSON() ([]byte, error) {
 		
 		AuthenticationSettings *Authenticationsettings `json:"authenticationSettings,omitempty"`
 		
+		Video *Videosettings `json:"video,omitempty"`
+		
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
 		DateModified *string `json:"dateModified,omitempty"`
@@ -238,6 +243,8 @@ func (o Webdeploymentconfigurationversion) MarshalJSON() ([]byte, error) {
 		JourneyEvents: o.JourneyEvents,
 		
 		AuthenticationSettings: o.AuthenticationSettings,
+		
+		Video: o.Video,
 		
 		DateCreated: DateCreated,
 		
@@ -328,6 +335,11 @@ func (o *Webdeploymentconfigurationversion) UnmarshalJSON(b []byte) error {
 	if AuthenticationSettings, ok := WebdeploymentconfigurationversionMap["authenticationSettings"].(map[string]interface{}); ok {
 		AuthenticationSettingsString, _ := json.Marshal(AuthenticationSettings)
 		json.Unmarshal(AuthenticationSettingsString, &o.AuthenticationSettings)
+	}
+	
+	if Video, ok := WebdeploymentconfigurationversionMap["video"].(map[string]interface{}); ok {
+		VideoString, _ := json.Marshal(Video)
+		json.Unmarshal(VideoString, &o.Video)
 	}
 	
 	if dateCreatedString, ok := WebdeploymentconfigurationversionMap["dateCreated"].(string); ok {

@@ -81,6 +81,9 @@ type Worktypeversion struct {
 	// Flow - The flow associated with the Worktype.
 	Flow *Workitemflowreference `json:"flow,omitempty"`
 
+	// DefaultScript - The default script for Workitems created from the Worktype.
+	DefaultScript *Workitemscriptreference `json:"defaultScript,omitempty"`
+
 	// Version - Version
 	Version *int `json:"version,omitempty"`
 
@@ -213,6 +216,8 @@ func (o Worktypeversion) MarshalJSON() ([]byte, error) {
 		
 		Flow *Workitemflowreference `json:"flow,omitempty"`
 		
+		DefaultScript *Workitemscriptreference `json:"defaultScript,omitempty"`
+		
 		Version *int `json:"version,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -263,6 +268,8 @@ func (o Worktypeversion) MarshalJSON() ([]byte, error) {
 		RuleSettings: o.RuleSettings,
 		
 		Flow: o.Flow,
+		
+		DefaultScript: o.DefaultScript,
 		
 		Version: o.Version,
 		
@@ -387,6 +394,11 @@ func (o *Worktypeversion) UnmarshalJSON(b []byte) error {
 	if Flow, ok := WorktypeversionMap["flow"].(map[string]interface{}); ok {
 		FlowString, _ := json.Marshal(Flow)
 		json.Unmarshal(FlowString, &o.Flow)
+	}
+	
+	if DefaultScript, ok := WorktypeversionMap["defaultScript"].(map[string]interface{}); ok {
+		DefaultScriptString, _ := json.Marshal(DefaultScript)
+		json.Unmarshal(DefaultScriptString, &o.DefaultScript)
 	}
 	
 	if Version, ok := WorktypeversionMap["version"].(float64); ok {
