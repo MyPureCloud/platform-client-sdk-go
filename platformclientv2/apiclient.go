@@ -179,7 +179,7 @@ func (c *RetryableHTTPClient) Do(req *Request) (*http.Response, error) {
 	}
 
 	// this is the closest we have to success criteria
-	if doErr == nil && checkErr == nil && !shouldRetry {
+	if doErr == nil && checkErr == nil {
 		return resp, nil
 	}
 
@@ -194,20 +194,20 @@ func (c *RetryableHTTPClient) Do(req *Request) (*http.Response, error) {
 		return c.ErrorHandler(resp, err, attempt)
 	}
 
-	// // By default, we close the response body and return an error without
-	// // returning the response
-	// if resp != nil {
-	// 	c.drainBody(resp.Body)
-	// }
+	// By default, we close the response body and return an error without
+	// returning the response
+	if resp != nil {
+		c.drainBody(resp.Body)
+	}
 
 	// this means CheckRetry thought the request was a failure, but didn't
 	// communicate why
 	if err == nil {
-		return resp, fmt.Errorf("%s %s giving up after %d attempt(s)",
+		return nil, fmt.Errorf("%s %s giving up after %d attempt(s)",
 			req.Method, req.URL, attempt)
 	}
 
-	return resp, fmt.Errorf("%s %s giving up after %d attempt(s): %w",
+	return nil, fmt.Errorf("%s %s giving up after %d attempt(s): %w",
 		req.Method, req.URL, attempt, err)
 }
 
