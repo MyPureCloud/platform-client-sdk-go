@@ -53,7 +53,7 @@ func testRetryErrorCode(t *testing.T, errorCode int) {
 
 	// Create a request
 	testBytes := []byte("hello")
-	req, err := retryablehttp.NewRequest("GET", "http://127.0.0.1:28934/v1/foo", bytes.NewReader(testBytes))
+	req, err := NewRequest("GET", "http://127.0.0.1:28934/v1/foo", bytes.NewReader(testBytes))
 	if err != nil {
 		t.Fatalf("err: %v", err)
 	}
@@ -136,7 +136,11 @@ func testDoNotRetryErrorCode(t *testing.T, errorCode int) {
 
 	// Create a request
 	testBytes := []byte("hello")
-	req, _ := retryablehttp.NewRequest("GET", "http://127.0.0.1:28934/v1/foo", bytes.NewReader(testBytes))
+	req, _ := NewRequest(
+		"GET",
+		"http://127.0.0.1:28934/v1/foo",
+		bytes.NewReader(testBytes),
+	)
 	// Send the request
 	doneCh := make(chan struct{})
 	go func() {

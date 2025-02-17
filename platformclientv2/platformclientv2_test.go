@@ -329,7 +329,10 @@ func TestUpdateUser(t *testing.T) {
 
 func TestSetProfileSkills(t *testing.T) {
 	// Update user
-	skills, response, err := config.usersAPI.PutUserProfileskills(config.userID, []string{config.userProfileSkill})
+	skills, response, err := config.usersAPI.PutUserProfileskills(
+		config.userID,
+		[]string{config.userProfileSkill},
+	)
 	if err != nil {
 		t.Error(err)
 	} else if response != nil && response.Error != nil {
@@ -415,7 +418,17 @@ func deleteUserDirectly(api *UsersApi, userId string) (*APIResponse, error) {
 	headerParams["Content-Type"] = "application/json"
 	headerParams["Accept"] = "application/json"
 
-	response, err := apiClient.CallAPI(path, http.MethodDelete, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "")
+	response, err := apiClient.CallAPI(
+		path,
+		http.MethodDelete,
+		postBody,
+		headerParams,
+		queryParams,
+		formParams,
+		postFileName,
+		fileBytes,
+		"",
+	)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if response.Error != nil {
@@ -428,7 +441,9 @@ func deleteUserDirectly(api *UsersApi, userId string) (*APIResponse, error) {
 func Example_authorizeDefaultConfiguration() {
 	// Use the default config instance and retrieve settings from env vars
 	config := GetDefaultConfiguration()
-	config.BasePath = "https://api." + os.Getenv("PURECLOUD_ENVIRONMENT") // e.g. PURECLOUD_ENVIRONMENT=mypurecloud.com
+	config.BasePath = "https://api." + os.Getenv(
+		"PURECLOUD_ENVIRONMENT",
+	) // e.g. PURECLOUD_ENVIRONMENT=mypurecloud.com
 	clientID := os.Getenv("PURECLOUD_CLIENT_ID")
 	clientSecret := os.Getenv("PURECLOUD_CLIENT_SECRET")
 
@@ -441,15 +456,17 @@ func Example_authorizeDefaultConfiguration() {
 	// Create an API instance using the default config
 	usersAPI := NewUsersApi()
 	fmt.Printf("Users API type: %v", reflect.TypeOf(usersAPI).String())
-	// Output: Users API type: UsersAPI
 
 	// Make requests using usersAPI
+	// Output: Users API type: UsersAPI
 }
 
 func Example_authorizeNewConfiguration() {
 	// Create a new config instance and retrieve settings from env vars
 	config := NewConfiguration()
-	config.BasePath = "https://api." + os.Getenv("PURECLOUD_ENVIRONMENT") // e.g. PURECLOUD_ENVIRONMENT=mypurecloud.com
+	config.BasePath = "https://api." + os.Getenv(
+		"PURECLOUD_ENVIRONMENT",
+	) // e.g. PURECLOUD_ENVIRONMENT=mypurecloud.com
 	clientID := os.Getenv("PURECLOUD_CLIENT_ID")
 	clientSecret := os.Getenv("PURECLOUD_CLIENT_SECRET")
 
@@ -462,9 +479,9 @@ func Example_authorizeNewConfiguration() {
 	// Create an API instance using the config instance
 	usersAPI := NewUsersApiWithConfig(config)
 	fmt.Printf("Users API type: %v", reflect.TypeOf(usersAPI).String())
-	// Output: Users API type: UsersAPI
 
 	// Make requests using usersAPI
+	// Output: Users API type: UsersAPI
 }
 
 // disable this test case until Gateway with MTLS certs is done in GO SDK
