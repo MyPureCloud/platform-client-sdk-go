@@ -447,7 +447,7 @@ var (
 
 // NewAPIClient creates a new API client
 func NewAPIClient(c *Configuration) APIClient {
-	timeout, err := time.ParseDuration("16s")
+	timeout, err := time.ParseDuration("32s")
 	if err != nil {
 		panic(err)
 	}
