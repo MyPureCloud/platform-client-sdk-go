@@ -3,7 +3,7 @@ package platformclientv2
 import (
 	"bytes"
 	"context"
-    "crypto/tls"
+	"crypto/tls"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -26,18 +26,15 @@ type APIClient struct {
 }
 
 var (
+	redirectsErrorRe = regexp.MustCompile(`stopped after \d+ redirects\z`)
 
-redirectsErrorRe = regexp.MustCompile(`stopped after \d+ redirects\z`)
+	schemeErrorRe = regexp.MustCompile(`unsupported protocol scheme`)
 
+	invalidHeaderErrorRe = regexp.MustCompile(`invalid header`)
 
-schemeErrorRe = regexp.MustCompile(`unsupported protocol scheme`)
-
-
-invalidHeaderErrorRe = regexp.MustCompile(`invalid header`)
-
-
-notTrustedErrorRe = regexp.MustCompile(`certificate is not trusted`)
+	notTrustedErrorRe = regexp.MustCompile(`certificate is not trusted`)
 )
+
 // NewAPIClient creates a new API client
 func NewAPIClient(c *Configuration) APIClient {
 	timeout, err := time.ParseDuration("16s")
@@ -116,11 +113,19 @@ func getConfUrl(c *Configuration, path string, extendedPath string) *url.URL {
 		}
 	}
 	if gateWayConfiguration.Port == "80" || gateWayConfiguration.Port == "443" {
-		uri, _ = url.Parse(fmt.Sprintf("%s://%s%s%s", gateWayConfiguration.Protocol, gateWayConfiguration.Host, pathValue, extendedPath))
+		uri, _ = url.Parse(
+			fmt.Sprintf(
+				"%s://%s%s%s",
+				gateWayConfiguration.Protocol,
+				gateWayConfiguration.Host,
+				pathValue,
+				extendedPath,
+			),
+		)
 	} else {
 		uri, _ = url.Parse(fmt.Sprintf("%s://%s:%s/%s%s", gateWayConfiguration.Protocol, gateWayConfiguration.Host, gateWayConfiguration.Port, pathValue, extendedPath))
 	}
-	
+
 	return uri
 }
 
@@ -139,13 +144,18 @@ func (c *APIClient) CallAPI(path string, method string,
 	if queryParams != nil {
 		for k, v := range queryParams {
 			if v != "" {
-				urlString += fmt.Sprintf("%s=%s&", url.QueryEscape(strings.TrimSpace(k)), url.QueryEscape(strings.TrimSpace(v)))
+				urlString += fmt.Sprintf(
+					"%s=%s&",
+					url.QueryEscape(strings.TrimSpace(k)),
+					url.QueryEscape(strings.TrimSpace(v)),
+				)
 			}
 		}
 	}
 	urlString = urlString[:len(urlString)-1] // Remove the trailing '&'
 
-	if c.configuration.GateWayConfiguration != nil && c.configuration.GateWayConfiguration.Host != "" {
+	if c.configuration.GateWayConfiguration != nil &&
+		c.configuration.GateWayConfiguration.Host != "" {
 		if index := strings.Index(urlString, "/api/v2"); index != -1 {
 			urlString = urlString[index:] // Get substring from /api onward
 		}
@@ -219,39 +229,39 @@ func (c *APIClient) CallAPI(path string, method string,
 		}
 	}
 
-
-		c.client.CheckRetry = DefaultRetryPolicy
+	c.client.CheckRetry = DefaultRetryPolicy
 
 	if c.configuration.ProxyConfiguration != nil {
-                var proxyUrl *url.URL
-                pathValue, exists :=  getPathValue(c.configuration.ProxyConfiguration, pathName)
+		var proxyUrl *url.URL
+		pathValue, exists := getPathValue(c.configuration.ProxyConfiguration, pathName)
 
-                if c.configuration.ProxyConfiguration.Auth != nil && c.configuration.ProxyConfiguration.Auth.UserName != "" && c.configuration.ProxyConfiguration.Auth.Password != "" {
-                        proxyUrl = &url.URL{
-                                Scheme: c.configuration.ProxyConfiguration.Protocol,
-                                User: url.UserPassword(c.configuration.ProxyConfiguration.Auth.UserName,
-                                        c.configuration.ProxyConfiguration.Auth.Password),
-                                Host: c.configuration.ProxyConfiguration.Host + ":" + c.configuration.ProxyConfiguration.Port,
-                        }
-                } else {
+		if c.configuration.ProxyConfiguration.Auth != nil &&
+			c.configuration.ProxyConfiguration.Auth.UserName != "" &&
+			c.configuration.ProxyConfiguration.Auth.Password != "" {
+			proxyUrl = &url.URL{
+				Scheme: c.configuration.ProxyConfiguration.Protocol,
+				User: url.UserPassword(c.configuration.ProxyConfiguration.Auth.UserName,
+					c.configuration.ProxyConfiguration.Auth.Password),
+				Host: c.configuration.ProxyConfiguration.Host + ":" + c.configuration.ProxyConfiguration.Port,
+			}
+		} else {
 
-                        urlString := c.configuration.ProxyConfiguration.Protocol + "://" +
-                                c.configuration.ProxyConfiguration.Host + ":" +
-                                c.configuration.ProxyConfiguration.Port
-                        proxyUrl, _ = url.Parse(urlString)
-                }
+			urlString := c.configuration.ProxyConfiguration.Protocol + "://" +
+				c.configuration.ProxyConfiguration.Host + ":" +
+				c.configuration.ProxyConfiguration.Port
+			proxyUrl, _ = url.Parse(urlString)
+		}
 
-                if exists {
-                   proxyUrl.Path = pathValue
-                }
+		if exists {
+			proxyUrl.Path = pathValue
+		}
 
+		tr := &http.Transport{
+			Proxy: http.ProxyURL(proxyUrl),
+		}
 
-                tr := &http.Transport{
-                        Proxy: http.ProxyURL(proxyUrl),
-                }
-
-                c.client.HTTPClient.Transport = tr
-        }
+		c.client.HTTPClient.Transport = tr
+	}
 
 	requestBody, _ := request.BodyBytes()
 
@@ -263,10 +273,24 @@ func (c *APIClient) CallAPI(path string, method string,
 
 	// Read body
 	body, _ := ioutil.ReadAll(res.Body)
-	c.configuration.LoggingConfiguration.trace(method, urlString, requestBody, res.StatusCode, request.Header, res.Header)
-	c.configuration.LoggingConfiguration.debug(method, urlString, requestBody, res.StatusCode, request.Header)
+	c.configuration.LoggingConfiguration.trace(
+		method,
+		urlString,
+		requestBody,
+		res.StatusCode,
+		request.Header,
+		res.Header,
+	)
+	c.configuration.LoggingConfiguration.debug(
+		method,
+		urlString,
+		requestBody,
+		res.StatusCode,
+		request.Header,
+	)
 
-	if res.StatusCode == http.StatusUnauthorized && c.configuration.ShouldRefreshAccessToken && c.configuration.RefreshToken != "" {
+	if res.StatusCode == http.StatusUnauthorized && c.configuration.ShouldRefreshAccessToken &&
+		c.configuration.RefreshToken != "" {
 		err := c.handleExpiredAccessToken()
 		if err != nil {
 			return nil, err
@@ -275,11 +299,29 @@ func (c *APIClient) CallAPI(path string, method string,
 			headerParams["Authorization"] = "Bearer " + c.configuration.AccessToken
 		}
 
-		return c.CallAPI(path, method, postBody, headerParams, queryParams, formParams, fileName, fileBytes, pathName)
+		return c.CallAPI(
+			path,
+			method,
+			postBody,
+			headerParams,
+			queryParams,
+			formParams,
+			fileName,
+			fileBytes,
+			pathName,
+		)
 	}
 
 	if res.StatusCode < http.StatusOK || res.StatusCode >= http.StatusMultipleChoices {
-		c.configuration.LoggingConfiguration.error(method, urlString, requestBody, body, res.StatusCode, request.Header, res.Header)
+		c.configuration.LoggingConfiguration.error(
+			method,
+			urlString,
+			requestBody,
+			body,
+			res.StatusCode,
+			request.Header,
+			res.Header,
+		)
 	}
 
 	return NewAPIResponse(res, body)
@@ -288,15 +330,13 @@ func (c *APIClient) CallAPI(path string, method string,
 func DefaultRetryPolicy(ctx context.Context, resp *http.Response, err error) (bool, error) {
 	// do not retry on context.Canceled or context.DeadlineExceeded
 	if ctx.Err() != nil {
-		return false, ctx.Err()
+		return false, nil
 	}
 
 	// don't propagate other errors
 	shouldRetry, _ := newRetryPolicy(resp, err)
 	return shouldRetry, nil
 }
-
-
 
 func newRetryPolicy(resp *http.Response, err error) (bool, error) {
 	if err != nil {
@@ -333,14 +373,15 @@ func newRetryPolicy(resp *http.Response, err error) (bool, error) {
 	// a Retry-After response header to indicate when the server is
 	// available to start processing request from client.
 	if resp.StatusCode == http.StatusTooManyRequests {
-	    return verifyRetryAfterHeader(resp.Header["Retry-After"], 180), nil
+		return verifyRetryAfterHeader(resp.Header["Retry-After"], 180), nil
 	}
 
 	// Check the response code. We retry on 500-range responses to allow
 	// the server time to recover, as 500's are typically not permanent
 	// errors and may relate to outages on the server side. This will catch
 	// invalid response codes as well, like 0 and 999.
-	if resp.StatusCode == 0 || (resp.StatusCode >= 500 && resp.StatusCode != http.StatusNotImplemented) {
+	if resp.StatusCode == 0 ||
+		(resp.StatusCode >= 500 && resp.StatusCode != http.StatusNotImplemented) {
 		return true, fmt.Errorf("unexpected HTTP status %s", resp.Status)
 	}
 
@@ -360,14 +401,12 @@ func verifyRetryAfterHeader(headers []string, defaultMaxRetry int64) bool {
 
 	if sleep, err := strconv.ParseInt(header, 10, 64); err == nil {
 		if sleep > defaultMaxRetry {
-			return  false
+			return false
 		}
 		return true
 	}
 	return true
 }
-
-
 
 // ParameterToString joins a parameter in the desired format
 func (c *APIClient) ParameterToString(obj interface{}, collectionFormat string) string {
@@ -392,7 +431,11 @@ func (c *APIClient) ParameterToString(obj interface{}, collectionFormat string) 
 func (c *APIClient) handleExpiredAccessToken() error {
 	if atomic.CompareAndSwapInt64(&c.configuration.RefreshInProgress, 0, 1) {
 		defer atomic.StoreInt64(&c.configuration.RefreshInProgress, 0)
-		_, err := c.configuration.RefreshAuthorizationCodeGrant(c.configuration.ClientID, c.configuration.ClientSecret, c.configuration.RefreshToken)
+		_, err := c.configuration.RefreshAuthorizationCodeGrant(
+			c.configuration.ClientID,
+			c.configuration.ClientSecret,
+			c.configuration.RefreshToken,
+		)
 		return err
 	} else {
 		// Wait maximum of RefreshTokenWaitTime seconds for other thread to complete refresh
