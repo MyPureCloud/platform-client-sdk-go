@@ -1,4 +1,4 @@
-module github.com/sentientie/platform-client-sdk-go/v153
+module github.com/sentientie/platform-client-sdk-go/v155
 
 go 1.23
 

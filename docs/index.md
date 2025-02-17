@@ -20,7 +20,7 @@ Some macOS users encounter the error "argument list too long" when building or i
 Retrieve the package from https://github.com/sentientie/platform-client-sdk-go using `go get`:
 
 ```go
-go get github.com/sentientie/platform-client-sdk-go/v153/platformclientv2
+go get github.com/sentientie/platform-client-sdk-go/v155/platformclientv2
 ```
 
 ## Using the SDK
@@ -29,7 +29,7 @@ go get github.com/sentientie/platform-client-sdk-go/v153/platformclientv2
 
 ```go
 import (
-	"github.com/sentientie/platform-client-sdk-go/v153/platformclientv2"
+	"github.com/sentientie/platform-client-sdk-go/v155/platformclientv2"
 )
 ```
 
