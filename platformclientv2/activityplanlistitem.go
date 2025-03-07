@@ -54,7 +54,7 @@ type Activityplanlistitem struct {
 	// ModifiedDate - The date the activity plan was modified, in ISO-8601 format
 	ModifiedDate *time.Time `json:"modifiedDate,omitempty"`
 
-	// ModifiedBy - The last user to modify this activity plan
+	// ModifiedBy - The last user to modify this activity plan. The id may be 'System' if it was an automated process
 	ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
 
 	// SelfUri - The URI for this object

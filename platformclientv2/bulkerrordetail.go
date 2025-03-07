@@ -11,13 +11,13 @@ import (
 type Bulkerrordetail struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// FieldName
+	// FieldName - The name of the field which experienced an error.
 	FieldName *string `json:"fieldName,omitempty"`
 
-	// Value
+	// Value - The field value from the request which caused the error.
 	Value *string `json:"value,omitempty"`
 
-	// Message
+	// Message - A field-specific error message describing why this operation was rejected.
 	Message *string `json:"message,omitempty"`
 }
 

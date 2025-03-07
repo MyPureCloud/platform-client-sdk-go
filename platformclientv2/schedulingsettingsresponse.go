@@ -20,8 +20,11 @@ type Schedulingsettingsresponse struct {
 	// ShrinkageOverrides - Shrinkage overrides for scheduling
 	ShrinkageOverrides *Shrinkageoverrides `json:"shrinkageOverrides,omitempty"`
 
-	// PlanningPeriod - Planning period settings for scheduling
+	// PlanningPeriod - Planning period settings for scheduling. Only one of planningPeriod or monthlyPlanningPeriod will be defined if applicable, but both can be null
 	PlanningPeriod *Planningperiodsettings `json:"planningPeriod,omitempty"`
+
+	// MonthlyPlanningPeriod - Monthly planning period settings for scheduling. Only one of planningPeriod or monthlyPlanningPeriod will be defined if applicable, but both can be null
+	MonthlyPlanningPeriod *Monthlyplanningperiodsettings `json:"monthlyPlanningPeriod,omitempty"`
 
 	// StartDayOfWeekend - Start day of weekend for scheduling
 	StartDayOfWeekend *string `json:"startDayOfWeekend,omitempty"`
@@ -98,6 +101,8 @@ func (o Schedulingsettingsresponse) MarshalJSON() ([]byte, error) {
 		
 		PlanningPeriod *Planningperiodsettings `json:"planningPeriod,omitempty"`
 		
+		MonthlyPlanningPeriod *Monthlyplanningperiodsettings `json:"monthlyPlanningPeriod,omitempty"`
+		
 		StartDayOfWeekend *string `json:"startDayOfWeekend,omitempty"`
 		Alias
 	}{ 
@@ -108,6 +113,8 @@ func (o Schedulingsettingsresponse) MarshalJSON() ([]byte, error) {
 		ShrinkageOverrides: o.ShrinkageOverrides,
 		
 		PlanningPeriod: o.PlanningPeriod,
+		
+		MonthlyPlanningPeriod: o.MonthlyPlanningPeriod,
 		
 		StartDayOfWeekend: o.StartDayOfWeekend,
 		Alias:    (Alias)(o),
@@ -138,6 +145,11 @@ func (o *Schedulingsettingsresponse) UnmarshalJSON(b []byte) error {
 	if PlanningPeriod, ok := SchedulingsettingsresponseMap["planningPeriod"].(map[string]interface{}); ok {
 		PlanningPeriodString, _ := json.Marshal(PlanningPeriod)
 		json.Unmarshal(PlanningPeriodString, &o.PlanningPeriod)
+	}
+	
+	if MonthlyPlanningPeriod, ok := SchedulingsettingsresponseMap["monthlyPlanningPeriod"].(map[string]interface{}); ok {
+		MonthlyPlanningPeriodString, _ := json.Marshal(MonthlyPlanningPeriod)
+		json.Unmarshal(MonthlyPlanningPeriodString, &o.MonthlyPlanningPeriod)
 	}
 	
 	if StartDayOfWeekend, ok := SchedulingsettingsresponseMap["startDayOfWeekend"].(string); ok {

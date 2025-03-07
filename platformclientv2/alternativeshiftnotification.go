@@ -30,7 +30,7 @@ type Alternativeshiftnotification struct {
 	// InitiatingShiftDate - The start date and time of the initiating shift. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	InitiatingShiftDate *time.Time `json:"initiatingShiftDate,omitempty"`
 
-	// ReceivingUser - The user on the receiving this alternative shift trade
+	// ReceivingUser - The user on the receiving side of this alternative shift trade
 	ReceivingUser *Userreference `json:"receivingUser,omitempty"`
 
 	// ReceivingShiftDate - The start date and time of the receiving alternative shift. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z

@@ -14,6 +14,9 @@ type Relationship struct {
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
+	// Division - The division to which this entity belongs.
+	Division *Writablestarrabledivision `json:"division,omitempty"`
+
 	// User - The user associated with the external organization. When creating or updating a relationship, only User.id is required. User object is fully populated when expanding a note.
 	User *User `json:"user,omitempty"`
 
@@ -95,6 +98,8 @@ func (o Relationship) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
+		Division *Writablestarrabledivision `json:"division,omitempty"`
+		
 		User *User `json:"user,omitempty"`
 		
 		ExternalOrganization *Externalorganization `json:"externalOrganization,omitempty"`
@@ -107,6 +112,8 @@ func (o Relationship) MarshalJSON() ([]byte, error) {
 		Alias
 	}{ 
 		Id: o.Id,
+		
+		Division: o.Division,
 		
 		User: o.User,
 		
@@ -132,6 +139,11 @@ func (o *Relationship) UnmarshalJSON(b []byte) error {
 		o.Id = &Id
 	}
     
+	if Division, ok := RelationshipMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
 	if User, ok := RelationshipMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)

@@ -38,6 +38,12 @@ type Updatecoachingappointmentrequest struct {
 
 	// ExternalLinks - The list of external links related to the appointment
 	ExternalLinks *[]string `json:"externalLinks,omitempty"`
+
+	// Location - The location of the appointment
+	Location *string `json:"location,omitempty"`
+
+	// ShareInsightsData - Whether to share the insight data
+	ShareInsightsData *bool `json:"shareInsightsData,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -128,6 +134,10 @@ func (o Updatecoachingappointmentrequest) MarshalJSON() ([]byte, error) {
 		WfmSchedule *Wfmschedulereference `json:"wfmSchedule,omitempty"`
 		
 		ExternalLinks *[]string `json:"externalLinks,omitempty"`
+		
+		Location *string `json:"location,omitempty"`
+		
+		ShareInsightsData *bool `json:"shareInsightsData,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -147,6 +157,10 @@ func (o Updatecoachingappointmentrequest) MarshalJSON() ([]byte, error) {
 		WfmSchedule: o.WfmSchedule,
 		
 		ExternalLinks: o.ExternalLinks,
+		
+		Location: o.Location,
+		
+		ShareInsightsData: o.ShareInsightsData,
 		Alias:    (Alias)(o),
 	})
 }
@@ -200,6 +214,14 @@ func (o *Updatecoachingappointmentrequest) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ExternalLinksString, &o.ExternalLinks)
 	}
 	
+	if Location, ok := UpdatecoachingappointmentrequestMap["location"].(string); ok {
+		o.Location = &Location
+	}
+    
+	if ShareInsightsData, ok := UpdatecoachingappointmentrequestMap["shareInsightsData"].(bool); ok {
+		o.ShareInsightsData = &ShareInsightsData
+	}
+    
 
 	return nil
 }

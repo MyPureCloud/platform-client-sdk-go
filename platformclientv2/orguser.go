@@ -46,7 +46,7 @@ type Orguser struct {
 	Username *string `json:"username,omitempty"`
 
 	// Manager
-	Manager **User `json:"manager,omitempty"`
+	Manager *User `json:"manager,omitempty"`
 
 	// Images
 	Images *[]Image `json:"images,omitempty"`
@@ -220,7 +220,7 @@ func (o Orguser) MarshalJSON() ([]byte, error) {
 		
 		Username *string `json:"username,omitempty"`
 		
-		Manager **User `json:"manager,omitempty"`
+		Manager *User `json:"manager,omitempty"`
 		
 		Images *[]Image `json:"images,omitempty"`
 		

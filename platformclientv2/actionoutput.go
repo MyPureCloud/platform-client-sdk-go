@@ -24,10 +24,10 @@ type Actionoutput struct {
 	ErrorSchemaUri *string `json:"errorSchemaUri,omitempty"`
 
 	// SuccessSchemaFlattened - JSON schema that defines the transformed, successful result that will be sent back to the caller. The schema is transformed based on Architect's flattened format. If the 'flatten' query parameter is supplied as true, this field will be returned. Either successSchema or successSchemaFlattened will be returned, not both.
-	SuccessSchemaFlattened *Jsonschemadocument `json:"successSchemaFlattened,omitempty"`
+	SuccessSchemaFlattened *Flattenedjsonschemadocument `json:"successSchemaFlattened,omitempty"`
 
 	// ErrorSchemaFlattened - JSON schema that defines the body of response when request is not successful. The schema is transformed based on Architect's flattened format. If the 'flatten' query parameter is supplied as true, this field will be returned. Either errorSchema or errorSchemaFlattened will be returned, not both.
-	ErrorSchemaFlattened *interface{} `json:"errorSchemaFlattened,omitempty"`
+	ErrorSchemaFlattened *Flattenedjsonschemadocument `json:"errorSchemaFlattened,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -101,9 +101,9 @@ func (o Actionoutput) MarshalJSON() ([]byte, error) {
 		
 		ErrorSchemaUri *string `json:"errorSchemaUri,omitempty"`
 		
-		SuccessSchemaFlattened *Jsonschemadocument `json:"successSchemaFlattened,omitempty"`
+		SuccessSchemaFlattened *Flattenedjsonschemadocument `json:"successSchemaFlattened,omitempty"`
 		
-		ErrorSchemaFlattened *interface{} `json:"errorSchemaFlattened,omitempty"`
+		ErrorSchemaFlattened *Flattenedjsonschemadocument `json:"errorSchemaFlattened,omitempty"`
 		Alias
 	}{ 
 		SuccessSchema: o.SuccessSchema,

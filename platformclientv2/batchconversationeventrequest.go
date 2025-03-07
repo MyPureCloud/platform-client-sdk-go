@@ -64,6 +64,48 @@ type Batchconversationeventrequest struct {
 
 	// EndConsultTransferEvents - Voice - EndConsultTransfer events for this batch
 	EndConsultTransferEvents *[]Endconsulttransferevent `json:"endConsultTransferEvents,omitempty"`
+
+	// EmailBeginTransmittingEvents - Email - EmailBeginTransmittingEvent events for this batch
+	EmailBeginTransmittingEvents *[]Emailbegintransmittingevent `json:"emailBeginTransmittingEvents,omitempty"`
+
+	// EmailCommunicationEndedEvents - Email - EmailCommunicationEndedEvent events for this batch
+	EmailCommunicationEndedEvents *[]Emailcommunicationendedevent `json:"emailCommunicationEndedEvents,omitempty"`
+
+	// EmailExternalEstablishedEvents - Email - EmailExternalEstablishedEvent events for this batch
+	EmailExternalEstablishedEvents *[]Emailexternalestablishedevent `json:"emailExternalEstablishedEvents,omitempty"`
+
+	// EmailFlowEstablishedEvents - Email - EmailFlowEstablishedEvent events for this batch
+	EmailFlowEstablishedEvents *[]Emailflowestablishedevent `json:"emailFlowEstablishedEvents,omitempty"`
+
+	// EmailRoutingEstablishedEvents - Email - EmailRoutingEstablishedEvent events for this batch
+	EmailRoutingEstablishedEvents *[]Emailroutingestablishedevent `json:"emailRoutingEstablishedEvents,omitempty"`
+
+	// EmailUserEstablishedEvents - Email - EmailUserEstablishedEvent events for this batch
+	EmailUserEstablishedEvents *[]Emailuserestablishedevent `json:"emailUserEstablishedEvents,omitempty"`
+
+	// EmailCommunicationAnsweredEvents - Email - EmailCommunicationAnsweredEvent events for this batch
+	EmailCommunicationAnsweredEvents *[]Emailcommunicationansweredevent `json:"emailCommunicationAnsweredEvents,omitempty"`
+
+	// EmailCommunicationDispositionAppliedEvents - Email - EmailCommunicationDispositionAppliedEvent events for this batch
+	EmailCommunicationDispositionAppliedEvents *[]Emailcommunicationdispositionappliedevent `json:"emailCommunicationDispositionAppliedEvents,omitempty"`
+
+	// EmailCommunicationSentMessageEvents - Email - EmailCommunicationSentMessageEvent events for this batch
+	EmailCommunicationSentMessageEvents *[]Emailcommunicationsentmessageevent `json:"emailCommunicationSentMessageEvents,omitempty"`
+
+	// EmailHoldUpdatedEvents - Email - EmailHoldUpdatedEvent events for this batch
+	EmailHoldUpdatedEvents *[]Emailholdupdatedevent `json:"emailHoldUpdatedEvents,omitempty"`
+
+	// EmailEndTransferEvents - Email - EmailEndTransferEvent events for this batch
+	EmailEndTransferEvents *[]Emailendtransferevent `json:"emailEndTransferEvents,omitempty"`
+
+	// EmailProgressTransferEvents - Email - EmailProgressTransferEvent events for this batch
+	EmailProgressTransferEvents *[]Emailprogresstransferevent `json:"emailProgressTransferEvents,omitempty"`
+
+	// EmailRoutingTransferEvents - Email - EmailRoutingTransferEvent events for this batch
+	EmailRoutingTransferEvents *[]Emailroutingtransferevent `json:"emailRoutingTransferEvents,omitempty"`
+
+	// EmailUserTransferEvents - Email - EmailUserTransferEvent events for this batch
+	EmailUserTransferEvents *[]Emailusertransferevent `json:"emailUserTransferEvents,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -164,6 +206,34 @@ func (o Batchconversationeventrequest) MarshalJSON() ([]byte, error) {
 		ProgressConsultTransferEvents *[]Progressconsulttransferevent `json:"progressConsultTransferEvents,omitempty"`
 		
 		EndConsultTransferEvents *[]Endconsulttransferevent `json:"endConsultTransferEvents,omitempty"`
+		
+		EmailBeginTransmittingEvents *[]Emailbegintransmittingevent `json:"emailBeginTransmittingEvents,omitempty"`
+		
+		EmailCommunicationEndedEvents *[]Emailcommunicationendedevent `json:"emailCommunicationEndedEvents,omitempty"`
+		
+		EmailExternalEstablishedEvents *[]Emailexternalestablishedevent `json:"emailExternalEstablishedEvents,omitempty"`
+		
+		EmailFlowEstablishedEvents *[]Emailflowestablishedevent `json:"emailFlowEstablishedEvents,omitempty"`
+		
+		EmailRoutingEstablishedEvents *[]Emailroutingestablishedevent `json:"emailRoutingEstablishedEvents,omitempty"`
+		
+		EmailUserEstablishedEvents *[]Emailuserestablishedevent `json:"emailUserEstablishedEvents,omitempty"`
+		
+		EmailCommunicationAnsweredEvents *[]Emailcommunicationansweredevent `json:"emailCommunicationAnsweredEvents,omitempty"`
+		
+		EmailCommunicationDispositionAppliedEvents *[]Emailcommunicationdispositionappliedevent `json:"emailCommunicationDispositionAppliedEvents,omitempty"`
+		
+		EmailCommunicationSentMessageEvents *[]Emailcommunicationsentmessageevent `json:"emailCommunicationSentMessageEvents,omitempty"`
+		
+		EmailHoldUpdatedEvents *[]Emailholdupdatedevent `json:"emailHoldUpdatedEvents,omitempty"`
+		
+		EmailEndTransferEvents *[]Emailendtransferevent `json:"emailEndTransferEvents,omitempty"`
+		
+		EmailProgressTransferEvents *[]Emailprogresstransferevent `json:"emailProgressTransferEvents,omitempty"`
+		
+		EmailRoutingTransferEvents *[]Emailroutingtransferevent `json:"emailRoutingTransferEvents,omitempty"`
+		
+		EmailUserTransferEvents *[]Emailusertransferevent `json:"emailUserTransferEvents,omitempty"`
 		Alias
 	}{ 
 		EndTransferEvents: o.EndTransferEvents,
@@ -201,6 +271,34 @@ func (o Batchconversationeventrequest) MarshalJSON() ([]byte, error) {
 		ProgressConsultTransferEvents: o.ProgressConsultTransferEvents,
 		
 		EndConsultTransferEvents: o.EndConsultTransferEvents,
+		
+		EmailBeginTransmittingEvents: o.EmailBeginTransmittingEvents,
+		
+		EmailCommunicationEndedEvents: o.EmailCommunicationEndedEvents,
+		
+		EmailExternalEstablishedEvents: o.EmailExternalEstablishedEvents,
+		
+		EmailFlowEstablishedEvents: o.EmailFlowEstablishedEvents,
+		
+		EmailRoutingEstablishedEvents: o.EmailRoutingEstablishedEvents,
+		
+		EmailUserEstablishedEvents: o.EmailUserEstablishedEvents,
+		
+		EmailCommunicationAnsweredEvents: o.EmailCommunicationAnsweredEvents,
+		
+		EmailCommunicationDispositionAppliedEvents: o.EmailCommunicationDispositionAppliedEvents,
+		
+		EmailCommunicationSentMessageEvents: o.EmailCommunicationSentMessageEvents,
+		
+		EmailHoldUpdatedEvents: o.EmailHoldUpdatedEvents,
+		
+		EmailEndTransferEvents: o.EmailEndTransferEvents,
+		
+		EmailProgressTransferEvents: o.EmailProgressTransferEvents,
+		
+		EmailRoutingTransferEvents: o.EmailRoutingTransferEvents,
+		
+		EmailUserTransferEvents: o.EmailUserTransferEvents,
 		Alias:    (Alias)(o),
 	})
 }
@@ -300,6 +398,76 @@ func (o *Batchconversationeventrequest) UnmarshalJSON(b []byte) error {
 	if EndConsultTransferEvents, ok := BatchconversationeventrequestMap["endConsultTransferEvents"].([]interface{}); ok {
 		EndConsultTransferEventsString, _ := json.Marshal(EndConsultTransferEvents)
 		json.Unmarshal(EndConsultTransferEventsString, &o.EndConsultTransferEvents)
+	}
+	
+	if EmailBeginTransmittingEvents, ok := BatchconversationeventrequestMap["emailBeginTransmittingEvents"].([]interface{}); ok {
+		EmailBeginTransmittingEventsString, _ := json.Marshal(EmailBeginTransmittingEvents)
+		json.Unmarshal(EmailBeginTransmittingEventsString, &o.EmailBeginTransmittingEvents)
+	}
+	
+	if EmailCommunicationEndedEvents, ok := BatchconversationeventrequestMap["emailCommunicationEndedEvents"].([]interface{}); ok {
+		EmailCommunicationEndedEventsString, _ := json.Marshal(EmailCommunicationEndedEvents)
+		json.Unmarshal(EmailCommunicationEndedEventsString, &o.EmailCommunicationEndedEvents)
+	}
+	
+	if EmailExternalEstablishedEvents, ok := BatchconversationeventrequestMap["emailExternalEstablishedEvents"].([]interface{}); ok {
+		EmailExternalEstablishedEventsString, _ := json.Marshal(EmailExternalEstablishedEvents)
+		json.Unmarshal(EmailExternalEstablishedEventsString, &o.EmailExternalEstablishedEvents)
+	}
+	
+	if EmailFlowEstablishedEvents, ok := BatchconversationeventrequestMap["emailFlowEstablishedEvents"].([]interface{}); ok {
+		EmailFlowEstablishedEventsString, _ := json.Marshal(EmailFlowEstablishedEvents)
+		json.Unmarshal(EmailFlowEstablishedEventsString, &o.EmailFlowEstablishedEvents)
+	}
+	
+	if EmailRoutingEstablishedEvents, ok := BatchconversationeventrequestMap["emailRoutingEstablishedEvents"].([]interface{}); ok {
+		EmailRoutingEstablishedEventsString, _ := json.Marshal(EmailRoutingEstablishedEvents)
+		json.Unmarshal(EmailRoutingEstablishedEventsString, &o.EmailRoutingEstablishedEvents)
+	}
+	
+	if EmailUserEstablishedEvents, ok := BatchconversationeventrequestMap["emailUserEstablishedEvents"].([]interface{}); ok {
+		EmailUserEstablishedEventsString, _ := json.Marshal(EmailUserEstablishedEvents)
+		json.Unmarshal(EmailUserEstablishedEventsString, &o.EmailUserEstablishedEvents)
+	}
+	
+	if EmailCommunicationAnsweredEvents, ok := BatchconversationeventrequestMap["emailCommunicationAnsweredEvents"].([]interface{}); ok {
+		EmailCommunicationAnsweredEventsString, _ := json.Marshal(EmailCommunicationAnsweredEvents)
+		json.Unmarshal(EmailCommunicationAnsweredEventsString, &o.EmailCommunicationAnsweredEvents)
+	}
+	
+	if EmailCommunicationDispositionAppliedEvents, ok := BatchconversationeventrequestMap["emailCommunicationDispositionAppliedEvents"].([]interface{}); ok {
+		EmailCommunicationDispositionAppliedEventsString, _ := json.Marshal(EmailCommunicationDispositionAppliedEvents)
+		json.Unmarshal(EmailCommunicationDispositionAppliedEventsString, &o.EmailCommunicationDispositionAppliedEvents)
+	}
+	
+	if EmailCommunicationSentMessageEvents, ok := BatchconversationeventrequestMap["emailCommunicationSentMessageEvents"].([]interface{}); ok {
+		EmailCommunicationSentMessageEventsString, _ := json.Marshal(EmailCommunicationSentMessageEvents)
+		json.Unmarshal(EmailCommunicationSentMessageEventsString, &o.EmailCommunicationSentMessageEvents)
+	}
+	
+	if EmailHoldUpdatedEvents, ok := BatchconversationeventrequestMap["emailHoldUpdatedEvents"].([]interface{}); ok {
+		EmailHoldUpdatedEventsString, _ := json.Marshal(EmailHoldUpdatedEvents)
+		json.Unmarshal(EmailHoldUpdatedEventsString, &o.EmailHoldUpdatedEvents)
+	}
+	
+	if EmailEndTransferEvents, ok := BatchconversationeventrequestMap["emailEndTransferEvents"].([]interface{}); ok {
+		EmailEndTransferEventsString, _ := json.Marshal(EmailEndTransferEvents)
+		json.Unmarshal(EmailEndTransferEventsString, &o.EmailEndTransferEvents)
+	}
+	
+	if EmailProgressTransferEvents, ok := BatchconversationeventrequestMap["emailProgressTransferEvents"].([]interface{}); ok {
+		EmailProgressTransferEventsString, _ := json.Marshal(EmailProgressTransferEvents)
+		json.Unmarshal(EmailProgressTransferEventsString, &o.EmailProgressTransferEvents)
+	}
+	
+	if EmailRoutingTransferEvents, ok := BatchconversationeventrequestMap["emailRoutingTransferEvents"].([]interface{}); ok {
+		EmailRoutingTransferEventsString, _ := json.Marshal(EmailRoutingTransferEvents)
+		json.Unmarshal(EmailRoutingTransferEventsString, &o.EmailRoutingTransferEvents)
+	}
+	
+	if EmailUserTransferEvents, ok := BatchconversationeventrequestMap["emailUserTransferEvents"].([]interface{}); ok {
+		EmailUserTransferEventsString, _ := json.Marshal(EmailUserTransferEvents)
+		json.Unmarshal(EmailUserTransferEventsString, &o.EmailUserTransferEvents)
 	}
 	
 

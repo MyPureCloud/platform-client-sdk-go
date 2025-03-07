@@ -27,6 +27,9 @@ type Journeyviewjob struct {
 	// JourneyView - The journey view for which the job is executed
 	JourneyView *Journeyview `json:"journeyView,omitempty"`
 
+	// DateCompletionEstimated - Timestamp for the estimated time of completion. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateCompletionEstimated *time.Time `json:"dateCompletionEstimated,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -60,7 +63,7 @@ func (o Journeyviewjob) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "DateCreated","DateCompleted", }
+		dateTimeFields := []string{ "DateCreated","DateCompleted","DateCompletionEstimated", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -109,6 +112,14 @@ func (o Journeyviewjob) MarshalJSON() ([]byte, error) {
 		DateCompleted = nil
 	}
 	
+	DateCompletionEstimated := new(string)
+	if o.DateCompletionEstimated != nil {
+		
+		*DateCompletionEstimated = timeutil.Strftime(o.DateCompletionEstimated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCompletionEstimated = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -119,6 +130,8 @@ func (o Journeyviewjob) MarshalJSON() ([]byte, error) {
 		Status *string `json:"status,omitempty"`
 		
 		JourneyView *Journeyview `json:"journeyView,omitempty"`
+		
+		DateCompletionEstimated *string `json:"dateCompletionEstimated,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
@@ -132,6 +145,8 @@ func (o Journeyviewjob) MarshalJSON() ([]byte, error) {
 		Status: o.Status,
 		
 		JourneyView: o.JourneyView,
+		
+		DateCompletionEstimated: DateCompletionEstimated,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -166,6 +181,11 @@ func (o *Journeyviewjob) UnmarshalJSON(b []byte) error {
 	if JourneyView, ok := JourneyviewjobMap["journeyView"].(map[string]interface{}); ok {
 		JourneyViewString, _ := json.Marshal(JourneyView)
 		json.Unmarshal(JourneyViewString, &o.JourneyView)
+	}
+	
+	if dateCompletionEstimatedString, ok := JourneyviewjobMap["dateCompletionEstimated"].(string); ok {
+		DateCompletionEstimated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCompletionEstimatedString)
+		o.DateCompletionEstimated = &DateCompletionEstimated
 	}
 	
 	if SelfUri, ok := JourneyviewjobMap["selfUri"].(string); ok {

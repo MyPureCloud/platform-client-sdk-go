@@ -63,8 +63,14 @@ type Recordingmessagingmessage struct {
 	// Cards - List of cards offered for this message
 	Cards *[]Card `json:"cards,omitempty"`
 
+	// NotificationTemplate - Template notification content.
+	NotificationTemplate *Recordingnotificationtemplate `json:"notificationTemplate,omitempty"`
+
 	// ContentType - Indicates the content type for this message
 	ContentType *string `json:"contentType,omitempty"`
+
+	// Events - List of event elements
+	Events *[]Conversationmessageevent `json:"events,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -172,7 +178,11 @@ func (o Recordingmessagingmessage) MarshalJSON() ([]byte, error) {
 		
 		Cards *[]Card `json:"cards,omitempty"`
 		
+		NotificationTemplate *Recordingnotificationtemplate `json:"notificationTemplate,omitempty"`
+		
 		ContentType *string `json:"contentType,omitempty"`
+		
+		Events *[]Conversationmessageevent `json:"events,omitempty"`
 		Alias
 	}{ 
 		From: o.From,
@@ -209,7 +219,11 @@ func (o Recordingmessagingmessage) MarshalJSON() ([]byte, error) {
 		
 		Cards: o.Cards,
 		
+		NotificationTemplate: o.NotificationTemplate,
+		
 		ContentType: o.ContentType,
+		
+		Events: o.Events,
 		Alias:    (Alias)(o),
 	})
 }
@@ -300,10 +314,20 @@ func (o *Recordingmessagingmessage) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(CardsString, &o.Cards)
 	}
 	
+	if NotificationTemplate, ok := RecordingmessagingmessageMap["notificationTemplate"].(map[string]interface{}); ok {
+		NotificationTemplateString, _ := json.Marshal(NotificationTemplate)
+		json.Unmarshal(NotificationTemplateString, &o.NotificationTemplate)
+	}
+	
 	if ContentType, ok := RecordingmessagingmessageMap["contentType"].(string); ok {
 		o.ContentType = &ContentType
 	}
     
+	if Events, ok := RecordingmessagingmessageMap["events"].([]interface{}); ok {
+		EventsString, _ := json.Marshal(Events)
+		json.Unmarshal(EventsString, &o.Events)
+	}
+	
 
 	return nil
 }

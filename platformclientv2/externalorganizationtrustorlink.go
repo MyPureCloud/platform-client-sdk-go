@@ -15,6 +15,9 @@ type Externalorganizationtrustorlink struct {
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
+	// Division - The division to which this entity belongs.
+	Division *Writablestarrabledivision `json:"division,omitempty"`
+
 	// ExternalOrganizationId - The id of a PureCloud External Organization entity in the External Contacts system that will be used to represent the trustor org
 	ExternalOrganizationId *string `json:"externalOrganizationId,omitempty"`
 
@@ -104,6 +107,8 @@ func (o Externalorganizationtrustorlink) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
+		Division *Writablestarrabledivision `json:"division,omitempty"`
+		
 		ExternalOrganizationId *string `json:"externalOrganizationId,omitempty"`
 		
 		TrustorOrgId *string `json:"trustorOrgId,omitempty"`
@@ -116,6 +121,8 @@ func (o Externalorganizationtrustorlink) MarshalJSON() ([]byte, error) {
 		Alias
 	}{ 
 		Id: o.Id,
+		
+		Division: o.Division,
 		
 		ExternalOrganizationId: o.ExternalOrganizationId,
 		
@@ -141,6 +148,11 @@ func (o *Externalorganizationtrustorlink) UnmarshalJSON(b []byte) error {
 		o.Id = &Id
 	}
     
+	if Division, ok := ExternalorganizationtrustorlinkMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
 	if ExternalOrganizationId, ok := ExternalorganizationtrustorlinkMap["externalOrganizationId"].(string); ok {
 		o.ExternalOrganizationId = &ExternalOrganizationId
 	}

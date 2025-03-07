@@ -24,7 +24,7 @@ type Queuemediasettings struct {
 	Email *Emailmediasettings `json:"email,omitempty"`
 
 	// Message - The queue media settings for message interactions.
-	Message *Mediasettings `json:"message,omitempty"`
+	Message *Messagemediasettings `json:"message,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -98,7 +98,7 @@ func (o Queuemediasettings) MarshalJSON() ([]byte, error) {
 		
 		Email *Emailmediasettings `json:"email,omitempty"`
 		
-		Message *Mediasettings `json:"message,omitempty"`
+		Message *Messagemediasettings `json:"message,omitempty"`
 		Alias
 	}{ 
 		Call: o.Call,

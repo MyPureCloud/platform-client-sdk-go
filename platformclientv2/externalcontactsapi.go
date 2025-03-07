@@ -1354,7 +1354,7 @@ func (a ExternalContactsApi) GetExternalcontactsContactUnresolved(contactId stri
 // GetExternalcontactsContacts invokes GET /api/v2/externalcontacts/contacts
 //
 // Search for external contacts
-func (a ExternalContactsApi) GetExternalcontactsContacts(pageSize int, pageNumber int, q string, sortOrder string, expand []string) (*Contactlisting, *APIResponse, error) {
+func (a ExternalContactsApi) GetExternalcontactsContacts(pageSize int, pageNumber int, q string, sortOrder string, expand []string, divisionIds []string) (*Contactlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/contacts"
@@ -1390,6 +1390,8 @@ func (a ExternalContactsApi) GetExternalcontactsContacts(pageSize int, pageNumbe
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
+	
+	queryParams["divisionIds"] = a.Configuration.APIClient.ParameterToString(divisionIds, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -3046,7 +3048,7 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationRelationships(extern
 // GetExternalcontactsOrganizations invokes GET /api/v2/externalcontacts/organizations
 //
 // Search for external organizations
-func (a ExternalContactsApi) GetExternalcontactsOrganizations(pageSize int, pageNumber int, q string, trustorId []string, sortOrder string, expand []string, includeTrustors bool) (*Externalorganizationlisting, *APIResponse, error) {
+func (a ExternalContactsApi) GetExternalcontactsOrganizations(pageSize int, pageNumber int, q string, trustorId []string, sortOrder string, expand []string, includeTrustors bool, divisionIds []string) (*Externalorganizationlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/organizations"
@@ -3086,6 +3088,8 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizations(pageSize int, page
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 	queryParams["includeTrustors"] = a.Configuration.APIClient.ParameterToString(includeTrustors, "")
+	
+	queryParams["divisionIds"] = a.Configuration.APIClient.ParameterToString(divisionIds, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -3548,7 +3552,7 @@ func (a ExternalContactsApi) GetExternalcontactsRelationship(relationshipId stri
 // GetExternalcontactsReversewhitepageslookup invokes GET /api/v2/externalcontacts/reversewhitepageslookup
 //
 // Look up contacts and externalOrganizations based on an attribute. Maximum of 25 values returned.
-func (a ExternalContactsApi) GetExternalcontactsReversewhitepageslookup(lookupVal string, expand []string) (*Reversewhitepageslookupresult, *APIResponse, error) {
+func (a ExternalContactsApi) GetExternalcontactsReversewhitepageslookup(lookupVal string, expand []string, divisionId string) (*Reversewhitepageslookupresult, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/reversewhitepageslookup"
@@ -3583,6 +3587,8 @@ func (a ExternalContactsApi) GetExternalcontactsReversewhitepageslookup(lookupVa
 	queryParams["lookupVal"] = a.Configuration.APIClient.ParameterToString(lookupVal, "")
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
+	
+	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -3633,10 +3639,94 @@ func (a ExternalContactsApi) GetExternalcontactsReversewhitepageslookup(lookupVa
 // GetExternalcontactsScanContacts invokes GET /api/v2/externalcontacts/scan/contacts
 //
 // Scan for external contacts using paging
-func (a ExternalContactsApi) GetExternalcontactsScanContacts(limit int, cursor string) (*Cursorcontactlisting, *APIResponse, error) {
+func (a ExternalContactsApi) GetExternalcontactsScanContacts(limit int, cursor string, divisionId string) (*Cursorcontactlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/scan/contacts"
+	defaultReturn := new(Cursorcontactlisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, "")
+	
+	queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, "")
+	
+	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Cursorcontactlisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Cursorcontactlisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetExternalcontactsScanContactsDivisionviewsAll invokes GET /api/v2/externalcontacts/scan/contacts/divisionviews/all
+//
+// Scan for external contacts using paging
+//
+// Preview: GetExternalcontactsScanContactsDivisionviewsAll is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+func (a ExternalContactsApi) GetExternalcontactsScanContactsDivisionviewsAll(limit int, cursor string) (*Cursorcontactlisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/externalcontacts/scan/contacts/divisionviews/all"
 	defaultReturn := new(Cursorcontactlisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3713,10 +3803,94 @@ func (a ExternalContactsApi) GetExternalcontactsScanContacts(limit int, cursor s
 // GetExternalcontactsScanNotes invokes GET /api/v2/externalcontacts/scan/notes
 //
 // Scan for notes using paging
-func (a ExternalContactsApi) GetExternalcontactsScanNotes(limit int, cursor string) (*Cursornotelisting, *APIResponse, error) {
+func (a ExternalContactsApi) GetExternalcontactsScanNotes(limit int, cursor string, divisionId string) (*Cursornotelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/scan/notes"
+	defaultReturn := new(Cursornotelisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, "")
+	
+	queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, "")
+	
+	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Cursornotelisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Cursornotelisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetExternalcontactsScanNotesDivisionviewsAll invokes GET /api/v2/externalcontacts/scan/notes/divisionviews/all
+//
+// Scan for notes using paging
+//
+// Preview: GetExternalcontactsScanNotesDivisionviewsAll is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+func (a ExternalContactsApi) GetExternalcontactsScanNotesDivisionviewsAll(limit int, cursor string) (*Cursornotelisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/externalcontacts/scan/notes/divisionviews/all"
 	defaultReturn := new(Cursornotelisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3793,10 +3967,94 @@ func (a ExternalContactsApi) GetExternalcontactsScanNotes(limit int, cursor stri
 // GetExternalcontactsScanOrganizations invokes GET /api/v2/externalcontacts/scan/organizations
 //
 // Scan for external organizations using paging
-func (a ExternalContactsApi) GetExternalcontactsScanOrganizations(limit int, cursor string) (*Cursororganizationlisting, *APIResponse, error) {
+func (a ExternalContactsApi) GetExternalcontactsScanOrganizations(limit int, cursor string, divisionId string) (*Cursororganizationlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/scan/organizations"
+	defaultReturn := new(Cursororganizationlisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, "")
+	
+	queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, "")
+	
+	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Cursororganizationlisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Cursororganizationlisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetExternalcontactsScanOrganizationsDivisionviewsAll invokes GET /api/v2/externalcontacts/scan/organizations/divisionviews/all
+//
+// Scan for external organizations using paging
+//
+// Preview: GetExternalcontactsScanOrganizationsDivisionviewsAll is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+func (a ExternalContactsApi) GetExternalcontactsScanOrganizationsDivisionviewsAll(limit int, cursor string) (*Cursororganizationlisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/externalcontacts/scan/organizations/divisionviews/all"
 	defaultReturn := new(Cursororganizationlisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -3873,10 +4131,94 @@ func (a ExternalContactsApi) GetExternalcontactsScanOrganizations(limit int, cur
 // GetExternalcontactsScanRelationships invokes GET /api/v2/externalcontacts/scan/relationships
 //
 // Scan for relationships
-func (a ExternalContactsApi) GetExternalcontactsScanRelationships(limit int, cursor string) (*Cursorrelationshiplisting, *APIResponse, error) {
+func (a ExternalContactsApi) GetExternalcontactsScanRelationships(limit int, cursor string, divisionId string) (*Cursorrelationshiplisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/scan/relationships"
+	defaultReturn := new(Cursorrelationshiplisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, "")
+	
+	queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, "")
+	
+	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Cursorrelationshiplisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Cursorrelationshiplisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetExternalcontactsScanRelationshipsDivisionviewsAll invokes GET /api/v2/externalcontacts/scan/relationships/divisionviews/all
+//
+// Scan for relationships
+//
+// Preview: GetExternalcontactsScanRelationshipsDivisionviewsAll is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+func (a ExternalContactsApi) GetExternalcontactsScanRelationshipsDivisionviewsAll(limit int, cursor string) (*Cursorrelationshiplisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/externalcontacts/scan/relationships/divisionviews/all"
 	defaultReturn := new(Cursorrelationshiplisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
@@ -4200,6 +4542,92 @@ func (a ExternalContactsApi) PostExternalcontactsBulkContactsAdd(body Bulkcontac
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Bulkcontactsresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostExternalcontactsBulkContactsDivisionviews invokes POST /api/v2/externalcontacts/bulk/contacts/divisionviews
+//
+// Bulk fetch contacts across divisions
+//
+// Preview: PostExternalcontactsBulkContactsDivisionviews is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+func (a ExternalContactsApi) PostExternalcontactsBulkContactsDivisionviews(body Bulkidsrequest) (*Bulkfetchcontactsresponse, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/externalcontacts/bulk/contacts/divisionviews"
+	defaultReturn := new(Bulkfetchcontactsresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ExternalContactsApi->PostExternalcontactsBulkContactsDivisionviews")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Bulkfetchcontactsresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Bulkfetchcontactsresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -4956,6 +5384,92 @@ func (a ExternalContactsApi) PostExternalcontactsBulkOrganizationsAdd(body Bulko
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Bulkorganizationsresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostExternalcontactsBulkOrganizationsDivisionviews invokes POST /api/v2/externalcontacts/bulk/organizations/divisionviews
+//
+// Bulk fetch organizations across divisions
+//
+// Preview: PostExternalcontactsBulkOrganizationsDivisionviews is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+func (a ExternalContactsApi) PostExternalcontactsBulkOrganizationsDivisionviews(body Bulkidsrequest) (*Bulkfetchorganizationsresponse, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/externalcontacts/bulk/organizations/divisionviews"
+	defaultReturn := new(Bulkfetchorganizationsresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ExternalContactsApi->PostExternalcontactsBulkOrganizationsDivisionviews")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Bulkfetchorganizationsresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Bulkfetchorganizationsresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

@@ -2507,6 +2507,96 @@ func (a RoutingApi) GetRoutingEmailDomainRoute(domainName string, routeId string
 	return successPayload, response, err
 }
 
+// GetRoutingEmailDomainRouteIdentityresolution invokes GET /api/v2/routing/email/domains/{domainName}/routes/{routeId}/identityresolution
+//
+// Get a route identity resolution setting.
+//
+// Preview: GetRoutingEmailDomainRouteIdentityresolution is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+func (a RoutingApi) GetRoutingEmailDomainRouteIdentityresolution(domainName string, routeId string) (*Identityresolutionconfig, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/email/domains/{domainName}/routes/{routeId}/identityresolution"
+	path = strings.Replace(path, "{domainName}", url.PathEscape(fmt.Sprintf("%v", domainName)), -1)
+	path = strings.Replace(path, "{routeId}", url.PathEscape(fmt.Sprintf("%v", routeId)), -1)
+	defaultReturn := new(Identityresolutionconfig)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'domainName' is set
+	if &domainName == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'domainName' when calling RoutingApi->GetRoutingEmailDomainRouteIdentityresolution")
+	}
+	// verify the required parameter 'routeId' is set
+	if &routeId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'routeId' when calling RoutingApi->GetRoutingEmailDomainRouteIdentityresolution")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Identityresolutionconfig
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Identityresolutionconfig" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // GetRoutingEmailDomainRoutes invokes GET /api/v2/routing/email/domains/{domainName}/routes
 //
 // Get routes
@@ -4251,6 +4341,90 @@ func (a RoutingApi) GetRoutingQueueEstimatedwaittime(queueId string, conversatio
 	return successPayload, response, err
 }
 
+// GetRoutingQueueIdentityresolution invokes GET /api/v2/routing/queues/{queueId}/identityresolution
+//
+// Get Queue IdentityResolution Settings.
+//
+// Preview: GetRoutingQueueIdentityresolution is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+func (a RoutingApi) GetRoutingQueueIdentityresolution(queueId string) (*Identityresolutionqueueconfig, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/identityresolution"
+	path = strings.Replace(path, "{queueId}", url.PathEscape(fmt.Sprintf("%v", queueId)), -1)
+	defaultReturn := new(Identityresolutionqueueconfig)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'queueId' is set
+	if &queueId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->GetRoutingQueueIdentityresolution")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Identityresolutionqueueconfig
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Identityresolutionqueueconfig" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // GetRoutingQueueMediatypeEstimatedwaittime invokes GET /api/v2/routing/queues/{queueId}/mediatypes/{mediaType}/estimatedwaittime
 //
 // Get Estimated Wait Time
@@ -5979,6 +6153,90 @@ func (a RoutingApi) GetRoutingSmsAvailablephonenumbers(countryCode string, phone
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Smsavailablephonenumberentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetRoutingSmsIdentityresolutionPhonenumber invokes GET /api/v2/routing/sms/identityresolution/phonenumbers/{addressId}
+//
+// Get a SMS identity resolution settings.
+//
+// Preview: GetRoutingSmsIdentityresolutionPhonenumber is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+func (a RoutingApi) GetRoutingSmsIdentityresolutionPhonenumber(addressId string) (*Identityresolutionconfig, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/sms/identityresolution/phonenumbers/{addressId}"
+	path = strings.Replace(path, "{addressId}", url.PathEscape(fmt.Sprintf("%v", addressId)), -1)
+	defaultReturn := new(Identityresolutionconfig)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'addressId' is set
+	if &addressId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'addressId' when calling RoutingApi->GetRoutingSmsIdentityresolutionPhonenumber")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Identityresolutionconfig
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Identityresolutionconfig" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -11509,6 +11767,104 @@ func (a RoutingApi) PutRoutingEmailDomainRoute(domainName string, routeId string
 	return successPayload, response, err
 }
 
+// PutRoutingEmailDomainRouteIdentityresolution invokes PUT /api/v2/routing/email/domains/{domainName}/routes/{routeId}/identityresolution
+//
+// Update identity resolution settings for a route.
+//
+// Preview: PutRoutingEmailDomainRouteIdentityresolution is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+func (a RoutingApi) PutRoutingEmailDomainRouteIdentityresolution(domainName string, routeId string, body Identityresolutionconfig) (*Identityresolutionconfig, *APIResponse, error) {
+	var httpMethod = "PUT"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/email/domains/{domainName}/routes/{routeId}/identityresolution"
+	path = strings.Replace(path, "{domainName}", url.PathEscape(fmt.Sprintf("%v", domainName)), -1)
+	path = strings.Replace(path, "{routeId}", url.PathEscape(fmt.Sprintf("%v", routeId)), -1)
+	defaultReturn := new(Identityresolutionconfig)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'domainName' is set
+	if &domainName == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'domainName' when calling RoutingApi->PutRoutingEmailDomainRouteIdentityresolution")
+	}
+	// verify the required parameter 'routeId' is set
+	if &routeId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'routeId' when calling RoutingApi->PutRoutingEmailDomainRouteIdentityresolution")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PutRoutingEmailDomainRouteIdentityresolution")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Identityresolutionconfig
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Identityresolutionconfig" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // PutRoutingEmailOutboundDomainActivation invokes PUT /api/v2/routing/email/outbound/domains/{domainId}/activation
 //
 // Request an activation status (cname + dkim) update of an outbound domain
@@ -11771,6 +12127,98 @@ func (a RoutingApi) PutRoutingQueue(queueId string, body Queuerequest) (*Queue, 
 	return successPayload, response, err
 }
 
+// PutRoutingQueueIdentityresolution invokes PUT /api/v2/routing/queues/{queueId}/identityresolution
+//
+// Update Queue IdentityResolution Settings.
+//
+// Preview: PutRoutingQueueIdentityresolution is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+func (a RoutingApi) PutRoutingQueueIdentityresolution(queueId string, body Identityresolutionqueueconfig) (*Identityresolutionqueueconfig, *APIResponse, error) {
+	var httpMethod = "PUT"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/identityresolution"
+	path = strings.Replace(path, "{queueId}", url.PathEscape(fmt.Sprintf("%v", queueId)), -1)
+	defaultReturn := new(Identityresolutionqueueconfig)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'queueId' is set
+	if &queueId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->PutRoutingQueueIdentityresolution")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PutRoutingQueueIdentityresolution")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Identityresolutionqueueconfig
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Identityresolutionqueueconfig" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // PutRoutingSettings invokes PUT /api/v2/routing/settings
 //
 // Update an organization's routing settings
@@ -11931,6 +12379,98 @@ func (a RoutingApi) PutRoutingSettingsTranscription(body Transcriptionsettings) 
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Transcriptionsettings" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PutRoutingSmsIdentityresolutionPhonenumber invokes PUT /api/v2/routing/sms/identityresolution/phonenumbers/{addressId}
+//
+// Update an SMS identity resolution settings.
+//
+// Preview: PutRoutingSmsIdentityresolutionPhonenumber is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+func (a RoutingApi) PutRoutingSmsIdentityresolutionPhonenumber(addressId string, body Identityresolutionconfig) (*Identityresolutionconfig, *APIResponse, error) {
+	var httpMethod = "PUT"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/sms/identityresolution/phonenumbers/{addressId}"
+	path = strings.Replace(path, "{addressId}", url.PathEscape(fmt.Sprintf("%v", addressId)), -1)
+	defaultReturn := new(Identityresolutionconfig)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'addressId' is set
+	if &addressId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'addressId' when calling RoutingApi->PutRoutingSmsIdentityresolutionPhonenumber")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PutRoutingSmsIdentityresolutionPhonenumber")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Identityresolutionconfig
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Identityresolutionconfig" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

@@ -8669,7 +8669,7 @@ func (a OutboundApi) PatchOutboundDnclistPhonenumbers(dncListId string, body Dnc
 // PatchOutboundSettings invokes PATCH /api/v2/outbound/settings
 //
 // Update the outbound settings for this organization
-func (a OutboundApi) PatchOutboundSettings(body Outboundsettings) (*APIResponse, error) {
+func (a OutboundApi) PatchOutboundSettings(body Outboundsettings, useMaxCallsPerAgentDecimal bool) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/settings"
@@ -8699,6 +8699,8 @@ func (a OutboundApi) PatchOutboundSettings(body Outboundsettings) (*APIResponse,
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["useMaxCallsPerAgentDecimal"] = a.Configuration.APIClient.ParameterToString(useMaxCallsPerAgentDecimal, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -9408,7 +9410,7 @@ func (a OutboundApi) PostOutboundCampaignrules(body Campaignrule) (*Campaignrule
 // PostOutboundCampaigns invokes POST /api/v2/outbound/campaigns
 //
 // Create a campaign.
-func (a OutboundApi) PostOutboundCampaigns(body Campaign) (*Campaign, *APIResponse, error) {
+func (a OutboundApi) PostOutboundCampaigns(body Campaign, useMaxCallsPerAgentDecimal bool) (*Campaign, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/campaigns"
@@ -9439,6 +9441,8 @@ func (a OutboundApi) PostOutboundCampaigns(body Campaign) (*Campaign, *APIRespon
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["useMaxCallsPerAgentDecimal"] = a.Configuration.APIClient.ParameterToString(useMaxCallsPerAgentDecimal, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -12293,7 +12297,7 @@ func (a OutboundApi) PutOutboundCallanalysisresponseset(callAnalysisSetId string
 // PutOutboundCampaign invokes PUT /api/v2/outbound/campaigns/{campaignId}
 //
 // Update a campaign.
-func (a OutboundApi) PutOutboundCampaign(campaignId string, body Campaign) (*Campaign, *APIResponse, error) {
+func (a OutboundApi) PutOutboundCampaign(campaignId string, body Campaign, useMaxCallsPerAgentDecimal bool) (*Campaign, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/campaigns/{campaignId}"
@@ -12330,6 +12334,8 @@ func (a OutboundApi) PutOutboundCampaign(campaignId string, body Campaign) (*Cam
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["useMaxCallsPerAgentDecimal"] = a.Configuration.APIClient.ParameterToString(useMaxCallsPerAgentDecimal, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

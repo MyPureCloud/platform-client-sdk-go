@@ -120,6 +120,9 @@ type Campaign struct {
 	// MaxCallsPerAgent - The maximum number of calls that can be placed per agent on this campaign
 	MaxCallsPerAgent *int `json:"maxCallsPerAgent,omitempty"`
 
+	// MaxCallsPerAgentDecimal - The maximum number of calls that can be placed per agent on this campaign with decimal precision
+	MaxCallsPerAgentDecimal *float64 `json:"maxCallsPerAgentDecimal,omitempty"`
+
 	// CallbackAutoAnswer - The option manages the auto-answer callback calls
 	CallbackAutoAnswer *bool `json:"callbackAutoAnswer,omitempty"`
 
@@ -281,6 +284,8 @@ func (o Campaign) MarshalJSON() ([]byte, error) {
 		
 		MaxCallsPerAgent *int `json:"maxCallsPerAgent,omitempty"`
 		
+		MaxCallsPerAgentDecimal *float64 `json:"maxCallsPerAgentDecimal,omitempty"`
+		
 		CallbackAutoAnswer *bool `json:"callbackAutoAnswer,omitempty"`
 		
 		DynamicLineBalancingSettings *Dynamiclinebalancingsettings `json:"dynamicLineBalancingSettings,omitempty"`
@@ -359,6 +364,8 @@ func (o Campaign) MarshalJSON() ([]byte, error) {
 		SkillColumns: o.SkillColumns,
 		
 		MaxCallsPerAgent: o.MaxCallsPerAgent,
+		
+		MaxCallsPerAgentDecimal: o.MaxCallsPerAgentDecimal,
 		
 		CallbackAutoAnswer: o.CallbackAutoAnswer,
 		
@@ -545,6 +552,10 @@ func (o *Campaign) UnmarshalJSON(b []byte) error {
 		o.MaxCallsPerAgent = &MaxCallsPerAgentInt
 	}
 	
+	if MaxCallsPerAgentDecimal, ok := CampaignMap["maxCallsPerAgentDecimal"].(float64); ok {
+		o.MaxCallsPerAgentDecimal = &MaxCallsPerAgentDecimal
+	}
+    
 	if CallbackAutoAnswer, ok := CampaignMap["callbackAutoAnswer"].(bool); ok {
 		o.CallbackAutoAnswer = &CallbackAutoAnswer
 	}

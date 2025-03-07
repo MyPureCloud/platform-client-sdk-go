@@ -12,7 +12,7 @@ type Identityproviderentitylisting struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Entities
-	Entities *[]Customprovider `json:"entities,omitempty"`
+	Entities *[]Samlprovider `json:"entities,omitempty"`
 
 	// PageSize
 	PageSize *int `json:"pageSize,omitempty"`
@@ -105,7 +105,7 @@ func (o Identityproviderentitylisting) MarshalJSON() ([]byte, error) {
 	type Alias Identityproviderentitylisting
 	
 	return json.Marshal(&struct { 
-		Entities *[]Customprovider `json:"entities,omitempty"`
+		Entities *[]Samlprovider `json:"entities,omitempty"`
 		
 		PageSize *int `json:"pageSize,omitempty"`
 		

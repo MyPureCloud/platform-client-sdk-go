@@ -1373,8 +1373,6 @@ func (a ChatApi) GetChatsUserMessages(userId string, limit string, before string
 // GetChatsUserSettings invokes GET /api/v2/chats/users/{userId}/settings
 //
 // Get a user's chat settings
-//
-// Preview: GetChatsUserSettings is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ChatApi) GetChatsUserSettings(userId string) (*Chatusersettings, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1457,8 +1455,6 @@ func (a ChatApi) GetChatsUserSettings(userId string) (*Chatusersettings, *APIRes
 // GetChatsUsersMeSettings invokes GET /api/v2/chats/users/me/settings
 //
 // Get a user's chat settings
-//
-// Preview: GetChatsUsersMeSettings is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ChatApi) GetChatsUsersMeSettings() (*Chatusersettings, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1894,8 +1890,6 @@ func (a ChatApi) PatchChatsUserMessage(userId string, messageId string, body Sen
 // PatchChatsUserSettings invokes PATCH /api/v2/chats/users/{userId}/settings
 //
 // Update a user's chat settings
-//
-// Preview: PatchChatsUserSettings is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ChatApi) PatchChatsUserSettings(userId string, body Chatusersettings) (*Chatusersettings, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -1986,8 +1980,6 @@ func (a ChatApi) PatchChatsUserSettings(userId string, body Chatusersettings) (*
 // PatchChatsUsersMeSettings invokes PATCH /api/v2/chats/users/me/settings
 //
 // Update a user's chat settings
-//
-// Preview: PatchChatsUsersMeSettings is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ChatApi) PatchChatsUsersMeSettings(body Chatusersettings) (*Chatusersettings, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables

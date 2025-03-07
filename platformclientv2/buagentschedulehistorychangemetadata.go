@@ -15,7 +15,7 @@ type Buagentschedulehistorychangemetadata struct {
 	// DateModified - The timestamp of the schedule change. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
-	// ModifiedBy - The user that made the schedule change
+	// ModifiedBy - The user that made the schedule change. The id may be 'System' if it was an automated process
 	ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
 }
 

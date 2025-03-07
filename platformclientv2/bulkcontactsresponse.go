@@ -11,13 +11,13 @@ import (
 type Bulkcontactsresponse struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Results
-	Results *[]Bulkresponseresultexternalcontactexternalcontact `json:"results,omitempty"`
+	// Results - A list of results for all of the Bulk operations specified in the request. Includes both successes and failures. Ordering is NOT guaranteed - may be in a different order from the request.
+	Results *[]Bulkresponseresultexternalcontactexternalcontactbulkentityerrorexternalcontact `json:"results,omitempty"`
 
-	// ErrorCount
+	// ErrorCount - The number of failed operations in the results.
 	ErrorCount *int `json:"errorCount,omitempty"`
 
-	// ErrorIndexes
+	// ErrorIndexes - The indexes of all failed operations in the results field.
 	ErrorIndexes *[]int `json:"errorIndexes,omitempty"`
 }
 
@@ -84,7 +84,7 @@ func (o Bulkcontactsresponse) MarshalJSON() ([]byte, error) {
 	type Alias Bulkcontactsresponse
 	
 	return json.Marshal(&struct { 
-		Results *[]Bulkresponseresultexternalcontactexternalcontact `json:"results,omitempty"`
+		Results *[]Bulkresponseresultexternalcontactexternalcontactbulkentityerrorexternalcontact `json:"results,omitempty"`
 		
 		ErrorCount *int `json:"errorCount,omitempty"`
 		

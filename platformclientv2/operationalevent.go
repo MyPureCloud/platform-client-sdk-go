@@ -18,6 +18,9 @@ type Operationalevent struct {
 	// EntityId - The unique identifier for the entity
 	EntityId *string `json:"entityId,omitempty"`
 
+	// EntityToken - A token representing the entity
+	EntityToken *string `json:"entityToken,omitempty"`
+
 	// EntityName - The name for the entity
 	EntityName *string `json:"entityName,omitempty"`
 
@@ -118,6 +121,8 @@ func (o Operationalevent) MarshalJSON() ([]byte, error) {
 		
 		EntityId *string `json:"entityId,omitempty"`
 		
+		EntityToken *string `json:"entityToken,omitempty"`
+		
 		EntityName *string `json:"entityName,omitempty"`
 		
 		PreviousValue *string `json:"previousValue,omitempty"`
@@ -138,6 +143,8 @@ func (o Operationalevent) MarshalJSON() ([]byte, error) {
 		EventDefinition: o.EventDefinition,
 		
 		EntityId: o.EntityId,
+		
+		EntityToken: o.EntityToken,
 		
 		EntityName: o.EntityName,
 		
@@ -172,6 +179,10 @@ func (o *Operationalevent) UnmarshalJSON(b []byte) error {
 	
 	if EntityId, ok := OperationaleventMap["entityId"].(string); ok {
 		o.EntityId = &EntityId
+	}
+    
+	if EntityToken, ok := OperationaleventMap["entityToken"].(string); ok {
+		o.EntityToken = &EntityToken
 	}
     
 	if EntityName, ok := OperationaleventMap["entityName"].(string); ok {

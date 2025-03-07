@@ -39,7 +39,7 @@ type Adherenceexplanationresponse struct {
 	// Notes - Notes about the adherence explanation
 	Notes *string `json:"notes,omitempty"`
 
-	// ReviewedBy - The user who reviewed the adherence explanation, if applicable
+	// ReviewedBy - The user who reviewed the adherence explanation, if applicable. The id may be 'System' if it was an automated process
 	ReviewedBy *Userreference `json:"reviewedBy,omitempty"`
 
 	// ReviewedDate - The timestamp for when the adherence explanation was reviewed, if applicable. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z

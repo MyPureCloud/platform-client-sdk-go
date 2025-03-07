@@ -32,8 +32,6 @@ func NewUploadsApiWithConfig(config *Configuration) *UploadsApi {
 // GetKnowledgeKnowledgebaseUploadsUrlsJob invokes GET /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/uploads/urls/jobs/{jobId}
 //
 // Get content upload from URL job status
-//
-// Preview: GetKnowledgeKnowledgebaseUploadsUrlsJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UploadsApi) GetKnowledgeKnowledgebaseUploadsUrlsJob(knowledgeBaseId string, jobId string) (*Getuploadsourceurljobstatusresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -296,8 +294,6 @@ func (a UploadsApi) PostKnowledgeDocumentuploads(body Uploadurlrequest) (*Upload
 // PostKnowledgeKnowledgebaseUploadsUrlsJobs invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/uploads/urls/jobs
 //
 // Create content upload from URL job
-//
-// Preview: PostKnowledgeKnowledgebaseUploadsUrlsJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UploadsApi) PostKnowledgeKnowledgebaseUploadsUrlsJobs(knowledgeBaseId string, body Createuploadsourceurljobrequest) (*Createuploadsourceurljobresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

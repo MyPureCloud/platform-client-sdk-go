@@ -41,6 +41,24 @@ type Pureengage struct {
 	// Certificates
 	Certificates *[]string `json:"certificates,omitempty"`
 
+	// LogoImageData
+	LogoImageData *string `json:"logoImageData,omitempty"`
+
+	// NameIdentifierFormat
+	NameIdentifierFormat *string `json:"nameIdentifierFormat,omitempty"`
+
+	// SsoBinding
+	SsoBinding *string `json:"ssoBinding,omitempty"`
+
+	// SignAuthnRequests
+	SignAuthnRequests *bool `json:"signAuthnRequests,omitempty"`
+
+	// ProviderName
+	ProviderName *string `json:"providerName,omitempty"`
+
+	// DisplayOnLogin
+	DisplayOnLogin *bool `json:"displayOnLogin,omitempty"`
+
 	// AutoProvisionUsers
 	AutoProvisionUsers *bool `json:"autoProvisionUsers,omitempty"`
 
@@ -131,6 +149,18 @@ func (o Pureengage) MarshalJSON() ([]byte, error) {
 		
 		Certificates *[]string `json:"certificates,omitempty"`
 		
+		LogoImageData *string `json:"logoImageData,omitempty"`
+		
+		NameIdentifierFormat *string `json:"nameIdentifierFormat,omitempty"`
+		
+		SsoBinding *string `json:"ssoBinding,omitempty"`
+		
+		SignAuthnRequests *bool `json:"signAuthnRequests,omitempty"`
+		
+		ProviderName *string `json:"providerName,omitempty"`
+		
+		DisplayOnLogin *bool `json:"displayOnLogin,omitempty"`
+		
 		AutoProvisionUsers *bool `json:"autoProvisionUsers,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -155,6 +185,18 @@ func (o Pureengage) MarshalJSON() ([]byte, error) {
 		Certificate: o.Certificate,
 		
 		Certificates: o.Certificates,
+		
+		LogoImageData: o.LogoImageData,
+		
+		NameIdentifierFormat: o.NameIdentifierFormat,
+		
+		SsoBinding: o.SsoBinding,
+		
+		SignAuthnRequests: o.SignAuthnRequests,
+		
+		ProviderName: o.ProviderName,
+		
+		DisplayOnLogin: o.DisplayOnLogin,
 		
 		AutoProvisionUsers: o.AutoProvisionUsers,
 		
@@ -211,6 +253,30 @@ func (o *Pureengage) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(CertificatesString, &o.Certificates)
 	}
 	
+	if LogoImageData, ok := PureengageMap["logoImageData"].(string); ok {
+		o.LogoImageData = &LogoImageData
+	}
+    
+	if NameIdentifierFormat, ok := PureengageMap["nameIdentifierFormat"].(string); ok {
+		o.NameIdentifierFormat = &NameIdentifierFormat
+	}
+    
+	if SsoBinding, ok := PureengageMap["ssoBinding"].(string); ok {
+		o.SsoBinding = &SsoBinding
+	}
+    
+	if SignAuthnRequests, ok := PureengageMap["signAuthnRequests"].(bool); ok {
+		o.SignAuthnRequests = &SignAuthnRequests
+	}
+    
+	if ProviderName, ok := PureengageMap["providerName"].(string); ok {
+		o.ProviderName = &ProviderName
+	}
+    
+	if DisplayOnLogin, ok := PureengageMap["displayOnLogin"].(bool); ok {
+		o.DisplayOnLogin = &DisplayOnLogin
+	}
+    
 	if AutoProvisionUsers, ok := PureengageMap["autoProvisionUsers"].(bool); ok {
 		o.AutoProvisionUsers = &AutoProvisionUsers
 	}

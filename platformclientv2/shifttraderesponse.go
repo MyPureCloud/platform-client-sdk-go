@@ -57,7 +57,7 @@ type Shifttraderesponse struct {
 	// AcceptableIntervals - Time frames when the initiating user is willing to accept trades. Empty means giving up the shift. Intervals are represented as an ISO-8601 string. For example: YYYY-MM-DDThh:mm:ss/YYYY-MM-DDThh:mm:ss
 	AcceptableIntervals *[]string `json:"acceptableIntervals,omitempty"`
 
-	// ReviewedBy - The user who reviewed this shift trade
+	// ReviewedBy - The user who reviewed this shift trade. The id may be 'System' if it was an automated process
 	ReviewedBy *Userreference `json:"reviewedBy,omitempty"`
 
 	// ReviewedDate - The timestamp when this shift trade was reviewed. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z

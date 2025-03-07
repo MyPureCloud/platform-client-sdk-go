@@ -15,6 +15,9 @@ type Externalcontact struct {
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
+	// Division - The division to which this entity belongs.
+	Division *Writablestarrabledivision `json:"division,omitempty"`
+
 	// FirstName - The first name of the contact.
 	FirstName *string `json:"firstName,omitempty"`
 
@@ -190,6 +193,8 @@ func (o Externalcontact) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
+		Division *Writablestarrabledivision `json:"division,omitempty"`
+		
 		FirstName *string `json:"firstName,omitempty"`
 		
 		MiddleName *string `json:"middleName,omitempty"`
@@ -254,6 +259,8 @@ func (o Externalcontact) MarshalJSON() ([]byte, error) {
 		Alias
 	}{ 
 		Id: o.Id,
+		
+		Division: o.Division,
 		
 		FirstName: o.FirstName,
 		
@@ -331,6 +338,11 @@ func (o *Externalcontact) UnmarshalJSON(b []byte) error {
 		o.Id = &Id
 	}
     
+	if Division, ok := ExternalcontactMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
 	if FirstName, ok := ExternalcontactMap["firstName"].(string); ok {
 		o.FirstName = &FirstName
 	}

@@ -18,7 +18,7 @@ type Bulkupdateshifttradestateresultitem struct {
 	// State - The state of the shift trade after the update request is processed
 	State *string `json:"state,omitempty"`
 
-	// ReviewedBy - The user who reviewed the request, if applicable
+	// ReviewedBy - The user who reviewed the request, if applicable. The id may be 'System' if it was an automated process
 	ReviewedBy *Userreference `json:"reviewedBy,omitempty"`
 
 	// ReviewedDate - The date the request was reviewed, if applicable. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z

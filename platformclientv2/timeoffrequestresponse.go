@@ -54,13 +54,13 @@ type Timeoffrequestresponse struct {
 	// Notes - Notes about the time off request
 	Notes *string `json:"notes,omitempty"`
 
-	// SubmittedBy - The user who submitted this time off request
+	// SubmittedBy - The user who submitted this time off request. The id may be 'System' if it was an automated process
 	SubmittedBy *Userreference `json:"submittedBy,omitempty"`
 
 	// SubmittedDate - The timestamp when this request was submitted. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	SubmittedDate *time.Time `json:"submittedDate,omitempty"`
 
-	// ReviewedBy - The user who reviewed this time off request
+	// ReviewedBy - The user who reviewed this time off request. The id may be 'System' if it was an automated process
 	ReviewedBy *Userreference `json:"reviewedBy,omitempty"`
 
 	// ReviewedDate - The timestamp when this request was reviewed. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z

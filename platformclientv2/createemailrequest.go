@@ -58,6 +58,9 @@ type Createemailrequest struct {
 
 	// ExternalContactId - The external contact with which the email should be associated. This field is only valid for OUTBOUND email.
 	ExternalContactId *string `json:"externalContactId,omitempty"`
+
+	// UtilizationLabel - Optional. Controls the number of agent interactions for INBOUND communications
+	UtilizationLabel *string `json:"utilizationLabel,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -154,6 +157,8 @@ func (o Createemailrequest) MarshalJSON() ([]byte, error) {
 		TextBody *string `json:"textBody,omitempty"`
 		
 		ExternalContactId *string `json:"externalContactId,omitempty"`
+		
+		UtilizationLabel *string `json:"utilizationLabel,omitempty"`
 		Alias
 	}{ 
 		QueueId: o.QueueId,
@@ -187,6 +192,8 @@ func (o Createemailrequest) MarshalJSON() ([]byte, error) {
 		TextBody: o.TextBody,
 		
 		ExternalContactId: o.ExternalContactId,
+		
+		UtilizationLabel: o.UtilizationLabel,
 		Alias:    (Alias)(o),
 	})
 }
@@ -263,6 +270,10 @@ func (o *Createemailrequest) UnmarshalJSON(b []byte) error {
     
 	if ExternalContactId, ok := CreateemailrequestMap["externalContactId"].(string); ok {
 		o.ExternalContactId = &ExternalContactId
+	}
+    
+	if UtilizationLabel, ok := CreateemailrequestMap["utilizationLabel"].(string); ok {
+		o.UtilizationLabel = &UtilizationLabel
 	}
     
 

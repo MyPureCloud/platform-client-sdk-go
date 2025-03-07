@@ -4080,8 +4080,6 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseOperationsUsersQuery(knowledgeBas
 // GetKnowledgeKnowledgebaseParseJob invokes GET /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/parse/jobs/{parseJobId}
 //
 // Get parse job report
-//
-// Preview: GetKnowledgeKnowledgebaseParseJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a KnowledgeApi) GetKnowledgeKnowledgebaseParseJob(knowledgeBaseId string, parseJobId string, expand []string) (*Knowledgeparsejobresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4810,8 +4808,6 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseUnansweredGroups(knowledgeBaseId 
 // GetKnowledgeKnowledgebaseUploadsUrlsJob invokes GET /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/uploads/urls/jobs/{jobId}
 //
 // Get content upload from URL job status
-//
-// Preview: GetKnowledgeKnowledgebaseUploadsUrlsJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a KnowledgeApi) GetKnowledgeKnowledgebaseUploadsUrlsJob(knowledgeBaseId string, jobId string) (*Getuploadsourceurljobstatusresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -6245,8 +6241,6 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLanguageDocumentsImport(knowled
 // PatchKnowledgeKnowledgebaseParseJob invokes PATCH /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/parse/jobs/{parseJobId}
 //
 // Send update to the parse operation
-//
-// Preview: PatchKnowledgeKnowledgebaseParseJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a KnowledgeApi) PatchKnowledgeKnowledgebaseParseJob(knowledgeBaseId string, parseJobId string, body Knowledgeparsejobrequestpatch) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -9451,8 +9445,6 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageTrainings(knowledgeBaseI
 // PostKnowledgeKnowledgebaseParseJobImport invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/parse/jobs/{parseJobId}/import
 //
 // Import the parsed articles
-//
-// Preview: PostKnowledgeKnowledgebaseParseJobImport is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a KnowledgeApi) PostKnowledgeKnowledgebaseParseJobImport(knowledgeBaseId string, parseJobId string, body Knowledgeparsejobrequestimport) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -9542,8 +9534,6 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseParseJobImport(knowledgeBaseId s
 // PostKnowledgeKnowledgebaseParseJobs invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/parse/jobs
 //
 // Create parse job
-//
-// Preview: PostKnowledgeKnowledgebaseParseJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a KnowledgeApi) PostKnowledgeKnowledgebaseParseJobs(knowledgeBaseId string, body Knowledgeparsejobrequest) (*Knowledgeparsejobresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -9811,7 +9801,7 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseSourcesSalesforce(knowledgeBaseI
 // PostKnowledgeKnowledgebaseSourcesSalesforceSourceIdSync invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/sources/salesforce/{sourceId}/sync
 //
 // Start sync on Salesforce Knowledge integration source
-func (a KnowledgeApi) PostKnowledgeKnowledgebaseSourcesSalesforceSourceIdSync(knowledgeBaseId string, sourceId string) (*Sourcesyncresponse, *APIResponse, error) {
+func (a KnowledgeApi) PostKnowledgeKnowledgebaseSourcesSalesforceSourceIdSync(knowledgeBaseId string, sourceId string, body interface{}) (*Sourcesyncresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/sources/salesforce/{sourceId}/sync"
@@ -9880,6 +9870,9 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseSourcesSalesforceSourceIdSync(kn
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
+	// body params
+	postBody = &body
+
 	var successPayload *Sourcesyncresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
@@ -9989,7 +9982,7 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseSourcesServicenow(knowledgeBaseI
 // PostKnowledgeKnowledgebaseSourcesServicenowSourceIdSync invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/sources/servicenow/{sourceId}/sync
 //
 // Start synchronization on ServiceNow Knowledge integration source
-func (a KnowledgeApi) PostKnowledgeKnowledgebaseSourcesServicenowSourceIdSync(knowledgeBaseId string, sourceId string) (*Sourcesyncresponse, *APIResponse, error) {
+func (a KnowledgeApi) PostKnowledgeKnowledgebaseSourcesServicenowSourceIdSync(knowledgeBaseId string, sourceId string, body interface{}) (*Sourcesyncresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/sources/servicenow/{sourceId}/sync"
@@ -10058,6 +10051,9 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseSourcesServicenowSourceIdSync(kn
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
+	// body params
+	postBody = &body
+
 	var successPayload *Sourcesyncresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
@@ -10167,8 +10163,6 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseSynchronizeJobs(knowledgeBaseId 
 // PostKnowledgeKnowledgebaseUploadsUrlsJobs invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/uploads/urls/jobs
 //
 // Create content upload from URL job
-//
-// Preview: PostKnowledgeKnowledgebaseUploadsUrlsJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a KnowledgeApi) PostKnowledgeKnowledgebaseUploadsUrlsJobs(knowledgeBaseId string, body Createuploadsourceurljobrequest) (*Createuploadsourceurljobresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

@@ -14,6 +14,9 @@ type Identityresolutionconfig struct {
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
+	// Division - The division to which this entity belongs.
+	Division *Writablestarrabledivision `json:"division,omitempty"`
+
 	// ResolveIdentities - Whether the channel should resolve identities
 	ResolveIdentities *bool `json:"resolveIdentities,omitempty"`
 
@@ -86,12 +89,16 @@ func (o Identityresolutionconfig) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
+		Division *Writablestarrabledivision `json:"division,omitempty"`
+		
 		ResolveIdentities *bool `json:"resolveIdentities,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
+		
+		Division: o.Division,
 		
 		ResolveIdentities: o.ResolveIdentities,
 		
@@ -111,6 +118,11 @@ func (o *Identityresolutionconfig) UnmarshalJSON(b []byte) error {
 		o.Id = &Id
 	}
     
+	if Division, ok := IdentityresolutionconfigMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
 	if ResolveIdentities, ok := IdentityresolutionconfigMap["resolveIdentities"].(bool); ok {
 		o.ResolveIdentities = &ResolveIdentities
 	}

@@ -24,7 +24,7 @@ type Userexpands struct {
 	ConversationSummary *Userconversationsummary `json:"conversationSummary,omitempty"`
 
 	// OutOfOffice - Determine if out of office is enabled
-	OutOfOffice *Outofoffice `json:"outOfOffice,omitempty"`
+	OutOfOffice **Outofoffice `json:"outOfOffice,omitempty"`
 
 	// Geolocation - Current geolocation position
 	Geolocation *Geolocation `json:"geolocation,omitempty"`
@@ -107,7 +107,7 @@ func (o Userexpands) MarshalJSON() ([]byte, error) {
 		
 		ConversationSummary *Userconversationsummary `json:"conversationSummary,omitempty"`
 		
-		OutOfOffice *Outofoffice `json:"outOfOffice,omitempty"`
+		OutOfOffice **Outofoffice `json:"outOfOffice,omitempty"`
 		
 		Geolocation *Geolocation `json:"geolocation,omitempty"`
 		

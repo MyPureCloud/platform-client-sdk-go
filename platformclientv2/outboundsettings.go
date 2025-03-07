@@ -30,6 +30,9 @@ type Outboundsettings struct {
 	// MaxCallsPerAgent - The maximum number of calls that can be placed per agent on any campaign
 	MaxCallsPerAgent *int `json:"maxCallsPerAgent,omitempty"`
 
+	// MaxCallsPerAgentDecimal - The maximum number of calls that can be placed per agent on any campaign with decimal precision
+	MaxCallsPerAgentDecimal *float64 `json:"maxCallsPerAgentDecimal,omitempty"`
+
 	// MaxConfigurableCallsPerAgent - The maximum number of calls that can be configured to be placed per agent on any campaign
 	MaxConfigurableCallsPerAgent *int `json:"maxConfigurableCallsPerAgent,omitempty"`
 
@@ -143,6 +146,8 @@ func (o Outboundsettings) MarshalJSON() ([]byte, error) {
 		
 		MaxCallsPerAgent *int `json:"maxCallsPerAgent,omitempty"`
 		
+		MaxCallsPerAgentDecimal *float64 `json:"maxCallsPerAgentDecimal,omitempty"`
+		
 		MaxConfigurableCallsPerAgent *int `json:"maxConfigurableCallsPerAgent,omitempty"`
 		
 		MaxLineUtilization *float64 `json:"maxLineUtilization,omitempty"`
@@ -169,6 +174,8 @@ func (o Outboundsettings) MarshalJSON() ([]byte, error) {
 		Version: o.Version,
 		
 		MaxCallsPerAgent: o.MaxCallsPerAgent,
+		
+		MaxCallsPerAgentDecimal: o.MaxCallsPerAgentDecimal,
 		
 		MaxConfigurableCallsPerAgent: o.MaxConfigurableCallsPerAgent,
 		
@@ -222,6 +229,10 @@ func (o *Outboundsettings) UnmarshalJSON(b []byte) error {
 		o.MaxCallsPerAgent = &MaxCallsPerAgentInt
 	}
 	
+	if MaxCallsPerAgentDecimal, ok := OutboundsettingsMap["maxCallsPerAgentDecimal"].(float64); ok {
+		o.MaxCallsPerAgentDecimal = &MaxCallsPerAgentDecimal
+	}
+    
 	if MaxConfigurableCallsPerAgent, ok := OutboundsettingsMap["maxConfigurableCallsPerAgent"].(float64); ok {
 		MaxConfigurableCallsPerAgentInt := int(MaxConfigurableCallsPerAgent)
 		o.MaxConfigurableCallsPerAgent = &MaxConfigurableCallsPerAgentInt

@@ -66,6 +66,12 @@ type Coachingappointmentresponse struct {
 	// ExternalLinks - The list of external links related to the appointment
 	ExternalLinks *[]string `json:"externalLinks,omitempty"`
 
+	// Location - The location of the appointment
+	Location *string `json:"location,omitempty"`
+
+	// ShareInsightsData - Whether to share the insight data
+	ShareInsightsData *bool `json:"shareInsightsData,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -201,6 +207,10 @@ func (o Coachingappointmentresponse) MarshalJSON() ([]byte, error) {
 		
 		ExternalLinks *[]string `json:"externalLinks,omitempty"`
 		
+		Location *string `json:"location,omitempty"`
+		
+		ShareInsightsData *bool `json:"shareInsightsData,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -239,6 +249,10 @@ func (o Coachingappointmentresponse) MarshalJSON() ([]byte, error) {
 		DateCompleted: DateCompleted,
 		
 		ExternalLinks: o.ExternalLinks,
+		
+		Location: o.Location,
+		
+		ShareInsightsData: o.ShareInsightsData,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -337,6 +351,14 @@ func (o *Coachingappointmentresponse) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ExternalLinksString, &o.ExternalLinks)
 	}
 	
+	if Location, ok := CoachingappointmentresponseMap["location"].(string); ok {
+		o.Location = &Location
+	}
+    
+	if ShareInsightsData, ok := CoachingappointmentresponseMap["shareInsightsData"].(bool); ok {
+		o.ShareInsightsData = &ShareInsightsData
+	}
+    
 	if SelfUri, ok := CoachingappointmentresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

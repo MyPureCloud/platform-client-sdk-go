@@ -18,7 +18,7 @@ type Workplanbidmetadata struct {
 	// CreatedDate - The date the entity created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	CreatedDate *time.Time `json:"createdDate,omitempty"`
 
-	// ModifiedBy - The user who modified the entity
+	// ModifiedBy - The user who modified the entity. The id may be 'System' if it was an automated process
 	ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
 
 	// ModifiedDate - The entity last modified date. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z

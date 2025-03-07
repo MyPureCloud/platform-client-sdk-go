@@ -14,9 +14,6 @@ type Messagecontent struct {
 	// ContentType - Type of this content element.
 	ContentType *string `json:"contentType,omitempty"`
 
-	// Location - Location content.
-	Location *Contentlocation `json:"location,omitempty"`
-
 	// Attachment - Attachment content.
 	Attachment *Contentattachment `json:"attachment,omitempty"`
 
@@ -58,6 +55,9 @@ type Messagecontent struct {
 
 	// QuickReplyV2 - Quick reply V2 content.
 	QuickReplyV2 *Contentquickreplyv2 `json:"quickReplyV2,omitempty"`
+
+	// DatePicker - DatePicker content.
+	DatePicker *Contentdatepicker `json:"datePicker,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -125,8 +125,6 @@ func (o Messagecontent) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		ContentType *string `json:"contentType,omitempty"`
 		
-		Location *Contentlocation `json:"location,omitempty"`
-		
 		Attachment *Contentattachment `json:"attachment,omitempty"`
 		
 		QuickReply *Contentquickreply `json:"quickReply,omitempty"`
@@ -154,11 +152,11 @@ func (o Messagecontent) MarshalJSON() ([]byte, error) {
 		Text *Contenttext `json:"text,omitempty"`
 		
 		QuickReplyV2 *Contentquickreplyv2 `json:"quickReplyV2,omitempty"`
+		
+		DatePicker *Contentdatepicker `json:"datePicker,omitempty"`
 		Alias
 	}{ 
 		ContentType: o.ContentType,
-		
-		Location: o.Location,
 		
 		Attachment: o.Attachment,
 		
@@ -187,6 +185,8 @@ func (o Messagecontent) MarshalJSON() ([]byte, error) {
 		Text: o.Text,
 		
 		QuickReplyV2: o.QuickReplyV2,
+		
+		DatePicker: o.DatePicker,
 		Alias:    (Alias)(o),
 	})
 }
@@ -202,11 +202,6 @@ func (o *Messagecontent) UnmarshalJSON(b []byte) error {
 		o.ContentType = &ContentType
 	}
     
-	if Location, ok := MessagecontentMap["location"].(map[string]interface{}); ok {
-		LocationString, _ := json.Marshal(Location)
-		json.Unmarshal(LocationString, &o.Location)
-	}
-	
 	if Attachment, ok := MessagecontentMap["attachment"].(map[string]interface{}); ok {
 		AttachmentString, _ := json.Marshal(Attachment)
 		json.Unmarshal(AttachmentString, &o.Attachment)
@@ -275,6 +270,11 @@ func (o *Messagecontent) UnmarshalJSON(b []byte) error {
 	if QuickReplyV2, ok := MessagecontentMap["quickReplyV2"].(map[string]interface{}); ok {
 		QuickReplyV2String, _ := json.Marshal(QuickReplyV2)
 		json.Unmarshal(QuickReplyV2String, &o.QuickReplyV2)
+	}
+	
+	if DatePicker, ok := MessagecontentMap["datePicker"].(map[string]interface{}); ok {
+		DatePickerString, _ := json.Marshal(DatePicker)
+		json.Unmarshal(DatePickerString, &o.DatePicker)
 	}
 	
 

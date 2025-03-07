@@ -15,13 +15,13 @@ type Wfmversionedentitymetadata struct {
 	// Version - The version of the associated entity.  Used to prevent conflicts on concurrent edits
 	Version *int `json:"version,omitempty"`
 
-	// ModifiedBy - The user who last modified the associated entity
+	// ModifiedBy - The user who last modified the associated entity. The id may be 'System' if it was an automated process
 	ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
 
 	// DateModified - The date the associated entity was last modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
-	// CreatedBy - The user who created the associated entity, if available
+	// CreatedBy - The user who created the associated entity, if available. The id may be 'System' if it was an automated process
 	CreatedBy *Userreference `json:"createdBy,omitempty"`
 
 	// DateCreated - The date the associated entity was created, if available. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z

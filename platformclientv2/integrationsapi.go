@@ -603,7 +603,7 @@ func (a IntegrationsApi) GetIntegrations(pageSize int, pageNumber int, sortBy st
 // GetIntegrationsAction invokes GET /api/v2/integrations/actions/{actionId}
 //
 // Retrieves a single Action matching id.
-func (a IntegrationsApi) GetIntegrationsAction(actionId string, expand string, includeConfig bool) (*Action, *APIResponse, error) {
+func (a IntegrationsApi) GetIntegrationsAction(actionId string, expand string, flatten bool, includeConfig bool) (*Action, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/actions/{actionId}"
@@ -637,6 +637,8 @@ func (a IntegrationsApi) GetIntegrationsAction(actionId string, expand string, i
 	}
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
+	
+	queryParams["flatten"] = a.Configuration.APIClient.ParameterToString(flatten, "")
 	
 	queryParams["includeConfig"] = a.Configuration.APIClient.ParameterToString(includeConfig, "")
 	
@@ -689,7 +691,7 @@ func (a IntegrationsApi) GetIntegrationsAction(actionId string, expand string, i
 // GetIntegrationsActionDraft invokes GET /api/v2/integrations/actions/{actionId}/draft
 //
 // Retrieve a Draft
-func (a IntegrationsApi) GetIntegrationsActionDraft(actionId string, expand string, includeConfig bool) (*Action, *APIResponse, error) {
+func (a IntegrationsApi) GetIntegrationsActionDraft(actionId string, expand string, flatten bool, includeConfig bool) (*Action, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/actions/{actionId}/draft"
@@ -723,6 +725,8 @@ func (a IntegrationsApi) GetIntegrationsActionDraft(actionId string, expand stri
 	}
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
+	
+	queryParams["flatten"] = a.Configuration.APIClient.ParameterToString(flatten, "")
 	
 	queryParams["includeConfig"] = a.Configuration.APIClient.ParameterToString(includeConfig, "")
 	

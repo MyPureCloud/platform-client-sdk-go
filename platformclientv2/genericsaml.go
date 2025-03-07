@@ -44,11 +44,23 @@ type Genericsaml struct {
 	// LogoImageData
 	LogoImageData *string `json:"logoImageData,omitempty"`
 
-	// EndpointCompression
-	EndpointCompression *bool `json:"endpointCompression,omitempty"`
-
 	// NameIdentifierFormat
 	NameIdentifierFormat *string `json:"nameIdentifierFormat,omitempty"`
+
+	// SsoBinding
+	SsoBinding *string `json:"ssoBinding,omitempty"`
+
+	// SignAuthnRequests
+	SignAuthnRequests *bool `json:"signAuthnRequests,omitempty"`
+
+	// ProviderName
+	ProviderName *string `json:"providerName,omitempty"`
+
+	// DisplayOnLogin
+	DisplayOnLogin *bool `json:"displayOnLogin,omitempty"`
+
+	// EndpointCompression
+	EndpointCompression *bool `json:"endpointCompression,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -139,9 +151,17 @@ func (o Genericsaml) MarshalJSON() ([]byte, error) {
 		
 		LogoImageData *string `json:"logoImageData,omitempty"`
 		
-		EndpointCompression *bool `json:"endpointCompression,omitempty"`
-		
 		NameIdentifierFormat *string `json:"nameIdentifierFormat,omitempty"`
+		
+		SsoBinding *string `json:"ssoBinding,omitempty"`
+		
+		SignAuthnRequests *bool `json:"signAuthnRequests,omitempty"`
+		
+		ProviderName *string `json:"providerName,omitempty"`
+		
+		DisplayOnLogin *bool `json:"displayOnLogin,omitempty"`
+		
+		EndpointCompression *bool `json:"endpointCompression,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
@@ -168,9 +188,17 @@ func (o Genericsaml) MarshalJSON() ([]byte, error) {
 		
 		LogoImageData: o.LogoImageData,
 		
-		EndpointCompression: o.EndpointCompression,
-		
 		NameIdentifierFormat: o.NameIdentifierFormat,
+		
+		SsoBinding: o.SsoBinding,
+		
+		SignAuthnRequests: o.SignAuthnRequests,
+		
+		ProviderName: o.ProviderName,
+		
+		DisplayOnLogin: o.DisplayOnLogin,
+		
+		EndpointCompression: o.EndpointCompression,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -229,12 +257,28 @@ func (o *Genericsaml) UnmarshalJSON(b []byte) error {
 		o.LogoImageData = &LogoImageData
 	}
     
-	if EndpointCompression, ok := GenericsamlMap["endpointCompression"].(bool); ok {
-		o.EndpointCompression = &EndpointCompression
-	}
-    
 	if NameIdentifierFormat, ok := GenericsamlMap["nameIdentifierFormat"].(string); ok {
 		o.NameIdentifierFormat = &NameIdentifierFormat
+	}
+    
+	if SsoBinding, ok := GenericsamlMap["ssoBinding"].(string); ok {
+		o.SsoBinding = &SsoBinding
+	}
+    
+	if SignAuthnRequests, ok := GenericsamlMap["signAuthnRequests"].(bool); ok {
+		o.SignAuthnRequests = &SignAuthnRequests
+	}
+    
+	if ProviderName, ok := GenericsamlMap["providerName"].(string); ok {
+		o.ProviderName = &ProviderName
+	}
+    
+	if DisplayOnLogin, ok := GenericsamlMap["displayOnLogin"].(bool); ok {
+		o.DisplayOnLogin = &DisplayOnLogin
+	}
+    
+	if EndpointCompression, ok := GenericsamlMap["endpointCompression"].(bool); ok {
+		o.EndpointCompression = &EndpointCompression
 	}
     
 	if SelfUri, ok := GenericsamlMap["selfUri"].(string); ok {

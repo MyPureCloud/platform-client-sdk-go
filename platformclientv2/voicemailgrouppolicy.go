@@ -32,6 +32,9 @@ type Voicemailgrouppolicy struct {
 	// LanguagePreference - The language preference for the group.  Used for group voicemail transcription
 	LanguagePreference *string `json:"languagePreference,omitempty"`
 
+	// EmailPolicy - The email policy for the group
+	EmailPolicy *Groupemailpolicy `json:"emailPolicy,omitempty"`
+
 	// RotateCallsSecs - How many seconds to ring before rotating to the next member in the group
 	RotateCallsSecs *int `json:"rotateCallsSecs,omitempty"`
 
@@ -128,6 +131,8 @@ func (o Voicemailgrouppolicy) MarshalJSON() ([]byte, error) {
 		
 		LanguagePreference *string `json:"languagePreference,omitempty"`
 		
+		EmailPolicy *Groupemailpolicy `json:"emailPolicy,omitempty"`
+		
 		RotateCallsSecs *int `json:"rotateCallsSecs,omitempty"`
 		
 		StopRingingAfterRotations *int `json:"stopRingingAfterRotations,omitempty"`
@@ -154,6 +159,8 @@ func (o Voicemailgrouppolicy) MarshalJSON() ([]byte, error) {
 		IncludeEmailTranscriptions: o.IncludeEmailTranscriptions,
 		
 		LanguagePreference: o.LanguagePreference,
+		
+		EmailPolicy: o.EmailPolicy,
 		
 		RotateCallsSecs: o.RotateCallsSecs,
 		
@@ -206,6 +213,11 @@ func (o *Voicemailgrouppolicy) UnmarshalJSON(b []byte) error {
 		o.LanguagePreference = &LanguagePreference
 	}
     
+	if EmailPolicy, ok := VoicemailgrouppolicyMap["emailPolicy"].(map[string]interface{}); ok {
+		EmailPolicyString, _ := json.Marshal(EmailPolicy)
+		json.Unmarshal(EmailPolicyString, &o.EmailPolicy)
+	}
+	
 	if RotateCallsSecs, ok := VoicemailgrouppolicyMap["rotateCallsSecs"].(float64); ok {
 		RotateCallsSecsInt := int(RotateCallsSecs)
 		o.RotateCallsSecs = &RotateCallsSecsInt

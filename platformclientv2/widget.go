@@ -92,6 +92,9 @@ type Widget struct {
 	// SelectedStatuses - Indicates the selected statuses used to filter the agent widget in the dashboard.
 	SelectedStatuses *[]string `json:"selectedStatuses,omitempty"`
 
+	// SelectedSegmentTypes - Indicates the selected segment types used to filter the agent activity in the dashboard.
+	SelectedSegmentTypes *[]string `json:"selectedSegmentTypes,omitempty"`
+
 	// AgentInteractionSortOrder - The sort order of the interactions in the agent status widget.
 	AgentInteractionSortOrder *string `json:"agentInteractionSortOrder,omitempty"`
 }
@@ -213,6 +216,8 @@ func (o Widget) MarshalJSON() ([]byte, error) {
 		
 		SelectedStatuses *[]string `json:"selectedStatuses,omitempty"`
 		
+		SelectedSegmentTypes *[]string `json:"selectedSegmentTypes,omitempty"`
+		
 		AgentInteractionSortOrder *string `json:"agentInteractionSortOrder,omitempty"`
 		Alias
 	}{ 
@@ -269,6 +274,8 @@ func (o Widget) MarshalJSON() ([]byte, error) {
 		ShowOfflineAgents: o.ShowOfflineAgents,
 		
 		SelectedStatuses: o.SelectedStatuses,
+		
+		SelectedSegmentTypes: o.SelectedSegmentTypes,
 		
 		AgentInteractionSortOrder: o.AgentInteractionSortOrder,
 		Alias:    (Alias)(o),
@@ -397,6 +404,11 @@ func (o *Widget) UnmarshalJSON(b []byte) error {
 	if SelectedStatuses, ok := WidgetMap["selectedStatuses"].([]interface{}); ok {
 		SelectedStatusesString, _ := json.Marshal(SelectedStatuses)
 		json.Unmarshal(SelectedStatusesString, &o.SelectedStatuses)
+	}
+	
+	if SelectedSegmentTypes, ok := WidgetMap["selectedSegmentTypes"].([]interface{}); ok {
+		SelectedSegmentTypesString, _ := json.Marshal(SelectedSegmentTypes)
+		json.Unmarshal(SelectedSegmentTypesString, &o.SelectedSegmentTypes)
 	}
 	
 	if AgentInteractionSortOrder, ok := WidgetMap["agentInteractionSortOrder"].(string); ok {

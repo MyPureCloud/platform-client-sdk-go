@@ -21,8 +21,6 @@ docs/DataExtensionsApi.json
 docs/DataPrivacyApi.json
 docs/DeleteAlertingAlert-example.txt
 docs/DeleteAlertingAlertsAll-example.txt
-docs/DeleteAlertingInteractionstatsAlert-example.txt
-docs/DeleteAlertingInteractionstatsRule-example.txt
 docs/DeleteAlertingRule-example.txt
 docs/DeleteAnalyticsConversationsDetailsJob-example.txt
 docs/DeleteAnalyticsConversationsDetailsJob-example.txt
@@ -329,12 +327,6 @@ docs/GamificationApi.json
 docs/GeneralDataProtectionRegulationApi.json
 docs/GeolocationApi.json
 docs/GetAlertingAlert-example.txt
-docs/GetAlertingAlertsActive-example.txt
-docs/GetAlertingInteractionstatsAlert-example.txt
-docs/GetAlertingInteractionstatsAlerts-example.txt
-docs/GetAlertingInteractionstatsAlertsUnread-example.txt
-docs/GetAlertingInteractionstatsRule-example.txt
-docs/GetAlertingInteractionstatsRules-example.txt
 docs/GetAlertingRule-example.txt
 docs/GetAnalyticsActionsAggregatesJob-example.txt
 docs/GetAnalyticsActionsAggregatesJobResults-example.txt
@@ -422,6 +414,7 @@ docs/GetArchitectGrammar-example.txt
 docs/GetArchitectGrammarLanguage-example.txt
 docs/GetArchitectGrammars-example.txt
 docs/GetArchitectIvr-example.txt
+docs/GetArchitectIvrIdentityresolution-example.txt
 docs/GetArchitectIvrs-example.txt
 docs/GetArchitectIvrsDivisionviews-example.txt
 docs/GetArchitectPrompt-example.txt
@@ -592,6 +585,9 @@ docs/GetConversationsMessagesCachedmedia-example.txt
 docs/GetConversationsMessagesCachedmediaCachedMediaItemId-example.txt
 docs/GetConversationsMessagingFacebookApp-example.txt
 docs/GetConversationsMessagingFacebookPermissions-example.txt
+docs/GetConversationsMessagingIdentityresolutionIntegrationsFacebookIntegrationId-example.txt
+docs/GetConversationsMessagingIdentityresolutionIntegrationsOpenIntegrationId-example.txt
+docs/GetConversationsMessagingIdentityresolutionIntegrationsWhatsappIntegrationId-example.txt
 docs/GetConversationsMessagingIntegrations-example.txt
 docs/GetConversationsMessagingIntegrationsFacebook-example.txt
 docs/GetConversationsMessagingIntegrationsFacebookIntegrationId-example.txt
@@ -667,9 +663,13 @@ docs/GetExternalcontactsOrganizationsSchemas-example.txt
 docs/GetExternalcontactsRelationship-example.txt
 docs/GetExternalcontactsReversewhitepageslookup-example.txt
 docs/GetExternalcontactsScanContacts-example.txt
+docs/GetExternalcontactsScanContactsDivisionviewsAll-example.txt
 docs/GetExternalcontactsScanNotes-example.txt
+docs/GetExternalcontactsScanNotesDivisionviewsAll-example.txt
 docs/GetExternalcontactsScanOrganizations-example.txt
+docs/GetExternalcontactsScanOrganizationsDivisionviewsAll-example.txt
 docs/GetExternalcontactsScanRelationships-example.txt
+docs/GetExternalcontactsScanRelationshipsDivisionviewsAll-example.txt
 docs/GetFaxDocument-example.txt
 docs/GetFaxDocumentContent-example.txt
 docs/GetFaxDocuments-example.txt
@@ -700,6 +700,7 @@ docs/GetFlowsDatatablesDivisionview-example.txt
 docs/GetFlowsDatatablesDivisionviews-example.txt
 docs/GetFlowsDivisionviews-example.txt
 docs/GetFlowsExecution-example.txt
+docs/GetFlowsExportJob-example.txt
 docs/GetFlowsInstance-example.txt
 docs/GetFlowsInstancesJob-example.txt
 docs/GetFlowsInstancesQuerycapabilities-example.txt
@@ -1161,7 +1162,6 @@ docs/GetRecordingRecordingkeysRotationschedule-example.txt
 docs/GetRecordingSettings-example.txt
 docs/GetRecordingUploadsReport-example.txt
 docs/GetRecordingsRetentionQuery-example.txt
-docs/GetRecordingsScreensessions-example.txt
 docs/GetRecordingsScreensessionsDetails-example.txt
 docs/GetResponsemanagementLibraries-example.txt
 docs/GetResponsemanagementLibrary-example.txt
@@ -1178,6 +1178,7 @@ docs/GetRoutingDirectroutingbackupSettingsMe-example.txt
 docs/GetRoutingDirectroutingbackupSettingsMe-example.txt
 docs/GetRoutingEmailDomain-example.txt
 docs/GetRoutingEmailDomainRoute-example.txt
+docs/GetRoutingEmailDomainRouteIdentityresolution-example.txt
 docs/GetRoutingEmailDomainRoutes-example.txt
 docs/GetRoutingEmailDomains-example.txt
 docs/GetRoutingEmailOutboundDomain-example.txt
@@ -1199,6 +1200,7 @@ docs/GetRoutingQueueAssistant-example.txt
 docs/GetRoutingQueueComparisonperiod-example.txt
 docs/GetRoutingQueueComparisonperiods-example.txt
 docs/GetRoutingQueueEstimatedwaittime-example.txt
+docs/GetRoutingQueueIdentityresolution-example.txt
 docs/GetRoutingQueueMediatypeEstimatedwaittime-example.txt
 docs/GetRoutingQueueMembers-example.txt
 docs/GetRoutingQueueUsers-example.txt
@@ -1219,6 +1221,7 @@ docs/GetRoutingSkills-example.txt
 docs/GetRoutingSmsAddress-example.txt
 docs/GetRoutingSmsAddresses-example.txt
 docs/GetRoutingSmsAvailablephonenumbers-example.txt
+docs/GetRoutingSmsIdentityresolutionPhonenumber-example.txt
 docs/GetRoutingSmsPhonenumber-example.txt
 docs/GetRoutingSmsPhonenumbers-example.txt
 docs/GetRoutingUserDirectroutingbackupSettings-example.txt
@@ -1520,6 +1523,7 @@ docs/GetWebdeploymentsConfigurations-example.txt
 docs/GetWebdeploymentsDeployment-example.txt
 docs/GetWebdeploymentsDeploymentCobrowseSessionId-example.txt
 docs/GetWebdeploymentsDeploymentConfigurations-example.txt
+docs/GetWebdeploymentsDeploymentIdentityresolution-example.txt
 docs/GetWebdeploymentsDeployments-example.txt
 docs/GetWebmessagingMessages-example.txt
 docs/GetWidgetsDeployment-example.txt
@@ -1860,7 +1864,6 @@ docs/PatchWorkforcemanagementUserWorkplanbidranks-example.txt
 docs/PatchWorkforcemanagementUsersWorkplanbidranksBulk-example.txt
 docs/PatchWorkforcemanagementWorkplanbidPreferences-example.txt
 docs/PostAlertingAlertsQuery-example.txt
-docs/PostAlertingInteractionstatsRules-example.txt
 docs/PostAlertingRules-example.txt
 docs/PostAlertingRulesBulkRemove-example.txt
 docs/PostAlertingRulesQuery-example.txt
@@ -2093,6 +2096,7 @@ docs/PostEventsUsersPresence-example.txt
 docs/PostEventsUsersRoutingstatus-example.txt
 docs/PostExternalcontactsBulkContacts-example.txt
 docs/PostExternalcontactsBulkContactsAdd-example.txt
+docs/PostExternalcontactsBulkContactsDivisionviews-example.txt
 docs/PostExternalcontactsBulkContactsRemove-example.txt
 docs/PostExternalcontactsBulkContactsUnresolved-example.txt
 docs/PostExternalcontactsBulkContactsUpdate-example.txt
@@ -2102,6 +2106,7 @@ docs/PostExternalcontactsBulkNotesRemove-example.txt
 docs/PostExternalcontactsBulkNotesUpdate-example.txt
 docs/PostExternalcontactsBulkOrganizations-example.txt
 docs/PostExternalcontactsBulkOrganizationsAdd-example.txt
+docs/PostExternalcontactsBulkOrganizationsDivisionviews-example.txt
 docs/PostExternalcontactsBulkOrganizationsRemove-example.txt
 docs/PostExternalcontactsBulkOrganizationsUpdate-example.txt
 docs/PostExternalcontactsBulkRelationships-example.txt
@@ -2139,6 +2144,7 @@ docs/PostFlowsDatatableImportJobs-example.txt
 docs/PostFlowsDatatableRows-example.txt
 docs/PostFlowsDatatables-example.txt
 docs/PostFlowsExecutions-example.txt
+docs/PostFlowsExportJobs-example.txt
 docs/PostFlowsInstancesJobs-example.txt
 docs/PostFlowsInstancesQuery-example.txt
 docs/PostFlowsJobs-example.txt
@@ -2588,12 +2594,11 @@ docs/PostWorkforcemanagementTimeoffrequestsIntegrationstatusQuery-example.txt
 docs/PresenceApi.json
 docs/ProcessAutomationApi.json
 docs/PutAlertingAlert-example.txt
-docs/PutAlertingInteractionstatsAlert-example.txt
-docs/PutAlertingInteractionstatsRule-example.txt
 docs/PutAlertingRule-example.txt
 docs/PutAnalyticsDataretentionSettings-example.txt
 docs/PutArchitectEmergencygroup-example.txt
 docs/PutArchitectIvr-example.txt
+docs/PutArchitectIvrIdentityresolution-example.txt
 docs/PutArchitectPrompt-example.txt
 docs/PutArchitectPromptResource-example.txt
 docs/PutArchitectSchedule-example.txt
@@ -2629,6 +2634,9 @@ docs/PutConversationsEmailMessagesDraft-example.txt
 docs/PutConversationsEmailRecordingstate-example.txt
 docs/PutConversationsKeyconfiguration-example.txt
 docs/PutConversationsMessageRecordingstate-example.txt
+docs/PutConversationsMessagingIdentityresolutionIntegrationsFacebookIntegrationId-example.txt
+docs/PutConversationsMessagingIdentityresolutionIntegrationsOpenIntegrationId-example.txt
+docs/PutConversationsMessagingIdentityresolutionIntegrationsWhatsappIntegrationId-example.txt
 docs/PutConversationsMessagingSettingsDefault-example.txt
 docs/PutConversationsMessagingSupportedcontentDefault-example.txt
 docs/PutConversationsMessagingThreadingtimeline-example.txt
@@ -2757,11 +2765,14 @@ docs/PutResponsemanagementResponseasset-example.txt
 docs/PutRoutingDirectroutingbackupSettingsMe-example.txt
 docs/PutRoutingDirectroutingbackupSettingsMe-example.txt
 docs/PutRoutingEmailDomainRoute-example.txt
+docs/PutRoutingEmailDomainRouteIdentityresolution-example.txt
 docs/PutRoutingEmailOutboundDomainActivation-example.txt
 docs/PutRoutingMessageRecipient-example.txt
 docs/PutRoutingQueue-example.txt
+docs/PutRoutingQueueIdentityresolution-example.txt
 docs/PutRoutingSettings-example.txt
 docs/PutRoutingSettingsTranscription-example.txt
+docs/PutRoutingSmsIdentityresolutionPhonenumber-example.txt
 docs/PutRoutingUserDirectroutingbackupSettings-example.txt
 docs/PutRoutingUserDirectroutingbackupSettings-example.txt
 docs/PutRoutingUserUtilization-example.txt
@@ -2827,6 +2838,7 @@ docs/PutWebchatDeployment-example.txt
 docs/PutWebchatSettings-example.txt
 docs/PutWebdeploymentsConfigurationVersionsDraft-example.txt
 docs/PutWebdeploymentsDeployment-example.txt
+docs/PutWebdeploymentsDeploymentIdentityresolution-example.txt
 docs/PutWidgetsDeployment-example.txt
 docs/PutWorkforcemanagementAgentIntegrationsHris-example.txt
 docs/PutWorkforcemanagementBusinessunitTimeofflimitValues-example.txt
@@ -2909,7 +2921,6 @@ platformclientv2/actiontargetlisting.go
 platformclientv2/actiontemplate.go
 platformclientv2/actiontemplatelisting.go
 platformclientv2/activation.go
-platformclientv2/activealertcount.go
 platformclientv2/activitycode.go
 platformclientv2/activitycodecontainer.go
 platformclientv2/activitycodereference.go
@@ -3125,6 +3136,7 @@ platformclientv2/architectdependencytrackingbuildnotificationclient.go
 platformclientv2/architectdependencytrackingbuildnotificationdependencytrackingbuildnotification.go
 platformclientv2/architectdependencytrackingbuildnotificationhomeorganization.go
 platformclientv2/architectdependencytrackingbuildnotificationuser.go
+platformclientv2/architectexportjobstateresponse.go
 platformclientv2/architectflowfields.go
 platformclientv2/architectflownotificationarchitectoperation.go
 platformclientv2/architectflownotificationclient.go
@@ -3141,6 +3153,7 @@ platformclientv2/architectflowoutcomenotificationerrormessageparams.go
 platformclientv2/architectflowoutcomenotificationflowoutcomenotification.go
 platformclientv2/architectflowoutcomenotificationhomeorganization.go
 platformclientv2/architectflowoutcomenotificationuser.go
+platformclientv2/architectflowreference.go
 platformclientv2/architectjobmessage.go
 platformclientv2/architectjobstateresponse.go
 platformclientv2/architectpromptnotificationarchitectoperation.go
@@ -3351,13 +3364,13 @@ platformclientv2/bulkcallbackpatchresponse.go
 platformclientv2/bulkcontactsrequest.go
 platformclientv2/bulkcontactsresponse.go
 platformclientv2/bulkdeleteresponse.go
+platformclientv2/bulkentityerrorentity.go
+platformclientv2/bulkentityerrorexternalcontact.go
+platformclientv2/bulkentityerrorexternalorganization.go
+platformclientv2/bulkentityerrornote.go
+platformclientv2/bulkentityerrorrelationship.go
 platformclientv2/bulkerror.go
 platformclientv2/bulkerrordetail.go
-platformclientv2/bulkerrorentity.go
-platformclientv2/bulkerrorexternalcontact.go
-platformclientv2/bulkerrorexternalorganization.go
-platformclientv2/bulkerrornote.go
-platformclientv2/bulkerrorrelationship.go
 platformclientv2/bulkfetchcontactsresponse.go
 platformclientv2/bulkfetchnotesresponse.go
 platformclientv2/bulkfetchorganizationsresponse.go
@@ -3383,15 +3396,15 @@ platformclientv2/bulkorganizationsresponse.go
 platformclientv2/bulkrelationshipsrequest.go
 platformclientv2/bulkrelationshipsresponse.go
 platformclientv2/bulkresponse.go
-platformclientv2/bulkresponseresultexternalcontactentity.go
-platformclientv2/bulkresponseresultexternalcontactexternalcontact.go
-platformclientv2/bulkresponseresultexternalorganizationentity.go
-platformclientv2/bulkresponseresultexternalorganizationexternalorganization.go
-platformclientv2/bulkresponseresultnoteentity.go
-platformclientv2/bulkresponseresultnotenote.go
-platformclientv2/bulkresponseresultrelationshipentity.go
-platformclientv2/bulkresponseresultrelationshiprelationship.go
-platformclientv2/bulkresponseresultvoidentity.go
+platformclientv2/bulkresponseresultexternalcontactentitybulkentityerrorentity.go
+platformclientv2/bulkresponseresultexternalcontactexternalcontactbulkentityerrorexternalcontact.go
+platformclientv2/bulkresponseresultexternalorganizationentitybulkentityerrorentity.go
+platformclientv2/bulkresponseresultexternalorganizationexternalorganizationbulkentityerrorexternalorganization.go
+platformclientv2/bulkresponseresultnoteentitybulkentityerrorentity.go
+platformclientv2/bulkresponseresultnotenotebulkentityerrornote.go
+platformclientv2/bulkresponseresultrelationshipentitybulkentityerrorentity.go
+platformclientv2/bulkresponseresultrelationshiprelationshipbulkentityerrorrelationship.go
+platformclientv2/bulkresponseresultvoidentitybulkentityerrorentity.go
 platformclientv2/bulkresult.go
 platformclientv2/bulkshifttradestateupdaterequest.go
 platformclientv2/bulkupdateshifttradestaterequestitem.go
@@ -3719,12 +3732,13 @@ platformclientv2/contentbuttonresponse.go
 platformclientv2/contentcard.go
 platformclientv2/contentcardaction.go
 platformclientv2/contentcarousel.go
+platformclientv2/contentdatepicker.go
+platformclientv2/contentdatepickeravailabletime.go
 platformclientv2/contentfilerequest.go
 platformclientv2/contentfileresponse.go
 platformclientv2/contentfilteritem.go
 platformclientv2/contentgeneric.go
 platformclientv2/contentlist.go
-platformclientv2/contentlocation.go
 platformclientv2/contentmanagementapi.go
 platformclientv2/contentmanagementsingledocumenttopicdocumentdatav2.go
 platformclientv2/contentmanagementsingledocumenttopiclockdata.go
@@ -4715,6 +4729,7 @@ platformclientv2/expandablewebdeployment.go
 platformclientv2/expandablewebdeploymententitylisting.go
 platformclientv2/expansioncriterium.go
 platformclientv2/expirededgelisting.go
+platformclientv2/exportdetails.go
 platformclientv2/exportscriptrequest.go
 platformclientv2/exportscriptresponse.go
 platformclientv2/exporturi.go
@@ -4854,6 +4869,7 @@ platformclientv2/fileuploadsettings.go
 platformclientv2/filter.go
 platformclientv2/filterpreviewresponse.go
 platformclientv2/fixedavailability.go
+platformclientv2/flattenedjsonschemadocument.go
 platformclientv2/flow.go
 platformclientv2/flowactivitydata.go
 platformclientv2/flowactivityentitydata.go
@@ -5022,6 +5038,7 @@ platformclientv2/group.go
 platformclientv2/groupbyattribute.go
 platformclientv2/groupcontact.go
 platformclientv2/groupcreate.go
+platformclientv2/groupemailpolicy.go
 platformclientv2/groupentitylisting.go
 platformclientv2/groupgreetingeventgreeting.go
 platformclientv2/groupgreetingeventgreetingaudiofile.go
@@ -5156,10 +5173,6 @@ platformclientv2/integrationtypeentitylisting.go
 platformclientv2/intent.go
 platformclientv2/intentdefinition.go
 platformclientv2/intentfeedback.go
-platformclientv2/interactionstatsalert.go
-platformclientv2/interactionstatsalertcontainer.go
-platformclientv2/interactionstatsrule.go
-platformclientv2/interactionstatsrulecontainer.go
 platformclientv2/internalmessage.go
 platformclientv2/internalmessagedetails.go
 platformclientv2/intradayperformancepredictiondata.go
@@ -5409,7 +5422,6 @@ platformclientv2/knowledgedocumentversionlisting.go
 platformclientv2/knowledgedocumentversionreference.go
 platformclientv2/knowledgedocumentversionvariation.go
 platformclientv2/knowledgedocumentversionvariationlisting.go
-platformclientv2/knowledgedocumentversionvariationreference.go
 platformclientv2/knowledgedocumentview.go
 platformclientv2/knowledgeexportjobdocumentsfilter.go
 platformclientv2/knowledgeexportjobfilter.go
@@ -5466,6 +5478,7 @@ platformclientv2/knowledgesyncjobreport.go
 platformclientv2/knowledgesyncjobrequest.go
 platformclientv2/knowledgesyncjobresponse.go
 platformclientv2/knowledgesyncjobstatistics.go
+platformclientv2/knowledgesyncrequest.go
 platformclientv2/knowledgetraining.go
 platformclientv2/kpiresult.go
 platformclientv2/label.go
@@ -5714,6 +5727,7 @@ platformclientv2/messagemediadata.go
 platformclientv2/messagemediaparticipant.go
 platformclientv2/messagemediapolicy.go
 platformclientv2/messagemediapolicyconditions.go
+platformclientv2/messagemediasettings.go
 platformclientv2/messagesticker.go
 platformclientv2/messagestickerattachment.go
 platformclientv2/messagetypingeventrequest.go
@@ -5837,6 +5851,7 @@ platformclientv2/notificationsapi.go
 platformclientv2/notificationsresponse.go
 platformclientv2/notificationssettings.go
 platformclientv2/notificationtemplatebody.go
+platformclientv2/notificationtemplatebutton.go
 platformclientv2/notificationtemplatefooter.go
 platformclientv2/notificationtemplateheader.go
 platformclientv2/notificationtemplateparameter.go
@@ -6160,6 +6175,7 @@ platformclientv2/presencedetailquerypredicate.go
 platformclientv2/presenceeventorganizationpresence.go
 platformclientv2/presenceeventuserpresence.go
 platformclientv2/presencesettings.go
+platformclientv2/presentedknowledgedocument.go
 platformclientv2/processautomationapi.go
 platformclientv2/processscheduleupdateuploadrequest.go
 platformclientv2/profilewithdaterange.go
@@ -6583,6 +6599,8 @@ platformclientv2/recurrenceperiod.go
 platformclientv2/recurrencesettings.go
 platformclientv2/referrer.go
 platformclientv2/regiontimezone.go
+platformclientv2/registerarchitectexportjob.go
+platformclientv2/registerarchitectexportjobresponse.go
 platformclientv2/registerarchitectjobresponse.go
 platformclientv2/relationship.go
 platformclientv2/relationshiplisting.go
@@ -6709,6 +6727,7 @@ platformclientv2/salesforce.go
 platformclientv2/salesforcesettings.go
 platformclientv2/salesforcesourcerequest.go
 platformclientv2/salesforcesourceresponse.go
+platformclientv2/samlprovider.go
 platformclientv2/schedule.go
 platformclientv2/scheduleactivity.go
 platformclientv2/scheduledivisionviewentitylisting.go
@@ -6774,8 +6793,6 @@ platformclientv2/screenrecordingactivesessions.go
 platformclientv2/screenrecordingapi.go
 platformclientv2/screenrecordingmetadata.go
 platformclientv2/screenrecordingmetadatarequest.go
-platformclientv2/screenrecordingsession.go
-platformclientv2/screenrecordingsessionlisting.go
 platformclientv2/screenrecordinguserauthenticatedinfo.go
 platformclientv2/screenshare.go
 platformclientv2/script.go
@@ -7305,8 +7322,6 @@ platformclientv2/unifiedgeneraltopic.go
 platformclientv2/unifiedgeneraltopicentitylisting.go
 platformclientv2/unpublishedprogramsentitylisting.go
 platformclientv2/unreadfields.go
-platformclientv2/unreadmetric.go
-platformclientv2/unreadstatus.go
 platformclientv2/updateactioninput.go
 platformclientv2/updateactivitycoderequest.go
 platformclientv2/updateactivityplanrequest.go

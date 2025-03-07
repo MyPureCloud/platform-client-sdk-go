@@ -15,6 +15,9 @@ type Note struct {
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
+	// Division - The division to which this entity belongs.
+	Division *Writablestarrabledivision `json:"division,omitempty"`
+
 	// EntityId - The id of the contact or organization to which this note refers. This only needs to be set for input when using the Bulk APIs.
 	EntityId *string `json:"entityId,omitempty"`
 
@@ -121,6 +124,8 @@ func (o Note) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
+		Division *Writablestarrabledivision `json:"division,omitempty"`
+		
 		EntityId *string `json:"entityId,omitempty"`
 		
 		EntityType *string `json:"entityType,omitempty"`
@@ -139,6 +144,8 @@ func (o Note) MarshalJSON() ([]byte, error) {
 		Alias
 	}{ 
 		Id: o.Id,
+		
+		Division: o.Division,
 		
 		EntityId: o.EntityId,
 		
@@ -170,6 +177,11 @@ func (o *Note) UnmarshalJSON(b []byte) error {
 		o.Id = &Id
 	}
     
+	if Division, ok := NoteMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
 	if EntityId, ok := NoteMap["entityId"].(string); ok {
 		o.EntityId = &EntityId
 	}

@@ -44,9 +44,6 @@ type Customprovider struct {
 	// LogoImageData
 	LogoImageData *string `json:"logoImageData,omitempty"`
 
-	// EndpointCompression
-	EndpointCompression *bool `json:"endpointCompression,omitempty"`
-
 	// NameIdentifierFormat
 	NameIdentifierFormat *string `json:"nameIdentifierFormat,omitempty"`
 
@@ -61,6 +58,9 @@ type Customprovider struct {
 
 	// DisplayOnLogin
 	DisplayOnLogin *bool `json:"displayOnLogin,omitempty"`
+
+	// EndpointCompression
+	EndpointCompression *bool `json:"endpointCompression,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -151,8 +151,6 @@ func (o Customprovider) MarshalJSON() ([]byte, error) {
 		
 		LogoImageData *string `json:"logoImageData,omitempty"`
 		
-		EndpointCompression *bool `json:"endpointCompression,omitempty"`
-		
 		NameIdentifierFormat *string `json:"nameIdentifierFormat,omitempty"`
 		
 		SsoBinding *string `json:"ssoBinding,omitempty"`
@@ -162,6 +160,8 @@ func (o Customprovider) MarshalJSON() ([]byte, error) {
 		ProviderName *string `json:"providerName,omitempty"`
 		
 		DisplayOnLogin *bool `json:"displayOnLogin,omitempty"`
+		
+		EndpointCompression *bool `json:"endpointCompression,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
@@ -188,8 +188,6 @@ func (o Customprovider) MarshalJSON() ([]byte, error) {
 		
 		LogoImageData: o.LogoImageData,
 		
-		EndpointCompression: o.EndpointCompression,
-		
 		NameIdentifierFormat: o.NameIdentifierFormat,
 		
 		SsoBinding: o.SsoBinding,
@@ -199,6 +197,8 @@ func (o Customprovider) MarshalJSON() ([]byte, error) {
 		ProviderName: o.ProviderName,
 		
 		DisplayOnLogin: o.DisplayOnLogin,
+		
+		EndpointCompression: o.EndpointCompression,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -257,10 +257,6 @@ func (o *Customprovider) UnmarshalJSON(b []byte) error {
 		o.LogoImageData = &LogoImageData
 	}
     
-	if EndpointCompression, ok := CustomproviderMap["endpointCompression"].(bool); ok {
-		o.EndpointCompression = &EndpointCompression
-	}
-    
 	if NameIdentifierFormat, ok := CustomproviderMap["nameIdentifierFormat"].(string); ok {
 		o.NameIdentifierFormat = &NameIdentifierFormat
 	}
@@ -279,6 +275,10 @@ func (o *Customprovider) UnmarshalJSON(b []byte) error {
     
 	if DisplayOnLogin, ok := CustomproviderMap["displayOnLogin"].(bool); ok {
 		o.DisplayOnLogin = &DisplayOnLogin
+	}
+    
+	if EndpointCompression, ok := CustomproviderMap["endpointCompression"].(bool); ok {
+		o.EndpointCompression = &EndpointCompression
 	}
     
 	if SelfUri, ok := CustomproviderMap["selfUri"].(string); ok {

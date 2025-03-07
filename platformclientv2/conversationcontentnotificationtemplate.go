@@ -23,6 +23,9 @@ type Conversationcontentnotificationtemplate struct {
 	// Body - The template body.
 	Body *Conversationnotificationtemplatebody `json:"body,omitempty"`
 
+	// Buttons - Template buttons
+	Buttons *[]Conversationnotificationtemplatebutton `json:"buttons,omitempty"`
+
 	// Footer - The template footer.
 	Footer *Conversationnotificationtemplatefooter `json:"footer,omitempty"`
 }
@@ -98,6 +101,8 @@ func (o Conversationcontentnotificationtemplate) MarshalJSON() ([]byte, error) {
 		
 		Body *Conversationnotificationtemplatebody `json:"body,omitempty"`
 		
+		Buttons *[]Conversationnotificationtemplatebutton `json:"buttons,omitempty"`
+		
 		Footer *Conversationnotificationtemplatefooter `json:"footer,omitempty"`
 		Alias
 	}{ 
@@ -108,6 +113,8 @@ func (o Conversationcontentnotificationtemplate) MarshalJSON() ([]byte, error) {
 		Header: o.Header,
 		
 		Body: o.Body,
+		
+		Buttons: o.Buttons,
 		
 		Footer: o.Footer,
 		Alias:    (Alias)(o),
@@ -137,6 +144,11 @@ func (o *Conversationcontentnotificationtemplate) UnmarshalJSON(b []byte) error 
 	if Body, ok := ConversationcontentnotificationtemplateMap["body"].(map[string]interface{}); ok {
 		BodyString, _ := json.Marshal(Body)
 		json.Unmarshal(BodyString, &o.Body)
+	}
+	
+	if Buttons, ok := ConversationcontentnotificationtemplateMap["buttons"].([]interface{}); ok {
+		ButtonsString, _ := json.Marshal(Buttons)
+		json.Unmarshal(ButtonsString, &o.Buttons)
 	}
 	
 	if Footer, ok := ConversationcontentnotificationtemplateMap["footer"].(map[string]interface{}); ok {

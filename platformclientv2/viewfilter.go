@@ -20,11 +20,17 @@ type Viewfilter struct {
 	// SkillIds - The skill ids are used to filter the view
 	SkillIds *[]string `json:"skillIds,omitempty"`
 
+	// AssignedSkillIds - The assigned user skill ids are used to filter the view
+	AssignedSkillIds *[]string `json:"assignedSkillIds,omitempty"`
+
 	// SkillGroups - The skill groups used to filter the view
 	SkillGroups *[]string `json:"skillGroups,omitempty"`
 
 	// LanguageIds - The language ids are used to filter the view
 	LanguageIds *[]string `json:"languageIds,omitempty"`
+
+	// AssignedLanguageIds - The assigned user language ids are used to filter the view
+	AssignedLanguageIds *[]string `json:"assignedLanguageIds,omitempty"`
 
 	// LanguageGroups - The language groups used to filter the view
 	LanguageGroups *[]string `json:"languageGroups,omitempty"`
@@ -670,6 +676,12 @@ type Viewfilter struct {
 
 	// TimelineCategories - A list of timeline categories
 	TimelineCategories *[]string `json:"timelineCategories,omitempty"`
+
+	// Acw - Filter to indicate for acw state
+	Acw *bool `json:"acw,omitempty"`
+
+	// SegmentTypes - A list of filtered segment types
+	SegmentTypes *[]string `json:"segmentTypes,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -741,9 +753,13 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		
 		SkillIds *[]string `json:"skillIds,omitempty"`
 		
+		AssignedSkillIds *[]string `json:"assignedSkillIds,omitempty"`
+		
 		SkillGroups *[]string `json:"skillGroups,omitempty"`
 		
 		LanguageIds *[]string `json:"languageIds,omitempty"`
+		
+		AssignedLanguageIds *[]string `json:"assignedLanguageIds,omitempty"`
 		
 		LanguageGroups *[]string `json:"languageGroups,omitempty"`
 		
@@ -1174,6 +1190,10 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		ViewMetrics *[]string `json:"viewMetrics,omitempty"`
 		
 		TimelineCategories *[]string `json:"timelineCategories,omitempty"`
+		
+		Acw *bool `json:"acw,omitempty"`
+		
+		SegmentTypes *[]string `json:"segmentTypes,omitempty"`
 		Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -1182,9 +1202,13 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		
 		SkillIds: o.SkillIds,
 		
+		AssignedSkillIds: o.AssignedSkillIds,
+		
 		SkillGroups: o.SkillGroups,
 		
 		LanguageIds: o.LanguageIds,
+		
+		AssignedLanguageIds: o.AssignedLanguageIds,
 		
 		LanguageGroups: o.LanguageGroups,
 		
@@ -1615,6 +1639,10 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		ViewMetrics: o.ViewMetrics,
 		
 		TimelineCategories: o.TimelineCategories,
+		
+		Acw: o.Acw,
+		
+		SegmentTypes: o.SegmentTypes,
 		Alias:    (Alias)(o),
 	})
 }
@@ -1641,6 +1669,11 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(SkillIdsString, &o.SkillIds)
 	}
 	
+	if AssignedSkillIds, ok := ViewfilterMap["assignedSkillIds"].([]interface{}); ok {
+		AssignedSkillIdsString, _ := json.Marshal(AssignedSkillIds)
+		json.Unmarshal(AssignedSkillIdsString, &o.AssignedSkillIds)
+	}
+	
 	if SkillGroups, ok := ViewfilterMap["skillGroups"].([]interface{}); ok {
 		SkillGroupsString, _ := json.Marshal(SkillGroups)
 		json.Unmarshal(SkillGroupsString, &o.SkillGroups)
@@ -1649,6 +1682,11 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if LanguageIds, ok := ViewfilterMap["languageIds"].([]interface{}); ok {
 		LanguageIdsString, _ := json.Marshal(LanguageIds)
 		json.Unmarshal(LanguageIdsString, &o.LanguageIds)
+	}
+	
+	if AssignedLanguageIds, ok := ViewfilterMap["assignedLanguageIds"].([]interface{}); ok {
+		AssignedLanguageIdsString, _ := json.Marshal(AssignedLanguageIds)
+		json.Unmarshal(AssignedLanguageIdsString, &o.AssignedLanguageIds)
 	}
 	
 	if LanguageGroups, ok := ViewfilterMap["languageGroups"].([]interface{}); ok {
@@ -2673,6 +2711,15 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if TimelineCategories, ok := ViewfilterMap["timelineCategories"].([]interface{}); ok {
 		TimelineCategoriesString, _ := json.Marshal(TimelineCategories)
 		json.Unmarshal(TimelineCategoriesString, &o.TimelineCategories)
+	}
+	
+	if Acw, ok := ViewfilterMap["acw"].(bool); ok {
+		o.Acw = &Acw
+	}
+    
+	if SegmentTypes, ok := ViewfilterMap["segmentTypes"].([]interface{}); ok {
+		SegmentTypesString, _ := json.Marshal(SegmentTypes)
+		json.Unmarshal(SegmentTypesString, &o.SegmentTypes)
 	}
 	
 

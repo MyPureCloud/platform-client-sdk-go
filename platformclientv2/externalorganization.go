@@ -18,6 +18,9 @@ type Externalorganization struct {
 	// Name - The name of the company.
 	Name *string `json:"name,omitempty"`
 
+	// Division - The division to which this entity belongs.
+	Division *Writablestarrabledivision `json:"division,omitempty"`
+
 	// CompanyType
 	CompanyType *string `json:"companyType,omitempty"`
 
@@ -162,6 +165,8 @@ func (o Externalorganization) MarshalJSON() ([]byte, error) {
 		
 		Name *string `json:"name,omitempty"`
 		
+		Division *Writablestarrabledivision `json:"division,omitempty"`
+		
 		CompanyType *string `json:"companyType,omitempty"`
 		
 		Industry *string `json:"industry,omitempty"`
@@ -206,6 +211,8 @@ func (o Externalorganization) MarshalJSON() ([]byte, error) {
 		Id: o.Id,
 		
 		Name: o.Name,
+		
+		Division: o.Division,
 		
 		CompanyType: o.CompanyType,
 		
@@ -265,6 +272,11 @@ func (o *Externalorganization) UnmarshalJSON(b []byte) error {
 		o.Name = &Name
 	}
     
+	if Division, ok := ExternalorganizationMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
 	if CompanyType, ok := ExternalorganizationMap["companyType"].(string); ok {
 		o.CompanyType = &CompanyType
 	}

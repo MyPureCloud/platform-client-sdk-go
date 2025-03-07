@@ -15,6 +15,9 @@ type Contactidentifier struct {
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
+	// Division - The division to which this entity belongs.
+	Division *Writablestarrabledivision `json:"division,omitempty"`
+
 	// VarType - The type of this identifier
 	VarType *string `json:"type,omitempty"`
 
@@ -104,6 +107,8 @@ func (o Contactidentifier) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
+		Division *Writablestarrabledivision `json:"division,omitempty"`
+		
 		VarType *string `json:"type,omitempty"`
 		
 		Value *string `json:"value,omitempty"`
@@ -116,6 +121,8 @@ func (o Contactidentifier) MarshalJSON() ([]byte, error) {
 		Alias
 	}{ 
 		Id: o.Id,
+		
+		Division: o.Division,
 		
 		VarType: o.VarType,
 		
@@ -141,6 +148,11 @@ func (o *Contactidentifier) UnmarshalJSON(b []byte) error {
 		o.Id = &Id
 	}
     
+	if Division, ok := ContactidentifierMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
 	if VarType, ok := ContactidentifierMap["type"].(string); ok {
 		o.VarType = &VarType
 	}

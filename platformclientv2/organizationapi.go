@@ -759,6 +759,8 @@ func (a OrganizationApi) GetOrganizationsLimitsNamespace(namespaceName string) (
 // Get estimated limit counts for a namespace. This is not a source of truth for limit values but a record of estimates to facilitate limit threshold tracking.
 //
 // See https://developer.genesys.cloud/organization/organization/limits#available-limits for limits that are trackable (Operational Events Enabled).
+//
+// Deprecated: GetOrganizationsLimitsNamespaceCounts is deprecated
 func (a OrganizationApi) GetOrganizationsLimitsNamespaceCounts(namespaceName string, cursor string, entityId string, userId string) (*Limitcountlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -931,6 +933,8 @@ func (a OrganizationApi) GetOrganizationsLimitsNamespaceDefaults(namespaceName s
 // Get estimated limit counts for a namespace and limit name. This is not a source of truth for limit values but a record of estimates to facilitate limit threshold tracking.
 //
 // See https://developer.genesys.cloud/organization/organization/limits#available-limits for limits that are trackable (Operational Events Enabled).
+//
+// Deprecated: GetOrganizationsLimitsNamespaceLimitCounts is deprecated
 func (a OrganizationApi) GetOrganizationsLimitsNamespaceLimitCounts(namespaceName string, limitName string, entityId string, userId string, cursor string) (*Limitcountlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

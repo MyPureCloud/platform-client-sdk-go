@@ -25,6 +25,9 @@ type Messageevent struct {
 
 	// Video - Video event.
 	Video *Eventvideo `json:"video,omitempty"`
+
+	// Reactions - A list of reactions to a message.
+	Reactions *[]Contentreaction `json:"reactions,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -99,6 +102,8 @@ func (o Messageevent) MarshalJSON() ([]byte, error) {
 		Presence *Eventpresence `json:"presence,omitempty"`
 		
 		Video *Eventvideo `json:"video,omitempty"`
+		
+		Reactions *[]Contentreaction `json:"reactions,omitempty"`
 		Alias
 	}{ 
 		EventType: o.EventType,
@@ -110,6 +115,8 @@ func (o Messageevent) MarshalJSON() ([]byte, error) {
 		Presence: o.Presence,
 		
 		Video: o.Video,
+		
+		Reactions: o.Reactions,
 		Alias:    (Alias)(o),
 	})
 }
@@ -143,6 +150,11 @@ func (o *Messageevent) UnmarshalJSON(b []byte) error {
 	if Video, ok := MessageeventMap["video"].(map[string]interface{}); ok {
 		VideoString, _ := json.Marshal(Video)
 		json.Unmarshal(VideoString, &o.Video)
+	}
+	
+	if Reactions, ok := MessageeventMap["reactions"].([]interface{}); ok {
+		ReactionsString, _ := json.Marshal(Reactions)
+		json.Unmarshal(ReactionsString, &o.Reactions)
 	}
 	
 

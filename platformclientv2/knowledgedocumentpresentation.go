@@ -12,7 +12,7 @@ type Knowledgedocumentpresentation struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Documents - The presented documents
-	Documents *[]Knowledgedocumentversionvariationreference `json:"documents,omitempty"`
+	Documents *[]Presentedknowledgedocument `json:"documents,omitempty"`
 
 	// SearchId - The search that surfaced the documents that were presented.
 	SearchId *string `json:"searchId,omitempty"`
@@ -96,7 +96,7 @@ func (o Knowledgedocumentpresentation) MarshalJSON() ([]byte, error) {
 	type Alias Knowledgedocumentpresentation
 	
 	return json.Marshal(&struct { 
-		Documents *[]Knowledgedocumentversionvariationreference `json:"documents,omitempty"`
+		Documents *[]Presentedknowledgedocument `json:"documents,omitempty"`
 		
 		SearchId *string `json:"searchId,omitempty"`
 		
