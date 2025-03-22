@@ -28,6 +28,9 @@ type Workitemstatusupdate struct {
 
 	// StatusTransitionTime - Time is represented as an ISO-8601 string without a timezone. For example: HH:mm:ss.SSS
 	StatusTransitionTime *string `json:"statusTransitionTime,omitempty"`
+
+	// AutoTerminateWorkitem - Terminate workitem on selection of status. Applicable only for statuses in the Closed category.
+	AutoTerminateWorkitem *bool `json:"autoTerminateWorkitem,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -104,6 +107,8 @@ func (o Workitemstatusupdate) MarshalJSON() ([]byte, error) {
 		StatusTransitionDelaySeconds *int `json:"statusTransitionDelaySeconds,omitempty"`
 		
 		StatusTransitionTime *string `json:"statusTransitionTime,omitempty"`
+		
+		AutoTerminateWorkitem *bool `json:"autoTerminateWorkitem,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -117,6 +122,8 @@ func (o Workitemstatusupdate) MarshalJSON() ([]byte, error) {
 		StatusTransitionDelaySeconds: o.StatusTransitionDelaySeconds,
 		
 		StatusTransitionTime: o.StatusTransitionTime,
+		
+		AutoTerminateWorkitem: o.AutoTerminateWorkitem,
 		Alias:    (Alias)(o),
 	})
 }
@@ -152,6 +159,10 @@ func (o *Workitemstatusupdate) UnmarshalJSON(b []byte) error {
 	
 	if StatusTransitionTime, ok := WorkitemstatusupdateMap["statusTransitionTime"].(string); ok {
 		o.StatusTransitionTime = &StatusTransitionTime
+	}
+    
+	if AutoTerminateWorkitem, ok := WorkitemstatusupdateMap["autoTerminateWorkitem"].(bool); ok {
+		o.AutoTerminateWorkitem = &AutoTerminateWorkitem
 	}
     
 

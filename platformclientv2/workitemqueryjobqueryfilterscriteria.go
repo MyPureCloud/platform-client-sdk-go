@@ -14,7 +14,7 @@ type Workitemqueryjobqueryfilterscriteria struct {
 	// Operator - Query filter logical operator to join predicates.
 	Operator *string `json:"operator,omitempty"`
 
-	// Predicates - Query filter predicate.
+	// Predicates - Query filter predicates. Number of predicates within the query filter should be between 1 and 5.
 	Predicates *[]Workitemqueryjobqueryfilterspredicate `json:"predicates,omitempty"`
 }
 

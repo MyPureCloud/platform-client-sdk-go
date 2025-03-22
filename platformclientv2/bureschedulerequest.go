@@ -38,6 +38,12 @@ type Bureschedulerequest struct {
 
 	// DoNotChangeManuallyEditedShifts - Instructs the scheduler whether it is allowed to change manually edited shifts
 	DoNotChangeManuallyEditedShifts *bool `json:"doNotChangeManuallyEditedShifts,omitempty"`
+
+	// ActivitySmoothingType - Overrides the default BU level activity smoothing type for this reschedule run
+	ActivitySmoothingType *string `json:"activitySmoothingType,omitempty"`
+
+	// InduceScheduleVariability - Overrides the default BU level induce schedule variability setting for this reschedule run
+	InduceScheduleVariability *bool `json:"induceScheduleVariability,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -136,6 +142,10 @@ func (o Bureschedulerequest) MarshalJSON() ([]byte, error) {
 		DoNotChangeShiftStartTimes *bool `json:"doNotChangeShiftStartTimes,omitempty"`
 		
 		DoNotChangeManuallyEditedShifts *bool `json:"doNotChangeManuallyEditedShifts,omitempty"`
+		
+		ActivitySmoothingType *string `json:"activitySmoothingType,omitempty"`
+		
+		InduceScheduleVariability *bool `json:"induceScheduleVariability,omitempty"`
 		Alias
 	}{ 
 		StartDate: StartDate,
@@ -155,6 +165,10 @@ func (o Bureschedulerequest) MarshalJSON() ([]byte, error) {
 		DoNotChangeShiftStartTimes: o.DoNotChangeShiftStartTimes,
 		
 		DoNotChangeManuallyEditedShifts: o.DoNotChangeManuallyEditedShifts,
+		
+		ActivitySmoothingType: o.ActivitySmoothingType,
+		
+		InduceScheduleVariability: o.InduceScheduleVariability,
 		Alias:    (Alias)(o),
 	})
 }
@@ -205,6 +219,14 @@ func (o *Bureschedulerequest) UnmarshalJSON(b []byte) error {
     
 	if DoNotChangeManuallyEditedShifts, ok := BureschedulerequestMap["doNotChangeManuallyEditedShifts"].(bool); ok {
 		o.DoNotChangeManuallyEditedShifts = &DoNotChangeManuallyEditedShifts
+	}
+    
+	if ActivitySmoothingType, ok := BureschedulerequestMap["activitySmoothingType"].(string); ok {
+		o.ActivitySmoothingType = &ActivitySmoothingType
+	}
+    
+	if InduceScheduleVariability, ok := BureschedulerequestMap["induceScheduleVariability"].(bool); ok {
+		o.InduceScheduleVariability = &InduceScheduleVariability
 	}
     
 

@@ -16,6 +16,9 @@ type Knowledgeexportjobfilter struct {
 
 	// VersionFilter - Specifies what version should be exported.
 	VersionFilter *string `json:"versionFilter,omitempty"`
+
+	// Exclude - Reduce the size of the export file by excluding certain items.
+	Exclude *[]string `json:"exclude,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Knowledgeexportjobfilter) MarshalJSON() ([]byte, error) {
 		DocumentsFilter *Knowledgeexportjobdocumentsfilter `json:"documentsFilter,omitempty"`
 		
 		VersionFilter *string `json:"versionFilter,omitempty"`
+		
+		Exclude *[]string `json:"exclude,omitempty"`
 		Alias
 	}{ 
 		DocumentsFilter: o.DocumentsFilter,
 		
 		VersionFilter: o.VersionFilter,
+		
+		Exclude: o.Exclude,
 		Alias:    (Alias)(o),
 	})
 }
@@ -109,6 +116,11 @@ func (o *Knowledgeexportjobfilter) UnmarshalJSON(b []byte) error {
 		o.VersionFilter = &VersionFilter
 	}
     
+	if Exclude, ok := KnowledgeexportjobfilterMap["exclude"].([]interface{}); ok {
+		ExcludeString, _ := json.Marshal(Exclude)
+		json.Unmarshal(ExcludeString, &o.Exclude)
+	}
+	
 
 	return nil
 }

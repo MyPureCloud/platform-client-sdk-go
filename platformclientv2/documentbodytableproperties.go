@@ -14,6 +14,9 @@ type Documentbodytableproperties struct {
 	// Width - The width of the table converted to em unit.
 	Width *float32 `json:"width,omitempty"`
 
+	// WidthWithUnit - The width of the table in the specified unit.
+	WidthWithUnit *Documentelementlength `json:"widthWithUnit,omitempty"`
+
 	// Height - The height for the table.
 	Height *float32 `json:"height,omitempty"`
 
@@ -107,6 +110,8 @@ func (o Documentbodytableproperties) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Width *float32 `json:"width,omitempty"`
 		
+		WidthWithUnit *Documentelementlength `json:"widthWithUnit,omitempty"`
+		
 		Height *float32 `json:"height,omitempty"`
 		
 		CellSpacing *float32 `json:"cellSpacing,omitempty"`
@@ -127,6 +132,8 @@ func (o Documentbodytableproperties) MarshalJSON() ([]byte, error) {
 		Alias
 	}{ 
 		Width: o.Width,
+		
+		WidthWithUnit: o.WidthWithUnit,
 		
 		Height: o.Height,
 		
@@ -159,6 +166,11 @@ func (o *Documentbodytableproperties) UnmarshalJSON(b []byte) error {
 	if Width, ok := DocumentbodytablepropertiesMap["width"].(float64); ok {
 		WidthFloat32 := float32(Width)
 		o.Width = &WidthFloat32
+	}
+	
+	if WidthWithUnit, ok := DocumentbodytablepropertiesMap["widthWithUnit"].(map[string]interface{}); ok {
+		WidthWithUnitString, _ := json.Marshal(WidthWithUnit)
+		json.Unmarshal(WidthWithUnitString, &o.WidthWithUnit)
 	}
 	
 	if Height, ok := DocumentbodytablepropertiesMap["height"].(float64); ok {

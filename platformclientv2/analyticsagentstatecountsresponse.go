@@ -11,8 +11,8 @@ import (
 type Analyticsagentstatecountsresponse struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Counts - List of count by segment types
-	Counts *[]Agentstatesegmenttypecount `json:"counts,omitempty"`
+	// SegmentCounts - List of count by segment types
+	SegmentCounts *[]Agentstatesegmenttypecount `json:"segmentCounts,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -78,10 +78,10 @@ func (o Analyticsagentstatecountsresponse) MarshalJSON() ([]byte, error) {
 	type Alias Analyticsagentstatecountsresponse
 	
 	return json.Marshal(&struct { 
-		Counts *[]Agentstatesegmenttypecount `json:"counts,omitempty"`
+		SegmentCounts *[]Agentstatesegmenttypecount `json:"segmentCounts,omitempty"`
 		Alias
 	}{ 
-		Counts: o.Counts,
+		SegmentCounts: o.SegmentCounts,
 		Alias:    (Alias)(o),
 	})
 }
@@ -93,9 +93,9 @@ func (o *Analyticsagentstatecountsresponse) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
-	if Counts, ok := AnalyticsagentstatecountsresponseMap["counts"].([]interface{}); ok {
-		CountsString, _ := json.Marshal(Counts)
-		json.Unmarshal(CountsString, &o.Counts)
+	if SegmentCounts, ok := AnalyticsagentstatecountsresponseMap["segmentCounts"].([]interface{}); ok {
+		SegmentCountsString, _ := json.Marshal(SegmentCounts)
+		json.Unmarshal(SegmentCountsString, &o.SegmentCounts)
 	}
 	
 

@@ -21,6 +21,9 @@ type Logcaptureuserconfiguration struct {
 	// DateExpired - Indicates when log capture will be turned off for the user. (Must be within 24 hours). Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateExpired *time.Time `json:"dateExpired,omitempty"`
 
+	// CaptureMethod - Indicates the method by which the logs were captured.
+	CaptureMethod *string `json:"captureMethod,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -110,6 +113,8 @@ func (o Logcaptureuserconfiguration) MarshalJSON() ([]byte, error) {
 		
 		DateExpired *string `json:"dateExpired,omitempty"`
 		
+		CaptureMethod *string `json:"captureMethod,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -118,6 +123,8 @@ func (o Logcaptureuserconfiguration) MarshalJSON() ([]byte, error) {
 		DateStarted: DateStarted,
 		
 		DateExpired: DateExpired,
+		
+		CaptureMethod: o.CaptureMethod,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -145,6 +152,10 @@ func (o *Logcaptureuserconfiguration) UnmarshalJSON(b []byte) error {
 		o.DateExpired = &DateExpired
 	}
 	
+	if CaptureMethod, ok := LogcaptureuserconfigurationMap["captureMethod"].(string); ok {
+		o.CaptureMethod = &CaptureMethod
+	}
+    
 	if SelfUri, ok := LogcaptureuserconfigurationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

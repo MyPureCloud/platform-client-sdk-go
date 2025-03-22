@@ -8,8 +8,8 @@ import (
 	"strings"
 )
 
-// Googlebusinessprofiledataingestionruleresponse
-type Googlebusinessprofiledataingestionruleresponse struct { 
+// Dataingestionruleresponse
+type Dataingestionruleresponse struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Id - ID of the data ingestion rule.
@@ -36,18 +36,12 @@ type Googlebusinessprofiledataingestionruleresponse struct {
 	// Platform - The platform of the data ingestion rule.
 	Platform *string `json:"platform,omitempty"`
 
-	// IntegrationId - The Integration Id from which public social posts are ingested. This entity is created using the /conversations/messaging/integrations/open/extensions/googlebusinessprofile resource
-	IntegrationId *string `json:"integrationId,omitempty"`
-
-	// ExternalSource - The external source associated with this data ingestion rule, which is used when performing identity resolution
-	ExternalSource *Domainentityref `json:"externalSource,omitempty"`
-
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Googlebusinessprofiledataingestionruleresponse) SetField(field string, fieldValue interface{}) {
+func (o *Dataingestionruleresponse) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -68,7 +62,7 @@ func (o *Googlebusinessprofiledataingestionruleresponse) SetField(field string, 
 	o.SetFieldNames[field] = true
 }
 
-func (o Googlebusinessprofiledataingestionruleresponse) MarshalJSON() ([]byte, error) {
+func (o Dataingestionruleresponse) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -106,7 +100,7 @@ func (o Googlebusinessprofiledataingestionruleresponse) MarshalJSON() ([]byte, e
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Googlebusinessprofiledataingestionruleresponse
+	type Alias Dataingestionruleresponse
 	
 	DateCreated := new(string)
 	if o.DateCreated != nil {
@@ -141,10 +135,6 @@ func (o Googlebusinessprofiledataingestionruleresponse) MarshalJSON() ([]byte, e
 		
 		Platform *string `json:"platform,omitempty"`
 		
-		IntegrationId *string `json:"integrationId,omitempty"`
-		
-		ExternalSource *Domainentityref `json:"externalSource,omitempty"`
-		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -164,67 +154,54 @@ func (o Googlebusinessprofiledataingestionruleresponse) MarshalJSON() ([]byte, e
 		
 		Platform: o.Platform,
 		
-		IntegrationId: o.IntegrationId,
-		
-		ExternalSource: o.ExternalSource,
-		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Googlebusinessprofiledataingestionruleresponse) UnmarshalJSON(b []byte) error {
-	var GooglebusinessprofiledataingestionruleresponseMap map[string]interface{}
-	err := json.Unmarshal(b, &GooglebusinessprofiledataingestionruleresponseMap)
+func (o *Dataingestionruleresponse) UnmarshalJSON(b []byte) error {
+	var DataingestionruleresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &DataingestionruleresponseMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := GooglebusinessprofiledataingestionruleresponseMap["id"].(string); ok {
+	if Id, ok := DataingestionruleresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
     
-	if Name, ok := GooglebusinessprofiledataingestionruleresponseMap["name"].(string); ok {
+	if Name, ok := DataingestionruleresponseMap["name"].(string); ok {
 		o.Name = &Name
 	}
     
-	if Description, ok := GooglebusinessprofiledataingestionruleresponseMap["description"].(string); ok {
+	if Description, ok := DataingestionruleresponseMap["description"].(string); ok {
 		o.Description = &Description
 	}
     
-	if Status, ok := GooglebusinessprofiledataingestionruleresponseMap["status"].(string); ok {
+	if Status, ok := DataingestionruleresponseMap["status"].(string); ok {
 		o.Status = &Status
 	}
     
-	if Version, ok := GooglebusinessprofiledataingestionruleresponseMap["version"].(float64); ok {
+	if Version, ok := DataingestionruleresponseMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
 	}
 	
-	if dateCreatedString, ok := GooglebusinessprofiledataingestionruleresponseMap["dateCreated"].(string); ok {
+	if dateCreatedString, ok := DataingestionruleresponseMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
 	}
 	
-	if dateModifiedString, ok := GooglebusinessprofiledataingestionruleresponseMap["dateModified"].(string); ok {
+	if dateModifiedString, ok := DataingestionruleresponseMap["dateModified"].(string); ok {
 		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
 		o.DateModified = &DateModified
 	}
 	
-	if Platform, ok := GooglebusinessprofiledataingestionruleresponseMap["platform"].(string); ok {
+	if Platform, ok := DataingestionruleresponseMap["platform"].(string); ok {
 		o.Platform = &Platform
 	}
     
-	if IntegrationId, ok := GooglebusinessprofiledataingestionruleresponseMap["integrationId"].(string); ok {
-		o.IntegrationId = &IntegrationId
-	}
-    
-	if ExternalSource, ok := GooglebusinessprofiledataingestionruleresponseMap["externalSource"].(map[string]interface{}); ok {
-		ExternalSourceString, _ := json.Marshal(ExternalSource)
-		json.Unmarshal(ExternalSourceString, &o.ExternalSource)
-	}
-	
-	if SelfUri, ok := GooglebusinessprofiledataingestionruleresponseMap["selfUri"].(string); ok {
+	if SelfUri, ok := DataingestionruleresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
     
@@ -233,7 +210,7 @@ func (o *Googlebusinessprofiledataingestionruleresponse) UnmarshalJSON(b []byte)
 }
 
 // String returns a JSON representation of the model
-func (o *Googlebusinessprofiledataingestionruleresponse) String() string {
+func (o *Dataingestionruleresponse) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

@@ -1,6 +1,5 @@
 package platformclientv2
 import (
-	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -8,19 +7,31 @@ import (
 	"strings"
 )
 
-// Conversationeditedsummary
-type Conversationeditedsummary struct { 
+// Creategeneralprogramtestphrasematchedtranscript
+type Creategeneralprogramtestphrasematchedtranscript struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Text - The text of the edited summary.
-	Text *string `json:"text,omitempty"`
+	// Timestamp
+	Timestamp *int `json:"timestamp,omitempty"`
 
-	// DateModified - The modification date of the edited summary. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
-	DateModified *time.Time `json:"dateModified,omitempty"`
+	// TranscriptId
+	TranscriptId *string `json:"transcriptId,omitempty"`
+
+	// CommunicationId
+	CommunicationId *string `json:"communicationId,omitempty"`
+
+	// ConversationId
+	ConversationId *string `json:"conversationId,omitempty"`
+
+	// MediaType
+	MediaType *string `json:"mediaType,omitempty"`
+
+	// DetectedPhrases
+	DetectedPhrases *[]Creategeneralprogramtestphrasedetectedphrase `json:"detectedPhrases,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Conversationeditedsummary) SetField(field string, fieldValue interface{}) {
+func (o *Creategeneralprogramtestphrasematchedtranscript) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -41,14 +52,14 @@ func (o *Conversationeditedsummary) SetField(field string, fieldValue interface{
 	o.SetFieldNames[field] = true
 }
 
-func (o Conversationeditedsummary) MarshalJSON() ([]byte, error) {
+func (o Creategeneralprogramtestphrasematchedtranscript) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "DateModified", }
+		dateTimeFields := []string{  }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -79,43 +90,68 @@ func (o Conversationeditedsummary) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Conversationeditedsummary
-	
-	DateModified := new(string)
-	if o.DateModified != nil {
-		
-		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
-	} else {
-		DateModified = nil
-	}
+	type Alias Creategeneralprogramtestphrasematchedtranscript
 	
 	return json.Marshal(&struct { 
-		Text *string `json:"text,omitempty"`
+		Timestamp *int `json:"timestamp,omitempty"`
 		
-		DateModified *string `json:"dateModified,omitempty"`
+		TranscriptId *string `json:"transcriptId,omitempty"`
+		
+		CommunicationId *string `json:"communicationId,omitempty"`
+		
+		ConversationId *string `json:"conversationId,omitempty"`
+		
+		MediaType *string `json:"mediaType,omitempty"`
+		
+		DetectedPhrases *[]Creategeneralprogramtestphrasedetectedphrase `json:"detectedPhrases,omitempty"`
 		Alias
 	}{ 
-		Text: o.Text,
+		Timestamp: o.Timestamp,
 		
-		DateModified: DateModified,
+		TranscriptId: o.TranscriptId,
+		
+		CommunicationId: o.CommunicationId,
+		
+		ConversationId: o.ConversationId,
+		
+		MediaType: o.MediaType,
+		
+		DetectedPhrases: o.DetectedPhrases,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Conversationeditedsummary) UnmarshalJSON(b []byte) error {
-	var ConversationeditedsummaryMap map[string]interface{}
-	err := json.Unmarshal(b, &ConversationeditedsummaryMap)
+func (o *Creategeneralprogramtestphrasematchedtranscript) UnmarshalJSON(b []byte) error {
+	var CreategeneralprogramtestphrasematchedtranscriptMap map[string]interface{}
+	err := json.Unmarshal(b, &CreategeneralprogramtestphrasematchedtranscriptMap)
 	if err != nil {
 		return err
 	}
 	
-	if Text, ok := ConversationeditedsummaryMap["text"].(string); ok {
-		o.Text = &Text
+	if Timestamp, ok := CreategeneralprogramtestphrasematchedtranscriptMap["timestamp"].(float64); ok {
+		TimestampInt := int(Timestamp)
+		o.Timestamp = &TimestampInt
+	}
+	
+	if TranscriptId, ok := CreategeneralprogramtestphrasematchedtranscriptMap["transcriptId"].(string); ok {
+		o.TranscriptId = &TranscriptId
 	}
     
-	if dateModifiedString, ok := ConversationeditedsummaryMap["dateModified"].(string); ok {
-		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
-		o.DateModified = &DateModified
+	if CommunicationId, ok := CreategeneralprogramtestphrasematchedtranscriptMap["communicationId"].(string); ok {
+		o.CommunicationId = &CommunicationId
+	}
+    
+	if ConversationId, ok := CreategeneralprogramtestphrasematchedtranscriptMap["conversationId"].(string); ok {
+		o.ConversationId = &ConversationId
+	}
+    
+	if MediaType, ok := CreategeneralprogramtestphrasematchedtranscriptMap["mediaType"].(string); ok {
+		o.MediaType = &MediaType
+	}
+    
+	if DetectedPhrases, ok := CreategeneralprogramtestphrasematchedtranscriptMap["detectedPhrases"].([]interface{}); ok {
+		DetectedPhrasesString, _ := json.Marshal(DetectedPhrases)
+		json.Unmarshal(DetectedPhrasesString, &o.DetectedPhrases)
 	}
 	
 
@@ -123,7 +159,7 @@ func (o *Conversationeditedsummary) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Conversationeditedsummary) String() string {
+func (o *Creategeneralprogramtestphrasematchedtranscript) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

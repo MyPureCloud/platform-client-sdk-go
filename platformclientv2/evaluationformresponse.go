@@ -39,6 +39,9 @@ type Evaluationformresponse struct {
 	// PublishedVersions - A list of the published versions of this form. Not populated by default, its availability depends on the endpoint. Use the 'expand=publishHistory' query parameter to retrieve this data where applicable (refer to the endpoint description to see if it is applicable).
 	PublishedVersions *Domainentitylistingevaluationform `json:"publishedVersions,omitempty"`
 
+	// AiScoring - AI scoring settings for the evaluation form.
+	AiScoring *Aiscoringsettings `json:"aiScoring,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -132,6 +135,8 @@ func (o Evaluationformresponse) MarshalJSON() ([]byte, error) {
 		
 		PublishedVersions *Domainentitylistingevaluationform `json:"publishedVersions,omitempty"`
 		
+		AiScoring *Aiscoringsettings `json:"aiScoring,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -152,6 +157,8 @@ func (o Evaluationformresponse) MarshalJSON() ([]byte, error) {
 		EvaluationSettings: o.EvaluationSettings,
 		
 		PublishedVersions: o.PublishedVersions,
+		
+		AiScoring: o.AiScoring,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -203,6 +210,11 @@ func (o *Evaluationformresponse) UnmarshalJSON(b []byte) error {
 	if PublishedVersions, ok := EvaluationformresponseMap["publishedVersions"].(map[string]interface{}); ok {
 		PublishedVersionsString, _ := json.Marshal(PublishedVersions)
 		json.Unmarshal(PublishedVersionsString, &o.PublishedVersions)
+	}
+	
+	if AiScoring, ok := EvaluationformresponseMap["aiScoring"].(map[string]interface{}); ok {
+		AiScoringString, _ := json.Marshal(AiScoring)
+		json.Unmarshal(AiScoringString, &o.AiScoring)
 	}
 	
 	if SelfUri, ok := EvaluationformresponseMap["selfUri"].(string); ok {

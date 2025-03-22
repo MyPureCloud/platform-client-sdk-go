@@ -22,6 +22,12 @@ type Buschedulingsettingsresponse struct {
 
 	// AllowWorkPlanPerMinuteGranularity - Indicates whether or not per minute granularity for scheduling will be enabled for this business unit. Defaults to false.
 	AllowWorkPlanPerMinuteGranularity *bool `json:"allowWorkPlanPerMinuteGranularity,omitempty"`
+
+	// ActivitySmoothingType - The activity smoothing type for schedule generation in this business unit
+	ActivitySmoothingType *string `json:"activitySmoothingType,omitempty"`
+
+	// InduceScheduleVariability - Indicates whether to provide variability in schedule generation
+	InduceScheduleVariability *bool `json:"induceScheduleVariability,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +100,10 @@ func (o Buschedulingsettingsresponse) MarshalJSON() ([]byte, error) {
 		ServiceGoalImpact *Wfmservicegoalimpactsettings `json:"serviceGoalImpact,omitempty"`
 		
 		AllowWorkPlanPerMinuteGranularity *bool `json:"allowWorkPlanPerMinuteGranularity,omitempty"`
+		
+		ActivitySmoothingType *string `json:"activitySmoothingType,omitempty"`
+		
+		InduceScheduleVariability *bool `json:"induceScheduleVariability,omitempty"`
 		Alias
 	}{ 
 		MessageSeverities: o.MessageSeverities,
@@ -103,6 +113,10 @@ func (o Buschedulingsettingsresponse) MarshalJSON() ([]byte, error) {
 		ServiceGoalImpact: o.ServiceGoalImpact,
 		
 		AllowWorkPlanPerMinuteGranularity: o.AllowWorkPlanPerMinuteGranularity,
+		
+		ActivitySmoothingType: o.ActivitySmoothingType,
+		
+		InduceScheduleVariability: o.InduceScheduleVariability,
 		Alias:    (Alias)(o),
 	})
 }
@@ -131,6 +145,14 @@ func (o *Buschedulingsettingsresponse) UnmarshalJSON(b []byte) error {
 	
 	if AllowWorkPlanPerMinuteGranularity, ok := BuschedulingsettingsresponseMap["allowWorkPlanPerMinuteGranularity"].(bool); ok {
 		o.AllowWorkPlanPerMinuteGranularity = &AllowWorkPlanPerMinuteGranularity
+	}
+    
+	if ActivitySmoothingType, ok := BuschedulingsettingsresponseMap["activitySmoothingType"].(string); ok {
+		o.ActivitySmoothingType = &ActivitySmoothingType
+	}
+    
+	if InduceScheduleVariability, ok := BuschedulingsettingsresponseMap["induceScheduleVariability"].(bool); ok {
+		o.InduceScheduleVariability = &InduceScheduleVariability
 	}
     
 

@@ -7,22 +7,19 @@ import (
 	"strings"
 )
 
-// Timeoffrequestsettings
-type Timeoffrequestsettings struct { 
+// Twitterdatahistoricaltweetrequest
+type Twitterdatahistoricaltweetrequest struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// SubmissionRangeEnforced - Whether to enforce a submission range for agent time off requests
-	SubmissionRangeEnforced *bool `json:"submissionRangeEnforced,omitempty"`
+	// SearchTerms - Search terms to use in the query
+	SearchTerms *string `json:"searchTerms,omitempty"`
 
-	// SubmissionEarliestDaysFromNow - The earliest number of days from now for which an agent can submit a time off request.  Use negative numbers to indicate days in the past
-	SubmissionEarliestDaysFromNow *int `json:"submissionEarliestDaysFromNow,omitempty"`
-
-	// SubmissionLatestDaysFromNow - The latest number of days from now for which an agent can submit a time off request
-	SubmissionLatestDaysFromNow *int `json:"submissionLatestDaysFromNow,omitempty"`
+	// Countries - ISO 3166-1 alpha-2 country codes to use for the search. Defaults to worldwide.
+	Countries *[]string `json:"countries,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Timeoffrequestsettings) SetField(field string, fieldValue interface{}) {
+func (o *Twitterdatahistoricaltweetrequest) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -43,7 +40,7 @@ func (o *Timeoffrequestsettings) SetField(field string, fieldValue interface{}) 
 	o.SetFieldNames[field] = true
 }
 
-func (o Timeoffrequestsettings) MarshalJSON() ([]byte, error) {
+func (o Twitterdatahistoricaltweetrequest) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -81,44 +78,35 @@ func (o Timeoffrequestsettings) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Timeoffrequestsettings
+	type Alias Twitterdatahistoricaltweetrequest
 	
 	return json.Marshal(&struct { 
-		SubmissionRangeEnforced *bool `json:"submissionRangeEnforced,omitempty"`
+		SearchTerms *string `json:"searchTerms,omitempty"`
 		
-		SubmissionEarliestDaysFromNow *int `json:"submissionEarliestDaysFromNow,omitempty"`
-		
-		SubmissionLatestDaysFromNow *int `json:"submissionLatestDaysFromNow,omitempty"`
+		Countries *[]string `json:"countries,omitempty"`
 		Alias
 	}{ 
-		SubmissionRangeEnforced: o.SubmissionRangeEnforced,
+		SearchTerms: o.SearchTerms,
 		
-		SubmissionEarliestDaysFromNow: o.SubmissionEarliestDaysFromNow,
-		
-		SubmissionLatestDaysFromNow: o.SubmissionLatestDaysFromNow,
+		Countries: o.Countries,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Timeoffrequestsettings) UnmarshalJSON(b []byte) error {
-	var TimeoffrequestsettingsMap map[string]interface{}
-	err := json.Unmarshal(b, &TimeoffrequestsettingsMap)
+func (o *Twitterdatahistoricaltweetrequest) UnmarshalJSON(b []byte) error {
+	var TwitterdatahistoricaltweetrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &TwitterdatahistoricaltweetrequestMap)
 	if err != nil {
 		return err
 	}
 	
-	if SubmissionRangeEnforced, ok := TimeoffrequestsettingsMap["submissionRangeEnforced"].(bool); ok {
-		o.SubmissionRangeEnforced = &SubmissionRangeEnforced
+	if SearchTerms, ok := TwitterdatahistoricaltweetrequestMap["searchTerms"].(string); ok {
+		o.SearchTerms = &SearchTerms
 	}
     
-	if SubmissionEarliestDaysFromNow, ok := TimeoffrequestsettingsMap["submissionEarliestDaysFromNow"].(float64); ok {
-		SubmissionEarliestDaysFromNowInt := int(SubmissionEarliestDaysFromNow)
-		o.SubmissionEarliestDaysFromNow = &SubmissionEarliestDaysFromNowInt
-	}
-	
-	if SubmissionLatestDaysFromNow, ok := TimeoffrequestsettingsMap["submissionLatestDaysFromNow"].(float64); ok {
-		SubmissionLatestDaysFromNowInt := int(SubmissionLatestDaysFromNow)
-		o.SubmissionLatestDaysFromNow = &SubmissionLatestDaysFromNowInt
+	if Countries, ok := TwitterdatahistoricaltweetrequestMap["countries"].([]interface{}); ok {
+		CountriesString, _ := json.Marshal(Countries)
+		json.Unmarshal(CountriesString, &o.Countries)
 	}
 	
 
@@ -126,7 +114,7 @@ func (o *Timeoffrequestsettings) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Timeoffrequestsettings) String() string {
+func (o *Twitterdatahistoricaltweetrequest) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

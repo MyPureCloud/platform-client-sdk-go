@@ -5163,8 +5163,6 @@ func (a QualityApi) PutQualityFormsEvaluation(formId string, body Evaluationform
 // PutQualityFormsEvaluationAiscoringSettings invokes PUT /api/v2/quality/forms/evaluations/{formId}/aiscoring/settings
 //
 // Update the AI Scoring settings of an evaluation form.
-//
-// Preview: PutQualityFormsEvaluationAiscoringSettings is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a QualityApi) PutQualityFormsEvaluationAiscoringSettings(formId string, body Aiscoringsettings) (*Aiscoringsettings, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

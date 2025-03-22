@@ -7,22 +7,28 @@ import (
 	"strings"
 )
 
-// Dataingestionrules
-type Dataingestionrules struct { 
+// Contactsexportfilter
+type Contactsexportfilter struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Twitter - A list of X (formally Twitter) data ingestion rules.
-	Twitter *[]Twitterdataingestionruleresponse `json:"twitter,omitempty"`
+	// Eq - Filtered field should have the same value
+	Eq *Contactsexportfieldfilter `json:"eq,omitempty"`
 
-	// Open - A list of Open data ingestion rules.
-	Open *[]Opendataingestionruleresponse `json:"open,omitempty"`
+	// In - Filtered field should match one of the listed values
+	In *Contactsexportfieldlistfilter `json:"in,omitempty"`
 
-	// Facebook - A list of Facebook data ingestion rules.
-	Facebook *[]Facebookdataingestionruleresponse `json:"facebook,omitempty"`
+	// And - Boolean AND combination of filters
+	And *[]Contactsexportfilter `json:"and,omitempty"`
+
+	// Or - Boolean OR combination of filters
+	Or *[]Contactsexportfilter `json:"or,omitempty"`
+
+	// Not - Boolean negation of filters
+	Not **Contactsexportfilter `json:"not,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Dataingestionrules) SetField(field string, fieldValue interface{}) {
+func (o *Contactsexportfilter) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -43,7 +49,7 @@ func (o *Dataingestionrules) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Dataingestionrules) MarshalJSON() ([]byte, error) {
+func (o Contactsexportfilter) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -81,45 +87,63 @@ func (o Dataingestionrules) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Dataingestionrules
+	type Alias Contactsexportfilter
 	
 	return json.Marshal(&struct { 
-		Twitter *[]Twitterdataingestionruleresponse `json:"twitter,omitempty"`
+		Eq *Contactsexportfieldfilter `json:"eq,omitempty"`
 		
-		Open *[]Opendataingestionruleresponse `json:"open,omitempty"`
+		In *Contactsexportfieldlistfilter `json:"in,omitempty"`
 		
-		Facebook *[]Facebookdataingestionruleresponse `json:"facebook,omitempty"`
+		And *[]Contactsexportfilter `json:"and,omitempty"`
+		
+		Or *[]Contactsexportfilter `json:"or,omitempty"`
+		
+		Not **Contactsexportfilter `json:"not,omitempty"`
 		Alias
 	}{ 
-		Twitter: o.Twitter,
+		Eq: o.Eq,
 		
-		Open: o.Open,
+		In: o.In,
 		
-		Facebook: o.Facebook,
+		And: o.And,
+		
+		Or: o.Or,
+		
+		Not: o.Not,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Dataingestionrules) UnmarshalJSON(b []byte) error {
-	var DataingestionrulesMap map[string]interface{}
-	err := json.Unmarshal(b, &DataingestionrulesMap)
+func (o *Contactsexportfilter) UnmarshalJSON(b []byte) error {
+	var ContactsexportfilterMap map[string]interface{}
+	err := json.Unmarshal(b, &ContactsexportfilterMap)
 	if err != nil {
 		return err
 	}
 	
-	if Twitter, ok := DataingestionrulesMap["twitter"].([]interface{}); ok {
-		TwitterString, _ := json.Marshal(Twitter)
-		json.Unmarshal(TwitterString, &o.Twitter)
+	if Eq, ok := ContactsexportfilterMap["eq"].(map[string]interface{}); ok {
+		EqString, _ := json.Marshal(Eq)
+		json.Unmarshal(EqString, &o.Eq)
 	}
 	
-	if Open, ok := DataingestionrulesMap["open"].([]interface{}); ok {
-		OpenString, _ := json.Marshal(Open)
-		json.Unmarshal(OpenString, &o.Open)
+	if In, ok := ContactsexportfilterMap["in"].(map[string]interface{}); ok {
+		InString, _ := json.Marshal(In)
+		json.Unmarshal(InString, &o.In)
 	}
 	
-	if Facebook, ok := DataingestionrulesMap["facebook"].([]interface{}); ok {
-		FacebookString, _ := json.Marshal(Facebook)
-		json.Unmarshal(FacebookString, &o.Facebook)
+	if And, ok := ContactsexportfilterMap["and"].([]interface{}); ok {
+		AndString, _ := json.Marshal(And)
+		json.Unmarshal(AndString, &o.And)
+	}
+	
+	if Or, ok := ContactsexportfilterMap["or"].([]interface{}); ok {
+		OrString, _ := json.Marshal(Or)
+		json.Unmarshal(OrString, &o.Or)
+	}
+	
+	if Not, ok := ContactsexportfilterMap["not"].(map[string]interface{}); ok {
+		NotString, _ := json.Marshal(Not)
+		json.Unmarshal(NotString, &o.Not)
 	}
 	
 
@@ -127,7 +151,7 @@ func (o *Dataingestionrules) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Dataingestionrules) String() string {
+func (o *Contactsexportfilter) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

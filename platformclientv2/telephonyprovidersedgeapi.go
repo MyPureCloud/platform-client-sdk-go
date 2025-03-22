@@ -3622,7 +3622,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExtensionpool(exten
 // GetTelephonyProvidersEdgesExtensionpools invokes GET /api/v2/telephony/providers/edges/extensionpools
 //
 // Get a listing of extension pools
-func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExtensionpools(pageSize int, pageNumber int, sortBy string, number string) (*Extensionpoolentitylisting, *APIResponse, error) {
+func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExtensionpools(pageSize int, pageNumber int, sortBy string, number string, divisionId []string) (*Extensionpoolentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/extensionpools"
@@ -3656,6 +3656,8 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExtensionpools(page
 	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
 	queryParams["number"] = a.Configuration.APIClient.ParameterToString(number, "")
+	
+	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

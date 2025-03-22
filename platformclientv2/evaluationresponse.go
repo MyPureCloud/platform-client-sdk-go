@@ -105,6 +105,9 @@ type Evaluationresponse struct {
 	// EvaluationSource - The source that created the evaluation.
 	EvaluationSource *Evaluationsource `json:"evaluationSource,omitempty"`
 
+	// AiScoring - AI scoring details for the evaluation.
+	AiScoring *Aiscoring `json:"aiScoring,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -290,6 +293,8 @@ func (o Evaluationresponse) MarshalJSON() ([]byte, error) {
 		
 		EvaluationSource *Evaluationsource `json:"evaluationSource,omitempty"`
 		
+		AiScoring *Aiscoring `json:"aiScoring,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -354,6 +359,8 @@ func (o Evaluationresponse) MarshalJSON() ([]byte, error) {
 		HasAssistanceFailed: o.HasAssistanceFailed,
 		
 		EvaluationSource: o.EvaluationSource,
+		
+		AiScoring: o.AiScoring,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -507,6 +514,11 @@ func (o *Evaluationresponse) UnmarshalJSON(b []byte) error {
 	if EvaluationSource, ok := EvaluationresponseMap["evaluationSource"].(map[string]interface{}); ok {
 		EvaluationSourceString, _ := json.Marshal(EvaluationSource)
 		json.Unmarshal(EvaluationSourceString, &o.EvaluationSource)
+	}
+	
+	if AiScoring, ok := EvaluationresponseMap["aiScoring"].(map[string]interface{}); ok {
+		AiScoringString, _ := json.Marshal(AiScoring)
+		json.Unmarshal(AiScoringString, &o.AiScoring)
 	}
 	
 	if SelfUri, ok := EvaluationresponseMap["selfUri"].(string); ok {

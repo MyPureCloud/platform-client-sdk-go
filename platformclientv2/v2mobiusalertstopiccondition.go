@@ -14,8 +14,8 @@ type V2mobiusalertstopiccondition struct {
 	// Id
 	Id *string `json:"id,omitempty"`
 
-	// Conditions
-	Conditions *[]V2mobiusalertstopiccondition `json:"conditions,omitempty"`
+	// Clauses
+	Clauses *[]V2mobiusalertstopiccondition `json:"clauses,omitempty"`
 
 	// Predicates
 	Predicates *[]V2mobiusalertstopicconditionrulepredicate `json:"predicates,omitempty"`
@@ -89,7 +89,7 @@ func (o V2mobiusalertstopiccondition) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
-		Conditions *[]V2mobiusalertstopiccondition `json:"conditions,omitempty"`
+		Clauses *[]V2mobiusalertstopiccondition `json:"clauses,omitempty"`
 		
 		Predicates *[]V2mobiusalertstopicconditionrulepredicate `json:"predicates,omitempty"`
 		
@@ -98,7 +98,7 @@ func (o V2mobiusalertstopiccondition) MarshalJSON() ([]byte, error) {
 	}{ 
 		Id: o.Id,
 		
-		Conditions: o.Conditions,
+		Clauses: o.Clauses,
 		
 		Predicates: o.Predicates,
 		
@@ -118,9 +118,9 @@ func (o *V2mobiusalertstopiccondition) UnmarshalJSON(b []byte) error {
 		o.Id = &Id
 	}
     
-	if Conditions, ok := V2mobiusalertstopicconditionMap["conditions"].([]interface{}); ok {
-		ConditionsString, _ := json.Marshal(Conditions)
-		json.Unmarshal(ConditionsString, &o.Conditions)
+	if Clauses, ok := V2mobiusalertstopicconditionMap["clauses"].([]interface{}); ok {
+		ClausesString, _ := json.Marshal(Clauses)
+		json.Unmarshal(ClausesString, &o.Clauses)
 	}
 	
 	if Predicates, ok := V2mobiusalertstopicconditionMap["predicates"].([]interface{}); ok {

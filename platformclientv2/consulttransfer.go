@@ -11,13 +11,13 @@ import (
 type Consulttransfer struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// SpeakTo - Determines to whom the initiating participant is speaking. Defaults to DESTINATION
+	// SpeakTo - Determines to whom the initiating participant is requesting to speak. Defaults to DESTINATION
 	SpeakTo *string `json:"speakTo,omitempty"`
 
 	// ConsultingUserId - The user ID of the person who wants to talk before completing the transfer. Could be the same of the context user ID
 	ConsultingUserId *string `json:"consultingUserId,omitempty"`
 
-	// Destination - Destination phone number and name.
+	// Destination - Destination. Specify one and only one parameter from the list below.
 	Destination *Destination `json:"destination,omitempty"`
 }
 

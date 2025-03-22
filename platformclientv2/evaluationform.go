@@ -36,6 +36,9 @@ type Evaluationform struct {
 	// EvaluationSettings - Settings for evaluations associated with this form
 	EvaluationSettings *Evaluationsettings `json:"evaluationSettings,omitempty"`
 
+	// AiScoring - AI scoring settings for the evaluation form.
+	AiScoring *Aiscoringsettings `json:"aiScoring,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -127,6 +130,8 @@ func (o Evaluationform) MarshalJSON() ([]byte, error) {
 		
 		EvaluationSettings *Evaluationsettings `json:"evaluationSettings,omitempty"`
 		
+		AiScoring *Aiscoringsettings `json:"aiScoring,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -145,6 +150,8 @@ func (o Evaluationform) MarshalJSON() ([]byte, error) {
 		PublishedVersions: o.PublishedVersions,
 		
 		EvaluationSettings: o.EvaluationSettings,
+		
+		AiScoring: o.AiScoring,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -192,6 +199,11 @@ func (o *Evaluationform) UnmarshalJSON(b []byte) error {
 	if EvaluationSettings, ok := EvaluationformMap["evaluationSettings"].(map[string]interface{}); ok {
 		EvaluationSettingsString, _ := json.Marshal(EvaluationSettings)
 		json.Unmarshal(EvaluationSettingsString, &o.EvaluationSettings)
+	}
+	
+	if AiScoring, ok := EvaluationformMap["aiScoring"].(map[string]interface{}); ok {
+		AiScoringString, _ := json.Marshal(AiScoring)
+		json.Unmarshal(AiScoringString, &o.AiScoring)
 	}
 	
 	if SelfUri, ok := EvaluationformMap["selfUri"].(string); ok {

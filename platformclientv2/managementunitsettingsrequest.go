@@ -18,7 +18,7 @@ type Managementunitsettingsrequest struct {
 	ShortTermForecasting *Shorttermforecastingsettings `json:"shortTermForecasting,omitempty"`
 
 	// TimeOff - Time off request settings for this management unit
-	TimeOff *Timeoffrequestsettings `json:"timeOff,omitempty"`
+	TimeOff *Timeoffsettingsrequest `json:"timeOff,omitempty"`
 
 	// Scheduling - Scheduling settings for this management unit
 	Scheduling *Schedulingsettingsrequest `json:"scheduling,omitempty"`
@@ -97,7 +97,7 @@ func (o Managementunitsettingsrequest) MarshalJSON() ([]byte, error) {
 		
 		ShortTermForecasting *Shorttermforecastingsettings `json:"shortTermForecasting,omitempty"`
 		
-		TimeOff *Timeoffrequestsettings `json:"timeOff,omitempty"`
+		TimeOff *Timeoffsettingsrequest `json:"timeOff,omitempty"`
 		
 		Scheduling *Schedulingsettingsrequest `json:"scheduling,omitempty"`
 		

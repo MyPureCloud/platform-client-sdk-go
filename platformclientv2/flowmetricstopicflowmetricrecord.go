@@ -153,7 +153,7 @@ type Flowmetricstopicflowmetricrecord struct {
 	// FlowVersion - The version of this flow
 	FlowVersion *string `json:"flowVersion,omitempty"`
 
-	// GroupId - Unique identifier for a PureCloud group
+	// GroupId - Unique identifier for a Genesys Cloud group
 	GroupId *string `json:"groupId,omitempty"`
 
 	// InteractionType - The interaction type (enterprise or contactCenter)

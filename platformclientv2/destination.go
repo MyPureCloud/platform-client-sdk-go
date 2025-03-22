@@ -14,13 +14,13 @@ type Destination struct {
 	// Address - Address or phone number.
 	Address *string `json:"address,omitempty"`
 
-	// Name
+	// Name - The name of the internal user.
 	Name *string `json:"name,omitempty"`
 
-	// UserId
+	// UserId - The user ID.
 	UserId *string `json:"userId,omitempty"`
 
-	// QueueId
+	// QueueId - The queue ID.
 	QueueId *string `json:"queueId,omitempty"`
 }
 

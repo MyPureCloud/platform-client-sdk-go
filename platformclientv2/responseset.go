@@ -36,6 +36,9 @@ type Responseset struct {
 	// AmdSpeechDistinguishEnabled - Whether to enable answering machine detection
 	AmdSpeechDistinguishEnabled *bool `json:"amdSpeechDistinguishEnabled,omitempty"`
 
+	// LiveSpeakerDetectionMode - Setting level of live speaker detection based on ringbacks
+	LiveSpeakerDetectionMode *string `json:"liveSpeakerDetectionMode,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -135,6 +138,8 @@ func (o Responseset) MarshalJSON() ([]byte, error) {
 		
 		AmdSpeechDistinguishEnabled *bool `json:"amdSpeechDistinguishEnabled,omitempty"`
 		
+		LiveSpeakerDetectionMode *string `json:"liveSpeakerDetectionMode,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -153,6 +158,8 @@ func (o Responseset) MarshalJSON() ([]byte, error) {
 		BeepDetectionEnabled: o.BeepDetectionEnabled,
 		
 		AmdSpeechDistinguishEnabled: o.AmdSpeechDistinguishEnabled,
+		
+		LiveSpeakerDetectionMode: o.LiveSpeakerDetectionMode,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -200,6 +207,10 @@ func (o *Responseset) UnmarshalJSON(b []byte) error {
     
 	if AmdSpeechDistinguishEnabled, ok := ResponsesetMap["amdSpeechDistinguishEnabled"].(bool); ok {
 		o.AmdSpeechDistinguishEnabled = &AmdSpeechDistinguishEnabled
+	}
+    
+	if LiveSpeakerDetectionMode, ok := ResponsesetMap["liveSpeakerDetectionMode"].(string); ok {
+		o.LiveSpeakerDetectionMode = &LiveSpeakerDetectionMode
 	}
     
 	if SelfUri, ok := ResponsesetMap["selfUri"].(string); ok {

@@ -3398,8 +3398,6 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocument(documentId strin
 // Get document content upload status
 //
 // Deprecated: GetKnowledgeKnowledgebaseLanguageDocumentUpload is deprecated
-//
-// Preview: GetKnowledgeKnowledgebaseLanguageDocumentUpload is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocumentUpload(documentId string, knowledgeBaseId string, languageCode string, uploadId string) (*Knowledgedocumentcontentupload, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -7976,8 +7974,6 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseDocumentsAnswers(knowledgeBaseId
 // PostKnowledgeKnowledgebaseDocumentsBulkRemove invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/bulk/remove
 //
 // Bulk remove documents.
-//
-// Preview: PostKnowledgeKnowledgebaseDocumentsBulkRemove is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a KnowledgeApi) PostKnowledgeKnowledgebaseDocumentsBulkRemove(knowledgeBaseId string, body Knowledgedocumentbulkremoverequest) (*Bulkresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -8068,8 +8064,6 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseDocumentsBulkRemove(knowledgeBas
 // PostKnowledgeKnowledgebaseDocumentsBulkUpdate invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/bulk/update
 //
 // Bulk update documents.
-//
-// Preview: PostKnowledgeKnowledgebaseDocumentsBulkUpdate is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a KnowledgeApi) PostKnowledgeKnowledgebaseDocumentsBulkUpdate(knowledgeBaseId string, body Knowledgedocumentbulkupdaterequest) (*Bulkresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -8497,8 +8491,6 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseDocumentsSearchSuggestions(knowl
 // PostKnowledgeKnowledgebaseDocumentsVersionsBulkAdd invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents/versions/bulk/add
 //
 // Bulk add document versions.
-//
-// Preview: PostKnowledgeKnowledgebaseDocumentsVersionsBulkAdd is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a KnowledgeApi) PostKnowledgeKnowledgebaseDocumentsVersionsBulkAdd(knowledgeBaseId string, body Knowledgedocumentbulkversionaddrequest) (*Bulkresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -8959,8 +8951,6 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageCategories(knowledgeBase
 // Upload Article Content
 //
 // Deprecated: PostKnowledgeKnowledgebaseLanguageDocumentUploads is deprecated
-//
-// Preview: PostKnowledgeKnowledgebaseLanguageDocumentUploads is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageDocumentUploads(documentId string, knowledgeBaseId string, languageCode string, body Knowledgedocumentcontentupload) (*Knowledgedocumentcontentupload, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

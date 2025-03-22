@@ -19,6 +19,12 @@ type Documentbodyvideoproperties struct {
 
 	// Indentation - The indentation for the video. The valid values in 'em'.
 	Indentation *float32 `json:"indentation,omitempty"`
+
+	// Width - The width of the video in the specified unit.
+	Width *Documentelementlength `json:"width,omitempty"`
+
+	// Height - The height of the video in the specified unit.
+	Height *Documentelementlength `json:"height,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +95,10 @@ func (o Documentbodyvideoproperties) MarshalJSON() ([]byte, error) {
 		Align *string `json:"align,omitempty"`
 		
 		Indentation *float32 `json:"indentation,omitempty"`
+		
+		Width *Documentelementlength `json:"width,omitempty"`
+		
+		Height *Documentelementlength `json:"height,omitempty"`
 		Alias
 	}{ 
 		BackgroundColor: o.BackgroundColor,
@@ -96,6 +106,10 @@ func (o Documentbodyvideoproperties) MarshalJSON() ([]byte, error) {
 		Align: o.Align,
 		
 		Indentation: o.Indentation,
+		
+		Width: o.Width,
+		
+		Height: o.Height,
 		Alias:    (Alias)(o),
 	})
 }
@@ -118,6 +132,16 @@ func (o *Documentbodyvideoproperties) UnmarshalJSON(b []byte) error {
 	if Indentation, ok := DocumentbodyvideopropertiesMap["indentation"].(float64); ok {
 		IndentationFloat32 := float32(Indentation)
 		o.Indentation = &IndentationFloat32
+	}
+	
+	if Width, ok := DocumentbodyvideopropertiesMap["width"].(map[string]interface{}); ok {
+		WidthString, _ := json.Marshal(Width)
+		json.Unmarshal(WidthString, &o.Width)
+	}
+	
+	if Height, ok := DocumentbodyvideopropertiesMap["height"].(map[string]interface{}); ok {
+		HeightString, _ := json.Marshal(Height)
+		json.Unmarshal(HeightString, &o.Height)
 	}
 	
 

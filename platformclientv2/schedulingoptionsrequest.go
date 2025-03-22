@@ -13,6 +13,12 @@ type Schedulingoptionsrequest struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// NoForecastOptions - Schedule generation options to apply if no forecast is supplied
 	NoForecastOptions *Schedulingnoforecastoptionsrequest `json:"noForecastOptions,omitempty"`
+
+	// ActivitySmoothingType - Overrides the default BU level activity smoothing type for this schedule generation
+	ActivitySmoothingType *string `json:"activitySmoothingType,omitempty"`
+
+	// InduceScheduleVariability - Overrides the default BU level induce schedule variability setting for this schedule generation
+	InduceScheduleVariability *bool `json:"induceScheduleVariability,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +85,17 @@ func (o Schedulingoptionsrequest) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		NoForecastOptions *Schedulingnoforecastoptionsrequest `json:"noForecastOptions,omitempty"`
+		
+		ActivitySmoothingType *string `json:"activitySmoothingType,omitempty"`
+		
+		InduceScheduleVariability *bool `json:"induceScheduleVariability,omitempty"`
 		Alias
 	}{ 
 		NoForecastOptions: o.NoForecastOptions,
+		
+		ActivitySmoothingType: o.ActivitySmoothingType,
+		
+		InduceScheduleVariability: o.InduceScheduleVariability,
 		Alias:    (Alias)(o),
 	})
 }
@@ -98,6 +112,14 @@ func (o *Schedulingoptionsrequest) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(NoForecastOptionsString, &o.NoForecastOptions)
 	}
 	
+	if ActivitySmoothingType, ok := SchedulingoptionsrequestMap["activitySmoothingType"].(string); ok {
+		o.ActivitySmoothingType = &ActivitySmoothingType
+	}
+    
+	if InduceScheduleVariability, ok := SchedulingoptionsrequestMap["induceScheduleVariability"].(bool); ok {
+		o.InduceScheduleVariability = &InduceScheduleVariability
+	}
+    
 
 	return nil
 }

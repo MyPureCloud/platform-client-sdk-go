@@ -16,6 +16,9 @@ type Creategeneralprogramtopicsdefinitionsjob struct {
 
 	// State
 	State *string `json:"state,omitempty"`
+
+	// TestTopicPhraseResults
+	TestTopicPhraseResults *[]Creategeneralprogramtesttopicphraseresults `json:"testTopicPhraseResults,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Creategeneralprogramtopicsdefinitionsjob) MarshalJSON() ([]byte, error) 
 		Id *string `json:"id,omitempty"`
 		
 		State *string `json:"state,omitempty"`
+		
+		TestTopicPhraseResults *[]Creategeneralprogramtesttopicphraseresults `json:"testTopicPhraseResults,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
 		
 		State: o.State,
+		
+		TestTopicPhraseResults: o.TestTopicPhraseResults,
 		Alias:    (Alias)(o),
 	})
 }
@@ -108,6 +115,11 @@ func (o *Creategeneralprogramtopicsdefinitionsjob) UnmarshalJSON(b []byte) error
 		o.State = &State
 	}
     
+	if TestTopicPhraseResults, ok := CreategeneralprogramtopicsdefinitionsjobMap["testTopicPhraseResults"].([]interface{}); ok {
+		TestTopicPhraseResultsString, _ := json.Marshal(TestTopicPhraseResults)
+		json.Unmarshal(TestTopicPhraseResultsString, &o.TestTopicPhraseResults)
+	}
+	
 
 	return nil
 }

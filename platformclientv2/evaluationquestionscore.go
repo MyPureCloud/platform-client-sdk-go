@@ -34,6 +34,9 @@ type Evaluationquestionscore struct {
 
 	// Comments - Comments from the evaluator specific to this question
 	Comments *string `json:"comments,omitempty"`
+
+	// AiAnswer - Suggested AI answer
+	AiAnswer *Aianswer `json:"aiAnswer,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -114,6 +117,8 @@ func (o Evaluationquestionscore) MarshalJSON() ([]byte, error) {
 		FailedKillQuestion *bool `json:"failedKillQuestion,omitempty"`
 		
 		Comments *string `json:"comments,omitempty"`
+		
+		AiAnswer *Aianswer `json:"aiAnswer,omitempty"`
 		Alias
 	}{ 
 		QuestionId: o.QuestionId,
@@ -131,6 +136,8 @@ func (o Evaluationquestionscore) MarshalJSON() ([]byte, error) {
 		FailedKillQuestion: o.FailedKillQuestion,
 		
 		Comments: o.Comments,
+		
+		AiAnswer: o.AiAnswer,
 		Alias:    (Alias)(o),
 	})
 }
@@ -175,6 +182,11 @@ func (o *Evaluationquestionscore) UnmarshalJSON(b []byte) error {
 		o.Comments = &Comments
 	}
     
+	if AiAnswer, ok := EvaluationquestionscoreMap["aiAnswer"].(map[string]interface{}); ok {
+		AiAnswerString, _ := json.Marshal(AiAnswer)
+		json.Unmarshal(AiAnswerString, &o.AiAnswer)
+	}
+	
 
 	return nil
 }

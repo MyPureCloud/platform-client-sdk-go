@@ -41,6 +41,9 @@ type Operationaleventnotificationtopicoperationaleventnotification struct {
 	// ConversationId
 	ConversationId *string `json:"conversationId,omitempty"`
 
+	// EntityToken
+	EntityToken *string `json:"entityToken,omitempty"`
+
 	// Timestamp
 	Timestamp *int `json:"timestamp,omitempty"`
 }
@@ -128,6 +131,8 @@ func (o Operationaleventnotificationtopicoperationaleventnotification) MarshalJS
 		
 		ConversationId *string `json:"conversationId,omitempty"`
 		
+		EntityToken *string `json:"entityToken,omitempty"`
+		
 		Timestamp *int `json:"timestamp,omitempty"`
 		Alias
 	}{ 
@@ -150,6 +155,8 @@ func (o Operationaleventnotificationtopicoperationaleventnotification) MarshalJS
 		EntityType: o.EntityType,
 		
 		ConversationId: o.ConversationId,
+		
+		EntityToken: o.EntityToken,
 		
 		Timestamp: o.Timestamp,
 		Alias:    (Alias)(o),
@@ -202,6 +209,10 @@ func (o *Operationaleventnotificationtopicoperationaleventnotification) Unmarsha
     
 	if ConversationId, ok := OperationaleventnotificationtopicoperationaleventnotificationMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
+	}
+    
+	if EntityToken, ok := OperationaleventnotificationtopicoperationaleventnotificationMap["entityToken"].(string); ok {
+		o.EntityToken = &EntityToken
 	}
     
 	if Timestamp, ok := OperationaleventnotificationtopicoperationaleventnotificationMap["timestamp"].(float64); ok {

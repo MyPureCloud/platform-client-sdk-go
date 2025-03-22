@@ -7,28 +7,22 @@ import (
 	"strings"
 )
 
-// Limitcount
-type Limitcount struct { 
+// Creategeneralprogramtesttopicphraseresults
+type Creategeneralprogramtesttopicphraseresults struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Name - The name of the limit.
-	Name *string `json:"name,omitempty"`
+	// ProcessedTranscriptsCount
+	ProcessedTranscriptsCount *int `json:"processedTranscriptsCount,omitempty"`
 
-	// EstimatedCount - The total used count of the limit.
-	EstimatedCount *int `json:"estimatedCount,omitempty"`
+	// MatchedTranscriptsCount
+	MatchedTranscriptsCount *int `json:"matchedTranscriptsCount,omitempty"`
 
-	// Max - The maximum value of the limit.
-	Max *int `json:"max,omitempty"`
-
-	// EntityId - The entity which makes this count unique. The context of what the entity is would be dependant on the limit. May not be applicable for all limits.
-	EntityId *string `json:"entityId,omitempty"`
-
-	// UserId - The user which makes this count unique. May not be applicable for all limits.
-	UserId *string `json:"userId,omitempty"`
+	// MatchedTranscripts
+	MatchedTranscripts *[]Creategeneralprogramtestphrasematchedtranscript `json:"matchedTranscripts,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Limitcount) SetField(field string, fieldValue interface{}) {
+func (o *Creategeneralprogramtesttopicphraseresults) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -49,7 +43,7 @@ func (o *Limitcount) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Limitcount) MarshalJSON() ([]byte, error) {
+func (o Creategeneralprogramtesttopicphraseresults) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -87,68 +81,53 @@ func (o Limitcount) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Limitcount
+	type Alias Creategeneralprogramtesttopicphraseresults
 	
 	return json.Marshal(&struct { 
-		Name *string `json:"name,omitempty"`
+		ProcessedTranscriptsCount *int `json:"processedTranscriptsCount,omitempty"`
 		
-		EstimatedCount *int `json:"estimatedCount,omitempty"`
+		MatchedTranscriptsCount *int `json:"matchedTranscriptsCount,omitempty"`
 		
-		Max *int `json:"max,omitempty"`
-		
-		EntityId *string `json:"entityId,omitempty"`
-		
-		UserId *string `json:"userId,omitempty"`
+		MatchedTranscripts *[]Creategeneralprogramtestphrasematchedtranscript `json:"matchedTranscripts,omitempty"`
 		Alias
 	}{ 
-		Name: o.Name,
+		ProcessedTranscriptsCount: o.ProcessedTranscriptsCount,
 		
-		EstimatedCount: o.EstimatedCount,
+		MatchedTranscriptsCount: o.MatchedTranscriptsCount,
 		
-		Max: o.Max,
-		
-		EntityId: o.EntityId,
-		
-		UserId: o.UserId,
+		MatchedTranscripts: o.MatchedTranscripts,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Limitcount) UnmarshalJSON(b []byte) error {
-	var LimitcountMap map[string]interface{}
-	err := json.Unmarshal(b, &LimitcountMap)
+func (o *Creategeneralprogramtesttopicphraseresults) UnmarshalJSON(b []byte) error {
+	var CreategeneralprogramtesttopicphraseresultsMap map[string]interface{}
+	err := json.Unmarshal(b, &CreategeneralprogramtesttopicphraseresultsMap)
 	if err != nil {
 		return err
 	}
 	
-	if Name, ok := LimitcountMap["name"].(string); ok {
-		o.Name = &Name
-	}
-    
-	if EstimatedCount, ok := LimitcountMap["estimatedCount"].(float64); ok {
-		EstimatedCountInt := int(EstimatedCount)
-		o.EstimatedCount = &EstimatedCountInt
+	if ProcessedTranscriptsCount, ok := CreategeneralprogramtesttopicphraseresultsMap["processedTranscriptsCount"].(float64); ok {
+		ProcessedTranscriptsCountInt := int(ProcessedTranscriptsCount)
+		o.ProcessedTranscriptsCount = &ProcessedTranscriptsCountInt
 	}
 	
-	if Max, ok := LimitcountMap["max"].(float64); ok {
-		MaxInt := int(Max)
-		o.Max = &MaxInt
+	if MatchedTranscriptsCount, ok := CreategeneralprogramtesttopicphraseresultsMap["matchedTranscriptsCount"].(float64); ok {
+		MatchedTranscriptsCountInt := int(MatchedTranscriptsCount)
+		o.MatchedTranscriptsCount = &MatchedTranscriptsCountInt
 	}
 	
-	if EntityId, ok := LimitcountMap["entityId"].(string); ok {
-		o.EntityId = &EntityId
+	if MatchedTranscripts, ok := CreategeneralprogramtesttopicphraseresultsMap["matchedTranscripts"].([]interface{}); ok {
+		MatchedTranscriptsString, _ := json.Marshal(MatchedTranscripts)
+		json.Unmarshal(MatchedTranscriptsString, &o.MatchedTranscripts)
 	}
-    
-	if UserId, ok := LimitcountMap["userId"].(string); ok {
-		o.UserId = &UserId
-	}
-    
+	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Limitcount) String() string {
+func (o *Creategeneralprogramtesttopicphraseresults) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

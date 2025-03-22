@@ -78,6 +78,9 @@ type Analyticssession struct {
 	// CobrowseRoomId - A unique identifier for a Genesys Cloud cobrowse room
 	CobrowseRoomId *string `json:"cobrowseRoomId,omitempty"`
 
+	// DeliveryPushed - Flag that indicates that the push delivery mechanism was used
+	DeliveryPushed *bool `json:"deliveryPushed,omitempty"`
+
 	// DeliveryStatus - The email or SMS delivery status
 	DeliveryStatus *string `json:"deliveryStatus,omitempty"`
 
@@ -401,6 +404,8 @@ func (o Analyticssession) MarshalJSON() ([]byte, error) {
 		
 		CobrowseRoomId *string `json:"cobrowseRoomId,omitempty"`
 		
+		DeliveryPushed *bool `json:"deliveryPushed,omitempty"`
+		
 		DeliveryStatus *string `json:"deliveryStatus,omitempty"`
 		
 		DeliveryStatusChangeDate *string `json:"deliveryStatusChangeDate,omitempty"`
@@ -567,6 +572,8 @@ func (o Analyticssession) MarshalJSON() ([]byte, error) {
 		CobrowseRole: o.CobrowseRole,
 		
 		CobrowseRoomId: o.CobrowseRoomId,
+		
+		DeliveryPushed: o.DeliveryPushed,
 		
 		DeliveryStatus: o.DeliveryStatus,
 		
@@ -792,6 +799,10 @@ func (o *Analyticssession) UnmarshalJSON(b []byte) error {
     
 	if CobrowseRoomId, ok := AnalyticssessionMap["cobrowseRoomId"].(string); ok {
 		o.CobrowseRoomId = &CobrowseRoomId
+	}
+    
+	if DeliveryPushed, ok := AnalyticssessionMap["deliveryPushed"].(bool); ok {
+		o.DeliveryPushed = &DeliveryPushed
 	}
     
 	if DeliveryStatus, ok := AnalyticssessionMap["deliveryStatus"].(string); ok {

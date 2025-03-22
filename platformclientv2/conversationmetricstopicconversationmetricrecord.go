@@ -123,7 +123,7 @@ type Conversationmetricstopicconversationmetricrecord struct {
 	// FlowOutType - Type of flow out that occurred when emitting tFlowOut.
 	FlowOutType *string `json:"flowOutType,omitempty"`
 
-	// GroupId - Unique identifier for a PureCloud group
+	// GroupId - Unique identifier for a Genesys Cloud group
 	GroupId *string `json:"groupId,omitempty"`
 
 	// InteractionType - The interaction type (enterprise or contactCenter)

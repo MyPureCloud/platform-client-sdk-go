@@ -19,6 +19,15 @@ type Documentbodyimageproperties struct {
 
 	// Indentation - The indentation property for the image. The valid values in 'em'.
 	Indentation *float32 `json:"indentation,omitempty"`
+
+	// Width - The width of the image converted to em unit.
+	Width *float32 `json:"width,omitempty"`
+
+	// WidthWithUnit - The width of the image in the specified unit.
+	WidthWithUnit *Documentelementlength `json:"widthWithUnit,omitempty"`
+
+	// AltText - Alternate text for the image for accessibility and when the image can't be loaded.
+	AltText *string `json:"altText,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +98,12 @@ func (o Documentbodyimageproperties) MarshalJSON() ([]byte, error) {
 		Align *string `json:"align,omitempty"`
 		
 		Indentation *float32 `json:"indentation,omitempty"`
+		
+		Width *float32 `json:"width,omitempty"`
+		
+		WidthWithUnit *Documentelementlength `json:"widthWithUnit,omitempty"`
+		
+		AltText *string `json:"altText,omitempty"`
 		Alias
 	}{ 
 		BackgroundColor: o.BackgroundColor,
@@ -96,6 +111,12 @@ func (o Documentbodyimageproperties) MarshalJSON() ([]byte, error) {
 		Align: o.Align,
 		
 		Indentation: o.Indentation,
+		
+		Width: o.Width,
+		
+		WidthWithUnit: o.WidthWithUnit,
+		
+		AltText: o.AltText,
 		Alias:    (Alias)(o),
 	})
 }
@@ -120,6 +141,20 @@ func (o *Documentbodyimageproperties) UnmarshalJSON(b []byte) error {
 		o.Indentation = &IndentationFloat32
 	}
 	
+	if Width, ok := DocumentbodyimagepropertiesMap["width"].(float64); ok {
+		WidthFloat32 := float32(Width)
+		o.Width = &WidthFloat32
+	}
+	
+	if WidthWithUnit, ok := DocumentbodyimagepropertiesMap["widthWithUnit"].(map[string]interface{}); ok {
+		WidthWithUnitString, _ := json.Marshal(WidthWithUnit)
+		json.Unmarshal(WidthWithUnitString, &o.WidthWithUnit)
+	}
+	
+	if AltText, ok := DocumentbodyimagepropertiesMap["altText"].(string); ok {
+		o.AltText = &AltText
+	}
+    
 
 	return nil
 }

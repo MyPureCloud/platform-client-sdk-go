@@ -682,6 +682,12 @@ type Viewfilter struct {
 
 	// SegmentTypes - A list of filtered segment types
 	SegmentTypes *[]string `json:"segmentTypes,omitempty"`
+
+	// ProgramIds - A list of program ids for filtering
+	ProgramIds *[]string `json:"programIds,omitempty"`
+
+	// CategoryIds - A list of category ids for filtering
+	CategoryIds *[]string `json:"categoryIds,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -1194,6 +1200,10 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		Acw *bool `json:"acw,omitempty"`
 		
 		SegmentTypes *[]string `json:"segmentTypes,omitempty"`
+		
+		ProgramIds *[]string `json:"programIds,omitempty"`
+		
+		CategoryIds *[]string `json:"categoryIds,omitempty"`
 		Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -1643,6 +1653,10 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		Acw: o.Acw,
 		
 		SegmentTypes: o.SegmentTypes,
+		
+		ProgramIds: o.ProgramIds,
+		
+		CategoryIds: o.CategoryIds,
 		Alias:    (Alias)(o),
 	})
 }
@@ -2720,6 +2734,16 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if SegmentTypes, ok := ViewfilterMap["segmentTypes"].([]interface{}); ok {
 		SegmentTypesString, _ := json.Marshal(SegmentTypes)
 		json.Unmarshal(SegmentTypesString, &o.SegmentTypes)
+	}
+	
+	if ProgramIds, ok := ViewfilterMap["programIds"].([]interface{}); ok {
+		ProgramIdsString, _ := json.Marshal(ProgramIds)
+		json.Unmarshal(ProgramIdsString, &o.ProgramIds)
+	}
+	
+	if CategoryIds, ok := ViewfilterMap["categoryIds"].([]interface{}); ok {
+		CategoryIdsString, _ := json.Marshal(CategoryIds)
+		json.Unmarshal(CategoryIdsString, &o.CategoryIds)
 	}
 	
 

@@ -27,9 +27,6 @@ type Externalorganization struct {
 	// Industry
 	Industry *string `json:"industry,omitempty"`
 
-	// PrimaryContactId
-	PrimaryContactId *string `json:"primaryContactId,omitempty"`
-
 	// Address
 	Address *Contactaddress `json:"address,omitempty"`
 
@@ -171,8 +168,6 @@ func (o Externalorganization) MarshalJSON() ([]byte, error) {
 		
 		Industry *string `json:"industry,omitempty"`
 		
-		PrimaryContactId *string `json:"primaryContactId,omitempty"`
-		
 		Address *Contactaddress `json:"address,omitempty"`
 		
 		PhoneNumber *Phonenumber `json:"phoneNumber,omitempty"`
@@ -217,8 +212,6 @@ func (o Externalorganization) MarshalJSON() ([]byte, error) {
 		CompanyType: o.CompanyType,
 		
 		Industry: o.Industry,
-		
-		PrimaryContactId: o.PrimaryContactId,
 		
 		Address: o.Address,
 		
@@ -283,10 +276,6 @@ func (o *Externalorganization) UnmarshalJSON(b []byte) error {
     
 	if Industry, ok := ExternalorganizationMap["industry"].(string); ok {
 		o.Industry = &Industry
-	}
-    
-	if PrimaryContactId, ok := ExternalorganizationMap["primaryContactId"].(string); ok {
-		o.PrimaryContactId = &PrimaryContactId
 	}
     
 	if Address, ok := ExternalorganizationMap["address"].(map[string]interface{}); ok {

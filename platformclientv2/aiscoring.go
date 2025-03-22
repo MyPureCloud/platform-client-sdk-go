@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -10,7 +11,16 @@ import (
 // Aiscoring
 type Aiscoring struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// FailureType - The type of error that occurred while processing AI scores. It is null where there is no error.
+	FailureType *string `json:"failureType,omitempty"`
+
+	// Pending - Indicates whether AI scoring is currently processing the evaluation.
+	Pending *bool `json:"pending,omitempty"`
+
+	// DateLastChanged - The date when the AI scores were last updated. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateLastChanged *time.Time `json:"dateLastChanged,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Aiscoring) SetField(field string, fieldValue interface{}) {
@@ -41,7 +51,7 @@ func (o Aiscoring) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
+		dateTimeFields := []string{ "DateLastChanged", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -74,8 +84,28 @@ func (o Aiscoring) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Aiscoring
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	DateLastChanged := new(string)
+	if o.DateLastChanged != nil {
+		
+		*DateLastChanged = timeutil.Strftime(o.DateLastChanged, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateLastChanged = nil
+	}
+	
+	return json.Marshal(&struct { 
+		FailureType *string `json:"failureType,omitempty"`
+		
+		Pending *bool `json:"pending,omitempty"`
+		
+		DateLastChanged *string `json:"dateLastChanged,omitempty"`
+		Alias
+	}{ 
+		FailureType: o.FailureType,
+		
+		Pending: o.Pending,
+		
+		DateLastChanged: DateLastChanged,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -84,6 +114,19 @@ func (o *Aiscoring) UnmarshalJSON(b []byte) error {
 	err := json.Unmarshal(b, &AiscoringMap)
 	if err != nil {
 		return err
+	}
+	
+	if FailureType, ok := AiscoringMap["failureType"].(string); ok {
+		o.FailureType = &FailureType
+	}
+    
+	if Pending, ok := AiscoringMap["pending"].(bool); ok {
+		o.Pending = &Pending
+	}
+    
+	if dateLastChangedString, ok := AiscoringMap["dateLastChanged"].(string); ok {
+		DateLastChanged, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateLastChangedString)
+		o.DateLastChanged = &DateLastChanged
 	}
 	
 

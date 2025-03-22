@@ -1038,7 +1038,7 @@ func (a RecordingApi) GetConversationRecordingmetadataRecordingId(conversationId
 // GetConversationRecordings invokes GET /api/v2/conversations/{conversationId}/recordings
 //
 // Get all of a Conversation's Recordings.
-func (a RecordingApi) GetConversationRecordings(conversationId string, maxWaitMs int, formatId string, mediaFormats []string, locale string) ([]Recording, *APIResponse, error) {
+func (a RecordingApi) GetConversationRecordings(conversationId string, maxWaitMs int, formatId string, mediaFormats []string, locale string, includePauseAnnotationsForScreenRecordings bool) ([]Recording, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/{conversationId}/recordings"
@@ -1078,6 +1078,8 @@ func (a RecordingApi) GetConversationRecordings(conversationId string, maxWaitMs
 	queryParams["mediaFormats"] = a.Configuration.APIClient.ParameterToString(mediaFormats, "multi")
 	
 	queryParams["locale"] = a.Configuration.APIClient.ParameterToString(locale, "")
+	
+	queryParams["includePauseAnnotationsForScreenRecordings"] = a.Configuration.APIClient.ParameterToString(includePauseAnnotationsForScreenRecordings, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

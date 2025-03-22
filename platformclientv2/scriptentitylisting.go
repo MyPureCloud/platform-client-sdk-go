@@ -23,6 +23,9 @@ type Scriptentitylisting struct {
 	// Total
 	Total *int `json:"total,omitempty"`
 
+	// TruncatedDivisions
+	TruncatedDivisions *bool `json:"truncatedDivisions,omitempty"`
+
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
 
@@ -113,6 +116,8 @@ func (o Scriptentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
+		TruncatedDivisions *bool `json:"truncatedDivisions,omitempty"`
+		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
 		LastUri *string `json:"lastUri,omitempty"`
@@ -133,6 +138,8 @@ func (o Scriptentitylisting) MarshalJSON() ([]byte, error) {
 		PageNumber: o.PageNumber,
 		
 		Total: o.Total,
+		
+		TruncatedDivisions: o.TruncatedDivisions,
 		
 		FirstUri: o.FirstUri,
 		
@@ -176,6 +183,10 @@ func (o *Scriptentitylisting) UnmarshalJSON(b []byte) error {
 		o.Total = &TotalInt
 	}
 	
+	if TruncatedDivisions, ok := ScriptentitylistingMap["truncatedDivisions"].(bool); ok {
+		o.TruncatedDivisions = &TruncatedDivisions
+	}
+    
 	if FirstUri, ok := ScriptentitylistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}

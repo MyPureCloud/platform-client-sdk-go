@@ -356,8 +356,6 @@ func (a ChatApi) DeleteChatsUserMessage(userId string, messageId string) (*APIRe
 // DeleteChatsUserMessagesPin invokes DELETE /api/v2/chats/users/{userId}/messages/pins/{pinnedMessageId}
 //
 // Remove a pinned message from a 1on1
-//
-// Preview: DeleteChatsUserMessagesPin is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ChatApi) DeleteChatsUserMessagesPin(userId string, pinnedMessageId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -1113,8 +1111,6 @@ func (a ChatApi) GetChatsThreadMessages(threadId string, limit string, before st
 // GetChatsUser invokes GET /api/v2/chats/users/{userId}
 //
 // Get information for a 1on1
-//
-// Preview: GetChatsUser is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ChatApi) GetChatsUser(userId string) (*Oneonone, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2492,8 +2488,6 @@ func (a ChatApi) PostChatsUserMessages(userId string, body Sendmessagebody) (*Ch
 // PostChatsUserMessagesPins invokes POST /api/v2/chats/users/{userId}/messages/pins
 //
 // Add pinned messages for a 1on1, up to a maximum of 5 pinned messages
-//
-// Preview: PostChatsUserMessagesPins is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ChatApi) PostChatsUserMessagesPins(userId string, body Pinnedmessagerequest) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

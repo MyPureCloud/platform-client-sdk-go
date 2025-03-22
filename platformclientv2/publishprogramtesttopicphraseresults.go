@@ -7,22 +7,22 @@ import (
 	"strings"
 )
 
-// Limitcountlisting
-type Limitcountlisting struct { 
+// Publishprogramtesttopicphraseresults
+type Publishprogramtesttopicphraseresults struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Entities
-	Entities *[]Limitcount `json:"entities,omitempty"`
+	// ProcessedTranscriptsCount
+	ProcessedTranscriptsCount *int `json:"processedTranscriptsCount,omitempty"`
 
-	// NextUri - A URI to the next page in the listing.
-	NextUri *string `json:"nextUri,omitempty"`
+	// MatchedTranscriptsCount
+	MatchedTranscriptsCount *int `json:"matchedTranscriptsCount,omitempty"`
 
-	// SelfUri - A URI to the current page in the listing.
-	SelfUri *string `json:"selfUri,omitempty"`
+	// MatchedTranscripts
+	MatchedTranscripts *[]Publishprogramtestphrasematchedtranscript `json:"matchedTranscripts,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Limitcountlisting) SetField(field string, fieldValue interface{}) {
+func (o *Publishprogramtesttopicphraseresults) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -43,7 +43,7 @@ func (o *Limitcountlisting) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Limitcountlisting) MarshalJSON() ([]byte, error) {
+func (o Publishprogramtesttopicphraseresults) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -81,51 +81,53 @@ func (o Limitcountlisting) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Limitcountlisting
+	type Alias Publishprogramtesttopicphraseresults
 	
 	return json.Marshal(&struct { 
-		Entities *[]Limitcount `json:"entities,omitempty"`
+		ProcessedTranscriptsCount *int `json:"processedTranscriptsCount,omitempty"`
 		
-		NextUri *string `json:"nextUri,omitempty"`
+		MatchedTranscriptsCount *int `json:"matchedTranscriptsCount,omitempty"`
 		
-		SelfUri *string `json:"selfUri,omitempty"`
+		MatchedTranscripts *[]Publishprogramtestphrasematchedtranscript `json:"matchedTranscripts,omitempty"`
 		Alias
 	}{ 
-		Entities: o.Entities,
+		ProcessedTranscriptsCount: o.ProcessedTranscriptsCount,
 		
-		NextUri: o.NextUri,
+		MatchedTranscriptsCount: o.MatchedTranscriptsCount,
 		
-		SelfUri: o.SelfUri,
+		MatchedTranscripts: o.MatchedTranscripts,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Limitcountlisting) UnmarshalJSON(b []byte) error {
-	var LimitcountlistingMap map[string]interface{}
-	err := json.Unmarshal(b, &LimitcountlistingMap)
+func (o *Publishprogramtesttopicphraseresults) UnmarshalJSON(b []byte) error {
+	var PublishprogramtesttopicphraseresultsMap map[string]interface{}
+	err := json.Unmarshal(b, &PublishprogramtesttopicphraseresultsMap)
 	if err != nil {
 		return err
 	}
 	
-	if Entities, ok := LimitcountlistingMap["entities"].([]interface{}); ok {
-		EntitiesString, _ := json.Marshal(Entities)
-		json.Unmarshal(EntitiesString, &o.Entities)
+	if ProcessedTranscriptsCount, ok := PublishprogramtesttopicphraseresultsMap["processedTranscriptsCount"].(float64); ok {
+		ProcessedTranscriptsCountInt := int(ProcessedTranscriptsCount)
+		o.ProcessedTranscriptsCount = &ProcessedTranscriptsCountInt
 	}
 	
-	if NextUri, ok := LimitcountlistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
+	if MatchedTranscriptsCount, ok := PublishprogramtesttopicphraseresultsMap["matchedTranscriptsCount"].(float64); ok {
+		MatchedTranscriptsCountInt := int(MatchedTranscriptsCount)
+		o.MatchedTranscriptsCount = &MatchedTranscriptsCountInt
 	}
-    
-	if SelfUri, ok := LimitcountlistingMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
+	
+	if MatchedTranscripts, ok := PublishprogramtesttopicphraseresultsMap["matchedTranscripts"].([]interface{}); ok {
+		MatchedTranscriptsString, _ := json.Marshal(MatchedTranscripts)
+		json.Unmarshal(MatchedTranscriptsString, &o.MatchedTranscripts)
 	}
-    
+	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Limitcountlisting) String() string {
+func (o *Publishprogramtesttopicphraseresults) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

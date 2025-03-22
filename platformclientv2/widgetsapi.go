@@ -32,6 +32,10 @@ func NewWidgetsApiWithConfig(config *Configuration) *WidgetsApi {
 // DeleteWidgetsDeployment invokes DELETE /api/v2/widgets/deployments/{deploymentId}
 //
 // Delete a Widget deployment
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-removal-of-acd-web-chat-version-2/. 
+//
+// Deprecated: DeleteWidgetsDeployment is deprecated
 func (a WidgetsApi) DeleteWidgetsDeployment(deploymentId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -107,6 +111,10 @@ func (a WidgetsApi) DeleteWidgetsDeployment(deploymentId string) (*APIResponse, 
 // GetWidgetsDeployment invokes GET /api/v2/widgets/deployments/{deploymentId}
 //
 // Get a Widget deployment
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-removal-of-acd-web-chat-version-2/. 
+//
+// Deprecated: GetWidgetsDeployment is deprecated
 func (a WidgetsApi) GetWidgetsDeployment(deploymentId string) (*Widgetdeployment, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -189,6 +197,10 @@ func (a WidgetsApi) GetWidgetsDeployment(deploymentId string) (*Widgetdeployment
 // GetWidgetsDeployments invokes GET /api/v2/widgets/deployments
 //
 // List Widget deployments
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-removal-of-acd-web-chat-version-2/. 
+//
+// Deprecated: GetWidgetsDeployments is deprecated
 func (a WidgetsApi) GetWidgetsDeployments() (*Widgetdeploymententitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -265,6 +277,10 @@ func (a WidgetsApi) GetWidgetsDeployments() (*Widgetdeploymententitylisting, *AP
 // PostWidgetsDeployments invokes POST /api/v2/widgets/deployments
 //
 // Create Widget deployment
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-removal-of-acd-web-chat-version-2/. 
+//
+// Deprecated: PostWidgetsDeployments is deprecated
 func (a WidgetsApi) PostWidgetsDeployments(body Widgetdeployment) (*Widgetdeployment, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -349,6 +365,10 @@ func (a WidgetsApi) PostWidgetsDeployments(body Widgetdeployment) (*Widgetdeploy
 // PutWidgetsDeployment invokes PUT /api/v2/widgets/deployments/{deploymentId}
 //
 // Update a Widget deployment
+//
+// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-removal-of-acd-web-chat-version-2/. 
+//
+// Deprecated: PutWidgetsDeployment is deprecated
 func (a WidgetsApi) PutWidgetsDeployment(deploymentId string, body Widgetdeployment) (*Widgetdeployment, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
