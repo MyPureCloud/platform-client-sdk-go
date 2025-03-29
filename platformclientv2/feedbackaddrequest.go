@@ -11,11 +11,11 @@ import (
 type Feedbackaddrequest struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Summary - Agent's summary for the conversation
-	Summary *string `json:"summary,omitempty"`
-
 	// Rating - Agent’s rating for the system-generated summary.
 	Rating *string `json:"rating,omitempty"`
+
+	// Summary - Agent's summary for the conversation
+	Summary *string `json:"summary,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -81,14 +81,14 @@ func (o Feedbackaddrequest) MarshalJSON() ([]byte, error) {
 	type Alias Feedbackaddrequest
 	
 	return json.Marshal(&struct { 
-		Summary *string `json:"summary,omitempty"`
-		
 		Rating *string `json:"rating,omitempty"`
+		
+		Summary *string `json:"summary,omitempty"`
 		Alias
 	}{ 
-		Summary: o.Summary,
-		
 		Rating: o.Rating,
+		
+		Summary: o.Summary,
 		Alias:    (Alias)(o),
 	})
 }
@@ -100,12 +100,12 @@ func (o *Feedbackaddrequest) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
-	if Summary, ok := FeedbackaddrequestMap["summary"].(string); ok {
-		o.Summary = &Summary
-	}
-    
 	if Rating, ok := FeedbackaddrequestMap["rating"].(string); ok {
 		o.Rating = &Rating
+	}
+    
+	if Summary, ok := FeedbackaddrequestMap["summary"].(string); ok {
+		o.Summary = &Summary
 	}
     
 

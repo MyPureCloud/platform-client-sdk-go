@@ -867,7 +867,7 @@ func (a RecordingApi) GetConversationRecordingAnnotations(conversationId string,
 
 // GetConversationRecordingmetadata invokes GET /api/v2/conversations/{conversationId}/recordingmetadata
 //
-// Get recording metadata for a conversation. Does not return playable media. Annotations won't be included in the response if either recording:recording:view or recording:annotation:view permission is missing.
+// Get recording metadata for a conversation. Does not return playable media nor system annotations. Bookmark annotations will be excluded if either recording:recording:view or recording:annotation:view permission is missing.
 func (a RecordingApi) GetConversationRecordingmetadata(conversationId string) ([]Recordingmetadata, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

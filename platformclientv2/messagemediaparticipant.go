@@ -90,6 +90,9 @@ type Messagemediaparticipant struct {
 	// ExternalContact - If this participant represents an external contact, then this will be the reference for the external contact.
 	ExternalContact *Domainentityref `json:"externalContact,omitempty"`
 
+	// ExternalContactInitialDivisionId - If this participant represents an external contact, then this will be the initial division for the external contact. This value will not be updated if the external contact is reassigned.
+	ExternalContactInitialDivisionId *string `json:"externalContactInitialDivisionId,omitempty"`
+
 	// ExternalOrganization - If this participant represents an external org, then this will be the reference for the external org.
 	ExternalOrganization *Domainentityref `json:"externalOrganization,omitempty"`
 
@@ -327,6 +330,8 @@ func (o Messagemediaparticipant) MarshalJSON() ([]byte, error) {
 		
 		ExternalContact *Domainentityref `json:"externalContact,omitempty"`
 		
+		ExternalContactInitialDivisionId *string `json:"externalContactInitialDivisionId,omitempty"`
+		
 		ExternalOrganization *Domainentityref `json:"externalOrganization,omitempty"`
 		
 		Wrapup *Wrapup `json:"wrapup,omitempty"`
@@ -417,6 +422,8 @@ func (o Messagemediaparticipant) MarshalJSON() ([]byte, error) {
 		Provider: o.Provider,
 		
 		ExternalContact: o.ExternalContact,
+		
+		ExternalContactInitialDivisionId: o.ExternalContactInitialDivisionId,
 		
 		ExternalOrganization: o.ExternalOrganization,
 		
@@ -584,6 +591,10 @@ func (o *Messagemediaparticipant) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ExternalContactString, &o.ExternalContact)
 	}
 	
+	if ExternalContactInitialDivisionId, ok := MessagemediaparticipantMap["externalContactInitialDivisionId"].(string); ok {
+		o.ExternalContactInitialDivisionId = &ExternalContactInitialDivisionId
+	}
+    
 	if ExternalOrganization, ok := MessagemediaparticipantMap["externalOrganization"].(map[string]interface{}); ok {
 		ExternalOrganizationString, _ := json.Marshal(ExternalOrganization)
 		json.Unmarshal(ExternalOrganizationString, &o.ExternalOrganization)

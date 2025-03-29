@@ -29,10 +29,10 @@ func NewPresenceApiWithConfig(config *Configuration) *PresenceApi {
 	}
 }
 
-// DeletePresenceDefinition invokes DELETE /api/v2/presence/definitions/{definitionId}
+// DeleteDivisionBasedPresenceDefinition invokes DELETE /api/v2/presence/definitions/{definitionId}
 //
 // Delete a Presence Definition
-func (a PresenceApi) DeletePresenceDefinition(definitionId string) (*APIResponse, error) {
+func (a PresenceApi) DeleteDivisionBasedPresenceDefinition(definitionId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/presence/definitions/{definitionId}"
@@ -44,7 +44,7 @@ func (a PresenceApi) DeletePresenceDefinition(definitionId string) (*APIResponse
 	// verify the required parameter 'definitionId' is set
 	if &definitionId == nil {
 		// false
-		return nil, errors.New("Missing required parameter 'definitionId' when calling PresenceApi->DeletePresenceDefinition0")
+		return nil, errors.New("Missing required parameter 'definitionId' when calling PresenceApi->DeleteDivisionBasedPresenceDefinition")
 	}
 
 	headerParams := make(map[string]string)
@@ -256,10 +256,10 @@ func (a PresenceApi) DeletePresencedefinition(presenceId string) (*APIResponse, 
 	return response, err
 }
 
-// GetPresenceDefinition invokes GET /api/v2/presence/definitions/{definitionId}
+// GetDivisionBasedPresenceDefinition invokes GET /api/v2/presence/definitions/{definitionId}
 //
 // Get a Presence Definition
-func (a PresenceApi) GetPresenceDefinition(definitionId string, localeCode string) (*Organizationpresencedefinition, *APIResponse, error) {
+func (a PresenceApi) GetDivisionBasedPresenceDefinition(definitionId string, localeCode string) (*Organizationpresencedefinition, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/presence/definitions/{definitionId}"
@@ -272,7 +272,7 @@ func (a PresenceApi) GetPresenceDefinition(definitionId string, localeCode strin
 	// verify the required parameter 'definitionId' is set
 	if &definitionId == nil {
 		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'definitionId' when calling PresenceApi->GetPresenceDefinition0")
+		return defaultReturn, nil, errors.New("Missing required parameter 'definitionId' when calling PresenceApi->GetDivisionBasedPresenceDefinition")
 	}
 
 	headerParams := make(map[string]string)
@@ -340,10 +340,10 @@ func (a PresenceApi) GetPresenceDefinition(definitionId string, localeCode strin
 	return successPayload, response, err
 }
 
-// GetPresenceDefinitions invokes GET /api/v2/presence/definitions
+// GetDivisionBasedPresenceDefinitions invokes GET /api/v2/presence/definitions
 //
 // Get a list of Presence Definitions
-func (a PresenceApi) GetPresenceDefinitions(deactivated string, divisionId []string, localeCode string) (*Organizationpresencedefinitionentitylisting, *APIResponse, error) {
+func (a PresenceApi) GetDivisionBasedPresenceDefinitions(deactivated string, divisionId []string, localeCode string) (*Organizationpresencedefinitionentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/presence/definitions"
@@ -1514,10 +1514,10 @@ func (a PresenceApi) PatchUserPresencesPurecloud(userId string, body Userpresenc
 	return successPayload, response, err
 }
 
-// PostPresenceDefinitions invokes POST /api/v2/presence/definitions
+// PostDivisionBasedPresenceDefinitions invokes POST /api/v2/presence/definitions
 //
 // Create a Presence Definition
-func (a PresenceApi) PostPresenceDefinitions(body Organizationpresencedefinition) (*Organizationpresencedefinition, *APIResponse, error) {
+func (a PresenceApi) PostDivisionBasedPresenceDefinitions(body Organizationpresencedefinition) (*Organizationpresencedefinition, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/presence/definitions"
@@ -1529,7 +1529,7 @@ func (a PresenceApi) PostPresenceDefinitions(body Organizationpresencedefinition
 	// verify the required parameter 'body' is set
 	if &body == nil {
 		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling PresenceApi->PostPresenceDefinitions0")
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling PresenceApi->PostDivisionBasedPresenceDefinitions")
 	}
 
 	headerParams := make(map[string]string)
@@ -1768,10 +1768,10 @@ func (a PresenceApi) PostPresencedefinitions(body Organizationpresence) (*Organi
 	return successPayload, response, err
 }
 
-// PutPresenceDefinition invokes PUT /api/v2/presence/definitions/{definitionId}
+// PutDivisionBasedPresenceDefinition invokes PUT /api/v2/presence/definitions/{definitionId}
 //
 // Update a Presence Definition
-func (a PresenceApi) PutPresenceDefinition(definitionId string, body Organizationpresencedefinition) (*Organizationpresencedefinition, *APIResponse, error) {
+func (a PresenceApi) PutDivisionBasedPresenceDefinition(definitionId string, body Organizationpresencedefinition) (*Organizationpresencedefinition, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/presence/definitions/{definitionId}"
@@ -1784,12 +1784,12 @@ func (a PresenceApi) PutPresenceDefinition(definitionId string, body Organizatio
 	// verify the required parameter 'definitionId' is set
 	if &definitionId == nil {
 		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'definitionId' when calling PresenceApi->PutPresenceDefinition0")
+		return defaultReturn, nil, errors.New("Missing required parameter 'definitionId' when calling PresenceApi->PutDivisionBasedPresenceDefinition")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
 		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling PresenceApi->PutPresenceDefinition0")
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling PresenceApi->PutDivisionBasedPresenceDefinition")
 	}
 
 	headerParams := make(map[string]string)

@@ -8999,6 +8999,94 @@ func (a ArchitectApi) PostArchitectPromptHistory(promptId string) (*Operation, *
 	return successPayload, response, err
 }
 
+// PostArchitectPromptResourceUploads invokes POST /api/v2/architect/prompts/{promptId}/resources/{languageCode}/uploads
+//
+// Creates a presigned URL for uploading a user prompt file
+func (a ArchitectApi) PostArchitectPromptResourceUploads(promptId string, languageCode string) (*Promptassetupload, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/architect/prompts/{promptId}/resources/{languageCode}/uploads"
+	path = strings.Replace(path, "{promptId}", url.PathEscape(fmt.Sprintf("%v", promptId)), -1)
+	path = strings.Replace(path, "{languageCode}", url.PathEscape(fmt.Sprintf("%v", languageCode)), -1)
+	defaultReturn := new(Promptassetupload)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'promptId' is set
+	if &promptId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'promptId' when calling ArchitectApi->PostArchitectPromptResourceUploads")
+	}
+	// verify the required parameter 'languageCode' is set
+	if &languageCode == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'languageCode' when calling ArchitectApi->PostArchitectPromptResourceUploads")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Promptassetupload
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Promptassetupload" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // PostArchitectPromptResources invokes POST /api/v2/architect/prompts/{promptId}/resources
 //
 // Create a new user prompt resource
@@ -9417,6 +9505,94 @@ func (a ArchitectApi) PostArchitectSystempromptHistory(promptId string) (*Operat
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Operation" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostArchitectSystempromptResourceUploads invokes POST /api/v2/architect/systemprompts/{promptId}/resources/{languageCode}/uploads
+//
+// Creates a presigned URL for uploading a system prompt file
+func (a ArchitectApi) PostArchitectSystempromptResourceUploads(promptId string, languageCode string) (*Promptassetupload, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/architect/systemprompts/{promptId}/resources/{languageCode}/uploads"
+	path = strings.Replace(path, "{promptId}", url.PathEscape(fmt.Sprintf("%v", promptId)), -1)
+	path = strings.Replace(path, "{languageCode}", url.PathEscape(fmt.Sprintf("%v", languageCode)), -1)
+	defaultReturn := new(Promptassetupload)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'promptId' is set
+	if &promptId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'promptId' when calling ArchitectApi->PostArchitectSystempromptResourceUploads")
+	}
+	// verify the required parameter 'languageCode' is set
+	if &languageCode == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'languageCode' when calling ArchitectApi->PostArchitectSystempromptResourceUploads")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Promptassetupload
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Promptassetupload" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

@@ -15,6 +15,9 @@ type Speechtextanalyticsconversationsummary struct {
 	// SummaryType - The type of summary
 	SummaryType *string `json:"summaryType,omitempty"`
 
+	// MediaType - The media type of the associated interaction
+	MediaType *string `json:"mediaType,omitempty"`
+
 	// Language - Language of the summary
 	Language *string `json:"language,omitempty"`
 
@@ -104,6 +107,8 @@ func (o Speechtextanalyticsconversationsummary) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		SummaryType *string `json:"summaryType,omitempty"`
 		
+		MediaType *string `json:"mediaType,omitempty"`
+		
 		Language *string `json:"language,omitempty"`
 		
 		AgentId *string `json:"agentId,omitempty"`
@@ -116,6 +121,8 @@ func (o Speechtextanalyticsconversationsummary) MarshalJSON() ([]byte, error) {
 		Alias
 	}{ 
 		SummaryType: o.SummaryType,
+		
+		MediaType: o.MediaType,
 		
 		Language: o.Language,
 		
@@ -139,6 +146,10 @@ func (o *Speechtextanalyticsconversationsummary) UnmarshalJSON(b []byte) error {
 	
 	if SummaryType, ok := SpeechtextanalyticsconversationsummaryMap["summaryType"].(string); ok {
 		o.SummaryType = &SummaryType
+	}
+    
+	if MediaType, ok := SpeechtextanalyticsconversationsummaryMap["mediaType"].(string); ok {
+		o.MediaType = &MediaType
 	}
     
 	if Language, ok := SpeechtextanalyticsconversationsummaryMap["language"].(string); ok {

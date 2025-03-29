@@ -9314,6 +9314,92 @@ func (a ConversationsApi) PatchConversationSecureattributes(conversationId strin
 	return successPayload, response, err
 }
 
+// PatchConversationSummaryFeedback invokes PATCH /api/v2/conversations/{conversationId}/summaries/{summaryId}/feedback
+//
+// Update the feedback for the summary.
+//
+// Preview: PatchConversationSummaryFeedback is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+func (a ConversationsApi) PatchConversationSummaryFeedback(conversationId string, summaryId string, body Feedbackupdaterequest) (*APIResponse, error) {
+	var httpMethod = "PATCH"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/{conversationId}/summaries/{summaryId}/feedback"
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{summaryId}", url.PathEscape(fmt.Sprintf("%v", summaryId)), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'conversationId' is set
+	if &conversationId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationSummaryFeedback")
+	}
+	// verify the required parameter 'summaryId' is set
+	if &summaryId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'summaryId' when calling ConversationsApi->PatchConversationSummaryFeedback")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
 // PatchConversationUtilizationlabel invokes PATCH /api/v2/conversations/{conversationId}/utilizationlabel
 //
 // Update the utilization label on a conversation. When there is no value provided, the system default label is applied

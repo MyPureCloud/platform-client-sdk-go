@@ -29,6 +29,9 @@ type Callconversation struct {
 	// UtilizationLabelId - An optional label that categorizes the conversation.  Max-utilization settings can be configured at a per-label level
 	UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
 
+	// Divisions - Identifiers of divisions associated with this conversation.
+	Divisions *[]Conversationdivisionmembership `json:"divisions,omitempty"`
+
 	// RecordingState
 	RecordingState *string `json:"recordingState,omitempty"`
 
@@ -117,6 +120,8 @@ func (o Callconversation) MarshalJSON() ([]byte, error) {
 		
 		UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
 		
+		Divisions *[]Conversationdivisionmembership `json:"divisions,omitempty"`
+		
 		RecordingState *string `json:"recordingState,omitempty"`
 		
 		MaxParticipants *int `json:"maxParticipants,omitempty"`
@@ -137,6 +142,8 @@ func (o Callconversation) MarshalJSON() ([]byte, error) {
 		RecentTransfers: o.RecentTransfers,
 		
 		UtilizationLabelId: o.UtilizationLabelId,
+		
+		Divisions: o.Divisions,
 		
 		RecordingState: o.RecordingState,
 		
@@ -183,6 +190,11 @@ func (o *Callconversation) UnmarshalJSON(b []byte) error {
 		o.UtilizationLabelId = &UtilizationLabelId
 	}
     
+	if Divisions, ok := CallconversationMap["divisions"].([]interface{}); ok {
+		DivisionsString, _ := json.Marshal(Divisions)
+		json.Unmarshal(DivisionsString, &o.Divisions)
+	}
+	
 	if RecordingState, ok := CallconversationMap["recordingState"].(string); ok {
 		o.RecordingState = &RecordingState
 	}

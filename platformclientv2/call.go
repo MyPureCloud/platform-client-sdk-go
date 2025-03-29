@@ -30,6 +30,9 @@ type Call struct {
 	// RecordingState - State of recording on this call.
 	RecordingState *string `json:"recordingState,omitempty"`
 
+	// RecordersState - Contains the states of different recorders.
+	RecordersState *Recordersstate `json:"recordersState,omitempty"`
+
 	// Muted - True if this call is muted so that remote participants can't hear any audio from this end.
 	Muted *bool `json:"muted,omitempty"`
 
@@ -219,6 +222,8 @@ func (o Call) MarshalJSON() ([]byte, error) {
 		
 		RecordingState *string `json:"recordingState,omitempty"`
 		
+		RecordersState *Recordersstate `json:"recordersState,omitempty"`
+		
 		Muted *bool `json:"muted,omitempty"`
 		
 		Confined *bool `json:"confined,omitempty"`
@@ -285,6 +290,8 @@ func (o Call) MarshalJSON() ([]byte, error) {
 		Recording: o.Recording,
 		
 		RecordingState: o.RecordingState,
+		
+		RecordersState: o.RecordersState,
 		
 		Muted: o.Muted,
 		
@@ -374,6 +381,11 @@ func (o *Call) UnmarshalJSON(b []byte) error {
 		o.RecordingState = &RecordingState
 	}
     
+	if RecordersState, ok := CallMap["recordersState"].(map[string]interface{}); ok {
+		RecordersStateString, _ := json.Marshal(RecordersState)
+		json.Unmarshal(RecordersStateString, &o.RecordersState)
+	}
+	
 	if Muted, ok := CallMap["muted"].(bool); ok {
 		o.Muted = &Muted
 	}

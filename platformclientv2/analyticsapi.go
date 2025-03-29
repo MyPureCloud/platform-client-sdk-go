@@ -352,8 +352,6 @@ func (a AnalyticsApi) GetAnalyticsActionsAggregatesJobResults(jobId string, curs
 // GetAnalyticsAgentStatus invokes GET /api/v2/analytics/agents/{userId}/status
 //
 // Get an agent and their active sessions by user ID
-//
-// Preview: GetAnalyticsAgentStatus is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) GetAnalyticsAgentStatus(userId string) (*Analyticsagentstateagentresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4854,8 +4852,6 @@ func (a AnalyticsApi) PostAnalyticsAgentcopilotsAggregatesQuery(body Agentcopilo
 // PostAnalyticsAgentsStatusCounts invokes POST /api/v2/analytics/agents/status/counts
 //
 // Count agents by segment type
-//
-// Preview: PostAnalyticsAgentsStatusCounts is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) PostAnalyticsAgentsStatusCounts(body Agentstatecountsrequest) (*Analyticsagentstatecountsresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -4940,8 +4936,6 @@ func (a AnalyticsApi) PostAnalyticsAgentsStatusCounts(body Agentstatecountsreque
 // PostAnalyticsAgentsStatusQuery invokes POST /api/v2/analytics/agents/status/query
 //
 // Retrieve the top 50 agents matching the query filters
-//
-// Preview: PostAnalyticsAgentsStatusQuery is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) PostAnalyticsAgentsStatusQuery(body Agentstatequeryrequest) (*Analyticsagentstatequeryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

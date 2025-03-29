@@ -19,6 +19,9 @@ type Conversationinsight struct {
 
 	// Description - Reasoning for the given insight
 	Description *string `json:"description,omitempty"`
+
+	// Outcome - The outcome of a given resolution insight
+	Outcome *string `json:"outcome,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +92,8 @@ func (o Conversationinsight) MarshalJSON() ([]byte, error) {
 		Title *string `json:"title,omitempty"`
 		
 		Description *string `json:"description,omitempty"`
+		
+		Outcome *string `json:"outcome,omitempty"`
 		Alias
 	}{ 
 		VarType: o.VarType,
@@ -96,6 +101,8 @@ func (o Conversationinsight) MarshalJSON() ([]byte, error) {
 		Title: o.Title,
 		
 		Description: o.Description,
+		
+		Outcome: o.Outcome,
 		Alias:    (Alias)(o),
 	})
 }
@@ -117,6 +124,10 @@ func (o *Conversationinsight) UnmarshalJSON(b []byte) error {
     
 	if Description, ok := ConversationinsightMap["description"].(string); ok {
 		o.Description = &Description
+	}
+    
+	if Outcome, ok := ConversationinsightMap["outcome"].(string); ok {
+		o.Outcome = &Outcome
 	}
     
 

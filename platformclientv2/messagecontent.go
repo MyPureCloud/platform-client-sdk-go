@@ -58,6 +58,9 @@ type Messagecontent struct {
 
 	// DatePicker - DatePicker content.
 	DatePicker *Contentdatepicker `json:"datePicker,omitempty"`
+
+	// Location - Location content.
+	Location *Contentlocation `json:"location,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -154,6 +157,8 @@ func (o Messagecontent) MarshalJSON() ([]byte, error) {
 		QuickReplyV2 *Contentquickreplyv2 `json:"quickReplyV2,omitempty"`
 		
 		DatePicker *Contentdatepicker `json:"datePicker,omitempty"`
+		
+		Location *Contentlocation `json:"location,omitempty"`
 		Alias
 	}{ 
 		ContentType: o.ContentType,
@@ -187,6 +192,8 @@ func (o Messagecontent) MarshalJSON() ([]byte, error) {
 		QuickReplyV2: o.QuickReplyV2,
 		
 		DatePicker: o.DatePicker,
+		
+		Location: o.Location,
 		Alias:    (Alias)(o),
 	})
 }
@@ -275,6 +282,11 @@ func (o *Messagecontent) UnmarshalJSON(b []byte) error {
 	if DatePicker, ok := MessagecontentMap["datePicker"].(map[string]interface{}); ok {
 		DatePickerString, _ := json.Marshal(DatePicker)
 		json.Unmarshal(DatePickerString, &o.DatePicker)
+	}
+	
+	if Location, ok := MessagecontentMap["location"].(map[string]interface{}); ok {
+		LocationString, _ := json.Marshal(Location)
+		json.Unmarshal(LocationString, &o.Location)
 	}
 	
 

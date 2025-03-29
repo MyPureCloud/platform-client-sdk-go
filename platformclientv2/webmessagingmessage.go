@@ -26,6 +26,12 @@ type Webmessagingmessage struct {
 	// Content - List of content elements.
 	Content *[]Webmessagingcontent `json:"content,omitempty"`
 
+	// Status - Message receipt status, only used with type Receipt.
+	Status *string `json:"status,omitempty"`
+
+	// Reasons - List of reasons for a message receipt that indicates the message has failed. Only used with Failed status.
+	Reasons *[]Reason `json:"reasons,omitempty"`
+
 	// Events - List of event elements.
 	Events *[]Webmessagingevent `json:"events,omitempty"`
 
@@ -112,6 +118,10 @@ func (o Webmessagingmessage) MarshalJSON() ([]byte, error) {
 		
 		Content *[]Webmessagingcontent `json:"content,omitempty"`
 		
+		Status *string `json:"status,omitempty"`
+		
+		Reasons *[]Reason `json:"reasons,omitempty"`
+		
 		Events *[]Webmessagingevent `json:"events,omitempty"`
 		
 		Direction *string `json:"direction,omitempty"`
@@ -130,6 +140,10 @@ func (o Webmessagingmessage) MarshalJSON() ([]byte, error) {
 		Text: o.Text,
 		
 		Content: o.Content,
+		
+		Status: o.Status,
+		
+		Reasons: o.Reasons,
 		
 		Events: o.Events,
 		
@@ -169,6 +183,15 @@ func (o *Webmessagingmessage) UnmarshalJSON(b []byte) error {
 	if Content, ok := WebmessagingmessageMap["content"].([]interface{}); ok {
 		ContentString, _ := json.Marshal(Content)
 		json.Unmarshal(ContentString, &o.Content)
+	}
+	
+	if Status, ok := WebmessagingmessageMap["status"].(string); ok {
+		o.Status = &Status
+	}
+    
+	if Reasons, ok := WebmessagingmessageMap["reasons"].([]interface{}); ok {
+		ReasonsString, _ := json.Marshal(Reasons)
+		json.Unmarshal(ReasonsString, &o.Reasons)
 	}
 	
 	if Events, ok := WebmessagingmessageMap["events"].([]interface{}); ok {

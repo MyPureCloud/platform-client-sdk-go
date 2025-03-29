@@ -29,6 +29,9 @@ type Cobrowseconversation struct {
 	// UtilizationLabelId - An optional label that categorizes the conversation.  Max-utilization settings can be configured at a per-label level
 	UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
 
+	// Divisions - Identifiers of divisions associated with this conversation.
+	Divisions *[]Conversationdivisionmembership `json:"divisions,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -108,6 +111,8 @@ func (o Cobrowseconversation) MarshalJSON() ([]byte, error) {
 		
 		UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
 		
+		Divisions *[]Conversationdivisionmembership `json:"divisions,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -122,6 +127,8 @@ func (o Cobrowseconversation) MarshalJSON() ([]byte, error) {
 		RecentTransfers: o.RecentTransfers,
 		
 		UtilizationLabelId: o.UtilizationLabelId,
+		
+		Divisions: o.Divisions,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -162,6 +169,11 @@ func (o *Cobrowseconversation) UnmarshalJSON(b []byte) error {
 		o.UtilizationLabelId = &UtilizationLabelId
 	}
     
+	if Divisions, ok := CobrowseconversationMap["divisions"].([]interface{}); ok {
+		DivisionsString, _ := json.Marshal(Divisions)
+		json.Unmarshal(DivisionsString, &o.Divisions)
+	}
+	
 	if SelfUri, ok := CobrowseconversationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

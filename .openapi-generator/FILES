@@ -77,6 +77,9 @@ docs/DeleteConversationsMessagingSettingsDefault-example.txt
 docs/DeleteConversationsMessagingSupportedcontentSupportedContentId-example.txt
 docs/DeleteDataprivacyMaskingrule-example.txt
 docs/DeleteDiagnosticsLogcaptureBrowserUser-example.txt
+docs/DeleteDivisionBasedPresenceDefinition-example.txt
+docs/DeleteEmailsSettingsThreading-example.txt
+docs/DeleteEmailsSettingsThreading-example.txt
 docs/DeleteEmployeeengagementCelebration-example.txt
 docs/DeleteEmployeeperformanceExternalmetricsDefinition-example.txt
 docs/DeleteExternalcontactsContact-example.txt
@@ -195,7 +198,6 @@ docs/DeleteOutboundSchedulesEmailcampaign-example.txt
 docs/DeleteOutboundSchedulesMessagingcampaign-example.txt
 docs/DeleteOutboundSchedulesSequence-example.txt
 docs/DeleteOutboundSequence-example.txt
-docs/DeletePresenceDefinition0-example.txt
 docs/DeletePresenceSource-example.txt
 docs/DeletePresencedefinition-example.txt
 docs/DeleteProcessautomationTrigger-example.txt
@@ -626,11 +628,15 @@ docs/GetDate-example.txt
 docs/GetDiagnosticsLogcaptureBrowserEntriesDownloadJob-example.txt
 docs/GetDiagnosticsLogcaptureBrowserUser-example.txt
 docs/GetDiagnosticsLogcaptureBrowserUsers-example.txt
+docs/GetDivisionBasedPresenceDefinition-example.txt
+docs/GetDivisionBasedPresenceDefinitions-example.txt
 docs/GetDocumentationGknSearch-example.txt
 docs/GetDocumentationSearch-example.txt
 docs/GetDownload-example.txt
 docs/GetEmailsSettings-example.txt
 docs/GetEmailsSettings-example.txt
+docs/GetEmailsSettingsThreading-example.txt
+docs/GetEmailsSettingsThreading-example.txt
 docs/GetEmployeeengagementCelebrations-example.txt
 docs/GetEmployeeengagementRecognition-example.txt
 docs/GetEmployeeperformanceExternalmetricsDefinition-example.txt
@@ -1112,8 +1118,6 @@ docs/GetOutboundSequence-example.txt
 docs/GetOutboundSequences-example.txt
 docs/GetOutboundSettings-example.txt
 docs/GetOutboundWrapupcodemappings-example.txt
-docs/GetPresenceDefinition0-example.txt
-docs/GetPresenceDefinitions0-example.txt
 docs/GetPresenceSettings-example.txt
 docs/GetPresenceSource-example.txt
 docs/GetPresenceSources-example.txt
@@ -1699,6 +1703,7 @@ docs/PatchCoachingNotification-example.txt
 docs/PatchConversationParticipant-example.txt
 docs/PatchConversationParticipantAttributes-example.txt
 docs/PatchConversationSecureattributes-example.txt
+docs/PatchConversationSummaryFeedback-example.txt
 docs/PatchConversationUtilizationlabel-example.txt
 docs/PatchConversationsAftercallworkConversationIdParticipantCommunication-example.txt
 docs/PatchConversationsCall-example.txt
@@ -1741,6 +1746,8 @@ docs/PatchConversationsSettings-example.txt
 docs/PatchDataprivacyMaskingrule-example.txt
 docs/PatchEmailsSettings-example.txt
 docs/PatchEmailsSettings-example.txt
+docs/PatchEmailsSettingsThreading-example.txt
+docs/PatchEmailsSettingsThreading-example.txt
 docs/PatchEmployeeengagementCelebration-example.txt
 docs/PatchEmployeeperformanceExternalmetricsDefinition-example.txt
 docs/PatchExternalcontactsContactIdentifiers-example.txt
@@ -1967,11 +1974,13 @@ docs/PostArchitectGrammarLanguages-example.txt
 docs/PostArchitectGrammars-example.txt
 docs/PostArchitectIvrs-example.txt
 docs/PostArchitectPromptHistory-example.txt
+docs/PostArchitectPromptResourceUploads-example.txt
 docs/PostArchitectPromptResources-example.txt
 docs/PostArchitectPrompts-example.txt
 docs/PostArchitectSchedulegroups-example.txt
 docs/PostArchitectSchedules-example.txt
 docs/PostArchitectSystempromptHistory-example.txt
+docs/PostArchitectSystempromptResourceUploads-example.txt
 docs/PostArchitectSystempromptResources-example.txt
 docs/PostAssistants-example.txt
 docs/PostAuditsQuery-example.txt
@@ -2102,6 +2111,7 @@ docs/PostDataprivacyMaskingrulesValidate-example.txt
 docs/PostDiagnosticsLogcaptureBrowserEntriesDownloadJobs-example.txt
 docs/PostDiagnosticsLogcaptureBrowserEntriesQuery-example.txt
 docs/PostDiagnosticsLogcaptureBrowserUser-example.txt
+docs/PostDivisionBasedPresenceDefinitions-example.txt
 docs/PostDocumentationAllSearch-example.txt
 docs/PostDocumentationGknSearch-example.txt
 docs/PostDocumentationSearch-example.txt
@@ -2201,6 +2211,7 @@ docs/PostIntegrationsCredentials-example.txt
 docs/PostIntegrationsSpeechNuanceNuanceIntegrationIdBotJobs-example.txt
 docs/PostIntegrationsSpeechNuanceNuanceIntegrationIdBotsJobs-example.txt
 docs/PostIntegrationsSpeechNuanceNuanceIntegrationIdBotsLaunchValidate-example.txt
+docs/PostIntegrationsWebhookEvents-example.txt
 docs/PostJourneyActionmaps-example.txt
 docs/PostJourneyActionmapsEstimatesJobs-example.txt
 docs/PostJourneyActiontemplates-example.txt
@@ -2350,7 +2361,6 @@ docs/PostOutboundMessagingcampaigns-example.txt
 docs/PostOutboundMessagingcampaignsProgress-example.txt
 docs/PostOutboundRulesets-example.txt
 docs/PostOutboundSequences-example.txt
-docs/PostPresenceDefinitions0-example.txt
 docs/PostPresenceSources-example.txt
 docs/PostPresencedefinitions-example.txt
 docs/PostProcessautomationTriggerTest-example.txt
@@ -2666,6 +2676,7 @@ docs/PutConversationsMessagingThreadingtimeline-example.txt
 docs/PutConversationsScreenshareRecordingstate-example.txt
 docs/PutConversationsSocialRecordingstate-example.txt
 docs/PutConversationsVideoRecordingstate-example.txt
+docs/PutDivisionBasedPresenceDefinition-example.txt
 docs/PutExternalcontactsContact-example.txt
 docs/PutExternalcontactsContactNote-example.txt
 docs/PutExternalcontactsContactsSchema-example.txt
@@ -2762,7 +2773,6 @@ docs/PutOutboundSchedulesMessagingcampaign-example.txt
 docs/PutOutboundSchedulesSequence-example.txt
 docs/PutOutboundSequence-example.txt
 docs/PutOutboundWrapupcodemappings-example.txt
-docs/PutPresenceDefinition0-example.txt
 docs/PutPresenceSettings-example.txt
 docs/PutPresenceSource-example.txt
 docs/PutPresenceUserPrimarysource-example.txt
@@ -3768,6 +3778,7 @@ platformclientv2/contentfileresponse.go
 platformclientv2/contentfilteritem.go
 platformclientv2/contentgeneric.go
 platformclientv2/contentlist.go
+platformclientv2/contentlocation.go
 platformclientv2/contentmanagementapi.go
 platformclientv2/contentmanagementsingledocumenttopicdocumentdatav2.go
 platformclientv2/contentmanagementsingledocumenttopiclockdata.go
@@ -4660,6 +4671,7 @@ platformclientv2/emailsapi.go
 platformclientv2/emailsettings.go
 platformclientv2/emailsetup.go
 platformclientv2/emailssettings.go
+platformclientv2/emailthreadingsettings.go
 platformclientv2/emailuserestablishedevent.go
 platformclientv2/emailusertransferevent.go
 platformclientv2/embeddedintegration.go
@@ -4671,6 +4683,7 @@ platformclientv2/emergencygrouplisting.go
 platformclientv2/emergencylocation.go
 platformclientv2/empathyscore.go
 platformclientv2/employeeengagementapi.go
+platformclientv2/employeeperformanceexternalmetricsdefinitionexternalmetricsdefinition.go
 platformclientv2/employerinfo.go
 platformclientv2/empty.go
 platformclientv2/encryptionkey.go
@@ -4905,6 +4918,7 @@ platformclientv2/faxtopicworkspacedata.go
 platformclientv2/featurestate.go
 platformclientv2/feedback.go
 platformclientv2/feedbackaddrequest.go
+platformclientv2/feedbackupdaterequest.go
 platformclientv2/fieldconfig.go
 platformclientv2/fieldconfigs.go
 platformclientv2/fieldlist.go
@@ -6040,6 +6054,22 @@ platformclientv2/outboundmessagingmessagingcampaignconfigchangewhatsappconfig.go
 platformclientv2/outboundmessagingmessagingcampaignprogresseventcampaignprogress.go
 platformclientv2/outboundmessagingmessagingcampaignprogresseventobject.go
 platformclientv2/outboundmessagingmessagingcampaignprogresseventurireference.go
+platformclientv2/outboundmessagingwhatsappcampaignconfigchangecontactsort.go
+platformclientv2/outboundmessagingwhatsappcampaignconfigchangeemailconfig.go
+platformclientv2/outboundmessagingwhatsappcampaignconfigchangeerrordetail.go
+platformclientv2/outboundmessagingwhatsappcampaignconfigchangefromemailaddress.go
+platformclientv2/outboundmessagingwhatsappcampaignconfigchangeintegrationref.go
+platformclientv2/outboundmessagingwhatsappcampaignconfigchangemessagingcampaign.go
+platformclientv2/outboundmessagingwhatsappcampaignconfigchangeobject.go
+platformclientv2/outboundmessagingwhatsappcampaignconfigchangereplytoemailaddress.go
+platformclientv2/outboundmessagingwhatsappcampaignconfigchangeresponseref.go
+platformclientv2/outboundmessagingwhatsappcampaignconfigchangesmsconfig.go
+platformclientv2/outboundmessagingwhatsappcampaignconfigchangesmsphonenumberref.go
+platformclientv2/outboundmessagingwhatsappcampaignconfigchangeurireference.go
+platformclientv2/outboundmessagingwhatsappcampaignconfigchangewhatsappconfig.go
+platformclientv2/outboundmessagingwhatsappcampaignprogresseventcampaignprogress.go
+platformclientv2/outboundmessagingwhatsappcampaignprogresseventobject.go
+platformclientv2/outboundmessagingwhatsappcampaignprogresseventurireference.go
 platformclientv2/outboundonlysetting.go
 platformclientv2/outboundroute.go
 platformclientv2/outboundroutebase.go
@@ -6249,6 +6279,7 @@ platformclientv2/prompt.go
 platformclientv2/promptasset.go
 platformclientv2/promptassetcreate.go
 platformclientv2/promptassetentitylisting.go
+platformclientv2/promptassetupload.go
 platformclientv2/promptentitylisting.go
 platformclientv2/propertychange.go
 platformclientv2/propertyindexrequest.go
@@ -6609,6 +6640,7 @@ platformclientv2/ratelimitaggregationquery.go
 platformclientv2/ratelimitaggregationview.go
 platformclientv2/reaction.go
 platformclientv2/realtimeadherenceexplanation.go
+platformclientv2/reason.go
 platformclientv2/recallentry.go
 platformclientv2/recipient.go
 platformclientv2/recipientadditionalidentifier.go
@@ -6618,6 +6650,7 @@ platformclientv2/recipientrequest.go
 platformclientv2/recognition.go
 platformclientv2/recognitionbase.go
 platformclientv2/record.go
+platformclientv2/recordersstate.go
 platformclientv2/recording.go
 platformclientv2/recordingannotationflow.go
 platformclientv2/recordingannotationqueue.go
@@ -7729,6 +7762,7 @@ platformclientv2/webeventdevice.go
 platformclientv2/webeventrequest.go
 platformclientv2/webeventresponse.go
 platformclientv2/webeventresponsesession.go
+platformclientv2/webhookinvocationresponse.go
 platformclientv2/webmessagingapi.go
 platformclientv2/webmessagingattachment.go
 platformclientv2/webmessagingbuttonresponse.go
@@ -7863,6 +7897,9 @@ platformclientv2/wfmhistoricaladherencequeryforteams.go
 platformclientv2/wfmhistoricaladherencequeryforusers.go
 platformclientv2/wfmhistoricaladherenceresponse.go
 platformclientv2/wfmhistoricaladherenceresultwrapper.go
+platformclientv2/wfmhistoricaldataimportpurgecompletetopichistoricaldatadeleteentity.go
+platformclientv2/wfmhistoricaldataimportpurgecompletetopichistoricaldatadisalloweddeleteentity.go
+platformclientv2/wfmhistoricaldataimportpurgecompletetopichistoricaldatapurgerequestcomplete.go
 platformclientv2/wfmhistoricaldatauploadpurgerequeststatustopichistoricaldatauploadpurgerequestupdate.go
 platformclientv2/wfmhistoricaldatauploadrequeststatustopichistoricaldatauploadrequestupdate.go
 platformclientv2/wfmhistoricalshrinkagecalculationscompletetopichistoricalshrinkagecalculationscompletenotification.go
