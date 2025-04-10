@@ -1413,6 +1413,85 @@ func (a OutboundApi) DeleteOutboundDnclistPhonenumbers(dncListId string, expired
 	return response, err
 }
 
+// DeleteOutboundDnclistWhatsappnumbers invokes DELETE /api/v2/outbound/dnclists/{dncListId}/whatsappnumbers
+//
+// Deletes all or expired whatsApp numbers from a DNC list.
+//
+// This operation is only for Internal DNC lists of whatsApp numbers
+func (a OutboundApi) DeleteOutboundDnclistWhatsappnumbers(dncListId string, expiredOnly bool) (*APIResponse, error) {
+	var httpMethod = "DELETE"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/outbound/dnclists/{dncListId}/whatsappnumbers"
+	path = strings.Replace(path, "{dncListId}", url.PathEscape(fmt.Sprintf("%v", dncListId)), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'dncListId' is set
+	if &dncListId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'dncListId' when calling OutboundApi->DeleteOutboundDnclistWhatsappnumbers")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["expiredOnly"] = a.Configuration.APIClient.ParameterToString(expiredOnly, "")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
 // DeleteOutboundFilespecificationtemplate invokes DELETE /api/v2/outbound/filespecificationtemplates/{fileSpecificationTemplateId}
 //
 // Delete File Specification Template
@@ -8604,6 +8683,91 @@ func (a OutboundApi) PatchOutboundDnclistPhonenumbers(dncListId string, body Dnc
 	if &body == nil {
 		// false
 		return nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PatchOutboundDnclistPhonenumbers")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
+// PatchOutboundDnclistWhatsappnumbers invokes PATCH /api/v2/outbound/dnclists/{dncListId}/whatsappnumbers
+//
+// Add entries to or delete entries from a DNC list.
+//
+// Only Internal DNC lists may be deleted from
+func (a OutboundApi) PatchOutboundDnclistWhatsappnumbers(dncListId string, body Dncpatchwhatsappnumbersrequest) (*APIResponse, error) {
+	var httpMethod = "PATCH"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/outbound/dnclists/{dncListId}/whatsappnumbers"
+	path = strings.Replace(path, "{dncListId}", url.PathEscape(fmt.Sprintf("%v", dncListId)), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'dncListId' is set
+	if &dncListId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'dncListId' when calling OutboundApi->PatchOutboundDnclistWhatsappnumbers")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PatchOutboundDnclistWhatsappnumbers")
 	}
 
 	headerParams := make(map[string]string)

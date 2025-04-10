@@ -26,6 +26,9 @@ type Namedentitytypemechanism struct {
 	// MaxLength - The maximum length of the entity resolved value
 	MaxLength *int `json:"maxLength,omitempty"`
 
+	// MinLength - The minimum length of the entity resolved value
+	MinLength *int `json:"minLength,omitempty"`
+
 	// Examples - Examples for entity detection
 	Examples *[]Namedentitytypemechanismexample `json:"examples,omitempty"`
 }
@@ -103,6 +106,8 @@ func (o Namedentitytypemechanism) MarshalJSON() ([]byte, error) {
 		
 		MaxLength *int `json:"maxLength,omitempty"`
 		
+		MinLength *int `json:"minLength,omitempty"`
+		
 		Examples *[]Namedentitytypemechanismexample `json:"examples,omitempty"`
 		Alias
 	}{ 
@@ -115,6 +120,8 @@ func (o Namedentitytypemechanism) MarshalJSON() ([]byte, error) {
 		SubType: o.SubType,
 		
 		MaxLength: o.MaxLength,
+		
+		MinLength: o.MinLength,
 		
 		Examples: o.Examples,
 		Alias:    (Alias)(o),
@@ -148,6 +155,11 @@ func (o *Namedentitytypemechanism) UnmarshalJSON(b []byte) error {
 	if MaxLength, ok := NamedentitytypemechanismMap["maxLength"].(float64); ok {
 		MaxLengthInt := int(MaxLength)
 		o.MaxLength = &MaxLengthInt
+	}
+	
+	if MinLength, ok := NamedentitytypemechanismMap["minLength"].(float64); ok {
+		MinLengthInt := int(MinLength)
+		o.MinLength = &MinLengthInt
 	}
 	
 	if Examples, ok := NamedentitytypemechanismMap["examples"].([]interface{}); ok {

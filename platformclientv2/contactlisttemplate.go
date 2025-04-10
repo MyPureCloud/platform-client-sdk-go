@@ -36,6 +36,9 @@ type Contactlisttemplate struct {
 	// EmailColumns - Indicates which columns are email addresses
 	EmailColumns *[]Emailcolumn `json:"emailColumns,omitempty"`
 
+	// WhatsAppColumns - Indicates which columns are whatsApp contacts
+	WhatsAppColumns *[]Whatsappcolumn `json:"whatsAppColumns,omitempty"`
+
 	// PreviewModeColumnName - A column to check if a contact should always be dialed in preview mode.
 	PreviewModeColumnName *string `json:"previewModeColumnName,omitempty"`
 
@@ -156,6 +159,8 @@ func (o Contactlisttemplate) MarshalJSON() ([]byte, error) {
 		
 		EmailColumns *[]Emailcolumn `json:"emailColumns,omitempty"`
 		
+		WhatsAppColumns *[]Whatsappcolumn `json:"whatsAppColumns,omitempty"`
+		
 		PreviewModeColumnName *string `json:"previewModeColumnName,omitempty"`
 		
 		PreviewModeAcceptedValues *[]string `json:"previewModeAcceptedValues,omitempty"`
@@ -188,6 +193,8 @@ func (o Contactlisttemplate) MarshalJSON() ([]byte, error) {
 		PhoneColumns: o.PhoneColumns,
 		
 		EmailColumns: o.EmailColumns,
+		
+		WhatsAppColumns: o.WhatsAppColumns,
 		
 		PreviewModeColumnName: o.PreviewModeColumnName,
 		
@@ -251,6 +258,11 @@ func (o *Contactlisttemplate) UnmarshalJSON(b []byte) error {
 	if EmailColumns, ok := ContactlisttemplateMap["emailColumns"].([]interface{}); ok {
 		EmailColumnsString, _ := json.Marshal(EmailColumns)
 		json.Unmarshal(EmailColumnsString, &o.EmailColumns)
+	}
+	
+	if WhatsAppColumns, ok := ContactlisttemplateMap["whatsAppColumns"].([]interface{}); ok {
+		WhatsAppColumnsString, _ := json.Marshal(WhatsAppColumns)
+		json.Unmarshal(WhatsAppColumnsString, &o.WhatsAppColumns)
 	}
 	
 	if PreviewModeColumnName, ok := ContactlisttemplateMap["previewModeColumnName"].(string); ok {

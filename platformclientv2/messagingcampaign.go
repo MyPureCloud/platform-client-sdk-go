@@ -69,6 +69,9 @@ type Messagingcampaign struct {
 	// SmsConfig - Configuration for this messaging campaign to send SMS messages.
 	SmsConfig *Smsconfig `json:"smsConfig,omitempty"`
 
+	// WhatsAppConfig - Configuration for this messaging campaign to send WhatsApp messages.
+	WhatsAppConfig *Whatsappconfig `json:"whatsAppConfig,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -190,6 +193,8 @@ func (o Messagingcampaign) MarshalJSON() ([]byte, error) {
 		
 		SmsConfig *Smsconfig `json:"smsConfig,omitempty"`
 		
+		WhatsAppConfig *Whatsappconfig `json:"whatsAppConfig,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -230,6 +235,8 @@ func (o Messagingcampaign) MarshalJSON() ([]byte, error) {
 		EmailConfig: o.EmailConfig,
 		
 		SmsConfig: o.SmsConfig,
+		
+		WhatsAppConfig: o.WhatsAppConfig,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -332,6 +339,11 @@ func (o *Messagingcampaign) UnmarshalJSON(b []byte) error {
 	if SmsConfig, ok := MessagingcampaignMap["smsConfig"].(map[string]interface{}); ok {
 		SmsConfigString, _ := json.Marshal(SmsConfig)
 		json.Unmarshal(SmsConfigString, &o.SmsConfig)
+	}
+	
+	if WhatsAppConfig, ok := MessagingcampaignMap["whatsAppConfig"].(map[string]interface{}); ok {
+		WhatsAppConfigString, _ := json.Marshal(WhatsAppConfig)
+		json.Unmarshal(WhatsAppConfigString, &o.WhatsAppConfig)
 	}
 	
 	if SelfUri, ok := MessagingcampaignMap["selfUri"].(string); ok {

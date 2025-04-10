@@ -17,6 +17,9 @@ type Domainresourceconditionvalue struct {
 	// Queue
 	Queue *Queue `json:"queue,omitempty"`
 
+	// Team
+	Team *Team `json:"team,omitempty"`
+
 	// Value
 	Value *string `json:"value,omitempty"`
 
@@ -91,6 +94,8 @@ func (o Domainresourceconditionvalue) MarshalJSON() ([]byte, error) {
 		
 		Queue *Queue `json:"queue,omitempty"`
 		
+		Team *Team `json:"team,omitempty"`
+		
 		Value *string `json:"value,omitempty"`
 		
 		VarType *string `json:"type,omitempty"`
@@ -99,6 +104,8 @@ func (o Domainresourceconditionvalue) MarshalJSON() ([]byte, error) {
 		User: o.User,
 		
 		Queue: o.Queue,
+		
+		Team: o.Team,
 		
 		Value: o.Value,
 		
@@ -122,6 +129,11 @@ func (o *Domainresourceconditionvalue) UnmarshalJSON(b []byte) error {
 	if Queue, ok := DomainresourceconditionvalueMap["queue"].(map[string]interface{}); ok {
 		QueueString, _ := json.Marshal(Queue)
 		json.Unmarshal(QueueString, &o.Queue)
+	}
+	
+	if Team, ok := DomainresourceconditionvalueMap["team"].(map[string]interface{}); ok {
+		TeamString, _ := json.Marshal(Team)
+		json.Unmarshal(TeamString, &o.Team)
 	}
 	
 	if Value, ok := DomainresourceconditionvalueMap["value"].(string); ok {

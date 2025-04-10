@@ -29,6 +29,9 @@ type Contactlistdivisionview struct {
 	// EmailColumns - Indicates which columns are email addresses.
 	EmailColumns *[]Emailcolumn `json:"emailColumns,omitempty"`
 
+	// WhatsAppColumns - Indicates which columns are whatsApp contacts.
+	WhatsAppColumns *[]Whatsappcolumn `json:"whatsAppColumns,omitempty"`
+
 	// ImportStatus - The status of the import process.
 	ImportStatus *Importstatus `json:"importStatus,omitempty"`
 
@@ -114,6 +117,8 @@ func (o Contactlistdivisionview) MarshalJSON() ([]byte, error) {
 		
 		EmailColumns *[]Emailcolumn `json:"emailColumns,omitempty"`
 		
+		WhatsAppColumns *[]Whatsappcolumn `json:"whatsAppColumns,omitempty"`
+		
 		ImportStatus *Importstatus `json:"importStatus,omitempty"`
 		
 		Size *int `json:"size,omitempty"`
@@ -132,6 +137,8 @@ func (o Contactlistdivisionview) MarshalJSON() ([]byte, error) {
 		PhoneColumns: o.PhoneColumns,
 		
 		EmailColumns: o.EmailColumns,
+		
+		WhatsAppColumns: o.WhatsAppColumns,
 		
 		ImportStatus: o.ImportStatus,
 		
@@ -175,6 +182,11 @@ func (o *Contactlistdivisionview) UnmarshalJSON(b []byte) error {
 	if EmailColumns, ok := ContactlistdivisionviewMap["emailColumns"].([]interface{}); ok {
 		EmailColumnsString, _ := json.Marshal(EmailColumns)
 		json.Unmarshal(EmailColumnsString, &o.EmailColumns)
+	}
+	
+	if WhatsAppColumns, ok := ContactlistdivisionviewMap["whatsAppColumns"].([]interface{}); ok {
+		WhatsAppColumnsString, _ := json.Marshal(WhatsAppColumns)
+		json.Unmarshal(WhatsAppColumnsString, &o.WhatsAppColumns)
 	}
 	
 	if ImportStatus, ok := ContactlistdivisionviewMap["importStatus"].(map[string]interface{}); ok {

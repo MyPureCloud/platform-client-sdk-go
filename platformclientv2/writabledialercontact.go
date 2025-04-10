@@ -27,6 +27,9 @@ type Writabledialercontact struct {
 	// LatestEmailEvaluations - A map of email records for the contact email columns.
 	LatestEmailEvaluations *map[string]Messageevaluation `json:"latestEmailEvaluations,omitempty"`
 
+	// LatestWhatsAppEvaluations - A map of whatsapp records for the contact whatsapp columns.
+	LatestWhatsAppEvaluations *map[string]Messageevaluation `json:"latestWhatsAppEvaluations,omitempty"`
+
 	// Callable - Indicates whether or not the contact can be called.
 	Callable *bool `json:"callable,omitempty"`
 
@@ -121,6 +124,8 @@ func (o Writabledialercontact) MarshalJSON() ([]byte, error) {
 		
 		LatestEmailEvaluations *map[string]Messageevaluation `json:"latestEmailEvaluations,omitempty"`
 		
+		LatestWhatsAppEvaluations *map[string]Messageevaluation `json:"latestWhatsAppEvaluations,omitempty"`
+		
 		Callable *bool `json:"callable,omitempty"`
 		
 		PhoneNumberStatus *map[string]Phonenumberstatus `json:"phoneNumberStatus,omitempty"`
@@ -139,6 +144,8 @@ func (o Writabledialercontact) MarshalJSON() ([]byte, error) {
 		LatestSmsEvaluations: o.LatestSmsEvaluations,
 		
 		LatestEmailEvaluations: o.LatestEmailEvaluations,
+		
+		LatestWhatsAppEvaluations: o.LatestWhatsAppEvaluations,
 		
 		Callable: o.Callable,
 		
@@ -179,6 +186,11 @@ func (o *Writabledialercontact) UnmarshalJSON(b []byte) error {
 	if LatestEmailEvaluations, ok := WritabledialercontactMap["latestEmailEvaluations"].(map[string]interface{}); ok {
 		LatestEmailEvaluationsString, _ := json.Marshal(LatestEmailEvaluations)
 		json.Unmarshal(LatestEmailEvaluationsString, &o.LatestEmailEvaluations)
+	}
+	
+	if LatestWhatsAppEvaluations, ok := WritabledialercontactMap["latestWhatsAppEvaluations"].(map[string]interface{}); ok {
+		LatestWhatsAppEvaluationsString, _ := json.Marshal(LatestWhatsAppEvaluations)
+		json.Unmarshal(LatestWhatsAppEvaluationsString, &o.LatestWhatsAppEvaluations)
 	}
 	
 	if Callable, ok := WritabledialercontactMap["callable"].(bool); ok {

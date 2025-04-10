@@ -77,7 +77,6 @@ docs/DeleteConversationsMessagingSettingsDefault-example.txt
 docs/DeleteConversationsMessagingSupportedcontentSupportedContentId-example.txt
 docs/DeleteDataprivacyMaskingrule-example.txt
 docs/DeleteDiagnosticsLogcaptureBrowserUser-example.txt
-docs/DeleteDivisionBasedPresenceDefinition-example.txt
 docs/DeleteEmailsSettingsThreading-example.txt
 docs/DeleteEmailsSettingsThreading-example.txt
 docs/DeleteEmployeeengagementCelebration-example.txt
@@ -100,6 +99,7 @@ docs/DeleteFlowsDatatable-example.txt
 docs/DeleteFlowsDatatableRow-example.txt
 docs/DeleteFlowsInstancesSettingsLoglevelsDefault-example.txt
 docs/DeleteFlowsMilestone-example.txt
+docs/DeleteGamificationContest-example.txt
 docs/DeleteGreeting-example.txt
 docs/DeleteGroup-example.txt
 docs/DeleteGroupDynamicsettings-example.txt
@@ -186,6 +186,7 @@ docs/DeleteOutboundDnclist-example.txt
 docs/DeleteOutboundDnclistCustomexclusioncolumns-example.txt
 docs/DeleteOutboundDnclistEmailaddresses-example.txt
 docs/DeleteOutboundDnclistPhonenumbers-example.txt
+docs/DeleteOutboundDnclistWhatsappnumbers-example.txt
 docs/DeleteOutboundFilespecificationtemplate-example.txt
 docs/DeleteOutboundFilespecificationtemplatesBulk-example.txt
 docs/DeleteOutboundImporttemplate-example.txt
@@ -198,6 +199,7 @@ docs/DeleteOutboundSchedulesEmailcampaign-example.txt
 docs/DeleteOutboundSchedulesMessagingcampaign-example.txt
 docs/DeleteOutboundSchedulesSequence-example.txt
 docs/DeleteOutboundSequence-example.txt
+docs/DeletePresenceDefinition0-example.txt
 docs/DeletePresenceSource-example.txt
 docs/DeletePresencedefinition-example.txt
 docs/DeleteProcessautomationTrigger-example.txt
@@ -453,10 +455,14 @@ docs/GetAuthorizationDivision-example.txt
 docs/GetAuthorizationDivisionGrants-example.txt
 docs/GetAuthorizationDivisions-example.txt
 docs/GetAuthorizationDivisions-example.txt
+docs/GetAuthorizationDivisionsDeleted-example.txt
+docs/GetAuthorizationDivisionsDeleted-example.txt
 docs/GetAuthorizationDivisionsHome-example.txt
 docs/GetAuthorizationDivisionsHome-example.txt
 docs/GetAuthorizationDivisionsLimit-example.txt
 docs/GetAuthorizationDivisionsLimit-example.txt
+docs/GetAuthorizationDivisionsQuery-example.txt
+docs/GetAuthorizationDivisionsQuery-example.txt
 docs/GetAuthorizationDivisionspermittedMe-example.txt
 docs/GetAuthorizationDivisionspermittedMe-example.txt
 docs/GetAuthorizationDivisionspermittedPagedMe-example.txt
@@ -628,8 +634,6 @@ docs/GetDate-example.txt
 docs/GetDiagnosticsLogcaptureBrowserEntriesDownloadJob-example.txt
 docs/GetDiagnosticsLogcaptureBrowserUser-example.txt
 docs/GetDiagnosticsLogcaptureBrowserUsers-example.txt
-docs/GetDivisionBasedPresenceDefinition-example.txt
-docs/GetDivisionBasedPresenceDefinitions-example.txt
 docs/GetDocumentationGknSearch-example.txt
 docs/GetDocumentationSearch-example.txt
 docs/GetDownload-example.txt
@@ -655,6 +659,9 @@ docs/GetExternalcontactsContactsSchema-example.txt
 docs/GetExternalcontactsContactsSchemaVersion-example.txt
 docs/GetExternalcontactsContactsSchemaVersions-example.txt
 docs/GetExternalcontactsContactsSchemas-example.txt
+docs/GetExternalcontactsContactsSchemasCoretype-example.txt
+docs/GetExternalcontactsContactsSchemasCoretypes-example.txt
+docs/GetExternalcontactsContactsSchemasLimits-example.txt
 docs/GetExternalcontactsExternalsource-example.txt
 docs/GetExternalcontactsExternalsources-example.txt
 docs/GetExternalcontactsImportCsvSetting-example.txt
@@ -667,6 +674,7 @@ docs/GetExternalcontactsImportSetting-example.txt
 docs/GetExternalcontactsImportSettings-example.txt
 docs/GetExternalcontactsOrganization-example.txt
 docs/GetExternalcontactsOrganizationContacts-example.txt
+docs/GetExternalcontactsOrganizationIdentifiers-example.txt
 docs/GetExternalcontactsOrganizationNote-example.txt
 docs/GetExternalcontactsOrganizationNotes-example.txt
 docs/GetExternalcontactsOrganizationRelationships-example.txt
@@ -675,6 +683,9 @@ docs/GetExternalcontactsOrganizationsSchema-example.txt
 docs/GetExternalcontactsOrganizationsSchemaVersion-example.txt
 docs/GetExternalcontactsOrganizationsSchemaVersions-example.txt
 docs/GetExternalcontactsOrganizationsSchemas-example.txt
+docs/GetExternalcontactsOrganizationsSchemasCoretype-example.txt
+docs/GetExternalcontactsOrganizationsSchemasCoretypes-example.txt
+docs/GetExternalcontactsOrganizationsSchemasLimits-example.txt
 docs/GetExternalcontactsRelationship-example.txt
 docs/GetExternalcontactsReversewhitepageslookup-example.txt
 docs/GetExternalcontactsScanContacts-example.txt
@@ -730,6 +741,14 @@ docs/GetFlowsMilestonesDivisionviews-example.txt
 docs/GetFlowsOutcome-example.txt
 docs/GetFlowsOutcomes-example.txt
 docs/GetFlowsOutcomesDivisionviews-example.txt
+docs/GetGamificationContest-example.txt
+docs/GetGamificationContestAgentsScores-example.txt
+docs/GetGamificationContestAgentsScoresMe-example.txt
+docs/GetGamificationContestAgentsScoresTrends-example.txt
+docs/GetGamificationContestAgentsScoresTrendsMe-example.txt
+docs/GetGamificationContestPrizeimage-example.txt
+docs/GetGamificationContests-example.txt
+docs/GetGamificationContestsMe-example.txt
 docs/GetGamificationInsights-example.txt
 docs/GetGamificationInsightsDetails-example.txt
 docs/GetGamificationInsightsGroupsTrends-example.txt
@@ -1118,6 +1137,8 @@ docs/GetOutboundSequence-example.txt
 docs/GetOutboundSequences-example.txt
 docs/GetOutboundSettings-example.txt
 docs/GetOutboundWrapupcodemappings-example.txt
+docs/GetPresenceDefinition0-example.txt
+docs/GetPresenceDefinitions0-example.txt
 docs/GetPresenceSettings-example.txt
 docs/GetPresenceSource-example.txt
 docs/GetPresenceSources-example.txt
@@ -1358,6 +1379,9 @@ docs/GetTaskmanagementWorkitemsSchema-example.txt
 docs/GetTaskmanagementWorkitemsSchemaVersion-example.txt
 docs/GetTaskmanagementWorkitemsSchemaVersions-example.txt
 docs/GetTaskmanagementWorkitemsSchemas-example.txt
+docs/GetTaskmanagementWorkitemsSchemasCoretype-example.txt
+docs/GetTaskmanagementWorkitemsSchemasCoretypes-example.txt
+docs/GetTaskmanagementWorkitemsSchemasLimits-example.txt
 docs/GetTaskmanagementWorktype-example.txt
 docs/GetTaskmanagementWorktypeFlowsDatebasedRule-example.txt
 docs/GetTaskmanagementWorktypeFlowsDatebasedRules-example.txt
@@ -1751,7 +1775,9 @@ docs/PatchEmailsSettingsThreading-example.txt
 docs/PatchEmployeeengagementCelebration-example.txt
 docs/PatchEmployeeperformanceExternalmetricsDefinition-example.txt
 docs/PatchExternalcontactsContactIdentifiers-example.txt
+docs/PatchExternalcontactsOrganizationIdentifiers-example.txt
 docs/PatchFlowsInstancesSettingsExecutiondata-example.txt
+docs/PatchGamificationContest-example.txt
 docs/PatchGeolocationsSettings-example.txt
 docs/PatchIntegration-example.txt
 docs/PatchIntegrationsAction-example.txt
@@ -1793,6 +1819,7 @@ docs/PatchOutboundCampaign-example.txt
 docs/PatchOutboundDnclistCustomexclusioncolumns-example.txt
 docs/PatchOutboundDnclistEmailaddresses-example.txt
 docs/PatchOutboundDnclistPhonenumbers-example.txt
+docs/PatchOutboundDnclistWhatsappnumbers-example.txt
 docs/PatchOutboundSettings-example.txt
 docs/PatchQualityFormsSurvey-example.txt
 docs/PatchRecordingCrossplatformMediaretentionpolicy-example.txt
@@ -2111,7 +2138,6 @@ docs/PostDataprivacyMaskingrulesValidate-example.txt
 docs/PostDiagnosticsLogcaptureBrowserEntriesDownloadJobs-example.txt
 docs/PostDiagnosticsLogcaptureBrowserEntriesQuery-example.txt
 docs/PostDiagnosticsLogcaptureBrowserUser-example.txt
-docs/PostDivisionBasedPresenceDefinitions-example.txt
 docs/PostDocumentationAllSearch-example.txt
 docs/PostDocumentationGknSearch-example.txt
 docs/PostDocumentationSearch-example.txt
@@ -2124,6 +2150,7 @@ docs/PostEventsUsersRoutingstatus-example.txt
 docs/PostExternalcontactsBulkContacts-example.txt
 docs/PostExternalcontactsBulkContactsAdd-example.txt
 docs/PostExternalcontactsBulkContactsDivisionviews-example.txt
+docs/PostExternalcontactsBulkContactsEnrich-example.txt
 docs/PostExternalcontactsBulkContactsRemove-example.txt
 docs/PostExternalcontactsBulkContactsUnresolved-example.txt
 docs/PostExternalcontactsBulkContactsUpdate-example.txt
@@ -2134,6 +2161,7 @@ docs/PostExternalcontactsBulkNotesUpdate-example.txt
 docs/PostExternalcontactsBulkOrganizations-example.txt
 docs/PostExternalcontactsBulkOrganizationsAdd-example.txt
 docs/PostExternalcontactsBulkOrganizationsDivisionviews-example.txt
+docs/PostExternalcontactsBulkOrganizationsEnrich-example.txt
 docs/PostExternalcontactsBulkOrganizationsRemove-example.txt
 docs/PostExternalcontactsBulkOrganizationsUpdate-example.txt
 docs/PostExternalcontactsBulkRelationships-example.txt
@@ -2143,10 +2171,14 @@ docs/PostExternalcontactsBulkRelationshipsUpdate-example.txt
 docs/PostExternalcontactsContactNotes-example.txt
 docs/PostExternalcontactsContactPromotion-example.txt
 docs/PostExternalcontactsContacts-example.txt
+docs/PostExternalcontactsContactsEnrich-example.txt
 docs/PostExternalcontactsContactsExports-example.txt
+docs/PostExternalcontactsContactsMerge-example.txt
 docs/PostExternalcontactsContactsSchemas-example.txt
 docs/PostExternalcontactsExternalsources-example.txt
 docs/PostExternalcontactsIdentifierlookup-example.txt
+docs/PostExternalcontactsIdentifierlookupContacts-example.txt
+docs/PostExternalcontactsIdentifierlookupOrganizations-example.txt
 docs/PostExternalcontactsImportCsvJobs-example.txt
 docs/PostExternalcontactsImportCsvSettings-example.txt
 docs/PostExternalcontactsImportCsvUploads-example.txt
@@ -2155,6 +2187,7 @@ docs/PostExternalcontactsImportSettings-example.txt
 docs/PostExternalcontactsMergeContacts-example.txt
 docs/PostExternalcontactsOrganizationNotes-example.txt
 docs/PostExternalcontactsOrganizations-example.txt
+docs/PostExternalcontactsOrganizationsEnrich-example.txt
 docs/PostExternalcontactsOrganizationsSchemas-example.txt
 docs/PostExternalcontactsRelationships-example.txt
 docs/PostFlowHistory-example.txt
@@ -2178,6 +2211,9 @@ docs/PostFlowsInstancesQuery-example.txt
 docs/PostFlowsJobs-example.txt
 docs/PostFlowsMilestones-example.txt
 docs/PostFlowsOutcomes-example.txt
+docs/PostGamificationContests-example.txt
+docs/PostGamificationContestsUploadsPrizeimages-example.txt
+docs/PostGamificationContestsUploadsPrizeimages-example.txt
 docs/PostGamificationProfileActivate-example.txt
 docs/PostGamificationProfileDeactivate-example.txt
 docs/PostGamificationProfileMembers-example.txt
@@ -2361,6 +2397,7 @@ docs/PostOutboundMessagingcampaigns-example.txt
 docs/PostOutboundMessagingcampaignsProgress-example.txt
 docs/PostOutboundRulesets-example.txt
 docs/PostOutboundSequences-example.txt
+docs/PostPresenceDefinitions0-example.txt
 docs/PostPresenceSources-example.txt
 docs/PostPresencedefinitions-example.txt
 docs/PostProcessautomationTriggerTest-example.txt
@@ -2676,7 +2713,6 @@ docs/PutConversationsMessagingThreadingtimeline-example.txt
 docs/PutConversationsScreenshareRecordingstate-example.txt
 docs/PutConversationsSocialRecordingstate-example.txt
 docs/PutConversationsVideoRecordingstate-example.txt
-docs/PutDivisionBasedPresenceDefinition-example.txt
 docs/PutExternalcontactsContact-example.txt
 docs/PutExternalcontactsContactNote-example.txt
 docs/PutExternalcontactsContactsSchema-example.txt
@@ -2699,6 +2735,7 @@ docs/PutFlowsDatatableRow-example.txt
 docs/PutFlowsInstancesSettingsLoglevelsDefault-example.txt
 docs/PutFlowsMilestone-example.txt
 docs/PutFlowsOutcome-example.txt
+docs/PutGamificationContest-example.txt
 docs/PutGamificationProfile-example.txt
 docs/PutGamificationProfileMetric-example.txt
 docs/PutGamificationStatus-example.txt
@@ -2773,6 +2810,7 @@ docs/PutOutboundSchedulesMessagingcampaign-example.txt
 docs/PutOutboundSchedulesSequence-example.txt
 docs/PutOutboundSequence-example.txt
 docs/PutOutboundWrapupcodemappings-example.txt
+docs/PutPresenceDefinition0-example.txt
 docs/PutPresenceSettings-example.txt
 docs/PutPresenceSource-example.txt
 docs/PutPresenceUserPrimarysource-example.txt
@@ -3276,6 +3314,7 @@ platformclientv2/authorizationpolicy.go
 platformclientv2/authorizationpolicyentitylisting.go
 platformclientv2/authorizationsettings.go
 platformclientv2/authzdivision.go
+platformclientv2/authzdivisioncursorlisting.go
 platformclientv2/authzdivisionentitylisting.go
 platformclientv2/authzdivisiongrantentitylisting.go
 platformclientv2/authzgrant.go
@@ -3358,6 +3397,7 @@ platformclientv2/buagentschedulequeryresponse.go
 platformclientv2/buagentschedulerescheduleresponse.go
 platformclientv2/buagentschedulesearchresponse.go
 platformclientv2/buagentscheduleshift.go
+platformclientv2/buagentscheduleshiftrequest.go
 platformclientv2/buagentschedulesqueryresponse.go
 platformclientv2/buagentschedulessearchresponse.go
 platformclientv2/buagentscheduleupdate.go
@@ -3395,12 +3435,16 @@ platformclientv2/bulistalternativeshifttradesresponse.go
 platformclientv2/bulkcallbackdisconnectrequest.go
 platformclientv2/bulkcallbackpatchrequest.go
 platformclientv2/bulkcallbackpatchresponse.go
+platformclientv2/bulkcontactsenrichrequest.go
+platformclientv2/bulkcontactsenrichresponse.go
 platformclientv2/bulkcontactsrequest.go
 platformclientv2/bulkcontactsresponse.go
 platformclientv2/bulkdeleteresponse.go
+platformclientv2/bulkentityerrorcontactenrichrequest.go
 platformclientv2/bulkentityerrorentity.go
 platformclientv2/bulkentityerrorexternalcontact.go
 platformclientv2/bulkentityerrorexternalorganization.go
+platformclientv2/bulkentityerrorexternalorganizationenrichrequest.go
 platformclientv2/bulkentityerrornote.go
 platformclientv2/bulkentityerrorrelationship.go
 platformclientv2/bulkerror.go
@@ -3425,15 +3469,19 @@ platformclientv2/bulkjobterminateresultsresponse.go
 platformclientv2/bulkjobupdate.go
 platformclientv2/bulknotesrequest.go
 platformclientv2/bulknotesresponse.go
+platformclientv2/bulkorganizationsenrichrequest.go
+platformclientv2/bulkorganizationsenrichresponse.go
 platformclientv2/bulkorganizationsrequest.go
 platformclientv2/bulkorganizationsresponse.go
 platformclientv2/bulkrelationshipsrequest.go
 platformclientv2/bulkrelationshipsresponse.go
 platformclientv2/bulkresponse.go
+platformclientv2/bulkresponseresultexternalcontactcontactenrichrequestbulkentityerrorcontactenrichrequest.go
 platformclientv2/bulkresponseresultexternalcontactentitybulkentityerrorentity.go
 platformclientv2/bulkresponseresultexternalcontactexternalcontactbulkentityerrorexternalcontact.go
 platformclientv2/bulkresponseresultexternalorganizationentitybulkentityerrorentity.go
 platformclientv2/bulkresponseresultexternalorganizationexternalorganizationbulkentityerrorexternalorganization.go
+platformclientv2/bulkresponseresultexternalorganizationexternalorganizationenrichrequestbulkentityerrorexternalorganizationenrichrequest.go
 platformclientv2/bulkresponseresultnoteentitybulkentityerrorentity.go
 platformclientv2/bulkresponseresultnotenotebulkentityerrornote.go
 platformclientv2/bulkresponseresultrelationshipentitybulkentityerrorentity.go
@@ -3724,6 +3772,8 @@ platformclientv2/contactcolumnconditionsettings.go
 platformclientv2/contactcolumntimezone.go
 platformclientv2/contactcolumntodataactionfieldmapping.go
 platformclientv2/contactdetaileventtopiccontactupdateevent.go
+platformclientv2/contactenrichoptions.go
+platformclientv2/contactenrichrequest.go
 platformclientv2/contactidentifier.go
 platformclientv2/contactidentifierlisting.go
 platformclientv2/contactimportfield.go
@@ -3806,6 +3856,28 @@ platformclientv2/contestdatametrics.go
 platformclientv2/contestdataprizes.go
 platformclientv2/contestdatawinners.go
 platformclientv2/contestdatawinnersusers.go
+platformclientv2/contestdisqualifiedagents.go
+platformclientv2/contestmetrics.go
+platformclientv2/contestmetricscore.go
+platformclientv2/contestmetricscoreranked.go
+platformclientv2/contestprizes.go
+platformclientv2/contestprofile.go
+platformclientv2/contestrequesingparticipantdailyinfo.go
+platformclientv2/contestscore.go
+platformclientv2/contestscoreranked.go
+platformclientv2/contestscoresagents.go
+platformclientv2/contestscoresagentspagedlist.go
+platformclientv2/contestscoresagenttrend.go
+platformclientv2/contestscoresagenttrendlist.go
+platformclientv2/contestscoresgrouptrend.go
+platformclientv2/contestscoresgrouptrendlist.go
+platformclientv2/contestscreaterequest.go
+platformclientv2/contestsessentials.go
+platformclientv2/contestsfinalizerequest.go
+platformclientv2/contestsresponse.go
+platformclientv2/contestuserrank.go
+platformclientv2/contestwinners.go
+platformclientv2/contestwinnersrequest.go
 platformclientv2/context.go
 platformclientv2/contextentity.go
 platformclientv2/contextintent.go
@@ -3926,11 +3998,13 @@ platformclientv2/conversationcontentcardaction.go
 platformclientv2/conversationcontentcarousel.go
 platformclientv2/conversationcontentdatepicker.go
 platformclientv2/conversationcontentdatepickeravailabletime.go
+platformclientv2/conversationcontentinteractiveapplication.go
 platformclientv2/conversationcontentlocation.go
 platformclientv2/conversationcontentnotificationtemplate.go
 platformclientv2/conversationcontentquickreply.go
 platformclientv2/conversationcontentquickreplyv2.go
 platformclientv2/conversationcontentreaction.go
+platformclientv2/conversationcontentreceivedreplymessage.go
 platformclientv2/conversationcontentstory.go
 platformclientv2/conversationcontenttext.go
 platformclientv2/conversationdeletionprotectionquery.go
@@ -4478,6 +4552,7 @@ platformclientv2/dnclistimportstatusobject.go
 platformclientv2/dncpatchcustomexclusioncolumnsrequest.go
 platformclientv2/dncpatchemailsrequest.go
 platformclientv2/dncpatchphonenumbersrequest.go
+platformclientv2/dncpatchwhatsappnumbersrequest.go
 platformclientv2/dnsrecordentry.go
 platformclientv2/document.go
 platformclientv2/documentarticle.go
@@ -4692,6 +4767,8 @@ platformclientv2/endconsulttransferevent.go
 platformclientv2/endpoint.go
 platformclientv2/endtransferevent.go
 platformclientv2/engineintegration.go
+platformclientv2/enrichfieldrule.go
+platformclientv2/enrichfieldrules.go
 platformclientv2/entity.go
 platformclientv2/entitychange.go
 platformclientv2/entitylisting.go
@@ -4876,7 +4953,10 @@ platformclientv2/externalmetricdefinitioncreaterequest.go
 platformclientv2/externalmetricdefinitionlisting.go
 platformclientv2/externalmetricdefinitionupdaterequest.go
 platformclientv2/externalorganization.go
+platformclientv2/externalorganizationenrichrequest.go
 platformclientv2/externalorganizationidentifier.go
+platformclientv2/externalorganizationidentifierclaimrequest.go
+platformclientv2/externalorganizationidentifierlisting.go
 platformclientv2/externalorganizationlisting.go
 platformclientv2/externalorganizationtrustorlink.go
 platformclientv2/externalsegment.go
@@ -5038,6 +5118,7 @@ platformclientv2/functionuploadrequest.go
 platformclientv2/functionuploadresponse.go
 platformclientv2/functionzipconfig.go
 platformclientv2/gamificationapi.go
+platformclientv2/gamificationcontestprizeimageuploadurlrequest.go
 platformclientv2/gamificationscorecardchangetopicevaluationdetail.go
 platformclientv2/gamificationscorecardchangetopicmetric.go
 platformclientv2/gamificationscorecardchangetopicperformancemetric.go
@@ -5066,6 +5147,7 @@ platformclientv2/geolocationsettings.go
 platformclientv2/getagentsworkplansrequest.go
 platformclientv2/getalertquery.go
 platformclientv2/getcelebrationlisting.go
+platformclientv2/getcontestsessentialslisting.go
 platformclientv2/getflowexecutiondatajobresult.go
 platformclientv2/getmetricdefinitionsresponse.go
 platformclientv2/getmetricresponse.go
@@ -5767,6 +5849,7 @@ platformclientv2/member.go
 platformclientv2/memberentity.go
 platformclientv2/membergroup.go
 platformclientv2/memberlisting.go
+platformclientv2/mergecontactsrequest.go
 platformclientv2/mergeoperation.go
 platformclientv2/mergerequest.go
 platformclientv2/message.go
@@ -6210,6 +6293,7 @@ platformclientv2/planninggroupmodel.go
 platformclientv2/planninggroupoutputs.go
 platformclientv2/planninggroupreference.go
 platformclientv2/planningperiodsettings.go
+platformclientv2/planningperiodshiftconstraints.go
 platformclientv2/policy.go
 platformclientv2/policyactions.go
 platformclientv2/policyattribute.go
@@ -6254,6 +6338,7 @@ platformclientv2/presenceeventorganizationpresence.go
 platformclientv2/presenceeventuserpresence.go
 platformclientv2/presencesettings.go
 platformclientv2/presentedknowledgedocument.go
+platformclientv2/prizeimages.go
 platformclientv2/processautomationapi.go
 platformclientv2/processscheduleupdateuploadrequest.go
 platformclientv2/profilewithdaterange.go
@@ -7263,6 +7348,8 @@ platformclientv2/textmessagelisting.go
 platformclientv2/textstyleproperties.go
 platformclientv2/ticker.go
 platformclientv2/timeallowed.go
+platformclientv2/timeanddatesubcondition.go
+platformclientv2/timeanddatesubconditionrange.go
 platformclientv2/timeinterval.go
 platformclientv2/timeoffbalancejobreference.go
 platformclientv2/timeoffbalancejobresponse.go

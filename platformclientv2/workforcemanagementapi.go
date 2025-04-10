@@ -7435,7 +7435,11 @@ func (a WorkforceManagementApi) GetWorkforcemanagementHistoricaldataBulkRemoveJo
 
 // GetWorkforcemanagementHistoricaldataDeletejob invokes GET /api/v2/workforcemanagement/historicaldata/deletejob
 //
-// Retrieves delete job status for historical data imports of the organization
+// Retrieves delete job status for historical data imports of the organization.
+//
+// Deprecated: Please use GET /workforcemanagement/historicaldata/bulk/remove/jobs instead.
+//
+// Deprecated: GetWorkforcemanagementHistoricaldataDeletejob is deprecated
 func (a WorkforceManagementApi) GetWorkforcemanagementHistoricaldataDeletejob() (*Historicalimportdeletejobresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -17818,7 +17822,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementHistoricaldataBulkRemoveJ
 
 // PostWorkforcemanagementHistoricaldataDeletejob invokes POST /api/v2/workforcemanagement/historicaldata/deletejob
 //
-// Delete the entries of the historical data imports in the organization
+// Delete the entries of the historical data imports in the organization.
+//
+// Deprecated: Please use POST /workforcemanagement/historicaldata/bulk/remove/jobs instead.
+//
+// Deprecated: PostWorkforcemanagementHistoricaldataDeletejob is deprecated
 func (a WorkforceManagementApi) PostWorkforcemanagementHistoricaldataDeletejob() (*Historicalimportdeletejobresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

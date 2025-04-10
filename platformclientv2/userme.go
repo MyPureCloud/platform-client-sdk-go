@@ -126,6 +126,9 @@ type Userme struct {
 	// DateLastLogin - The last time the user logged in using username and password. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateLastLogin *time.Time `json:"dateLastLogin,omitempty"`
 
+	// DateWelcomeSent - The date & time the user was sent their welcome email. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateWelcomeSent *time.Time `json:"dateWelcomeSent,omitempty"`
+
 	// Date - The PureCloud system date time.
 	Date *Serverdate `json:"date,omitempty"`
 
@@ -207,7 +210,7 @@ func (o Userme) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "DateLastLogin", }
+		dateTimeFields := []string{ "DateLastLogin","DateWelcomeSent", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -246,6 +249,14 @@ func (o Userme) MarshalJSON() ([]byte, error) {
 		*DateLastLogin = timeutil.Strftime(o.DateLastLogin, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateLastLogin = nil
+	}
+	
+	DateWelcomeSent := new(string)
+	if o.DateWelcomeSent != nil {
+		
+		*DateWelcomeSent = timeutil.Strftime(o.DateWelcomeSent, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateWelcomeSent = nil
 	}
 	
 	return json.Marshal(&struct { 
@@ -324,6 +335,8 @@ func (o Userme) MarshalJSON() ([]byte, error) {
 		LastTokenIssued *Oauthlasttokenissued `json:"lastTokenIssued,omitempty"`
 		
 		DateLastLogin *string `json:"dateLastLogin,omitempty"`
+		
+		DateWelcomeSent *string `json:"dateWelcomeSent,omitempty"`
 		
 		Date *Serverdate `json:"date,omitempty"`
 		
@@ -435,6 +448,8 @@ func (o Userme) MarshalJSON() ([]byte, error) {
 		LastTokenIssued: o.LastTokenIssued,
 		
 		DateLastLogin: DateLastLogin,
+		
+		DateWelcomeSent: DateWelcomeSent,
 		
 		Date: o.Date,
 		
@@ -658,6 +673,11 @@ func (o *Userme) UnmarshalJSON(b []byte) error {
 	if dateLastLoginString, ok := UsermeMap["dateLastLogin"].(string); ok {
 		DateLastLogin, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateLastLoginString)
 		o.DateLastLogin = &DateLastLogin
+	}
+	
+	if dateWelcomeSentString, ok := UsermeMap["dateWelcomeSent"].(string); ok {
+		DateWelcomeSent, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateWelcomeSentString)
+		o.DateWelcomeSent = &DateWelcomeSent
 	}
 	
 	if Date, ok := UsermeMap["date"].(map[string]interface{}); ok {

@@ -3018,7 +3018,7 @@ func (a RoutingApi) GetRoutingEmailOutboundDomainSearch(domainId string) (*Outbo
 // GetRoutingEmailOutboundDomains invokes GET /api/v2/routing/email/outbound/domains
 //
 // Get outbound domains
-func (a RoutingApi) GetRoutingEmailOutboundDomains(filter string) (*Outbounddomainentitylisting, *APIResponse, error) {
+func (a RoutingApi) GetRoutingEmailOutboundDomains(pageSize int, pageNumber int, filter string) (*Outbounddomainentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/email/outbound/domains"
@@ -3044,6 +3044,10 @@ func (a RoutingApi) GetRoutingEmailOutboundDomains(filter string) (*Outbounddoma
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 	queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, "")
 	

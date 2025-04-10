@@ -123,6 +123,9 @@ type User struct {
 	// DateLastLogin - The last time the user logged in using username and password. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateLastLogin *time.Time `json:"dateLastLogin,omitempty"`
 
+	// DateWelcomeSent - The date & time the user was sent their welcome email. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateWelcomeSent *time.Time `json:"dateWelcomeSent,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -156,7 +159,7 @@ func (o User) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "DateLastLogin", }
+		dateTimeFields := []string{ "DateLastLogin","DateWelcomeSent", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -195,6 +198,14 @@ func (o User) MarshalJSON() ([]byte, error) {
 		*DateLastLogin = timeutil.Strftime(o.DateLastLogin, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateLastLogin = nil
+	}
+	
+	DateWelcomeSent := new(string)
+	if o.DateWelcomeSent != nil {
+		
+		*DateWelcomeSent = timeutil.Strftime(o.DateWelcomeSent, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateWelcomeSent = nil
 	}
 	
 	return json.Marshal(&struct { 
@@ -272,6 +283,8 @@ func (o User) MarshalJSON() ([]byte, error) {
 		
 		DateLastLogin *string `json:"dateLastLogin,omitempty"`
 		
+		DateWelcomeSent *string `json:"dateWelcomeSent,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -348,6 +361,8 @@ func (o User) MarshalJSON() ([]byte, error) {
 		LastTokenIssued: o.LastTokenIssued,
 		
 		DateLastLogin: DateLastLogin,
+		
+		DateWelcomeSent: DateWelcomeSent,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -534,6 +549,11 @@ func (o *User) UnmarshalJSON(b []byte) error {
 	if dateLastLoginString, ok := UserMap["dateLastLogin"].(string); ok {
 		DateLastLogin, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateLastLoginString)
 		o.DateLastLogin = &DateLastLogin
+	}
+	
+	if dateWelcomeSentString, ok := UserMap["dateWelcomeSent"].(string); ok {
+		DateWelcomeSent, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateWelcomeSentString)
+		o.DateWelcomeSent = &DateWelcomeSent
 	}
 	
 	if SelfUri, ok := UserMap["selfUri"].(string); ok {

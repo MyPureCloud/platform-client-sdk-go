@@ -48,6 +48,9 @@ type Datatableimportjob struct {
 	// CountRecordsFailed - The current count of the number of records that failed to import
 	CountRecordsFailed *int `json:"countRecordsFailed,omitempty"`
 
+	// UploadHeaders - Required headers when uploading a file through PUT request to the URL in the 'uploadURI' field
+	UploadHeaders *map[string]string `json:"uploadHeaders,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -155,6 +158,8 @@ func (o Datatableimportjob) MarshalJSON() ([]byte, error) {
 		
 		CountRecordsFailed *int `json:"countRecordsFailed,omitempty"`
 		
+		UploadHeaders *map[string]string `json:"uploadHeaders,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -181,6 +186,8 @@ func (o Datatableimportjob) MarshalJSON() ([]byte, error) {
 		CountRecordsDeleted: o.CountRecordsDeleted,
 		
 		CountRecordsFailed: o.CountRecordsFailed,
+		
+		UploadHeaders: o.UploadHeaders,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -247,6 +254,11 @@ func (o *Datatableimportjob) UnmarshalJSON(b []byte) error {
 	if CountRecordsFailed, ok := DatatableimportjobMap["countRecordsFailed"].(float64); ok {
 		CountRecordsFailedInt := int(CountRecordsFailed)
 		o.CountRecordsFailed = &CountRecordsFailedInt
+	}
+	
+	if UploadHeaders, ok := DatatableimportjobMap["uploadHeaders"].(map[string]interface{}); ok {
+		UploadHeadersString, _ := json.Marshal(UploadHeaders)
+		json.Unmarshal(UploadHeadersString, &o.UploadHeaders)
 	}
 	
 	if SelfUri, ok := DatatableimportjobMap["selfUri"].(string); ok {

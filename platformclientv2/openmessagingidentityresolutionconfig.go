@@ -20,6 +20,9 @@ type Openmessagingidentityresolutionconfig struct {
 	// ResolveIdentities - Whether the channel should resolve identities
 	ResolveIdentities *bool `json:"resolveIdentities,omitempty"`
 
+	// ExternalSource - The external source used for stitching this channel - used only for Open Messaging.
+	ExternalSource *Addressableentityref `json:"externalSource,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -93,6 +96,8 @@ func (o Openmessagingidentityresolutionconfig) MarshalJSON() ([]byte, error) {
 		
 		ResolveIdentities *bool `json:"resolveIdentities,omitempty"`
 		
+		ExternalSource *Addressableentityref `json:"externalSource,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -101,6 +106,8 @@ func (o Openmessagingidentityresolutionconfig) MarshalJSON() ([]byte, error) {
 		Division: o.Division,
 		
 		ResolveIdentities: o.ResolveIdentities,
+		
+		ExternalSource: o.ExternalSource,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -127,6 +134,11 @@ func (o *Openmessagingidentityresolutionconfig) UnmarshalJSON(b []byte) error {
 		o.ResolveIdentities = &ResolveIdentities
 	}
     
+	if ExternalSource, ok := OpenmessagingidentityresolutionconfigMap["externalSource"].(map[string]interface{}); ok {
+		ExternalSourceString, _ := json.Marshal(ExternalSource)
+		json.Unmarshal(ExternalSourceString, &o.ExternalSource)
+	}
+	
 	if SelfUri, ok := OpenmessagingidentityresolutionconfigMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
