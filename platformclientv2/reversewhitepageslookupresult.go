@@ -13,9 +13,6 @@ type Reversewhitepageslookupresult struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// Contacts
 	Contacts *[]Externalcontact `json:"contacts,omitempty"`
-
-	// ExternalOrganizations
-	ExternalOrganizations *[]Externalorganization `json:"externalOrganizations,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -82,13 +79,9 @@ func (o Reversewhitepageslookupresult) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		Contacts *[]Externalcontact `json:"contacts,omitempty"`
-		
-		ExternalOrganizations *[]Externalorganization `json:"externalOrganizations,omitempty"`
 		Alias
 	}{ 
 		Contacts: o.Contacts,
-		
-		ExternalOrganizations: o.ExternalOrganizations,
 		Alias:    (Alias)(o),
 	})
 }
@@ -103,11 +96,6 @@ func (o *Reversewhitepageslookupresult) UnmarshalJSON(b []byte) error {
 	if Contacts, ok := ReversewhitepageslookupresultMap["contacts"].([]interface{}); ok {
 		ContactsString, _ := json.Marshal(Contacts)
 		json.Unmarshal(ContactsString, &o.Contacts)
-	}
-	
-	if ExternalOrganizations, ok := ReversewhitepageslookupresultMap["externalOrganizations"].([]interface{}); ok {
-		ExternalOrganizationsString, _ := json.Marshal(ExternalOrganizations)
-		json.Unmarshal(ExternalOrganizationsString, &o.ExternalOrganizations)
 	}
 	
 

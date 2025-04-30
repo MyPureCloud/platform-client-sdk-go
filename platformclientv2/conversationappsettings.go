@@ -37,6 +37,9 @@ type Conversationappsettings struct {
 
 	// Notifications - The notification settings for messenger apps
 	Notifications *Notificationssettings `json:"notifications,omitempty"`
+
+	// SessionDurationSeconds - The guest session duration settings for messenger conversations
+	SessionDurationSeconds *int `json:"sessionDurationSeconds,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -119,6 +122,8 @@ func (o Conversationappsettings) MarshalJSON() ([]byte, error) {
 		Humanize *Humanize `json:"humanize,omitempty"`
 		
 		Notifications *Notificationssettings `json:"notifications,omitempty"`
+		
+		SessionDurationSeconds *int `json:"sessionDurationSeconds,omitempty"`
 		Alias
 	}{ 
 		Enabled: o.Enabled,
@@ -138,6 +143,8 @@ func (o Conversationappsettings) MarshalJSON() ([]byte, error) {
 		Humanize: o.Humanize,
 		
 		Notifications: o.Notifications,
+		
+		SessionDurationSeconds: o.SessionDurationSeconds,
 		Alias:    (Alias)(o),
 	})
 }
@@ -189,6 +196,11 @@ func (o *Conversationappsettings) UnmarshalJSON(b []byte) error {
 	if Notifications, ok := ConversationappsettingsMap["notifications"].(map[string]interface{}); ok {
 		NotificationsString, _ := json.Marshal(Notifications)
 		json.Unmarshal(NotificationsString, &o.Notifications)
+	}
+	
+	if SessionDurationSeconds, ok := ConversationappsettingsMap["sessionDurationSeconds"].(float64); ok {
+		SessionDurationSecondsInt := int(SessionDurationSeconds)
+		o.SessionDurationSeconds = &SessionDurationSecondsInt
 	}
 	
 

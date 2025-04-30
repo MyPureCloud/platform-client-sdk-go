@@ -7,19 +7,22 @@ import (
 	"strings"
 )
 
-// V2flowexecutiondataflowidtopicflow - This contains information about the flow that invoked this execution.  Both a flow execution and action identifier are needed to uniquely identify the invocation point.
-type V2flowexecutiondataflowidtopicflow struct { 
+// Conversationsummarytopicconversationfollowupaction
+type Conversationsummarytopicconversationfollowupaction struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// FlowExecutionId - The flow execution identifier whose runtime that invoked this.
-	FlowExecutionId *string `json:"flowExecutionId,omitempty"`
+	// Text
+	Text *string `json:"text,omitempty"`
 
-	// ObjectExecutionId - The object execution identifier within the flow whose runtime that invoked this.  In Architect flows, this object execution identifier will be either an action execution identifier or a menu execution identifier.
-	ObjectExecutionId *string `json:"objectExecutionId,omitempty"`
+	// Description
+	Description *string `json:"description,omitempty"`
+
+	// Score
+	Score *float32 `json:"score,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *V2flowexecutiondataflowidtopicflow) SetField(field string, fieldValue interface{}) {
+func (o *Conversationsummarytopicconversationfollowupaction) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -40,7 +43,7 @@ func (o *V2flowexecutiondataflowidtopicflow) SetField(field string, fieldValue i
 	o.SetFieldNames[field] = true
 }
 
-func (o V2flowexecutiondataflowidtopicflow) MarshalJSON() ([]byte, error) {
+func (o Conversationsummarytopicconversationfollowupaction) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -78,34 +81,43 @@ func (o V2flowexecutiondataflowidtopicflow) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias V2flowexecutiondataflowidtopicflow
+	type Alias Conversationsummarytopicconversationfollowupaction
 	
 	return json.Marshal(&struct { 
-		FlowExecutionId *string `json:"flowExecutionId,omitempty"`
+		Text *string `json:"text,omitempty"`
 		
-		ObjectExecutionId *string `json:"objectExecutionId,omitempty"`
+		Description *string `json:"description,omitempty"`
+		
+		Score *float32 `json:"score,omitempty"`
 		Alias
 	}{ 
-		FlowExecutionId: o.FlowExecutionId,
+		Text: o.Text,
 		
-		ObjectExecutionId: o.ObjectExecutionId,
+		Description: o.Description,
+		
+		Score: o.Score,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *V2flowexecutiondataflowidtopicflow) UnmarshalJSON(b []byte) error {
-	var V2flowexecutiondataflowidtopicflowMap map[string]interface{}
-	err := json.Unmarshal(b, &V2flowexecutiondataflowidtopicflowMap)
+func (o *Conversationsummarytopicconversationfollowupaction) UnmarshalJSON(b []byte) error {
+	var ConversationsummarytopicconversationfollowupactionMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationsummarytopicconversationfollowupactionMap)
 	if err != nil {
 		return err
 	}
 	
-	if FlowExecutionId, ok := V2flowexecutiondataflowidtopicflowMap["flowExecutionId"].(string); ok {
-		o.FlowExecutionId = &FlowExecutionId
+	if Text, ok := ConversationsummarytopicconversationfollowupactionMap["text"].(string); ok {
+		o.Text = &Text
 	}
     
-	if ObjectExecutionId, ok := V2flowexecutiondataflowidtopicflowMap["objectExecutionId"].(string); ok {
-		o.ObjectExecutionId = &ObjectExecutionId
+	if Description, ok := ConversationsummarytopicconversationfollowupactionMap["description"].(string); ok {
+		o.Description = &Description
+	}
+    
+	if Score, ok := ConversationsummarytopicconversationfollowupactionMap["score"].(float64); ok {
+		ScoreFloat32 := float32(Score)
+		o.Score = &ScoreFloat32
 	}
     
 
@@ -113,7 +125,7 @@ func (o *V2flowexecutiondataflowidtopicflow) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *V2flowexecutiondataflowidtopicflow) String() string {
+func (o *Conversationsummarytopicconversationfollowupaction) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

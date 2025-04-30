@@ -30,6 +30,12 @@ type Journeyviewjob struct {
 	// DateCompletionEstimated - Timestamp for the estimated time of completion. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCompletionEstimated *time.Time `json:"dateCompletionEstimated,omitempty"`
 
+	// EstimatedCompletionMargin - Margin of error of the estimated time of completion
+	EstimatedCompletionMargin *int `json:"estimatedCompletionMargin,omitempty"`
+
+	// UserId - Id of the user who submitted the request
+	UserId *string `json:"userId,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -133,6 +139,10 @@ func (o Journeyviewjob) MarshalJSON() ([]byte, error) {
 		
 		DateCompletionEstimated *string `json:"dateCompletionEstimated,omitempty"`
 		
+		EstimatedCompletionMargin *int `json:"estimatedCompletionMargin,omitempty"`
+		
+		UserId *string `json:"userId,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -147,6 +157,10 @@ func (o Journeyviewjob) MarshalJSON() ([]byte, error) {
 		JourneyView: o.JourneyView,
 		
 		DateCompletionEstimated: DateCompletionEstimated,
+		
+		EstimatedCompletionMargin: o.EstimatedCompletionMargin,
+		
+		UserId: o.UserId,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -188,6 +202,15 @@ func (o *Journeyviewjob) UnmarshalJSON(b []byte) error {
 		o.DateCompletionEstimated = &DateCompletionEstimated
 	}
 	
+	if EstimatedCompletionMargin, ok := JourneyviewjobMap["estimatedCompletionMargin"].(float64); ok {
+		EstimatedCompletionMarginInt := int(EstimatedCompletionMargin)
+		o.EstimatedCompletionMargin = &EstimatedCompletionMarginInt
+	}
+	
+	if UserId, ok := JourneyviewjobMap["userId"].(string); ok {
+		o.UserId = &UserId
+	}
+    
 	if SelfUri, ok := JourneyviewjobMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

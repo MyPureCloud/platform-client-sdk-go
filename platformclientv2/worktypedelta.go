@@ -70,6 +70,15 @@ type Worktypedelta struct {
 
 	// DefaultScriptId
 	DefaultScriptId *Workitemsattributechangestring `json:"defaultScriptId,omitempty"`
+
+	// FlowId
+	FlowId *Workitemsattributechangestring `json:"flowId,omitempty"`
+
+	// RuleSettings
+	RuleSettings *Workitemsattributechangeworkitemrulesettings `json:"ruleSettings,omitempty"`
+
+	// UnassignedDivisionContactsEnabled
+	UnassignedDivisionContactsEnabled *Workitemsattributechangeboolean `json:"unassignedDivisionContactsEnabled,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -174,6 +183,12 @@ func (o Worktypedelta) MarshalJSON() ([]byte, error) {
 		ModifiedBy *Workitemsattributechangestring `json:"modifiedBy,omitempty"`
 		
 		DefaultScriptId *Workitemsattributechangestring `json:"defaultScriptId,omitempty"`
+		
+		FlowId *Workitemsattributechangestring `json:"flowId,omitempty"`
+		
+		RuleSettings *Workitemsattributechangeworkitemrulesettings `json:"ruleSettings,omitempty"`
+		
+		UnassignedDivisionContactsEnabled *Workitemsattributechangeboolean `json:"unassignedDivisionContactsEnabled,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -215,6 +230,12 @@ func (o Worktypedelta) MarshalJSON() ([]byte, error) {
 		ModifiedBy: o.ModifiedBy,
 		
 		DefaultScriptId: o.DefaultScriptId,
+		
+		FlowId: o.FlowId,
+		
+		RuleSettings: o.RuleSettings,
+		
+		UnassignedDivisionContactsEnabled: o.UnassignedDivisionContactsEnabled,
 		Alias:    (Alias)(o),
 	})
 }
@@ -324,6 +345,21 @@ func (o *Worktypedelta) UnmarshalJSON(b []byte) error {
 	if DefaultScriptId, ok := WorktypedeltaMap["defaultScriptId"].(map[string]interface{}); ok {
 		DefaultScriptIdString, _ := json.Marshal(DefaultScriptId)
 		json.Unmarshal(DefaultScriptIdString, &o.DefaultScriptId)
+	}
+	
+	if FlowId, ok := WorktypedeltaMap["flowId"].(map[string]interface{}); ok {
+		FlowIdString, _ := json.Marshal(FlowId)
+		json.Unmarshal(FlowIdString, &o.FlowId)
+	}
+	
+	if RuleSettings, ok := WorktypedeltaMap["ruleSettings"].(map[string]interface{}); ok {
+		RuleSettingsString, _ := json.Marshal(RuleSettings)
+		json.Unmarshal(RuleSettingsString, &o.RuleSettings)
+	}
+	
+	if UnassignedDivisionContactsEnabled, ok := WorktypedeltaMap["unassignedDivisionContactsEnabled"].(map[string]interface{}); ok {
+		UnassignedDivisionContactsEnabledString, _ := json.Marshal(UnassignedDivisionContactsEnabled)
+		json.Unmarshal(UnassignedDivisionContactsEnabledString, &o.UnassignedDivisionContactsEnabled)
 	}
 	
 

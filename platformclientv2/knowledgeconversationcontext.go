@@ -17,6 +17,9 @@ type Knowledgeconversationcontext struct {
 	// MediaType - The media type of the conversation.
 	MediaType *string `json:"mediaType,omitempty"`
 
+	// MessageType - The message type of the conversation.
+	MessageType *string `json:"messageType,omitempty"`
+
 	// QueueId - The unique identifier of the queue used to assign the interaction to the user.
 	QueueId *string `json:"queueId,omitempty"`
 
@@ -91,6 +94,8 @@ func (o Knowledgeconversationcontext) MarshalJSON() ([]byte, error) {
 		
 		MediaType *string `json:"mediaType,omitempty"`
 		
+		MessageType *string `json:"messageType,omitempty"`
+		
 		QueueId *string `json:"queueId,omitempty"`
 		
 		ExternalContactId *string `json:"externalContactId,omitempty"`
@@ -99,6 +104,8 @@ func (o Knowledgeconversationcontext) MarshalJSON() ([]byte, error) {
 		ConversationId: o.ConversationId,
 		
 		MediaType: o.MediaType,
+		
+		MessageType: o.MessageType,
 		
 		QueueId: o.QueueId,
 		
@@ -120,6 +127,10 @@ func (o *Knowledgeconversationcontext) UnmarshalJSON(b []byte) error {
     
 	if MediaType, ok := KnowledgeconversationcontextMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
+	}
+    
+	if MessageType, ok := KnowledgeconversationcontextMap["messageType"].(string); ok {
+		o.MessageType = &MessageType
 	}
     
 	if QueueId, ok := KnowledgeconversationcontextMap["queueId"].(string); ok {

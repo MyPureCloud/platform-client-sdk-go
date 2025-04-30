@@ -47,7 +47,7 @@ type Worktypeupdate struct {
 	// Description - The description of the Worktype. Maximum length of 512 characters.
 	Description *string `json:"description,omitempty"`
 
-	// DefaultStatusId - The ID of the default status for Workitems created from the Worktype.
+	// DefaultStatusId - The ID of the default status for Workitems created from the Worktype. Must be a valid UUID.
 	DefaultStatusId *string `json:"defaultStatusId,omitempty"`
 
 	// SchemaVersion - The version of the Worktypes custom attribute schema. The latest schema version will be used if this property is not set.

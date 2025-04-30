@@ -112,6 +112,24 @@ type Workitemsusereventsnotificationworkitem struct {
 
 	// ScriptId
 	ScriptId *string `json:"scriptId,omitempty"`
+
+	// WorkbinName
+	WorkbinName *string `json:"workbinName,omitempty"`
+
+	// TypeName
+	TypeName *string `json:"typeName,omitempty"`
+
+	// PreferredAgentIds
+	PreferredAgentIds *[]string `json:"preferredAgentIds,omitempty"`
+
+	// DivisionId
+	DivisionId *string `json:"divisionId,omitempty"`
+
+	// ScoredAgents
+	ScoredAgents *[]Workitemsusereventsnotificationscoredagent `json:"scoredAgents,omitempty"`
+
+	// UtilizationLabelId
+	UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -244,6 +262,18 @@ func (o Workitemsusereventsnotificationworkitem) MarshalJSON() ([]byte, error) {
 		SkillIds *[]string `json:"skillIds,omitempty"`
 		
 		ScriptId *string `json:"scriptId,omitempty"`
+		
+		WorkbinName *string `json:"workbinName,omitempty"`
+		
+		TypeName *string `json:"typeName,omitempty"`
+		
+		PreferredAgentIds *[]string `json:"preferredAgentIds,omitempty"`
+		
+		DivisionId *string `json:"divisionId,omitempty"`
+		
+		ScoredAgents *[]Workitemsusereventsnotificationscoredagent `json:"scoredAgents,omitempty"`
+		
+		UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -313,6 +343,18 @@ func (o Workitemsusereventsnotificationworkitem) MarshalJSON() ([]byte, error) {
 		SkillIds: o.SkillIds,
 		
 		ScriptId: o.ScriptId,
+		
+		WorkbinName: o.WorkbinName,
+		
+		TypeName: o.TypeName,
+		
+		PreferredAgentIds: o.PreferredAgentIds,
+		
+		DivisionId: o.DivisionId,
+		
+		ScoredAgents: o.ScoredAgents,
+		
+		UtilizationLabelId: o.UtilizationLabelId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -467,6 +509,32 @@ func (o *Workitemsusereventsnotificationworkitem) UnmarshalJSON(b []byte) error 
 	
 	if ScriptId, ok := WorkitemsusereventsnotificationworkitemMap["scriptId"].(string); ok {
 		o.ScriptId = &ScriptId
+	}
+    
+	if WorkbinName, ok := WorkitemsusereventsnotificationworkitemMap["workbinName"].(string); ok {
+		o.WorkbinName = &WorkbinName
+	}
+    
+	if TypeName, ok := WorkitemsusereventsnotificationworkitemMap["typeName"].(string); ok {
+		o.TypeName = &TypeName
+	}
+    
+	if PreferredAgentIds, ok := WorkitemsusereventsnotificationworkitemMap["preferredAgentIds"].([]interface{}); ok {
+		PreferredAgentIdsString, _ := json.Marshal(PreferredAgentIds)
+		json.Unmarshal(PreferredAgentIdsString, &o.PreferredAgentIds)
+	}
+	
+	if DivisionId, ok := WorkitemsusereventsnotificationworkitemMap["divisionId"].(string); ok {
+		o.DivisionId = &DivisionId
+	}
+    
+	if ScoredAgents, ok := WorkitemsusereventsnotificationworkitemMap["scoredAgents"].([]interface{}); ok {
+		ScoredAgentsString, _ := json.Marshal(ScoredAgents)
+		json.Unmarshal(ScoredAgentsString, &o.ScoredAgents)
+	}
+	
+	if UtilizationLabelId, ok := WorkitemsusereventsnotificationworkitemMap["utilizationLabelId"].(string); ok {
+		o.UtilizationLabelId = &UtilizationLabelId
 	}
     
 

@@ -888,8 +888,6 @@ func (a TaskManagementApi) GetTaskmanagementWorkbin(workbinId string) (*Workbin,
 // GetTaskmanagementWorkbinHistory invokes GET /api/v2/taskmanagement/workbins/{workbinId}/history
 //
 // Get a listing of a workbin's attribute change history
-//
-// Preview: GetTaskmanagementWorkbinHistory is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) GetTaskmanagementWorkbinHistory(workbinId string, after string, pageSize int, sortOrder string) (*Workbinchangelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -978,8 +976,6 @@ func (a TaskManagementApi) GetTaskmanagementWorkbinHistory(workbinId string, aft
 // GetTaskmanagementWorkbinVersion invokes GET /api/v2/taskmanagement/workbins/{workbinId}/versions/{entityVersion}
 //
 // Get a version of a workbin
-//
-// Preview: GetTaskmanagementWorkbinVersion is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) GetTaskmanagementWorkbinVersion(workbinId string, entityVersion int) (*Workbinversion, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1068,8 +1064,6 @@ func (a TaskManagementApi) GetTaskmanagementWorkbinVersion(workbinId string, ent
 // GetTaskmanagementWorkbinVersions invokes GET /api/v2/taskmanagement/workbins/{workbinId}/versions
 //
 // Get all versions of a workbin
-//
-// Preview: GetTaskmanagementWorkbinVersions is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) GetTaskmanagementWorkbinVersions(workbinId string, after string, pageSize int, sortOrder string) (*Workbinversionlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1242,8 +1236,6 @@ func (a TaskManagementApi) GetTaskmanagementWorkitem(workitemId string, expands 
 // GetTaskmanagementWorkitemHistory invokes GET /api/v2/taskmanagement/workitems/{workitemId}/history
 //
 // Get a listing of a workitem's attribute change history
-//
-// Preview: GetTaskmanagementWorkitemHistory is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) GetTaskmanagementWorkitemHistory(workitemId string, after string, pageSize int, sortOrder string) (*Workitemchangelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1428,8 +1420,6 @@ func (a TaskManagementApi) GetTaskmanagementWorkitemUserWrapups(workitemId strin
 // GetTaskmanagementWorkitemVersion invokes GET /api/v2/taskmanagement/workitems/{workitemId}/versions/{entityVersion}
 //
 // Get a version of a workitem
-//
-// Preview: GetTaskmanagementWorkitemVersion is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) GetTaskmanagementWorkitemVersion(workitemId string, entityVersion int) (*Workitemversion, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1518,8 +1508,6 @@ func (a TaskManagementApi) GetTaskmanagementWorkitemVersion(workitemId string, e
 // GetTaskmanagementWorkitemVersions invokes GET /api/v2/taskmanagement/workitems/{workitemId}/versions
 //
 // Get all versions of a workitem
-//
-// Preview: GetTaskmanagementWorkitemVersions is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) GetTaskmanagementWorkitemVersions(workitemId string, after string, pageSize int, sortOrder string) (*Workitemversionlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3442,8 +3430,6 @@ func (a TaskManagementApi) GetTaskmanagementWorktypeFlowsOncreateRules(worktypeI
 // GetTaskmanagementWorktypeHistory invokes GET /api/v2/taskmanagement/worktypes/{worktypeId}/history
 //
 // Get a listing of a worktype's attribute change history
-//
-// Preview: GetTaskmanagementWorktypeHistory is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) GetTaskmanagementWorktypeHistory(worktypeId string, after string, pageSize int, sortOrder string, fields []string) (*Worktypechangelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3704,8 +3690,6 @@ func (a TaskManagementApi) GetTaskmanagementWorktypeStatuses(worktypeId string) 
 // GetTaskmanagementWorktypeVersion invokes GET /api/v2/taskmanagement/worktypes/{worktypeId}/versions/{entityVersion}
 //
 // Get a version of a worktype
-//
-// Preview: GetTaskmanagementWorktypeVersion is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) GetTaskmanagementWorktypeVersion(worktypeId string, entityVersion int) (*Worktypeversion, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3794,8 +3778,6 @@ func (a TaskManagementApi) GetTaskmanagementWorktypeVersion(worktypeId string, e
 // GetTaskmanagementWorktypeVersions invokes GET /api/v2/taskmanagement/worktypes/{worktypeId}/versions
 //
 // Get all versions of a worktype
-//
-// Preview: GetTaskmanagementWorktypeVersions is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TaskManagementApi) GetTaskmanagementWorktypeVersions(worktypeId string, after string, pageSize int, sortOrder string) (*Worktypeversionlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

@@ -18,6 +18,9 @@ type Conversationmessagingchannel struct {
 	// Platform - The provider type.
 	Platform *string `json:"platform,omitempty"`
 
+	// VarType - Specifies if this message is part of a private or public conversation.
+	VarType *string `json:"type,omitempty"`
+
 	// MessageId - Unique provider ID of the message such as a Facebook message ID.
 	MessageId *string `json:"messageId,omitempty"`
 
@@ -35,6 +38,9 @@ type Conversationmessagingchannel struct {
 
 	// DateDeleted - Time the message was deleted. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateDeleted *time.Time `json:"dateDeleted,omitempty"`
+
+	// PublicMetadata - Information about a public message.
+	PublicMetadata *Conversationpublicmetadata `json:"publicMetadata,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -128,6 +134,8 @@ func (o Conversationmessagingchannel) MarshalJSON() ([]byte, error) {
 		
 		Platform *string `json:"platform,omitempty"`
 		
+		VarType *string `json:"type,omitempty"`
+		
 		MessageId *string `json:"messageId,omitempty"`
 		
 		To *Conversationmessagingtorecipient `json:"to,omitempty"`
@@ -139,11 +147,15 @@ func (o Conversationmessagingchannel) MarshalJSON() ([]byte, error) {
 		DateModified *string `json:"dateModified,omitempty"`
 		
 		DateDeleted *string `json:"dateDeleted,omitempty"`
+		
+		PublicMetadata *Conversationpublicmetadata `json:"publicMetadata,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
 		
 		Platform: o.Platform,
+		
+		VarType: o.VarType,
 		
 		MessageId: o.MessageId,
 		
@@ -156,6 +168,8 @@ func (o Conversationmessagingchannel) MarshalJSON() ([]byte, error) {
 		DateModified: DateModified,
 		
 		DateDeleted: DateDeleted,
+		
+		PublicMetadata: o.PublicMetadata,
 		Alias:    (Alias)(o),
 	})
 }
@@ -173,6 +187,10 @@ func (o *Conversationmessagingchannel) UnmarshalJSON(b []byte) error {
     
 	if Platform, ok := ConversationmessagingchannelMap["platform"].(string); ok {
 		o.Platform = &Platform
+	}
+    
+	if VarType, ok := ConversationmessagingchannelMap["type"].(string); ok {
+		o.VarType = &VarType
 	}
     
 	if MessageId, ok := ConversationmessagingchannelMap["messageId"].(string); ok {
@@ -202,6 +220,11 @@ func (o *Conversationmessagingchannel) UnmarshalJSON(b []byte) error {
 	if dateDeletedString, ok := ConversationmessagingchannelMap["dateDeleted"].(string); ok {
 		DateDeleted, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateDeletedString)
 		o.DateDeleted = &DateDeleted
+	}
+	
+	if PublicMetadata, ok := ConversationmessagingchannelMap["publicMetadata"].(map[string]interface{}); ok {
+		PublicMetadataString, _ := json.Marshal(PublicMetadata)
+		json.Unmarshal(PublicMetadataString, &o.PublicMetadata)
 	}
 	
 

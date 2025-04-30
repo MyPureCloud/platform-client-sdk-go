@@ -16,6 +16,9 @@ type Conversationpublicmetadata struct {
 
 	// ReplyToId - The id of the message this public message is replying to.
 	ReplyToId *string `json:"replyToId,omitempty"`
+
+	// Url - The URL of the social post on the native platform.
+	Url *string `json:"url,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Conversationpublicmetadata) MarshalJSON() ([]byte, error) {
 		RootId *string `json:"rootId,omitempty"`
 		
 		ReplyToId *string `json:"replyToId,omitempty"`
+		
+		Url *string `json:"url,omitempty"`
 		Alias
 	}{ 
 		RootId: o.RootId,
 		
 		ReplyToId: o.ReplyToId,
+		
+		Url: o.Url,
 		Alias:    (Alias)(o),
 	})
 }
@@ -106,6 +113,10 @@ func (o *Conversationpublicmetadata) UnmarshalJSON(b []byte) error {
     
 	if ReplyToId, ok := ConversationpublicmetadataMap["replyToId"].(string); ok {
 		o.ReplyToId = &ReplyToId
+	}
+    
+	if Url, ok := ConversationpublicmetadataMap["url"].(string); ok {
+		o.Url = &Url
 	}
     
 

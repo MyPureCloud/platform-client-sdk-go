@@ -2,7 +2,7 @@
 
 A Go package to interface with the Genesys Cloud Platform API. View the documentation on the [pkg.go.dev](https://pkg.go.dev/github.com/MyPureCloud/platform-client-sdk-go). Browse the source code on [Github](https://github.com/MyPureCloud/platform-client-sdk-go).
 
-Latest version: 156.0.0 [![GitHub release](https://img.shields.io/github/release/mypurecloud/platform-client-sdk-go.svg)](https://github.com/MyPureCloud/platform-client-sdk-go)
+Latest version: 157.0.0 [![GitHub release](https://img.shields.io/github/release/mypurecloud/platform-client-sdk-go.svg)](https://github.com/MyPureCloud/platform-client-sdk-go)
 [![Release Notes Badge](https://developer-content.genesys.cloud/images/sdk-release-notes.png)](https://github.com/MyPureCloud/platform-client-sdk-go/blob/master/releaseNotes.md)
 
 ## Golang Version Dependency
@@ -20,7 +20,7 @@ Some macOS users encounter the error "argument list too long" when building or i
 Retrieve the package from https://github.com/MyPureCloud/platform-client-sdk-go using `go get`:
 
 ```go
-go get github.com/mypurecloud/platform-client-sdk-go/v156/platformclientv2
+go get github.com/mypurecloud/platform-client-sdk-go/v157/platformclientv2
 ```
 
 ## Using the SDK
@@ -29,7 +29,7 @@ go get github.com/mypurecloud/platform-client-sdk-go/v156/platformclientv2
 
 ```go
 import (
-	"github.com/mypurecloud/platform-client-sdk-go/v156/platformclientv2"
+	"github.com/mypurecloud/platform-client-sdk-go/v157/platformclientv2"
 )
 ```
 
@@ -365,6 +365,62 @@ This serializes to the JSON document below. Note that only the properties set us
 }
 ```
 
+### Custom HTTP Client
+
+The SDK supports injecting a custom HTTP client to handle requests. This allows you to customize request handling, add custom middleware, or implement specific networking requirements.
+The CustomHttpClient should be an instance of AbstractHttpClient defined in the SDK which will implement the request method.
+Please find an example for the same.
+
+```go
+// Create a custom HTTP client
+customClient := &CustomHttpClient{
+    // Configure your custom client settings
+}
+
+// Set the custom client on the configuration
+config.APIClient.SetHttpClient(customClient)
+```
+
+### Using MTLS Authentication via Gateway
+
+Configure MTLS authentication for gateway servers (when Genesys Cloud requests must go through an intermediate API gateway):
+
+```go
+config := platformclientv2.GetDefaultConfiguration()
+
+// Configure gateway settings
+config.SetGateway(&platformclientv2.GatewayConfiguration{
+    Host:            "mygateway.mydomain.myextension",
+    Protocol:        "https",
+    Port:            1443,
+})
+
+// Set MTLS certificates
+err := config.SetMTLSCertificates(
+    "path/to/client.cert.pem",
+    "path/to/client.key.pem",
+    "path/to/ca.cert.pem",
+)
+if err != nil {
+    panic(err)
+}
+```
+
+If you have the certificate contents in memory (for example, from a secrets manager or environment variables), you can use SetMTLSContents:
+
+```go
+client := platformclient.GetDefaultConfiguration()
+client.SetGateway("mygateway.mydomain.myextension", "https", 1443, "myadditionalpathforlogin", "myadditionalpathforapi")
+
+// certPEM, keyPEM, and caChainPEM are []byte containing the PEM-encoded certificates
+err := client.SetMTLSContents(certPEM, keyPEM, caChainPEM)
+if err != nil {
+    log.Fatal(err)
+}
+
+// If your private key is passphrase-protected, make sure to decrypt it before passing to SetMTLSContents
+```
+
 ## Versioning
 
 The SDK's version is incremented according to the [Semantic Versioning Specification](https://semver.org/). The decision to increment version numbers is determined by [diffing the Platform API's swagger](https://github.com/purecloudlabs/platform-client-sdk-common/blob/master/modules/swaggerDiff.js) for automated builds, and optionally forcing a version bump when a build is triggered manually (e.g. releasing a bugfix).
@@ -373,4 +429,4 @@ The SDK's version is incremented according to the [Semantic Versioning Specifica
 
 This package is intended to be forwards compatible with v2 of Genesys Cloud's Platform API. While the general policy for the API is not to introduce breaking changes, there are certain additions and changes to the API that cause breaking changes for the SDK, often due to the way the API is expressed in its swagger definition. Because of this, the SDK can have a major version bump while the API remains at major version 2. While the SDK is intended to be forward compatible, patches will only be released to the latest version. For these reasons, it is strongly recommended that all applications using this SDK are kept up to date and use the latest version of the SDK.
 
-For any issues, questions, or suggestions for the SDK, visit the [Genesys Cloud Developer Forum](https://developer.genesys.cloud/forum/).
+For any issues, questions, or suggestions for the SDK, visit the [Genesys Cloud Developer Community](https://community.genesys.com/communities/community-home1/digestviewer?CommunityKey=a39cc4d6-857e-43cb-be7b-019581ab9f38).

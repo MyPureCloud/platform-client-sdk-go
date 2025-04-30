@@ -7,13 +7,25 @@ import (
 	"strings"
 )
 
-// Queueconversationvideoeventtopicobject - The number of peer participants from the perspective of the participant in the conference.
-type Queueconversationvideoeventtopicobject struct { 
+// Usersettingsforchat
+type Usersettingsforchat struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// Muted - Whether or not to enable muting notifications
+	Muted *bool `json:"muted,omitempty"`
+
+	// MentionsOnly - Whether or not to enable notifications for mentions only
+	MentionsOnly *bool `json:"mentionsOnly,omitempty"`
+
+	// NotifyOnReactions - Whether or not to enable notifications for reactions on a user's own messages
+	NotifyOnReactions *bool `json:"notifyOnReactions,omitempty"`
+
+	// Mobile - Settings for mobile devices
+	Mobile *Mobilesettings `json:"mobile,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Queueconversationvideoeventtopicobject) SetField(field string, fieldValue interface{}) {
+func (o *Usersettingsforchat) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -34,7 +46,7 @@ func (o *Queueconversationvideoeventtopicobject) SetField(field string, fieldVal
 	o.SetFieldNames[field] = true
 }
 
-func (o Queueconversationvideoeventtopicobject) MarshalJSON() ([]byte, error) {
+func (o Usersettingsforchat) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -72,18 +84,51 @@ func (o Queueconversationvideoeventtopicobject) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Queueconversationvideoeventtopicobject
+	type Alias Usersettingsforchat
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		Muted *bool `json:"muted,omitempty"`
+		
+		MentionsOnly *bool `json:"mentionsOnly,omitempty"`
+		
+		NotifyOnReactions *bool `json:"notifyOnReactions,omitempty"`
+		
+		Mobile *Mobilesettings `json:"mobile,omitempty"`
+		Alias
+	}{ 
+		Muted: o.Muted,
+		
+		MentionsOnly: o.MentionsOnly,
+		
+		NotifyOnReactions: o.NotifyOnReactions,
+		
+		Mobile: o.Mobile,
+		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Queueconversationvideoeventtopicobject) UnmarshalJSON(b []byte) error {
-	var QueueconversationvideoeventtopicobjectMap map[string]interface{}
-	err := json.Unmarshal(b, &QueueconversationvideoeventtopicobjectMap)
+func (o *Usersettingsforchat) UnmarshalJSON(b []byte) error {
+	var UsersettingsforchatMap map[string]interface{}
+	err := json.Unmarshal(b, &UsersettingsforchatMap)
 	if err != nil {
 		return err
+	}
+	
+	if Muted, ok := UsersettingsforchatMap["muted"].(bool); ok {
+		o.Muted = &Muted
+	}
+    
+	if MentionsOnly, ok := UsersettingsforchatMap["mentionsOnly"].(bool); ok {
+		o.MentionsOnly = &MentionsOnly
+	}
+    
+	if NotifyOnReactions, ok := UsersettingsforchatMap["notifyOnReactions"].(bool); ok {
+		o.NotifyOnReactions = &NotifyOnReactions
+	}
+    
+	if Mobile, ok := UsersettingsforchatMap["mobile"].(map[string]interface{}); ok {
+		MobileString, _ := json.Marshal(Mobile)
+		json.Unmarshal(MobileString, &o.Mobile)
 	}
 	
 
@@ -91,7 +136,7 @@ func (o *Queueconversationvideoeventtopicobject) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Queueconversationvideoeventtopicobject) String() string {
+func (o *Usersettingsforchat) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

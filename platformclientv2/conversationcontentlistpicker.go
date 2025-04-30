@@ -7,13 +7,22 @@ import (
 	"strings"
 )
 
-// Queueconversationeventtopicobject - The number of peer participants from the perspective of the participant in the conference.
-type Queueconversationeventtopicobject struct { 
+// Conversationcontentlistpicker - List Picker object for presenting multiple sections of selectable items.
+type Conversationcontentlistpicker struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// Sections - An array of sections in the List Picker.
+	Sections *[]Conversationcontentlistpickersection `json:"sections,omitempty"`
+
+	// ReplyMessage - The message displayed in the received message bubble.
+	ReplyMessage *Conversationcontentreceivedreplymessage `json:"replyMessage,omitempty"`
+
+	// ReceivedMessage - The message displayed in the reply message bubble.
+	ReceivedMessage *Conversationcontentreceivedreplymessage `json:"receivedMessage,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Queueconversationeventtopicobject) SetField(field string, fieldValue interface{}) {
+func (o *Conversationcontentlistpicker) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -34,7 +43,7 @@ func (o *Queueconversationeventtopicobject) SetField(field string, fieldValue in
 	o.SetFieldNames[field] = true
 }
 
-func (o Queueconversationeventtopicobject) MarshalJSON() ([]byte, error) {
+func (o Conversationcontentlistpicker) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -72,18 +81,45 @@ func (o Queueconversationeventtopicobject) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Queueconversationeventtopicobject
+	type Alias Conversationcontentlistpicker
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		Sections *[]Conversationcontentlistpickersection `json:"sections,omitempty"`
+		
+		ReplyMessage *Conversationcontentreceivedreplymessage `json:"replyMessage,omitempty"`
+		
+		ReceivedMessage *Conversationcontentreceivedreplymessage `json:"receivedMessage,omitempty"`
+		Alias
+	}{ 
+		Sections: o.Sections,
+		
+		ReplyMessage: o.ReplyMessage,
+		
+		ReceivedMessage: o.ReceivedMessage,
+		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Queueconversationeventtopicobject) UnmarshalJSON(b []byte) error {
-	var QueueconversationeventtopicobjectMap map[string]interface{}
-	err := json.Unmarshal(b, &QueueconversationeventtopicobjectMap)
+func (o *Conversationcontentlistpicker) UnmarshalJSON(b []byte) error {
+	var ConversationcontentlistpickerMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationcontentlistpickerMap)
 	if err != nil {
 		return err
+	}
+	
+	if Sections, ok := ConversationcontentlistpickerMap["sections"].([]interface{}); ok {
+		SectionsString, _ := json.Marshal(Sections)
+		json.Unmarshal(SectionsString, &o.Sections)
+	}
+	
+	if ReplyMessage, ok := ConversationcontentlistpickerMap["replyMessage"].(map[string]interface{}); ok {
+		ReplyMessageString, _ := json.Marshal(ReplyMessage)
+		json.Unmarshal(ReplyMessageString, &o.ReplyMessage)
+	}
+	
+	if ReceivedMessage, ok := ConversationcontentlistpickerMap["receivedMessage"].(map[string]interface{}); ok {
+		ReceivedMessageString, _ := json.Marshal(ReceivedMessage)
+		json.Unmarshal(ReceivedMessageString, &o.ReceivedMessage)
 	}
 	
 
@@ -91,7 +127,7 @@ func (o *Queueconversationeventtopicobject) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Queueconversationeventtopicobject) String() string {
+func (o *Conversationcontentlistpicker) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

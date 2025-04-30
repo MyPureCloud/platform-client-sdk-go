@@ -7,31 +7,22 @@ import (
 	"strings"
 )
 
-// Dialercontactlistfilterconfigchangerange - FilterRange is one of the attributes of a FilterPredicate
-type Dialercontactlistfilterconfigchangerange struct { 
+// Conversationcontentlistpickersection - List Picker object for presenting a section of selectable items.
+type Conversationcontentlistpickersection struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Min - Minimum end of the range
-	Min *string `json:"min,omitempty"`
+	// Title - Required title for the section.
+	Title *string `json:"title,omitempty"`
 
-	// Max - Maximum end of the range
-	Max *string `json:"max,omitempty"`
+	// MultipleSelection - Whether multiple items can be selected in this section.
+	MultipleSelection *bool `json:"multipleSelection,omitempty"`
 
-	// MinInclusive - Whether or not to include the minimum in the range
-	MinInclusive *bool `json:"minInclusive,omitempty"`
-
-	// MaxInclusive - Whether or not to include the maximum in the range
-	MaxInclusive *bool `json:"maxInclusive,omitempty"`
-
-	// InSet - Elements that apply to the IN operator
-	InSet *[]string `json:"inSet,omitempty"`
-
-	// AdditionalProperties
-	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+	// Items - List of items to choice from in the section
+	Items *[]Conversationcontentlistpickeritem `json:"items,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Dialercontactlistfilterconfigchangerange) SetField(field string, fieldValue interface{}) {
+func (o *Conversationcontentlistpickersection) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -52,7 +43,7 @@ func (o *Dialercontactlistfilterconfigchangerange) SetField(field string, fieldV
 	o.SetFieldNames[field] = true
 }
 
-func (o Dialercontactlistfilterconfigchangerange) MarshalJSON() ([]byte, error) {
+func (o Conversationcontentlistpickersection) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -90,68 +81,43 @@ func (o Dialercontactlistfilterconfigchangerange) MarshalJSON() ([]byte, error) 
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Dialercontactlistfilterconfigchangerange
+	type Alias Conversationcontentlistpickersection
 	
 	return json.Marshal(&struct { 
-		Min *string `json:"min,omitempty"`
+		Title *string `json:"title,omitempty"`
 		
-		Max *string `json:"max,omitempty"`
+		MultipleSelection *bool `json:"multipleSelection,omitempty"`
 		
-		MinInclusive *bool `json:"minInclusive,omitempty"`
-		
-		MaxInclusive *bool `json:"maxInclusive,omitempty"`
-		
-		InSet *[]string `json:"inSet,omitempty"`
-		
-		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+		Items *[]Conversationcontentlistpickeritem `json:"items,omitempty"`
 		Alias
 	}{ 
-		Min: o.Min,
+		Title: o.Title,
 		
-		Max: o.Max,
+		MultipleSelection: o.MultipleSelection,
 		
-		MinInclusive: o.MinInclusive,
-		
-		MaxInclusive: o.MaxInclusive,
-		
-		InSet: o.InSet,
-		
-		AdditionalProperties: o.AdditionalProperties,
+		Items: o.Items,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Dialercontactlistfilterconfigchangerange) UnmarshalJSON(b []byte) error {
-	var DialercontactlistfilterconfigchangerangeMap map[string]interface{}
-	err := json.Unmarshal(b, &DialercontactlistfilterconfigchangerangeMap)
+func (o *Conversationcontentlistpickersection) UnmarshalJSON(b []byte) error {
+	var ConversationcontentlistpickersectionMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationcontentlistpickersectionMap)
 	if err != nil {
 		return err
 	}
 	
-	if Min, ok := DialercontactlistfilterconfigchangerangeMap["min"].(string); ok {
-		o.Min = &Min
+	if Title, ok := ConversationcontentlistpickersectionMap["title"].(string); ok {
+		o.Title = &Title
 	}
     
-	if Max, ok := DialercontactlistfilterconfigchangerangeMap["max"].(string); ok {
-		o.Max = &Max
+	if MultipleSelection, ok := ConversationcontentlistpickersectionMap["multipleSelection"].(bool); ok {
+		o.MultipleSelection = &MultipleSelection
 	}
     
-	if MinInclusive, ok := DialercontactlistfilterconfigchangerangeMap["minInclusive"].(bool); ok {
-		o.MinInclusive = &MinInclusive
-	}
-    
-	if MaxInclusive, ok := DialercontactlistfilterconfigchangerangeMap["maxInclusive"].(bool); ok {
-		o.MaxInclusive = &MaxInclusive
-	}
-    
-	if InSet, ok := DialercontactlistfilterconfigchangerangeMap["inSet"].([]interface{}); ok {
-		InSetString, _ := json.Marshal(InSet)
-		json.Unmarshal(InSetString, &o.InSet)
-	}
-	
-	if AdditionalProperties, ok := DialercontactlistfilterconfigchangerangeMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	if Items, ok := ConversationcontentlistpickersectionMap["items"].([]interface{}); ok {
+		ItemsString, _ := json.Marshal(Items)
+		json.Unmarshal(ItemsString, &o.Items)
 	}
 	
 
@@ -159,7 +125,7 @@ func (o *Dialercontactlistfilterconfigchangerange) UnmarshalJSON(b []byte) error
 }
 
 // String returns a JSON representation of the model
-func (o *Dialercontactlistfilterconfigchangerange) String() string {
+func (o *Conversationcontentlistpickersection) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

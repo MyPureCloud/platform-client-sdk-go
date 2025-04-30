@@ -26,9 +26,6 @@ type Journeysegmentrequest struct {
 	// Color - The hexadecimal color value of the segment.
 	Color *string `json:"color,omitempty"`
 
-	// Scope - The target entity that a segment applies to.
-	Scope *string `json:"scope,omitempty"`
-
 	// ShouldDisplayToAgent - Whether or not the segment should be displayed to agent/supervisor users.
 	ShouldDisplayToAgent *bool `json:"shouldDisplayToAgent,omitempty"`
 
@@ -118,8 +115,6 @@ func (o Journeysegmentrequest) MarshalJSON() ([]byte, error) {
 		
 		Color *string `json:"color,omitempty"`
 		
-		Scope *string `json:"scope,omitempty"`
-		
 		ShouldDisplayToAgent *bool `json:"shouldDisplayToAgent,omitempty"`
 		
 		Context *Requestcontext `json:"context,omitempty"`
@@ -140,8 +135,6 @@ func (o Journeysegmentrequest) MarshalJSON() ([]byte, error) {
 		Description: o.Description,
 		
 		Color: o.Color,
-		
-		Scope: o.Scope,
 		
 		ShouldDisplayToAgent: o.ShouldDisplayToAgent,
 		
@@ -182,10 +175,6 @@ func (o *Journeysegmentrequest) UnmarshalJSON(b []byte) error {
     
 	if Color, ok := JourneysegmentrequestMap["color"].(string); ok {
 		o.Color = &Color
-	}
-    
-	if Scope, ok := JourneysegmentrequestMap["scope"].(string); ok {
-		o.Scope = &Scope
 	}
     
 	if ShouldDisplayToAgent, ok := JourneysegmentrequestMap["shouldDisplayToAgent"].(bool); ok {

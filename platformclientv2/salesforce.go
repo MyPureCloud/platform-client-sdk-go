@@ -59,6 +59,9 @@ type Salesforce struct {
 	// DisplayOnLogin
 	DisplayOnLogin *bool `json:"displayOnLogin,omitempty"`
 
+	// MetadataURL
+	MetadataURL *string `json:"metadataURL,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -158,6 +161,8 @@ func (o Salesforce) MarshalJSON() ([]byte, error) {
 		
 		DisplayOnLogin *bool `json:"displayOnLogin,omitempty"`
 		
+		MetadataURL *string `json:"metadataURL,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -192,6 +197,8 @@ func (o Salesforce) MarshalJSON() ([]byte, error) {
 		ProviderName: o.ProviderName,
 		
 		DisplayOnLogin: o.DisplayOnLogin,
+		
+		MetadataURL: o.MetadataURL,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -268,6 +275,10 @@ func (o *Salesforce) UnmarshalJSON(b []byte) error {
     
 	if DisplayOnLogin, ok := SalesforceMap["displayOnLogin"].(bool); ok {
 		o.DisplayOnLogin = &DisplayOnLogin
+	}
+    
+	if MetadataURL, ok := SalesforceMap["metadataURL"].(string); ok {
+		o.MetadataURL = &MetadataURL
 	}
     
 	if SelfUri, ok := SalesforceMap["selfUri"].(string); ok {

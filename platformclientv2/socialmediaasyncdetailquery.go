@@ -20,6 +20,9 @@ type Socialmediaasyncdetailquery struct {
 	// Filter - Behaves like a SQL WHERE clause. This is ANDed with the interval parameter. Expresses boolean logical predicates as well as dimensional filters
 	Filter *Socialmediaqueryfilter `json:"filter,omitempty"`
 
+	// TopicIds - List of topicIds to query in
+	TopicIds *[]string `json:"topicIds,omitempty"`
+
 	// PageSize - The number of results per page
 	PageSize *int `json:"pageSize,omitempty"`
 
@@ -96,6 +99,8 @@ func (o Socialmediaasyncdetailquery) MarshalJSON() ([]byte, error) {
 		
 		Filter *Socialmediaqueryfilter `json:"filter,omitempty"`
 		
+		TopicIds *[]string `json:"topicIds,omitempty"`
+		
 		PageSize *int `json:"pageSize,omitempty"`
 		
 		Order *string `json:"order,omitempty"`
@@ -106,6 +111,8 @@ func (o Socialmediaasyncdetailquery) MarshalJSON() ([]byte, error) {
 		TimeZone: o.TimeZone,
 		
 		Filter: o.Filter,
+		
+		TopicIds: o.TopicIds,
 		
 		PageSize: o.PageSize,
 		
@@ -132,6 +139,11 @@ func (o *Socialmediaasyncdetailquery) UnmarshalJSON(b []byte) error {
 	if Filter, ok := SocialmediaasyncdetailqueryMap["filter"].(map[string]interface{}); ok {
 		FilterString, _ := json.Marshal(Filter)
 		json.Unmarshal(FilterString, &o.Filter)
+	}
+	
+	if TopicIds, ok := SocialmediaasyncdetailqueryMap["topicIds"].([]interface{}); ok {
+		TopicIdsString, _ := json.Marshal(TopicIds)
+		json.Unmarshal(TopicIdsString, &o.TopicIds)
 	}
 	
 	if PageSize, ok := SocialmediaasyncdetailqueryMap["pageSize"].(float64); ok {

@@ -4267,7 +4267,7 @@ func (a ExternalContactsApi) GetExternalcontactsRelationship(relationshipId stri
 
 // GetExternalcontactsReversewhitepageslookup invokes GET /api/v2/externalcontacts/reversewhitepageslookup
 //
-// Look up contacts and externalOrganizations based on an attribute. Maximum of 25 values returned.
+// Look up contacts based on an attribute. Maximum of 25 values returned.
 func (a ExternalContactsApi) GetExternalcontactsReversewhitepageslookup(lookupVal string, expand []string, divisionId string) (*Reversewhitepageslookupresult, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

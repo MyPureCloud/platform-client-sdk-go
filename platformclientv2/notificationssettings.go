@@ -13,6 +13,9 @@ type Notificationssettings struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// Enabled - The toggle to enable or disable notifications
 	Enabled *bool `json:"enabled,omitempty"`
+
+	// NotificationContentType - The notification content type settings for messenger
+	NotificationContentType *string `json:"notificationContentType,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +82,13 @@ func (o Notificationssettings) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		Enabled *bool `json:"enabled,omitempty"`
+		
+		NotificationContentType *string `json:"notificationContentType,omitempty"`
 		Alias
 	}{ 
 		Enabled: o.Enabled,
+		
+		NotificationContentType: o.NotificationContentType,
 		Alias:    (Alias)(o),
 	})
 }
@@ -95,6 +102,10 @@ func (o *Notificationssettings) UnmarshalJSON(b []byte) error {
 	
 	if Enabled, ok := NotificationssettingsMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
+	}
+    
+	if NotificationContentType, ok := NotificationssettingsMap["notificationContentType"].(string); ok {
+		o.NotificationContentType = &NotificationContentType
 	}
     
 

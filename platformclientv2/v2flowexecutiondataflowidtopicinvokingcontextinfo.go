@@ -7,28 +7,28 @@ import (
 	"strings"
 )
 
-// V2flowexecutiondataflowidtopicinvokingcontext - This contains contextual information about an invoking entity.
-type V2flowexecutiondataflowidtopicinvokingcontext struct { 
+// V2flowexecutiondataflowidtopicinvokingcontextinfo - This contains contextual information about an invoking entity.
+type V2flowexecutiondataflowidtopicinvokingcontextinfo struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Flow
-	Flow *V2flowexecutiondataflowidtopicflow `json:"flow,omitempty"`
+	Flow *V2flowexecutiondataflowidtopicinvokingflowcontext `json:"flow,omitempty"`
 
 	// JourneyActionMap
-	JourneyActionMap *V2flowexecutiondataflowidtopicjourneyactionmap `json:"journeyActionMap,omitempty"`
+	JourneyActionMap *V2flowexecutiondataflowidtopicinvokingjourneyactionmapcontext `json:"journeyActionMap,omitempty"`
 
 	// ProcessAutomation
-	ProcessAutomation *V2flowexecutiondataflowidtopicprocessautomation `json:"processAutomation,omitempty"`
+	ProcessAutomation *V2flowexecutiondataflowidtopicinvokingprocessautomationcontext `json:"processAutomation,omitempty"`
 
 	// Quality
-	Quality *V2flowexecutiondataflowidtopicquality `json:"quality,omitempty"`
+	Quality *V2flowexecutiondataflowidtopicinvokingqualitycontext `json:"quality,omitempty"`
 
 	// Workitem
-	Workitem *V2flowexecutiondataflowidtopicworkitem `json:"workitem,omitempty"`
+	Workitem *V2flowexecutiondataflowidtopicinvokingworkitemcontext `json:"workitem,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *V2flowexecutiondataflowidtopicinvokingcontext) SetField(field string, fieldValue interface{}) {
+func (o *V2flowexecutiondataflowidtopicinvokingcontextinfo) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -49,7 +49,7 @@ func (o *V2flowexecutiondataflowidtopicinvokingcontext) SetField(field string, f
 	o.SetFieldNames[field] = true
 }
 
-func (o V2flowexecutiondataflowidtopicinvokingcontext) MarshalJSON() ([]byte, error) {
+func (o V2flowexecutiondataflowidtopicinvokingcontextinfo) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -87,18 +87,18 @@ func (o V2flowexecutiondataflowidtopicinvokingcontext) MarshalJSON() ([]byte, er
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias V2flowexecutiondataflowidtopicinvokingcontext
+	type Alias V2flowexecutiondataflowidtopicinvokingcontextinfo
 	
 	return json.Marshal(&struct { 
-		Flow *V2flowexecutiondataflowidtopicflow `json:"flow,omitempty"`
+		Flow *V2flowexecutiondataflowidtopicinvokingflowcontext `json:"flow,omitempty"`
 		
-		JourneyActionMap *V2flowexecutiondataflowidtopicjourneyactionmap `json:"journeyActionMap,omitempty"`
+		JourneyActionMap *V2flowexecutiondataflowidtopicinvokingjourneyactionmapcontext `json:"journeyActionMap,omitempty"`
 		
-		ProcessAutomation *V2flowexecutiondataflowidtopicprocessautomation `json:"processAutomation,omitempty"`
+		ProcessAutomation *V2flowexecutiondataflowidtopicinvokingprocessautomationcontext `json:"processAutomation,omitempty"`
 		
-		Quality *V2flowexecutiondataflowidtopicquality `json:"quality,omitempty"`
+		Quality *V2flowexecutiondataflowidtopicinvokingqualitycontext `json:"quality,omitempty"`
 		
-		Workitem *V2flowexecutiondataflowidtopicworkitem `json:"workitem,omitempty"`
+		Workitem *V2flowexecutiondataflowidtopicinvokingworkitemcontext `json:"workitem,omitempty"`
 		Alias
 	}{ 
 		Flow: o.Flow,
@@ -114,34 +114,34 @@ func (o V2flowexecutiondataflowidtopicinvokingcontext) MarshalJSON() ([]byte, er
 	})
 }
 
-func (o *V2flowexecutiondataflowidtopicinvokingcontext) UnmarshalJSON(b []byte) error {
-	var V2flowexecutiondataflowidtopicinvokingcontextMap map[string]interface{}
-	err := json.Unmarshal(b, &V2flowexecutiondataflowidtopicinvokingcontextMap)
+func (o *V2flowexecutiondataflowidtopicinvokingcontextinfo) UnmarshalJSON(b []byte) error {
+	var V2flowexecutiondataflowidtopicinvokingcontextinfoMap map[string]interface{}
+	err := json.Unmarshal(b, &V2flowexecutiondataflowidtopicinvokingcontextinfoMap)
 	if err != nil {
 		return err
 	}
 	
-	if Flow, ok := V2flowexecutiondataflowidtopicinvokingcontextMap["flow"].(map[string]interface{}); ok {
+	if Flow, ok := V2flowexecutiondataflowidtopicinvokingcontextinfoMap["flow"].(map[string]interface{}); ok {
 		FlowString, _ := json.Marshal(Flow)
 		json.Unmarshal(FlowString, &o.Flow)
 	}
 	
-	if JourneyActionMap, ok := V2flowexecutiondataflowidtopicinvokingcontextMap["journeyActionMap"].(map[string]interface{}); ok {
+	if JourneyActionMap, ok := V2flowexecutiondataflowidtopicinvokingcontextinfoMap["journeyActionMap"].(map[string]interface{}); ok {
 		JourneyActionMapString, _ := json.Marshal(JourneyActionMap)
 		json.Unmarshal(JourneyActionMapString, &o.JourneyActionMap)
 	}
 	
-	if ProcessAutomation, ok := V2flowexecutiondataflowidtopicinvokingcontextMap["processAutomation"].(map[string]interface{}); ok {
+	if ProcessAutomation, ok := V2flowexecutiondataflowidtopicinvokingcontextinfoMap["processAutomation"].(map[string]interface{}); ok {
 		ProcessAutomationString, _ := json.Marshal(ProcessAutomation)
 		json.Unmarshal(ProcessAutomationString, &o.ProcessAutomation)
 	}
 	
-	if Quality, ok := V2flowexecutiondataflowidtopicinvokingcontextMap["quality"].(map[string]interface{}); ok {
+	if Quality, ok := V2flowexecutiondataflowidtopicinvokingcontextinfoMap["quality"].(map[string]interface{}); ok {
 		QualityString, _ := json.Marshal(Quality)
 		json.Unmarshal(QualityString, &o.Quality)
 	}
 	
-	if Workitem, ok := V2flowexecutiondataflowidtopicinvokingcontextMap["workitem"].(map[string]interface{}); ok {
+	if Workitem, ok := V2flowexecutiondataflowidtopicinvokingcontextinfoMap["workitem"].(map[string]interface{}); ok {
 		WorkitemString, _ := json.Marshal(Workitem)
 		json.Unmarshal(WorkitemString, &o.Workitem)
 	}
@@ -151,7 +151,7 @@ func (o *V2flowexecutiondataflowidtopicinvokingcontext) UnmarshalJSON(b []byte) 
 }
 
 // String returns a JSON representation of the model
-func (o *V2flowexecutiondataflowidtopicinvokingcontext) String() string {
+func (o *V2flowexecutiondataflowidtopicinvokingcontextinfo) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

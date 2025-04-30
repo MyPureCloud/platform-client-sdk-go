@@ -36,14 +36,14 @@ type Managementunit struct {
 	// Division - The division to which this entity belongs.
 	Division *Divisionreference `json:"division,omitempty"`
 
+	// ModifiedBy - The user who last modified this entity.  Deprecated, use field from settings.metadata instead
+	ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
+
 	// Version - The version of the underlying entity.  Deprecated, use field from settings.metadata instead
 	Version *int `json:"version,omitempty"`
 
 	// DateModified - The date and time at which this entity was last modified.  Deprecated, use field from settings.metadata instead. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateModified *time.Time `json:"dateModified,omitempty"`
-
-	// ModifiedBy - The user who last modified this entity.  Deprecated, use field from settings.metadata instead
-	ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -136,11 +136,11 @@ func (o Managementunit) MarshalJSON() ([]byte, error) {
 		
 		Division *Divisionreference `json:"division,omitempty"`
 		
+		ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
+		
 		Version *int `json:"version,omitempty"`
 		
 		DateModified *string `json:"dateModified,omitempty"`
-		
-		ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
@@ -161,11 +161,11 @@ func (o Managementunit) MarshalJSON() ([]byte, error) {
 		
 		Division: o.Division,
 		
+		ModifiedBy: o.ModifiedBy,
+		
 		Version: o.Version,
 		
 		DateModified: DateModified,
-		
-		ModifiedBy: o.ModifiedBy,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -215,6 +215,11 @@ func (o *Managementunit) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(DivisionString, &o.Division)
 	}
 	
+	if ModifiedBy, ok := ManagementunitMap["modifiedBy"].(map[string]interface{}); ok {
+		ModifiedByString, _ := json.Marshal(ModifiedBy)
+		json.Unmarshal(ModifiedByString, &o.ModifiedBy)
+	}
+	
 	if Version, ok := ManagementunitMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -223,11 +228,6 @@ func (o *Managementunit) UnmarshalJSON(b []byte) error {
 	if dateModifiedString, ok := ManagementunitMap["dateModified"].(string); ok {
 		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
 		o.DateModified = &DateModified
-	}
-	
-	if ModifiedBy, ok := ManagementunitMap["modifiedBy"].(map[string]interface{}); ok {
-		ModifiedByString, _ := json.Marshal(ModifiedBy)
-		json.Unmarshal(ModifiedByString, &o.ModifiedBy)
 	}
 	
 	if SelfUri, ok := ManagementunitMap["selfUri"].(string); ok {

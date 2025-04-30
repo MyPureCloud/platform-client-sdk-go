@@ -7,19 +7,22 @@ import (
 	"strings"
 )
 
-// V2flowexecutiondataflowidtopicjourneyactionmap - This contains contextual information about an invoking entity.
-type V2flowexecutiondataflowidtopicjourneyactionmap struct { 
+// Conditionalgroupactivationcondition
+type Conditionalgroupactivationcondition struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// ActionMapId - The identifier of the journey action map that invoked this flow.
-	ActionMapId *string `json:"actionMapId,omitempty"`
+	// SimpleMetric - Instructs this condition to evaluate a simple queue-level metric
+	SimpleMetric *Conditionalgroupactivationsimplemetric `json:"simpleMetric,omitempty"`
 
-	// ActionId - The identifier of the specific action map instance that invoked this flow.
-	ActionId *string `json:"actionId,omitempty"`
+	// Operator - The operator used to compare the actual value against the threshold value
+	Operator *string `json:"operator,omitempty"`
+
+	// Value - The threshold value, beyond which a rule evaluates as true
+	Value *float64 `json:"value,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *V2flowexecutiondataflowidtopicjourneyactionmap) SetField(field string, fieldValue interface{}) {
+func (o *Conditionalgroupactivationcondition) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -40,7 +43,7 @@ func (o *V2flowexecutiondataflowidtopicjourneyactionmap) SetField(field string, 
 	o.SetFieldNames[field] = true
 }
 
-func (o V2flowexecutiondataflowidtopicjourneyactionmap) MarshalJSON() ([]byte, error) {
+func (o Conditionalgroupactivationcondition) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -78,34 +81,43 @@ func (o V2flowexecutiondataflowidtopicjourneyactionmap) MarshalJSON() ([]byte, e
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias V2flowexecutiondataflowidtopicjourneyactionmap
+	type Alias Conditionalgroupactivationcondition
 	
 	return json.Marshal(&struct { 
-		ActionMapId *string `json:"actionMapId,omitempty"`
+		SimpleMetric *Conditionalgroupactivationsimplemetric `json:"simpleMetric,omitempty"`
 		
-		ActionId *string `json:"actionId,omitempty"`
+		Operator *string `json:"operator,omitempty"`
+		
+		Value *float64 `json:"value,omitempty"`
 		Alias
 	}{ 
-		ActionMapId: o.ActionMapId,
+		SimpleMetric: o.SimpleMetric,
 		
-		ActionId: o.ActionId,
+		Operator: o.Operator,
+		
+		Value: o.Value,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *V2flowexecutiondataflowidtopicjourneyactionmap) UnmarshalJSON(b []byte) error {
-	var V2flowexecutiondataflowidtopicjourneyactionmapMap map[string]interface{}
-	err := json.Unmarshal(b, &V2flowexecutiondataflowidtopicjourneyactionmapMap)
+func (o *Conditionalgroupactivationcondition) UnmarshalJSON(b []byte) error {
+	var ConditionalgroupactivationconditionMap map[string]interface{}
+	err := json.Unmarshal(b, &ConditionalgroupactivationconditionMap)
 	if err != nil {
 		return err
 	}
 	
-	if ActionMapId, ok := V2flowexecutiondataflowidtopicjourneyactionmapMap["actionMapId"].(string); ok {
-		o.ActionMapId = &ActionMapId
+	if SimpleMetric, ok := ConditionalgroupactivationconditionMap["simpleMetric"].(map[string]interface{}); ok {
+		SimpleMetricString, _ := json.Marshal(SimpleMetric)
+		json.Unmarshal(SimpleMetricString, &o.SimpleMetric)
+	}
+	
+	if Operator, ok := ConditionalgroupactivationconditionMap["operator"].(string); ok {
+		o.Operator = &Operator
 	}
     
-	if ActionId, ok := V2flowexecutiondataflowidtopicjourneyactionmapMap["actionId"].(string); ok {
-		o.ActionId = &ActionId
+	if Value, ok := ConditionalgroupactivationconditionMap["value"].(float64); ok {
+		o.Value = &Value
 	}
     
 
@@ -113,7 +125,7 @@ func (o *V2flowexecutiondataflowidtopicjourneyactionmap) UnmarshalJSON(b []byte)
 }
 
 // String returns a JSON representation of the model
-func (o *V2flowexecutiondataflowidtopicjourneyactionmap) String() string {
+func (o *Conditionalgroupactivationcondition) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

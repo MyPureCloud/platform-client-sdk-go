@@ -1451,11 +1451,11 @@ func (a ChatApi) GetChatsUserSettings(userId string) (*Chatusersettings, *APIRes
 // GetChatsUsersMeSettings invokes GET /api/v2/chats/users/me/settings
 //
 // Get a user's chat settings
-func (a ChatApi) GetChatsUsersMeSettings() (*Chatusersettings, *APIResponse, error) {
+func (a ChatApi) GetChatsUsersMeSettings() (*Usersettingsforchat, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/chats/users/me/settings"
-	defaultReturn := new(Chatusersettings)
+	defaultReturn := new(Usersettingsforchat)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -1508,14 +1508,14 @@ func (a ChatApi) GetChatsUsersMeSettings() (*Chatusersettings, *APIResponse, err
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Chatusersettings
+	var successPayload *Usersettingsforchat
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Chatusersettings" == "string" {
+		if "Usersettingsforchat" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -1976,11 +1976,11 @@ func (a ChatApi) PatchChatsUserSettings(userId string, body Chatusersettings) (*
 // PatchChatsUsersMeSettings invokes PATCH /api/v2/chats/users/me/settings
 //
 // Update a user's chat settings
-func (a ChatApi) PatchChatsUsersMeSettings(body Chatusersettings) (*Chatusersettings, *APIResponse, error) {
+func (a ChatApi) PatchChatsUsersMeSettings(body Usersettingsforchat) (*Usersettingsforchat, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/chats/users/me/settings"
-	defaultReturn := new(Chatusersettings)
+	defaultReturn := new(Usersettingsforchat)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -2041,14 +2041,14 @@ func (a ChatApi) PatchChatsUsersMeSettings(body Chatusersettings) (*Chatusersett
 	// body params
 	postBody = &body
 
-	var successPayload *Chatusersettings
+	var successPayload *Usersettingsforchat
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Chatusersettings" == "string" {
+		if "Usersettingsforchat" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

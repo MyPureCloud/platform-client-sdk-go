@@ -48,6 +48,9 @@ type Expandablewebdeployment struct {
 	// Status - The current status of the deployment
 	Status *string `json:"status,omitempty"`
 
+	// PushIntegrations - The push integration objects associated with the deployment
+	PushIntegrations *[]Pushintegration `json:"pushIntegrations,omitempty"`
+
 	// Configuration - The config version this deployment uses
 	Configuration *Webdeploymentconfigurationversionresponse `json:"configuration,omitempty"`
 
@@ -158,6 +161,8 @@ func (o Expandablewebdeployment) MarshalJSON() ([]byte, error) {
 		
 		Status *string `json:"status,omitempty"`
 		
+		PushIntegrations *[]Pushintegration `json:"pushIntegrations,omitempty"`
+		
 		Configuration *Webdeploymentconfigurationversionresponse `json:"configuration,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -186,6 +191,8 @@ func (o Expandablewebdeployment) MarshalJSON() ([]byte, error) {
 		Flow: o.Flow,
 		
 		Status: o.Status,
+		
+		PushIntegrations: o.PushIntegrations,
 		
 		Configuration: o.Configuration,
 		
@@ -255,6 +262,11 @@ func (o *Expandablewebdeployment) UnmarshalJSON(b []byte) error {
 		o.Status = &Status
 	}
     
+	if PushIntegrations, ok := ExpandablewebdeploymentMap["pushIntegrations"].([]interface{}); ok {
+		PushIntegrationsString, _ := json.Marshal(PushIntegrations)
+		json.Unmarshal(PushIntegrationsString, &o.PushIntegrations)
+	}
+	
 	if Configuration, ok := ExpandablewebdeploymentMap["configuration"].(map[string]interface{}); ok {
 		ConfigurationString, _ := json.Marshal(Configuration)
 		json.Unmarshal(ConfigurationString, &o.Configuration)

@@ -7,19 +7,19 @@ import (
 	"strings"
 )
 
-// V2flowexecutiondataflowidtopicquality - The quality context that invoked this.
-type V2flowexecutiondataflowidtopicquality struct { 
+// Workitemsattributechangelistworkitemscoredagentdelta
+type Workitemsattributechangelistworkitemscoredagentdelta struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// PolicyId - The identifier of the quality policy that invoked this flow.
-	PolicyId *string `json:"policyId,omitempty"`
+	// NewValue - New property value
+	NewValue *[]Workitemscoredagentdelta `json:"newValue,omitempty"`
 
-	// PolicyName - The name of the quality policy that invoked this flow.
-	PolicyName *string `json:"policyName,omitempty"`
+	// OldValue - Old property value
+	OldValue *[]Workitemscoredagentdelta `json:"oldValue,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *V2flowexecutiondataflowidtopicquality) SetField(field string, fieldValue interface{}) {
+func (o *Workitemsattributechangelistworkitemscoredagentdelta) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -40,7 +40,7 @@ func (o *V2flowexecutiondataflowidtopicquality) SetField(field string, fieldValu
 	o.SetFieldNames[field] = true
 }
 
-func (o V2flowexecutiondataflowidtopicquality) MarshalJSON() ([]byte, error) {
+func (o Workitemsattributechangelistworkitemscoredagentdelta) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -78,42 +78,44 @@ func (o V2flowexecutiondataflowidtopicquality) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias V2flowexecutiondataflowidtopicquality
+	type Alias Workitemsattributechangelistworkitemscoredagentdelta
 	
 	return json.Marshal(&struct { 
-		PolicyId *string `json:"policyId,omitempty"`
+		NewValue *[]Workitemscoredagentdelta `json:"newValue,omitempty"`
 		
-		PolicyName *string `json:"policyName,omitempty"`
+		OldValue *[]Workitemscoredagentdelta `json:"oldValue,omitempty"`
 		Alias
 	}{ 
-		PolicyId: o.PolicyId,
+		NewValue: o.NewValue,
 		
-		PolicyName: o.PolicyName,
+		OldValue: o.OldValue,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *V2flowexecutiondataflowidtopicquality) UnmarshalJSON(b []byte) error {
-	var V2flowexecutiondataflowidtopicqualityMap map[string]interface{}
-	err := json.Unmarshal(b, &V2flowexecutiondataflowidtopicqualityMap)
+func (o *Workitemsattributechangelistworkitemscoredagentdelta) UnmarshalJSON(b []byte) error {
+	var WorkitemsattributechangelistworkitemscoredagentdeltaMap map[string]interface{}
+	err := json.Unmarshal(b, &WorkitemsattributechangelistworkitemscoredagentdeltaMap)
 	if err != nil {
 		return err
 	}
 	
-	if PolicyId, ok := V2flowexecutiondataflowidtopicqualityMap["policyId"].(string); ok {
-		o.PolicyId = &PolicyId
+	if NewValue, ok := WorkitemsattributechangelistworkitemscoredagentdeltaMap["newValue"].([]interface{}); ok {
+		NewValueString, _ := json.Marshal(NewValue)
+		json.Unmarshal(NewValueString, &o.NewValue)
 	}
-    
-	if PolicyName, ok := V2flowexecutiondataflowidtopicqualityMap["policyName"].(string); ok {
-		o.PolicyName = &PolicyName
+	
+	if OldValue, ok := WorkitemsattributechangelistworkitemscoredagentdeltaMap["oldValue"].([]interface{}); ok {
+		OldValueString, _ := json.Marshal(OldValue)
+		json.Unmarshal(OldValueString, &o.OldValue)
 	}
-    
+	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *V2flowexecutiondataflowidtopicquality) String() string {
+func (o *Workitemsattributechangelistworkitemscoredagentdelta) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

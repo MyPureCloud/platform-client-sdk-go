@@ -26,20 +26,20 @@ type Emergencygroupdivisionviewentitylisting struct {
 	// TotalNumberOfEntities - The total organization-wide number of entities.
 	TotalNumberOfEntities *int `json:"totalNumberOfEntities,omitempty"`
 
-	// FirstUri
-	FirstUri *string `json:"firstUri,omitempty"`
-
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
-	// SelfUri
-	SelfUri *string `json:"selfUri,omitempty"`
-
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
 
 	// PreviousUri
 	PreviousUri *string `json:"previousUri,omitempty"`
+
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
+
+	// FirstUri
+	FirstUri *string `json:"firstUri,omitempty"`
+
+	// SelfUri
+	SelfUri *string `json:"selfUri,omitempty"`
 
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
@@ -118,15 +118,15 @@ func (o Emergencygroupdivisionviewentitylisting) MarshalJSON() ([]byte, error) {
 		
 		TotalNumberOfEntities *int `json:"totalNumberOfEntities,omitempty"`
 		
-		FirstUri *string `json:"firstUri,omitempty"`
-		
-		LastUri *string `json:"lastUri,omitempty"`
-		
-		SelfUri *string `json:"selfUri,omitempty"`
-		
 		NextUri *string `json:"nextUri,omitempty"`
 		
 		PreviousUri *string `json:"previousUri,omitempty"`
+		
+		LastUri *string `json:"lastUri,omitempty"`
+		
+		FirstUri *string `json:"firstUri,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		Alias
@@ -141,15 +141,15 @@ func (o Emergencygroupdivisionviewentitylisting) MarshalJSON() ([]byte, error) {
 		
 		TotalNumberOfEntities: o.TotalNumberOfEntities,
 		
-		FirstUri: o.FirstUri,
-		
-		LastUri: o.LastUri,
-		
-		SelfUri: o.SelfUri,
-		
 		NextUri: o.NextUri,
 		
 		PreviousUri: o.PreviousUri,
+		
+		LastUri: o.LastUri,
+		
+		FirstUri: o.FirstUri,
+		
+		SelfUri: o.SelfUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
@@ -188,24 +188,24 @@ func (o *Emergencygroupdivisionviewentitylisting) UnmarshalJSON(b []byte) error 
 		o.TotalNumberOfEntities = &TotalNumberOfEntitiesInt
 	}
 	
-	if FirstUri, ok := EmergencygroupdivisionviewentitylistingMap["firstUri"].(string); ok {
-		o.FirstUri = &FirstUri
-	}
-    
-	if LastUri, ok := EmergencygroupdivisionviewentitylistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
-	if SelfUri, ok := EmergencygroupdivisionviewentitylistingMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
-	}
-    
 	if NextUri, ok := EmergencygroupdivisionviewentitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
     
 	if PreviousUri, ok := EmergencygroupdivisionviewentitylistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
+	}
+    
+	if LastUri, ok := EmergencygroupdivisionviewentitylistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
+	}
+    
+	if FirstUri, ok := EmergencygroupdivisionviewentitylistingMap["firstUri"].(string); ok {
+		o.FirstUri = &FirstUri
+	}
+    
+	if SelfUri, ok := EmergencygroupdivisionviewentitylistingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
 	}
     
 	if PageCount, ok := EmergencygroupdivisionviewentitylistingMap["pageCount"].(float64); ok {

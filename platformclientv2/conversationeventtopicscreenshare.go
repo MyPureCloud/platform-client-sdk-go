@@ -40,7 +40,7 @@ type Conversationeventtopicscreenshare struct {
 	PeerId *string `json:"peerId,omitempty"`
 
 	// PeerCount - The number of peer participants from the perspective of the participant in the conference.
-	PeerCount *interface{} `json:"peerCount,omitempty"`
+	PeerCount *int `json:"peerCount,omitempty"`
 
 	// DisconnectType - System defined string indicating what caused the communication to disconnect. Will be null until the communication disconnects.
 	DisconnectType *string `json:"disconnectType,omitempty"`
@@ -161,7 +161,7 @@ func (o Conversationeventtopicscreenshare) MarshalJSON() ([]byte, error) {
 		
 		PeerId *string `json:"peerId,omitempty"`
 		
-		PeerCount *interface{} `json:"peerCount,omitempty"`
+		PeerCount *int `json:"peerCount,omitempty"`
 		
 		DisconnectType *string `json:"disconnectType,omitempty"`
 		
@@ -259,9 +259,9 @@ func (o *Conversationeventtopicscreenshare) UnmarshalJSON(b []byte) error {
 		o.PeerId = &PeerId
 	}
     
-	if PeerCount, ok := ConversationeventtopicscreenshareMap["peerCount"].(map[string]interface{}); ok {
-		PeerCountString, _ := json.Marshal(PeerCount)
-		json.Unmarshal(PeerCountString, &o.PeerCount)
+	if PeerCount, ok := ConversationeventtopicscreenshareMap["peerCount"].(float64); ok {
+		PeerCountInt := int(PeerCount)
+		o.PeerCount = &PeerCountInt
 	}
 	
 	if DisconnectType, ok := ConversationeventtopicscreenshareMap["disconnectType"].(string); ok {

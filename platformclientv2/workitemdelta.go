@@ -94,6 +94,15 @@ type Workitemdelta struct {
 
 	// ScriptId
 	ScriptId *Workitemsattributechangestring `json:"scriptId,omitempty"`
+
+	// DateAssignmentStateChanged
+	DateAssignmentStateChanged *Workitemsattributechangeinstant `json:"dateAssignmentStateChanged,omitempty"`
+
+	// AlertTimeoutSeconds
+	AlertTimeoutSeconds *Workitemsattributechangeinteger `json:"alertTimeoutSeconds,omitempty"`
+
+	// ScoredAgents
+	ScoredAgents *Workitemsattributechangelistworkitemscoredagentdelta `json:"scoredAgents,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -214,6 +223,12 @@ func (o Workitemdelta) MarshalJSON() ([]byte, error) {
 		StatusCategory *Workitemsattributechangeworkitemstatuscategory `json:"statusCategory,omitempty"`
 		
 		ScriptId *Workitemsattributechangestring `json:"scriptId,omitempty"`
+		
+		DateAssignmentStateChanged *Workitemsattributechangeinstant `json:"dateAssignmentStateChanged,omitempty"`
+		
+		AlertTimeoutSeconds *Workitemsattributechangeinteger `json:"alertTimeoutSeconds,omitempty"`
+		
+		ScoredAgents *Workitemsattributechangelistworkitemscoredagentdelta `json:"scoredAgents,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -271,6 +286,12 @@ func (o Workitemdelta) MarshalJSON() ([]byte, error) {
 		StatusCategory: o.StatusCategory,
 		
 		ScriptId: o.ScriptId,
+		
+		DateAssignmentStateChanged: o.DateAssignmentStateChanged,
+		
+		AlertTimeoutSeconds: o.AlertTimeoutSeconds,
+		
+		ScoredAgents: o.ScoredAgents,
 		Alias:    (Alias)(o),
 	})
 }
@@ -420,6 +441,21 @@ func (o *Workitemdelta) UnmarshalJSON(b []byte) error {
 	if ScriptId, ok := WorkitemdeltaMap["scriptId"].(map[string]interface{}); ok {
 		ScriptIdString, _ := json.Marshal(ScriptId)
 		json.Unmarshal(ScriptIdString, &o.ScriptId)
+	}
+	
+	if DateAssignmentStateChanged, ok := WorkitemdeltaMap["dateAssignmentStateChanged"].(map[string]interface{}); ok {
+		DateAssignmentStateChangedString, _ := json.Marshal(DateAssignmentStateChanged)
+		json.Unmarshal(DateAssignmentStateChangedString, &o.DateAssignmentStateChanged)
+	}
+	
+	if AlertTimeoutSeconds, ok := WorkitemdeltaMap["alertTimeoutSeconds"].(map[string]interface{}); ok {
+		AlertTimeoutSecondsString, _ := json.Marshal(AlertTimeoutSeconds)
+		json.Unmarshal(AlertTimeoutSecondsString, &o.AlertTimeoutSeconds)
+	}
+	
+	if ScoredAgents, ok := WorkitemdeltaMap["scoredAgents"].(map[string]interface{}); ok {
+		ScoredAgentsString, _ := json.Marshal(ScoredAgents)
+		json.Unmarshal(ScoredAgentsString, &o.ScoredAgents)
 	}
 	
 

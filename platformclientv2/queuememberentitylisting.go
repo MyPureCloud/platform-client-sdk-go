@@ -20,17 +20,17 @@ type Queuememberentitylisting struct {
 	// PageSize
 	PageSize *int `json:"pageSize,omitempty"`
 
-	// FirstUri
-	FirstUri *string `json:"firstUri,omitempty"`
-
-	// SelfUri
-	SelfUri *string `json:"selfUri,omitempty"`
-
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
 
 	// PreviousUri
 	PreviousUri *string `json:"previousUri,omitempty"`
+
+	// FirstUri
+	FirstUri *string `json:"firstUri,omitempty"`
+
+	// SelfUri
+	SelfUri *string `json:"selfUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -102,13 +102,13 @@ func (o Queuememberentitylisting) MarshalJSON() ([]byte, error) {
 		
 		PageSize *int `json:"pageSize,omitempty"`
 		
-		FirstUri *string `json:"firstUri,omitempty"`
-		
-		SelfUri *string `json:"selfUri,omitempty"`
-		
 		NextUri *string `json:"nextUri,omitempty"`
 		
 		PreviousUri *string `json:"previousUri,omitempty"`
+		
+		FirstUri *string `json:"firstUri,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
 		Entities: o.Entities,
@@ -117,13 +117,13 @@ func (o Queuememberentitylisting) MarshalJSON() ([]byte, error) {
 		
 		PageSize: o.PageSize,
 		
-		FirstUri: o.FirstUri,
-		
-		SelfUri: o.SelfUri,
-		
 		NextUri: o.NextUri,
 		
 		PreviousUri: o.PreviousUri,
+		
+		FirstUri: o.FirstUri,
+		
+		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
 	})
 }
@@ -150,20 +150,20 @@ func (o *Queuememberentitylisting) UnmarshalJSON(b []byte) error {
 		o.PageSize = &PageSizeInt
 	}
 	
-	if FirstUri, ok := QueuememberentitylistingMap["firstUri"].(string); ok {
-		o.FirstUri = &FirstUri
-	}
-    
-	if SelfUri, ok := QueuememberentitylistingMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
-	}
-    
 	if NextUri, ok := QueuememberentitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
     
 	if PreviousUri, ok := QueuememberentitylistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
+	}
+    
+	if FirstUri, ok := QueuememberentitylistingMap["firstUri"].(string); ok {
+		o.FirstUri = &FirstUri
+	}
+    
+	if SelfUri, ok := QueuememberentitylistingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
 	}
     
 

@@ -31,7 +31,7 @@ type Evaluation struct {
 	Agent *User `json:"agent,omitempty"`
 
 	// Calibration
-	Calibration *Calibration `json:"calibration,omitempty"`
+	Calibration **Calibration `json:"calibration,omitempty"`
 
 	// Status
 	Status *string `json:"status,omitempty"`
@@ -54,8 +54,14 @@ type Evaluation struct {
 	// AssignedDate - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	AssignedDate *time.Time `json:"assignedDate,omitempty"`
 
+	// CreatedDate - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	CreatedDate *time.Time `json:"createdDate,omitempty"`
+
 	// ChangedDate - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ChangedDate *time.Time `json:"changedDate,omitempty"`
+
+	// SubmittedDate - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	SubmittedDate *time.Time `json:"submittedDate,omitempty"`
 
 	// RevisionCreatedDate - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	RevisionCreatedDate *time.Time `json:"revisionCreatedDate,omitempty"`
@@ -69,7 +75,7 @@ type Evaluation struct {
 	// Rescore - Is only true when evaluation is re-scored.
 	Rescore *bool `json:"rescore,omitempty"`
 
-	// ConversationDate - Date of conversation. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	// ConversationDate - Creation date of the conversation. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ConversationDate *time.Time `json:"conversationDate,omitempty"`
 
 	// ConversationEndDate - End date of conversation if it had completed before evaluation creation. Null if created before the conversation ended. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
@@ -144,7 +150,7 @@ func (o Evaluation) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "ReleaseDate","AssignedDate","ChangedDate","RevisionCreatedDate","ConversationDate","ConversationEndDate","DateAssigneeChanged", }
+		dateTimeFields := []string{ "ReleaseDate","AssignedDate","CreatedDate","ChangedDate","SubmittedDate","RevisionCreatedDate","ConversationDate","ConversationEndDate","DateAssigneeChanged", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -193,12 +199,28 @@ func (o Evaluation) MarshalJSON() ([]byte, error) {
 		AssignedDate = nil
 	}
 	
+	CreatedDate := new(string)
+	if o.CreatedDate != nil {
+		
+		*CreatedDate = timeutil.Strftime(o.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		CreatedDate = nil
+	}
+	
 	ChangedDate := new(string)
 	if o.ChangedDate != nil {
 		
 		*ChangedDate = timeutil.Strftime(o.ChangedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ChangedDate = nil
+	}
+	
+	SubmittedDate := new(string)
+	if o.SubmittedDate != nil {
+		
+		*SubmittedDate = timeutil.Strftime(o.SubmittedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		SubmittedDate = nil
 	}
 	
 	RevisionCreatedDate := new(string)
@@ -246,7 +268,7 @@ func (o Evaluation) MarshalJSON() ([]byte, error) {
 		
 		Agent *User `json:"agent,omitempty"`
 		
-		Calibration *Calibration `json:"calibration,omitempty"`
+		Calibration **Calibration `json:"calibration,omitempty"`
 		
 		Status *string `json:"status,omitempty"`
 		
@@ -262,7 +284,11 @@ func (o Evaluation) MarshalJSON() ([]byte, error) {
 		
 		AssignedDate *string `json:"assignedDate,omitempty"`
 		
+		CreatedDate *string `json:"createdDate,omitempty"`
+		
 		ChangedDate *string `json:"changedDate,omitempty"`
+		
+		SubmittedDate *string `json:"submittedDate,omitempty"`
 		
 		RevisionCreatedDate *string `json:"revisionCreatedDate,omitempty"`
 		
@@ -331,7 +357,11 @@ func (o Evaluation) MarshalJSON() ([]byte, error) {
 		
 		AssignedDate: AssignedDate,
 		
+		CreatedDate: CreatedDate,
+		
 		ChangedDate: ChangedDate,
+		
+		SubmittedDate: SubmittedDate,
 		
 		RevisionCreatedDate: RevisionCreatedDate,
 		
@@ -446,9 +476,19 @@ func (o *Evaluation) UnmarshalJSON(b []byte) error {
 		o.AssignedDate = &AssignedDate
 	}
 	
+	if createdDateString, ok := EvaluationMap["createdDate"].(string); ok {
+		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
+		o.CreatedDate = &CreatedDate
+	}
+	
 	if changedDateString, ok := EvaluationMap["changedDate"].(string); ok {
 		ChangedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", changedDateString)
 		o.ChangedDate = &ChangedDate
+	}
+	
+	if submittedDateString, ok := EvaluationMap["submittedDate"].(string); ok {
+		SubmittedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", submittedDateString)
+		o.SubmittedDate = &SubmittedDate
 	}
 	
 	if revisionCreatedDateString, ok := EvaluationMap["revisionCreatedDate"].(string); ok {

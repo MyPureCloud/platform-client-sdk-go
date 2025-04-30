@@ -1,9 +1,9 @@
 package platformclientv2
 
 import (
-	"bytes"
 	"net"
 	"net/http"
+	"net/url"
 	"sync/atomic"
 	"testing"
 	"time"
@@ -45,25 +45,30 @@ func testRetryErrorCode(t *testing.T, errorCode int) {
 	responseHook := func(logger retryablehttp.Logger, res *http.Response) {}
 
 	APIClient := NewAPIClient(&Configuration{})
-	APIClient.client.RetryWaitMin = 10 * time.Millisecond
-	APIClient.client.RetryWaitMax = 50 * time.Millisecond
-	APIClient.client.RetryMax = 50
-	APIClient.client.RequestLogHook = hook
-	APIClient.client.ResponseLogHook = responseHook
+	APIClient.client.SetRetryWaitMin(10 * time.Millisecond)
+	APIClient.client.SetRetryWaitMax(50 * time.Millisecond)
+	APIClient.client.SetRetryMax(50)
+	APIClient.client.SetRequestLogHook(hook)
+	APIClient.client.SetResponseLogHook(responseHook)
 
 	// Create a request
 	testBytes := []byte("hello")
-	req, err := retryablehttp.NewRequest("GET", "http://127.0.0.1:28934/v1/foo", bytes.NewReader(testBytes))
-	if err != nil {
-		t.Fatalf("err: %v", err)
-	}
+
+	u, _ := url.Parse("http://127.0.0.1:28934/v1/foo")
+
+	// Initialize HTTP request options
+	httpRequestOptions := &HTTPRequestOptions{}
+	httpRequestOptions.SetUrl(u)
+	httpRequestOptions.SetMethod("GET")
+	httpRequestOptions.SetBody(testBytes)
+
 	// Send the request
 	var resp *http.Response
 	doneCh := make(chan struct{})
 	go func() {
 		defer close(doneCh)
 		var err error
-		resp, err = APIClient.client.Do(req)
+		resp, err = APIClient.client.Do(httpRequestOptions)
 		if err != nil {
 			t.Fatalf("err: %v", err)
 		}
@@ -129,20 +134,28 @@ func testDoNotRetryErrorCode(t *testing.T, errorCode int) {
 	responseHook := func(logger retryablehttp.Logger, res *http.Response) {}
 
 	APIClient := NewAPIClient(&Configuration{})
-	APIClient.client.RetryWaitMax = 0
-	APIClient.client.RetryMax = 0
-	APIClient.client.RequestLogHook = hook
-	APIClient.client.ResponseLogHook = responseHook
+	APIClient.client.SetRetryWaitMax(0)
+	APIClient.client.SetRetryMax(0)
+	APIClient.client.SetRequestLogHook(hook)
+	APIClient.client.SetResponseLogHook(responseHook)
 
 	// Create a request
 	testBytes := []byte("hello")
-	req, _ := retryablehttp.NewRequest("GET", "http://127.0.0.1:28934/v1/foo", bytes.NewReader(testBytes))
+
+	u, _ := url.Parse("http://127.0.0.1:28934/v1/foo")
+
+	// Initialize HTTP request options
+	httpRequestOptions := &HTTPRequestOptions{}
+	httpRequestOptions.SetUrl(u)
+	httpRequestOptions.SetMethod("GET")
+	httpRequestOptions.SetBody(testBytes)
+
 	// Send the request
 	doneCh := make(chan struct{})
 	go func() {
 		defer close(doneCh)
 		var err error
-		_, err = APIClient.client.Do(req)
+		_, err = APIClient.client.Do(httpRequestOptions)
 		if err == nil {
 			t.Fatalf("expected error response")
 		}

@@ -8,8 +8,8 @@ import (
 	"strings"
 )
 
-// V2flowexecutiondataflowidtopicexecution
-type V2flowexecutiondataflowidtopicexecution struct { 
+// V2flowexecutiondataflowidtopicflowexecutionitem
+type V2flowexecutiondataflowidtopicflowexecutionitem struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// ObjectType - The type of executionItem that was executed.
@@ -38,7 +38,7 @@ type V2flowexecutiondataflowidtopicexecution struct {
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *V2flowexecutiondataflowidtopicexecution) SetField(field string, fieldValue interface{}) {
+func (o *V2flowexecutiondataflowidtopicflowexecutionitem) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -59,7 +59,7 @@ func (o *V2flowexecutiondataflowidtopicexecution) SetField(field string, fieldVa
 	o.SetFieldNames[field] = true
 }
 
-func (o V2flowexecutiondataflowidtopicexecution) MarshalJSON() ([]byte, error) {
+func (o V2flowexecutiondataflowidtopicflowexecutionitem) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -97,7 +97,7 @@ func (o V2flowexecutiondataflowidtopicexecution) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias V2flowexecutiondataflowidtopicexecution
+	type Alias V2flowexecutiondataflowidtopicflowexecutionitem
 	
 	StartDateTime := new(string)
 	if o.StartDateTime != nil {
@@ -144,45 +144,45 @@ func (o V2flowexecutiondataflowidtopicexecution) MarshalJSON() ([]byte, error) {
 	})
 }
 
-func (o *V2flowexecutiondataflowidtopicexecution) UnmarshalJSON(b []byte) error {
-	var V2flowexecutiondataflowidtopicexecutionMap map[string]interface{}
-	err := json.Unmarshal(b, &V2flowexecutiondataflowidtopicexecutionMap)
+func (o *V2flowexecutiondataflowidtopicflowexecutionitem) UnmarshalJSON(b []byte) error {
+	var V2flowexecutiondataflowidtopicflowexecutionitemMap map[string]interface{}
+	err := json.Unmarshal(b, &V2flowexecutiondataflowidtopicflowexecutionitemMap)
 	if err != nil {
 		return err
 	}
 	
-	if ObjectType, ok := V2flowexecutiondataflowidtopicexecutionMap["objectType"].(string); ok {
+	if ObjectType, ok := V2flowexecutiondataflowidtopicflowexecutionitemMap["objectType"].(string); ok {
 		o.ObjectType = &ObjectType
 	}
     
-	if ObjectId, ok := V2flowexecutiondataflowidtopicexecutionMap["objectId"].(string); ok {
+	if ObjectId, ok := V2flowexecutiondataflowidtopicflowexecutionitemMap["objectId"].(string); ok {
 		o.ObjectId = &ObjectId
 	}
     
-	if OutputPathId, ok := V2flowexecutiondataflowidtopicexecutionMap["outputPathId"].(string); ok {
+	if OutputPathId, ok := V2flowexecutiondataflowidtopicflowexecutionitemMap["outputPathId"].(string); ok {
 		o.OutputPathId = &OutputPathId
 	}
     
-	if ExecutionId, ok := V2flowexecutiondataflowidtopicexecutionMap["executionId"].(string); ok {
+	if ExecutionId, ok := V2flowexecutiondataflowidtopicflowexecutionitemMap["executionId"].(string); ok {
 		o.ExecutionId = &ExecutionId
 	}
     
-	if startDateTimeString, ok := V2flowexecutiondataflowidtopicexecutionMap["startDateTime"].(string); ok {
+	if startDateTimeString, ok := V2flowexecutiondataflowidtopicflowexecutionitemMap["startDateTime"].(string); ok {
 		StartDateTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateTimeString)
 		o.StartDateTime = &StartDateTime
 	}
 	
-	if VarError, ok := V2flowexecutiondataflowidtopicexecutionMap["error"].(map[string]interface{}); ok {
+	if VarError, ok := V2flowexecutiondataflowidtopicflowexecutionitemMap["error"].(map[string]interface{}); ok {
 		VarErrorString, _ := json.Marshal(VarError)
 		json.Unmarshal(VarErrorString, &o.VarError)
 	}
 	
-	if Warning, ok := V2flowexecutiondataflowidtopicexecutionMap["warning"].(map[string]interface{}); ok {
+	if Warning, ok := V2flowexecutiondataflowidtopicflowexecutionitemMap["warning"].(map[string]interface{}); ok {
 		WarningString, _ := json.Marshal(Warning)
 		json.Unmarshal(WarningString, &o.Warning)
 	}
 	
-	if LanguageTag, ok := V2flowexecutiondataflowidtopicexecutionMap["languageTag"].(string); ok {
+	if LanguageTag, ok := V2flowexecutiondataflowidtopicflowexecutionitemMap["languageTag"].(string); ok {
 		o.LanguageTag = &LanguageTag
 	}
     
@@ -191,7 +191,7 @@ func (o *V2flowexecutiondataflowidtopicexecution) UnmarshalJSON(b []byte) error 
 }
 
 // String returns a JSON representation of the model
-func (o *V2flowexecutiondataflowidtopicexecution) String() string {
+func (o *V2flowexecutiondataflowidtopicflowexecutionitem) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

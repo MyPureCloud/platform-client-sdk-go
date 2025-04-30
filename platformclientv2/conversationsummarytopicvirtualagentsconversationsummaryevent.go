@@ -51,6 +51,9 @@ type Conversationsummarytopicvirtualagentsconversationsummaryevent struct {
 	// Resolution
 	Resolution *Conversationsummarytopicvirtualagentsconversationresolution `json:"resolution,omitempty"`
 
+	// FollowupActions
+	FollowupActions *[]Conversationsummarytopicvirtualagentsconversationfollowupaction `json:"followupActions,omitempty"`
+
 	// WrapUpCodes
 	WrapUpCodes *[]Conversationsummarytopicvirtualagentsconversationwrapupcode `json:"wrapUpCodes,omitempty"`
 
@@ -164,6 +167,8 @@ func (o Conversationsummarytopicvirtualagentsconversationsummaryevent) MarshalJS
 		
 		Resolution *Conversationsummarytopicvirtualagentsconversationresolution `json:"resolution,omitempty"`
 		
+		FollowupActions *[]Conversationsummarytopicvirtualagentsconversationfollowupaction `json:"followupActions,omitempty"`
+		
 		WrapUpCodes *[]Conversationsummarytopicvirtualagentsconversationwrapupcode `json:"wrapUpCodes,omitempty"`
 		
 		TriggerSource *Conversationsummarytopicvirtualagentstriggersource `json:"triggerSource,omitempty"`
@@ -200,6 +205,8 @@ func (o Conversationsummarytopicvirtualagentsconversationsummaryevent) MarshalJS
 		Reason: o.Reason,
 		
 		Resolution: o.Resolution,
+		
+		FollowupActions: o.FollowupActions,
 		
 		WrapUpCodes: o.WrapUpCodes,
 		
@@ -278,6 +285,11 @@ func (o *Conversationsummarytopicvirtualagentsconversationsummaryevent) Unmarsha
 	if Resolution, ok := ConversationsummarytopicvirtualagentsconversationsummaryeventMap["resolution"].(map[string]interface{}); ok {
 		ResolutionString, _ := json.Marshal(Resolution)
 		json.Unmarshal(ResolutionString, &o.Resolution)
+	}
+	
+	if FollowupActions, ok := ConversationsummarytopicvirtualagentsconversationsummaryeventMap["followupActions"].([]interface{}); ok {
+		FollowupActionsString, _ := json.Marshal(FollowupActions)
+		json.Unmarshal(FollowupActionsString, &o.FollowupActions)
 	}
 	
 	if WrapUpCodes, ok := ConversationsummarytopicvirtualagentsconversationsummaryeventMap["wrapUpCodes"].([]interface{}); ok {

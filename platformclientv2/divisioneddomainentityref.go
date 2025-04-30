@@ -19,6 +19,9 @@ type Divisioneddomainentityref struct {
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
+
+	// Division - The division this entity belongs to.
+	Division *Divisionreference `json:"division,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +92,8 @@ func (o Divisioneddomainentityref) MarshalJSON() ([]byte, error) {
 		Name *string `json:"name,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
+		
+		Division *Divisionreference `json:"division,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -96,6 +101,8 @@ func (o Divisioneddomainentityref) MarshalJSON() ([]byte, error) {
 		Name: o.Name,
 		
 		SelfUri: o.SelfUri,
+		
+		Division: o.Division,
 		Alias:    (Alias)(o),
 	})
 }
@@ -119,6 +126,11 @@ func (o *Divisioneddomainentityref) UnmarshalJSON(b []byte) error {
 		o.SelfUri = &SelfUri
 	}
     
+	if Division, ok := DivisioneddomainentityrefMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
 
 	return nil
 }

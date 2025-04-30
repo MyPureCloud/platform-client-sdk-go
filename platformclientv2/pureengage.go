@@ -59,6 +59,9 @@ type Pureengage struct {
 	// DisplayOnLogin
 	DisplayOnLogin *bool `json:"displayOnLogin,omitempty"`
 
+	// MetadataURL
+	MetadataURL *string `json:"metadataURL,omitempty"`
+
 	// AutoProvisionUsers
 	AutoProvisionUsers *bool `json:"autoProvisionUsers,omitempty"`
 
@@ -161,6 +164,8 @@ func (o Pureengage) MarshalJSON() ([]byte, error) {
 		
 		DisplayOnLogin *bool `json:"displayOnLogin,omitempty"`
 		
+		MetadataURL *string `json:"metadataURL,omitempty"`
+		
 		AutoProvisionUsers *bool `json:"autoProvisionUsers,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -197,6 +202,8 @@ func (o Pureengage) MarshalJSON() ([]byte, error) {
 		ProviderName: o.ProviderName,
 		
 		DisplayOnLogin: o.DisplayOnLogin,
+		
+		MetadataURL: o.MetadataURL,
 		
 		AutoProvisionUsers: o.AutoProvisionUsers,
 		
@@ -275,6 +282,10 @@ func (o *Pureengage) UnmarshalJSON(b []byte) error {
     
 	if DisplayOnLogin, ok := PureengageMap["displayOnLogin"].(bool); ok {
 		o.DisplayOnLogin = &DisplayOnLogin
+	}
+    
+	if MetadataURL, ok := PureengageMap["metadataURL"].(string); ok {
+		o.MetadataURL = &MetadataURL
 	}
     
 	if AutoProvisionUsers, ok := PureengageMap["autoProvisionUsers"].(bool); ok {

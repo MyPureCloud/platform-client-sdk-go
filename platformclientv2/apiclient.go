@@ -1,10 +1,8 @@
 package platformclientv2
 
 import (
-	"bytes"
 	"context"
     "crypto/tls"
-	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -15,14 +13,17 @@ import (
 	"strings"
 	"sync/atomic"
 	"time"
+	"crypto/x509"
+	"os"
 
 	"github.com/hashicorp/go-retryablehttp"
 )
 
 // APIClient provides functions for making API requests
 type APIClient struct {
-	client        retryablehttp.Client
+	client        AbstractHttpClient
 	configuration *Configuration
+	proxyAgent    *ProxyAgent
 }
 
 var (
@@ -38,19 +39,42 @@ invalidHeaderErrorRe = regexp.MustCompile(`invalid header`)
 
 notTrustedErrorRe = regexp.MustCompile(`certificate is not trusted`)
 )
+
+
+// SetHttpClient sets the HTTP client
+func (c *APIClient) SetHttpClient(client interface{}) error {
+    // check if client implements AbstractHttpClient
+    httpClient, ok := client.(AbstractHttpClient)
+    if !ok {
+        return fmt.Errorf("httpClient must implement AbstractHttpClient interface. See DefaultHttpClient for an example")
+    }
+    c.client = httpClient
+    return nil
+}
+
+// GetHttpClient gets or creates the HTTP client
+func (c *APIClient) GetHttpClient() AbstractHttpClient {
+    if c.client != nil {
+        return c.client
+    }
+    
+    // Create new default client if none exists
+    c.client = NewDefaultHttpClient(c.proxyAgent)
+    return c.client
+}
+
+func (c *APIClient) SetProxyAgent(proxyAgent *ProxyAgent) {
+    c.proxyAgent = proxyAgent
+	client := c.GetHttpClient()
+	client.SetHttpsAgent(proxyAgent)
+}
+
 // NewAPIClient creates a new API client
 func NewAPIClient(c *Configuration) APIClient {
-	timeout, err := time.ParseDuration("16s")
-	if err != nil {
-		panic(err)
-	}
-
-	client := retryablehttp.NewClient()
-	client.Logger = nil
-	client.HTTPClient.Timeout = timeout
+	defaultClient := c.APIClient.GetHttpClient()
 
 	return APIClient{
-		client:        *client,
+		client:        defaultClient,
 		configuration: c,
 	}
 }
@@ -106,10 +130,12 @@ func getConfUrl(c *Configuration, path string, extendedPath string) *url.URL {
 			if param.PathName == path {
 				tempValue := param.PathValue
 
-				if !strings.HasPrefix(tempValue, "/") {
-					pathValue = fmt.Sprintf("/%v", tempValue)
-				} else {
-					pathValue = fmt.Sprintf("%v", tempValue)
+				if tempValue != "" {
+					if !strings.HasPrefix(tempValue, "/") {
+						pathValue = fmt.Sprintf("/%v", tempValue)
+					} else {
+						pathValue = fmt.Sprintf("%v", tempValue)
+					}
 				}
 				break
 			}
@@ -124,6 +150,170 @@ func getConfUrl(c *Configuration, path string, extendedPath string) *url.URL {
 	return uri
 }
 
+// Handles the Proxy Configuration
+func (c *APIClient) configureProxy(pathName string) (*http.Transport, error) {
+	if c.configuration.ProxyConfiguration == nil {
+		return nil, nil
+	}
+
+	var proxyUrl *url.URL
+    pathValue, exists :=  getPathValue(c.configuration.ProxyConfiguration, pathName)
+
+    if c.configuration.ProxyConfiguration.Auth != nil && c.configuration.ProxyConfiguration.Auth.UserName != "" && c.configuration.ProxyConfiguration.Auth.Password != "" {
+        proxyUrl = &url.URL{
+            Scheme: c.configuration.ProxyConfiguration.Protocol,
+            User: url.UserPassword(
+				c.configuration.ProxyConfiguration.Auth.UserName,
+            	c.configuration.ProxyConfiguration.Auth.Password,
+			),
+            Host: c.configuration.ProxyConfiguration.Host + ":" + c.configuration.ProxyConfiguration.Port,
+        }
+    } else {
+        urlString := c.configuration.ProxyConfiguration.Protocol + "://" +
+                    c.configuration.ProxyConfiguration.Host + ":" +
+                    c.configuration.ProxyConfiguration.Port
+        proxyUrl, _ = url.Parse(urlString)
+    }
+
+    if exists {
+        proxyUrl.Path = pathValue
+    }
+
+	return &http.Transport{
+        Proxy: http.ProxyURL(proxyUrl),
+    }, nil
+}
+
+// SetMTLSContents sets the MTLS certificate contents directly rather than loading from files.
+func (c *APIClient) SetMTLSContents(certContent, keyContent, caContent string) error {
+    if certContent == "" {
+        return fmt.Errorf("certificate content cannot be empty")
+    }
+
+    if keyContent == "" {
+        return fmt.Errorf("private key content cannot be empty") 
+    }
+
+    if caContent == "" {
+        return fmt.Errorf("CA certificate content cannot be empty")
+    }
+
+    c.configuration.MTLSConfiguration = &MTLSConfiguration {
+		CertFile: []byte(certContent),
+		KeyFile: []byte(keyContent),
+		CAFile: []byte(caContent),
+	}
+	return nil
+}
+
+// Handles the MTLS Gateway Configuration
+func (c *APIClient) configureMTLS() (*tls.Config, error) {
+	if c.configuration.MTLSConfiguration == nil {
+		return nil, nil
+	}
+
+	if c.configuration.MTLSConfiguration.CertFile == nil {
+		return nil, fmt.Errorf("failed to load certificate content")
+	}
+
+	if c.configuration.MTLSConfiguration.KeyFile == nil {
+		return nil, fmt.Errorf("failed to load Key file content")
+	}
+
+	if c.configuration.MTLSConfiguration.CAFile == nil {
+        return nil, fmt.Errorf("Failed to load CA certificate content")
+    }
+
+	cert, err := tls.X509KeyPair(
+		[]byte(c.configuration.MTLSConfiguration.CertFile), 
+		[]byte(c.configuration.MTLSConfiguration.KeyFile),
+	)
+
+	if err != nil {
+		return nil, fmt.Errorf("failed to load client certificate: %v", err)
+	}
+
+	caCertPool := x509.NewCertPool()
+	if !caCertPool.AppendCertsFromPEM([]byte(c.configuration.MTLSConfiguration.CAFile)) {
+		return nil, fmt.Errorf("failed to append CA certificate")
+	}
+
+	// Create TLS config with custom verification
+    tlsConfig := &tls.Config{
+        Certificates: []tls.Certificate{cert},
+        RootCAs:     caCertPool,
+        MinVersion:  tls.VersionTLS12,
+		InsecureSkipVerify: true,  // Required for custom verification
+    }
+
+    return tlsConfig, nil
+}
+
+// Handles the transport configurations (Proxy, Gateway)
+func (c *APIClient) configureTransport(pathName string) (*http.Transport, error) {
+	// Proxy Configuration
+	proxyTr, err := c.configureProxy(pathName)
+	if err != nil {
+		return nil, err
+	}
+
+	// MTLS Configuration
+	mtlsConfig, err := c.configureMTLS()
+	if err != nil {
+		return nil, err
+	}
+
+	transport := &http.Transport{}
+
+	if proxyTr != nil {
+		transport.Proxy = proxyTr.Proxy
+	}
+
+	if mtlsConfig != nil {
+		transport.TLSClientConfig = mtlsConfig
+	}
+
+	return transport, nil
+}
+
+// Sets the MTLS Certificates for the file paths
+func (c *APIClient) SetMTLSCertificates(certFile, keyFile, caFile string) error {
+	if certFile == "" {
+		return fmt.Errorf("Failed to load the Certificate")
+	}
+
+	if keyFile == "" {
+		return fmt.Errorf("Failed to load Key File")
+	}
+
+	if caFile == "" {
+		return fmt.Errorf("Failed to load CA certificate")
+	}
+	
+	certPEMBlock, err := os.ReadFile(certFile)
+	if err != nil {
+		return err
+	}
+	keyPEMBlock, err := os.ReadFile(keyFile)
+	if err != nil {
+		return err
+	}
+
+	caPEMBlock, err := os.ReadFile(caFile)
+	if err != nil {
+		return err
+	}
+
+	c.configuration.MTLSConfiguration = &MTLSConfiguration {
+		CertFile: certPEMBlock,
+		KeyFile: keyPEMBlock,
+		CAFile: caPEMBlock,
+	}
+
+	return nil
+}
+
+
 // CallAPI invokes an API endpoint
 func (c *APIClient) CallAPI(path string, method string,
 	postBody interface{},
@@ -135,6 +325,7 @@ func (c *APIClient) CallAPI(path string, method string,
 	pathName string) (*APIResponse, error) {
 	var u *url.URL
 
+	// Build initial URL with query parameters
 	urlString := path + "?"
 	if queryParams != nil {
 		for k, v := range queryParams {
@@ -145,6 +336,7 @@ func (c *APIClient) CallAPI(path string, method string,
 	}
 	urlString = urlString[:len(urlString)-1] // Remove the trailing '&'
 
+	// Handle gateway configuration if present
 	if c.configuration.GateWayConfiguration != nil && c.configuration.GateWayConfiguration.Host != "" {
 		if index := strings.Index(urlString, "/api/v2"); index != -1 {
 			urlString = urlString[index:] // Get substring from /api onward
@@ -158,114 +350,92 @@ func (c *APIClient) CallAPI(path string, method string,
 		u, _ = url.Parse(urlString)
 	}
 
-	request := retryablehttp.Request{
-		Request: &http.Request{
-			URL:    u,
-			Close:  true,
-			Method: strings.ToUpper(method),
-			Header: make(map[string][]string),
-		},
-	}
+	// Initialize HTTP request options
+	httpRequestOptions := &HTTPRequestOptions{}
+	httpRequestOptions.SetUrl(u)
+	httpRequestOptions.SetMethod(method)
 
-	// Set default headers
+	// Set default headers from configuration
 	if c.configuration.DefaultHeader != nil {
 		for k, v := range c.configuration.DefaultHeader {
-			request.Header.Set(k, v)
+			httpRequestOptions.SetHeaders(k, v)
 		}
 	}
 
-	// Set form data
+	// Set form parameters if present
 	if len(formParams) > 0 {
-		request.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-		request.SetBody(ioutil.NopCloser(strings.NewReader(formParams.Encode())))
+		httpRequestOptions.SetHeaders("Content-Type", "application/x-www-form-urlencoded")
+		httpRequestOptions.SetFormParams(formParams)
 	}
 
-	// Set post body
+	// Set JSON body if present
 	if postBody != nil {
-		request.Header.Set("Content-Type", "application/json")
-		// Check if postBody is of type *string
-		if body, ok := postBody.(*string); ok {
-			j := []byte(*body)
-			request.SetBody(ioutil.NopCloser(bytes.NewReader(j)))
-		} else {
-			j, _ := json.Marshal(postBody)
-			request.SetBody(ioutil.NopCloser(bytes.NewReader(j)))
-		}
+		httpRequestOptions.SetHeaders("Content-Type", "application/json")
 	}
 
-	// Set provided headers
+	// Set additional headers from parameters
 	if len(headerParams) > 0 {
 		for k, v := range headerParams {
-			request.Header.Set(k, v)
+			httpRequestOptions.SetHeaders(k, v)
 		}
 	}
 
+	httpRequestOptions.SetBody(postBody)
+
+	// Configure retry behavior
 	if c.configuration.RetryConfiguration == nil {
-		c.client.RetryMax = 0
-		c.client.RetryWaitMax = 0
+		c.client.SetRetryMax(0)
+		c.client.SetRetryWaitMax(0)
 	} else {
-		c.client.RetryWaitMax = c.configuration.RetryConfiguration.RetryWaitMax
-		c.client.RetryWaitMin = c.configuration.RetryConfiguration.RetryWaitMin
-		c.client.RetryMax = c.configuration.RetryConfiguration.RetryMax
+		c.client.SetRetryWaitMax(c.configuration.RetryConfiguration.RetryWaitMax)
+		c.client.SetRetryWaitMin(c.configuration.RetryConfiguration.RetryWaitMin)
+		c.client.SetRetryMax(c.configuration.RetryConfiguration.RetryMax)
 		if c.configuration.RetryConfiguration.RequestLogHook != nil {
-			c.client.RequestLogHook = func(_ retryablehttp.Logger, req *http.Request, retryNumber int) {
+			c.client.SetRequestLogHook(func(_ retryablehttp.Logger, req *http.Request, retryNumber int) {
 				c.configuration.RetryConfiguration.RequestLogHook(req, retryNumber)
-			}
+			})
 		}
 		if c.configuration.RetryConfiguration.ResponseLogHook != nil {
-			c.client.ResponseLogHook = func(_ retryablehttp.Logger, res *http.Response) {
+			c.client.SetResponseLogHook(func(_ retryablehttp.Logger, res *http.Response) {
 				c.configuration.RetryConfiguration.ResponseLogHook(res)
-			}
+			})
 		}
 	}
 
 
-		c.client.CheckRetry = DefaultRetryPolicy
+	// Set retry policy
+	c.client.SetCheckRetry(DefaultRetryPolicy)
 
-	if c.configuration.ProxyConfiguration != nil {
-                var proxyUrl *url.URL
-                pathValue, exists :=  getPathValue(c.configuration.ProxyConfiguration, pathName)
+	// Configure proxy if specified
+	transport, err := c.configureTransport(pathName)
+	if err != nil {
+		return nil, fmt.Errorf("failed to configure transport: %v", err)
+	}
 
-                if c.configuration.ProxyConfiguration.Auth != nil && c.configuration.ProxyConfiguration.Auth.UserName != "" && c.configuration.ProxyConfiguration.Auth.Password != "" {
-                        proxyUrl = &url.URL{
-                                Scheme: c.configuration.ProxyConfiguration.Protocol,
-                                User: url.UserPassword(c.configuration.ProxyConfiguration.Auth.UserName,
-                                        c.configuration.ProxyConfiguration.Auth.Password),
-                                Host: c.configuration.ProxyConfiguration.Host + ":" + c.configuration.ProxyConfiguration.Port,
-                        }
-                } else {
+	if transport.TLSClientConfig != nil || transport.Proxy != nil {
+		c.client.SetTransport(transport)
+	}
 
-                        urlString := c.configuration.ProxyConfiguration.Protocol + "://" +
-                                c.configuration.ProxyConfiguration.Host + ":" +
-                                c.configuration.ProxyConfiguration.Port
-                        proxyUrl, _ = url.Parse(urlString)
-                }
-
-                if exists {
-                   proxyUrl.Path = pathValue
-                }
-
-
-                tr := &http.Transport{
-                        Proxy: http.ProxyURL(proxyUrl),
-                }
-
-                c.client.HTTPClient.Transport = tr
-        }
-
-	requestBody, _ := request.BodyBytes()
+	// Build the request
+	buildReq, err := httpRequestOptions.ToRetryableRequest()
+	if err != nil {
+		return nil, err
+	}
+	//For logging
+	requestBody, _ := buildReq.BodyBytes()
 
 	// Execute request
-	res, err := c.client.Do(&request)
+	res, err := c.client.Do(httpRequestOptions)
 	if err != nil {
 		return nil, err
 	}
 
-	// Read body
+	// Read response body and log request/response details
 	body, _ := ioutil.ReadAll(res.Body)
-	c.configuration.LoggingConfiguration.trace(method, urlString, requestBody, res.StatusCode, request.Header, res.Header)
-	c.configuration.LoggingConfiguration.debug(method, urlString, requestBody, res.StatusCode, request.Header)
+	c.configuration.LoggingConfiguration.trace(method, urlString, requestBody, res.StatusCode, httpRequestOptions.GetHeaders(), res.Header)
+	c.configuration.LoggingConfiguration.debug(method, urlString, requestBody, res.StatusCode, httpRequestOptions.GetHeaders())
 
+	// Handle unauthorized response by refreshing access token if configured
 	if res.StatusCode == http.StatusUnauthorized && c.configuration.ShouldRefreshAccessToken && c.configuration.RefreshToken != "" {
 		err := c.handleExpiredAccessToken()
 		if err != nil {
@@ -278,8 +448,9 @@ func (c *APIClient) CallAPI(path string, method string,
 		return c.CallAPI(path, method, postBody, headerParams, queryParams, formParams, fileName, fileBytes, pathName)
 	}
 
+	// Log errors for non-successful status codes
 	if res.StatusCode < http.StatusOK || res.StatusCode >= http.StatusMultipleChoices {
-		c.configuration.LoggingConfiguration.error(method, urlString, requestBody, body, res.StatusCode, request.Header, res.Header)
+		c.configuration.LoggingConfiguration.error(method, urlString, requestBody, body, res.StatusCode, httpRequestOptions.GetHeaders(), res.Header)
 	}
 
 	return NewAPIResponse(res, body)

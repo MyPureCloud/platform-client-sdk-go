@@ -24,7 +24,7 @@ type Dialercontactlistfilterconfigchangefilterpredicate struct {
 	Value *string `json:"value,omitempty"`
 
 	// VarRange
-	VarRange *Dialercontactlistfilterconfigchangerange `json:"range,omitempty"`
+	VarRange *Dialercontactlistfilterconfigchangefilterrange `json:"range,omitempty"`
 
 	// Inverted - Whether or not to invert to result of evaluating the predicate
 	Inverted *bool `json:"inverted,omitempty"`
@@ -104,7 +104,7 @@ func (o Dialercontactlistfilterconfigchangefilterpredicate) MarshalJSON() ([]byt
 		
 		Value *string `json:"value,omitempty"`
 		
-		VarRange *Dialercontactlistfilterconfigchangerange `json:"range,omitempty"`
+		VarRange *Dialercontactlistfilterconfigchangefilterrange `json:"range,omitempty"`
 		
 		Inverted *bool `json:"inverted,omitempty"`
 		

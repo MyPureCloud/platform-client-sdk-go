@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -7,13 +8,19 @@ import (
 	"strings"
 )
 
-// Queueconversationsocialexpressioneventtopicobject - The number of peer participants from the perspective of the participant in the conference.
-type Queueconversationsocialexpressioneventtopicobject struct { 
+// Overridedate
+type Overridedate struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// Date - The date in yyyy-MM-dd format, interpreted in the business unit’s time zone. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
+	Date *time.Time `json:"date,omitempty"`
+
+	// VarType - The type of override date
+	VarType *string `json:"type,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Queueconversationsocialexpressioneventtopicobject) SetField(field string, fieldValue interface{}) {
+func (o *Overridedate) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -34,7 +41,7 @@ func (o *Queueconversationsocialexpressioneventtopicobject) SetField(field strin
 	o.SetFieldNames[field] = true
 }
 
-func (o Queueconversationsocialexpressioneventtopicobject) MarshalJSON() ([]byte, error) {
+func (o Overridedate) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -43,7 +50,7 @@ func (o Queueconversationsocialexpressioneventtopicobject) MarshalJSON() ([]byte
 		// Known field names that require type overrides
 		dateTimeFields := []string{  }
 		localDateTimeFields := []string{  }
-		dateFields := []string{  }
+		dateFields := []string{ "Date", }
 
 		// Construct object
 		newObj := make(map[string]interface{})
@@ -72,26 +79,50 @@ func (o Queueconversationsocialexpressioneventtopicobject) MarshalJSON() ([]byte
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Queueconversationsocialexpressioneventtopicobject
+	type Alias Overridedate
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	Date := new(string)
+	if o.Date != nil {
+		*Date = timeutil.Strftime(o.Date, "%Y-%m-%d")
+	} else {
+		Date = nil
+	}
+	
+	return json.Marshal(&struct { 
+		Date *string `json:"date,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
+		Alias
+	}{ 
+		Date: Date,
+		
+		VarType: o.VarType,
+		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Queueconversationsocialexpressioneventtopicobject) UnmarshalJSON(b []byte) error {
-	var QueueconversationsocialexpressioneventtopicobjectMap map[string]interface{}
-	err := json.Unmarshal(b, &QueueconversationsocialexpressioneventtopicobjectMap)
+func (o *Overridedate) UnmarshalJSON(b []byte) error {
+	var OverridedateMap map[string]interface{}
+	err := json.Unmarshal(b, &OverridedateMap)
 	if err != nil {
 		return err
 	}
 	
+	if dateString, ok := OverridedateMap["date"].(string); ok {
+		Date, _ := time.Parse("2006-01-02", dateString)
+		o.Date = &Date
+	}
+	
+	if VarType, ok := OverridedateMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+    
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Queueconversationsocialexpressioneventtopicobject) String() string {
+func (o *Overridedate) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

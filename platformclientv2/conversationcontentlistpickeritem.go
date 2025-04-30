@@ -7,19 +7,25 @@ import (
 	"strings"
 )
 
-// V2flowexecutiondataflowidtopicworkitem - This contains information about the workitem that invoked this flow execution.
-type V2flowexecutiondataflowidtopicworkitem struct { 
+// Conversationcontentlistpickeritem - Represents a selectable item in a list picker.
+type Conversationcontentlistpickeritem struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// WorkitemId - The identifier of the workitem that invoked this flow.
-	WorkitemId *string `json:"workitemId,omitempty"`
+	// Id - Unique identifier for the list picker item
+	Id *string `json:"id,omitempty"`
 
-	// WorkitemName - The name of the process workitem that invoked this flow.
-	WorkitemName *string `json:"workitemName,omitempty"`
+	// Title - The main text displayed for the item.
+	Title *string `json:"title,omitempty"`
+
+	// Subtitle - Additional text providing more details about the item.
+	Subtitle *string `json:"subtitle,omitempty"`
+
+	// ImageUrl - URL of an image to be displayed alongside the item.
+	ImageUrl *string `json:"imageUrl,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *V2flowexecutiondataflowidtopicworkitem) SetField(field string, fieldValue interface{}) {
+func (o *Conversationcontentlistpickeritem) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -40,7 +46,7 @@ func (o *V2flowexecutiondataflowidtopicworkitem) SetField(field string, fieldVal
 	o.SetFieldNames[field] = true
 }
 
-func (o V2flowexecutiondataflowidtopicworkitem) MarshalJSON() ([]byte, error) {
+func (o Conversationcontentlistpickeritem) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -78,34 +84,50 @@ func (o V2flowexecutiondataflowidtopicworkitem) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias V2flowexecutiondataflowidtopicworkitem
+	type Alias Conversationcontentlistpickeritem
 	
 	return json.Marshal(&struct { 
-		WorkitemId *string `json:"workitemId,omitempty"`
+		Id *string `json:"id,omitempty"`
 		
-		WorkitemName *string `json:"workitemName,omitempty"`
+		Title *string `json:"title,omitempty"`
+		
+		Subtitle *string `json:"subtitle,omitempty"`
+		
+		ImageUrl *string `json:"imageUrl,omitempty"`
 		Alias
 	}{ 
-		WorkitemId: o.WorkitemId,
+		Id: o.Id,
 		
-		WorkitemName: o.WorkitemName,
+		Title: o.Title,
+		
+		Subtitle: o.Subtitle,
+		
+		ImageUrl: o.ImageUrl,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *V2flowexecutiondataflowidtopicworkitem) UnmarshalJSON(b []byte) error {
-	var V2flowexecutiondataflowidtopicworkitemMap map[string]interface{}
-	err := json.Unmarshal(b, &V2flowexecutiondataflowidtopicworkitemMap)
+func (o *Conversationcontentlistpickeritem) UnmarshalJSON(b []byte) error {
+	var ConversationcontentlistpickeritemMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationcontentlistpickeritemMap)
 	if err != nil {
 		return err
 	}
 	
-	if WorkitemId, ok := V2flowexecutiondataflowidtopicworkitemMap["workitemId"].(string); ok {
-		o.WorkitemId = &WorkitemId
+	if Id, ok := ConversationcontentlistpickeritemMap["id"].(string); ok {
+		o.Id = &Id
 	}
     
-	if WorkitemName, ok := V2flowexecutiondataflowidtopicworkitemMap["workitemName"].(string); ok {
-		o.WorkitemName = &WorkitemName
+	if Title, ok := ConversationcontentlistpickeritemMap["title"].(string); ok {
+		o.Title = &Title
+	}
+    
+	if Subtitle, ok := ConversationcontentlistpickeritemMap["subtitle"].(string); ok {
+		o.Subtitle = &Subtitle
+	}
+    
+	if ImageUrl, ok := ConversationcontentlistpickeritemMap["imageUrl"].(string); ok {
+		o.ImageUrl = &ImageUrl
 	}
     
 
@@ -113,7 +135,7 @@ func (o *V2flowexecutiondataflowidtopicworkitem) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *V2flowexecutiondataflowidtopicworkitem) String() string {
+func (o *Conversationcontentlistpickeritem) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

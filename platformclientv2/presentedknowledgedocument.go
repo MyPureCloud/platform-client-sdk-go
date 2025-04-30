@@ -20,7 +20,7 @@ type Presentedknowledgedocument struct {
 	// DocumentVersionId - The version of the document.
 	DocumentVersionId *string `json:"documentVersionId,omitempty"`
 
-	// SurfacingMethod - The method how knowledge was surfaced. Article: Full article was shown. Snippet: A snippet from the article was shown. Highlight: A highlighted answer in a snippet was shown.
+	// SurfacingMethod - The method how knowledge was surfaced. Article: Full article was shown. Snippet: A snippet from the article was shown. Highlight: A highlighted answer in a snippet was shown.Generative: A generated answer in a snippet was shown.
 	SurfacingMethod *string `json:"surfacingMethod,omitempty"`
 }
 

@@ -69,6 +69,9 @@ type Recordingmessagingmessage struct {
 	// ContentType - Indicates the content type for this message
 	ContentType *string `json:"contentType,omitempty"`
 
+	// SocialVisibility - For social media messages, the visibility of the message in the originating social platform
+	SocialVisibility *string `json:"socialVisibility,omitempty"`
+
 	// Events - List of event elements
 	Events *[]Conversationmessageevent `json:"events,omitempty"`
 }
@@ -182,6 +185,8 @@ func (o Recordingmessagingmessage) MarshalJSON() ([]byte, error) {
 		
 		ContentType *string `json:"contentType,omitempty"`
 		
+		SocialVisibility *string `json:"socialVisibility,omitempty"`
+		
 		Events *[]Conversationmessageevent `json:"events,omitempty"`
 		Alias
 	}{ 
@@ -222,6 +227,8 @@ func (o Recordingmessagingmessage) MarshalJSON() ([]byte, error) {
 		NotificationTemplate: o.NotificationTemplate,
 		
 		ContentType: o.ContentType,
+		
+		SocialVisibility: o.SocialVisibility,
 		
 		Events: o.Events,
 		Alias:    (Alias)(o),
@@ -321,6 +328,10 @@ func (o *Recordingmessagingmessage) UnmarshalJSON(b []byte) error {
 	
 	if ContentType, ok := RecordingmessagingmessageMap["contentType"].(string); ok {
 		o.ContentType = &ContentType
+	}
+    
+	if SocialVisibility, ok := RecordingmessagingmessageMap["socialVisibility"].(string); ok {
+		o.SocialVisibility = &SocialVisibility
 	}
     
 	if Events, ok := RecordingmessagingmessageMap["events"].([]interface{}); ok {

@@ -51,6 +51,7 @@ type Configuration struct {
 	AutoReloadConfig         bool                  `json:"autoReloadConfig,omitempty"`
 	ProxyConfiguration       *ProxyConfiguration   `json:"proxyConfiguration,omitempty"`
 	GateWayConfiguration	 *GateWayConfiguration `json:"gateWayConfiguration,omitempty"`
+	MTLSConfiguration   	 *MTLSConfiguration    `json:"mtlsConfiguration,omitempty"`
 }
 
 const (
@@ -134,6 +135,13 @@ type AuthErrorResponse struct {
 	Error            string `json:"error,omitempty"`
 	Description      string `json:"description,omitempty"`
 	ErrorDescription string `json:"error_description,omitempty"`
+}
+
+// MTLS configuration
+type MTLSConfiguration struct {
+    CertFile []byte
+    KeyFile  []byte
+    CAFile   []byte
 }
 
 var (
@@ -246,6 +254,35 @@ func ConvertStringToPathParams(input string) ([]*PathParams, error) {
 	return pathParams, nil
 }
 
+// Handles the gateway configuration
+func (c *Configuration) SetGateway(gateway *GateWayConfiguration) {
+	gatewayConf := GateWayConfiguration{}
+	c.GateWayConfiguration = &gatewayConf
+
+	if gateway.Host != "" {
+		c.GateWayConfiguration.Host = gateway.Host
+	}
+
+	if gateway.Port != "" {
+		c.GateWayConfiguration.Port = gateway.Port
+	}
+
+	if gateway.Protocol != "" {
+		c.GateWayConfiguration.Protocol = gateway.Protocol
+	}
+
+	userName := gateway.Auth.UserName
+	password := gateway.Auth.Password
+
+	if len(gateway.PathParams) > 0 {
+		c.GateWayConfiguration.PathParams = gateway.PathParams
+	}
+
+	if userName != "" && password != "" {
+		c.GateWayConfiguration.Auth = gateway.Auth
+	}
+}
+
 func (c *Configuration) updateConfigFromFile() error {
 	isJson, err := isJsonFile(c.ConfigFilePath)
 	if err != nil {
@@ -332,24 +369,11 @@ func (c *Configuration) updateConfigFromFile() error {
 			}
 			c.GateWayConfiguration = &gatewayConf
 		} else {
-			gatewayConf := GateWayConfiguration{}
-			c.GateWayConfiguration = &gatewayConf
-
-			gatewayHost := getConfigString("gateway", "host")
-			if gatewayHost != "" {
-				c.GateWayConfiguration.Host = gatewayHost
+			gateway := &GateWayConfiguration {
+				Protocol: getConfigString("gateway", "protocol"),
+				Host: getConfigString("gateway", "host"),
+				Port: getConfigString("gateway", "port"),
 			}
-
-			port := getConfigString("gateway", "port")
-			if port != "" {
-				c.GateWayConfiguration.Port = port
-			}
-
-			protocol := getConfigString("gateway", "protocol")
-			if protocol != "" {
-				c.GateWayConfiguration.Protocol = protocol
-			}
-
 			userName := getConfigString("gateway", "auth-username")
 			password := getConfigString("gateway", "auth-password")
 
@@ -358,17 +382,17 @@ func (c *Configuration) updateConfigFromFile() error {
 			if pathParamString != "" {
 				pathParam, err := ConvertStringToPathParams(pathParamString)
 				if err == nil {
-					c.GateWayConfiguration.PathParams = pathParam
+					gateway.PathParams = pathParam
 				}
 			}
 
 			if userName != "" && password != "" {
 				auth := Auth{}
-				c.GateWayConfiguration.Auth = &auth
-				c.GateWayConfiguration.Auth.UserName = userName
-				c.GateWayConfiguration.Auth.Password = password
+				gateway.Auth = &auth
+				gateway.Auth.UserName = userName
+				gateway.Auth.Password = password
 			}
-
+			c.SetGateway(gateway)
 		}
 	}
 

@@ -44,8 +44,14 @@ type Conversationnormalizedmessage struct {
 	// Direction - The direction of the message.
 	Direction *string `json:"direction,omitempty"`
 
+	// RelatedMessages - A list of messages related to this one.
+	RelatedMessages *[]Conversationnormalizedmessage `json:"relatedMessages,omitempty"`
+
 	// Metadata - Additional metadata about this message.
 	Metadata *map[string]string `json:"metadata,omitempty"`
+
+	// Enrichment - Metadata enrichments provided by the platform.
+	Enrichment *Conversationenrichment `json:"enrichment,omitempty"`
 
 	// ByoSmsIntegrationId - The internal id representing the customer supplied sms integration message.
 	ByoSmsIntegrationId *string `json:"byoSmsIntegrationId,omitempty"`
@@ -136,7 +142,11 @@ func (o Conversationnormalizedmessage) MarshalJSON() ([]byte, error) {
 		
 		Direction *string `json:"direction,omitempty"`
 		
+		RelatedMessages *[]Conversationnormalizedmessage `json:"relatedMessages,omitempty"`
+		
 		Metadata *map[string]string `json:"metadata,omitempty"`
+		
+		Enrichment *Conversationenrichment `json:"enrichment,omitempty"`
 		
 		ByoSmsIntegrationId *string `json:"byoSmsIntegrationId,omitempty"`
 		Alias
@@ -163,7 +173,11 @@ func (o Conversationnormalizedmessage) MarshalJSON() ([]byte, error) {
 		
 		Direction: o.Direction,
 		
+		RelatedMessages: o.RelatedMessages,
+		
 		Metadata: o.Metadata,
+		
+		Enrichment: o.Enrichment,
 		
 		ByoSmsIntegrationId: o.ByoSmsIntegrationId,
 		Alias:    (Alias)(o),
@@ -225,9 +239,19 @@ func (o *Conversationnormalizedmessage) UnmarshalJSON(b []byte) error {
 		o.Direction = &Direction
 	}
     
+	if RelatedMessages, ok := ConversationnormalizedmessageMap["relatedMessages"].([]interface{}); ok {
+		RelatedMessagesString, _ := json.Marshal(RelatedMessages)
+		json.Unmarshal(RelatedMessagesString, &o.RelatedMessages)
+	}
+	
 	if Metadata, ok := ConversationnormalizedmessageMap["metadata"].(map[string]interface{}); ok {
 		MetadataString, _ := json.Marshal(Metadata)
 		json.Unmarshal(MetadataString, &o.Metadata)
+	}
+	
+	if Enrichment, ok := ConversationnormalizedmessageMap["enrichment"].(map[string]interface{}); ok {
+		EnrichmentString, _ := json.Marshal(Enrichment)
+		json.Unmarshal(EnrichmentString, &o.Enrichment)
 	}
 	
 	if ByoSmsIntegrationId, ok := ConversationnormalizedmessageMap["byoSmsIntegrationId"].(string); ok {

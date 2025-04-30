@@ -27,6 +27,9 @@ type Conversationcontentdatepicker struct {
 	// DateMaximum - The maximum Date Enabled in the datepicker calendar, format: ISO 8601.
 	DateMaximum *time.Time `json:"dateMaximum,omitempty"`
 
+	// Location - Location of the event.
+	Location *Conversationcontentlocation `json:"location,omitempty"`
+
 	// AvailableTimes - An array of available times objects.
 	AvailableTimes *[]Conversationcontentdatepickeravailabletime `json:"availableTimes,omitempty"`
 }
@@ -120,6 +123,8 @@ func (o Conversationcontentdatepicker) MarshalJSON() ([]byte, error) {
 		
 		DateMaximum *string `json:"dateMaximum,omitempty"`
 		
+		Location *Conversationcontentlocation `json:"location,omitempty"`
+		
 		AvailableTimes *[]Conversationcontentdatepickeravailabletime `json:"availableTimes,omitempty"`
 		Alias
 	}{ 
@@ -132,6 +137,8 @@ func (o Conversationcontentdatepicker) MarshalJSON() ([]byte, error) {
 		DateMinimum: DateMinimum,
 		
 		DateMaximum: DateMaximum,
+		
+		Location: o.Location,
 		
 		AvailableTimes: o.AvailableTimes,
 		Alias:    (Alias)(o),
@@ -165,6 +172,11 @@ func (o *Conversationcontentdatepicker) UnmarshalJSON(b []byte) error {
 	if dateMaximumString, ok := ConversationcontentdatepickerMap["dateMaximum"].(string); ok {
 		DateMaximum, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateMaximumString)
 		o.DateMaximum = &DateMaximum
+	}
+	
+	if Location, ok := ConversationcontentdatepickerMap["location"].(map[string]interface{}); ok {
+		LocationString, _ := json.Marshal(Location)
+		json.Unmarshal(LocationString, &o.Location)
 	}
 	
 	if AvailableTimes, ok := ConversationcontentdatepickerMap["availableTimes"].([]interface{}); ok {

@@ -23,7 +23,7 @@ type Knowledgeguestdocumentcopy struct {
 	// QueryType - The type of the query that surfaced the document.
 	QueryType *string `json:"queryType,omitempty"`
 
-	// SurfacingMethod - The method how knowledge was surfaced. Article: Full article was shown. Snippet: A snippet from the article was shown. Highlight: A highlighted answer in a snippet was shown.
+	// SurfacingMethod - The method how knowledge was surfaced. Article: Full article was shown. Snippet: A snippet from the article was shown. Highlight: A highlighted answer in a snippet was shown.Generative: A generated answer in a snippet was shown.
 	SurfacingMethod *string `json:"surfacingMethod,omitempty"`
 
 	// SessionId - Knowledge session ID.

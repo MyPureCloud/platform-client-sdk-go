@@ -13,6 +13,12 @@ type Conversationeventpresence struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// VarType - Describes the type of Presence event.
 	VarType *string `json:"type,omitempty"`
+
+	// ReceivedMessage - The message displayed in the received message bubble.
+	ReceivedMessage *Conversationcontentreceivedreplymessage `json:"receivedMessage,omitempty"`
+
+	// ReplyMessage - The message displayed in the reply message bubble.
+	ReplyMessage *Conversationcontentreceivedreplymessage `json:"replyMessage,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +85,17 @@ func (o Conversationeventpresence) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
+		
+		ReceivedMessage *Conversationcontentreceivedreplymessage `json:"receivedMessage,omitempty"`
+		
+		ReplyMessage *Conversationcontentreceivedreplymessage `json:"replyMessage,omitempty"`
 		Alias
 	}{ 
 		VarType: o.VarType,
+		
+		ReceivedMessage: o.ReceivedMessage,
+		
+		ReplyMessage: o.ReplyMessage,
 		Alias:    (Alias)(o),
 	})
 }
@@ -97,6 +111,16 @@ func (o *Conversationeventpresence) UnmarshalJSON(b []byte) error {
 		o.VarType = &VarType
 	}
     
+	if ReceivedMessage, ok := ConversationeventpresenceMap["receivedMessage"].(map[string]interface{}); ok {
+		ReceivedMessageString, _ := json.Marshal(ReceivedMessage)
+		json.Unmarshal(ReceivedMessageString, &o.ReceivedMessage)
+	}
+	
+	if ReplyMessage, ok := ConversationeventpresenceMap["replyMessage"].(map[string]interface{}); ok {
+		ReplyMessageString, _ := json.Marshal(ReplyMessage)
+		json.Unmarshal(ReplyMessageString, &o.ReplyMessage)
+	}
+	
 
 	return nil
 }

@@ -27,6 +27,9 @@ type Queueconversationvideoeventtopiccall struct {
 	// RecordingState - State of recording on this call.
 	RecordingState *string `json:"recordingState,omitempty"`
 
+	// RecordersState
+	RecordersState *Queueconversationvideoeventtopicrecordersstate `json:"recordersState,omitempty"`
+
 	// Muted - True if this call is muted so that remote participants can't hear any audio from this end.
 	Muted *bool `json:"muted,omitempty"`
 
@@ -208,6 +211,8 @@ func (o Queueconversationvideoeventtopiccall) MarshalJSON() ([]byte, error) {
 		
 		RecordingState *string `json:"recordingState,omitempty"`
 		
+		RecordersState *Queueconversationvideoeventtopicrecordersstate `json:"recordersState,omitempty"`
+		
 		Muted *bool `json:"muted,omitempty"`
 		
 		Confined *bool `json:"confined,omitempty"`
@@ -268,6 +273,8 @@ func (o Queueconversationvideoeventtopiccall) MarshalJSON() ([]byte, error) {
 		Recording: o.Recording,
 		
 		RecordingState: o.RecordingState,
+		
+		RecordersState: o.RecordersState,
 		
 		Muted: o.Muted,
 		
@@ -349,6 +356,11 @@ func (o *Queueconversationvideoeventtopiccall) UnmarshalJSON(b []byte) error {
 		o.RecordingState = &RecordingState
 	}
     
+	if RecordersState, ok := QueueconversationvideoeventtopiccallMap["recordersState"].(map[string]interface{}); ok {
+		RecordersStateString, _ := json.Marshal(RecordersState)
+		json.Unmarshal(RecordersStateString, &o.RecordersState)
+	}
+	
 	if Muted, ok := QueueconversationvideoeventtopiccallMap["muted"].(bool); ok {
 		o.Muted = &Muted
 	}

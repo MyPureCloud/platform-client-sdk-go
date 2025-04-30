@@ -7,13 +7,19 @@ import (
 	"strings"
 )
 
-// Conversationeventtopicobject - The number of peer participants from the perspective of the participant in the conference.
-type Conversationeventtopicobject struct { 
+// V2flowexecutiondataflowidtopicinvokingprocessautomationcontext - This contains contextual information about an invoking entity.
+type V2flowexecutiondataflowidtopicinvokingprocessautomationcontext struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// TriggerId - The identifier of the process automation trigger that invoked this flow.
+	TriggerId *string `json:"triggerId,omitempty"`
+
+	// TriggerName - The name of the process automation trigger that invoked this flow.
+	TriggerName *string `json:"triggerName,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Conversationeventtopicobject) SetField(field string, fieldValue interface{}) {
+func (o *V2flowexecutiondataflowidtopicinvokingprocessautomationcontext) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -34,7 +40,7 @@ func (o *Conversationeventtopicobject) SetField(field string, fieldValue interfa
 	o.SetFieldNames[field] = true
 }
 
-func (o Conversationeventtopicobject) MarshalJSON() ([]byte, error) {
+func (o V2flowexecutiondataflowidtopicinvokingprocessautomationcontext) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -72,26 +78,42 @@ func (o Conversationeventtopicobject) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Conversationeventtopicobject
+	type Alias V2flowexecutiondataflowidtopicinvokingprocessautomationcontext
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		TriggerId *string `json:"triggerId,omitempty"`
+		
+		TriggerName *string `json:"triggerName,omitempty"`
+		Alias
+	}{ 
+		TriggerId: o.TriggerId,
+		
+		TriggerName: o.TriggerName,
+		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Conversationeventtopicobject) UnmarshalJSON(b []byte) error {
-	var ConversationeventtopicobjectMap map[string]interface{}
-	err := json.Unmarshal(b, &ConversationeventtopicobjectMap)
+func (o *V2flowexecutiondataflowidtopicinvokingprocessautomationcontext) UnmarshalJSON(b []byte) error {
+	var V2flowexecutiondataflowidtopicinvokingprocessautomationcontextMap map[string]interface{}
+	err := json.Unmarshal(b, &V2flowexecutiondataflowidtopicinvokingprocessautomationcontextMap)
 	if err != nil {
 		return err
 	}
 	
+	if TriggerId, ok := V2flowexecutiondataflowidtopicinvokingprocessautomationcontextMap["triggerId"].(string); ok {
+		o.TriggerId = &TriggerId
+	}
+    
+	if TriggerName, ok := V2flowexecutiondataflowidtopicinvokingprocessautomationcontextMap["triggerName"].(string); ok {
+		o.TriggerName = &TriggerName
+	}
+    
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Conversationeventtopicobject) String() string {
+func (o *V2flowexecutiondataflowidtopicinvokingprocessautomationcontext) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

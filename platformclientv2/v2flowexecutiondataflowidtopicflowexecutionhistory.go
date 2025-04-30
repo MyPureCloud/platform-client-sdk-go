@@ -31,7 +31,7 @@ type V2flowexecutiondataflowidtopicflowexecutionhistory struct {
 	Errors *[]V2flowexecutiondataflowidtopicflowerrorwarninginfo `json:"errors,omitempty"`
 
 	// Execution - An array of execution items that describe what happened when an Architect flow action container ran such as a flow, task, state or bot.
-	Execution *[]V2flowexecutiondataflowidtopicexecution `json:"execution,omitempty"`
+	Execution *[]V2flowexecutiondataflowidtopicflowexecutionitem `json:"execution,omitempty"`
 
 	// FlowExitReason - Provides information about why a flow ended.
 	FlowExitReason *string `json:"flowExitReason,omitempty"`
@@ -55,7 +55,7 @@ type V2flowexecutiondataflowidtopicflowexecutionhistory struct {
 	MessageType *string `json:"messageType,omitempty"`
 
 	// InvokingContext
-	InvokingContext *V2flowexecutiondataflowidtopicinvokingcontext `json:"invokingContext,omitempty"`
+	InvokingContext *V2flowexecutiondataflowidtopicinvokingcontextinfo `json:"invokingContext,omitempty"`
 
 	// StartDateTime - The start date time for this flow instance execution data.
 	StartDateTime *time.Time `json:"startDateTime,omitempty"`
@@ -155,7 +155,7 @@ func (o V2flowexecutiondataflowidtopicflowexecutionhistory) MarshalJSON() ([]byt
 		
 		Errors *[]V2flowexecutiondataflowidtopicflowerrorwarninginfo `json:"errors,omitempty"`
 		
-		Execution *[]V2flowexecutiondataflowidtopicexecution `json:"execution,omitempty"`
+		Execution *[]V2flowexecutiondataflowidtopicflowexecutionitem `json:"execution,omitempty"`
 		
 		FlowExitReason *string `json:"flowExitReason,omitempty"`
 		
@@ -171,7 +171,7 @@ func (o V2flowexecutiondataflowidtopicflowexecutionhistory) MarshalJSON() ([]byt
 		
 		MessageType *string `json:"messageType,omitempty"`
 		
-		InvokingContext *V2flowexecutiondataflowidtopicinvokingcontext `json:"invokingContext,omitempty"`
+		InvokingContext *V2flowexecutiondataflowidtopicinvokingcontextinfo `json:"invokingContext,omitempty"`
 		
 		StartDateTime *string `json:"startDateTime,omitempty"`
 		

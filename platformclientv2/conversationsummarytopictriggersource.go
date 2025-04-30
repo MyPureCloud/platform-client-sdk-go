@@ -16,6 +16,9 @@ type Conversationsummarytopictriggersource struct {
 
 	// SourceId
 	SourceId *string `json:"sourceId,omitempty"`
+
+	// SourceOutcome
+	SourceOutcome *string `json:"sourceOutcome,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Conversationsummarytopictriggersource) MarshalJSON() ([]byte, error) {
 		SourceType *string `json:"sourceType,omitempty"`
 		
 		SourceId *string `json:"sourceId,omitempty"`
+		
+		SourceOutcome *string `json:"sourceOutcome,omitempty"`
 		Alias
 	}{ 
 		SourceType: o.SourceType,
 		
 		SourceId: o.SourceId,
+		
+		SourceOutcome: o.SourceOutcome,
 		Alias:    (Alias)(o),
 	})
 }
@@ -106,6 +113,10 @@ func (o *Conversationsummarytopictriggersource) UnmarshalJSON(b []byte) error {
     
 	if SourceId, ok := ConversationsummarytopictriggersourceMap["sourceId"].(string); ok {
 		o.SourceId = &SourceId
+	}
+    
+	if SourceOutcome, ok := ConversationsummarytopictriggersourceMap["sourceOutcome"].(string); ok {
+		o.SourceOutcome = &SourceOutcome
 	}
     
 

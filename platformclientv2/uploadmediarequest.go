@@ -7,19 +7,22 @@ import (
 	"strings"
 )
 
-// V2flowexecutiondataflowidtopicprocessautomation - This contains contextual information about an invoking entity.
-type V2flowexecutiondataflowidtopicprocessautomation struct { 
+// Uploadmediarequest
+type Uploadmediarequest struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// TriggerId - The identifier of the process automation trigger that invoked this flow.
-	TriggerId *string `json:"triggerId,omitempty"`
+	// FileName - Name of the media file to upload. It must not start with a dot and not end with a forward slash. Whitespace and the following characters are not allowed: \\{^}%`]\">[~<#|
+	FileName *string `json:"fileName,omitempty"`
 
-	// TriggerName - The name of the process automation trigger that invoked this flow.
-	TriggerName *string `json:"triggerName,omitempty"`
+	// ContentLengthBytes - The length of the file to upload in bytes
+	ContentLengthBytes *int `json:"contentLengthBytes,omitempty"`
+
+	// ContentMd5 - Content MD5 of the file to upload
+	ContentMd5 *string `json:"contentMd5,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *V2flowexecutiondataflowidtopicprocessautomation) SetField(field string, fieldValue interface{}) {
+func (o *Uploadmediarequest) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -40,7 +43,7 @@ func (o *V2flowexecutiondataflowidtopicprocessautomation) SetField(field string,
 	o.SetFieldNames[field] = true
 }
 
-func (o V2flowexecutiondataflowidtopicprocessautomation) MarshalJSON() ([]byte, error) {
+func (o Uploadmediarequest) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -78,34 +81,43 @@ func (o V2flowexecutiondataflowidtopicprocessautomation) MarshalJSON() ([]byte, 
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias V2flowexecutiondataflowidtopicprocessautomation
+	type Alias Uploadmediarequest
 	
 	return json.Marshal(&struct { 
-		TriggerId *string `json:"triggerId,omitempty"`
+		FileName *string `json:"fileName,omitempty"`
 		
-		TriggerName *string `json:"triggerName,omitempty"`
+		ContentLengthBytes *int `json:"contentLengthBytes,omitempty"`
+		
+		ContentMd5 *string `json:"contentMd5,omitempty"`
 		Alias
 	}{ 
-		TriggerId: o.TriggerId,
+		FileName: o.FileName,
 		
-		TriggerName: o.TriggerName,
+		ContentLengthBytes: o.ContentLengthBytes,
+		
+		ContentMd5: o.ContentMd5,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *V2flowexecutiondataflowidtopicprocessautomation) UnmarshalJSON(b []byte) error {
-	var V2flowexecutiondataflowidtopicprocessautomationMap map[string]interface{}
-	err := json.Unmarshal(b, &V2flowexecutiondataflowidtopicprocessautomationMap)
+func (o *Uploadmediarequest) UnmarshalJSON(b []byte) error {
+	var UploadmediarequestMap map[string]interface{}
+	err := json.Unmarshal(b, &UploadmediarequestMap)
 	if err != nil {
 		return err
 	}
 	
-	if TriggerId, ok := V2flowexecutiondataflowidtopicprocessautomationMap["triggerId"].(string); ok {
-		o.TriggerId = &TriggerId
+	if FileName, ok := UploadmediarequestMap["fileName"].(string); ok {
+		o.FileName = &FileName
 	}
     
-	if TriggerName, ok := V2flowexecutiondataflowidtopicprocessautomationMap["triggerName"].(string); ok {
-		o.TriggerName = &TriggerName
+	if ContentLengthBytes, ok := UploadmediarequestMap["contentLengthBytes"].(float64); ok {
+		ContentLengthBytesInt := int(ContentLengthBytes)
+		o.ContentLengthBytes = &ContentLengthBytesInt
+	}
+	
+	if ContentMd5, ok := UploadmediarequestMap["contentMd5"].(string); ok {
+		o.ContentMd5 = &ContentMd5
 	}
     
 
@@ -113,7 +125,7 @@ func (o *V2flowexecutiondataflowidtopicprocessautomation) UnmarshalJSON(b []byte
 }
 
 // String returns a JSON representation of the model
-func (o *V2flowexecutiondataflowidtopicprocessautomation) String() string {
+func (o *Uploadmediarequest) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 
