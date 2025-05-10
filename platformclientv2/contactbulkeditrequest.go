@@ -22,6 +22,9 @@ type Contactbulkeditrequest struct {
 
 	// Contact - Contact object with details of fields used for patching.
 	Contact *Dialercontact `json:"contact,omitempty"`
+
+	// GenerateDownloadURI - Whether to do backup export as part of Bulk Operation or not. Default: true.
+	GenerateDownloadURI *bool `json:"generateDownloadURI,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +97,8 @@ func (o Contactbulkeditrequest) MarshalJSON() ([]byte, error) {
 		ContactIds *[]string `json:"contactIds,omitempty"`
 		
 		Contact *Dialercontact `json:"contact,omitempty"`
+		
+		GenerateDownloadURI *bool `json:"generateDownloadURI,omitempty"`
 		Alias
 	}{ 
 		ContactListFilterId: o.ContactListFilterId,
@@ -103,6 +108,8 @@ func (o Contactbulkeditrequest) MarshalJSON() ([]byte, error) {
 		ContactIds: o.ContactIds,
 		
 		Contact: o.Contact,
+		
+		GenerateDownloadURI: o.GenerateDownloadURI,
 		Alias:    (Alias)(o),
 	})
 }
@@ -133,6 +140,10 @@ func (o *Contactbulkeditrequest) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ContactString, &o.Contact)
 	}
 	
+	if GenerateDownloadURI, ok := ContactbulkeditrequestMap["generateDownloadURI"].(bool); ok {
+		o.GenerateDownloadURI = &GenerateDownloadURI
+	}
+    
 
 	return nil
 }

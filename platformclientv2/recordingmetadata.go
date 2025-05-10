@@ -72,6 +72,9 @@ type Recordingmetadata struct {
 	// SessionId - The session id represents an external resource id, such as email, call, chat, etc
 	SessionId *string `json:"sessionId,omitempty"`
 
+	// Region - The region the source recording is stored in
+	Region *string `json:"region,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -219,6 +222,8 @@ func (o Recordingmetadata) MarshalJSON() ([]byte, error) {
 		
 		SessionId *string `json:"sessionId,omitempty"`
 		
+		Region *string `json:"region,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -261,6 +266,8 @@ func (o Recordingmetadata) MarshalJSON() ([]byte, error) {
 		RemainingRestorationsAllowedForOrg: o.RemainingRestorationsAllowedForOrg,
 		
 		SessionId: o.SessionId,
+		
+		Region: o.Region,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -360,6 +367,10 @@ func (o *Recordingmetadata) UnmarshalJSON(b []byte) error {
 	
 	if SessionId, ok := RecordingmetadataMap["sessionId"].(string); ok {
 		o.SessionId = &SessionId
+	}
+    
+	if Region, ok := RecordingmetadataMap["region"].(string); ok {
+		o.Region = &Region
 	}
     
 	if SelfUri, ok := RecordingmetadataMap["selfUri"].(string); ok {

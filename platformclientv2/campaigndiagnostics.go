@@ -32,6 +32,24 @@ type Campaigndiagnostics struct {
 	// FilteredOutContactsCount - Number of contacts that don't match filter. This is currently supported only for Campaigns with dynamic filter on.
 	FilteredOutContactsCount *int `json:"filteredOutContactsCount,omitempty"`
 
+	// IdleAgents - Information regarding the campaign's available agents.
+	IdleAgents *int `json:"idleAgents,omitempty"`
+
+	// EffectiveIdleAgents - Information regarding the campaign's effective available agents.
+	EffectiveIdleAgents *float64 `json:"effectiveIdleAgents,omitempty"`
+
+	// LinesUtilization - Information on the campaign's lines utilization.
+	LinesUtilization *Campaignlinesutilization `json:"linesUtilization,omitempty"`
+
+	// NumberOfContactsCalled - Number of contacts called during the campaign.
+	NumberOfContactsCalled *int `json:"numberOfContactsCalled,omitempty"`
+
+	// TotalNumberOfContacts - Total number of contacts in the campaign.
+	TotalNumberOfContacts *int `json:"totalNumberOfContacts,omitempty"`
+
+	// CampaignErrors - A list of current error conditions associated with the campaign.
+	CampaignErrors *[]Resterrordetail `json:"campaignErrors,omitempty"`
+
 	// CampaignSkillStatistics - Information regarding the campaign's skills
 	CampaignSkillStatistics *Campaignskillstatistics `json:"campaignSkillStatistics,omitempty"`
 }
@@ -113,6 +131,18 @@ func (o Campaigndiagnostics) MarshalJSON() ([]byte, error) {
 		
 		FilteredOutContactsCount *int `json:"filteredOutContactsCount,omitempty"`
 		
+		IdleAgents *int `json:"idleAgents,omitempty"`
+		
+		EffectiveIdleAgents *float64 `json:"effectiveIdleAgents,omitempty"`
+		
+		LinesUtilization *Campaignlinesutilization `json:"linesUtilization,omitempty"`
+		
+		NumberOfContactsCalled *int `json:"numberOfContactsCalled,omitempty"`
+		
+		TotalNumberOfContacts *int `json:"totalNumberOfContacts,omitempty"`
+		
+		CampaignErrors *[]Resterrordetail `json:"campaignErrors,omitempty"`
+		
 		CampaignSkillStatistics *Campaignskillstatistics `json:"campaignSkillStatistics,omitempty"`
 		Alias
 	}{ 
@@ -129,6 +159,18 @@ func (o Campaigndiagnostics) MarshalJSON() ([]byte, error) {
 		TimeZoneRescheduledCallsCount: o.TimeZoneRescheduledCallsCount,
 		
 		FilteredOutContactsCount: o.FilteredOutContactsCount,
+		
+		IdleAgents: o.IdleAgents,
+		
+		EffectiveIdleAgents: o.EffectiveIdleAgents,
+		
+		LinesUtilization: o.LinesUtilization,
+		
+		NumberOfContactsCalled: o.NumberOfContactsCalled,
+		
+		TotalNumberOfContacts: o.TotalNumberOfContacts,
+		
+		CampaignErrors: o.CampaignErrors,
 		
 		CampaignSkillStatistics: o.CampaignSkillStatistics,
 		Alias:    (Alias)(o),
@@ -175,6 +217,35 @@ func (o *Campaigndiagnostics) UnmarshalJSON(b []byte) error {
 	if FilteredOutContactsCount, ok := CampaigndiagnosticsMap["filteredOutContactsCount"].(float64); ok {
 		FilteredOutContactsCountInt := int(FilteredOutContactsCount)
 		o.FilteredOutContactsCount = &FilteredOutContactsCountInt
+	}
+	
+	if IdleAgents, ok := CampaigndiagnosticsMap["idleAgents"].(float64); ok {
+		IdleAgentsInt := int(IdleAgents)
+		o.IdleAgents = &IdleAgentsInt
+	}
+	
+	if EffectiveIdleAgents, ok := CampaigndiagnosticsMap["effectiveIdleAgents"].(float64); ok {
+		o.EffectiveIdleAgents = &EffectiveIdleAgents
+	}
+    
+	if LinesUtilization, ok := CampaigndiagnosticsMap["linesUtilization"].(map[string]interface{}); ok {
+		LinesUtilizationString, _ := json.Marshal(LinesUtilization)
+		json.Unmarshal(LinesUtilizationString, &o.LinesUtilization)
+	}
+	
+	if NumberOfContactsCalled, ok := CampaigndiagnosticsMap["numberOfContactsCalled"].(float64); ok {
+		NumberOfContactsCalledInt := int(NumberOfContactsCalled)
+		o.NumberOfContactsCalled = &NumberOfContactsCalledInt
+	}
+	
+	if TotalNumberOfContacts, ok := CampaigndiagnosticsMap["totalNumberOfContacts"].(float64); ok {
+		TotalNumberOfContactsInt := int(TotalNumberOfContacts)
+		o.TotalNumberOfContacts = &TotalNumberOfContactsInt
+	}
+	
+	if CampaignErrors, ok := CampaigndiagnosticsMap["campaignErrors"].([]interface{}); ok {
+		CampaignErrorsString, _ := json.Marshal(CampaignErrors)
+		json.Unmarshal(CampaignErrorsString, &o.CampaignErrors)
 	}
 	
 	if CampaignSkillStatistics, ok := CampaigndiagnosticsMap["campaignSkillStatistics"].(map[string]interface{}); ok {

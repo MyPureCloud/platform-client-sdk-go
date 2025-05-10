@@ -2422,7 +2422,7 @@ func (a RoutingApi) GetRoutingEmailDomain(domainId string) (*Inbounddomain, *API
 // GetRoutingEmailDomainRoute invokes GET /api/v2/routing/email/domains/{domainName}/routes/{routeId}
 //
 // Get a route
-func (a RoutingApi) GetRoutingEmailDomainRoute(domainName string, routeId string) (*Inboundroute, *APIResponse, error) {
+func (a RoutingApi) GetRoutingEmailDomainRoute(domainName string, routeId string, expand []string) (*Inboundroute, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/email/domains/{domainName}/routes/{routeId}"
@@ -2460,6 +2460,8 @@ func (a RoutingApi) GetRoutingEmailDomainRoute(domainName string, routeId string
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -2510,8 +2512,6 @@ func (a RoutingApi) GetRoutingEmailDomainRoute(domainName string, routeId string
 // GetRoutingEmailDomainRouteIdentityresolution invokes GET /api/v2/routing/email/domains/{domainName}/routes/{routeId}/identityresolution
 //
 // Get a route identity resolution setting.
-//
-// Preview: GetRoutingEmailDomainRouteIdentityresolution is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a RoutingApi) GetRoutingEmailDomainRouteIdentityresolution(domainName string, routeId string) (*Identityresolutionconfig, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2600,7 +2600,7 @@ func (a RoutingApi) GetRoutingEmailDomainRouteIdentityresolution(domainName stri
 // GetRoutingEmailDomainRoutes invokes GET /api/v2/routing/email/domains/{domainName}/routes
 //
 // Get routes
-func (a RoutingApi) GetRoutingEmailDomainRoutes(domainName string, pageSize int, pageNumber int, pattern string) (*Inboundrouteentitylisting, *APIResponse, error) {
+func (a RoutingApi) GetRoutingEmailDomainRoutes(domainName string, pageSize int, pageNumber int, pattern string, expand []string) (*Inboundrouteentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/email/domains/{domainName}/routes"
@@ -2638,6 +2638,8 @@ func (a RoutingApi) GetRoutingEmailDomainRoutes(domainName string, pageSize int,
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 	queryParams["pattern"] = a.Configuration.APIClient.ParameterToString(pattern, "")
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -3928,7 +3930,7 @@ func (a RoutingApi) GetRoutingPredictorsKeyperformanceindicators(kpiGroup string
 // GetRoutingQueue invokes GET /api/v2/routing/queues/{queueId}
 //
 // Get details about this queue.
-func (a RoutingApi) GetRoutingQueue(queueId string) (*Queue, *APIResponse, error) {
+func (a RoutingApi) GetRoutingQueue(queueId string, expand []string) (*Queue, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}"
@@ -3960,6 +3962,8 @@ func (a RoutingApi) GetRoutingQueue(queueId string) (*Queue, *APIResponse, error
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -4348,8 +4352,6 @@ func (a RoutingApi) GetRoutingQueueEstimatedwaittime(queueId string, conversatio
 // GetRoutingQueueIdentityresolution invokes GET /api/v2/routing/queues/{queueId}/identityresolution
 //
 // Get Queue IdentityResolution Settings.
-//
-// Preview: GetRoutingQueueIdentityresolution is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a RoutingApi) GetRoutingQueueIdentityresolution(queueId string) (*Identityresolutionqueueconfig, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4820,7 +4822,7 @@ func (a RoutingApi) GetRoutingQueueWrapupcodes(queueId string, pageSize int, pag
 // GetRoutingQueues invokes GET /api/v2/routing/queues
 //
 // Get list of queues.
-func (a RoutingApi) GetRoutingQueues(pageNumber int, pageSize int, sortOrder string, name string, id []string, divisionId []string, peerId []string, cannedResponseLibraryId string, hasPeer bool) (*Queueentitylisting, *APIResponse, error) {
+func (a RoutingApi) GetRoutingQueues(pageNumber int, pageSize int, sortOrder string, name string, id []string, divisionId []string, peerId []string, cannedResponseLibraryId string, hasPeer bool, expand []string) (*Queueentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues"
@@ -4864,6 +4866,8 @@ func (a RoutingApi) GetRoutingQueues(pageNumber int, pageSize int, sortOrder str
 	queryParams["cannedResponseLibraryId"] = a.Configuration.APIClient.ParameterToString(cannedResponseLibraryId, "")
 	
 	queryParams["hasPeer"] = a.Configuration.APIClient.ParameterToString(hasPeer, "")
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -6168,8 +6172,6 @@ func (a RoutingApi) GetRoutingSmsAvailablephonenumbers(countryCode string, phone
 // GetRoutingSmsIdentityresolutionPhonenumber invokes GET /api/v2/routing/sms/identityresolution/phonenumbers/{addressId}
 //
 // Get a SMS identity resolution settings.
-//
-// Preview: GetRoutingSmsIdentityresolutionPhonenumber is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a RoutingApi) GetRoutingSmsIdentityresolutionPhonenumber(addressId string) (*Identityresolutionconfig, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -6336,7 +6338,7 @@ func (a RoutingApi) GetRoutingSmsPhonenumber(phoneNumberId string, expand string
 // GetRoutingSmsPhonenumbers invokes GET /api/v2/routing/sms/phonenumbers
 //
 // Get a list of provisioned phone numbers.
-func (a RoutingApi) GetRoutingSmsPhonenumbers(phoneNumber string, phoneNumberType []string, phoneNumberStatus []string, countryCode []string, pageSize int, pageNumber int, sortBy string, sortOrder string, language string, integrationId string, supportedContentId string) (*Smsphonenumberentitylisting, *APIResponse, error) {
+func (a RoutingApi) GetRoutingSmsPhonenumbers(phoneNumber string, phoneNumberType []string, phoneNumberStatus []string, countryCode []string, pageSize int, pageNumber int, sortBy string, sortOrder string, language string, integrationId string, supportedContentId string, expand []string) (*Smsphonenumberentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/sms/phonenumbers"
@@ -6384,6 +6386,8 @@ func (a RoutingApi) GetRoutingSmsPhonenumbers(phoneNumber string, phoneNumberTyp
 	queryParams["integrationId"] = a.Configuration.APIClient.ParameterToString(integrationId, "")
 	
 	queryParams["supportedContentId"] = a.Configuration.APIClient.ParameterToString(supportedContentId, "")
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -11774,8 +11778,6 @@ func (a RoutingApi) PutRoutingEmailDomainRoute(domainName string, routeId string
 // PutRoutingEmailDomainRouteIdentityresolution invokes PUT /api/v2/routing/email/domains/{domainName}/routes/{routeId}/identityresolution
 //
 // Update identity resolution settings for a route.
-//
-// Preview: PutRoutingEmailDomainRouteIdentityresolution is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a RoutingApi) PutRoutingEmailDomainRouteIdentityresolution(domainName string, routeId string, body Identityresolutionconfig) (*Identityresolutionconfig, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -12134,8 +12136,6 @@ func (a RoutingApi) PutRoutingQueue(queueId string, body Queuerequest) (*Queue, 
 // PutRoutingQueueIdentityresolution invokes PUT /api/v2/routing/queues/{queueId}/identityresolution
 //
 // Update Queue IdentityResolution Settings.
-//
-// Preview: PutRoutingQueueIdentityresolution is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a RoutingApi) PutRoutingQueueIdentityresolution(queueId string, body Identityresolutionqueueconfig) (*Identityresolutionqueueconfig, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -12394,8 +12394,6 @@ func (a RoutingApi) PutRoutingSettingsTranscription(body Transcriptionsettings) 
 // PutRoutingSmsIdentityresolutionPhonenumber invokes PUT /api/v2/routing/sms/identityresolution/phonenumbers/{addressId}
 //
 // Update an SMS identity resolution settings.
-//
-// Preview: PutRoutingSmsIdentityresolutionPhonenumber is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a RoutingApi) PutRoutingSmsIdentityresolutionPhonenumber(addressId string, body Identityresolutionconfig) (*Identityresolutionconfig, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

@@ -70,6 +70,9 @@ type Reportingexportjobrequest struct {
 
 	// DurationFormat - Indicates the duration format for the exports
 	DurationFormat *string `json:"durationFormat,omitempty"`
+
+	// ChartColumns - The list of columns for which chart is going to be displayed in export
+	ChartColumns *[]Chartcolumn `json:"chartColumns,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -174,6 +177,8 @@ func (o Reportingexportjobrequest) MarshalJSON() ([]byte, error) {
 		IncludeDurationFormatInHeader *bool `json:"includeDurationFormatInHeader,omitempty"`
 		
 		DurationFormat *string `json:"durationFormat,omitempty"`
+		
+		ChartColumns *[]Chartcolumn `json:"chartColumns,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -215,6 +220,8 @@ func (o Reportingexportjobrequest) MarshalJSON() ([]byte, error) {
 		IncludeDurationFormatInHeader: o.IncludeDurationFormatInHeader,
 		
 		DurationFormat: o.DurationFormat,
+		
+		ChartColumns: o.ChartColumns,
 		Alias:    (Alias)(o),
 	})
 }
@@ -309,6 +316,11 @@ func (o *Reportingexportjobrequest) UnmarshalJSON(b []byte) error {
 		o.DurationFormat = &DurationFormat
 	}
     
+	if ChartColumns, ok := ReportingexportjobrequestMap["chartColumns"].([]interface{}); ok {
+		ChartColumnsString, _ := json.Marshal(ChartColumns)
+		json.Unmarshal(ChartColumnsString, &o.ChartColumns)
+	}
+	
 
 	return nil
 }

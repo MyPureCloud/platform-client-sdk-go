@@ -129,6 +129,9 @@ type Campaign struct {
 	// DynamicLineBalancingSettings - Dynamic line balancing settings
 	DynamicLineBalancingSettings *Dynamiclinebalancingsettings `json:"dynamicLineBalancingSettings,omitempty"`
 
+	// DiagnosticsSettings - Campaign diagnostics settings
+	DiagnosticsSettings *Diagnosticssettings `json:"diagnosticsSettings,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -290,6 +293,8 @@ func (o Campaign) MarshalJSON() ([]byte, error) {
 		
 		DynamicLineBalancingSettings *Dynamiclinebalancingsettings `json:"dynamicLineBalancingSettings,omitempty"`
 		
+		DiagnosticsSettings *Diagnosticssettings `json:"diagnosticsSettings,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -370,6 +375,8 @@ func (o Campaign) MarshalJSON() ([]byte, error) {
 		CallbackAutoAnswer: o.CallbackAutoAnswer,
 		
 		DynamicLineBalancingSettings: o.DynamicLineBalancingSettings,
+		
+		DiagnosticsSettings: o.DiagnosticsSettings,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -563,6 +570,11 @@ func (o *Campaign) UnmarshalJSON(b []byte) error {
 	if DynamicLineBalancingSettings, ok := CampaignMap["dynamicLineBalancingSettings"].(map[string]interface{}); ok {
 		DynamicLineBalancingSettingsString, _ := json.Marshal(DynamicLineBalancingSettings)
 		json.Unmarshal(DynamicLineBalancingSettingsString, &o.DynamicLineBalancingSettings)
+	}
+	
+	if DiagnosticsSettings, ok := CampaignMap["diagnosticsSettings"].(map[string]interface{}); ok {
+		DiagnosticsSettingsString, _ := json.Marshal(DiagnosticsSettings)
+		json.Unmarshal(DiagnosticsSettingsString, &o.DiagnosticsSettings)
 	}
 	
 	if SelfUri, ok := CampaignMap["selfUri"].(string); ok {

@@ -691,6 +691,9 @@ type Viewfilter struct {
 
 	// DeliveryPushed - Filter to indicate if push notification is sent
 	DeliveryPushed *bool `json:"deliveryPushed,omitempty"`
+
+	// SocialRatings - A set of ratings for Google Business Profile
+	SocialRatings *[]float32 `json:"socialRatings,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -1209,6 +1212,8 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		CategoryIds *[]string `json:"categoryIds,omitempty"`
 		
 		DeliveryPushed *bool `json:"deliveryPushed,omitempty"`
+		
+		SocialRatings *[]float32 `json:"socialRatings,omitempty"`
 		Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -1664,6 +1669,8 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		CategoryIds: o.CategoryIds,
 		
 		DeliveryPushed: o.DeliveryPushed,
+		
+		SocialRatings: o.SocialRatings,
 		Alias:    (Alias)(o),
 	})
 }
@@ -2757,6 +2764,11 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 		o.DeliveryPushed = &DeliveryPushed
 	}
     
+	if SocialRatings, ok := ViewfilterMap["socialRatings"].([]interface{}); ok {
+		SocialRatingsString, _ := json.Marshal(SocialRatings)
+		json.Unmarshal(SocialRatingsString, &o.SocialRatings)
+	}
+	
 
 	return nil
 }

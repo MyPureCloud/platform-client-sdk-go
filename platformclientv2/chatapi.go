@@ -865,7 +865,7 @@ func (a ChatApi) GetChatsRoomParticipant(roomJid string, participantJid string) 
 // GetChatsRoomParticipants invokes GET /api/v2/chats/rooms/{roomJid}/participants
 //
 // Get room participants in a room
-func (a ChatApi) GetChatsRoomParticipants(roomJid string) (*Roomparticipantsresponse, *APIResponse, error) {
+func (a ChatApi) GetChatsRoomParticipants(roomJid string, notify bool) (*Roomparticipantsresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/chats/rooms/{roomJid}/participants"
@@ -897,6 +897,8 @@ func (a ChatApi) GetChatsRoomParticipants(roomJid string) (*Roomparticipantsresp
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["notify"] = a.Configuration.APIClient.ParameterToString(notify, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

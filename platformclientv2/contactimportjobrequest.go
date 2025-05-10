@@ -13,6 +13,9 @@ type Contactimportjobrequest struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// SettingsId - Settings id
 	SettingsId *string `json:"settingsId,omitempty"`
+
+	// Division - The division to import into
+	Division *Writablestarrabledivision `json:"division,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +82,13 @@ func (o Contactimportjobrequest) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		SettingsId *string `json:"settingsId,omitempty"`
+		
+		Division *Writablestarrabledivision `json:"division,omitempty"`
 		Alias
 	}{ 
 		SettingsId: o.SettingsId,
+		
+		Division: o.Division,
 		Alias:    (Alias)(o),
 	})
 }
@@ -97,6 +104,11 @@ func (o *Contactimportjobrequest) UnmarshalJSON(b []byte) error {
 		o.SettingsId = &SettingsId
 	}
     
+	if Division, ok := ContactimportjobrequestMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
 
 	return nil
 }

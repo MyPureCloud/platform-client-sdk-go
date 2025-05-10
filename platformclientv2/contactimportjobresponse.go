@@ -30,6 +30,9 @@ type Contactimportjobresponse struct {
 	// DateCreated - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
+	// Division - Division for the job
+	Division *Starrabledivision `json:"division,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -120,6 +123,8 @@ func (o Contactimportjobresponse) MarshalJSON() ([]byte, error) {
 		
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
+		Division *Starrabledivision `json:"division,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
 		Settings *Addressableentityref `json:"settings,omitempty"`
@@ -136,6 +141,8 @@ func (o Contactimportjobresponse) MarshalJSON() ([]byte, error) {
 		Metadata: o.Metadata,
 		
 		DateCreated: DateCreated,
+		
+		Division: o.Division,
 		
 		SelfUri: o.SelfUri,
 		
@@ -175,6 +182,11 @@ func (o *Contactimportjobresponse) UnmarshalJSON(b []byte) error {
 	if dateCreatedString, ok := ContactimportjobresponseMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
+	}
+	
+	if Division, ok := ContactimportjobresponseMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
 	}
 	
 	if SelfUri, ok := ContactimportjobresponseMap["selfUri"].(string); ok {

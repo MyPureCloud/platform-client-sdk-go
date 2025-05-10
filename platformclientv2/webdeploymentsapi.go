@@ -920,8 +920,6 @@ func (a WebDeploymentsApi) GetWebdeploymentsDeploymentConfigurations(deploymentI
 // GetWebdeploymentsDeploymentIdentityresolution invokes GET /api/v2/webdeployments/deployments/{deploymentId}/identityresolution
 //
 // Get a deployment identity resolution setting.
-//
-// Preview: GetWebdeploymentsDeploymentIdentityresolution is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a WebDeploymentsApi) GetWebdeploymentsDeploymentIdentityresolution(deploymentId string) (*Identityresolutionconfig, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1665,8 +1663,6 @@ func (a WebDeploymentsApi) PutWebdeploymentsDeployment(deploymentId string, depl
 // PutWebdeploymentsDeploymentIdentityresolution invokes PUT /api/v2/webdeployments/deployments/{deploymentId}/identityresolution
 //
 // Update identity resolution settings for a deployment.
-//
-// Preview: PutWebdeploymentsDeploymentIdentityresolution is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a WebDeploymentsApi) PutWebdeploymentsDeploymentIdentityresolution(deploymentId string, body Identityresolutionconfig) (*Identityresolutionconfig, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

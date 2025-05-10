@@ -2855,8 +2855,6 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTopicsPublishjob(jobId 
 // GetSpeechandtextanalyticsTranslationsLanguageConversation invokes GET /api/v2/speechandtextanalytics/translations/languages/{languageId}/conversations/{conversationId}
 //
 // Translate a single interaction recording (or an email conversation)
-//
-// Preview: GetSpeechandtextanalyticsTranslationsLanguageConversation is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTranslationsLanguageConversation(languageId string, conversationId string, communicationId string, recordingId string) (*Communicationtranslationlist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2949,8 +2947,6 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTranslationsLanguageCon
 // GetSpeechandtextanalyticsTranslationsLanguages invokes GET /api/v2/speechandtextanalytics/translations/languages
 //
 // Get supported translation languages
-//
-// Preview: GetSpeechandtextanalyticsTranslationsLanguages is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTranslationsLanguages() (*Translatesupportedlanguagelist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

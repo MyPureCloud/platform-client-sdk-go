@@ -35,6 +35,9 @@ type Socialmediastatisticalsummary struct {
 	// Sum
 	Sum *float32 `json:"sum,omitempty"`
 
+	// Average
+	Average *float32 `json:"average,omitempty"`
+
 	// Current
 	Current *float32 `json:"current,omitempty"`
 
@@ -136,6 +139,8 @@ func (o Socialmediastatisticalsummary) MarshalJSON() ([]byte, error) {
 		
 		Sum *float32 `json:"sum,omitempty"`
 		
+		Average *float32 `json:"average,omitempty"`
+		
 		Current *float32 `json:"current,omitempty"`
 		
 		Ratio *float32 `json:"ratio,omitempty"`
@@ -166,6 +171,8 @@ func (o Socialmediastatisticalsummary) MarshalJSON() ([]byte, error) {
 		CountUnknown: o.CountUnknown,
 		
 		Sum: o.Sum,
+		
+		Average: o.Average,
 		
 		Current: o.Current,
 		
@@ -229,6 +236,11 @@ func (o *Socialmediastatisticalsummary) UnmarshalJSON(b []byte) error {
 	if Sum, ok := SocialmediastatisticalsummaryMap["sum"].(float64); ok {
 		SumFloat32 := float32(Sum)
 		o.Sum = &SumFloat32
+	}
+    
+	if Average, ok := SocialmediastatisticalsummaryMap["average"].(float64); ok {
+		AverageFloat32 := float32(Average)
+		o.Average = &AverageFloat32
 	}
     
 	if Current, ok := SocialmediastatisticalsummaryMap["current"].(float64); ok {

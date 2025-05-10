@@ -47,7 +47,7 @@ type Appevent struct {
 	// Attributes - User-defined attributes associated with a particular event.
 	Attributes *map[string]Customeventattribute `json:"attributes,omitempty"`
 
-	// Traits - Traits are attributes intrinsic to the customer that may be sent in selected events. Examples are email, name, phone.
+	// Traits - Traits are attributes intrinsic to the customer that may be sent in selected events. Examples are email, givenName, cellPhone.
 	Traits *map[string]Customeventattribute `json:"traits,omitempty"`
 }
 

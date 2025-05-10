@@ -105,6 +105,9 @@ type Reportingexportjobresponse struct {
 	// ExportAllowedToRerun - Indicates whether the export run is allowed to rerun
 	ExportAllowedToRerun *bool `json:"exportAllowedToRerun,omitempty"`
 
+	// ChartColumns - The list of columns for which chart is going to be displayed in export
+	ChartColumns *[]Chartcolumn `json:"chartColumns,omitempty"`
+
 	// Enabled
 	Enabled *bool `json:"enabled,omitempty"`
 
@@ -253,6 +256,8 @@ func (o Reportingexportjobresponse) MarshalJSON() ([]byte, error) {
 		
 		ExportAllowedToRerun *bool `json:"exportAllowedToRerun,omitempty"`
 		
+		ChartColumns *[]Chartcolumn `json:"chartColumns,omitempty"`
+		
 		Enabled *bool `json:"enabled,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -319,6 +324,8 @@ func (o Reportingexportjobresponse) MarshalJSON() ([]byte, error) {
 		DurationFormat: o.DurationFormat,
 		
 		ExportAllowedToRerun: o.ExportAllowedToRerun,
+		
+		ChartColumns: o.ChartColumns,
 		
 		Enabled: o.Enabled,
 		
@@ -464,6 +471,11 @@ func (o *Reportingexportjobresponse) UnmarshalJSON(b []byte) error {
 		o.ExportAllowedToRerun = &ExportAllowedToRerun
 	}
     
+	if ChartColumns, ok := ReportingexportjobresponseMap["chartColumns"].([]interface{}); ok {
+		ChartColumnsString, _ := json.Marshal(ChartColumns)
+		json.Unmarshal(ChartColumnsString, &o.ChartColumns)
+	}
+	
 	if Enabled, ok := ReportingexportjobresponseMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}

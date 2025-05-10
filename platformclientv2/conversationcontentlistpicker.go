@@ -14,10 +14,10 @@ type Conversationcontentlistpicker struct {
 	// Sections - An array of sections in the List Picker.
 	Sections *[]Conversationcontentlistpickersection `json:"sections,omitempty"`
 
-	// ReplyMessage - The message displayed in the received message bubble.
+	// ReplyMessage - The reply message after the user has selected the options from the List Picker.
 	ReplyMessage *Conversationcontentreceivedreplymessage `json:"replyMessage,omitempty"`
 
-	// ReceivedMessage - The message displayed in the reply message bubble.
+	// ReceivedMessage - The message prompt to select options in the List Picker sections.
 	ReceivedMessage *Conversationcontentreceivedreplymessage `json:"receivedMessage,omitempty"`
 }
 

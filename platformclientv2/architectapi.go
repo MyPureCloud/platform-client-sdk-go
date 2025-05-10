@@ -3039,8 +3039,6 @@ func (a ArchitectApi) GetArchitectIvr(ivrId string) (*Ivr, *APIResponse, error) 
 // GetArchitectIvrIdentityresolution invokes GET /api/v2/architect/ivrs/{ivrId}/identityresolution
 //
 // Get an IVR IdentityResolutionConfig.
-//
-// Preview: GetArchitectIvrIdentityresolution is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ArchitectApi) GetArchitectIvrIdentityresolution(ivrId string) (*Identityresolutionconfig, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3123,7 +3121,7 @@ func (a ArchitectApi) GetArchitectIvrIdentityresolution(ivrId string) (*Identity
 // GetArchitectIvrs invokes GET /api/v2/architect/ivrs
 //
 // Get IVR configs.
-func (a ArchitectApi) GetArchitectIvrs(pageNumber int, pageSize int, sortBy string, sortOrder string, name string, dnis string, scheduleGroup string) (*Ivrentitylisting, *APIResponse, error) {
+func (a ArchitectApi) GetArchitectIvrs(pageNumber int, pageSize int, sortBy string, sortOrder string, name string, dnis string, scheduleGroup string, expand []string) (*Ivrentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/ivrs"
@@ -3163,6 +3161,8 @@ func (a ArchitectApi) GetArchitectIvrs(pageNumber int, pageSize int, sortBy stri
 	queryParams["dnis"] = a.Configuration.APIClient.ParameterToString(dnis, "")
 	
 	queryParams["scheduleGroup"] = a.Configuration.APIClient.ParameterToString(scheduleGroup, "")
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -11672,8 +11672,6 @@ func (a ArchitectApi) PutArchitectIvr(ivrId string, body Ivr) (*Ivr, *APIRespons
 // PutArchitectIvrIdentityresolution invokes PUT /api/v2/architect/ivrs/{ivrId}/identityresolution
 //
 // Update an IVR IdentityResolutionConfig.
-//
-// Preview: PutArchitectIvrIdentityresolution is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ArchitectApi) PutArchitectIvrIdentityresolution(ivrId string, body Identityresolutionconfig) (*Identityresolutionconfig, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

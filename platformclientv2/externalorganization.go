@@ -72,6 +72,12 @@ type Externalorganization struct {
 	// CustomFields - Custom fields defined in the schema referenced by schemaId and schemaVersion.
 	CustomFields *map[string]interface{} `json:"customFields,omitempty"`
 
+	// Identifiers - Identifiers claimed by this external org
+	Identifiers *[]Externalorganizationidentifier `json:"identifiers,omitempty"`
+
+	// ExternalIds - A list of external identifiers that identify this External Organization in an external system
+	ExternalIds *[]Externalid `json:"externalIds,omitempty"`
+
 	// ExternalDataSources - Links to the sources of data (e.g. one source might be a CRM) that contributed data to this record.  Read-only, and only populated when requested via expand param.
 	ExternalDataSources *[]Externaldatasource `json:"externalDataSources,omitempty"`
 
@@ -198,6 +204,10 @@ func (o Externalorganization) MarshalJSON() ([]byte, error) {
 		
 		CustomFields *map[string]interface{} `json:"customFields,omitempty"`
 		
+		Identifiers *[]Externalorganizationidentifier `json:"identifiers,omitempty"`
+		
+		ExternalIds *[]Externalid `json:"externalIds,omitempty"`
+		
 		ExternalDataSources *[]Externaldatasource `json:"externalDataSources,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -242,6 +252,10 @@ func (o Externalorganization) MarshalJSON() ([]byte, error) {
 		Schema: o.Schema,
 		
 		CustomFields: o.CustomFields,
+		
+		Identifiers: o.Identifiers,
+		
+		ExternalIds: o.ExternalIds,
 		
 		ExternalDataSources: o.ExternalDataSources,
 		
@@ -350,6 +364,16 @@ func (o *Externalorganization) UnmarshalJSON(b []byte) error {
 	if CustomFields, ok := ExternalorganizationMap["customFields"].(map[string]interface{}); ok {
 		CustomFieldsString, _ := json.Marshal(CustomFields)
 		json.Unmarshal(CustomFieldsString, &o.CustomFields)
+	}
+	
+	if Identifiers, ok := ExternalorganizationMap["identifiers"].([]interface{}); ok {
+		IdentifiersString, _ := json.Marshal(Identifiers)
+		json.Unmarshal(IdentifiersString, &o.Identifiers)
+	}
+	
+	if ExternalIds, ok := ExternalorganizationMap["externalIds"].([]interface{}); ok {
+		ExternalIdsString, _ := json.Marshal(ExternalIds)
+		json.Unmarshal(ExternalIdsString, &o.ExternalIds)
 	}
 	
 	if ExternalDataSources, ok := ExternalorganizationMap["externalDataSources"].([]interface{}); ok {

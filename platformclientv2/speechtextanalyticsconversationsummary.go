@@ -21,8 +21,8 @@ type Speechtextanalyticsconversationsummary struct {
 	// Language - Language of the summary
 	Language *string `json:"language,omitempty"`
 
-	// AgentId - The id of the agent associated with the summary
-	AgentId *string `json:"agentId,omitempty"`
+	// SourceId - The id of the source (program, agent assistant, or flow) from which summarization is triggered
+	SourceId *string `json:"sourceId,omitempty"`
 
 	// Summary - A summarization of the conversation transcription
 	Summary *string `json:"summary,omitempty"`
@@ -111,7 +111,7 @@ func (o Speechtextanalyticsconversationsummary) MarshalJSON() ([]byte, error) {
 		
 		Language *string `json:"language,omitempty"`
 		
-		AgentId *string `json:"agentId,omitempty"`
+		SourceId *string `json:"sourceId,omitempty"`
 		
 		Summary *string `json:"summary,omitempty"`
 		
@@ -126,7 +126,7 @@ func (o Speechtextanalyticsconversationsummary) MarshalJSON() ([]byte, error) {
 		
 		Language: o.Language,
 		
-		AgentId: o.AgentId,
+		SourceId: o.SourceId,
 		
 		Summary: o.Summary,
 		
@@ -156,8 +156,8 @@ func (o *Speechtextanalyticsconversationsummary) UnmarshalJSON(b []byte) error {
 		o.Language = &Language
 	}
     
-	if AgentId, ok := SpeechtextanalyticsconversationsummaryMap["agentId"].(string); ok {
-		o.AgentId = &AgentId
+	if SourceId, ok := SpeechtextanalyticsconversationsummaryMap["sourceId"].(string); ok {
+		o.SourceId = &SourceId
 	}
     
 	if Summary, ok := SpeechtextanalyticsconversationsummaryMap["summary"].(string); ok {

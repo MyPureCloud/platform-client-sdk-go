@@ -10,7 +10,10 @@ import (
 // Diagnosticssettings
 type Diagnosticssettings struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// ReportLowMaxCallsPerAgentAlert - Whether to report on low max calls per agent alerts.
+	ReportLowMaxCallsPerAgentAlert *bool `json:"reportLowMaxCallsPerAgentAlert,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Diagnosticssettings) SetField(field string, fieldValue interface{}) {
@@ -74,8 +77,12 @@ func (o Diagnosticssettings) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Diagnosticssettings
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		ReportLowMaxCallsPerAgentAlert *bool `json:"reportLowMaxCallsPerAgentAlert,omitempty"`
+		Alias
+	}{ 
+		ReportLowMaxCallsPerAgentAlert: o.ReportLowMaxCallsPerAgentAlert,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -86,6 +93,10 @@ func (o *Diagnosticssettings) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if ReportLowMaxCallsPerAgentAlert, ok := DiagnosticssettingsMap["reportLowMaxCallsPerAgentAlert"].(bool); ok {
+		o.ReportLowMaxCallsPerAgentAlert = &ReportLowMaxCallsPerAgentAlert
+	}
+    
 
 	return nil
 }

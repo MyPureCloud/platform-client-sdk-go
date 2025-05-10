@@ -6603,8 +6603,6 @@ func (a ConversationsApi) GetConversationsMessagingFacebookPermissions() (*Faceb
 // GetConversationsMessagingIdentityresolutionIntegrationsFacebookIntegrationId invokes GET /api/v2/conversations/messaging/identityresolution/integrations/facebook/{integrationId}
 //
 // Get Facebook messaging integration identity resolution settings
-//
-// Preview: GetConversationsMessagingIdentityresolutionIntegrationsFacebookIntegrationId is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) GetConversationsMessagingIdentityresolutionIntegrationsFacebookIntegrationId(integrationId string) (*Identityresolutionconfig, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -6687,8 +6685,6 @@ func (a ConversationsApi) GetConversationsMessagingIdentityresolutionIntegration
 // GetConversationsMessagingIdentityresolutionIntegrationsOpenIntegrationId invokes GET /api/v2/conversations/messaging/identityresolution/integrations/open/{integrationId}
 //
 // Get an open messaging integration Identity Resolution settings
-//
-// Preview: GetConversationsMessagingIdentityresolutionIntegrationsOpenIntegrationId is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) GetConversationsMessagingIdentityresolutionIntegrationsOpenIntegrationId(integrationId string) (*Openmessagingidentityresolutionconfig, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -6771,8 +6767,6 @@ func (a ConversationsApi) GetConversationsMessagingIdentityresolutionIntegration
 // GetConversationsMessagingIdentityresolutionIntegrationsWhatsappIntegrationId invokes GET /api/v2/conversations/messaging/identityresolution/integrations/whatsapp/{integrationId}
 //
 // Get a whatsApp integration Identity Resolution settings
-//
-// Preview: GetConversationsMessagingIdentityresolutionIntegrationsWhatsappIntegrationId is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) GetConversationsMessagingIdentityresolutionIntegrationsWhatsappIntegrationId(integrationId string) (*Identityresolutionconfig, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -9314,11 +9308,93 @@ func (a ConversationsApi) PatchConversationSecureattributes(conversationId strin
 	return successPayload, response, err
 }
 
+// PatchConversationSummaryEngagements invokes PATCH /api/v2/conversations/{conversationId}/summaries/{summaryId}/engagements
+//
+// Update agent's engagement for the summary.
+func (a ConversationsApi) PatchConversationSummaryEngagements(conversationId string, summaryId string, body Engagementrequest) (*APIResponse, error) {
+	var httpMethod = "PATCH"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/{conversationId}/summaries/{summaryId}/engagements"
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{summaryId}", url.PathEscape(fmt.Sprintf("%v", summaryId)), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'conversationId' is set
+	if &conversationId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationSummaryEngagements")
+	}
+	// verify the required parameter 'summaryId' is set
+	if &summaryId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'summaryId' when calling ConversationsApi->PatchConversationSummaryEngagements")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
 // PatchConversationSummaryFeedback invokes PATCH /api/v2/conversations/{conversationId}/summaries/{summaryId}/feedback
 //
 // Update the feedback for the summary.
-//
-// Preview: PatchConversationSummaryFeedback is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) PatchConversationSummaryFeedback(conversationId string, summaryId string, body Feedbackupdaterequest) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -21419,8 +21495,6 @@ func (a ConversationsApi) PutConversationsMessageRecordingstate(conversationId s
 // PutConversationsMessagingIdentityresolutionIntegrationsFacebookIntegrationId invokes PUT /api/v2/conversations/messaging/identityresolution/integrations/facebook/{integrationId}
 //
 // Create an identity resolution settings for a Facebook messaging integration
-//
-// Preview: PutConversationsMessagingIdentityresolutionIntegrationsFacebookIntegrationId is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) PutConversationsMessagingIdentityresolutionIntegrationsFacebookIntegrationId(integrationId string, body Identityresolutionconfig) (*Identityresolutionconfig, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -21511,8 +21585,6 @@ func (a ConversationsApi) PutConversationsMessagingIdentityresolutionIntegration
 // PutConversationsMessagingIdentityresolutionIntegrationsOpenIntegrationId invokes PUT /api/v2/conversations/messaging/identityresolution/integrations/open/{integrationId}
 //
 // Update an open messaging integration Identity Resolution settings
-//
-// Preview: PutConversationsMessagingIdentityresolutionIntegrationsOpenIntegrationId is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) PutConversationsMessagingIdentityresolutionIntegrationsOpenIntegrationId(integrationId string, body Openmessagingidentityresolutionconfig) (*Openmessagingidentityresolutionconfig, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -21603,8 +21675,6 @@ func (a ConversationsApi) PutConversationsMessagingIdentityresolutionIntegration
 // PutConversationsMessagingIdentityresolutionIntegrationsWhatsappIntegrationId invokes PUT /api/v2/conversations/messaging/identityresolution/integrations/whatsapp/{integrationId}
 //
 // Update a whatsApp integration Identity Resolution settings
-//
-// Preview: PutConversationsMessagingIdentityresolutionIntegrationsWhatsappIntegrationId is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) PutConversationsMessagingIdentityresolutionIntegrationsWhatsappIntegrationId(integrationId string, body Identityresolutionconfig) (*Identityresolutionconfig, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

@@ -3176,8 +3176,6 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationContacts(externalOrg
 // GetExternalcontactsOrganizationIdentifiers invokes GET /api/v2/externalcontacts/organizations/{externalOrganizationId}/identifiers
 //
 // List the identifiers for an external organization
-//
-// Preview: GetExternalcontactsOrganizationIdentifiers is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ExternalContactsApi) GetExternalcontactsOrganizationIdentifiers(externalOrganizationId string) (*Externalorganizationidentifierlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4437,8 +4435,6 @@ func (a ExternalContactsApi) GetExternalcontactsScanContacts(limit int, cursor s
 // GetExternalcontactsScanContactsDivisionviewsAll invokes GET /api/v2/externalcontacts/scan/contacts/divisionviews/all
 //
 // Scan for external contacts using paging
-//
-// Preview: GetExternalcontactsScanContactsDivisionviewsAll is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ExternalContactsApi) GetExternalcontactsScanContactsDivisionviewsAll(limit int, cursor string) (*Cursorcontactlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4601,8 +4597,6 @@ func (a ExternalContactsApi) GetExternalcontactsScanNotes(limit int, cursor stri
 // GetExternalcontactsScanNotesDivisionviewsAll invokes GET /api/v2/externalcontacts/scan/notes/divisionviews/all
 //
 // Scan for notes using paging
-//
-// Preview: GetExternalcontactsScanNotesDivisionviewsAll is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ExternalContactsApi) GetExternalcontactsScanNotesDivisionviewsAll(limit int, cursor string) (*Cursornotelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4765,8 +4759,6 @@ func (a ExternalContactsApi) GetExternalcontactsScanOrganizations(limit int, cur
 // GetExternalcontactsScanOrganizationsDivisionviewsAll invokes GET /api/v2/externalcontacts/scan/organizations/divisionviews/all
 //
 // Scan for external organizations using paging
-//
-// Preview: GetExternalcontactsScanOrganizationsDivisionviewsAll is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ExternalContactsApi) GetExternalcontactsScanOrganizationsDivisionviewsAll(limit int, cursor string) (*Cursororganizationlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4929,8 +4921,6 @@ func (a ExternalContactsApi) GetExternalcontactsScanRelationships(limit int, cur
 // GetExternalcontactsScanRelationshipsDivisionviewsAll invokes GET /api/v2/externalcontacts/scan/relationships/divisionviews/all
 //
 // Scan for relationships
-//
-// Preview: GetExternalcontactsScanRelationshipsDivisionviewsAll is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ExternalContactsApi) GetExternalcontactsScanRelationshipsDivisionviewsAll(limit int, cursor string) (*Cursorrelationshiplisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5101,8 +5091,6 @@ func (a ExternalContactsApi) PatchExternalcontactsContactIdentifiers(contactId s
 // PatchExternalcontactsOrganizationIdentifiers invokes PATCH /api/v2/externalcontacts/organizations/{externalOrganizationId}/identifiers
 //
 // Claim or release identifiers for an external organization
-//
-// Preview: PatchExternalcontactsOrganizationIdentifiers is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ExternalContactsApi) PatchExternalcontactsOrganizationIdentifiers(externalOrganizationId string, body Externalorganizationidentifierclaimrequest) (*Externalorganizationidentifier, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -5361,8 +5349,6 @@ func (a ExternalContactsApi) PostExternalcontactsBulkContactsAdd(body Bulkcontac
 // PostExternalcontactsBulkContactsDivisionviews invokes POST /api/v2/externalcontacts/bulk/contacts/divisionviews
 //
 // Bulk fetch contacts across divisions
-//
-// Preview: PostExternalcontactsBulkContactsDivisionviews is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ExternalContactsApi) PostExternalcontactsBulkContactsDivisionviews(body Bulkidsrequest) (*Bulkfetchcontactsresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -5449,8 +5435,6 @@ func (a ExternalContactsApi) PostExternalcontactsBulkContactsDivisionviews(body 
 // Bulk Enrich Contacts - Run up to 10 Enrich operations per request
 //
 // See the API endpoint /externalcontacts/contacts/enrich for docs on individual Enrich operations.
-//
-// Preview: PostExternalcontactsBulkContactsEnrich is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ExternalContactsApi) PostExternalcontactsBulkContactsEnrich(body Bulkcontactsenrichrequest, dryRun bool) (*Bulkcontactsenrichresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6293,8 +6277,6 @@ func (a ExternalContactsApi) PostExternalcontactsBulkOrganizationsAdd(body Bulko
 // PostExternalcontactsBulkOrganizationsDivisionviews invokes POST /api/v2/externalcontacts/bulk/organizations/divisionviews
 //
 // Bulk fetch organizations across divisions
-//
-// Preview: PostExternalcontactsBulkOrganizationsDivisionviews is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ExternalContactsApi) PostExternalcontactsBulkOrganizationsDivisionviews(body Bulkidsrequest) (*Bulkfetchorganizationsresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6381,8 +6363,6 @@ func (a ExternalContactsApi) PostExternalcontactsBulkOrganizationsDivisionviews(
 // Bulk enrich external organizations - Run up to 10 Enrich operations per request
 //
 // See the API endpoint /externalcontacts/organizations/enrich for docs on individual Enrich operations.
-//
-// Preview: PostExternalcontactsBulkOrganizationsEnrich is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ExternalContactsApi) PostExternalcontactsBulkOrganizationsEnrich(body Bulkorganizationsenrichrequest, dryRun bool) (*Bulkorganizationsenrichresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7231,8 +7211,6 @@ func (a ExternalContactsApi) PostExternalcontactsContacts(body Externalcontact) 
 // Modify or create an External Contact, with powerful behaviors for finding and combining data with pre-existing Contacts.
 //
 // You may also submit multiple Enrich operations in one request via the Bulk Enrich API at /externalcontacts/bulk/contacts. A 201 response status indicates that a new Contact was created, whereas a 200 status indicates that a Contact was updated or a merge occurred.
-//
-// Preview: PostExternalcontactsContactsEnrich is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ExternalContactsApi) PostExternalcontactsContactsEnrich(body Contactenrichrequest, dryRun bool) (*Externalcontact, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7405,8 +7383,6 @@ func (a ExternalContactsApi) PostExternalcontactsContactsExports(body Contactsex
 // Merge up to 25 contacts into a new contact record
 //
 // Merge operation may fail if the resulting mergeset exceeds our default limit of 52. The valueOverride field lets you override any of the Contact fields post-merge. If any Contact field is left null in &#x60;valueOverride&#x60;, it will be taken from the most recently-modified contact in the merge set. Exception for *phone/_*email fields: Conflicting data will be moved to any other available phone/email fields in the merged contact.
-//
-// Preview: PostExternalcontactsContactsMerge is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ExternalContactsApi) PostExternalcontactsContactsMerge(body Mergecontactsrequest) (*Externalcontact, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7751,8 +7727,6 @@ func (a ExternalContactsApi) PostExternalcontactsIdentifierlookup(identifier Con
 // Fetch a contact using an identifier type and value.
 //
 // Phone number identifier values must be provided with the country code and a leading &#39;+&#39; symbol. Example: \&quot;+1 704 298 4733\&quot;
-//
-// Preview: PostExternalcontactsIdentifierlookupContacts is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ExternalContactsApi) PostExternalcontactsIdentifierlookupContacts(identifier Contactidentifier, expand []string) (*Externalcontact, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7841,8 +7815,6 @@ func (a ExternalContactsApi) PostExternalcontactsIdentifierlookupContacts(identi
 // Fetch an external organization using an identifier type and value.
 //
 // This endpoint will only accept ExternalId type identifiers.
-//
-// Preview: PostExternalcontactsIdentifierlookupOrganizations is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ExternalContactsApi) PostExternalcontactsIdentifierlookupOrganizations(identifier Externalorganizationidentifier, expand []string) (*Externalorganization, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -8613,8 +8585,6 @@ func (a ExternalContactsApi) PostExternalcontactsOrganizations(body Externalorga
 // Modify or create an External Org, with powerful behaviors for finding and combining data with pre-existing External Orgs.
 //
 // You may also submit multiple Enrich operations in one request via the Bulk Enrich API at /externalcontacts/bulk/organizations. A 201 response status indicates that a new External Organization was created, whereas a 200 status indicates that an External Organization was updated
-//
-// Preview: PostExternalcontactsOrganizationsEnrich is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ExternalContactsApi) PostExternalcontactsOrganizationsEnrich(body Externalorganizationenrichrequest, dryRun bool) (*Externalorganization, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

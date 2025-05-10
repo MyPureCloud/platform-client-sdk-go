@@ -48,6 +48,9 @@ type Analyticsconversationwithoutattributes struct {
 	// OriginatingDirection - The original direction of the conversation
 	OriginatingDirection *string `json:"originatingDirection,omitempty"`
 
+	// OriginatingSocialMediaPublic - Indicates that the conversation originated from a public message on social media
+	OriginatingSocialMediaPublic *bool `json:"originatingSocialMediaPublic,omitempty"`
+
 	// SelfServed - Indicates whether all flow sessions were self serviced
 	SelfServed *bool `json:"selfServed,omitempty"`
 
@@ -175,6 +178,8 @@ func (o Analyticsconversationwithoutattributes) MarshalJSON() ([]byte, error) {
 		
 		OriginatingDirection *string `json:"originatingDirection,omitempty"`
 		
+		OriginatingSocialMediaPublic *bool `json:"originatingSocialMediaPublic,omitempty"`
+		
 		SelfServed *bool `json:"selfServed,omitempty"`
 		
 		Evaluations *[]Analyticsevaluation `json:"evaluations,omitempty"`
@@ -209,6 +214,8 @@ func (o Analyticsconversationwithoutattributes) MarshalJSON() ([]byte, error) {
 		MediaStatsMinConversationRFactor: o.MediaStatsMinConversationRFactor,
 		
 		OriginatingDirection: o.OriginatingDirection,
+		
+		OriginatingSocialMediaPublic: o.OriginatingSocialMediaPublic,
 		
 		SelfServed: o.SelfServed,
 		
@@ -281,6 +288,10 @@ func (o *Analyticsconversationwithoutattributes) UnmarshalJSON(b []byte) error {
     
 	if OriginatingDirection, ok := AnalyticsconversationwithoutattributesMap["originatingDirection"].(string); ok {
 		o.OriginatingDirection = &OriginatingDirection
+	}
+    
+	if OriginatingSocialMediaPublic, ok := AnalyticsconversationwithoutattributesMap["originatingSocialMediaPublic"].(bool); ok {
+		o.OriginatingSocialMediaPublic = &OriginatingSocialMediaPublic
 	}
     
 	if SelfServed, ok := AnalyticsconversationwithoutattributesMap["selfServed"].(bool); ok {

@@ -16,6 +16,9 @@ type Csvjobrequest struct {
 
 	// SettingsId - Settings for the csv job
 	SettingsId *string `json:"settingsId,omitempty"`
+
+	// Division - Division for the csv job
+	Division *Writablestarrabledivision `json:"division,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Csvjobrequest) MarshalJSON() ([]byte, error) {
 		UploadId *string `json:"uploadId,omitempty"`
 		
 		SettingsId *string `json:"settingsId,omitempty"`
+		
+		Division *Writablestarrabledivision `json:"division,omitempty"`
 		Alias
 	}{ 
 		UploadId: o.UploadId,
 		
 		SettingsId: o.SettingsId,
+		
+		Division: o.Division,
 		Alias:    (Alias)(o),
 	})
 }
@@ -108,6 +115,11 @@ func (o *Csvjobrequest) UnmarshalJSON(b []byte) error {
 		o.SettingsId = &SettingsId
 	}
     
+	if Division, ok := CsvjobrequestMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
 
 	return nil
 }

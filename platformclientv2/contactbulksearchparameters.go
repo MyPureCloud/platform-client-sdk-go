@@ -16,6 +16,9 @@ type Contactbulksearchparameters struct {
 
 	// Criteria - Criteria to filter the contacts by. Either this property or contactListFilterId is required.
 	Criteria *Contactbulksearchcriteria `json:"criteria,omitempty"`
+
+	// GenerateDownloadURI - Whether to do backup export as part of Bulk Operation or not. Default: true.
+	GenerateDownloadURI *bool `json:"generateDownloadURI,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Contactbulksearchparameters) MarshalJSON() ([]byte, error) {
 		ContactListFilterId *string `json:"contactListFilterId,omitempty"`
 		
 		Criteria *Contactbulksearchcriteria `json:"criteria,omitempty"`
+		
+		GenerateDownloadURI *bool `json:"generateDownloadURI,omitempty"`
 		Alias
 	}{ 
 		ContactListFilterId: o.ContactListFilterId,
 		
 		Criteria: o.Criteria,
+		
+		GenerateDownloadURI: o.GenerateDownloadURI,
 		Alias:    (Alias)(o),
 	})
 }
@@ -109,6 +116,10 @@ func (o *Contactbulksearchparameters) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(CriteriaString, &o.Criteria)
 	}
 	
+	if GenerateDownloadURI, ok := ContactbulksearchparametersMap["generateDownloadURI"].(bool); ok {
+		o.GenerateDownloadURI = &GenerateDownloadURI
+	}
+    
 
 	return nil
 }

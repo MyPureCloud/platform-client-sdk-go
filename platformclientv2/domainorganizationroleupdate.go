@@ -38,11 +38,11 @@ type Domainorganizationroleupdate struct {
 	// RoleNeedsUpdate - Optional unless patch operation.
 	RoleNeedsUpdate *bool `json:"roleNeedsUpdate,omitempty"`
 
-	// Base
-	Base *bool `json:"base,omitempty"`
-
 	// VarDefault
 	VarDefault *bool `json:"default,omitempty"`
+
+	// Base
+	Base *bool `json:"base,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -129,9 +129,9 @@ func (o Domainorganizationroleupdate) MarshalJSON() ([]byte, error) {
 		
 		RoleNeedsUpdate *bool `json:"roleNeedsUpdate,omitempty"`
 		
-		Base *bool `json:"base,omitempty"`
-		
 		VarDefault *bool `json:"default,omitempty"`
+		
+		Base *bool `json:"base,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
@@ -154,9 +154,9 @@ func (o Domainorganizationroleupdate) MarshalJSON() ([]byte, error) {
 		
 		RoleNeedsUpdate: o.RoleNeedsUpdate,
 		
-		Base: o.Base,
-		
 		VarDefault: o.VarDefault,
+		
+		Base: o.Base,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -210,12 +210,12 @@ func (o *Domainorganizationroleupdate) UnmarshalJSON(b []byte) error {
 		o.RoleNeedsUpdate = &RoleNeedsUpdate
 	}
     
-	if Base, ok := DomainorganizationroleupdateMap["base"].(bool); ok {
-		o.Base = &Base
-	}
-    
 	if VarDefault, ok := DomainorganizationroleupdateMap["default"].(bool); ok {
 		o.VarDefault = &VarDefault
+	}
+    
+	if Base, ok := DomainorganizationroleupdateMap["base"].(bool); ok {
+		o.Base = &Base
 	}
     
 	if SelfUri, ok := DomainorganizationroleupdateMap["selfUri"].(string); ok {

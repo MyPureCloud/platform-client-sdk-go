@@ -16,6 +16,9 @@ type Resterrordetail struct {
 
 	// Details - additional information regarding the error
 	Details *string `json:"details,omitempty"`
+
+	// UserParams - parameters to be inserted into details.
+	UserParams *[]Userparam `json:"userParams,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Resterrordetail) MarshalJSON() ([]byte, error) {
 		VarError *string `json:"error,omitempty"`
 		
 		Details *string `json:"details,omitempty"`
+		
+		UserParams *[]Userparam `json:"userParams,omitempty"`
 		Alias
 	}{ 
 		VarError: o.VarError,
 		
 		Details: o.Details,
+		
+		UserParams: o.UserParams,
 		Alias:    (Alias)(o),
 	})
 }
@@ -108,6 +115,11 @@ func (o *Resterrordetail) UnmarshalJSON(b []byte) error {
 		o.Details = &Details
 	}
     
+	if UserParams, ok := ResterrordetailMap["userParams"].([]interface{}); ok {
+		UserParamsString, _ := json.Marshal(UserParams)
+		json.Unmarshal(UserParamsString, &o.UserParams)
+	}
+	
 
 	return nil
 }

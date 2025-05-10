@@ -14,10 +14,10 @@ type Conversationeventpresence struct {
 	// VarType - Describes the type of Presence event.
 	VarType *string `json:"type,omitempty"`
 
-	// ReceivedMessage - The message displayed in the received message bubble.
+	// ReceivedMessage - A sign in prompt message for when the authenticate event is received.
 	ReceivedMessage *Conversationcontentreceivedreplymessage `json:"receivedMessage,omitempty"`
 
-	// ReplyMessage - The message displayed in the reply message bubble.
+	// ReplyMessage - A reply message on authentication success.
 	ReplyMessage *Conversationcontentreceivedreplymessage `json:"replyMessage,omitempty"`
 }
 
