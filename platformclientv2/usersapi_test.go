@@ -13,6 +13,7 @@ func ExampleUsersApi_GetUsers() {
 	clientID := os.Getenv("PURECLOUD_CLIENT_ID")
 	clientSecret := os.Getenv("PURECLOUD_CLIENT_SECRET")
 	config.GateWayConfiguration = nil
+	config.MTLSConfiguration = nil
 
 	// Authorize the configuration
 	err := config.AuthorizeClientCredentials(clientID, clientSecret)

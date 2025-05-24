@@ -29,6 +29,9 @@ type Namedentitytypemechanism struct {
 	// MinLength - The minimum length of the entity resolved value
 	MinLength *int `json:"minLength,omitempty"`
 
+	// AllowSpecialChars - Flag whether to allow for special characters during AI slot capture
+	AllowSpecialChars *bool `json:"allowSpecialChars,omitempty"`
+
 	// Examples - Examples for entity detection
 	Examples *[]Namedentitytypemechanismexample `json:"examples,omitempty"`
 }
@@ -108,6 +111,8 @@ func (o Namedentitytypemechanism) MarshalJSON() ([]byte, error) {
 		
 		MinLength *int `json:"minLength,omitempty"`
 		
+		AllowSpecialChars *bool `json:"allowSpecialChars,omitempty"`
+		
 		Examples *[]Namedentitytypemechanismexample `json:"examples,omitempty"`
 		Alias
 	}{ 
@@ -122,6 +127,8 @@ func (o Namedentitytypemechanism) MarshalJSON() ([]byte, error) {
 		MaxLength: o.MaxLength,
 		
 		MinLength: o.MinLength,
+		
+		AllowSpecialChars: o.AllowSpecialChars,
 		
 		Examples: o.Examples,
 		Alias:    (Alias)(o),
@@ -162,6 +169,10 @@ func (o *Namedentitytypemechanism) UnmarshalJSON(b []byte) error {
 		o.MinLength = &MinLengthInt
 	}
 	
+	if AllowSpecialChars, ok := NamedentitytypemechanismMap["allowSpecialChars"].(bool); ok {
+		o.AllowSpecialChars = &AllowSpecialChars
+	}
+    
 	if Examples, ok := NamedentitytypemechanismMap["examples"].([]interface{}); ok {
 		ExamplesString, _ := json.Marshal(Examples)
 		json.Unmarshal(ExamplesString, &o.Examples)

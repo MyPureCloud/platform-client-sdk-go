@@ -34,7 +34,7 @@ func NewTextbotsApiWithConfig(config *Configuration) *TextbotsApi {
 // Find bots using the currently configured friendly name or ID.
 //
 // The name does allow case-insensitive partial string matches or by IDs (up to 50), but not both at the same time. Optionally you can limit the scope of the search by providing one or more bot types.  You can specify the maximum results to return, up to a limit of 100
-func (a TextbotsApi) GetTextbotsBotsSearch(botType []string, botName string, botId []string, pageSize int) (*Botsearchresponseentitylisting, *APIResponse, error) {
+func (a TextbotsApi) GetTextbotsBotsSearch(botType []string, botName string, botId []string, virtualAgentEnabled bool, pageSize int) (*Botsearchresponseentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/textbots/bots/search"
@@ -66,6 +66,8 @@ func (a TextbotsApi) GetTextbotsBotsSearch(botType []string, botName string, bot
 	queryParams["botName"] = a.Configuration.APIClient.ParameterToString(botName, "")
 	
 	queryParams["botId"] = a.Configuration.APIClient.ParameterToString(botId, "multi")
+	
+	queryParams["virtualAgentEnabled"] = a.Configuration.APIClient.ParameterToString(virtualAgentEnabled, "")
 	
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	

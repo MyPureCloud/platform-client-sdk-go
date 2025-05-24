@@ -23,11 +23,11 @@ type Messagingintegrationentitylisting struct {
 	// Total
 	Total *int `json:"total,omitempty"`
 
-	// NextUri
-	NextUri *string `json:"nextUri,omitempty"`
-
 	// PreviousUri
 	PreviousUri *string `json:"previousUri,omitempty"`
+
+	// NextUri
+	NextUri *string `json:"nextUri,omitempty"`
 
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
@@ -113,9 +113,9 @@ func (o Messagingintegrationentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
-		NextUri *string `json:"nextUri,omitempty"`
-		
 		PreviousUri *string `json:"previousUri,omitempty"`
+		
+		NextUri *string `json:"nextUri,omitempty"`
 		
 		LastUri *string `json:"lastUri,omitempty"`
 		
@@ -134,9 +134,9 @@ func (o Messagingintegrationentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
-		NextUri: o.NextUri,
-		
 		PreviousUri: o.PreviousUri,
+		
+		NextUri: o.NextUri,
 		
 		LastUri: o.LastUri,
 		
@@ -176,12 +176,12 @@ func (o *Messagingintegrationentitylisting) UnmarshalJSON(b []byte) error {
 		o.Total = &TotalInt
 	}
 	
-	if NextUri, ok := MessagingintegrationentitylistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
-	}
-    
 	if PreviousUri, ok := MessagingintegrationentitylistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
+	}
+    
+	if NextUri, ok := MessagingintegrationentitylistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
 	}
     
 	if LastUri, ok := MessagingintegrationentitylistingMap["lastUri"].(string); ok {

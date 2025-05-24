@@ -7,22 +7,22 @@ import (
 	"strings"
 )
 
-// Buplanninggroupheadcountforecast
-type Buplanninggroupheadcountforecast struct { 
+// Maestrowebhooksinvocationtopicpublicwebhooksevent
+type Maestrowebhooksinvocationtopicpublicwebhooksevent struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// PlanningGroup - The planning group to which this portion of the headcount forecast applies
-	PlanningGroup *Planninggroupreference `json:"planningGroup,omitempty"`
+	// WebhookId
+	WebhookId *string `json:"webhookId,omitempty"`
 
-	// RequiredPerInterval - Required headcount per interval, referenced against the reference start date
-	RequiredPerInterval *[]float64 `json:"requiredPerInterval,omitempty"`
+	// InvocationTime
+	InvocationTime *string `json:"invocationTime,omitempty"`
 
-	// RequiredWithoutShrinkagePerInterval - Required headcount per interval without accounting for shrinkage, referenced against the reference start date
-	RequiredWithoutShrinkagePerInterval *[]float64 `json:"requiredWithoutShrinkagePerInterval,omitempty"`
+	// WebhooksInvocation
+	WebhooksInvocation *Maestrowebhooksinvocationtopicwebhooksinvocation `json:"webhooksInvocation,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Buplanninggroupheadcountforecast) SetField(field string, fieldValue interface{}) {
+func (o *Maestrowebhooksinvocationtopicpublicwebhooksevent) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -43,7 +43,7 @@ func (o *Buplanninggroupheadcountforecast) SetField(field string, fieldValue int
 	o.SetFieldNames[field] = true
 }
 
-func (o Buplanninggroupheadcountforecast) MarshalJSON() ([]byte, error) {
+func (o Maestrowebhooksinvocationtopicpublicwebhooksevent) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -81,45 +81,43 @@ func (o Buplanninggroupheadcountforecast) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Buplanninggroupheadcountforecast
+	type Alias Maestrowebhooksinvocationtopicpublicwebhooksevent
 	
 	return json.Marshal(&struct { 
-		PlanningGroup *Planninggroupreference `json:"planningGroup,omitempty"`
+		WebhookId *string `json:"webhookId,omitempty"`
 		
-		RequiredPerInterval *[]float64 `json:"requiredPerInterval,omitempty"`
+		InvocationTime *string `json:"invocationTime,omitempty"`
 		
-		RequiredWithoutShrinkagePerInterval *[]float64 `json:"requiredWithoutShrinkagePerInterval,omitempty"`
+		WebhooksInvocation *Maestrowebhooksinvocationtopicwebhooksinvocation `json:"webhooksInvocation,omitempty"`
 		Alias
 	}{ 
-		PlanningGroup: o.PlanningGroup,
+		WebhookId: o.WebhookId,
 		
-		RequiredPerInterval: o.RequiredPerInterval,
+		InvocationTime: o.InvocationTime,
 		
-		RequiredWithoutShrinkagePerInterval: o.RequiredWithoutShrinkagePerInterval,
+		WebhooksInvocation: o.WebhooksInvocation,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Buplanninggroupheadcountforecast) UnmarshalJSON(b []byte) error {
-	var BuplanninggroupheadcountforecastMap map[string]interface{}
-	err := json.Unmarshal(b, &BuplanninggroupheadcountforecastMap)
+func (o *Maestrowebhooksinvocationtopicpublicwebhooksevent) UnmarshalJSON(b []byte) error {
+	var MaestrowebhooksinvocationtopicpublicwebhookseventMap map[string]interface{}
+	err := json.Unmarshal(b, &MaestrowebhooksinvocationtopicpublicwebhookseventMap)
 	if err != nil {
 		return err
 	}
 	
-	if PlanningGroup, ok := BuplanninggroupheadcountforecastMap["planningGroup"].(map[string]interface{}); ok {
-		PlanningGroupString, _ := json.Marshal(PlanningGroup)
-		json.Unmarshal(PlanningGroupString, &o.PlanningGroup)
+	if WebhookId, ok := MaestrowebhooksinvocationtopicpublicwebhookseventMap["webhookId"].(string); ok {
+		o.WebhookId = &WebhookId
 	}
-	
-	if RequiredPerInterval, ok := BuplanninggroupheadcountforecastMap["requiredPerInterval"].([]interface{}); ok {
-		RequiredPerIntervalString, _ := json.Marshal(RequiredPerInterval)
-		json.Unmarshal(RequiredPerIntervalString, &o.RequiredPerInterval)
+    
+	if InvocationTime, ok := MaestrowebhooksinvocationtopicpublicwebhookseventMap["invocationTime"].(string); ok {
+		o.InvocationTime = &InvocationTime
 	}
-	
-	if RequiredWithoutShrinkagePerInterval, ok := BuplanninggroupheadcountforecastMap["requiredWithoutShrinkagePerInterval"].([]interface{}); ok {
-		RequiredWithoutShrinkagePerIntervalString, _ := json.Marshal(RequiredWithoutShrinkagePerInterval)
-		json.Unmarshal(RequiredWithoutShrinkagePerIntervalString, &o.RequiredWithoutShrinkagePerInterval)
+    
+	if WebhooksInvocation, ok := MaestrowebhooksinvocationtopicpublicwebhookseventMap["webhooksInvocation"].(map[string]interface{}); ok {
+		WebhooksInvocationString, _ := json.Marshal(WebhooksInvocation)
+		json.Unmarshal(WebhooksInvocationString, &o.WebhooksInvocation)
 	}
 	
 
@@ -127,7 +125,7 @@ func (o *Buplanninggroupheadcountforecast) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Buplanninggroupheadcountforecast) String() string {
+func (o *Maestrowebhooksinvocationtopicpublicwebhooksevent) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

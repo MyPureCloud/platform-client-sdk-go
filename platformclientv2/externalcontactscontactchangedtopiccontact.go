@@ -87,6 +87,9 @@ type Externalcontactscontactchangedtopiccontact struct {
 	// ExternalIds
 	ExternalIds *[]Externalcontactscontactchangedtopicexternalid `json:"externalIds,omitempty"`
 
+	// AppleOpaqueIds
+	AppleOpaqueIds *[]Externalcontactscontactchangedtopicappleopaqueid `json:"appleOpaqueIds,omitempty"`
+
 	// CanonicalContactId
 	CanonicalContactId *string `json:"canonicalContactId,omitempty"`
 
@@ -244,6 +247,8 @@ func (o Externalcontactscontactchangedtopiccontact) MarshalJSON() ([]byte, error
 		
 		ExternalIds *[]Externalcontactscontactchangedtopicexternalid `json:"externalIds,omitempty"`
 		
+		AppleOpaqueIds *[]Externalcontactscontactchangedtopicappleopaqueid `json:"appleOpaqueIds,omitempty"`
+		
 		CanonicalContactId *string `json:"canonicalContactId,omitempty"`
 		
 		Schema *Externalcontactscontactchangedtopicdataschema `json:"schema,omitempty"`
@@ -312,6 +317,8 @@ func (o Externalcontactscontactchangedtopiccontact) MarshalJSON() ([]byte, error
 		InstagramId: o.InstagramId,
 		
 		ExternalIds: o.ExternalIds,
+		
+		AppleOpaqueIds: o.AppleOpaqueIds,
 		
 		CanonicalContactId: o.CanonicalContactId,
 		
@@ -452,6 +459,11 @@ func (o *Externalcontactscontactchangedtopiccontact) UnmarshalJSON(b []byte) err
 	if ExternalIds, ok := ExternalcontactscontactchangedtopiccontactMap["externalIds"].([]interface{}); ok {
 		ExternalIdsString, _ := json.Marshal(ExternalIds)
 		json.Unmarshal(ExternalIdsString, &o.ExternalIds)
+	}
+	
+	if AppleOpaqueIds, ok := ExternalcontactscontactchangedtopiccontactMap["appleOpaqueIds"].([]interface{}); ok {
+		AppleOpaqueIdsString, _ := json.Marshal(AppleOpaqueIds)
+		json.Unmarshal(AppleOpaqueIdsString, &o.AppleOpaqueIds)
 	}
 	
 	if CanonicalContactId, ok := ExternalcontactscontactchangedtopiccontactMap["canonicalContactId"].(string); ok {

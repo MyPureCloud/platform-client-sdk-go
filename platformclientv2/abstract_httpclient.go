@@ -22,11 +22,11 @@ type AbstractHttpClient interface {
 	// SetRetryWaitMin sets the minimum wait time between retries
 	SetRetryWaitMin(duration time.Duration)
 
-	// SetRequestLogHook sets a logging hook that is called before each retry attempt
-	SetRequestLogHook(hook func(retryablehttp.Logger, *http.Request, int))
+	// SetPreHook sets a logging hook that is called before each retry attempt
+	SetPreHook(hook func(retryablehttp.Logger, *http.Request, int))
 
-	// SetResponseLogHook sets a logging hook that is called after each response
-	SetResponseLogHook(hook func(retryablehttp.Logger, *http.Response))
+	// SetPostHook sets a logging hook that is called after each response
+	SetPostHook(hook func(retryablehttp.Logger, *http.Response))
 
 	// SetCheckRetry sets the retry policy function to determine if a request should be retried
 	SetCheckRetry(checkRetry func(ctx context.Context, resp *http.Response, err error) (bool, error))

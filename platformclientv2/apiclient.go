@@ -391,12 +391,12 @@ func (c *APIClient) CallAPI(path string, method string,
 		c.client.SetRetryWaitMin(c.configuration.RetryConfiguration.RetryWaitMin)
 		c.client.SetRetryMax(c.configuration.RetryConfiguration.RetryMax)
 		if c.configuration.RetryConfiguration.RequestLogHook != nil {
-			c.client.SetRequestLogHook(func(_ retryablehttp.Logger, req *http.Request, retryNumber int) {
+			c.client.SetPreHook(func(_ retryablehttp.Logger, req *http.Request, retryNumber int) {
 				c.configuration.RetryConfiguration.RequestLogHook(req, retryNumber)
 			})
 		}
 		if c.configuration.RetryConfiguration.ResponseLogHook != nil {
-			c.client.SetResponseLogHook(func(_ retryablehttp.Logger, res *http.Response) {
+			c.client.SetPostHook(func(_ retryablehttp.Logger, res *http.Response) {
 				c.configuration.RetryConfiguration.ResponseLogHook(res)
 			})
 		}

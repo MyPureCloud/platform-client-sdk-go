@@ -45,9 +45,6 @@ type Messagedata struct {
 	// Media - The media details associated to a message. (Deprecated - Instead use normalizedMessage.content[index].attachment)
 	Media *[]Messagemedia `json:"media,omitempty"`
 
-	// Stickers - The sticker details associated to a message. (Deprecated - Instead use normalizedMessage.content[index].attachment
-	Stickers *[]Messagesticker `json:"stickers,omitempty"`
-
 	// NormalizedMessage - The message into normalized format
 	NormalizedMessage *Conversationnormalizedmessage `json:"normalizedMessage,omitempty"`
 
@@ -157,8 +154,6 @@ func (o Messagedata) MarshalJSON() ([]byte, error) {
 		
 		Media *[]Messagemedia `json:"media,omitempty"`
 		
-		Stickers *[]Messagesticker `json:"stickers,omitempty"`
-		
 		NormalizedMessage *Conversationnormalizedmessage `json:"normalizedMessage,omitempty"`
 		
 		NormalizedReceipts *[]Conversationnormalizedmessage `json:"normalizedReceipts,omitempty"`
@@ -191,8 +186,6 @@ func (o Messagedata) MarshalJSON() ([]byte, error) {
 		Status: o.Status,
 		
 		Media: o.Media,
-		
-		Stickers: o.Stickers,
 		
 		NormalizedMessage: o.NormalizedMessage,
 		
@@ -258,11 +251,6 @@ func (o *Messagedata) UnmarshalJSON(b []byte) error {
 	if Media, ok := MessagedataMap["media"].([]interface{}); ok {
 		MediaString, _ := json.Marshal(Media)
 		json.Unmarshal(MediaString, &o.Media)
-	}
-	
-	if Stickers, ok := MessagedataMap["stickers"].([]interface{}); ok {
-		StickersString, _ := json.Marshal(Stickers)
-		json.Unmarshal(StickersString, &o.Stickers)
 	}
 	
 	if NormalizedMessage, ok := MessagedataMap["normalizedMessage"].(map[string]interface{}); ok {

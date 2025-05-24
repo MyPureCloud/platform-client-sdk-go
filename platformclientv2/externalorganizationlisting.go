@@ -26,11 +26,11 @@ type Externalorganizationlisting struct {
 	// PartialResults
 	PartialResults *bool `json:"partialResults,omitempty"`
 
-	// NextUri
-	NextUri *string `json:"nextUri,omitempty"`
-
 	// PreviousUri
 	PreviousUri *string `json:"previousUri,omitempty"`
+
+	// NextUri
+	NextUri *string `json:"nextUri,omitempty"`
 
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
@@ -118,9 +118,9 @@ func (o Externalorganizationlisting) MarshalJSON() ([]byte, error) {
 		
 		PartialResults *bool `json:"partialResults,omitempty"`
 		
-		NextUri *string `json:"nextUri,omitempty"`
-		
 		PreviousUri *string `json:"previousUri,omitempty"`
+		
+		NextUri *string `json:"nextUri,omitempty"`
 		
 		LastUri *string `json:"lastUri,omitempty"`
 		
@@ -141,9 +141,9 @@ func (o Externalorganizationlisting) MarshalJSON() ([]byte, error) {
 		
 		PartialResults: o.PartialResults,
 		
-		NextUri: o.NextUri,
-		
 		PreviousUri: o.PreviousUri,
+		
+		NextUri: o.NextUri,
 		
 		LastUri: o.LastUri,
 		
@@ -187,12 +187,12 @@ func (o *Externalorganizationlisting) UnmarshalJSON(b []byte) error {
 		o.PartialResults = &PartialResults
 	}
     
-	if NextUri, ok := ExternalorganizationlistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
-	}
-    
 	if PreviousUri, ok := ExternalorganizationlistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
+	}
+    
+	if NextUri, ok := ExternalorganizationlistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
 	}
     
 	if LastUri, ok := ExternalorganizationlistingMap["lastUri"].(string); ok {

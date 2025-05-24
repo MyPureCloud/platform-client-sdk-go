@@ -17,9 +17,6 @@ type Additionalmessage struct {
 	// MediaIds - The media ids associated with the text message. See https://developer.genesys.cloud/api/rest/v2/conversations/messaging-media-upload for example usage.
 	MediaIds *[]string `json:"mediaIds,omitempty"`
 
-	// StickerIds - The sticker ids associated with the text message.
-	StickerIds *[]string `json:"stickerIds,omitempty"`
-
 	// MessagingTemplate - The messaging template use to send a predefined canned response with the message
 	MessagingTemplate *Sendmessagingtemplaterequest `json:"messagingTemplate,omitempty"`
 }
@@ -91,16 +88,12 @@ func (o Additionalmessage) MarshalJSON() ([]byte, error) {
 		
 		MediaIds *[]string `json:"mediaIds,omitempty"`
 		
-		StickerIds *[]string `json:"stickerIds,omitempty"`
-		
 		MessagingTemplate *Sendmessagingtemplaterequest `json:"messagingTemplate,omitempty"`
 		Alias
 	}{ 
 		TextBody: o.TextBody,
 		
 		MediaIds: o.MediaIds,
-		
-		StickerIds: o.StickerIds,
 		
 		MessagingTemplate: o.MessagingTemplate,
 		Alias:    (Alias)(o),
@@ -121,11 +114,6 @@ func (o *Additionalmessage) UnmarshalJSON(b []byte) error {
 	if MediaIds, ok := AdditionalmessageMap["mediaIds"].([]interface{}); ok {
 		MediaIdsString, _ := json.Marshal(MediaIds)
 		json.Unmarshal(MediaIdsString, &o.MediaIds)
-	}
-	
-	if StickerIds, ok := AdditionalmessageMap["stickerIds"].([]interface{}); ok {
-		StickerIdsString, _ := json.Marshal(StickerIds)
-		json.Unmarshal(StickerIdsString, &o.StickerIds)
 	}
 	
 	if MessagingTemplate, ok := AdditionalmessageMap["messagingTemplate"].(map[string]interface{}); ok {

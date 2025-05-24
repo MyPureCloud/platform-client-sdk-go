@@ -30,13 +30,13 @@ func (c *DefaultHttpClient) SetRetryWaitMin(duration time.Duration) {
 	c.client.RetryWaitMin = duration
 }
 
-// SetRequestLogHook sets a logging hook that runs before each retry
-func (c *DefaultHttpClient) SetRequestLogHook(hook func(retryablehttp.Logger, *http.Request, int)) {
+// SetPreHook sets a logging hook that runs before each retry
+func (c *DefaultHttpClient) SetPreHook(hook func(retryablehttp.Logger, *http.Request, int)) {
 	c.client.RequestLogHook = hook
 }
 
-// SetResponseLogHook sets a logging hook that runs after each retry
-func (c *DefaultHttpClient) SetResponseLogHook(hook func(retryablehttp.Logger, *http.Response)) {
+// SetPostHook sets a logging hook that runs after each retry
+func (c *DefaultHttpClient) SetPostHook(hook func(retryablehttp.Logger, *http.Response)) {
 	c.client.ResponseLogHook = hook
 }
 

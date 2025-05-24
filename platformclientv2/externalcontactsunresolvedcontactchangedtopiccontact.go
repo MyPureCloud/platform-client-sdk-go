@@ -87,6 +87,9 @@ type Externalcontactsunresolvedcontactchangedtopiccontact struct {
 	// ExternalIds
 	ExternalIds *[]Externalcontactsunresolvedcontactchangedtopicexternalid `json:"externalIds,omitempty"`
 
+	// AppleOpaqueIds
+	AppleOpaqueIds *[]Externalcontactsunresolvedcontactchangedtopicappleopaqueid `json:"appleOpaqueIds,omitempty"`
+
 	// CanonicalContactId
 	CanonicalContactId *string `json:"canonicalContactId,omitempty"`
 
@@ -244,6 +247,8 @@ func (o Externalcontactsunresolvedcontactchangedtopiccontact) MarshalJSON() ([]b
 		
 		ExternalIds *[]Externalcontactsunresolvedcontactchangedtopicexternalid `json:"externalIds,omitempty"`
 		
+		AppleOpaqueIds *[]Externalcontactsunresolvedcontactchangedtopicappleopaqueid `json:"appleOpaqueIds,omitempty"`
+		
 		CanonicalContactId *string `json:"canonicalContactId,omitempty"`
 		
 		Schema *Externalcontactsunresolvedcontactchangedtopicdataschema `json:"schema,omitempty"`
@@ -312,6 +317,8 @@ func (o Externalcontactsunresolvedcontactchangedtopiccontact) MarshalJSON() ([]b
 		InstagramId: o.InstagramId,
 		
 		ExternalIds: o.ExternalIds,
+		
+		AppleOpaqueIds: o.AppleOpaqueIds,
 		
 		CanonicalContactId: o.CanonicalContactId,
 		
@@ -452,6 +459,11 @@ func (o *Externalcontactsunresolvedcontactchangedtopiccontact) UnmarshalJSON(b [
 	if ExternalIds, ok := ExternalcontactsunresolvedcontactchangedtopiccontactMap["externalIds"].([]interface{}); ok {
 		ExternalIdsString, _ := json.Marshal(ExternalIds)
 		json.Unmarshal(ExternalIdsString, &o.ExternalIds)
+	}
+	
+	if AppleOpaqueIds, ok := ExternalcontactsunresolvedcontactchangedtopiccontactMap["appleOpaqueIds"].([]interface{}); ok {
+		AppleOpaqueIdsString, _ := json.Marshal(AppleOpaqueIds)
+		json.Unmarshal(AppleOpaqueIdsString, &o.AppleOpaqueIds)
 	}
 	
 	if CanonicalContactId, ok := ExternalcontactsunresolvedcontactchangedtopiccontactMap["canonicalContactId"].(string); ok {

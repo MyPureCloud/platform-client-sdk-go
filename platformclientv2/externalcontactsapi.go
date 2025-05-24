@@ -1933,7 +1933,7 @@ func (a ExternalContactsApi) GetExternalcontactsContactsSchemas() (*Dataschemali
 
 // GetExternalcontactsContactsSchemasCoretype invokes GET /api/v2/externalcontacts/contacts/schemas/coretypes/{coreTypeName}
 //
-// Get the core types from which all schemas are built.
+// Get a specific named core type.
 func (a ExternalContactsApi) GetExternalcontactsContactsSchemasCoretype(coreTypeName string) (*Coretype, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2016,11 +2016,11 @@ func (a ExternalContactsApi) GetExternalcontactsContactsSchemasCoretype(coreType
 // GetExternalcontactsContactsSchemasCoretypes invokes GET /api/v2/externalcontacts/contacts/schemas/coretypes
 //
 // Get the core types from which all schemas are built.
-func (a ExternalContactsApi) GetExternalcontactsContactsSchemasCoretypes() (*Coretype, *APIResponse, error) {
+func (a ExternalContactsApi) GetExternalcontactsContactsSchemasCoretypes() (*Coretypelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/contacts/schemas/coretypes"
-	defaultReturn := new(Coretype)
+	defaultReturn := new(Coretypelisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -2073,14 +2073,14 @@ func (a ExternalContactsApi) GetExternalcontactsContactsSchemasCoretypes() (*Cor
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Coretype
+	var successPayload *Coretypelisting
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Coretype" == "string" {
+		if "Coretypelisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -3947,7 +3947,7 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationsSchemas() (*Datasch
 
 // GetExternalcontactsOrganizationsSchemasCoretype invokes GET /api/v2/externalcontacts/organizations/schemas/coretypes/{coreTypeName}
 //
-// Get the core types from which all schemas are built.
+// Get a specific named core type.
 func (a ExternalContactsApi) GetExternalcontactsOrganizationsSchemasCoretype(coreTypeName string) (*Coretype, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4030,11 +4030,11 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationsSchemasCoretype(cor
 // GetExternalcontactsOrganizationsSchemasCoretypes invokes GET /api/v2/externalcontacts/organizations/schemas/coretypes
 //
 // Get the core types from which all schemas are built.
-func (a ExternalContactsApi) GetExternalcontactsOrganizationsSchemasCoretypes() (*Coretype, *APIResponse, error) {
+func (a ExternalContactsApi) GetExternalcontactsOrganizationsSchemasCoretypes() (*Coretypelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/organizations/schemas/coretypes"
-	defaultReturn := new(Coretype)
+	defaultReturn := new(Coretypelisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -4087,14 +4087,14 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationsSchemasCoretypes() 
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Coretype
+	var successPayload *Coretypelisting
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Coretype" == "string" {
+		if "Coretypelisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

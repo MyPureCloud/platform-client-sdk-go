@@ -11,7 +11,7 @@ import (
 type Contentattachment struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - Provider specific ID for attachment. For example, a LINE sticker ID.
+	// Id - Provider specific ID for attachment.
 	Id *string `json:"id,omitempty"`
 
 	// MediaType - The type of attachment this instance represents.

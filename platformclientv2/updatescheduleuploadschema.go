@@ -21,7 +21,7 @@ type Updatescheduleuploadschema struct {
 	ShortTermForecast *Bushorttermforecastreference `json:"shortTermForecast,omitempty"`
 
 	// HeadcountForecast - The headcount forecast to associate with the schedule
-	HeadcountForecast *Buheadcountforecast `json:"headcountForecast,omitempty"`
+	HeadcountForecast *Buheadcountforecastbuplanninggroupheadcountforecastuploadschema `json:"headcountForecast,omitempty"`
 
 	// AgentSchedules - Individual agent schedules
 	AgentSchedules *[]Buupdateagentscheduleuploadschema `json:"agentSchedules,omitempty"`
@@ -99,7 +99,7 @@ func (o Updatescheduleuploadschema) MarshalJSON() ([]byte, error) {
 		
 		ShortTermForecast *Bushorttermforecastreference `json:"shortTermForecast,omitempty"`
 		
-		HeadcountForecast *Buheadcountforecast `json:"headcountForecast,omitempty"`
+		HeadcountForecast *Buheadcountforecastbuplanninggroupheadcountforecastuploadschema `json:"headcountForecast,omitempty"`
 		
 		AgentSchedules *[]Buupdateagentscheduleuploadschema `json:"agentSchedules,omitempty"`
 		

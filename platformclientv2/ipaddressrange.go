@@ -19,6 +19,9 @@ type Ipaddressrange struct {
 
 	// Region
 	Region *string `json:"region,omitempty"`
+
+	// Direction - The direction of traffic for the IP range from the perspective of Genesys Cloud (e.g. inbound to Genesys; outbound from Genesys)
+	Direction *string `json:"direction,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +92,8 @@ func (o Ipaddressrange) MarshalJSON() ([]byte, error) {
 		Service *string `json:"service,omitempty"`
 		
 		Region *string `json:"region,omitempty"`
+		
+		Direction *string `json:"direction,omitempty"`
 		Alias
 	}{ 
 		Cidr: o.Cidr,
@@ -96,6 +101,8 @@ func (o Ipaddressrange) MarshalJSON() ([]byte, error) {
 		Service: o.Service,
 		
 		Region: o.Region,
+		
+		Direction: o.Direction,
 		Alias:    (Alias)(o),
 	})
 }
@@ -117,6 +124,10 @@ func (o *Ipaddressrange) UnmarshalJSON(b []byte) error {
     
 	if Region, ok := IpaddressrangeMap["region"].(string); ok {
 		o.Region = &Region
+	}
+    
+	if Direction, ok := IpaddressrangeMap["direction"].(string); ok {
+		o.Direction = &Direction
 	}
     
 

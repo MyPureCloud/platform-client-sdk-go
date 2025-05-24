@@ -69,6 +69,9 @@ type Externalcontact struct {
 	// FacebookId
 	FacebookId *Facebookid `json:"facebookId,omitempty"`
 
+	// InstagramId - User information for an Instagram account
+	InstagramId *Instagramid `json:"instagramId,omitempty"`
+
 	// ExternalIds - A list of external identifiers that identify this contact in an external system
 	ExternalIds *[]Externalid `json:"externalIds,omitempty"`
 
@@ -107,6 +110,12 @@ type Externalcontact struct {
 
 	// MergeSet - The set of all contacts that are a part of the merge tree. If null, this contact is not a part of any merge.
 	MergeSet *[]Contactaddressableentityref `json:"mergeSet,omitempty"`
+
+	// MergedFrom - The input contacts from the merge operation.
+	MergedFrom *[]Contactaddressableentityref `json:"mergedFrom,omitempty"`
+
+	// MergedTo - The output contact from the merge operation.
+	MergedTo *Contactaddressableentityref `json:"mergedTo,omitempty"`
 
 	// MergeOperation - Information about the merge history of this contact. If null, this contact is not a part of any merge.
 	MergeOperation *Mergeoperation `json:"mergeOperation,omitempty"`
@@ -232,6 +241,8 @@ func (o Externalcontact) MarshalJSON() ([]byte, error) {
 		
 		FacebookId *Facebookid `json:"facebookId,omitempty"`
 		
+		InstagramId *Instagramid `json:"instagramId,omitempty"`
+		
 		ExternalIds *[]Externalid `json:"externalIds,omitempty"`
 		
 		Identifiers *[]Contactidentifier `json:"identifiers,omitempty"`
@@ -257,6 +268,10 @@ func (o Externalcontact) MarshalJSON() ([]byte, error) {
 		CanonicalContact *Contactaddressableentityref `json:"canonicalContact,omitempty"`
 		
 		MergeSet *[]Contactaddressableentityref `json:"mergeSet,omitempty"`
+		
+		MergedFrom *[]Contactaddressableentityref `json:"mergedFrom,omitempty"`
+		
+		MergedTo *Contactaddressableentityref `json:"mergedTo,omitempty"`
 		
 		MergeOperation *Mergeoperation `json:"mergeOperation,omitempty"`
 		
@@ -301,6 +316,8 @@ func (o Externalcontact) MarshalJSON() ([]byte, error) {
 		
 		FacebookId: o.FacebookId,
 		
+		InstagramId: o.InstagramId,
+		
 		ExternalIds: o.ExternalIds,
 		
 		Identifiers: o.Identifiers,
@@ -326,6 +343,10 @@ func (o Externalcontact) MarshalJSON() ([]byte, error) {
 		CanonicalContact: o.CanonicalContact,
 		
 		MergeSet: o.MergeSet,
+		
+		MergedFrom: o.MergedFrom,
+		
+		MergedTo: o.MergedTo,
 		
 		MergeOperation: o.MergeOperation,
 		
@@ -427,6 +448,11 @@ func (o *Externalcontact) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(FacebookIdString, &o.FacebookId)
 	}
 	
+	if InstagramId, ok := ExternalcontactMap["instagramId"].(map[string]interface{}); ok {
+		InstagramIdString, _ := json.Marshal(InstagramId)
+		json.Unmarshal(InstagramIdString, &o.InstagramId)
+	}
+	
 	if ExternalIds, ok := ExternalcontactMap["externalIds"].([]interface{}); ok {
 		ExternalIdsString, _ := json.Marshal(ExternalIds)
 		json.Unmarshal(ExternalIdsString, &o.ExternalIds)
@@ -487,6 +513,16 @@ func (o *Externalcontact) UnmarshalJSON(b []byte) error {
 	if MergeSet, ok := ExternalcontactMap["mergeSet"].([]interface{}); ok {
 		MergeSetString, _ := json.Marshal(MergeSet)
 		json.Unmarshal(MergeSetString, &o.MergeSet)
+	}
+	
+	if MergedFrom, ok := ExternalcontactMap["mergedFrom"].([]interface{}); ok {
+		MergedFromString, _ := json.Marshal(MergedFrom)
+		json.Unmarshal(MergedFromString, &o.MergedFrom)
+	}
+	
+	if MergedTo, ok := ExternalcontactMap["mergedTo"].(map[string]interface{}); ok {
+		MergedToString, _ := json.Marshal(MergedTo)
+		json.Unmarshal(MergedToString, &o.MergedTo)
 	}
 	
 	if MergeOperation, ok := ExternalcontactMap["mergeOperation"].(map[string]interface{}); ok {

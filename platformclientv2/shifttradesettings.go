@@ -49,6 +49,24 @@ type Shifttradesettings struct {
 
 	// ActivityCategoryRules - Rules that specify what to do with activity categories that are part of a shift defined in a trade
 	ActivityCategoryRules *[]Shifttradeactivityrule `json:"activityCategoryRules,omitempty"`
+
+	// MaxTradeSpanWeeks - The maximum number of weeks a shift trade can span
+	MaxTradeSpanWeeks *int `json:"maxTradeSpanWeeks,omitempty"`
+
+	// MaxTradesPerAgentPerWeek - The maximum number of shift trades an agent can submit per week
+	MaxTradesPerAgentPerWeek *int `json:"maxTradesPerAgentPerWeek,omitempty"`
+
+	// MinMinutesBetweenShifts - The minimum number of minutes between shifts
+	MinMinutesBetweenShifts *int `json:"minMinutesBetweenShifts,omitempty"`
+
+	// PlanningPeriodMinPaidViolations - How to handle shift trades which result in violations of planning period minimum paid time constraint
+	PlanningPeriodMinPaidViolations *string `json:"planningPeriodMinPaidViolations,omitempty"`
+
+	// PlanningPeriodMaxPaidViolations - How to handle shift trades which result in violations of planning period maximum paid time constraint
+	PlanningPeriodMaxPaidViolations *string `json:"planningPeriodMaxPaidViolations,omitempty"`
+
+	// MinMinutesBetweenShiftsViolations - How to handle shift trades which result in violations of minimum number of minutes between shifts constraint
+	MinMinutesBetweenShiftsViolations *string `json:"minMinutesBetweenShiftsViolations,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -139,6 +157,18 @@ func (o Shifttradesettings) MarshalJSON() ([]byte, error) {
 		RequiresMatchingPlanningGroups *bool `json:"requiresMatchingPlanningGroups,omitempty"`
 		
 		ActivityCategoryRules *[]Shifttradeactivityrule `json:"activityCategoryRules,omitempty"`
+		
+		MaxTradeSpanWeeks *int `json:"maxTradeSpanWeeks,omitempty"`
+		
+		MaxTradesPerAgentPerWeek *int `json:"maxTradesPerAgentPerWeek,omitempty"`
+		
+		MinMinutesBetweenShifts *int `json:"minMinutesBetweenShifts,omitempty"`
+		
+		PlanningPeriodMinPaidViolations *string `json:"planningPeriodMinPaidViolations,omitempty"`
+		
+		PlanningPeriodMaxPaidViolations *string `json:"planningPeriodMaxPaidViolations,omitempty"`
+		
+		MinMinutesBetweenShiftsViolations *string `json:"minMinutesBetweenShiftsViolations,omitempty"`
 		Alias
 	}{ 
 		Enabled: o.Enabled,
@@ -166,6 +196,18 @@ func (o Shifttradesettings) MarshalJSON() ([]byte, error) {
 		RequiresMatchingPlanningGroups: o.RequiresMatchingPlanningGroups,
 		
 		ActivityCategoryRules: o.ActivityCategoryRules,
+		
+		MaxTradeSpanWeeks: o.MaxTradeSpanWeeks,
+		
+		MaxTradesPerAgentPerWeek: o.MaxTradesPerAgentPerWeek,
+		
+		MinMinutesBetweenShifts: o.MinMinutesBetweenShifts,
+		
+		PlanningPeriodMinPaidViolations: o.PlanningPeriodMinPaidViolations,
+		
+		PlanningPeriodMaxPaidViolations: o.PlanningPeriodMaxPaidViolations,
+		
+		MinMinutesBetweenShiftsViolations: o.MinMinutesBetweenShiftsViolations,
 		Alias:    (Alias)(o),
 	})
 }
@@ -231,6 +273,33 @@ func (o *Shifttradesettings) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ActivityCategoryRulesString, &o.ActivityCategoryRules)
 	}
 	
+	if MaxTradeSpanWeeks, ok := ShifttradesettingsMap["maxTradeSpanWeeks"].(float64); ok {
+		MaxTradeSpanWeeksInt := int(MaxTradeSpanWeeks)
+		o.MaxTradeSpanWeeks = &MaxTradeSpanWeeksInt
+	}
+	
+	if MaxTradesPerAgentPerWeek, ok := ShifttradesettingsMap["maxTradesPerAgentPerWeek"].(float64); ok {
+		MaxTradesPerAgentPerWeekInt := int(MaxTradesPerAgentPerWeek)
+		o.MaxTradesPerAgentPerWeek = &MaxTradesPerAgentPerWeekInt
+	}
+	
+	if MinMinutesBetweenShifts, ok := ShifttradesettingsMap["minMinutesBetweenShifts"].(float64); ok {
+		MinMinutesBetweenShiftsInt := int(MinMinutesBetweenShifts)
+		o.MinMinutesBetweenShifts = &MinMinutesBetweenShiftsInt
+	}
+	
+	if PlanningPeriodMinPaidViolations, ok := ShifttradesettingsMap["planningPeriodMinPaidViolations"].(string); ok {
+		o.PlanningPeriodMinPaidViolations = &PlanningPeriodMinPaidViolations
+	}
+    
+	if PlanningPeriodMaxPaidViolations, ok := ShifttradesettingsMap["planningPeriodMaxPaidViolations"].(string); ok {
+		o.PlanningPeriodMaxPaidViolations = &PlanningPeriodMaxPaidViolations
+	}
+    
+	if MinMinutesBetweenShiftsViolations, ok := ShifttradesettingsMap["minMinutesBetweenShiftsViolations"].(string); ok {
+		o.MinMinutesBetweenShiftsViolations = &MinMinutesBetweenShiftsViolations
+	}
+    
 
 	return nil
 }

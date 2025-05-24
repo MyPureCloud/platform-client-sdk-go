@@ -17,8 +17,8 @@ type Burescheduleresult struct {
 	// GenerationResultsDownloadUrl - The download URL from which to fetch the generation results for the rescheduling run
 	GenerationResultsDownloadUrl *string `json:"generationResultsDownloadUrl,omitempty"`
 
-	// HeadcountForecast - The headcount forecast.  Note the result will always be delivered via the headcountForecastDownloadUrl; however the schema is included for documentation
-	HeadcountForecast *Buheadcountforecast `json:"headcountForecast,omitempty"`
+	// HeadcountForecast - The headcount forecast. Note the result will always be delivered via the headcountForecastDownloadUrl; however the schema is included for documentation
+	HeadcountForecast *Buheadcountforecastbuplanninggroupheadcountforecastresult `json:"headcountForecast,omitempty"`
 
 	// HeadcountForecastDownloadUrl - The download URL from which to fetch the headcount forecast for the rescheduling run
 	HeadcountForecastDownloadUrl *string `json:"headcountForecastDownloadUrl,omitempty"`
@@ -94,7 +94,7 @@ func (o Burescheduleresult) MarshalJSON() ([]byte, error) {
 		
 		GenerationResultsDownloadUrl *string `json:"generationResultsDownloadUrl,omitempty"`
 		
-		HeadcountForecast *Buheadcountforecast `json:"headcountForecast,omitempty"`
+		HeadcountForecast *Buheadcountforecastbuplanninggroupheadcountforecastresult `json:"headcountForecast,omitempty"`
 		
 		HeadcountForecastDownloadUrl *string `json:"headcountForecastDownloadUrl,omitempty"`
 		

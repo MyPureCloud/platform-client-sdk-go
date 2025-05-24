@@ -11,6 +11,9 @@ import (
 type Conversationcontentbuttonresponse struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
+	// OriginatingMessageId - Reference to the ID of the original message (e.g., list picker) this button response is replying to.
+	OriginatingMessageId *string `json:"originatingMessageId,omitempty"`
+
 	// VarType - Describes the button that resulted in the Button Response.
 	VarType *string `json:"type,omitempty"`
 
@@ -84,6 +87,8 @@ func (o Conversationcontentbuttonresponse) MarshalJSON() ([]byte, error) {
 	type Alias Conversationcontentbuttonresponse
 	
 	return json.Marshal(&struct { 
+		OriginatingMessageId *string `json:"originatingMessageId,omitempty"`
+		
 		VarType *string `json:"type,omitempty"`
 		
 		Text *string `json:"text,omitempty"`
@@ -91,6 +96,8 @@ func (o Conversationcontentbuttonresponse) MarshalJSON() ([]byte, error) {
 		Payload *string `json:"payload,omitempty"`
 		Alias
 	}{ 
+		OriginatingMessageId: o.OriginatingMessageId,
+		
 		VarType: o.VarType,
 		
 		Text: o.Text,
@@ -107,6 +114,10 @@ func (o *Conversationcontentbuttonresponse) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if OriginatingMessageId, ok := ConversationcontentbuttonresponseMap["originatingMessageId"].(string); ok {
+		o.OriginatingMessageId = &OriginatingMessageId
+	}
+    
 	if VarType, ok := ConversationcontentbuttonresponseMap["type"].(string); ok {
 		o.VarType = &VarType
 	}

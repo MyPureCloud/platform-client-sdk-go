@@ -46,6 +46,9 @@ type Conversationmessagecontent struct {
 
 	// Reactions - A set of reactions to a message.
 	Reactions *[]Conversationcontentreaction `json:"reactions,omitempty"`
+
+	// Push - Push content.
+	Push *Conversationcontentpush `json:"push,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -134,6 +137,8 @@ func (o Conversationmessagecontent) MarshalJSON() ([]byte, error) {
 		QuickReplyV2 *Conversationcontentquickreplyv2 `json:"quickReplyV2,omitempty"`
 		
 		Reactions *[]Conversationcontentreaction `json:"reactions,omitempty"`
+		
+		Push *Conversationcontentpush `json:"push,omitempty"`
 		Alias
 	}{ 
 		ContentType: o.ContentType,
@@ -159,6 +164,8 @@ func (o Conversationmessagecontent) MarshalJSON() ([]byte, error) {
 		QuickReplyV2: o.QuickReplyV2,
 		
 		Reactions: o.Reactions,
+		
+		Push: o.Push,
 		Alias:    (Alias)(o),
 	})
 }
@@ -227,6 +234,11 @@ func (o *Conversationmessagecontent) UnmarshalJSON(b []byte) error {
 	if Reactions, ok := ConversationmessagecontentMap["reactions"].([]interface{}); ok {
 		ReactionsString, _ := json.Marshal(Reactions)
 		json.Unmarshal(ReactionsString, &o.Reactions)
+	}
+	
+	if Push, ok := ConversationmessagecontentMap["push"].(map[string]interface{}); ok {
+		PushString, _ := json.Marshal(Push)
+		json.Unmarshal(PushString, &o.Push)
 	}
 	
 

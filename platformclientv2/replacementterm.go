@@ -11,7 +11,7 @@ import (
 type Replacementterm struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// VarType - Social Handle Type
+	// VarType - Subject search type
 	VarType *string `json:"type,omitempty"`
 
 	// ExistingValue

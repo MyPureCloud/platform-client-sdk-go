@@ -9328,7 +9328,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekSchedule
 // GetWorkforcemanagementManagementunitWeekShifttrades invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekDateId}/shifttrades
 //
 // Gets all the shift trades for a given week
-func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekShifttrades(managementUnitId string, weekDateId time.Time, evaluateMatches bool, forceDownloadService bool) (*Weekshifttradelistresponse, *APIResponse, error) {
+func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekShifttrades(managementUnitId string, weekDateId time.Time, evaluateMatches bool, includeCrossWeekShifts bool, forceDownloadService bool) (*Weekshifttradelistresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekDateId}/shifttrades"
@@ -9368,6 +9368,8 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekShifttra
 	}
 	
 	queryParams["evaluateMatches"] = a.Configuration.APIClient.ParameterToString(evaluateMatches, "")
+	
+	queryParams["includeCrossWeekShifts"] = a.Configuration.APIClient.ParameterToString(includeCrossWeekShifts, "")
 	
 	queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, "")
 	

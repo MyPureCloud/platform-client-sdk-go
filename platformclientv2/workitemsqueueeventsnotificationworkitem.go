@@ -86,6 +86,9 @@ type Workitemsqueueeventsnotificationworkitem struct {
 	// Changes
 	Changes *[]Workitemsqueueeventsnotificationdelta `json:"changes,omitempty"`
 
+	// PropertyChanges
+	PropertyChanges *[]Workitemsqueueeventsnotificationpropertychange `json:"propertyChanges,omitempty"`
+
 	// AssignmentState
 	AssignmentState *string `json:"assignmentState,omitempty"`
 
@@ -245,6 +248,8 @@ func (o Workitemsqueueeventsnotificationworkitem) MarshalJSON() ([]byte, error) 
 		
 		Changes *[]Workitemsqueueeventsnotificationdelta `json:"changes,omitempty"`
 		
+		PropertyChanges *[]Workitemsqueueeventsnotificationpropertychange `json:"propertyChanges,omitempty"`
+		
 		AssignmentState *string `json:"assignmentState,omitempty"`
 		
 		AssignmentId *string `json:"assignmentId,omitempty"`
@@ -325,6 +330,8 @@ func (o Workitemsqueueeventsnotificationworkitem) MarshalJSON() ([]byte, error) 
 		Operation: o.Operation,
 		
 		Changes: o.Changes,
+		
+		PropertyChanges: o.PropertyChanges,
 		
 		AssignmentState: o.AssignmentState,
 		
@@ -468,6 +475,11 @@ func (o *Workitemsqueueeventsnotificationworkitem) UnmarshalJSON(b []byte) error
 	if Changes, ok := WorkitemsqueueeventsnotificationworkitemMap["changes"].([]interface{}); ok {
 		ChangesString, _ := json.Marshal(Changes)
 		json.Unmarshal(ChangesString, &o.Changes)
+	}
+	
+	if PropertyChanges, ok := WorkitemsqueueeventsnotificationworkitemMap["propertyChanges"].([]interface{}); ok {
+		PropertyChangesString, _ := json.Marshal(PropertyChanges)
+		json.Unmarshal(PropertyChangesString, &o.PropertyChanges)
 	}
 	
 	if AssignmentState, ok := WorkitemsqueueeventsnotificationworkitemMap["assignmentState"].(string); ok {

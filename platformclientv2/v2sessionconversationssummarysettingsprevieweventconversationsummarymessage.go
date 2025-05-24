@@ -1,6 +1,5 @@
 package platformclientv2
 import (
-	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -8,19 +7,19 @@ import (
 	"strings"
 )
 
-// Buheadcountforecast
-type Buheadcountforecast struct { 
+// V2sessionconversationssummarysettingsprevieweventconversationsummarymessage
+type V2sessionconversationssummarysettingsprevieweventconversationsummarymessage struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Entities
-	Entities *[]Buplanninggroupheadcountforecast `json:"entities,omitempty"`
+	// Text
+	Text *string `json:"text,omitempty"`
 
-	// ReferenceStartDate - Reference start date for the interval values in each forecast entity. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
-	ReferenceStartDate *time.Time `json:"referenceStartDate,omitempty"`
+	// Score
+	Score *float32 `json:"score,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Buheadcountforecast) SetField(field string, fieldValue interface{}) {
+func (o *V2sessionconversationssummarysettingsprevieweventconversationsummarymessage) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -41,14 +40,14 @@ func (o *Buheadcountforecast) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Buheadcountforecast) MarshalJSON() ([]byte, error) {
+func (o V2sessionconversationssummarysettingsprevieweventconversationsummarymessage) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "ReferenceStartDate", }
+		dateTimeFields := []string{  }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -79,52 +78,43 @@ func (o Buheadcountforecast) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Buheadcountforecast
-	
-	ReferenceStartDate := new(string)
-	if o.ReferenceStartDate != nil {
-		
-		*ReferenceStartDate = timeutil.Strftime(o.ReferenceStartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
-	} else {
-		ReferenceStartDate = nil
-	}
+	type Alias V2sessionconversationssummarysettingsprevieweventconversationsummarymessage
 	
 	return json.Marshal(&struct { 
-		Entities *[]Buplanninggroupheadcountforecast `json:"entities,omitempty"`
+		Text *string `json:"text,omitempty"`
 		
-		ReferenceStartDate *string `json:"referenceStartDate,omitempty"`
+		Score *float32 `json:"score,omitempty"`
 		Alias
 	}{ 
-		Entities: o.Entities,
+		Text: o.Text,
 		
-		ReferenceStartDate: ReferenceStartDate,
+		Score: o.Score,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Buheadcountforecast) UnmarshalJSON(b []byte) error {
-	var BuheadcountforecastMap map[string]interface{}
-	err := json.Unmarshal(b, &BuheadcountforecastMap)
+func (o *V2sessionconversationssummarysettingsprevieweventconversationsummarymessage) UnmarshalJSON(b []byte) error {
+	var V2sessionconversationssummarysettingsprevieweventconversationsummarymessageMap map[string]interface{}
+	err := json.Unmarshal(b, &V2sessionconversationssummarysettingsprevieweventconversationsummarymessageMap)
 	if err != nil {
 		return err
 	}
 	
-	if Entities, ok := BuheadcountforecastMap["entities"].([]interface{}); ok {
-		EntitiesString, _ := json.Marshal(Entities)
-		json.Unmarshal(EntitiesString, &o.Entities)
+	if Text, ok := V2sessionconversationssummarysettingsprevieweventconversationsummarymessageMap["text"].(string); ok {
+		o.Text = &Text
 	}
-	
-	if referenceStartDateString, ok := BuheadcountforecastMap["referenceStartDate"].(string); ok {
-		ReferenceStartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", referenceStartDateString)
-		o.ReferenceStartDate = &ReferenceStartDate
+    
+	if Score, ok := V2sessionconversationssummarysettingsprevieweventconversationsummarymessageMap["score"].(float64); ok {
+		ScoreFloat32 := float32(Score)
+		o.Score = &ScoreFloat32
 	}
-	
+    
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Buheadcountforecast) String() string {
+func (o *V2sessionconversationssummarysettingsprevieweventconversationsummarymessage) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

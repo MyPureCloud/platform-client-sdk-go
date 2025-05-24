@@ -54,6 +54,9 @@ type Conversationsummarytopicconversationsummaryevent struct {
 	// FollowupActions
 	FollowupActions *[]Conversationsummarytopicconversationfollowupaction `json:"followupActions,omitempty"`
 
+	// ExtractedEntities
+	ExtractedEntities *[]Conversationsummarytopicsummaryextractedcustomentity `json:"extractedEntities,omitempty"`
+
 	// WrapUpCodes
 	WrapUpCodes *[]Conversationsummarytopicconversationwrapupcode `json:"wrapUpCodes,omitempty"`
 
@@ -169,6 +172,8 @@ func (o Conversationsummarytopicconversationsummaryevent) MarshalJSON() ([]byte,
 		
 		FollowupActions *[]Conversationsummarytopicconversationfollowupaction `json:"followupActions,omitempty"`
 		
+		ExtractedEntities *[]Conversationsummarytopicsummaryextractedcustomentity `json:"extractedEntities,omitempty"`
+		
 		WrapUpCodes *[]Conversationsummarytopicconversationwrapupcode `json:"wrapUpCodes,omitempty"`
 		
 		TriggerSource *Conversationsummarytopictriggersource `json:"triggerSource,omitempty"`
@@ -207,6 +212,8 @@ func (o Conversationsummarytopicconversationsummaryevent) MarshalJSON() ([]byte,
 		Resolution: o.Resolution,
 		
 		FollowupActions: o.FollowupActions,
+		
+		ExtractedEntities: o.ExtractedEntities,
 		
 		WrapUpCodes: o.WrapUpCodes,
 		
@@ -290,6 +297,11 @@ func (o *Conversationsummarytopicconversationsummaryevent) UnmarshalJSON(b []byt
 	if FollowupActions, ok := ConversationsummarytopicconversationsummaryeventMap["followupActions"].([]interface{}); ok {
 		FollowupActionsString, _ := json.Marshal(FollowupActions)
 		json.Unmarshal(FollowupActionsString, &o.FollowupActions)
+	}
+	
+	if ExtractedEntities, ok := ConversationsummarytopicconversationsummaryeventMap["extractedEntities"].([]interface{}); ok {
+		ExtractedEntitiesString, _ := json.Marshal(ExtractedEntities)
+		json.Unmarshal(ExtractedEntitiesString, &o.ExtractedEntities)
 	}
 	
 	if WrapUpCodes, ok := ConversationsummarytopicconversationsummaryeventMap["wrapUpCodes"].([]interface{}); ok {

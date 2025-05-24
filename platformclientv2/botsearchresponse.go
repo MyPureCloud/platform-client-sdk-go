@@ -23,6 +23,9 @@ type Botsearchresponse struct {
 	// Description - The description of the bot
 	Description *string `json:"description,omitempty"`
 
+	// VirtualAgentEnabled - Whether the bot is a virtual agent or not
+	VirtualAgentEnabled *bool `json:"virtualAgentEnabled,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -98,6 +101,8 @@ func (o Botsearchresponse) MarshalJSON() ([]byte, error) {
 		
 		Description *string `json:"description,omitempty"`
 		
+		VirtualAgentEnabled *bool `json:"virtualAgentEnabled,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -108,6 +113,8 @@ func (o Botsearchresponse) MarshalJSON() ([]byte, error) {
 		BotType: o.BotType,
 		
 		Description: o.Description,
+		
+		VirtualAgentEnabled: o.VirtualAgentEnabled,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -135,6 +142,10 @@ func (o *Botsearchresponse) UnmarshalJSON(b []byte) error {
     
 	if Description, ok := BotsearchresponseMap["description"].(string); ok {
 		o.Description = &Description
+	}
+    
+	if VirtualAgentEnabled, ok := BotsearchresponseMap["virtualAgentEnabled"].(bool); ok {
+		o.VirtualAgentEnabled = &VirtualAgentEnabled
 	}
     
 	if SelfUri, ok := BotsearchresponseMap["selfUri"].(string); ok {

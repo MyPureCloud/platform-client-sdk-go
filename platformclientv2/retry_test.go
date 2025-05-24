@@ -48,8 +48,8 @@ func testRetryErrorCode(t *testing.T, errorCode int) {
 	APIClient.client.SetRetryWaitMin(10 * time.Millisecond)
 	APIClient.client.SetRetryWaitMax(50 * time.Millisecond)
 	APIClient.client.SetRetryMax(50)
-	APIClient.client.SetRequestLogHook(hook)
-	APIClient.client.SetResponseLogHook(responseHook)
+	APIClient.client.SetPreHook(hook)
+	APIClient.client.SetPostHook(responseHook)
 
 	// Create a request
 	testBytes := []byte("hello")
@@ -136,8 +136,8 @@ func testDoNotRetryErrorCode(t *testing.T, errorCode int) {
 	APIClient := NewAPIClient(&Configuration{})
 	APIClient.client.SetRetryWaitMax(0)
 	APIClient.client.SetRetryMax(0)
-	APIClient.client.SetRequestLogHook(hook)
-	APIClient.client.SetResponseLogHook(responseHook)
+	APIClient.client.SetPreHook(hook)
+	APIClient.client.SetPostHook(responseHook)
 
 	// Create a request
 	testBytes := []byte("hello")

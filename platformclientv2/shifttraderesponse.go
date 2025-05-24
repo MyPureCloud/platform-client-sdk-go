@@ -36,6 +36,9 @@ type Shifttraderesponse struct {
 	// InitiatingShiftEnd - The end date/time of the shift being offered for trade. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	InitiatingShiftEnd *time.Time `json:"initiatingShiftEnd,omitempty"`
 
+	// ReceivingWeekDate - The start week date of the receiving shift in yyyy-MM-dd format for a cross-week shift trade or null otherwise. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
+	ReceivingWeekDate *time.Time `json:"receivingWeekDate,omitempty"`
+
 	// ReceivingUser - The user matching the trade, or if the state is not 'Matched', the user to whom the trade request was sent
 	ReceivingUser *Userreference `json:"receivingUser,omitempty"`
 
@@ -98,7 +101,7 @@ func (o Shifttraderesponse) MarshalJSON() ([]byte, error) {
 		// Known field names that require type overrides
 		dateTimeFields := []string{ "InitiatingShiftStart","InitiatingShiftEnd","ReceivingShiftStart","ReceivingShiftEnd","Expiration","ReviewedDate", }
 		localDateTimeFields := []string{  }
-		dateFields := []string{ "WeekDate", }
+		dateFields := []string{ "WeekDate","ReceivingWeekDate", }
 
 		// Construct object
 		newObj := make(map[string]interface{})
@@ -152,6 +155,13 @@ func (o Shifttraderesponse) MarshalJSON() ([]byte, error) {
 		InitiatingShiftEnd = nil
 	}
 	
+	ReceivingWeekDate := new(string)
+	if o.ReceivingWeekDate != nil {
+		*ReceivingWeekDate = timeutil.Strftime(o.ReceivingWeekDate, "%Y-%m-%d")
+	} else {
+		ReceivingWeekDate = nil
+	}
+	
 	ReceivingShiftStart := new(string)
 	if o.ReceivingShiftStart != nil {
 		
@@ -201,6 +211,8 @@ func (o Shifttraderesponse) MarshalJSON() ([]byte, error) {
 		
 		InitiatingShiftEnd *string `json:"initiatingShiftEnd,omitempty"`
 		
+		ReceivingWeekDate *string `json:"receivingWeekDate,omitempty"`
+		
 		ReceivingUser *Userreference `json:"receivingUser,omitempty"`
 		
 		ReceivingShiftId *string `json:"receivingShiftId,omitempty"`
@@ -237,6 +249,8 @@ func (o Shifttraderesponse) MarshalJSON() ([]byte, error) {
 		InitiatingShiftStart: InitiatingShiftStart,
 		
 		InitiatingShiftEnd: InitiatingShiftEnd,
+		
+		ReceivingWeekDate: ReceivingWeekDate,
 		
 		ReceivingUser: o.ReceivingUser,
 		
@@ -303,6 +317,11 @@ func (o *Shifttraderesponse) UnmarshalJSON(b []byte) error {
 	if initiatingShiftEndString, ok := ShifttraderesponseMap["initiatingShiftEnd"].(string); ok {
 		InitiatingShiftEnd, _ := time.Parse("2006-01-02T15:04:05.999999Z", initiatingShiftEndString)
 		o.InitiatingShiftEnd = &InitiatingShiftEnd
+	}
+	
+	if receivingWeekDateString, ok := ShifttraderesponseMap["receivingWeekDate"].(string); ok {
+		ReceivingWeekDate, _ := time.Parse("2006-01-02", receivingWeekDateString)
+		o.ReceivingWeekDate = &ReceivingWeekDate
 	}
 	
 	if ReceivingUser, ok := ShifttraderesponseMap["receivingUser"].(map[string]interface{}); ok {

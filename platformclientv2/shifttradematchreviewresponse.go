@@ -22,6 +22,9 @@ type Shifttradematchreviewresponse struct {
 
 	// AdminReviewViolations - Constraint violations associated with this shift trade which require shift trade administrator review
 	AdminReviewViolations *[]Shifttradematchviolation `json:"adminReviewViolations,omitempty"`
+
+	// UnevaluatedRules - Unevaluated rules for this shift trade which require shift trade administrator review
+	UnevaluatedRules *[]string `json:"unevaluatedRules,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +97,8 @@ func (o Shifttradematchreviewresponse) MarshalJSON() ([]byte, error) {
 		Violations *[]Shifttradematchviolation `json:"violations,omitempty"`
 		
 		AdminReviewViolations *[]Shifttradematchviolation `json:"adminReviewViolations,omitempty"`
+		
+		UnevaluatedRules *[]string `json:"unevaluatedRules,omitempty"`
 		Alias
 	}{ 
 		InitiatingUser: o.InitiatingUser,
@@ -103,6 +108,8 @@ func (o Shifttradematchreviewresponse) MarshalJSON() ([]byte, error) {
 		Violations: o.Violations,
 		
 		AdminReviewViolations: o.AdminReviewViolations,
+		
+		UnevaluatedRules: o.UnevaluatedRules,
 		Alias:    (Alias)(o),
 	})
 }
@@ -132,6 +139,11 @@ func (o *Shifttradematchreviewresponse) UnmarshalJSON(b []byte) error {
 	if AdminReviewViolations, ok := ShifttradematchreviewresponseMap["adminReviewViolations"].([]interface{}); ok {
 		AdminReviewViolationsString, _ := json.Marshal(AdminReviewViolations)
 		json.Unmarshal(AdminReviewViolationsString, &o.AdminReviewViolations)
+	}
+	
+	if UnevaluatedRules, ok := ShifttradematchreviewresponseMap["unevaluatedRules"].([]interface{}); ok {
+		UnevaluatedRulesString, _ := json.Marshal(UnevaluatedRules)
+		json.Unmarshal(UnevaluatedRulesString, &o.UnevaluatedRules)
 	}
 	
 

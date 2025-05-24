@@ -17,6 +17,9 @@ type Weekshifttradematchessummaryresponse struct {
 
 	// Count - The number of trades in the 'Matched' state with the initiating shift in the given week
 	Count *int `json:"count,omitempty"`
+
+	// CrossWeekReceivingCount - The number of cross-week trades in the 'Matched' state with the receiving shift for the given week
+	CrossWeekReceivingCount *int `json:"crossWeekReceivingCount,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -92,11 +95,15 @@ func (o Weekshifttradematchessummaryresponse) MarshalJSON() ([]byte, error) {
 		WeekDate *string `json:"weekDate,omitempty"`
 		
 		Count *int `json:"count,omitempty"`
+		
+		CrossWeekReceivingCount *int `json:"crossWeekReceivingCount,omitempty"`
 		Alias
 	}{ 
 		WeekDate: WeekDate,
 		
 		Count: o.Count,
+		
+		CrossWeekReceivingCount: o.CrossWeekReceivingCount,
 		Alias:    (Alias)(o),
 	})
 }
@@ -116,6 +123,11 @@ func (o *Weekshifttradematchessummaryresponse) UnmarshalJSON(b []byte) error {
 	if Count, ok := WeekshifttradematchessummaryresponseMap["count"].(float64); ok {
 		CountInt := int(Count)
 		o.Count = &CountInt
+	}
+	
+	if CrossWeekReceivingCount, ok := WeekshifttradematchessummaryresponseMap["crossWeekReceivingCount"].(float64); ok {
+		CrossWeekReceivingCountInt := int(CrossWeekReceivingCount)
+		o.CrossWeekReceivingCount = &CrossWeekReceivingCountInt
 	}
 	
 

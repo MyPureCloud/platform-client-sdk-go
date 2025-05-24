@@ -5665,7 +5665,7 @@ func (a ArchitectApi) GetFlowVersions(flowId string, pageNumber int, pageSize in
 // Get a pageable list of flows, filtered by query parameters
 //
 // If one or more IDs are specified, the search will fetch flows that match the given ID(s) and not use any additional supplied query parameters in the search.
-func (a ArchitectApi) GetFlows(varType []string, pageNumber int, pageSize int, sortBy string, sortOrder string, id []string, name string, description string, nameOrDescription string, publishVersionId string, editableBy string, lockedBy string, lockedByClientId string, secure string, deleted bool, includeSchemas bool, publishedAfter string, publishedBefore string, divisionId []string) (*Flowentitylisting, *APIResponse, error) {
+func (a ArchitectApi) GetFlows(varType []string, pageNumber int, pageSize int, sortBy string, sortOrder string, id []string, name string, description string, nameOrDescription string, publishVersionId string, editableBy string, lockedBy string, lockedByClientId string, secure string, deleted bool, includeSchemas bool, virtualAgentEnabled bool, publishedAfter string, publishedBefore string, divisionId []string) (*Flowentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows"
@@ -5723,6 +5723,8 @@ func (a ArchitectApi) GetFlows(varType []string, pageNumber int, pageSize int, s
 	queryParams["deleted"] = a.Configuration.APIClient.ParameterToString(deleted, "")
 	
 	queryParams["includeSchemas"] = a.Configuration.APIClient.ParameterToString(includeSchemas, "")
+	
+	queryParams["virtualAgentEnabled"] = a.Configuration.APIClient.ParameterToString(virtualAgentEnabled, "")
 	
 	queryParams["publishedAfter"] = a.Configuration.APIClient.ParameterToString(publishedAfter, "")
 	

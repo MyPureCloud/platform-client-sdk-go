@@ -694,6 +694,9 @@ type Viewfilter struct {
 
 	// SocialRatings - A set of ratings for Google Business Profile
 	SocialRatings *[]float32 `json:"socialRatings,omitempty"`
+
+	// VirtualAgentIds - A list of virtual agent ids for filtering.
+	VirtualAgentIds *[]string `json:"virtualAgentIds,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -1214,6 +1217,8 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		DeliveryPushed *bool `json:"deliveryPushed,omitempty"`
 		
 		SocialRatings *[]float32 `json:"socialRatings,omitempty"`
+		
+		VirtualAgentIds *[]string `json:"virtualAgentIds,omitempty"`
 		Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -1671,6 +1676,8 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		DeliveryPushed: o.DeliveryPushed,
 		
 		SocialRatings: o.SocialRatings,
+		
+		VirtualAgentIds: o.VirtualAgentIds,
 		Alias:    (Alias)(o),
 	})
 }
@@ -2767,6 +2774,11 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if SocialRatings, ok := ViewfilterMap["socialRatings"].([]interface{}); ok {
 		SocialRatingsString, _ := json.Marshal(SocialRatings)
 		json.Unmarshal(SocialRatingsString, &o.SocialRatings)
+	}
+	
+	if VirtualAgentIds, ok := ViewfilterMap["virtualAgentIds"].([]interface{}); ok {
+		VirtualAgentIdsString, _ := json.Marshal(VirtualAgentIds)
+		json.Unmarshal(VirtualAgentIdsString, &o.VirtualAgentIds)
 	}
 	
 

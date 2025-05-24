@@ -12,7 +12,7 @@ type Buheadcountforecastresponse struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Result - The headcount forecast, null when downloadUrl is provided
-	Result *Buheadcountforecast `json:"result,omitempty"`
+	Result *Buheadcountforecastbuplanninggroupheadcountforecastresult `json:"result,omitempty"`
 
 	// DownloadUrl - Download URL.  Null unless the response is too large to pass directly through the api
 	DownloadUrl *string `json:"downloadUrl,omitempty"`
@@ -81,7 +81,7 @@ func (o Buheadcountforecastresponse) MarshalJSON() ([]byte, error) {
 	type Alias Buheadcountforecastresponse
 	
 	return json.Marshal(&struct { 
-		Result *Buheadcountforecast `json:"result,omitempty"`
+		Result *Buheadcountforecastbuplanninggroupheadcountforecastresult `json:"result,omitempty"`
 		
 		DownloadUrl *string `json:"downloadUrl,omitempty"`
 		Alias

@@ -2589,7 +2589,7 @@ func (a TaskManagementApi) GetTaskmanagementWorkitemsSchemas() (*Dataschemalisti
 
 // GetTaskmanagementWorkitemsSchemasCoretype invokes GET /api/v2/taskmanagement/workitems/schemas/coretypes/{coreTypeName}
 //
-// Get the core types from which all schemas are built.
+// Get a specific named core type.
 func (a TaskManagementApi) GetTaskmanagementWorkitemsSchemasCoretype(coreTypeName string) (*Coretype, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2672,11 +2672,11 @@ func (a TaskManagementApi) GetTaskmanagementWorkitemsSchemasCoretype(coreTypeNam
 // GetTaskmanagementWorkitemsSchemasCoretypes invokes GET /api/v2/taskmanagement/workitems/schemas/coretypes
 //
 // Get the core types from which all schemas are built.
-func (a TaskManagementApi) GetTaskmanagementWorkitemsSchemasCoretypes() (*Coretype, *APIResponse, error) {
+func (a TaskManagementApi) GetTaskmanagementWorkitemsSchemasCoretypes() (*Coretypelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/taskmanagement/workitems/schemas/coretypes"
-	defaultReturn := new(Coretype)
+	defaultReturn := new(Coretypelisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -2729,14 +2729,14 @@ func (a TaskManagementApi) GetTaskmanagementWorkitemsSchemasCoretypes() (*Corety
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Coretype
+	var successPayload *Coretypelisting
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Coretype" == "string" {
+		if "Coretypelisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

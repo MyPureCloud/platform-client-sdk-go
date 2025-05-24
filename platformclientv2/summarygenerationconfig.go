@@ -13,6 +13,9 @@ type Summarygenerationconfig struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// Enabled - Copilot generated summary is enabled.
 	Enabled *bool `json:"enabled,omitempty"`
+
+	// SummarySetting - Configured summary setting object.
+	SummarySetting *Summarysettingentity `json:"summarySetting,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +82,13 @@ func (o Summarygenerationconfig) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		Enabled *bool `json:"enabled,omitempty"`
+		
+		SummarySetting *Summarysettingentity `json:"summarySetting,omitempty"`
 		Alias
 	}{ 
 		Enabled: o.Enabled,
+		
+		SummarySetting: o.SummarySetting,
 		Alias:    (Alias)(o),
 	})
 }
@@ -97,6 +104,11 @@ func (o *Summarygenerationconfig) UnmarshalJSON(b []byte) error {
 		o.Enabled = &Enabled
 	}
     
+	if SummarySetting, ok := SummarygenerationconfigMap["summarySetting"].(map[string]interface{}); ok {
+		SummarySettingString, _ := json.Marshal(SummarySetting)
+		json.Unmarshal(SummarySettingString, &o.SummarySetting)
+	}
+	
 
 	return nil
 }

@@ -54,6 +54,9 @@ type Conversationsummarytopicvirtualagentsconversationsummaryevent struct {
 	// FollowupActions
 	FollowupActions *[]Conversationsummarytopicvirtualagentsconversationfollowupaction `json:"followupActions,omitempty"`
 
+	// ExtractedEntities
+	ExtractedEntities *[]Conversationsummarytopicvirtualagentssummaryextractedcustomentity `json:"extractedEntities,omitempty"`
+
 	// WrapUpCodes
 	WrapUpCodes *[]Conversationsummarytopicvirtualagentsconversationwrapupcode `json:"wrapUpCodes,omitempty"`
 
@@ -169,6 +172,8 @@ func (o Conversationsummarytopicvirtualagentsconversationsummaryevent) MarshalJS
 		
 		FollowupActions *[]Conversationsummarytopicvirtualagentsconversationfollowupaction `json:"followupActions,omitempty"`
 		
+		ExtractedEntities *[]Conversationsummarytopicvirtualagentssummaryextractedcustomentity `json:"extractedEntities,omitempty"`
+		
 		WrapUpCodes *[]Conversationsummarytopicvirtualagentsconversationwrapupcode `json:"wrapUpCodes,omitempty"`
 		
 		TriggerSource *Conversationsummarytopicvirtualagentstriggersource `json:"triggerSource,omitempty"`
@@ -207,6 +212,8 @@ func (o Conversationsummarytopicvirtualagentsconversationsummaryevent) MarshalJS
 		Resolution: o.Resolution,
 		
 		FollowupActions: o.FollowupActions,
+		
+		ExtractedEntities: o.ExtractedEntities,
 		
 		WrapUpCodes: o.WrapUpCodes,
 		
@@ -290,6 +297,11 @@ func (o *Conversationsummarytopicvirtualagentsconversationsummaryevent) Unmarsha
 	if FollowupActions, ok := ConversationsummarytopicvirtualagentsconversationsummaryeventMap["followupActions"].([]interface{}); ok {
 		FollowupActionsString, _ := json.Marshal(FollowupActions)
 		json.Unmarshal(FollowupActionsString, &o.FollowupActions)
+	}
+	
+	if ExtractedEntities, ok := ConversationsummarytopicvirtualagentsconversationsummaryeventMap["extractedEntities"].([]interface{}); ok {
+		ExtractedEntitiesString, _ := json.Marshal(ExtractedEntities)
+		json.Unmarshal(ExtractedEntitiesString, &o.ExtractedEntities)
 	}
 	
 	if WrapUpCodes, ok := ConversationsummarytopicvirtualagentsconversationsummaryeventMap["wrapUpCodes"].([]interface{}); ok {
