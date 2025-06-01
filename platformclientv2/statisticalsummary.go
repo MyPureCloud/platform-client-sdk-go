@@ -49,6 +49,9 @@ type Statisticalsummary struct {
 
 	// P99
 	P99 *int `json:"p99,omitempty"`
+
+	// CalculatedMetricValue
+	CalculatedMetricValue *int `json:"calculatedMetricValue,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -139,6 +142,8 @@ func (o Statisticalsummary) MarshalJSON() ([]byte, error) {
 		P95 *int `json:"p95,omitempty"`
 		
 		P99 *int `json:"p99,omitempty"`
+		
+		CalculatedMetricValue *int `json:"calculatedMetricValue,omitempty"`
 		Alias
 	}{ 
 		Max: o.Max,
@@ -166,6 +171,8 @@ func (o Statisticalsummary) MarshalJSON() ([]byte, error) {
 		P95: o.P95,
 		
 		P99: o.P99,
+		
+		CalculatedMetricValue: o.CalculatedMetricValue,
 		Alias:    (Alias)(o),
 	})
 }
@@ -240,6 +247,11 @@ func (o *Statisticalsummary) UnmarshalJSON(b []byte) error {
 	if P99, ok := StatisticalsummaryMap["p99"].(float64); ok {
 		P99Int := int(P99)
 		o.P99 = &P99Int
+	}
+	
+	if CalculatedMetricValue, ok := StatisticalsummaryMap["calculatedMetricValue"].(float64); ok {
+		CalculatedMetricValueInt := int(CalculatedMetricValue)
+		o.CalculatedMetricValue = &CalculatedMetricValueInt
 	}
 	
 

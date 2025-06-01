@@ -22,6 +22,9 @@ type Conversationactivitymetricvalue struct {
 
 	// Count - Metric count
 	Count *int `json:"count,omitempty"`
+
+	// CalculatedMetricValue - Calculated metric value
+	CalculatedMetricValue *int `json:"calculatedMetricValue,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +97,8 @@ func (o Conversationactivitymetricvalue) MarshalJSON() ([]byte, error) {
 		EntityIds *[]string `json:"entityIds,omitempty"`
 		
 		Count *int `json:"count,omitempty"`
+		
+		CalculatedMetricValue *int `json:"calculatedMetricValue,omitempty"`
 		Alias
 	}{ 
 		Metric: o.Metric,
@@ -103,6 +108,8 @@ func (o Conversationactivitymetricvalue) MarshalJSON() ([]byte, error) {
 		EntityIds: o.EntityIds,
 		
 		Count: o.Count,
+		
+		CalculatedMetricValue: o.CalculatedMetricValue,
 		Alias:    (Alias)(o),
 	})
 }
@@ -130,6 +137,11 @@ func (o *Conversationactivitymetricvalue) UnmarshalJSON(b []byte) error {
 	if Count, ok := ConversationactivitymetricvalueMap["count"].(float64); ok {
 		CountInt := int(Count)
 		o.Count = &CountInt
+	}
+	
+	if CalculatedMetricValue, ok := ConversationactivitymetricvalueMap["calculatedMetricValue"].(float64); ok {
+		CalculatedMetricValueInt := int(CalculatedMetricValue)
+		o.CalculatedMetricValue = &CalculatedMetricValueInt
 	}
 	
 

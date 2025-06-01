@@ -26,20 +26,20 @@ type Extensionentitylisting struct {
 	// TotalNumberOfEntities - The total organization-wide number of entities.
 	TotalNumberOfEntities *int `json:"totalNumberOfEntities,omitempty"`
 
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
-
-	// NextUri
-	NextUri *string `json:"nextUri,omitempty"`
+	// FirstUri
+	FirstUri *string `json:"firstUri,omitempty"`
 
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
 
-	// FirstUri
-	FirstUri *string `json:"firstUri,omitempty"`
-
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
+
+	// NextUri
+	NextUri *string `json:"nextUri,omitempty"`
+
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
 
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
@@ -118,15 +118,15 @@ func (o Extensionentitylisting) MarshalJSON() ([]byte, error) {
 		
 		TotalNumberOfEntities *int `json:"totalNumberOfEntities,omitempty"`
 		
-		PreviousUri *string `json:"previousUri,omitempty"`
-		
-		NextUri *string `json:"nextUri,omitempty"`
+		FirstUri *string `json:"firstUri,omitempty"`
 		
 		LastUri *string `json:"lastUri,omitempty"`
 		
-		FirstUri *string `json:"firstUri,omitempty"`
-		
 		SelfUri *string `json:"selfUri,omitempty"`
+		
+		NextUri *string `json:"nextUri,omitempty"`
+		
+		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		Alias
@@ -141,15 +141,15 @@ func (o Extensionentitylisting) MarshalJSON() ([]byte, error) {
 		
 		TotalNumberOfEntities: o.TotalNumberOfEntities,
 		
-		PreviousUri: o.PreviousUri,
-		
-		NextUri: o.NextUri,
+		FirstUri: o.FirstUri,
 		
 		LastUri: o.LastUri,
 		
-		FirstUri: o.FirstUri,
-		
 		SelfUri: o.SelfUri,
+		
+		NextUri: o.NextUri,
+		
+		PreviousUri: o.PreviousUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
@@ -188,24 +188,24 @@ func (o *Extensionentitylisting) UnmarshalJSON(b []byte) error {
 		o.TotalNumberOfEntities = &TotalNumberOfEntitiesInt
 	}
 	
-	if PreviousUri, ok := ExtensionentitylistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
-	}
-    
-	if NextUri, ok := ExtensionentitylistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
+	if FirstUri, ok := ExtensionentitylistingMap["firstUri"].(string); ok {
+		o.FirstUri = &FirstUri
 	}
     
 	if LastUri, ok := ExtensionentitylistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
 	}
     
-	if FirstUri, ok := ExtensionentitylistingMap["firstUri"].(string); ok {
-		o.FirstUri = &FirstUri
-	}
-    
 	if SelfUri, ok := ExtensionentitylistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
+	}
+    
+	if NextUri, ok := ExtensionentitylistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
+	}
+    
+	if PreviousUri, ok := ExtensionentitylistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
 	}
     
 	if PageCount, ok := ExtensionentitylistingMap["pageCount"].(float64); ok {

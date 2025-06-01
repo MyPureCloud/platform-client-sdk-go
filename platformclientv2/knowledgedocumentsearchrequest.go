@@ -61,6 +61,9 @@ type Knowledgedocumentsearchrequest struct {
 
 	// AnswerMode - Allows extracted answers from an article (AnswerHighlight) and/or AI-generated answers (AnswerGeneration). Default mode: AnswerHighlight. Use this property with answerHighlightTopResults.
 	AnswerMode *[]string `json:"answerMode,omitempty"`
+
+	// PreprocessQuery - Indicates whether the search query should be preprocessed.
+	PreprocessQuery *bool `json:"preprocessQuery,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -159,6 +162,8 @@ func (o Knowledgedocumentsearchrequest) MarshalJSON() ([]byte, error) {
 		AnswerHighlightTopResults *int `json:"answerHighlightTopResults,omitempty"`
 		
 		AnswerMode *[]string `json:"answerMode,omitempty"`
+		
+		PreprocessQuery *bool `json:"preprocessQuery,omitempty"`
 		Alias
 	}{ 
 		Query: o.Query,
@@ -194,6 +199,8 @@ func (o Knowledgedocumentsearchrequest) MarshalJSON() ([]byte, error) {
 		AnswerHighlightTopResults: o.AnswerHighlightTopResults,
 		
 		AnswerMode: o.AnswerMode,
+		
+		PreprocessQuery: o.PreprocessQuery,
 		Alias:    (Alias)(o),
 	})
 }
@@ -284,6 +291,10 @@ func (o *Knowledgedocumentsearchrequest) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(AnswerModeString, &o.AnswerMode)
 	}
 	
+	if PreprocessQuery, ok := KnowledgedocumentsearchrequestMap["preprocessQuery"].(bool); ok {
+		o.PreprocessQuery = &PreprocessQuery
+	}
+    
 
 	return nil
 }

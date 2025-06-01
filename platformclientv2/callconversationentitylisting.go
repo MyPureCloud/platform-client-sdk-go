@@ -23,20 +23,20 @@ type Callconversationentitylisting struct {
 	// Total
 	Total *int `json:"total,omitempty"`
 
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
-
-	// NextUri
-	NextUri *string `json:"nextUri,omitempty"`
+	// FirstUri
+	FirstUri *string `json:"firstUri,omitempty"`
 
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
 
-	// FirstUri
-	FirstUri *string `json:"firstUri,omitempty"`
-
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
+
+	// NextUri
+	NextUri *string `json:"nextUri,omitempty"`
+
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
 
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
@@ -113,15 +113,15 @@ func (o Callconversationentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
-		PreviousUri *string `json:"previousUri,omitempty"`
-		
-		NextUri *string `json:"nextUri,omitempty"`
+		FirstUri *string `json:"firstUri,omitempty"`
 		
 		LastUri *string `json:"lastUri,omitempty"`
 		
-		FirstUri *string `json:"firstUri,omitempty"`
-		
 		SelfUri *string `json:"selfUri,omitempty"`
+		
+		NextUri *string `json:"nextUri,omitempty"`
+		
+		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		Alias
@@ -134,15 +134,15 @@ func (o Callconversationentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
-		PreviousUri: o.PreviousUri,
-		
-		NextUri: o.NextUri,
+		FirstUri: o.FirstUri,
 		
 		LastUri: o.LastUri,
 		
-		FirstUri: o.FirstUri,
-		
 		SelfUri: o.SelfUri,
+		
+		NextUri: o.NextUri,
+		
+		PreviousUri: o.PreviousUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
@@ -176,24 +176,24 @@ func (o *Callconversationentitylisting) UnmarshalJSON(b []byte) error {
 		o.Total = &TotalInt
 	}
 	
-	if PreviousUri, ok := CallconversationentitylistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
-	}
-    
-	if NextUri, ok := CallconversationentitylistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
+	if FirstUri, ok := CallconversationentitylistingMap["firstUri"].(string); ok {
+		o.FirstUri = &FirstUri
 	}
     
 	if LastUri, ok := CallconversationentitylistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
 	}
     
-	if FirstUri, ok := CallconversationentitylistingMap["firstUri"].(string); ok {
-		o.FirstUri = &FirstUri
-	}
-    
 	if SelfUri, ok := CallconversationentitylistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
+	}
+    
+	if NextUri, ok := CallconversationentitylistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
+	}
+    
+	if PreviousUri, ok := CallconversationentitylistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
 	}
     
 	if PageCount, ok := CallconversationentitylistingMap["pageCount"].(float64); ok {

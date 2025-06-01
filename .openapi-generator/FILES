@@ -874,6 +874,9 @@ docs/GetIntegrationsActionsCertificates-example.txt
 docs/GetIntegrationsActionsCertificatesTruststore-example.txt
 docs/GetIntegrationsActionsDrafts-example.txt
 docs/GetIntegrationsActionsFunctionsRuntimes-example.txt
+docs/GetIntegrationsBotconnectorBot-example.txt
+docs/GetIntegrationsBotconnectorBots-example.txt
+docs/GetIntegrationsBotconnectorBotsSummaries-example.txt
 docs/GetIntegrationsBotconnectorIntegrationIdBot-example.txt
 docs/GetIntegrationsBotconnectorIntegrationIdBotVersions-example.txt
 docs/GetIntegrationsBotconnectorIntegrationIdBots-example.txt
@@ -1380,6 +1383,7 @@ docs/GetSpeechandtextanalyticsTopicsDialects-example.txt
 docs/GetSpeechandtextanalyticsTopicsGeneral-example.txt
 docs/GetSpeechandtextanalyticsTopicsGeneralStatus-example.txt
 docs/GetSpeechandtextanalyticsTopicsPublishjob-example.txt
+docs/GetSpeechandtextanalyticsTopicsTestphraseJob-example.txt
 docs/GetSpeechandtextanalyticsTranslationsLanguageConversation-example.txt
 docs/GetSpeechandtextanalyticsTranslationsLanguages-example.txt
 docs/GetStation-example.txt
@@ -2148,6 +2152,7 @@ docs/PostConversationsKeyconfigurationsValidate-example.txt
 docs/PostConversationsMessageCommunicationMessages-example.txt
 docs/PostConversationsMessageCommunicationMessagesMedia-example.txt
 docs/PostConversationsMessageCommunicationMessagesMediaUploads-example.txt
+docs/PostConversationsMessageCommunicationSocialmediaMessages-example.txt
 docs/PostConversationsMessageCommunicationTyping-example.txt
 docs/PostConversationsMessageInboundOpenEvent-example.txt
 docs/PostConversationsMessageInboundOpenMessage-example.txt
@@ -2284,6 +2289,8 @@ docs/PostIntegrationsActionExecute-example.txt
 docs/PostIntegrationsActionTest-example.txt
 docs/PostIntegrationsActions-example.txt
 docs/PostIntegrationsActionsDrafts-example.txt
+docs/PostIntegrationsBotconnectorsIncomingMessages-example.txt
+docs/PostIntegrationsBotconnectorsOutgoingMessages-example.txt
 docs/PostIntegrationsCredentials-example.txt
 docs/PostIntegrationsSpeechNuanceNuanceIntegrationIdBotJobs-example.txt
 docs/PostIntegrationsSpeechNuanceNuanceIntegrationIdBotsJobs-example.txt
@@ -2512,6 +2519,8 @@ docs/PostSocialmediaEscalationrules-example.txt
 docs/PostSocialmediaEscalationsMessages-example.txt
 docs/PostSocialmediaTopicDataingestionrulesFacebook-example.txt
 docs/PostSocialmediaTopicDataingestionrulesOpen-example.txt
+docs/PostSocialmediaTopicDataingestionrulesOpenRuleIdMessagesBulk-example.txt
+docs/PostSocialmediaTopicDataingestionrulesOpenRuleIdReactionsBulk-example.txt
 docs/PostSocialmediaTopicDataingestionrulesTwitter-example.txt
 docs/PostSocialmediaTopics-example.txt
 docs/PostSocialmediaTwitterHistoricalTweets-example.txt
@@ -2523,6 +2532,7 @@ docs/PostSpeechandtextanalyticsProgramsPublishjobs-example.txt
 docs/PostSpeechandtextanalyticsSentimentfeedback-example.txt
 docs/PostSpeechandtextanalyticsTopics-example.txt
 docs/PostSpeechandtextanalyticsTopicsPublishjobs-example.txt
+docs/PostSpeechandtextanalyticsTopicsTestphraseJobs-example.txt
 docs/PostSpeechandtextanalyticsTranscriptsSearch-example.txt
 docs/PostSpeechandtextanalyticsTranscriptsSearch-example.txt
 docs/PostTaskmanagementWorkbins-example.txt
@@ -3066,8 +3076,8 @@ platformclientv2/addconversationresponse.go
 platformclientv2/additionallanguagesintent.go
 platformclientv2/additionallanguagessynonyms.go
 platformclientv2/additionalmessage.go
+platformclientv2/additionalsocialmediamessage.go
 platformclientv2/address.go
-platformclientv2/addressableentity.go
 platformclientv2/addressableentityref.go
 platformclientv2/addressablelicensedefinition.go
 platformclientv2/addshifttraderequest.go
@@ -3370,6 +3380,7 @@ platformclientv2/authzgrantrole.go
 platformclientv2/authzsubject.go
 platformclientv2/autoanswersetting.go
 platformclientv2/autoanswersettings.go
+platformclientv2/automatedanswer.go
 platformclientv2/automatictimezonemappingsettings.go
 platformclientv2/autostart.go
 platformclientv2/autostatustransitiondetail.go
@@ -3418,6 +3429,7 @@ platformclientv2/billingusagereport.go
 platformclientv2/billingusageresource.go
 platformclientv2/billingwallet.go
 platformclientv2/biography.go
+platformclientv2/bot.go
 platformclientv2/botaggregatedatacontainer.go
 platformclientv2/botaggregatequeryclause.go
 platformclientv2/botaggregatequeryfilter.go
@@ -3432,15 +3444,23 @@ platformclientv2/botconnectorbot.go
 platformclientv2/botconnectorbotsummaryentitylisting.go
 platformclientv2/botconnectorbotversion.go
 platformclientv2/botconnectorbotversionsummaryentitylisting.go
+platformclientv2/botconnectorintent.go
+platformclientv2/botconnectorsummary.go
+platformclientv2/botconnectorversionsummary.go
+platformclientv2/botentity.go
+platformclientv2/botentityvalue.go
 platformclientv2/botexecutionconfiguration.go
 platformclientv2/botflowsession.go
 platformclientv2/botintent.go
 platformclientv2/botlist.go
+platformclientv2/botlisting.go
 platformclientv2/botmessengerprofile.go
 platformclientv2/botsearchresponse.go
 platformclientv2/botsearchresponseentitylisting.go
 platformclientv2/botslot.go
 platformclientv2/botsummary.go
+platformclientv2/botsummaryentitylisting.go
+platformclientv2/botversion.go
 platformclientv2/botversionsummary.go
 platformclientv2/browser.go
 platformclientv2/buabandonrate.go
@@ -4069,7 +4089,10 @@ platformclientv2/conversationcontentcardaction.go
 platformclientv2/conversationcontentcarousel.go
 platformclientv2/conversationcontentdatepicker.go
 platformclientv2/conversationcontentdatepickeravailabletime.go
+platformclientv2/conversationcontentform.go
+platformclientv2/conversationcontentinput.go
 platformclientv2/conversationcontentinteractiveapplication.go
+platformclientv2/conversationcontentintroduction.go
 platformclientv2/conversationcontentlineitem.go
 platformclientv2/conversationcontentlistpicker.go
 platformclientv2/conversationcontentlistpickeritem.go
@@ -4086,6 +4109,8 @@ platformclientv2/conversationcontentreceivedreplymessage.go
 platformclientv2/conversationcontentrequiredcontactfield.go
 platformclientv2/conversationcontentstory.go
 platformclientv2/conversationcontenttext.go
+platformclientv2/conversationcontentwheelpicker.go
+platformclientv2/conversationcontentwheelpickeritem.go
 platformclientv2/conversationdeletionprotectionquery.go
 platformclientv2/conversationdetailqueryclause.go
 platformclientv2/conversationdetailqueryfilter.go
@@ -4170,6 +4195,10 @@ platformclientv2/conversationeventtopicworkflow.go
 platformclientv2/conversationeventtopicwrapup.go
 platformclientv2/conversationeventtyping.go
 platformclientv2/conversationeventvideo.go
+platformclientv2/conversationformpage.go
+platformclientv2/conversationformpagecomponent.go
+platformclientv2/conversationformresponsecomponent.go
+platformclientv2/conversationformresponsecontent.go
 platformclientv2/conversationinsight.go
 platformclientv2/conversationmessagecontent.go
 platformclientv2/conversationmessageevent.go
@@ -5383,6 +5412,8 @@ platformclientv2/inboundmessagerequest.go
 platformclientv2/inboundonlysetting.go
 platformclientv2/inboundroute.go
 platformclientv2/inboundrouteentitylisting.go
+platformclientv2/incomingmessagerequest.go
+platformclientv2/incomingmessageresponse.go
 platformclientv2/infixoperator.go
 platformclientv2/infrastructureascodeapi.go
 platformclientv2/infrastructureascodejob.go
@@ -5390,6 +5421,7 @@ platformclientv2/initialconfiguration.go
 platformclientv2/initiatescreenrecording.go
 platformclientv2/initiatingaction.go
 platformclientv2/initiatingalternativeshift.go
+platformclientv2/inputmessage.go
 platformclientv2/insightsagentitem.go
 platformclientv2/insightsagents.go
 platformclientv2/insightsdetails.go
@@ -5878,6 +5910,9 @@ platformclientv2/listedprogram.go
 platformclientv2/listedtopic.go
 platformclientv2/listing.go
 platformclientv2/listitemcomponent.go
+platformclientv2/listpicker.go
+platformclientv2/listpickeritem.go
+platformclientv2/listpickersection.go
 platformclientv2/listwrapperagentworkplanfield.go
 platformclientv2/listwrapperalternativeshiftbusettingsactivitycategory.go
 platformclientv2/listwrapperalternativeshiftbusettingsgranularity.go
@@ -5915,6 +5950,8 @@ platformclientv2/logcapturedownloadexecutionresponse.go
 platformclientv2/logcapturequeryrequest.go
 platformclientv2/logcapturequeryresponse.go
 platformclientv2/logcaptureuserconfiguration.go
+platformclientv2/logcaptureuserconfigurationlisting.go
+platformclientv2/logcaptureuserconfigurationresponse.go
 platformclientv2/logentry.go
 platformclientv2/logger.go
 platformclientv2/logicalinterfaceentitylisting.go
@@ -6187,6 +6224,18 @@ platformclientv2/openmessagingtorecipient.go
 platformclientv2/opennormalizedmessage.go
 platformclientv2/openreceiptnormalizedmessage.go
 platformclientv2/openrichmediasetting.go
+platformclientv2/opensocialmediachannel.go
+platformclientv2/opensocialmediamessagecontent.go
+platformclientv2/opensocialmedianormalizedmessage.go
+platformclientv2/opensocialmediapublicmetadata.go
+platformclientv2/opensocialmediareactionschannel.go
+platformclientv2/opensocialmediareactionsevent.go
+platformclientv2/opensocialmediareactionsnormalizedevent.go
+platformclientv2/opensocialmediareactionsrequest.go
+platformclientv2/opensocialmediarecipient.go
+platformclientv2/opensocialmediarecipientadditionalidentifier.go
+platformclientv2/opensocialnormalizedmessageentitylisting.go
+platformclientv2/opensocialreactionsnormalizedevententitylisting.go
 platformclientv2/operand.go
 platformclientv2/operandposition.go
 platformclientv2/operation.go
@@ -6306,6 +6355,8 @@ platformclientv2/outcomerefrequest.go
 platformclientv2/outcomerequest.go
 platformclientv2/outcomescore.go
 platformclientv2/outcomescoresresult.go
+platformclientv2/outgoingmessagerequest.go
+platformclientv2/outgoingmessageresponse.go
 platformclientv2/outlierinfo.go
 platformclientv2/outofoffice.go
 platformclientv2/outofofficeeventoutofoffice.go
@@ -6319,7 +6370,6 @@ platformclientv2/page.go
 platformclientv2/pagednamespacelisting.go
 platformclientv2/pagedskillcombinationlisting.go
 platformclientv2/pagelessdomainentitylistingevaluationversion.go
-platformclientv2/pagelessentitylisting.go
 platformclientv2/pagingspec.go
 platformclientv2/parkingstaterequest.go
 platformclientv2/parsedcertificate.go
@@ -6911,6 +6961,7 @@ platformclientv2/reoccurrence.go
 platformclientv2/replacementterm.go
 platformclientv2/replacerequest.go
 platformclientv2/replaceresponse.go
+platformclientv2/replymessage.go
 platformclientv2/replytoemailaddress.go
 platformclientv2/reportingdataexporttopicdataexportnotification.go
 platformclientv2/reportingexportjoblisting.go
@@ -7254,6 +7305,7 @@ platformclientv2/socialmediaasyncdetailquery.go
 platformclientv2/socialmediaasyncdetailqueryresponse.go
 platformclientv2/socialmediadetaildatacontainer.go
 platformclientv2/socialmediadetailmessagecontainer.go
+platformclientv2/socialmediamessagedata.go
 platformclientv2/socialmediamessageescalationinfo.go
 platformclientv2/socialmediaqueryclause.go
 platformclientv2/socialmediaqueryfilter.go
@@ -7451,6 +7503,11 @@ platformclientv2/testmoderesults.go
 platformclientv2/testmodetrigger.go
 platformclientv2/testschemaoperation.go
 platformclientv2/testtargetoperation.go
+platformclientv2/testtopicphrasejob.go
+platformclientv2/testtopicphrasejobrequest.go
+platformclientv2/testtopicphrasejobs.go
+platformclientv2/testtopicphrasephrase.go
+platformclientv2/testtopicphrasetopic.go
 platformclientv2/textbotchannel.go
 platformclientv2/textbotdisconnectaction.go
 platformclientv2/textboterrorinputevent.go
@@ -7550,6 +7607,7 @@ platformclientv2/transcriptiontopictranscriptword.go
 platformclientv2/transcripts.go
 platformclientv2/transcriptsearchcriteria.go
 platformclientv2/transcriptsearchrequest.go
+platformclientv2/transcriptsfilters.go
 platformclientv2/transcripttopic.go
 platformclientv2/transcripttopics.go
 platformclientv2/transcripttranslation.go

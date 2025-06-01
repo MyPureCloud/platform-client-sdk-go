@@ -900,7 +900,7 @@ func (a BusinessRulesApi) GetBusinessrulesDecisiontables(after string, pageSize 
 // Search for decision tables.
 //
 // Preview: GetBusinessrulesDecisiontablesSearch is a preview method and is subject to both breaking and non-breaking changes at any time without notice
-func (a BusinessRulesApi) GetBusinessrulesDecisiontablesSearch(before string, after string, pageSize string, schemaId string, name string) (*Decisiontablelisting, *APIResponse, error) {
+func (a BusinessRulesApi) GetBusinessrulesDecisiontablesSearch(after string, pageSize string, schemaId string, name string) (*Decisiontablelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/businessrules/decisiontables/search"
@@ -926,8 +926,6 @@ func (a BusinessRulesApi) GetBusinessrulesDecisiontablesSearch(before string, af
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, "")
 	
 	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
 	

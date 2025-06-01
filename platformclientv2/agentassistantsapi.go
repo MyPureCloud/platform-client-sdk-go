@@ -529,7 +529,7 @@ func (a AgentAssistantsApi) GetAssistantQueues(assistantId string, before string
 // GetAssistants invokes GET /api/v2/assistants
 //
 // Get all assistants.
-func (a AgentAssistantsApi) GetAssistants(before string, after string, limit string, pageSize string, name string) (*Assistantlisting, *APIResponse, error) {
+func (a AgentAssistantsApi) GetAssistants(before string, after string, limit string, pageSize string, name string, expand string) (*Assistantlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/assistants"
@@ -565,6 +565,8 @@ func (a AgentAssistantsApi) GetAssistants(before string, after string, limit str
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

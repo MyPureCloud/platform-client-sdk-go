@@ -11,6 +11,9 @@ import (
 type Conversationcontentlistpicker struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
+	// Id - Optional unique identifier to help map component replies to form messages where multiple ListPickers can be present.
+	Id *string `json:"id,omitempty"`
+
 	// Sections - An array of sections in the List Picker.
 	Sections *[]Conversationcontentlistpickersection `json:"sections,omitempty"`
 
@@ -84,6 +87,8 @@ func (o Conversationcontentlistpicker) MarshalJSON() ([]byte, error) {
 	type Alias Conversationcontentlistpicker
 	
 	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
 		Sections *[]Conversationcontentlistpickersection `json:"sections,omitempty"`
 		
 		ReplyMessage *Conversationcontentreceivedreplymessage `json:"replyMessage,omitempty"`
@@ -91,6 +96,8 @@ func (o Conversationcontentlistpicker) MarshalJSON() ([]byte, error) {
 		ReceivedMessage *Conversationcontentreceivedreplymessage `json:"receivedMessage,omitempty"`
 		Alias
 	}{ 
+		Id: o.Id,
+		
 		Sections: o.Sections,
 		
 		ReplyMessage: o.ReplyMessage,
@@ -107,6 +114,10 @@ func (o *Conversationcontentlistpicker) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if Id, ok := ConversationcontentlistpickerMap["id"].(string); ok {
+		o.Id = &Id
+	}
+    
 	if Sections, ok := ConversationcontentlistpickerMap["sections"].([]interface{}); ok {
 		SectionsString, _ := json.Marshal(Sections)
 		json.Unmarshal(SectionsString, &o.Sections)

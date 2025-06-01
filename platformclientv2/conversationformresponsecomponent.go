@@ -7,22 +7,19 @@ import (
 	"strings"
 )
 
-// Pagelessentitylisting
-type Pagelessentitylisting struct { 
+// Conversationformresponsecomponent - A response component from a form
+type Conversationformresponsecomponent struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Total
-	Total *int `json:"total,omitempty"`
+	// Id - The id of the component in the original message.
+	Id *string `json:"id,omitempty"`
 
-	// Entities
-	Entities *[]Addressableentity `json:"entities,omitempty"`
-
-	// SelfUri
-	SelfUri *string `json:"selfUri,omitempty"`
+	// Component - The content object capturing component response from the original message.
+	Component *Conversationformresponsecontent `json:"component,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Pagelessentitylisting) SetField(field string, fieldValue interface{}) {
+func (o *Conversationformresponsecomponent) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -43,7 +40,7 @@ func (o *Pagelessentitylisting) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Pagelessentitylisting) MarshalJSON() ([]byte, error) {
+func (o Conversationformresponsecomponent) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -81,52 +78,43 @@ func (o Pagelessentitylisting) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Pagelessentitylisting
+	type Alias Conversationformresponsecomponent
 	
 	return json.Marshal(&struct { 
-		Total *int `json:"total,omitempty"`
+		Id *string `json:"id,omitempty"`
 		
-		Entities *[]Addressableentity `json:"entities,omitempty"`
-		
-		SelfUri *string `json:"selfUri,omitempty"`
+		Component *Conversationformresponsecontent `json:"component,omitempty"`
 		Alias
 	}{ 
-		Total: o.Total,
+		Id: o.Id,
 		
-		Entities: o.Entities,
-		
-		SelfUri: o.SelfUri,
+		Component: o.Component,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Pagelessentitylisting) UnmarshalJSON(b []byte) error {
-	var PagelessentitylistingMap map[string]interface{}
-	err := json.Unmarshal(b, &PagelessentitylistingMap)
+func (o *Conversationformresponsecomponent) UnmarshalJSON(b []byte) error {
+	var ConversationformresponsecomponentMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationformresponsecomponentMap)
 	if err != nil {
 		return err
 	}
 	
-	if Total, ok := PagelessentitylistingMap["total"].(float64); ok {
-		TotalInt := int(Total)
-		o.Total = &TotalInt
-	}
-	
-	if Entities, ok := PagelessentitylistingMap["entities"].([]interface{}); ok {
-		EntitiesString, _ := json.Marshal(Entities)
-		json.Unmarshal(EntitiesString, &o.Entities)
-	}
-	
-	if SelfUri, ok := PagelessentitylistingMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
+	if Id, ok := ConversationformresponsecomponentMap["id"].(string); ok {
+		o.Id = &Id
 	}
     
+	if Component, ok := ConversationformresponsecomponentMap["component"].(map[string]interface{}); ok {
+		ComponentString, _ := json.Marshal(Component)
+		json.Unmarshal(ComponentString, &o.Component)
+	}
+	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Pagelessentitylisting) String() string {
+func (o *Conversationformresponsecomponent) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

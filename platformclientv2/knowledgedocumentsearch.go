@@ -46,6 +46,9 @@ type Knowledgedocumentsearch struct {
 
 	// AnswerGeneration - The results with AI-generated answer if the answerMode request property contains \"AnswerGeneration\".
 	AnswerGeneration *Knowledgeanswergenerationresponse `json:"answerGeneration,omitempty"`
+
+	// PreprocessQuery - Indicates whether the search query should be preprocessed.
+	PreprocessQuery *bool `json:"preprocessQuery,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -134,6 +137,8 @@ func (o Knowledgedocumentsearch) MarshalJSON() ([]byte, error) {
 		ConfidenceThreshold *float32 `json:"confidenceThreshold,omitempty"`
 		
 		AnswerGeneration *Knowledgeanswergenerationresponse `json:"answerGeneration,omitempty"`
+		
+		PreprocessQuery *bool `json:"preprocessQuery,omitempty"`
 		Alias
 	}{ 
 		Query: o.Query,
@@ -159,6 +164,8 @@ func (o Knowledgedocumentsearch) MarshalJSON() ([]byte, error) {
 		ConfidenceThreshold: o.ConfidenceThreshold,
 		
 		AnswerGeneration: o.AnswerGeneration,
+		
+		PreprocessQuery: o.PreprocessQuery,
 		Alias:    (Alias)(o),
 	})
 }
@@ -227,6 +234,10 @@ func (o *Knowledgedocumentsearch) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(AnswerGenerationString, &o.AnswerGeneration)
 	}
 	
+	if PreprocessQuery, ok := KnowledgedocumentsearchMap["preprocessQuery"].(bool); ok {
+		o.PreprocessQuery = &PreprocessQuery
+	}
+    
 
 	return nil
 }

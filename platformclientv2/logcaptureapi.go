@@ -189,12 +189,12 @@ func (a LogCaptureApi) GetDiagnosticsLogcaptureBrowserEntriesDownloadJob(jobId s
 // GetDiagnosticsLogcaptureBrowserUser invokes GET /api/v2/diagnostics/logcapture/browser/users/{userId}
 //
 // Get log capture configuration for the user
-func (a LogCaptureApi) GetDiagnosticsLogcaptureBrowserUser(userId string) (*Logcaptureuserconfiguration, *APIResponse, error) {
+func (a LogCaptureApi) GetDiagnosticsLogcaptureBrowserUser(userId string) (*Logcaptureuserconfigurationresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/diagnostics/logcapture/browser/users/{userId}"
 	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
-	defaultReturn := new(Logcaptureuserconfiguration)
+	defaultReturn := new(Logcaptureuserconfigurationresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -252,14 +252,14 @@ func (a LogCaptureApi) GetDiagnosticsLogcaptureBrowserUser(userId string) (*Logc
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Logcaptureuserconfiguration
+	var successPayload *Logcaptureuserconfigurationresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Logcaptureuserconfiguration" == "string" {
+		if "Logcaptureuserconfigurationresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -271,11 +271,11 @@ func (a LogCaptureApi) GetDiagnosticsLogcaptureBrowserUser(userId string) (*Logc
 // GetDiagnosticsLogcaptureBrowserUsers invokes GET /api/v2/diagnostics/logcapture/browser/users
 //
 // Get all log capture enabled users for an org
-func (a LogCaptureApi) GetDiagnosticsLogcaptureBrowserUsers(includeExpired bool) (*Pagelessentitylisting, *APIResponse, error) {
+func (a LogCaptureApi) GetDiagnosticsLogcaptureBrowserUsers(includeExpired bool) (*Logcaptureuserconfigurationlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/diagnostics/logcapture/browser/users"
-	defaultReturn := new(Pagelessentitylisting)
+	defaultReturn := new(Logcaptureuserconfigurationlisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -330,14 +330,14 @@ func (a LogCaptureApi) GetDiagnosticsLogcaptureBrowserUsers(includeExpired bool)
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Pagelessentitylisting
+	var successPayload *Logcaptureuserconfigurationlisting
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Pagelessentitylisting" == "string" {
+		if "Logcaptureuserconfigurationlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -428,7 +428,7 @@ func (a LogCaptureApi) PostDiagnosticsLogcaptureBrowserEntriesDownloadJobs(body 
 // PostDiagnosticsLogcaptureBrowserEntriesQuery invokes POST /api/v2/diagnostics/logcapture/browser/entries/query
 //
 // Query collected log entries. It returns a limited amount of records, to get all records use download endpoint.
-func (a LogCaptureApi) PostDiagnosticsLogcaptureBrowserEntriesQuery(before string, after string, pageSize string, body Logcapturequeryrequest) (*Logcapturequeryresponse, *APIResponse, error) {
+func (a LogCaptureApi) PostDiagnosticsLogcaptureBrowserEntriesQuery(after string, pageSize string, body Logcapturequeryrequest) (*Logcapturequeryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/diagnostics/logcapture/browser/entries/query"
@@ -454,8 +454,6 @@ func (a LogCaptureApi) PostDiagnosticsLogcaptureBrowserEntriesQuery(before strin
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, "")
 	
 	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
 	

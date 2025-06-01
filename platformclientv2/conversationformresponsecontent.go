@@ -7,19 +7,19 @@ import (
 	"strings"
 )
 
-// Addressableentity
-type Addressableentity struct { 
+// Conversationformresponsecontent - Message content element for form responses
+type Conversationformresponsecontent struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The globally unique identifier for the object.
-	Id *string `json:"id,omitempty"`
+	// ContentType - Type of this content element.
+	ContentType *string `json:"contentType,omitempty"`
 
-	// SelfUri - The URI for this object
-	SelfUri *string `json:"selfUri,omitempty"`
+	// ButtonResponse - Button response content.
+	ButtonResponse *Conversationcontentbuttonresponse `json:"buttonResponse,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Addressableentity) SetField(field string, fieldValue interface{}) {
+func (o *Conversationformresponsecontent) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -40,7 +40,7 @@ func (o *Addressableentity) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Addressableentity) MarshalJSON() ([]byte, error) {
+func (o Conversationformresponsecontent) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -78,42 +78,43 @@ func (o Addressableentity) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Addressableentity
+	type Alias Conversationformresponsecontent
 	
 	return json.Marshal(&struct { 
-		Id *string `json:"id,omitempty"`
+		ContentType *string `json:"contentType,omitempty"`
 		
-		SelfUri *string `json:"selfUri,omitempty"`
+		ButtonResponse *Conversationcontentbuttonresponse `json:"buttonResponse,omitempty"`
 		Alias
 	}{ 
-		Id: o.Id,
+		ContentType: o.ContentType,
 		
-		SelfUri: o.SelfUri,
+		ButtonResponse: o.ButtonResponse,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Addressableentity) UnmarshalJSON(b []byte) error {
-	var AddressableentityMap map[string]interface{}
-	err := json.Unmarshal(b, &AddressableentityMap)
+func (o *Conversationformresponsecontent) UnmarshalJSON(b []byte) error {
+	var ConversationformresponsecontentMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationformresponsecontentMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := AddressableentityMap["id"].(string); ok {
-		o.Id = &Id
+	if ContentType, ok := ConversationformresponsecontentMap["contentType"].(string); ok {
+		o.ContentType = &ContentType
 	}
     
-	if SelfUri, ok := AddressableentityMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
+	if ButtonResponse, ok := ConversationformresponsecontentMap["buttonResponse"].(map[string]interface{}); ok {
+		ButtonResponseString, _ := json.Marshal(ButtonResponse)
+		json.Unmarshal(ButtonResponseString, &o.ButtonResponse)
 	}
-    
+	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Addressableentity) String() string {
+func (o *Conversationformresponsecontent) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

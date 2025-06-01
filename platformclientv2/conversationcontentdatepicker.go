@@ -12,6 +12,9 @@ import (
 type Conversationcontentdatepicker struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
+	// Id - Optional unique identifier to help map component replies to form messages where multiple DatePickers can be present.
+	Id *string `json:"id,omitempty"`
+
 	// Title - Text to show in the title.
 	Title *string `json:"title,omitempty"`
 
@@ -32,6 +35,9 @@ type Conversationcontentdatepicker struct {
 
 	// AvailableTimes - An array of available times objects.
 	AvailableTimes *[]Conversationcontentdatepickeravailabletime `json:"availableTimes,omitempty"`
+
+	// DateDisplayFormat - The format the date should be presented to the end user.
+	DateDisplayFormat *string `json:"dateDisplayFormat,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -113,6 +119,8 @@ func (o Conversationcontentdatepicker) MarshalJSON() ([]byte, error) {
 	}
 	
 	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
 		Title *string `json:"title,omitempty"`
 		
 		Subtitle *string `json:"subtitle,omitempty"`
@@ -126,8 +134,12 @@ func (o Conversationcontentdatepicker) MarshalJSON() ([]byte, error) {
 		Location *Conversationcontentlocation `json:"location,omitempty"`
 		
 		AvailableTimes *[]Conversationcontentdatepickeravailabletime `json:"availableTimes,omitempty"`
+		
+		DateDisplayFormat *string `json:"dateDisplayFormat,omitempty"`
 		Alias
 	}{ 
+		Id: o.Id,
+		
 		Title: o.Title,
 		
 		Subtitle: o.Subtitle,
@@ -141,6 +153,8 @@ func (o Conversationcontentdatepicker) MarshalJSON() ([]byte, error) {
 		Location: o.Location,
 		
 		AvailableTimes: o.AvailableTimes,
+		
+		DateDisplayFormat: o.DateDisplayFormat,
 		Alias:    (Alias)(o),
 	})
 }
@@ -152,6 +166,10 @@ func (o *Conversationcontentdatepicker) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if Id, ok := ConversationcontentdatepickerMap["id"].(string); ok {
+		o.Id = &Id
+	}
+    
 	if Title, ok := ConversationcontentdatepickerMap["title"].(string); ok {
 		o.Title = &Title
 	}
@@ -184,6 +202,10 @@ func (o *Conversationcontentdatepicker) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(AvailableTimesString, &o.AvailableTimes)
 	}
 	
+	if DateDisplayFormat, ok := ConversationcontentdatepickerMap["dateDisplayFormat"].(string); ok {
+		o.DateDisplayFormat = &DateDisplayFormat
+	}
+    
 
 	return nil
 }

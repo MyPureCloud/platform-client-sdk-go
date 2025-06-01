@@ -344,8 +344,6 @@ func (a SocialMediaApi) DeleteSocialmediaTopicDataingestionrulesFacebookFacebook
 // DeleteSocialmediaTopicDataingestionrulesOpenOpenId invokes DELETE /api/v2/socialmedia/topics/{topicId}/dataingestionrules/open/{openId}
 //
 // Delete a open data ingestion rule.
-//
-// Preview: DeleteSocialmediaTopicDataingestionrulesOpenOpenId is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a SocialMediaApi) DeleteSocialmediaTopicDataingestionrulesOpenOpenId(topicId string, openId string, hardDelete bool) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -1465,8 +1463,6 @@ func (a SocialMediaApi) GetSocialmediaTopicDataingestionrulesFacebookFacebookIng
 // GetSocialmediaTopicDataingestionrulesOpenOpenId invokes GET /api/v2/socialmedia/topics/{topicId}/dataingestionrules/open/{openId}
 //
 // Get a single open data ingestion rule.
-//
-// Preview: GetSocialmediaTopicDataingestionrulesOpenOpenId is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a SocialMediaApi) GetSocialmediaTopicDataingestionrulesOpenOpenId(topicId string, openId string, includeDeleted bool) (*Opendataingestionruleresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1557,8 +1553,6 @@ func (a SocialMediaApi) GetSocialmediaTopicDataingestionrulesOpenOpenId(topicId 
 // GetSocialmediaTopicDataingestionrulesOpenOpenIdVersion invokes GET /api/v2/socialmedia/topics/{topicId}/dataingestionrules/open/{openId}/versions/{dataIngestionRuleVersion}
 //
 // Get a single Open data ingestion rule version.
-//
-// Preview: GetSocialmediaTopicDataingestionrulesOpenOpenIdVersion is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a SocialMediaApi) GetSocialmediaTopicDataingestionrulesOpenOpenIdVersion(topicId string, openId string, dataIngestionRuleVersion string, includeDeleted bool) (*Opendataingestionruleversionresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1655,8 +1649,6 @@ func (a SocialMediaApi) GetSocialmediaTopicDataingestionrulesOpenOpenIdVersion(t
 // GetSocialmediaTopicDataingestionrulesOpenOpenIdVersions invokes GET /api/v2/socialmedia/topics/{topicId}/dataingestionrules/open/{openId}/versions
 //
 // Get the Open data ingestion rule versions.
-//
-// Preview: GetSocialmediaTopicDataingestionrulesOpenOpenIdVersions is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a SocialMediaApi) GetSocialmediaTopicDataingestionrulesOpenOpenIdVersions(topicId string, openId string, pageNumber int, pageSize int, includeDeleted bool) (*Opendataingestionruleversionresponseentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2291,8 +2283,6 @@ func (a SocialMediaApi) PatchSocialmediaTopicDataingestionrulesFacebookFacebookI
 // PatchSocialmediaTopicDataingestionrulesOpenOpenId invokes PATCH /api/v2/socialmedia/topics/{topicId}/dataingestionrules/open/{openId}
 //
 // Update the status of a open data ingestion rule.
-//
-// Preview: PatchSocialmediaTopicDataingestionrulesOpenOpenId is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a SocialMediaApi) PatchSocialmediaTopicDataingestionrulesOpenOpenId(topicId string, openId string, body Dataingestionrulestatuspatchrequest) (*Opendataingestionruleresponse, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -2893,8 +2883,6 @@ func (a SocialMediaApi) PostSocialmediaTopicDataingestionrulesFacebook(topicId s
 // PostSocialmediaTopicDataingestionrulesOpen invokes POST /api/v2/socialmedia/topics/{topicId}/dataingestionrules/open
 //
 // Create an open data ingestion rule.
-//
-// Preview: PostSocialmediaTopicDataingestionrulesOpen is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a SocialMediaApi) PostSocialmediaTopicDataingestionrulesOpen(topicId string, body Opendataingestionrulerequest) (*Opendataingestionruleresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2969,6 +2957,202 @@ func (a SocialMediaApi) PostSocialmediaTopicDataingestionrulesOpen(topicId strin
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Opendataingestionruleresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostSocialmediaTopicDataingestionrulesOpenRuleIdMessagesBulk invokes POST /api/v2/socialmedia/topics/{topicId}/dataingestionrules/open/{ruleId}/messages/bulk
+//
+// Ingest a list of Open Social Messages
+//
+// Ingest a list of open social messages to an ingestion rule on a topic. This endpoint will ingest and enrich these messages.  In order to call this endpoint you will need OAuth token generated using OAuth client credentials authorized with at least social scope.
+func (a SocialMediaApi) PostSocialmediaTopicDataingestionrulesOpenRuleIdMessagesBulk(topicId string, ruleId string, body []Opensocialmedianormalizedmessage) (*Opensocialnormalizedmessageentitylisting, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/socialmedia/topics/{topicId}/dataingestionrules/open/{ruleId}/messages/bulk"
+	path = strings.Replace(path, "{topicId}", url.PathEscape(fmt.Sprintf("%v", topicId)), -1)
+	path = strings.Replace(path, "{ruleId}", url.PathEscape(fmt.Sprintf("%v", ruleId)), -1)
+	defaultReturn := new(Opensocialnormalizedmessageentitylisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'topicId' is set
+	if &topicId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'topicId' when calling SocialMediaApi->PostSocialmediaTopicDataingestionrulesOpenRuleIdMessagesBulk")
+	}
+	// verify the required parameter 'ruleId' is set
+	if &ruleId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'ruleId' when calling SocialMediaApi->PostSocialmediaTopicDataingestionrulesOpenRuleIdMessagesBulk")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// true
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SocialMediaApi->PostSocialmediaTopicDataingestionrulesOpenRuleIdMessagesBulk")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Opensocialnormalizedmessageentitylisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Opensocialnormalizedmessageentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostSocialmediaTopicDataingestionrulesOpenRuleIdReactionsBulk invokes POST /api/v2/socialmedia/topics/{topicId}/dataingestionrules/open/{ruleId}/reactions/bulk
+//
+// Ingest a list of Open Social Reactions
+//
+// Ingest a list of open social reactions to an ingestion rule on a topic. This endpoint will ingest these reactions.  In order to call this endpoint you will need OAuth token generated using OAuth client credentials authorized with at least social scope.
+func (a SocialMediaApi) PostSocialmediaTopicDataingestionrulesOpenRuleIdReactionsBulk(topicId string, ruleId string, body Opensocialmediareactionsrequest) (*Opensocialreactionsnormalizedevententitylisting, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/socialmedia/topics/{topicId}/dataingestionrules/open/{ruleId}/reactions/bulk"
+	path = strings.Replace(path, "{topicId}", url.PathEscape(fmt.Sprintf("%v", topicId)), -1)
+	path = strings.Replace(path, "{ruleId}", url.PathEscape(fmt.Sprintf("%v", ruleId)), -1)
+	defaultReturn := new(Opensocialreactionsnormalizedevententitylisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'topicId' is set
+	if &topicId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'topicId' when calling SocialMediaApi->PostSocialmediaTopicDataingestionrulesOpenRuleIdReactionsBulk")
+	}
+	// verify the required parameter 'ruleId' is set
+	if &ruleId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'ruleId' when calling SocialMediaApi->PostSocialmediaTopicDataingestionrulesOpenRuleIdReactionsBulk")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SocialMediaApi->PostSocialmediaTopicDataingestionrulesOpenRuleIdReactionsBulk")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Opensocialreactionsnormalizedevententitylisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Opensocialreactionsnormalizedevententitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -3404,8 +3588,6 @@ func (a SocialMediaApi) PutSocialmediaTopicDataingestionrulesFacebookFacebookIng
 // PutSocialmediaTopicDataingestionrulesOpenOpenId invokes PUT /api/v2/socialmedia/topics/{topicId}/dataingestionrules/open/{openId}
 //
 // Update the open data ingestion rule.
-//
-// Preview: PutSocialmediaTopicDataingestionrulesOpenOpenId is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a SocialMediaApi) PutSocialmediaTopicDataingestionrulesOpenOpenId(topicId string, openId string, body Opendataingestionrulerequest) (*Opendataingestionruleresponse, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

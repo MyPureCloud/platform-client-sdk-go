@@ -11009,6 +11009,11 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementAlternativeshiftsTrade(t
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'tradeId' when calling WorkforceManagementApi->PatchWorkforcemanagementAlternativeshiftsTrade")
 	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PatchWorkforcemanagementAlternativeshiftsTrade")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -11178,6 +11183,11 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunit(businessUni
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PatchWorkforcemanagementBusinessunit")
 	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PatchWorkforcemanagementBusinessunit")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -11268,6 +11278,11 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitActivitycode
 	if &activityCodeId == nil {
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'activityCodeId' when calling WorkforceManagementApi->PatchWorkforcemanagementBusinessunitActivitycode")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PatchWorkforcemanagementBusinessunitActivitycode")
 	}
 
 	headerParams := make(map[string]string)
@@ -11452,6 +11467,11 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitAlternatives
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PatchWorkforcemanagementBusinessunitAlternativeshiftsSettings")
 	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PatchWorkforcemanagementBusinessunitAlternativeshiftsSettings")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -11543,6 +11563,11 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitPlanninggrou
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'planningGroupId' when calling WorkforceManagementApi->PatchWorkforcemanagementBusinessunitPlanninggroup")
 	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PatchWorkforcemanagementBusinessunitPlanninggroup")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -11633,6 +11658,11 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitSchedulingRu
 		// false
 		return nil, errors.New("Missing required parameter 'runId' when calling WorkforceManagementApi->PatchWorkforcemanagementBusinessunitSchedulingRun")
 	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PatchWorkforcemanagementBusinessunitSchedulingRun")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -11717,6 +11747,11 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitServicegoalt
 	if &serviceGoalTemplateId == nil {
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'serviceGoalTemplateId' when calling WorkforceManagementApi->PatchWorkforcemanagementBusinessunitServicegoaltemplate")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PatchWorkforcemanagementBusinessunitServicegoaltemplate")
 	}
 
 	headerParams := make(map[string]string)
@@ -11809,6 +11844,11 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitStaffinggrou
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'staffingGroupId' when calling WorkforceManagementApi->PatchWorkforcemanagementBusinessunitStaffinggroup")
 	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PatchWorkforcemanagementBusinessunitStaffinggroup")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -11899,6 +11939,11 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitTimeoffplan(
 	if &timeOffPlanId == nil {
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'timeOffPlanId' when calling WorkforceManagementApi->PatchWorkforcemanagementBusinessunitTimeoffplan")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PatchWorkforcemanagementBusinessunitTimeoffplan")
 	}
 
 	headerParams := make(map[string]string)
@@ -12093,6 +12138,11 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitWorkplanbidG
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'bidGroupId' when calling WorkforceManagementApi->PatchWorkforcemanagementBusinessunitWorkplanbidGroup")
 	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PatchWorkforcemanagementBusinessunitWorkplanbidGroup")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -12190,6 +12240,11 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitWorkplanbidG
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'bidGroupId' when calling WorkforceManagementApi->PatchWorkforcemanagementBusinessunitWorkplanbidGroupPreferences")
 	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PatchWorkforcemanagementBusinessunitWorkplanbidGroupPreferences")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -12275,6 +12330,11 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunit(managemen
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunit")
 	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunit")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -12359,6 +12419,11 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitAgents(man
 		// false
 		return nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitAgents")
 	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitAgents")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -12437,6 +12502,11 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitAgentsWork
 	if &managementUnitId == nil {
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitAgentsWorkplansBulk")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitAgentsWorkplansBulk")
 	}
 
 	headerParams := make(map[string]string)
@@ -12531,6 +12601,11 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitTimeofflim
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'timeOffLimitId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitTimeofflimit")
 	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitTimeofflimit")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -12621,6 +12696,11 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitTimeoffpla
 	if &timeOffPlanId == nil {
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'timeOffPlanId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitTimeoffplan")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitTimeoffplan")
 	}
 
 	headerParams := make(map[string]string)
@@ -12719,6 +12799,11 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitTimeoffreq
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitTimeoffrequestUserIntegrationstatus")
 	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitTimeoffrequestUserIntegrationstatus")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -12815,6 +12900,11 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitUserTimeof
 	if &timeOffRequestId == nil {
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'timeOffRequestId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitUserTimeoffrequest")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitUserTimeoffrequest")
 	}
 
 	headerParams := make(map[string]string)
@@ -12988,7 +13078,7 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitWeekShiftt
 // PatchWorkforcemanagementManagementunitWorkplan invokes PATCH /api/v2/workforcemanagement/managementunits/{managementUnitId}/workplans/{workPlanId}
 //
 // Update a work plan
-func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitWorkplan(managementUnitId string, workPlanId string, validationMode string, body Workplan) (*Workplan, *APIResponse, error) {
+func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitWorkplan(managementUnitId string, workPlanId string, body Workplan, validationMode string) (*Workplan, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/workplans/{workPlanId}"
@@ -13008,6 +13098,11 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitWorkplan(m
 	if &workPlanId == nil {
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'workPlanId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitWorkplan")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitWorkplan")
 	}
 
 	headerParams := make(map[string]string)
@@ -13102,6 +13197,11 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitWorkplanro
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'workPlanRotationId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitWorkplanrotation")
 	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitWorkplanrotation")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -13187,6 +13287,11 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementTimeoffrequest(timeOffRe
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'timeOffRequestId' when calling WorkforceManagementApi->PatchWorkforcemanagementTimeoffrequest")
 	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PatchWorkforcemanagementTimeoffrequest")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -13271,6 +13376,11 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementUserWorkplanbidranks(use
 	if &userId == nil {
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling WorkforceManagementApi->PatchWorkforcemanagementUserWorkplanbidranks")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PatchWorkforcemanagementUserWorkplanbidranks")
 	}
 
 	headerParams := make(map[string]string)
@@ -13440,6 +13550,11 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementWorkplanbidPreferences(b
 	if &bidId == nil {
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'bidId' when calling WorkforceManagementApi->PatchWorkforcemanagementWorkplanbidPreferences")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PatchWorkforcemanagementWorkplanbidPreferences")
 	}
 
 	headerParams := make(map[string]string)
@@ -13773,6 +13888,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementAdherenceHistoricalBulk(b
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementAdherenceHistoricalBulk")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -14036,6 +14156,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementAgents(body Moveagentsreq
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementAgents")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -14115,6 +14240,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementAgentsIntegrationsHrisQue
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementAgentsIntegrationsHrisQuery")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -14278,6 +14408,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementAgentschedulesMine(body B
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementAgentschedulesMine")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -14614,6 +14749,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitActivitycodes
 	if &businessUnitId == nil {
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitActivitycodes")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitActivitycodes")
 	}
 
 	headerParams := make(map[string]string)
@@ -14959,7 +15099,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitAdherenceExpl
 // PostWorkforcemanagementBusinessunitAgentschedulesSearch invokes POST /api/v2/workforcemanagement/businessunits/{businessUnitId}/agentschedules/search
 //
 // Search published schedules
-func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitAgentschedulesSearch(businessUnitId string, forceAsync bool, forceDownloadService bool, body Busearchagentschedulesrequest) (*Buasyncagentschedulessearchresponse, *APIResponse, error) {
+func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitAgentschedulesSearch(businessUnitId string, body Busearchagentschedulesrequest, forceAsync bool, forceDownloadService bool) (*Buasyncagentschedulessearchresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/agentschedules/search"
@@ -14973,6 +15113,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitAgentschedule
 	if &businessUnitId == nil {
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitAgentschedulesSearch")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitAgentschedulesSearch")
 	}
 
 	headerParams := make(map[string]string)
@@ -15140,7 +15285,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitAlternativesh
 // PostWorkforcemanagementBusinessunitIntraday invokes POST /api/v2/workforcemanagement/businessunits/{businessUnitId}/intraday
 //
 // Get intraday data for the given date for the requested planningGroupIds
-func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitIntraday(businessUnitId string, forceAsync bool, body Intradayplanninggrouprequest) (*Asyncintradayresponse, *APIResponse, error) {
+func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitIntraday(businessUnitId string, body Intradayplanninggrouprequest, forceAsync bool) (*Asyncintradayresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/intraday"
@@ -15154,6 +15299,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitIntraday(busi
 	if &businessUnitId == nil {
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitIntraday")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitIntraday")
 	}
 
 	headerParams := make(map[string]string)
@@ -15242,6 +15392,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitPlanninggroup
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitPlanninggroups")
 	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitPlanninggroups")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -15326,6 +15481,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitServicegoalte
 	if &businessUnitId == nil {
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitServicegoaltemplates")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitServicegoaltemplates")
 	}
 
 	headerParams := make(map[string]string)
@@ -15412,6 +15572,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitStaffinggroup
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitStaffinggroups")
 	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitStaffinggroups")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -15496,6 +15661,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitStaffinggroup
 	if &businessUnitId == nil {
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitStaffinggroupsQuery")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitStaffinggroupsQuery")
 	}
 
 	headerParams := make(map[string]string)
@@ -15582,6 +15752,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitTimeofflimits
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitTimeofflimits")
 	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitTimeofflimits")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -15667,6 +15842,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitTimeofflimits
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitTimeofflimitsValuesQuery")
 	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitTimeofflimitsValuesQuery")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -15751,6 +15931,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitTimeoffplans(
 	if &businessUnitId == nil {
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitTimeoffplans")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitTimeoffplans")
 	}
 
 	headerParams := make(map[string]string)
@@ -16057,6 +16242,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekScheduleP
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'scheduleId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekSchedulePerformancepredictionsRecalculations")
 	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekSchedulePerformancepredictionsRecalculations")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -16153,6 +16343,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekScheduleP
 	if &scheduleId == nil {
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'scheduleId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekSchedulePerformancepredictionsRecalculationsUploadurl")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWeekSchedulePerformancepredictionsRecalculationsUploadurl")
 	}
 
 	headerParams := make(map[string]string)
@@ -17432,6 +17627,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWorkplanbidGr
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'bidId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWorkplanbidGroups")
 	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWorkplanbidGroups")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -17517,6 +17717,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWorkplanbids(
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWorkplanbids")
 	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWorkplanbids")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -17598,6 +17803,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunits(body Create
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunits")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -17755,6 +17965,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementHistoricaldataBulkRemoveJ
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementHistoricaldataBulkRemoveJobs")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -17914,6 +18129,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementHistoricaldataValidate(bo
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementHistoricaldataValidate")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -18066,7 +18286,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementIntegrationsHriTimeofftyp
 // PostWorkforcemanagementManagementunitAgentsWorkplansQuery invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/agents/workplans/query
 //
 // Get agents work plans configuration
-func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitAgentsWorkplansQuery(managementUnitId string, forceDownloadService bool, body Getagentsworkplansrequest) (*Agentsworkplansresponse, *APIResponse, error) {
+func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitAgentsWorkplansQuery(managementUnitId string, body Getagentsworkplansrequest, forceDownloadService bool) (*Agentsworkplansresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/agents/workplans/query"
@@ -18080,6 +18300,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitAgentsWorkp
 	if &managementUnitId == nil {
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitAgentsWorkplansQuery")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitAgentsWorkplansQuery")
 	}
 
 	headerParams := make(map[string]string)
@@ -18153,7 +18378,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitAgentsWorkp
 // PostWorkforcemanagementManagementunitAgentschedulesSearch invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/agentschedules/search
 //
 // Query published schedules for given given time range for set of users
-func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitAgentschedulesSearch(managementUnitId string, forceAsync bool, forceDownloadService bool, body Busearchagentschedulesrequest) (*Buasyncagentschedulessearchresponse, *APIResponse, error) {
+func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitAgentschedulesSearch(managementUnitId string, body Busearchagentschedulesrequest, forceAsync bool, forceDownloadService bool) (*Buasyncagentschedulessearchresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/agentschedules/search"
@@ -18167,6 +18392,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitAgentschedu
 	if &managementUnitId == nil {
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitAgentschedulesSearch")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitAgentschedulesSearch")
 	}
 
 	headerParams := make(map[string]string)
@@ -18259,6 +18489,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitHistoricala
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitHistoricaladherencequery")
 	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitHistoricaladherencequery")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -18345,6 +18580,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitMove(manage
 	if &managementUnitId == nil {
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitMove")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitMove")
 	}
 
 	headerParams := make(map[string]string)
@@ -18433,6 +18673,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitSchedulesSe
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitSchedulesSearch")
 	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitSchedulesSearch")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -18519,6 +18764,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitShrinkageJo
 	if &managementUnitId == nil {
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitShrinkageJobs")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitShrinkageJobs")
 	}
 
 	headerParams := make(map[string]string)
@@ -18607,6 +18857,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeofflimi
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitTimeofflimits")
 	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitTimeofflimits")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -18691,6 +18946,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeofflimi
 	if &managementUnitId == nil {
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitTimeofflimitsValuesQuery")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitTimeofflimitsValuesQuery")
 	}
 
 	headerParams := make(map[string]string)
@@ -18777,6 +19037,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffplan
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitTimeoffplans")
 	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitTimeoffplans")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -18861,6 +19126,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequ
 	if &managementUnitId == nil {
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitTimeoffrequests")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitTimeoffrequests")
 	}
 
 	headerParams := make(map[string]string)
@@ -18947,6 +19217,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequ
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitTimeoffrequestsIntegrationstatusQuery")
 	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitTimeoffrequestsIntegrationstatusQuery")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -19019,7 +19294,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequ
 // Fetches time off requests matching the conditions specified in the request body
 //
 // Request body requires one of the following: User ID is specified, statuses &#x3D;&#x3D; [Pending] or date range to be specified and less than or equal to 33 days.  All other fields are filters
-func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequestsQuery(managementUnitId string, forceDownloadService bool, body Timeoffrequestquerybody) (*Timeoffrequestlisting, *APIResponse, error) {
+func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequestsQuery(managementUnitId string, body Timeoffrequestquerybody, forceDownloadService bool) (*Timeoffrequestlisting, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/timeoffrequests/query"
@@ -19033,6 +19308,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequ
 	if &managementUnitId == nil {
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitTimeoffrequestsQuery")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitTimeoffrequestsQuery")
 	}
 
 	headerParams := make(map[string]string)
@@ -19120,6 +19400,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequ
 	if &managementUnitId == nil {
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitTimeoffrequestsWaitlistpositionsQuery")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitTimeoffrequestsWaitlistpositionsQuery")
 	}
 
 	headerParams := make(map[string]string)
@@ -19401,6 +19686,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitUserTimeoff
 	if &userId == nil {
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitUserTimeoffrequestsEstimate")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitUserTimeoffrequestsEstimate")
 	}
 
 	headerParams := make(map[string]string)
@@ -19889,6 +20179,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplanCop
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'workPlanId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWorkplanCopy")
 	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWorkplanCopy")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -19959,7 +20254,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplanCop
 // PostWorkforcemanagementManagementunitWorkplanValidate invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/workplans/{workPlanId}/validate
 //
 // Validate Work Plan
-func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplanValidate(managementUnitId string, workPlanId string, expand []string, body Workplanvalidationrequest) (*Validateworkplanresponse, *APIResponse, error) {
+func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplanValidate(managementUnitId string, workPlanId string, body Workplanvalidationrequest, expand []string) (*Validateworkplanresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/workplans/{workPlanId}/validate"
@@ -19979,6 +20274,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplanVal
 	if &workPlanId == nil {
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'workPlanId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWorkplanValidate")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWorkplanValidate")
 	}
 
 	headerParams := make(map[string]string)
@@ -20073,6 +20373,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplanrot
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'workPlanRotationId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWorkplanrotationCopy")
 	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWorkplanrotationCopy")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -20158,6 +20463,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplanrot
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWorkplanrotations")
 	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWorkplanrotations")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -20228,7 +20538,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplanrot
 // PostWorkforcemanagementManagementunitWorkplans invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/workplans
 //
 // Create a new work plan
-func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplans(managementUnitId string, validationMode string, body Createworkplan) (*Workplan, *APIResponse, error) {
+func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplans(managementUnitId string, body Createworkplan, validationMode string) (*Workplan, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/workplans"
@@ -20242,6 +20552,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplans(m
 	if &managementUnitId == nil {
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWorkplans")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWorkplans")
 	}
 
 	headerParams := make(map[string]string)
@@ -20326,6 +20641,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunits(body Crea
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunits")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -20405,6 +20725,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementNotificationsUpdate(body 
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementNotificationsUpdate")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -20573,6 +20898,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementTeamAdherenceHistorical(t
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'teamId' when calling WorkforceManagementApi->PostWorkforcemanagementTeamAdherenceHistorical")
 	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementTeamAdherenceHistorical")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -20659,6 +20989,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementTeamShrinkageJobs(teamId 
 	if &teamId == nil {
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'teamId' when calling WorkforceManagementApi->PostWorkforcemanagementTeamShrinkageJobs")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementTeamShrinkageJobs")
 	}
 
 	headerParams := make(map[string]string)
@@ -20823,6 +21158,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementTimeofflimitsAvailableQue
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementTimeofflimitsAvailableQuery")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -20902,6 +21242,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementTimeoffrequests(body Crea
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementTimeoffrequests")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -20981,6 +21326,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementTimeoffrequestsEstimate(b
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementTimeoffrequestsEstimate")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -21060,6 +21410,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementTimeoffrequestsIntegratio
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementTimeoffrequestsIntegrationstatusQuery")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -21243,6 +21598,11 @@ func (a WorkforceManagementApi) PutWorkforcemanagementBusinessunitTimeofflimitVa
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'timeOffLimitId' when calling WorkforceManagementApi->PutWorkforcemanagementBusinessunitTimeofflimitValues")
 	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PutWorkforcemanagementBusinessunitTimeofflimitValues")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -21335,6 +21695,11 @@ func (a WorkforceManagementApi) PutWorkforcemanagementManagementunitTimeofflimit
 	if &timeOffLimitId == nil {
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'timeOffLimitId' when calling WorkforceManagementApi->PutWorkforcemanagementManagementunitTimeofflimitValues")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PutWorkforcemanagementManagementunitTimeofflimitValues")
 	}
 
 	headerParams := make(map[string]string)

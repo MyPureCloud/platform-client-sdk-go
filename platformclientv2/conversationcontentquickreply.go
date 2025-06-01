@@ -22,6 +22,9 @@ type Conversationcontentquickreply struct {
 
 	// Action - Specifies the type of action that is triggered upon clicking the quick reply.
 	Action *string `json:"action,omitempty"`
+
+	// SummaryText - Summary of what the quick reply relates to.
+	SummaryText *string `json:"summaryText,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +97,8 @@ func (o Conversationcontentquickreply) MarshalJSON() ([]byte, error) {
 		Image *string `json:"image,omitempty"`
 		
 		Action *string `json:"action,omitempty"`
+		
+		SummaryText *string `json:"summaryText,omitempty"`
 		Alias
 	}{ 
 		Text: o.Text,
@@ -103,6 +108,8 @@ func (o Conversationcontentquickreply) MarshalJSON() ([]byte, error) {
 		Image: o.Image,
 		
 		Action: o.Action,
+		
+		SummaryText: o.SummaryText,
 		Alias:    (Alias)(o),
 	})
 }
@@ -128,6 +135,10 @@ func (o *Conversationcontentquickreply) UnmarshalJSON(b []byte) error {
     
 	if Action, ok := ConversationcontentquickreplyMap["action"].(string); ok {
 		o.Action = &Action
+	}
+    
+	if SummaryText, ok := ConversationcontentquickreplyMap["summaryText"].(string); ok {
+		o.SummaryText = &SummaryText
 	}
     
 
