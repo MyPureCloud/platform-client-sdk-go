@@ -24,6 +24,9 @@ type Miner struct {
 	// MinerType - Type of the miner, intent or topic.
 	MinerType *string `json:"minerType,omitempty"`
 
+	// Seeding - Flag to indicate whether seeding is supported for this miner.
+	Seeding *bool `json:"seeding,omitempty"`
+
 	// DateCreated - Date when the miner was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
@@ -199,6 +202,8 @@ func (o Miner) MarshalJSON() ([]byte, error) {
 		
 		MinerType *string `json:"minerType,omitempty"`
 		
+		Seeding *bool `json:"seeding,omitempty"`
+		
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
 		Status *string `json:"status,omitempty"`
@@ -245,6 +250,8 @@ func (o Miner) MarshalJSON() ([]byte, error) {
 		Language: o.Language,
 		
 		MinerType: o.MinerType,
+		
+		Seeding: o.Seeding,
 		
 		DateCreated: DateCreated,
 		
@@ -308,6 +315,10 @@ func (o *Miner) UnmarshalJSON(b []byte) error {
     
 	if MinerType, ok := MinerMap["minerType"].(string); ok {
 		o.MinerType = &MinerType
+	}
+    
+	if Seeding, ok := MinerMap["seeding"].(bool); ok {
+		o.Seeding = &Seeding
 	}
     
 	if dateCreatedString, ok := MinerMap["dateCreated"].(string); ok {

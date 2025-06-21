@@ -2,7 +2,7 @@
 
 A Go package to interface with the Genesys Cloud Platform API. View the documentation on the [pkg.go.dev](https://pkg.go.dev/github.com/MyPureCloud/platform-client-sdk-go). Browse the source code on [Github](https://github.com/MyPureCloud/platform-client-sdk-go).
 
-Latest version: 160.0.0 [![GitHub release](https://img.shields.io/github/release/mypurecloud/platform-client-sdk-go.svg)](https://github.com/MyPureCloud/platform-client-sdk-go)
+Latest version: 161.0.0 [![GitHub release](https://img.shields.io/github/release/mypurecloud/platform-client-sdk-go.svg)](https://github.com/MyPureCloud/platform-client-sdk-go)
 [![Release Notes Badge](https://developer-content.genesys.cloud/images/sdk-release-notes.png)](https://github.com/MyPureCloud/platform-client-sdk-go/blob/master/releaseNotes.md)
 
 ## Golang Version Dependency
@@ -20,7 +20,7 @@ Some macOS users encounter the error "argument list too long" when building or i
 Retrieve the package from https://github.com/MyPureCloud/platform-client-sdk-go using `go get`:
 
 ```go
-go get github.com/mypurecloud/platform-client-sdk-go/v160/platformclientv2
+go get github.com/mypurecloud/platform-client-sdk-go/v161/platformclientv2
 ```
 
 ## Using the SDK
@@ -29,7 +29,7 @@ go get github.com/mypurecloud/platform-client-sdk-go/v160/platformclientv2
 
 ```go
 import (
-	"github.com/mypurecloud/platform-client-sdk-go/v160/platformclientv2"
+	"github.com/mypurecloud/platform-client-sdk-go/v161/platformclientv2"
 )
 ```
 
@@ -388,11 +388,25 @@ Configure MTLS authentication for gateway servers (when Genesys Cloud requests m
 ```go
 config := platformclientv2.GetDefaultConfiguration()
 
-// Configure gateway settings
-config.SetGateway(&platformclientv2.GatewayConfiguration{
+// Configure additional path for Login and API endpoints (optional)
+login := PathParams{
+    PathName:  "login",
+    PathValue: "myadditionalpathforlogin",
+}
+api := PathParams{
+	PathName:  "api",
+	PathValue: "myadditionalpathforapi",
+}
+gatewayPathParams := []*PathParams{
+	&api,
+	&login,
+}
+
+config.SetGateway(&GateWayConfiguration{
     Host:            "mygateway.mydomain.myextension",
     Protocol:        "https",
-    Port:            1443,
+    Port:            "1443",
+    PathParams: gatewayPathParams
 })
 
 // Set MTLS certificates
@@ -410,7 +424,16 @@ If you have the certificate contents in memory (for example, from a secrets mana
 
 ```go
 client := platformclient.GetDefaultConfiguration()
-client.SetGateway("mygateway.mydomain.myextension", "https", 1443, "myadditionalpathforlogin", "myadditionalpathforapi")
+
+// Configure additional path for Login and API endpoints (optional) - using ConvertStringToPathParams helper
+gatewayPathParams, err := ConvertStringToPathParams("login:myadditionalpathforlogin,api:myadditionalpathforapi")
+
+config.SetGateway(&GateWayConfiguration{
+    Host:            "mygateway.mydomain.myextension",
+    Protocol:        "https",
+    Port:            "1443",
+    PathParams: gatewayPathParams
+})
 
 // certPEM, keyPEM, and caChainPEM are []byte containing the PEM-encoded certificates
 err := client.SetMTLSContents(certPEM, keyPEM, caChainPEM)
@@ -426,25 +449,34 @@ if err != nil {
 For any custom requirements like pre validations or post cleanups (for ex: OCSP and CRL validation), we can inject the prehook and posthook functions.
 The SDK's default client will make sure the injected hook functions are executed.
 
+When using the default HTTP Client, the retryablehttp.Logger is unavailable.
+This is a limitation of the go-retryablehttp client. The client will print DEBUG logs of the HTTP Requests, regardless of the log level settings, unless the Logger Printf function is overridden.
+
 ```go
 // PreHook implements the certificate revocation check
 func PreHook(logger retryablehttp.Logger, req *http.Request, retry int) {
-	config := platformclientv2.GetDefaultConfiguration()
+    // NOTICE - DO NOT USE the retryablehttp.logger - it is disabled
+    // This is a limitation of the go-retryablehttp client.
+    // The client will print DEBUG logs of the HTTP Requests, regardless of the log level settings, unless the Logger Printf function is overridden.
+    // Calling the Logger Printf method will not cause an exception, but will not effectively print logs in stdout.
+    logger.Printf("You can verify that retryablehttp.Logger is not nil and does not cause exception when called. But this will print no log to stdout as the logger is disabled.")
+	
+    config := platformclientv2.GetDefaultConfiguration()
 
 	// certificate extraction logic
 
 	// Check certificate status
 	isValid, err := validateCertificate(issuerCertificate, certificate)
 	if err != nil {
-		logger.Printf("[ERROR] Certificate validation failed: %v", err)
+		fmt.Printf("[ERROR] Certificate validation failed: %v", err)
 		return
 	}
 
 	if !isValid {
-		logger.Printf("[ERROR] Certificate is revoked")
+		fmt.Printf("[ERROR] Certificate is revoked")
 	}
     else {
-	    logger.Printf("[INFO] Certificate validation successful")
+	    fmt.Printf("[INFO] Certificate validation successful")
     }
 }
 

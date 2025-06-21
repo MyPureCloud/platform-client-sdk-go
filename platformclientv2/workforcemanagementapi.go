@@ -4746,7 +4746,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitStaffinggroup(
 // GetWorkforcemanagementBusinessunitStaffinggroups invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/staffinggroups
 //
 // Gets a list of staffing groups
-func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitStaffinggroups(businessUnitId string, managementUnitId string) (*Staffinggrouplisting, *APIResponse, error) {
+func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitStaffinggroups(businessUnitId string, managementUnitId string, forceDownloadService bool) (*Staffinggrouplisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/staffinggroups"
@@ -4780,6 +4780,8 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitStaffinggroups
 	}
 	
 	queryParams["managementUnitId"] = a.Configuration.APIClient.ParameterToString(managementUnitId, "")
+	
+	queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -15647,7 +15649,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitStaffinggroup
 // PostWorkforcemanagementBusinessunitStaffinggroupsQuery invokes POST /api/v2/workforcemanagement/businessunits/{businessUnitId}/staffinggroups/query
 //
 // Gets staffing group associations for a list of user IDs
-func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitStaffinggroupsQuery(businessUnitId string, body Queryuserstaffinggrouplistrequest) (*Userstaffinggrouplisting, *APIResponse, error) {
+func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitStaffinggroupsQuery(businessUnitId string, body Queryuserstaffinggrouplistrequest, forceDownloadService bool) (*Userstaffinggrouplisting, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/staffinggroups/query"
@@ -15684,6 +15686,8 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitStaffinggroup
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -17535,6 +17539,11 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWorkplanbidCo
 	if &bidId == nil {
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'bidId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWorkplanbidCopy")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitWorkplanbidCopy")
 	}
 
 	headerParams := make(map[string]string)

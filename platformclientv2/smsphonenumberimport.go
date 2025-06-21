@@ -29,6 +29,9 @@ type Smsphonenumberimport struct {
 	// Compliance - Compliance configuration for short codes, including help, stop and opt in.
 	Compliance *Compliance `json:"compliance,omitempty"`
 
+	// SupportedContent - Defines the media SupportedContent profile configured for an MMS capable phone number.
+	SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -108,6 +111,8 @@ func (o Smsphonenumberimport) MarshalJSON() ([]byte, error) {
 		
 		Compliance *Compliance `json:"compliance,omitempty"`
 		
+		SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -122,6 +127,8 @@ func (o Smsphonenumberimport) MarshalJSON() ([]byte, error) {
 		IntegrationId: o.IntegrationId,
 		
 		Compliance: o.Compliance,
+		
+		SupportedContent: o.SupportedContent,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -158,6 +165,11 @@ func (o *Smsphonenumberimport) UnmarshalJSON(b []byte) error {
 	if Compliance, ok := SmsphonenumberimportMap["compliance"].(map[string]interface{}); ok {
 		ComplianceString, _ := json.Marshal(Compliance)
 		json.Unmarshal(ComplianceString, &o.Compliance)
+	}
+	
+	if SupportedContent, ok := SmsphonenumberimportMap["supportedContent"].(map[string]interface{}); ok {
+		SupportedContentString, _ := json.Marshal(SupportedContent)
+		json.Unmarshal(SupportedContentString, &o.SupportedContent)
 	}
 	
 	if SelfUri, ok := SmsphonenumberimportMap["selfUri"].(string); ok {

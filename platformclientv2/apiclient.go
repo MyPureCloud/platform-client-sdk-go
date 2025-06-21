@@ -129,6 +129,15 @@ func getConfUrl(c *Configuration, path string, extendedPath string) *url.URL {
 		for _, param := range gateWayConfiguration.PathParams {
 			if param.PathName == path {
 				tempValue := param.PathValue
+				if tempValue != "" {
+					tempValue = strings.TrimSpace(tempValue)
+				}
+				if tempValue != "" {
+					tempValue = strings.TrimRight(tempValue, "/")
+				}
+				if tempValue != "" {
+					tempValue = strings.TrimLeft(tempValue, "/")
+				}
 
 				if tempValue != "" {
 					if !strings.HasPrefix(tempValue, "/") {
@@ -144,9 +153,9 @@ func getConfUrl(c *Configuration, path string, extendedPath string) *url.URL {
 	if gateWayConfiguration.Port == "80" || gateWayConfiguration.Port == "443" {
 		uri, _ = url.Parse(fmt.Sprintf("%s://%s%s%s", gateWayConfiguration.Protocol, gateWayConfiguration.Host, pathValue, extendedPath))
 	} else {
-		uri, _ = url.Parse(fmt.Sprintf("%s://%s:%s/%s%s", gateWayConfiguration.Protocol, gateWayConfiguration.Host, gateWayConfiguration.Port, pathValue, extendedPath))
+		uri, _ = url.Parse(fmt.Sprintf("%s://%s:%s%s%s", gateWayConfiguration.Protocol, gateWayConfiguration.Host, gateWayConfiguration.Port, pathValue, extendedPath))
 	}
-	
+
 	return uri
 }
 

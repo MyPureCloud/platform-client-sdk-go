@@ -36,11 +36,11 @@ type Twitterdataingestionruleresponse struct {
 	// Platform - The platform of the data ingestion rule.
 	Platform *string `json:"platform,omitempty"`
 
-	// SearchTerms - Search terms for X (formally Twitter).
-	SearchTerms *string `json:"searchTerms,omitempty"`
-
 	// Countries - ISO 3166-1 alpha-2 country codes where Data Ingestion Rules should apply. Defaults to worldwide.
 	Countries *[]string `json:"countries,omitempty"`
+
+	// SearchTerms - Search terms for X (formally Twitter).
+	SearchTerms *string `json:"searchTerms,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -141,9 +141,9 @@ func (o Twitterdataingestionruleresponse) MarshalJSON() ([]byte, error) {
 		
 		Platform *string `json:"platform,omitempty"`
 		
-		SearchTerms *string `json:"searchTerms,omitempty"`
-		
 		Countries *[]string `json:"countries,omitempty"`
+		
+		SearchTerms *string `json:"searchTerms,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
@@ -164,9 +164,9 @@ func (o Twitterdataingestionruleresponse) MarshalJSON() ([]byte, error) {
 		
 		Platform: o.Platform,
 		
-		SearchTerms: o.SearchTerms,
-		
 		Countries: o.Countries,
+		
+		SearchTerms: o.SearchTerms,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -215,15 +215,15 @@ func (o *Twitterdataingestionruleresponse) UnmarshalJSON(b []byte) error {
 		o.Platform = &Platform
 	}
     
-	if SearchTerms, ok := TwitterdataingestionruleresponseMap["searchTerms"].(string); ok {
-		o.SearchTerms = &SearchTerms
-	}
-    
 	if Countries, ok := TwitterdataingestionruleresponseMap["countries"].([]interface{}); ok {
 		CountriesString, _ := json.Marshal(Countries)
 		json.Unmarshal(CountriesString, &o.Countries)
 	}
 	
+	if SearchTerms, ok := TwitterdataingestionruleresponseMap["searchTerms"].(string); ok {
+		o.SearchTerms = &SearchTerms
+	}
+    
 	if SelfUri, ok := TwitterdataingestionruleresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

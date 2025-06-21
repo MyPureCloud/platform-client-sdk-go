@@ -25,6 +25,9 @@ type Mediartpstatistics struct {
 
 	// EstimatedAverageMos - The estimated average MOS score
 	EstimatedAverageMos *float64 `json:"estimatedAverageMos,omitempty"`
+
+	// AverageJitter - The average jitter
+	AverageJitter *float64 `json:"averageJitter,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -99,6 +102,8 @@ func (o Mediartpstatistics) MarshalJSON() ([]byte, error) {
 		RtpEventsSent *int `json:"rtpEventsSent,omitempty"`
 		
 		EstimatedAverageMos *float64 `json:"estimatedAverageMos,omitempty"`
+		
+		AverageJitter *float64 `json:"averageJitter,omitempty"`
 		Alias
 	}{ 
 		PacketsReceived: o.PacketsReceived,
@@ -110,6 +115,8 @@ func (o Mediartpstatistics) MarshalJSON() ([]byte, error) {
 		RtpEventsSent: o.RtpEventsSent,
 		
 		EstimatedAverageMos: o.EstimatedAverageMos,
+		
+		AverageJitter: o.AverageJitter,
 		Alias:    (Alias)(o),
 	})
 }
@@ -143,6 +150,10 @@ func (o *Mediartpstatistics) UnmarshalJSON(b []byte) error {
 	
 	if EstimatedAverageMos, ok := MediartpstatisticsMap["estimatedAverageMos"].(float64); ok {
 		o.EstimatedAverageMos = &EstimatedAverageMos
+	}
+    
+	if AverageJitter, ok := MediartpstatisticsMap["averageJitter"].(float64); ok {
+		o.AverageJitter = &AverageJitter
 	}
     
 

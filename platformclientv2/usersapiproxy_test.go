@@ -113,6 +113,7 @@ func TestExampleUsersApi_GetUsers_CustomClient(t *testing.T) {
 	} else {
 		fmt.Printf("Successfully retrieved user data with status code %v\n", response.StatusCode)
 	}
+	config.APIClient.client.SetPreHook(nil)
 	// Output: Successfully retrieved user data with status code 200
 }
 
@@ -120,30 +121,32 @@ func TestExampleUsersApi_GetUsers_CustomClient(t *testing.T) {
 func PreHook(logger retryablehttp.Logger, req *http.Request, retry int) {
 	config := GetDefaultConfiguration()
 
+	logger.Printf("Verify that retryablehttp.Logger is not nil and does not cause exception when called. This will print no log as the logger is disabled.")
+
 	//Extract certificate from request
 	certificate, err := getCertificateFromConfig(config)
 	if err != nil {
-		logger.Printf("[ERROR] Certificate extraction failed: %v", err)
+		fmt.Printf("[ERROR] Certificate extraction failed: %v", err)
 		return
 	}
 	issuerCertificate, err := getIssuerCertificate()
 	if err != nil {
-		logger.Printf("[ERROR] Issuer Certificate extraction failed: %v", err)
+		fmt.Printf("[ERROR] Issuer Certificate extraction failed: %v", err)
 		return
 	}
 
 	// Check certificate status
 	isValid, err := validateCertificate(issuerCertificate, certificate)
 	if err != nil {
-		logger.Printf("[ERROR] Certificate validation failed: %v", err)
+		fmt.Printf("[ERROR] Certificate validation failed: %v", err)
 		return
 	}
 
 	if !isValid {
-		logger.Printf("[ERROR] Certificate is revoked")
+		fmt.Printf("[ERROR] Certificate is revoked")
 	}
 
-	logger.Printf("[INFO] Certificate validation successful")
+	fmt.Printf("[INFO] Certificate validation successful")
 }
 
 // getCertificateFromConfig extracts the certificate from the configuration

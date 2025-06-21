@@ -17,8 +17,11 @@ type Agentqueuetimerequest struct {
 	// StartOffsetMinutes - List of offsets in minutes from calculationStartDate
 	StartOffsetMinutes *[]int `json:"startOffsetMinutes,omitempty"`
 
-	// OnQueueLengthMinutesPerInterval - List of on queue time lengths in minutes per interval of elements in startOffsetMinutes
+	// OnQueueLengthMinutesPerInterval - List of on-queue time lengths in minutes per interval of elements in startOffsetMinutes
 	OnQueueLengthMinutesPerInterval *[]int `json:"onQueueLengthMinutesPerInterval,omitempty"`
+
+	// OnQueueActivityCodeIds - List of on-queue activity code ids
+	OnQueueActivityCodeIds *[]string `json:"onQueueActivityCodeIds,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +92,8 @@ func (o Agentqueuetimerequest) MarshalJSON() ([]byte, error) {
 		StartOffsetMinutes *[]int `json:"startOffsetMinutes,omitempty"`
 		
 		OnQueueLengthMinutesPerInterval *[]int `json:"onQueueLengthMinutesPerInterval,omitempty"`
+		
+		OnQueueActivityCodeIds *[]string `json:"onQueueActivityCodeIds,omitempty"`
 		Alias
 	}{ 
 		AgentId: o.AgentId,
@@ -96,6 +101,8 @@ func (o Agentqueuetimerequest) MarshalJSON() ([]byte, error) {
 		StartOffsetMinutes: o.StartOffsetMinutes,
 		
 		OnQueueLengthMinutesPerInterval: o.OnQueueLengthMinutesPerInterval,
+		
+		OnQueueActivityCodeIds: o.OnQueueActivityCodeIds,
 		Alias:    (Alias)(o),
 	})
 }
@@ -119,6 +126,11 @@ func (o *Agentqueuetimerequest) UnmarshalJSON(b []byte) error {
 	if OnQueueLengthMinutesPerInterval, ok := AgentqueuetimerequestMap["onQueueLengthMinutesPerInterval"].([]interface{}); ok {
 		OnQueueLengthMinutesPerIntervalString, _ := json.Marshal(OnQueueLengthMinutesPerInterval)
 		json.Unmarshal(OnQueueLengthMinutesPerIntervalString, &o.OnQueueLengthMinutesPerInterval)
+	}
+	
+	if OnQueueActivityCodeIds, ok := AgentqueuetimerequestMap["onQueueActivityCodeIds"].([]interface{}); ok {
+		OnQueueActivityCodeIdsString, _ := json.Marshal(OnQueueActivityCodeIds)
+		json.Unmarshal(OnQueueActivityCodeIdsString, &o.OnQueueActivityCodeIds)
 	}
 	
 

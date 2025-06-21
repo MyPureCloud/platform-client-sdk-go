@@ -36,6 +36,9 @@ type Facebookdataingestionruleversionresponse struct {
 	// Platform - The platform of the data ingestion rule.
 	Platform *string `json:"platform,omitempty"`
 
+	// Countries - The countries is available only on twitter data ingestion rule. ISO 3166-1 alpha-2 country codes where Data Ingestion Rules should apply. Defaults to worldwide.
+	Countries *[]string `json:"countries,omitempty"`
+
 	// IntegrationId - The Integration Id from which public social posts are ingested. This entity is created using the /conversations/messaging/integrations/facebook resource
 	IntegrationId *string `json:"integrationId,omitempty"`
 
@@ -138,6 +141,8 @@ func (o Facebookdataingestionruleversionresponse) MarshalJSON() ([]byte, error) 
 		
 		Platform *string `json:"platform,omitempty"`
 		
+		Countries *[]string `json:"countries,omitempty"`
+		
 		IntegrationId *string `json:"integrationId,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -158,6 +163,8 @@ func (o Facebookdataingestionruleversionresponse) MarshalJSON() ([]byte, error) 
 		DateModified: DateModified,
 		
 		Platform: o.Platform,
+		
+		Countries: o.Countries,
 		
 		IntegrationId: o.IntegrationId,
 		
@@ -208,6 +215,11 @@ func (o *Facebookdataingestionruleversionresponse) UnmarshalJSON(b []byte) error
 		o.Platform = &Platform
 	}
     
+	if Countries, ok := FacebookdataingestionruleversionresponseMap["countries"].([]interface{}); ok {
+		CountriesString, _ := json.Marshal(Countries)
+		json.Unmarshal(CountriesString, &o.Countries)
+	}
+	
 	if IntegrationId, ok := FacebookdataingestionruleversionresponseMap["integrationId"].(string); ok {
 		o.IntegrationId = &IntegrationId
 	}

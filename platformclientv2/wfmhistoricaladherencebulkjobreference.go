@@ -11,10 +11,10 @@ import (
 type Wfmhistoricaladherencebulkjobreference struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The ID of the historical adherence bulk job to listen for via notification or query using the jobs route
+	// Id - The ID of the historical adherence job to listen for via notification or query using the jobs route
 	Id *string `json:"id,omitempty"`
 
-	// Status - The status of the historical adherence bulk job
+	// Status - The status of the historical adherence job
 	Status *string `json:"status,omitempty"`
 
 	// SelfUri - The URI for this object

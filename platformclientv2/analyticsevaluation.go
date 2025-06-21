@@ -54,6 +54,9 @@ type Analyticsevaluation struct {
 	// Rescored - Whether the evaluation has been rescored at least once
 	Rescored *bool `json:"rescored,omitempty"`
 
+	// SystemSubmitted - Whether the evaluation was auto submitted by the system
+	SystemSubmitted *bool `json:"systemSubmitted,omitempty"`
+
 	// UserId - ID of the agent the evaluation was performed against
 	UserId *string `json:"userId,omitempty"`
 
@@ -163,6 +166,8 @@ func (o Analyticsevaluation) MarshalJSON() ([]byte, error) {
 		
 		Rescored *bool `json:"rescored,omitempty"`
 		
+		SystemSubmitted *bool `json:"systemSubmitted,omitempty"`
+		
 		UserId *string `json:"userId,omitempty"`
 		
 		OTotalCriticalScore *int `json:"oTotalCriticalScore,omitempty"`
@@ -197,6 +202,8 @@ func (o Analyticsevaluation) MarshalJSON() ([]byte, error) {
 		Released: o.Released,
 		
 		Rescored: o.Rescored,
+		
+		SystemSubmitted: o.SystemSubmitted,
 		
 		UserId: o.UserId,
 		
@@ -269,6 +276,10 @@ func (o *Analyticsevaluation) UnmarshalJSON(b []byte) error {
     
 	if Rescored, ok := AnalyticsevaluationMap["rescored"].(bool); ok {
 		o.Rescored = &Rescored
+	}
+    
+	if SystemSubmitted, ok := AnalyticsevaluationMap["systemSubmitted"].(bool); ok {
+		o.SystemSubmitted = &SystemSubmitted
 	}
     
 	if UserId, ok := AnalyticsevaluationMap["userId"].(string); ok {

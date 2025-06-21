@@ -35,7 +35,7 @@ type Systempromptasset struct {
 	// Text
 	Text *string `json:"text,omitempty"`
 
-	// UploadUri
+	// UploadUri - Deprecated. This was use for uploading the resource audio.
 	UploadUri *string `json:"uploadUri,omitempty"`
 
 	// UploadStatus

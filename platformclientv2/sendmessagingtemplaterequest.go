@@ -11,7 +11,7 @@ import (
 type Sendmessagingtemplaterequest struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// ResponseId - A Response Management response identifier for a messaging template defined response
+	// ResponseId - Unique identifier for a Response Management response to fetch and apply pre-configured message content when sending outbound responses.
 	ResponseId *string `json:"responseId,omitempty"`
 
 	// Parameters - A list of Response Management response substitutions for the response's messaging template. (Deprecated) use bodyParameters instead.

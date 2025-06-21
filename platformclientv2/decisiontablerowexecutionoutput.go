@@ -14,6 +14,9 @@ type Decisiontablerowexecutionoutput struct {
 	// RowId - Unique rule identifier.
 	RowId *string `json:"rowId,omitempty"`
 
+	// RowIndex - Unique rule identifier.
+	RowIndex *int `json:"rowIndex,omitempty"`
+
 	// Outputs - The JSON output produced by this rule. Valid according to the execution output contract.
 	Outputs *map[string]interface{} `json:"outputs,omitempty"`
 }
@@ -83,10 +86,14 @@ func (o Decisiontablerowexecutionoutput) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		RowId *string `json:"rowId,omitempty"`
 		
+		RowIndex *int `json:"rowIndex,omitempty"`
+		
 		Outputs *map[string]interface{} `json:"outputs,omitempty"`
 		Alias
 	}{ 
 		RowId: o.RowId,
+		
+		RowIndex: o.RowIndex,
 		
 		Outputs: o.Outputs,
 		Alias:    (Alias)(o),
@@ -104,6 +111,11 @@ func (o *Decisiontablerowexecutionoutput) UnmarshalJSON(b []byte) error {
 		o.RowId = &RowId
 	}
     
+	if RowIndex, ok := DecisiontablerowexecutionoutputMap["rowIndex"].(float64); ok {
+		RowIndexInt := int(RowIndex)
+		o.RowIndex = &RowIndexInt
+	}
+	
 	if Outputs, ok := DecisiontablerowexecutionoutputMap["outputs"].(map[string]interface{}); ok {
 		OutputsString, _ := json.Marshal(Outputs)
 		json.Unmarshal(OutputsString, &o.Outputs)

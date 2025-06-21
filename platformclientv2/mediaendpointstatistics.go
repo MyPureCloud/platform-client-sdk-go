@@ -26,8 +26,14 @@ type Mediaendpointstatistics struct {
 	// Rtp - Statistics of sent and received RTP. Reference: https://www.rfc-editor.org/rfc/rfc3550
 	Rtp *Mediartpstatistics `json:"rtp,omitempty"`
 
-	// ReconnectAttemptCount - Media reconnect attempt count
-	ReconnectAttemptCount *int `json:"reconnectAttemptCount,omitempty"`
+	// ReconnectAttempts - Media reconnect attempt count
+	ReconnectAttempts *int `json:"reconnectAttempts,omitempty"`
+
+	// SourceType - Source type of media endpoint
+	SourceType *string `json:"sourceType,omitempty"`
+
+	// ClientInfo - Client information associated with media endpoint
+	ClientInfo *Mediastatisticsclientinfo `json:"clientInfo,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -103,7 +109,11 @@ func (o Mediaendpointstatistics) MarshalJSON() ([]byte, error) {
 		
 		Rtp *Mediartpstatistics `json:"rtp,omitempty"`
 		
-		ReconnectAttemptCount *int `json:"reconnectAttemptCount,omitempty"`
+		ReconnectAttempts *int `json:"reconnectAttempts,omitempty"`
+		
+		SourceType *string `json:"sourceType,omitempty"`
+		
+		ClientInfo *Mediastatisticsclientinfo `json:"clientInfo,omitempty"`
 		Alias
 	}{ 
 		Trunk: o.Trunk,
@@ -116,7 +126,11 @@ func (o Mediaendpointstatistics) MarshalJSON() ([]byte, error) {
 		
 		Rtp: o.Rtp,
 		
-		ReconnectAttemptCount: o.ReconnectAttemptCount,
+		ReconnectAttempts: o.ReconnectAttempts,
+		
+		SourceType: o.SourceType,
+		
+		ClientInfo: o.ClientInfo,
 		Alias:    (Alias)(o),
 	})
 }
@@ -153,9 +167,18 @@ func (o *Mediaendpointstatistics) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(RtpString, &o.Rtp)
 	}
 	
-	if ReconnectAttemptCount, ok := MediaendpointstatisticsMap["reconnectAttemptCount"].(float64); ok {
-		ReconnectAttemptCountInt := int(ReconnectAttemptCount)
-		o.ReconnectAttemptCount = &ReconnectAttemptCountInt
+	if ReconnectAttempts, ok := MediaendpointstatisticsMap["reconnectAttempts"].(float64); ok {
+		ReconnectAttemptsInt := int(ReconnectAttempts)
+		o.ReconnectAttempts = &ReconnectAttemptsInt
+	}
+	
+	if SourceType, ok := MediaendpointstatisticsMap["sourceType"].(string); ok {
+		o.SourceType = &SourceType
+	}
+    
+	if ClientInfo, ok := MediaendpointstatisticsMap["clientInfo"].(map[string]interface{}); ok {
+		ClientInfoString, _ := json.Marshal(ClientInfo)
+		json.Unmarshal(ClientInfoString, &o.ClientInfo)
 	}
 	
 

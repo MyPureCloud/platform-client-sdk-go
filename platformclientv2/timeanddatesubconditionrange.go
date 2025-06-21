@@ -10,7 +10,16 @@ import (
 // Timeanddatesubconditionrange
 type Timeanddatesubconditionrange struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// Min - The minimum value of the range. Required for the operator BETWEEN. Format depends on type: timeOfDay: HH:mm, dayOfWeek: 1-7 (Monday-Sunday), dayOfMonth: 1-31, specificDate: yyyy-MM-dd (if includeYear=true) or MM-dd (if includeYear=false).
+	Min *string `json:"min,omitempty"`
+
+	// Max - The maximum value of the range. Required for the operator BETWEEN. Format follows the same rules as 'min'.
+	Max *string `json:"max,omitempty"`
+
+	// InSet - A set of values that the date/ time data should be in. Required for the IN operator. Format depends on type: dayOfWeek: 1-7 (Monday-Sunday), dayOfMonth: 1-31, and/ or LAST_DAY, ODD_DAY, EVEN_DAY,specificDate: yyyy-MM-dd (if includeYear=true) or MM-dd (if includeYear=false).
+	InSet *[]string `json:"inSet,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Timeanddatesubconditionrange) SetField(field string, fieldValue interface{}) {
@@ -74,8 +83,20 @@ func (o Timeanddatesubconditionrange) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Timeanddatesubconditionrange
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		Min *string `json:"min,omitempty"`
+		
+		Max *string `json:"max,omitempty"`
+		
+		InSet *[]string `json:"inSet,omitempty"`
+		Alias
+	}{ 
+		Min: o.Min,
+		
+		Max: o.Max,
+		
+		InSet: o.InSet,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -84,6 +105,19 @@ func (o *Timeanddatesubconditionrange) UnmarshalJSON(b []byte) error {
 	err := json.Unmarshal(b, &TimeanddatesubconditionrangeMap)
 	if err != nil {
 		return err
+	}
+	
+	if Min, ok := TimeanddatesubconditionrangeMap["min"].(string); ok {
+		o.Min = &Min
+	}
+    
+	if Max, ok := TimeanddatesubconditionrangeMap["max"].(string); ok {
+		o.Max = &Max
+	}
+    
+	if InSet, ok := TimeanddatesubconditionrangeMap["inSet"].([]interface{}); ok {
+		InSetString, _ := json.Marshal(InSet)
+		json.Unmarshal(InSetString, &o.InSet)
 	}
 	
 

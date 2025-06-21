@@ -820,6 +820,8 @@ func (a VoicemailApi) GetVoicemailMessage(messageId string, expand []string) (*V
 // GetVoicemailMessageMedia invokes GET /api/v2/voicemail/messages/{messageId}/media
 //
 // Get media playback URI for this voicemail message
+//
+// API should migrate to use GET api/v2/voicemail/messages/{messageId}/downloads
 func (a VoicemailApi) GetVoicemailMessageMedia(messageId string, formatId string) (*Voicemailmediainfo, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

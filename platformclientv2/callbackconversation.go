@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -28,6 +29,9 @@ type Callbackconversation struct {
 
 	// UtilizationLabelId - An optional label that categorizes the conversation.  Max-utilization settings can be configured at a per-label level
 	UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
+
+	// InactivityTimeout - The time in the future, after which this conversation would be considered inactive. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	InactivityTimeout *time.Time `json:"inactivityTimeout,omitempty"`
 
 	// Divisions - Identifiers of divisions associated with this conversation.
 	Divisions *[]Conversationdivisionmembership `json:"divisions,omitempty"`
@@ -65,7 +69,7 @@ func (o Callbackconversation) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
+		dateTimeFields := []string{ "InactivityTimeout", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -98,6 +102,14 @@ func (o Callbackconversation) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Callbackconversation
 	
+	InactivityTimeout := new(string)
+	if o.InactivityTimeout != nil {
+		
+		*InactivityTimeout = timeutil.Strftime(o.InactivityTimeout, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		InactivityTimeout = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -110,6 +122,8 @@ func (o Callbackconversation) MarshalJSON() ([]byte, error) {
 		RecentTransfers *[]Transferresponse `json:"recentTransfers,omitempty"`
 		
 		UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
+		
+		InactivityTimeout *string `json:"inactivityTimeout,omitempty"`
 		
 		Divisions *[]Conversationdivisionmembership `json:"divisions,omitempty"`
 		
@@ -127,6 +141,8 @@ func (o Callbackconversation) MarshalJSON() ([]byte, error) {
 		RecentTransfers: o.RecentTransfers,
 		
 		UtilizationLabelId: o.UtilizationLabelId,
+		
+		InactivityTimeout: InactivityTimeout,
 		
 		Divisions: o.Divisions,
 		
@@ -169,6 +185,11 @@ func (o *Callbackconversation) UnmarshalJSON(b []byte) error {
 		o.UtilizationLabelId = &UtilizationLabelId
 	}
     
+	if inactivityTimeoutString, ok := CallbackconversationMap["inactivityTimeout"].(string); ok {
+		InactivityTimeout, _ := time.Parse("2006-01-02T15:04:05.999999Z", inactivityTimeoutString)
+		o.InactivityTimeout = &InactivityTimeout
+	}
+	
 	if Divisions, ok := CallbackconversationMap["divisions"].([]interface{}); ok {
 		DivisionsString, _ := json.Marshal(Divisions)
 		json.Unmarshal(DivisionsString, &o.Divisions)

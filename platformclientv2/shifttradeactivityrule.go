@@ -17,7 +17,7 @@ type Shifttradeactivityrule struct {
 	// Action - The action this rule invokes
 	Action *string `json:"action,omitempty"`
 
-	// ActivityCodeIdReplacement - The activity code ID with which to replace activities belonging to the original category if applicable (required if action == Replace, must be a default activity code ID)
+	// ActivityCodeIdReplacement - The ID of the activity code with which to replace activities belonging to the original category if applicable (required if action == Replace, must be a default activity code ID)
 	ActivityCodeIdReplacement *string `json:"activityCodeIdReplacement,omitempty"`
 }
 

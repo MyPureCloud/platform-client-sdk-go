@@ -15,7 +15,7 @@ type Performancepredictionuploadschema struct {
 	// CalculationStartDate - Date as an ISO-8601 string, corresponding to the beginning of the performance prediction results
 	CalculationStartDate *time.Time `json:"calculationStartDate,omitempty"`
 
-	// OnQueueTimes - List of agent on queue times by management unit
+	// OnQueueTimes - List of agent on-queue times by management unit
 	OnQueueTimes *[]Muagentqueuetimerequest `json:"onQueueTimes,omitempty"`
 }
 

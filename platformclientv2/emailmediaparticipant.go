@@ -24,6 +24,9 @@ type Emailmediaparticipant struct {
 	// StartTime - The time when this participant first joined the conversation. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	StartTime *time.Time `json:"startTime,omitempty"`
 
+	// StartAlertingTime - The timestamp when it is first put into an alerting state. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	StartAlertingTime *time.Time `json:"startAlertingTime,omitempty"`
+
 	// ConnectedTime - The time when this participant went connected for this media (eg: video connected time). Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ConnectedTime *time.Time `json:"connectedTime,omitempty"`
 
@@ -171,7 +174,7 @@ func (o Emailmediaparticipant) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "StartTime","ConnectedTime","EndTime","StartHoldTime","StartAcwTime","EndAcwTime","ParkTime","ResumeTime", }
+		dateTimeFields := []string{ "StartTime","StartAlertingTime","ConnectedTime","EndTime","StartHoldTime","StartAcwTime","EndAcwTime","ParkTime","ResumeTime", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -210,6 +213,14 @@ func (o Emailmediaparticipant) MarshalJSON() ([]byte, error) {
 		*StartTime = timeutil.Strftime(o.StartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartTime = nil
+	}
+	
+	StartAlertingTime := new(string)
+	if o.StartAlertingTime != nil {
+		
+		*StartAlertingTime = timeutil.Strftime(o.StartAlertingTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartAlertingTime = nil
 	}
 	
 	ConnectedTime := new(string)
@@ -276,6 +287,8 @@ func (o Emailmediaparticipant) MarshalJSON() ([]byte, error) {
 		Address *string `json:"address,omitempty"`
 		
 		StartTime *string `json:"startTime,omitempty"`
+		
+		StartAlertingTime *string `json:"startAlertingTime,omitempty"`
 		
 		ConnectedTime *string `json:"connectedTime,omitempty"`
 		
@@ -363,6 +376,8 @@ func (o Emailmediaparticipant) MarshalJSON() ([]byte, error) {
 		Address: o.Address,
 		
 		StartTime: StartTime,
+		
+		StartAlertingTime: StartAlertingTime,
 		
 		ConnectedTime: ConnectedTime,
 		
@@ -467,6 +482,11 @@ func (o *Emailmediaparticipant) UnmarshalJSON(b []byte) error {
 	if startTimeString, ok := EmailmediaparticipantMap["startTime"].(string); ok {
 		StartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startTimeString)
 		o.StartTime = &StartTime
+	}
+	
+	if startAlertingTimeString, ok := EmailmediaparticipantMap["startAlertingTime"].(string); ok {
+		StartAlertingTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startAlertingTimeString)
+		o.StartAlertingTime = &StartAlertingTime
 	}
 	
 	if connectedTimeString, ok := EmailmediaparticipantMap["connectedTime"].(string); ok {

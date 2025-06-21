@@ -10,7 +10,25 @@ import (
 // Timeanddatesubcondition
 type Timeanddatesubcondition struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// VarType - The type of time/date sub-condition.
+	VarType *string `json:"type,omitempty"`
+
+	// Operator - The operator to use for comparison.
+	Operator *string `json:"operator,omitempty"`
+
+	// Inverted - If true, inverts the result of evaluating this sub-condition. Default is false.
+	Inverted *bool `json:"inverted,omitempty"`
+
+	// IncludeYear - If true, includes year in date comparison for specificDate type. When false, only month and day are compared. Default is true. Only applicable for specificDate type.
+	IncludeYear *bool `json:"includeYear,omitempty"`
+
+	// ThresholdValue - Threshold value for BEFORE or AFTER operators. Format depends on type: timeOfDay: HH:mm, dayOfWeek: 1-7 (Monday-Sunday), dayOfMonth: 1-31 and/ or LAST_DAY, ODD_DAY, EVEN_DAY, specificDate: yyyy-MM-dd (if includeYear=true) or MM-dd (if includeYear=false). For single-value comparison, use a list with one element.
+	ThresholdValue *string `json:"thresholdValue,omitempty"`
+
+	// VarRange - A range of values for BETWEEN and IN operators. Format follows the same rules as 'thresholdValue'.
+	VarRange *Timeanddatesubconditionrange `json:"range,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Timeanddatesubcondition) SetField(field string, fieldValue interface{}) {
@@ -74,8 +92,32 @@ func (o Timeanddatesubcondition) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Timeanddatesubcondition
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		VarType *string `json:"type,omitempty"`
+		
+		Operator *string `json:"operator,omitempty"`
+		
+		Inverted *bool `json:"inverted,omitempty"`
+		
+		IncludeYear *bool `json:"includeYear,omitempty"`
+		
+		ThresholdValue *string `json:"thresholdValue,omitempty"`
+		
+		VarRange *Timeanddatesubconditionrange `json:"range,omitempty"`
+		Alias
+	}{ 
+		VarType: o.VarType,
+		
+		Operator: o.Operator,
+		
+		Inverted: o.Inverted,
+		
+		IncludeYear: o.IncludeYear,
+		
+		ThresholdValue: o.ThresholdValue,
+		
+		VarRange: o.VarRange,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -84,6 +126,31 @@ func (o *Timeanddatesubcondition) UnmarshalJSON(b []byte) error {
 	err := json.Unmarshal(b, &TimeanddatesubconditionMap)
 	if err != nil {
 		return err
+	}
+	
+	if VarType, ok := TimeanddatesubconditionMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+    
+	if Operator, ok := TimeanddatesubconditionMap["operator"].(string); ok {
+		o.Operator = &Operator
+	}
+    
+	if Inverted, ok := TimeanddatesubconditionMap["inverted"].(bool); ok {
+		o.Inverted = &Inverted
+	}
+    
+	if IncludeYear, ok := TimeanddatesubconditionMap["includeYear"].(bool); ok {
+		o.IncludeYear = &IncludeYear
+	}
+    
+	if ThresholdValue, ok := TimeanddatesubconditionMap["thresholdValue"].(string); ok {
+		o.ThresholdValue = &ThresholdValue
+	}
+    
+	if VarRange, ok := TimeanddatesubconditionMap["range"].(map[string]interface{}); ok {
+		VarRangeString, _ := json.Marshal(VarRange)
+		json.Unmarshal(VarRangeString, &o.VarRange)
 	}
 	
 

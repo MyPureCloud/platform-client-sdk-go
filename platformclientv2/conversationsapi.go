@@ -1770,6 +1770,196 @@ func (a ConversationsApi) GetConversation(conversationId string) (*Conversation,
 	return successPayload, response, err
 }
 
+// GetConversationCommunicationInternalmessage invokes GET /api/v2/conversations/{conversationId}/communications/{communicationId}/internalmessages/{messageId}
+//
+// Get message
+//
+// Preview: GetConversationCommunicationInternalmessage is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+func (a ConversationsApi) GetConversationCommunicationInternalmessage(conversationId string, communicationId string, messageId string) (*Internalmessagedata, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/{conversationId}/communications/{communicationId}/internalmessages/{messageId}"
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{communicationId}", url.PathEscape(fmt.Sprintf("%v", communicationId)), -1)
+	path = strings.Replace(path, "{messageId}", url.PathEscape(fmt.Sprintf("%v", messageId)), -1)
+	defaultReturn := new(Internalmessagedata)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'conversationId' is set
+	if &conversationId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversationCommunicationInternalmessage")
+	}
+	// verify the required parameter 'communicationId' is set
+	if &communicationId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'communicationId' when calling ConversationsApi->GetConversationCommunicationInternalmessage")
+	}
+	// verify the required parameter 'messageId' is set
+	if &messageId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'messageId' when calling ConversationsApi->GetConversationCommunicationInternalmessage")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Internalmessagedata
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Internalmessagedata" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetConversationCommunicationInternalmessages invokes GET /api/v2/conversations/{conversationId}/communications/{communicationId}/internalmessages
+//
+// Get messages for communication
+//
+// Preview: GetConversationCommunicationInternalmessages is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+func (a ConversationsApi) GetConversationCommunicationInternalmessages(conversationId string, communicationId string, pageSize int, pageNumber int) (*Internalmessagedataentitylisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/{conversationId}/communications/{communicationId}/internalmessages"
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{communicationId}", url.PathEscape(fmt.Sprintf("%v", communicationId)), -1)
+	defaultReturn := new(Internalmessagedataentitylisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'conversationId' is set
+	if &conversationId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversationCommunicationInternalmessages")
+	}
+	// verify the required parameter 'communicationId' is set
+	if &communicationId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'communicationId' when calling ConversationsApi->GetConversationCommunicationInternalmessages")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Internalmessagedataentitylisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Internalmessagedataentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // GetConversationParticipantSecureivrsession invokes GET /api/v2/conversations/{conversationId}/participants/{participantId}/secureivrsessions/{secureSessionId}
 //
 // Fetch info on a secure session
@@ -5424,6 +5614,168 @@ func (a ConversationsApi) GetConversationsEmails() (*Emailconversationentitylist
 	return successPayload, response, err
 }
 
+// GetConversationsInternalmessage invokes GET /api/v2/conversations/internalmessages/{conversationId}
+//
+// Get internal message conversation
+//
+// Preview: GetConversationsInternalmessage is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+func (a ConversationsApi) GetConversationsInternalmessage(conversationId string) (*Internalmessageconversation, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/internalmessages/{conversationId}"
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	defaultReturn := new(Internalmessageconversation)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'conversationId' is set
+	if &conversationId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversationsInternalmessage")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Internalmessageconversation
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Internalmessageconversation" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetConversationsInternalmessages invokes GET /api/v2/conversations/internalmessages
+//
+// Get active internal message conversations for the logged in user
+//
+// Preview: GetConversationsInternalmessages is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+func (a ConversationsApi) GetConversationsInternalmessages() (*Internalmessageconversationentitylisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/internalmessages"
+	defaultReturn := new(Internalmessageconversationentitylisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Internalmessageconversationentitylisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Internalmessageconversationentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // GetConversationsKeyconfiguration invokes GET /api/v2/conversations/keyconfigurations/{keyconfigurationsId}
 //
 // Get the encryption key configurations
@@ -6922,6 +7274,88 @@ func (a ConversationsApi) GetConversationsMessagingIdentityresolutionIntegration
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Openmessagingidentityresolutionconfig" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetConversationsMessagingIdentityresolutionIntegrationsTwitterIntegrationId invokes GET /api/v2/conversations/messaging/identityresolution/integrations/twitter/{integrationId}
+//
+// Get X (Formally Twitter) messaging integration identity resolution settings
+func (a ConversationsApi) GetConversationsMessagingIdentityresolutionIntegrationsTwitterIntegrationId(integrationId string) (*Identityresolutionconfig, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/identityresolution/integrations/twitter/{integrationId}"
+	path = strings.Replace(path, "{integrationId}", url.PathEscape(fmt.Sprintf("%v", integrationId)), -1)
+	defaultReturn := new(Identityresolutionconfig)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'integrationId' is set
+	if &integrationId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'integrationId' when calling ConversationsApi->GetConversationsMessagingIdentityresolutionIntegrationsTwitterIntegrationId")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Identityresolutionconfig
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Identityresolutionconfig" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -14030,6 +14464,106 @@ func (a ConversationsApi) PostConversationCobrowse(conversationId string) (*Cobr
 	return successPayload, response, err
 }
 
+// PostConversationCommunicationInternalmessages invokes POST /api/v2/conversations/{conversationId}/communications/{communicationId}/internalmessages
+//
+// Send internal message
+//
+// Send a new internal message for an existing communication.
+//
+// Preview: PostConversationCommunicationInternalmessages is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+func (a ConversationsApi) PostConversationCommunicationInternalmessages(conversationId string, communicationId string, body Internalmessagerequest) (*Internalmessagedata, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/{conversationId}/communications/{communicationId}/internalmessages"
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{communicationId}", url.PathEscape(fmt.Sprintf("%v", communicationId)), -1)
+	defaultReturn := new(Internalmessagedata)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'conversationId' is set
+	if &conversationId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PostConversationCommunicationInternalmessages")
+	}
+	// verify the required parameter 'communicationId' is set
+	if &communicationId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'communicationId' when calling ConversationsApi->PostConversationCommunicationInternalmessages")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationCommunicationInternalmessages")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Internalmessagedata
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Internalmessagedata" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // PostConversationDisconnect invokes POST /api/v2/conversations/{conversationId}/disconnect
 //
 // Performs a full conversation teardown. Issues disconnect requests for any connected media. Applies a system wrap-up code to any participants that are pending wrap-up. This is not intended to be the normal way of ending interactions but is available in the event of problems with the application to allow a resynchronization of state across all components. It is recommended that users submit a support case if they are relying on this endpoint systematically as there is likely something that needs investigation.
@@ -14278,6 +14812,106 @@ func (a ConversationsApi) PostConversationParticipantDigits(conversationId strin
 		err = errors.New(response.ErrorMessage)
 	}
 	return response, err
+}
+
+// PostConversationParticipantInternalmessagesUsersCommunications invokes POST /api/v2/conversations/{conversationId}/participants/{participantId}/internalmessages/users/communications
+//
+// Setup internal message communication with user
+//
+// The target user of the digital consultation must have the &#x60;conversation:internalMessaging:accept&#x60; permission.
+//
+// Preview: PostConversationParticipantInternalmessagesUsersCommunications is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+func (a ConversationsApi) PostConversationParticipantInternalmessagesUsersCommunications(conversationId string, participantId string, body Messagingconferwithuserrequest) (*Messagingconferresponse, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/{conversationId}/participants/{participantId}/internalmessages/users/communications"
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{participantId}", url.PathEscape(fmt.Sprintf("%v", participantId)), -1)
+	defaultReturn := new(Messagingconferresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'conversationId' is set
+	if &conversationId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PostConversationParticipantInternalmessagesUsersCommunications")
+	}
+	// verify the required parameter 'participantId' is set
+	if &participantId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PostConversationParticipantInternalmessagesUsersCommunications")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationParticipantInternalmessagesUsersCommunications")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Messagingconferresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Messagingconferresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
 }
 
 // PostConversationParticipantReplace invokes POST /api/v2/conversations/{conversationId}/participants/{participantId}/replace
@@ -18840,6 +19474,98 @@ func (a ConversationsApi) PostConversationsMessageInboundOpenReceipt(integration
 	return successPayload, response, err
 }
 
+// PostConversationsMessageInboundOpenStructuredResponse invokes POST /api/v2/conversations/messages/{integrationId}/inbound/open/structured/response
+//
+// Send inbound Open Response
+//
+// Send an inbound response for a structured message to an Open Messaging integration. In order to call this endpoint you will need OAuth token generated using OAuth client credentials authorized with at least messaging scope. This will be a part of an existing conversation. See https://developer.genesys.cloud/api/digital/openmessaging/ for example usage.
+func (a ConversationsApi) PostConversationsMessageInboundOpenStructuredResponse(integrationId string, body Openinboundstructuredresponsemessage) (*Openstructuredresponsenormalizedmessage, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/messages/{integrationId}/inbound/open/structured/response"
+	path = strings.Replace(path, "{integrationId}", url.PathEscape(fmt.Sprintf("%v", integrationId)), -1)
+	defaultReturn := new(Openstructuredresponsenormalizedmessage)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'integrationId' is set
+	if &integrationId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'integrationId' when calling ConversationsApi->PostConversationsMessageInboundOpenStructuredResponse")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationsMessageInboundOpenStructuredResponse")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Openstructuredresponsenormalizedmessage
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Openstructuredresponsenormalizedmessage" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // PostConversationsMessageMessagesBulk invokes POST /api/v2/conversations/messages/{conversationId}/messages/bulk
 //
 // Get messages in batch
@@ -22110,6 +22836,96 @@ func (a ConversationsApi) PutConversationsMessagingIdentityresolutionIntegration
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Openmessagingidentityresolutionconfig" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PutConversationsMessagingIdentityresolutionIntegrationsTwitterIntegrationId invokes PUT /api/v2/conversations/messaging/identityresolution/integrations/twitter/{integrationId}
+//
+// Create an identity resolution settings for an X (Formally Twitter) messaging integration
+func (a ConversationsApi) PutConversationsMessagingIdentityresolutionIntegrationsTwitterIntegrationId(integrationId string, body Identityresolutionconfig) (*Identityresolutionconfig, *APIResponse, error) {
+	var httpMethod = "PUT"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/identityresolution/integrations/twitter/{integrationId}"
+	path = strings.Replace(path, "{integrationId}", url.PathEscape(fmt.Sprintf("%v", integrationId)), -1)
+	defaultReturn := new(Identityresolutionconfig)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'integrationId' is set
+	if &integrationId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'integrationId' when calling ConversationsApi->PutConversationsMessagingIdentityresolutionIntegrationsTwitterIntegrationId")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PutConversationsMessagingIdentityresolutionIntegrationsTwitterIntegrationId")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Identityresolutionconfig
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Identityresolutionconfig" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

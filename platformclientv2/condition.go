@@ -58,6 +58,15 @@ type Condition struct {
 
 	// Predicates - A list of predicates defining the comparisons to use for this condition. Required for a dataActionCondition.
 	Predicates *[]Dataactionconditionpredicate `json:"predicates,omitempty"`
+
+	// SubConditions - A list of sub-conditions to evaluate. Required for a timeAndDateCondition.
+	SubConditions *[]Timeanddatesubcondition `json:"subConditions,omitempty"`
+
+	// MatchAnyConditions - If true, only one sub-condition must match for the condition to be true. If false, all sub-conditions must match. Default is false. Required for a timeAndDateCondition.
+	MatchAnyConditions *bool `json:"matchAnyConditions,omitempty"`
+
+	// TimeZoneId - The time zone to use for this condition. Required for a timeAndDateCondition.
+	TimeZoneId *string `json:"timeZoneId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -154,6 +163,12 @@ func (o Condition) MarshalJSON() ([]byte, error) {
 		ContactColumnToDataActionFieldMappings *[]Contactcolumntodataactionfieldmapping `json:"contactColumnToDataActionFieldMappings,omitempty"`
 		
 		Predicates *[]Dataactionconditionpredicate `json:"predicates,omitempty"`
+		
+		SubConditions *[]Timeanddatesubcondition `json:"subConditions,omitempty"`
+		
+		MatchAnyConditions *bool `json:"matchAnyConditions,omitempty"`
+		
+		TimeZoneId *string `json:"timeZoneId,omitempty"`
 		Alias
 	}{ 
 		VarType: o.VarType,
@@ -187,6 +202,12 @@ func (o Condition) MarshalJSON() ([]byte, error) {
 		ContactColumnToDataActionFieldMappings: o.ContactColumnToDataActionFieldMappings,
 		
 		Predicates: o.Predicates,
+		
+		SubConditions: o.SubConditions,
+		
+		MatchAnyConditions: o.MatchAnyConditions,
+		
+		TimeZoneId: o.TimeZoneId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -266,6 +287,19 @@ func (o *Condition) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(PredicatesString, &o.Predicates)
 	}
 	
+	if SubConditions, ok := ConditionMap["subConditions"].([]interface{}); ok {
+		SubConditionsString, _ := json.Marshal(SubConditions)
+		json.Unmarshal(SubConditionsString, &o.SubConditions)
+	}
+	
+	if MatchAnyConditions, ok := ConditionMap["matchAnyConditions"].(bool); ok {
+		o.MatchAnyConditions = &MatchAnyConditions
+	}
+    
+	if TimeZoneId, ok := ConditionMap["timeZoneId"].(string); ok {
+		o.TimeZoneId = &TimeZoneId
+	}
+    
 
 	return nil
 }

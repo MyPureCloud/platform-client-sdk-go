@@ -12,7 +12,7 @@ import (
 type Buschedulereferenceformuroute struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The globally unique identifier for the object.
+	// Id - The ID of the schedule
 	Id *string `json:"id,omitempty"`
 
 	// WeekDate - The start week date for this schedule. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd

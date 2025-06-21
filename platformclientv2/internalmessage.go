@@ -27,6 +27,9 @@ type Internalmessage struct {
 	// DisconnectType - System defined string indicating what caused the communication to disconnect. Will be null until the communication disconnects.
 	DisconnectType *string `json:"disconnectType,omitempty"`
 
+	// StartAlertingTime - The timestamp the communication has when it is first put into an alerting state. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	StartAlertingTime *time.Time `json:"startAlertingTime,omitempty"`
+
 	// ConnectedTime - The timestamp when this communication was connected in the cloud clock. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ConnectedTime *time.Time `json:"connectedTime,omitempty"`
 
@@ -84,7 +87,7 @@ func (o Internalmessage) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "ConnectedTime","DisconnectedTime", }
+		dateTimeFields := []string{ "StartAlertingTime","ConnectedTime","DisconnectedTime", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -117,6 +120,14 @@ func (o Internalmessage) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Internalmessage
 	
+	StartAlertingTime := new(string)
+	if o.StartAlertingTime != nil {
+		
+		*StartAlertingTime = timeutil.Strftime(o.StartAlertingTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartAlertingTime = nil
+	}
+	
 	ConnectedTime := new(string)
 	if o.ConnectedTime != nil {
 		
@@ -143,6 +154,8 @@ func (o Internalmessage) MarshalJSON() ([]byte, error) {
 		Segments *[]Segment `json:"segments,omitempty"`
 		
 		DisconnectType *string `json:"disconnectType,omitempty"`
+		
+		StartAlertingTime *string `json:"startAlertingTime,omitempty"`
 		
 		ConnectedTime *string `json:"connectedTime,omitempty"`
 		
@@ -172,6 +185,8 @@ func (o Internalmessage) MarshalJSON() ([]byte, error) {
 		Segments: o.Segments,
 		
 		DisconnectType: o.DisconnectType,
+		
+		StartAlertingTime: StartAlertingTime,
 		
 		ConnectedTime: ConnectedTime,
 		
@@ -222,6 +237,11 @@ func (o *Internalmessage) UnmarshalJSON(b []byte) error {
 		o.DisconnectType = &DisconnectType
 	}
     
+	if startAlertingTimeString, ok := InternalmessageMap["startAlertingTime"].(string); ok {
+		StartAlertingTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startAlertingTimeString)
+		o.StartAlertingTime = &StartAlertingTime
+	}
+	
 	if connectedTimeString, ok := InternalmessageMap["connectedTime"].(string); ok {
 		ConnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", connectedTimeString)
 		o.ConnectedTime = &ConnectedTime

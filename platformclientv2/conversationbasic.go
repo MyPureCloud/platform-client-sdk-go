@@ -36,6 +36,9 @@ type Conversationbasic struct {
 	// UtilizationLabelId - An optional label that categorizes the conversation.  Max-utilization settings can be configured at a per-label level
 	UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
 
+	// InactivityTimeout - The time in the future, after which this conversation would be considered inactive. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	InactivityTimeout *time.Time `json:"inactivityTimeout,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -72,7 +75,7 @@ func (o Conversationbasic) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "StartTime","EndTime", }
+		dateTimeFields := []string{ "StartTime","EndTime","InactivityTimeout", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -121,6 +124,14 @@ func (o Conversationbasic) MarshalJSON() ([]byte, error) {
 		EndTime = nil
 	}
 	
+	InactivityTimeout := new(string)
+	if o.InactivityTimeout != nil {
+		
+		*InactivityTimeout = timeutil.Strftime(o.InactivityTimeout, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		InactivityTimeout = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -137,6 +148,8 @@ func (o Conversationbasic) MarshalJSON() ([]byte, error) {
 		SecurePause *bool `json:"securePause,omitempty"`
 		
 		UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
+		
+		InactivityTimeout *string `json:"inactivityTimeout,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
@@ -158,6 +171,8 @@ func (o Conversationbasic) MarshalJSON() ([]byte, error) {
 		SecurePause: o.SecurePause,
 		
 		UtilizationLabelId: o.UtilizationLabelId,
+		
+		InactivityTimeout: InactivityTimeout,
 		
 		SelfUri: o.SelfUri,
 		
@@ -208,6 +223,11 @@ func (o *Conversationbasic) UnmarshalJSON(b []byte) error {
 		o.UtilizationLabelId = &UtilizationLabelId
 	}
     
+	if inactivityTimeoutString, ok := ConversationbasicMap["inactivityTimeout"].(string); ok {
+		InactivityTimeout, _ := time.Parse("2006-01-02T15:04:05.999999Z", inactivityTimeoutString)
+		o.InactivityTimeout = &InactivityTimeout
+	}
+	
 	if SelfUri, ok := ConversationbasicMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

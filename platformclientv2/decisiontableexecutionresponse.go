@@ -14,7 +14,13 @@ type Decisiontableexecutionresponse struct {
 	// Table - The decision table version entity that was executed.
 	Table *Decisiontableversionentity `json:"table,omitempty"`
 
-	// RowExecutionOutputs - The output data for each executed row for which output is collected. 
+	// TotalMatchRowCount - Total number of rows that matched execution input and would return results
+	TotalMatchRowCount *int `json:"totalMatchRowCount,omitempty"`
+
+	// TopMatchRows - Top 5 rows matching execution input, excluding the one produced the result.
+	TopMatchRows *[]Decisiontablerowentityref `json:"topMatchRows,omitempty"`
+
+	// RowExecutionOutputs - The output data for each executed row for which output is collected.
 	RowExecutionOutputs *[]Decisiontablerowexecutionoutput `json:"rowExecutionOutputs,omitempty"`
 }
 
@@ -83,10 +89,18 @@ func (o Decisiontableexecutionresponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Table *Decisiontableversionentity `json:"table,omitempty"`
 		
+		TotalMatchRowCount *int `json:"totalMatchRowCount,omitempty"`
+		
+		TopMatchRows *[]Decisiontablerowentityref `json:"topMatchRows,omitempty"`
+		
 		RowExecutionOutputs *[]Decisiontablerowexecutionoutput `json:"rowExecutionOutputs,omitempty"`
 		Alias
 	}{ 
 		Table: o.Table,
+		
+		TotalMatchRowCount: o.TotalMatchRowCount,
+		
+		TopMatchRows: o.TopMatchRows,
 		
 		RowExecutionOutputs: o.RowExecutionOutputs,
 		Alias:    (Alias)(o),
@@ -103,6 +117,16 @@ func (o *Decisiontableexecutionresponse) UnmarshalJSON(b []byte) error {
 	if Table, ok := DecisiontableexecutionresponseMap["table"].(map[string]interface{}); ok {
 		TableString, _ := json.Marshal(Table)
 		json.Unmarshal(TableString, &o.Table)
+	}
+	
+	if TotalMatchRowCount, ok := DecisiontableexecutionresponseMap["totalMatchRowCount"].(float64); ok {
+		TotalMatchRowCountInt := int(TotalMatchRowCount)
+		o.TotalMatchRowCount = &TotalMatchRowCountInt
+	}
+	
+	if TopMatchRows, ok := DecisiontableexecutionresponseMap["topMatchRows"].([]interface{}); ok {
+		TopMatchRowsString, _ := json.Marshal(TopMatchRows)
+		json.Unmarshal(TopMatchRowsString, &o.TopMatchRows)
 	}
 	
 	if RowExecutionOutputs, ok := DecisiontableexecutionresponseMap["rowExecutionOutputs"].([]interface{}); ok {

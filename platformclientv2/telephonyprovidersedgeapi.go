@@ -3709,7 +3709,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExtensionpools(page
 //
 // Get a pageable list of basic extension pool objects filterable by query parameters.
 //
-// This returns extension pools consisting of name and division. If one or more IDs are specified, the search will fetch flow outcomes that match the given ID(s) and not use any additional supplied query parameters in the search.
+// This returns extension pools consisting of name and division. If one or more IDs are specified, the search will fetch extension pools that match the given ID(s) and not use any additional supplied query parameters in the search.
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExtensionpoolsDivisionviews(pageNumber int, pageSize int, sortBy string, sortOrder string, id []string, name string, divisionId []string) (*Extensionpooldivisionviewentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -8605,6 +8605,110 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesExtensionpools(bod
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Extensionpool" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostTelephonyProvidersEdgesMediastatisticsConversationCommunicationMediaresource invokes POST /api/v2/telephony/providers/edges/mediastatistics/conversations/{conversationId}/communications/{communicationId}/mediaresources/{mediaResourceId}
+//
+// Post media endpoint statistics event.
+//
+// Preview: PostTelephonyProvidersEdgesMediastatisticsConversationCommunicationMediaresource is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesMediastatisticsConversationCommunicationMediaresource(conversationId string, communicationId string, mediaResourceId string, body Mediastatisticspostrequest) (*Mediastatistics, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/mediastatistics/conversations/{conversationId}/communications/{communicationId}/mediaresources/{mediaResourceId}"
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{communicationId}", url.PathEscape(fmt.Sprintf("%v", communicationId)), -1)
+	path = strings.Replace(path, "{mediaResourceId}", url.PathEscape(fmt.Sprintf("%v", mediaResourceId)), -1)
+	defaultReturn := new(Mediastatistics)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'conversationId' is set
+	if &conversationId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgesMediastatisticsConversationCommunicationMediaresource")
+	}
+	// verify the required parameter 'communicationId' is set
+	if &communicationId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'communicationId' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgesMediastatisticsConversationCommunicationMediaresource")
+	}
+	// verify the required parameter 'mediaResourceId' is set
+	if &mediaResourceId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'mediaResourceId' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgesMediastatisticsConversationCommunicationMediaresource")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PostTelephonyProvidersEdgesMediastatisticsConversationCommunicationMediaresource")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Mediastatistics
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Mediastatistics" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

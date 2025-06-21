@@ -32,11 +32,11 @@ type Opendataingestionruleversionresponseentitylisting struct {
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
 
-	// NextUri
-	NextUri *string `json:"nextUri,omitempty"`
-
 	// PreviousUri
 	PreviousUri *string `json:"previousUri,omitempty"`
+
+	// NextUri
+	NextUri *string `json:"nextUri,omitempty"`
 
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
@@ -119,9 +119,9 @@ func (o Opendataingestionruleversionresponseentitylisting) MarshalJSON() ([]byte
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
-		NextUri *string `json:"nextUri,omitempty"`
-		
 		PreviousUri *string `json:"previousUri,omitempty"`
+		
+		NextUri *string `json:"nextUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		Alias
@@ -140,9 +140,9 @@ func (o Opendataingestionruleversionresponseentitylisting) MarshalJSON() ([]byte
 		
 		SelfUri: o.SelfUri,
 		
-		NextUri: o.NextUri,
-		
 		PreviousUri: o.PreviousUri,
+		
+		NextUri: o.NextUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
@@ -188,12 +188,12 @@ func (o *Opendataingestionruleversionresponseentitylisting) UnmarshalJSON(b []by
 		o.SelfUri = &SelfUri
 	}
     
-	if NextUri, ok := OpendataingestionruleversionresponseentitylistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
-	}
-    
 	if PreviousUri, ok := OpendataingestionruleversionresponseentitylistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
+	}
+    
+	if NextUri, ok := OpendataingestionruleversionresponseentitylistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
 	}
     
 	if PageCount, ok := OpendataingestionruleversionresponseentitylistingMap["pageCount"].(float64); ok {

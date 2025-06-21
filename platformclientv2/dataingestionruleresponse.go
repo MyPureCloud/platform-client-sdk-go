@@ -36,6 +36,9 @@ type Dataingestionruleresponse struct {
 	// Platform - The platform of the data ingestion rule.
 	Platform *string `json:"platform,omitempty"`
 
+	// Countries - The countries is available only on twitter data ingestion rule. ISO 3166-1 alpha-2 country codes where Data Ingestion Rules should apply. Defaults to worldwide.
+	Countries *[]string `json:"countries,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -135,6 +138,8 @@ func (o Dataingestionruleresponse) MarshalJSON() ([]byte, error) {
 		
 		Platform *string `json:"platform,omitempty"`
 		
+		Countries *[]string `json:"countries,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -153,6 +158,8 @@ func (o Dataingestionruleresponse) MarshalJSON() ([]byte, error) {
 		DateModified: DateModified,
 		
 		Platform: o.Platform,
+		
+		Countries: o.Countries,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -201,6 +208,11 @@ func (o *Dataingestionruleresponse) UnmarshalJSON(b []byte) error {
 		o.Platform = &Platform
 	}
     
+	if Countries, ok := DataingestionruleresponseMap["countries"].([]interface{}); ok {
+		CountriesString, _ := json.Marshal(Countries)
+		json.Unmarshal(CountriesString, &o.Countries)
+	}
+	
 	if SelfUri, ok := DataingestionruleresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

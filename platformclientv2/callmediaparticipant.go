@@ -24,6 +24,9 @@ type Callmediaparticipant struct {
 	// StartTime - The time when this participant first joined the conversation. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	StartTime *time.Time `json:"startTime,omitempty"`
 
+	// StartAlertingTime - The timestamp when it is first put into an alerting state. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	StartAlertingTime *time.Time `json:"startAlertingTime,omitempty"`
+
 	// ConnectedTime - The time when this participant went connected for this media (eg: video connected time). Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ConnectedTime *time.Time `json:"connectedTime,omitempty"`
 
@@ -135,6 +138,9 @@ type Callmediaparticipant struct {
 	// RecordingState - The state of the call recording.
 	RecordingState *string `json:"recordingState,omitempty"`
 
+	// RecordersState - Contains the states of different recorders.
+	RecordersState *Recordersstate `json:"recordersState,omitempty"`
+
 	// Group - The group involved in the group ring call.
 	Group *Domainentityref `json:"group,omitempty"`
 
@@ -204,7 +210,7 @@ func (o Callmediaparticipant) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "StartTime","ConnectedTime","EndTime","StartHoldTime","StartAcwTime","EndAcwTime","ParkTime","ResumeTime","BargedTime", }
+		dateTimeFields := []string{ "StartTime","StartAlertingTime","ConnectedTime","EndTime","StartHoldTime","StartAcwTime","EndAcwTime","ParkTime","ResumeTime","BargedTime", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -243,6 +249,14 @@ func (o Callmediaparticipant) MarshalJSON() ([]byte, error) {
 		*StartTime = timeutil.Strftime(o.StartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartTime = nil
+	}
+	
+	StartAlertingTime := new(string)
+	if o.StartAlertingTime != nil {
+		
+		*StartAlertingTime = timeutil.Strftime(o.StartAlertingTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartAlertingTime = nil
 	}
 	
 	ConnectedTime := new(string)
@@ -318,6 +332,8 @@ func (o Callmediaparticipant) MarshalJSON() ([]byte, error) {
 		
 		StartTime *string `json:"startTime,omitempty"`
 		
+		StartAlertingTime *string `json:"startAlertingTime,omitempty"`
+		
 		ConnectedTime *string `json:"connectedTime,omitempty"`
 		
 		EndTime *string `json:"endTime,omitempty"`
@@ -392,6 +408,8 @@ func (o Callmediaparticipant) MarshalJSON() ([]byte, error) {
 		
 		RecordingState *string `json:"recordingState,omitempty"`
 		
+		RecordersState *Recordersstate `json:"recordersState,omitempty"`
+		
 		Group *Domainentityref `json:"group,omitempty"`
 		
 		Ani *string `json:"ani,omitempty"`
@@ -426,6 +444,8 @@ func (o Callmediaparticipant) MarshalJSON() ([]byte, error) {
 		Address: o.Address,
 		
 		StartTime: StartTime,
+		
+		StartAlertingTime: StartAlertingTime,
 		
 		ConnectedTime: ConnectedTime,
 		
@@ -501,6 +521,8 @@ func (o Callmediaparticipant) MarshalJSON() ([]byte, error) {
 		
 		RecordingState: o.RecordingState,
 		
+		RecordersState: o.RecordersState,
+		
 		Group: o.Group,
 		
 		Ani: o.Ani,
@@ -552,6 +574,11 @@ func (o *Callmediaparticipant) UnmarshalJSON(b []byte) error {
 	if startTimeString, ok := CallmediaparticipantMap["startTime"].(string); ok {
 		StartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startTimeString)
 		o.StartTime = &StartTime
+	}
+	
+	if startAlertingTimeString, ok := CallmediaparticipantMap["startAlertingTime"].(string); ok {
+		StartAlertingTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startAlertingTimeString)
+		o.StartAlertingTime = &StartAlertingTime
 	}
 	
 	if connectedTimeString, ok := CallmediaparticipantMap["connectedTime"].(string); ok {
@@ -723,6 +750,11 @@ func (o *Callmediaparticipant) UnmarshalJSON(b []byte) error {
 		o.RecordingState = &RecordingState
 	}
     
+	if RecordersState, ok := CallmediaparticipantMap["recordersState"].(map[string]interface{}); ok {
+		RecordersStateString, _ := json.Marshal(RecordersState)
+		json.Unmarshal(RecordersStateString, &o.RecordersState)
+	}
+	
 	if Group, ok := CallmediaparticipantMap["group"].(map[string]interface{}); ok {
 		GroupString, _ := json.Marshal(Group)
 		json.Unmarshal(GroupString, &o.Group)

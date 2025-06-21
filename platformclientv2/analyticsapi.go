@@ -4851,7 +4851,7 @@ func (a AnalyticsApi) PostAnalyticsAgentcopilotsAggregatesQuery(body Agentcopilo
 
 // PostAnalyticsAgentsStatusCounts invokes POST /api/v2/analytics/agents/status/counts
 //
-// Count agents by segment type
+// Count agents by different groupings
 func (a AnalyticsApi) PostAnalyticsAgentsStatusCounts(body Agentstatecountsrequest) (*Analyticsagentstatecountsresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

@@ -36,6 +36,9 @@ type Opendataingestionruleresponse struct {
 	// Platform - The platform of the data ingestion rule.
 	Platform *string `json:"platform,omitempty"`
 
+	// Countries - The countries is available only on twitter data ingestion rule. ISO 3166-1 alpha-2 country codes where Data Ingestion Rules should apply. Defaults to worldwide.
+	Countries *[]string `json:"countries,omitempty"`
+
 	// ExternalSource - The external source associated with this open data ingestion rule, which is used when performing identity resolution
 	ExternalSource *Domainentityref `json:"externalSource,omitempty"`
 
@@ -138,6 +141,8 @@ func (o Opendataingestionruleresponse) MarshalJSON() ([]byte, error) {
 		
 		Platform *string `json:"platform,omitempty"`
 		
+		Countries *[]string `json:"countries,omitempty"`
+		
 		ExternalSource *Domainentityref `json:"externalSource,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -158,6 +163,8 @@ func (o Opendataingestionruleresponse) MarshalJSON() ([]byte, error) {
 		DateModified: DateModified,
 		
 		Platform: o.Platform,
+		
+		Countries: o.Countries,
 		
 		ExternalSource: o.ExternalSource,
 		
@@ -208,6 +215,11 @@ func (o *Opendataingestionruleresponse) UnmarshalJSON(b []byte) error {
 		o.Platform = &Platform
 	}
     
+	if Countries, ok := OpendataingestionruleresponseMap["countries"].([]interface{}); ok {
+		CountriesString, _ := json.Marshal(Countries)
+		json.Unmarshal(CountriesString, &o.Countries)
+	}
+	
 	if ExternalSource, ok := OpendataingestionruleresponseMap["externalSource"].(map[string]interface{}); ok {
 		ExternalSourceString, _ := json.Marshal(ExternalSource)
 		json.Unmarshal(ExternalSourceString, &o.ExternalSource)

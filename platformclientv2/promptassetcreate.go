@@ -35,7 +35,7 @@ type Promptassetcreate struct {
 	// UploadStatus - Audio upload status
 	UploadStatus *string `json:"uploadStatus,omitempty"`
 
-	// UploadUri - Upload URI for the resource audio
+	// UploadUri - Deprecated. This was use for uploading the resource audio.
 	UploadUri *string `json:"uploadUri,omitempty"`
 
 	// LanguageDefault - Whether or not this resource locale is the default for the language

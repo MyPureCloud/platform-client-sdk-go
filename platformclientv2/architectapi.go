@@ -2596,7 +2596,7 @@ func (a ArchitectApi) GetArchitectEmergencygroups(pageNumber int, pageSize int, 
 //
 // Get a pageable list of basic emergency group objects filterable by query parameters.
 //
-// This returns emergency groups consisting of name and division. If one or more IDs are specified, the search will fetch flow outcomes that match the given ID(s) and not use any additional supplied query parameters in the search.
+// This returns emergency groups consisting of name and division. If one or more IDs are specified, the search will fetch emergency groups that match the given ID(s) and not use any additional supplied query parameters in the search.
 func (a ArchitectApi) GetArchitectEmergencygroupsDivisionviews(pageNumber int, pageSize int, sortBy string, sortOrder string, id []string, name string, divisionId []string) (*Emergencygroupdivisionviewentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -9004,6 +9004,8 @@ func (a ArchitectApi) PostArchitectPromptHistory(promptId string) (*Operation, *
 // PostArchitectPromptResourceUploads invokes POST /api/v2/architect/prompts/{promptId}/resources/{languageCode}/uploads
 //
 // Creates a presigned URL for uploading a user prompt file
+//
+// Preview: PostArchitectPromptResourceUploads is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ArchitectApi) PostArchitectPromptResourceUploads(promptId string, languageCode string) (*Promptassetupload, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -9518,6 +9520,8 @@ func (a ArchitectApi) PostArchitectSystempromptHistory(promptId string) (*Operat
 // PostArchitectSystempromptResourceUploads invokes POST /api/v2/architect/systemprompts/{promptId}/resources/{languageCode}/uploads
 //
 // Creates a presigned URL for uploading a system prompt file
+//
+// Preview: PostArchitectSystempromptResourceUploads is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ArchitectApi) PostArchitectSystempromptResourceUploads(promptId string, languageCode string) (*Promptassetupload, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

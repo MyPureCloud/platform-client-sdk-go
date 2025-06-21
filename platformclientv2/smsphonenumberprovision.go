@@ -29,6 +29,9 @@ type Smsphonenumberprovision struct {
 	// AddressId - The id of an address added on your account. Due to regulatory requirements in some countries, an address may be required when provisioning a sms number. In those cases you should provide the provisioned sms address id here
 	AddressId *string `json:"addressId,omitempty"`
 
+	// SupportedContent - Defines the media SupportedContent profile configured for an MMS capable phone number.
+	SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -108,6 +111,8 @@ func (o Smsphonenumberprovision) MarshalJSON() ([]byte, error) {
 		
 		AddressId *string `json:"addressId,omitempty"`
 		
+		SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -122,6 +127,8 @@ func (o Smsphonenumberprovision) MarshalJSON() ([]byte, error) {
 		Name: o.Name,
 		
 		AddressId: o.AddressId,
+		
+		SupportedContent: o.SupportedContent,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -159,6 +166,11 @@ func (o *Smsphonenumberprovision) UnmarshalJSON(b []byte) error {
 		o.AddressId = &AddressId
 	}
     
+	if SupportedContent, ok := SmsphonenumberprovisionMap["supportedContent"].(map[string]interface{}); ok {
+		SupportedContentString, _ := json.Marshal(SupportedContent)
+		json.Unmarshal(SupportedContentString, &o.SupportedContent)
+	}
+	
 	if SelfUri, ok := SmsphonenumberprovisionMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

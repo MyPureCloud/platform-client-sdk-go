@@ -11,7 +11,7 @@ import (
 type Pushintegration struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The globally unique identifier for the object.
+	// Id - The mobile push integration id associated with the deployment
 	Id *string `json:"id,omitempty"`
 
 	// Provider - The integration provider associated with the deployment
