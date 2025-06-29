@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -38,6 +39,9 @@ type Queueconversationvideoeventtopicconversation struct {
 	// SecurePause
 	SecurePause *bool `json:"securePause,omitempty"`
 
+	// InactivityTimeout
+	InactivityTimeout *time.Time `json:"inactivityTimeout,omitempty"`
+
 	// Divisions
 	Divisions *[]Queueconversationvideoeventtopicconversationdivisionmembership `json:"divisions,omitempty"`
 }
@@ -71,7 +75,7 @@ func (o Queueconversationvideoeventtopicconversation) MarshalJSON() ([]byte, err
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
+		dateTimeFields := []string{ "InactivityTimeout", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -104,6 +108,14 @@ func (o Queueconversationvideoeventtopicconversation) MarshalJSON() ([]byte, err
 	_  = timeutil.Timedelta{}
 	type Alias Queueconversationvideoeventtopicconversation
 	
+	InactivityTimeout := new(string)
+	if o.InactivityTimeout != nil {
+		
+		*InactivityTimeout = timeutil.Strftime(o.InactivityTimeout, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		InactivityTimeout = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -122,6 +134,8 @@ func (o Queueconversationvideoeventtopicconversation) MarshalJSON() ([]byte, err
 		UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
 		
 		SecurePause *bool `json:"securePause,omitempty"`
+		
+		InactivityTimeout *string `json:"inactivityTimeout,omitempty"`
 		
 		Divisions *[]Queueconversationvideoeventtopicconversationdivisionmembership `json:"divisions,omitempty"`
 		Alias
@@ -143,6 +157,8 @@ func (o Queueconversationvideoeventtopicconversation) MarshalJSON() ([]byte, err
 		UtilizationLabelId: o.UtilizationLabelId,
 		
 		SecurePause: o.SecurePause,
+		
+		InactivityTimeout: InactivityTimeout,
 		
 		Divisions: o.Divisions,
 		Alias:    (Alias)(o),
@@ -195,6 +211,11 @@ func (o *Queueconversationvideoeventtopicconversation) UnmarshalJSON(b []byte) e
 		o.SecurePause = &SecurePause
 	}
     
+	if inactivityTimeoutString, ok := QueueconversationvideoeventtopicconversationMap["inactivityTimeout"].(string); ok {
+		InactivityTimeout, _ := time.Parse("2006-01-02T15:04:05.999999Z", inactivityTimeoutString)
+		o.InactivityTimeout = &InactivityTimeout
+	}
+	
 	if Divisions, ok := QueueconversationvideoeventtopicconversationMap["divisions"].([]interface{}); ok {
 		DivisionsString, _ := json.Marshal(Divisions)
 		json.Unmarshal(DivisionsString, &o.Divisions)

@@ -21,7 +21,7 @@ type Textbotpromptsegment struct {
 	Format *Format `json:"format,omitempty"`
 
 	// Content - Details to display Rich Media content. This is only populated when the segment 'type' is 'Rich Media'.
-	Content *[]Messagecontent `json:"content,omitempty"`
+	Content *[]Conversationmessagecontent `json:"content,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -93,7 +93,7 @@ func (o Textbotpromptsegment) MarshalJSON() ([]byte, error) {
 		
 		Format *Format `json:"format,omitempty"`
 		
-		Content *[]Messagecontent `json:"content,omitempty"`
+		Content *[]Conversationmessagecontent `json:"content,omitempty"`
 		Alias
 	}{ 
 		Text: o.Text,

@@ -17,6 +17,9 @@ type Contestuserrank struct {
 	// Rank - The user's rank in contest, a lower rank is better (1 is the best)
 	Rank *int `json:"rank,omitempty"`
 
+	// Score - The user's contest score
+	Score *float64 `json:"score,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -88,12 +91,16 @@ func (o Contestuserrank) MarshalJSON() ([]byte, error) {
 		
 		Rank *int `json:"rank,omitempty"`
 		
+		Score *float64 `json:"score,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
 		
 		Rank: o.Rank,
+		
+		Score: o.Score,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -116,6 +123,10 @@ func (o *Contestuserrank) UnmarshalJSON(b []byte) error {
 		o.Rank = &RankInt
 	}
 	
+	if Score, ok := ContestuserrankMap["score"].(float64); ok {
+		o.Score = &Score
+	}
+    
 	if SelfUri, ok := ContestuserrankMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

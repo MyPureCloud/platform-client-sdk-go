@@ -4736,7 +4736,7 @@ func (a RoutingApi) GetRoutingQueueUsers(queueId string, pageNumber int, pageSiz
 // GetRoutingQueueWrapupcodes invokes GET /api/v2/routing/queues/{queueId}/wrapupcodes
 //
 // Get the wrap-up codes for a queue
-func (a RoutingApi) GetRoutingQueueWrapupcodes(queueId string, pageSize int, pageNumber int) (*Wrapupcodeentitylisting, *APIResponse, error) {
+func (a RoutingApi) GetRoutingQueueWrapupcodes(queueId string, pageSize int, pageNumber int, name string) (*Wrapupcodeentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/wrapupcodes"
@@ -4772,6 +4772,8 @@ func (a RoutingApi) GetRoutingQueueWrapupcodes(queueId string, pageSize int, pag
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

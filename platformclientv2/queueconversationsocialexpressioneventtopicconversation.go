@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -38,6 +39,9 @@ type Queueconversationsocialexpressioneventtopicconversation struct {
 	// SecurePause
 	SecurePause *bool `json:"securePause,omitempty"`
 
+	// InactivityTimeout
+	InactivityTimeout *time.Time `json:"inactivityTimeout,omitempty"`
+
 	// Divisions
 	Divisions *[]Queueconversationsocialexpressioneventtopicconversationdivisionmembership `json:"divisions,omitempty"`
 }
@@ -71,7 +75,7 @@ func (o Queueconversationsocialexpressioneventtopicconversation) MarshalJSON() (
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
+		dateTimeFields := []string{ "InactivityTimeout", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -104,6 +108,14 @@ func (o Queueconversationsocialexpressioneventtopicconversation) MarshalJSON() (
 	_  = timeutil.Timedelta{}
 	type Alias Queueconversationsocialexpressioneventtopicconversation
 	
+	InactivityTimeout := new(string)
+	if o.InactivityTimeout != nil {
+		
+		*InactivityTimeout = timeutil.Strftime(o.InactivityTimeout, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		InactivityTimeout = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -122,6 +134,8 @@ func (o Queueconversationsocialexpressioneventtopicconversation) MarshalJSON() (
 		UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
 		
 		SecurePause *bool `json:"securePause,omitempty"`
+		
+		InactivityTimeout *string `json:"inactivityTimeout,omitempty"`
 		
 		Divisions *[]Queueconversationsocialexpressioneventtopicconversationdivisionmembership `json:"divisions,omitempty"`
 		Alias
@@ -143,6 +157,8 @@ func (o Queueconversationsocialexpressioneventtopicconversation) MarshalJSON() (
 		UtilizationLabelId: o.UtilizationLabelId,
 		
 		SecurePause: o.SecurePause,
+		
+		InactivityTimeout: InactivityTimeout,
 		
 		Divisions: o.Divisions,
 		Alias:    (Alias)(o),
@@ -195,6 +211,11 @@ func (o *Queueconversationsocialexpressioneventtopicconversation) UnmarshalJSON(
 		o.SecurePause = &SecurePause
 	}
     
+	if inactivityTimeoutString, ok := QueueconversationsocialexpressioneventtopicconversationMap["inactivityTimeout"].(string); ok {
+		InactivityTimeout, _ := time.Parse("2006-01-02T15:04:05.999999Z", inactivityTimeoutString)
+		o.InactivityTimeout = &InactivityTimeout
+	}
+	
 	if Divisions, ok := QueueconversationsocialexpressioneventtopicconversationMap["divisions"].([]interface{}); ok {
 		DivisionsString, _ := json.Marshal(Divisions)
 		json.Unmarshal(DivisionsString, &o.Divisions)

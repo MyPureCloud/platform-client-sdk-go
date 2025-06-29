@@ -2779,6 +2779,10 @@ func (a IntegrationsApi) GetIntegrationsCredential(credentialId string) (*Creden
 // GetIntegrationsCredentials invokes GET /api/v2/integrations/credentials
 //
 // List multiple sets of credentials
+//
+// This endpoint is deprecated. Please see the Listing API (GET /api/v2/integrations/credentials/listing)
+//
+// Deprecated: GetIntegrationsCredentials is deprecated
 func (a IntegrationsApi) GetIntegrationsCredentials(pageNumber int, pageSize int) (*Credentialinfolisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

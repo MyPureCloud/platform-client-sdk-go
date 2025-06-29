@@ -22,6 +22,9 @@ type Buttonresponse struct {
 
 	// MessageType - Button response message type that captures QuickReply , Cards and Carousel .This is used  as label for Card selection
 	MessageType *string `json:"messageType,omitempty"`
+
+	// OriginatingMessageId - Reference to the ID of the original message (e.g., list picker) this button response is replying to.
+	OriginatingMessageId *string `json:"originatingMessageId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +97,8 @@ func (o Buttonresponse) MarshalJSON() ([]byte, error) {
 		Payload *string `json:"payload,omitempty"`
 		
 		MessageType *string `json:"messageType,omitempty"`
+		
+		OriginatingMessageId *string `json:"originatingMessageId,omitempty"`
 		Alias
 	}{ 
 		VarType: o.VarType,
@@ -103,6 +108,8 @@ func (o Buttonresponse) MarshalJSON() ([]byte, error) {
 		Payload: o.Payload,
 		
 		MessageType: o.MessageType,
+		
+		OriginatingMessageId: o.OriginatingMessageId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -128,6 +135,10 @@ func (o *Buttonresponse) UnmarshalJSON(b []byte) error {
     
 	if MessageType, ok := ButtonresponseMap["messageType"].(string); ok {
 		o.MessageType = &MessageType
+	}
+    
+	if OriginatingMessageId, ok := ButtonresponseMap["originatingMessageId"].(string); ok {
+		o.OriginatingMessageId = &OriginatingMessageId
 	}
     
 

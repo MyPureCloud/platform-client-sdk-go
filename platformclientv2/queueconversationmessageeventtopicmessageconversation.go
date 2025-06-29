@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -28,6 +29,9 @@ type Queueconversationmessageeventtopicmessageconversation struct {
 
 	// UtilizationLabelId
 	UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
+
+	// InactivityTimeout
+	InactivityTimeout *time.Time `json:"inactivityTimeout,omitempty"`
 
 	// Divisions
 	Divisions *[]Queueconversationmessageeventtopicconversationdivisionmembership `json:"divisions,omitempty"`
@@ -62,7 +66,7 @@ func (o Queueconversationmessageeventtopicmessageconversation) MarshalJSON() ([]
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
+		dateTimeFields := []string{ "InactivityTimeout", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -95,6 +99,14 @@ func (o Queueconversationmessageeventtopicmessageconversation) MarshalJSON() ([]
 	_  = timeutil.Timedelta{}
 	type Alias Queueconversationmessageeventtopicmessageconversation
 	
+	InactivityTimeout := new(string)
+	if o.InactivityTimeout != nil {
+		
+		*InactivityTimeout = timeutil.Strftime(o.InactivityTimeout, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		InactivityTimeout = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -107,6 +119,8 @@ func (o Queueconversationmessageeventtopicmessageconversation) MarshalJSON() ([]
 		Address *string `json:"address,omitempty"`
 		
 		UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
+		
+		InactivityTimeout *string `json:"inactivityTimeout,omitempty"`
 		
 		Divisions *[]Queueconversationmessageeventtopicconversationdivisionmembership `json:"divisions,omitempty"`
 		Alias
@@ -122,6 +136,8 @@ func (o Queueconversationmessageeventtopicmessageconversation) MarshalJSON() ([]
 		Address: o.Address,
 		
 		UtilizationLabelId: o.UtilizationLabelId,
+		
+		InactivityTimeout: InactivityTimeout,
 		
 		Divisions: o.Divisions,
 		Alias:    (Alias)(o),
@@ -161,6 +177,11 @@ func (o *Queueconversationmessageeventtopicmessageconversation) UnmarshalJSON(b 
 		o.UtilizationLabelId = &UtilizationLabelId
 	}
     
+	if inactivityTimeoutString, ok := QueueconversationmessageeventtopicmessageconversationMap["inactivityTimeout"].(string); ok {
+		InactivityTimeout, _ := time.Parse("2006-01-02T15:04:05.999999Z", inactivityTimeoutString)
+		o.InactivityTimeout = &InactivityTimeout
+	}
+	
 	if Divisions, ok := QueueconversationmessageeventtopicmessageconversationMap["divisions"].([]interface{}); ok {
 		DivisionsString, _ := json.Marshal(Divisions)
 		json.Unmarshal(DivisionsString, &o.Divisions)

@@ -12,6 +12,12 @@ import (
 type Voicemailmailboxinfo struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
+	// Id - The globally unique identifier for the object.
+	Id *string `json:"id,omitempty"`
+
+	// OwnerType - The owner type of the voicemail mailbox
+	OwnerType *string `json:"ownerType,omitempty"`
+
 	// UsageSizeBytes - The total number of bytes for all voicemail message audio recordings
 	UsageSizeBytes *int `json:"usageSizeBytes,omitempty"`
 
@@ -41,6 +47,9 @@ type Voicemailmailboxinfo struct {
 
 	// OldestReadDate - The date of the most oldest read voicemail message. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	OldestReadDate *time.Time `json:"oldestReadDate,omitempty"`
+
+	// SelfUri - The URI for this object
+	SelfUri *string `json:"selfUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -154,6 +163,10 @@ func (o Voicemailmailboxinfo) MarshalJSON() ([]byte, error) {
 	}
 	
 	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		OwnerType *string `json:"ownerType,omitempty"`
+		
 		UsageSizeBytes *int `json:"usageSizeBytes,omitempty"`
 		
 		TotalCount *int `json:"totalCount,omitempty"`
@@ -173,8 +186,14 @@ func (o Voicemailmailboxinfo) MarshalJSON() ([]byte, error) {
 		NewestReadDate *string `json:"newestReadDate,omitempty"`
 		
 		OldestReadDate *string `json:"oldestReadDate,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
+		Id: o.Id,
+		
+		OwnerType: o.OwnerType,
+		
 		UsageSizeBytes: o.UsageSizeBytes,
 		
 		TotalCount: o.TotalCount,
@@ -194,6 +213,8 @@ func (o Voicemailmailboxinfo) MarshalJSON() ([]byte, error) {
 		NewestReadDate: NewestReadDate,
 		
 		OldestReadDate: OldestReadDate,
+		
+		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
 	})
 }
@@ -205,6 +226,14 @@ func (o *Voicemailmailboxinfo) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if Id, ok := VoicemailmailboxinfoMap["id"].(string); ok {
+		o.Id = &Id
+	}
+    
+	if OwnerType, ok := VoicemailmailboxinfoMap["ownerType"].(string); ok {
+		o.OwnerType = &OwnerType
+	}
+    
 	if UsageSizeBytes, ok := VoicemailmailboxinfoMap["usageSizeBytes"].(float64); ok {
 		UsageSizeBytesInt := int(UsageSizeBytes)
 		o.UsageSizeBytes = &UsageSizeBytesInt
@@ -255,6 +284,10 @@ func (o *Voicemailmailboxinfo) UnmarshalJSON(b []byte) error {
 		o.OldestReadDate = &OldestReadDate
 	}
 	
+	if SelfUri, ok := VoicemailmailboxinfoMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+    
 
 	return nil
 }

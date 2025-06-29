@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -11,6 +12,9 @@ import (
 type Datepicker struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
+	// Id - Optional unique identifier to help map component replies to form messages where multiple DatePickers can be present.
+	Id *string `json:"id,omitempty"`
+
 	// Title - Text to show in the title.
 	Title *string `json:"title,omitempty"`
 
@@ -19,6 +23,9 @@ type Datepicker struct {
 
 	// DatePickerAvailableDateTimes - An array of available times objects.
 	DatePickerAvailableDateTimes *[]Datepickeravailabledatetime `json:"datePickerAvailableDateTimes,omitempty"`
+
+	// DateSelected - Selected date response from end customer. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateSelected *time.Time `json:"dateSelected,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -50,7 +57,7 @@ func (o Datepicker) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
+		dateTimeFields := []string{ "DateSelected", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -83,19 +90,35 @@ func (o Datepicker) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Datepicker
 	
+	DateSelected := new(string)
+	if o.DateSelected != nil {
+		
+		*DateSelected = timeutil.Strftime(o.DateSelected, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateSelected = nil
+	}
+	
 	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
 		Title *string `json:"title,omitempty"`
 		
 		Subtitle *string `json:"subtitle,omitempty"`
 		
 		DatePickerAvailableDateTimes *[]Datepickeravailabledatetime `json:"datePickerAvailableDateTimes,omitempty"`
+		
+		DateSelected *string `json:"dateSelected,omitempty"`
 		Alias
 	}{ 
+		Id: o.Id,
+		
 		Title: o.Title,
 		
 		Subtitle: o.Subtitle,
 		
 		DatePickerAvailableDateTimes: o.DatePickerAvailableDateTimes,
+		
+		DateSelected: DateSelected,
 		Alias:    (Alias)(o),
 	})
 }
@@ -107,6 +130,10 @@ func (o *Datepicker) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if Id, ok := DatepickerMap["id"].(string); ok {
+		o.Id = &Id
+	}
+    
 	if Title, ok := DatepickerMap["title"].(string); ok {
 		o.Title = &Title
 	}
@@ -118,6 +145,11 @@ func (o *Datepicker) UnmarshalJSON(b []byte) error {
 	if DatePickerAvailableDateTimes, ok := DatepickerMap["datePickerAvailableDateTimes"].([]interface{}); ok {
 		DatePickerAvailableDateTimesString, _ := json.Marshal(DatePickerAvailableDateTimes)
 		json.Unmarshal(DatePickerAvailableDateTimesString, &o.DatePickerAvailableDateTimes)
+	}
+	
+	if dateSelectedString, ok := DatepickerMap["dateSelected"].(string); ok {
+		DateSelected, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateSelectedString)
+		o.DateSelected = &DateSelected
 	}
 	
 

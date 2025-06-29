@@ -36,6 +36,9 @@ type Analyticsconversation struct {
 	// ExternalTag - External tag for the conversation
 	ExternalTag *string `json:"externalTag,omitempty"`
 
+	// InactivityTimeout - The time in the future, after which this conversation would be considered inactive. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	InactivityTimeout *time.Time `json:"inactivityTimeout,omitempty"`
+
 	// KnowledgeBaseIds - The unique identifier(s) of the knowledge base(s) used
 	KnowledgeBaseIds *[]string `json:"knowledgeBaseIds,omitempty"`
 
@@ -96,7 +99,7 @@ func (o Analyticsconversation) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "ConferenceStart","ConversationEnd","ConversationStart", }
+		dateTimeFields := []string{ "ConferenceStart","ConversationEnd","ConversationStart","InactivityTimeout", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -153,6 +156,14 @@ func (o Analyticsconversation) MarshalJSON() ([]byte, error) {
 		ConversationStart = nil
 	}
 	
+	InactivityTimeout := new(string)
+	if o.InactivityTimeout != nil {
+		
+		*InactivityTimeout = timeutil.Strftime(o.InactivityTimeout, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		InactivityTimeout = nil
+	}
+	
 	return json.Marshal(&struct { 
 		ConferenceStart *string `json:"conferenceStart,omitempty"`
 		
@@ -169,6 +180,8 @@ func (o Analyticsconversation) MarshalJSON() ([]byte, error) {
 		DivisionIds *[]string `json:"divisionIds,omitempty"`
 		
 		ExternalTag *string `json:"externalTag,omitempty"`
+		
+		InactivityTimeout *string `json:"inactivityTimeout,omitempty"`
 		
 		KnowledgeBaseIds *[]string `json:"knowledgeBaseIds,omitempty"`
 		
@@ -206,6 +219,8 @@ func (o Analyticsconversation) MarshalJSON() ([]byte, error) {
 		DivisionIds: o.DivisionIds,
 		
 		ExternalTag: o.ExternalTag,
+		
+		InactivityTimeout: InactivityTimeout,
 		
 		KnowledgeBaseIds: o.KnowledgeBaseIds,
 		
@@ -273,6 +288,11 @@ func (o *Analyticsconversation) UnmarshalJSON(b []byte) error {
 		o.ExternalTag = &ExternalTag
 	}
     
+	if inactivityTimeoutString, ok := AnalyticsconversationMap["inactivityTimeout"].(string); ok {
+		InactivityTimeout, _ := time.Parse("2006-01-02T15:04:05.999999Z", inactivityTimeoutString)
+		o.InactivityTimeout = &InactivityTimeout
+	}
+	
 	if KnowledgeBaseIds, ok := AnalyticsconversationMap["knowledgeBaseIds"].([]interface{}); ok {
 		KnowledgeBaseIdsString, _ := json.Marshal(KnowledgeBaseIds)
 		json.Unmarshal(KnowledgeBaseIdsString, &o.KnowledgeBaseIds)

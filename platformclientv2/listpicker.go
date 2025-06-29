@@ -11,6 +11,9 @@ import (
 type Listpicker struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
+	// Id - Optional unique identifier to help map component replies to form messages where multiple List Pickers can be present.
+	Id *string `json:"id,omitempty"`
+
 	// Title - Text to show in the title.
 	Title *string `json:"title,omitempty"`
 
@@ -84,6 +87,8 @@ func (o Listpicker) MarshalJSON() ([]byte, error) {
 	type Alias Listpicker
 	
 	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
 		Title *string `json:"title,omitempty"`
 		
 		Subtitle *string `json:"subtitle,omitempty"`
@@ -91,6 +96,8 @@ func (o Listpicker) MarshalJSON() ([]byte, error) {
 		Sections *[]Listpickersection `json:"sections,omitempty"`
 		Alias
 	}{ 
+		Id: o.Id,
+		
 		Title: o.Title,
 		
 		Subtitle: o.Subtitle,
@@ -107,6 +114,10 @@ func (o *Listpicker) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if Id, ok := ListpickerMap["id"].(string); ok {
+		o.Id = &Id
+	}
+    
 	if Title, ok := ListpickerMap["title"].(string); ok {
 		o.Title = &Title
 	}

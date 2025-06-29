@@ -14,6 +14,9 @@ type V2sessionconversationssummarysettingsprevieweventconversationresolutionmess
 	// Text
 	Text *string `json:"text,omitempty"`
 
+	// Description
+	Description *string `json:"description,omitempty"`
+
 	// Score
 	Score *float32 `json:"score,omitempty"`
 }
@@ -83,10 +86,14 @@ func (o V2sessionconversationssummarysettingsprevieweventconversationresolutionm
 	return json.Marshal(&struct { 
 		Text *string `json:"text,omitempty"`
 		
+		Description *string `json:"description,omitempty"`
+		
 		Score *float32 `json:"score,omitempty"`
 		Alias
 	}{ 
 		Text: o.Text,
+		
+		Description: o.Description,
 		
 		Score: o.Score,
 		Alias:    (Alias)(o),
@@ -102,6 +109,10 @@ func (o *V2sessionconversationssummarysettingsprevieweventconversationresolution
 	
 	if Text, ok := V2sessionconversationssummarysettingsprevieweventconversationresolutionmessageMap["text"].(string); ok {
 		o.Text = &Text
+	}
+    
+	if Description, ok := V2sessionconversationssummarysettingsprevieweventconversationresolutionmessageMap["description"].(string); ok {
+		o.Description = &Description
 	}
     
 	if Score, ok := V2sessionconversationssummarysettingsprevieweventconversationresolutionmessageMap["score"].(float64); ok {

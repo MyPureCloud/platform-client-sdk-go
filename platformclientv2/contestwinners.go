@@ -14,6 +14,9 @@ type Contestwinners struct {
 	// Tier - The Contest Winner tier
 	Tier *int `json:"tier,omitempty"`
 
+	// WinnersCount - The number of Contest Winners in a tier
+	WinnersCount *int `json:"winnersCount,omitempty"`
+
 	// Users - The Contest Winner users at the tier
 	Users *[]Contestuserrank `json:"users,omitempty"`
 }
@@ -83,10 +86,14 @@ func (o Contestwinners) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Tier *int `json:"tier,omitempty"`
 		
+		WinnersCount *int `json:"winnersCount,omitempty"`
+		
 		Users *[]Contestuserrank `json:"users,omitempty"`
 		Alias
 	}{ 
 		Tier: o.Tier,
+		
+		WinnersCount: o.WinnersCount,
 		
 		Users: o.Users,
 		Alias:    (Alias)(o),
@@ -103,6 +110,11 @@ func (o *Contestwinners) UnmarshalJSON(b []byte) error {
 	if Tier, ok := ContestwinnersMap["tier"].(float64); ok {
 		TierInt := int(Tier)
 		o.Tier = &TierInt
+	}
+	
+	if WinnersCount, ok := ContestwinnersMap["winnersCount"].(float64); ok {
+		WinnersCountInt := int(WinnersCount)
+		o.WinnersCount = &WinnersCountInt
 	}
 	
 	if Users, ok := ContestwinnersMap["users"].([]interface{}); ok {
