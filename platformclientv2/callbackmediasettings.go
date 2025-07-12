@@ -44,6 +44,12 @@ type Callbackmediasettings struct {
 	// PacingModifier - Controls the maximum number of outbound calls at one time when mode is CustomerFirst.
 	PacingModifier *float64 `json:"pacingModifier,omitempty"`
 
+	// MaxRetryCount - Maximum number of retries that should be attempted to try and connect a customer first callback to a customer when the initial callback attempt did not connect.
+	MaxRetryCount *int `json:"maxRetryCount,omitempty"`
+
+	// RetryDelaySeconds - Delay in seconds between each retry of a customer first callback.
+	RetryDelaySeconds *int `json:"retryDelaySeconds,omitempty"`
+
 	// LiveVoiceReactionType - The action to take if a live voice is detected during the outbound call of a customer first callback.
 	LiveVoiceReactionType *string `json:"liveVoiceReactionType,omitempty"`
 
@@ -142,6 +148,10 @@ func (o Callbackmediasettings) MarshalJSON() ([]byte, error) {
 		
 		PacingModifier *float64 `json:"pacingModifier,omitempty"`
 		
+		MaxRetryCount *int `json:"maxRetryCount,omitempty"`
+		
+		RetryDelaySeconds *int `json:"retryDelaySeconds,omitempty"`
+		
 		LiveVoiceReactionType *string `json:"liveVoiceReactionType,omitempty"`
 		
 		LiveVoiceFlow *Domainentityref `json:"liveVoiceFlow,omitempty"`
@@ -172,6 +182,10 @@ func (o Callbackmediasettings) MarshalJSON() ([]byte, error) {
 		AutoEndDelaySeconds: o.AutoEndDelaySeconds,
 		
 		PacingModifier: o.PacingModifier,
+		
+		MaxRetryCount: o.MaxRetryCount,
+		
+		RetryDelaySeconds: o.RetryDelaySeconds,
 		
 		LiveVoiceReactionType: o.LiveVoiceReactionType,
 		
@@ -240,6 +254,16 @@ func (o *Callbackmediasettings) UnmarshalJSON(b []byte) error {
 		o.PacingModifier = &PacingModifier
 	}
     
+	if MaxRetryCount, ok := CallbackmediasettingsMap["maxRetryCount"].(float64); ok {
+		MaxRetryCountInt := int(MaxRetryCount)
+		o.MaxRetryCount = &MaxRetryCountInt
+	}
+	
+	if RetryDelaySeconds, ok := CallbackmediasettingsMap["retryDelaySeconds"].(float64); ok {
+		RetryDelaySecondsInt := int(RetryDelaySeconds)
+		o.RetryDelaySeconds = &RetryDelaySecondsInt
+	}
+	
 	if LiveVoiceReactionType, ok := CallbackmediasettingsMap["liveVoiceReactionType"].(string); ok {
 		o.LiveVoiceReactionType = &LiveVoiceReactionType
 	}

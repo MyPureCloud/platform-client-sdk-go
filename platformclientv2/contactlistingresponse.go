@@ -26,20 +26,20 @@ type Contactlistingresponse struct {
 	// ContactsCount
 	ContactsCount *int `json:"contactsCount,omitempty"`
 
-	// FirstUri
-	FirstUri *string `json:"firstUri,omitempty"`
-
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
-	// SelfUri
-	SelfUri *string `json:"selfUri,omitempty"`
-
 	// PreviousUri
 	PreviousUri *string `json:"previousUri,omitempty"`
 
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
+
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
+
+	// FirstUri
+	FirstUri *string `json:"firstUri,omitempty"`
+
+	// SelfUri
+	SelfUri *string `json:"selfUri,omitempty"`
 
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
@@ -118,15 +118,15 @@ func (o Contactlistingresponse) MarshalJSON() ([]byte, error) {
 		
 		ContactsCount *int `json:"contactsCount,omitempty"`
 		
-		FirstUri *string `json:"firstUri,omitempty"`
-		
-		LastUri *string `json:"lastUri,omitempty"`
-		
-		SelfUri *string `json:"selfUri,omitempty"`
-		
 		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		NextUri *string `json:"nextUri,omitempty"`
+		
+		LastUri *string `json:"lastUri,omitempty"`
+		
+		FirstUri *string `json:"firstUri,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		Alias
@@ -141,15 +141,15 @@ func (o Contactlistingresponse) MarshalJSON() ([]byte, error) {
 		
 		ContactsCount: o.ContactsCount,
 		
-		FirstUri: o.FirstUri,
-		
-		LastUri: o.LastUri,
-		
-		SelfUri: o.SelfUri,
-		
 		PreviousUri: o.PreviousUri,
 		
 		NextUri: o.NextUri,
+		
+		LastUri: o.LastUri,
+		
+		FirstUri: o.FirstUri,
+		
+		SelfUri: o.SelfUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
@@ -188,24 +188,24 @@ func (o *Contactlistingresponse) UnmarshalJSON(b []byte) error {
 		o.ContactsCount = &ContactsCountInt
 	}
 	
-	if FirstUri, ok := ContactlistingresponseMap["firstUri"].(string); ok {
-		o.FirstUri = &FirstUri
-	}
-    
-	if LastUri, ok := ContactlistingresponseMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
-	if SelfUri, ok := ContactlistingresponseMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
-	}
-    
 	if PreviousUri, ok := ContactlistingresponseMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
 	}
     
 	if NextUri, ok := ContactlistingresponseMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
+	}
+    
+	if LastUri, ok := ContactlistingresponseMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
+	}
+    
+	if FirstUri, ok := ContactlistingresponseMap["firstUri"].(string); ok {
+		o.FirstUri = &FirstUri
+	}
+    
+	if SelfUri, ok := ContactlistingresponseMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
 	}
     
 	if PageCount, ok := ContactlistingresponseMap["pageCount"].(float64); ok {

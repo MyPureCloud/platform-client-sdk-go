@@ -18,7 +18,7 @@ type Decisiontablerow struct {
 	// Table - The decision table to which this row belongs
 	Table *Decisiontableversionentity `json:"table,omitempty"`
 
-	// RowIndex - The absolute index of this row in the decision table, starting at 0
+	// RowIndex - The absolute index of this row in the decision table, starting at 1
 	RowIndex *int `json:"rowIndex,omitempty"`
 
 	// DateCreated - The date when this row was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z

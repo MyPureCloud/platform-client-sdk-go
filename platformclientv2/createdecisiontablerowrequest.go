@@ -11,7 +11,7 @@ import (
 type Createdecisiontablerowrequest struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// RowIndex - The absolute position of this row in the decision table. Must be an integerstarting from 0, must be non-negative and less than or equal to the size of the table. If not provided row will be append to the end of the table. 
+	// RowIndex - The absolute position of this row in the decision table. Must be an integerstarting from 1, must be positive and less than or equal to the size of the table. If not provided row will be append to the end of the table. 
 	RowIndex *int `json:"rowIndex,omitempty"`
 
 	// Inputs - The input values of the row. The key for this map is the column ID the row value relates. Column IDs are available from the decision table entity

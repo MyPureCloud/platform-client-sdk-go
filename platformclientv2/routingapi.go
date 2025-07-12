@@ -9995,7 +9995,7 @@ func (a RoutingApi) PostRoutingEmailDomains(body Inbounddomain) (*Inbounddomain,
 // PostRoutingEmailOutboundDomains invokes POST /api/v2/routing/email/outbound/domains
 //
 // Create a domain
-func (a RoutingApi) PostRoutingEmailOutboundDomains(body Outbounddomain) (*Emailoutbounddomainresult, *APIResponse, error) {
+func (a RoutingApi) PostRoutingEmailOutboundDomains(body Outbounddomainrequest) (*Emailoutbounddomainresult, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/email/outbound/domains"
@@ -10079,7 +10079,7 @@ func (a RoutingApi) PostRoutingEmailOutboundDomains(body Outbounddomain) (*Email
 // PostRoutingEmailOutboundDomainsSimulated invokes POST /api/v2/routing/email/outbound/domains/simulated
 //
 // Create a simulated domain
-func (a RoutingApi) PostRoutingEmailOutboundDomainsSimulated(body Outbounddomain) (*Emailoutbounddomainresult, *APIResponse, error) {
+func (a RoutingApi) PostRoutingEmailOutboundDomainsSimulated(body Outbounddomainrequest) (*Emailoutbounddomainresult, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/email/outbound/domains/simulated"

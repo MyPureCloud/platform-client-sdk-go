@@ -38,6 +38,9 @@ type Evaluationquestion struct {
 	// AnswerOptions - Options from which to choose an answer for this question. Only used by Multiple Choice type questions.
 	AnswerOptions *[]Answeroption `json:"answerOptions,omitempty"`
 
+	// MultipleSelectOptionQuestions - Only used by Multiple Select type questions. A list of multiple choice questions representing selectable options.
+	MultipleSelectOptionQuestions *[]Evaluationquestion `json:"multipleSelectOptionQuestions,omitempty"`
+
 	// IsKill
 	IsKill *bool `json:"isKill,omitempty"`
 
@@ -126,6 +129,8 @@ func (o Evaluationquestion) MarshalJSON() ([]byte, error) {
 		
 		AnswerOptions *[]Answeroption `json:"answerOptions,omitempty"`
 		
+		MultipleSelectOptionQuestions *[]Evaluationquestion `json:"multipleSelectOptionQuestions,omitempty"`
+		
 		IsKill *bool `json:"isKill,omitempty"`
 		
 		IsCritical *bool `json:"isCritical,omitempty"`
@@ -148,6 +153,8 @@ func (o Evaluationquestion) MarshalJSON() ([]byte, error) {
 		VisibilityCondition: o.VisibilityCondition,
 		
 		AnswerOptions: o.AnswerOptions,
+		
+		MultipleSelectOptionQuestions: o.MultipleSelectOptionQuestions,
 		
 		IsKill: o.IsKill,
 		
@@ -199,6 +206,11 @@ func (o *Evaluationquestion) UnmarshalJSON(b []byte) error {
 	if AnswerOptions, ok := EvaluationquestionMap["answerOptions"].([]interface{}); ok {
 		AnswerOptionsString, _ := json.Marshal(AnswerOptions)
 		json.Unmarshal(AnswerOptionsString, &o.AnswerOptions)
+	}
+	
+	if MultipleSelectOptionQuestions, ok := EvaluationquestionMap["multipleSelectOptionQuestions"].([]interface{}); ok {
+		MultipleSelectOptionQuestionsString, _ := json.Marshal(MultipleSelectOptionQuestions)
+		json.Unmarshal(MultipleSelectOptionQuestionsString, &o.MultipleSelectOptionQuestions)
 	}
 	
 	if IsKill, ok := EvaluationquestionMap["isKill"].(bool); ok {

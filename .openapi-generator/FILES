@@ -59,6 +59,7 @@ docs/DeleteChatsRoomMessagesPin-example.txt
 docs/DeleteChatsRoomParticipant-example.txt
 docs/DeleteChatsUserMessage-example.txt
 docs/DeleteChatsUserMessagesPin-example.txt
+docs/DeleteChatsUsersMeSettings-example.txt
 docs/DeleteCoachingAppointment-example.txt
 docs/DeleteCoachingAppointmentAnnotation-example.txt
 docs/DeleteContentmanagementDocument-example.txt
@@ -1719,6 +1720,7 @@ docs/GetWorkforcemanagementNotifications-example.txt
 docs/GetWorkforcemanagementSchedulingjob-example.txt
 docs/GetWorkforcemanagementShifttrades-example.txt
 docs/GetWorkforcemanagementShrinkageJob-example.txt
+docs/GetWorkforcemanagementTeamAdherence-example.txt
 docs/GetWorkforcemanagementTimeoffbalanceJob-example.txt
 docs/GetWorkforcemanagementTimeoffrequest-example.txt
 docs/GetWorkforcemanagementTimeoffrequestWaitlistpositions-example.txt
@@ -2105,6 +2107,7 @@ docs/PostChatsRoomParticipant-example.txt
 docs/PostChatsRooms-example.txt
 docs/PostChatsUserMessages-example.txt
 docs/PostChatsUserMessagesPins-example.txt
+docs/PostChatsUsersMeSettings-example.txt
 docs/PostCoachingAppointmentAnnotations-example.txt
 docs/PostCoachingAppointmentConversations-example.txt
 docs/PostCoachingAppointments-example.txt
@@ -4506,6 +4509,7 @@ platformclientv2/customeventattribute.go
 platformclientv2/customeventattributelist.go
 platformclientv2/customi18nlabels.go
 platformclientv2/customprovider.go
+platformclientv2/customsmtpserverrequest.go
 platformclientv2/daily.go
 platformclientv2/dailypossibleshift.go
 platformclientv2/dashboardconfiguration.go
@@ -5433,6 +5437,7 @@ platformclientv2/identityproviderapi.go
 platformclientv2/identityproviderentitylisting.go
 platformclientv2/identityresolutionautomergeconfig.go
 platformclientv2/identityresolutionconfig.go
+platformclientv2/identityresolutionexternalsource.go
 platformclientv2/identityresolutionqueueconfig.go
 platformclientv2/idleeventtrigger.go
 platformclientv2/idletokentimeout.go
@@ -6325,6 +6330,7 @@ platformclientv2/outboundapi.go
 platformclientv2/outbounddetaileventtopicoutboundinitevent.go
 platformclientv2/outbounddomain.go
 platformclientv2/outbounddomainentitylisting.go
+platformclientv2/outbounddomainrequest.go
 platformclientv2/outboundmessagingcampaignpostcontactemaileventtopicemailattributes.go
 platformclientv2/outboundmessagingcampaignpostcontactemaileventtopicoutboundmessagingcampaignpostcontactemailevent.go
 platformclientv2/outboundmessagingcampaignpostcontactsmseventtopicoutboundmessagingcampaignpostcontactsmsevent.go
@@ -7874,6 +7880,7 @@ platformclientv2/useravailabletimes.go
 platformclientv2/userbestpoints.go
 platformclientv2/userbestpointsitem.go
 platformclientv2/userchatsettings.go
+platformclientv2/userchatsettingspost.go
 platformclientv2/userconversationseventmediasummary.go
 platformclientv2/userconversationseventmediasummarydetail.go
 platformclientv2/userconversationseventuserconversationsummary.go

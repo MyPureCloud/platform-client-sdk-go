@@ -37,6 +37,9 @@ type Evaluationquestionscore struct {
 
 	// AiAnswer - Suggested AI answer
 	AiAnswer *Aianswer `json:"aiAnswer,omitempty"`
+
+	// MultipleSelectQuestionOptionScores - Only applicable to Multiple Select questions. Scores corresponding to the options of Multiple Select questions.
+	MultipleSelectQuestionOptionScores *[]Evaluationquestionscore `json:"multipleSelectQuestionOptionScores,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -119,6 +122,8 @@ func (o Evaluationquestionscore) MarshalJSON() ([]byte, error) {
 		Comments *string `json:"comments,omitempty"`
 		
 		AiAnswer *Aianswer `json:"aiAnswer,omitempty"`
+		
+		MultipleSelectQuestionOptionScores *[]Evaluationquestionscore `json:"multipleSelectQuestionOptionScores,omitempty"`
 		Alias
 	}{ 
 		QuestionId: o.QuestionId,
@@ -138,6 +143,8 @@ func (o Evaluationquestionscore) MarshalJSON() ([]byte, error) {
 		Comments: o.Comments,
 		
 		AiAnswer: o.AiAnswer,
+		
+		MultipleSelectQuestionOptionScores: o.MultipleSelectQuestionOptionScores,
 		Alias:    (Alias)(o),
 	})
 }
@@ -185,6 +192,11 @@ func (o *Evaluationquestionscore) UnmarshalJSON(b []byte) error {
 	if AiAnswer, ok := EvaluationquestionscoreMap["aiAnswer"].(map[string]interface{}); ok {
 		AiAnswerString, _ := json.Marshal(AiAnswer)
 		json.Unmarshal(AiAnswerString, &o.AiAnswer)
+	}
+	
+	if MultipleSelectQuestionOptionScores, ok := EvaluationquestionscoreMap["multipleSelectQuestionOptionScores"].([]interface{}); ok {
+		MultipleSelectQuestionOptionScoresString, _ := json.Marshal(MultipleSelectQuestionOptionScores)
+		json.Unmarshal(MultipleSelectQuestionOptionScoresString, &o.MultipleSelectQuestionOptionScores)
 	}
 	
 

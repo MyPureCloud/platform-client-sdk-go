@@ -14,6 +14,9 @@ type Answeroption struct {
 	// Id
 	Id *string `json:"id,omitempty"`
 
+	// BuiltInType - The built-in type of this answer option. Only used for built-in answer options such as selection states for Multiple Select answer options. Possible values include: Selected, Unselected
+	BuiltInType *string `json:"builtInType,omitempty"`
+
 	// Text
 	Text *string `json:"text,omitempty"`
 
@@ -89,6 +92,8 @@ func (o Answeroption) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
+		BuiltInType *string `json:"builtInType,omitempty"`
+		
 		Text *string `json:"text,omitempty"`
 		
 		Value *int `json:"value,omitempty"`
@@ -97,6 +102,8 @@ func (o Answeroption) MarshalJSON() ([]byte, error) {
 		Alias
 	}{ 
 		Id: o.Id,
+		
+		BuiltInType: o.BuiltInType,
 		
 		Text: o.Text,
 		
@@ -116,6 +123,10 @@ func (o *Answeroption) UnmarshalJSON(b []byte) error {
 	
 	if Id, ok := AnsweroptionMap["id"].(string); ok {
 		o.Id = &Id
+	}
+    
+	if BuiltInType, ok := AnsweroptionMap["builtInType"].(string); ok {
+		o.BuiltInType = &BuiltInType
 	}
     
 	if Text, ok := AnsweroptionMap["text"].(string); ok {
