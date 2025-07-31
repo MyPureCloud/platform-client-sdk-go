@@ -30,6 +30,12 @@ type Buupdateagentscheduleshift struct {
 	// Schedule - The schedule to which this shift belongs
 	Schedule *Buschedulereference `json:"schedule,omitempty"`
 
+	// WorkPlanId - The ID of the work plan for which the work plan shift emanates from
+	WorkPlanId *Valuewrapperstring `json:"workPlanId,omitempty"`
+
+	// WorkPlanShiftId - The ID of the work plan shift that was used in schedule generation
+	WorkPlanShiftId *Valuewrapperstring `json:"workPlanShiftId,omitempty"`
+
 	// Delete - Set to true to delete the shift from the agent's schedule
 	Delete *bool `json:"delete,omitempty"`
 }
@@ -117,6 +123,10 @@ func (o Buupdateagentscheduleshift) MarshalJSON() ([]byte, error) {
 		
 		Schedule *Buschedulereference `json:"schedule,omitempty"`
 		
+		WorkPlanId *Valuewrapperstring `json:"workPlanId,omitempty"`
+		
+		WorkPlanShiftId *Valuewrapperstring `json:"workPlanShiftId,omitempty"`
+		
 		Delete *bool `json:"delete,omitempty"`
 		Alias
 	}{ 
@@ -131,6 +141,10 @@ func (o Buupdateagentscheduleshift) MarshalJSON() ([]byte, error) {
 		ManuallyEdited: o.ManuallyEdited,
 		
 		Schedule: o.Schedule,
+		
+		WorkPlanId: o.WorkPlanId,
+		
+		WorkPlanShiftId: o.WorkPlanShiftId,
 		
 		Delete: o.Delete,
 		Alias:    (Alias)(o),
@@ -170,6 +184,16 @@ func (o *Buupdateagentscheduleshift) UnmarshalJSON(b []byte) error {
 	if Schedule, ok := BuupdateagentscheduleshiftMap["schedule"].(map[string]interface{}); ok {
 		ScheduleString, _ := json.Marshal(Schedule)
 		json.Unmarshal(ScheduleString, &o.Schedule)
+	}
+	
+	if WorkPlanId, ok := BuupdateagentscheduleshiftMap["workPlanId"].(map[string]interface{}); ok {
+		WorkPlanIdString, _ := json.Marshal(WorkPlanId)
+		json.Unmarshal(WorkPlanIdString, &o.WorkPlanId)
+	}
+	
+	if WorkPlanShiftId, ok := BuupdateagentscheduleshiftMap["workPlanShiftId"].(map[string]interface{}); ok {
+		WorkPlanShiftIdString, _ := json.Marshal(WorkPlanShiftId)
+		json.Unmarshal(WorkPlanShiftIdString, &o.WorkPlanShiftId)
 	}
 	
 	if Delete, ok := BuupdateagentscheduleshiftMap["delete"].(bool); ok {

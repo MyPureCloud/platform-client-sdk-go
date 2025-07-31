@@ -14,6 +14,9 @@ type Surveyquestiongroup struct {
 	// Id
 	Id *string `json:"id,omitempty"`
 
+	// ContextId - An identifier for this question group that stays the same across versions of the form.
+	ContextId *string `json:"contextId,omitempty"`
+
 	// Name
 	Name *string `json:"name,omitempty"`
 
@@ -95,6 +98,8 @@ func (o Surveyquestiongroup) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
+		ContextId *string `json:"contextId,omitempty"`
+		
 		Name *string `json:"name,omitempty"`
 		
 		VarType *string `json:"type,omitempty"`
@@ -107,6 +112,8 @@ func (o Surveyquestiongroup) MarshalJSON() ([]byte, error) {
 		Alias
 	}{ 
 		Id: o.Id,
+		
+		ContextId: o.ContextId,
 		
 		Name: o.Name,
 		
@@ -130,6 +137,10 @@ func (o *Surveyquestiongroup) UnmarshalJSON(b []byte) error {
 	
 	if Id, ok := SurveyquestiongroupMap["id"].(string); ok {
 		o.Id = &Id
+	}
+    
+	if ContextId, ok := SurveyquestiongroupMap["contextId"].(string); ok {
+		o.ContextId = &ContextId
 	}
     
 	if Name, ok := SurveyquestiongroupMap["name"].(string); ok {

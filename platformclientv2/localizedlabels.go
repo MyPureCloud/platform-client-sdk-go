@@ -11,10 +11,10 @@ import (
 type Localizedlabels struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Key - Contains localized label key used in messenger homescreen
+	// Key - Contains localized label key used in messenger homescreen and push notification. PushNotificationTitle and PushNotificationBody keys are required when notifications are enabled.
 	Key *string `json:"key,omitempty"`
 
-	// Value - Contains localized label value used in messenger homescreen
+	// Value - Contains localized label value used in messenger homescreen and push notification
 	Value *string `json:"value,omitempty"`
 }
 

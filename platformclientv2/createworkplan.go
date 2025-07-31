@@ -80,6 +80,12 @@ type Createworkplan struct {
 	// MaximumPaidMinutesPerPlanningPeriod - Maximum paid minutes in the planning period
 	MaximumPaidMinutesPerPlanningPeriod *int `json:"maximumPaidMinutesPerPlanningPeriod,omitempty"`
 
+	// ConstrainMaximumWorkingWeekendsPerPlanningPeriod - Whether to constrain the maximum working weekends in the planning period
+	ConstrainMaximumWorkingWeekendsPerPlanningPeriod *bool `json:"constrainMaximumWorkingWeekendsPerPlanningPeriod,omitempty"`
+
+	// MaximumWorkingWeekendsPerPlanningPeriod - Maximum working weekends in the planning period
+	MaximumWorkingWeekendsPerPlanningPeriod *int `json:"maximumWorkingWeekendsPerPlanningPeriod,omitempty"`
+
 	// OptionalDays - Optional days to schedule for this work plan
 	OptionalDays *Setwrapperdayofweek `json:"optionalDays,omitempty"`
 
@@ -205,6 +211,10 @@ func (o Createworkplan) MarshalJSON() ([]byte, error) {
 		
 		MaximumPaidMinutesPerPlanningPeriod *int `json:"maximumPaidMinutesPerPlanningPeriod,omitempty"`
 		
+		ConstrainMaximumWorkingWeekendsPerPlanningPeriod *bool `json:"constrainMaximumWorkingWeekendsPerPlanningPeriod,omitempty"`
+		
+		MaximumWorkingWeekendsPerPlanningPeriod *int `json:"maximumWorkingWeekendsPerPlanningPeriod,omitempty"`
+		
 		OptionalDays *Setwrapperdayofweek `json:"optionalDays,omitempty"`
 		
 		ShiftStartVarianceType *string `json:"shiftStartVarianceType,omitempty"`
@@ -261,6 +271,10 @@ func (o Createworkplan) MarshalJSON() ([]byte, error) {
 		MinimumPaidMinutesPerPlanningPeriod: o.MinimumPaidMinutesPerPlanningPeriod,
 		
 		MaximumPaidMinutesPerPlanningPeriod: o.MaximumPaidMinutesPerPlanningPeriod,
+		
+		ConstrainMaximumWorkingWeekendsPerPlanningPeriod: o.ConstrainMaximumWorkingWeekendsPerPlanningPeriod,
+		
+		MaximumWorkingWeekendsPerPlanningPeriod: o.MaximumWorkingWeekendsPerPlanningPeriod,
 		
 		OptionalDays: o.OptionalDays,
 		
@@ -387,6 +401,15 @@ func (o *Createworkplan) UnmarshalJSON(b []byte) error {
 	if MaximumPaidMinutesPerPlanningPeriod, ok := CreateworkplanMap["maximumPaidMinutesPerPlanningPeriod"].(float64); ok {
 		MaximumPaidMinutesPerPlanningPeriodInt := int(MaximumPaidMinutesPerPlanningPeriod)
 		o.MaximumPaidMinutesPerPlanningPeriod = &MaximumPaidMinutesPerPlanningPeriodInt
+	}
+	
+	if ConstrainMaximumWorkingWeekendsPerPlanningPeriod, ok := CreateworkplanMap["constrainMaximumWorkingWeekendsPerPlanningPeriod"].(bool); ok {
+		o.ConstrainMaximumWorkingWeekendsPerPlanningPeriod = &ConstrainMaximumWorkingWeekendsPerPlanningPeriod
+	}
+    
+	if MaximumWorkingWeekendsPerPlanningPeriod, ok := CreateworkplanMap["maximumWorkingWeekendsPerPlanningPeriod"].(float64); ok {
+		MaximumWorkingWeekendsPerPlanningPeriodInt := int(MaximumWorkingWeekendsPerPlanningPeriod)
+		o.MaximumWorkingWeekendsPerPlanningPeriod = &MaximumWorkingWeekendsPerPlanningPeriodInt
 	}
 	
 	if OptionalDays, ok := CreateworkplanMap["optionalDays"].(map[string]interface{}); ok {

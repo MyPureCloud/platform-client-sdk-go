@@ -22,6 +22,9 @@ type Dialersequencescheduleconfigchangerecurrencerange struct {
 
 	// AdditionalProperties
 	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
+	// GetAdditionalProperties
+	GetAdditionalProperties *map[string]interface{} `json:"getAdditionalProperties,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +97,8 @@ func (o Dialersequencescheduleconfigchangerecurrencerange) MarshalJSON() ([]byte
 		NumberOfOccurrences *int `json:"numberOfOccurrences,omitempty"`
 		
 		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+		
+		GetAdditionalProperties *map[string]interface{} `json:"getAdditionalProperties,omitempty"`
 		Alias
 	}{ 
 		VarType: o.VarType,
@@ -103,6 +108,8 @@ func (o Dialersequencescheduleconfigchangerecurrencerange) MarshalJSON() ([]byte
 		NumberOfOccurrences: o.NumberOfOccurrences,
 		
 		AdditionalProperties: o.AdditionalProperties,
+		
+		GetAdditionalProperties: o.GetAdditionalProperties,
 		Alias:    (Alias)(o),
 	})
 }
@@ -130,6 +137,11 @@ func (o *Dialersequencescheduleconfigchangerecurrencerange) UnmarshalJSON(b []by
 	if AdditionalProperties, ok := DialersequencescheduleconfigchangerecurrencerangeMap["additionalProperties"].(map[string]interface{}); ok {
 		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
 		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+	if GetAdditionalProperties, ok := DialersequencescheduleconfigchangerecurrencerangeMap["getAdditionalProperties"].(map[string]interface{}); ok {
+		GetAdditionalPropertiesString, _ := json.Marshal(GetAdditionalProperties)
+		json.Unmarshal(GetAdditionalPropertiesString, &o.GetAdditionalProperties)
 	}
 	
 

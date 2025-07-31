@@ -758,7 +758,7 @@ func (a ChatApi) GetChatsRoomMessage(roomJid string, messageIds string) (*Chatme
 // GetChatsRoomMessages invokes GET /api/v2/chats/rooms/{roomJid}/messages
 //
 // Get a room's message history
-func (a ChatApi) GetChatsRoomMessages(roomJid string, limit string, before string, after string) (*Chatmessageentitylisting, *APIResponse, error) {
+func (a ChatApi) GetChatsRoomMessages(roomJid string, limit string, before string, after string, excludeMetadata bool) (*Chatmessageentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/chats/rooms/{roomJid}/messages"
@@ -796,6 +796,8 @@ func (a ChatApi) GetChatsRoomMessages(roomJid string, limit string, before strin
 	queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, "")
 	
 	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
+	
+	queryParams["excludeMetadata"] = a.Configuration.APIClient.ParameterToString(excludeMetadata, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -1094,7 +1096,7 @@ func (a ChatApi) GetChatsSettings() (*Chatsettings, *APIResponse, error) {
 // GetChatsThreadMessages invokes GET /api/v2/chats/threads/{threadId}/messages
 //
 // Get history by thread
-func (a ChatApi) GetChatsThreadMessages(threadId string, limit string, before string, after string) (*Chatmessageentitylisting, *APIResponse, error) {
+func (a ChatApi) GetChatsThreadMessages(threadId string, limit string, before string, after string, excludeMetadata bool) (*Chatmessageentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/chats/threads/{threadId}/messages"
@@ -1132,6 +1134,8 @@ func (a ChatApi) GetChatsThreadMessages(threadId string, limit string, before st
 	queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, "")
 	
 	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
+	
+	queryParams["excludeMetadata"] = a.Configuration.APIClient.ParameterToString(excludeMetadata, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -1352,7 +1356,7 @@ func (a ChatApi) GetChatsUserMessage(userId string, messageIds string) (*Chatmes
 // GetChatsUserMessages invokes GET /api/v2/chats/users/{userId}/messages
 //
 // Get 1on1 History between a user
-func (a ChatApi) GetChatsUserMessages(userId string, limit string, before string, after string) (*Chatmessageresponse, *APIResponse, error) {
+func (a ChatApi) GetChatsUserMessages(userId string, limit string, before string, after string, excludeMetadata bool) (*Chatmessageresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/chats/users/{userId}/messages"
@@ -1390,6 +1394,8 @@ func (a ChatApi) GetChatsUserMessages(userId string, limit string, before string
 	queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, "")
 	
 	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
+	
+	queryParams["excludeMetadata"] = a.Configuration.APIClient.ParameterToString(excludeMetadata, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

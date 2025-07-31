@@ -28,6 +28,9 @@ type Dialercontactlistfilterconfigchangefilterrange struct {
 
 	// AdditionalProperties
 	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
+	// GetAdditionalProperties
+	GetAdditionalProperties *map[string]interface{} `json:"getAdditionalProperties,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -104,6 +107,8 @@ func (o Dialercontactlistfilterconfigchangefilterrange) MarshalJSON() ([]byte, e
 		InSet *[]string `json:"inSet,omitempty"`
 		
 		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+		
+		GetAdditionalProperties *map[string]interface{} `json:"getAdditionalProperties,omitempty"`
 		Alias
 	}{ 
 		Min: o.Min,
@@ -117,6 +122,8 @@ func (o Dialercontactlistfilterconfigchangefilterrange) MarshalJSON() ([]byte, e
 		InSet: o.InSet,
 		
 		AdditionalProperties: o.AdditionalProperties,
+		
+		GetAdditionalProperties: o.GetAdditionalProperties,
 		Alias:    (Alias)(o),
 	})
 }
@@ -152,6 +159,11 @@ func (o *Dialercontactlistfilterconfigchangefilterrange) UnmarshalJSON(b []byte)
 	if AdditionalProperties, ok := DialercontactlistfilterconfigchangefilterrangeMap["additionalProperties"].(map[string]interface{}); ok {
 		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
 		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+	if GetAdditionalProperties, ok := DialercontactlistfilterconfigchangefilterrangeMap["getAdditionalProperties"].(map[string]interface{}); ok {
+		GetAdditionalPropertiesString, _ := json.Marshal(GetAdditionalProperties)
+		json.Unmarshal(GetAdditionalPropertiesString, &o.GetAdditionalProperties)
 	}
 	
 

@@ -20,6 +20,9 @@ type Assessmentformquestiongroup struct {
 	// VarType - The question group type
 	VarType *string `json:"type,omitempty"`
 
+	// ContextId - An identifier for this question group that stays the same across versions of the form.
+	ContextId *string `json:"contextId,omitempty"`
+
 	// DefaultAnswersToHighest
 	DefaultAnswersToHighest *bool `json:"defaultAnswersToHighest,omitempty"`
 
@@ -114,6 +117,8 @@ func (o Assessmentformquestiongroup) MarshalJSON() ([]byte, error) {
 		
 		VarType *string `json:"type,omitempty"`
 		
+		ContextId *string `json:"contextId,omitempty"`
+		
 		DefaultAnswersToHighest *bool `json:"defaultAnswersToHighest,omitempty"`
 		
 		DefaultAnswersToNA *bool `json:"defaultAnswersToNA,omitempty"`
@@ -136,6 +141,8 @@ func (o Assessmentformquestiongroup) MarshalJSON() ([]byte, error) {
 		Name: o.Name,
 		
 		VarType: o.VarType,
+		
+		ContextId: o.ContextId,
 		
 		DefaultAnswersToHighest: o.DefaultAnswersToHighest,
 		
@@ -173,6 +180,10 @@ func (o *Assessmentformquestiongroup) UnmarshalJSON(b []byte) error {
     
 	if VarType, ok := AssessmentformquestiongroupMap["type"].(string); ok {
 		o.VarType = &VarType
+	}
+    
+	if ContextId, ok := AssessmentformquestiongroupMap["contextId"].(string); ok {
+		o.ContextId = &ContextId
 	}
     
 	if DefaultAnswersToHighest, ok := AssessmentformquestiongroupMap["defaultAnswersToHighest"].(bool); ok {

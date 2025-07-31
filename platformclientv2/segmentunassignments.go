@@ -7,16 +7,16 @@ import (
 	"strings"
 )
 
-// Basemediasettings
-type Basemediasettings struct { 
+// Segmentunassignments
+type Segmentunassignments struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// EnableAutoAnswer - Indicates if auto-answer is enabled for the given media type or subtype (default is false).  Subtype settings take precedence over media type settings.
-	EnableAutoAnswer *bool `json:"enableAutoAnswer,omitempty"`
+	// Segments - The segments to be unassigned.
+	Segments *[]Segmentforunassignment `json:"segments,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Basemediasettings) SetField(field string, fieldValue interface{}) {
+func (o *Segmentunassignments) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -37,7 +37,7 @@ func (o *Basemediasettings) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Basemediasettings) MarshalJSON() ([]byte, error) {
+func (o Segmentunassignments) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -75,34 +75,35 @@ func (o Basemediasettings) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Basemediasettings
+	type Alias Segmentunassignments
 	
 	return json.Marshal(&struct { 
-		EnableAutoAnswer *bool `json:"enableAutoAnswer,omitempty"`
+		Segments *[]Segmentforunassignment `json:"segments,omitempty"`
 		Alias
 	}{ 
-		EnableAutoAnswer: o.EnableAutoAnswer,
+		Segments: o.Segments,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Basemediasettings) UnmarshalJSON(b []byte) error {
-	var BasemediasettingsMap map[string]interface{}
-	err := json.Unmarshal(b, &BasemediasettingsMap)
+func (o *Segmentunassignments) UnmarshalJSON(b []byte) error {
+	var SegmentunassignmentsMap map[string]interface{}
+	err := json.Unmarshal(b, &SegmentunassignmentsMap)
 	if err != nil {
 		return err
 	}
 	
-	if EnableAutoAnswer, ok := BasemediasettingsMap["enableAutoAnswer"].(bool); ok {
-		o.EnableAutoAnswer = &EnableAutoAnswer
+	if Segments, ok := SegmentunassignmentsMap["segments"].([]interface{}); ok {
+		SegmentsString, _ := json.Marshal(Segments)
+		json.Unmarshal(SegmentsString, &o.Segments)
 	}
-    
+	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Basemediasettings) String() string {
+func (o *Segmentunassignments) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

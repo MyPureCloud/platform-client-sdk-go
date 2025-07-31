@@ -11,7 +11,7 @@ import (
 type Notificationssettings struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Enabled - The toggle to enable or disable notifications
+	// Enabled - The toggle to enable or disable notifications. When enabled, PushNotificationTitle and PushNotificationBody localization keys are required.
 	Enabled *bool `json:"enabled,omitempty"`
 
 	// NotificationContentType - The notification content type settings for messenger

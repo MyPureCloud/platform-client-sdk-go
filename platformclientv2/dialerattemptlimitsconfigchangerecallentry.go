@@ -19,6 +19,9 @@ type Dialerattemptlimitsconfigchangerecallentry struct {
 
 	// AdditionalProperties
 	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+
+	// GetAdditionalProperties
+	GetAdditionalProperties *map[string]interface{} `json:"getAdditionalProperties,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +92,8 @@ func (o Dialerattemptlimitsconfigchangerecallentry) MarshalJSON() ([]byte, error
 		MinutesBetweenAttempts *int `json:"minutesBetweenAttempts,omitempty"`
 		
 		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+		
+		GetAdditionalProperties *map[string]interface{} `json:"getAdditionalProperties,omitempty"`
 		Alias
 	}{ 
 		NbrAttempts: o.NbrAttempts,
@@ -96,6 +101,8 @@ func (o Dialerattemptlimitsconfigchangerecallentry) MarshalJSON() ([]byte, error
 		MinutesBetweenAttempts: o.MinutesBetweenAttempts,
 		
 		AdditionalProperties: o.AdditionalProperties,
+		
+		GetAdditionalProperties: o.GetAdditionalProperties,
 		Alias:    (Alias)(o),
 	})
 }
@@ -120,6 +127,11 @@ func (o *Dialerattemptlimitsconfigchangerecallentry) UnmarshalJSON(b []byte) err
 	if AdditionalProperties, ok := DialerattemptlimitsconfigchangerecallentryMap["additionalProperties"].(map[string]interface{}); ok {
 		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
 		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+	if GetAdditionalProperties, ok := DialerattemptlimitsconfigchangerecallentryMap["getAdditionalProperties"].(map[string]interface{}); ok {
+		GetAdditionalPropertiesString, _ := json.Marshal(GetAdditionalProperties)
+		json.Unmarshal(GetAdditionalPropertiesString, &o.GetAdditionalProperties)
 	}
 	
 

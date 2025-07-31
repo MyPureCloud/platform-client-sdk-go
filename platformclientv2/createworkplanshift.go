@@ -74,6 +74,9 @@ type Createworkplanshift struct {
 	// DayOffRule - The day off rule for agents to have next day off or previous day off. used if constrainDayOff = true
 	DayOffRule *string `json:"dayOffRule,omitempty"`
 
+	// PlanningPeriodConstraints - Planning period constraints
+	PlanningPeriodConstraints *Planningperiodshiftconstraints `json:"planningPeriodConstraints,omitempty"`
+
 	// Activities - Activities configured for this shift
 	Activities *[]Createworkplanactivity `json:"activities,omitempty"`
 }
@@ -183,6 +186,8 @@ func (o Createworkplanshift) MarshalJSON() ([]byte, error) {
 		
 		DayOffRule *string `json:"dayOffRule,omitempty"`
 		
+		PlanningPeriodConstraints *Planningperiodshiftconstraints `json:"planningPeriodConstraints,omitempty"`
+		
 		Activities *[]Createworkplanactivity `json:"activities,omitempty"`
 		Alias
 	}{ 
@@ -227,6 +232,8 @@ func (o Createworkplanshift) MarshalJSON() ([]byte, error) {
 		ConstrainDayOff: o.ConstrainDayOff,
 		
 		DayOffRule: o.DayOffRule,
+		
+		PlanningPeriodConstraints: o.PlanningPeriodConstraints,
 		
 		Activities: o.Activities,
 		Alias:    (Alias)(o),
@@ -336,6 +343,11 @@ func (o *Createworkplanshift) UnmarshalJSON(b []byte) error {
 		o.DayOffRule = &DayOffRule
 	}
     
+	if PlanningPeriodConstraints, ok := CreateworkplanshiftMap["planningPeriodConstraints"].(map[string]interface{}); ok {
+		PlanningPeriodConstraintsString, _ := json.Marshal(PlanningPeriodConstraints)
+		json.Unmarshal(PlanningPeriodConstraintsString, &o.PlanningPeriodConstraints)
+	}
+	
 	if Activities, ok := CreateworkplanshiftMap["activities"].([]interface{}); ok {
 		ActivitiesString, _ := json.Marshal(Activities)
 		json.Unmarshal(ActivitiesString, &o.Activities)

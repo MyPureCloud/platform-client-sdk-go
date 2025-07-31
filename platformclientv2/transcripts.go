@@ -19,6 +19,9 @@ type Transcripts struct {
 
 	// DoesNotContain - List of transcript contents which needs to satisfy does not contain criteria
 	DoesNotContain *[]string `json:"doesNotContain,omitempty"`
+
+	// NotSimilarTo - List of words or phrases used to filter out transcripts that contain content similar to any item in this list
+	NotSimilarTo *[]string `json:"notSimilarTo,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +92,8 @@ func (o Transcripts) MarshalJSON() ([]byte, error) {
 		Contains *[]string `json:"contains,omitempty"`
 		
 		DoesNotContain *[]string `json:"doesNotContain,omitempty"`
+		
+		NotSimilarTo *[]string `json:"notSimilarTo,omitempty"`
 		Alias
 	}{ 
 		ExactMatch: o.ExactMatch,
@@ -96,6 +101,8 @@ func (o Transcripts) MarshalJSON() ([]byte, error) {
 		Contains: o.Contains,
 		
 		DoesNotContain: o.DoesNotContain,
+		
+		NotSimilarTo: o.NotSimilarTo,
 		Alias:    (Alias)(o),
 	})
 }
@@ -120,6 +127,11 @@ func (o *Transcripts) UnmarshalJSON(b []byte) error {
 	if DoesNotContain, ok := TranscriptsMap["doesNotContain"].([]interface{}); ok {
 		DoesNotContainString, _ := json.Marshal(DoesNotContain)
 		json.Unmarshal(DoesNotContainString, &o.DoesNotContain)
+	}
+	
+	if NotSimilarTo, ok := TranscriptsMap["notSimilarTo"].([]interface{}); ok {
+		NotSimilarToString, _ := json.Marshal(NotSimilarTo)
+		json.Unmarshal(NotSimilarToString, &o.NotSimilarTo)
 	}
 	
 

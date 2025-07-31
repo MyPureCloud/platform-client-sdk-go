@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -22,6 +23,9 @@ type Tokeninfo struct {
 
 	// ClonedUser - Only present when a user is a clone of trustee user in the trustor org.
 	ClonedUser *Tokeninfocloneduser `json:"clonedUser,omitempty"`
+
+	// DateTokenIdles - Date/Time when token is due to expire. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateTokenIdles *time.Time `json:"dateTokenIdles,omitempty"`
 
 	// OAuthClient
 	OAuthClient *Orgoauthclient `json:"OAuthClient,omitempty"`
@@ -56,7 +60,7 @@ func (o Tokeninfo) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
+		dateTimeFields := []string{ "DateTokenIdles", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -89,6 +93,14 @@ func (o Tokeninfo) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Tokeninfo
 	
+	DateTokenIdles := new(string)
+	if o.DateTokenIdles != nil {
+		
+		*DateTokenIdles = timeutil.Strftime(o.DateTokenIdles, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateTokenIdles = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Organization *Namedentity `json:"organization,omitempty"`
 		
@@ -97,6 +109,8 @@ func (o Tokeninfo) MarshalJSON() ([]byte, error) {
 		AuthorizedScope *[]string `json:"authorizedScope,omitempty"`
 		
 		ClonedUser *Tokeninfocloneduser `json:"clonedUser,omitempty"`
+		
+		DateTokenIdles *string `json:"dateTokenIdles,omitempty"`
 		
 		OAuthClient *Orgoauthclient `json:"OAuthClient,omitempty"`
 		Alias
@@ -108,6 +122,8 @@ func (o Tokeninfo) MarshalJSON() ([]byte, error) {
 		AuthorizedScope: o.AuthorizedScope,
 		
 		ClonedUser: o.ClonedUser,
+		
+		DateTokenIdles: DateTokenIdles,
 		
 		OAuthClient: o.OAuthClient,
 		Alias:    (Alias)(o),
@@ -139,6 +155,11 @@ func (o *Tokeninfo) UnmarshalJSON(b []byte) error {
 	if ClonedUser, ok := TokeninfoMap["clonedUser"].(map[string]interface{}); ok {
 		ClonedUserString, _ := json.Marshal(ClonedUser)
 		json.Unmarshal(ClonedUserString, &o.ClonedUser)
+	}
+	
+	if dateTokenIdlesString, ok := TokeninfoMap["dateTokenIdles"].(string); ok {
+		DateTokenIdles, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateTokenIdlesString)
+		o.DateTokenIdles = &DateTokenIdles
 	}
 	
 	if OAuthClient, ok := TokeninfoMap["OAuthClient"].(map[string]interface{}); ok {

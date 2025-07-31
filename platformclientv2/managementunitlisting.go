@@ -23,9 +23,6 @@ type Managementunitlisting struct {
 	// Total - Deprecated, paging is not supported
 	Total *int `json:"total,omitempty"`
 
-	// PageCount - Deprecated, paging is not supported
-	PageCount *int `json:"pageCount,omitempty"`
-
 	// PreviousUri - Deprecated, paging is not supported
 	PreviousUri *string `json:"previousUri,omitempty"`
 
@@ -37,6 +34,9 @@ type Managementunitlisting struct {
 
 	// FirstUri - Deprecated, paging is not supported
 	FirstUri *string `json:"firstUri,omitempty"`
+
+	// PageCount - Deprecated, paging is not supported
+	PageCount *int `json:"pageCount,omitempty"`
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -113,8 +113,6 @@ func (o Managementunitlisting) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
-		PageCount *int `json:"pageCount,omitempty"`
-		
 		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		NextUri *string `json:"nextUri,omitempty"`
@@ -122,6 +120,8 @@ func (o Managementunitlisting) MarshalJSON() ([]byte, error) {
 		LastUri *string `json:"lastUri,omitempty"`
 		
 		FirstUri *string `json:"firstUri,omitempty"`
+		
+		PageCount *int `json:"pageCount,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
@@ -134,8 +134,6 @@ func (o Managementunitlisting) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
-		PageCount: o.PageCount,
-		
 		PreviousUri: o.PreviousUri,
 		
 		NextUri: o.NextUri,
@@ -143,6 +141,8 @@ func (o Managementunitlisting) MarshalJSON() ([]byte, error) {
 		LastUri: o.LastUri,
 		
 		FirstUri: o.FirstUri,
+		
+		PageCount: o.PageCount,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -176,11 +176,6 @@ func (o *Managementunitlisting) UnmarshalJSON(b []byte) error {
 		o.Total = &TotalInt
 	}
 	
-	if PageCount, ok := ManagementunitlistingMap["pageCount"].(float64); ok {
-		PageCountInt := int(PageCount)
-		o.PageCount = &PageCountInt
-	}
-	
 	if PreviousUri, ok := ManagementunitlistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
 	}
@@ -197,6 +192,11 @@ func (o *Managementunitlisting) UnmarshalJSON(b []byte) error {
 		o.FirstUri = &FirstUri
 	}
     
+	if PageCount, ok := ManagementunitlistingMap["pageCount"].(float64); ok {
+		PageCountInt := int(PageCount)
+		o.PageCount = &PageCountInt
+	}
+	
 	if SelfUri, ok := ManagementunitlistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

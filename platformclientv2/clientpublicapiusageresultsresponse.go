@@ -7,34 +7,31 @@ import (
 	"strings"
 )
 
-// Transcriptconversationdetailsearchrequest
-type Transcriptconversationdetailsearchrequest struct { 
+// Clientpublicapiusageresultsresponse
+type Clientpublicapiusageresultsresponse struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// SortOrder - The sort order for results
-	SortOrder *string `json:"sortOrder,omitempty"`
+	// Name
+	Name *string `json:"name,omitempty"`
 
-	// SortBy - The field in the resource that you want to sort the results by
-	SortBy *string `json:"sortBy,omitempty"`
+	// QueryStatus - The status of the query.
+	QueryStatus *string `json:"queryStatus,omitempty"`
 
-	// PageSize - The number of results per page
-	PageSize *int `json:"pageSize,omitempty"`
+	// ErrorBody - The reason for the failure. This will only be present if the query is in a FAILURE state but may not be included even if the state is FAILURE
+	ErrorBody *Errorbody `json:"errorBody,omitempty"`
 
-	// PageNumber - The page of resources you want to retrieve
-	PageNumber *int `json:"pageNumber,omitempty"`
+	// NextUri - The uri to get the next set of results. Will only be included if there is another page to retrieve.
+	NextUri *string `json:"nextUri,omitempty"`
 
-	// Sort - Multi-value sort order, list of multiple sort values
-	Sort *[]Searchsort `json:"sort,omitempty"`
+	// Entities - The results of the query.
+	Entities *[]Clientpublicapiusage `json:"entities,omitempty"`
 
-	// Types - Resource domain type to search
-	Types *[]string `json:"types,omitempty"`
-
-	// Query - The search criteria
-	Query *[]Transcriptconversationdetailsearchcriteria `json:"query,omitempty"`
+	// SelfUri - The URI for this object
+	SelfUri *string `json:"selfUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Transcriptconversationdetailsearchrequest) SetField(field string, fieldValue interface{}) {
+func (o *Clientpublicapiusageresultsresponse) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -55,7 +52,7 @@ func (o *Transcriptconversationdetailsearchrequest) SetField(field string, field
 	o.SetFieldNames[field] = true
 }
 
-func (o Transcriptconversationdetailsearchrequest) MarshalJSON() ([]byte, error) {
+func (o Clientpublicapiusageresultsresponse) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -93,87 +90,76 @@ func (o Transcriptconversationdetailsearchrequest) MarshalJSON() ([]byte, error)
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Transcriptconversationdetailsearchrequest
+	type Alias Clientpublicapiusageresultsresponse
 	
 	return json.Marshal(&struct { 
-		SortOrder *string `json:"sortOrder,omitempty"`
+		Name *string `json:"name,omitempty"`
 		
-		SortBy *string `json:"sortBy,omitempty"`
+		QueryStatus *string `json:"queryStatus,omitempty"`
 		
-		PageSize *int `json:"pageSize,omitempty"`
+		ErrorBody *Errorbody `json:"errorBody,omitempty"`
 		
-		PageNumber *int `json:"pageNumber,omitempty"`
+		NextUri *string `json:"nextUri,omitempty"`
 		
-		Sort *[]Searchsort `json:"sort,omitempty"`
+		Entities *[]Clientpublicapiusage `json:"entities,omitempty"`
 		
-		Types *[]string `json:"types,omitempty"`
-		
-		Query *[]Transcriptconversationdetailsearchcriteria `json:"query,omitempty"`
+		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
-		SortOrder: o.SortOrder,
+		Name: o.Name,
 		
-		SortBy: o.SortBy,
+		QueryStatus: o.QueryStatus,
 		
-		PageSize: o.PageSize,
+		ErrorBody: o.ErrorBody,
 		
-		PageNumber: o.PageNumber,
+		NextUri: o.NextUri,
 		
-		Sort: o.Sort,
+		Entities: o.Entities,
 		
-		Types: o.Types,
-		
-		Query: o.Query,
+		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Transcriptconversationdetailsearchrequest) UnmarshalJSON(b []byte) error {
-	var TranscriptconversationdetailsearchrequestMap map[string]interface{}
-	err := json.Unmarshal(b, &TranscriptconversationdetailsearchrequestMap)
+func (o *Clientpublicapiusageresultsresponse) UnmarshalJSON(b []byte) error {
+	var ClientpublicapiusageresultsresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &ClientpublicapiusageresultsresponseMap)
 	if err != nil {
 		return err
 	}
 	
-	if SortOrder, ok := TranscriptconversationdetailsearchrequestMap["sortOrder"].(string); ok {
-		o.SortOrder = &SortOrder
+	if Name, ok := ClientpublicapiusageresultsresponseMap["name"].(string); ok {
+		o.Name = &Name
 	}
     
-	if SortBy, ok := TranscriptconversationdetailsearchrequestMap["sortBy"].(string); ok {
-		o.SortBy = &SortBy
+	if QueryStatus, ok := ClientpublicapiusageresultsresponseMap["queryStatus"].(string); ok {
+		o.QueryStatus = &QueryStatus
 	}
     
-	if PageSize, ok := TranscriptconversationdetailsearchrequestMap["pageSize"].(float64); ok {
-		PageSizeInt := int(PageSize)
-		o.PageSize = &PageSizeInt
+	if ErrorBody, ok := ClientpublicapiusageresultsresponseMap["errorBody"].(map[string]interface{}); ok {
+		ErrorBodyString, _ := json.Marshal(ErrorBody)
+		json.Unmarshal(ErrorBodyString, &o.ErrorBody)
 	}
 	
-	if PageNumber, ok := TranscriptconversationdetailsearchrequestMap["pageNumber"].(float64); ok {
-		PageNumberInt := int(PageNumber)
-		o.PageNumber = &PageNumberInt
+	if NextUri, ok := ClientpublicapiusageresultsresponseMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
+	}
+    
+	if Entities, ok := ClientpublicapiusageresultsresponseMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
 	}
 	
-	if Sort, ok := TranscriptconversationdetailsearchrequestMap["sort"].([]interface{}); ok {
-		SortString, _ := json.Marshal(Sort)
-		json.Unmarshal(SortString, &o.Sort)
+	if SelfUri, ok := ClientpublicapiusageresultsresponseMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
 	}
-	
-	if Types, ok := TranscriptconversationdetailsearchrequestMap["types"].([]interface{}); ok {
-		TypesString, _ := json.Marshal(Types)
-		json.Unmarshal(TypesString, &o.Types)
-	}
-	
-	if Query, ok := TranscriptconversationdetailsearchrequestMap["query"].([]interface{}); ok {
-		QueryString, _ := json.Marshal(Query)
-		json.Unmarshal(QueryString, &o.Query)
-	}
-	
+    
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Transcriptconversationdetailsearchrequest) String() string {
+func (o *Clientpublicapiusageresultsresponse) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

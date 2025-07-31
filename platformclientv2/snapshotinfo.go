@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -17,8 +18,8 @@ type Snapshotinfo struct {
 	// SnapshotId - Snapshot Id of the continuous forecast session
 	SnapshotId *string `json:"snapshotId,omitempty"`
 
-	// SessionId - Session Id of the continuous forecast session
-	SessionId *string `json:"sessionId,omitempty"`
+	// DateSnapshot - Date of snapshot generation. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateSnapshot *time.Time `json:"dateSnapshot,omitempty"`
 
 	// BusinessUnitId - Business unit ID of the continuous forecast session
 	BusinessUnitId *string `json:"businessUnitId,omitempty"`
@@ -56,7 +57,7 @@ func (o Snapshotinfo) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
+		dateTimeFields := []string{ "DateSnapshot", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -89,12 +90,20 @@ func (o Snapshotinfo) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Snapshotinfo
 	
+	DateSnapshot := new(string)
+	if o.DateSnapshot != nil {
+		
+		*DateSnapshot = timeutil.Strftime(o.DateSnapshot, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateSnapshot = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Version *int `json:"version,omitempty"`
 		
 		SnapshotId *string `json:"snapshotId,omitempty"`
 		
-		SessionId *string `json:"sessionId,omitempty"`
+		DateSnapshot *string `json:"dateSnapshot,omitempty"`
 		
 		BusinessUnitId *string `json:"businessUnitId,omitempty"`
 		
@@ -105,7 +114,7 @@ func (o Snapshotinfo) MarshalJSON() ([]byte, error) {
 		
 		SnapshotId: o.SnapshotId,
 		
-		SessionId: o.SessionId,
+		DateSnapshot: DateSnapshot,
 		
 		BusinessUnitId: o.BusinessUnitId,
 		
@@ -130,10 +139,11 @@ func (o *Snapshotinfo) UnmarshalJSON(b []byte) error {
 		o.SnapshotId = &SnapshotId
 	}
     
-	if SessionId, ok := SnapshotinfoMap["sessionId"].(string); ok {
-		o.SessionId = &SessionId
+	if dateSnapshotString, ok := SnapshotinfoMap["dateSnapshot"].(string); ok {
+		DateSnapshot, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateSnapshotString)
+		o.DateSnapshot = &DateSnapshot
 	}
-    
+	
 	if BusinessUnitId, ok := SnapshotinfoMap["businessUnitId"].(string); ok {
 		o.BusinessUnitId = &BusinessUnitId
 	}

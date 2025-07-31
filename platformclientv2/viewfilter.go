@@ -697,6 +697,15 @@ type Viewfilter struct {
 
 	// VirtualAgentIds - A list of virtual agent ids for filtering.
 	VirtualAgentIds *[]string `json:"virtualAgentIds,omitempty"`
+
+	// EmpathyScoreCategories - A set of Empathy Score Categories for filtering
+	EmpathyScoreCategories *[]string `json:"empathyScoreCategories,omitempty"`
+
+	// SentimentScoreCategories - A set of Sentiment Score Categories  for filtering
+	SentimentScoreCategories *[]string `json:"sentimentScoreCategories,omitempty"`
+
+	// SentimentTrendCategories - A set of Sentiment Trend Categories for filtering
+	SentimentTrendCategories *[]string `json:"sentimentTrendCategories,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -1219,6 +1228,12 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		SocialRatings *[]float32 `json:"socialRatings,omitempty"`
 		
 		VirtualAgentIds *[]string `json:"virtualAgentIds,omitempty"`
+		
+		EmpathyScoreCategories *[]string `json:"empathyScoreCategories,omitempty"`
+		
+		SentimentScoreCategories *[]string `json:"sentimentScoreCategories,omitempty"`
+		
+		SentimentTrendCategories *[]string `json:"sentimentTrendCategories,omitempty"`
 		Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -1678,6 +1693,12 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		SocialRatings: o.SocialRatings,
 		
 		VirtualAgentIds: o.VirtualAgentIds,
+		
+		EmpathyScoreCategories: o.EmpathyScoreCategories,
+		
+		SentimentScoreCategories: o.SentimentScoreCategories,
+		
+		SentimentTrendCategories: o.SentimentTrendCategories,
 		Alias:    (Alias)(o),
 	})
 }
@@ -2779,6 +2800,21 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if VirtualAgentIds, ok := ViewfilterMap["virtualAgentIds"].([]interface{}); ok {
 		VirtualAgentIdsString, _ := json.Marshal(VirtualAgentIds)
 		json.Unmarshal(VirtualAgentIdsString, &o.VirtualAgentIds)
+	}
+	
+	if EmpathyScoreCategories, ok := ViewfilterMap["empathyScoreCategories"].([]interface{}); ok {
+		EmpathyScoreCategoriesString, _ := json.Marshal(EmpathyScoreCategories)
+		json.Unmarshal(EmpathyScoreCategoriesString, &o.EmpathyScoreCategories)
+	}
+	
+	if SentimentScoreCategories, ok := ViewfilterMap["sentimentScoreCategories"].([]interface{}); ok {
+		SentimentScoreCategoriesString, _ := json.Marshal(SentimentScoreCategories)
+		json.Unmarshal(SentimentScoreCategoriesString, &o.SentimentScoreCategories)
+	}
+	
+	if SentimentTrendCategories, ok := ViewfilterMap["sentimentTrendCategories"].([]interface{}); ok {
+		SentimentTrendCategoriesString, _ := json.Marshal(SentimentTrendCategories)
+		json.Unmarshal(SentimentTrendCategoriesString, &o.SentimentTrendCategories)
 	}
 	
 

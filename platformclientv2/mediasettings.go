@@ -25,9 +25,6 @@ type Mediasettings struct {
 
 	// ManualAnswerAlertToneSeconds - How long to play the alerting tone for a manual-answer interaction
 	ManualAnswerAlertToneSeconds *float64 `json:"manualAnswerAlertToneSeconds,omitempty"`
-
-	// SubTypeSettings - Map of media subtype to media subtype specific settings.
-	SubTypeSettings *map[string]Basemediasettings `json:"subTypeSettings,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -102,8 +99,6 @@ func (o Mediasettings) MarshalJSON() ([]byte, error) {
 		AutoAnswerAlertToneSeconds *float64 `json:"autoAnswerAlertToneSeconds,omitempty"`
 		
 		ManualAnswerAlertToneSeconds *float64 `json:"manualAnswerAlertToneSeconds,omitempty"`
-		
-		SubTypeSettings *map[string]Basemediasettings `json:"subTypeSettings,omitempty"`
 		Alias
 	}{ 
 		EnableAutoAnswer: o.EnableAutoAnswer,
@@ -115,8 +110,6 @@ func (o Mediasettings) MarshalJSON() ([]byte, error) {
 		AutoAnswerAlertToneSeconds: o.AutoAnswerAlertToneSeconds,
 		
 		ManualAnswerAlertToneSeconds: o.ManualAnswerAlertToneSeconds,
-		
-		SubTypeSettings: o.SubTypeSettings,
 		Alias:    (Alias)(o),
 	})
 }
@@ -150,11 +143,6 @@ func (o *Mediasettings) UnmarshalJSON(b []byte) error {
 		o.ManualAnswerAlertToneSeconds = &ManualAnswerAlertToneSeconds
 	}
     
-	if SubTypeSettings, ok := MediasettingsMap["subTypeSettings"].(map[string]interface{}); ok {
-		SubTypeSettingsString, _ := json.Marshal(SubTypeSettings)
-		json.Unmarshal(SubTypeSettingsString, &o.SubTypeSettings)
-	}
-	
 
 	return nil
 }

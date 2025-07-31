@@ -14,6 +14,9 @@ type Assessmentformquestion struct {
 	// Id
 	Id *string `json:"id,omitempty"`
 
+	// ContextId - An identifier for this question that stays the same across versions of the form.
+	ContextId *string `json:"contextId,omitempty"`
+
 	// VarType
 	VarType *string `json:"type,omitempty"`
 
@@ -110,6 +113,8 @@ func (o Assessmentformquestion) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
+		ContextId *string `json:"contextId,omitempty"`
+		
 		VarType *string `json:"type,omitempty"`
 		
 		Text *string `json:"text,omitempty"`
@@ -132,6 +137,8 @@ func (o Assessmentformquestion) MarshalJSON() ([]byte, error) {
 		Alias
 	}{ 
 		Id: o.Id,
+		
+		ContextId: o.ContextId,
 		
 		VarType: o.VarType,
 		
@@ -165,6 +172,10 @@ func (o *Assessmentformquestion) UnmarshalJSON(b []byte) error {
 	
 	if Id, ok := AssessmentformquestionMap["id"].(string); ok {
 		o.Id = &Id
+	}
+    
+	if ContextId, ok := AssessmentformquestionMap["contextId"].(string); ok {
+		o.ContextId = &ContextId
 	}
     
 	if VarType, ok := AssessmentformquestionMap["type"].(string); ok {

@@ -10545,7 +10545,7 @@ func (a ConversationsApi) PatchConversationsCallParticipantAttributes(conversati
 
 // PatchConversationsCallParticipantCommunication invokes PATCH /api/v2/conversations/calls/{conversationId}/participants/{participantId}/communications/{communicationId}
 //
-// Update conversation participant's communication by disconnecting it.
+// Update conversation participant's communication by disconnecting it. This endpoint does not update wrapup.
 func (a ConversationsApi) PatchConversationsCallParticipantCommunication(conversationId string, participantId string, communicationId string, body Mediaparticipantrequest) (*interface{}, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -11491,7 +11491,7 @@ func (a ConversationsApi) PatchConversationsChatParticipantAttributes(conversati
 
 // PatchConversationsChatParticipantCommunication invokes PATCH /api/v2/conversations/chats/{conversationId}/participants/{participantId}/communications/{communicationId}
 //
-// Update conversation participant's communication by disconnecting it.
+// Update conversation participant's communication by disconnecting it. This endpoint does not update wrapup.
 //
 // This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-removal-of-acd-web-chat-version-2/.
 //
@@ -12344,7 +12344,7 @@ func (a ConversationsApi) PatchConversationsEmailParticipantAttributes(conversat
 
 // PatchConversationsEmailParticipantCommunication invokes PATCH /api/v2/conversations/emails/{conversationId}/participants/{participantId}/communications/{communicationId}
 //
-// Update conversation participant's communication by disconnecting it.
+// Update conversation participant's communication by disconnecting it. This endpoint does not update wrapup.
 func (a ConversationsApi) PatchConversationsEmailParticipantCommunication(conversationId string, participantId string, communicationId string, body Mediaparticipantrequest) (*interface{}, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -12800,7 +12800,7 @@ func (a ConversationsApi) PatchConversationsMessageParticipantAttributes(convers
 
 // PatchConversationsMessageParticipantCommunication invokes PATCH /api/v2/conversations/messages/{conversationId}/participants/{participantId}/communications/{communicationId}
 //
-// Update conversation participant's communication by disconnecting it.
+// Update conversation participant's communication by disconnecting it. This endpoint does not update wrapup.
 func (a ConversationsApi) PatchConversationsMessageParticipantCommunication(conversationId string, participantId string, communicationId string, body Mediaparticipantrequest) (*interface{}, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables

@@ -72,6 +72,9 @@ type Evaluation struct {
 	// MediaType - List of different communication types used in conversation.
 	MediaType *[]string `json:"mediaType,omitempty"`
 
+	// DivisionIds - Evaluation is assigned in the following division(s).
+	DivisionIds *[]string `json:"divisionIds,omitempty"`
+
 	// Rescore - Is only true when evaluation is re-scored.
 	Rescore *bool `json:"rescore,omitempty"`
 
@@ -296,6 +299,8 @@ func (o Evaluation) MarshalJSON() ([]byte, error) {
 		
 		MediaType *[]string `json:"mediaType,omitempty"`
 		
+		DivisionIds *[]string `json:"divisionIds,omitempty"`
+		
 		Rescore *bool `json:"rescore,omitempty"`
 		
 		ConversationDate *string `json:"conversationDate,omitempty"`
@@ -368,6 +373,8 @@ func (o Evaluation) MarshalJSON() ([]byte, error) {
 		Queue: o.Queue,
 		
 		MediaType: o.MediaType,
+		
+		DivisionIds: o.DivisionIds,
 		
 		Rescore: o.Rescore,
 		
@@ -504,6 +511,11 @@ func (o *Evaluation) UnmarshalJSON(b []byte) error {
 	if MediaType, ok := EvaluationMap["mediaType"].([]interface{}); ok {
 		MediaTypeString, _ := json.Marshal(MediaType)
 		json.Unmarshal(MediaTypeString, &o.MediaType)
+	}
+	
+	if DivisionIds, ok := EvaluationMap["divisionIds"].([]interface{}); ok {
+		DivisionIdsString, _ := json.Marshal(DivisionIds)
+		json.Unmarshal(DivisionIdsString, &o.DivisionIds)
 	}
 	
 	if Rescore, ok := EvaluationMap["rescore"].(bool); ok {

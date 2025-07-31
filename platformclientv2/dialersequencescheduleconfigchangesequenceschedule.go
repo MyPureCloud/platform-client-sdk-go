@@ -41,6 +41,9 @@ type Dialersequencescheduleconfigchangesequenceschedule struct {
 
 	// Version - Required for updates, must match the version number of the most recent update
 	Version *int `json:"version,omitempty"`
+
+	// GetAdditionalProperties
+	GetAdditionalProperties *map[string]interface{} `json:"getAdditionalProperties,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -141,6 +144,8 @@ func (o Dialersequencescheduleconfigchangesequenceschedule) MarshalJSON() ([]byt
 		DateModified *string `json:"dateModified,omitempty"`
 		
 		Version *int `json:"version,omitempty"`
+		
+		GetAdditionalProperties *map[string]interface{} `json:"getAdditionalProperties,omitempty"`
 		Alias
 	}{ 
 		Intervals: o.Intervals,
@@ -162,6 +167,8 @@ func (o Dialersequencescheduleconfigchangesequenceschedule) MarshalJSON() ([]byt
 		DateModified: DateModified,
 		
 		Version: o.Version,
+		
+		GetAdditionalProperties: o.GetAdditionalProperties,
 		Alias:    (Alias)(o),
 	})
 }
@@ -218,6 +225,11 @@ func (o *Dialersequencescheduleconfigchangesequenceschedule) UnmarshalJSON(b []b
 	if Version, ok := DialersequencescheduleconfigchangesequencescheduleMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
+	}
+	
+	if GetAdditionalProperties, ok := DialersequencescheduleconfigchangesequencescheduleMap["getAdditionalProperties"].(map[string]interface{}); ok {
+		GetAdditionalPropertiesString, _ := json.Marshal(GetAdditionalProperties)
+		json.Unmarshal(GetAdditionalPropertiesString, &o.GetAdditionalProperties)
 	}
 	
 

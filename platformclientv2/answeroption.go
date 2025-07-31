@@ -14,6 +14,9 @@ type Answeroption struct {
 	// Id
 	Id *string `json:"id,omitempty"`
 
+	// ContextId - An identifier for this answer that stays the same across versions of the form.
+	ContextId *string `json:"contextId,omitempty"`
+
 	// BuiltInType - The built-in type of this answer option. Only used for built-in answer options such as selection states for Multiple Select answer options. Possible values include: Selected, Unselected
 	BuiltInType *string `json:"builtInType,omitempty"`
 
@@ -92,6 +95,8 @@ func (o Answeroption) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
+		ContextId *string `json:"contextId,omitempty"`
+		
 		BuiltInType *string `json:"builtInType,omitempty"`
 		
 		Text *string `json:"text,omitempty"`
@@ -102,6 +107,8 @@ func (o Answeroption) MarshalJSON() ([]byte, error) {
 		Alias
 	}{ 
 		Id: o.Id,
+		
+		ContextId: o.ContextId,
 		
 		BuiltInType: o.BuiltInType,
 		
@@ -123,6 +130,10 @@ func (o *Answeroption) UnmarshalJSON(b []byte) error {
 	
 	if Id, ok := AnsweroptionMap["id"].(string); ok {
 		o.Id = &Id
+	}
+    
+	if ContextId, ok := AnsweroptionMap["contextId"].(string); ok {
+		o.ContextId = &ContextId
 	}
     
 	if BuiltInType, ok := AnsweroptionMap["builtInType"].(string); ok {

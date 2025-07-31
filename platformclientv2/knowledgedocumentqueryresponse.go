@@ -24,7 +24,7 @@ type Knowledgedocumentqueryresponse struct {
 	PageCount *int `json:"pageCount,omitempty"`
 
 	// Results - Documents matching the query.
-	Results *[]Knowledgedocumentresponse `json:"results,omitempty"`
+	Results *[]Knowledgedocumentqueryresult `json:"results,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -98,7 +98,7 @@ func (o Knowledgedocumentqueryresponse) MarshalJSON() ([]byte, error) {
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		
-		Results *[]Knowledgedocumentresponse `json:"results,omitempty"`
+		Results *[]Knowledgedocumentqueryresult `json:"results,omitempty"`
 		Alias
 	}{ 
 		PageSize: o.PageSize,

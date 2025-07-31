@@ -22,6 +22,9 @@ type Dialercampaignruleconfigchangecampaignruleactionentities struct {
 
 	// Sequences - A list of sequenceIds to act on
 	Sequences *[]Dialercampaignruleconfigchangeurireference `json:"sequences,omitempty"`
+
+	// GetAdditionalProperties
+	GetAdditionalProperties *map[string]interface{} `json:"getAdditionalProperties,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +97,8 @@ func (o Dialercampaignruleconfigchangecampaignruleactionentities) MarshalJSON() 
 		Campaigns *[]Dialercampaignruleconfigchangeurireference `json:"campaigns,omitempty"`
 		
 		Sequences *[]Dialercampaignruleconfigchangeurireference `json:"sequences,omitempty"`
+		
+		GetAdditionalProperties *map[string]interface{} `json:"getAdditionalProperties,omitempty"`
 		Alias
 	}{ 
 		UseTriggeringEntity: o.UseTriggeringEntity,
@@ -103,6 +108,8 @@ func (o Dialercampaignruleconfigchangecampaignruleactionentities) MarshalJSON() 
 		Campaigns: o.Campaigns,
 		
 		Sequences: o.Sequences,
+		
+		GetAdditionalProperties: o.GetAdditionalProperties,
 		Alias:    (Alias)(o),
 	})
 }
@@ -131,6 +138,11 @@ func (o *Dialercampaignruleconfigchangecampaignruleactionentities) UnmarshalJSON
 	if Sequences, ok := DialercampaignruleconfigchangecampaignruleactionentitiesMap["sequences"].([]interface{}); ok {
 		SequencesString, _ := json.Marshal(Sequences)
 		json.Unmarshal(SequencesString, &o.Sequences)
+	}
+	
+	if GetAdditionalProperties, ok := DialercampaignruleconfigchangecampaignruleactionentitiesMap["getAdditionalProperties"].(map[string]interface{}); ok {
+		GetAdditionalPropertiesString, _ := json.Marshal(GetAdditionalProperties)
+		json.Unmarshal(GetAdditionalPropertiesString, &o.GetAdditionalProperties)
 	}
 	
 

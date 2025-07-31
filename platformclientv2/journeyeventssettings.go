@@ -14,13 +14,13 @@ type Journeyeventssettings struct {
 	// Enabled - Whether or not journey event collection is enabled.
 	Enabled *bool `json:"enabled,omitempty"`
 
-	// ExcludedQueryParameters - List of parameters to be excluded from the query string.
+	// ExcludedQueryParameters - (deprecated) List of parameters to be excluded from the query string.
 	ExcludedQueryParameters *[]string `json:"excludedQueryParameters,omitempty"`
 
-	// ShouldKeepUrlFragment - Whether or not to keep the URL fragment.
+	// ShouldKeepUrlFragment - (deprecated) Whether or not to keep the URL fragment.
 	ShouldKeepUrlFragment *bool `json:"shouldKeepUrlFragment,omitempty"`
 
-	// SearchQueryParameters - List of query parameters used for search (e.g. 'q').
+	// SearchQueryParameters - (deprecated) List of query parameters used for search (e.g. 'q').
 	SearchQueryParameters *[]string `json:"searchQueryParameters,omitempty"`
 
 	// PageviewConfig - Controls how the pageview events are tracked.
@@ -40,6 +40,9 @@ type Journeyeventssettings struct {
 
 	// ScrollDepthEvents - Tracks when a visitor scrolls to a specific percentage of a webpage.
 	ScrollDepthEvents *[]Scrollpercentageeventtrigger `json:"scrollDepthEvents,omitempty"`
+
+	// TrackingSettings - Configuration settings for tracking behavior and filtering
+	TrackingSettings *interface{} `json:"trackingSettings,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -124,6 +127,8 @@ func (o Journeyeventssettings) MarshalJSON() ([]byte, error) {
 		InViewportEvents *[]Selectoreventtrigger `json:"inViewportEvents,omitempty"`
 		
 		ScrollDepthEvents *[]Scrollpercentageeventtrigger `json:"scrollDepthEvents,omitempty"`
+		
+		TrackingSettings *interface{} `json:"trackingSettings,omitempty"`
 		Alias
 	}{ 
 		Enabled: o.Enabled,
@@ -145,6 +150,8 @@ func (o Journeyeventssettings) MarshalJSON() ([]byte, error) {
 		InViewportEvents: o.InViewportEvents,
 		
 		ScrollDepthEvents: o.ScrollDepthEvents,
+		
+		TrackingSettings: o.TrackingSettings,
 		Alias:    (Alias)(o),
 	})
 }
@@ -201,6 +208,11 @@ func (o *Journeyeventssettings) UnmarshalJSON(b []byte) error {
 	if ScrollDepthEvents, ok := JourneyeventssettingsMap["scrollDepthEvents"].([]interface{}); ok {
 		ScrollDepthEventsString, _ := json.Marshal(ScrollDepthEvents)
 		json.Unmarshal(ScrollDepthEventsString, &o.ScrollDepthEvents)
+	}
+	
+	if TrackingSettings, ok := JourneyeventssettingsMap["trackingSettings"].(map[string]interface{}); ok {
+		TrackingSettingsString, _ := json.Marshal(TrackingSettings)
+		json.Unmarshal(TrackingSettingsString, &o.TrackingSettings)
 	}
 	
 

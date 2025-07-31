@@ -61,6 +61,9 @@ type Dialerrulesetconfigchangecondition struct {
 
 	// Predicates - A list of predicates defining the comparisons to use for this condition. Required for a dataActionCondition.
 	Predicates *[]Dialerrulesetconfigchangedataactionconditionpredicate `json:"predicates,omitempty"`
+
+	// GetAdditionalProperties
+	GetAdditionalProperties *map[string]interface{} `json:"getAdditionalProperties,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -159,6 +162,8 @@ func (o Dialerrulesetconfigchangecondition) MarshalJSON() ([]byte, error) {
 		ContactColumnToDataActionFieldMappings *[]Dialerrulesetconfigchangecontactcolumntodataactionfieldmapping `json:"contactColumnToDataActionFieldMappings,omitempty"`
 		
 		Predicates *[]Dialerrulesetconfigchangedataactionconditionpredicate `json:"predicates,omitempty"`
+		
+		GetAdditionalProperties *map[string]interface{} `json:"getAdditionalProperties,omitempty"`
 		Alias
 	}{ 
 		DataAction: o.DataAction,
@@ -194,6 +199,8 @@ func (o Dialerrulesetconfigchangecondition) MarshalJSON() ([]byte, error) {
 		ContactColumnToDataActionFieldMappings: o.ContactColumnToDataActionFieldMappings,
 		
 		Predicates: o.Predicates,
+		
+		GetAdditionalProperties: o.GetAdditionalProperties,
 		Alias:    (Alias)(o),
 	})
 }
@@ -276,6 +283,11 @@ func (o *Dialerrulesetconfigchangecondition) UnmarshalJSON(b []byte) error {
 	if Predicates, ok := DialerrulesetconfigchangeconditionMap["predicates"].([]interface{}); ok {
 		PredicatesString, _ := json.Marshal(Predicates)
 		json.Unmarshal(PredicatesString, &o.Predicates)
+	}
+	
+	if GetAdditionalProperties, ok := DialerrulesetconfigchangeconditionMap["getAdditionalProperties"].(map[string]interface{}); ok {
+		GetAdditionalPropertiesString, _ := json.Marshal(GetAdditionalProperties)
+		json.Unmarshal(GetAdditionalPropertiesString, &o.GetAdditionalProperties)
 	}
 	
 

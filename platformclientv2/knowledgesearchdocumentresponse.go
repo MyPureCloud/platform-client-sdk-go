@@ -73,7 +73,7 @@ type Knowledgesearchdocumentresponse struct {
 	Readonly *bool `json:"readonly,omitempty"`
 
 	// Variations - Variations of the document.
-	Variations *[]Documentvariationanswer `json:"variations,omitempty"`
+	Variations *[]Knowledgedocumentsearchvariation `json:"variations,omitempty"`
 
 	// Answer - The answer to the query.
 	Answer *string `json:"answer,omitempty"`
@@ -217,7 +217,7 @@ func (o Knowledgesearchdocumentresponse) MarshalJSON() ([]byte, error) {
 		
 		Readonly *bool `json:"readonly,omitempty"`
 		
-		Variations *[]Documentvariationanswer `json:"variations,omitempty"`
+		Variations *[]Knowledgedocumentsearchvariation `json:"variations,omitempty"`
 		
 		Answer *string `json:"answer,omitempty"`
 		

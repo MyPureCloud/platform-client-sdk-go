@@ -29,6 +29,12 @@ type Buagentscheduleshiftrequest struct {
 
 	// Schedule - The schedule to which this shift belongs
 	Schedule *Buschedulereference `json:"schedule,omitempty"`
+
+	// WorkPlanId - The ID of the work plan for which the work plan shift emanates from
+	WorkPlanId *Valuewrapperstring `json:"workPlanId,omitempty"`
+
+	// WorkPlanShiftId - The ID of the work plan shift that was used in schedule generation
+	WorkPlanShiftId *Valuewrapperstring `json:"workPlanShiftId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -113,6 +119,10 @@ func (o Buagentscheduleshiftrequest) MarshalJSON() ([]byte, error) {
 		ManuallyEdited *bool `json:"manuallyEdited,omitempty"`
 		
 		Schedule *Buschedulereference `json:"schedule,omitempty"`
+		
+		WorkPlanId *Valuewrapperstring `json:"workPlanId,omitempty"`
+		
+		WorkPlanShiftId *Valuewrapperstring `json:"workPlanShiftId,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -126,6 +136,10 @@ func (o Buagentscheduleshiftrequest) MarshalJSON() ([]byte, error) {
 		ManuallyEdited: o.ManuallyEdited,
 		
 		Schedule: o.Schedule,
+		
+		WorkPlanId: o.WorkPlanId,
+		
+		WorkPlanShiftId: o.WorkPlanShiftId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -163,6 +177,16 @@ func (o *Buagentscheduleshiftrequest) UnmarshalJSON(b []byte) error {
 	if Schedule, ok := BuagentscheduleshiftrequestMap["schedule"].(map[string]interface{}); ok {
 		ScheduleString, _ := json.Marshal(Schedule)
 		json.Unmarshal(ScheduleString, &o.Schedule)
+	}
+	
+	if WorkPlanId, ok := BuagentscheduleshiftrequestMap["workPlanId"].(map[string]interface{}); ok {
+		WorkPlanIdString, _ := json.Marshal(WorkPlanId)
+		json.Unmarshal(WorkPlanIdString, &o.WorkPlanId)
+	}
+	
+	if WorkPlanShiftId, ok := BuagentscheduleshiftrequestMap["workPlanShiftId"].(map[string]interface{}); ok {
+		WorkPlanShiftIdString, _ := json.Marshal(WorkPlanShiftId)
+		json.Unmarshal(WorkPlanShiftIdString, &o.WorkPlanShiftId)
 	}
 	
 

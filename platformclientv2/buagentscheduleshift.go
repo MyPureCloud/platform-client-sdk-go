@@ -29,6 +29,12 @@ type Buagentscheduleshift struct {
 
 	// Schedule - The schedule to which this shift belongs
 	Schedule *Buschedulereference `json:"schedule,omitempty"`
+
+	// WorkPlanId - The ID of the work plan for which the work plan shift emanates from
+	WorkPlanId *string `json:"workPlanId,omitempty"`
+
+	// WorkPlanShiftId - The ID of the work plan shift that was used in schedule generation
+	WorkPlanShiftId *string `json:"workPlanShiftId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -113,6 +119,10 @@ func (o Buagentscheduleshift) MarshalJSON() ([]byte, error) {
 		ManuallyEdited *bool `json:"manuallyEdited,omitempty"`
 		
 		Schedule *Buschedulereference `json:"schedule,omitempty"`
+		
+		WorkPlanId *string `json:"workPlanId,omitempty"`
+		
+		WorkPlanShiftId *string `json:"workPlanShiftId,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -126,6 +136,10 @@ func (o Buagentscheduleshift) MarshalJSON() ([]byte, error) {
 		ManuallyEdited: o.ManuallyEdited,
 		
 		Schedule: o.Schedule,
+		
+		WorkPlanId: o.WorkPlanId,
+		
+		WorkPlanShiftId: o.WorkPlanShiftId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -165,6 +179,14 @@ func (o *Buagentscheduleshift) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ScheduleString, &o.Schedule)
 	}
 	
+	if WorkPlanId, ok := BuagentscheduleshiftMap["workPlanId"].(string); ok {
+		o.WorkPlanId = &WorkPlanId
+	}
+    
+	if WorkPlanShiftId, ok := BuagentscheduleshiftMap["workPlanShiftId"].(string); ok {
+		o.WorkPlanShiftId = &WorkPlanShiftId
+	}
+    
 
 	return nil
 }

@@ -26,9 +26,6 @@ type Callbackmediasettings struct {
 	// ManualAnswerAlertToneSeconds - How long to play the alerting tone for a manual-answer interaction
 	ManualAnswerAlertToneSeconds *float64 `json:"manualAnswerAlertToneSeconds,omitempty"`
 
-	// SubTypeSettings - Map of media subtype to media subtype specific settings.
-	SubTypeSettings *map[string]Basemediasettings `json:"subTypeSettings,omitempty"`
-
 	// Mode - The mode callbacks will use on this queue.
 	Mode *string `json:"mode,omitempty"`
 
@@ -136,8 +133,6 @@ func (o Callbackmediasettings) MarshalJSON() ([]byte, error) {
 		
 		ManualAnswerAlertToneSeconds *float64 `json:"manualAnswerAlertToneSeconds,omitempty"`
 		
-		SubTypeSettings *map[string]Basemediasettings `json:"subTypeSettings,omitempty"`
-		
 		Mode *string `json:"mode,omitempty"`
 		
 		EnableAutoDialAndEnd *bool `json:"enableAutoDialAndEnd,omitempty"`
@@ -170,8 +165,6 @@ func (o Callbackmediasettings) MarshalJSON() ([]byte, error) {
 		AutoAnswerAlertToneSeconds: o.AutoAnswerAlertToneSeconds,
 		
 		ManualAnswerAlertToneSeconds: o.ManualAnswerAlertToneSeconds,
-		
-		SubTypeSettings: o.SubTypeSettings,
 		
 		Mode: o.Mode,
 		
@@ -227,11 +220,6 @@ func (o *Callbackmediasettings) UnmarshalJSON(b []byte) error {
 		o.ManualAnswerAlertToneSeconds = &ManualAnswerAlertToneSeconds
 	}
     
-	if SubTypeSettings, ok := CallbackmediasettingsMap["subTypeSettings"].(map[string]interface{}); ok {
-		SubTypeSettingsString, _ := json.Marshal(SubTypeSettings)
-		json.Unmarshal(SubTypeSettingsString, &o.SubTypeSettings)
-	}
-	
 	if Mode, ok := CallbackmediasettingsMap["mode"].(string); ok {
 		o.Mode = &Mode
 	}

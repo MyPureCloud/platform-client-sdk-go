@@ -66,6 +66,9 @@ type Recordingmessagingmessage struct {
 	// NotificationTemplate - Template notification content.
 	NotificationTemplate *Recordingnotificationtemplate `json:"notificationTemplate,omitempty"`
 
+	// DatePicker - DatePicker content object.
+	DatePicker *Datepicker `json:"datePicker,omitempty"`
+
 	// ContentType - Indicates the content type for this message
 	ContentType *string `json:"contentType,omitempty"`
 
@@ -183,6 +186,8 @@ func (o Recordingmessagingmessage) MarshalJSON() ([]byte, error) {
 		
 		NotificationTemplate *Recordingnotificationtemplate `json:"notificationTemplate,omitempty"`
 		
+		DatePicker *Datepicker `json:"datePicker,omitempty"`
+		
 		ContentType *string `json:"contentType,omitempty"`
 		
 		SocialVisibility *string `json:"socialVisibility,omitempty"`
@@ -225,6 +230,8 @@ func (o Recordingmessagingmessage) MarshalJSON() ([]byte, error) {
 		Cards: o.Cards,
 		
 		NotificationTemplate: o.NotificationTemplate,
+		
+		DatePicker: o.DatePicker,
 		
 		ContentType: o.ContentType,
 		
@@ -324,6 +331,11 @@ func (o *Recordingmessagingmessage) UnmarshalJSON(b []byte) error {
 	if NotificationTemplate, ok := RecordingmessagingmessageMap["notificationTemplate"].(map[string]interface{}); ok {
 		NotificationTemplateString, _ := json.Marshal(NotificationTemplate)
 		json.Unmarshal(NotificationTemplateString, &o.NotificationTemplate)
+	}
+	
+	if DatePicker, ok := RecordingmessagingmessageMap["datePicker"].(map[string]interface{}); ok {
+		DatePickerString, _ := json.Marshal(DatePicker)
+		json.Unmarshal(DatePickerString, &o.DatePicker)
 	}
 	
 	if ContentType, ok := RecordingmessagingmessageMap["contentType"].(string); ok {

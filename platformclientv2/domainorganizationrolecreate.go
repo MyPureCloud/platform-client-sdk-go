@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -37,6 +38,15 @@ type Domainorganizationrolecreate struct {
 
 	// RoleNeedsUpdate - Optional unless patch operation.
 	RoleNeedsUpdate *bool `json:"roleNeedsUpdate,omitempty"`
+
+	// BaseLicense
+	BaseLicense *string `json:"baseLicense,omitempty"`
+
+	// AddonLicenses
+	AddonLicenses *[]string `json:"addonLicenses,omitempty"`
+
+	// DateLicenseLastUpdated - The time that this role licenses were most recently updated. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateLicenseLastUpdated *time.Time `json:"dateLicenseLastUpdated,omitempty"`
 
 	// Base
 	Base *bool `json:"base,omitempty"`
@@ -77,7 +87,7 @@ func (o Domainorganizationrolecreate) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
+		dateTimeFields := []string{ "DateLicenseLastUpdated", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -110,6 +120,14 @@ func (o Domainorganizationrolecreate) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Domainorganizationrolecreate
 	
+	DateLicenseLastUpdated := new(string)
+	if o.DateLicenseLastUpdated != nil {
+		
+		*DateLicenseLastUpdated = timeutil.Strftime(o.DateLicenseLastUpdated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateLicenseLastUpdated = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -128,6 +146,12 @@ func (o Domainorganizationrolecreate) MarshalJSON() ([]byte, error) {
 		UserCount *int `json:"userCount,omitempty"`
 		
 		RoleNeedsUpdate *bool `json:"roleNeedsUpdate,omitempty"`
+		
+		BaseLicense *string `json:"baseLicense,omitempty"`
+		
+		AddonLicenses *[]string `json:"addonLicenses,omitempty"`
+		
+		DateLicenseLastUpdated *string `json:"dateLicenseLastUpdated,omitempty"`
 		
 		Base *bool `json:"base,omitempty"`
 		
@@ -153,6 +177,12 @@ func (o Domainorganizationrolecreate) MarshalJSON() ([]byte, error) {
 		UserCount: o.UserCount,
 		
 		RoleNeedsUpdate: o.RoleNeedsUpdate,
+		
+		BaseLicense: o.BaseLicense,
+		
+		AddonLicenses: o.AddonLicenses,
+		
+		DateLicenseLastUpdated: DateLicenseLastUpdated,
 		
 		Base: o.Base,
 		
@@ -210,6 +240,20 @@ func (o *Domainorganizationrolecreate) UnmarshalJSON(b []byte) error {
 		o.RoleNeedsUpdate = &RoleNeedsUpdate
 	}
     
+	if BaseLicense, ok := DomainorganizationrolecreateMap["baseLicense"].(string); ok {
+		o.BaseLicense = &BaseLicense
+	}
+    
+	if AddonLicenses, ok := DomainorganizationrolecreateMap["addonLicenses"].([]interface{}); ok {
+		AddonLicensesString, _ := json.Marshal(AddonLicenses)
+		json.Unmarshal(AddonLicensesString, &o.AddonLicenses)
+	}
+	
+	if dateLicenseLastUpdatedString, ok := DomainorganizationrolecreateMap["dateLicenseLastUpdated"].(string); ok {
+		DateLicenseLastUpdated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateLicenseLastUpdatedString)
+		o.DateLicenseLastUpdated = &DateLicenseLastUpdated
+	}
+	
 	if Base, ok := DomainorganizationrolecreateMap["base"].(bool); ok {
 		o.Base = &Base
 	}

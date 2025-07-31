@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -13,6 +14,15 @@ type Journeywebeventsnotificationsegmentassignmentmessage struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// Segment
 	Segment *Journeywebeventsnotificationsegment `json:"segment,omitempty"`
+
+	// AssignmentState
+	AssignmentState *string `json:"assignmentState,omitempty"`
+
+	// DateAssigned
+	DateAssigned *time.Time `json:"dateAssigned,omitempty"`
+
+	// DateForUnassignment
+	DateForUnassignment *time.Time `json:"dateForUnassignment,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -44,7 +54,7 @@ func (o Journeywebeventsnotificationsegmentassignmentmessage) MarshalJSON() ([]b
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
+		dateTimeFields := []string{ "DateAssigned","DateForUnassignment", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -77,11 +87,39 @@ func (o Journeywebeventsnotificationsegmentassignmentmessage) MarshalJSON() ([]b
 	_  = timeutil.Timedelta{}
 	type Alias Journeywebeventsnotificationsegmentassignmentmessage
 	
+	DateAssigned := new(string)
+	if o.DateAssigned != nil {
+		
+		*DateAssigned = timeutil.Strftime(o.DateAssigned, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateAssigned = nil
+	}
+	
+	DateForUnassignment := new(string)
+	if o.DateForUnassignment != nil {
+		
+		*DateForUnassignment = timeutil.Strftime(o.DateForUnassignment, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateForUnassignment = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Segment *Journeywebeventsnotificationsegment `json:"segment,omitempty"`
+		
+		AssignmentState *string `json:"assignmentState,omitempty"`
+		
+		DateAssigned *string `json:"dateAssigned,omitempty"`
+		
+		DateForUnassignment *string `json:"dateForUnassignment,omitempty"`
 		Alias
 	}{ 
 		Segment: o.Segment,
+		
+		AssignmentState: o.AssignmentState,
+		
+		DateAssigned: DateAssigned,
+		
+		DateForUnassignment: DateForUnassignment,
 		Alias:    (Alias)(o),
 	})
 }
@@ -96,6 +134,20 @@ func (o *Journeywebeventsnotificationsegmentassignmentmessage) UnmarshalJSON(b [
 	if Segment, ok := JourneywebeventsnotificationsegmentassignmentmessageMap["segment"].(map[string]interface{}); ok {
 		SegmentString, _ := json.Marshal(Segment)
 		json.Unmarshal(SegmentString, &o.Segment)
+	}
+	
+	if AssignmentState, ok := JourneywebeventsnotificationsegmentassignmentmessageMap["assignmentState"].(string); ok {
+		o.AssignmentState = &AssignmentState
+	}
+    
+	if dateAssignedString, ok := JourneywebeventsnotificationsegmentassignmentmessageMap["dateAssigned"].(string); ok {
+		DateAssigned, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateAssignedString)
+		o.DateAssigned = &DateAssigned
+	}
+	
+	if dateForUnassignmentString, ok := JourneywebeventsnotificationsegmentassignmentmessageMap["dateForUnassignment"].(string); ok {
+		DateForUnassignment, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateForUnassignmentString)
+		o.DateForUnassignment = &DateForUnassignment
 	}
 	
 
