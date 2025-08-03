@@ -19,6 +19,9 @@ type Createstaffinggrouprequest struct {
 
 	// ManagementUnitId - The ID of the management unit to which the staffing group users belong. If undefined the staffing group can include users from the entire business unit
 	ManagementUnitId *string `json:"managementUnitId,omitempty"`
+
+	// PlanningGroupIds - The set of planning group IDs to associate with the staffing group
+	PlanningGroupIds *[]string `json:"planningGroupIds,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +92,8 @@ func (o Createstaffinggrouprequest) MarshalJSON() ([]byte, error) {
 		UserIds *[]string `json:"userIds,omitempty"`
 		
 		ManagementUnitId *string `json:"managementUnitId,omitempty"`
+		
+		PlanningGroupIds *[]string `json:"planningGroupIds,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -96,6 +101,8 @@ func (o Createstaffinggrouprequest) MarshalJSON() ([]byte, error) {
 		UserIds: o.UserIds,
 		
 		ManagementUnitId: o.ManagementUnitId,
+		
+		PlanningGroupIds: o.PlanningGroupIds,
 		Alias:    (Alias)(o),
 	})
 }
@@ -120,6 +127,11 @@ func (o *Createstaffinggrouprequest) UnmarshalJSON(b []byte) error {
 		o.ManagementUnitId = &ManagementUnitId
 	}
     
+	if PlanningGroupIds, ok := CreatestaffinggrouprequestMap["planningGroupIds"].([]interface{}); ok {
+		PlanningGroupIdsString, _ := json.Marshal(PlanningGroupIds)
+		json.Unmarshal(PlanningGroupIdsString, &o.PlanningGroupIds)
+	}
+	
 
 	return nil
 }

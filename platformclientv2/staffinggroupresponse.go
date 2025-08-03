@@ -23,6 +23,9 @@ type Staffinggroupresponse struct {
 	// ManagementUnit - The ID of the management unit to which the staffing group users belong. If undefined the staffing group can include users from the entire business unit
 	ManagementUnit *Managementunitreference `json:"managementUnit,omitempty"`
 
+	// PlanningGroups - The list of planning groups that are associated with the staffing group
+	PlanningGroups *[]Planninggroupreference `json:"planningGroups,omitempty"`
+
 	// Metadata - Version metadata for the staffing group
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 
@@ -101,6 +104,8 @@ func (o Staffinggroupresponse) MarshalJSON() ([]byte, error) {
 		
 		ManagementUnit *Managementunitreference `json:"managementUnit,omitempty"`
 		
+		PlanningGroups *[]Planninggroupreference `json:"planningGroups,omitempty"`
+		
 		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -113,6 +118,8 @@ func (o Staffinggroupresponse) MarshalJSON() ([]byte, error) {
 		Users: o.Users,
 		
 		ManagementUnit: o.ManagementUnit,
+		
+		PlanningGroups: o.PlanningGroups,
 		
 		Metadata: o.Metadata,
 		
@@ -144,6 +151,11 @@ func (o *Staffinggroupresponse) UnmarshalJSON(b []byte) error {
 	if ManagementUnit, ok := StaffinggroupresponseMap["managementUnit"].(map[string]interface{}); ok {
 		ManagementUnitString, _ := json.Marshal(ManagementUnit)
 		json.Unmarshal(ManagementUnitString, &o.ManagementUnit)
+	}
+	
+	if PlanningGroups, ok := StaffinggroupresponseMap["planningGroups"].([]interface{}); ok {
+		PlanningGroupsString, _ := json.Marshal(PlanningGroups)
+		json.Unmarshal(PlanningGroupsString, &o.PlanningGroups)
 	}
 	
 	if Metadata, ok := StaffinggroupresponseMap["metadata"].(map[string]interface{}); ok {

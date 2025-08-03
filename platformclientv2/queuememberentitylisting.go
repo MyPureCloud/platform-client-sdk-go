@@ -20,11 +20,11 @@ type Queuememberentitylisting struct {
 	// PageSize
 	PageSize *int `json:"pageSize,omitempty"`
 
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
-
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
+
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
 
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
@@ -102,9 +102,9 @@ func (o Queuememberentitylisting) MarshalJSON() ([]byte, error) {
 		
 		PageSize *int `json:"pageSize,omitempty"`
 		
-		PreviousUri *string `json:"previousUri,omitempty"`
-		
 		NextUri *string `json:"nextUri,omitempty"`
+		
+		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
@@ -117,9 +117,9 @@ func (o Queuememberentitylisting) MarshalJSON() ([]byte, error) {
 		
 		PageSize: o.PageSize,
 		
-		PreviousUri: o.PreviousUri,
-		
 		NextUri: o.NextUri,
+		
+		PreviousUri: o.PreviousUri,
 		
 		FirstUri: o.FirstUri,
 		
@@ -150,12 +150,12 @@ func (o *Queuememberentitylisting) UnmarshalJSON(b []byte) error {
 		o.PageSize = &PageSizeInt
 	}
 	
-	if PreviousUri, ok := QueuememberentitylistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
-	}
-    
 	if NextUri, ok := QueuememberentitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
+	}
+    
+	if PreviousUri, ok := QueuememberentitylistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
 	}
     
 	if FirstUri, ok := QueuememberentitylistingMap["firstUri"].(string); ok {

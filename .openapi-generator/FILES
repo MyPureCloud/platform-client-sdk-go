@@ -24,8 +24,29 @@ docs/DataPrivacyApi.json
 docs/DeleteAlertingAlert-example.txt
 docs/DeleteAlertingAlertsAll-example.txt
 docs/DeleteAlertingRule-example.txt
+docs/DeleteAnalyticsActionsAggregatesJob-example.txt
+docs/DeleteAnalyticsAgentcopilotsAggregatesJob-example.txt
+docs/DeleteAnalyticsBotsAggregatesJob-example.txt
+docs/DeleteAnalyticsConversationsAggregatesJob-example.txt
+docs/DeleteAnalyticsConversationsAggregatesJob-example.txt
 docs/DeleteAnalyticsConversationsDetailsJob-example.txt
 docs/DeleteAnalyticsConversationsDetailsJob-example.txt
+docs/DeleteAnalyticsEvaluationsAggregatesJob-example.txt
+docs/DeleteAnalyticsEvaluationsAggregatesJob-example.txt
+docs/DeleteAnalyticsFlowexecutionsAggregatesJob-example.txt
+docs/DeleteAnalyticsFlowsAggregatesJob-example.txt
+docs/DeleteAnalyticsFlowsAggregatesJob-example.txt
+docs/DeleteAnalyticsJourneysAggregatesJob-example.txt
+docs/DeleteAnalyticsJourneysAggregatesJob-example.txt
+docs/DeleteAnalyticsKnowledgeAggregatesJob-example.txt
+docs/DeleteAnalyticsResolutionsAggregatesJob-example.txt
+docs/DeleteAnalyticsSummariesAggregatesJob-example.txt
+docs/DeleteAnalyticsSurveysAggregatesJob-example.txt
+docs/DeleteAnalyticsSurveysAggregatesJob-example.txt
+docs/DeleteAnalyticsTaskmanagementAggregatesJob-example.txt
+docs/DeleteAnalyticsTranscriptsAggregatesJob-example.txt
+docs/DeleteAnalyticsUsersAggregatesJob-example.txt
+docs/DeleteAnalyticsUsersAggregatesJob-example.txt
 docs/DeleteAnalyticsUsersDetailsJob-example.txt
 docs/DeleteAnalyticsUsersDetailsJob-example.txt
 docs/DeleteArchitectEmergencygroup-example.txt
@@ -207,6 +228,7 @@ docs/DeleteOutboundSchedulesCampaign-example.txt
 docs/DeleteOutboundSchedulesEmailcampaign-example.txt
 docs/DeleteOutboundSchedulesMessagingcampaign-example.txt
 docs/DeleteOutboundSchedulesSequence-example.txt
+docs/DeleteOutboundSchedulesWhatsappcampaign-example.txt
 docs/DeleteOutboundSequence-example.txt
 docs/DeletePresenceDefinition0-example.txt
 docs/DeletePresenceSource-example.txt
@@ -1184,6 +1206,8 @@ docs/GetOutboundSchedulesMessagingcampaign-example.txt
 docs/GetOutboundSchedulesMessagingcampaigns-example.txt
 docs/GetOutboundSchedulesSequence-example.txt
 docs/GetOutboundSchedulesSequences-example.txt
+docs/GetOutboundSchedulesWhatsappcampaign-example.txt
+docs/GetOutboundSchedulesWhatsappcampaigns-example.txt
 docs/GetOutboundSequence-example.txt
 docs/GetOutboundSequences-example.txt
 docs/GetOutboundSettings-example.txt
@@ -1783,7 +1807,6 @@ docs/PatchAuthorizationRole-example.txt
 docs/PatchAuthorizationSettings-example.txt
 docs/PatchBusinessrulesDecisiontable-example.txt
 docs/PatchBusinessrulesDecisiontableVersion-example.txt
-docs/PatchBusinessrulesDecisiontableVersionRow-example.txt
 docs/PatchChatsRoom-example.txt
 docs/PatchChatsRoomMessage-example.txt
 docs/PatchChatsSettings-example.txt
@@ -2713,6 +2736,7 @@ docs/PostWorkforcemanagementBusinessunitIntraday-example.txt
 docs/PostWorkforcemanagementBusinessunitPlanninggroups-example.txt
 docs/PostWorkforcemanagementBusinessunitServicegoaltemplates-example.txt
 docs/PostWorkforcemanagementBusinessunitStaffinggroups-example.txt
+docs/PostWorkforcemanagementBusinessunitStaffinggroupsPlanninggroupsQuery-example.txt
 docs/PostWorkforcemanagementBusinessunitStaffinggroupsQuery-example.txt
 docs/PostWorkforcemanagementBusinessunitTimeofflimits-example.txt
 docs/PostWorkforcemanagementBusinessunitTimeofflimitsValuesQuery-example.txt
@@ -2929,6 +2953,7 @@ docs/PutOutboundSchedulesCampaign-example.txt
 docs/PutOutboundSchedulesEmailcampaign-example.txt
 docs/PutOutboundSchedulesMessagingcampaign-example.txt
 docs/PutOutboundSchedulesSequence-example.txt
+docs/PutOutboundSchedulesWhatsappcampaign-example.txt
 docs/PutOutboundSequence-example.txt
 docs/PutOutboundWrapupcodemappings-example.txt
 docs/PutPresenceDefinition0-example.txt
@@ -5587,6 +5612,7 @@ platformclientv2/integrationtypeentitylisting.go
 platformclientv2/intent.go
 platformclientv2/intentdefinition.go
 platformclientv2/intentfeedback.go
+platformclientv2/intentreference.go
 platformclientv2/interactiveapplication.go
 platformclientv2/internalmessage.go
 platformclientv2/internalmessageconversation.go
@@ -6290,6 +6316,7 @@ platformclientv2/nludomainlisting.go
 platformclientv2/nludomainversion.go
 platformclientv2/nludomainversionlisting.go
 platformclientv2/nludomainversionqualityreport.go
+platformclientv2/nludomainversionreference.go
 platformclientv2/nludomainversiontrainingresponse.go
 platformclientv2/nlufeedbacklisting.go
 platformclientv2/nlufeedbackrequest.go
@@ -6631,6 +6658,8 @@ platformclientv2/planninggroupmodel.go
 platformclientv2/planninggroupoutputs.go
 platformclientv2/planninggroupreference.go
 platformclientv2/planninggrouprequirementoutput.go
+platformclientv2/planninggrouptostaffinggroupslisting.go
+platformclientv2/planninggrouptostaffinggroupsresponse.go
 platformclientv2/planningperiodsettings.go
 platformclientv2/planningperiodshiftconstraints.go
 platformclientv2/policy.go
@@ -6740,6 +6769,7 @@ platformclientv2/querycapacityplanstaffinggroupmetricchangehistory.go
 platformclientv2/querycriteria.go
 platformclientv2/querydivision.go
 platformclientv2/queryfacetinfo.go
+platformclientv2/queryplanninggrouptostaffinggroupsrequest.go
 platformclientv2/queryrequest.go
 platformclientv2/queryrequestclause.go
 platformclientv2/queryrequestfilter.go
@@ -7930,7 +7960,6 @@ platformclientv2/updatecoachingappointmentrequest.go
 platformclientv2/updatecontactcolumnactionsettings.go
 platformclientv2/updatedecisiontablecolumnsrequest.go
 platformclientv2/updatedecisiontablerequest.go
-platformclientv2/updatedecisiontablerowrequest.go
 platformclientv2/updatedecisiontableversionrequest.go
 platformclientv2/updatedraftinput.go
 platformclientv2/updatedsettingsresponse.go
@@ -8498,6 +8527,8 @@ platformclientv2/whatsappavailablephonenumberdetails.go
 platformclientv2/whatsappavailablephonenumberdetailslisting.go
 platformclientv2/whatsappcallingconfigurationrequest.go
 platformclientv2/whatsappcallingconfigurationresponse.go
+platformclientv2/whatsappcampaignschedule.go
+platformclientv2/whatsappcampaignscheduleentitylisting.go
 platformclientv2/whatsappcolumn.go
 platformclientv2/whatsappconfig.go
 platformclientv2/whatsappdefinition.go

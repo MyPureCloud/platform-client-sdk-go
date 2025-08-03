@@ -54,6 +54,9 @@ type Userqueue struct {
 	// ConditionalGroupRouting - The Conditional Group Routing settings for the queue.
 	ConditionalGroupRouting *Conditionalgrouprouting `json:"conditionalGroupRouting,omitempty"`
 
+	// ConditionalGroupActivation - The Conditional Group Activation settings for the queue.
+	ConditionalGroupActivation *Conditionalgroupactivation `json:"conditionalGroupActivation,omitempty"`
+
 	// Bullseye - The bullseye settings for the queue.
 	Bullseye *Bullseye `json:"bullseye,omitempty"`
 
@@ -240,6 +243,8 @@ func (o Userqueue) MarshalJSON() ([]byte, error) {
 		
 		ConditionalGroupRouting *Conditionalgrouprouting `json:"conditionalGroupRouting,omitempty"`
 		
+		ConditionalGroupActivation *Conditionalgroupactivation `json:"conditionalGroupActivation,omitempty"`
+		
 		Bullseye *Bullseye `json:"bullseye,omitempty"`
 		
 		ScoringMethod *string `json:"scoringMethod,omitempty"`
@@ -320,6 +325,8 @@ func (o Userqueue) MarshalJSON() ([]byte, error) {
 		RoutingRules: o.RoutingRules,
 		
 		ConditionalGroupRouting: o.ConditionalGroupRouting,
+		
+		ConditionalGroupActivation: o.ConditionalGroupActivation,
 		
 		Bullseye: o.Bullseye,
 		
@@ -446,6 +453,11 @@ func (o *Userqueue) UnmarshalJSON(b []byte) error {
 	if ConditionalGroupRouting, ok := UserqueueMap["conditionalGroupRouting"].(map[string]interface{}); ok {
 		ConditionalGroupRoutingString, _ := json.Marshal(ConditionalGroupRouting)
 		json.Unmarshal(ConditionalGroupRoutingString, &o.ConditionalGroupRouting)
+	}
+	
+	if ConditionalGroupActivation, ok := UserqueueMap["conditionalGroupActivation"].(map[string]interface{}); ok {
+		ConditionalGroupActivationString, _ := json.Marshal(ConditionalGroupActivation)
+		json.Unmarshal(ConditionalGroupActivationString, &o.ConditionalGroupActivation)
 	}
 	
 	if Bullseye, ok := UserqueueMap["bullseye"].(map[string]interface{}); ok {

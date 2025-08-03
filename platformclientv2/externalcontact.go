@@ -117,7 +117,7 @@ type Externalcontact struct {
 	// MergedTo - The output contact from the merge operation.
 	MergedTo *Contactaddressableentityref `json:"mergedTo,omitempty"`
 
-	// MergeOperation - Information about the merge history of this contact. If null, this contact is not a part of any merge.
+	// MergeOperation - (Deprecated: use mergedTo and mergedFrom instead) Information about the merge history of this contact. If null, this contact is not a part of any merge.
 	MergeOperation *Mergeoperation `json:"mergeOperation,omitempty"`
 
 	// SelfUri - The URI for this object

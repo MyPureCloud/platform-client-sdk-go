@@ -17,6 +17,9 @@ type Updatestaffinggrouprequest struct {
 	// UserIds - The set of user Ids to associate with the staffing group
 	UserIds *Setwrapperstring `json:"userIds,omitempty"`
 
+	// PlanningGroupIds - The set of planning group Ids to associate with the staffing group
+	PlanningGroupIds *Setwrapperstring `json:"planningGroupIds,omitempty"`
+
 	// Metadata - Version metadata for the staffing group
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 }
@@ -88,12 +91,16 @@ func (o Updatestaffinggrouprequest) MarshalJSON() ([]byte, error) {
 		
 		UserIds *Setwrapperstring `json:"userIds,omitempty"`
 		
+		PlanningGroupIds *Setwrapperstring `json:"planningGroupIds,omitempty"`
+		
 		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
 		
 		UserIds: o.UserIds,
+		
+		PlanningGroupIds: o.PlanningGroupIds,
 		
 		Metadata: o.Metadata,
 		Alias:    (Alias)(o),
@@ -114,6 +121,11 @@ func (o *Updatestaffinggrouprequest) UnmarshalJSON(b []byte) error {
 	if UserIds, ok := UpdatestaffinggrouprequestMap["userIds"].(map[string]interface{}); ok {
 		UserIdsString, _ := json.Marshal(UserIds)
 		json.Unmarshal(UserIdsString, &o.UserIds)
+	}
+	
+	if PlanningGroupIds, ok := UpdatestaffinggrouprequestMap["planningGroupIds"].(map[string]interface{}); ok {
+		PlanningGroupIdsString, _ := json.Marshal(PlanningGroupIds)
+		json.Unmarshal(PlanningGroupIdsString, &o.PlanningGroupIds)
 	}
 	
 	if Metadata, ok := UpdatestaffinggrouprequestMap["metadata"].(map[string]interface{}); ok {

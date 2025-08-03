@@ -33,7 +33,7 @@ func NewWidgetsApiWithConfig(config *Configuration) *WidgetsApi {
 //
 // Delete a Widget deployment
 //
-// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-removal-of-acd-web-chat-version-2/. 
+// This endpoint is deprecated. Please see the article https://help.genesys.cloud/articles/deprecation-removal-of-acd-web-chat-version-2/. 
 //
 // Deprecated: DeleteWidgetsDeployment is deprecated
 func (a WidgetsApi) DeleteWidgetsDeployment(deploymentId string) (*APIResponse, error) {
@@ -112,7 +112,7 @@ func (a WidgetsApi) DeleteWidgetsDeployment(deploymentId string) (*APIResponse, 
 //
 // Get a Widget deployment
 //
-// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-removal-of-acd-web-chat-version-2/. 
+// This endpoint is deprecated. Please see the article https://help.genesys.cloud/articles/deprecation-removal-of-acd-web-chat-version-2/. 
 //
 // Deprecated: GetWidgetsDeployment is deprecated
 func (a WidgetsApi) GetWidgetsDeployment(deploymentId string) (*Widgetdeployment, *APIResponse, error) {
@@ -198,7 +198,7 @@ func (a WidgetsApi) GetWidgetsDeployment(deploymentId string) (*Widgetdeployment
 //
 // List Widget deployments
 //
-// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-removal-of-acd-web-chat-version-2/. 
+// This endpoint is deprecated. Please see the article https://help.genesys.cloud/articles/deprecation-removal-of-acd-web-chat-version-2/. 
 //
 // Deprecated: GetWidgetsDeployments is deprecated
 func (a WidgetsApi) GetWidgetsDeployments() (*Widgetdeploymententitylisting, *APIResponse, error) {
@@ -278,7 +278,7 @@ func (a WidgetsApi) GetWidgetsDeployments() (*Widgetdeploymententitylisting, *AP
 //
 // Create Widget deployment
 //
-// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-removal-of-acd-web-chat-version-2/. 
+// This endpoint is deprecated. Please see the article https://help.genesys.cloud/articles/deprecation-removal-of-acd-web-chat-version-2/. 
 //
 // Deprecated: PostWidgetsDeployments is deprecated
 func (a WidgetsApi) PostWidgetsDeployments(body Widgetdeployment) (*Widgetdeployment, *APIResponse, error) {
@@ -366,7 +366,7 @@ func (a WidgetsApi) PostWidgetsDeployments(body Widgetdeployment) (*Widgetdeploy
 //
 // Update a Widget deployment
 //
-// This endpoint is deprecated. Please see the article https://help.mypurecloud.com/articles/deprecation-removal-of-acd-web-chat-version-2/. 
+// This endpoint is deprecated. Please see the article https://help.genesys.cloud/articles/deprecation-removal-of-acd-web-chat-version-2/. 
 //
 // Deprecated: PutWidgetsDeployment is deprecated
 func (a WidgetsApi) PutWidgetsDeployment(deploymentId string, body Widgetdeployment) (*Widgetdeployment, *APIResponse, error) {

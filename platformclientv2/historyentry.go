@@ -35,6 +35,9 @@ type Historyentry struct {
 
 	// VirtualAgentEnabled
 	VirtualAgentEnabled *bool `json:"virtualAgentEnabled,omitempty"`
+
+	// AgenticVirtualAgentEnabled
+	AgenticVirtualAgentEnabled *bool `json:"agenticVirtualAgentEnabled,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -123,6 +126,8 @@ func (o Historyentry) MarshalJSON() ([]byte, error) {
 		Secure *bool `json:"secure,omitempty"`
 		
 		VirtualAgentEnabled *bool `json:"virtualAgentEnabled,omitempty"`
+		
+		AgenticVirtualAgentEnabled *bool `json:"agenticVirtualAgentEnabled,omitempty"`
 		Alias
 	}{ 
 		Action: o.Action,
@@ -140,6 +145,8 @@ func (o Historyentry) MarshalJSON() ([]byte, error) {
 		Secure: o.Secure,
 		
 		VirtualAgentEnabled: o.VirtualAgentEnabled,
+		
+		AgenticVirtualAgentEnabled: o.AgenticVirtualAgentEnabled,
 		Alias:    (Alias)(o),
 	})
 }
@@ -184,6 +191,10 @@ func (o *Historyentry) UnmarshalJSON(b []byte) error {
     
 	if VirtualAgentEnabled, ok := HistoryentryMap["virtualAgentEnabled"].(bool); ok {
 		o.VirtualAgentEnabled = &VirtualAgentEnabled
+	}
+    
+	if AgenticVirtualAgentEnabled, ok := HistoryentryMap["agenticVirtualAgentEnabled"].(bool); ok {
+		o.AgenticVirtualAgentEnabled = &AgenticVirtualAgentEnabled
 	}
     
 

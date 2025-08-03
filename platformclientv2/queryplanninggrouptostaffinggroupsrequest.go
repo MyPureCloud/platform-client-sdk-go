@@ -7,19 +7,19 @@ import (
 	"strings"
 )
 
-// Updatedecisiontablerowrequest
-type Updatedecisiontablerowrequest struct { 
+// Queryplanninggrouptostaffinggroupsrequest
+type Queryplanninggrouptostaffinggroupsrequest struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Inputs - The updated input values of the row. The key for this map is the column ID the row value relates. Column IDs are available from the decision table entity
-	Inputs *map[string]Decisiontablerowparametervalue `json:"inputs,omitempty"`
+	// PlanningGroupIds - The list of planning group IDs to request capacity group associations
+	PlanningGroupIds *[]string `json:"planningGroupIds,omitempty"`
 
-	// Outputs - The updated output values of the row. The key for this map is the column ID the row value relates. Column IDs are available from the decision table entity
-	Outputs *map[string]Decisiontablerowparametervalue `json:"outputs,omitempty"`
+	// StaffingGroupIds - The list of staffing group IDs to request capacity group associations
+	StaffingGroupIds *[]string `json:"staffingGroupIds,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Updatedecisiontablerowrequest) SetField(field string, fieldValue interface{}) {
+func (o *Queryplanninggrouptostaffinggroupsrequest) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -40,7 +40,7 @@ func (o *Updatedecisiontablerowrequest) SetField(field string, fieldValue interf
 	o.SetFieldNames[field] = true
 }
 
-func (o Updatedecisiontablerowrequest) MarshalJSON() ([]byte, error) {
+func (o Queryplanninggrouptostaffinggroupsrequest) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -78,36 +78,36 @@ func (o Updatedecisiontablerowrequest) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Updatedecisiontablerowrequest
+	type Alias Queryplanninggrouptostaffinggroupsrequest
 	
 	return json.Marshal(&struct { 
-		Inputs *map[string]Decisiontablerowparametervalue `json:"inputs,omitempty"`
+		PlanningGroupIds *[]string `json:"planningGroupIds,omitempty"`
 		
-		Outputs *map[string]Decisiontablerowparametervalue `json:"outputs,omitempty"`
+		StaffingGroupIds *[]string `json:"staffingGroupIds,omitempty"`
 		Alias
 	}{ 
-		Inputs: o.Inputs,
+		PlanningGroupIds: o.PlanningGroupIds,
 		
-		Outputs: o.Outputs,
+		StaffingGroupIds: o.StaffingGroupIds,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Updatedecisiontablerowrequest) UnmarshalJSON(b []byte) error {
-	var UpdatedecisiontablerowrequestMap map[string]interface{}
-	err := json.Unmarshal(b, &UpdatedecisiontablerowrequestMap)
+func (o *Queryplanninggrouptostaffinggroupsrequest) UnmarshalJSON(b []byte) error {
+	var QueryplanninggrouptostaffinggroupsrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &QueryplanninggrouptostaffinggroupsrequestMap)
 	if err != nil {
 		return err
 	}
 	
-	if Inputs, ok := UpdatedecisiontablerowrequestMap["inputs"].(map[string]interface{}); ok {
-		InputsString, _ := json.Marshal(Inputs)
-		json.Unmarshal(InputsString, &o.Inputs)
+	if PlanningGroupIds, ok := QueryplanninggrouptostaffinggroupsrequestMap["planningGroupIds"].([]interface{}); ok {
+		PlanningGroupIdsString, _ := json.Marshal(PlanningGroupIds)
+		json.Unmarshal(PlanningGroupIdsString, &o.PlanningGroupIds)
 	}
 	
-	if Outputs, ok := UpdatedecisiontablerowrequestMap["outputs"].(map[string]interface{}); ok {
-		OutputsString, _ := json.Marshal(Outputs)
-		json.Unmarshal(OutputsString, &o.Outputs)
+	if StaffingGroupIds, ok := QueryplanninggrouptostaffinggroupsrequestMap["staffingGroupIds"].([]interface{}); ok {
+		StaffingGroupIdsString, _ := json.Marshal(StaffingGroupIds)
+		json.Unmarshal(StaffingGroupIdsString, &o.StaffingGroupIds)
 	}
 	
 
@@ -115,7 +115,7 @@ func (o *Updatedecisiontablerowrequest) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Updatedecisiontablerowrequest) String() string {
+func (o *Queryplanninggrouptostaffinggroupsrequest) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

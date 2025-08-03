@@ -15,10 +15,10 @@ type Literal struct {
 	// VarString - A string value
 	VarString *string `json:"string,omitempty"`
 
-	// Integer - An integer value
+	// Integer - A positive or negative whole number, including zero
 	Integer *int `json:"integer,omitempty"`
 
-	// Number - A decimal value
+	// Number - A positive or negative decimal number, including zero
 	Number *float64 `json:"number,omitempty"`
 
 	// Date - A date value, must be in the format of yyyy-MM-dd, e.g. 2024-09-23. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd

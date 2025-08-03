@@ -726,7 +726,7 @@ func (a BusinessRulesApi) GetBusinessrulesDecisiontableVersionRows(tableId strin
 // Get a list of decision table versions
 //
 // Preview: GetBusinessrulesDecisiontableVersions is a preview method and is subject to both breaking and non-breaking changes at any time without notice
-func (a BusinessRulesApi) GetBusinessrulesDecisiontableVersions(tableId string, after string, pageSize string, divisionIds []string) (*Decisiontableversionlisting, *APIResponse, error) {
+func (a BusinessRulesApi) GetBusinessrulesDecisiontableVersions(tableId string, after string, pageSize string) (*Decisiontableversionlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/businessrules/decisiontables/{tableId}/versions"
@@ -762,8 +762,6 @@ func (a BusinessRulesApi) GetBusinessrulesDecisiontableVersions(tableId string, 
 	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
 	
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
-	
-	queryParams["divisionIds"] = a.Configuration.APIClient.ParameterToString(divisionIds, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -816,7 +814,7 @@ func (a BusinessRulesApi) GetBusinessrulesDecisiontableVersions(tableId string, 
 // Get a list of decision tables.
 //
 // Preview: GetBusinessrulesDecisiontables is a preview method and is subject to both breaking and non-breaking changes at any time without notice
-func (a BusinessRulesApi) GetBusinessrulesDecisiontables(after string, pageSize string, divisionIds []string) (*Decisiontablelisting, *APIResponse, error) {
+func (a BusinessRulesApi) GetBusinessrulesDecisiontables(after string, pageSize string, divisionIds []string, name string) (*Decisiontablelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/businessrules/decisiontables"
@@ -848,6 +846,8 @@ func (a BusinessRulesApi) GetBusinessrulesDecisiontables(after string, pageSize 
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 	queryParams["divisionIds"] = a.Configuration.APIClient.ParameterToString(divisionIds, "multi")
+	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -1493,112 +1493,6 @@ func (a BusinessRulesApi) PatchBusinessrulesDecisiontableVersion(tableId string,
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Decisiontableversion" == "string" {
-			copy(response.RawBody, &successPayload)
-		} else {
-			err = json.Unmarshal(response.RawBody, &successPayload)
-		}
-	}
-	return successPayload, response, err
-}
-
-// PatchBusinessrulesDecisiontableVersionRow invokes PATCH /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}/rows/{rowId}
-//
-// Partially update a decision table row. Will be deprecated, we should use PUT request.
-//
-// Deprecated: PatchBusinessrulesDecisiontableVersionRow is deprecated
-//
-// Preview: PatchBusinessrulesDecisiontableVersionRow is a preview method and is subject to both breaking and non-breaking changes at any time without notice
-func (a BusinessRulesApi) PatchBusinessrulesDecisiontableVersionRow(tableId string, tableVersion int, rowId string, body Updatedecisiontablerowrequest) (*Decisiontablerow, *APIResponse, error) {
-	var httpMethod = "PATCH"
-	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}/rows/{rowId}"
-	path = strings.Replace(path, "{tableId}", url.PathEscape(fmt.Sprintf("%v", tableId)), -1)
-	path = strings.Replace(path, "{tableVersion}", url.PathEscape(fmt.Sprintf("%v", tableVersion)), -1)
-	path = strings.Replace(path, "{rowId}", url.PathEscape(fmt.Sprintf("%v", rowId)), -1)
-	defaultReturn := new(Decisiontablerow)
-	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
-	}
-
-	// verify the required parameter 'tableId' is set
-	if &tableId == nil {
-		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'tableId' when calling BusinessRulesApi->PatchBusinessrulesDecisiontableVersionRow")
-	}
-	// verify the required parameter 'tableVersion' is set
-	if &tableVersion == nil {
-		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'tableVersion' when calling BusinessRulesApi->PatchBusinessrulesDecisiontableVersionRow")
-	}
-	// verify the required parameter 'rowId' is set
-	if &rowId == nil {
-		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'rowId' when calling BusinessRulesApi->PatchBusinessrulesDecisiontableVersionRow")
-	}
-	// verify the required parameter 'body' is set
-	if &body == nil {
-		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling BusinessRulesApi->PatchBusinessrulesDecisiontableVersionRow")
-	}
-
-	headerParams := make(map[string]string)
-	queryParams := make(map[string]string)
-	formParams := url.Values{}
-	var postBody interface{}
-	var postFileName string
-	var fileBytes []byte
-	// authentication (PureCloud OAuth) required
-
-	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
-	}
-	// add default headers if any
-	for key := range a.Configuration.DefaultHeader {
-		headerParams[key] = a.Configuration.DefaultHeader[key]
-	}
-	
-
-	// Find an replace keys that were altered to avoid clashes with go keywords 
-	correctedQueryParams := make(map[string]string)
-	for k, v := range queryParams {
-		if k == "varType" {
-			correctedQueryParams["type"] = v
-			continue
-		}
-		correctedQueryParams[k] = v
-	}
-	queryParams = correctedQueryParams
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
-
-	// set Content-Type header
-	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		headerParams["Content-Type"] = localVarHttpContentType
-	}
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-	}
-
-	// set Accept header
-	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		headerParams["Accept"] = localVarHttpHeaderAccept
-	}
-	// body params
-	postBody = &body
-
-	var successPayload *Decisiontablerow
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
-	if err != nil {
-		// Nothing special to do here, but do avoid processing the response
-	} else if err == nil && response.Error != nil {
-		err = errors.New(response.ErrorMessage)
-	} else if response.HasBody {
-		if "Decisiontablerow" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

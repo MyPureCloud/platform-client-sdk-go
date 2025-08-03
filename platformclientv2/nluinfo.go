@@ -15,7 +15,7 @@ type Nluinfo struct {
 	Domain *Addressableentityref `json:"domain,omitempty"`
 
 	// Version
-	Version **Nludomainversion `json:"version,omitempty"`
+	Version *Nludomainversion `json:"version,omitempty"`
 
 	// Intents
 	Intents *[]Intent `json:"intents,omitempty"`
@@ -92,7 +92,7 @@ func (o Nluinfo) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Domain *Addressableentityref `json:"domain,omitempty"`
 		
-		Version **Nludomainversion `json:"version,omitempty"`
+		Version *Nludomainversion `json:"version,omitempty"`
 		
 		Intents *[]Intent `json:"intents,omitempty"`
 		

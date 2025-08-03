@@ -23,11 +23,11 @@ type Managementunitlisting struct {
 	// Total - Deprecated, paging is not supported
 	Total *int `json:"total,omitempty"`
 
-	// PreviousUri - Deprecated, paging is not supported
-	PreviousUri *string `json:"previousUri,omitempty"`
-
 	// NextUri - Deprecated, paging is not supported
 	NextUri *string `json:"nextUri,omitempty"`
+
+	// PreviousUri - Deprecated, paging is not supported
+	PreviousUri *string `json:"previousUri,omitempty"`
 
 	// LastUri - Deprecated, paging is not supported
 	LastUri *string `json:"lastUri,omitempty"`
@@ -113,9 +113,9 @@ func (o Managementunitlisting) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
-		PreviousUri *string `json:"previousUri,omitempty"`
-		
 		NextUri *string `json:"nextUri,omitempty"`
+		
+		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		LastUri *string `json:"lastUri,omitempty"`
 		
@@ -134,9 +134,9 @@ func (o Managementunitlisting) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
-		PreviousUri: o.PreviousUri,
-		
 		NextUri: o.NextUri,
+		
+		PreviousUri: o.PreviousUri,
 		
 		LastUri: o.LastUri,
 		
@@ -176,12 +176,12 @@ func (o *Managementunitlisting) UnmarshalJSON(b []byte) error {
 		o.Total = &TotalInt
 	}
 	
-	if PreviousUri, ok := ManagementunitlistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
-	}
-    
 	if NextUri, ok := ManagementunitlistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
+	}
+    
+	if PreviousUri, ok := ManagementunitlistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
 	}
     
 	if LastUri, ok := ManagementunitlistingMap["lastUri"].(string); ok {

@@ -23,11 +23,11 @@ type Consumedresourcesentitylisting struct {
 	// Total
 	Total *int `json:"total,omitempty"`
 
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
-
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
+
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
 
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
@@ -113,9 +113,9 @@ func (o Consumedresourcesentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
-		PreviousUri *string `json:"previousUri,omitempty"`
-		
 		NextUri *string `json:"nextUri,omitempty"`
+		
+		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		LastUri *string `json:"lastUri,omitempty"`
 		
@@ -134,9 +134,9 @@ func (o Consumedresourcesentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
-		PreviousUri: o.PreviousUri,
-		
 		NextUri: o.NextUri,
+		
+		PreviousUri: o.PreviousUri,
 		
 		LastUri: o.LastUri,
 		
@@ -176,12 +176,12 @@ func (o *Consumedresourcesentitylisting) UnmarshalJSON(b []byte) error {
 		o.Total = &TotalInt
 	}
 	
-	if PreviousUri, ok := ConsumedresourcesentitylistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
-	}
-    
 	if NextUri, ok := ConsumedresourcesentitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
+	}
+    
+	if PreviousUri, ok := ConsumedresourcesentitylistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
 	}
     
 	if LastUri, ok := ConsumedresourcesentitylistingMap["lastUri"].(string); ok {

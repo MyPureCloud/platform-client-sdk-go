@@ -34,6 +34,9 @@ type Webmessagingcontent struct {
 
 	// DatePicker - DatePicker content
 	DatePicker *Contentdatepicker `json:"datePicker,omitempty"`
+
+	// ListPicker - ListPicker content
+	ListPicker *Conversationcontentlistpicker `json:"listPicker,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -114,6 +117,8 @@ func (o Webmessagingcontent) MarshalJSON() ([]byte, error) {
 		Carousel *Contentcarousel `json:"carousel,omitempty"`
 		
 		DatePicker *Contentdatepicker `json:"datePicker,omitempty"`
+		
+		ListPicker *Conversationcontentlistpicker `json:"listPicker,omitempty"`
 		Alias
 	}{ 
 		ContentType: o.ContentType,
@@ -131,6 +136,8 @@ func (o Webmessagingcontent) MarshalJSON() ([]byte, error) {
 		Carousel: o.Carousel,
 		
 		DatePicker: o.DatePicker,
+		
+		ListPicker: o.ListPicker,
 		Alias:    (Alias)(o),
 	})
 }
@@ -179,6 +186,11 @@ func (o *Webmessagingcontent) UnmarshalJSON(b []byte) error {
 	if DatePicker, ok := WebmessagingcontentMap["datePicker"].(map[string]interface{}); ok {
 		DatePickerString, _ := json.Marshal(DatePicker)
 		json.Unmarshal(DatePickerString, &o.DatePicker)
+	}
+	
+	if ListPicker, ok := WebmessagingcontentMap["listPicker"].(map[string]interface{}); ok {
+		ListPickerString, _ := json.Marshal(ListPicker)
+		json.Unmarshal(ListPickerString, &o.ListPicker)
 	}
 	
 

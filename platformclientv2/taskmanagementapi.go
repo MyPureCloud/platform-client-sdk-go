@@ -1324,13 +1324,13 @@ func (a TaskManagementApi) GetTaskmanagementWorkitemHistory(workitemId string, a
 // GetTaskmanagementWorkitemUserWrapups invokes GET /api/v2/taskmanagement/workitems/{workitemId}/users/{userId}/wrapups
 //
 // Get all wrapup codes added for the given user for a workitem.
-func (a TaskManagementApi) GetTaskmanagementWorkitemUserWrapups(workitemId string, userId string, expands string, after string, pageSize int, sortOrder string) (*Workitemwrapup, *APIResponse, error) {
+func (a TaskManagementApi) GetTaskmanagementWorkitemUserWrapups(workitemId string, userId string, expands string, after string, pageSize int, sortOrder string) (*Workitemwrapupentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/taskmanagement/workitems/{workitemId}/users/{userId}/wrapups"
 	path = strings.Replace(path, "{workitemId}", url.PathEscape(fmt.Sprintf("%v", workitemId)), -1)
 	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
-	defaultReturn := new(Workitemwrapup)
+	defaultReturn := new(Workitemwrapupentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -1401,14 +1401,14 @@ func (a TaskManagementApi) GetTaskmanagementWorkitemUserWrapups(workitemId strin
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Workitemwrapup
+	var successPayload *Workitemwrapupentitylisting
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Workitemwrapup" == "string" {
+		if "Workitemwrapupentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

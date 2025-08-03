@@ -22,10 +22,10 @@ type Nludomain struct {
 	Language *string `json:"language,omitempty"`
 
 	// DraftVersion - The draft version of that NLU domain.
-	DraftVersion *Nludomainversion `json:"draftVersion,omitempty"`
+	DraftVersion **Nludomainversionreference `json:"draftVersion,omitempty"`
 
 	// LastPublishedVersion - The last published version of that NLU domain.
-	LastPublishedVersion *Nludomainversion `json:"lastPublishedVersion,omitempty"`
+	LastPublishedVersion *Nludomainversionreference `json:"lastPublishedVersion,omitempty"`
 
 	// DateCreated - The date when the NLU domain was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
@@ -125,9 +125,9 @@ func (o Nludomain) MarshalJSON() ([]byte, error) {
 		
 		Language *string `json:"language,omitempty"`
 		
-		DraftVersion *Nludomainversion `json:"draftVersion,omitempty"`
+		DraftVersion **Nludomainversionreference `json:"draftVersion,omitempty"`
 		
-		LastPublishedVersion *Nludomainversion `json:"lastPublishedVersion,omitempty"`
+		LastPublishedVersion *Nludomainversionreference `json:"lastPublishedVersion,omitempty"`
 		
 		DateCreated *string `json:"dateCreated,omitempty"`
 		

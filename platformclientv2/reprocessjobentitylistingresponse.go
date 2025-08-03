@@ -26,11 +26,11 @@ type Reprocessjobentitylistingresponse struct {
 	// QueueTotal - The total number of queued jobs.
 	QueueTotal *int `json:"queueTotal,omitempty"`
 
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
-
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
+
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
 
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
@@ -118,9 +118,9 @@ func (o Reprocessjobentitylistingresponse) MarshalJSON() ([]byte, error) {
 		
 		QueueTotal *int `json:"queueTotal,omitempty"`
 		
-		PreviousUri *string `json:"previousUri,omitempty"`
-		
 		NextUri *string `json:"nextUri,omitempty"`
+		
+		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		LastUri *string `json:"lastUri,omitempty"`
 		
@@ -141,9 +141,9 @@ func (o Reprocessjobentitylistingresponse) MarshalJSON() ([]byte, error) {
 		
 		QueueTotal: o.QueueTotal,
 		
-		PreviousUri: o.PreviousUri,
-		
 		NextUri: o.NextUri,
+		
+		PreviousUri: o.PreviousUri,
 		
 		LastUri: o.LastUri,
 		
@@ -188,12 +188,12 @@ func (o *Reprocessjobentitylistingresponse) UnmarshalJSON(b []byte) error {
 		o.QueueTotal = &QueueTotalInt
 	}
 	
-	if PreviousUri, ok := ReprocessjobentitylistingresponseMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
-	}
-    
 	if NextUri, ok := ReprocessjobentitylistingresponseMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
+	}
+    
+	if PreviousUri, ok := ReprocessjobentitylistingresponseMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
 	}
     
 	if LastUri, ok := ReprocessjobentitylistingresponseMap["lastUri"].(string); ok {
