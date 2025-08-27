@@ -14,6 +14,9 @@ type Decisiontablecolumndefaultrowvalue struct {
 	// Value - A default string value for this column, will be cast to appropriate type according to the relevant contract schema property.
 	Value *string `json:"value,omitempty"`
 
+	// Values - A default list of values for this column, items will be cast to appropriate type according to the relevant contract schema property
+	Values *[]string `json:"values,omitempty"`
+
 	// Special - A default special value enum for this column.
 	Special *string `json:"special,omitempty"`
 }
@@ -83,10 +86,14 @@ func (o Decisiontablecolumndefaultrowvalue) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Value *string `json:"value,omitempty"`
 		
+		Values *[]string `json:"values,omitempty"`
+		
 		Special *string `json:"special,omitempty"`
 		Alias
 	}{ 
 		Value: o.Value,
+		
+		Values: o.Values,
 		
 		Special: o.Special,
 		Alias:    (Alias)(o),
@@ -104,6 +111,11 @@ func (o *Decisiontablecolumndefaultrowvalue) UnmarshalJSON(b []byte) error {
 		o.Value = &Value
 	}
     
+	if Values, ok := DecisiontablecolumndefaultrowvalueMap["values"].([]interface{}); ok {
+		ValuesString, _ := json.Marshal(Values)
+		json.Unmarshal(ValuesString, &o.Values)
+	}
+	
 	if Special, ok := DecisiontablecolumndefaultrowvalueMap["special"].(string); ok {
 		o.Special = &Special
 	}

@@ -23,6 +23,9 @@ type Actioncertificatelisting struct {
 	// Total
 	Total *int `json:"total,omitempty"`
 
+	// FirstUri
+	FirstUri *string `json:"firstUri,omitempty"`
+
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
 
@@ -31,9 +34,6 @@ type Actioncertificatelisting struct {
 
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
-
-	// FirstUri
-	FirstUri *string `json:"firstUri,omitempty"`
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -113,13 +113,13 @@ func (o Actioncertificatelisting) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
+		FirstUri *string `json:"firstUri,omitempty"`
+		
 		NextUri *string `json:"nextUri,omitempty"`
 		
 		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		LastUri *string `json:"lastUri,omitempty"`
-		
-		FirstUri *string `json:"firstUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
@@ -134,13 +134,13 @@ func (o Actioncertificatelisting) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
+		FirstUri: o.FirstUri,
+		
 		NextUri: o.NextUri,
 		
 		PreviousUri: o.PreviousUri,
 		
 		LastUri: o.LastUri,
-		
-		FirstUri: o.FirstUri,
 		
 		SelfUri: o.SelfUri,
 		
@@ -176,6 +176,10 @@ func (o *Actioncertificatelisting) UnmarshalJSON(b []byte) error {
 		o.Total = &TotalInt
 	}
 	
+	if FirstUri, ok := ActioncertificatelistingMap["firstUri"].(string); ok {
+		o.FirstUri = &FirstUri
+	}
+    
 	if NextUri, ok := ActioncertificatelistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
@@ -186,10 +190,6 @@ func (o *Actioncertificatelisting) UnmarshalJSON(b []byte) error {
     
 	if LastUri, ok := ActioncertificatelistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
-	}
-    
-	if FirstUri, ok := ActioncertificatelistingMap["firstUri"].(string); ok {
-		o.FirstUri = &FirstUri
 	}
     
 	if SelfUri, ok := ActioncertificatelistingMap["selfUri"].(string); ok {

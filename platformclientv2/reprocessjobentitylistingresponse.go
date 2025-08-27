@@ -26,6 +26,9 @@ type Reprocessjobentitylistingresponse struct {
 	// QueueTotal - The total number of queued jobs.
 	QueueTotal *int `json:"queueTotal,omitempty"`
 
+	// FirstUri
+	FirstUri *string `json:"firstUri,omitempty"`
+
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
 
@@ -34,9 +37,6 @@ type Reprocessjobentitylistingresponse struct {
 
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
-
-	// FirstUri
-	FirstUri *string `json:"firstUri,omitempty"`
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -118,13 +118,13 @@ func (o Reprocessjobentitylistingresponse) MarshalJSON() ([]byte, error) {
 		
 		QueueTotal *int `json:"queueTotal,omitempty"`
 		
+		FirstUri *string `json:"firstUri,omitempty"`
+		
 		NextUri *string `json:"nextUri,omitempty"`
 		
 		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		LastUri *string `json:"lastUri,omitempty"`
-		
-		FirstUri *string `json:"firstUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
@@ -141,13 +141,13 @@ func (o Reprocessjobentitylistingresponse) MarshalJSON() ([]byte, error) {
 		
 		QueueTotal: o.QueueTotal,
 		
+		FirstUri: o.FirstUri,
+		
 		NextUri: o.NextUri,
 		
 		PreviousUri: o.PreviousUri,
 		
 		LastUri: o.LastUri,
-		
-		FirstUri: o.FirstUri,
 		
 		SelfUri: o.SelfUri,
 		
@@ -188,6 +188,10 @@ func (o *Reprocessjobentitylistingresponse) UnmarshalJSON(b []byte) error {
 		o.QueueTotal = &QueueTotalInt
 	}
 	
+	if FirstUri, ok := ReprocessjobentitylistingresponseMap["firstUri"].(string); ok {
+		o.FirstUri = &FirstUri
+	}
+    
 	if NextUri, ok := ReprocessjobentitylistingresponseMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
@@ -198,10 +202,6 @@ func (o *Reprocessjobentitylistingresponse) UnmarshalJSON(b []byte) error {
     
 	if LastUri, ok := ReprocessjobentitylistingresponseMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
-	}
-    
-	if FirstUri, ok := ReprocessjobentitylistingresponseMap["firstUri"].(string); ok {
-		o.FirstUri = &FirstUri
 	}
     
 	if SelfUri, ok := ReprocessjobentitylistingresponseMap["selfUri"].(string); ok {

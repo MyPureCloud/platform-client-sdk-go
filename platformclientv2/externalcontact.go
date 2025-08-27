@@ -72,6 +72,9 @@ type Externalcontact struct {
 	// InstagramId - User information for an Instagram account
 	InstagramId *Instagramid `json:"instagramId,omitempty"`
 
+	// AppleOpaqueIds - User information for an Apple account
+	AppleOpaqueIds *[]Appleopaqueid `json:"appleOpaqueIds,omitempty"`
+
 	// ExternalIds - A list of external identifiers that identify this contact in an external system
 	ExternalIds *[]Externalid `json:"externalIds,omitempty"`
 
@@ -243,6 +246,8 @@ func (o Externalcontact) MarshalJSON() ([]byte, error) {
 		
 		InstagramId *Instagramid `json:"instagramId,omitempty"`
 		
+		AppleOpaqueIds *[]Appleopaqueid `json:"appleOpaqueIds,omitempty"`
+		
 		ExternalIds *[]Externalid `json:"externalIds,omitempty"`
 		
 		Identifiers *[]Contactidentifier `json:"identifiers,omitempty"`
@@ -317,6 +322,8 @@ func (o Externalcontact) MarshalJSON() ([]byte, error) {
 		FacebookId: o.FacebookId,
 		
 		InstagramId: o.InstagramId,
+		
+		AppleOpaqueIds: o.AppleOpaqueIds,
 		
 		ExternalIds: o.ExternalIds,
 		
@@ -451,6 +458,11 @@ func (o *Externalcontact) UnmarshalJSON(b []byte) error {
 	if InstagramId, ok := ExternalcontactMap["instagramId"].(map[string]interface{}); ok {
 		InstagramIdString, _ := json.Marshal(InstagramId)
 		json.Unmarshal(InstagramIdString, &o.InstagramId)
+	}
+	
+	if AppleOpaqueIds, ok := ExternalcontactMap["appleOpaqueIds"].([]interface{}); ok {
+		AppleOpaqueIdsString, _ := json.Marshal(AppleOpaqueIds)
+		json.Unmarshal(AppleOpaqueIdsString, &o.AppleOpaqueIds)
 	}
 	
 	if ExternalIds, ok := ExternalcontactMap["externalIds"].([]interface{}); ok {

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -7,22 +8,25 @@ import (
 	"strings"
 )
 
-// Eventcobrowse - A CoBrowse event.
-type Eventcobrowse struct { 
+// Conversationchecklisttopicagentchecklistactivationtrigger
+type Conversationchecklisttopicagentchecklistactivationtrigger struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// VarType - Describes the type of CoBrowse event.
-	VarType *string `json:"type,omitempty"`
+	// TriggerType
+	TriggerType *string `json:"triggerType,omitempty"`
 
-	// SessionId - The CoBrowse session ID.
-	SessionId *string `json:"sessionId,omitempty"`
+	// TriggerDate
+	TriggerDate *time.Time `json:"triggerDate,omitempty"`
 
-	// SessionJoinToken - The CoBrowse session join token.
-	SessionJoinToken *string `json:"sessionJoinToken,omitempty"`
+	// IntentName
+	IntentName *string `json:"intentName,omitempty"`
+
+	// IntentId
+	IntentId *string `json:"intentId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Eventcobrowse) SetField(field string, fieldValue interface{}) {
+func (o *Conversationchecklisttopicagentchecklistactivationtrigger) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -43,14 +47,14 @@ func (o *Eventcobrowse) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Eventcobrowse) MarshalJSON() ([]byte, error) {
+func (o Conversationchecklisttopicagentchecklistactivationtrigger) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
+		dateTimeFields := []string{ "TriggerDate", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -81,42 +85,59 @@ func (o Eventcobrowse) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Eventcobrowse
+	type Alias Conversationchecklisttopicagentchecklistactivationtrigger
+	
+	TriggerDate := new(string)
+	if o.TriggerDate != nil {
+		
+		*TriggerDate = timeutil.Strftime(o.TriggerDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		TriggerDate = nil
+	}
 	
 	return json.Marshal(&struct { 
-		VarType *string `json:"type,omitempty"`
+		TriggerType *string `json:"triggerType,omitempty"`
 		
-		SessionId *string `json:"sessionId,omitempty"`
+		TriggerDate *string `json:"triggerDate,omitempty"`
 		
-		SessionJoinToken *string `json:"sessionJoinToken,omitempty"`
+		IntentName *string `json:"intentName,omitempty"`
+		
+		IntentId *string `json:"intentId,omitempty"`
 		Alias
 	}{ 
-		VarType: o.VarType,
+		TriggerType: o.TriggerType,
 		
-		SessionId: o.SessionId,
+		TriggerDate: TriggerDate,
 		
-		SessionJoinToken: o.SessionJoinToken,
+		IntentName: o.IntentName,
+		
+		IntentId: o.IntentId,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Eventcobrowse) UnmarshalJSON(b []byte) error {
-	var EventcobrowseMap map[string]interface{}
-	err := json.Unmarshal(b, &EventcobrowseMap)
+func (o *Conversationchecklisttopicagentchecklistactivationtrigger) UnmarshalJSON(b []byte) error {
+	var ConversationchecklisttopicagentchecklistactivationtriggerMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationchecklisttopicagentchecklistactivationtriggerMap)
 	if err != nil {
 		return err
 	}
 	
-	if VarType, ok := EventcobrowseMap["type"].(string); ok {
-		o.VarType = &VarType
+	if TriggerType, ok := ConversationchecklisttopicagentchecklistactivationtriggerMap["triggerType"].(string); ok {
+		o.TriggerType = &TriggerType
 	}
     
-	if SessionId, ok := EventcobrowseMap["sessionId"].(string); ok {
-		o.SessionId = &SessionId
+	if triggerDateString, ok := ConversationchecklisttopicagentchecklistactivationtriggerMap["triggerDate"].(string); ok {
+		TriggerDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", triggerDateString)
+		o.TriggerDate = &TriggerDate
+	}
+	
+	if IntentName, ok := ConversationchecklisttopicagentchecklistactivationtriggerMap["intentName"].(string); ok {
+		o.IntentName = &IntentName
 	}
     
-	if SessionJoinToken, ok := EventcobrowseMap["sessionJoinToken"].(string); ok {
-		o.SessionJoinToken = &SessionJoinToken
+	if IntentId, ok := ConversationchecklisttopicagentchecklistactivationtriggerMap["intentId"].(string); ok {
+		o.IntentId = &IntentId
 	}
     
 
@@ -124,7 +145,7 @@ func (o *Eventcobrowse) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Eventcobrowse) String() string {
+func (o *Conversationchecklisttopicagentchecklistactivationtrigger) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

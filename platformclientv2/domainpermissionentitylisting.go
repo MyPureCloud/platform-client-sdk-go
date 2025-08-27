@@ -7,12 +7,12 @@ import (
 	"strings"
 )
 
-// Permissioncollectionentitylisting
-type Permissioncollectionentitylisting struct { 
+// Domainpermissionentitylisting
+type Domainpermissionentitylisting struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Entities
-	Entities *[]Domainpermissioncollection `json:"entities,omitempty"`
+	Entities *[]Domainpermissioncollectiondomainpermission `json:"entities,omitempty"`
 
 	// PageSize
 	PageSize *int `json:"pageSize,omitempty"`
@@ -23,6 +23,9 @@ type Permissioncollectionentitylisting struct {
 	// Total
 	Total *int `json:"total,omitempty"`
 
+	// FirstUri
+	FirstUri *string `json:"firstUri,omitempty"`
+
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
 
@@ -32,9 +35,6 @@ type Permissioncollectionentitylisting struct {
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
 
-	// FirstUri
-	FirstUri *string `json:"firstUri,omitempty"`
-
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -43,7 +43,7 @@ type Permissioncollectionentitylisting struct {
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Permissioncollectionentitylisting) SetField(field string, fieldValue interface{}) {
+func (o *Domainpermissionentitylisting) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -64,7 +64,7 @@ func (o *Permissioncollectionentitylisting) SetField(field string, fieldValue in
 	o.SetFieldNames[field] = true
 }
 
-func (o Permissioncollectionentitylisting) MarshalJSON() ([]byte, error) {
+func (o Domainpermissionentitylisting) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -102,10 +102,10 @@ func (o Permissioncollectionentitylisting) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Permissioncollectionentitylisting
+	type Alias Domainpermissionentitylisting
 	
 	return json.Marshal(&struct { 
-		Entities *[]Domainpermissioncollection `json:"entities,omitempty"`
+		Entities *[]Domainpermissioncollectiondomainpermission `json:"entities,omitempty"`
 		
 		PageSize *int `json:"pageSize,omitempty"`
 		
@@ -113,13 +113,13 @@ func (o Permissioncollectionentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
+		FirstUri *string `json:"firstUri,omitempty"`
+		
 		NextUri *string `json:"nextUri,omitempty"`
 		
 		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		LastUri *string `json:"lastUri,omitempty"`
-		
-		FirstUri *string `json:"firstUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
@@ -134,13 +134,13 @@ func (o Permissioncollectionentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
+		FirstUri: o.FirstUri,
+		
 		NextUri: o.NextUri,
 		
 		PreviousUri: o.PreviousUri,
 		
 		LastUri: o.LastUri,
-		
-		FirstUri: o.FirstUri,
 		
 		SelfUri: o.SelfUri,
 		
@@ -149,54 +149,54 @@ func (o Permissioncollectionentitylisting) MarshalJSON() ([]byte, error) {
 	})
 }
 
-func (o *Permissioncollectionentitylisting) UnmarshalJSON(b []byte) error {
-	var PermissioncollectionentitylistingMap map[string]interface{}
-	err := json.Unmarshal(b, &PermissioncollectionentitylistingMap)
+func (o *Domainpermissionentitylisting) UnmarshalJSON(b []byte) error {
+	var DomainpermissionentitylistingMap map[string]interface{}
+	err := json.Unmarshal(b, &DomainpermissionentitylistingMap)
 	if err != nil {
 		return err
 	}
 	
-	if Entities, ok := PermissioncollectionentitylistingMap["entities"].([]interface{}); ok {
+	if Entities, ok := DomainpermissionentitylistingMap["entities"].([]interface{}); ok {
 		EntitiesString, _ := json.Marshal(Entities)
 		json.Unmarshal(EntitiesString, &o.Entities)
 	}
 	
-	if PageSize, ok := PermissioncollectionentitylistingMap["pageSize"].(float64); ok {
+	if PageSize, ok := DomainpermissionentitylistingMap["pageSize"].(float64); ok {
 		PageSizeInt := int(PageSize)
 		o.PageSize = &PageSizeInt
 	}
 	
-	if PageNumber, ok := PermissioncollectionentitylistingMap["pageNumber"].(float64); ok {
+	if PageNumber, ok := DomainpermissionentitylistingMap["pageNumber"].(float64); ok {
 		PageNumberInt := int(PageNumber)
 		o.PageNumber = &PageNumberInt
 	}
 	
-	if Total, ok := PermissioncollectionentitylistingMap["total"].(float64); ok {
+	if Total, ok := DomainpermissionentitylistingMap["total"].(float64); ok {
 		TotalInt := int(Total)
 		o.Total = &TotalInt
 	}
 	
-	if NextUri, ok := PermissioncollectionentitylistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
-	}
-    
-	if PreviousUri, ok := PermissioncollectionentitylistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
-	}
-    
-	if LastUri, ok := PermissioncollectionentitylistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
-	if FirstUri, ok := PermissioncollectionentitylistingMap["firstUri"].(string); ok {
+	if FirstUri, ok := DomainpermissionentitylistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
     
-	if SelfUri, ok := PermissioncollectionentitylistingMap["selfUri"].(string); ok {
+	if NextUri, ok := DomainpermissionentitylistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
+	}
+    
+	if PreviousUri, ok := DomainpermissionentitylistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
+	}
+    
+	if LastUri, ok := DomainpermissionentitylistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
+	}
+    
+	if SelfUri, ok := DomainpermissionentitylistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
     
-	if PageCount, ok := PermissioncollectionentitylistingMap["pageCount"].(float64); ok {
+	if PageCount, ok := DomainpermissionentitylistingMap["pageCount"].(float64); ok {
 		PageCountInt := int(PageCount)
 		o.PageCount = &PageCountInt
 	}
@@ -206,7 +206,7 @@ func (o *Permissioncollectionentitylisting) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Permissioncollectionentitylisting) String() string {
+func (o *Domainpermissionentitylisting) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

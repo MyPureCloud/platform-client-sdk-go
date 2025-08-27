@@ -7,31 +7,16 @@ import (
 	"strings"
 )
 
-// Messageevent - Message event element.  Examples include: system messages, typing indicators, cobrowse offerings.
-type Messageevent struct { 
+// Assistantqueueusersbulkremoverequest
+type Assistantqueueusersbulkremoverequest struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// EventType - Type of this event element
-	EventType *string `json:"eventType,omitempty"`
-
-	// CoBrowse - CoBrowse event.
-	CoBrowse *Eventcobrowse `json:"coBrowse,omitempty"`
-
-	// Typing - Typing event.
-	Typing *Eventtyping `json:"typing,omitempty"`
-
-	// Presence - Presence event.
-	Presence *Eventpresence `json:"presence,omitempty"`
-
-	// Video - Video event.
-	Video *Eventvideo `json:"video,omitempty"`
-
-	// Reactions - A list of reactions to a message.
-	Reactions *[]Contentreaction `json:"reactions,omitempty"`
+	// Entities - List of users to de-assign assistant form. Maximum users to remove is 100 per request.
+	Entities *[]Assistantqueueuser `json:"entities,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Messageevent) SetField(field string, fieldValue interface{}) {
+func (o *Assistantqueueusersbulkremoverequest) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -52,7 +37,7 @@ func (o *Messageevent) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Messageevent) MarshalJSON() ([]byte, error) {
+func (o Assistantqueueusersbulkremoverequest) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -90,71 +75,27 @@ func (o Messageevent) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Messageevent
+	type Alias Assistantqueueusersbulkremoverequest
 	
 	return json.Marshal(&struct { 
-		EventType *string `json:"eventType,omitempty"`
-		
-		CoBrowse *Eventcobrowse `json:"coBrowse,omitempty"`
-		
-		Typing *Eventtyping `json:"typing,omitempty"`
-		
-		Presence *Eventpresence `json:"presence,omitempty"`
-		
-		Video *Eventvideo `json:"video,omitempty"`
-		
-		Reactions *[]Contentreaction `json:"reactions,omitempty"`
+		Entities *[]Assistantqueueuser `json:"entities,omitempty"`
 		Alias
 	}{ 
-		EventType: o.EventType,
-		
-		CoBrowse: o.CoBrowse,
-		
-		Typing: o.Typing,
-		
-		Presence: o.Presence,
-		
-		Video: o.Video,
-		
-		Reactions: o.Reactions,
+		Entities: o.Entities,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Messageevent) UnmarshalJSON(b []byte) error {
-	var MessageeventMap map[string]interface{}
-	err := json.Unmarshal(b, &MessageeventMap)
+func (o *Assistantqueueusersbulkremoverequest) UnmarshalJSON(b []byte) error {
+	var AssistantqueueusersbulkremoverequestMap map[string]interface{}
+	err := json.Unmarshal(b, &AssistantqueueusersbulkremoverequestMap)
 	if err != nil {
 		return err
 	}
 	
-	if EventType, ok := MessageeventMap["eventType"].(string); ok {
-		o.EventType = &EventType
-	}
-    
-	if CoBrowse, ok := MessageeventMap["coBrowse"].(map[string]interface{}); ok {
-		CoBrowseString, _ := json.Marshal(CoBrowse)
-		json.Unmarshal(CoBrowseString, &o.CoBrowse)
-	}
-	
-	if Typing, ok := MessageeventMap["typing"].(map[string]interface{}); ok {
-		TypingString, _ := json.Marshal(Typing)
-		json.Unmarshal(TypingString, &o.Typing)
-	}
-	
-	if Presence, ok := MessageeventMap["presence"].(map[string]interface{}); ok {
-		PresenceString, _ := json.Marshal(Presence)
-		json.Unmarshal(PresenceString, &o.Presence)
-	}
-	
-	if Video, ok := MessageeventMap["video"].(map[string]interface{}); ok {
-		VideoString, _ := json.Marshal(Video)
-		json.Unmarshal(VideoString, &o.Video)
-	}
-	
-	if Reactions, ok := MessageeventMap["reactions"].([]interface{}); ok {
-		ReactionsString, _ := json.Marshal(Reactions)
-		json.Unmarshal(ReactionsString, &o.Reactions)
+	if Entities, ok := AssistantqueueusersbulkremoverequestMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
 	}
 	
 
@@ -162,7 +103,7 @@ func (o *Messageevent) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Messageevent) String() string {
+func (o *Assistantqueueusersbulkremoverequest) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

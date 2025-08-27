@@ -7,19 +7,16 @@ import (
 	"strings"
 )
 
-// Eventtyping - A Typing event.
-type Eventtyping struct { 
+// Assistantqueueuser
+type Assistantqueueuser struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// VarType - Describes the type of Typing event.
-	VarType *string `json:"type,omitempty"`
-
-	// Duration - The duration of the Typing event in milliseconds.
-	Duration *int `json:"duration,omitempty"`
+	// Id - The globally unique identifier for the user.
+	Id *string `json:"id,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Eventtyping) SetField(field string, fieldValue interface{}) {
+func (o *Assistantqueueuser) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -40,7 +37,7 @@ func (o *Eventtyping) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Eventtyping) MarshalJSON() ([]byte, error) {
+func (o Assistantqueueuser) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -78,43 +75,34 @@ func (o Eventtyping) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Eventtyping
+	type Alias Assistantqueueuser
 	
 	return json.Marshal(&struct { 
-		VarType *string `json:"type,omitempty"`
-		
-		Duration *int `json:"duration,omitempty"`
+		Id *string `json:"id,omitempty"`
 		Alias
 	}{ 
-		VarType: o.VarType,
-		
-		Duration: o.Duration,
+		Id: o.Id,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Eventtyping) UnmarshalJSON(b []byte) error {
-	var EventtypingMap map[string]interface{}
-	err := json.Unmarshal(b, &EventtypingMap)
+func (o *Assistantqueueuser) UnmarshalJSON(b []byte) error {
+	var AssistantqueueuserMap map[string]interface{}
+	err := json.Unmarshal(b, &AssistantqueueuserMap)
 	if err != nil {
 		return err
 	}
 	
-	if VarType, ok := EventtypingMap["type"].(string); ok {
-		o.VarType = &VarType
+	if Id, ok := AssistantqueueuserMap["id"].(string); ok {
+		o.Id = &Id
 	}
     
-	if Duration, ok := EventtypingMap["duration"].(float64); ok {
-		DurationInt := int(Duration)
-		o.Duration = &DurationInt
-	}
-	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Eventtyping) String() string {
+func (o *Assistantqueueuser) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

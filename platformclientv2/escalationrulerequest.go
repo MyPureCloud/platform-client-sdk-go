@@ -29,16 +29,16 @@ type Escalationrulerequest struct {
 	// Status - The status of the escalation rule.
 	Status *string `json:"status,omitempty"`
 
-	// OpenEscalation - The target integration configuration used for an open social media message if the match criteria returns true.
+	// OpenEscalation - The target integration configuration used for an open message escalation.
 	OpenEscalation *Escalationtarget `json:"openEscalation,omitempty"`
 
-	// FacebookEscalation - The target integration configuration used for a Facebook social media message if the match criteria returns true.
+	// FacebookEscalation - The target integration configuration used for a Facebook message escalation.
 	FacebookEscalation *Escalationtarget `json:"facebookEscalation,omitempty"`
 
-	// InstagramEscalation - The target integration configuration used for an Instagram social media message if the match criteria returns true.
+	// InstagramEscalation - The target integration configuration used for an Instagram message escalation.
 	InstagramEscalation *Escalationtarget `json:"instagramEscalation,omitempty"`
 
-	// TwitterEscalation - The target integration configuration used for a X (formerly Twitter) social media message if the match criteria returns true.
+	// TwitterEscalation - The target integration configuration used for a X (formerly Twitter) message escalation.
 	TwitterEscalation *Escalationtarget `json:"twitterEscalation,omitempty"`
 }
 

@@ -20,6 +20,12 @@ type Journeyeventdefinition struct {
 	// Source - The source of the event definition
 	Source *string `json:"source,omitempty"`
 
+	// Rank - The rank of the event definition
+	Rank *int `json:"rank,omitempty"`
+
+	// DisplayName - The display name of the event definition
+	DisplayName *string `json:"displayName,omitempty"`
+
 	// Description - The description of this event definition
 	Description *string `json:"description,omitempty"`
 
@@ -99,6 +105,10 @@ func (o Journeyeventdefinition) MarshalJSON() ([]byte, error) {
 		
 		Source *string `json:"source,omitempty"`
 		
+		Rank *int `json:"rank,omitempty"`
+		
+		DisplayName *string `json:"displayName,omitempty"`
+		
 		Description *string `json:"description,omitempty"`
 		
 		JsonSchema *Jsonschemadocument `json:"jsonSchema,omitempty"`
@@ -111,6 +121,10 @@ func (o Journeyeventdefinition) MarshalJSON() ([]byte, error) {
 		Name: o.Name,
 		
 		Source: o.Source,
+		
+		Rank: o.Rank,
+		
+		DisplayName: o.DisplayName,
 		
 		Description: o.Description,
 		
@@ -138,6 +152,15 @@ func (o *Journeyeventdefinition) UnmarshalJSON(b []byte) error {
     
 	if Source, ok := JourneyeventdefinitionMap["source"].(string); ok {
 		o.Source = &Source
+	}
+    
+	if Rank, ok := JourneyeventdefinitionMap["rank"].(float64); ok {
+		RankInt := int(Rank)
+		o.Rank = &RankInt
+	}
+	
+	if DisplayName, ok := JourneyeventdefinitionMap["displayName"].(string); ok {
+		o.DisplayName = &DisplayName
 	}
     
 	if Description, ok := JourneyeventdefinitionMap["description"].(string); ok {

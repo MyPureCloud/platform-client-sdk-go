@@ -7,22 +7,13 @@ import (
 	"strings"
 )
 
-// Eventvideo - A Video event.
-type Eventvideo struct { 
+// Campaignrulespecificdateparameters
+type Campaignrulespecificdateparameters struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`
-	// VarType - Describes the type of Video event.
-	VarType *string `json:"type,omitempty"`
-
-	// OfferingId - The Video offering ID.
-	OfferingId *string `json:"offeringId,omitempty"`
-
-	// Jwt - The Video offering JWT token.
-	Jwt *string `json:"jwt,omitempty"`
-}
+	SetFieldNames map[string]bool `json:"-"`}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Eventvideo) SetField(field string, fieldValue interface{}) {
+func (o *Campaignrulespecificdateparameters) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -43,7 +34,7 @@ func (o *Eventvideo) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Eventvideo) MarshalJSON() ([]byte, error) {
+func (o Campaignrulespecificdateparameters) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -81,50 +72,26 @@ func (o Eventvideo) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Eventvideo
+	type Alias Campaignrulespecificdateparameters
 	
-	return json.Marshal(&struct { 
-		VarType *string `json:"type,omitempty"`
-		
-		OfferingId *string `json:"offeringId,omitempty"`
-		
-		Jwt *string `json:"jwt,omitempty"`
-		Alias
-	}{ 
-		VarType: o.VarType,
-		
-		OfferingId: o.OfferingId,
-		
-		Jwt: o.Jwt,
-		Alias:    (Alias)(o),
+	return json.Marshal(&struct { Alias
+	}{ Alias:    (Alias)(o),
 	})
 }
 
-func (o *Eventvideo) UnmarshalJSON(b []byte) error {
-	var EventvideoMap map[string]interface{}
-	err := json.Unmarshal(b, &EventvideoMap)
+func (o *Campaignrulespecificdateparameters) UnmarshalJSON(b []byte) error {
+	var CampaignrulespecificdateparametersMap map[string]interface{}
+	err := json.Unmarshal(b, &CampaignrulespecificdateparametersMap)
 	if err != nil {
 		return err
 	}
 	
-	if VarType, ok := EventvideoMap["type"].(string); ok {
-		o.VarType = &VarType
-	}
-    
-	if OfferingId, ok := EventvideoMap["offeringId"].(string); ok {
-		o.OfferingId = &OfferingId
-	}
-    
-	if Jwt, ok := EventvideoMap["jwt"].(string); ok {
-		o.Jwt = &Jwt
-	}
-    
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Eventvideo) String() string {
+func (o *Campaignrulespecificdateparameters) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

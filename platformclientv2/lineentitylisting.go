@@ -26,6 +26,9 @@ type Lineentitylisting struct {
 	// TotalNumberOfEntities - The total organization-wide number of entities.
 	TotalNumberOfEntities *int `json:"totalNumberOfEntities,omitempty"`
 
+	// FirstUri
+	FirstUri *string `json:"firstUri,omitempty"`
+
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
 
@@ -34,9 +37,6 @@ type Lineentitylisting struct {
 
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
-
-	// FirstUri
-	FirstUri *string `json:"firstUri,omitempty"`
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -118,13 +118,13 @@ func (o Lineentitylisting) MarshalJSON() ([]byte, error) {
 		
 		TotalNumberOfEntities *int `json:"totalNumberOfEntities,omitempty"`
 		
+		FirstUri *string `json:"firstUri,omitempty"`
+		
 		NextUri *string `json:"nextUri,omitempty"`
 		
 		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		LastUri *string `json:"lastUri,omitempty"`
-		
-		FirstUri *string `json:"firstUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
@@ -141,13 +141,13 @@ func (o Lineentitylisting) MarshalJSON() ([]byte, error) {
 		
 		TotalNumberOfEntities: o.TotalNumberOfEntities,
 		
+		FirstUri: o.FirstUri,
+		
 		NextUri: o.NextUri,
 		
 		PreviousUri: o.PreviousUri,
 		
 		LastUri: o.LastUri,
-		
-		FirstUri: o.FirstUri,
 		
 		SelfUri: o.SelfUri,
 		
@@ -188,6 +188,10 @@ func (o *Lineentitylisting) UnmarshalJSON(b []byte) error {
 		o.TotalNumberOfEntities = &TotalNumberOfEntitiesInt
 	}
 	
+	if FirstUri, ok := LineentitylistingMap["firstUri"].(string); ok {
+		o.FirstUri = &FirstUri
+	}
+    
 	if NextUri, ok := LineentitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
@@ -198,10 +202,6 @@ func (o *Lineentitylisting) UnmarshalJSON(b []byte) error {
     
 	if LastUri, ok := LineentitylistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
-	}
-    
-	if FirstUri, ok := LineentitylistingMap["firstUri"].(string); ok {
-		o.FirstUri = &FirstUri
 	}
     
 	if SelfUri, ok := LineentitylistingMap["selfUri"].(string); ok {

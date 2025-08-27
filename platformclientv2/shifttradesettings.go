@@ -50,6 +50,12 @@ type Shifttradesettings struct {
 	// ActivityCategoryRules - Rules that specify what to do with activity categories that are part of a shift defined in a trade
 	ActivityCategoryRules *[]Shifttradeactivityrule `json:"activityCategoryRules,omitempty"`
 
+	// ExternalActivityRules - Rules that specify what to do with external activities that are part of a shift
+	ExternalActivityRules *[]Shifttradeexternalactivityrule `json:"externalActivityRules,omitempty"`
+
+	// ExternalActivityRuleIgnoresActivityCategoryRule - Whether external activity rules ignore activity category rules
+	ExternalActivityRuleIgnoresActivityCategoryRule *bool `json:"externalActivityRuleIgnoresActivityCategoryRule,omitempty"`
+
 	// MaxTradeSpanWeeks - The maximum number of weeks a shift trade can span
 	MaxTradeSpanWeeks *int `json:"maxTradeSpanWeeks,omitempty"`
 
@@ -158,6 +164,10 @@ func (o Shifttradesettings) MarshalJSON() ([]byte, error) {
 		
 		ActivityCategoryRules *[]Shifttradeactivityrule `json:"activityCategoryRules,omitempty"`
 		
+		ExternalActivityRules *[]Shifttradeexternalactivityrule `json:"externalActivityRules,omitempty"`
+		
+		ExternalActivityRuleIgnoresActivityCategoryRule *bool `json:"externalActivityRuleIgnoresActivityCategoryRule,omitempty"`
+		
 		MaxTradeSpanWeeks *int `json:"maxTradeSpanWeeks,omitempty"`
 		
 		MaxTradesPerAgentPerWeek *int `json:"maxTradesPerAgentPerWeek,omitempty"`
@@ -196,6 +206,10 @@ func (o Shifttradesettings) MarshalJSON() ([]byte, error) {
 		RequiresMatchingPlanningGroups: o.RequiresMatchingPlanningGroups,
 		
 		ActivityCategoryRules: o.ActivityCategoryRules,
+		
+		ExternalActivityRules: o.ExternalActivityRules,
+		
+		ExternalActivityRuleIgnoresActivityCategoryRule: o.ExternalActivityRuleIgnoresActivityCategoryRule,
 		
 		MaxTradeSpanWeeks: o.MaxTradeSpanWeeks,
 		
@@ -273,6 +287,15 @@ func (o *Shifttradesettings) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ActivityCategoryRulesString, &o.ActivityCategoryRules)
 	}
 	
+	if ExternalActivityRules, ok := ShifttradesettingsMap["externalActivityRules"].([]interface{}); ok {
+		ExternalActivityRulesString, _ := json.Marshal(ExternalActivityRules)
+		json.Unmarshal(ExternalActivityRulesString, &o.ExternalActivityRules)
+	}
+	
+	if ExternalActivityRuleIgnoresActivityCategoryRule, ok := ShifttradesettingsMap["externalActivityRuleIgnoresActivityCategoryRule"].(bool); ok {
+		o.ExternalActivityRuleIgnoresActivityCategoryRule = &ExternalActivityRuleIgnoresActivityCategoryRule
+	}
+    
 	if MaxTradeSpanWeeks, ok := ShifttradesettingsMap["maxTradeSpanWeeks"].(float64); ok {
 		MaxTradeSpanWeeksInt := int(MaxTradeSpanWeeks)
 		o.MaxTradeSpanWeeks = &MaxTradeSpanWeeksInt

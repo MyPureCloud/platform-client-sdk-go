@@ -89,6 +89,7 @@ docs/DeleteContentmanagementStatusStatusId-example.txt
 docs/DeleteContentmanagementWorkspace-example.txt
 docs/DeleteContentmanagementWorkspaceMember-example.txt
 docs/DeleteContentmanagementWorkspaceTagvalue-example.txt
+docs/DeleteConversation-example.txt
 docs/DeleteConversationParticipantCode-example.txt
 docs/DeleteConversationParticipantFlaggedreason-example.txt
 docs/DeleteConversationRecordingAnnotation-example.txt
@@ -336,6 +337,7 @@ docs/DeleteWebdeploymentsConfiguration-example.txt
 docs/DeleteWebdeploymentsDeployment-example.txt
 docs/DeleteWebdeploymentsDeploymentCobrowseSessionId-example.txt
 docs/DeleteWebdeploymentsTokenRevoke-example.txt
+docs/DeleteWebmessagingDeploymentPushdevice-example.txt
 docs/DeleteWidgetsDeployment-example.txt
 docs/DeleteWorkforcemanagementBusinessunit-example.txt
 docs/DeleteWorkforcemanagementBusinessunitActivitycode-example.txt
@@ -1290,7 +1292,6 @@ docs/GetRoutingEmailDomainRoutes-example.txt
 docs/GetRoutingEmailDomains-example.txt
 docs/GetRoutingEmailOutboundDomain-example.txt
 docs/GetRoutingEmailOutboundDomainActivation-example.txt
-docs/GetRoutingEmailOutboundDomainSearch-example.txt
 docs/GetRoutingEmailOutboundDomains-example.txt
 docs/GetRoutingEmailSetup-example.txt
 docs/GetRoutingLanguage-example.txt
@@ -1819,12 +1820,14 @@ docs/PatchCoachingAppointmentStatus-example.txt
 docs/PatchCoachingNotification-example.txt
 docs/PatchConversationParticipant-example.txt
 docs/PatchConversationParticipantAttributes-example.txt
+docs/PatchConversationRecordingstate-example.txt
 docs/PatchConversationSecureattributes-example.txt
 docs/PatchConversationSummaryEngagements-example.txt
 docs/PatchConversationSummaryFeedback-example.txt
 docs/PatchConversationUtilizationlabel-example.txt
 docs/PatchConversationsAftercallworkConversationIdParticipantCommunication-example.txt
 docs/PatchConversationsCall-example.txt
+docs/PatchConversationsCallConference-example.txt
 docs/PatchConversationsCallParticipant-example.txt
 docs/PatchConversationsCallParticipantAttributes-example.txt
 docs/PatchConversationsCallParticipantCommunication-example.txt
@@ -1980,6 +1983,7 @@ docs/PatchVoicemailMePolicy-example.txt
 docs/PatchVoicemailMessage-example.txt
 docs/PatchVoicemailUserpolicy-example.txt
 docs/PatchWebchatGuestConversationMediarequest-example.txt
+docs/PatchWebmessagingDeploymentPushdevice-example.txt
 docs/PatchWorkforcemanagementAgentAdherenceExplanation-example.txt
 docs/PatchWorkforcemanagementAlternativeshiftsTrade-example.txt
 docs/PatchWorkforcemanagementAlternativeshiftsTradesStateJobs-example.txt
@@ -2105,6 +2109,9 @@ docs/PostArchitectSchedules-example.txt
 docs/PostArchitectSystempromptHistory-example.txt
 docs/PostArchitectSystempromptResourceUploads-example.txt
 docs/PostArchitectSystempromptResources-example.txt
+docs/PostAssistantQueueUsersBulkAdd-example.txt
+docs/PostAssistantQueueUsersBulkRemove-example.txt
+docs/PostAssistantQueueUsersQuery-example.txt
 docs/PostAssistants-example.txt
 docs/PostAuditsQuery-example.txt
 docs/PostAuditsQueryRealtime-example.txt
@@ -2705,6 +2712,7 @@ docs/PostWebdeploymentsConfigurations-example.txt
 docs/PostWebdeploymentsDeployments-example.txt
 docs/PostWebdeploymentsTokenOauthcodegrantjwtexchange-example.txt
 docs/PostWebdeploymentsTokenRefresh-example.txt
+docs/PostWebmessagingDeploymentPushdevice-example.txt
 docs/PostWidgetsDeployments-example.txt
 docs/PostWorkforcemanagementAdherenceExplanations-example.txt
 docs/PostWorkforcemanagementAdherenceExplanationsQuery-example.txt
@@ -3167,6 +3175,7 @@ platformclientv2/addconversationrequest.go
 platformclientv2/addconversationresponse.go
 platformclientv2/additionallanguagesintent.go
 platformclientv2/additionallanguagessynonyms.go
+platformclientv2/additionalmatchcriteria.go
 platformclientv2/additionalmessage.go
 platformclientv2/additionalsocialmediamessage.go
 platformclientv2/address.go
@@ -3418,6 +3427,11 @@ platformclientv2/assistant.go
 platformclientv2/assistantlisting.go
 platformclientv2/assistantqueue.go
 platformclientv2/assistantqueuelisting.go
+platformclientv2/assistantqueueuser.go
+platformclientv2/assistantqueueusersbulkaddrequest.go
+platformclientv2/assistantqueueusersbulkremoverequest.go
+platformclientv2/assistantqueueusersqueryrequest.go
+platformclientv2/assistantqueueusersqueryresponse.go
 platformclientv2/associatedvaluefield.go
 platformclientv2/asyncconversationquery.go
 platformclientv2/asyncforecastoperationresult.go
@@ -3784,14 +3798,28 @@ platformclientv2/campaignprogress.go
 platformclientv2/campaignrule.go
 platformclientv2/campaignruleaction.go
 platformclientv2/campaignruleactionentities.go
+platformclientv2/campaignrulecampaignruntimesettings.go
+platformclientv2/campaignrulecampaignwaittimesettings.go
 platformclientv2/campaignrulecondition.go
 platformclientv2/campaignruleconditiongroup.go
+platformclientv2/campaignruledatetimeconditionparameters.go
+platformclientv2/campaignruledayofmonthinterval.go
+platformclientv2/campaignruledayofmonthparameters.go
+platformclientv2/campaignruledayofweekinterval.go
+platformclientv2/campaignruledayofweekparameters.go
 platformclientv2/campaignruleentities.go
 platformclientv2/campaignruleentitylisting.go
 platformclientv2/campaignruleexecutionsettings.go
 platformclientv2/campaignruleparameters.go
+platformclientv2/campaignrulespecificdateinterval.go
+platformclientv2/campaignrulespecificdateparameters.go
+platformclientv2/campaignruletimeofdayinterval.go
+platformclientv2/campaignruletimeofdayparameters.go
 platformclientv2/campaignrulewarning.go
 platformclientv2/campaignrulewarningparameters.go
+platformclientv2/campaignruleweekdayofmonth.go
+platformclientv2/campaignruleweekdayofmonthinterval.go
+platformclientv2/campaignruleweekdayofmonthparameters.go
 platformclientv2/campaignschedule.go
 platformclientv2/campaignsequence.go
 platformclientv2/campaignsequenceentitylisting.go
@@ -4169,6 +4197,10 @@ platformclientv2/conversationchateventtopicqueuemediasettings.go
 platformclientv2/conversationchateventtopicscoredagent.go
 platformclientv2/conversationchateventtopicurireference.go
 platformclientv2/conversationchateventtopicwrapup.go
+platformclientv2/conversationchecklisttopicagentchecklistactivationtrigger.go
+platformclientv2/conversationchecklisttopicagentchecklistitemstate.go
+platformclientv2/conversationchecklisttopicagentchecklistruntimeeventbody.go
+platformclientv2/conversationchecklisttopicconversationcontextturninfo.go
 platformclientv2/conversationclearsettings.go
 platformclientv2/conversationcobrowseeventtopiccobrowseconversation.go
 platformclientv2/conversationcobrowseeventtopiccobrowsemediaparticipant.go
@@ -4604,6 +4636,7 @@ platformclientv2/dataactionconditionsettings.go
 platformclientv2/dataactioncontactcolumnfieldmapping.go
 platformclientv2/dataavailabilityresponse.go
 platformclientv2/dataextensionsapi.go
+platformclientv2/dataingestionrulecriteria.go
 platformclientv2/dataingestionruleresponse.go
 platformclientv2/dataingestionruleresponseentitylisting.go
 platformclientv2/dataingestionrulesmetadata.go
@@ -4908,7 +4941,8 @@ platformclientv2/domainorganizationrolecreate.go
 platformclientv2/domainorganizationroleupdate.go
 platformclientv2/domainorgroledifference.go
 platformclientv2/domainpermission.go
-platformclientv2/domainpermissioncollection.go
+platformclientv2/domainpermissioncollectiondomainpermission.go
+platformclientv2/domainpermissionentitylisting.go
 platformclientv2/domainpermissionpolicy.go
 platformclientv2/domainphysicalcapabilities.go
 platformclientv2/domainphysicalinterface.go
@@ -5105,7 +5139,6 @@ platformclientv2/event.go
 platformclientv2/eventaction.go
 platformclientv2/eventaggregatesqueryrequest.go
 platformclientv2/eventaggregatesresponse.go
-platformclientv2/eventcobrowse.go
 platformclientv2/eventcondition.go
 platformclientv2/eventdefinition.go
 platformclientv2/eventdefinitionaggregates.go
@@ -5114,14 +5147,11 @@ platformclientv2/eventerror.go
 platformclientv2/eventlisting.go
 platformclientv2/eventlog.go
 platformclientv2/eventmessage.go
-platformclientv2/eventpresence.go
 platformclientv2/eventqueryrequest.go
 platformclientv2/eventqueryresponse.go
 platformclientv2/eventsapi.go
 platformclientv2/eventsession.go
 platformclientv2/eventsetting.go
-platformclientv2/eventtyping.go
-platformclientv2/eventvideo.go
 platformclientv2/executerecordingjobsquery.go
 platformclientv2/executiondataentity.go
 platformclientv2/executiondataflowsettingsresponse.go
@@ -6195,7 +6225,6 @@ platformclientv2/messageconversationentitylisting.go
 platformclientv2/messagedata.go
 platformclientv2/messagedetails.go
 platformclientv2/messageevaluation.go
-platformclientv2/messageevent.go
 platformclientv2/messagefooter.go
 platformclientv2/messageheader.go
 platformclientv2/messageinfo.go
@@ -6617,7 +6646,6 @@ platformclientv2/performancepredictionrecalculationuploadresponse.go
 platformclientv2/performancepredictionresponse.go
 platformclientv2/performancepredictionuploadschema.go
 platformclientv2/performanceprofile.go
-platformclientv2/permissioncollectionentitylisting.go
 platformclientv2/permissiondetails.go
 platformclientv2/permissions.go
 platformclientv2/persistentconnectionchangetopicerrorinfo.go
@@ -6753,6 +6781,8 @@ platformclientv2/publishtopictopicsdefinitionsjob.go
 platformclientv2/punctualityevent.go
 platformclientv2/purecloud.go
 platformclientv2/pureengage.go
+platformclientv2/pushdeviceinsertrequest.go
+platformclientv2/pushdeviceupdaterequest.go
 platformclientv2/pushintegration.go
 platformclientv2/putdecisiontablerowrequest.go
 platformclientv2/qmauditqueryrequest.go
@@ -7755,6 +7785,7 @@ platformclientv2/textbotmodeoutputprompts.go
 platformclientv2/textbotoutputprompts.go
 platformclientv2/textbotpromptsegment.go
 platformclientv2/textbotsapi.go
+platformclientv2/textbotsrichmediainputevent.go
 platformclientv2/textbottextmodeconstraints.go
 platformclientv2/textbottranscript.go
 platformclientv2/textbotturnreference.go
@@ -7803,6 +7834,7 @@ platformclientv2/tokeninfo.go
 platformclientv2/tokeninfocloneduser.go
 platformclientv2/tokensapi.go
 platformclientv2/topic.go
+platformclientv2/topiccriteria.go
 platformclientv2/topiccursorentitylisting.go
 platformclientv2/topicduration.go
 platformclientv2/topicjob.go
@@ -7957,6 +7989,7 @@ platformclientv2/updatebusinessunitrequest.go
 platformclientv2/updatebusinessunitsettingsrequest.go
 platformclientv2/updatecapacityplanrequest.go
 platformclientv2/updatecoachingappointmentrequest.go
+platformclientv2/updateconferencerequest.go
 platformclientv2/updatecontactcolumnactionsettings.go
 platformclientv2/updatedecisiontablecolumnsrequest.go
 platformclientv2/updatedecisiontablerequest.go

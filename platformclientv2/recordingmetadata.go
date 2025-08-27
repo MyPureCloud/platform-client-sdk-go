@@ -63,10 +63,10 @@ type Recordingmetadata struct {
 	// ExportedDate - The date the recording was exported. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ExportedDate *time.Time `json:"exportedDate,omitempty"`
 
-	// MaxAllowedRestorationsForOrg - How many archive restorations the organization is allowed to have.
+	// MaxAllowedRestorationsForOrg - How many archive restorations the organization is allowed to have. Deprecated - Always returns 10000 since the restoration limit is no longer enforced.
 	MaxAllowedRestorationsForOrg *int `json:"maxAllowedRestorationsForOrg,omitempty"`
 
-	// RemainingRestorationsAllowedForOrg - The remaining archive restorations the organization has.
+	// RemainingRestorationsAllowedForOrg - The remaining archive restorations the organization has. Deprecated - Always returns 10000 since the restoration limit is no longer enforced.
 	RemainingRestorationsAllowedForOrg *int `json:"remainingRestorationsAllowedForOrg,omitempty"`
 
 	// SessionId - The session id represents an external resource id, such as email, call, chat, etc

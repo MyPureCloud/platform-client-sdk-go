@@ -26,6 +26,12 @@ type Shifttradeactivitypreviewresponse struct {
 
 	// PayableMinutes - Payable minutes for this activity
 	PayableMinutes *int `json:"payableMinutes,omitempty"`
+
+	// ExternalActivityType - The type of the external activity associated with this activity, if applicable
+	ExternalActivityType *string `json:"externalActivityType,omitempty"`
+
+	// ExternalActivityId - The ID of the external activity associated with this activity, if applicable
+	ExternalActivityId *string `json:"externalActivityId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -108,6 +114,10 @@ func (o Shifttradeactivitypreviewresponse) MarshalJSON() ([]byte, error) {
 		CountsAsPaidTime *bool `json:"countsAsPaidTime,omitempty"`
 		
 		PayableMinutes *int `json:"payableMinutes,omitempty"`
+		
+		ExternalActivityType *string `json:"externalActivityType,omitempty"`
+		
+		ExternalActivityId *string `json:"externalActivityId,omitempty"`
 		Alias
 	}{ 
 		StartDate: StartDate,
@@ -119,6 +129,10 @@ func (o Shifttradeactivitypreviewresponse) MarshalJSON() ([]byte, error) {
 		CountsAsPaidTime: o.CountsAsPaidTime,
 		
 		PayableMinutes: o.PayableMinutes,
+		
+		ExternalActivityType: o.ExternalActivityType,
+		
+		ExternalActivityId: o.ExternalActivityId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -153,6 +167,14 @@ func (o *Shifttradeactivitypreviewresponse) UnmarshalJSON(b []byte) error {
 		o.PayableMinutes = &PayableMinutesInt
 	}
 	
+	if ExternalActivityType, ok := ShifttradeactivitypreviewresponseMap["externalActivityType"].(string); ok {
+		o.ExternalActivityType = &ExternalActivityType
+	}
+    
+	if ExternalActivityId, ok := ShifttradeactivitypreviewresponseMap["externalActivityId"].(string); ok {
+		o.ExternalActivityId = &ExternalActivityId
+	}
+    
 
 	return nil
 }

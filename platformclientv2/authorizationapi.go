@@ -1219,11 +1219,11 @@ func (a AuthorizationApi) GetAuthorizationDivisionspermittedPagedSubjectId(subje
 // Get all permissions.
 //
 // Retrieve a list of all permission defined in the system.
-func (a AuthorizationApi) GetAuthorizationPermissions(pageSize int, pageNumber int, queryType string, query string) (*Permissioncollectionentitylisting, *APIResponse, error) {
+func (a AuthorizationApi) GetAuthorizationPermissions(pageSize int, pageNumber int, queryType string, query string) (*Domainpermissionentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/permissions"
-	defaultReturn := new(Permissioncollectionentitylisting)
+	defaultReturn := new(Domainpermissionentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -1284,14 +1284,14 @@ func (a AuthorizationApi) GetAuthorizationPermissions(pageSize int, pageNumber i
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Permissioncollectionentitylisting
+	var successPayload *Domainpermissionentitylisting
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Permissioncollectionentitylisting" == "string" {
+		if "Domainpermissionentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

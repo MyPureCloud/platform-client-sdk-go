@@ -30,6 +30,9 @@ type Literal struct {
 	// Special - A special value enum, such as Wildcard, Null, etc
 	Special *string `json:"special,omitempty"`
 
+	// Strings - A string list value
+	Strings *[]string `json:"strings,omitempty"`
+
 	// Boolean - A boolean value
 	Boolean *bool `json:"boolean,omitempty"`
 }
@@ -124,6 +127,8 @@ func (o Literal) MarshalJSON() ([]byte, error) {
 		
 		Special *string `json:"special,omitempty"`
 		
+		Strings *[]string `json:"strings,omitempty"`
+		
 		Boolean *bool `json:"boolean,omitempty"`
 		Alias
 	}{ 
@@ -138,6 +143,8 @@ func (o Literal) MarshalJSON() ([]byte, error) {
 		Datetime: Datetime,
 		
 		Special: o.Special,
+		
+		Strings: o.Strings,
 		
 		Boolean: o.Boolean,
 		Alias:    (Alias)(o),
@@ -178,6 +185,11 @@ func (o *Literal) UnmarshalJSON(b []byte) error {
 		o.Special = &Special
 	}
     
+	if Strings, ok := LiteralMap["strings"].([]interface{}); ok {
+		StringsString, _ := json.Marshal(Strings)
+		json.Unmarshal(StringsString, &o.Strings)
+	}
+	
 	if Boolean, ok := LiteralMap["boolean"].(bool); ok {
 		o.Boolean = &Boolean
 	}

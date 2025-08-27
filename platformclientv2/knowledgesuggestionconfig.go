@@ -19,6 +19,9 @@ type Knowledgesuggestionconfig struct {
 
 	// KnowledgeBases - The knowledge bases to query based on dialect, when Genesys is the knowledge suggestions provider.
 	KnowledgeBases *[]Knowledgebasewithdialectreference `json:"knowledgeBases,omitempty"`
+
+	// ReceiveSegmentedArticles - Include segmented articles in knowledge suggestions.
+	ReceiveSegmentedArticles *bool `json:"receiveSegmentedArticles,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +92,8 @@ func (o Knowledgesuggestionconfig) MarshalJSON() ([]byte, error) {
 		KnowledgeBase *Knowledgebasereference `json:"knowledgeBase,omitempty"`
 		
 		KnowledgeBases *[]Knowledgebasewithdialectreference `json:"knowledgeBases,omitempty"`
+		
+		ReceiveSegmentedArticles *bool `json:"receiveSegmentedArticles,omitempty"`
 		Alias
 	}{ 
 		VendorName: o.VendorName,
@@ -96,6 +101,8 @@ func (o Knowledgesuggestionconfig) MarshalJSON() ([]byte, error) {
 		KnowledgeBase: o.KnowledgeBase,
 		
 		KnowledgeBases: o.KnowledgeBases,
+		
+		ReceiveSegmentedArticles: o.ReceiveSegmentedArticles,
 		Alias:    (Alias)(o),
 	})
 }
@@ -121,6 +128,10 @@ func (o *Knowledgesuggestionconfig) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(KnowledgeBasesString, &o.KnowledgeBases)
 	}
 	
+	if ReceiveSegmentedArticles, ok := KnowledgesuggestionconfigMap["receiveSegmentedArticles"].(bool); ok {
+		o.ReceiveSegmentedArticles = &ReceiveSegmentedArticles
+	}
+    
 
 	return nil
 }

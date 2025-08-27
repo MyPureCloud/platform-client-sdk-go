@@ -7,28 +7,13 @@ import (
 	"strings"
 )
 
-// Domainpermissioncollection
-type Domainpermissioncollection struct { 
+// Campaignruledayofmonthparameters
+type Campaignruledayofmonthparameters struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`
-	// Id - The globally unique identifier for the object.
-	Id *string `json:"id,omitempty"`
-
-	// Name
-	Name *string `json:"name,omitempty"`
-
-	// Domain
-	Domain *string `json:"domain,omitempty"`
-
-	// PermissionMap
-	PermissionMap *map[string][]Domainpermission `json:"permissionMap,omitempty"`
-
-	// SelfUri - The URI for this object
-	SelfUri *string `json:"selfUri,omitempty"`
-}
+	SetFieldNames map[string]bool `json:"-"`}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Domainpermissioncollection) SetField(field string, fieldValue interface{}) {
+func (o *Campaignruledayofmonthparameters) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -49,7 +34,7 @@ func (o *Domainpermissioncollection) SetField(field string, fieldValue interface
 	o.SetFieldNames[field] = true
 }
 
-func (o Domainpermissioncollection) MarshalJSON() ([]byte, error) {
+func (o Campaignruledayofmonthparameters) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -87,67 +72,26 @@ func (o Domainpermissioncollection) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Domainpermissioncollection
+	type Alias Campaignruledayofmonthparameters
 	
-	return json.Marshal(&struct { 
-		Id *string `json:"id,omitempty"`
-		
-		Name *string `json:"name,omitempty"`
-		
-		Domain *string `json:"domain,omitempty"`
-		
-		PermissionMap *map[string][]Domainpermission `json:"permissionMap,omitempty"`
-		
-		SelfUri *string `json:"selfUri,omitempty"`
-		Alias
-	}{ 
-		Id: o.Id,
-		
-		Name: o.Name,
-		
-		Domain: o.Domain,
-		
-		PermissionMap: o.PermissionMap,
-		
-		SelfUri: o.SelfUri,
-		Alias:    (Alias)(o),
+	return json.Marshal(&struct { Alias
+	}{ Alias:    (Alias)(o),
 	})
 }
 
-func (o *Domainpermissioncollection) UnmarshalJSON(b []byte) error {
-	var DomainpermissioncollectionMap map[string]interface{}
-	err := json.Unmarshal(b, &DomainpermissioncollectionMap)
+func (o *Campaignruledayofmonthparameters) UnmarshalJSON(b []byte) error {
+	var CampaignruledayofmonthparametersMap map[string]interface{}
+	err := json.Unmarshal(b, &CampaignruledayofmonthparametersMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := DomainpermissioncollectionMap["id"].(string); ok {
-		o.Id = &Id
-	}
-    
-	if Name, ok := DomainpermissioncollectionMap["name"].(string); ok {
-		o.Name = &Name
-	}
-    
-	if Domain, ok := DomainpermissioncollectionMap["domain"].(string); ok {
-		o.Domain = &Domain
-	}
-    
-	if PermissionMap, ok := DomainpermissioncollectionMap["permissionMap"].(map[string]interface{}); ok {
-		PermissionMapString, _ := json.Marshal(PermissionMap)
-		json.Unmarshal(PermissionMapString, &o.PermissionMap)
-	}
-	
-	if SelfUri, ok := DomainpermissioncollectionMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
-	}
-    
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Domainpermissioncollection) String() string {
+func (o *Campaignruledayofmonthparameters) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 
