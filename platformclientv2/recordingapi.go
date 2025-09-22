@@ -4401,7 +4401,7 @@ func (a RecordingApi) PutRecordingCrossplatformMediaretentionpolicy(policyId str
 //
 // Execute the recording bulk job.
 //
-// A job must be executed by the same user whom originally created the job.  In addition, the user must have permission to update the recording&#39;s retention.
+// Each organization can run up to a maximum of two concurrent jobs that are either in pending or processing state. A job must be executed by the same user whom originally created the job.  In addition, the user must have permission to update the recording&#39;s retention.
 func (a RecordingApi) PutRecordingJob(jobId string, body Executerecordingjobsquery) (*Recordingjob, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -4583,7 +4583,7 @@ func (a RecordingApi) PutRecordingKeyconfiguration(keyConfigurationId string, bo
 //
 // Update a media retention policy
 //
-// Policy does not work retroactively
+// Policy does not work retroactively. In the conditions.forUsers section, each user object can include the &#39;id&#39; field containing the user&#39;s unique identifier. Example: [{\&quot;id\&quot;:\&quot;&lt;userId&gt;\&quot;}].
 func (a RecordingApi) PutRecordingMediaretentionpolicy(policyId string, body Policy) (*Policy, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

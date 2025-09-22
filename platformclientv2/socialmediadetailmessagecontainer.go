@@ -19,6 +19,9 @@ type Socialmediadetailmessagecontainer struct {
 
 	// EscalationInfo
 	EscalationInfo *Socialmediamessageescalationinfo `json:"escalationInfo,omitempty"`
+
+	// ContentModeration
+	ContentModeration *Contentmoderation `json:"contentModeration,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +92,8 @@ func (o Socialmediadetailmessagecontainer) MarshalJSON() ([]byte, error) {
 		NormalizedMessage *Conversationnormalizedmessage `json:"normalizedMessage,omitempty"`
 		
 		EscalationInfo *Socialmediamessageescalationinfo `json:"escalationInfo,omitempty"`
+		
+		ContentModeration *Contentmoderation `json:"contentModeration,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -96,6 +101,8 @@ func (o Socialmediadetailmessagecontainer) MarshalJSON() ([]byte, error) {
 		NormalizedMessage: o.NormalizedMessage,
 		
 		EscalationInfo: o.EscalationInfo,
+		
+		ContentModeration: o.ContentModeration,
 		Alias:    (Alias)(o),
 	})
 }
@@ -119,6 +126,11 @@ func (o *Socialmediadetailmessagecontainer) UnmarshalJSON(b []byte) error {
 	if EscalationInfo, ok := SocialmediadetailmessagecontainerMap["escalationInfo"].(map[string]interface{}); ok {
 		EscalationInfoString, _ := json.Marshal(EscalationInfo)
 		json.Unmarshal(EscalationInfoString, &o.EscalationInfo)
+	}
+	
+	if ContentModeration, ok := SocialmediadetailmessagecontainerMap["contentModeration"].(map[string]interface{}); ok {
+		ContentModerationString, _ := json.Marshal(ContentModeration)
+		json.Unmarshal(ContentModerationString, &o.ContentModeration)
 	}
 	
 

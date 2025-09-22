@@ -25,6 +25,9 @@ type Emailoutbounddomainresult struct {
 
 	// SenderType
 	SenderType *string `json:"senderType,omitempty"`
+
+	// EmailSetting - The email settings associated with this domain.
+	EmailSetting *Emailsetting `json:"emailSetting,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -99,6 +102,8 @@ func (o Emailoutbounddomainresult) MarshalJSON() ([]byte, error) {
 		SenderStatus *string `json:"senderStatus,omitempty"`
 		
 		SenderType *string `json:"senderType,omitempty"`
+		
+		EmailSetting *Emailsetting `json:"emailSetting,omitempty"`
 		Alias
 	}{ 
 		DnsCnameBounceRecord: o.DnsCnameBounceRecord,
@@ -110,6 +115,8 @@ func (o Emailoutbounddomainresult) MarshalJSON() ([]byte, error) {
 		SenderStatus: o.SenderStatus,
 		
 		SenderType: o.SenderType,
+		
+		EmailSetting: o.EmailSetting,
 		Alias:    (Alias)(o),
 	})
 }
@@ -143,6 +150,11 @@ func (o *Emailoutbounddomainresult) UnmarshalJSON(b []byte) error {
 		o.SenderType = &SenderType
 	}
     
+	if EmailSetting, ok := EmailoutbounddomainresultMap["emailSetting"].(map[string]interface{}); ok {
+		EmailSettingString, _ := json.Marshal(EmailSetting)
+		json.Unmarshal(EmailSettingString, &o.EmailSetting)
+	}
+	
 
 	return nil
 }

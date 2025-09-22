@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -34,6 +35,12 @@ type Mediaendpointstatistics struct {
 
 	// ClientInfo - Client information associated with media endpoint
 	ClientInfo *Mediastatisticsclientinfo `json:"clientInfo,omitempty"`
+
+	// DateCreated - Media endpoint statistics creation time. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateCreated *time.Time `json:"dateCreated,omitempty"`
+
+	// DateProcessed - Media endpoint statistics processed time. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateProcessed *time.Time `json:"dateProcessed,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -65,7 +72,7 @@ func (o Mediaendpointstatistics) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
+		dateTimeFields := []string{ "DateCreated","DateProcessed", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -98,6 +105,22 @@ func (o Mediaendpointstatistics) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Mediaendpointstatistics
 	
+	DateCreated := new(string)
+	if o.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
+	DateProcessed := new(string)
+	if o.DateProcessed != nil {
+		
+		*DateProcessed = timeutil.Strftime(o.DateProcessed, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateProcessed = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Trunk *Mediastatisticstrunkinfo `json:"trunk,omitempty"`
 		
@@ -114,6 +137,10 @@ func (o Mediaendpointstatistics) MarshalJSON() ([]byte, error) {
 		SourceType *string `json:"sourceType,omitempty"`
 		
 		ClientInfo *Mediastatisticsclientinfo `json:"clientInfo,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		DateProcessed *string `json:"dateProcessed,omitempty"`
 		Alias
 	}{ 
 		Trunk: o.Trunk,
@@ -131,6 +158,10 @@ func (o Mediaendpointstatistics) MarshalJSON() ([]byte, error) {
 		SourceType: o.SourceType,
 		
 		ClientInfo: o.ClientInfo,
+		
+		DateCreated: DateCreated,
+		
+		DateProcessed: DateProcessed,
 		Alias:    (Alias)(o),
 	})
 }
@@ -179,6 +210,16 @@ func (o *Mediaendpointstatistics) UnmarshalJSON(b []byte) error {
 	if ClientInfo, ok := MediaendpointstatisticsMap["clientInfo"].(map[string]interface{}); ok {
 		ClientInfoString, _ := json.Marshal(ClientInfo)
 		json.Unmarshal(ClientInfoString, &o.ClientInfo)
+	}
+	
+	if dateCreatedString, ok := MediaendpointstatisticsMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateProcessedString, ok := MediaendpointstatisticsMap["dateProcessed"].(string); ok {
+		DateProcessed, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateProcessedString)
+		o.DateProcessed = &DateProcessed
 	}
 	
 

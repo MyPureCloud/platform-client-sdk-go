@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -22,6 +23,9 @@ type Mediastatisticspostrequest struct {
 
 	// ReconnectAttempts - Media reconnect attempt count
 	ReconnectAttempts *int `json:"reconnectAttempts,omitempty"`
+
+	// DateCreated - Media endpoint statistics creation time. Format: yyyy-MM-dd'T'HH:mm:ss.SSS'Z'. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateCreated *time.Time `json:"dateCreated,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -53,7 +57,7 @@ func (o Mediastatisticspostrequest) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
+		dateTimeFields := []string{ "DateCreated", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -86,6 +90,14 @@ func (o Mediastatisticspostrequest) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Mediastatisticspostrequest
 	
+	DateCreated := new(string)
+	if o.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
 	return json.Marshal(&struct { 
 		SourceType *string `json:"sourceType,omitempty"`
 		
@@ -94,6 +106,8 @@ func (o Mediastatisticspostrequest) MarshalJSON() ([]byte, error) {
 		Rtp *Mediartpstatistics `json:"rtp,omitempty"`
 		
 		ReconnectAttempts *int `json:"reconnectAttempts,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
 		Alias
 	}{ 
 		SourceType: o.SourceType,
@@ -103,6 +117,8 @@ func (o Mediastatisticspostrequest) MarshalJSON() ([]byte, error) {
 		Rtp: o.Rtp,
 		
 		ReconnectAttempts: o.ReconnectAttempts,
+		
+		DateCreated: DateCreated,
 		Alias:    (Alias)(o),
 	})
 }
@@ -131,6 +147,11 @@ func (o *Mediastatisticspostrequest) UnmarshalJSON(b []byte) error {
 	if ReconnectAttempts, ok := MediastatisticspostrequestMap["reconnectAttempts"].(float64); ok {
 		ReconnectAttemptsInt := int(ReconnectAttempts)
 		o.ReconnectAttempts = &ReconnectAttemptsInt
+	}
+	
+	if dateCreatedString, ok := MediastatisticspostrequestMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
 	}
 	
 

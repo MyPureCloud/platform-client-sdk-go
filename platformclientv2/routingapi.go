@@ -2340,7 +2340,7 @@ func (a RoutingApi) GetRoutingDirectroutingbackupSettingsMe() (*Agentdirectrouti
 // GetRoutingEmailDomain invokes GET /api/v2/routing/email/domains/{domainId}
 //
 // Get domain
-func (a RoutingApi) GetRoutingEmailDomain(domainId string) (*Inbounddomain, *APIResponse, error) {
+func (a RoutingApi) GetRoutingEmailDomain(domainId string, expand string) (*Inbounddomain, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/email/domains/{domainId}"
@@ -2372,6 +2372,8 @@ func (a RoutingApi) GetRoutingEmailDomain(domainId string) (*Inbounddomain, *API
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -2690,7 +2692,7 @@ func (a RoutingApi) GetRoutingEmailDomainRoutes(domainName string, pageSize int,
 // GetRoutingEmailDomains invokes GET /api/v2/routing/email/domains
 //
 // Get domains
-func (a RoutingApi) GetRoutingEmailDomains(pageSize int, pageNumber int, excludeStatus bool, filter string) (*Inbounddomainentitylisting, *APIResponse, error) {
+func (a RoutingApi) GetRoutingEmailDomains(pageSize int, pageNumber int, excludeStatus bool, filter string, expand string) (*Inbounddomainentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/email/domains"
@@ -2724,6 +2726,8 @@ func (a RoutingApi) GetRoutingEmailDomains(pageSize int, pageNumber int, exclude
 	queryParams["excludeStatus"] = a.Configuration.APIClient.ParameterToString(excludeStatus, "")
 	
 	queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, "")
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -2774,7 +2778,7 @@ func (a RoutingApi) GetRoutingEmailDomains(pageSize int, pageNumber int, exclude
 // GetRoutingEmailOutboundDomain invokes GET /api/v2/routing/email/outbound/domains/{domainId}
 //
 // Get domain
-func (a RoutingApi) GetRoutingEmailOutboundDomain(domainId string) (*Outbounddomain, *APIResponse, error) {
+func (a RoutingApi) GetRoutingEmailOutboundDomain(domainId string, expand string) (*Outbounddomain, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/email/outbound/domains/{domainId}"
@@ -2806,6 +2810,8 @@ func (a RoutingApi) GetRoutingEmailOutboundDomain(domainId string) (*Outbounddom
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -2938,7 +2944,7 @@ func (a RoutingApi) GetRoutingEmailOutboundDomainActivation(domainId string) (*E
 // GetRoutingEmailOutboundDomains invokes GET /api/v2/routing/email/outbound/domains
 //
 // Get outbound domains
-func (a RoutingApi) GetRoutingEmailOutboundDomains(pageSize int, pageNumber int, filter string) (*Outbounddomainentitylisting, *APIResponse, error) {
+func (a RoutingApi) GetRoutingEmailOutboundDomains(pageSize int, pageNumber int, filter string, expand string) (*Outbounddomainentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/email/outbound/domains"
@@ -2970,6 +2976,8 @@ func (a RoutingApi) GetRoutingEmailOutboundDomains(pageSize int, pageNumber int,
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 	queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, "")
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -9829,7 +9837,7 @@ func (a RoutingApi) PostRoutingEmailDomainTestconnection(domainId string, body T
 // PostRoutingEmailDomains invokes POST /api/v2/routing/email/domains
 //
 // Create a domain
-func (a RoutingApi) PostRoutingEmailDomains(body Inbounddomain) (*Inbounddomain, *APIResponse, error) {
+func (a RoutingApi) PostRoutingEmailDomains(body Inbounddomaincreaterequest) (*Inbounddomain, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/email/domains"
@@ -9913,7 +9921,7 @@ func (a RoutingApi) PostRoutingEmailDomains(body Inbounddomain) (*Inbounddomain,
 // PostRoutingEmailOutboundDomains invokes POST /api/v2/routing/email/outbound/domains
 //
 // Create a domain
-func (a RoutingApi) PostRoutingEmailOutboundDomains(body Outbounddomainrequest) (*Emailoutbounddomainresult, *APIResponse, error) {
+func (a RoutingApi) PostRoutingEmailOutboundDomains(body Outbounddomaincreaterequest) (*Emailoutbounddomainresult, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/email/outbound/domains"
@@ -9997,7 +10005,7 @@ func (a RoutingApi) PostRoutingEmailOutboundDomains(body Outbounddomainrequest) 
 // PostRoutingEmailOutboundDomainsSimulated invokes POST /api/v2/routing/email/outbound/domains/simulated
 //
 // Create a simulated domain
-func (a RoutingApi) PostRoutingEmailOutboundDomainsSimulated(body Outbounddomainrequest) (*Emailoutbounddomainresult, *APIResponse, error) {
+func (a RoutingApi) PostRoutingEmailOutboundDomainsSimulated(body Outbounddomaincreaterequest) (*Emailoutbounddomainresult, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/email/outbound/domains/simulated"

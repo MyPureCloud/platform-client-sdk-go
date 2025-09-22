@@ -81,6 +81,9 @@ type Phone struct {
 	// WebRtcUser - This is the user associated with a WebRTC type phone.  It is required for all WebRTC phones.
 	WebRtcUser *Domainentityref `json:"webRtcUser,omitempty"`
 
+	// StandAlone - Boolean indicating whether the phone is standAlone.
+	StandAlone *bool `json:"standAlone,omitempty"`
+
 	// PrimaryEdge
 	PrimaryEdge *Edge `json:"primaryEdge,omitempty"`
 
@@ -216,6 +219,8 @@ func (o Phone) MarshalJSON() ([]byte, error) {
 		
 		WebRtcUser *Domainentityref `json:"webRtcUser,omitempty"`
 		
+		StandAlone *bool `json:"standAlone,omitempty"`
+		
 		PrimaryEdge *Edge `json:"primaryEdge,omitempty"`
 		
 		SecondaryEdge *Edge `json:"secondaryEdge,omitempty"`
@@ -268,6 +273,8 @@ func (o Phone) MarshalJSON() ([]byte, error) {
 		Capabilities: o.Capabilities,
 		
 		WebRtcUser: o.WebRtcUser,
+		
+		StandAlone: o.StandAlone,
 		
 		PrimaryEdge: o.PrimaryEdge,
 		
@@ -392,6 +399,10 @@ func (o *Phone) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(WebRtcUserString, &o.WebRtcUser)
 	}
 	
+	if StandAlone, ok := PhoneMap["standAlone"].(bool); ok {
+		o.StandAlone = &StandAlone
+	}
+    
 	if PrimaryEdge, ok := PhoneMap["primaryEdge"].(map[string]interface{}); ok {
 		PrimaryEdgeString, _ := json.Marshal(PrimaryEdge)
 		json.Unmarshal(PrimaryEdgeString, &o.PrimaryEdge)

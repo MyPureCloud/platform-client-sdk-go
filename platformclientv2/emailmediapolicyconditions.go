@@ -11,8 +11,8 @@ import (
 type Emailmediapolicyconditions struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// ForUsers
-	ForUsers *[]User `json:"forUsers,omitempty"`
+	// ForUsers - List of users to apply this policy to. Each user object can include the 'id' field containing the user's unique identifier. Example: [{\"id\":\"<userId>\"}].
+	ForUsers *[]Policyuser `json:"forUsers,omitempty"`
 
 	// DateRanges
 	DateRanges *[]string `json:"dateRanges,omitempty"`
@@ -99,7 +99,7 @@ func (o Emailmediapolicyconditions) MarshalJSON() ([]byte, error) {
 	type Alias Emailmediapolicyconditions
 	
 	return json.Marshal(&struct { 
-		ForUsers *[]User `json:"forUsers,omitempty"`
+		ForUsers *[]Policyuser `json:"forUsers,omitempty"`
 		
 		DateRanges *[]string `json:"dateRanges,omitempty"`
 		

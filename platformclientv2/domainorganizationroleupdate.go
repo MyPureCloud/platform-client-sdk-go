@@ -48,11 +48,11 @@ type Domainorganizationroleupdate struct {
 	// DateLicenseLastUpdated - The time that this role licenses were most recently updated. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateLicenseLastUpdated *time.Time `json:"dateLicenseLastUpdated,omitempty"`
 
-	// VarDefault
-	VarDefault *bool `json:"default,omitempty"`
-
 	// Base
 	Base *bool `json:"base,omitempty"`
+
+	// VarDefault
+	VarDefault *bool `json:"default,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -153,9 +153,9 @@ func (o Domainorganizationroleupdate) MarshalJSON() ([]byte, error) {
 		
 		DateLicenseLastUpdated *string `json:"dateLicenseLastUpdated,omitempty"`
 		
-		VarDefault *bool `json:"default,omitempty"`
-		
 		Base *bool `json:"base,omitempty"`
+		
+		VarDefault *bool `json:"default,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
@@ -184,9 +184,9 @@ func (o Domainorganizationroleupdate) MarshalJSON() ([]byte, error) {
 		
 		DateLicenseLastUpdated: DateLicenseLastUpdated,
 		
-		VarDefault: o.VarDefault,
-		
 		Base: o.Base,
+		
+		VarDefault: o.VarDefault,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -254,12 +254,12 @@ func (o *Domainorganizationroleupdate) UnmarshalJSON(b []byte) error {
 		o.DateLicenseLastUpdated = &DateLicenseLastUpdated
 	}
 	
-	if VarDefault, ok := DomainorganizationroleupdateMap["default"].(bool); ok {
-		o.VarDefault = &VarDefault
-	}
-    
 	if Base, ok := DomainorganizationroleupdateMap["base"].(bool); ok {
 		o.Base = &Base
+	}
+    
+	if VarDefault, ok := DomainorganizationroleupdateMap["default"].(bool); ok {
+		o.VarDefault = &VarDefault
 	}
     
 	if SelfUri, ok := DomainorganizationroleupdateMap["selfUri"].(string); ok {

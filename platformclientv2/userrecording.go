@@ -24,9 +24,6 @@ type Userrecording struct {
 	// DateModified - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
-	// ContentUri
-	ContentUri *string `json:"contentUri,omitempty"`
-
 	// Workspace
 	Workspace *Domainentityref `json:"workspace,omitempty"`
 
@@ -139,8 +136,6 @@ func (o Userrecording) MarshalJSON() ([]byte, error) {
 		
 		DateModified *string `json:"dateModified,omitempty"`
 		
-		ContentUri *string `json:"contentUri,omitempty"`
-		
 		Workspace *Domainentityref `json:"workspace,omitempty"`
 		
 		CreatedBy *Domainentityref `json:"createdBy,omitempty"`
@@ -165,8 +160,6 @@ func (o Userrecording) MarshalJSON() ([]byte, error) {
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
-		
-		ContentUri: o.ContentUri,
 		
 		Workspace: o.Workspace,
 		
@@ -212,10 +205,6 @@ func (o *Userrecording) UnmarshalJSON(b []byte) error {
 		o.DateModified = &DateModified
 	}
 	
-	if ContentUri, ok := UserrecordingMap["contentUri"].(string); ok {
-		o.ContentUri = &ContentUri
-	}
-    
 	if Workspace, ok := UserrecordingMap["workspace"].(map[string]interface{}); ok {
 		WorkspaceString, _ := json.Marshal(Workspace)
 		json.Unmarshal(WorkspaceString, &o.Workspace)

@@ -26,6 +26,9 @@ type Outbounddomain struct {
 	// SenderType - Sender Type
 	SenderType *string `json:"senderType,omitempty"`
 
+	// EmailSetting - The email settings associated with this domain.
+	EmailSetting *Emailsetting `json:"emailSetting,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -103,6 +106,8 @@ func (o Outbounddomain) MarshalJSON() ([]byte, error) {
 		
 		SenderType *string `json:"senderType,omitempty"`
 		
+		EmailSetting *Emailsetting `json:"emailSetting,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -115,6 +120,8 @@ func (o Outbounddomain) MarshalJSON() ([]byte, error) {
 		DkimVerificationResult: o.DkimVerificationResult,
 		
 		SenderType: o.SenderType,
+		
+		EmailSetting: o.EmailSetting,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -150,6 +157,11 @@ func (o *Outbounddomain) UnmarshalJSON(b []byte) error {
 		o.SenderType = &SenderType
 	}
     
+	if EmailSetting, ok := OutbounddomainMap["emailSetting"].(map[string]interface{}); ok {
+		EmailSettingString, _ := json.Marshal(EmailSetting)
+		json.Unmarshal(EmailSettingString, &o.EmailSetting)
+	}
+	
 	if SelfUri, ok := OutbounddomainMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

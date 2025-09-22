@@ -54,6 +54,9 @@ type Nludomainversion struct {
 	// Entities - The entities defined for this NLU domain version.This field is mutually exclusive with entityTypeBindings
 	Entities *[]Namedentitydefinition `json:"entities,omitempty"`
 
+	// LanguageVersions - Map of language code to NLU domain version UUID for multilingual domains.
+	LanguageVersions *map[string]string `json:"languageVersions,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -181,6 +184,8 @@ func (o Nludomainversion) MarshalJSON() ([]byte, error) {
 		
 		Entities *[]Namedentitydefinition `json:"entities,omitempty"`
 		
+		LanguageVersions *map[string]string `json:"languageVersions,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -211,6 +216,8 @@ func (o Nludomainversion) MarshalJSON() ([]byte, error) {
 		EntityTypes: o.EntityTypes,
 		
 		Entities: o.Entities,
+		
+		LanguageVersions: o.LanguageVersions,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -286,6 +293,11 @@ func (o *Nludomainversion) UnmarshalJSON(b []byte) error {
 	if Entities, ok := NludomainversionMap["entities"].([]interface{}); ok {
 		EntitiesString, _ := json.Marshal(Entities)
 		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+	if LanguageVersions, ok := NludomainversionMap["languageVersions"].(map[string]interface{}); ok {
+		LanguageVersionsString, _ := json.Marshal(LanguageVersions)
+		json.Unmarshal(LanguageVersionsString, &o.LanguageVersions)
 	}
 	
 	if SelfUri, ok := NludomainversionMap["selfUri"].(string); ok {

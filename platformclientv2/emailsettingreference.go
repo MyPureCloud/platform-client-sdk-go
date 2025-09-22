@@ -7,22 +7,22 @@ import (
 	"strings"
 )
 
-// Outbounddomainrequest
-type Outbounddomainrequest struct { 
+// Emailsettingreference - Email Setting reference for email routing settings
+type Emailsettingreference struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - Unique Id of the domain such as: example.com
+	// Id - The email setting unique identifier
 	Id *string `json:"id,omitempty"`
 
-	// SenderType - Sender Type
-	SenderType *string `json:"senderType,omitempty"`
-
-	// Name - The domain such as: example.com
+	// Name
 	Name *string `json:"name,omitempty"`
+
+	// SelfUri - The email setting URI
+	SelfUri *string `json:"selfUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Outbounddomainrequest) SetField(field string, fieldValue interface{}) {
+func (o *Emailsettingreference) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -43,7 +43,7 @@ func (o *Outbounddomainrequest) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Outbounddomainrequest) MarshalJSON() ([]byte, error) {
+func (o Emailsettingreference) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -81,42 +81,42 @@ func (o Outbounddomainrequest) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Outbounddomainrequest
+	type Alias Emailsettingreference
 	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
-		SenderType *string `json:"senderType,omitempty"`
-		
 		Name *string `json:"name,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
 		
-		SenderType: o.SenderType,
-		
 		Name: o.Name,
+		
+		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Outbounddomainrequest) UnmarshalJSON(b []byte) error {
-	var OutbounddomainrequestMap map[string]interface{}
-	err := json.Unmarshal(b, &OutbounddomainrequestMap)
+func (o *Emailsettingreference) UnmarshalJSON(b []byte) error {
+	var EmailsettingreferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &EmailsettingreferenceMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := OutbounddomainrequestMap["id"].(string); ok {
+	if Id, ok := EmailsettingreferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
     
-	if SenderType, ok := OutbounddomainrequestMap["senderType"].(string); ok {
-		o.SenderType = &SenderType
+	if Name, ok := EmailsettingreferenceMap["name"].(string); ok {
+		o.Name = &Name
 	}
     
-	if Name, ok := OutbounddomainrequestMap["name"].(string); ok {
-		o.Name = &Name
+	if SelfUri, ok := EmailsettingreferenceMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
 	}
     
 
@@ -124,7 +124,7 @@ func (o *Outbounddomainrequest) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Outbounddomainrequest) String() string {
+func (o *Emailsettingreference) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 
