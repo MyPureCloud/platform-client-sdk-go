@@ -32,11 +32,11 @@ type Internalmessageconversationentitylisting struct {
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
+
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
 
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
@@ -119,9 +119,9 @@ func (o Internalmessageconversationentitylisting) MarshalJSON() ([]byte, error) 
 		
 		NextUri *string `json:"nextUri,omitempty"`
 		
-		LastUri *string `json:"lastUri,omitempty"`
-		
 		SelfUri *string `json:"selfUri,omitempty"`
+		
+		LastUri *string `json:"lastUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		Alias
@@ -140,9 +140,9 @@ func (o Internalmessageconversationentitylisting) MarshalJSON() ([]byte, error) 
 		
 		NextUri: o.NextUri,
 		
-		LastUri: o.LastUri,
-		
 		SelfUri: o.SelfUri,
+		
+		LastUri: o.LastUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
@@ -188,12 +188,12 @@ func (o *Internalmessageconversationentitylisting) UnmarshalJSON(b []byte) error
 		o.NextUri = &NextUri
 	}
     
-	if LastUri, ok := InternalmessageconversationentitylistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
 	if SelfUri, ok := InternalmessageconversationentitylistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
+	}
+    
+	if LastUri, ok := InternalmessageconversationentitylistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
 	}
     
 	if PageCount, ok := InternalmessageconversationentitylistingMap["pageCount"].(float64); ok {

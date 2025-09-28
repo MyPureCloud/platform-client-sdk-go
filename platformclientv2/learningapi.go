@@ -3005,7 +3005,7 @@ func (a LearningApi) PutLearningModulePreview(moduleId string, body Learningmodu
 // Update a learning module rule
 //
 // This will update a learning module rule with the specified fields.
-func (a LearningApi) PutLearningModuleRule(moduleId string, body Learningmodulerule) (*Learningmodulerule, *APIResponse, error) {
+func (a LearningApi) PutLearningModuleRule(moduleId string, body Learningmodulerule, assign bool) (*Learningmodulerule, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/learning/modules/{moduleId}/rule"
@@ -3042,6 +3042,8 @@ func (a LearningApi) PutLearningModuleRule(moduleId string, body Learningmoduler
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["assign"] = a.Configuration.APIClient.ParameterToString(assign, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

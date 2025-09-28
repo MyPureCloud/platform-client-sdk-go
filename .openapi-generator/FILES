@@ -96,6 +96,7 @@ docs/DeleteConversationRecordingAnnotation-example.txt
 docs/DeleteConversationsCallParticipantConsult-example.txt
 docs/DeleteConversationsEmailMessagesDraftAttachment-example.txt
 docs/DeleteConversationsMessagesCachedmediaCachedMediaItemId-example.txt
+docs/DeleteConversationsMessagingIntegrationsAppleIntegrationId-example.txt
 docs/DeleteConversationsMessagingIntegrationsFacebookIntegrationId-example.txt
 docs/DeleteConversationsMessagingIntegrationsInstagramIntegrationId-example.txt
 docs/DeleteConversationsMessagingIntegrationsOpenIntegrationId-example.txt
@@ -484,6 +485,7 @@ docs/GetAssistantCopilot-example.txt
 docs/GetAssistantQueue-example.txt
 docs/GetAssistantQueues-example.txt
 docs/GetAssistants-example.txt
+docs/GetAssistantsCopilotFeaturesupport-example.txt
 docs/GetAssistantsQueues-example.txt
 docs/GetAuditsQueryRealtimeServicemapping-example.txt
 docs/GetAuditsQueryServicemapping-example.txt
@@ -664,6 +666,8 @@ docs/GetConversationsMessagingIdentityresolutionIntegrationsTwitterIntegrationId
 docs/GetConversationsMessagingIdentityresolutionIntegrationsWhatsappIntegrationId-example.txt
 docs/GetConversationsMessagingIntegrationTwitterOauthSettings-example.txt
 docs/GetConversationsMessagingIntegrations-example.txt
+docs/GetConversationsMessagingIntegrationsApple-example.txt
+docs/GetConversationsMessagingIntegrationsAppleIntegrationId-example.txt
 docs/GetConversationsMessagingIntegrationsFacebook-example.txt
 docs/GetConversationsMessagingIntegrationsFacebookIntegrationId-example.txt
 docs/GetConversationsMessagingIntegrationsInstagram-example.txt
@@ -675,6 +679,7 @@ docs/GetConversationsMessagingIntegrationsTwitterIntegrationId-example.txt
 docs/GetConversationsMessagingIntegrationsTwitterOauthSettings-example.txt
 docs/GetConversationsMessagingIntegrationsWhatsapp-example.txt
 docs/GetConversationsMessagingIntegrationsWhatsappIntegrationId-example.txt
+docs/GetConversationsMessagingOauthAppleCallback-example.txt
 docs/GetConversationsMessagingSetting-example.txt
 docs/GetConversationsMessagingSettings-example.txt
 docs/GetConversationsMessagingSettingsDefault-example.txt
@@ -1870,6 +1875,7 @@ docs/PatchConversationsMessage-example.txt
 docs/PatchConversationsMessageParticipant-example.txt
 docs/PatchConversationsMessageParticipantAttributes-example.txt
 docs/PatchConversationsMessageParticipantCommunication-example.txt
+docs/PatchConversationsMessagingIntegrationsAppleIntegrationId-example.txt
 docs/PatchConversationsMessagingIntegrationsFacebookIntegrationId-example.txt
 docs/PatchConversationsMessagingIntegrationsInstagramIntegrationId-example.txt
 docs/PatchConversationsMessagingIntegrationsOpenIntegrationId-example.txt
@@ -2259,6 +2265,7 @@ docs/PostConversationsMessageParticipantReplace-example.txt
 docs/PostConversationsMessages-example.txt
 docs/PostConversationsMessagesAgentless-example.txt
 docs/PostConversationsMessagesInboundOpen-example.txt
+docs/PostConversationsMessagingIntegrationsApple-example.txt
 docs/PostConversationsMessagingIntegrationsFacebook-example.txt
 docs/PostConversationsMessagingIntegrationsInstagram-example.txt
 docs/PostConversationsMessagingIntegrationsOpen-example.txt
@@ -2749,6 +2756,7 @@ docs/PostWorkforcemanagementAgentAdherenceExplanationsQuery-example.txt
 docs/PostWorkforcemanagementAgents-example.txt
 docs/PostWorkforcemanagementAgentsIntegrationsHrisQuery-example.txt
 docs/PostWorkforcemanagementAgentsMePossibleworkshifts-example.txt
+docs/PostWorkforcemanagementAgentschedulesManagementunitsMine-example.txt
 docs/PostWorkforcemanagementAgentschedulesMine-example.txt
 docs/PostWorkforcemanagementAlternativeshiftsOffersJobs-example.txt
 docs/PostWorkforcemanagementAlternativeshiftsOffersSearchJobs-example.txt
@@ -3268,6 +3276,11 @@ platformclientv2/agentlessemailsendrequestdto.go
 platformclientv2/agentlessemailsendresponsedto.go
 platformclientv2/agentmanagementunitreference.go
 platformclientv2/agentmaxutilizationresponse.go
+platformclientv2/agentmuqueryresponse.go
+platformclientv2/agentmuscheduleitem.go
+platformclientv2/agentmuschedulequery.go
+platformclientv2/agentmuscheduleresult.go
+platformclientv2/agentmuscheduleshift.go
 platformclientv2/agentownedmappingpreview.go
 platformclientv2/agentownedmappingpreviewlisting.go
 platformclientv2/agentownedrouting.go
@@ -3277,6 +3290,7 @@ platformclientv2/agentqueryadherenceexplanationsrequest.go
 platformclientv2/agentqueryadherenceexplanationsresponse.go
 platformclientv2/agentqueuetimerequest.go
 platformclientv2/agentsbidassignedworkplanoverriderequest.go
+platformclientv2/agentscheduleshiftactivity.go
 platformclientv2/agentsintegrationslisting.go
 platformclientv2/agentstateagentqueryclause.go
 platformclientv2/agentstateagentquerypredicate.go
@@ -3392,7 +3406,14 @@ platformclientv2/appevent.go
 platformclientv2/appeventrequest.go
 platformclientv2/appeventresponse.go
 platformclientv2/appeventresponsesession.go
+platformclientv2/appleauthentication.go
+platformclientv2/appleimessageapp.go
+platformclientv2/appleintegration.go
+platformclientv2/appleintegrationentitylisting.go
+platformclientv2/appleintegrationrequest.go
+platformclientv2/appleintegrationupdaterequest.go
 platformclientv2/appleopaqueid.go
+platformclientv2/applepay.go
 platformclientv2/approvalnamespace.go
 platformclientv2/architectapi.go
 platformclientv2/architectdependencytrackingbuildnotificationclient.go
@@ -4895,7 +4916,9 @@ platformclientv2/disallowedentitylearningassignmentitem.go
 platformclientv2/disallowedentitylearningassignmentreference.go
 platformclientv2/disconnectreason.go
 platformclientv2/disposition.go
+platformclientv2/dispositionamdtimeout.go
 platformclientv2/dispositionparameters.go
+platformclientv2/dispositionsilentcalltimeout.go
 platformclientv2/division.go
 platformclientv2/divisioneddomainentityref.go
 platformclientv2/divisionentityref.go
@@ -5007,8 +5030,7 @@ platformclientv2/domainorganizationrolecreate.go
 platformclientv2/domainorganizationroleupdate.go
 platformclientv2/domainorgroledifference.go
 platformclientv2/domainpermission.go
-platformclientv2/domainpermissioncollectiondomainpermission.go
-platformclientv2/domainpermissionentitylisting.go
+platformclientv2/domainpermissioncollection.go
 platformclientv2/domainpermissionpolicy.go
 platformclientv2/domainphysicalcapabilities.go
 platformclientv2/domainphysicalinterface.go
@@ -5368,6 +5390,7 @@ platformclientv2/faxtopiclockdata.go
 platformclientv2/faxtopicuserdata.go
 platformclientv2/faxtopicworkspacedata.go
 platformclientv2/featurestate.go
+platformclientv2/featuresupport.go
 platformclientv2/feedback.go
 platformclientv2/feedbackaddrequest.go
 platformclientv2/feedbackupdaterequest.go
@@ -6071,6 +6094,8 @@ platformclientv2/languageentitylisting.go
 platformclientv2/languageoverride.go
 platformclientv2/languagereference.go
 platformclientv2/languagesapi.go
+platformclientv2/languagesupportinforecord.go
+platformclientv2/languagesupportresponse.go
 platformclientv2/languageunderstandingapi.go
 platformclientv2/lastattemptbycolumnconditionsettings.go
 platformclientv2/lastattemptoverallconditionsettings.go
@@ -6465,6 +6490,8 @@ platformclientv2/number.go
 platformclientv2/numberplan.go
 platformclientv2/numericrange.go
 platformclientv2/oauthapi.go
+platformclientv2/oauthappleauthorizationresponse.go
+platformclientv2/oauthappleauthorizationresponseerror.go
 platformclientv2/oauthauthorization.go
 platformclientv2/oauthauthorizationlisting.go
 platformclientv2/oauthclient.go
@@ -6733,6 +6760,7 @@ platformclientv2/performancepredictionrecalculationuploadresponse.go
 platformclientv2/performancepredictionresponse.go
 platformclientv2/performancepredictionuploadschema.go
 platformclientv2/performanceprofile.go
+platformclientv2/permissioncollectionentitylisting.go
 platformclientv2/permissiondetails.go
 platformclientv2/permissions.go
 platformclientv2/persistentconnectionchangetopicerrorinfo.go

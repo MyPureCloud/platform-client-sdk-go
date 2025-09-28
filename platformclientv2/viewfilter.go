@@ -706,6 +706,9 @@ type Viewfilter struct {
 
 	// SentimentTrendCategories - A set of Sentiment Trend Categories for filtering
 	SentimentTrendCategories *[]string `json:"sentimentTrendCategories,omitempty"`
+
+	// ContentModerationFlags - A set of Content Moderation Flags for filtering
+	ContentModerationFlags *[]string `json:"contentModerationFlags,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -1234,6 +1237,8 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		SentimentScoreCategories *[]string `json:"sentimentScoreCategories,omitempty"`
 		
 		SentimentTrendCategories *[]string `json:"sentimentTrendCategories,omitempty"`
+		
+		ContentModerationFlags *[]string `json:"contentModerationFlags,omitempty"`
 		Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -1699,6 +1704,8 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		SentimentScoreCategories: o.SentimentScoreCategories,
 		
 		SentimentTrendCategories: o.SentimentTrendCategories,
+		
+		ContentModerationFlags: o.ContentModerationFlags,
 		Alias:    (Alias)(o),
 	})
 }
@@ -2815,6 +2822,11 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if SentimentTrendCategories, ok := ViewfilterMap["sentimentTrendCategories"].([]interface{}); ok {
 		SentimentTrendCategoriesString, _ := json.Marshal(SentimentTrendCategories)
 		json.Unmarshal(SentimentTrendCategoriesString, &o.SentimentTrendCategories)
+	}
+	
+	if ContentModerationFlags, ok := ViewfilterMap["contentModerationFlags"].([]interface{}); ok {
+		ContentModerationFlagsString, _ := json.Marshal(ContentModerationFlags)
+		json.Unmarshal(ContentModerationFlagsString, &o.ContentModerationFlags)
 	}
 	
 

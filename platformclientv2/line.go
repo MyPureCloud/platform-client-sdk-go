@@ -54,13 +54,13 @@ type Line struct {
 	// EdgeGroup - The edge group associated with the line. (Deprecated)
 	EdgeGroup *Domainentityref `json:"edgeGroup,omitempty"`
 
-	// Template
+	// Template - The station base/template. (Deprecated - Please use the lineBaseSettings field instead, as it contains the same data)
 	Template *Domainentityref `json:"template,omitempty"`
 
 	// Site
 	Site *Domainentityref `json:"site,omitempty"`
 
-	// LineBaseSettings
+	// LineBaseSettings - The station base/template.
 	LineBaseSettings *Domainentityref `json:"lineBaseSettings,omitempty"`
 
 	// PrimaryEdge - The primary edge associated to the line. (Deprecated)

@@ -47,8 +47,26 @@ type Conversationmessagecontent struct {
 	// Reactions - A set of reactions to a message.
 	Reactions *[]Conversationcontentreaction `json:"reactions,omitempty"`
 
+	// DatePicker - Date picker content.
+	DatePicker *Conversationcontentdatepicker `json:"datePicker,omitempty"`
+
+	// InteractiveApplication - InteractiveApplication content.
+	InteractiveApplication *Conversationcontentinteractiveapplication `json:"interactiveApplication,omitempty"`
+
+	// ListPicker - List picker content.
+	ListPicker *Conversationcontentlistpicker `json:"listPicker,omitempty"`
+
+	// PaymentRequest - Payment request content.
+	PaymentRequest *Conversationcontentpaymentrequest `json:"paymentRequest,omitempty"`
+
+	// PaymentResponse - Payment response content.
+	PaymentResponse *Conversationcontentpaymentresponse `json:"paymentResponse,omitempty"`
+
 	// Push - Push content.
 	Push *Conversationcontentpush `json:"push,omitempty"`
+
+	// Form - Form content.
+	Form *Conversationcontentform `json:"form,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -138,7 +156,19 @@ func (o Conversationmessagecontent) MarshalJSON() ([]byte, error) {
 		
 		Reactions *[]Conversationcontentreaction `json:"reactions,omitempty"`
 		
+		DatePicker *Conversationcontentdatepicker `json:"datePicker,omitempty"`
+		
+		InteractiveApplication *Conversationcontentinteractiveapplication `json:"interactiveApplication,omitempty"`
+		
+		ListPicker *Conversationcontentlistpicker `json:"listPicker,omitempty"`
+		
+		PaymentRequest *Conversationcontentpaymentrequest `json:"paymentRequest,omitempty"`
+		
+		PaymentResponse *Conversationcontentpaymentresponse `json:"paymentResponse,omitempty"`
+		
 		Push *Conversationcontentpush `json:"push,omitempty"`
+		
+		Form *Conversationcontentform `json:"form,omitempty"`
 		Alias
 	}{ 
 		ContentType: o.ContentType,
@@ -165,7 +195,19 @@ func (o Conversationmessagecontent) MarshalJSON() ([]byte, error) {
 		
 		Reactions: o.Reactions,
 		
+		DatePicker: o.DatePicker,
+		
+		InteractiveApplication: o.InteractiveApplication,
+		
+		ListPicker: o.ListPicker,
+		
+		PaymentRequest: o.PaymentRequest,
+		
+		PaymentResponse: o.PaymentResponse,
+		
 		Push: o.Push,
+		
+		Form: o.Form,
 		Alias:    (Alias)(o),
 	})
 }
@@ -236,9 +278,39 @@ func (o *Conversationmessagecontent) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ReactionsString, &o.Reactions)
 	}
 	
+	if DatePicker, ok := ConversationmessagecontentMap["datePicker"].(map[string]interface{}); ok {
+		DatePickerString, _ := json.Marshal(DatePicker)
+		json.Unmarshal(DatePickerString, &o.DatePicker)
+	}
+	
+	if InteractiveApplication, ok := ConversationmessagecontentMap["interactiveApplication"].(map[string]interface{}); ok {
+		InteractiveApplicationString, _ := json.Marshal(InteractiveApplication)
+		json.Unmarshal(InteractiveApplicationString, &o.InteractiveApplication)
+	}
+	
+	if ListPicker, ok := ConversationmessagecontentMap["listPicker"].(map[string]interface{}); ok {
+		ListPickerString, _ := json.Marshal(ListPicker)
+		json.Unmarshal(ListPickerString, &o.ListPicker)
+	}
+	
+	if PaymentRequest, ok := ConversationmessagecontentMap["paymentRequest"].(map[string]interface{}); ok {
+		PaymentRequestString, _ := json.Marshal(PaymentRequest)
+		json.Unmarshal(PaymentRequestString, &o.PaymentRequest)
+	}
+	
+	if PaymentResponse, ok := ConversationmessagecontentMap["paymentResponse"].(map[string]interface{}); ok {
+		PaymentResponseString, _ := json.Marshal(PaymentResponse)
+		json.Unmarshal(PaymentResponseString, &o.PaymentResponse)
+	}
+	
 	if Push, ok := ConversationmessagecontentMap["push"].(map[string]interface{}); ok {
 		PushString, _ := json.Marshal(Push)
 		json.Unmarshal(PushString, &o.Push)
+	}
+	
+	if Form, ok := ConversationmessagecontentMap["form"].(map[string]interface{}); ok {
+		FormString, _ := json.Marshal(Form)
+		json.Unmarshal(FormString, &o.Form)
 	}
 	
 

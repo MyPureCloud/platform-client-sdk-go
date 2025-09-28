@@ -7,12 +7,12 @@ import (
 	"strings"
 )
 
-// Domainpermissionentitylisting
-type Domainpermissionentitylisting struct { 
+// Appleintegrationentitylisting
+type Appleintegrationentitylisting struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Entities
-	Entities *[]Domainpermissioncollectiondomainpermission `json:"entities,omitempty"`
+	Entities *[]Appleintegration `json:"entities,omitempty"`
 
 	// PageSize
 	PageSize *int `json:"pageSize,omitempty"`
@@ -32,18 +32,18 @@ type Domainpermissionentitylisting struct {
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
+
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
 
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Domainpermissionentitylisting) SetField(field string, fieldValue interface{}) {
+func (o *Appleintegrationentitylisting) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -64,7 +64,7 @@ func (o *Domainpermissionentitylisting) SetField(field string, fieldValue interf
 	o.SetFieldNames[field] = true
 }
 
-func (o Domainpermissionentitylisting) MarshalJSON() ([]byte, error) {
+func (o Appleintegrationentitylisting) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -102,10 +102,10 @@ func (o Domainpermissionentitylisting) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Domainpermissionentitylisting
+	type Alias Appleintegrationentitylisting
 	
 	return json.Marshal(&struct { 
-		Entities *[]Domainpermissioncollectiondomainpermission `json:"entities,omitempty"`
+		Entities *[]Appleintegration `json:"entities,omitempty"`
 		
 		PageSize *int `json:"pageSize,omitempty"`
 		
@@ -119,9 +119,9 @@ func (o Domainpermissionentitylisting) MarshalJSON() ([]byte, error) {
 		
 		NextUri *string `json:"nextUri,omitempty"`
 		
-		LastUri *string `json:"lastUri,omitempty"`
-		
 		SelfUri *string `json:"selfUri,omitempty"`
+		
+		LastUri *string `json:"lastUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		Alias
@@ -140,63 +140,63 @@ func (o Domainpermissionentitylisting) MarshalJSON() ([]byte, error) {
 		
 		NextUri: o.NextUri,
 		
-		LastUri: o.LastUri,
-		
 		SelfUri: o.SelfUri,
+		
+		LastUri: o.LastUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Domainpermissionentitylisting) UnmarshalJSON(b []byte) error {
-	var DomainpermissionentitylistingMap map[string]interface{}
-	err := json.Unmarshal(b, &DomainpermissionentitylistingMap)
+func (o *Appleintegrationentitylisting) UnmarshalJSON(b []byte) error {
+	var AppleintegrationentitylistingMap map[string]interface{}
+	err := json.Unmarshal(b, &AppleintegrationentitylistingMap)
 	if err != nil {
 		return err
 	}
 	
-	if Entities, ok := DomainpermissionentitylistingMap["entities"].([]interface{}); ok {
+	if Entities, ok := AppleintegrationentitylistingMap["entities"].([]interface{}); ok {
 		EntitiesString, _ := json.Marshal(Entities)
 		json.Unmarshal(EntitiesString, &o.Entities)
 	}
 	
-	if PageSize, ok := DomainpermissionentitylistingMap["pageSize"].(float64); ok {
+	if PageSize, ok := AppleintegrationentitylistingMap["pageSize"].(float64); ok {
 		PageSizeInt := int(PageSize)
 		o.PageSize = &PageSizeInt
 	}
 	
-	if PageNumber, ok := DomainpermissionentitylistingMap["pageNumber"].(float64); ok {
+	if PageNumber, ok := AppleintegrationentitylistingMap["pageNumber"].(float64); ok {
 		PageNumberInt := int(PageNumber)
 		o.PageNumber = &PageNumberInt
 	}
 	
-	if Total, ok := DomainpermissionentitylistingMap["total"].(float64); ok {
+	if Total, ok := AppleintegrationentitylistingMap["total"].(float64); ok {
 		TotalInt := int(Total)
 		o.Total = &TotalInt
 	}
 	
-	if FirstUri, ok := DomainpermissionentitylistingMap["firstUri"].(string); ok {
+	if FirstUri, ok := AppleintegrationentitylistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
     
-	if PreviousUri, ok := DomainpermissionentitylistingMap["previousUri"].(string); ok {
+	if PreviousUri, ok := AppleintegrationentitylistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
 	}
     
-	if NextUri, ok := DomainpermissionentitylistingMap["nextUri"].(string); ok {
+	if NextUri, ok := AppleintegrationentitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
     
-	if LastUri, ok := DomainpermissionentitylistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
-	if SelfUri, ok := DomainpermissionentitylistingMap["selfUri"].(string); ok {
+	if SelfUri, ok := AppleintegrationentitylistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
     
-	if PageCount, ok := DomainpermissionentitylistingMap["pageCount"].(float64); ok {
+	if LastUri, ok := AppleintegrationentitylistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
+	}
+    
+	if PageCount, ok := AppleintegrationentitylistingMap["pageCount"].(float64); ok {
 		PageCountInt := int(PageCount)
 		o.PageCount = &PageCountInt
 	}
@@ -206,7 +206,7 @@ func (o *Domainpermissionentitylisting) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Domainpermissionentitylisting) String() string {
+func (o *Appleintegrationentitylisting) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

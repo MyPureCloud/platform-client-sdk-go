@@ -26,6 +26,12 @@ type Disposition struct {
 
 	// DetectedSpeechEnd - Absolute time when the speech ended. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DetectedSpeechEnd *time.Time `json:"detectedSpeechEnd,omitempty"`
+
+	// AmdTimeout - Answering Machine Detection timeout configuration.
+	AmdTimeout *Dispositionamdtimeout `json:"amdTimeout,omitempty"`
+
+	// SilentCallTimeout - Silent Call timeout configuration.
+	SilentCallTimeout *Dispositionsilentcalltimeout `json:"silentCallTimeout,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -116,6 +122,10 @@ func (o Disposition) MarshalJSON() ([]byte, error) {
 		DetectedSpeechStart *string `json:"detectedSpeechStart,omitempty"`
 		
 		DetectedSpeechEnd *string `json:"detectedSpeechEnd,omitempty"`
+		
+		AmdTimeout *Dispositionamdtimeout `json:"amdTimeout,omitempty"`
+		
+		SilentCallTimeout *Dispositionsilentcalltimeout `json:"silentCallTimeout,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -127,6 +137,10 @@ func (o Disposition) MarshalJSON() ([]byte, error) {
 		DetectedSpeechStart: DetectedSpeechStart,
 		
 		DetectedSpeechEnd: DetectedSpeechEnd,
+		
+		AmdTimeout: o.AmdTimeout,
+		
+		SilentCallTimeout: o.SilentCallTimeout,
 		Alias:    (Alias)(o),
 	})
 }
@@ -159,6 +173,16 @@ func (o *Disposition) UnmarshalJSON(b []byte) error {
 	if detectedSpeechEndString, ok := DispositionMap["detectedSpeechEnd"].(string); ok {
 		DetectedSpeechEnd, _ := time.Parse("2006-01-02T15:04:05.999999Z", detectedSpeechEndString)
 		o.DetectedSpeechEnd = &DetectedSpeechEnd
+	}
+	
+	if AmdTimeout, ok := DispositionMap["amdTimeout"].(map[string]interface{}); ok {
+		AmdTimeoutString, _ := json.Marshal(AmdTimeout)
+		json.Unmarshal(AmdTimeoutString, &o.AmdTimeout)
+	}
+	
+	if SilentCallTimeout, ok := DispositionMap["silentCallTimeout"].(map[string]interface{}); ok {
+		SilentCallTimeoutString, _ := json.Marshal(SilentCallTimeout)
+		json.Unmarshal(SilentCallTimeoutString, &o.SilentCallTimeout)
 	}
 	
 

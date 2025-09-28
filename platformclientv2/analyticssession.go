@@ -114,6 +114,9 @@ type Analyticssession struct {
 	// EligibleAgentCounts - Number of eligible agents for each predictive routing attempt
 	EligibleAgentCounts *[]int `json:"eligibleAgentCounts,omitempty"`
 
+	// EngagementSource - Open Messaging engagement source type
+	EngagementSource *string `json:"engagementSource,omitempty"`
+
 	// ExtendedDeliveryStatus - Extended delivery status
 	ExtendedDeliveryStatus *string `json:"extendedDeliveryStatus,omitempty"`
 
@@ -428,6 +431,8 @@ func (o Analyticssession) MarshalJSON() ([]byte, error) {
 		
 		EligibleAgentCounts *[]int `json:"eligibleAgentCounts,omitempty"`
 		
+		EngagementSource *string `json:"engagementSource,omitempty"`
+		
 		ExtendedDeliveryStatus *string `json:"extendedDeliveryStatus,omitempty"`
 		
 		FlowInType *string `json:"flowInType,omitempty"`
@@ -596,6 +601,8 @@ func (o Analyticssession) MarshalJSON() ([]byte, error) {
 		EdgeId: o.EdgeId,
 		
 		EligibleAgentCounts: o.EligibleAgentCounts,
+		
+		EngagementSource: o.EngagementSource,
 		
 		ExtendedDeliveryStatus: o.ExtendedDeliveryStatus,
 		
@@ -854,6 +861,10 @@ func (o *Analyticssession) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(EligibleAgentCountsString, &o.EligibleAgentCounts)
 	}
 	
+	if EngagementSource, ok := AnalyticssessionMap["engagementSource"].(string); ok {
+		o.EngagementSource = &EngagementSource
+	}
+    
 	if ExtendedDeliveryStatus, ok := AnalyticssessionMap["extendedDeliveryStatus"].(string); ok {
 		o.ExtendedDeliveryStatus = &ExtendedDeliveryStatus
 	}

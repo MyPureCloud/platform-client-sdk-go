@@ -101,6 +101,9 @@ type Message struct {
 
 	// QueueMediaSettings - Represents the queue settings for this media type.
 	QueueMediaSettings *Conversationqueuemediasettings `json:"queueMediaSettings,omitempty"`
+
+	// EngagementSource
+	EngagementSource *string `json:"engagementSource,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -257,6 +260,8 @@ func (o Message) MarshalJSON() ([]byte, error) {
 		ByoSmsIntegrationId *string `json:"byoSmsIntegrationId,omitempty"`
 		
 		QueueMediaSettings *Conversationqueuemediasettings `json:"queueMediaSettings,omitempty"`
+		
+		EngagementSource *string `json:"engagementSource,omitempty"`
 		Alias
 	}{ 
 		State: o.State,
@@ -318,6 +323,8 @@ func (o Message) MarshalJSON() ([]byte, error) {
 		ByoSmsIntegrationId: o.ByoSmsIntegrationId,
 		
 		QueueMediaSettings: o.QueueMediaSettings,
+		
+		EngagementSource: o.EngagementSource,
 		Alias:    (Alias)(o),
 	})
 }
@@ -462,6 +469,10 @@ func (o *Message) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(QueueMediaSettingsString, &o.QueueMediaSettings)
 	}
 	
+	if EngagementSource, ok := MessageMap["engagementSource"].(string); ok {
+		o.EngagementSource = &EngagementSource
+	}
+    
 
 	return nil
 }

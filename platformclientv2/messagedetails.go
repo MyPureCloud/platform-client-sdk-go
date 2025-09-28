@@ -27,10 +27,10 @@ type Messagedetails struct {
 	// MessageTime - The time when the message was sent or received. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	MessageTime *time.Time `json:"messageTime,omitempty"`
 
-	// Media - The media (images, files, etc) associated with this message, if any
+	// Media - Deprecated: Use the API /api/v2/conversations/messages/{conversationId}/messages/{messageId} to get the associated media.
 	Media *[]Messagemedia `json:"media,omitempty"`
 
-	// Stickers - One or more stickers associated with this message, if any
+	// Stickers - Deprecated: This attribute is no longer used. Messages have not included associated stickers for a long time.
 	Stickers *[]Messagesticker `json:"stickers,omitempty"`
 
 	// MessageMetadata - Information that describes the content of the message, if any

@@ -3690,7 +3690,7 @@ func (a RoutingApi) GetRoutingPredictorModels(predictorId string) (*Predictormod
 // GetRoutingPredictors invokes GET /api/v2/routing/predictors
 //
 // Retrieve all predictors.
-func (a RoutingApi) GetRoutingPredictors(before string, after string, limit string, pageSize string, queueId []string) (*Predictorlisting, *APIResponse, error) {
+func (a RoutingApi) GetRoutingPredictors(before string, after string, limit string, pageSize string, queueId []string, kpiId string, state string) (*Predictorlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/predictors"
@@ -3726,6 +3726,10 @@ func (a RoutingApi) GetRoutingPredictors(before string, after string, limit stri
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 	queryParams["queueId"] = a.Configuration.APIClient.ParameterToString(queueId, "multi")
+	
+	queryParams["kpiId"] = a.Configuration.APIClient.ParameterToString(kpiId, "")
+	
+	queryParams["state"] = a.Configuration.APIClient.ParameterToString(state, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -3940,7 +3944,7 @@ func (a RoutingApi) GetRoutingQueue(queueId string, expand []string) (*Queue, *A
 // GetRoutingQueueAssistant invokes GET /api/v2/routing/queues/{queueId}/assistant
 //
 // Get an assistant associated with a queue.
-func (a RoutingApi) GetRoutingQueueAssistant(queueId string, expand string) (*Assistantqueue, *APIResponse, error) {
+func (a RoutingApi) GetRoutingQueueAssistant(queueId string, expand []string) (*Assistantqueue, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/assistant"
@@ -3973,7 +3977,7 @@ func (a RoutingApi) GetRoutingQueueAssistant(queueId string, expand string) (*As
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

@@ -26,7 +26,7 @@ type Posttextrequest struct {
 	// PostTextMessage - Message to send to the bot
 	PostTextMessage *Posttextmessage `json:"postTextMessage,omitempty"`
 
-	// LanguageCode - The launguage code the bot will run under
+	// LanguageCode - The language code the bot will run under
 	LanguageCode *string `json:"languageCode,omitempty"`
 
 	// BotSessionTimeoutMinutes - Override timeout for the bot session. This should be greater than 10 minutes.

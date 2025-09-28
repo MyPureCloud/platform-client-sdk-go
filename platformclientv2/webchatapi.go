@@ -193,6 +193,10 @@ func (a WebChatApi) DeleteWebchatGuestConversationMember(conversationId string, 
 // DeleteWebchatSettings invokes DELETE /api/v2/webchat/settings
 //
 // Remove WebChat deployment settings
+//
+// This endpoint is deprecated. Please see the article https://community.genesys.com/discussion/deprecation-acd-chat-v20-and-resulting-impact-to-apiv2webchatsettings.
+//
+// Deprecated: DeleteWebchatSettings is deprecated
 func (a WebChatApi) DeleteWebchatSettings() (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -966,6 +970,10 @@ func (a WebChatApi) GetWebchatGuestConversationMessages(conversationId string, a
 // GetWebchatSettings invokes GET /api/v2/webchat/settings
 //
 // Get WebChat deployment settings
+//
+// This endpoint is deprecated. Please see the article https://community.genesys.com/discussion/deprecation-acd-chat-v20-and-resulting-impact-to-apiv2webchatsettings.
+//
+// Deprecated: GetWebchatSettings is deprecated
 func (a WebChatApi) GetWebchatSettings() (*Webchatsettings, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1592,6 +1600,10 @@ func (a WebChatApi) PutWebchatDeployment(deploymentId string, body Webchatdeploy
 // PutWebchatSettings invokes PUT /api/v2/webchat/settings
 //
 // Update WebChat deployment settings
+//
+// This endpoint is deprecated. Please see the article https://community.genesys.com/discussion/deprecation-acd-chat-v20-and-resulting-impact-to-apiv2webchatsettings.
+//
+// Deprecated: PutWebchatSettings is deprecated
 func (a WebChatApi) PutWebchatSettings(body Webchatsettings) (*Webchatsettings, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

@@ -27,6 +27,9 @@ type Topic struct {
 	// Strictness
 	Strictness *string `json:"strictness,omitempty"`
 
+	// MatchingType
+	MatchingType *string `json:"matchingType,omitempty"`
+
 	// Programs
 	Programs *[]Baseprogramentity `json:"programs,omitempty"`
 
@@ -147,6 +150,8 @@ func (o Topic) MarshalJSON() ([]byte, error) {
 		
 		Strictness *string `json:"strictness,omitempty"`
 		
+		MatchingType *string `json:"matchingType,omitempty"`
+		
 		Programs *[]Baseprogramentity `json:"programs,omitempty"`
 		
 		Tags *[]string `json:"tags,omitempty"`
@@ -177,6 +182,8 @@ func (o Topic) MarshalJSON() ([]byte, error) {
 		Published: o.Published,
 		
 		Strictness: o.Strictness,
+		
+		MatchingType: o.MatchingType,
 		
 		Programs: o.Programs,
 		
@@ -226,6 +233,10 @@ func (o *Topic) UnmarshalJSON(b []byte) error {
     
 	if Strictness, ok := TopicMap["strictness"].(string); ok {
 		o.Strictness = &Strictness
+	}
+    
+	if MatchingType, ok := TopicMap["matchingType"].(string); ok {
+		o.MatchingType = &MatchingType
 	}
     
 	if Programs, ok := TopicMap["programs"].([]interface{}); ok {

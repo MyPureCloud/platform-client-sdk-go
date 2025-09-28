@@ -81,7 +81,7 @@ type Activityplanresponse struct {
 	// ModifiedBy - The last user to modify this activity plan. The id may be 'System' if it was an automated process
 	ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
 
-	// LastRunDate - The date the activity plan was last run, in ISO-8601 format
+	// LastRunDate - The date on which the activity plan was last manually run, in ISO-8601 format
 	LastRunDate *time.Time `json:"lastRunDate,omitempty"`
 
 	// LastRunBy - The last user to run this activity plan

@@ -13,6 +13,9 @@ type Contentmoderation struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// Flag - The Content Moderation Flag of the message.
 	Flag *string `json:"flag,omitempty"`
+
+	// Categories - The Content Moderation Categories of the message.
+	Categories *[]string `json:"categories,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +82,13 @@ func (o Contentmoderation) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		Flag *string `json:"flag,omitempty"`
+		
+		Categories *[]string `json:"categories,omitempty"`
 		Alias
 	}{ 
 		Flag: o.Flag,
+		
+		Categories: o.Categories,
 		Alias:    (Alias)(o),
 	})
 }
@@ -97,6 +104,11 @@ func (o *Contentmoderation) UnmarshalJSON(b []byte) error {
 		o.Flag = &Flag
 	}
     
+	if Categories, ok := ContentmoderationMap["categories"].([]interface{}); ok {
+		CategoriesString, _ := json.Marshal(Categories)
+		json.Unmarshal(CategoriesString, &o.Categories)
+	}
+	
 
 	return nil
 }

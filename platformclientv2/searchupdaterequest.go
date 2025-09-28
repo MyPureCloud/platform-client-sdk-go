@@ -19,6 +19,9 @@ type Searchupdaterequest struct {
 
 	// SelectedAnswer - The selected search result chosen as the answer.
 	SelectedAnswer *Selectedanswer `json:"selectedAnswer,omitempty"`
+
+	// SelectedAnswers - The search results selected as answers
+	SelectedAnswers *[]Selectedanswer `json:"selectedAnswers,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +92,8 @@ func (o Searchupdaterequest) MarshalJSON() ([]byte, error) {
 		Answered *bool `json:"answered,omitempty"`
 		
 		SelectedAnswer *Selectedanswer `json:"selectedAnswer,omitempty"`
+		
+		SelectedAnswers *[]Selectedanswer `json:"selectedAnswers,omitempty"`
 		Alias
 	}{ 
 		SessionId: o.SessionId,
@@ -96,6 +101,8 @@ func (o Searchupdaterequest) MarshalJSON() ([]byte, error) {
 		Answered: o.Answered,
 		
 		SelectedAnswer: o.SelectedAnswer,
+		
+		SelectedAnswers: o.SelectedAnswers,
 		Alias:    (Alias)(o),
 	})
 }
@@ -118,6 +125,11 @@ func (o *Searchupdaterequest) UnmarshalJSON(b []byte) error {
 	if SelectedAnswer, ok := SearchupdaterequestMap["selectedAnswer"].(map[string]interface{}); ok {
 		SelectedAnswerString, _ := json.Marshal(SelectedAnswer)
 		json.Unmarshal(SelectedAnswerString, &o.SelectedAnswer)
+	}
+	
+	if SelectedAnswers, ok := SearchupdaterequestMap["selectedAnswers"].([]interface{}); ok {
+		SelectedAnswersString, _ := json.Marshal(SelectedAnswers)
+		json.Unmarshal(SelectedAnswersString, &o.SelectedAnswers)
 	}
 	
 

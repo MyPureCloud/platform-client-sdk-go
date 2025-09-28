@@ -1689,7 +1689,7 @@ func (a QualityApi) GetQualityEvaluationsQuery(pageSize int, pageNumber int, exp
 
 // GetQualityEvaluatorsActivity invokes GET /api/v2/quality/evaluators/activity
 //
-// Get an evaluator activity
+// Get an evaluator activity. To ensure optimal performance and prevent timeouts when processing large datasets, startTime and endTime fields are highly recommended for all requests.
 func (a QualityApi) GetQualityEvaluatorsActivity(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, startTime time.Time, endTime time.Time, name string, permission []string, group string, agentTeamId string) (*Evaluatoractivityentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

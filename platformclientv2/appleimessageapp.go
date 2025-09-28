@@ -7,28 +7,22 @@ import (
 	"strings"
 )
 
-// Domainpermissioncollectiondomainpermission
-type Domainpermissioncollectiondomainpermission struct { 
+// Appleimessageapp
+type Appleimessageapp struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The globally unique identifier for the object.
-	Id *string `json:"id,omitempty"`
+	// ApplicationName - Application Name.
+	ApplicationName *string `json:"applicationName,omitempty"`
 
-	// Name
-	Name *string `json:"name,omitempty"`
+	// ApplicationId - Application ID.
+	ApplicationId *string `json:"applicationId,omitempty"`
 
-	// Domain
-	Domain *string `json:"domain,omitempty"`
-
-	// PermissionMap
-	PermissionMap *map[string][]Domainpermission `json:"permissionMap,omitempty"`
-
-	// SelfUri - The URI for this object
-	SelfUri *string `json:"selfUri,omitempty"`
+	// BundleId - Bundle ID.
+	BundleId *string `json:"bundleId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Domainpermissioncollectiondomainpermission) SetField(field string, fieldValue interface{}) {
+func (o *Appleimessageapp) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -49,7 +43,7 @@ func (o *Domainpermissioncollectiondomainpermission) SetField(field string, fiel
 	o.SetFieldNames[field] = true
 }
 
-func (o Domainpermissioncollectiondomainpermission) MarshalJSON() ([]byte, error) {
+func (o Appleimessageapp) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -87,59 +81,42 @@ func (o Domainpermissioncollectiondomainpermission) MarshalJSON() ([]byte, error
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Domainpermissioncollectiondomainpermission
+	type Alias Appleimessageapp
 	
 	return json.Marshal(&struct { 
-		Id *string `json:"id,omitempty"`
+		ApplicationName *string `json:"applicationName,omitempty"`
 		
-		Name *string `json:"name,omitempty"`
+		ApplicationId *string `json:"applicationId,omitempty"`
 		
-		Domain *string `json:"domain,omitempty"`
-		
-		PermissionMap *map[string][]Domainpermission `json:"permissionMap,omitempty"`
-		
-		SelfUri *string `json:"selfUri,omitempty"`
+		BundleId *string `json:"bundleId,omitempty"`
 		Alias
 	}{ 
-		Id: o.Id,
+		ApplicationName: o.ApplicationName,
 		
-		Name: o.Name,
+		ApplicationId: o.ApplicationId,
 		
-		Domain: o.Domain,
-		
-		PermissionMap: o.PermissionMap,
-		
-		SelfUri: o.SelfUri,
+		BundleId: o.BundleId,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Domainpermissioncollectiondomainpermission) UnmarshalJSON(b []byte) error {
-	var DomainpermissioncollectiondomainpermissionMap map[string]interface{}
-	err := json.Unmarshal(b, &DomainpermissioncollectiondomainpermissionMap)
+func (o *Appleimessageapp) UnmarshalJSON(b []byte) error {
+	var AppleimessageappMap map[string]interface{}
+	err := json.Unmarshal(b, &AppleimessageappMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := DomainpermissioncollectiondomainpermissionMap["id"].(string); ok {
-		o.Id = &Id
+	if ApplicationName, ok := AppleimessageappMap["applicationName"].(string); ok {
+		o.ApplicationName = &ApplicationName
 	}
     
-	if Name, ok := DomainpermissioncollectiondomainpermissionMap["name"].(string); ok {
-		o.Name = &Name
+	if ApplicationId, ok := AppleimessageappMap["applicationId"].(string); ok {
+		o.ApplicationId = &ApplicationId
 	}
     
-	if Domain, ok := DomainpermissioncollectiondomainpermissionMap["domain"].(string); ok {
-		o.Domain = &Domain
-	}
-    
-	if PermissionMap, ok := DomainpermissioncollectiondomainpermissionMap["permissionMap"].(map[string]interface{}); ok {
-		PermissionMapString, _ := json.Marshal(PermissionMap)
-		json.Unmarshal(PermissionMapString, &o.PermissionMap)
-	}
-	
-	if SelfUri, ok := DomainpermissioncollectiondomainpermissionMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
+	if BundleId, ok := AppleimessageappMap["bundleId"].(string); ok {
+		o.BundleId = &BundleId
 	}
     
 
@@ -147,7 +124,7 @@ func (o *Domainpermissioncollectiondomainpermission) UnmarshalJSON(b []byte) err
 }
 
 // String returns a JSON representation of the model
-func (o *Domainpermissioncollectiondomainpermission) String() string {
+func (o *Appleimessageapp) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

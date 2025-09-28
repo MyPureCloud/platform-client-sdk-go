@@ -77,6 +77,9 @@ type Recordingmessagingmessage struct {
 
 	// Events - List of event elements
 	Events *[]Conversationmessageevent `json:"events,omitempty"`
+
+	// InteractiveApplication - InteractiveApplication content.
+	InteractiveApplication *Interactiveapplication `json:"interactiveApplication,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -193,6 +196,8 @@ func (o Recordingmessagingmessage) MarshalJSON() ([]byte, error) {
 		SocialVisibility *string `json:"socialVisibility,omitempty"`
 		
 		Events *[]Conversationmessageevent `json:"events,omitempty"`
+		
+		InteractiveApplication *Interactiveapplication `json:"interactiveApplication,omitempty"`
 		Alias
 	}{ 
 		From: o.From,
@@ -238,6 +243,8 @@ func (o Recordingmessagingmessage) MarshalJSON() ([]byte, error) {
 		SocialVisibility: o.SocialVisibility,
 		
 		Events: o.Events,
+		
+		InteractiveApplication: o.InteractiveApplication,
 		Alias:    (Alias)(o),
 	})
 }
@@ -349,6 +356,11 @@ func (o *Recordingmessagingmessage) UnmarshalJSON(b []byte) error {
 	if Events, ok := RecordingmessagingmessageMap["events"].([]interface{}); ok {
 		EventsString, _ := json.Marshal(Events)
 		json.Unmarshal(EventsString, &o.Events)
+	}
+	
+	if InteractiveApplication, ok := RecordingmessagingmessageMap["interactiveApplication"].(map[string]interface{}); ok {
+		InteractiveApplicationString, _ := json.Marshal(InteractiveApplication)
+		json.Unmarshal(InteractiveApplicationString, &o.InteractiveApplication)
 	}
 	
 

@@ -39,7 +39,7 @@ type Activityplanlistitem struct {
 	// State - The state of this activity plan
 	State *string `json:"state,omitempty"`
 
-	// LastRunDate - The date the activity plan was last run, in ISO-8601 format
+	// LastRunDate - The date on which the activity plan was last manually run, in ISO-8601 format
 	LastRunDate *time.Time `json:"lastRunDate,omitempty"`
 
 	// LastRunBy - The last user to run this activity plan

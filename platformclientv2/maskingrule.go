@@ -33,6 +33,9 @@ type Maskingrule struct {
 	// VarType - Masking rule type
 	VarType *string `json:"type,omitempty"`
 
+	// Direction - inbound/outbound
+	Direction *string `json:"direction,omitempty"`
+
 	// Integrations - Associated integration channels
 	Integrations *[]string `json:"integrations,omitempty"`
 
@@ -136,6 +139,8 @@ func (o Maskingrule) MarshalJSON() ([]byte, error) {
 		
 		VarType *string `json:"type,omitempty"`
 		
+		Direction *string `json:"direction,omitempty"`
+		
 		Integrations *[]string `json:"integrations,omitempty"`
 		
 		DateCreated *string `json:"dateCreated,omitempty"`
@@ -156,6 +161,8 @@ func (o Maskingrule) MarshalJSON() ([]byte, error) {
 		Enabled: o.Enabled,
 		
 		VarType: o.VarType,
+		
+		Direction: o.Direction,
 		
 		Integrations: o.Integrations,
 		
@@ -199,6 +206,10 @@ func (o *Maskingrule) UnmarshalJSON(b []byte) error {
     
 	if VarType, ok := MaskingruleMap["type"].(string); ok {
 		o.VarType = &VarType
+	}
+    
+	if Direction, ok := MaskingruleMap["direction"].(string); ok {
+		o.Direction = &Direction
 	}
     
 	if Integrations, ok := MaskingruleMap["integrations"].([]interface{}); ok {

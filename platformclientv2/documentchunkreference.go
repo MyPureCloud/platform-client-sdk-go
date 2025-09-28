@@ -16,6 +16,9 @@ type Documentchunkreference struct {
 
 	// Title - The title of the document.
 	Title *string `json:"title,omitempty"`
+
+	// SelfUri - The URI for this object
+	SelfUri *string `json:"selfUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Documentchunkreference) MarshalJSON() ([]byte, error) {
 		Id *string `json:"id,omitempty"`
 		
 		Title *string `json:"title,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
 		
 		Title: o.Title,
+		
+		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
 	})
 }
@@ -106,6 +113,10 @@ func (o *Documentchunkreference) UnmarshalJSON(b []byte) error {
     
 	if Title, ok := DocumentchunkreferenceMap["title"].(string); ok {
 		o.Title = &Title
+	}
+    
+	if SelfUri, ok := DocumentchunkreferenceMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
 	}
     
 
