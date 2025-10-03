@@ -26,6 +26,9 @@ type V2statopicsdetectedtopictopicsdetectedmessage struct {
 	// MediaType
 	MediaType *string `json:"mediaType,omitempty"`
 
+	// ProgramId
+	ProgramId *string `json:"programId,omitempty"`
+
 	// Topics
 	Topics *[]V2statopicsdetectedtopictopicdetected `json:"topics,omitempty"`
 
@@ -106,6 +109,8 @@ func (o V2statopicsdetectedtopictopicsdetectedmessage) MarshalJSON() ([]byte, er
 		
 		MediaType *string `json:"mediaType,omitempty"`
 		
+		ProgramId *string `json:"programId,omitempty"`
+		
 		Topics *[]V2statopicsdetectedtopictopicdetected `json:"topics,omitempty"`
 		
 		Participants *[]V2statopicsdetectedtopicparticipant `json:"participants,omitempty"`
@@ -120,6 +125,8 @@ func (o V2statopicsdetectedtopictopicsdetectedmessage) MarshalJSON() ([]byte, er
 		TranscriptId: o.TranscriptId,
 		
 		MediaType: o.MediaType,
+		
+		ProgramId: o.ProgramId,
 		
 		Topics: o.Topics,
 		
@@ -153,6 +160,10 @@ func (o *V2statopicsdetectedtopictopicsdetectedmessage) UnmarshalJSON(b []byte) 
     
 	if MediaType, ok := V2statopicsdetectedtopictopicsdetectedmessageMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
+	}
+    
+	if ProgramId, ok := V2statopicsdetectedtopictopicsdetectedmessageMap["programId"].(string); ok {
+		o.ProgramId = &ProgramId
 	}
     
 	if Topics, ok := V2statopicsdetectedtopictopicsdetectedmessageMap["topics"].([]interface{}); ok {

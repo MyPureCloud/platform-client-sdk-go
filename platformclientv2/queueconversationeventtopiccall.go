@@ -104,6 +104,9 @@ type Queueconversationeventtopiccall struct {
 
 	// QueueMediaSettings
 	QueueMediaSettings *Queueconversationeventtopicqueuemediasettings `json:"queueMediaSettings,omitempty"`
+
+	// Disposition
+	Disposition *Queueconversationeventtopicdisposition `json:"disposition,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -262,6 +265,8 @@ func (o Queueconversationeventtopiccall) MarshalJSON() ([]byte, error) {
 		AgentAssistantId *string `json:"agentAssistantId,omitempty"`
 		
 		QueueMediaSettings *Queueconversationeventtopicqueuemediasettings `json:"queueMediaSettings,omitempty"`
+		
+		Disposition *Queueconversationeventtopicdisposition `json:"disposition,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -325,6 +330,8 @@ func (o Queueconversationeventtopiccall) MarshalJSON() ([]byte, error) {
 		AgentAssistantId: o.AgentAssistantId,
 		
 		QueueMediaSettings: o.QueueMediaSettings,
+		
+		Disposition: o.Disposition,
 		Alias:    (Alias)(o),
 	})
 }
@@ -471,6 +478,11 @@ func (o *Queueconversationeventtopiccall) UnmarshalJSON(b []byte) error {
 	if QueueMediaSettings, ok := QueueconversationeventtopiccallMap["queueMediaSettings"].(map[string]interface{}); ok {
 		QueueMediaSettingsString, _ := json.Marshal(QueueMediaSettings)
 		json.Unmarshal(QueueMediaSettingsString, &o.QueueMediaSettings)
+	}
+	
+	if Disposition, ok := QueueconversationeventtopiccallMap["disposition"].(map[string]interface{}); ok {
+		DispositionString, _ := json.Marshal(Disposition)
+		json.Unmarshal(DispositionString, &o.Disposition)
 	}
 	
 

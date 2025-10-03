@@ -1152,7 +1152,7 @@ func (a TaskManagementApi) GetTaskmanagementWorkbinVersions(workbinId string, af
 // GetTaskmanagementWorkitem invokes GET /api/v2/taskmanagement/workitems/{workitemId}
 //
 // Get a workitem
-func (a TaskManagementApi) GetTaskmanagementWorkitem(workitemId string, expands string) (*Workitem, *APIResponse, error) {
+func (a TaskManagementApi) GetTaskmanagementWorkitem(workitemId string, expands []string) (*Workitem, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/taskmanagement/workitems/{workitemId}"
@@ -1185,7 +1185,7 @@ func (a TaskManagementApi) GetTaskmanagementWorkitem(workitemId string, expands 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	queryParams["expands"] = a.Configuration.APIClient.ParameterToString(expands, "")
+	queryParams["expands"] = a.Configuration.APIClient.ParameterToString(expands, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

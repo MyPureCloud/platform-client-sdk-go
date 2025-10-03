@@ -14,7 +14,7 @@ type Emailsetting struct {
 	// Id - The globally unique identifier for the settings.
 	Id *string `json:"id,omitempty"`
 
-	// Name
+	// Name - The name of the email setting.
 	Name *string `json:"name,omitempty"`
 
 	// Domains - The domain list settings.

@@ -147,6 +147,9 @@ type Conversationmessageeventtopicmessagemediaparticipant struct {
 	// ByoSmsIntegrationId
 	ByoSmsIntegrationId *string `json:"byoSmsIntegrationId,omitempty"`
 
+	// EngagementSource
+	EngagementSource *string `json:"engagementSource,omitempty"`
+
 	// MonitoredParticipantId
 	MonitoredParticipantId *string `json:"monitoredParticipantId,omitempty"`
 }
@@ -368,6 +371,8 @@ func (o Conversationmessageeventtopicmessagemediaparticipant) MarshalJSON() ([]b
 		
 		ByoSmsIntegrationId *string `json:"byoSmsIntegrationId,omitempty"`
 		
+		EngagementSource *string `json:"engagementSource,omitempty"`
+		
 		MonitoredParticipantId *string `json:"monitoredParticipantId,omitempty"`
 		Alias
 	}{ 
@@ -460,6 +465,8 @@ func (o Conversationmessageeventtopicmessagemediaparticipant) MarshalJSON() ([]b
 		RecipientType: o.RecipientType,
 		
 		ByoSmsIntegrationId: o.ByoSmsIntegrationId,
+		
+		EngagementSource: o.EngagementSource,
 		
 		MonitoredParticipantId: o.MonitoredParticipantId,
 		Alias:    (Alias)(o),
@@ -675,6 +682,10 @@ func (o *Conversationmessageeventtopicmessagemediaparticipant) UnmarshalJSON(b [
     
 	if ByoSmsIntegrationId, ok := ConversationmessageeventtopicmessagemediaparticipantMap["byoSmsIntegrationId"].(string); ok {
 		o.ByoSmsIntegrationId = &ByoSmsIntegrationId
+	}
+    
+	if EngagementSource, ok := ConversationmessageeventtopicmessagemediaparticipantMap["engagementSource"].(string); ok {
+		o.EngagementSource = &EngagementSource
 	}
     
 	if MonitoredParticipantId, ok := ConversationmessageeventtopicmessagemediaparticipantMap["monitoredParticipantId"].(string); ok {

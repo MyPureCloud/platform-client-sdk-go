@@ -11,17 +11,17 @@ import (
 type Decisiontablecontract struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// ParentSchema - DSS V1 schema entity defining source properties for the decision table contract schemas
+	// ParentSchema - DSS schema entity defining source properties for the decision table contract schemas
 	ParentSchema *Domainentityref `json:"parentSchema,omitempty"`
 
 	// RowAuthoringSchema - JSON schema describing required value types for each column in every row in a decision table
-	RowAuthoringSchema *Jsonschemawithdefinitions `json:"rowAuthoringSchema,omitempty"`
+	RowAuthoringSchema *Contractjsonschema `json:"rowAuthoringSchema,omitempty"`
 
 	// ExecutionInputSchema - JSON schema for execution input data for a decision table
-	ExecutionInputSchema *Jsonschemawithdefinitions `json:"executionInputSchema,omitempty"`
+	ExecutionInputSchema *Contractjsonschema `json:"executionInputSchema,omitempty"`
 
 	// ExecutionOutputSchema - JSON schema for execution output data for a decision table
-	ExecutionOutputSchema *Jsonschemawithdefinitions `json:"executionOutputSchema,omitempty"`
+	ExecutionOutputSchema *Contractjsonschema `json:"executionOutputSchema,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,11 +89,11 @@ func (o Decisiontablecontract) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		ParentSchema *Domainentityref `json:"parentSchema,omitempty"`
 		
-		RowAuthoringSchema *Jsonschemawithdefinitions `json:"rowAuthoringSchema,omitempty"`
+		RowAuthoringSchema *Contractjsonschema `json:"rowAuthoringSchema,omitempty"`
 		
-		ExecutionInputSchema *Jsonschemawithdefinitions `json:"executionInputSchema,omitempty"`
+		ExecutionInputSchema *Contractjsonschema `json:"executionInputSchema,omitempty"`
 		
-		ExecutionOutputSchema *Jsonschemawithdefinitions `json:"executionOutputSchema,omitempty"`
+		ExecutionOutputSchema *Contractjsonschema `json:"executionOutputSchema,omitempty"`
 		Alias
 	}{ 
 		ParentSchema: o.ParentSchema,

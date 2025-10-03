@@ -41,11 +41,11 @@ type Evaluationquestion struct {
 	// MultipleSelectOptionQuestions - Only used by Multiple Select type questions. A list of multiple choice questions representing selectable options.
 	MultipleSelectOptionQuestions *[]Evaluationquestion `json:"multipleSelectOptionQuestions,omitempty"`
 
-	// IsKill
-	IsKill *bool `json:"isKill,omitempty"`
-
 	// IsCritical
 	IsCritical *bool `json:"isCritical,omitempty"`
+
+	// IsKill
+	IsKill *bool `json:"isKill,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -131,9 +131,9 @@ func (o Evaluationquestion) MarshalJSON() ([]byte, error) {
 		
 		MultipleSelectOptionQuestions *[]Evaluationquestion `json:"multipleSelectOptionQuestions,omitempty"`
 		
-		IsKill *bool `json:"isKill,omitempty"`
-		
 		IsCritical *bool `json:"isCritical,omitempty"`
+		
+		IsKill *bool `json:"isKill,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -156,9 +156,9 @@ func (o Evaluationquestion) MarshalJSON() ([]byte, error) {
 		
 		MultipleSelectOptionQuestions: o.MultipleSelectOptionQuestions,
 		
-		IsKill: o.IsKill,
-		
 		IsCritical: o.IsCritical,
+		
+		IsKill: o.IsKill,
 		Alias:    (Alias)(o),
 	})
 }
@@ -213,12 +213,12 @@ func (o *Evaluationquestion) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(MultipleSelectOptionQuestionsString, &o.MultipleSelectOptionQuestions)
 	}
 	
-	if IsKill, ok := EvaluationquestionMap["isKill"].(bool); ok {
-		o.IsKill = &IsKill
-	}
-    
 	if IsCritical, ok := EvaluationquestionMap["isCritical"].(bool); ok {
 		o.IsCritical = &IsCritical
+	}
+    
+	if IsKill, ok := EvaluationquestionMap["isKill"].(bool); ok {
+		o.IsKill = &IsKill
 	}
     
 

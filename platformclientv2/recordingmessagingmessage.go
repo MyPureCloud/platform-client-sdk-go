@@ -57,6 +57,9 @@ type Recordingmessagingmessage struct {
 	// ButtonResponse - Button Response selected by user for this message.
 	ButtonResponse *Buttonresponse `json:"buttonResponse,omitempty"`
 
+	// ButtonResponses - List of Button Response selected by user for this message.
+	ButtonResponses *[]Buttonresponse `json:"buttonResponses,omitempty"`
+
 	// Story - Ephemeral story content.
 	Story *Recordingcontentstory `json:"story,omitempty"`
 
@@ -69,6 +72,9 @@ type Recordingmessagingmessage struct {
 	// DatePicker - DatePicker content object.
 	DatePicker *Datepicker `json:"datePicker,omitempty"`
 
+	// ListPicker - ListPicker content object.
+	ListPicker *Listpicker `json:"listPicker,omitempty"`
+
 	// ContentType - Indicates the content type for this message
 	ContentType *string `json:"contentType,omitempty"`
 
@@ -80,6 +86,12 @@ type Recordingmessagingmessage struct {
 
 	// InteractiveApplication - InteractiveApplication content.
 	InteractiveApplication *Interactiveapplication `json:"interactiveApplication,omitempty"`
+
+	// PaymentRequest - Payment request content.
+	PaymentRequest *Paymentrequest `json:"paymentRequest,omitempty"`
+
+	// PaymentResponse - Payment response content.
+	PaymentResponse *Paymentresponse `json:"paymentResponse,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -183,6 +195,8 @@ func (o Recordingmessagingmessage) MarshalJSON() ([]byte, error) {
 		
 		ButtonResponse *Buttonresponse `json:"buttonResponse,omitempty"`
 		
+		ButtonResponses *[]Buttonresponse `json:"buttonResponses,omitempty"`
+		
 		Story *Recordingcontentstory `json:"story,omitempty"`
 		
 		Cards *[]Card `json:"cards,omitempty"`
@@ -191,6 +205,8 @@ func (o Recordingmessagingmessage) MarshalJSON() ([]byte, error) {
 		
 		DatePicker *Datepicker `json:"datePicker,omitempty"`
 		
+		ListPicker *Listpicker `json:"listPicker,omitempty"`
+		
 		ContentType *string `json:"contentType,omitempty"`
 		
 		SocialVisibility *string `json:"socialVisibility,omitempty"`
@@ -198,6 +214,10 @@ func (o Recordingmessagingmessage) MarshalJSON() ([]byte, error) {
 		Events *[]Conversationmessageevent `json:"events,omitempty"`
 		
 		InteractiveApplication *Interactiveapplication `json:"interactiveApplication,omitempty"`
+		
+		PaymentRequest *Paymentrequest `json:"paymentRequest,omitempty"`
+		
+		PaymentResponse *Paymentresponse `json:"paymentResponse,omitempty"`
 		Alias
 	}{ 
 		From: o.From,
@@ -230,6 +250,8 @@ func (o Recordingmessagingmessage) MarshalJSON() ([]byte, error) {
 		
 		ButtonResponse: o.ButtonResponse,
 		
+		ButtonResponses: o.ButtonResponses,
+		
 		Story: o.Story,
 		
 		Cards: o.Cards,
@@ -238,6 +260,8 @@ func (o Recordingmessagingmessage) MarshalJSON() ([]byte, error) {
 		
 		DatePicker: o.DatePicker,
 		
+		ListPicker: o.ListPicker,
+		
 		ContentType: o.ContentType,
 		
 		SocialVisibility: o.SocialVisibility,
@@ -245,6 +269,10 @@ func (o Recordingmessagingmessage) MarshalJSON() ([]byte, error) {
 		Events: o.Events,
 		
 		InteractiveApplication: o.InteractiveApplication,
+		
+		PaymentRequest: o.PaymentRequest,
+		
+		PaymentResponse: o.PaymentResponse,
 		Alias:    (Alias)(o),
 	})
 }
@@ -325,6 +353,11 @@ func (o *Recordingmessagingmessage) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ButtonResponseString, &o.ButtonResponse)
 	}
 	
+	if ButtonResponses, ok := RecordingmessagingmessageMap["buttonResponses"].([]interface{}); ok {
+		ButtonResponsesString, _ := json.Marshal(ButtonResponses)
+		json.Unmarshal(ButtonResponsesString, &o.ButtonResponses)
+	}
+	
 	if Story, ok := RecordingmessagingmessageMap["story"].(map[string]interface{}); ok {
 		StoryString, _ := json.Marshal(Story)
 		json.Unmarshal(StoryString, &o.Story)
@@ -345,6 +378,11 @@ func (o *Recordingmessagingmessage) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(DatePickerString, &o.DatePicker)
 	}
 	
+	if ListPicker, ok := RecordingmessagingmessageMap["listPicker"].(map[string]interface{}); ok {
+		ListPickerString, _ := json.Marshal(ListPicker)
+		json.Unmarshal(ListPickerString, &o.ListPicker)
+	}
+	
 	if ContentType, ok := RecordingmessagingmessageMap["contentType"].(string); ok {
 		o.ContentType = &ContentType
 	}
@@ -361,6 +399,16 @@ func (o *Recordingmessagingmessage) UnmarshalJSON(b []byte) error {
 	if InteractiveApplication, ok := RecordingmessagingmessageMap["interactiveApplication"].(map[string]interface{}); ok {
 		InteractiveApplicationString, _ := json.Marshal(InteractiveApplication)
 		json.Unmarshal(InteractiveApplicationString, &o.InteractiveApplication)
+	}
+	
+	if PaymentRequest, ok := RecordingmessagingmessageMap["paymentRequest"].(map[string]interface{}); ok {
+		PaymentRequestString, _ := json.Marshal(PaymentRequest)
+		json.Unmarshal(PaymentRequestString, &o.PaymentRequest)
+	}
+	
+	if PaymentResponse, ok := RecordingmessagingmessageMap["paymentResponse"].(map[string]interface{}); ok {
+		PaymentResponseString, _ := json.Marshal(PaymentResponse)
+		json.Unmarshal(PaymentResponseString, &o.PaymentResponse)
 	}
 	
 

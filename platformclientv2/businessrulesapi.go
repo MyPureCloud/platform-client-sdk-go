@@ -992,12 +992,12 @@ func (a BusinessRulesApi) GetBusinessrulesDecisiontablesSearch(after string, pag
 // Get a schema
 //
 // Preview: GetBusinessrulesSchema is a preview method and is subject to both breaking and non-breaking changes at any time without notice
-func (a BusinessRulesApi) GetBusinessrulesSchema(schemaId string) (*Dataschema, *APIResponse, error) {
+func (a BusinessRulesApi) GetBusinessrulesSchema(schemaId string) (*Businessrulesdataschema, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/businessrules/schemas/{schemaId}"
 	path = strings.Replace(path, "{schemaId}", url.PathEscape(fmt.Sprintf("%v", schemaId)), -1)
-	defaultReturn := new(Dataschema)
+	defaultReturn := new(Businessrulesdataschema)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -1055,14 +1055,14 @@ func (a BusinessRulesApi) GetBusinessrulesSchema(schemaId string) (*Dataschema, 
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Dataschema
+	var successPayload *Businessrulesdataschema
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Dataschema" == "string" {
+		if "Businessrulesdataschema" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -1076,11 +1076,11 @@ func (a BusinessRulesApi) GetBusinessrulesSchema(schemaId string) (*Dataschema, 
 // Get a list of schemas.
 //
 // Preview: GetBusinessrulesSchemas is a preview method and is subject to both breaking and non-breaking changes at any time without notice
-func (a BusinessRulesApi) GetBusinessrulesSchemas() (*Dataschemalisting, *APIResponse, error) {
+func (a BusinessRulesApi) GetBusinessrulesSchemas() (*Businessrulesdataschemalisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/businessrules/schemas"
-	defaultReturn := new(Dataschemalisting)
+	defaultReturn := new(Businessrulesdataschemalisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -1133,14 +1133,14 @@ func (a BusinessRulesApi) GetBusinessrulesSchemas() (*Dataschemalisting, *APIRes
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Dataschemalisting
+	var successPayload *Businessrulesdataschemalisting
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Dataschemalisting" == "string" {
+		if "Businessrulesdataschemalisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -2254,11 +2254,11 @@ func (a BusinessRulesApi) PostBusinessrulesDecisiontables(body Createdecisiontab
 // Create a schema
 //
 // Preview: PostBusinessrulesSchemas is a preview method and is subject to both breaking and non-breaking changes at any time without notice
-func (a BusinessRulesApi) PostBusinessrulesSchemas(body Dataschema) (*Dataschema, *APIResponse, error) {
+func (a BusinessRulesApi) PostBusinessrulesSchemas(body Businessrulesschemacreaterequest) (*Businessrulesdataschema, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/businessrules/schemas"
-	defaultReturn := new(Dataschema)
+	defaultReturn := new(Businessrulesdataschema)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -2319,14 +2319,14 @@ func (a BusinessRulesApi) PostBusinessrulesSchemas(body Dataschema) (*Dataschema
 	// body params
 	postBody = &body
 
-	var successPayload *Dataschema
+	var successPayload *Businessrulesdataschema
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Dataschema" == "string" {
+		if "Businessrulesdataschema" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -2534,12 +2534,12 @@ func (a BusinessRulesApi) PutBusinessrulesDecisiontableVersionRow(tableId string
 // Update a schema
 //
 // Preview: PutBusinessrulesSchema is a preview method and is subject to both breaking and non-breaking changes at any time without notice
-func (a BusinessRulesApi) PutBusinessrulesSchema(schemaId string, body Dataschema) (*Dataschema, *APIResponse, error) {
+func (a BusinessRulesApi) PutBusinessrulesSchema(schemaId string, body Businessrulesschemaupdaterequest) (*Businessrulesdataschema, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/businessrules/schemas/{schemaId}"
 	path = strings.Replace(path, "{schemaId}", url.PathEscape(fmt.Sprintf("%v", schemaId)), -1)
-	defaultReturn := new(Dataschema)
+	defaultReturn := new(Businessrulesdataschema)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -2605,14 +2605,14 @@ func (a BusinessRulesApi) PutBusinessrulesSchema(schemaId string, body Dataschem
 	// body params
 	postBody = &body
 
-	var successPayload *Dataschema
+	var successPayload *Businessrulesdataschema
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Dataschema" == "string" {
+		if "Businessrulesdataschema" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

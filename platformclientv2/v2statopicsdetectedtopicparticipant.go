@@ -22,6 +22,9 @@ type V2statopicsdetectedtopicparticipant struct {
 
 	// Purpose
 	Purpose *string `json:"purpose,omitempty"`
+
+	// FlowId
+	FlowId *string `json:"flowId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +97,8 @@ func (o V2statopicsdetectedtopicparticipant) MarshalJSON() ([]byte, error) {
 		DivisionId *string `json:"divisionId,omitempty"`
 		
 		Purpose *string `json:"purpose,omitempty"`
+		
+		FlowId *string `json:"flowId,omitempty"`
 		Alias
 	}{ 
 		UserId: o.UserId,
@@ -103,6 +108,8 @@ func (o V2statopicsdetectedtopicparticipant) MarshalJSON() ([]byte, error) {
 		DivisionId: o.DivisionId,
 		
 		Purpose: o.Purpose,
+		
+		FlowId: o.FlowId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -128,6 +135,10 @@ func (o *V2statopicsdetectedtopicparticipant) UnmarshalJSON(b []byte) error {
     
 	if Purpose, ok := V2statopicsdetectedtopicparticipantMap["purpose"].(string); ok {
 		o.Purpose = &Purpose
+	}
+    
+	if FlowId, ok := V2statopicsdetectedtopicparticipantMap["flowId"].(string); ok {
+		o.FlowId = &FlowId
 	}
     
 

@@ -147,6 +147,9 @@ type Queueconversationcalleventtopiccallmediaparticipant struct {
 	// RecordersState
 	RecordersState *Queueconversationcalleventtopicrecordersstate `json:"recordersState,omitempty"`
 
+	// Disposition
+	Disposition *Queueconversationcalleventtopicdisposition `json:"disposition,omitempty"`
+
 	// SecurePause
 	SecurePause *bool `json:"securePause,omitempty"`
 
@@ -406,6 +409,8 @@ func (o Queueconversationcalleventtopiccallmediaparticipant) MarshalJSON() ([]by
 		
 		RecordersState *Queueconversationcalleventtopicrecordersstate `json:"recordersState,omitempty"`
 		
+		Disposition *Queueconversationcalleventtopicdisposition `json:"disposition,omitempty"`
+		
 		SecurePause *bool `json:"securePause,omitempty"`
 		
 		Group *Queueconversationcalleventtopicurireference `json:"group,omitempty"`
@@ -518,6 +523,8 @@ func (o Queueconversationcalleventtopiccallmediaparticipant) MarshalJSON() ([]by
 		RecordingState: o.RecordingState,
 		
 		RecordersState: o.RecordersState,
+		
+		Disposition: o.Disposition,
 		
 		SecurePause: o.SecurePause,
 		
@@ -753,6 +760,11 @@ func (o *Queueconversationcalleventtopiccallmediaparticipant) UnmarshalJSON(b []
 	if RecordersState, ok := QueueconversationcalleventtopiccallmediaparticipantMap["recordersState"].(map[string]interface{}); ok {
 		RecordersStateString, _ := json.Marshal(RecordersState)
 		json.Unmarshal(RecordersStateString, &o.RecordersState)
+	}
+	
+	if Disposition, ok := QueueconversationcalleventtopiccallmediaparticipantMap["disposition"].(map[string]interface{}); ok {
+		DispositionString, _ := json.Marshal(Disposition)
+		json.Unmarshal(DispositionString, &o.Disposition)
 	}
 	
 	if SecurePause, ok := QueueconversationcalleventtopiccallmediaparticipantMap["securePause"].(bool); ok {

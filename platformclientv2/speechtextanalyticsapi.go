@@ -2862,7 +2862,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTopic(topicId string) (
 // GetSpeechandtextanalyticsTopics invokes GET /api/v2/speechandtextanalytics/topics
 //
 // Get the list of Speech & Text Analytics topics
-func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTopics(nextPage string, pageSize int, state string, name string, ids []string, dialects []string, sortBy string, sortOrder string) (*Topicsentitylisting, *APIResponse, error) {
+func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTopics(nextPage string, pageSize int, pageNumber int, state string, name string, ids []string, dialects []string, sortBy string, sortOrder string) (*Topicsentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/speechandtextanalytics/topics"
@@ -2892,6 +2892,8 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTopics(nextPage string,
 	queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, "")
 	
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 	queryParams["state"] = a.Configuration.APIClient.ParameterToString(state, "")
 	

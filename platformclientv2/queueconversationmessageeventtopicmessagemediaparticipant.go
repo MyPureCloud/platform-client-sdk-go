@@ -147,6 +147,9 @@ type Queueconversationmessageeventtopicmessagemediaparticipant struct {
 	// ByoSmsIntegrationId
 	ByoSmsIntegrationId *string `json:"byoSmsIntegrationId,omitempty"`
 
+	// EngagementSource
+	EngagementSource *string `json:"engagementSource,omitempty"`
+
 	// MonitoredParticipantId
 	MonitoredParticipantId *string `json:"monitoredParticipantId,omitempty"`
 }
@@ -368,6 +371,8 @@ func (o Queueconversationmessageeventtopicmessagemediaparticipant) MarshalJSON()
 		
 		ByoSmsIntegrationId *string `json:"byoSmsIntegrationId,omitempty"`
 		
+		EngagementSource *string `json:"engagementSource,omitempty"`
+		
 		MonitoredParticipantId *string `json:"monitoredParticipantId,omitempty"`
 		Alias
 	}{ 
@@ -460,6 +465,8 @@ func (o Queueconversationmessageeventtopicmessagemediaparticipant) MarshalJSON()
 		RecipientType: o.RecipientType,
 		
 		ByoSmsIntegrationId: o.ByoSmsIntegrationId,
+		
+		EngagementSource: o.EngagementSource,
 		
 		MonitoredParticipantId: o.MonitoredParticipantId,
 		Alias:    (Alias)(o),
@@ -675,6 +682,10 @@ func (o *Queueconversationmessageeventtopicmessagemediaparticipant) UnmarshalJSO
     
 	if ByoSmsIntegrationId, ok := QueueconversationmessageeventtopicmessagemediaparticipantMap["byoSmsIntegrationId"].(string); ok {
 		o.ByoSmsIntegrationId = &ByoSmsIntegrationId
+	}
+    
+	if EngagementSource, ok := QueueconversationmessageeventtopicmessagemediaparticipantMap["engagementSource"].(string); ok {
+		o.EngagementSource = &EngagementSource
 	}
     
 	if MonitoredParticipantId, ok := QueueconversationmessageeventtopicmessagemediaparticipantMap["monitoredParticipantId"].(string); ok {

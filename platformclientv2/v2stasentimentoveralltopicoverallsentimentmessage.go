@@ -25,6 +25,9 @@ type V2stasentimentoveralltopicoverallsentimentmessage struct {
 
 	// DivisionIds
 	DivisionIds *[]string `json:"divisionIds,omitempty"`
+
+	// FlowIds
+	FlowIds *[]string `json:"flowIds,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -99,6 +102,8 @@ func (o V2stasentimentoveralltopicoverallsentimentmessage) MarshalJSON() ([]byte
 		QueueIds *[]string `json:"queueIds,omitempty"`
 		
 		DivisionIds *[]string `json:"divisionIds,omitempty"`
+		
+		FlowIds *[]string `json:"flowIds,omitempty"`
 		Alias
 	}{ 
 		ConversationId: o.ConversationId,
@@ -110,6 +115,8 @@ func (o V2stasentimentoveralltopicoverallsentimentmessage) MarshalJSON() ([]byte
 		QueueIds: o.QueueIds,
 		
 		DivisionIds: o.DivisionIds,
+		
+		FlowIds: o.FlowIds,
 		Alias:    (Alias)(o),
 	})
 }
@@ -143,6 +150,11 @@ func (o *V2stasentimentoveralltopicoverallsentimentmessage) UnmarshalJSON(b []by
 	if DivisionIds, ok := V2stasentimentoveralltopicoverallsentimentmessageMap["divisionIds"].([]interface{}); ok {
 		DivisionIdsString, _ := json.Marshal(DivisionIds)
 		json.Unmarshal(DivisionIdsString, &o.DivisionIds)
+	}
+	
+	if FlowIds, ok := V2stasentimentoveralltopicoverallsentimentmessageMap["flowIds"].([]interface{}); ok {
+		FlowIdsString, _ := json.Marshal(FlowIds)
+		json.Unmarshal(FlowIdsString, &o.FlowIds)
 	}
 	
 

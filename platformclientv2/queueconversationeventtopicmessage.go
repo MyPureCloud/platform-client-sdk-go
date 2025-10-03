@@ -87,6 +87,9 @@ type Queueconversationeventtopicmessage struct {
 	// AgentAssistantId - UUID of virtual agent assistant that provide suggestions to the agent participant during the conversation.
 	AgentAssistantId *string `json:"agentAssistantId,omitempty"`
 
+	// EngagementSource - Provide more visibility into what integrations customers are creating with Open Messaging. String values are defined in the Constants.java named ENGAGEMENT_SOURCE_*
+	EngagementSource *string `json:"engagementSource,omitempty"`
+
 	// ByoSmsIntegrationId
 	ByoSmsIntegrationId *string `json:"byoSmsIntegrationId,omitempty"`
 
@@ -231,6 +234,8 @@ func (o Queueconversationeventtopicmessage) MarshalJSON() ([]byte, error) {
 		
 		AgentAssistantId *string `json:"agentAssistantId,omitempty"`
 		
+		EngagementSource *string `json:"engagementSource,omitempty"`
+		
 		ByoSmsIntegrationId *string `json:"byoSmsIntegrationId,omitempty"`
 		
 		QueueMediaSettings *Queueconversationeventtopicqueuemediasettings `json:"queueMediaSettings,omitempty"`
@@ -285,6 +290,8 @@ func (o Queueconversationeventtopicmessage) MarshalJSON() ([]byte, error) {
 		AfterCallWorkRequired: o.AfterCallWorkRequired,
 		
 		AgentAssistantId: o.AgentAssistantId,
+		
+		EngagementSource: o.EngagementSource,
 		
 		ByoSmsIntegrationId: o.ByoSmsIntegrationId,
 		
@@ -408,6 +415,10 @@ func (o *Queueconversationeventtopicmessage) UnmarshalJSON(b []byte) error {
     
 	if AgentAssistantId, ok := QueueconversationeventtopicmessageMap["agentAssistantId"].(string); ok {
 		o.AgentAssistantId = &AgentAssistantId
+	}
+    
+	if EngagementSource, ok := QueueconversationeventtopicmessageMap["engagementSource"].(string); ok {
+		o.EngagementSource = &EngagementSource
 	}
     
 	if ByoSmsIntegrationId, ok := QueueconversationeventtopicmessageMap["byoSmsIntegrationId"].(string); ok {

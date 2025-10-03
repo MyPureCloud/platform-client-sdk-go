@@ -1041,7 +1041,7 @@ func (a GamificationApi) GetGamificationContestsMe(pageNumber int, pageSize int,
 // GetGamificationInsights invokes GET /api/v2/gamification/insights
 //
 // Get insights summary
-func (a GamificationApi) GetGamificationInsights(filterType string, filterId string, granularity string, comparativePeriodStartWorkday time.Time, primaryPeriodStartWorkday time.Time, pageSize int, pageNumber int, sortKey string, sortMetricId string, sortOrder string, userIds string) (*Insightssummary, *APIResponse, error) {
+func (a GamificationApi) GetGamificationInsights(filterType string, filterId string, granularity string, comparativePeriodStartWorkday time.Time, primaryPeriodStartWorkday time.Time, pageSize int, pageNumber int, sortKey string, sortMetricId string, sortOrder string, userIds string, reportsTo string) (*Insightssummary, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/insights"
@@ -1114,6 +1114,8 @@ func (a GamificationApi) GetGamificationInsights(filterType string, filterId str
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 	queryParams["userIds"] = a.Configuration.APIClient.ParameterToString(userIds, "")
+	
+	queryParams["reportsTo"] = a.Configuration.APIClient.ParameterToString(reportsTo, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -1525,7 +1527,7 @@ func (a GamificationApi) GetGamificationInsightsGroupsTrendsAll(filterType strin
 // GetGamificationInsightsMembers invokes GET /api/v2/gamification/insights/members
 //
 // Query users in a profile during a period of time
-func (a GamificationApi) GetGamificationInsightsMembers(filterType string, filterId string, granularity string, startWorkday time.Time) (*Insightsagents, *APIResponse, error) {
+func (a GamificationApi) GetGamificationInsightsMembers(filterType string, filterId string, granularity string, startWorkday time.Time, reportsTo string) (*Insightsagents, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/insights/members"
@@ -1580,6 +1582,8 @@ func (a GamificationApi) GetGamificationInsightsMembers(filterType string, filte
 	
 	queryParams["startWorkday"] = a.Configuration.APIClient.ParameterToString(startWorkday, "")
 	
+	queryParams["reportsTo"] = a.Configuration.APIClient.ParameterToString(reportsTo, "")
+	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
 	correctedQueryParams := make(map[string]string)
@@ -1629,7 +1633,7 @@ func (a GamificationApi) GetGamificationInsightsMembers(filterType string, filte
 // GetGamificationInsightsRankings invokes GET /api/v2/gamification/insights/rankings
 //
 // Get insights rankings
-func (a GamificationApi) GetGamificationInsightsRankings(filterType string, filterId string, granularity string, comparativePeriodStartWorkday time.Time, primaryPeriodStartWorkday time.Time, sortKey string, sortMetricId string, sectionSize int, userIds string) (*Insightsrankings, *APIResponse, error) {
+func (a GamificationApi) GetGamificationInsightsRankings(filterType string, filterId string, granularity string, comparativePeriodStartWorkday time.Time, primaryPeriodStartWorkday time.Time, sortKey string, sortMetricId string, sectionSize int, userIds string, reportsTo string) (*Insightsrankings, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/insights/rankings"
@@ -1703,6 +1707,8 @@ func (a GamificationApi) GetGamificationInsightsRankings(filterType string, filt
 	queryParams["sectionSize"] = a.Configuration.APIClient.ParameterToString(sectionSize, "")
 	
 	queryParams["userIds"] = a.Configuration.APIClient.ParameterToString(userIds, "")
+	
+	queryParams["reportsTo"] = a.Configuration.APIClient.ParameterToString(reportsTo, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

@@ -20,6 +20,9 @@ type V2staempathyoveralltopicoverallempathymessage struct {
 	// DivisionIds
 	DivisionIds *[]string `json:"divisionIds,omitempty"`
 
+	// FlowIds
+	FlowIds *[]string `json:"flowIds,omitempty"`
+
 	// Agents
 	Agents *[]V2staempathyoveralltopicagentempathyscore `json:"agents,omitempty"`
 }
@@ -93,6 +96,8 @@ func (o V2staempathyoveralltopicoverallempathymessage) MarshalJSON() ([]byte, er
 		
 		DivisionIds *[]string `json:"divisionIds,omitempty"`
 		
+		FlowIds *[]string `json:"flowIds,omitempty"`
+		
 		Agents *[]V2staempathyoveralltopicagentempathyscore `json:"agents,omitempty"`
 		Alias
 	}{ 
@@ -101,6 +106,8 @@ func (o V2staempathyoveralltopicoverallempathymessage) MarshalJSON() ([]byte, er
 		QueueIds: o.QueueIds,
 		
 		DivisionIds: o.DivisionIds,
+		
+		FlowIds: o.FlowIds,
 		
 		Agents: o.Agents,
 		Alias:    (Alias)(o),
@@ -126,6 +133,11 @@ func (o *V2staempathyoveralltopicoverallempathymessage) UnmarshalJSON(b []byte) 
 	if DivisionIds, ok := V2staempathyoveralltopicoverallempathymessageMap["divisionIds"].([]interface{}); ok {
 		DivisionIdsString, _ := json.Marshal(DivisionIds)
 		json.Unmarshal(DivisionIdsString, &o.DivisionIds)
+	}
+	
+	if FlowIds, ok := V2staempathyoveralltopicoverallempathymessageMap["flowIds"].([]interface{}); ok {
+		FlowIdsString, _ := json.Marshal(FlowIds)
+		json.Unmarshal(FlowIdsString, &o.FlowIds)
 	}
 	
 	if Agents, ok := V2staempathyoveralltopicoverallempathymessageMap["agents"].([]interface{}); ok {
