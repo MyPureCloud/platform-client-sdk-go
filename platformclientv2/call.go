@@ -108,6 +108,9 @@ type Call struct {
 	// AgentAssistantId - UUID of virtual agent assistant that provide suggestions to the agent participant during the conversation.
 	AgentAssistantId *string `json:"agentAssistantId,omitempty"`
 
+	// TransferSource - Indicates how call reaches the agent.
+	TransferSource *string `json:"transferSource,omitempty"`
+
 	// QueueMediaSettings - Represents the queue settings for this media type.
 	QueueMediaSettings *Conversationqueuemediasettings `json:"queueMediaSettings,omitempty"`
 
@@ -274,6 +277,8 @@ func (o Call) MarshalJSON() ([]byte, error) {
 		
 		AgentAssistantId *string `json:"agentAssistantId,omitempty"`
 		
+		TransferSource *string `json:"transferSource,omitempty"`
+		
 		QueueMediaSettings *Conversationqueuemediasettings `json:"queueMediaSettings,omitempty"`
 		
 		Disposition *Disposition `json:"disposition,omitempty"`
@@ -342,6 +347,8 @@ func (o Call) MarshalJSON() ([]byte, error) {
 		AfterCallWorkRequired: o.AfterCallWorkRequired,
 		
 		AgentAssistantId: o.AgentAssistantId,
+		
+		TransferSource: o.TransferSource,
 		
 		QueueMediaSettings: o.QueueMediaSettings,
 		
@@ -496,6 +503,10 @@ func (o *Call) UnmarshalJSON(b []byte) error {
     
 	if AgentAssistantId, ok := CallMap["agentAssistantId"].(string); ok {
 		o.AgentAssistantId = &AgentAssistantId
+	}
+    
+	if TransferSource, ok := CallMap["transferSource"].(string); ok {
+		o.TransferSource = &TransferSource
 	}
     
 	if QueueMediaSettings, ok := CallMap["queueMediaSettings"].(map[string]interface{}); ok {

@@ -12,7 +12,7 @@ type Identityresolutionqueueconfig struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// CallOnBehalfOfQueue
-	CallOnBehalfOfQueue *Identityresolutionconfig `json:"callOnBehalfOfQueue,omitempty"`
+	CallOnBehalfOfQueue *Outboundqueueidentityresolutionconfig `json:"callOnBehalfOfQueue,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -78,7 +78,7 @@ func (o Identityresolutionqueueconfig) MarshalJSON() ([]byte, error) {
 	type Alias Identityresolutionqueueconfig
 	
 	return json.Marshal(&struct { 
-		CallOnBehalfOfQueue *Identityresolutionconfig `json:"callOnBehalfOfQueue,omitempty"`
+		CallOnBehalfOfQueue *Outboundqueueidentityresolutionconfig `json:"callOnBehalfOfQueue,omitempty"`
 		Alias
 	}{ 
 		CallOnBehalfOfQueue: o.CallOnBehalfOfQueue,

@@ -34,6 +34,9 @@ type Patchcontentoffer struct {
 
 	// Style - Properties customizing the styling of the content offer.
 	Style *Patchcontentofferstylingconfiguration `json:"style,omitempty"`
+
+	// ImageAltText - Image description text for accessibility compliance and assistive technology support.
+	ImageAltText *string `json:"imageAltText,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -114,6 +117,8 @@ func (o Patchcontentoffer) MarshalJSON() ([]byte, error) {
 		CallToAction *Patchcalltoaction `json:"callToAction,omitempty"`
 		
 		Style *Patchcontentofferstylingconfiguration `json:"style,omitempty"`
+		
+		ImageAltText *string `json:"imageAltText,omitempty"`
 		Alias
 	}{ 
 		ImageUrl: o.ImageUrl,
@@ -131,6 +136,8 @@ func (o Patchcontentoffer) MarshalJSON() ([]byte, error) {
 		CallToAction: o.CallToAction,
 		
 		Style: o.Style,
+		
+		ImageAltText: o.ImageAltText,
 		Alias:    (Alias)(o),
 	})
 }
@@ -176,6 +183,10 @@ func (o *Patchcontentoffer) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(StyleString, &o.Style)
 	}
 	
+	if ImageAltText, ok := PatchcontentofferMap["imageAltText"].(string); ok {
+		o.ImageAltText = &ImageAltText
+	}
+    
 
 	return nil
 }

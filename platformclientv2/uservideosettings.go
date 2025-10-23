@@ -16,6 +16,9 @@ type Uservideosettings struct {
 
 	// AllowScreenShare - whether or not user screen share is allowed
 	AllowScreenShare *bool `json:"allowScreenShare,omitempty"`
+
+	// AllowMicrophone - whether or not user microphone is allowed
+	AllowMicrophone *bool `json:"allowMicrophone,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Uservideosettings) MarshalJSON() ([]byte, error) {
 		AllowCamera *bool `json:"allowCamera,omitempty"`
 		
 		AllowScreenShare *bool `json:"allowScreenShare,omitempty"`
+		
+		AllowMicrophone *bool `json:"allowMicrophone,omitempty"`
 		Alias
 	}{ 
 		AllowCamera: o.AllowCamera,
 		
 		AllowScreenShare: o.AllowScreenShare,
+		
+		AllowMicrophone: o.AllowMicrophone,
 		Alias:    (Alias)(o),
 	})
 }
@@ -106,6 +113,10 @@ func (o *Uservideosettings) UnmarshalJSON(b []byte) error {
     
 	if AllowScreenShare, ok := UservideosettingsMap["allowScreenShare"].(bool); ok {
 		o.AllowScreenShare = &AllowScreenShare
+	}
+    
+	if AllowMicrophone, ok := UservideosettingsMap["allowMicrophone"].(bool); ok {
+		o.AllowMicrophone = &AllowMicrophone
 	}
     
 

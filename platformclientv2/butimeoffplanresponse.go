@@ -29,6 +29,12 @@ type Butimeoffplanresponse struct {
 	// DaysBeforeStartToExpireFromWaitlist - The number of days before the time-off request start date for when the request will be expired from the waitlist
 	DaysBeforeStartToExpireFromWaitlist *int `json:"daysBeforeStartToExpireFromWaitlist,omitempty"`
 
+	// AutoPublishApprovedTimeOffRequests - Whether newly approved time-off requests with activity codes associated with this time-off plan should be automatically published to the schedule
+	AutoPublishApprovedTimeOffRequests *bool `json:"autoPublishApprovedTimeOffRequests,omitempty"`
+
+	// RestrictedActivityCodes - The IDs of non time-off activity codes to check for conflicts in case the auto approval rule specifies checking activity codes. If these activity codes are present in schedule and overlap with the time-off request duration, the request will not be auto approved
+	RestrictedActivityCodes *Activitycodesreference `json:"restrictedActivityCodes,omitempty"`
+
 	// HrisTimeOffType - Time-off type, if this time-off plan is associated with the integration
 	HrisTimeOffType *Hristimeofftype `json:"hrisTimeOffType,omitempty"`
 
@@ -126,6 +132,10 @@ func (o Butimeoffplanresponse) MarshalJSON() ([]byte, error) {
 		
 		DaysBeforeStartToExpireFromWaitlist *int `json:"daysBeforeStartToExpireFromWaitlist,omitempty"`
 		
+		AutoPublishApprovedTimeOffRequests *bool `json:"autoPublishApprovedTimeOffRequests,omitempty"`
+		
+		RestrictedActivityCodes *Activitycodesreference `json:"restrictedActivityCodes,omitempty"`
+		
 		HrisTimeOffType *Hristimeofftype `json:"hrisTimeOffType,omitempty"`
 		
 		Enabled *bool `json:"enabled,omitempty"`
@@ -152,6 +162,10 @@ func (o Butimeoffplanresponse) MarshalJSON() ([]byte, error) {
 		AutoApprovalRule: o.AutoApprovalRule,
 		
 		DaysBeforeStartToExpireFromWaitlist: o.DaysBeforeStartToExpireFromWaitlist,
+		
+		AutoPublishApprovedTimeOffRequests: o.AutoPublishApprovedTimeOffRequests,
+		
+		RestrictedActivityCodes: o.RestrictedActivityCodes,
 		
 		HrisTimeOffType: o.HrisTimeOffType,
 		
@@ -202,6 +216,15 @@ func (o *Butimeoffplanresponse) UnmarshalJSON(b []byte) error {
 	if DaysBeforeStartToExpireFromWaitlist, ok := ButimeoffplanresponseMap["daysBeforeStartToExpireFromWaitlist"].(float64); ok {
 		DaysBeforeStartToExpireFromWaitlistInt := int(DaysBeforeStartToExpireFromWaitlist)
 		o.DaysBeforeStartToExpireFromWaitlist = &DaysBeforeStartToExpireFromWaitlistInt
+	}
+	
+	if AutoPublishApprovedTimeOffRequests, ok := ButimeoffplanresponseMap["autoPublishApprovedTimeOffRequests"].(bool); ok {
+		o.AutoPublishApprovedTimeOffRequests = &AutoPublishApprovedTimeOffRequests
+	}
+    
+	if RestrictedActivityCodes, ok := ButimeoffplanresponseMap["restrictedActivityCodes"].(map[string]interface{}); ok {
+		RestrictedActivityCodesString, _ := json.Marshal(RestrictedActivityCodes)
+		json.Unmarshal(RestrictedActivityCodesString, &o.RestrictedActivityCodes)
 	}
 	
 	if HrisTimeOffType, ok := ButimeoffplanresponseMap["hrisTimeOffType"].(map[string]interface{}); ok {

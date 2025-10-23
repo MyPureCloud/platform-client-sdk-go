@@ -35,6 +35,9 @@ type Transcriptiontopictranscriptionmessage struct {
 
 	// Status
 	Status *Transcriptiontopictranscriptionrequeststatus `json:"status,omitempty"`
+
+	// SpeechTextAnalyticsProgramId
+	SpeechTextAnalyticsProgramId *string `json:"speechTextAnalyticsProgramId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -123,6 +126,8 @@ func (o Transcriptiontopictranscriptionmessage) MarshalJSON() ([]byte, error) {
 		Transcripts *[]Transcriptiontopictranscriptresult `json:"transcripts,omitempty"`
 		
 		Status *Transcriptiontopictranscriptionrequeststatus `json:"status,omitempty"`
+		
+		SpeechTextAnalyticsProgramId *string `json:"speechTextAnalyticsProgramId,omitempty"`
 		Alias
 	}{ 
 		EventTime: EventTime,
@@ -140,6 +145,8 @@ func (o Transcriptiontopictranscriptionmessage) MarshalJSON() ([]byte, error) {
 		Transcripts: o.Transcripts,
 		
 		Status: o.Status,
+		
+		SpeechTextAnalyticsProgramId: o.SpeechTextAnalyticsProgramId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -188,6 +195,10 @@ func (o *Transcriptiontopictranscriptionmessage) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(StatusString, &o.Status)
 	}
 	
+	if SpeechTextAnalyticsProgramId, ok := TranscriptiontopictranscriptionmessageMap["speechTextAnalyticsProgramId"].(string); ok {
+		o.SpeechTextAnalyticsProgramId = &SpeechTextAnalyticsProgramId
+	}
+    
 
 	return nil
 }

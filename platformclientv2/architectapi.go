@@ -3039,12 +3039,12 @@ func (a ArchitectApi) GetArchitectIvr(ivrId string) (*Ivr, *APIResponse, error) 
 // GetArchitectIvrIdentityresolution invokes GET /api/v2/architect/ivrs/{ivrId}/identityresolution
 //
 // Get an IVR IdentityResolutionConfig.
-func (a ArchitectApi) GetArchitectIvrIdentityresolution(ivrId string) (*Identityresolutionconfig, *APIResponse, error) {
+func (a ArchitectApi) GetArchitectIvrIdentityresolution(ivrId string) (*Ivridentityresolutionconfig, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/ivrs/{ivrId}/identityresolution"
 	path = strings.Replace(path, "{ivrId}", url.PathEscape(fmt.Sprintf("%v", ivrId)), -1)
-	defaultReturn := new(Identityresolutionconfig)
+	defaultReturn := new(Ivridentityresolutionconfig)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -3102,14 +3102,14 @@ func (a ArchitectApi) GetArchitectIvrIdentityresolution(ivrId string) (*Identity
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Identityresolutionconfig
+	var successPayload *Ivridentityresolutionconfig
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Identityresolutionconfig" == "string" {
+		if "Ivridentityresolutionconfig" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -11678,12 +11678,12 @@ func (a ArchitectApi) PutArchitectIvr(ivrId string, body Ivr) (*Ivr, *APIRespons
 // PutArchitectIvrIdentityresolution invokes PUT /api/v2/architect/ivrs/{ivrId}/identityresolution
 //
 // Update an IVR IdentityResolutionConfig.
-func (a ArchitectApi) PutArchitectIvrIdentityresolution(ivrId string, body Identityresolutionconfig) (*Identityresolutionconfig, *APIResponse, error) {
+func (a ArchitectApi) PutArchitectIvrIdentityresolution(ivrId string, body Ivridentityresolutionconfig) (*Ivridentityresolutionconfig, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/ivrs/{ivrId}/identityresolution"
 	path = strings.Replace(path, "{ivrId}", url.PathEscape(fmt.Sprintf("%v", ivrId)), -1)
-	defaultReturn := new(Identityresolutionconfig)
+	defaultReturn := new(Ivridentityresolutionconfig)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -11749,14 +11749,14 @@ func (a ArchitectApi) PutArchitectIvrIdentityresolution(ivrId string, body Ident
 	// body params
 	postBody = &body
 
-	var successPayload *Identityresolutionconfig
+	var successPayload *Ivridentityresolutionconfig
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Identityresolutionconfig" == "string" {
+		if "Ivridentityresolutionconfig" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

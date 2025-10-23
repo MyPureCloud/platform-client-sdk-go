@@ -57,8 +57,17 @@ type Appleintegration struct {
 	// CreateError - Error information returned, if createStatus is set to Error
 	CreateError *Errorbody `json:"createError,omitempty"`
 
+	// AppleIMessageApp - Interactive Application (iMessage App) Settings.
+	AppleIMessageApp *Appleimessageapp `json:"appleIMessageApp,omitempty"`
+
+	// AppleAuthentication - The Apple Messages for Business authentication setting.
+	AppleAuthentication *Appleauthentication `json:"appleAuthentication,omitempty"`
+
+	// ApplePay - Apple Pay settings.
+	ApplePay *Applepay `json:"applePay,omitempty"`
+
 	// IdentityResolution - The configuration to control identity resolution.
-	IdentityResolution *Identityresolutionconfig `json:"identityResolution,omitempty"`
+	IdentityResolution *Appleidentityresolutionconfig `json:"identityResolution,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -173,7 +182,13 @@ func (o Appleintegration) MarshalJSON() ([]byte, error) {
 		
 		CreateError *Errorbody `json:"createError,omitempty"`
 		
-		IdentityResolution *Identityresolutionconfig `json:"identityResolution,omitempty"`
+		AppleIMessageApp *Appleimessageapp `json:"appleIMessageApp,omitempty"`
+		
+		AppleAuthentication *Appleauthentication `json:"appleAuthentication,omitempty"`
+		
+		ApplePay *Applepay `json:"applePay,omitempty"`
+		
+		IdentityResolution *Appleidentityresolutionconfig `json:"identityResolution,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
@@ -207,6 +222,12 @@ func (o Appleintegration) MarshalJSON() ([]byte, error) {
 		CreateStatus: o.CreateStatus,
 		
 		CreateError: o.CreateError,
+		
+		AppleIMessageApp: o.AppleIMessageApp,
+		
+		AppleAuthentication: o.AppleAuthentication,
+		
+		ApplePay: o.ApplePay,
 		
 		IdentityResolution: o.IdentityResolution,
 		
@@ -288,6 +309,21 @@ func (o *Appleintegration) UnmarshalJSON(b []byte) error {
 	if CreateError, ok := AppleintegrationMap["createError"].(map[string]interface{}); ok {
 		CreateErrorString, _ := json.Marshal(CreateError)
 		json.Unmarshal(CreateErrorString, &o.CreateError)
+	}
+	
+	if AppleIMessageApp, ok := AppleintegrationMap["appleIMessageApp"].(map[string]interface{}); ok {
+		AppleIMessageAppString, _ := json.Marshal(AppleIMessageApp)
+		json.Unmarshal(AppleIMessageAppString, &o.AppleIMessageApp)
+	}
+	
+	if AppleAuthentication, ok := AppleintegrationMap["appleAuthentication"].(map[string]interface{}); ok {
+		AppleAuthenticationString, _ := json.Marshal(AppleAuthentication)
+		json.Unmarshal(AppleAuthenticationString, &o.AppleAuthentication)
+	}
+	
+	if ApplePay, ok := AppleintegrationMap["applePay"].(map[string]interface{}); ok {
+		ApplePayString, _ := json.Marshal(ApplePay)
+		json.Unmarshal(ApplePayString, &o.ApplePay)
 	}
 	
 	if IdentityResolution, ok := AppleintegrationMap["identityResolution"].(map[string]interface{}); ok {

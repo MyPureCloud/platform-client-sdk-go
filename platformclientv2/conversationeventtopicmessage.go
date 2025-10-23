@@ -95,6 +95,12 @@ type Conversationeventtopicmessage struct {
 
 	// QueueMediaSettings - Represents the queue setting for this media.
 	QueueMediaSettings *Conversationeventtopicqueuemediasettings `json:"queueMediaSettings,omitempty"`
+
+	// ResumeTime - The time when a parked message should resume.
+	ResumeTime *time.Time `json:"resumeTime,omitempty"`
+
+	// ParkTime - The time when an  parked message was parked.
+	ParkTime *time.Time `json:"parkTime,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -126,7 +132,7 @@ func (o Conversationeventtopicmessage) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "StartHoldTime","ConnectedTime","DisconnectedTime", }
+		dateTimeFields := []string{ "StartHoldTime","ConnectedTime","DisconnectedTime","ResumeTime","ParkTime", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -181,6 +187,22 @@ func (o Conversationeventtopicmessage) MarshalJSON() ([]byte, error) {
 		*DisconnectedTime = timeutil.Strftime(o.DisconnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DisconnectedTime = nil
+	}
+	
+	ResumeTime := new(string)
+	if o.ResumeTime != nil {
+		
+		*ResumeTime = timeutil.Strftime(o.ResumeTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ResumeTime = nil
+	}
+	
+	ParkTime := new(string)
+	if o.ParkTime != nil {
+		
+		*ParkTime = timeutil.Strftime(o.ParkTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ParkTime = nil
 	}
 	
 	return json.Marshal(&struct { 
@@ -239,6 +261,10 @@ func (o Conversationeventtopicmessage) MarshalJSON() ([]byte, error) {
 		ByoSmsIntegrationId *string `json:"byoSmsIntegrationId,omitempty"`
 		
 		QueueMediaSettings *Conversationeventtopicqueuemediasettings `json:"queueMediaSettings,omitempty"`
+		
+		ResumeTime *string `json:"resumeTime,omitempty"`
+		
+		ParkTime *string `json:"parkTime,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -296,6 +322,10 @@ func (o Conversationeventtopicmessage) MarshalJSON() ([]byte, error) {
 		ByoSmsIntegrationId: o.ByoSmsIntegrationId,
 		
 		QueueMediaSettings: o.QueueMediaSettings,
+		
+		ResumeTime: ResumeTime,
+		
+		ParkTime: ParkTime,
 		Alias:    (Alias)(o),
 	})
 }
@@ -428,6 +458,16 @@ func (o *Conversationeventtopicmessage) UnmarshalJSON(b []byte) error {
 	if QueueMediaSettings, ok := ConversationeventtopicmessageMap["queueMediaSettings"].(map[string]interface{}); ok {
 		QueueMediaSettingsString, _ := json.Marshal(QueueMediaSettings)
 		json.Unmarshal(QueueMediaSettingsString, &o.QueueMediaSettings)
+	}
+	
+	if resumeTimeString, ok := ConversationeventtopicmessageMap["resumeTime"].(string); ok {
+		ResumeTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", resumeTimeString)
+		o.ResumeTime = &ResumeTime
+	}
+	
+	if parkTimeString, ok := ConversationeventtopicmessageMap["parkTime"].(string); ok {
+		ParkTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", parkTimeString)
+		o.ParkTime = &ParkTime
 	}
 	
 

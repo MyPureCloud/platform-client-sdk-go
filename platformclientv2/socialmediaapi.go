@@ -925,7 +925,7 @@ func (a SocialMediaApi) GetSocialmediaAnalyticsMessagesJobResults(jobId string, 
 // GetSocialmediaEscalationrule invokes GET /api/v2/socialmedia/escalationrules/{escalationRuleId}
 //
 // Get a single escalation rule.
-func (a SocialMediaApi) GetSocialmediaEscalationrule(escalationRuleId string) (*Escalationruleresponse, *APIResponse, error) {
+func (a SocialMediaApi) GetSocialmediaEscalationrule(escalationRuleId string, expand string) (*Escalationruleresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/socialmedia/escalationrules/{escalationRuleId}"
@@ -957,6 +957,8 @@ func (a SocialMediaApi) GetSocialmediaEscalationrule(escalationRuleId string) (*
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

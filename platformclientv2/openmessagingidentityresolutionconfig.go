@@ -14,7 +14,7 @@ type Openmessagingidentityresolutionconfig struct {
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
-	// Division - The division to which this entity belongs.
+	// Division - The division to use when performing identity resolution.
 	Division *Writablestarrabledivision `json:"division,omitempty"`
 
 	// ResolveIdentities - Whether the channel should resolve identities

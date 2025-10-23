@@ -63,6 +63,9 @@ type Whatsappintegration struct {
 	// CreateError - Error information returned, if createStatus is set to Error
 	CreateError *Errorbody `json:"createError,omitempty"`
 
+	// WhatsAppBusinessAccountId - The WhatsApp Business Account Id (WABA Id)
+	WhatsAppBusinessAccountId *string `json:"whatsAppBusinessAccountId,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -180,6 +183,8 @@ func (o Whatsappintegration) MarshalJSON() ([]byte, error) {
 		
 		CreateError *Errorbody `json:"createError,omitempty"`
 		
+		WhatsAppBusinessAccountId *string `json:"whatsAppBusinessAccountId,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -216,6 +221,8 @@ func (o Whatsappintegration) MarshalJSON() ([]byte, error) {
 		CreateStatus: o.CreateStatus,
 		
 		CreateError: o.CreateError,
+		
+		WhatsAppBusinessAccountId: o.WhatsAppBusinessAccountId,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -308,6 +315,10 @@ func (o *Whatsappintegration) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(CreateErrorString, &o.CreateError)
 	}
 	
+	if WhatsAppBusinessAccountId, ok := WhatsappintegrationMap["whatsAppBusinessAccountId"].(string); ok {
+		o.WhatsAppBusinessAccountId = &WhatsAppBusinessAccountId
+	}
+    
 	if SelfUri, ok := WhatsappintegrationMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

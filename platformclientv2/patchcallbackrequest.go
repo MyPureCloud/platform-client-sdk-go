@@ -23,6 +23,15 @@ type Patchcallbackrequest struct {
 
 	// CallbackScheduledTime - The scheduled date-time for the callback. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	CallbackScheduledTime *time.Time `json:"callbackScheduledTime,omitempty"`
+
+	// CountryCode - The countryCode
+	CountryCode *string `json:"countryCode,omitempty"`
+
+	// CallbackNumbers - The callbackNumbers
+	CallbackNumbers *[]string `json:"callbackNumbers,omitempty"`
+
+	// ValidateCallbackNumbers - validateCallbackNumbers
+	ValidateCallbackNumbers *bool `json:"validateCallbackNumbers,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -103,6 +112,12 @@ func (o Patchcallbackrequest) MarshalJSON() ([]byte, error) {
 		AgentId *string `json:"agentId,omitempty"`
 		
 		CallbackScheduledTime *string `json:"callbackScheduledTime,omitempty"`
+		
+		CountryCode *string `json:"countryCode,omitempty"`
+		
+		CallbackNumbers *[]string `json:"callbackNumbers,omitempty"`
+		
+		ValidateCallbackNumbers *bool `json:"validateCallbackNumbers,omitempty"`
 		Alias
 	}{ 
 		ConversationId: o.ConversationId,
@@ -112,6 +127,12 @@ func (o Patchcallbackrequest) MarshalJSON() ([]byte, error) {
 		AgentId: o.AgentId,
 		
 		CallbackScheduledTime: CallbackScheduledTime,
+		
+		CountryCode: o.CountryCode,
+		
+		CallbackNumbers: o.CallbackNumbers,
+		
+		ValidateCallbackNumbers: o.ValidateCallbackNumbers,
 		Alias:    (Alias)(o),
 	})
 }
@@ -140,6 +161,19 @@ func (o *Patchcallbackrequest) UnmarshalJSON(b []byte) error {
 		o.CallbackScheduledTime = &CallbackScheduledTime
 	}
 	
+	if CountryCode, ok := PatchcallbackrequestMap["countryCode"].(string); ok {
+		o.CountryCode = &CountryCode
+	}
+    
+	if CallbackNumbers, ok := PatchcallbackrequestMap["callbackNumbers"].([]interface{}); ok {
+		CallbackNumbersString, _ := json.Marshal(CallbackNumbers)
+		json.Unmarshal(CallbackNumbersString, &o.CallbackNumbers)
+	}
+	
+	if ValidateCallbackNumbers, ok := PatchcallbackrequestMap["validateCallbackNumbers"].(bool); ok {
+		o.ValidateCallbackNumbers = &ValidateCallbackNumbers
+	}
+    
 
 	return nil
 }

@@ -41,6 +41,9 @@ type Updateactivitycoderequest struct {
 	// SecondaryPresences - The secondary presences of this activity code
 	SecondaryPresences *Listwrappersecondarypresence `json:"secondaryPresences,omitempty"`
 
+	// PlanningGroupIds - The planning group IDs associated with this activity code
+	PlanningGroupIds *Listwrapperstring `json:"planningGroupIds,omitempty"`
+
 	// Metadata - Version metadata for the associated business unit's list of activity codes
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 }
@@ -128,6 +131,8 @@ func (o Updateactivitycoderequest) MarshalJSON() ([]byte, error) {
 		
 		SecondaryPresences *Listwrappersecondarypresence `json:"secondaryPresences,omitempty"`
 		
+		PlanningGroupIds *Listwrapperstring `json:"planningGroupIds,omitempty"`
+		
 		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 		Alias
 	}{ 
@@ -150,6 +155,8 @@ func (o Updateactivitycoderequest) MarshalJSON() ([]byte, error) {
 		Interruptible: o.Interruptible,
 		
 		SecondaryPresences: o.SecondaryPresences,
+		
+		PlanningGroupIds: o.PlanningGroupIds,
 		
 		Metadata: o.Metadata,
 		Alias:    (Alias)(o),
@@ -203,6 +210,11 @@ func (o *Updateactivitycoderequest) UnmarshalJSON(b []byte) error {
 	if SecondaryPresences, ok := UpdateactivitycoderequestMap["secondaryPresences"].(map[string]interface{}); ok {
 		SecondaryPresencesString, _ := json.Marshal(SecondaryPresences)
 		json.Unmarshal(SecondaryPresencesString, &o.SecondaryPresences)
+	}
+	
+	if PlanningGroupIds, ok := UpdateactivitycoderequestMap["planningGroupIds"].(map[string]interface{}); ok {
+		PlanningGroupIdsString, _ := json.Marshal(PlanningGroupIds)
+		json.Unmarshal(PlanningGroupIdsString, &o.PlanningGroupIds)
 	}
 	
 	if Metadata, ok := UpdateactivitycoderequestMap["metadata"].(map[string]interface{}); ok {

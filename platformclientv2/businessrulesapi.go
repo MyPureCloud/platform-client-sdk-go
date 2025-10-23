@@ -32,8 +32,6 @@ func NewBusinessRulesApiWithConfig(config *Configuration) *BusinessRulesApi {
 // DeleteBusinessrulesDecisiontable invokes DELETE /api/v2/businessrules/decisiontables/{tableId}
 //
 // Delete a decision table
-//
-// Preview: DeleteBusinessrulesDecisiontable is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a BusinessRulesApi) DeleteBusinessrulesDecisiontable(tableId string, forceDelete bool) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -111,8 +109,6 @@ func (a BusinessRulesApi) DeleteBusinessrulesDecisiontable(tableId string, force
 // DeleteBusinessrulesDecisiontableVersion invokes DELETE /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}
 //
 // Delete a decision table version
-//
-// Preview: DeleteBusinessrulesDecisiontableVersion is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a BusinessRulesApi) DeleteBusinessrulesDecisiontableVersion(tableId string, tableVersion int) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -194,8 +190,6 @@ func (a BusinessRulesApi) DeleteBusinessrulesDecisiontableVersion(tableId string
 // DeleteBusinessrulesDecisiontableVersionRow invokes DELETE /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}/rows/{rowId}
 //
 // Delete a decision table row
-//
-// Preview: DeleteBusinessrulesDecisiontableVersionRow is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a BusinessRulesApi) DeleteBusinessrulesDecisiontableVersionRow(tableId string, tableVersion int, rowId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -283,8 +277,6 @@ func (a BusinessRulesApi) DeleteBusinessrulesDecisiontableVersionRow(tableId str
 // DeleteBusinessrulesSchema invokes DELETE /api/v2/businessrules/schemas/{schemaId}
 //
 // Delete a schema
-//
-// Preview: DeleteBusinessrulesSchema is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a BusinessRulesApi) DeleteBusinessrulesSchema(schemaId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -360,8 +352,6 @@ func (a BusinessRulesApi) DeleteBusinessrulesSchema(schemaId string) (*APIRespon
 // GetBusinessrulesDecisiontable invokes GET /api/v2/businessrules/decisiontables/{tableId}
 //
 // Get a decision table
-//
-// Preview: GetBusinessrulesDecisiontable is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a BusinessRulesApi) GetBusinessrulesDecisiontable(tableId string) (*Decisiontable, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -444,8 +434,6 @@ func (a BusinessRulesApi) GetBusinessrulesDecisiontable(tableId string) (*Decisi
 // GetBusinessrulesDecisiontableVersion invokes GET /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}
 //
 // Get a decision table version
-//
-// Preview: GetBusinessrulesDecisiontableVersion is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a BusinessRulesApi) GetBusinessrulesDecisiontableVersion(tableId string, tableVersion int) (*Decisiontableversion, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -534,8 +522,6 @@ func (a BusinessRulesApi) GetBusinessrulesDecisiontableVersion(tableId string, t
 // GetBusinessrulesDecisiontableVersionRow invokes GET /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}/rows/{rowId}
 //
 // Get a decision table row
-//
-// Preview: GetBusinessrulesDecisiontableVersionRow is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a BusinessRulesApi) GetBusinessrulesDecisiontableVersionRow(tableId string, tableVersion int, rowId string) (*Decisiontablerow, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -630,8 +616,6 @@ func (a BusinessRulesApi) GetBusinessrulesDecisiontableVersionRow(tableId string
 // GetBusinessrulesDecisiontableVersionRows invokes GET /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}/rows
 //
 // Get a list of decision table rows.
-//
-// Preview: GetBusinessrulesDecisiontableVersionRows is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a BusinessRulesApi) GetBusinessrulesDecisiontableVersionRows(tableId string, tableVersion int, pageNumber string, pageSize string) (*Decisiontablerowlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -724,8 +708,6 @@ func (a BusinessRulesApi) GetBusinessrulesDecisiontableVersionRows(tableId strin
 // GetBusinessrulesDecisiontableVersions invokes GET /api/v2/businessrules/decisiontables/{tableId}/versions
 //
 // Get a list of decision table versions
-//
-// Preview: GetBusinessrulesDecisiontableVersions is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a BusinessRulesApi) GetBusinessrulesDecisiontableVersions(tableId string, after string, pageSize string) (*Decisiontableversionlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -812,8 +794,6 @@ func (a BusinessRulesApi) GetBusinessrulesDecisiontableVersions(tableId string, 
 // GetBusinessrulesDecisiontables invokes GET /api/v2/businessrules/decisiontables
 //
 // Get a list of decision tables.
-//
-// Preview: GetBusinessrulesDecisiontables is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a BusinessRulesApi) GetBusinessrulesDecisiontables(after string, pageSize string, divisionIds []string, name string) (*Decisiontablelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -898,8 +878,6 @@ func (a BusinessRulesApi) GetBusinessrulesDecisiontables(after string, pageSize 
 // GetBusinessrulesDecisiontablesSearch invokes GET /api/v2/businessrules/decisiontables/search
 //
 // Search for decision tables.
-//
-// Preview: GetBusinessrulesDecisiontablesSearch is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a BusinessRulesApi) GetBusinessrulesDecisiontablesSearch(after string, pageSize string, schemaId string, name string, withPublishedVersion bool, expand []string, ids []string) (*Decisiontablelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -990,8 +968,6 @@ func (a BusinessRulesApi) GetBusinessrulesDecisiontablesSearch(after string, pag
 // GetBusinessrulesSchema invokes GET /api/v2/businessrules/schemas/{schemaId}
 //
 // Get a schema
-//
-// Preview: GetBusinessrulesSchema is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a BusinessRulesApi) GetBusinessrulesSchema(schemaId string) (*Businessrulesdataschema, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1074,8 +1050,6 @@ func (a BusinessRulesApi) GetBusinessrulesSchema(schemaId string) (*Businessrule
 // GetBusinessrulesSchemas invokes GET /api/v2/businessrules/schemas
 //
 // Get a list of schemas.
-//
-// Preview: GetBusinessrulesSchemas is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a BusinessRulesApi) GetBusinessrulesSchemas() (*Businessrulesdataschemalisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1152,8 +1126,6 @@ func (a BusinessRulesApi) GetBusinessrulesSchemas() (*Businessrulesdataschemalis
 // GetBusinessrulesSchemasCoretype invokes GET /api/v2/businessrules/schemas/coretypes/{coreTypeName}
 //
 // Get a specific named core type.
-//
-// Preview: GetBusinessrulesSchemasCoretype is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a BusinessRulesApi) GetBusinessrulesSchemasCoretype(coreTypeName string) (*Coretype, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1236,8 +1208,6 @@ func (a BusinessRulesApi) GetBusinessrulesSchemasCoretype(coreTypeName string) (
 // GetBusinessrulesSchemasCoretypes invokes GET /api/v2/businessrules/schemas/coretypes
 //
 // Get the core types from which all schemas are built.
-//
-// Preview: GetBusinessrulesSchemasCoretypes is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a BusinessRulesApi) GetBusinessrulesSchemasCoretypes() (*Coretypelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1314,8 +1284,6 @@ func (a BusinessRulesApi) GetBusinessrulesSchemasCoretypes() (*Coretypelisting, 
 // PatchBusinessrulesDecisiontable invokes PATCH /api/v2/businessrules/decisiontables/{tableId}
 //
 // Update a decision table
-//
-// Preview: PatchBusinessrulesDecisiontable is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a BusinessRulesApi) PatchBusinessrulesDecisiontable(tableId string, body Updatedecisiontablerequest) (*Decisiontable, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -1406,8 +1374,6 @@ func (a BusinessRulesApi) PatchBusinessrulesDecisiontable(tableId string, body U
 // PatchBusinessrulesDecisiontableVersion invokes PATCH /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}
 //
 // Update a decision table version
-//
-// Preview: PatchBusinessrulesDecisiontableVersion is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a BusinessRulesApi) PatchBusinessrulesDecisiontableVersion(tableId string, tableVersion int, body Updatedecisiontableversionrequest) (*Decisiontableversion, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -1504,8 +1470,6 @@ func (a BusinessRulesApi) PatchBusinessrulesDecisiontableVersion(tableId string,
 // PostBusinessrulesDecisiontableExecute invokes POST /api/v2/businessrules/decisiontables/{tableId}/execute
 //
 // Execute a published decision table
-//
-// Preview: PostBusinessrulesDecisiontableExecute is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a BusinessRulesApi) PostBusinessrulesDecisiontableExecute(tableId string, body Decisiontableexecutionrequest) (*Decisiontableexecutionresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1596,8 +1560,6 @@ func (a BusinessRulesApi) PostBusinessrulesDecisiontableExecute(tableId string, 
 // PostBusinessrulesDecisiontableVersionCopy invokes POST /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}/copy
 //
 // Copy a decision table version
-//
-// Preview: PostBusinessrulesDecisiontableVersionCopy is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a BusinessRulesApi) PostBusinessrulesDecisiontableVersionCopy(tableId string, tableVersion int, body Copydecisiontablerequest) (*Decisiontableversion, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1694,8 +1656,6 @@ func (a BusinessRulesApi) PostBusinessrulesDecisiontableVersionCopy(tableId stri
 // PostBusinessrulesDecisiontableVersionExecute invokes POST /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}/execute
 //
 // Execute a decision table version
-//
-// Preview: PostBusinessrulesDecisiontableVersionExecute is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a BusinessRulesApi) PostBusinessrulesDecisiontableVersionExecute(tableId string, tableVersion int, body Decisiontableexecutionrequest) (*Decisiontableexecutionresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1792,8 +1752,6 @@ func (a BusinessRulesApi) PostBusinessrulesDecisiontableVersionExecute(tableId s
 // PostBusinessrulesDecisiontableVersionRows invokes POST /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}/rows
 //
 // Create a decision table row
-//
-// Preview: PostBusinessrulesDecisiontableVersionRows is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a BusinessRulesApi) PostBusinessrulesDecisiontableVersionRows(tableId string, tableVersion int, body Createdecisiontablerowrequest) (*Decisiontablerow, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1890,8 +1848,6 @@ func (a BusinessRulesApi) PostBusinessrulesDecisiontableVersionRows(tableId stri
 // PostBusinessrulesDecisiontableVersionRowsSearch invokes POST /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}/rows/search
 //
 // Search for decision table rows
-//
-// Preview: PostBusinessrulesDecisiontableVersionRowsSearch is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a BusinessRulesApi) PostBusinessrulesDecisiontableVersionRowsSearch(tableId string, tableVersion int, body Searchdecisiontablerowsrequest, pageNumber string, pageSize string) (*Decisiontablerowlisting, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1992,8 +1948,6 @@ func (a BusinessRulesApi) PostBusinessrulesDecisiontableVersionRowsSearch(tableI
 // PostBusinessrulesDecisiontableVersionSync invokes POST /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}/sync
 //
 // Update the Business Rules Schema to the latest version for a given decision table version
-//
-// Preview: PostBusinessrulesDecisiontableVersionSync is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a BusinessRulesApi) PostBusinessrulesDecisiontableVersionSync(tableId string, tableVersion int) (*Decisiontableversion, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2082,8 +2036,6 @@ func (a BusinessRulesApi) PostBusinessrulesDecisiontableVersionSync(tableId stri
 // PostBusinessrulesDecisiontableVersions invokes POST /api/v2/businessrules/decisiontables/{tableId}/versions
 //
 // Create a new decision table version
-//
-// Preview: PostBusinessrulesDecisiontableVersions is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a BusinessRulesApi) PostBusinessrulesDecisiontableVersions(tableId string) (*Decisiontableversion, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2166,8 +2118,6 @@ func (a BusinessRulesApi) PostBusinessrulesDecisiontableVersions(tableId string)
 // PostBusinessrulesDecisiontables invokes POST /api/v2/businessrules/decisiontables
 //
 // Create a decision table
-//
-// Preview: PostBusinessrulesDecisiontables is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a BusinessRulesApi) PostBusinessrulesDecisiontables(body Createdecisiontablerequest) (*Decisiontableversion, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2252,8 +2202,6 @@ func (a BusinessRulesApi) PostBusinessrulesDecisiontables(body Createdecisiontab
 // PostBusinessrulesSchemas invokes POST /api/v2/businessrules/schemas
 //
 // Create a schema
-//
-// Preview: PostBusinessrulesSchemas is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a BusinessRulesApi) PostBusinessrulesSchemas(body Businessrulesschemacreaterequest) (*Businessrulesdataschema, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2338,8 +2286,6 @@ func (a BusinessRulesApi) PostBusinessrulesSchemas(body Businessrulesschemacreat
 // PutBusinessrulesDecisiontableVersionPublish invokes PUT /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}/publish
 //
 // Publish a decision table version
-//
-// Preview: PutBusinessrulesDecisiontableVersionPublish is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a BusinessRulesApi) PutBusinessrulesDecisiontableVersionPublish(tableId string, tableVersion int) (*Decisiontableversion, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -2428,8 +2374,6 @@ func (a BusinessRulesApi) PutBusinessrulesDecisiontableVersionPublish(tableId st
 // PutBusinessrulesDecisiontableVersionRow invokes PUT /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}/rows/{rowId}
 //
 // Full update a decision table row
-//
-// Preview: PutBusinessrulesDecisiontableVersionRow is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a BusinessRulesApi) PutBusinessrulesDecisiontableVersionRow(tableId string, tableVersion int, rowId string, body Putdecisiontablerowrequest) (*Decisiontablerow, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -2532,8 +2476,6 @@ func (a BusinessRulesApi) PutBusinessrulesDecisiontableVersionRow(tableId string
 // PutBusinessrulesSchema invokes PUT /api/v2/businessrules/schemas/{schemaId}
 //
 // Update a schema
-//
-// Preview: PutBusinessrulesSchema is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a BusinessRulesApi) PutBusinessrulesSchema(schemaId string, body Businessrulesschemaupdaterequest) (*Businessrulesdataschema, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

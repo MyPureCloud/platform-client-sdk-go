@@ -40,6 +40,9 @@ type Createactivitycoderequest struct {
 
 	// SecondaryPresences - The secondary presences of this activity code
 	SecondaryPresences *[]Secondarypresence `json:"secondaryPresences,omitempty"`
+
+	// PlanningGroupIds - The planning group IDs associated with this activity code
+	PlanningGroupIds *[]string `json:"planningGroupIds,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -124,6 +127,8 @@ func (o Createactivitycoderequest) MarshalJSON() ([]byte, error) {
 		Interruptible *bool `json:"interruptible,omitempty"`
 		
 		SecondaryPresences *[]Secondarypresence `json:"secondaryPresences,omitempty"`
+		
+		PlanningGroupIds *[]string `json:"planningGroupIds,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -145,6 +150,8 @@ func (o Createactivitycoderequest) MarshalJSON() ([]byte, error) {
 		Interruptible: o.Interruptible,
 		
 		SecondaryPresences: o.SecondaryPresences,
+		
+		PlanningGroupIds: o.PlanningGroupIds,
 		Alias:    (Alias)(o),
 	})
 }
@@ -196,6 +203,11 @@ func (o *Createactivitycoderequest) UnmarshalJSON(b []byte) error {
 	if SecondaryPresences, ok := CreateactivitycoderequestMap["secondaryPresences"].([]interface{}); ok {
 		SecondaryPresencesString, _ := json.Marshal(SecondaryPresences)
 		json.Unmarshal(SecondaryPresencesString, &o.SecondaryPresences)
+	}
+	
+	if PlanningGroupIds, ok := CreateactivitycoderequestMap["planningGroupIds"].([]interface{}); ok {
+		PlanningGroupIdsString, _ := json.Marshal(PlanningGroupIds)
+		json.Unmarshal(PlanningGroupIdsString, &o.PlanningGroupIds)
 	}
 	
 

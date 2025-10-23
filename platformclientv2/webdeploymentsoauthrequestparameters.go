@@ -14,6 +14,9 @@ type Webdeploymentsoauthrequestparameters struct {
 	// Code - The authorization code to be sent to the authentication server during the token request.  Refer to https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest
 	Code *string `json:"code,omitempty"`
 
+	// IdToken - The implicit id_token to be sent to the authentication server during the token request.  Refer to https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest
+	IdToken *string `json:"idToken,omitempty"`
+
 	// RedirectUri - Redirect URI sent in the \"Authentication Request\"Refer to https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest
 	RedirectUri *string `json:"redirectUri,omitempty"`
 
@@ -95,6 +98,8 @@ func (o Webdeploymentsoauthrequestparameters) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Code *string `json:"code,omitempty"`
 		
+		IdToken *string `json:"idToken,omitempty"`
+		
 		RedirectUri *string `json:"redirectUri,omitempty"`
 		
 		Nonce *string `json:"nonce,omitempty"`
@@ -107,6 +112,8 @@ func (o Webdeploymentsoauthrequestparameters) MarshalJSON() ([]byte, error) {
 		Alias
 	}{ 
 		Code: o.Code,
+		
+		IdToken: o.IdToken,
 		
 		RedirectUri: o.RedirectUri,
 		
@@ -130,6 +137,10 @@ func (o *Webdeploymentsoauthrequestparameters) UnmarshalJSON(b []byte) error {
 	
 	if Code, ok := WebdeploymentsoauthrequestparametersMap["code"].(string); ok {
 		o.Code = &Code
+	}
+    
+	if IdToken, ok := WebdeploymentsoauthrequestparametersMap["idToken"].(string); ok {
+		o.IdToken = &IdToken
 	}
     
 	if RedirectUri, ok := WebdeploymentsoauthrequestparametersMap["redirectUri"].(string); ok {

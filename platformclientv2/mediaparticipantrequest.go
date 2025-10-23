@@ -17,7 +17,7 @@ type Mediaparticipantrequest struct {
 	// State - The state to update to set for this participant's communications.  Possible values are: 'connected' and 'disconnected'.
 	State *string `json:"state,omitempty"`
 
-	// Recording - True to enable recording of this participant, otherwise false to disable recording.
+	// Recording - True to enable ad-hoc recording of this participant, otherwise false to disable recording.
 	Recording *bool `json:"recording,omitempty"`
 
 	// Muted - True to mute this conversation participant.

@@ -16,6 +16,9 @@ type Dataingestionrulecriteria struct {
 
 	// Id - The ID of the data ingestion rule.
 	Id *string `json:"id,omitempty"`
+
+	// Name - The name of the data ingestion rule. Only populated when expanded.
+	Name *string `json:"name,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Dataingestionrulecriteria) MarshalJSON() ([]byte, error) {
 		EffectivePlatform *string `json:"effectivePlatform,omitempty"`
 		
 		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
 		Alias
 	}{ 
 		EffectivePlatform: o.EffectivePlatform,
 		
 		Id: o.Id,
+		
+		Name: o.Name,
 		Alias:    (Alias)(o),
 	})
 }
@@ -106,6 +113,10 @@ func (o *Dataingestionrulecriteria) UnmarshalJSON(b []byte) error {
     
 	if Id, ok := DataingestionrulecriteriaMap["id"].(string); ok {
 		o.Id = &Id
+	}
+    
+	if Name, ok := DataingestionrulecriteriaMap["name"].(string); ok {
+		o.Name = &Name
 	}
     
 

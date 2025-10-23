@@ -1329,7 +1329,7 @@ func (a WebDeploymentsApi) PostWebdeploymentsDeployments(deployment Webdeploymen
 
 // PostWebdeploymentsTokenOauthcodegrantjwtexchange invokes POST /api/v2/webdeployments/token/oauthcodegrantjwtexchange
 //
-// Exchange an oAuth code (obtained using the Authorization Code Flow) for a JWT that can be used by webdeployments.
+// Exchange an oAuth code (obtained using the Authorization Code Flow or Implicit flow) for a JWT that can be used by webdeployments.
 func (a WebDeploymentsApi) PostWebdeploymentsTokenOauthcodegrantjwtexchange(body Webdeploymentsoauthexchangerequest) (*Webdeploymentsauthorizationresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

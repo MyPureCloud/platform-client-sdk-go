@@ -26,17 +26,17 @@ type Opensocialreactionsnormalizedevententitylisting struct {
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
-	// SelfUri
-	SelfUri *string `json:"selfUri,omitempty"`
-
 	// PreviousUri
 	PreviousUri *string `json:"previousUri,omitempty"`
 
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
+
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
+
+	// SelfUri
+	SelfUri *string `json:"selfUri,omitempty"`
 
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
@@ -115,13 +115,13 @@ func (o Opensocialreactionsnormalizedevententitylisting) MarshalJSON() ([]byte, 
 		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
-		LastUri *string `json:"lastUri,omitempty"`
-		
-		SelfUri *string `json:"selfUri,omitempty"`
-		
 		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		NextUri *string `json:"nextUri,omitempty"`
+		
+		LastUri *string `json:"lastUri,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		Alias
@@ -136,13 +136,13 @@ func (o Opensocialreactionsnormalizedevententitylisting) MarshalJSON() ([]byte, 
 		
 		FirstUri: o.FirstUri,
 		
-		LastUri: o.LastUri,
-		
-		SelfUri: o.SelfUri,
-		
 		PreviousUri: o.PreviousUri,
 		
 		NextUri: o.NextUri,
+		
+		LastUri: o.LastUri,
+		
+		SelfUri: o.SelfUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
@@ -180,20 +180,20 @@ func (o *Opensocialreactionsnormalizedevententitylisting) UnmarshalJSON(b []byte
 		o.FirstUri = &FirstUri
 	}
     
-	if LastUri, ok := OpensocialreactionsnormalizedevententitylistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
-	if SelfUri, ok := OpensocialreactionsnormalizedevententitylistingMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
-	}
-    
 	if PreviousUri, ok := OpensocialreactionsnormalizedevententitylistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
 	}
     
 	if NextUri, ok := OpensocialreactionsnormalizedevententitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
+	}
+    
+	if LastUri, ok := OpensocialreactionsnormalizedevententitylistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
+	}
+    
+	if SelfUri, ok := OpensocialreactionsnormalizedevententitylistingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
 	}
     
 	if PageCount, ok := OpensocialreactionsnormalizedevententitylistingMap["pageCount"].(float64); ok {

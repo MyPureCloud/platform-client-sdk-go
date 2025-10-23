@@ -167,9 +167,6 @@ docs/DeleteKnowledgeKnowledgebaseDocumentVariation-example.txt
 docs/DeleteKnowledgeKnowledgebaseExportJob-example.txt
 docs/DeleteKnowledgeKnowledgebaseImportJob-example.txt
 docs/DeleteKnowledgeKnowledgebaseLabel-example.txt
-docs/DeleteKnowledgeKnowledgebaseLanguageCategory-example.txt
-docs/DeleteKnowledgeKnowledgebaseLanguageDocument-example.txt
-docs/DeleteKnowledgeKnowledgebaseLanguageDocumentsImport-example.txt
 docs/DeleteKnowledgeKnowledgebaseSourcesSalesforceSourceId-example.txt
 docs/DeleteKnowledgeKnowledgebaseSourcesServicenowSourceId-example.txt
 docs/DeleteKnowledgeKnowledgebaseSynchronizeJob-example.txt
@@ -1032,14 +1029,6 @@ docs/GetKnowledgeKnowledgebaseExportJob-example.txt
 docs/GetKnowledgeKnowledgebaseImportJob-example.txt
 docs/GetKnowledgeKnowledgebaseLabel-example.txt
 docs/GetKnowledgeKnowledgebaseLabels-example.txt
-docs/GetKnowledgeKnowledgebaseLanguageCategories-example.txt
-docs/GetKnowledgeKnowledgebaseLanguageCategory-example.txt
-docs/GetKnowledgeKnowledgebaseLanguageDocument-example.txt
-docs/GetKnowledgeKnowledgebaseLanguageDocumentUpload-example.txt
-docs/GetKnowledgeKnowledgebaseLanguageDocuments-example.txt
-docs/GetKnowledgeKnowledgebaseLanguageDocumentsImport-example.txt
-docs/GetKnowledgeKnowledgebaseLanguageTraining-example.txt
-docs/GetKnowledgeKnowledgebaseLanguageTrainings-example.txt
 docs/GetKnowledgeKnowledgebaseOperations-example.txt
 docs/GetKnowledgeKnowledgebaseOperationsUsersQuery-example.txt
 docs/GetKnowledgeKnowledgebaseParseJob-example.txt
@@ -1304,9 +1293,12 @@ docs/GetRoutingAvailablemediatypes-example.txt
 docs/GetRoutingDirectroutingbackupSettingsMe-example.txt
 docs/GetRoutingDirectroutingbackupSettingsMe-example.txt
 docs/GetRoutingEmailDomain-example.txt
+docs/GetRoutingEmailDomainDkim-example.txt
+docs/GetRoutingEmailDomainMailfrom-example.txt
 docs/GetRoutingEmailDomainRoute-example.txt
 docs/GetRoutingEmailDomainRouteIdentityresolution-example.txt
 docs/GetRoutingEmailDomainRoutes-example.txt
+docs/GetRoutingEmailDomainVerification-example.txt
 docs/GetRoutingEmailDomains-example.txt
 docs/GetRoutingEmailOutboundDomain-example.txt
 docs/GetRoutingEmailOutboundDomainActivation-example.txt
@@ -1852,6 +1844,7 @@ docs/PatchConversationsCallParticipant-example.txt
 docs/PatchConversationsCallParticipantAttributes-example.txt
 docs/PatchConversationsCallParticipantCommunication-example.txt
 docs/PatchConversationsCallParticipantConsult-example.txt
+docs/PatchConversationsCallParticipantUserUserId-example.txt
 docs/PatchConversationsCallback-example.txt
 docs/PatchConversationsCallbackParticipant-example.txt
 docs/PatchConversationsCallbackParticipantAttributes-example.txt
@@ -1917,10 +1910,6 @@ docs/PatchKnowledgeKnowledgebaseDocumentVariation-example.txt
 docs/PatchKnowledgeKnowledgebaseDocumentsSearchSearchId-example.txt
 docs/PatchKnowledgeKnowledgebaseImportJob-example.txt
 docs/PatchKnowledgeKnowledgebaseLabel-example.txt
-docs/PatchKnowledgeKnowledgebaseLanguageCategory-example.txt
-docs/PatchKnowledgeKnowledgebaseLanguageDocument-example.txt
-docs/PatchKnowledgeKnowledgebaseLanguageDocuments-example.txt
-docs/PatchKnowledgeKnowledgebaseLanguageDocumentsImport-example.txt
 docs/PatchKnowledgeKnowledgebaseParseJob-example.txt
 docs/PatchKnowledgeKnowledgebaseSynchronizeJob-example.txt
 docs/PatchKnowledgeKnowledgebaseUnansweredGroupPhrasegroup-example.txt
@@ -2451,16 +2440,8 @@ docs/PostKnowledgeKnowledgebaseDocumentsVersionsBulkAdd-example.txt
 docs/PostKnowledgeKnowledgebaseExportJobs-example.txt
 docs/PostKnowledgeKnowledgebaseImportJobs-example.txt
 docs/PostKnowledgeKnowledgebaseLabels-example.txt
-docs/PostKnowledgeKnowledgebaseLanguageCategories-example.txt
-docs/PostKnowledgeKnowledgebaseLanguageDocumentUploads-example.txt
-docs/PostKnowledgeKnowledgebaseLanguageDocuments-example.txt
-docs/PostKnowledgeKnowledgebaseLanguageDocumentsImports-example.txt
-docs/PostKnowledgeKnowledgebaseLanguageTrainingPromote-example.txt
-docs/PostKnowledgeKnowledgebaseLanguageTrainings-example.txt
 docs/PostKnowledgeKnowledgebaseParseJobImport-example.txt
 docs/PostKnowledgeKnowledgebaseParseJobs-example.txt
-docs/PostKnowledgeKnowledgebaseSearch-example.txt
-docs/PostKnowledgeKnowledgebaseSearch-example.txt
 docs/PostKnowledgeKnowledgebaseSourcesSalesforce-example.txt
 docs/PostKnowledgeKnowledgebaseSourcesSalesforceSourceIdSync-example.txt
 docs/PostKnowledgeKnowledgebaseSourcesServicenow-example.txt
@@ -2530,6 +2511,7 @@ docs/PostOutboundCampaignStart-example.txt
 docs/PostOutboundCampaignStop-example.txt
 docs/PostOutboundCampaignrules-example.txt
 docs/PostOutboundCampaigns-example.txt
+docs/PostOutboundCampaignsPerformanceQuery-example.txt
 docs/PostOutboundCampaignsProgress-example.txt
 docs/PostOutboundContactlistClear-example.txt
 docs/PostOutboundContactlistContacts-example.txt
@@ -2598,8 +2580,11 @@ docs/PostResponsemanagementResponses-example.txt
 docs/PostResponsemanagementResponsesQuery-example.txt
 docs/PostRoutingAssessments-example.txt
 docs/PostRoutingAssessmentsJobs-example.txt
+docs/PostRoutingEmailDomainDkim-example.txt
+docs/PostRoutingEmailDomainMailfrom-example.txt
 docs/PostRoutingEmailDomainRoutes-example.txt
 docs/PostRoutingEmailDomainTestconnection-example.txt
+docs/PostRoutingEmailDomainVerification-example.txt
 docs/PostRoutingEmailDomains-example.txt
 docs/PostRoutingEmailOutboundDomains-example.txt
 docs/PostRoutingEmailOutboundDomainsSimulated-example.txt
@@ -3155,6 +3140,7 @@ platformclientv2/actionaggregatequeryfilter.go
 platformclientv2/actionaggregatequerypredicate.go
 platformclientv2/actionaggregatequeryresponse.go
 platformclientv2/actionaggregationquery.go
+platformclientv2/actionaggregationsort.go
 platformclientv2/actionaggregationview.go
 platformclientv2/actionasyncaggregatequeryresponse.go
 platformclientv2/actionasyncaggregationquery.go
@@ -3260,6 +3246,7 @@ platformclientv2/agentcopilotaggregatequeryfilter.go
 platformclientv2/agentcopilotaggregatequerypredicate.go
 platformclientv2/agentcopilotaggregatequeryresponse.go
 platformclientv2/agentcopilotaggregationquery.go
+platformclientv2/agentcopilotaggregationsort.go
 platformclientv2/agentcopilotaggregationview.go
 platformclientv2/agentcopilotapi.go
 platformclientv2/agentcopilotasyncaggregatequeryresponse.go
@@ -3407,6 +3394,7 @@ platformclientv2/appeventrequest.go
 platformclientv2/appeventresponse.go
 platformclientv2/appeventresponsesession.go
 platformclientv2/appleauthentication.go
+platformclientv2/appleidentityresolutionconfig.go
 platformclientv2/appleimessageapp.go
 platformclientv2/appleintegration.go
 platformclientv2/appleintegrationentitylisting.go
@@ -3452,8 +3440,6 @@ platformclientv2/architectsystempromptresourcenotificationsystempromptresourceno
 platformclientv2/archiveretention.go
 platformclientv2/arraynode.go
 platformclientv2/article.go
-platformclientv2/articlecontent.go
-platformclientv2/articlecontentbody.go
 platformclientv2/articlesfilter.go
 platformclientv2/assessmentform.go
 platformclientv2/assessmentformquestion.go
@@ -3597,6 +3583,7 @@ platformclientv2/botaggregatequeryfilter.go
 platformclientv2/botaggregatequerypredicate.go
 platformclientv2/botaggregatequeryresponse.go
 platformclientv2/botaggregationquery.go
+platformclientv2/botaggregationsort.go
 platformclientv2/botaggregationview.go
 platformclientv2/botasyncaggregatequeryresponse.go
 platformclientv2/botasyncaggregationquery.go
@@ -3849,6 +3836,10 @@ platformclientv2/campaignoutboundlinesallocation.go
 platformclientv2/campaignoutboundlinesdistribution.go
 platformclientv2/campaignoutboundlinesreservation.go
 platformclientv2/campaignpatchrequest.go
+platformclientv2/campaignperformancedata.go
+platformclientv2/campaignperformancedatacontactrate.go
+platformclientv2/campaignperformancedatalisting.go
+platformclientv2/campaignperformancedataprogress.go
 platformclientv2/campaignprogress.go
 platformclientv2/campaignrule.go
 platformclientv2/campaignruleaction.go
@@ -3905,7 +3896,6 @@ platformclientv2/category.go
 platformclientv2/categorycreaterequest.go
 platformclientv2/categoryentity.go
 platformclientv2/categoryentitylisting.go
-platformclientv2/categorylisting.go
 platformclientv2/categoryreference.go
 platformclientv2/categoryrequest.go
 platformclientv2/categoryresponse.go
@@ -4186,6 +4176,7 @@ platformclientv2/conversationaggregatequeryfilter.go
 platformclientv2/conversationaggregatequerypredicate.go
 platformclientv2/conversationaggregatequeryresponse.go
 platformclientv2/conversationaggregationquery.go
+platformclientv2/conversationaggregationsort.go
 platformclientv2/conversationaggregationview.go
 platformclientv2/conversationappsettings.go
 platformclientv2/conversationassociation.go
@@ -4953,7 +4944,6 @@ platformclientv2/dncpatchphonenumbersrequest.go
 platformclientv2/dncpatchwhatsappnumbersrequest.go
 platformclientv2/dnsrecordentry.go
 platformclientv2/document.go
-platformclientv2/documentarticle.go
 platformclientv2/documentationresult.go
 platformclientv2/documentationsearchcriteria.go
 platformclientv2/documentationsearchrequest.go
@@ -4992,7 +4982,6 @@ platformclientv2/documentbodytablewithhighlight.go
 platformclientv2/documentbodyvideo.go
 platformclientv2/documentbodyvideoproperties.go
 platformclientv2/documentbodywithhighlight.go
-platformclientv2/documentcategoryinput.go
 platformclientv2/documentchunkblock.go
 platformclientv2/documentchunkreference.go
 platformclientv2/documentcontentblock.go
@@ -5000,10 +4989,8 @@ platformclientv2/documentcontentblockwithhighlight.go
 platformclientv2/documentcontenthighlightindex.go
 platformclientv2/documentelementlength.go
 platformclientv2/documententitylisting.go
-platformclientv2/documentfaq.go
 platformclientv2/documentlistcontentblock.go
 platformclientv2/documentlistcontentblockwithhighlight.go
-platformclientv2/documentlisting.go
 platformclientv2/documentquery.go
 platformclientv2/documentqueryclause.go
 platformclientv2/documentqueryinterval.go
@@ -5375,6 +5362,7 @@ platformclientv2/facebookdataingestionruleresponse.go
 platformclientv2/facebookdataingestionruleversionresponse.go
 platformclientv2/facebookdataingestionruleversionresponseentitylisting.go
 platformclientv2/facebookid.go
+platformclientv2/facebookidentityresolutionconfig.go
 platformclientv2/facebookintegration.go
 platformclientv2/facebookintegrationentitylisting.go
 platformclientv2/facebookintegrationrequest.go
@@ -5436,6 +5424,7 @@ platformclientv2/flowaggregatequeryfilter.go
 platformclientv2/flowaggregatequerypredicate.go
 platformclientv2/flowaggregatequeryresponse.go
 platformclientv2/flowaggregationquery.go
+platformclientv2/flowaggregationsort.go
 platformclientv2/flowaggregationview.go
 platformclientv2/flowasyncaggregatequeryresponse.go
 platformclientv2/flowasyncaggregationquery.go
@@ -5451,6 +5440,7 @@ platformclientv2/flowexecutionaggregatequeryfilter.go
 platformclientv2/flowexecutionaggregatequerypredicate.go
 platformclientv2/flowexecutionaggregatequeryresponse.go
 platformclientv2/flowexecutionaggregationquery.go
+platformclientv2/flowexecutionaggregationsort.go
 platformclientv2/flowexecutionaggregationview.go
 platformclientv2/flowexecutionasyncaggregatequeryresponse.go
 platformclientv2/flowexecutionasyncaggregationquery.go
@@ -5672,7 +5662,6 @@ platformclientv2/identityprovider.go
 platformclientv2/identityproviderapi.go
 platformclientv2/identityproviderentitylisting.go
 platformclientv2/identityresolutionautomergeconfig.go
-platformclientv2/identityresolutionconfig.go
 platformclientv2/identityresolutionexternalsource.go
 platformclientv2/identityresolutionqueueconfig.go
 platformclientv2/idleeventtrigger.go
@@ -5690,10 +5679,8 @@ platformclientv2/ignoretopicsrequest.go
 platformclientv2/ignoretopicsresponse.go
 platformclientv2/image.go
 platformclientv2/imapsettings.go
-platformclientv2/importerror.go
 platformclientv2/importforecastresponse.go
 platformclientv2/importforecastuploadresponse.go
-platformclientv2/importreport.go
 platformclientv2/importscheduleuploadresponse.go
 platformclientv2/importscheduleuploadschema.go
 platformclientv2/importscriptstatusresponse.go
@@ -5747,6 +5734,7 @@ platformclientv2/instagramdataingestionruleresponse.go
 platformclientv2/instagramdataingestionruleversionresponse.go
 platformclientv2/instagramdataingestionruleversionresponseentitylisting.go
 platformclientv2/instagramid.go
+platformclientv2/instagramidentityresolutionconfig.go
 platformclientv2/instagramintegration.go
 platformclientv2/instagramintegrationentitylisting.go
 platformclientv2/instagramintegrationrequest.go
@@ -5791,6 +5779,7 @@ platformclientv2/ivrdivisionview.go
 platformclientv2/ivrdivisionviewentitylisting.go
 platformclientv2/ivrentitylisting.go
 platformclientv2/ivrestablishedevent.go
+platformclientv2/ivridentityresolutionconfig.go
 platformclientv2/journey.go
 platformclientv2/journeyaction.go
 platformclientv2/journeyactionmap.go
@@ -5800,6 +5789,7 @@ platformclientv2/journeyaggregatequeryfilter.go
 platformclientv2/journeyaggregatequerypredicate.go
 platformclientv2/journeyaggregatequeryresponse.go
 platformclientv2/journeyaggregationquery.go
+platformclientv2/journeyaggregationsort.go
 platformclientv2/journeyaggregationview.go
 platformclientv2/journeyapi.go
 platformclientv2/journeyapp.go
@@ -5971,6 +5961,7 @@ platformclientv2/knowledgeaggregatequeryfilter.go
 platformclientv2/knowledgeaggregatequerypredicate.go
 platformclientv2/knowledgeaggregatequeryresponse.go
 platformclientv2/knowledgeaggregationquery.go
+platformclientv2/knowledgeaggregationsort.go
 platformclientv2/knowledgeaggregationview.go
 platformclientv2/knowledgeanswerconfig.go
 platformclientv2/knowledgeanswerdocumentresponse.go
@@ -5985,23 +5976,18 @@ platformclientv2/knowledgebaselisting.go
 platformclientv2/knowledgebasereference.go
 platformclientv2/knowledgebaseupdaterequest.go
 platformclientv2/knowledgebasewithdialectreference.go
-platformclientv2/knowledgecategory.go
-platformclientv2/knowledgecategoryrequest.go
 platformclientv2/knowledgecontextreference.go
 platformclientv2/knowledgecontextvaluereference.go
 platformclientv2/knowledgeconversationcontext.go
 platformclientv2/knowledgeconversationcontextresponse.go
-platformclientv2/knowledgedocument.go
 platformclientv2/knowledgedocumentalternative.go
 platformclientv2/knowledgedocumentbulkremoverequest.go
-platformclientv2/knowledgedocumentbulkrequest.go
 platformclientv2/knowledgedocumentbulkupdateentity.go
 platformclientv2/knowledgedocumentbulkupdaterequest.go
 platformclientv2/knowledgedocumentbulkversionaddentity.go
 platformclientv2/knowledgedocumentbulkversionaddrequest.go
 platformclientv2/knowledgedocumentchunkrequest.go
 platformclientv2/knowledgedocumentchunkresponse.go
-platformclientv2/knowledgedocumentcontentupload.go
 platformclientv2/knowledgedocumentcopy.go
 platformclientv2/knowledgedocumentcreaterequest.go
 platformclientv2/knowledgedocumentdescriptor.go
@@ -6019,7 +6005,6 @@ platformclientv2/knowledgedocumentqueryresult.go
 platformclientv2/knowledgedocumentqueryvariation.go
 platformclientv2/knowledgedocumentreference.go
 platformclientv2/knowledgedocumentreq.go
-platformclientv2/knowledgedocumentrequest.go
 platformclientv2/knowledgedocumentresponse.go
 platformclientv2/knowledgedocumentresponselisting.go
 platformclientv2/knowledgedocumentsanswerfilter.go
@@ -6041,7 +6026,6 @@ platformclientv2/knowledgeexportjobdocumentsfilter.go
 platformclientv2/knowledgeexportjobfilter.go
 platformclientv2/knowledgeexportjobrequest.go
 platformclientv2/knowledgeexportjobresponse.go
-platformclientv2/knowledgeextendedcategory.go
 platformclientv2/knowledgegroupstatistics.go
 platformclientv2/knowledgeguestanswerdocumentresponse.go
 platformclientv2/knowledgeguestanswerdocumentsresponse.go
@@ -6063,7 +6047,6 @@ platformclientv2/knowledgeguestsearchdocumentresponse.go
 platformclientv2/knowledgeguestsession.go
 platformclientv2/knowledgeguestsessionapp.go
 platformclientv2/knowledgeguestsessioncontext.go
-platformclientv2/knowledgeimport.go
 platformclientv2/knowledgeimportjoberror.go
 platformclientv2/knowledgeimportjobreport.go
 platformclientv2/knowledgeimportjobrequest.go
@@ -6084,16 +6067,12 @@ platformclientv2/knowledgeparsejobresponse.go
 platformclientv2/knowledgeparserecord.go
 platformclientv2/knowledgesearchclientapplication.go
 platformclientv2/knowledgesearchdocumentresponse.go
-platformclientv2/knowledgesearchdocumentv1.go
-platformclientv2/knowledgesearchrequest.go
-platformclientv2/knowledgesearchresponse.go
 platformclientv2/knowledgesuggestionconfig.go
 platformclientv2/knowledgesyncjobreport.go
 platformclientv2/knowledgesyncjobrequest.go
 platformclientv2/knowledgesyncjobresponse.go
 platformclientv2/knowledgesyncjobstatistics.go
 platformclientv2/knowledgesyncrequest.go
-platformclientv2/knowledgetraining.go
 platformclientv2/kpiresult.go
 platformclientv2/label.go
 platformclientv2/labelcreaterequest.go
@@ -6385,6 +6364,7 @@ platformclientv2/messagingendtransferevent.go
 platformclientv2/messagingexternalestablishedevent.go
 platformclientv2/messagingflowestablishedevent.go
 platformclientv2/messagingholdupdatedevent.go
+platformclientv2/messagingidentityresolutionconfig.go
 platformclientv2/messaginginitialconfiguration.go
 platformclientv2/messagingintegration.go
 platformclientv2/messagingintegrationentitylisting.go
@@ -6675,6 +6655,7 @@ platformclientv2/outboundpreviewcampaignpostcontactoutboundpreviewcampaignpostco
 platformclientv2/outboundpreviewcampaignpostcontactvoiceattributes.go
 platformclientv2/outboundpreviewcampaignprecontactoutboundpreviewcampaignprecontactevent.go
 platformclientv2/outboundpreviewcampaignprecontactvoiceattributes.go
+platformclientv2/outboundqueueidentityresolutionconfig.go
 platformclientv2/outboundroute.go
 platformclientv2/outboundroutebase.go
 platformclientv2/outboundroutebaseentitylisting.go
@@ -7276,6 +7257,7 @@ platformclientv2/ratelimitaggregatequeryfilter.go
 platformclientv2/ratelimitaggregatequerypredicate.go
 platformclientv2/ratelimitaggregatequeryresponse.go
 platformclientv2/ratelimitaggregationquery.go
+platformclientv2/ratelimitaggregationsort.go
 platformclientv2/ratelimitaggregationview.go
 platformclientv2/reaction.go
 platformclientv2/realtimeadherenceexplanation.go
@@ -7396,6 +7378,7 @@ platformclientv2/resolutionaggregatequeryfilter.go
 platformclientv2/resolutionaggregatequerypredicate.go
 platformclientv2/resolutionaggregatequeryresponse.go
 platformclientv2/resolutionaggregationquery.go
+platformclientv2/resolutionaggregationsort.go
 platformclientv2/resolutionaggregationview.go
 platformclientv2/resolutionasyncaggregatequeryresponse.go
 platformclientv2/resolutionasyncaggregationquery.go
@@ -7426,7 +7409,6 @@ platformclientv2/responsesubstitution.go
 platformclientv2/responsetext.go
 platformclientv2/resterrordetail.go
 platformclientv2/restorepresencesettings.go
-platformclientv2/resultcounters.go
 platformclientv2/retentionduration.go
 platformclientv2/reversewhitepageslookupresult.go
 platformclientv2/reviewassessmentresults.go
@@ -7440,6 +7422,7 @@ platformclientv2/roomparticipant.go
 platformclientv2/roomparticipantresponse.go
 platformclientv2/roomparticipantsresponse.go
 platformclientv2/roomupdaterequest.go
+platformclientv2/routeidentityresolutionconfig.go
 platformclientv2/routepathrequest.go
 platformclientv2/routepathresponse.go
 platformclientv2/routingactivitydata.go
@@ -7686,6 +7669,7 @@ platformclientv2/smsalphanumericprovision.go
 platformclientv2/smsavailablephonenumber.go
 platformclientv2/smsavailablephonenumberentitylisting.go
 platformclientv2/smsconfig.go
+platformclientv2/smsidentityresolutionconfig.go
 platformclientv2/smsphonenumber.go
 platformclientv2/smsphonenumberentitylisting.go
 platformclientv2/smsphonenumberimport.go
@@ -7803,6 +7787,7 @@ platformclientv2/summaryaggregatequeryfilter.go
 platformclientv2/summaryaggregatequerypredicate.go
 platformclientv2/summaryaggregatequeryresponse.go
 platformclientv2/summaryaggregationquery.go
+platformclientv2/summaryaggregationsort.go
 platformclientv2/summaryaggregationview.go
 platformclientv2/summaryasyncaggregatequeryresponse.go
 platformclientv2/summaryasyncaggregationquery.go
@@ -7844,6 +7829,7 @@ platformclientv2/surveyaggregatequeryfilter.go
 platformclientv2/surveyaggregatequerypredicate.go
 platformclientv2/surveyaggregatequeryresponse.go
 platformclientv2/surveyaggregationquery.go
+platformclientv2/surveyaggregationsort.go
 platformclientv2/surveyaggregationview.go
 platformclientv2/surveyassignment.go
 platformclientv2/surveyasyncaggregatequeryresponse.go
@@ -7882,6 +7868,7 @@ platformclientv2/taskmanagementaggregatequeryfilter.go
 platformclientv2/taskmanagementaggregatequerypredicate.go
 platformclientv2/taskmanagementaggregatequeryresponse.go
 platformclientv2/taskmanagementaggregationquery.go
+platformclientv2/taskmanagementaggregationsort.go
 platformclientv2/taskmanagementaggregationview.go
 platformclientv2/taskmanagementapi.go
 platformclientv2/taskmanagementasyncaggregatequeryresponse.go
@@ -7927,7 +7914,11 @@ platformclientv2/testtopicphrasejob.go
 platformclientv2/testtopicphrasejobrequest.go
 platformclientv2/testtopicphrasejobs.go
 platformclientv2/testtopicphrasephrase.go
+platformclientv2/testtopicphrasetestphrasedetectedphrase.go
+platformclientv2/testtopicphrasetestphrasematchedtranscript.go
+platformclientv2/testtopicphrasetesttopicphraseresults.go
 platformclientv2/testtopicphrasetopic.go
+platformclientv2/testtopicphrasetopicsdefinitionsjob.go
 platformclientv2/textbotchannel.go
 platformclientv2/textbotdisconnectaction.go
 platformclientv2/textboterrorinputevent.go
@@ -8007,13 +7998,13 @@ platformclientv2/topicsentitylisting.go
 platformclientv2/touchpoint.go
 platformclientv2/touchpointresponse.go
 platformclientv2/trackingsettings.go
-platformclientv2/traininglisting.go
 platformclientv2/transcriptaggregatedatacontainer.go
 platformclientv2/transcriptaggregatequeryclause.go
 platformclientv2/transcriptaggregatequeryfilter.go
 platformclientv2/transcriptaggregatequerypredicate.go
 platformclientv2/transcriptaggregatequeryresponse.go
 platformclientv2/transcriptaggregationquery.go
+platformclientv2/transcriptaggregationsort.go
 platformclientv2/transcriptaggregationview.go
 platformclientv2/transcriptasyncaggregatequeryresponse.go
 platformclientv2/transcriptasyncaggregationquery.go
@@ -8111,6 +8102,7 @@ platformclientv2/twitterdataingestionruleresponse.go
 platformclientv2/twitterdataingestionruleversionresponse.go
 platformclientv2/twitterdataingestionruleversionresponseentitylisting.go
 platformclientv2/twitterid.go
+platformclientv2/twitteridentityresolutionconfig.go
 platformclientv2/twitterintegration.go
 platformclientv2/twitterintegrationentitylisting.go
 platformclientv2/twitterintegrationrequest.go
@@ -8379,12 +8371,9 @@ platformclientv2/v2mobiusrulestopiccondition.go
 platformclientv2/v2mobiusrulestopicconditionrulepredicate.go
 platformclientv2/v2mobiusrulestopicentityproperties.go
 platformclientv2/v2mobiusrulestopicrule.go
-platformclientv2/v2queueobservationmetricdata.go
-platformclientv2/v2queueobservationmetricgroup.go
-platformclientv2/v2queueobservationmetricstats.go
-platformclientv2/v2queueobservationobservation.go
-platformclientv2/v2queueobservationobservationnotification.go
-platformclientv2/v2queueobservationscoredagent.go
+platformclientv2/v2queueobservationmetriccountdata.go
+platformclientv2/v2queueobservationmetriccountgroup.go
+platformclientv2/v2queueobservationobservationcountnotification.go
 platformclientv2/v2reprocessjobstatechangedtopicjobstatechanged.go
 platformclientv2/v2sessionconversationssummarysettingsprevieweventconversationfollowupaction.go
 platformclientv2/v2sessionconversationssummarysettingsprevieweventconversationreasonmessage.go
@@ -8392,6 +8381,7 @@ platformclientv2/v2sessionconversationssummarysettingsprevieweventconversationre
 platformclientv2/v2sessionconversationssummarysettingsprevieweventconversationsummaryextractedentity.go
 platformclientv2/v2sessionconversationssummarysettingsprevieweventconversationsummarymessage.go
 platformclientv2/v2sessionconversationssummarysettingsprevieweventconversationsummarysettingspreviewmessage.go
+platformclientv2/v2staconversationcategoriesstaconversationcategoriesmessage.go
 platformclientv2/v2staempathyoveralltopicagentempathyscore.go
 platformclientv2/v2staempathyoveralltopicoverallempathymessage.go
 platformclientv2/v2stasentimentoveralltopicoverallsentimentmessage.go
@@ -8729,6 +8719,7 @@ platformclientv2/whatsappdefinition.go
 platformclientv2/whatsappembeddedsignupintegrationactivationrequest.go
 platformclientv2/whatsappembeddedsignupintegrationrequest.go
 platformclientv2/whatsappid.go
+platformclientv2/whatsappidentityresolutionconfig.go
 platformclientv2/whatsappintegration.go
 platformclientv2/whatsappintegrationentitylisting.go
 platformclientv2/whatsappintegrationrequest.go

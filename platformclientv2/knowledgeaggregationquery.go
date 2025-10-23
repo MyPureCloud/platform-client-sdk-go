@@ -38,10 +38,13 @@ type Knowledgeaggregationquery struct {
 	// AlternateTimeDimension - Dimension to use as the alternative timestamp for data in the aggregate.  Choosing \"eventTime\" uses the actual time of the data event.
 	AlternateTimeDimension *string `json:"alternateTimeDimension,omitempty"`
 
-	// QueryType - Query type to use. Use groupBy for all matching results, and topN for just top N results for the requested metric (group by exactly 1 dimension)
+	// QueryType - Query type to use. Use groupBy for all matching results, and topN/bottomN for N results ordered by the sortMetric. Default is groupBy.
 	QueryType *string `json:"queryType,omitempty"`
 
-	// Limit - How many results you want in the topN list. Only applicable for topN query type.
+	// SortMetric - Required when requesting multiple metrics. Only applicable for topN/bottomN query type.
+	SortMetric *Knowledgeaggregationsort `json:"sortMetric,omitempty"`
+
+	// Limit - How many results you want in an ordered list. Only applicable for topN/bottomN query type.
 	Limit *int `json:"limit,omitempty"`
 }
 
@@ -128,6 +131,8 @@ func (o Knowledgeaggregationquery) MarshalJSON() ([]byte, error) {
 		
 		QueryType *string `json:"queryType,omitempty"`
 		
+		SortMetric *Knowledgeaggregationsort `json:"sortMetric,omitempty"`
+		
 		Limit *int `json:"limit,omitempty"`
 		Alias
 	}{ 
@@ -150,6 +155,8 @@ func (o Knowledgeaggregationquery) MarshalJSON() ([]byte, error) {
 		AlternateTimeDimension: o.AlternateTimeDimension,
 		
 		QueryType: o.QueryType,
+		
+		SortMetric: o.SortMetric,
 		
 		Limit: o.Limit,
 		Alias:    (Alias)(o),
@@ -207,6 +214,11 @@ func (o *Knowledgeaggregationquery) UnmarshalJSON(b []byte) error {
 		o.QueryType = &QueryType
 	}
     
+	if SortMetric, ok := KnowledgeaggregationqueryMap["sortMetric"].(map[string]interface{}); ok {
+		SortMetricString, _ := json.Marshal(SortMetric)
+		json.Unmarshal(SortMetricString, &o.SortMetric)
+	}
+	
 	if Limit, ok := KnowledgeaggregationqueryMap["limit"].(float64); ok {
 		LimitInt := int(Limit)
 		o.Limit = &LimitInt

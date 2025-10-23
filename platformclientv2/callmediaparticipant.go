@@ -179,6 +179,9 @@ type Callmediaparticipant struct {
 
 	// Disposition - Call resolution data for Dialer bulk make calls commands.
 	Disposition *Disposition `json:"disposition,omitempty"`
+
+	// TransferSource - Indicates how call reaches the agent.
+	TransferSource *string `json:"transferSource,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -435,6 +438,8 @@ func (o Callmediaparticipant) MarshalJSON() ([]byte, error) {
 		SecurePause *bool `json:"securePause,omitempty"`
 		
 		Disposition *Disposition `json:"disposition,omitempty"`
+		
+		TransferSource *string `json:"transferSource,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -548,6 +553,8 @@ func (o Callmediaparticipant) MarshalJSON() ([]byte, error) {
 		SecurePause: o.SecurePause,
 		
 		Disposition: o.Disposition,
+		
+		TransferSource: o.TransferSource,
 		Alias:    (Alias)(o),
 	})
 }
@@ -811,6 +818,10 @@ func (o *Callmediaparticipant) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(DispositionString, &o.Disposition)
 	}
 	
+	if TransferSource, ok := CallmediaparticipantMap["transferSource"].(string); ok {
+		o.TransferSource = &TransferSource
+	}
+    
 
 	return nil
 }

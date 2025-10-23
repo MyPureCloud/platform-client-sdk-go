@@ -32,6 +32,15 @@ type Appleintegrationrequest struct {
 	// LogoUrl - The url of the businesses logo.
 	LogoUrl *string `json:"logoUrl,omitempty"`
 
+	// AppleIMessageApp - Interactive Application (iMessage App) Settings.
+	AppleIMessageApp *Appleimessageapp `json:"appleIMessageApp,omitempty"`
+
+	// AppleAuthentication - The Apple Messages for Business authentication setting.
+	AppleAuthentication *Appleauthentication `json:"appleAuthentication,omitempty"`
+
+	// ApplePay - Apple Pay settings.
+	ApplePay *Applepay `json:"applePay,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -113,6 +122,12 @@ func (o Appleintegrationrequest) MarshalJSON() ([]byte, error) {
 		
 		LogoUrl *string `json:"logoUrl,omitempty"`
 		
+		AppleIMessageApp *Appleimessageapp `json:"appleIMessageApp,omitempty"`
+		
+		AppleAuthentication *Appleauthentication `json:"appleAuthentication,omitempty"`
+		
+		ApplePay *Applepay `json:"applePay,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -129,6 +144,12 @@ func (o Appleintegrationrequest) MarshalJSON() ([]byte, error) {
 		BusinessName: o.BusinessName,
 		
 		LogoUrl: o.LogoUrl,
+		
+		AppleIMessageApp: o.AppleIMessageApp,
+		
+		AppleAuthentication: o.AppleAuthentication,
+		
+		ApplePay: o.ApplePay,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -172,6 +193,21 @@ func (o *Appleintegrationrequest) UnmarshalJSON(b []byte) error {
 		o.LogoUrl = &LogoUrl
 	}
     
+	if AppleIMessageApp, ok := AppleintegrationrequestMap["appleIMessageApp"].(map[string]interface{}); ok {
+		AppleIMessageAppString, _ := json.Marshal(AppleIMessageApp)
+		json.Unmarshal(AppleIMessageAppString, &o.AppleIMessageApp)
+	}
+	
+	if AppleAuthentication, ok := AppleintegrationrequestMap["appleAuthentication"].(map[string]interface{}); ok {
+		AppleAuthenticationString, _ := json.Marshal(AppleAuthentication)
+		json.Unmarshal(AppleAuthenticationString, &o.AppleAuthentication)
+	}
+	
+	if ApplePay, ok := AppleintegrationrequestMap["applePay"].(map[string]interface{}); ok {
+		ApplePayString, _ := json.Marshal(ApplePay)
+		json.Unmarshal(ApplePayString, &o.ApplePay)
+	}
+	
 	if SelfUri, ok := AppleintegrationrequestMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

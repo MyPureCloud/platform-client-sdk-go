@@ -2421,6 +2421,170 @@ func (a RoutingApi) GetRoutingEmailDomain(domainId string, expand string) (*Inbo
 	return successPayload, response, err
 }
 
+// GetRoutingEmailDomainDkim invokes GET /api/v2/routing/email/domains/{domainId}/dkim
+//
+// Get domain dkim settings
+func (a RoutingApi) GetRoutingEmailDomainDkim(domainId string) (*Verificationresult, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/email/domains/{domainId}/dkim"
+	path = strings.Replace(path, "{domainId}", url.PathEscape(fmt.Sprintf("%v", domainId)), -1)
+	defaultReturn := new(Verificationresult)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'domainId' is set
+	if &domainId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'domainId' when calling RoutingApi->GetRoutingEmailDomainDkim")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Verificationresult
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Verificationresult" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetRoutingEmailDomainMailfrom invokes GET /api/v2/routing/email/domains/{domainId}/mailfrom
+//
+// Get domain mail from settings
+func (a RoutingApi) GetRoutingEmailDomainMailfrom(domainId string) (*Mailfromresult, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/email/domains/{domainId}/mailfrom"
+	path = strings.Replace(path, "{domainId}", url.PathEscape(fmt.Sprintf("%v", domainId)), -1)
+	defaultReturn := new(Mailfromresult)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'domainId' is set
+	if &domainId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'domainId' when calling RoutingApi->GetRoutingEmailDomainMailfrom")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Mailfromresult
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Mailfromresult" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // GetRoutingEmailDomainRoute invokes GET /api/v2/routing/email/domains/{domainName}/routes/{routeId}
 //
 // Get a route
@@ -2514,13 +2678,13 @@ func (a RoutingApi) GetRoutingEmailDomainRoute(domainName string, routeId string
 // GetRoutingEmailDomainRouteIdentityresolution invokes GET /api/v2/routing/email/domains/{domainName}/routes/{routeId}/identityresolution
 //
 // Get a route identity resolution setting.
-func (a RoutingApi) GetRoutingEmailDomainRouteIdentityresolution(domainName string, routeId string) (*Identityresolutionconfig, *APIResponse, error) {
+func (a RoutingApi) GetRoutingEmailDomainRouteIdentityresolution(domainName string, routeId string) (*Routeidentityresolutionconfig, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/email/domains/{domainName}/routes/{routeId}/identityresolution"
 	path = strings.Replace(path, "{domainName}", url.PathEscape(fmt.Sprintf("%v", domainName)), -1)
 	path = strings.Replace(path, "{routeId}", url.PathEscape(fmt.Sprintf("%v", routeId)), -1)
-	defaultReturn := new(Identityresolutionconfig)
+	defaultReturn := new(Routeidentityresolutionconfig)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -2583,14 +2747,14 @@ func (a RoutingApi) GetRoutingEmailDomainRouteIdentityresolution(domainName stri
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Identityresolutionconfig
+	var successPayload *Routeidentityresolutionconfig
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Identityresolutionconfig" == "string" {
+		if "Routeidentityresolutionconfig" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -2681,6 +2845,88 @@ func (a RoutingApi) GetRoutingEmailDomainRoutes(domainName string, pageSize int,
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Inboundrouteentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetRoutingEmailDomainVerification invokes GET /api/v2/routing/email/domains/{domainId}/verification
+//
+// Get domain verification settings
+func (a RoutingApi) GetRoutingEmailDomainVerification(domainId string) (*Verificationresult, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/email/domains/{domainId}/verification"
+	path = strings.Replace(path, "{domainId}", url.PathEscape(fmt.Sprintf("%v", domainId)), -1)
+	defaultReturn := new(Verificationresult)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'domainId' is set
+	if &domainId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'domainId' when calling RoutingApi->GetRoutingEmailDomainVerification")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Verificationresult
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Verificationresult" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -6104,12 +6350,12 @@ func (a RoutingApi) GetRoutingSmsAvailablephonenumbers(countryCode string, phone
 // GetRoutingSmsIdentityresolutionPhonenumber invokes GET /api/v2/routing/sms/identityresolution/phonenumbers/{addressId}
 //
 // Get a SMS identity resolution settings.
-func (a RoutingApi) GetRoutingSmsIdentityresolutionPhonenumber(addressId string) (*Identityresolutionconfig, *APIResponse, error) {
+func (a RoutingApi) GetRoutingSmsIdentityresolutionPhonenumber(addressId string) (*Smsidentityresolutionconfig, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/sms/identityresolution/phonenumbers/{addressId}"
 	path = strings.Replace(path, "{addressId}", url.PathEscape(fmt.Sprintf("%v", addressId)), -1)
-	defaultReturn := new(Identityresolutionconfig)
+	defaultReturn := new(Smsidentityresolutionconfig)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -6167,14 +6413,14 @@ func (a RoutingApi) GetRoutingSmsIdentityresolutionPhonenumber(addressId string)
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Identityresolutionconfig
+	var successPayload *Smsidentityresolutionconfig
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Identityresolutionconfig" == "string" {
+		if "Smsidentityresolutionconfig" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -9661,6 +9907,178 @@ func (a RoutingApi) PostRoutingAssessmentsJobs(body Createbenefitassessmentjobre
 	return successPayload, response, err
 }
 
+// PostRoutingEmailDomainDkim invokes POST /api/v2/routing/email/domains/{domainId}/dkim
+//
+// Restart domain dkim
+func (a RoutingApi) PostRoutingEmailDomainDkim(domainId string) (*Verificationresult, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/email/domains/{domainId}/dkim"
+	path = strings.Replace(path, "{domainId}", url.PathEscape(fmt.Sprintf("%v", domainId)), -1)
+	defaultReturn := new(Verificationresult)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'domainId' is set
+	if &domainId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'domainId' when calling RoutingApi->PostRoutingEmailDomainDkim")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Verificationresult
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Verificationresult" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostRoutingEmailDomainMailfrom invokes POST /api/v2/routing/email/domains/{domainId}/mailfrom
+//
+// Set domain mail from settings
+func (a RoutingApi) PostRoutingEmailDomainMailfrom(domainId string, body Mailfromresult) (*Mailfromresult, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/email/domains/{domainId}/mailfrom"
+	path = strings.Replace(path, "{domainId}", url.PathEscape(fmt.Sprintf("%v", domainId)), -1)
+	defaultReturn := new(Mailfromresult)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'domainId' is set
+	if &domainId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'domainId' when calling RoutingApi->PostRoutingEmailDomainMailfrom")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PostRoutingEmailDomainMailfrom")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Mailfromresult
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Mailfromresult" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // PostRoutingEmailDomainRoutes invokes POST /api/v2/routing/email/domains/{domainName}/routes
 //
 // Create a route
@@ -9830,6 +10248,88 @@ func (a RoutingApi) PostRoutingEmailDomainTestconnection(domainId string, body T
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Testmessage" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostRoutingEmailDomainVerification invokes POST /api/v2/routing/email/domains/{domainId}/verification
+//
+// Restart domain verification
+func (a RoutingApi) PostRoutingEmailDomainVerification(domainId string) (*Verificationresult, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/email/domains/{domainId}/verification"
+	path = strings.Replace(path, "{domainId}", url.PathEscape(fmt.Sprintf("%v", domainId)), -1)
+	defaultReturn := new(Verificationresult)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'domainId' is set
+	if &domainId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'domainId' when calling RoutingApi->PostRoutingEmailDomainVerification")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Verificationresult
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Verificationresult" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -11800,13 +12300,13 @@ func (a RoutingApi) PutRoutingEmailDomainRoute(domainName string, routeId string
 // PutRoutingEmailDomainRouteIdentityresolution invokes PUT /api/v2/routing/email/domains/{domainName}/routes/{routeId}/identityresolution
 //
 // Update identity resolution settings for a route.
-func (a RoutingApi) PutRoutingEmailDomainRouteIdentityresolution(domainName string, routeId string, body Identityresolutionconfig) (*Identityresolutionconfig, *APIResponse, error) {
+func (a RoutingApi) PutRoutingEmailDomainRouteIdentityresolution(domainName string, routeId string, body Routeidentityresolutionconfig) (*Routeidentityresolutionconfig, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/email/domains/{domainName}/routes/{routeId}/identityresolution"
 	path = strings.Replace(path, "{domainName}", url.PathEscape(fmt.Sprintf("%v", domainName)), -1)
 	path = strings.Replace(path, "{routeId}", url.PathEscape(fmt.Sprintf("%v", routeId)), -1)
-	defaultReturn := new(Identityresolutionconfig)
+	defaultReturn := new(Routeidentityresolutionconfig)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -11877,14 +12377,14 @@ func (a RoutingApi) PutRoutingEmailDomainRouteIdentityresolution(domainName stri
 	// body params
 	postBody = &body
 
-	var successPayload *Identityresolutionconfig
+	var successPayload *Routeidentityresolutionconfig
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Identityresolutionconfig" == "string" {
+		if "Routeidentityresolutionconfig" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -12416,12 +12916,12 @@ func (a RoutingApi) PutRoutingSettingsTranscription(body Transcriptionsettings) 
 // PutRoutingSmsIdentityresolutionPhonenumber invokes PUT /api/v2/routing/sms/identityresolution/phonenumbers/{addressId}
 //
 // Update an SMS identity resolution settings.
-func (a RoutingApi) PutRoutingSmsIdentityresolutionPhonenumber(addressId string, body Identityresolutionconfig) (*Identityresolutionconfig, *APIResponse, error) {
+func (a RoutingApi) PutRoutingSmsIdentityresolutionPhonenumber(addressId string, body Smsidentityresolutionconfig) (*Smsidentityresolutionconfig, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/sms/identityresolution/phonenumbers/{addressId}"
 	path = strings.Replace(path, "{addressId}", url.PathEscape(fmt.Sprintf("%v", addressId)), -1)
-	defaultReturn := new(Identityresolutionconfig)
+	defaultReturn := new(Smsidentityresolutionconfig)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -12487,14 +12987,14 @@ func (a RoutingApi) PutRoutingSmsIdentityresolutionPhonenumber(addressId string,
 	// body params
 	postBody = &body
 
-	var successPayload *Identityresolutionconfig
+	var successPayload *Smsidentityresolutionconfig
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Identityresolutionconfig" == "string" {
+		if "Smsidentityresolutionconfig" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

@@ -107,6 +107,9 @@ type Queueconversationeventtopiccall struct {
 
 	// Disposition
 	Disposition *Queueconversationeventtopicdisposition `json:"disposition,omitempty"`
+
+	// TransferSource - Indicates how call reaches the agent.
+	TransferSource *string `json:"transferSource,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -267,6 +270,8 @@ func (o Queueconversationeventtopiccall) MarshalJSON() ([]byte, error) {
 		QueueMediaSettings *Queueconversationeventtopicqueuemediasettings `json:"queueMediaSettings,omitempty"`
 		
 		Disposition *Queueconversationeventtopicdisposition `json:"disposition,omitempty"`
+		
+		TransferSource *string `json:"transferSource,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -332,6 +337,8 @@ func (o Queueconversationeventtopiccall) MarshalJSON() ([]byte, error) {
 		QueueMediaSettings: o.QueueMediaSettings,
 		
 		Disposition: o.Disposition,
+		
+		TransferSource: o.TransferSource,
 		Alias:    (Alias)(o),
 	})
 }
@@ -485,6 +492,10 @@ func (o *Queueconversationeventtopiccall) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(DispositionString, &o.Disposition)
 	}
 	
+	if TransferSource, ok := QueueconversationeventtopiccallMap["transferSource"].(string); ok {
+		o.TransferSource = &TransferSource
+	}
+    
 
 	return nil
 }

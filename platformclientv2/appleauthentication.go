@@ -10,7 +10,19 @@ import (
 // Appleauthentication
 type Appleauthentication struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// OauthClientId - The Apple Messages for Business OAuth client id.
+	OauthClientId *string `json:"oauthClientId,omitempty"`
+
+	// OauthClientSecret - The Apple Messages for Business OAuth client secret.
+	OauthClientSecret *string `json:"oauthClientSecret,omitempty"`
+
+	// OauthTokenUrl - The Apple Messages for Business token URL.
+	OauthTokenUrl *string `json:"oauthTokenUrl,omitempty"`
+
+	// OauthScope - The Apple Messages for Business OAuth scope.
+	OauthScope *string `json:"oauthScope,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Appleauthentication) SetField(field string, fieldValue interface{}) {
@@ -74,8 +86,24 @@ func (o Appleauthentication) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Appleauthentication
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		OauthClientId *string `json:"oauthClientId,omitempty"`
+		
+		OauthClientSecret *string `json:"oauthClientSecret,omitempty"`
+		
+		OauthTokenUrl *string `json:"oauthTokenUrl,omitempty"`
+		
+		OauthScope *string `json:"oauthScope,omitempty"`
+		Alias
+	}{ 
+		OauthClientId: o.OauthClientId,
+		
+		OauthClientSecret: o.OauthClientSecret,
+		
+		OauthTokenUrl: o.OauthTokenUrl,
+		
+		OauthScope: o.OauthScope,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -86,6 +114,22 @@ func (o *Appleauthentication) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if OauthClientId, ok := AppleauthenticationMap["oauthClientId"].(string); ok {
+		o.OauthClientId = &OauthClientId
+	}
+    
+	if OauthClientSecret, ok := AppleauthenticationMap["oauthClientSecret"].(string); ok {
+		o.OauthClientSecret = &OauthClientSecret
+	}
+    
+	if OauthTokenUrl, ok := AppleauthenticationMap["oauthTokenUrl"].(string); ok {
+		o.OauthTokenUrl = &OauthTokenUrl
+	}
+    
+	if OauthScope, ok := AppleauthenticationMap["oauthScope"].(string); ok {
+		o.OauthScope = &OauthScope
+	}
+    
 
 	return nil
 }

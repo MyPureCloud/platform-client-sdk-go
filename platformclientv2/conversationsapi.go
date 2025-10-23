@@ -7182,12 +7182,12 @@ func (a ConversationsApi) GetConversationsMessagingFacebookPermissions() (*Faceb
 // GetConversationsMessagingIdentityresolutionIntegrationsAppleIntegrationId invokes GET /api/v2/conversations/messaging/identityresolution/integrations/apple/{integrationId}
 //
 // Get Apple messaging integration identity resolution settings
-func (a ConversationsApi) GetConversationsMessagingIdentityresolutionIntegrationsAppleIntegrationId(integrationId string) (*Identityresolutionconfig, *APIResponse, error) {
+func (a ConversationsApi) GetConversationsMessagingIdentityresolutionIntegrationsAppleIntegrationId(integrationId string) (*Appleidentityresolutionconfig, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/identityresolution/integrations/apple/{integrationId}"
 	path = strings.Replace(path, "{integrationId}", url.PathEscape(fmt.Sprintf("%v", integrationId)), -1)
-	defaultReturn := new(Identityresolutionconfig)
+	defaultReturn := new(Appleidentityresolutionconfig)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -7245,14 +7245,14 @@ func (a ConversationsApi) GetConversationsMessagingIdentityresolutionIntegration
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Identityresolutionconfig
+	var successPayload *Appleidentityresolutionconfig
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Identityresolutionconfig" == "string" {
+		if "Appleidentityresolutionconfig" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -7264,12 +7264,12 @@ func (a ConversationsApi) GetConversationsMessagingIdentityresolutionIntegration
 // GetConversationsMessagingIdentityresolutionIntegrationsFacebookIntegrationId invokes GET /api/v2/conversations/messaging/identityresolution/integrations/facebook/{integrationId}
 //
 // Get Facebook messaging integration identity resolution settings
-func (a ConversationsApi) GetConversationsMessagingIdentityresolutionIntegrationsFacebookIntegrationId(integrationId string) (*Identityresolutionconfig, *APIResponse, error) {
+func (a ConversationsApi) GetConversationsMessagingIdentityresolutionIntegrationsFacebookIntegrationId(integrationId string) (*Facebookidentityresolutionconfig, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/identityresolution/integrations/facebook/{integrationId}"
 	path = strings.Replace(path, "{integrationId}", url.PathEscape(fmt.Sprintf("%v", integrationId)), -1)
-	defaultReturn := new(Identityresolutionconfig)
+	defaultReturn := new(Facebookidentityresolutionconfig)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -7327,14 +7327,14 @@ func (a ConversationsApi) GetConversationsMessagingIdentityresolutionIntegration
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Identityresolutionconfig
+	var successPayload *Facebookidentityresolutionconfig
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Identityresolutionconfig" == "string" {
+		if "Facebookidentityresolutionconfig" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -7346,12 +7346,12 @@ func (a ConversationsApi) GetConversationsMessagingIdentityresolutionIntegration
 // GetConversationsMessagingIdentityresolutionIntegrationsInstagramIntegrationId invokes GET /api/v2/conversations/messaging/identityresolution/integrations/instagram/{integrationId}
 //
 // Get an Instagram integration identity resolution settings
-func (a ConversationsApi) GetConversationsMessagingIdentityresolutionIntegrationsInstagramIntegrationId(integrationId string) (*Identityresolutionconfig, *APIResponse, error) {
+func (a ConversationsApi) GetConversationsMessagingIdentityresolutionIntegrationsInstagramIntegrationId(integrationId string) (*Instagramidentityresolutionconfig, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/identityresolution/integrations/instagram/{integrationId}"
 	path = strings.Replace(path, "{integrationId}", url.PathEscape(fmt.Sprintf("%v", integrationId)), -1)
-	defaultReturn := new(Identityresolutionconfig)
+	defaultReturn := new(Instagramidentityresolutionconfig)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -7409,14 +7409,14 @@ func (a ConversationsApi) GetConversationsMessagingIdentityresolutionIntegration
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Identityresolutionconfig
+	var successPayload *Instagramidentityresolutionconfig
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Identityresolutionconfig" == "string" {
+		if "Instagramidentityresolutionconfig" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -7510,12 +7510,12 @@ func (a ConversationsApi) GetConversationsMessagingIdentityresolutionIntegration
 // GetConversationsMessagingIdentityresolutionIntegrationsTwitterIntegrationId invokes GET /api/v2/conversations/messaging/identityresolution/integrations/twitter/{integrationId}
 //
 // Get X (Formally Twitter) messaging integration identity resolution settings
-func (a ConversationsApi) GetConversationsMessagingIdentityresolutionIntegrationsTwitterIntegrationId(integrationId string) (*Identityresolutionconfig, *APIResponse, error) {
+func (a ConversationsApi) GetConversationsMessagingIdentityresolutionIntegrationsTwitterIntegrationId(integrationId string) (*Twitteridentityresolutionconfig, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/identityresolution/integrations/twitter/{integrationId}"
 	path = strings.Replace(path, "{integrationId}", url.PathEscape(fmt.Sprintf("%v", integrationId)), -1)
-	defaultReturn := new(Identityresolutionconfig)
+	defaultReturn := new(Twitteridentityresolutionconfig)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -7573,14 +7573,14 @@ func (a ConversationsApi) GetConversationsMessagingIdentityresolutionIntegration
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Identityresolutionconfig
+	var successPayload *Twitteridentityresolutionconfig
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Identityresolutionconfig" == "string" {
+		if "Twitteridentityresolutionconfig" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -7592,12 +7592,12 @@ func (a ConversationsApi) GetConversationsMessagingIdentityresolutionIntegration
 // GetConversationsMessagingIdentityresolutionIntegrationsWhatsappIntegrationId invokes GET /api/v2/conversations/messaging/identityresolution/integrations/whatsapp/{integrationId}
 //
 // Get a whatsApp integration Identity Resolution settings
-func (a ConversationsApi) GetConversationsMessagingIdentityresolutionIntegrationsWhatsappIntegrationId(integrationId string) (*Identityresolutionconfig, *APIResponse, error) {
+func (a ConversationsApi) GetConversationsMessagingIdentityresolutionIntegrationsWhatsappIntegrationId(integrationId string) (*Whatsappidentityresolutionconfig, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/identityresolution/integrations/whatsapp/{integrationId}"
 	path = strings.Replace(path, "{integrationId}", url.PathEscape(fmt.Sprintf("%v", integrationId)), -1)
-	defaultReturn := new(Identityresolutionconfig)
+	defaultReturn := new(Whatsappidentityresolutionconfig)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -7655,14 +7655,14 @@ func (a ConversationsApi) GetConversationsMessagingIdentityresolutionIntegration
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Identityresolutionconfig
+	var successPayload *Whatsappidentityresolutionconfig
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Identityresolutionconfig" == "string" {
+		if "Whatsappidentityresolutionconfig" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -11387,6 +11387,101 @@ func (a ConversationsApi) PatchConversationsCallParticipantConsult(conversationI
 		}
 	}
 	return successPayload, response, err
+}
+
+// PatchConversationsCallParticipantUserUserId invokes PATCH /api/v2/conversations/calls/{conversationId}/participants/{participantId}/user/{userId}
+//
+// Update conversation participant on behalf of a user
+func (a ConversationsApi) PatchConversationsCallParticipantUserUserId(conversationId string, participantId string, userId string, body Mediaparticipantrequest) (*APIResponse, error) {
+	var httpMethod = "PATCH"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/calls/{conversationId}/participants/{participantId}/user/{userId}"
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{participantId}", url.PathEscape(fmt.Sprintf("%v", participantId)), -1)
+	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'conversationId' is set
+	if &conversationId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsCallParticipantUserUserId")
+	}
+	// verify the required parameter 'participantId' is set
+	if &participantId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationsCallParticipantUserUserId")
+	}
+	// verify the required parameter 'userId' is set
+	if &userId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'userId' when calling ConversationsApi->PatchConversationsCallParticipantUserUserId")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsCallParticipantUserUserId")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
 }
 
 // PatchConversationsCallback invokes PATCH /api/v2/conversations/callbacks/{conversationId}
@@ -23873,12 +23968,12 @@ func (a ConversationsApi) PutConversationsMessageRecordingstate(conversationId s
 // PutConversationsMessagingIdentityresolutionIntegrationsAppleIntegrationId invokes PUT /api/v2/conversations/messaging/identityresolution/integrations/apple/{integrationId}
 //
 // Create an identity resolution settings for a Apple messaging integration
-func (a ConversationsApi) PutConversationsMessagingIdentityresolutionIntegrationsAppleIntegrationId(integrationId string, body Identityresolutionconfig) (*Identityresolutionconfig, *APIResponse, error) {
+func (a ConversationsApi) PutConversationsMessagingIdentityresolutionIntegrationsAppleIntegrationId(integrationId string, body Appleidentityresolutionconfig) (*Appleidentityresolutionconfig, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/identityresolution/integrations/apple/{integrationId}"
 	path = strings.Replace(path, "{integrationId}", url.PathEscape(fmt.Sprintf("%v", integrationId)), -1)
-	defaultReturn := new(Identityresolutionconfig)
+	defaultReturn := new(Appleidentityresolutionconfig)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -23944,14 +24039,14 @@ func (a ConversationsApi) PutConversationsMessagingIdentityresolutionIntegration
 	// body params
 	postBody = &body
 
-	var successPayload *Identityresolutionconfig
+	var successPayload *Appleidentityresolutionconfig
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Identityresolutionconfig" == "string" {
+		if "Appleidentityresolutionconfig" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -23963,12 +24058,12 @@ func (a ConversationsApi) PutConversationsMessagingIdentityresolutionIntegration
 // PutConversationsMessagingIdentityresolutionIntegrationsFacebookIntegrationId invokes PUT /api/v2/conversations/messaging/identityresolution/integrations/facebook/{integrationId}
 //
 // Create an identity resolution settings for a Facebook messaging integration
-func (a ConversationsApi) PutConversationsMessagingIdentityresolutionIntegrationsFacebookIntegrationId(integrationId string, body Identityresolutionconfig) (*Identityresolutionconfig, *APIResponse, error) {
+func (a ConversationsApi) PutConversationsMessagingIdentityresolutionIntegrationsFacebookIntegrationId(integrationId string, body Facebookidentityresolutionconfig) (*Facebookidentityresolutionconfig, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/identityresolution/integrations/facebook/{integrationId}"
 	path = strings.Replace(path, "{integrationId}", url.PathEscape(fmt.Sprintf("%v", integrationId)), -1)
-	defaultReturn := new(Identityresolutionconfig)
+	defaultReturn := new(Facebookidentityresolutionconfig)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -24034,14 +24129,14 @@ func (a ConversationsApi) PutConversationsMessagingIdentityresolutionIntegration
 	// body params
 	postBody = &body
 
-	var successPayload *Identityresolutionconfig
+	var successPayload *Facebookidentityresolutionconfig
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Identityresolutionconfig" == "string" {
+		if "Facebookidentityresolutionconfig" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -24053,12 +24148,12 @@ func (a ConversationsApi) PutConversationsMessagingIdentityresolutionIntegration
 // PutConversationsMessagingIdentityresolutionIntegrationsInstagramIntegrationId invokes PUT /api/v2/conversations/messaging/identityresolution/integrations/instagram/{integrationId}
 //
 // Create identity resolution settings for an Instagram messaging integration
-func (a ConversationsApi) PutConversationsMessagingIdentityresolutionIntegrationsInstagramIntegrationId(integrationId string, body Identityresolutionconfig) (*Identityresolutionconfig, *APIResponse, error) {
+func (a ConversationsApi) PutConversationsMessagingIdentityresolutionIntegrationsInstagramIntegrationId(integrationId string, body Instagramidentityresolutionconfig) (*Instagramidentityresolutionconfig, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/identityresolution/integrations/instagram/{integrationId}"
 	path = strings.Replace(path, "{integrationId}", url.PathEscape(fmt.Sprintf("%v", integrationId)), -1)
-	defaultReturn := new(Identityresolutionconfig)
+	defaultReturn := new(Instagramidentityresolutionconfig)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -24124,14 +24219,14 @@ func (a ConversationsApi) PutConversationsMessagingIdentityresolutionIntegration
 	// body params
 	postBody = &body
 
-	var successPayload *Identityresolutionconfig
+	var successPayload *Instagramidentityresolutionconfig
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Identityresolutionconfig" == "string" {
+		if "Instagramidentityresolutionconfig" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -24233,12 +24328,12 @@ func (a ConversationsApi) PutConversationsMessagingIdentityresolutionIntegration
 // PutConversationsMessagingIdentityresolutionIntegrationsTwitterIntegrationId invokes PUT /api/v2/conversations/messaging/identityresolution/integrations/twitter/{integrationId}
 //
 // Create an identity resolution settings for an X (Formally Twitter) messaging integration
-func (a ConversationsApi) PutConversationsMessagingIdentityresolutionIntegrationsTwitterIntegrationId(integrationId string, body Identityresolutionconfig) (*Identityresolutionconfig, *APIResponse, error) {
+func (a ConversationsApi) PutConversationsMessagingIdentityresolutionIntegrationsTwitterIntegrationId(integrationId string, body Twitteridentityresolutionconfig) (*Twitteridentityresolutionconfig, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/identityresolution/integrations/twitter/{integrationId}"
 	path = strings.Replace(path, "{integrationId}", url.PathEscape(fmt.Sprintf("%v", integrationId)), -1)
-	defaultReturn := new(Identityresolutionconfig)
+	defaultReturn := new(Twitteridentityresolutionconfig)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -24304,14 +24399,14 @@ func (a ConversationsApi) PutConversationsMessagingIdentityresolutionIntegration
 	// body params
 	postBody = &body
 
-	var successPayload *Identityresolutionconfig
+	var successPayload *Twitteridentityresolutionconfig
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Identityresolutionconfig" == "string" {
+		if "Twitteridentityresolutionconfig" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -24323,12 +24418,12 @@ func (a ConversationsApi) PutConversationsMessagingIdentityresolutionIntegration
 // PutConversationsMessagingIdentityresolutionIntegrationsWhatsappIntegrationId invokes PUT /api/v2/conversations/messaging/identityresolution/integrations/whatsapp/{integrationId}
 //
 // Update a whatsApp integration Identity Resolution settings
-func (a ConversationsApi) PutConversationsMessagingIdentityresolutionIntegrationsWhatsappIntegrationId(integrationId string, body Identityresolutionconfig) (*Identityresolutionconfig, *APIResponse, error) {
+func (a ConversationsApi) PutConversationsMessagingIdentityresolutionIntegrationsWhatsappIntegrationId(integrationId string, body Whatsappidentityresolutionconfig) (*Whatsappidentityresolutionconfig, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/identityresolution/integrations/whatsapp/{integrationId}"
 	path = strings.Replace(path, "{integrationId}", url.PathEscape(fmt.Sprintf("%v", integrationId)), -1)
-	defaultReturn := new(Identityresolutionconfig)
+	defaultReturn := new(Whatsappidentityresolutionconfig)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -24394,14 +24489,14 @@ func (a ConversationsApi) PutConversationsMessagingIdentityresolutionIntegration
 	// body params
 	postBody = &body
 
-	var successPayload *Identityresolutionconfig
+	var successPayload *Whatsappidentityresolutionconfig
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Identityresolutionconfig" == "string" {
+		if "Whatsappidentityresolutionconfig" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

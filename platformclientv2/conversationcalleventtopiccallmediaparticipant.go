@@ -150,6 +150,9 @@ type Conversationcalleventtopiccallmediaparticipant struct {
 	// Disposition
 	Disposition *Conversationcalleventtopicdisposition `json:"disposition,omitempty"`
 
+	// TransferSource
+	TransferSource *string `json:"transferSource,omitempty"`
+
 	// SecurePause
 	SecurePause *bool `json:"securePause,omitempty"`
 
@@ -411,6 +414,8 @@ func (o Conversationcalleventtopiccallmediaparticipant) MarshalJSON() ([]byte, e
 		
 		Disposition *Conversationcalleventtopicdisposition `json:"disposition,omitempty"`
 		
+		TransferSource *string `json:"transferSource,omitempty"`
+		
 		SecurePause *bool `json:"securePause,omitempty"`
 		
 		Group *Conversationcalleventtopicurireference `json:"group,omitempty"`
@@ -525,6 +530,8 @@ func (o Conversationcalleventtopiccallmediaparticipant) MarshalJSON() ([]byte, e
 		RecordersState: o.RecordersState,
 		
 		Disposition: o.Disposition,
+		
+		TransferSource: o.TransferSource,
 		
 		SecurePause: o.SecurePause,
 		
@@ -767,6 +774,10 @@ func (o *Conversationcalleventtopiccallmediaparticipant) UnmarshalJSON(b []byte)
 		json.Unmarshal(DispositionString, &o.Disposition)
 	}
 	
+	if TransferSource, ok := ConversationcalleventtopiccallmediaparticipantMap["transferSource"].(string); ok {
+		o.TransferSource = &TransferSource
+	}
+    
 	if SecurePause, ok := ConversationcalleventtopiccallmediaparticipantMap["securePause"].(bool); ok {
 		o.SecurePause = &SecurePause
 	}

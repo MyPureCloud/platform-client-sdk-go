@@ -17,6 +17,9 @@ type Agentvideosettings struct {
 	// AllowScreenShare - whether or not agent screen share is allowed
 	AllowScreenShare *bool `json:"allowScreenShare,omitempty"`
 
+	// AllowMicrophone - whether or not agent microphone is allowed
+	AllowMicrophone *bool `json:"allowMicrophone,omitempty"`
+
 	// Background - background for agent
 	Background *string `json:"background,omitempty"`
 
@@ -91,6 +94,8 @@ func (o Agentvideosettings) MarshalJSON() ([]byte, error) {
 		
 		AllowScreenShare *bool `json:"allowScreenShare,omitempty"`
 		
+		AllowMicrophone *bool `json:"allowMicrophone,omitempty"`
+		
 		Background *string `json:"background,omitempty"`
 		
 		BackgroundImage *Backgroundimagesettings `json:"backgroundImage,omitempty"`
@@ -99,6 +104,8 @@ func (o Agentvideosettings) MarshalJSON() ([]byte, error) {
 		AllowCamera: o.AllowCamera,
 		
 		AllowScreenShare: o.AllowScreenShare,
+		
+		AllowMicrophone: o.AllowMicrophone,
 		
 		Background: o.Background,
 		
@@ -120,6 +127,10 @@ func (o *Agentvideosettings) UnmarshalJSON(b []byte) error {
     
 	if AllowScreenShare, ok := AgentvideosettingsMap["allowScreenShare"].(bool); ok {
 		o.AllowScreenShare = &AllowScreenShare
+	}
+    
+	if AllowMicrophone, ok := AgentvideosettingsMap["allowMicrophone"].(bool); ok {
+		o.AllowMicrophone = &AllowMicrophone
 	}
     
 	if Background, ok := AgentvideosettingsMap["background"].(string); ok {
