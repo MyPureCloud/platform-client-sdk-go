@@ -26,17 +26,17 @@ type Lexbotaliasentitylisting struct {
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
 
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
-
-	// NextUri
-	NextUri *string `json:"nextUri,omitempty"`
-
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
+
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
+
+	// NextUri
+	NextUri *string `json:"nextUri,omitempty"`
 
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
@@ -115,13 +115,13 @@ func (o Lexbotaliasentitylisting) MarshalJSON() ([]byte, error) {
 		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
-		PreviousUri *string `json:"previousUri,omitempty"`
-		
-		NextUri *string `json:"nextUri,omitempty"`
-		
 		LastUri *string `json:"lastUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
+		
+		PreviousUri *string `json:"previousUri,omitempty"`
+		
+		NextUri *string `json:"nextUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		Alias
@@ -136,13 +136,13 @@ func (o Lexbotaliasentitylisting) MarshalJSON() ([]byte, error) {
 		
 		FirstUri: o.FirstUri,
 		
-		PreviousUri: o.PreviousUri,
-		
-		NextUri: o.NextUri,
-		
 		LastUri: o.LastUri,
 		
 		SelfUri: o.SelfUri,
+		
+		PreviousUri: o.PreviousUri,
+		
+		NextUri: o.NextUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
@@ -180,20 +180,20 @@ func (o *Lexbotaliasentitylisting) UnmarshalJSON(b []byte) error {
 		o.FirstUri = &FirstUri
 	}
     
-	if PreviousUri, ok := LexbotaliasentitylistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
-	}
-    
-	if NextUri, ok := LexbotaliasentitylistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
-	}
-    
 	if LastUri, ok := LexbotaliasentitylistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
 	}
     
 	if SelfUri, ok := LexbotaliasentitylistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
+	}
+    
+	if PreviousUri, ok := LexbotaliasentitylistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
+	}
+    
+	if NextUri, ok := LexbotaliasentitylistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
 	}
     
 	if PageCount, ok := LexbotaliasentitylistingMap["pageCount"].(float64); ok {

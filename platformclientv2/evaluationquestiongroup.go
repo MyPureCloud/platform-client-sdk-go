@@ -43,6 +43,9 @@ type Evaluationquestiongroup struct {
 
 	// VisibilityCondition
 	VisibilityCondition *Visibilitycondition `json:"visibilityCondition,omitempty"`
+
+	// DefaultAnswersTo - Default scoring settings for the questions within this question group.
+	DefaultAnswersTo *Defaultanswersto `json:"defaultAnswersTo,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -129,6 +132,8 @@ func (o Evaluationquestiongroup) MarshalJSON() ([]byte, error) {
 		Questions *[]Evaluationquestion `json:"questions,omitempty"`
 		
 		VisibilityCondition *Visibilitycondition `json:"visibilityCondition,omitempty"`
+		
+		DefaultAnswersTo *Defaultanswersto `json:"defaultAnswersTo,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -152,6 +157,8 @@ func (o Evaluationquestiongroup) MarshalJSON() ([]byte, error) {
 		Questions: o.Questions,
 		
 		VisibilityCondition: o.VisibilityCondition,
+		
+		DefaultAnswersTo: o.DefaultAnswersTo,
 		Alias:    (Alias)(o),
 	})
 }
@@ -208,6 +215,11 @@ func (o *Evaluationquestiongroup) UnmarshalJSON(b []byte) error {
 	if VisibilityCondition, ok := EvaluationquestiongroupMap["visibilityCondition"].(map[string]interface{}); ok {
 		VisibilityConditionString, _ := json.Marshal(VisibilityCondition)
 		json.Unmarshal(VisibilityConditionString, &o.VisibilityCondition)
+	}
+	
+	if DefaultAnswersTo, ok := EvaluationquestiongroupMap["defaultAnswersTo"].(map[string]interface{}); ok {
+		DefaultAnswersToString, _ := json.Marshal(DefaultAnswersTo)
+		json.Unmarshal(DefaultAnswersToString, &o.DefaultAnswersTo)
 	}
 	
 

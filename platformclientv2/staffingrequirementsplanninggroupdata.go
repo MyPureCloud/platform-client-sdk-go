@@ -16,6 +16,12 @@ type Staffingrequirementsplanninggroupdata struct {
 
 	// StaffingRequirementsPerInterval - Staffing requirements per interval for this week forecast
 	StaffingRequirementsPerInterval *[]float64 `json:"staffingRequirementsPerInterval,omitempty"`
+
+	// MinimumStaffPerInterval - Minimum Staff per interval for this week forecast
+	MinimumStaffPerInterval *[]float64 `json:"minimumStaffPerInterval,omitempty"`
+
+	// EffectiveStaffPerInterval - Effective Staff per interval for this week forecast
+	EffectiveStaffPerInterval *[]float64 `json:"effectiveStaffPerInterval,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +90,19 @@ func (o Staffingrequirementsplanninggroupdata) MarshalJSON() ([]byte, error) {
 		PlanningGroupId *string `json:"planningGroupId,omitempty"`
 		
 		StaffingRequirementsPerInterval *[]float64 `json:"staffingRequirementsPerInterval,omitempty"`
+		
+		MinimumStaffPerInterval *[]float64 `json:"minimumStaffPerInterval,omitempty"`
+		
+		EffectiveStaffPerInterval *[]float64 `json:"effectiveStaffPerInterval,omitempty"`
 		Alias
 	}{ 
 		PlanningGroupId: o.PlanningGroupId,
 		
 		StaffingRequirementsPerInterval: o.StaffingRequirementsPerInterval,
+		
+		MinimumStaffPerInterval: o.MinimumStaffPerInterval,
+		
+		EffectiveStaffPerInterval: o.EffectiveStaffPerInterval,
 		Alias:    (Alias)(o),
 	})
 }
@@ -107,6 +121,16 @@ func (o *Staffingrequirementsplanninggroupdata) UnmarshalJSON(b []byte) error {
 	if StaffingRequirementsPerInterval, ok := StaffingrequirementsplanninggroupdataMap["staffingRequirementsPerInterval"].([]interface{}); ok {
 		StaffingRequirementsPerIntervalString, _ := json.Marshal(StaffingRequirementsPerInterval)
 		json.Unmarshal(StaffingRequirementsPerIntervalString, &o.StaffingRequirementsPerInterval)
+	}
+	
+	if MinimumStaffPerInterval, ok := StaffingrequirementsplanninggroupdataMap["minimumStaffPerInterval"].([]interface{}); ok {
+		MinimumStaffPerIntervalString, _ := json.Marshal(MinimumStaffPerInterval)
+		json.Unmarshal(MinimumStaffPerIntervalString, &o.MinimumStaffPerInterval)
+	}
+	
+	if EffectiveStaffPerInterval, ok := StaffingrequirementsplanninggroupdataMap["effectiveStaffPerInterval"].([]interface{}); ok {
+		EffectiveStaffPerIntervalString, _ := json.Marshal(EffectiveStaffPerInterval)
+		json.Unmarshal(EffectiveStaffPerIntervalString, &o.EffectiveStaffPerInterval)
 	}
 	
 

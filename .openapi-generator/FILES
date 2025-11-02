@@ -569,6 +569,7 @@ docs/GetCoachingAppointments-example.txt
 docs/GetCoachingAppointmentsMe-example.txt
 docs/GetCoachingNotification-example.txt
 docs/GetCoachingNotifications-example.txt
+docs/GetCoachingScheduleslotsJob-example.txt
 docs/GetContentmanagementDocument-example.txt
 docs/GetContentmanagementDocumentContent-example.txt
 docs/GetContentmanagementDocuments-example.txt
@@ -823,6 +824,7 @@ docs/GetGamificationInsights-example.txt
 docs/GetGamificationInsightsDetails-example.txt
 docs/GetGamificationInsightsGroupsTrends-example.txt
 docs/GetGamificationInsightsGroupsTrendsAll-example.txt
+docs/GetGamificationInsightsManagers-example.txt
 docs/GetGamificationInsightsMembers-example.txt
 docs/GetGamificationInsightsRankings-example.txt
 docs/GetGamificationInsightsTrends-example.txt
@@ -1079,6 +1081,7 @@ docs/GetLearningModuleVersion-example.txt
 docs/GetLearningModules-example.txt
 docs/GetLearningModulesAssignments-example.txt
 docs/GetLearningModulesCoverartCoverArtId-example.txt
+docs/GetLearningScheduleslotsJob-example.txt
 docs/GetLearningScormScormId-example.txt
 docs/GetLicenseDefinition-example.txt
 docs/GetLicenseDefinitions-example.txt
@@ -1255,12 +1258,8 @@ docs/GetQualityPublishedform-example.txt
 docs/GetQualityPublishedforms-example.txt
 docs/GetQualityPublishedformsEvaluation-example.txt
 docs/GetQualityPublishedformsEvaluations-example.txt
-docs/GetQualityPublishedformsEvaluationsDivisionview-example.txt
-docs/GetQualityPublishedformsEvaluationsDivisionviews-example.txt
 docs/GetQualityPublishedformsSurvey-example.txt
 docs/GetQualityPublishedformsSurveys-example.txt
-docs/GetQualityPublishedformsSurveysDivisionview-example.txt
-docs/GetQualityPublishedformsSurveysDivisionviews-example.txt
 docs/GetQualitySurvey-example.txt
 docs/GetQualitySurveysScorable-example.txt
 docs/GetRecordingBatchrequest-example.txt
@@ -2171,6 +2170,7 @@ docs/PostCoachingAppointmentAnnotations-example.txt
 docs/PostCoachingAppointmentConversations-example.txt
 docs/PostCoachingAppointments-example.txt
 docs/PostCoachingAppointmentsAggregatesQuery-example.txt
+docs/PostCoachingScheduleslotsJobs-example.txt
 docs/PostCoachingScheduleslotsQuery-example.txt
 docs/PostContentmanagementDocument-example.txt
 docs/PostContentmanagementDocumentContent-example.txt
@@ -2476,6 +2476,7 @@ docs/PostLearningModuleJobs-example.txt
 docs/PostLearningModulePublish-example.txt
 docs/PostLearningModules-example.txt
 docs/PostLearningRulesQuery-example.txt
+docs/PostLearningScheduleslotsJobs-example.txt
 docs/PostLearningScheduleslotsQuery-example.txt
 docs/PostLearningScorm-example.txt
 docs/PostLicenseInfer-example.txt
@@ -3961,6 +3962,11 @@ platformclientv2/coachingappointmentstatusresponse.go
 platformclientv2/coachingappointmentstatusresponselist.go
 platformclientv2/coachingnotification.go
 platformclientv2/coachingnotificationlist.go
+platformclientv2/coachingscheduleslotsjobrequest.go
+platformclientv2/coachingscheduleslotsjobresponse.go
+platformclientv2/coachingscheduleslotsjobresult.go
+platformclientv2/coachingscheduleslotsjobschedule.go
+platformclientv2/coachingscheduleslotsjobslot.go
 platformclientv2/coachingslot.go
 platformclientv2/coachingslotsrequest.go
 platformclientv2/coachingslotsresponse.go
@@ -4182,6 +4188,7 @@ platformclientv2/conversationappsettings.go
 platformclientv2/conversationassociation.go
 platformclientv2/conversationasyncaggregatequeryresponse.go
 platformclientv2/conversationasyncaggregationquery.go
+platformclientv2/conversationattributefilter.go
 platformclientv2/conversationbasic.go
 platformclientv2/conversationcallbackeventtopiccallbackconversation.go
 platformclientv2/conversationcallbackeventtopiccallbackmediaparticipant.go
@@ -4479,6 +4486,9 @@ platformclientv2/conversationresponsesuggestionstopicsuggestioncontext.go
 platformclientv2/conversationresponsesuggestionstopicsuggestionfeedback.go
 platformclientv2/conversationroutingdata.go
 platformclientv2/conversationsapi.go
+platformclientv2/conversationschemaattribute.go
+platformclientv2/conversationschemadata.go
+platformclientv2/conversationschemareference.go
 platformclientv2/conversationscreenshareeventtopicconversationdivisionmembership.go
 platformclientv2/conversationscreenshareeventtopicconversationroutingdata.go
 platformclientv2/conversationscreenshareeventtopicdetail.go
@@ -5207,8 +5217,6 @@ platformclientv2/evaluationdetailquerypredicate.go
 platformclientv2/evaluationentitylisting.go
 platformclientv2/evaluationform.go
 platformclientv2/evaluationformandscoringset.go
-platformclientv2/evaluationformdivisionview.go
-platformclientv2/evaluationformdivisionviewlisting.go
 platformclientv2/evaluationformresponse.go
 platformclientv2/evaluationformresponseentitylisting.go
 platformclientv2/evaluationqualityv2topiccalibration.go
@@ -6067,6 +6075,7 @@ platformclientv2/knowledgeparsejobresponse.go
 platformclientv2/knowledgeparserecord.go
 platformclientv2/knowledgesearchclientapplication.go
 platformclientv2/knowledgesearchdocumentresponse.go
+platformclientv2/knowledgesetting.go
 platformclientv2/knowledgesuggestionconfig.go
 platformclientv2/knowledgesyncjobreport.go
 platformclientv2/knowledgesyncjobrequest.go
@@ -6164,6 +6173,11 @@ platformclientv2/learningmodulerule.go
 platformclientv2/learningmoduleruleparts.go
 platformclientv2/learningmodulesdomainentitylisting.go
 platformclientv2/learningmodulesummary.go
+platformclientv2/learningscheduleslotsjobrequest.go
+platformclientv2/learningscheduleslotsjobresponse.go
+platformclientv2/learningscheduleslotsjobresult.go
+platformclientv2/learningscheduleslotsjobschedule.go
+platformclientv2/learningscheduleslotsjobslot.go
 platformclientv2/learningscheduleslotsqueryrequest.go
 platformclientv2/learningscheduleslotsqueryresponse.go
 platformclientv2/learningscormresponse.go
@@ -7769,11 +7783,13 @@ platformclientv2/subscriberresponse.go
 platformclientv2/subscription.go
 platformclientv2/subscriptionoverviewusage.go
 platformclientv2/suggestapi.go
+platformclientv2/suggestedsearchchunk.go
 platformclientv2/suggestion.go
 platformclientv2/suggestioncannedresponse.go
 platformclientv2/suggestioncontext.go
 platformclientv2/suggestionengagement.go
 platformclientv2/suggestionfeedback.go
+platformclientv2/suggestiongeneratedknowledgeanswer.go
 platformclientv2/suggestionknowledgeanswer.go
 platformclientv2/suggestionknowledgearticle.go
 platformclientv2/suggestionknowledgesearch.go
@@ -7840,8 +7856,6 @@ platformclientv2/surveydetailquerypredicate.go
 platformclientv2/surveyerrordetails.go
 platformclientv2/surveyform.go
 platformclientv2/surveyformandscoringset.go
-platformclientv2/surveyformdivisionview.go
-platformclientv2/surveyformdivisionviewlisting.go
 platformclientv2/surveyformentitylisting.go
 platformclientv2/surveyquestion.go
 platformclientv2/surveyquestiongroup.go
@@ -8030,6 +8044,7 @@ platformclientv2/transferinitiator.go
 platformclientv2/transferrequest.go
 platformclientv2/transferresponse.go
 platformclientv2/transferresponsemodifiedby.go
+platformclientv2/transfersfulltimeequivalent.go
 platformclientv2/transfertoaddressrequest.go
 platformclientv2/transfertoagentrequest.go
 platformclientv2/transfertoexternalcontactrequest.go
@@ -8228,6 +8243,7 @@ platformclientv2/userconversationseventmediasummarydetail.go
 platformclientv2/userconversationseventuserconversationsummary.go
 platformclientv2/userconversationsummary.go
 platformclientv2/usercursorentitylisting.go
+platformclientv2/usercustomattributes.go
 platformclientv2/userdetailqueryclause.go
 platformclientv2/userdetailqueryfilter.go
 platformclientv2/userdetailquerypredicate.go

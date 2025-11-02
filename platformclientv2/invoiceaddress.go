@@ -12,8 +12,8 @@ import (
 type Invoiceaddress struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// GetdateEffective - The date when the Address became effective. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
-	GetdateEffective *time.Time `json:"getdateEffective,omitempty"`
+	// DateEffective - The date when the Address became effective. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
+	DateEffective *time.Time `json:"dateEffective,omitempty"`
 
 	// AddressType - The type of address.
 	AddressType *string `json:"addressType,omitempty"`
@@ -42,8 +42,8 @@ type Invoiceaddress struct {
 	// CountryCode - The code representing the country for the Address (ISO_3166).
 	CountryCode *string `json:"countryCode,omitempty"`
 
-	// GetcitySubdivision1 - The primary subdivision within a city (e.g., district, neighborhood).
-	GetcitySubdivision1 *string `json:"getcitySubdivision1,omitempty"`
+	// CitySubdivision1 - The primary subdivision within a city (e.g., district, neighborhood).
+	CitySubdivision1 *string `json:"citySubdivision1,omitempty"`
 
 	// RegionSubdivision1 - The primary administrative division within a region (e.g., state, province).
 	RegionSubdivision1 *string `json:"regionSubdivision1,omitempty"`
@@ -86,7 +86,7 @@ func (o Invoiceaddress) MarshalJSON() ([]byte, error) {
 		// Known field names that require type overrides
 		dateTimeFields := []string{  }
 		localDateTimeFields := []string{  }
-		dateFields := []string{ "GetdateEffective", }
+		dateFields := []string{ "DateEffective", }
 
 		// Construct object
 		newObj := make(map[string]interface{})
@@ -117,15 +117,15 @@ func (o Invoiceaddress) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Invoiceaddress
 	
-	GetdateEffective := new(string)
-	if o.GetdateEffective != nil {
-		*GetdateEffective = timeutil.Strftime(o.GetdateEffective, "%Y-%m-%d")
+	DateEffective := new(string)
+	if o.DateEffective != nil {
+		*DateEffective = timeutil.Strftime(o.DateEffective, "%Y-%m-%d")
 	} else {
-		GetdateEffective = nil
+		DateEffective = nil
 	}
 	
 	return json.Marshal(&struct { 
-		GetdateEffective *string `json:"getdateEffective,omitempty"`
+		DateEffective *string `json:"dateEffective,omitempty"`
 		
 		AddressType *string `json:"addressType,omitempty"`
 		
@@ -145,7 +145,7 @@ func (o Invoiceaddress) MarshalJSON() ([]byte, error) {
 		
 		CountryCode *string `json:"countryCode,omitempty"`
 		
-		GetcitySubdivision1 *string `json:"getcitySubdivision1,omitempty"`
+		CitySubdivision1 *string `json:"citySubdivision1,omitempty"`
 		
 		RegionSubdivision1 *string `json:"regionSubdivision1,omitempty"`
 		
@@ -154,7 +154,7 @@ func (o Invoiceaddress) MarshalJSON() ([]byte, error) {
 		Country *string `json:"country,omitempty"`
 		Alias
 	}{ 
-		GetdateEffective: GetdateEffective,
+		DateEffective: DateEffective,
 		
 		AddressType: o.AddressType,
 		
@@ -174,7 +174,7 @@ func (o Invoiceaddress) MarshalJSON() ([]byte, error) {
 		
 		CountryCode: o.CountryCode,
 		
-		GetcitySubdivision1: o.GetcitySubdivision1,
+		CitySubdivision1: o.CitySubdivision1,
 		
 		RegionSubdivision1: o.RegionSubdivision1,
 		
@@ -192,9 +192,9 @@ func (o *Invoiceaddress) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
-	if getdateEffectiveString, ok := InvoiceaddressMap["getdateEffective"].(string); ok {
-		GetdateEffective, _ := time.Parse("2006-01-02", getdateEffectiveString)
-		o.GetdateEffective = &GetdateEffective
+	if dateEffectiveString, ok := InvoiceaddressMap["dateEffective"].(string); ok {
+		DateEffective, _ := time.Parse("2006-01-02", dateEffectiveString)
+		o.DateEffective = &DateEffective
 	}
 	
 	if AddressType, ok := InvoiceaddressMap["addressType"].(string); ok {
@@ -233,8 +233,8 @@ func (o *Invoiceaddress) UnmarshalJSON(b []byte) error {
 		o.CountryCode = &CountryCode
 	}
     
-	if GetcitySubdivision1, ok := InvoiceaddressMap["getcitySubdivision1"].(string); ok {
-		o.GetcitySubdivision1 = &GetcitySubdivision1
+	if CitySubdivision1, ok := InvoiceaddressMap["citySubdivision1"].(string); ok {
+		o.CitySubdivision1 = &CitySubdivision1
 	}
     
 	if RegionSubdivision1, ok := InvoiceaddressMap["regionSubdivision1"].(string); ok {

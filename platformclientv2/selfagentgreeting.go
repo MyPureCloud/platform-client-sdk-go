@@ -17,11 +17,17 @@ type Selfagentgreeting struct {
 	// Name
 	Name *string `json:"name,omitempty"`
 
-	// InboundPrompt - The agent greeting prompt to use when the call is connected
+	// InboundPrompt - The agent greeting prompt to use when inbound calls are connected
 	InboundPrompt *Prompt `json:"inboundPrompt,omitempty"`
 
-	// OutboundPrompt - The agent greeting prompt to use when the call is about to be disconnected
+	// OutboundPrompt - The agent greeting prompt to use when outbound calls are connected
 	OutboundPrompt *Prompt `json:"outboundPrompt,omitempty"`
+
+	// InboundPromptDefaultLanguage - The default language to use for the agent greeting inbound prompt
+	InboundPromptDefaultLanguage *string `json:"inboundPromptDefaultLanguage,omitempty"`
+
+	// OutboundPromptDefaultLanguage - The default language to use for the agent greeting outbound prompt
+	OutboundPromptDefaultLanguage *string `json:"outboundPromptDefaultLanguage,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -98,6 +104,10 @@ func (o Selfagentgreeting) MarshalJSON() ([]byte, error) {
 		
 		OutboundPrompt *Prompt `json:"outboundPrompt,omitempty"`
 		
+		InboundPromptDefaultLanguage *string `json:"inboundPromptDefaultLanguage,omitempty"`
+		
+		OutboundPromptDefaultLanguage *string `json:"outboundPromptDefaultLanguage,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -108,6 +118,10 @@ func (o Selfagentgreeting) MarshalJSON() ([]byte, error) {
 		InboundPrompt: o.InboundPrompt,
 		
 		OutboundPrompt: o.OutboundPrompt,
+		
+		InboundPromptDefaultLanguage: o.InboundPromptDefaultLanguage,
+		
+		OutboundPromptDefaultLanguage: o.OutboundPromptDefaultLanguage,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -139,6 +153,14 @@ func (o *Selfagentgreeting) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(OutboundPromptString, &o.OutboundPrompt)
 	}
 	
+	if InboundPromptDefaultLanguage, ok := SelfagentgreetingMap["inboundPromptDefaultLanguage"].(string); ok {
+		o.InboundPromptDefaultLanguage = &InboundPromptDefaultLanguage
+	}
+    
+	if OutboundPromptDefaultLanguage, ok := SelfagentgreetingMap["outboundPromptDefaultLanguage"].(string); ok {
+		o.OutboundPromptDefaultLanguage = &OutboundPromptDefaultLanguage
+	}
+    
 	if SelfUri, ok := SelfagentgreetingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

@@ -7,28 +7,19 @@ import (
 	"strings"
 )
 
-// Surveyformdivisionview
-type Surveyformdivisionview struct { 
+// Transfersfulltimeequivalent
+type Transfersfulltimeequivalent struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The globally unique identifier for the object.
-	Id *string `json:"id,omitempty"`
+	// DestinationStaffingGroupId - The target staffing group that will receive the full time equivalent when agents are transferred from one staffing group to another
+	DestinationStaffingGroupId *string `json:"destinationStaffingGroupId,omitempty"`
 
-	// Name
-	Name *string `json:"name,omitempty"`
-
-	// Language - Language for survey viewer localization. Currently localized languages: da, de, en-US, es, fi, fr, it, ja, ko, nl, no, pl, pt-BR, sv, th, tr, zh-CH, zh-TW
-	Language *string `json:"language,omitempty"`
-
-	// ContextId - Unique Id for all versions of this form
-	ContextId *string `json:"contextId,omitempty"`
-
-	// SelfUri - The URI for this object
-	SelfUri *string `json:"selfUri,omitempty"`
+	// TransferType - The duration of the transfer full time equivalent from one staffing group to another
+	TransferType *string `json:"transferType,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Surveyformdivisionview) SetField(field string, fieldValue interface{}) {
+func (o *Transfersfulltimeequivalent) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -49,7 +40,7 @@ func (o *Surveyformdivisionview) SetField(field string, fieldValue interface{}) 
 	o.SetFieldNames[field] = true
 }
 
-func (o Surveyformdivisionview) MarshalJSON() ([]byte, error) {
+func (o Transfersfulltimeequivalent) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -87,58 +78,34 @@ func (o Surveyformdivisionview) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Surveyformdivisionview
+	type Alias Transfersfulltimeequivalent
 	
 	return json.Marshal(&struct { 
-		Id *string `json:"id,omitempty"`
+		DestinationStaffingGroupId *string `json:"destinationStaffingGroupId,omitempty"`
 		
-		Name *string `json:"name,omitempty"`
-		
-		Language *string `json:"language,omitempty"`
-		
-		ContextId *string `json:"contextId,omitempty"`
-		
-		SelfUri *string `json:"selfUri,omitempty"`
+		TransferType *string `json:"transferType,omitempty"`
 		Alias
 	}{ 
-		Id: o.Id,
+		DestinationStaffingGroupId: o.DestinationStaffingGroupId,
 		
-		Name: o.Name,
-		
-		Language: o.Language,
-		
-		ContextId: o.ContextId,
-		
-		SelfUri: o.SelfUri,
+		TransferType: o.TransferType,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Surveyformdivisionview) UnmarshalJSON(b []byte) error {
-	var SurveyformdivisionviewMap map[string]interface{}
-	err := json.Unmarshal(b, &SurveyformdivisionviewMap)
+func (o *Transfersfulltimeequivalent) UnmarshalJSON(b []byte) error {
+	var TransfersfulltimeequivalentMap map[string]interface{}
+	err := json.Unmarshal(b, &TransfersfulltimeequivalentMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := SurveyformdivisionviewMap["id"].(string); ok {
-		o.Id = &Id
+	if DestinationStaffingGroupId, ok := TransfersfulltimeequivalentMap["destinationStaffingGroupId"].(string); ok {
+		o.DestinationStaffingGroupId = &DestinationStaffingGroupId
 	}
     
-	if Name, ok := SurveyformdivisionviewMap["name"].(string); ok {
-		o.Name = &Name
-	}
-    
-	if Language, ok := SurveyformdivisionviewMap["language"].(string); ok {
-		o.Language = &Language
-	}
-    
-	if ContextId, ok := SurveyformdivisionviewMap["contextId"].(string); ok {
-		o.ContextId = &ContextId
-	}
-    
-	if SelfUri, ok := SurveyformdivisionviewMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
+	if TransferType, ok := TransfersfulltimeequivalentMap["transferType"].(string); ok {
+		o.TransferType = &TransferType
 	}
     
 
@@ -146,7 +113,7 @@ func (o *Surveyformdivisionview) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Surveyformdivisionview) String() string {
+func (o *Transfersfulltimeequivalent) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

@@ -7,43 +7,37 @@ import (
 	"strings"
 )
 
-// Evaluationformdivisionviewlisting
-type Evaluationformdivisionviewlisting struct { 
+// Learningscheduleslotsjobresponse
+type Learningscheduleslotsjobresponse struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Entities
-	Entities *[]Evaluationformdivisionview `json:"entities,omitempty"`
+	// Id - The globally unique identifier for the object.
+	Id *string `json:"id,omitempty"`
 
-	// PageSize
-	PageSize *int `json:"pageSize,omitempty"`
+	// UserIds - The user IDs to fetch the slots for.
+	UserIds *[]string `json:"userIds,omitempty"`
 
-	// PageNumber
-	PageNumber *int `json:"pageNumber,omitempty"`
+	// LengthInMinutes - The length in minutes of the slots.
+	LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
 
-	// Total
-	Total *int `json:"total,omitempty"`
+	// BusinessUnitId - The Business Unit Id of the users.
+	BusinessUnitId *string `json:"businessUnitId,omitempty"`
 
-	// FirstUri
-	FirstUri *string `json:"firstUri,omitempty"`
+	// ActivityCodeId - The Activity Code Id of the slots.
+	ActivityCodeId *string `json:"activityCodeId,omitempty"`
 
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
+	// SlotsType - The type of slots fetched in the job.
+	SlotsType *string `json:"slotsType,omitempty"`
 
-	// NextUri
-	NextUri *string `json:"nextUri,omitempty"`
+	// Results - The results of the job.
+	Results *[]Learningscheduleslotsjobresult `json:"results,omitempty"`
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
-	// SelfUri
+	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
-
-	// PageCount
-	PageCount *int `json:"pageCount,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Evaluationformdivisionviewlisting) SetField(field string, fieldValue interface{}) {
+func (o *Learningscheduleslotsjobresponse) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -64,7 +58,7 @@ func (o *Evaluationformdivisionviewlisting) SetField(field string, fieldValue in
 	o.SetFieldNames[field] = true
 }
 
-func (o Evaluationformdivisionviewlisting) MarshalJSON() ([]byte, error) {
+func (o Learningscheduleslotsjobresponse) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -102,111 +96,93 @@ func (o Evaluationformdivisionviewlisting) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Evaluationformdivisionviewlisting
+	type Alias Learningscheduleslotsjobresponse
 	
 	return json.Marshal(&struct { 
-		Entities *[]Evaluationformdivisionview `json:"entities,omitempty"`
+		Id *string `json:"id,omitempty"`
 		
-		PageSize *int `json:"pageSize,omitempty"`
+		UserIds *[]string `json:"userIds,omitempty"`
 		
-		PageNumber *int `json:"pageNumber,omitempty"`
+		LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
 		
-		Total *int `json:"total,omitempty"`
+		BusinessUnitId *string `json:"businessUnitId,omitempty"`
 		
-		FirstUri *string `json:"firstUri,omitempty"`
+		ActivityCodeId *string `json:"activityCodeId,omitempty"`
 		
-		PreviousUri *string `json:"previousUri,omitempty"`
+		SlotsType *string `json:"slotsType,omitempty"`
 		
-		NextUri *string `json:"nextUri,omitempty"`
-		
-		LastUri *string `json:"lastUri,omitempty"`
+		Results *[]Learningscheduleslotsjobresult `json:"results,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		
-		PageCount *int `json:"pageCount,omitempty"`
 		Alias
 	}{ 
-		Entities: o.Entities,
+		Id: o.Id,
 		
-		PageSize: o.PageSize,
+		UserIds: o.UserIds,
 		
-		PageNumber: o.PageNumber,
+		LengthInMinutes: o.LengthInMinutes,
 		
-		Total: o.Total,
+		BusinessUnitId: o.BusinessUnitId,
 		
-		FirstUri: o.FirstUri,
+		ActivityCodeId: o.ActivityCodeId,
 		
-		PreviousUri: o.PreviousUri,
+		SlotsType: o.SlotsType,
 		
-		NextUri: o.NextUri,
-		
-		LastUri: o.LastUri,
+		Results: o.Results,
 		
 		SelfUri: o.SelfUri,
-		
-		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Evaluationformdivisionviewlisting) UnmarshalJSON(b []byte) error {
-	var EvaluationformdivisionviewlistingMap map[string]interface{}
-	err := json.Unmarshal(b, &EvaluationformdivisionviewlistingMap)
+func (o *Learningscheduleslotsjobresponse) UnmarshalJSON(b []byte) error {
+	var LearningscheduleslotsjobresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &LearningscheduleslotsjobresponseMap)
 	if err != nil {
 		return err
 	}
 	
-	if Entities, ok := EvaluationformdivisionviewlistingMap["entities"].([]interface{}); ok {
-		EntitiesString, _ := json.Marshal(Entities)
-		json.Unmarshal(EntitiesString, &o.Entities)
-	}
-	
-	if PageSize, ok := EvaluationformdivisionviewlistingMap["pageSize"].(float64); ok {
-		PageSizeInt := int(PageSize)
-		o.PageSize = &PageSizeInt
-	}
-	
-	if PageNumber, ok := EvaluationformdivisionviewlistingMap["pageNumber"].(float64); ok {
-		PageNumberInt := int(PageNumber)
-		o.PageNumber = &PageNumberInt
-	}
-	
-	if Total, ok := EvaluationformdivisionviewlistingMap["total"].(float64); ok {
-		TotalInt := int(Total)
-		o.Total = &TotalInt
-	}
-	
-	if FirstUri, ok := EvaluationformdivisionviewlistingMap["firstUri"].(string); ok {
-		o.FirstUri = &FirstUri
+	if Id, ok := LearningscheduleslotsjobresponseMap["id"].(string); ok {
+		o.Id = &Id
 	}
     
-	if PreviousUri, ok := EvaluationformdivisionviewlistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
+	if UserIds, ok := LearningscheduleslotsjobresponseMap["userIds"].([]interface{}); ok {
+		UserIdsString, _ := json.Marshal(UserIds)
+		json.Unmarshal(UserIdsString, &o.UserIds)
+	}
+	
+	if LengthInMinutes, ok := LearningscheduleslotsjobresponseMap["lengthInMinutes"].(float64); ok {
+		LengthInMinutesInt := int(LengthInMinutes)
+		o.LengthInMinutes = &LengthInMinutesInt
+	}
+	
+	if BusinessUnitId, ok := LearningscheduleslotsjobresponseMap["businessUnitId"].(string); ok {
+		o.BusinessUnitId = &BusinessUnitId
 	}
     
-	if NextUri, ok := EvaluationformdivisionviewlistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
+	if ActivityCodeId, ok := LearningscheduleslotsjobresponseMap["activityCodeId"].(string); ok {
+		o.ActivityCodeId = &ActivityCodeId
 	}
     
-	if LastUri, ok := EvaluationformdivisionviewlistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
+	if SlotsType, ok := LearningscheduleslotsjobresponseMap["slotsType"].(string); ok {
+		o.SlotsType = &SlotsType
 	}
     
-	if SelfUri, ok := EvaluationformdivisionviewlistingMap["selfUri"].(string); ok {
+	if Results, ok := LearningscheduleslotsjobresponseMap["results"].([]interface{}); ok {
+		ResultsString, _ := json.Marshal(Results)
+		json.Unmarshal(ResultsString, &o.Results)
+	}
+	
+	if SelfUri, ok := LearningscheduleslotsjobresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
     
-	if PageCount, ok := EvaluationformdivisionviewlistingMap["pageCount"].(float64); ok {
-		PageCountInt := int(PageCount)
-		o.PageCount = &PageCountInt
-	}
-	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Evaluationformdivisionviewlisting) String() string {
+func (o *Learningscheduleslotsjobresponse) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

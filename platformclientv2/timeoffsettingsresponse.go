@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -14,11 +15,17 @@ type Timeoffsettingsresponse struct {
 	// SubmissionRangeEnforced - Whether to enforce a submission range for agent time off requests
 	SubmissionRangeEnforced *bool `json:"submissionRangeEnforced,omitempty"`
 
+	// SubmissionRangeType - The type of the submission range
+	SubmissionRangeType *string `json:"submissionRangeType,omitempty"`
+
 	// SubmissionEarliestDaysFromNow - The earliest number of days from now for which an agent can submit a time off request.  Use negative numbers to indicate days in the past
 	SubmissionEarliestDaysFromNow *int `json:"submissionEarliestDaysFromNow,omitempty"`
 
 	// SubmissionLatestDaysFromNow - The latest number of days from now for which an agent can submit a time off request
 	SubmissionLatestDaysFromNow *int `json:"submissionLatestDaysFromNow,omitempty"`
+
+	// SubmissionLatestDate - The latest date for the time off request submission interpreted in the business unit time zone in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
+	SubmissionLatestDate *time.Time `json:"submissionLatestDate,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -52,7 +59,7 @@ func (o Timeoffsettingsresponse) MarshalJSON() ([]byte, error) {
 		// Known field names that require type overrides
 		dateTimeFields := []string{  }
 		localDateTimeFields := []string{  }
-		dateFields := []string{  }
+		dateFields := []string{ "SubmissionLatestDate", }
 
 		// Construct object
 		newObj := make(map[string]interface{})
@@ -83,19 +90,34 @@ func (o Timeoffsettingsresponse) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Timeoffsettingsresponse
 	
+	SubmissionLatestDate := new(string)
+	if o.SubmissionLatestDate != nil {
+		*SubmissionLatestDate = timeutil.Strftime(o.SubmissionLatestDate, "%Y-%m-%d")
+	} else {
+		SubmissionLatestDate = nil
+	}
+	
 	return json.Marshal(&struct { 
 		SubmissionRangeEnforced *bool `json:"submissionRangeEnforced,omitempty"`
+		
+		SubmissionRangeType *string `json:"submissionRangeType,omitempty"`
 		
 		SubmissionEarliestDaysFromNow *int `json:"submissionEarliestDaysFromNow,omitempty"`
 		
 		SubmissionLatestDaysFromNow *int `json:"submissionLatestDaysFromNow,omitempty"`
+		
+		SubmissionLatestDate *string `json:"submissionLatestDate,omitempty"`
 		Alias
 	}{ 
 		SubmissionRangeEnforced: o.SubmissionRangeEnforced,
 		
+		SubmissionRangeType: o.SubmissionRangeType,
+		
 		SubmissionEarliestDaysFromNow: o.SubmissionEarliestDaysFromNow,
 		
 		SubmissionLatestDaysFromNow: o.SubmissionLatestDaysFromNow,
+		
+		SubmissionLatestDate: SubmissionLatestDate,
 		Alias:    (Alias)(o),
 	})
 }
@@ -111,6 +133,10 @@ func (o *Timeoffsettingsresponse) UnmarshalJSON(b []byte) error {
 		o.SubmissionRangeEnforced = &SubmissionRangeEnforced
 	}
     
+	if SubmissionRangeType, ok := TimeoffsettingsresponseMap["submissionRangeType"].(string); ok {
+		o.SubmissionRangeType = &SubmissionRangeType
+	}
+    
 	if SubmissionEarliestDaysFromNow, ok := TimeoffsettingsresponseMap["submissionEarliestDaysFromNow"].(float64); ok {
 		SubmissionEarliestDaysFromNowInt := int(SubmissionEarliestDaysFromNow)
 		o.SubmissionEarliestDaysFromNow = &SubmissionEarliestDaysFromNowInt
@@ -119,6 +145,11 @@ func (o *Timeoffsettingsresponse) UnmarshalJSON(b []byte) error {
 	if SubmissionLatestDaysFromNow, ok := TimeoffsettingsresponseMap["submissionLatestDaysFromNow"].(float64); ok {
 		SubmissionLatestDaysFromNowInt := int(SubmissionLatestDaysFromNow)
 		o.SubmissionLatestDaysFromNow = &SubmissionLatestDaysFromNowInt
+	}
+	
+	if submissionLatestDateString, ok := TimeoffsettingsresponseMap["submissionLatestDate"].(string); ok {
+		SubmissionLatestDate, _ := time.Parse("2006-01-02", submissionLatestDateString)
+		o.SubmissionLatestDate = &SubmissionLatestDate
 	}
 	
 

@@ -7,43 +7,31 @@ import (
 	"strings"
 )
 
-// Surveyformdivisionviewlisting
-type Surveyformdivisionviewlisting struct { 
+// Usercustomattributes
+type Usercustomattributes struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Entities
-	Entities *[]Surveyformdivisionview `json:"entities,omitempty"`
+	// Id - The globally unique identifier for the object.
+	Id *string `json:"id,omitempty"`
 
-	// PageSize
-	PageSize *int `json:"pageSize,omitempty"`
+	// Name
+	Name *string `json:"name,omitempty"`
 
-	// PageNumber
-	PageNumber *int `json:"pageNumber,omitempty"`
+	// UserId - The user's Id which the attributes are being assigned to.
+	UserId *string `json:"userId,omitempty"`
 
-	// Total
-	Total *int `json:"total,omitempty"`
+	// Schema - The schema that dictates which attributes can be included.
+	Schema *Dataschema `json:"schema,omitempty"`
 
-	// FirstUri
-	FirstUri *string `json:"firstUri,omitempty"`
+	// Attributes - The map of attribute values.
+	Attributes *map[string]interface{} `json:"attributes,omitempty"`
 
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
-
-	// NextUri
-	NextUri *string `json:"nextUri,omitempty"`
-
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
-	// SelfUri
+	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
-
-	// PageCount
-	PageCount *int `json:"pageCount,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Surveyformdivisionviewlisting) SetField(field string, fieldValue interface{}) {
+func (o *Usercustomattributes) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -64,7 +52,7 @@ func (o *Surveyformdivisionviewlisting) SetField(field string, fieldValue interf
 	o.SetFieldNames[field] = true
 }
 
-func (o Surveyformdivisionviewlisting) MarshalJSON() ([]byte, error) {
+func (o Usercustomattributes) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -102,111 +90,76 @@ func (o Surveyformdivisionviewlisting) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Surveyformdivisionviewlisting
+	type Alias Usercustomattributes
 	
 	return json.Marshal(&struct { 
-		Entities *[]Surveyformdivisionview `json:"entities,omitempty"`
+		Id *string `json:"id,omitempty"`
 		
-		PageSize *int `json:"pageSize,omitempty"`
+		Name *string `json:"name,omitempty"`
 		
-		PageNumber *int `json:"pageNumber,omitempty"`
+		UserId *string `json:"userId,omitempty"`
 		
-		Total *int `json:"total,omitempty"`
+		Schema *Dataschema `json:"schema,omitempty"`
 		
-		FirstUri *string `json:"firstUri,omitempty"`
-		
-		PreviousUri *string `json:"previousUri,omitempty"`
-		
-		NextUri *string `json:"nextUri,omitempty"`
-		
-		LastUri *string `json:"lastUri,omitempty"`
+		Attributes *map[string]interface{} `json:"attributes,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		
-		PageCount *int `json:"pageCount,omitempty"`
 		Alias
 	}{ 
-		Entities: o.Entities,
+		Id: o.Id,
 		
-		PageSize: o.PageSize,
+		Name: o.Name,
 		
-		PageNumber: o.PageNumber,
+		UserId: o.UserId,
 		
-		Total: o.Total,
+		Schema: o.Schema,
 		
-		FirstUri: o.FirstUri,
-		
-		PreviousUri: o.PreviousUri,
-		
-		NextUri: o.NextUri,
-		
-		LastUri: o.LastUri,
+		Attributes: o.Attributes,
 		
 		SelfUri: o.SelfUri,
-		
-		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Surveyformdivisionviewlisting) UnmarshalJSON(b []byte) error {
-	var SurveyformdivisionviewlistingMap map[string]interface{}
-	err := json.Unmarshal(b, &SurveyformdivisionviewlistingMap)
+func (o *Usercustomattributes) UnmarshalJSON(b []byte) error {
+	var UsercustomattributesMap map[string]interface{}
+	err := json.Unmarshal(b, &UsercustomattributesMap)
 	if err != nil {
 		return err
 	}
 	
-	if Entities, ok := SurveyformdivisionviewlistingMap["entities"].([]interface{}); ok {
-		EntitiesString, _ := json.Marshal(Entities)
-		json.Unmarshal(EntitiesString, &o.Entities)
-	}
-	
-	if PageSize, ok := SurveyformdivisionviewlistingMap["pageSize"].(float64); ok {
-		PageSizeInt := int(PageSize)
-		o.PageSize = &PageSizeInt
-	}
-	
-	if PageNumber, ok := SurveyformdivisionviewlistingMap["pageNumber"].(float64); ok {
-		PageNumberInt := int(PageNumber)
-		o.PageNumber = &PageNumberInt
-	}
-	
-	if Total, ok := SurveyformdivisionviewlistingMap["total"].(float64); ok {
-		TotalInt := int(Total)
-		o.Total = &TotalInt
-	}
-	
-	if FirstUri, ok := SurveyformdivisionviewlistingMap["firstUri"].(string); ok {
-		o.FirstUri = &FirstUri
+	if Id, ok := UsercustomattributesMap["id"].(string); ok {
+		o.Id = &Id
 	}
     
-	if PreviousUri, ok := SurveyformdivisionviewlistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
+	if Name, ok := UsercustomattributesMap["name"].(string); ok {
+		o.Name = &Name
 	}
     
-	if NextUri, ok := SurveyformdivisionviewlistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
+	if UserId, ok := UsercustomattributesMap["userId"].(string); ok {
+		o.UserId = &UserId
 	}
     
-	if LastUri, ok := SurveyformdivisionviewlistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
+	if Schema, ok := UsercustomattributesMap["schema"].(map[string]interface{}); ok {
+		SchemaString, _ := json.Marshal(Schema)
+		json.Unmarshal(SchemaString, &o.Schema)
 	}
-    
-	if SelfUri, ok := SurveyformdivisionviewlistingMap["selfUri"].(string); ok {
+	
+	if Attributes, ok := UsercustomattributesMap["attributes"].(map[string]interface{}); ok {
+		AttributesString, _ := json.Marshal(Attributes)
+		json.Unmarshal(AttributesString, &o.Attributes)
+	}
+	
+	if SelfUri, ok := UsercustomattributesMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
     
-	if PageCount, ok := SurveyformdivisionviewlistingMap["pageCount"].(float64); ok {
-		PageCountInt := int(PageCount)
-		o.PageCount = &PageCountInt
-	}
-	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Surveyformdivisionviewlisting) String() string {
+func (o *Usercustomattributes) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

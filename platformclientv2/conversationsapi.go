@@ -2000,8 +2000,6 @@ func (a ConversationsApi) GetConversation(conversationId string) (*Conversation,
 // GetConversationCommunicationInternalmessage invokes GET /api/v2/conversations/{conversationId}/communications/{communicationId}/internalmessages/{messageId}
 //
 // Get message
-//
-// Preview: GetConversationCommunicationInternalmessage is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) GetConversationCommunicationInternalmessage(conversationId string, communicationId string, messageId string) (*Internalmessagedata, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2096,8 +2094,6 @@ func (a ConversationsApi) GetConversationCommunicationInternalmessage(conversati
 // GetConversationCommunicationInternalmessages invokes GET /api/v2/conversations/{conversationId}/communications/{communicationId}/internalmessages
 //
 // Get messages for communication
-//
-// Preview: GetConversationCommunicationInternalmessages is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) GetConversationCommunicationInternalmessages(conversationId string, communicationId string, pageSize int, pageNumber int) (*Internalmessagedataentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5844,8 +5840,6 @@ func (a ConversationsApi) GetConversationsEmails() (*Emailconversationentitylist
 // GetConversationsInternalmessage invokes GET /api/v2/conversations/internalmessages/{conversationId}
 //
 // Get internal message conversation
-//
-// Preview: GetConversationsInternalmessage is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) GetConversationsInternalmessage(conversationId string) (*Internalmessageconversation, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5928,8 +5922,6 @@ func (a ConversationsApi) GetConversationsInternalmessage(conversationId string)
 // GetConversationsInternalmessages invokes GET /api/v2/conversations/internalmessages
 //
 // Get active internal message conversations for the logged in user
-//
-// Preview: GetConversationsInternalmessages is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) GetConversationsInternalmessages() (*Internalmessageconversationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -15302,8 +15294,6 @@ func (a ConversationsApi) PostConversationCobrowse(conversationId string) (*Cobr
 // Send internal message
 //
 // Send a new internal message for an existing communication.
-//
-// Preview: PostConversationCommunicationInternalmessages is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) PostConversationCommunicationInternalmessages(conversationId string, communicationId string, body Internalmessagerequest) (*Internalmessagedata, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -15652,8 +15642,6 @@ func (a ConversationsApi) PostConversationParticipantDigits(conversationId strin
 // Setup internal message communication with user
 //
 // The target user of the digital consultation must have the &#x60;conversation:internalMessaging:accept&#x60; permission.
-//
-// Preview: PostConversationParticipantInternalmessagesUsersCommunications is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) PostConversationParticipantInternalmessagesUsersCommunications(conversationId string, participantId string, body Messagingconferwithuserrequest) (*Messagingconferresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -20969,7 +20957,7 @@ func (a ConversationsApi) PostConversationsMessageInboundOpenStructuredResponse(
 //
 // Get messages in batch
 //
-// The path parameter [conversationId] should contain the conversationId of the conversation being filtered. The body should contain the messageId(s) of messages being requested. For example: [\&quot;a3069a33b-bbb1-4703-9d68-061d9e9db96e\&quot;, \&quot;55bc6be3-078c-4a49-a4e6-1e05776ed7e8\&quot;]
+// The path parameter [conversationId] should contain the conversationId of the conversation being filtered. The body should contain the messageId(s) of messages being requested. For example: [\&quot;a3069a33b-bbb1-4703-9d68-061d9e9db96e\&quot;, \&quot;55bc6be3-078c-4a49-a4e6-1e05776ed7e8\&quot;]. The max messages you can request in the body is 1,000. Best practice is to limit to only the messages you need in each request, rather than request large batches by default.
 func (a ConversationsApi) PostConversationsMessageMessagesBulk(conversationId string, useNormalizedMessage bool, body []string) (*Textmessagelisting, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

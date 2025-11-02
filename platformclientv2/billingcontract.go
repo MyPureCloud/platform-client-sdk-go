@@ -24,8 +24,8 @@ type Billingcontract struct {
 	// CommercialModel - The type of commercial model.
 	CommercialModel *string `json:"commercialModel,omitempty"`
 
-	// GetpurchaseOrderNumbers - List of po numbers periods for this contract.
-	GetpurchaseOrderNumbers *[]string `json:"getpurchaseOrderNumbers,omitempty"`
+	// PurchaseOrderNumbers - List of po numbers periods for this contract.
+	PurchaseOrderNumbers *[]string `json:"purchaseOrderNumbers,omitempty"`
 
 	// BillToCustomer - The bill to customer.
 	BillToCustomer *Customer `json:"billToCustomer,omitempty"`
@@ -154,7 +154,7 @@ func (o Billingcontract) MarshalJSON() ([]byte, error) {
 		
 		CommercialModel *string `json:"commercialModel,omitempty"`
 		
-		GetpurchaseOrderNumbers *[]string `json:"getpurchaseOrderNumbers,omitempty"`
+		PurchaseOrderNumbers *[]string `json:"purchaseOrderNumbers,omitempty"`
 		
 		BillToCustomer *Customer `json:"billToCustomer,omitempty"`
 		
@@ -183,7 +183,7 @@ func (o Billingcontract) MarshalJSON() ([]byte, error) {
 		
 		CommercialModel: o.CommercialModel,
 		
-		GetpurchaseOrderNumbers: o.GetpurchaseOrderNumbers,
+		PurchaseOrderNumbers: o.PurchaseOrderNumbers,
 		
 		BillToCustomer: o.BillToCustomer,
 		
@@ -229,9 +229,9 @@ func (o *Billingcontract) UnmarshalJSON(b []byte) error {
 		o.CommercialModel = &CommercialModel
 	}
     
-	if GetpurchaseOrderNumbers, ok := BillingcontractMap["getpurchaseOrderNumbers"].([]interface{}); ok {
-		GetpurchaseOrderNumbersString, _ := json.Marshal(GetpurchaseOrderNumbers)
-		json.Unmarshal(GetpurchaseOrderNumbersString, &o.GetpurchaseOrderNumbers)
+	if PurchaseOrderNumbers, ok := BillingcontractMap["purchaseOrderNumbers"].([]interface{}); ok {
+		PurchaseOrderNumbersString, _ := json.Marshal(PurchaseOrderNumbers)
+		json.Unmarshal(PurchaseOrderNumbersString, &o.PurchaseOrderNumbers)
 	}
 	
 	if BillToCustomer, ok := BillingcontractMap["billToCustomer"].(map[string]interface{}); ok {

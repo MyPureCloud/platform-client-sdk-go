@@ -20,6 +20,12 @@ type Deploymentidentityresolutionconfig struct {
 	// ResolveIdentities - Whether the channel should resolve identities
 	ResolveIdentities *bool `json:"resolveIdentities,omitempty"`
 
+	// ExternalSource - The external source used for stitching this channel.
+	ExternalSource *Identityresolutionexternalsource `json:"externalSource,omitempty"`
+
+	// Automerge - Whether automerging of contacts should be enabled for each channel.
+	Automerge *Identityresolutionautomergeconfig `json:"automerge,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -93,6 +99,10 @@ func (o Deploymentidentityresolutionconfig) MarshalJSON() ([]byte, error) {
 		
 		ResolveIdentities *bool `json:"resolveIdentities,omitempty"`
 		
+		ExternalSource *Identityresolutionexternalsource `json:"externalSource,omitempty"`
+		
+		Automerge *Identityresolutionautomergeconfig `json:"automerge,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -101,6 +111,10 @@ func (o Deploymentidentityresolutionconfig) MarshalJSON() ([]byte, error) {
 		Division: o.Division,
 		
 		ResolveIdentities: o.ResolveIdentities,
+		
+		ExternalSource: o.ExternalSource,
+		
+		Automerge: o.Automerge,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -127,6 +141,16 @@ func (o *Deploymentidentityresolutionconfig) UnmarshalJSON(b []byte) error {
 		o.ResolveIdentities = &ResolveIdentities
 	}
     
+	if ExternalSource, ok := DeploymentidentityresolutionconfigMap["externalSource"].(map[string]interface{}); ok {
+		ExternalSourceString, _ := json.Marshal(ExternalSource)
+		json.Unmarshal(ExternalSourceString, &o.ExternalSource)
+	}
+	
+	if Automerge, ok := DeploymentidentityresolutionconfigMap["automerge"].(map[string]interface{}); ok {
+		AutomergeString, _ := json.Marshal(Automerge)
+		json.Unmarshal(AutomergeString, &o.Automerge)
+	}
+	
 	if SelfUri, ok := DeploymentidentityresolutionconfigMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

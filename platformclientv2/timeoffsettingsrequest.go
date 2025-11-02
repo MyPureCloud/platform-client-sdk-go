@@ -14,11 +14,17 @@ type Timeoffsettingsrequest struct {
 	// SubmissionRangeEnforced - Whether to enforce a submission range for agent time off requests
 	SubmissionRangeEnforced *bool `json:"submissionRangeEnforced,omitempty"`
 
+	// SubmissionRangeType - The type of the submission range
+	SubmissionRangeType *string `json:"submissionRangeType,omitempty"`
+
 	// SubmissionEarliestDaysFromNow - The earliest number of days from now for which an agent can submit a time off request.  Use negative numbers to indicate days in the past
 	SubmissionEarliestDaysFromNow *int `json:"submissionEarliestDaysFromNow,omitempty"`
 
 	// SubmissionLatestDaysFromNow - The latest number of days from now for which an agent can submit a time off request
 	SubmissionLatestDaysFromNow *int `json:"submissionLatestDaysFromNow,omitempty"`
+
+	// SubmissionLatestDate - The latest date for the time off request submission interpreted in the business unit time zone in yyyy-MM-dd format
+	SubmissionLatestDate *Valuewrapperlocaldate `json:"submissionLatestDate,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -86,16 +92,24 @@ func (o Timeoffsettingsrequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		SubmissionRangeEnforced *bool `json:"submissionRangeEnforced,omitempty"`
 		
+		SubmissionRangeType *string `json:"submissionRangeType,omitempty"`
+		
 		SubmissionEarliestDaysFromNow *int `json:"submissionEarliestDaysFromNow,omitempty"`
 		
 		SubmissionLatestDaysFromNow *int `json:"submissionLatestDaysFromNow,omitempty"`
+		
+		SubmissionLatestDate *Valuewrapperlocaldate `json:"submissionLatestDate,omitempty"`
 		Alias
 	}{ 
 		SubmissionRangeEnforced: o.SubmissionRangeEnforced,
 		
+		SubmissionRangeType: o.SubmissionRangeType,
+		
 		SubmissionEarliestDaysFromNow: o.SubmissionEarliestDaysFromNow,
 		
 		SubmissionLatestDaysFromNow: o.SubmissionLatestDaysFromNow,
+		
+		SubmissionLatestDate: o.SubmissionLatestDate,
 		Alias:    (Alias)(o),
 	})
 }
@@ -111,6 +125,10 @@ func (o *Timeoffsettingsrequest) UnmarshalJSON(b []byte) error {
 		o.SubmissionRangeEnforced = &SubmissionRangeEnforced
 	}
     
+	if SubmissionRangeType, ok := TimeoffsettingsrequestMap["submissionRangeType"].(string); ok {
+		o.SubmissionRangeType = &SubmissionRangeType
+	}
+    
 	if SubmissionEarliestDaysFromNow, ok := TimeoffsettingsrequestMap["submissionEarliestDaysFromNow"].(float64); ok {
 		SubmissionEarliestDaysFromNowInt := int(SubmissionEarliestDaysFromNow)
 		o.SubmissionEarliestDaysFromNow = &SubmissionEarliestDaysFromNowInt
@@ -119,6 +137,11 @@ func (o *Timeoffsettingsrequest) UnmarshalJSON(b []byte) error {
 	if SubmissionLatestDaysFromNow, ok := TimeoffsettingsrequestMap["submissionLatestDaysFromNow"].(float64); ok {
 		SubmissionLatestDaysFromNowInt := int(SubmissionLatestDaysFromNow)
 		o.SubmissionLatestDaysFromNow = &SubmissionLatestDaysFromNowInt
+	}
+	
+	if SubmissionLatestDate, ok := TimeoffsettingsrequestMap["submissionLatestDate"].(map[string]interface{}); ok {
+		SubmissionLatestDateString, _ := json.Marshal(SubmissionLatestDate)
+		json.Unmarshal(SubmissionLatestDateString, &o.SubmissionLatestDate)
 	}
 	
 

@@ -41,11 +41,14 @@ type Evaluationquestion struct {
 	// MultipleSelectOptionQuestions - Only used by Multiple Select type questions. A list of multiple choice questions representing selectable options.
 	MultipleSelectOptionQuestions *[]Evaluationquestion `json:"multipleSelectOptionQuestions,omitempty"`
 
-	// IsCritical
-	IsCritical *bool `json:"isCritical,omitempty"`
+	// DefaultAnswer - The default selected answer for the question
+	DefaultAnswer *Defaultanswer `json:"defaultAnswer,omitempty"`
 
 	// IsKill
 	IsKill *bool `json:"isKill,omitempty"`
+
+	// IsCritical
+	IsCritical *bool `json:"isCritical,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -131,9 +134,11 @@ func (o Evaluationquestion) MarshalJSON() ([]byte, error) {
 		
 		MultipleSelectOptionQuestions *[]Evaluationquestion `json:"multipleSelectOptionQuestions,omitempty"`
 		
-		IsCritical *bool `json:"isCritical,omitempty"`
+		DefaultAnswer *Defaultanswer `json:"defaultAnswer,omitempty"`
 		
 		IsKill *bool `json:"isKill,omitempty"`
+		
+		IsCritical *bool `json:"isCritical,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -156,9 +161,11 @@ func (o Evaluationquestion) MarshalJSON() ([]byte, error) {
 		
 		MultipleSelectOptionQuestions: o.MultipleSelectOptionQuestions,
 		
-		IsCritical: o.IsCritical,
+		DefaultAnswer: o.DefaultAnswer,
 		
 		IsKill: o.IsKill,
+		
+		IsCritical: o.IsCritical,
 		Alias:    (Alias)(o),
 	})
 }
@@ -213,12 +220,17 @@ func (o *Evaluationquestion) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(MultipleSelectOptionQuestionsString, &o.MultipleSelectOptionQuestions)
 	}
 	
-	if IsCritical, ok := EvaluationquestionMap["isCritical"].(bool); ok {
-		o.IsCritical = &IsCritical
+	if DefaultAnswer, ok := EvaluationquestionMap["defaultAnswer"].(map[string]interface{}); ok {
+		DefaultAnswerString, _ := json.Marshal(DefaultAnswer)
+		json.Unmarshal(DefaultAnswerString, &o.DefaultAnswer)
 	}
-    
+	
 	if IsKill, ok := EvaluationquestionMap["isKill"].(bool); ok {
 		o.IsKill = &IsKill
+	}
+    
+	if IsCritical, ok := EvaluationquestionMap["isCritical"].(bool); ok {
+		o.IsCritical = &IsCritical
 	}
     
 

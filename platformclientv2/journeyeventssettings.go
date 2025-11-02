@@ -42,7 +42,7 @@ type Journeyeventssettings struct {
 	ScrollDepthEvents *[]Scrollpercentageeventtrigger `json:"scrollDepthEvents,omitempty"`
 
 	// TrackingSettings - Configuration settings for tracking behavior and filtering
-	TrackingSettings *interface{} `json:"trackingSettings,omitempty"`
+	TrackingSettings *Trackingsettings `json:"trackingSettings,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -128,7 +128,7 @@ func (o Journeyeventssettings) MarshalJSON() ([]byte, error) {
 		
 		ScrollDepthEvents *[]Scrollpercentageeventtrigger `json:"scrollDepthEvents,omitempty"`
 		
-		TrackingSettings *interface{} `json:"trackingSettings,omitempty"`
+		TrackingSettings *Trackingsettings `json:"trackingSettings,omitempty"`
 		Alias
 	}{ 
 		Enabled: o.Enabled,

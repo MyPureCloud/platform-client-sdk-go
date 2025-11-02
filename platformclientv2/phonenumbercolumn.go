@@ -16,6 +16,9 @@ type Phonenumbercolumn struct {
 
 	// VarType
 	VarType *string `json:"type,omitempty"`
+
+	// CallableTimeColumnName
+	CallableTimeColumnName *string `json:"callableTimeColumnName,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Phonenumbercolumn) MarshalJSON() ([]byte, error) {
 		ColumnName *string `json:"columnName,omitempty"`
 		
 		VarType *string `json:"type,omitempty"`
+		
+		CallableTimeColumnName *string `json:"callableTimeColumnName,omitempty"`
 		Alias
 	}{ 
 		ColumnName: o.ColumnName,
 		
 		VarType: o.VarType,
+		
+		CallableTimeColumnName: o.CallableTimeColumnName,
 		Alias:    (Alias)(o),
 	})
 }
@@ -106,6 +113,10 @@ func (o *Phonenumbercolumn) UnmarshalJSON(b []byte) error {
     
 	if VarType, ok := PhonenumbercolumnMap["type"].(string); ok {
 		o.VarType = &VarType
+	}
+    
+	if CallableTimeColumnName, ok := PhonenumbercolumnMap["callableTimeColumnName"].(string); ok {
+		o.CallableTimeColumnName = &CallableTimeColumnName
 	}
     
 

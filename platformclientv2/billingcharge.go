@@ -20,17 +20,17 @@ type Billingcharge struct {
 	// Organizations - List of plans within the organization.
 	Organizations *[]Namedentity `json:"organizations,omitempty"`
 
-	// GetprepaidQuantity - The quantity of usage that is prepaid.
-	GetprepaidQuantity *int `json:"getprepaidQuantity,omitempty"`
+	// PrepaidQuantity - The quantity of usage that is prepaid.
+	PrepaidQuantity *int `json:"prepaidQuantity,omitempty"`
 
-	// GetfairuseQuantity - The quantity of usage allowed under fair use policies.
-	GetfairuseQuantity *int `json:"getfairuseQuantity,omitempty"`
+	// FairuseQuantity - The quantity of usage allowed under fair use policies.
+	FairuseQuantity *int `json:"fairuseQuantity,omitempty"`
 
-	// GetactualQuantity - The actual quantity of usage.
-	GetactualQuantity *int `json:"getactualQuantity,omitempty"`
+	// ActualQuantity - The actual quantity of usage.
+	ActualQuantity *int `json:"actualQuantity,omitempty"`
 
-	// GetoverageQuantity - The quantity of usage that exceeds prepaid or fair use limits.
-	GetoverageQuantity *int `json:"getoverageQuantity,omitempty"`
+	// OverageQuantity - The quantity of usage that exceeds prepaid or fair use limits.
+	OverageQuantity *int `json:"overageQuantity,omitempty"`
 
 	// OverageRate - The rate charged per unit of overage.
 	OverageRate *float32 `json:"overageRate,omitempty"`
@@ -111,13 +111,13 @@ func (o Billingcharge) MarshalJSON() ([]byte, error) {
 		
 		Organizations *[]Namedentity `json:"organizations,omitempty"`
 		
-		GetprepaidQuantity *int `json:"getprepaidQuantity,omitempty"`
+		PrepaidQuantity *int `json:"prepaidQuantity,omitempty"`
 		
-		GetfairuseQuantity *int `json:"getfairuseQuantity,omitempty"`
+		FairuseQuantity *int `json:"fairuseQuantity,omitempty"`
 		
-		GetactualQuantity *int `json:"getactualQuantity,omitempty"`
+		ActualQuantity *int `json:"actualQuantity,omitempty"`
 		
-		GetoverageQuantity *int `json:"getoverageQuantity,omitempty"`
+		OverageQuantity *int `json:"overageQuantity,omitempty"`
 		
 		OverageRate *float32 `json:"overageRate,omitempty"`
 		
@@ -132,13 +132,13 @@ func (o Billingcharge) MarshalJSON() ([]byte, error) {
 		
 		Organizations: o.Organizations,
 		
-		GetprepaidQuantity: o.GetprepaidQuantity,
+		PrepaidQuantity: o.PrepaidQuantity,
 		
-		GetfairuseQuantity: o.GetfairuseQuantity,
+		FairuseQuantity: o.FairuseQuantity,
 		
-		GetactualQuantity: o.GetactualQuantity,
+		ActualQuantity: o.ActualQuantity,
 		
-		GetoverageQuantity: o.GetoverageQuantity,
+		OverageQuantity: o.OverageQuantity,
 		
 		OverageRate: o.OverageRate,
 		
@@ -170,24 +170,24 @@ func (o *Billingcharge) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(OrganizationsString, &o.Organizations)
 	}
 	
-	if GetprepaidQuantity, ok := BillingchargeMap["getprepaidQuantity"].(float64); ok {
-		GetprepaidQuantityInt := int(GetprepaidQuantity)
-		o.GetprepaidQuantity = &GetprepaidQuantityInt
+	if PrepaidQuantity, ok := BillingchargeMap["prepaidQuantity"].(float64); ok {
+		PrepaidQuantityInt := int(PrepaidQuantity)
+		o.PrepaidQuantity = &PrepaidQuantityInt
 	}
 	
-	if GetfairuseQuantity, ok := BillingchargeMap["getfairuseQuantity"].(float64); ok {
-		GetfairuseQuantityInt := int(GetfairuseQuantity)
-		o.GetfairuseQuantity = &GetfairuseQuantityInt
+	if FairuseQuantity, ok := BillingchargeMap["fairuseQuantity"].(float64); ok {
+		FairuseQuantityInt := int(FairuseQuantity)
+		o.FairuseQuantity = &FairuseQuantityInt
 	}
 	
-	if GetactualQuantity, ok := BillingchargeMap["getactualQuantity"].(float64); ok {
-		GetactualQuantityInt := int(GetactualQuantity)
-		o.GetactualQuantity = &GetactualQuantityInt
+	if ActualQuantity, ok := BillingchargeMap["actualQuantity"].(float64); ok {
+		ActualQuantityInt := int(ActualQuantity)
+		o.ActualQuantity = &ActualQuantityInt
 	}
 	
-	if GetoverageQuantity, ok := BillingchargeMap["getoverageQuantity"].(float64); ok {
-		GetoverageQuantityInt := int(GetoverageQuantity)
-		o.GetoverageQuantity = &GetoverageQuantityInt
+	if OverageQuantity, ok := BillingchargeMap["overageQuantity"].(float64); ok {
+		OverageQuantityInt := int(OverageQuantity)
+		o.OverageQuantity = &OverageQuantityInt
 	}
 	
 	if OverageRate, ok := BillingchargeMap["overageRate"].(float64); ok {

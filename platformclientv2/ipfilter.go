@@ -10,7 +10,13 @@ import (
 // Ipfilter - Configuration for filtering tracking based on IP addresses.
 type Ipfilter struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// IpAddress - IP address or CIDR range to filter (e.g. '192.168.1.0/24').
+	IpAddress *string `json:"ipAddress,omitempty"`
+
+	// Name - Descriptive name for the IP address filter.
+	Name *string `json:"name,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Ipfilter) SetField(field string, fieldValue interface{}) {
@@ -74,8 +80,16 @@ func (o Ipfilter) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Ipfilter
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		IpAddress *string `json:"ipAddress,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		Alias
+	}{ 
+		IpAddress: o.IpAddress,
+		
+		Name: o.Name,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -86,6 +100,14 @@ func (o *Ipfilter) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if IpAddress, ok := IpfilterMap["ipAddress"].(string); ok {
+		o.IpAddress = &IpAddress
+	}
+    
+	if Name, ok := IpfilterMap["name"].(string); ok {
+		o.Name = &Name
+	}
+    
 
 	return nil
 }

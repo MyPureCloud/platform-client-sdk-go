@@ -10,7 +10,19 @@ import (
 // Trackingsettings - Settings that control how tracking data is collected and filtered.
 type Trackingsettings struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// ExcludedQueryParameters - List of parameters to be excluded from the query string.
+	ExcludedQueryParameters *[]string `json:"excludedQueryParameters,omitempty"`
+
+	// ShouldKeepUrlFragment - Whether or not to keep the URL fragment.
+	ShouldKeepUrlFragment *bool `json:"shouldKeepUrlFragment,omitempty"`
+
+	// SearchQueryParameters - List of query parameters used for search (e.g. 'query').
+	SearchQueryParameters *[]string `json:"searchQueryParameters,omitempty"`
+
+	// IpFilters - IP address filtering configuration for tracking restrictions.
+	IpFilters *[]Ipfilter `json:"ipFilters,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Trackingsettings) SetField(field string, fieldValue interface{}) {
@@ -74,8 +86,24 @@ func (o Trackingsettings) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Trackingsettings
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		ExcludedQueryParameters *[]string `json:"excludedQueryParameters,omitempty"`
+		
+		ShouldKeepUrlFragment *bool `json:"shouldKeepUrlFragment,omitempty"`
+		
+		SearchQueryParameters *[]string `json:"searchQueryParameters,omitempty"`
+		
+		IpFilters *[]Ipfilter `json:"ipFilters,omitempty"`
+		Alias
+	}{ 
+		ExcludedQueryParameters: o.ExcludedQueryParameters,
+		
+		ShouldKeepUrlFragment: o.ShouldKeepUrlFragment,
+		
+		SearchQueryParameters: o.SearchQueryParameters,
+		
+		IpFilters: o.IpFilters,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -84,6 +112,25 @@ func (o *Trackingsettings) UnmarshalJSON(b []byte) error {
 	err := json.Unmarshal(b, &TrackingsettingsMap)
 	if err != nil {
 		return err
+	}
+	
+	if ExcludedQueryParameters, ok := TrackingsettingsMap["excludedQueryParameters"].([]interface{}); ok {
+		ExcludedQueryParametersString, _ := json.Marshal(ExcludedQueryParameters)
+		json.Unmarshal(ExcludedQueryParametersString, &o.ExcludedQueryParameters)
+	}
+	
+	if ShouldKeepUrlFragment, ok := TrackingsettingsMap["shouldKeepUrlFragment"].(bool); ok {
+		o.ShouldKeepUrlFragment = &ShouldKeepUrlFragment
+	}
+    
+	if SearchQueryParameters, ok := TrackingsettingsMap["searchQueryParameters"].([]interface{}); ok {
+		SearchQueryParametersString, _ := json.Marshal(SearchQueryParameters)
+		json.Unmarshal(SearchQueryParametersString, &o.SearchQueryParameters)
+	}
+	
+	if IpFilters, ok := TrackingsettingsMap["ipFilters"].([]interface{}); ok {
+		IpFiltersString, _ := json.Marshal(IpFilters)
+		json.Unmarshal(IpFiltersString, &o.IpFilters)
 	}
 	
 

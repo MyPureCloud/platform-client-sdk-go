@@ -6861,7 +6861,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermf
 // GetWorkforcemanagementBusinessunitWeekShorttermforecastStaffingrequirement invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekDateId}/shorttermforecasts/{forecastId}/staffingrequirement
 //
 // Get the staffing requirement by planning group for a forecast
-func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermforecastStaffingrequirement(businessUnitId string, weekDateId time.Time, forecastId string, weekNumbers []string) (*Buforecaststaffingrequirementsresultresponse, *APIResponse, error) {
+func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermforecastStaffingrequirement(businessUnitId string, weekDateId time.Time, forecastId string, weekNumbers []string, expand []string) (*Buforecaststaffingrequirementsresultresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekDateId}/shorttermforecasts/{forecastId}/staffingrequirement"
@@ -6907,6 +6907,8 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermf
 	}
 	
 	queryParams["weekNumbers"] = a.Configuration.APIClient.ParameterToString(weekNumbers, "multi")
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

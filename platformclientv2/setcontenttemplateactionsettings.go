@@ -11,10 +11,10 @@ import (
 type Setcontenttemplateactionsettings struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// SmsContentTemplateId - A string of sms contentTemplateId.
+	// SmsContentTemplateId - A String containing the SMS contentTemplateId.
 	SmsContentTemplateId *string `json:"smsContentTemplateId,omitempty"`
 
-	// EmailContentTemplateId - A string of email contentTemplateId.
+	// EmailContentTemplateId - A String containing the Email contentTemplateId.
 	EmailContentTemplateId *string `json:"emailContentTemplateId,omitempty"`
 }
 

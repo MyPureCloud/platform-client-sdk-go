@@ -11,7 +11,7 @@ import (
 type Enrichfieldrule struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Field - A restricted JSONPath naming the specific field this combining behavior should apply to. You may use dot-notation for named fields, and array indexing for lists, but nothing more sophisticated (e.g. wildcards, sublists, filter expressions, etc). For example, to target the `firstName` field of a Contact, this should be \"$.firstName\".
+	// Field - A restricted JSONPath naming the specific field this combining behavior should apply to. Only dot notation with alphanumeric characters and underscores (e.g., $.address.address1, $.externalOrganization, $.tickers) are allowed. Bracket notation, array indexing, wildcards, sublists, and filter expressions are not permitted.
 	Field *string `json:"field,omitempty"`
 
 	// Action - The behavior for how to combine data from the request body and the database.

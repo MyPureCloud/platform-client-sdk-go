@@ -7,25 +7,22 @@ import (
 	"strings"
 )
 
-// Evaluationformdivisionview
-type Evaluationformdivisionview struct { 
+// Conversationschemadata
+type Conversationschemadata struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The globally unique identifier for the object.
-	Id *string `json:"id,omitempty"`
+	// Schema - Schema that defines attributes.
+	Schema *Conversationschemareference `json:"schema,omitempty"`
 
-	// Name
-	Name *string `json:"name,omitempty"`
+	// Attributes - Attributes to use for filtering; number of elements: min: 1, max: 5.
+	Attributes *[]Conversationschemaattribute `json:"attributes,omitempty"`
 
-	// ContextId - Unique Id for all versions of this form
-	ContextId *string `json:"contextId,omitempty"`
-
-	// SelfUri - The URI for this object
-	SelfUri *string `json:"selfUri,omitempty"`
+	// Operator - Operator to apply for multiple attributes, default: MatchAll
+	Operator *string `json:"operator,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Evaluationformdivisionview) SetField(field string, fieldValue interface{}) {
+func (o *Conversationschemadata) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -46,7 +43,7 @@ func (o *Evaluationformdivisionview) SetField(field string, fieldValue interface
 	o.SetFieldNames[field] = true
 }
 
-func (o Evaluationformdivisionview) MarshalJSON() ([]byte, error) {
+func (o Conversationschemadata) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -84,50 +81,44 @@ func (o Evaluationformdivisionview) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Evaluationformdivisionview
+	type Alias Conversationschemadata
 	
 	return json.Marshal(&struct { 
-		Id *string `json:"id,omitempty"`
+		Schema *Conversationschemareference `json:"schema,omitempty"`
 		
-		Name *string `json:"name,omitempty"`
+		Attributes *[]Conversationschemaattribute `json:"attributes,omitempty"`
 		
-		ContextId *string `json:"contextId,omitempty"`
-		
-		SelfUri *string `json:"selfUri,omitempty"`
+		Operator *string `json:"operator,omitempty"`
 		Alias
 	}{ 
-		Id: o.Id,
+		Schema: o.Schema,
 		
-		Name: o.Name,
+		Attributes: o.Attributes,
 		
-		ContextId: o.ContextId,
-		
-		SelfUri: o.SelfUri,
+		Operator: o.Operator,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Evaluationformdivisionview) UnmarshalJSON(b []byte) error {
-	var EvaluationformdivisionviewMap map[string]interface{}
-	err := json.Unmarshal(b, &EvaluationformdivisionviewMap)
+func (o *Conversationschemadata) UnmarshalJSON(b []byte) error {
+	var ConversationschemadataMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationschemadataMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := EvaluationformdivisionviewMap["id"].(string); ok {
-		o.Id = &Id
+	if Schema, ok := ConversationschemadataMap["schema"].(map[string]interface{}); ok {
+		SchemaString, _ := json.Marshal(Schema)
+		json.Unmarshal(SchemaString, &o.Schema)
 	}
-    
-	if Name, ok := EvaluationformdivisionviewMap["name"].(string); ok {
-		o.Name = &Name
+	
+	if Attributes, ok := ConversationschemadataMap["attributes"].([]interface{}); ok {
+		AttributesString, _ := json.Marshal(Attributes)
+		json.Unmarshal(AttributesString, &o.Attributes)
 	}
-    
-	if ContextId, ok := EvaluationformdivisionviewMap["contextId"].(string); ok {
-		o.ContextId = &ContextId
-	}
-    
-	if SelfUri, ok := EvaluationformdivisionviewMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
+	
+	if Operator, ok := ConversationschemadataMap["operator"].(string); ok {
+		o.Operator = &Operator
 	}
     
 
@@ -135,7 +126,7 @@ func (o *Evaluationformdivisionview) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Evaluationformdivisionview) String() string {
+func (o *Conversationschemadata) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 
