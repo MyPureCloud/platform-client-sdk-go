@@ -20,6 +20,9 @@ type Channeltopic struct {
 	// RejectionReason
 	RejectionReason *string `json:"rejectionReason,omitempty"`
 
+	// MissingPermissions
+	MissingPermissions *[]string `json:"missingPermissions,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -93,6 +96,8 @@ func (o Channeltopic) MarshalJSON() ([]byte, error) {
 		
 		RejectionReason *string `json:"rejectionReason,omitempty"`
 		
+		MissingPermissions *[]string `json:"missingPermissions,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -101,6 +106,8 @@ func (o Channeltopic) MarshalJSON() ([]byte, error) {
 		State: o.State,
 		
 		RejectionReason: o.RejectionReason,
+		
+		MissingPermissions: o.MissingPermissions,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -126,6 +133,11 @@ func (o *Channeltopic) UnmarshalJSON(b []byte) error {
 		o.RejectionReason = &RejectionReason
 	}
     
+	if MissingPermissions, ok := ChanneltopicMap["missingPermissions"].([]interface{}); ok {
+		MissingPermissionsString, _ := json.Marshal(MissingPermissions)
+		json.Unmarshal(MissingPermissionsString, &o.MissingPermissions)
+	}
+	
 	if SelfUri, ok := ChanneltopicMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

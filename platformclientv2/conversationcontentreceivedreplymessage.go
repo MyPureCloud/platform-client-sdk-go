@@ -11,11 +11,17 @@ import (
 type Conversationcontentreceivedreplymessage struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
+	// Header - Text to show in the header.
+	Header *string `json:"header,omitempty"`
+
 	// Title - Text to show in the title.
 	Title *string `json:"title,omitempty"`
 
 	// Subtitle - Text to show in the subtitle.
 	Subtitle *string `json:"subtitle,omitempty"`
+
+	// ButtonLabel - Text to show on the button label.
+	ButtonLabel *string `json:"buttonLabel,omitempty"`
 
 	// ImageUrl - URL of an image.
 	ImageUrl *string `json:"imageUrl,omitempty"`
@@ -84,16 +90,24 @@ func (o Conversationcontentreceivedreplymessage) MarshalJSON() ([]byte, error) {
 	type Alias Conversationcontentreceivedreplymessage
 	
 	return json.Marshal(&struct { 
+		Header *string `json:"header,omitempty"`
+		
 		Title *string `json:"title,omitempty"`
 		
 		Subtitle *string `json:"subtitle,omitempty"`
 		
+		ButtonLabel *string `json:"buttonLabel,omitempty"`
+		
 		ImageUrl *string `json:"imageUrl,omitempty"`
 		Alias
 	}{ 
+		Header: o.Header,
+		
 		Title: o.Title,
 		
 		Subtitle: o.Subtitle,
+		
+		ButtonLabel: o.ButtonLabel,
 		
 		ImageUrl: o.ImageUrl,
 		Alias:    (Alias)(o),
@@ -107,12 +121,20 @@ func (o *Conversationcontentreceivedreplymessage) UnmarshalJSON(b []byte) error 
 		return err
 	}
 	
+	if Header, ok := ConversationcontentreceivedreplymessageMap["header"].(string); ok {
+		o.Header = &Header
+	}
+    
 	if Title, ok := ConversationcontentreceivedreplymessageMap["title"].(string); ok {
 		o.Title = &Title
 	}
     
 	if Subtitle, ok := ConversationcontentreceivedreplymessageMap["subtitle"].(string); ok {
 		o.Subtitle = &Subtitle
+	}
+    
+	if ButtonLabel, ok := ConversationcontentreceivedreplymessageMap["buttonLabel"].(string); ok {
+		o.ButtonLabel = &ButtonLabel
 	}
     
 	if ImageUrl, ok := ConversationcontentreceivedreplymessageMap["imageUrl"].(string); ok {

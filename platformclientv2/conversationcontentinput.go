@@ -28,6 +28,12 @@ type Conversationcontentinput struct {
 
 	// IsMultipleLine - Whether the input should allow multiple lines of text.
 	IsMultipleLine *bool `json:"isMultipleLine,omitempty"`
+
+	// KeyboardType - Type of keyboard to be shown.
+	KeyboardType *string `json:"keyboardType,omitempty"`
+
+	// AutoCompleteType - A string value representing the keyboard and system information about the expected semantic meaning for the content that users enter.
+	AutoCompleteType *string `json:"autoCompleteType,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -104,6 +110,10 @@ func (o Conversationcontentinput) MarshalJSON() ([]byte, error) {
 		IsRequired *bool `json:"isRequired,omitempty"`
 		
 		IsMultipleLine *bool `json:"isMultipleLine,omitempty"`
+		
+		KeyboardType *string `json:"keyboardType,omitempty"`
+		
+		AutoCompleteType *string `json:"autoCompleteType,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -117,6 +127,10 @@ func (o Conversationcontentinput) MarshalJSON() ([]byte, error) {
 		IsRequired: o.IsRequired,
 		
 		IsMultipleLine: o.IsMultipleLine,
+		
+		KeyboardType: o.KeyboardType,
+		
+		AutoCompleteType: o.AutoCompleteType,
 		Alias:    (Alias)(o),
 	})
 }
@@ -150,6 +164,14 @@ func (o *Conversationcontentinput) UnmarshalJSON(b []byte) error {
     
 	if IsMultipleLine, ok := ConversationcontentinputMap["isMultipleLine"].(bool); ok {
 		o.IsMultipleLine = &IsMultipleLine
+	}
+    
+	if KeyboardType, ok := ConversationcontentinputMap["keyboardType"].(string); ok {
+		o.KeyboardType = &KeyboardType
+	}
+    
+	if AutoCompleteType, ok := ConversationcontentinputMap["autoCompleteType"].(string); ok {
+		o.AutoCompleteType = &AutoCompleteType
 	}
     
 

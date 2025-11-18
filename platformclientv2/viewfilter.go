@@ -709,6 +709,12 @@ type Viewfilter struct {
 
 	// ContentModerationFlags - A set of Content Moderation Flags for filtering
 	ContentModerationFlags *[]string `json:"contentModerationFlags,omitempty"`
+
+	// SessionExpired - Filter to indicate for if session is expired
+	SessionExpired *bool `json:"sessionExpired,omitempty"`
+
+	// EngagementSource - The engagement sources used to filter the view
+	EngagementSource *[]string `json:"engagementSource,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -1239,6 +1245,10 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		SentimentTrendCategories *[]string `json:"sentimentTrendCategories,omitempty"`
 		
 		ContentModerationFlags *[]string `json:"contentModerationFlags,omitempty"`
+		
+		SessionExpired *bool `json:"sessionExpired,omitempty"`
+		
+		EngagementSource *[]string `json:"engagementSource,omitempty"`
 		Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -1706,6 +1716,10 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		SentimentTrendCategories: o.SentimentTrendCategories,
 		
 		ContentModerationFlags: o.ContentModerationFlags,
+		
+		SessionExpired: o.SessionExpired,
+		
+		EngagementSource: o.EngagementSource,
 		Alias:    (Alias)(o),
 	})
 }
@@ -2827,6 +2841,15 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if ContentModerationFlags, ok := ViewfilterMap["contentModerationFlags"].([]interface{}); ok {
 		ContentModerationFlagsString, _ := json.Marshal(ContentModerationFlags)
 		json.Unmarshal(ContentModerationFlagsString, &o.ContentModerationFlags)
+	}
+	
+	if SessionExpired, ok := ViewfilterMap["sessionExpired"].(bool); ok {
+		o.SessionExpired = &SessionExpired
+	}
+    
+	if EngagementSource, ok := ViewfilterMap["engagementSource"].([]interface{}); ok {
+		EngagementSourceString, _ := json.Marshal(EngagementSource)
+		json.Unmarshal(EngagementSourceString, &o.EngagementSource)
 	}
 	
 

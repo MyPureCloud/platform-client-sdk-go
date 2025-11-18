@@ -17,7 +17,7 @@ type Facebookdataingestionrulerequest struct {
 	// Description - A description of the data ingestion rule.
 	Description *string `json:"description,omitempty"`
 
-	// IntegrationId - The Integration Id from which to ingest public social posts. This entity is created using the /conversations/messaging/integrations/facebook resource
+	// IntegrationId - Id of the Integration when source is owned (Authenticated). This entity is created using the /conversations/messaging/integrations/facebook resource. Optional when configuring non-owned pages.
 	IntegrationId *string `json:"integrationId,omitempty"`
 }
 

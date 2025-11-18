@@ -4129,31 +4129,30 @@ func (a TaskManagementApi) PatchTaskmanagementWorkitemAssignment(workitemId stri
 // PatchTaskmanagementWorkitemUserWrapups invokes PATCH /api/v2/taskmanagement/workitems/{workitemId}/users/{userId}/wrapups
 //
 // Add/Remove a wrapup code for a given user in a workitem.
-func (a TaskManagementApi) PatchTaskmanagementWorkitemUserWrapups(workitemId string, userId string, body Workitemwrapupupdate) (*Workitemwrapup, *APIResponse, error) {
+func (a TaskManagementApi) PatchTaskmanagementWorkitemUserWrapups(workitemId string, userId string, body Workitemwrapupupdate) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/taskmanagement/workitems/{workitemId}/users/{userId}/wrapups"
 	path = strings.Replace(path, "{workitemId}", url.PathEscape(fmt.Sprintf("%v", workitemId)), -1)
 	path = strings.Replace(path, "{userId}", url.PathEscape(fmt.Sprintf("%v", userId)), -1)
-	defaultReturn := new(Workitemwrapup)
 	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'workitemId' is set
 	if &workitemId == nil {
 		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'workitemId' when calling TaskManagementApi->PatchTaskmanagementWorkitemUserWrapups")
+		return nil, errors.New("Missing required parameter 'workitemId' when calling TaskManagementApi->PatchTaskmanagementWorkitemUserWrapups")
 	}
 	// verify the required parameter 'userId' is set
 	if &userId == nil {
 		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling TaskManagementApi->PatchTaskmanagementWorkitemUserWrapups")
+		return nil, errors.New("Missing required parameter 'userId' when calling TaskManagementApi->PatchTaskmanagementWorkitemUserWrapups")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
 		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TaskManagementApi->PatchTaskmanagementWorkitemUserWrapups")
+		return nil, errors.New("Missing required parameter 'body' when calling TaskManagementApi->PatchTaskmanagementWorkitemUserWrapups")
 	}
 
 	headerParams := make(map[string]string)
@@ -4206,44 +4205,37 @@ func (a TaskManagementApi) PatchTaskmanagementWorkitemUserWrapups(workitemId str
 	// body params
 	postBody = &body
 
-	var successPayload *Workitemwrapup
+
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else if response.HasBody {
-		if "Workitemwrapup" == "string" {
-			copy(response.RawBody, &successPayload)
-		} else {
-			err = json.Unmarshal(response.RawBody, &successPayload)
-		}
 	}
-	return successPayload, response, err
+	return response, err
 }
 
 // PatchTaskmanagementWorkitemUsersMeWrapups invokes PATCH /api/v2/taskmanagement/workitems/{workitemId}/users/me/wrapups
 //
 // Add/Remove a wrapup code for the current user in a workitem.
-func (a TaskManagementApi) PatchTaskmanagementWorkitemUsersMeWrapups(workitemId string, body Workitemwrapupupdate) (*Workitemwrapup, *APIResponse, error) {
+func (a TaskManagementApi) PatchTaskmanagementWorkitemUsersMeWrapups(workitemId string, body Workitemwrapupupdate) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/taskmanagement/workitems/{workitemId}/users/me/wrapups"
 	path = strings.Replace(path, "{workitemId}", url.PathEscape(fmt.Sprintf("%v", workitemId)), -1)
-	defaultReturn := new(Workitemwrapup)
 	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'workitemId' is set
 	if &workitemId == nil {
 		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'workitemId' when calling TaskManagementApi->PatchTaskmanagementWorkitemUsersMeWrapups")
+		return nil, errors.New("Missing required parameter 'workitemId' when calling TaskManagementApi->PatchTaskmanagementWorkitemUsersMeWrapups")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
 		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TaskManagementApi->PatchTaskmanagementWorkitemUsersMeWrapups")
+		return nil, errors.New("Missing required parameter 'body' when calling TaskManagementApi->PatchTaskmanagementWorkitemUsersMeWrapups")
 	}
 
 	headerParams := make(map[string]string)
@@ -4296,20 +4288,14 @@ func (a TaskManagementApi) PatchTaskmanagementWorkitemUsersMeWrapups(workitemId 
 	// body params
 	postBody = &body
 
-	var successPayload *Workitemwrapup
+
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else if response.HasBody {
-		if "Workitemwrapup" == "string" {
-			copy(response.RawBody, &successPayload)
-		} else {
-			err = json.Unmarshal(response.RawBody, &successPayload)
-		}
 	}
-	return successPayload, response, err
+	return response, err
 }
 
 // PatchTaskmanagementWorkitemsBulkAddJob invokes PATCH /api/v2/taskmanagement/workitems/bulk/add/jobs/{bulkJobId}

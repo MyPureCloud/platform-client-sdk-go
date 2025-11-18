@@ -39,7 +39,7 @@ type Facebookdataingestionruleresponse struct {
 	// Countries - The countries is available only on twitter data ingestion rule. ISO 3166-1 alpha-2 country codes where Data Ingestion Rules should apply. Defaults to worldwide.
 	Countries *[]string `json:"countries,omitempty"`
 
-	// IntegrationId - The Integration Id from which public social posts are ingested. This entity is created using the /conversations/messaging/integrations/facebook resource
+	// IntegrationId - Id of the Integration when source is owned (Authenticated). This entity is created using the /conversations/messaging/integrations/facebook resource. Optional when configuring non-owned pages.
 	IntegrationId *string `json:"integrationId,omitempty"`
 
 	// SelfUri - The URI for this object

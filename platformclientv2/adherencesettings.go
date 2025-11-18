@@ -28,6 +28,9 @@ type Adherencesettings struct {
 
 	// IgnoredActivityCategories - Activity categories that should be ignored for adherence purposes
 	IgnoredActivityCategories *Ignoredactivitycategories `json:"ignoredActivityCategories,omitempty"`
+
+	// IgnoredActivityCodeIds - Activity code IDs that should be ignored for adherence purposes
+	IgnoredActivityCodeIds *Ignoredactivitycodeids `json:"ignoredActivityCodeIds,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -104,6 +107,8 @@ func (o Adherencesettings) MarshalJSON() ([]byte, error) {
 		TrackOnQueueActivity *bool `json:"trackOnQueueActivity,omitempty"`
 		
 		IgnoredActivityCategories *Ignoredactivitycategories `json:"ignoredActivityCategories,omitempty"`
+		
+		IgnoredActivityCodeIds *Ignoredactivitycodeids `json:"ignoredActivityCodeIds,omitempty"`
 		Alias
 	}{ 
 		SevereAlertThresholdMinutes: o.SevereAlertThresholdMinutes,
@@ -117,6 +122,8 @@ func (o Adherencesettings) MarshalJSON() ([]byte, error) {
 		TrackOnQueueActivity: o.TrackOnQueueActivity,
 		
 		IgnoredActivityCategories: o.IgnoredActivityCategories,
+		
+		IgnoredActivityCodeIds: o.IgnoredActivityCodeIds,
 		Alias:    (Alias)(o),
 	})
 }
@@ -154,6 +161,11 @@ func (o *Adherencesettings) UnmarshalJSON(b []byte) error {
 	if IgnoredActivityCategories, ok := AdherencesettingsMap["ignoredActivityCategories"].(map[string]interface{}); ok {
 		IgnoredActivityCategoriesString, _ := json.Marshal(IgnoredActivityCategories)
 		json.Unmarshal(IgnoredActivityCategoriesString, &o.IgnoredActivityCategories)
+	}
+	
+	if IgnoredActivityCodeIds, ok := AdherencesettingsMap["ignoredActivityCodeIds"].(map[string]interface{}); ok {
+		IgnoredActivityCodeIdsString, _ := json.Marshal(IgnoredActivityCodeIds)
+		json.Unmarshal(IgnoredActivityCodeIdsString, &o.IgnoredActivityCodeIds)
 	}
 	
 

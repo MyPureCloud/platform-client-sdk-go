@@ -12,7 +12,7 @@ import (
 type Bushorttermforecastweekreference struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - Forecast id used in this work plan bid
+	// Id - The ID of the forecast
 	Id *string `json:"id,omitempty"`
 
 	// WeekDate - The weekDate of the short term forecast in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
@@ -21,7 +21,7 @@ type Bushorttermforecastweekreference struct {
 	// Description - The description of the short term forecast
 	Description *string `json:"description,omitempty"`
 
-	// WeekNumber - The week number used for this bid. First week starts with number 1
+	// WeekNumber - The week number to be used from the selected forecast. First week starts with number 1
 	WeekNumber *int `json:"weekNumber,omitempty"`
 
 	// SelfUri - The URI for this object

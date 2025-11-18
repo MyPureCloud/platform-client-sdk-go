@@ -7,12 +7,12 @@ import (
 	"strings"
 )
 
-// Learningmodulesdomainentitylisting
-type Learningmodulesdomainentitylisting struct { 
+// Messagemedialisting
+type Messagemedialisting struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Entities
-	Entities *[]Learningmodule `json:"entities,omitempty"`
+	Entities *[]Messagemediadata `json:"entities,omitempty"`
 
 	// PageSize
 	PageSize *int `json:"pageSize,omitempty"`
@@ -23,27 +23,27 @@ type Learningmodulesdomainentitylisting struct {
 	// Total
 	Total *int `json:"total,omitempty"`
 
-	// FirstUri
-	FirstUri *string `json:"firstUri,omitempty"`
-
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
-	// SelfUri
-	SelfUri *string `json:"selfUri,omitempty"`
-
 	// PreviousUri
 	PreviousUri *string `json:"previousUri,omitempty"`
 
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
 
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
+
+	// FirstUri
+	FirstUri *string `json:"firstUri,omitempty"`
+
+	// SelfUri
+	SelfUri *string `json:"selfUri,omitempty"`
+
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Learningmodulesdomainentitylisting) SetField(field string, fieldValue interface{}) {
+func (o *Messagemedialisting) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -64,7 +64,7 @@ func (o *Learningmodulesdomainentitylisting) SetField(field string, fieldValue i
 	o.SetFieldNames[field] = true
 }
 
-func (o Learningmodulesdomainentitylisting) MarshalJSON() ([]byte, error) {
+func (o Messagemedialisting) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -102,10 +102,10 @@ func (o Learningmodulesdomainentitylisting) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Learningmodulesdomainentitylisting
+	type Alias Messagemedialisting
 	
 	return json.Marshal(&struct { 
-		Entities *[]Learningmodule `json:"entities,omitempty"`
+		Entities *[]Messagemediadata `json:"entities,omitempty"`
 		
 		PageSize *int `json:"pageSize,omitempty"`
 		
@@ -113,15 +113,15 @@ func (o Learningmodulesdomainentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
-		FirstUri *string `json:"firstUri,omitempty"`
-		
-		LastUri *string `json:"lastUri,omitempty"`
-		
-		SelfUri *string `json:"selfUri,omitempty"`
-		
 		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		NextUri *string `json:"nextUri,omitempty"`
+		
+		LastUri *string `json:"lastUri,omitempty"`
+		
+		FirstUri *string `json:"firstUri,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		Alias
@@ -134,69 +134,69 @@ func (o Learningmodulesdomainentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
-		FirstUri: o.FirstUri,
-		
-		LastUri: o.LastUri,
-		
-		SelfUri: o.SelfUri,
-		
 		PreviousUri: o.PreviousUri,
 		
 		NextUri: o.NextUri,
+		
+		LastUri: o.LastUri,
+		
+		FirstUri: o.FirstUri,
+		
+		SelfUri: o.SelfUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Learningmodulesdomainentitylisting) UnmarshalJSON(b []byte) error {
-	var LearningmodulesdomainentitylistingMap map[string]interface{}
-	err := json.Unmarshal(b, &LearningmodulesdomainentitylistingMap)
+func (o *Messagemedialisting) UnmarshalJSON(b []byte) error {
+	var MessagemedialistingMap map[string]interface{}
+	err := json.Unmarshal(b, &MessagemedialistingMap)
 	if err != nil {
 		return err
 	}
 	
-	if Entities, ok := LearningmodulesdomainentitylistingMap["entities"].([]interface{}); ok {
+	if Entities, ok := MessagemedialistingMap["entities"].([]interface{}); ok {
 		EntitiesString, _ := json.Marshal(Entities)
 		json.Unmarshal(EntitiesString, &o.Entities)
 	}
 	
-	if PageSize, ok := LearningmodulesdomainentitylistingMap["pageSize"].(float64); ok {
+	if PageSize, ok := MessagemedialistingMap["pageSize"].(float64); ok {
 		PageSizeInt := int(PageSize)
 		o.PageSize = &PageSizeInt
 	}
 	
-	if PageNumber, ok := LearningmodulesdomainentitylistingMap["pageNumber"].(float64); ok {
+	if PageNumber, ok := MessagemedialistingMap["pageNumber"].(float64); ok {
 		PageNumberInt := int(PageNumber)
 		o.PageNumber = &PageNumberInt
 	}
 	
-	if Total, ok := LearningmodulesdomainentitylistingMap["total"].(float64); ok {
+	if Total, ok := MessagemedialistingMap["total"].(float64); ok {
 		TotalInt := int(Total)
 		o.Total = &TotalInt
 	}
 	
-	if FirstUri, ok := LearningmodulesdomainentitylistingMap["firstUri"].(string); ok {
-		o.FirstUri = &FirstUri
-	}
-    
-	if LastUri, ok := LearningmodulesdomainentitylistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
-	if SelfUri, ok := LearningmodulesdomainentitylistingMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
-	}
-    
-	if PreviousUri, ok := LearningmodulesdomainentitylistingMap["previousUri"].(string); ok {
+	if PreviousUri, ok := MessagemedialistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
 	}
     
-	if NextUri, ok := LearningmodulesdomainentitylistingMap["nextUri"].(string); ok {
+	if NextUri, ok := MessagemedialistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
     
-	if PageCount, ok := LearningmodulesdomainentitylistingMap["pageCount"].(float64); ok {
+	if LastUri, ok := MessagemedialistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
+	}
+    
+	if FirstUri, ok := MessagemedialistingMap["firstUri"].(string); ok {
+		o.FirstUri = &FirstUri
+	}
+    
+	if SelfUri, ok := MessagemedialistingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+    
+	if PageCount, ok := MessagemedialistingMap["pageCount"].(float64); ok {
 		PageCountInt := int(PageCount)
 		o.PageCount = &PageCountInt
 	}
@@ -206,7 +206,7 @@ func (o *Learningmodulesdomainentitylisting) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Learningmodulesdomainentitylisting) String() string {
+func (o *Messagemedialisting) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

@@ -22,6 +22,9 @@ type Webmessagingbuttonresponse struct {
 
 	// Payload - The response payload associated with the clicked button.
 	Payload *string `json:"payload,omitempty"`
+
+	// OriginatingMessageId - Id of original structured message that this message responds to.
+	OriginatingMessageId *string `json:"originatingMessageId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +97,8 @@ func (o Webmessagingbuttonresponse) MarshalJSON() ([]byte, error) {
 		Text *string `json:"text,omitempty"`
 		
 		Payload *string `json:"payload,omitempty"`
+		
+		OriginatingMessageId *string `json:"originatingMessageId,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -103,6 +108,8 @@ func (o Webmessagingbuttonresponse) MarshalJSON() ([]byte, error) {
 		Text: o.Text,
 		
 		Payload: o.Payload,
+		
+		OriginatingMessageId: o.OriginatingMessageId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -128,6 +135,10 @@ func (o *Webmessagingbuttonresponse) UnmarshalJSON(b []byte) error {
     
 	if Payload, ok := WebmessagingbuttonresponseMap["payload"].(string); ok {
 		o.Payload = &Payload
+	}
+    
+	if OriginatingMessageId, ok := WebmessagingbuttonresponseMap["originatingMessageId"].(string); ok {
+		o.OriginatingMessageId = &OriginatingMessageId
 	}
     
 

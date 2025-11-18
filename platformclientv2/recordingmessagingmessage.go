@@ -92,6 +92,12 @@ type Recordingmessagingmessage struct {
 
 	// PaymentResponse - Payment response content.
 	PaymentResponse *Paymentresponse `json:"paymentResponse,omitempty"`
+
+	// Form - Form content.
+	Form *Recordingform `json:"form,omitempty"`
+
+	// RoadsideAssistance - Roadside Assistance content.
+	RoadsideAssistance *Recordingroadsideassistance `json:"roadsideAssistance,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -218,6 +224,10 @@ func (o Recordingmessagingmessage) MarshalJSON() ([]byte, error) {
 		PaymentRequest *Paymentrequest `json:"paymentRequest,omitempty"`
 		
 		PaymentResponse *Paymentresponse `json:"paymentResponse,omitempty"`
+		
+		Form *Recordingform `json:"form,omitempty"`
+		
+		RoadsideAssistance *Recordingroadsideassistance `json:"roadsideAssistance,omitempty"`
 		Alias
 	}{ 
 		From: o.From,
@@ -273,6 +283,10 @@ func (o Recordingmessagingmessage) MarshalJSON() ([]byte, error) {
 		PaymentRequest: o.PaymentRequest,
 		
 		PaymentResponse: o.PaymentResponse,
+		
+		Form: o.Form,
+		
+		RoadsideAssistance: o.RoadsideAssistance,
 		Alias:    (Alias)(o),
 	})
 }
@@ -409,6 +423,16 @@ func (o *Recordingmessagingmessage) UnmarshalJSON(b []byte) error {
 	if PaymentResponse, ok := RecordingmessagingmessageMap["paymentResponse"].(map[string]interface{}); ok {
 		PaymentResponseString, _ := json.Marshal(PaymentResponse)
 		json.Unmarshal(PaymentResponseString, &o.PaymentResponse)
+	}
+	
+	if Form, ok := RecordingmessagingmessageMap["form"].(map[string]interface{}); ok {
+		FormString, _ := json.Marshal(Form)
+		json.Unmarshal(FormString, &o.Form)
+	}
+	
+	if RoadsideAssistance, ok := RecordingmessagingmessageMap["roadsideAssistance"].(map[string]interface{}); ok {
+		RoadsideAssistanceString, _ := json.Marshal(RoadsideAssistance)
+		json.Unmarshal(RoadsideAssistanceString, &o.RoadsideAssistance)
 	}
 	
 

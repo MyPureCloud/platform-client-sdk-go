@@ -32,6 +32,12 @@ type Messagemediadata struct {
 	// Status - The status of the media, indicates if the media is in the process of uploading. If the upload fails, the media becomes invalid
 	Status *string `json:"status,omitempty"`
 
+	// ConversationId
+	ConversationId *string `json:"conversationId,omitempty"`
+
+	// CommunicationId
+	CommunicationId *string `json:"communicationId,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -113,6 +119,10 @@ func (o Messagemediadata) MarshalJSON() ([]byte, error) {
 		
 		Status *string `json:"status,omitempty"`
 		
+		ConversationId *string `json:"conversationId,omitempty"`
+		
+		CommunicationId *string `json:"communicationId,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -129,6 +139,10 @@ func (o Messagemediadata) MarshalJSON() ([]byte, error) {
 		UploadUrl: o.UploadUrl,
 		
 		Status: o.Status,
+		
+		ConversationId: o.ConversationId,
+		
+		CommunicationId: o.CommunicationId,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -169,6 +183,14 @@ func (o *Messagemediadata) UnmarshalJSON(b []byte) error {
     
 	if Status, ok := MessagemediadataMap["status"].(string); ok {
 		o.Status = &Status
+	}
+    
+	if ConversationId, ok := MessagemediadataMap["conversationId"].(string); ok {
+		o.ConversationId = &ConversationId
+	}
+    
+	if CommunicationId, ok := MessagemediadataMap["communicationId"].(string); ok {
+		o.CommunicationId = &CommunicationId
 	}
     
 	if SelfUri, ok := MessagemediadataMap["selfUri"].(string); ok {

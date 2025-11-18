@@ -645,6 +645,7 @@ docs/GetConversationsInternalmessages-example.txt
 docs/GetConversationsKeyconfiguration-example.txt
 docs/GetConversationsKeyconfigurations-example.txt
 docs/GetConversationsMessage-example.txt
+docs/GetConversationsMessageCommunicationMessagesMedia-example.txt
 docs/GetConversationsMessageCommunicationMessagesMediaMediaId-example.txt
 docs/GetConversationsMessageDetails-example.txt
 docs/GetConversationsMessageMessage-example.txt
@@ -3283,6 +3284,7 @@ platformclientv2/agentsintegrationslisting.go
 platformclientv2/agentstateagentqueryclause.go
 platformclientv2/agentstateagentquerypredicate.go
 platformclientv2/agentstatecountsrequest.go
+platformclientv2/agentstateeventtopicagentstateeventnotification.go
 platformclientv2/agentstateisoutofofficecount.go
 platformclientv2/agentstatepresencecount.go
 platformclientv2/agentstatequeryrequest.go
@@ -4306,6 +4308,8 @@ platformclientv2/conversationcontentquickreplyv2.go
 platformclientv2/conversationcontentreaction.go
 platformclientv2/conversationcontentreceivedreplymessage.go
 platformclientv2/conversationcontentrequiredcontactfield.go
+platformclientv2/conversationcontentrichlink.go
+platformclientv2/conversationcontentrichlinkheader.go
 platformclientv2/conversationcontentroadsideassistance.go
 platformclientv2/conversationcontentstory.go
 platformclientv2/conversationcontenttext.go
@@ -5362,6 +5366,7 @@ platformclientv2/externalorganizationidentifierclaimrequest.go
 platformclientv2/externalorganizationidentifierlisting.go
 platformclientv2/externalorganizationlisting.go
 platformclientv2/externalorganizationtrustorlink.go
+platformclientv2/externalpagemetadata.go
 platformclientv2/externalsegment.go
 platformclientv2/externalsource.go
 platformclientv2/facebookappcredentials.go
@@ -5826,6 +5831,7 @@ platformclientv2/journeyappeventsnotificationwebactionmessage.go
 platformclientv2/journeyasyncaggregatequeryresponse.go
 platformclientv2/journeyasyncaggregationquery.go
 platformclientv2/journeycampaign.go
+platformclientv2/journeycaseassociation.go
 platformclientv2/journeycontext.go
 platformclientv2/journeycustomer.go
 platformclientv2/journeycustomersession.go
@@ -5898,6 +5904,8 @@ platformclientv2/journeyviewelementfilterrange.go
 platformclientv2/journeyviewelementfilterrangedata.go
 platformclientv2/journeyviewjob.go
 platformclientv2/journeyviewjoblisting.go
+platformclientv2/journeyviewjobnotificationtopicjourneyview.go
+platformclientv2/journeyviewjobnotificationtopicjourneyviewjobnotificationeventv2.go
 platformclientv2/journeyviewlink.go
 platformclientv2/journeyviewlinktimeconstraint.go
 platformclientv2/journeyviewlisting.go
@@ -6154,6 +6162,7 @@ platformclientv2/learningmoduleinformstep.go
 platformclientv2/learningmoduleinformsteprequest.go
 platformclientv2/learningmodulejobrequest.go
 platformclientv2/learningmodulejobresponse.go
+platformclientv2/learningmodulelist.go
 platformclientv2/learningmodulepreviewgetresponse.go
 platformclientv2/learningmodulepreviewgetresponseassignment.go
 platformclientv2/learningmodulepreviewgetresponsestep.go
@@ -6171,7 +6180,6 @@ platformclientv2/learningmodulereassignsummary.go
 platformclientv2/learningmodulerequest.go
 platformclientv2/learningmodulerule.go
 platformclientv2/learningmoduleruleparts.go
-platformclientv2/learningmodulesdomainentitylisting.go
 platformclientv2/learningmodulesummary.go
 platformclientv2/learningscheduleslotsjobrequest.go
 platformclientv2/learningscheduleslotsjobresponse.go
@@ -6351,6 +6359,7 @@ platformclientv2/messageinfo.go
 platformclientv2/messagemedia.go
 platformclientv2/messagemediaattachment.go
 platformclientv2/messagemediadata.go
+platformclientv2/messagemedialisting.go
 platformclientv2/messagemediaparticipant.go
 platformclientv2/messagemediapolicy.go
 platformclientv2/messagemediapolicyconditions.go
@@ -7623,6 +7632,7 @@ platformclientv2/settingdirection.go
 platformclientv2/settings.go
 platformclientv2/settingsapi.go
 platformclientv2/setuuidatarequest.go
+platformclientv2/setwhatsappintegrationactionsettings.go
 platformclientv2/setwrapperdayofweek.go
 platformclientv2/setwrapperroutepathrequest.go
 platformclientv2/setwrapperstring.go
