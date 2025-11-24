@@ -34,6 +34,9 @@ type Conversationknowledgesearchsuggestionstopicsuggestioncontext struct {
 
 	// QueryStatement
 	QueryStatement *string `json:"queryStatement,omitempty"`
+
+	// Language
+	Language *string `json:"language,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -114,6 +117,8 @@ func (o Conversationknowledgesearchsuggestionstopicsuggestioncontext) MarshalJSO
 		MessageId *string `json:"messageId,omitempty"`
 		
 		QueryStatement *string `json:"queryStatement,omitempty"`
+		
+		Language *string `json:"language,omitempty"`
 		Alias
 	}{ 
 		QueueId: o.QueueId,
@@ -131,6 +136,8 @@ func (o Conversationknowledgesearchsuggestionstopicsuggestioncontext) MarshalJSO
 		MessageId: o.MessageId,
 		
 		QueryStatement: o.QueryStatement,
+		
+		Language: o.Language,
 		Alias:    (Alias)(o),
 	})
 }
@@ -172,6 +179,10 @@ func (o *Conversationknowledgesearchsuggestionstopicsuggestioncontext) Unmarshal
     
 	if QueryStatement, ok := ConversationknowledgesearchsuggestionstopicsuggestioncontextMap["queryStatement"].(string); ok {
 		o.QueryStatement = &QueryStatement
+	}
+    
+	if Language, ok := ConversationknowledgesearchsuggestionstopicsuggestioncontextMap["language"].(string); ok {
+		o.Language = &Language
 	}
     
 

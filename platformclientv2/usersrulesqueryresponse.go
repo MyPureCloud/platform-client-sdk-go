@@ -7,19 +7,31 @@ import (
 	"strings"
 )
 
-// Klaxoninteractionstatsalertstopicnotificationuser
-type Klaxoninteractionstatsalertstopicnotificationuser struct { 
+// Usersrulesqueryresponse
+type Usersrulesqueryresponse struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id
-	Id *string `json:"id,omitempty"`
+	// Entities
+	Entities *[]Userreference `json:"entities,omitempty"`
 
-	// DisplayName
-	DisplayName *string `json:"displayName,omitempty"`
+	// PageSize
+	PageSize *int `json:"pageSize,omitempty"`
+
+	// PageNumber
+	PageNumber *int `json:"pageNumber,omitempty"`
+
+	// NextUri
+	NextUri *string `json:"nextUri,omitempty"`
+
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
+
+	// SelfUri
+	SelfUri *string `json:"selfUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Klaxoninteractionstatsalertstopicnotificationuser) SetField(field string, fieldValue interface{}) {
+func (o *Usersrulesqueryresponse) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -40,7 +52,7 @@ func (o *Klaxoninteractionstatsalertstopicnotificationuser) SetField(field strin
 	o.SetFieldNames[field] = true
 }
 
-func (o Klaxoninteractionstatsalertstopicnotificationuser) MarshalJSON() ([]byte, error) {
+func (o Usersrulesqueryresponse) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -78,34 +90,69 @@ func (o Klaxoninteractionstatsalertstopicnotificationuser) MarshalJSON() ([]byte
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Klaxoninteractionstatsalertstopicnotificationuser
+	type Alias Usersrulesqueryresponse
 	
 	return json.Marshal(&struct { 
-		Id *string `json:"id,omitempty"`
+		Entities *[]Userreference `json:"entities,omitempty"`
 		
-		DisplayName *string `json:"displayName,omitempty"`
+		PageSize *int `json:"pageSize,omitempty"`
+		
+		PageNumber *int `json:"pageNumber,omitempty"`
+		
+		NextUri *string `json:"nextUri,omitempty"`
+		
+		PreviousUri *string `json:"previousUri,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
-		Id: o.Id,
+		Entities: o.Entities,
 		
-		DisplayName: o.DisplayName,
+		PageSize: o.PageSize,
+		
+		PageNumber: o.PageNumber,
+		
+		NextUri: o.NextUri,
+		
+		PreviousUri: o.PreviousUri,
+		
+		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Klaxoninteractionstatsalertstopicnotificationuser) UnmarshalJSON(b []byte) error {
-	var KlaxoninteractionstatsalertstopicnotificationuserMap map[string]interface{}
-	err := json.Unmarshal(b, &KlaxoninteractionstatsalertstopicnotificationuserMap)
+func (o *Usersrulesqueryresponse) UnmarshalJSON(b []byte) error {
+	var UsersrulesqueryresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &UsersrulesqueryresponseMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := KlaxoninteractionstatsalertstopicnotificationuserMap["id"].(string); ok {
-		o.Id = &Id
+	if Entities, ok := UsersrulesqueryresponseMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+	if PageSize, ok := UsersrulesqueryresponseMap["pageSize"].(float64); ok {
+		PageSizeInt := int(PageSize)
+		o.PageSize = &PageSizeInt
+	}
+	
+	if PageNumber, ok := UsersrulesqueryresponseMap["pageNumber"].(float64); ok {
+		PageNumberInt := int(PageNumber)
+		o.PageNumber = &PageNumberInt
+	}
+	
+	if NextUri, ok := UsersrulesqueryresponseMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
 	}
     
-	if DisplayName, ok := KlaxoninteractionstatsalertstopicnotificationuserMap["displayName"].(string); ok {
-		o.DisplayName = &DisplayName
+	if PreviousUri, ok := UsersrulesqueryresponseMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
+	}
+    
+	if SelfUri, ok := UsersrulesqueryresponseMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
 	}
     
 
@@ -113,7 +160,7 @@ func (o *Klaxoninteractionstatsalertstopicnotificationuser) UnmarshalJSON(b []by
 }
 
 // String returns a JSON representation of the model
-func (o *Klaxoninteractionstatsalertstopicnotificationuser) String() string {
+func (o *Usersrulesqueryresponse) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

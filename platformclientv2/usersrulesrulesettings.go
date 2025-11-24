@@ -7,19 +7,19 @@ import (
 	"strings"
 )
 
-// Klaxoninteractionstatsrulestopicnotificationuser
-type Klaxoninteractionstatsrulestopicnotificationuser struct { 
+// Usersrulesrulesettings - Users rule type-specific settings response
+type Usersrulesrulesettings struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id
-	Id *string `json:"id,omitempty"`
+	// AllowedContainers - The allowed containers for the rule
+	AllowedContainers *[]string `json:"allowedContainers,omitempty"`
 
-	// DisplayName
-	DisplayName *string `json:"displayName,omitempty"`
+	// LockedCriteria - The locked criteria settings for the rule
+	LockedCriteria *[]Usersruleslockedcriteriasettingscriteria `json:"lockedCriteria,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Klaxoninteractionstatsrulestopicnotificationuser) SetField(field string, fieldValue interface{}) {
+func (o *Usersrulesrulesettings) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -40,7 +40,7 @@ func (o *Klaxoninteractionstatsrulestopicnotificationuser) SetField(field string
 	o.SetFieldNames[field] = true
 }
 
-func (o Klaxoninteractionstatsrulestopicnotificationuser) MarshalJSON() ([]byte, error) {
+func (o Usersrulesrulesettings) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -78,42 +78,44 @@ func (o Klaxoninteractionstatsrulestopicnotificationuser) MarshalJSON() ([]byte,
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Klaxoninteractionstatsrulestopicnotificationuser
+	type Alias Usersrulesrulesettings
 	
 	return json.Marshal(&struct { 
-		Id *string `json:"id,omitempty"`
+		AllowedContainers *[]string `json:"allowedContainers,omitempty"`
 		
-		DisplayName *string `json:"displayName,omitempty"`
+		LockedCriteria *[]Usersruleslockedcriteriasettingscriteria `json:"lockedCriteria,omitempty"`
 		Alias
 	}{ 
-		Id: o.Id,
+		AllowedContainers: o.AllowedContainers,
 		
-		DisplayName: o.DisplayName,
+		LockedCriteria: o.LockedCriteria,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Klaxoninteractionstatsrulestopicnotificationuser) UnmarshalJSON(b []byte) error {
-	var KlaxoninteractionstatsrulestopicnotificationuserMap map[string]interface{}
-	err := json.Unmarshal(b, &KlaxoninteractionstatsrulestopicnotificationuserMap)
+func (o *Usersrulesrulesettings) UnmarshalJSON(b []byte) error {
+	var UsersrulesrulesettingsMap map[string]interface{}
+	err := json.Unmarshal(b, &UsersrulesrulesettingsMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := KlaxoninteractionstatsrulestopicnotificationuserMap["id"].(string); ok {
-		o.Id = &Id
+	if AllowedContainers, ok := UsersrulesrulesettingsMap["allowedContainers"].([]interface{}); ok {
+		AllowedContainersString, _ := json.Marshal(AllowedContainers)
+		json.Unmarshal(AllowedContainersString, &o.AllowedContainers)
 	}
-    
-	if DisplayName, ok := KlaxoninteractionstatsrulestopicnotificationuserMap["displayName"].(string); ok {
-		o.DisplayName = &DisplayName
+	
+	if LockedCriteria, ok := UsersrulesrulesettingsMap["lockedCriteria"].([]interface{}); ok {
+		LockedCriteriaString, _ := json.Marshal(LockedCriteria)
+		json.Unmarshal(LockedCriteriaString, &o.LockedCriteria)
 	}
-    
+	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Klaxoninteractionstatsrulestopicnotificationuser) String() string {
+func (o *Usersrulesrulesettings) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

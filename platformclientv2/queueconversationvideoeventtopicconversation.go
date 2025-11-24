@@ -42,6 +42,12 @@ type Queueconversationvideoeventtopicconversation struct {
 	// InactivityTimeout
 	InactivityTimeout *time.Time `json:"inactivityTimeout,omitempty"`
 
+	// AssociatedConversation
+	AssociatedConversation *Queueconversationvideoeventtopicdomainentityref `json:"associatedConversation,omitempty"`
+
+	// ConsultationConversations
+	ConsultationConversations *[]Queueconversationvideoeventtopicdomainentityref `json:"consultationConversations,omitempty"`
+
 	// Divisions
 	Divisions *[]Queueconversationvideoeventtopicconversationdivisionmembership `json:"divisions,omitempty"`
 }
@@ -137,6 +143,10 @@ func (o Queueconversationvideoeventtopicconversation) MarshalJSON() ([]byte, err
 		
 		InactivityTimeout *string `json:"inactivityTimeout,omitempty"`
 		
+		AssociatedConversation *Queueconversationvideoeventtopicdomainentityref `json:"associatedConversation,omitempty"`
+		
+		ConsultationConversations *[]Queueconversationvideoeventtopicdomainentityref `json:"consultationConversations,omitempty"`
+		
 		Divisions *[]Queueconversationvideoeventtopicconversationdivisionmembership `json:"divisions,omitempty"`
 		Alias
 	}{ 
@@ -159,6 +169,10 @@ func (o Queueconversationvideoeventtopicconversation) MarshalJSON() ([]byte, err
 		SecurePause: o.SecurePause,
 		
 		InactivityTimeout: InactivityTimeout,
+		
+		AssociatedConversation: o.AssociatedConversation,
+		
+		ConsultationConversations: o.ConsultationConversations,
 		
 		Divisions: o.Divisions,
 		Alias:    (Alias)(o),
@@ -214,6 +228,16 @@ func (o *Queueconversationvideoeventtopicconversation) UnmarshalJSON(b []byte) e
 	if inactivityTimeoutString, ok := QueueconversationvideoeventtopicconversationMap["inactivityTimeout"].(string); ok {
 		InactivityTimeout, _ := time.Parse("2006-01-02T15:04:05.999999Z", inactivityTimeoutString)
 		o.InactivityTimeout = &InactivityTimeout
+	}
+	
+	if AssociatedConversation, ok := QueueconversationvideoeventtopicconversationMap["associatedConversation"].(map[string]interface{}); ok {
+		AssociatedConversationString, _ := json.Marshal(AssociatedConversation)
+		json.Unmarshal(AssociatedConversationString, &o.AssociatedConversation)
+	}
+	
+	if ConsultationConversations, ok := QueueconversationvideoeventtopicconversationMap["consultationConversations"].([]interface{}); ok {
+		ConsultationConversationsString, _ := json.Marshal(ConsultationConversations)
+		json.Unmarshal(ConsultationConversationsString, &o.ConsultationConversations)
 	}
 	
 	if Divisions, ok := QueueconversationvideoeventtopicconversationMap["divisions"].([]interface{}); ok {

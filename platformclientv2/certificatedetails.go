@@ -27,11 +27,11 @@ type Certificatedetails struct {
 	// Expired - True if the certificate is expired, false otherwise.
 	Expired *bool `json:"expired,omitempty"`
 
-	// Valid
-	Valid *bool `json:"valid,omitempty"`
-
 	// SignatureValid
 	SignatureValid *bool `json:"signatureValid,omitempty"`
+
+	// Valid
+	Valid *bool `json:"valid,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -123,9 +123,9 @@ func (o Certificatedetails) MarshalJSON() ([]byte, error) {
 		
 		Expired *bool `json:"expired,omitempty"`
 		
-		Valid *bool `json:"valid,omitempty"`
-		
 		SignatureValid *bool `json:"signatureValid,omitempty"`
+		
+		Valid *bool `json:"valid,omitempty"`
 		Alias
 	}{ 
 		Issuer: o.Issuer,
@@ -138,9 +138,9 @@ func (o Certificatedetails) MarshalJSON() ([]byte, error) {
 		
 		Expired: o.Expired,
 		
-		Valid: o.Valid,
-		
 		SignatureValid: o.SignatureValid,
+		
+		Valid: o.Valid,
 		Alias:    (Alias)(o),
 	})
 }
@@ -174,12 +174,12 @@ func (o *Certificatedetails) UnmarshalJSON(b []byte) error {
 		o.Expired = &Expired
 	}
     
-	if Valid, ok := CertificatedetailsMap["valid"].(bool); ok {
-		o.Valid = &Valid
-	}
-    
 	if SignatureValid, ok := CertificatedetailsMap["signatureValid"].(bool); ok {
 		o.SignatureValid = &SignatureValid
+	}
+    
+	if Valid, ok := CertificatedetailsMap["valid"].(bool); ok {
+		o.Valid = &Valid
 	}
     
 

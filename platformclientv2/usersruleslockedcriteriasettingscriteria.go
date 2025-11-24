@@ -7,19 +7,19 @@ import (
 	"strings"
 )
 
-// Klaxonheartbeatalertstopicnotificationuser
-type Klaxonheartbeatalertstopicnotificationuser struct { 
+// Usersruleslockedcriteriasettingscriteria
+type Usersruleslockedcriteriasettingscriteria struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id
-	Id *string `json:"id,omitempty"`
+	// Operator - The operator for this criteria
+	Operator *string `json:"operator,omitempty"`
 
-	// DisplayName
-	DisplayName *string `json:"displayName,omitempty"`
+	// Group - The user selection groups for this criteria
+	Group *[]Usersruleslockedcriteriasettingsgroup `json:"group,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Klaxonheartbeatalertstopicnotificationuser) SetField(field string, fieldValue interface{}) {
+func (o *Usersruleslockedcriteriasettingscriteria) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -40,7 +40,7 @@ func (o *Klaxonheartbeatalertstopicnotificationuser) SetField(field string, fiel
 	o.SetFieldNames[field] = true
 }
 
-func (o Klaxonheartbeatalertstopicnotificationuser) MarshalJSON() ([]byte, error) {
+func (o Usersruleslockedcriteriasettingscriteria) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -78,42 +78,43 @@ func (o Klaxonheartbeatalertstopicnotificationuser) MarshalJSON() ([]byte, error
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Klaxonheartbeatalertstopicnotificationuser
+	type Alias Usersruleslockedcriteriasettingscriteria
 	
 	return json.Marshal(&struct { 
-		Id *string `json:"id,omitempty"`
+		Operator *string `json:"operator,omitempty"`
 		
-		DisplayName *string `json:"displayName,omitempty"`
+		Group *[]Usersruleslockedcriteriasettingsgroup `json:"group,omitempty"`
 		Alias
 	}{ 
-		Id: o.Id,
+		Operator: o.Operator,
 		
-		DisplayName: o.DisplayName,
+		Group: o.Group,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Klaxonheartbeatalertstopicnotificationuser) UnmarshalJSON(b []byte) error {
-	var KlaxonheartbeatalertstopicnotificationuserMap map[string]interface{}
-	err := json.Unmarshal(b, &KlaxonheartbeatalertstopicnotificationuserMap)
+func (o *Usersruleslockedcriteriasettingscriteria) UnmarshalJSON(b []byte) error {
+	var UsersruleslockedcriteriasettingscriteriaMap map[string]interface{}
+	err := json.Unmarshal(b, &UsersruleslockedcriteriasettingscriteriaMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := KlaxonheartbeatalertstopicnotificationuserMap["id"].(string); ok {
-		o.Id = &Id
+	if Operator, ok := UsersruleslockedcriteriasettingscriteriaMap["operator"].(string); ok {
+		o.Operator = &Operator
 	}
     
-	if DisplayName, ok := KlaxonheartbeatalertstopicnotificationuserMap["displayName"].(string); ok {
-		o.DisplayName = &DisplayName
+	if Group, ok := UsersruleslockedcriteriasettingscriteriaMap["group"].([]interface{}); ok {
+		GroupString, _ := json.Marshal(Group)
+		json.Unmarshal(GroupString, &o.Group)
 	}
-    
+	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Klaxonheartbeatalertstopicnotificationuser) String() string {
+func (o *Usersruleslockedcriteriasettingscriteria) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

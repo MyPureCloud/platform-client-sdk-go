@@ -11,7 +11,7 @@ import (
 type Queueconversationeventtopicconversationdivisionmembership struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Division
+	// Division - A reference to another domain entity.
 	Division *Queueconversationeventtopicdomainentityref `json:"division,omitempty"`
 
 	// Entities

@@ -15,6 +15,9 @@ type Session struct {
 	// Id - The ID of the session.
 	Id *string `json:"id,omitempty"`
 
+	// ExternalContact - The external contact associated with this session.
+	ExternalContact *Addressableentityref `json:"externalContact,omitempty"`
+
 	// CustomerId - Primary identifier of the customer in the source where the events for the session originate from.
 	CustomerId *string `json:"customerId,omitempty"`
 
@@ -99,6 +102,9 @@ type Session struct {
 	// LastEvent - Information about the most recent event in this session.
 	LastEvent *Sessionlastevent `json:"lastEvent,omitempty"`
 
+	// Conversation - The conversation for this session.
+	Conversation *Addressableentityref `json:"conversation,omitempty"`
+
 	// LastConnectedQueue - The last queue connected to this session.
 	LastConnectedQueue *Connectedqueue `json:"lastConnectedQueue,omitempty"`
 
@@ -141,17 +147,11 @@ type Session struct {
 	// EndedDate - Timestamp indicating when the session was ended. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	EndedDate *time.Time `json:"endedDate,omitempty"`
 
-	// ExternalContact - The external contact associated with this session.
-	ExternalContact *Addressableentityref `json:"externalContact,omitempty"`
-
 	// AwayDate - Timestamp indicating when the visitor should be considered as away. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	AwayDate *time.Time `json:"awayDate,omitempty"`
 
 	// IdleDate - Timestamp indicating when the visitor should be considered as idle. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	IdleDate *time.Time `json:"idleDate,omitempty"`
-
-	// Conversation - The conversation for this session.
-	Conversation *Addressableentityref `json:"conversation,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -251,6 +251,8 @@ func (o Session) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
+		ExternalContact *Addressableentityref `json:"externalContact,omitempty"`
+		
 		CustomerId *string `json:"customerId,omitempty"`
 		
 		CustomerIdType *string `json:"customerIdType,omitempty"`
@@ -307,6 +309,8 @@ func (o Session) MarshalJSON() ([]byte, error) {
 		
 		LastEvent *Sessionlastevent `json:"lastEvent,omitempty"`
 		
+		Conversation *Addressableentityref `json:"conversation,omitempty"`
+		
 		LastConnectedQueue *Connectedqueue `json:"lastConnectedQueue,omitempty"`
 		
 		LastConnectedUser *Connecteduser `json:"lastConnectedUser,omitempty"`
@@ -335,16 +339,14 @@ func (o Session) MarshalJSON() ([]byte, error) {
 		
 		EndedDate *string `json:"endedDate,omitempty"`
 		
-		ExternalContact *Addressableentityref `json:"externalContact,omitempty"`
-		
 		AwayDate *string `json:"awayDate,omitempty"`
 		
 		IdleDate *string `json:"idleDate,omitempty"`
-		
-		Conversation *Addressableentityref `json:"conversation,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
+		
+		ExternalContact: o.ExternalContact,
 		
 		CustomerId: o.CustomerId,
 		
@@ -402,6 +404,8 @@ func (o Session) MarshalJSON() ([]byte, error) {
 		
 		LastEvent: o.LastEvent,
 		
+		Conversation: o.Conversation,
+		
 		LastConnectedQueue: o.LastConnectedQueue,
 		
 		LastConnectedUser: o.LastConnectedUser,
@@ -430,13 +434,9 @@ func (o Session) MarshalJSON() ([]byte, error) {
 		
 		EndedDate: EndedDate,
 		
-		ExternalContact: o.ExternalContact,
-		
 		AwayDate: AwayDate,
 		
 		IdleDate: IdleDate,
-		
-		Conversation: o.Conversation,
 		Alias:    (Alias)(o),
 	})
 }
@@ -452,6 +452,11 @@ func (o *Session) UnmarshalJSON(b []byte) error {
 		o.Id = &Id
 	}
     
+	if ExternalContact, ok := SessionMap["externalContact"].(map[string]interface{}); ok {
+		ExternalContactString, _ := json.Marshal(ExternalContact)
+		json.Unmarshal(ExternalContactString, &o.ExternalContact)
+	}
+	
 	if CustomerId, ok := SessionMap["customerId"].(string); ok {
 		o.CustomerId = &CustomerId
 	}
@@ -583,6 +588,11 @@ func (o *Session) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(LastEventString, &o.LastEvent)
 	}
 	
+	if Conversation, ok := SessionMap["conversation"].(map[string]interface{}); ok {
+		ConversationString, _ := json.Marshal(Conversation)
+		json.Unmarshal(ConversationString, &o.Conversation)
+	}
+	
 	if LastConnectedQueue, ok := SessionMap["lastConnectedQueue"].(map[string]interface{}); ok {
 		LastConnectedQueueString, _ := json.Marshal(LastConnectedQueue)
 		json.Unmarshal(LastConnectedQueueString, &o.LastConnectedQueue)
@@ -646,11 +656,6 @@ func (o *Session) UnmarshalJSON(b []byte) error {
 		o.EndedDate = &EndedDate
 	}
 	
-	if ExternalContact, ok := SessionMap["externalContact"].(map[string]interface{}); ok {
-		ExternalContactString, _ := json.Marshal(ExternalContact)
-		json.Unmarshal(ExternalContactString, &o.ExternalContact)
-	}
-	
 	if awayDateString, ok := SessionMap["awayDate"].(string); ok {
 		AwayDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", awayDateString)
 		o.AwayDate = &AwayDate
@@ -659,11 +664,6 @@ func (o *Session) UnmarshalJSON(b []byte) error {
 	if idleDateString, ok := SessionMap["idleDate"].(string); ok {
 		IdleDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", idleDateString)
 		o.IdleDate = &IdleDate
-	}
-	
-	if Conversation, ok := SessionMap["conversation"].(map[string]interface{}); ok {
-		ConversationString, _ := json.Marshal(Conversation)
-		json.Unmarshal(ConversationString, &o.Conversation)
 	}
 	
 

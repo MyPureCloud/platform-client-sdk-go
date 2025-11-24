@@ -10125,8 +10125,6 @@ func (a ConversationsApi) GetConversationsVideoParticipantCommunicationWrapup(co
 // GetConversationsVideosMeeting invokes GET /api/v2/conversations/videos/meetings/{meetingId}
 //
 // Gets a record for a given meetingId
-//
-// Preview: GetConversationsVideosMeeting is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) GetConversationsVideosMeeting(meetingId string) (*Meetingidrecord, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -22873,8 +22871,6 @@ func (a ConversationsApi) PostConversationsVideoParticipantCommunicationWrapup(c
 // PostConversationsVideosMeetings invokes POST /api/v2/conversations/videos/meetings
 //
 // Generate a meetingId for a given conferenceId
-//
-// Preview: PostConversationsVideosMeetings is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) PostConversationsVideosMeetings(body Generatemeetingidrequest) (*Meetingidrecord, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

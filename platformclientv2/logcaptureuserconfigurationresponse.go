@@ -12,7 +12,7 @@ import (
 type Logcaptureuserconfigurationresponse struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The globally unique identifier for the object.
+	// Id - The ID of the user for which log capture is configured.
 	Id *string `json:"id,omitempty"`
 
 	// DateStarted - Indicates when log capture was enabled for the user. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z

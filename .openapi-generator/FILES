@@ -328,6 +328,7 @@ docs/DeleteUserVerifier-example.txt
 docs/DeleteUserrecording-example.txt
 docs/DeleteUsersAgentuiAgentsAutoanswerAgentIdSettings-example.txt
 docs/DeleteUsersAgentuiAgentsAutoanswerAgentIdSettings-example.txt
+docs/DeleteUsersRule-example.txt
 docs/DeleteVoicemailMessage-example.txt
 docs/DeleteVoicemailMessages-example.txt
 docs/DeleteWebchatDeployment-example.txt
@@ -1629,6 +1630,11 @@ docs/GetUsersMe-example.txt
 docs/GetUsersPresenceBulk-example.txt
 docs/GetUsersPresencesPurecloudBulk-example.txt
 docs/GetUsersQuery-example.txt
+docs/GetUsersRule-example.txt
+docs/GetUsersRuleDependentTypeId-example.txt
+docs/GetUsersRuleDependents-example.txt
+docs/GetUsersRules-example.txt
+docs/GetUsersRulesSetting-example.txt
 docs/GetUsersSearch-example.txt
 docs/GetUsersSearch-example.txt
 docs/GetVoicemailGroupMailbox-example.txt
@@ -1676,6 +1682,7 @@ docs/GetWorkforcemanagementAdherenceHistoricalBulkJob-example.txt
 docs/GetWorkforcemanagementAdherenceHistoricalJob-example.txt
 docs/GetWorkforcemanagementAgentAdherenceExplanation-example.txt
 docs/GetWorkforcemanagementAgentManagementunit-example.txt
+docs/GetWorkforcemanagementAgentsMeAdherenceHistoricalJob-example.txt
 docs/GetWorkforcemanagementAgentsMeManagementunit-example.txt
 docs/GetWorkforcemanagementAlternativeshiftsOffersJob-example.txt
 docs/GetWorkforcemanagementAlternativeshiftsOffersSearchJob-example.txt
@@ -1989,6 +1996,7 @@ docs/PatchUserRoutingskillsBulk-example.txt
 docs/PatchUsersAgentuiAgentsAutoanswerAgentIdSettings-example.txt
 docs/PatchUsersAgentuiAgentsAutoanswerAgentIdSettings-example.txt
 docs/PatchUsersBulk-example.txt
+docs/PatchUsersRule-example.txt
 docs/PatchVoicemailGroupPolicy-example.txt
 docs/PatchVoicemailMePolicy-example.txt
 docs/PatchVoicemailMessage-example.txt
@@ -2475,6 +2483,7 @@ docs/PostLearningAssignmentsBulkadd-example.txt
 docs/PostLearningAssignmentsBulkremove-example.txt
 docs/PostLearningModuleJobs-example.txt
 docs/PostLearningModulePublish-example.txt
+docs/PostLearningModuleRuleMigrate-example.txt
 docs/PostLearningModules-example.txt
 docs/PostLearningRulesQuery-example.txt
 docs/PostLearningScheduleslotsJobs-example.txt
@@ -2712,6 +2721,8 @@ docs/PostUserRoutingskills-example.txt
 docs/PostUsers-example.txt
 docs/PostUsersDevelopmentActivitiesAggregatesQuery-example.txt
 docs/PostUsersMePassword-example.txt
+docs/PostUsersRules-example.txt
+docs/PostUsersRulesQuery-example.txt
 docs/PostUsersSearch-example.txt
 docs/PostUsersSearch-example.txt
 docs/PostUsersSearchConversationTarget-example.txt
@@ -2742,6 +2753,7 @@ docs/PostWorkforcemanagementAgentAdherenceExplanations-example.txt
 docs/PostWorkforcemanagementAgentAdherenceExplanationsQuery-example.txt
 docs/PostWorkforcemanagementAgents-example.txt
 docs/PostWorkforcemanagementAgentsIntegrationsHrisQuery-example.txt
+docs/PostWorkforcemanagementAgentsMeAdherenceHistoricalJobs-example.txt
 docs/PostWorkforcemanagementAgentsMePossibleworkshifts-example.txt
 docs/PostWorkforcemanagementAgentschedulesManagementunitsMine-example.txt
 docs/PostWorkforcemanagementAgentschedulesMine-example.txt
@@ -3117,6 +3129,7 @@ docs/UploadsApi.json
 docs/UsageApi.json
 docs/UserRecordingsApi.json
 docs/UsersApi.json
+docs/UsersRulesApi.json
 docs/UtilitiesApi.json
 docs/VoicemailApi.json
 docs/WebChatApi.json
@@ -3240,6 +3253,8 @@ platformclientv2/agentactivitychangedtopicoutofoffice.go
 platformclientv2/agentactivitychangedtopicpresence.go
 platformclientv2/agentactivitychangedtopicroutingstatus.go
 platformclientv2/agentactivityentitylisting.go
+platformclientv2/agentadherencedaymetrics.go
+platformclientv2/agentadherencescheduledactivity.go
 platformclientv2/agentassistantsapi.go
 platformclientv2/agentbidworkplanoverriderequest.go
 platformclientv2/agentcopilotaggregatedatacontainer.go
@@ -4565,6 +4580,12 @@ platformclientv2/conversationsummarytopicvirtualagentssummaryextractedcustomenti
 platformclientv2/conversationsummarytopicvirtualagentstriggersource.go
 platformclientv2/conversationsummarywrapupcode.go
 platformclientv2/conversationtagsupdate.go
+platformclientv2/conversationthirdpartyactionsuggestionstopicsuggestedintent.go
+platformclientv2/conversationthirdpartyactionsuggestionstopicsuggestedintentslot.go
+platformclientv2/conversationthirdpartyactionsuggestionstopicsuggestioncontext.go
+platformclientv2/conversationthirdpartyactionsuggestionstopicsuggestionfeedback.go
+platformclientv2/conversationthirdpartyactionsuggestionstopicthirdpartyactionsuggestionevent.go
+platformclientv2/conversationthirdpartyactionsuggestionstopicthirdpartysuggestion.go
 platformclientv2/conversationthreadingwindow.go
 platformclientv2/conversationthreadingwindowsetting.go
 platformclientv2/conversationuser.go
@@ -5962,14 +5983,6 @@ platformclientv2/keyperformanceindicator.go
 platformclientv2/keyperformanceindicatorassessment.go
 platformclientv2/keyrotationschedule.go
 platformclientv2/keyvalue.go
-platformclientv2/klaxonheartbeatalertstopicheartbeatalert.go
-platformclientv2/klaxonheartbeatalertstopicnotificationuser.go
-platformclientv2/klaxonheartbeatrulestopicheartbeatrule.go
-platformclientv2/klaxonheartbeatrulestopicnotificationuser.go
-platformclientv2/klaxoninteractionstatsalertstopicinteractionstatalert.go
-platformclientv2/klaxoninteractionstatsalertstopicnotificationuser.go
-platformclientv2/klaxoninteractionstatsrulestopicinteractionstatrule.go
-platformclientv2/klaxoninteractionstatsrulestopicnotificationuser.go
 platformclientv2/knowledge.go
 platformclientv2/knowledgeaggregatedatacontainer.go
 platformclientv2/knowledgeaggregatequeryclause.go
@@ -6163,6 +6176,7 @@ platformclientv2/learningmoduleinformsteprequest.go
 platformclientv2/learningmodulejobrequest.go
 platformclientv2/learningmodulejobresponse.go
 platformclientv2/learningmodulelist.go
+platformclientv2/learningmodulemigrateresponse.go
 platformclientv2/learningmodulepreviewgetresponse.go
 platformclientv2/learningmodulepreviewgetresponseassignment.go
 platformclientv2/learningmodulepreviewgetresponsestep.go
@@ -7567,6 +7581,7 @@ platformclientv2/searchshifttradesresponse.go
 platformclientv2/searchsort.go
 platformclientv2/searchupdaterequest.go
 platformclientv2/secondarypresence.go
+platformclientv2/secondarypresencelookupitem.go
 platformclientv2/section.go
 platformclientv2/securesession.go
 platformclientv2/securesessionentitylisting.go
@@ -8325,7 +8340,23 @@ platformclientv2/usersearchrulepart.go
 platformclientv2/usersettingsforchat.go
 platformclientv2/userskillentitylisting.go
 platformclientv2/userskillgroupentitylisting.go
+platformclientv2/usersrulesapi.go
+platformclientv2/usersrulescreaterulerequest.go
+platformclientv2/usersrulescriteria.go
+platformclientv2/usersrulesdependent.go
+platformclientv2/usersrulesdependentlist.go
+platformclientv2/usersrulesgroupitem.go
+platformclientv2/usersruleslastrunmetadata.go
+platformclientv2/usersruleslockedcriteriasettingscriteria.go
+platformclientv2/usersruleslockedcriteriasettingsgroup.go
+platformclientv2/usersrulesqueryresponse.go
+platformclientv2/usersrulesqueryrulerequest.go
+platformclientv2/usersrulesrule.go
+platformclientv2/usersrulesrulelist.go
 platformclientv2/usersrulesrulereference.go
+platformclientv2/usersrulesrulesettings.go
+platformclientv2/usersrulesupdaterulerequest.go
+platformclientv2/usersrulesvalue.go
 platformclientv2/userssearchresponse.go
 platformclientv2/userstaffinggrouplisting.go
 platformclientv2/userstaffinggroupresponse.go
@@ -8574,6 +8605,9 @@ platformclientv2/wfmagentadherenceexplanationchangedbusinessunittopicadherenceex
 platformclientv2/wfmagentadherenceexplanationchangedbusinessunittopicbusinessunit.go
 platformclientv2/wfmagentadherenceexplanationchangedbusinessunittopicmanagementunit.go
 platformclientv2/wfmagentadherenceexplanationchangedbusinessunittopicuserreference.go
+platformclientv2/wfmagenthistoricaladherencejobreference.go
+platformclientv2/wfmagenthistoricaladherenceresponse.go
+platformclientv2/wfmagenthistoricaladherenceresult.go
 platformclientv2/wfmagentscheduleupdatetopicagentscheduleshiftupdate.go
 platformclientv2/wfmagentscheduleupdatetopicagentscheduleupdatenotification.go
 platformclientv2/wfmagentscheduleupdatetopicuserreference.go
@@ -8651,6 +8685,7 @@ platformclientv2/wfmhistoricaladherencebulkuserdaymetrics.go
 platformclientv2/wfmhistoricaladherencebulkuserresult.go
 platformclientv2/wfmhistoricaladherencecalculationscompletetopicwfmhistoricaladherencecalculationscompletenotice.go
 platformclientv2/wfmhistoricaladherencequery.go
+platformclientv2/wfmhistoricaladherencequeryforagent.go
 platformclientv2/wfmhistoricaladherencequeryforteams.go
 platformclientv2/wfmhistoricaladherencequeryforusers.go
 platformclientv2/wfmhistoricaladherenceresponse.go

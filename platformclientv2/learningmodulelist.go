@@ -26,6 +26,9 @@ type Learningmodulelist struct {
 	// TotalLegacyRules - The total number of unmigrated rules
 	TotalLegacyRules *int `json:"totalLegacyRules,omitempty"`
 
+	// FirstUri
+	FirstUri *string `json:"firstUri,omitempty"`
+
 	// PreviousUri
 	PreviousUri *string `json:"previousUri,omitempty"`
 
@@ -34,9 +37,6 @@ type Learningmodulelist struct {
 
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
-
-	// FirstUri
-	FirstUri *string `json:"firstUri,omitempty"`
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -118,13 +118,13 @@ func (o Learningmodulelist) MarshalJSON() ([]byte, error) {
 		
 		TotalLegacyRules *int `json:"totalLegacyRules,omitempty"`
 		
+		FirstUri *string `json:"firstUri,omitempty"`
+		
 		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		NextUri *string `json:"nextUri,omitempty"`
 		
 		LastUri *string `json:"lastUri,omitempty"`
-		
-		FirstUri *string `json:"firstUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
@@ -141,13 +141,13 @@ func (o Learningmodulelist) MarshalJSON() ([]byte, error) {
 		
 		TotalLegacyRules: o.TotalLegacyRules,
 		
+		FirstUri: o.FirstUri,
+		
 		PreviousUri: o.PreviousUri,
 		
 		NextUri: o.NextUri,
 		
 		LastUri: o.LastUri,
-		
-		FirstUri: o.FirstUri,
 		
 		SelfUri: o.SelfUri,
 		
@@ -188,6 +188,10 @@ func (o *Learningmodulelist) UnmarshalJSON(b []byte) error {
 		o.TotalLegacyRules = &TotalLegacyRulesInt
 	}
 	
+	if FirstUri, ok := LearningmodulelistMap["firstUri"].(string); ok {
+		o.FirstUri = &FirstUri
+	}
+    
 	if PreviousUri, ok := LearningmodulelistMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
 	}
@@ -198,10 +202,6 @@ func (o *Learningmodulelist) UnmarshalJSON(b []byte) error {
     
 	if LastUri, ok := LearningmodulelistMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
-	}
-    
-	if FirstUri, ok := LearningmodulelistMap["firstUri"].(string); ok {
-		o.FirstUri = &FirstUri
 	}
     
 	if SelfUri, ok := LearningmodulelistMap["selfUri"].(string); ok {

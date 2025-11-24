@@ -11,11 +11,8 @@ import (
 type Selfagentgreeting struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The globally unique identifier for the object.
+	// Id - The ID of the associated user.
 	Id *string `json:"id,omitempty"`
-
-	// Name
-	Name *string `json:"name,omitempty"`
 
 	// InboundPrompt - The agent greeting prompt to use when inbound calls are connected
 	InboundPrompt *Prompt `json:"inboundPrompt,omitempty"`
@@ -98,8 +95,6 @@ func (o Selfagentgreeting) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
-		Name *string `json:"name,omitempty"`
-		
 		InboundPrompt *Prompt `json:"inboundPrompt,omitempty"`
 		
 		OutboundPrompt *Prompt `json:"outboundPrompt,omitempty"`
@@ -112,8 +107,6 @@ func (o Selfagentgreeting) MarshalJSON() ([]byte, error) {
 		Alias
 	}{ 
 		Id: o.Id,
-		
-		Name: o.Name,
 		
 		InboundPrompt: o.InboundPrompt,
 		
@@ -137,10 +130,6 @@ func (o *Selfagentgreeting) UnmarshalJSON(b []byte) error {
 	
 	if Id, ok := SelfagentgreetingMap["id"].(string); ok {
 		o.Id = &Id
-	}
-    
-	if Name, ok := SelfagentgreetingMap["name"].(string); ok {
-		o.Name = &Name
 	}
     
 	if InboundPrompt, ok := SelfagentgreetingMap["inboundPrompt"].(map[string]interface{}); ok {

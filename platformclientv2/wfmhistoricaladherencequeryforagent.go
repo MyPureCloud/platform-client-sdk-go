@@ -8,43 +8,22 @@ import (
 	"strings"
 )
 
-// Klaxonheartbeatalertstopicheartbeatalert
-type Klaxonheartbeatalertstopicheartbeatalert struct { 
+// Wfmhistoricaladherencequeryforagent
+type Wfmhistoricaladherencequeryforagent struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id
-	Id *string `json:"id,omitempty"`
-
-	// Name
-	Name *string `json:"name,omitempty"`
-
-	// SenderId
-	SenderId *string `json:"senderId,omitempty"`
-
-	// HeartBeatTimeoutInMinutes
-	HeartBeatTimeoutInMinutes *float32 `json:"heartBeatTimeoutInMinutes,omitempty"`
-
-	// RuleId
-	RuleId *string `json:"ruleId,omitempty"`
-
-	// StartDate
+	// StartDate - Beginning of the date range to query in ISO-8601 format
 	StartDate *time.Time `json:"startDate,omitempty"`
 
-	// EndDate
+	// EndDate - End of the date range to query in ISO-8601 format. If it is not set, end date will be set to current time
 	EndDate *time.Time `json:"endDate,omitempty"`
 
-	// NotificationUsers
-	NotificationUsers *[]Klaxonheartbeatalertstopicnotificationuser `json:"notificationUsers,omitempty"`
-
-	// AlertTypes
-	AlertTypes *[]string `json:"alertTypes,omitempty"`
-
-	// RuleType
-	RuleType *string `json:"ruleType,omitempty"`
+	// TimeZone - The time zone, in olson format, to use in defining days when computing adherence. The results will be returned as UTC timestamps regardless of the time zone input.
+	TimeZone *string `json:"timeZone,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Klaxonheartbeatalertstopicheartbeatalert) SetField(field string, fieldValue interface{}) {
+func (o *Wfmhistoricaladherencequeryforagent) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -65,7 +44,7 @@ func (o *Klaxonheartbeatalertstopicheartbeatalert) SetField(field string, fieldV
 	o.SetFieldNames[field] = true
 }
 
-func (o Klaxonheartbeatalertstopicheartbeatalert) MarshalJSON() ([]byte, error) {
+func (o Wfmhistoricaladherencequeryforagent) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -103,7 +82,7 @@ func (o Klaxonheartbeatalertstopicheartbeatalert) MarshalJSON() ([]byte, error) 
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Klaxonheartbeatalertstopicheartbeatalert
+	type Alias Wfmhistoricaladherencequeryforagent
 	
 	StartDate := new(string)
 	if o.StartDate != nil {
@@ -122,100 +101,41 @@ func (o Klaxonheartbeatalertstopicheartbeatalert) MarshalJSON() ([]byte, error) 
 	}
 	
 	return json.Marshal(&struct { 
-		Id *string `json:"id,omitempty"`
-		
-		Name *string `json:"name,omitempty"`
-		
-		SenderId *string `json:"senderId,omitempty"`
-		
-		HeartBeatTimeoutInMinutes *float32 `json:"heartBeatTimeoutInMinutes,omitempty"`
-		
-		RuleId *string `json:"ruleId,omitempty"`
-		
 		StartDate *string `json:"startDate,omitempty"`
 		
 		EndDate *string `json:"endDate,omitempty"`
 		
-		NotificationUsers *[]Klaxonheartbeatalertstopicnotificationuser `json:"notificationUsers,omitempty"`
-		
-		AlertTypes *[]string `json:"alertTypes,omitempty"`
-		
-		RuleType *string `json:"ruleType,omitempty"`
+		TimeZone *string `json:"timeZone,omitempty"`
 		Alias
 	}{ 
-		Id: o.Id,
-		
-		Name: o.Name,
-		
-		SenderId: o.SenderId,
-		
-		HeartBeatTimeoutInMinutes: o.HeartBeatTimeoutInMinutes,
-		
-		RuleId: o.RuleId,
-		
 		StartDate: StartDate,
 		
 		EndDate: EndDate,
 		
-		NotificationUsers: o.NotificationUsers,
-		
-		AlertTypes: o.AlertTypes,
-		
-		RuleType: o.RuleType,
+		TimeZone: o.TimeZone,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Klaxonheartbeatalertstopicheartbeatalert) UnmarshalJSON(b []byte) error {
-	var KlaxonheartbeatalertstopicheartbeatalertMap map[string]interface{}
-	err := json.Unmarshal(b, &KlaxonheartbeatalertstopicheartbeatalertMap)
+func (o *Wfmhistoricaladherencequeryforagent) UnmarshalJSON(b []byte) error {
+	var WfmhistoricaladherencequeryforagentMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmhistoricaladherencequeryforagentMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := KlaxonheartbeatalertstopicheartbeatalertMap["id"].(string); ok {
-		o.Id = &Id
-	}
-    
-	if Name, ok := KlaxonheartbeatalertstopicheartbeatalertMap["name"].(string); ok {
-		o.Name = &Name
-	}
-    
-	if SenderId, ok := KlaxonheartbeatalertstopicheartbeatalertMap["senderId"].(string); ok {
-		o.SenderId = &SenderId
-	}
-    
-	if HeartBeatTimeoutInMinutes, ok := KlaxonheartbeatalertstopicheartbeatalertMap["heartBeatTimeoutInMinutes"].(float64); ok {
-		HeartBeatTimeoutInMinutesFloat32 := float32(HeartBeatTimeoutInMinutes)
-		o.HeartBeatTimeoutInMinutes = &HeartBeatTimeoutInMinutesFloat32
-	}
-    
-	if RuleId, ok := KlaxonheartbeatalertstopicheartbeatalertMap["ruleId"].(string); ok {
-		o.RuleId = &RuleId
-	}
-    
-	if startDateString, ok := KlaxonheartbeatalertstopicheartbeatalertMap["startDate"].(string); ok {
+	if startDateString, ok := WfmhistoricaladherencequeryforagentMap["startDate"].(string); ok {
 		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
 		o.StartDate = &StartDate
 	}
 	
-	if endDateString, ok := KlaxonheartbeatalertstopicheartbeatalertMap["endDate"].(string); ok {
+	if endDateString, ok := WfmhistoricaladherencequeryforagentMap["endDate"].(string); ok {
 		EndDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", endDateString)
 		o.EndDate = &EndDate
 	}
 	
-	if NotificationUsers, ok := KlaxonheartbeatalertstopicheartbeatalertMap["notificationUsers"].([]interface{}); ok {
-		NotificationUsersString, _ := json.Marshal(NotificationUsers)
-		json.Unmarshal(NotificationUsersString, &o.NotificationUsers)
-	}
-	
-	if AlertTypes, ok := KlaxonheartbeatalertstopicheartbeatalertMap["alertTypes"].([]interface{}); ok {
-		AlertTypesString, _ := json.Marshal(AlertTypes)
-		json.Unmarshal(AlertTypesString, &o.AlertTypes)
-	}
-	
-	if RuleType, ok := KlaxonheartbeatalertstopicheartbeatalertMap["ruleType"].(string); ok {
-		o.RuleType = &RuleType
+	if TimeZone, ok := WfmhistoricaladherencequeryforagentMap["timeZone"].(string); ok {
+		o.TimeZone = &TimeZone
 	}
     
 
@@ -223,7 +143,7 @@ func (o *Klaxonheartbeatalertstopicheartbeatalert) UnmarshalJSON(b []byte) error
 }
 
 // String returns a JSON representation of the model
-func (o *Klaxonheartbeatalertstopicheartbeatalert) String() string {
+func (o *Wfmhistoricaladherencequeryforagent) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

@@ -15,6 +15,9 @@ type Journeycaseassociation struct {
 	// Id - The ID of the association.
 	Id *string `json:"id,omitempty"`
 
+	// AssociatedCase - The case that was associated with the journey session.
+	AssociatedCase *Addressableentityref `json:"associatedCase,omitempty"`
+
 	// CaseReference - The reference for the case that was associated with the journey session.
 	CaseReference *string `json:"caseReference,omitempty"`
 
@@ -23,9 +26,6 @@ type Journeycaseassociation struct {
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
-
-	// VarCase - The case that was associated with the journey session.
-	VarCase *Addressableentityref `json:"case,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -101,24 +101,24 @@ func (o Journeycaseassociation) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
+		AssociatedCase *Addressableentityref `json:"associatedCase,omitempty"`
+		
 		CaseReference *string `json:"caseReference,omitempty"`
 		
 		DateAssociated *string `json:"dateAssociated,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		
-		VarCase *Addressableentityref `json:"case,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
+		
+		AssociatedCase: o.AssociatedCase,
 		
 		CaseReference: o.CaseReference,
 		
 		DateAssociated: DateAssociated,
 		
 		SelfUri: o.SelfUri,
-		
-		VarCase: o.VarCase,
 		Alias:    (Alias)(o),
 	})
 }
@@ -134,6 +134,11 @@ func (o *Journeycaseassociation) UnmarshalJSON(b []byte) error {
 		o.Id = &Id
 	}
     
+	if AssociatedCase, ok := JourneycaseassociationMap["associatedCase"].(map[string]interface{}); ok {
+		AssociatedCaseString, _ := json.Marshal(AssociatedCase)
+		json.Unmarshal(AssociatedCaseString, &o.AssociatedCase)
+	}
+	
 	if CaseReference, ok := JourneycaseassociationMap["caseReference"].(string); ok {
 		o.CaseReference = &CaseReference
 	}
@@ -147,11 +152,6 @@ func (o *Journeycaseassociation) UnmarshalJSON(b []byte) error {
 		o.SelfUri = &SelfUri
 	}
     
-	if VarCase, ok := JourneycaseassociationMap["case"].(map[string]interface{}); ok {
-		VarCaseString, _ := json.Marshal(VarCase)
-		json.Unmarshal(VarCaseString, &o.VarCase)
-	}
-	
 
 	return nil
 }

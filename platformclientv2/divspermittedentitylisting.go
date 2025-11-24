@@ -26,6 +26,9 @@ type Divspermittedentitylisting struct {
 	// AllDivsPermitted
 	AllDivsPermitted *bool `json:"allDivsPermitted,omitempty"`
 
+	// FirstUri
+	FirstUri *string `json:"firstUri,omitempty"`
+
 	// PreviousUri
 	PreviousUri *string `json:"previousUri,omitempty"`
 
@@ -34,9 +37,6 @@ type Divspermittedentitylisting struct {
 
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
-
-	// FirstUri
-	FirstUri *string `json:"firstUri,omitempty"`
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -118,13 +118,13 @@ func (o Divspermittedentitylisting) MarshalJSON() ([]byte, error) {
 		
 		AllDivsPermitted *bool `json:"allDivsPermitted,omitempty"`
 		
+		FirstUri *string `json:"firstUri,omitempty"`
+		
 		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		NextUri *string `json:"nextUri,omitempty"`
 		
 		LastUri *string `json:"lastUri,omitempty"`
-		
-		FirstUri *string `json:"firstUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
@@ -141,13 +141,13 @@ func (o Divspermittedentitylisting) MarshalJSON() ([]byte, error) {
 		
 		AllDivsPermitted: o.AllDivsPermitted,
 		
+		FirstUri: o.FirstUri,
+		
 		PreviousUri: o.PreviousUri,
 		
 		NextUri: o.NextUri,
 		
 		LastUri: o.LastUri,
-		
-		FirstUri: o.FirstUri,
 		
 		SelfUri: o.SelfUri,
 		
@@ -187,6 +187,10 @@ func (o *Divspermittedentitylisting) UnmarshalJSON(b []byte) error {
 		o.AllDivsPermitted = &AllDivsPermitted
 	}
     
+	if FirstUri, ok := DivspermittedentitylistingMap["firstUri"].(string); ok {
+		o.FirstUri = &FirstUri
+	}
+    
 	if PreviousUri, ok := DivspermittedentitylistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
 	}
@@ -197,10 +201,6 @@ func (o *Divspermittedentitylisting) UnmarshalJSON(b []byte) error {
     
 	if LastUri, ok := DivspermittedentitylistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
-	}
-    
-	if FirstUri, ok := DivspermittedentitylistingMap["firstUri"].(string); ok {
-		o.FirstUri = &FirstUri
 	}
     
 	if SelfUri, ok := DivspermittedentitylistingMap["selfUri"].(string); ok {

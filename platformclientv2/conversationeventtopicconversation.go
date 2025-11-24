@@ -42,6 +42,12 @@ type Conversationeventtopicconversation struct {
 	// InactivityTimeout
 	InactivityTimeout *time.Time `json:"inactivityTimeout,omitempty"`
 
+	// AssociatedConversation
+	AssociatedConversation *Conversationeventtopicdomainentityref `json:"associatedConversation,omitempty"`
+
+	// ConsultationConversations
+	ConsultationConversations *[]Conversationeventtopicdomainentityref `json:"consultationConversations,omitempty"`
+
 	// Divisions
 	Divisions *[]Conversationeventtopicconversationdivisionmembership `json:"divisions,omitempty"`
 }
@@ -137,6 +143,10 @@ func (o Conversationeventtopicconversation) MarshalJSON() ([]byte, error) {
 		
 		InactivityTimeout *string `json:"inactivityTimeout,omitempty"`
 		
+		AssociatedConversation *Conversationeventtopicdomainentityref `json:"associatedConversation,omitempty"`
+		
+		ConsultationConversations *[]Conversationeventtopicdomainentityref `json:"consultationConversations,omitempty"`
+		
 		Divisions *[]Conversationeventtopicconversationdivisionmembership `json:"divisions,omitempty"`
 		Alias
 	}{ 
@@ -159,6 +169,10 @@ func (o Conversationeventtopicconversation) MarshalJSON() ([]byte, error) {
 		SecurePause: o.SecurePause,
 		
 		InactivityTimeout: InactivityTimeout,
+		
+		AssociatedConversation: o.AssociatedConversation,
+		
+		ConsultationConversations: o.ConsultationConversations,
 		
 		Divisions: o.Divisions,
 		Alias:    (Alias)(o),
@@ -214,6 +228,16 @@ func (o *Conversationeventtopicconversation) UnmarshalJSON(b []byte) error {
 	if inactivityTimeoutString, ok := ConversationeventtopicconversationMap["inactivityTimeout"].(string); ok {
 		InactivityTimeout, _ := time.Parse("2006-01-02T15:04:05.999999Z", inactivityTimeoutString)
 		o.InactivityTimeout = &InactivityTimeout
+	}
+	
+	if AssociatedConversation, ok := ConversationeventtopicconversationMap["associatedConversation"].(map[string]interface{}); ok {
+		AssociatedConversationString, _ := json.Marshal(AssociatedConversation)
+		json.Unmarshal(AssociatedConversationString, &o.AssociatedConversation)
+	}
+	
+	if ConsultationConversations, ok := ConversationeventtopicconversationMap["consultationConversations"].([]interface{}); ok {
+		ConsultationConversationsString, _ := json.Marshal(ConsultationConversations)
+		json.Unmarshal(ConsultationConversationsString, &o.ConsultationConversations)
 	}
 	
 	if Divisions, ok := ConversationeventtopicconversationMap["divisions"].([]interface{}); ok {

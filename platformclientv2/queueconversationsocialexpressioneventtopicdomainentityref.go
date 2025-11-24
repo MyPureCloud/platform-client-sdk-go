@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// Queueconversationsocialexpressioneventtopicdomainentityref - A reference to another domain entity.
+// Queueconversationsocialexpressioneventtopicdomainentityref
 type Queueconversationsocialexpressioneventtopicdomainentityref struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
