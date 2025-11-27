@@ -26,20 +26,20 @@ type Stationentitylisting struct {
 	// TotalNumberOfEntities - The total organization-wide number of entities.
 	TotalNumberOfEntities *int `json:"totalNumberOfEntities,omitempty"`
 
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
+
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
 
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
+	// SelfUri
+	SelfUri *string `json:"selfUri,omitempty"`
 
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
-	// SelfUri
-	SelfUri *string `json:"selfUri,omitempty"`
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
 
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
@@ -118,15 +118,15 @@ func (o Stationentitylisting) MarshalJSON() ([]byte, error) {
 		
 		TotalNumberOfEntities *int `json:"totalNumberOfEntities,omitempty"`
 		
+		LastUri *string `json:"lastUri,omitempty"`
+		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
-		PreviousUri *string `json:"previousUri,omitempty"`
+		SelfUri *string `json:"selfUri,omitempty"`
 		
 		NextUri *string `json:"nextUri,omitempty"`
 		
-		LastUri *string `json:"lastUri,omitempty"`
-		
-		SelfUri *string `json:"selfUri,omitempty"`
+		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		Alias
@@ -141,15 +141,15 @@ func (o Stationentitylisting) MarshalJSON() ([]byte, error) {
 		
 		TotalNumberOfEntities: o.TotalNumberOfEntities,
 		
+		LastUri: o.LastUri,
+		
 		FirstUri: o.FirstUri,
 		
-		PreviousUri: o.PreviousUri,
+		SelfUri: o.SelfUri,
 		
 		NextUri: o.NextUri,
 		
-		LastUri: o.LastUri,
-		
-		SelfUri: o.SelfUri,
+		PreviousUri: o.PreviousUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
@@ -188,24 +188,24 @@ func (o *Stationentitylisting) UnmarshalJSON(b []byte) error {
 		o.TotalNumberOfEntities = &TotalNumberOfEntitiesInt
 	}
 	
+	if LastUri, ok := StationentitylistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
+	}
+    
 	if FirstUri, ok := StationentitylistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
     
-	if PreviousUri, ok := StationentitylistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
+	if SelfUri, ok := StationentitylistingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
 	}
     
 	if NextUri, ok := StationentitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
     
-	if LastUri, ok := StationentitylistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
-	if SelfUri, ok := StationentitylistingMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
+	if PreviousUri, ok := StationentitylistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
 	}
     
 	if PageCount, ok := StationentitylistingMap["pageCount"].(float64); ok {

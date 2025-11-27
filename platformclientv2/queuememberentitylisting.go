@@ -23,14 +23,14 @@ type Queuememberentitylisting struct {
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
 
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
+	// SelfUri
+	SelfUri *string `json:"selfUri,omitempty"`
 
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
 
-	// SelfUri
-	SelfUri *string `json:"selfUri,omitempty"`
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -104,11 +104,11 @@ func (o Queuememberentitylisting) MarshalJSON() ([]byte, error) {
 		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
-		PreviousUri *string `json:"previousUri,omitempty"`
+		SelfUri *string `json:"selfUri,omitempty"`
 		
 		NextUri *string `json:"nextUri,omitempty"`
 		
-		SelfUri *string `json:"selfUri,omitempty"`
+		PreviousUri *string `json:"previousUri,omitempty"`
 		Alias
 	}{ 
 		Entities: o.Entities,
@@ -119,11 +119,11 @@ func (o Queuememberentitylisting) MarshalJSON() ([]byte, error) {
 		
 		FirstUri: o.FirstUri,
 		
-		PreviousUri: o.PreviousUri,
+		SelfUri: o.SelfUri,
 		
 		NextUri: o.NextUri,
 		
-		SelfUri: o.SelfUri,
+		PreviousUri: o.PreviousUri,
 		Alias:    (Alias)(o),
 	})
 }
@@ -154,16 +154,16 @@ func (o *Queuememberentitylisting) UnmarshalJSON(b []byte) error {
 		o.FirstUri = &FirstUri
 	}
     
-	if PreviousUri, ok := QueuememberentitylistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
+	if SelfUri, ok := QueuememberentitylistingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
 	}
     
 	if NextUri, ok := QueuememberentitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
     
-	if SelfUri, ok := QueuememberentitylistingMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
+	if PreviousUri, ok := QueuememberentitylistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
 	}
     
 

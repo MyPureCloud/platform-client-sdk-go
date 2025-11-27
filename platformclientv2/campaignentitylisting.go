@@ -23,20 +23,20 @@ type Campaignentitylisting struct {
 	// Total
 	Total *int `json:"total,omitempty"`
 
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
+
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
 
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
+	// SelfUri
+	SelfUri *string `json:"selfUri,omitempty"`
 
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
-	// SelfUri
-	SelfUri *string `json:"selfUri,omitempty"`
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
 
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
@@ -113,15 +113,15 @@ func (o Campaignentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
+		LastUri *string `json:"lastUri,omitempty"`
+		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
-		PreviousUri *string `json:"previousUri,omitempty"`
+		SelfUri *string `json:"selfUri,omitempty"`
 		
 		NextUri *string `json:"nextUri,omitempty"`
 		
-		LastUri *string `json:"lastUri,omitempty"`
-		
-		SelfUri *string `json:"selfUri,omitempty"`
+		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		Alias
@@ -134,15 +134,15 @@ func (o Campaignentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
+		LastUri: o.LastUri,
+		
 		FirstUri: o.FirstUri,
 		
-		PreviousUri: o.PreviousUri,
+		SelfUri: o.SelfUri,
 		
 		NextUri: o.NextUri,
 		
-		LastUri: o.LastUri,
-		
-		SelfUri: o.SelfUri,
+		PreviousUri: o.PreviousUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
@@ -176,24 +176,24 @@ func (o *Campaignentitylisting) UnmarshalJSON(b []byte) error {
 		o.Total = &TotalInt
 	}
 	
+	if LastUri, ok := CampaignentitylistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
+	}
+    
 	if FirstUri, ok := CampaignentitylistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
     
-	if PreviousUri, ok := CampaignentitylistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
+	if SelfUri, ok := CampaignentitylistingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
 	}
     
 	if NextUri, ok := CampaignentitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
     
-	if LastUri, ok := CampaignentitylistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
-	if SelfUri, ok := CampaignentitylistingMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
+	if PreviousUri, ok := CampaignentitylistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
 	}
     
 	if PageCount, ok := CampaignentitylistingMap["pageCount"].(float64); ok {

@@ -17,7 +17,7 @@ type Workitemquerypostrequest struct {
 	// VarSelect - Specify the value 'Count' for this parameter in order to return only the record count.
 	VarSelect *string `json:"select,omitempty"`
 
-	// Filters - List of filter objects to be used in the search.
+	// Filters - List of filter objects to be used in the search. Valid filter names are: 'id', 'name', 'description', 'languageId', 'priority', 'dateCreated', 'dateModified', 'dateDue', 'dateExpires', 'durationInSeconds', 'ttl', 'statusId', 'statusCategory', 'dateClosed', 'externalContactId', 'reporterId', 'queueId', 'externalTag', 'modifiedBy', 'assignmentState', 'divisionId', 'customFields.<custom field name>'
 	Filters *[]Workitemfilter `json:"filters,omitempty"`
 
 	// Attributes - List of entity attributes to be retrieved in the result.

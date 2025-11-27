@@ -17,7 +17,7 @@ type Worktypequeryrequest struct {
 	// VarSelect - Specify the value 'Count' for this parameter in order to return only the record count.
 	VarSelect *string `json:"select,omitempty"`
 
-	// Filters - List of filter objects to be used in the search.
+	// Filters - List of filter objects to be used in the search. Valid filter names are: 'divisionId', 'id', 'name', 'description', 'defaultWorkbinId', 'defaultDurationSeconds', 'defaultExpirationSeconds', 'defaultDueDurationSeconds', 'defaultPriority', 'defaultLanguageId', 'defaultTtlSeconds', 'assignmentEnabled', 'defaultQueueId', 'schemaId', 'schemaVersion', 'dateCreated', 'dateModified', 'modifiedBy'
 	Filters *[]Workitemfilter `json:"filters,omitempty"`
 
 	// Attributes - List of entity attributes to be retrieved in the result.

@@ -26,20 +26,20 @@ type Scriptentitylisting struct {
 	// TruncatedDivisions
 	TruncatedDivisions *bool `json:"truncatedDivisions,omitempty"`
 
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
+
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
 
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
+	// SelfUri
+	SelfUri *string `json:"selfUri,omitempty"`
 
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
-	// SelfUri
-	SelfUri *string `json:"selfUri,omitempty"`
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
 
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
@@ -118,15 +118,15 @@ func (o Scriptentitylisting) MarshalJSON() ([]byte, error) {
 		
 		TruncatedDivisions *bool `json:"truncatedDivisions,omitempty"`
 		
+		LastUri *string `json:"lastUri,omitempty"`
+		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
-		PreviousUri *string `json:"previousUri,omitempty"`
+		SelfUri *string `json:"selfUri,omitempty"`
 		
 		NextUri *string `json:"nextUri,omitempty"`
 		
-		LastUri *string `json:"lastUri,omitempty"`
-		
-		SelfUri *string `json:"selfUri,omitempty"`
+		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		Alias
@@ -141,15 +141,15 @@ func (o Scriptentitylisting) MarshalJSON() ([]byte, error) {
 		
 		TruncatedDivisions: o.TruncatedDivisions,
 		
+		LastUri: o.LastUri,
+		
 		FirstUri: o.FirstUri,
 		
-		PreviousUri: o.PreviousUri,
+		SelfUri: o.SelfUri,
 		
 		NextUri: o.NextUri,
 		
-		LastUri: o.LastUri,
-		
-		SelfUri: o.SelfUri,
+		PreviousUri: o.PreviousUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
@@ -187,24 +187,24 @@ func (o *Scriptentitylisting) UnmarshalJSON(b []byte) error {
 		o.TruncatedDivisions = &TruncatedDivisions
 	}
     
+	if LastUri, ok := ScriptentitylistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
+	}
+    
 	if FirstUri, ok := ScriptentitylistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
     
-	if PreviousUri, ok := ScriptentitylistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
+	if SelfUri, ok := ScriptentitylistingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
 	}
     
 	if NextUri, ok := ScriptentitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
     
-	if LastUri, ok := ScriptentitylistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
-	if SelfUri, ok := ScriptentitylistingMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
+	if PreviousUri, ok := ScriptentitylistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
 	}
     
 	if PageCount, ok := ScriptentitylistingMap["pageCount"].(float64); ok {

@@ -11,7 +11,7 @@ import (
 type Workitemqueryjobfilter struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Name - Attribute name.
+	// Name - Attribute name. Valid filter names are: 'workbinId', 'id', 'typeId', 'priority', 'dateCreated', 'dateDue', 'statusId', 'dateClosed', 'externalContactId', 'assigneeId', 'assignmentState', 'queueId', 'externalTag', 'divisionId'
 	Name *string `json:"name,omitempty"`
 
 	// Operator - Filter operator.

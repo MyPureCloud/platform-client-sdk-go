@@ -23,20 +23,20 @@ type Opendataingestionruleversionresponseentitylisting struct {
 	// Total
 	Total *int `json:"total,omitempty"`
 
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
+
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
 
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
+	// SelfUri
+	SelfUri *string `json:"selfUri,omitempty"`
 
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
-	// SelfUri
-	SelfUri *string `json:"selfUri,omitempty"`
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
 
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
@@ -113,15 +113,15 @@ func (o Opendataingestionruleversionresponseentitylisting) MarshalJSON() ([]byte
 		
 		Total *int `json:"total,omitempty"`
 		
+		LastUri *string `json:"lastUri,omitempty"`
+		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
-		PreviousUri *string `json:"previousUri,omitempty"`
+		SelfUri *string `json:"selfUri,omitempty"`
 		
 		NextUri *string `json:"nextUri,omitempty"`
 		
-		LastUri *string `json:"lastUri,omitempty"`
-		
-		SelfUri *string `json:"selfUri,omitempty"`
+		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		Alias
@@ -134,15 +134,15 @@ func (o Opendataingestionruleversionresponseentitylisting) MarshalJSON() ([]byte
 		
 		Total: o.Total,
 		
+		LastUri: o.LastUri,
+		
 		FirstUri: o.FirstUri,
 		
-		PreviousUri: o.PreviousUri,
+		SelfUri: o.SelfUri,
 		
 		NextUri: o.NextUri,
 		
-		LastUri: o.LastUri,
-		
-		SelfUri: o.SelfUri,
+		PreviousUri: o.PreviousUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
@@ -176,24 +176,24 @@ func (o *Opendataingestionruleversionresponseentitylisting) UnmarshalJSON(b []by
 		o.Total = &TotalInt
 	}
 	
+	if LastUri, ok := OpendataingestionruleversionresponseentitylistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
+	}
+    
 	if FirstUri, ok := OpendataingestionruleversionresponseentitylistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
     
-	if PreviousUri, ok := OpendataingestionruleversionresponseentitylistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
+	if SelfUri, ok := OpendataingestionruleversionresponseentitylistingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
 	}
     
 	if NextUri, ok := OpendataingestionruleversionresponseentitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
     
-	if LastUri, ok := OpendataingestionruleversionresponseentitylistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
-	if SelfUri, ok := OpendataingestionruleversionresponseentitylistingMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
+	if PreviousUri, ok := OpendataingestionruleversionresponseentitylistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
 	}
     
 	if PageCount, ok := OpendataingestionruleversionresponseentitylistingMap["pageCount"].(float64); ok {

@@ -13,6 +13,9 @@ type Journeyviewresult struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// Elements - The elements within the journey view result
 	Elements *[]Journeyviewresultelement `json:"elements,omitempty"`
+
+	// Charts - The chart results within the journey view result
+	Charts *[]Journeyviewchartresult `json:"charts,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +82,13 @@ func (o Journeyviewresult) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		Elements *[]Journeyviewresultelement `json:"elements,omitempty"`
+		
+		Charts *[]Journeyviewchartresult `json:"charts,omitempty"`
 		Alias
 	}{ 
 		Elements: o.Elements,
+		
+		Charts: o.Charts,
 		Alias:    (Alias)(o),
 	})
 }
@@ -96,6 +103,11 @@ func (o *Journeyviewresult) UnmarshalJSON(b []byte) error {
 	if Elements, ok := JourneyviewresultMap["elements"].([]interface{}); ok {
 		ElementsString, _ := json.Marshal(Elements)
 		json.Unmarshal(ElementsString, &o.Elements)
+	}
+	
+	if Charts, ok := JourneyviewresultMap["charts"].([]interface{}); ok {
+		ChartsString, _ := json.Marshal(Charts)
+		json.Unmarshal(ChartsString, &o.Charts)
 	}
 	
 

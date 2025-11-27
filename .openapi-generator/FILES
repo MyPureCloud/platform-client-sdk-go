@@ -713,6 +713,7 @@ docs/GetEmailsSettingsThreading-example.txt
 docs/GetEmailsSettingsThreading-example.txt
 docs/GetEmployeeengagementCelebrations-example.txt
 docs/GetEmployeeengagementRecognition-example.txt
+docs/GetEmployeeengagementRecognitions-example.txt
 docs/GetEmployeeperformanceExternalmetricsDefinition-example.txt
 docs/GetEmployeeperformanceExternalmetricsDefinitions-example.txt
 docs/GetExternalcontactsContact-example.txt
@@ -7308,6 +7309,7 @@ platformclientv2/recipientlisting.go
 platformclientv2/recipientrequest.go
 platformclientv2/recognition.go
 platformclientv2/recognitionbase.go
+platformclientv2/recognitions.go
 platformclientv2/record.go
 platformclientv2/recordersstate.go
 platformclientv2/recording.go
@@ -7337,6 +7339,8 @@ platformclientv2/recordingjobentitylisting.go
 platformclientv2/recordingjobfailedrecording.go
 platformclientv2/recordingjobsquery.go
 platformclientv2/recordinglocation.go
+platformclientv2/recordingmessagereceipt.go
+platformclientv2/recordingmessagereceiptreason.go
 platformclientv2/recordingmessagingmessage.go
 platformclientv2/recordingmetadata.go
 platformclientv2/recordingnotificationtemplate.go

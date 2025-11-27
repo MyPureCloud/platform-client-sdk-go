@@ -7077,7 +7077,7 @@ func (a OutboundApi) GetOutboundMessagingcampaignProgress(messagingCampaignId st
 // GetOutboundMessagingcampaigns invokes GET /api/v2/outbound/messagingcampaigns
 //
 // Query a list of Messaging Campaigns
-func (a OutboundApi) GetOutboundMessagingcampaigns(pageSize int, pageNumber int, sortBy string, sortOrder string, name string, contactListId string, divisionId []string, varType string, senderSmsPhoneNumber string, id []string, contentTemplateId string, campaignStatus string) (*Messagingcampaignentitylisting, *APIResponse, error) {
+func (a OutboundApi) GetOutboundMessagingcampaigns(pageSize int, pageNumber int, sortBy string, sortOrder string, name string, contactListId string, divisionId []string, varType string, senderSmsPhoneNumber string, id []string, contentTemplateId string, campaignStatus string, ruleSetIds []string) (*Messagingcampaignentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/messagingcampaigns"
@@ -7127,6 +7127,8 @@ func (a OutboundApi) GetOutboundMessagingcampaigns(pageSize int, pageNumber int,
 	queryParams["contentTemplateId"] = a.Configuration.APIClient.ParameterToString(contentTemplateId, "")
 	
 	queryParams["campaignStatus"] = a.Configuration.APIClient.ParameterToString(campaignStatus, "")
+	
+	queryParams["ruleSetIds"] = a.Configuration.APIClient.ParameterToString(ruleSetIds, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
