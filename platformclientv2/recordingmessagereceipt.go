@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -13,6 +14,9 @@ type Recordingmessagereceipt struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// Id - The id of the message receipt. Message receipts will have the same ID as the message they reference.
 	Id *string `json:"id,omitempty"`
+
+	// ReceiptTime - Original time of the event (receipt). Example: delivery receipt time, read receipt time. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	ReceiptTime *time.Time `json:"receiptTime,omitempty"`
 
 	// Status - The message receipt status
 	Status *string `json:"status,omitempty"`
@@ -50,7 +54,7 @@ func (o Recordingmessagereceipt) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
+		dateTimeFields := []string{ "ReceiptTime", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -83,8 +87,18 @@ func (o Recordingmessagereceipt) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Recordingmessagereceipt
 	
+	ReceiptTime := new(string)
+	if o.ReceiptTime != nil {
+		
+		*ReceiptTime = timeutil.Strftime(o.ReceiptTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ReceiptTime = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
+		
+		ReceiptTime *string `json:"receiptTime,omitempty"`
 		
 		Status *string `json:"status,omitempty"`
 		
@@ -92,6 +106,8 @@ func (o Recordingmessagereceipt) MarshalJSON() ([]byte, error) {
 		Alias
 	}{ 
 		Id: o.Id,
+		
+		ReceiptTime: ReceiptTime,
 		
 		Status: o.Status,
 		
@@ -111,6 +127,11 @@ func (o *Recordingmessagereceipt) UnmarshalJSON(b []byte) error {
 		o.Id = &Id
 	}
     
+	if receiptTimeString, ok := RecordingmessagereceiptMap["receiptTime"].(string); ok {
+		ReceiptTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", receiptTimeString)
+		o.ReceiptTime = &ReceiptTime
+	}
+	
 	if Status, ok := RecordingmessagereceiptMap["status"].(string); ok {
 		o.Status = &Status
 	}

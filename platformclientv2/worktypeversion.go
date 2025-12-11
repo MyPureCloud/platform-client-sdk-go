@@ -84,6 +84,9 @@ type Worktypeversion struct {
 	// DefaultScript - The default script for Workitems created from the Worktype.
 	DefaultScript *Workitemscriptreference `json:"defaultScript,omitempty"`
 
+	// UnassignedDivisionContactsEnabled - When set to true, will allow Workitems to be associated with External Contacts that are not assigned to any division. Default value is true.
+	UnassignedDivisionContactsEnabled *bool `json:"unassignedDivisionContactsEnabled,omitempty"`
+
 	// Version - Version
 	Version *int `json:"version,omitempty"`
 
@@ -218,6 +221,8 @@ func (o Worktypeversion) MarshalJSON() ([]byte, error) {
 		
 		DefaultScript *Workitemscriptreference `json:"defaultScript,omitempty"`
 		
+		UnassignedDivisionContactsEnabled *bool `json:"unassignedDivisionContactsEnabled,omitempty"`
+		
 		Version *int `json:"version,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -270,6 +275,8 @@ func (o Worktypeversion) MarshalJSON() ([]byte, error) {
 		Flow: o.Flow,
 		
 		DefaultScript: o.DefaultScript,
+		
+		UnassignedDivisionContactsEnabled: o.UnassignedDivisionContactsEnabled,
 		
 		Version: o.Version,
 		
@@ -401,6 +408,10 @@ func (o *Worktypeversion) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(DefaultScriptString, &o.DefaultScript)
 	}
 	
+	if UnassignedDivisionContactsEnabled, ok := WorktypeversionMap["unassignedDivisionContactsEnabled"].(bool); ok {
+		o.UnassignedDivisionContactsEnabled = &UnassignedDivisionContactsEnabled
+	}
+    
 	if Version, ok := WorktypeversionMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt

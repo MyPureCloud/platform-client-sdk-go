@@ -109,8 +109,6 @@ func (a AuthorizationApi) DeleteAuthorizationDivision(divisionId string, force b
 // DeleteAuthorizationPoliciesTargetSubjectSubjectId invokes DELETE /api/v2/authorization/policies/targets/{targetName}/subject/{subjectId}
 //
 // Delete an access control policy
-//
-// Preview: DeleteAuthorizationPoliciesTargetSubjectSubjectId is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AuthorizationApi) DeleteAuthorizationPoliciesTargetSubjectSubjectId(targetName string, subjectId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -1303,8 +1301,6 @@ func (a AuthorizationApi) GetAuthorizationPermissions(pageSize int, pageNumber i
 // GetAuthorizationPolicies invokes GET /api/v2/authorization/policies
 //
 // Get a page of access policies for an organization
-//
-// Preview: GetAuthorizationPolicies is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AuthorizationApi) GetAuthorizationPolicies(after string, pageSize int) (*Authorizationpolicyentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1385,8 +1381,6 @@ func (a AuthorizationApi) GetAuthorizationPolicies(after string, pageSize int) (
 // GetAuthorizationPoliciesSubjectSubjectId invokes GET /api/v2/authorization/policies/subject/{subjectId}
 //
 // Get a page of access policies for a given subject
-//
-// Preview: GetAuthorizationPoliciesSubjectSubjectId is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AuthorizationApi) GetAuthorizationPoliciesSubjectSubjectId(subjectId string, after string, pageSize int) (*Authorizationpolicyentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1473,8 +1467,6 @@ func (a AuthorizationApi) GetAuthorizationPoliciesSubjectSubjectId(subjectId str
 // GetAuthorizationPoliciesTarget invokes GET /api/v2/authorization/policies/targets/{targetName}
 //
 // Get a page of access policies for a given policy target
-//
-// Preview: GetAuthorizationPoliciesTarget is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AuthorizationApi) GetAuthorizationPoliciesTarget(targetName string, after string, pageSize int) (*Authorizationpolicyentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1561,8 +1553,6 @@ func (a AuthorizationApi) GetAuthorizationPoliciesTarget(targetName string, afte
 // GetAuthorizationPoliciesTargetSubjectSubjectId invokes GET /api/v2/authorization/policies/targets/{targetName}/subject/{subjectId}
 //
 // Get an access control policy for a specified resource target and subject
-//
-// Preview: GetAuthorizationPoliciesTargetSubjectSubjectId is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AuthorizationApi) GetAuthorizationPoliciesTargetSubjectSubjectId(targetName string, subjectId string) (*Authorizationpolicy, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1651,8 +1641,6 @@ func (a AuthorizationApi) GetAuthorizationPoliciesTargetSubjectSubjectId(targetN
 // GetAuthorizationPoliciesTargets invokes GET /api/v2/authorization/policies/targets
 //
 // Get a map of policy targets to valid attributes for those targets
-//
-// Preview: GetAuthorizationPoliciesTargets is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AuthorizationApi) GetAuthorizationPoliciesTargets() (*Targetattributes, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1729,8 +1717,6 @@ func (a AuthorizationApi) GetAuthorizationPoliciesTargets() (*Targetattributes, 
 // GetAuthorizationPolicy invokes GET /api/v2/authorization/policies/{policyId}
 //
 // Get an access control policy with the specified policy ID
-//
-// Preview: GetAuthorizationPolicy is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AuthorizationApi) GetAuthorizationPolicy(policyId string) (*Authorizationpolicy, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1813,8 +1799,6 @@ func (a AuthorizationApi) GetAuthorizationPolicy(policyId string) (*Authorizatio
 // GetAuthorizationPolicyAttributes invokes GET /api/v2/authorization/policies/{policyId}/attributes
 //
 // Get the list of attributes used to evaluate an access control policy with the specified policy ID
-//
-// Preview: GetAuthorizationPolicyAttributes is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AuthorizationApi) GetAuthorizationPolicyAttributes(policyId string) (*Policyattributeset, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3352,8 +3336,6 @@ func (a AuthorizationApi) PostAuthorizationDivisions(body Authzdivision) (*Authz
 // PostAuthorizationPoliciesTarget invokes POST /api/v2/authorization/policies/targets/{targetName}
 //
 // Add an access control policy for a specified resource target and subject
-//
-// Preview: PostAuthorizationPoliciesTarget is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AuthorizationApi) PostAuthorizationPoliciesTarget(targetName string, body Authorizationpolicy) (*Authorizationpolicy, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3444,8 +3426,6 @@ func (a AuthorizationApi) PostAuthorizationPoliciesTarget(targetName string, bod
 // PostAuthorizationPoliciesTargetValidate invokes POST /api/v2/authorization/policies/targets/{targetName}/validate
 //
 // Validate the conditions and attributes of an access control policy for a specified resource target
-//
-// Preview: PostAuthorizationPoliciesTargetValidate is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AuthorizationApi) PostAuthorizationPoliciesTargetValidate(targetName string, body Authorizationpolicy) (*Validationerrorlisting, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3536,8 +3516,6 @@ func (a AuthorizationApi) PostAuthorizationPoliciesTargetValidate(targetName str
 // PostAuthorizationPolicySimulate invokes POST /api/v2/authorization/policies/{policyId}/simulate
 //
 // Simulate a request and evaluate the specified policy ID against the provided values
-//
-// Preview: PostAuthorizationPolicySimulate is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AuthorizationApi) PostAuthorizationPolicySimulate(policyId string, body Policytestpayload) (*Policytestresult, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -4409,8 +4387,6 @@ func (a AuthorizationApi) PutAuthorizationDivision(divisionId string, body Authz
 // PutAuthorizationPoliciesTarget invokes PUT /api/v2/authorization/policies/targets/{targetName}
 //
 // Add an access control policy for a specified resource target and subject, overwriting any existing policy
-//
-// Preview: PutAuthorizationPoliciesTarget is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AuthorizationApi) PutAuthorizationPoliciesTarget(targetName string, body Authorizationpolicy) (*Authorizationpolicy, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -4501,8 +4477,6 @@ func (a AuthorizationApi) PutAuthorizationPoliciesTarget(targetName string, body
 // PutAuthorizationPolicy invokes PUT /api/v2/authorization/policies/{policyId}
 //
 // Update an access control policy with a given ID
-//
-// Preview: PutAuthorizationPolicy is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AuthorizationApi) PutAuthorizationPolicy(policyId string, body Authorizationpolicy) (*Authorizationpolicy, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

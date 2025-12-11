@@ -39,6 +39,9 @@ type Gdprrequest struct {
 	// ResultsUrl - The location where the results of the request can be retrieved
 	ResultsUrl *string `json:"resultsUrl,omitempty"`
 
+	// ResultsUrls - The locations where the results of the request can be retrieved if multiple archive files created
+	ResultsUrls *[]string `json:"resultsUrls,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -132,6 +135,8 @@ func (o Gdprrequest) MarshalJSON() ([]byte, error) {
 		
 		ResultsUrl *string `json:"resultsUrl,omitempty"`
 		
+		ResultsUrls *[]string `json:"resultsUrls,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -152,6 +157,8 @@ func (o Gdprrequest) MarshalJSON() ([]byte, error) {
 		Subject: o.Subject,
 		
 		ResultsUrl: o.ResultsUrl,
+		
+		ResultsUrls: o.ResultsUrls,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -205,6 +212,11 @@ func (o *Gdprrequest) UnmarshalJSON(b []byte) error {
 		o.ResultsUrl = &ResultsUrl
 	}
     
+	if ResultsUrls, ok := GdprrequestMap["resultsUrls"].([]interface{}); ok {
+		ResultsUrlsString, _ := json.Marshal(ResultsUrls)
+		json.Unmarshal(ResultsUrlsString, &o.ResultsUrls)
+	}
+	
 	if SelfUri, ok := GdprrequestMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

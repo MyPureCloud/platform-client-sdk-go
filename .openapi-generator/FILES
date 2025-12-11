@@ -27,6 +27,7 @@ docs/DeleteAlertingRule-example.txt
 docs/DeleteAnalyticsActionsAggregatesJob-example.txt
 docs/DeleteAnalyticsAgentcopilotsAggregatesJob-example.txt
 docs/DeleteAnalyticsBotsAggregatesJob-example.txt
+docs/DeleteAnalyticsCasemanagementAggregatesJob-example.txt
 docs/DeleteAnalyticsConversationsAggregatesJob-example.txt
 docs/DeleteAnalyticsConversationsAggregatesJob-example.txt
 docs/DeleteAnalyticsConversationsDetailsJob-example.txt
@@ -65,6 +66,7 @@ docs/DeleteArchitectSystempromptResource-example.txt
 docs/DeleteAssistant-example.txt
 docs/DeleteAssistantQueue-example.txt
 docs/DeleteAssistantQueues-example.txt
+docs/DeleteAssistantsAgentchecklist-example.txt
 docs/DeleteAuthorizationDivision-example.txt
 docs/DeleteAuthorizationDivision-example.txt
 docs/DeleteAuthorizationPoliciesTargetSubjectSubjectId-example.txt
@@ -255,6 +257,7 @@ docs/DeleteRoutingEmailDomainRoute-example.txt
 docs/DeleteRoutingEmailOutboundDomain-example.txt
 docs/DeleteRoutingLanguage-example.txt
 docs/DeleteRoutingPredictor-example.txt
+docs/DeleteRoutingPredictorsKeyperformanceindicator-example.txt
 docs/DeleteRoutingQueue-example.txt
 docs/DeleteRoutingQueueMember-example.txt
 docs/DeleteRoutingQueueUser-example.txt
@@ -381,6 +384,8 @@ docs/GetAnalyticsBotflowReportingturns-example.txt
 docs/GetAnalyticsBotflowSessions-example.txt
 docs/GetAnalyticsBotsAggregatesJob-example.txt
 docs/GetAnalyticsBotsAggregatesJobResults-example.txt
+docs/GetAnalyticsCasemanagementAggregatesJob-example.txt
+docs/GetAnalyticsCasemanagementAggregatesJobResults-example.txt
 docs/GetAnalyticsConversationDetails-example.txt
 docs/GetAnalyticsConversationDetails-example.txt
 docs/GetAnalyticsConversationsAggregatesJob-example.txt
@@ -483,6 +488,9 @@ docs/GetAssistantCopilot-example.txt
 docs/GetAssistantQueue-example.txt
 docs/GetAssistantQueues-example.txt
 docs/GetAssistants-example.txt
+docs/GetAssistantsAgentchecklist-example.txt
+docs/GetAssistantsAgentchecklists-example.txt
+docs/GetAssistantsAgentchecklistsLanguages-example.txt
 docs/GetAssistantsCopilotFeaturesupport-example.txt
 docs/GetAssistantsQueues-example.txt
 docs/GetAuditsQueryRealtimeServicemapping-example.txt
@@ -591,6 +599,9 @@ docs/GetContentmanagementWorkspaceTagvalue-example.txt
 docs/GetContentmanagementWorkspaceTagvalues-example.txt
 docs/GetContentmanagementWorkspaces-example.txt
 docs/GetConversation-example.txt
+docs/GetConversationCommunicationAgentchecklist-example.txt
+docs/GetConversationCommunicationAgentchecklistJob-example.txt
+docs/GetConversationCommunicationAgentchecklists-example.txt
 docs/GetConversationCommunicationInternalmessage-example.txt
 docs/GetConversationCommunicationInternalmessages-example.txt
 docs/GetConversationParticipantSecureivrsession-example.txt
@@ -1314,7 +1325,9 @@ docs/GetRoutingPredictor-example.txt
 docs/GetRoutingPredictorModelFeatures-example.txt
 docs/GetRoutingPredictorModels-example.txt
 docs/GetRoutingPredictors-example.txt
+docs/GetRoutingPredictorsKeyperformanceindicator-example.txt
 docs/GetRoutingPredictorsKeyperformanceindicators-example.txt
+docs/GetRoutingPredictorsKeyperformanceindicatortypes-example.txt
 docs/GetRoutingQueue-example.txt
 docs/GetRoutingQueueAssistant-example.txt
 docs/GetRoutingQueueComparisonperiod-example.txt
@@ -1945,6 +1958,7 @@ docs/PatchRoutingConversation-example.txt
 docs/PatchRoutingEmailDomain-example.txt
 docs/PatchRoutingEmailDomainValidate-example.txt
 docs/PatchRoutingPredictor-example.txt
+docs/PatchRoutingPredictorsKeyperformanceindicator-example.txt
 docs/PatchRoutingQueueMember-example.txt
 docs/PatchRoutingQueueMembers-example.txt
 docs/PatchRoutingQueueUser-example.txt
@@ -2046,6 +2060,8 @@ docs/PostAnalyticsAgentsStatusCounts-example.txt
 docs/PostAnalyticsAgentsStatusQuery-example.txt
 docs/PostAnalyticsBotsAggregatesJobs-example.txt
 docs/PostAnalyticsBotsAggregatesQuery-example.txt
+docs/PostAnalyticsCasemanagementAggregatesJobs-example.txt
+docs/PostAnalyticsCasemanagementAggregatesQuery-example.txt
 docs/PostAnalyticsConversationDetailsProperties-example.txt
 docs/PostAnalyticsConversationDetailsProperties-example.txt
 docs/PostAnalyticsConversationsActivityQuery-example.txt
@@ -2134,6 +2150,7 @@ docs/PostAssistantQueueUsersBulkAdd-example.txt
 docs/PostAssistantQueueUsersBulkRemove-example.txt
 docs/PostAssistantQueueUsersQuery-example.txt
 docs/PostAssistants-example.txt
+docs/PostAssistantsAgentchecklists-example.txt
 docs/PostAuditsQuery-example.txt
 docs/PostAuditsQueryRealtime-example.txt
 docs/PostAuditsQueryRealtimeRelated-example.txt
@@ -2193,6 +2210,10 @@ docs/PostContentmanagementWorkspaces-example.txt
 docs/PostConversationAssign-example.txt
 docs/PostConversationBarge-example.txt
 docs/PostConversationCobrowse-example.txt
+docs/PostConversationCommunicationAgentchecklist-example.txt
+docs/PostConversationCommunicationAgentchecklistAgentaction-example.txt
+docs/PostConversationCommunicationAgentchecklistJobs-example.txt
+docs/PostConversationCommunicationAgentchecklistsFinalize-example.txt
 docs/PostConversationCommunicationInternalmessages-example.txt
 docs/PostConversationDisconnect-example.txt
 docs/PostConversationParticipantCallbacks-example.txt
@@ -2382,6 +2403,7 @@ docs/PostGroups-example.txt
 docs/PostGroupsDynamicsettingsPreview-example.txt
 docs/PostGroupsSearch-example.txt
 docs/PostGroupsSearch-example.txt
+docs/PostGuideSessionTurns-example.txt
 docs/PostGuideVersionJobs-example.txt
 docs/PostGuideVersions-example.txt
 docs/PostGuides-example.txt
@@ -2602,6 +2624,7 @@ docs/PostRoutingEmailOutboundDomains-example.txt
 docs/PostRoutingEmailOutboundDomainsSimulated-example.txt
 docs/PostRoutingLanguages-example.txt
 docs/PostRoutingPredictors-example.txt
+docs/PostRoutingPredictorsKeyperformanceindicators-example.txt
 docs/PostRoutingQueueMembers-example.txt
 docs/PostRoutingQueueUsers-example.txt
 docs/PostRoutingQueueWrapupcodes-example.txt
@@ -2856,6 +2879,7 @@ docs/PutArchitectSchedulegroup-example.txt
 docs/PutArchitectSystempromptResource-example.txt
 docs/PutAssistantCopilot-example.txt
 docs/PutAssistantQueue-example.txt
+docs/PutAssistantsAgentchecklist-example.txt
 docs/PutAuthorizationDivision-example.txt
 docs/PutAuthorizationDivision-example.txt
 docs/PutAuthorizationPoliciesTarget-example.txt
@@ -3187,6 +3211,7 @@ platformclientv2/actiontargetlisting.go
 platformclientv2/actiontemplate.go
 platformclientv2/actiontemplatelisting.go
 platformclientv2/activation.go
+platformclientv2/activationtrigger.go
 platformclientv2/activitycode.go
 platformclientv2/activitycodecontainer.go
 platformclientv2/activitycodereference.go
@@ -3247,6 +3272,8 @@ platformclientv2/admintimeoffrequestpatch.go
 platformclientv2/aftercallwork.go
 platformclientv2/aftercallworkupdate.go
 platformclientv2/agent.go
+platformclientv2/agentaction.go
+platformclientv2/agentactionpayload.go
 platformclientv2/agentactivity.go
 platformclientv2/agentactivitychangedtopicagentactivity.go
 platformclientv2/agentactivitychangedtopicorganizationpresence.go
@@ -3258,6 +3285,12 @@ platformclientv2/agentadherencedaymetrics.go
 platformclientv2/agentadherencescheduledactivity.go
 platformclientv2/agentassistantsapi.go
 platformclientv2/agentbidworkplanoverriderequest.go
+platformclientv2/agentchecklist.go
+platformclientv2/agentchecklistinfo.go
+platformclientv2/agentchecklistitem.go
+platformclientv2/agentchecklistlisting.go
+platformclientv2/agentchecklistresponse.go
+platformclientv2/agentchecklistresponselist.go
 platformclientv2/agentcopilotaggregatedatacontainer.go
 platformclientv2/agentcopilotaggregatequeryclause.go
 platformclientv2/agentcopilotaggregatequeryfilter.go
@@ -3895,6 +3928,8 @@ platformclientv2/cannedresponselibraries.go
 platformclientv2/capacityplandeleterequest.go
 platformclientv2/capacityplanlistitem.go
 platformclientv2/capacityplanmetadata.go
+platformclientv2/capacityplanmetricssummary.go
+platformclientv2/capacityplanningplanninggroupallocation.go
 platformclientv2/capacityplanningrequirementsresulttopicbusinessunit.go
 platformclientv2/capacityplanningrequirementsresulttopiccapacityplanreference.go
 platformclientv2/capacityplanningrequirementsresulttopicstaffingrequirementsnotification.go
@@ -3908,7 +3943,19 @@ platformclientv2/capacityplanstaffinggroupmetricchangeresponse.go
 platformclientv2/capacityplanstaffingrequirementresult.go
 platformclientv2/card.go
 platformclientv2/cardaction.go
+platformclientv2/cardparameters.go
+platformclientv2/carouselparameters.go
 platformclientv2/carrierservicesapi.go
+platformclientv2/casemanagementaggregatedatacontainer.go
+platformclientv2/casemanagementaggregatequeryclause.go
+platformclientv2/casemanagementaggregatequeryfilter.go
+platformclientv2/casemanagementaggregatequerypredicate.go
+platformclientv2/casemanagementaggregatequeryresponse.go
+platformclientv2/casemanagementaggregationquery.go
+platformclientv2/casemanagementaggregationsort.go
+platformclientv2/casemanagementaggregationview.go
+platformclientv2/casemanagementasyncaggregatequeryresponse.go
+platformclientv2/casemanagementasyncaggregationquery.go
 platformclientv2/categoriesentitylisting.go
 platformclientv2/categoriesfilter.go
 platformclientv2/category.go
@@ -3956,6 +4003,12 @@ platformclientv2/chatsettings.go
 platformclientv2/chatuserref.go
 platformclientv2/chatusersettings.go
 platformclientv2/check.go
+platformclientv2/checklistactivationpayload.go
+platformclientv2/checklistfinalizepayload.go
+platformclientv2/checklistinferencejobcreationresponse.go
+platformclientv2/checklistinferencejobpayload.go
+platformclientv2/checklistinferencejobresponse.go
+platformclientv2/checklistitem.go
 platformclientv2/clientapp.go
 platformclientv2/clientappconfigurationinfo.go
 platformclientv2/clientappentitylisting.go
@@ -4331,6 +4384,7 @@ platformclientv2/conversationcontentstory.go
 platformclientv2/conversationcontenttext.go
 platformclientv2/conversationcontentwheelpicker.go
 platformclientv2/conversationcontentwheelpickeritem.go
+platformclientv2/conversationcontext.go
 platformclientv2/conversationdeletionprotectionquery.go
 platformclientv2/conversationdetailqueryclause.go
 platformclientv2/conversationdetailqueryfilter.go
@@ -4482,6 +4536,8 @@ platformclientv2/conversationmetricstopicconversationscoredagent.go
 platformclientv2/conversationnormalizedmessage.go
 platformclientv2/conversationnotificationtemplatebody.go
 platformclientv2/conversationnotificationtemplatebutton.go
+platformclientv2/conversationnotificationtemplatecard.go
+platformclientv2/conversationnotificationtemplatecarousel.go
 platformclientv2/conversationnotificationtemplatefooter.go
 platformclientv2/conversationnotificationtemplateheader.go
 platformclientv2/conversationnotificationtemplateparameter.go
@@ -4613,6 +4669,9 @@ platformclientv2/conversationvideoeventtopicwrapup.go
 platformclientv2/copilot.go
 platformclientv2/copilotaction.go
 platformclientv2/copilotcondition.go
+platformclientv2/copilotcontext.go
+platformclientv2/copilotcontextfilter.go
+platformclientv2/copilotcontextvalue.go
 platformclientv2/copilotfallbackaction.go
 platformclientv2/copilotnludomain.go
 platformclientv2/copilotnludomainversion.go
@@ -4656,6 +4715,7 @@ platformclientv2/creategeneralprogramtopicsdefinitionsjob.go
 platformclientv2/createguide.go
 platformclientv2/createguideversion.go
 platformclientv2/createintegrationrequest.go
+platformclientv2/createkpirequest.go
 platformclientv2/createmanagementunitapirequest.go
 platformclientv2/createmanagementunitsettingsrequest.go
 platformclientv2/createmetric.go
@@ -5649,6 +5709,14 @@ platformclientv2/guide.go
 platformclientv2/guidecontentgenerationjob.go
 platformclientv2/guideentitylisting.go
 platformclientv2/guidejob.go
+platformclientv2/guidesessioninputevent.go
+platformclientv2/guidesessionturninvocationdata.go
+platformclientv2/guidesessionturninvocationparameters.go
+platformclientv2/guidesessionturninvocationresponse.go
+platformclientv2/guidesessionturnrequest.go
+platformclientv2/guidesessionturnresponse.go
+platformclientv2/guidesessionturnresponsedata.go
+platformclientv2/guidesessionvariable.go
 platformclientv2/guideversion.go
 platformclientv2/guideversionpublish.go
 platformclientv2/guideversionpublishjob.go
@@ -5982,6 +6050,7 @@ platformclientv2/jsonschemawithdefinitions.go
 platformclientv2/jsonsearchresponse.go
 platformclientv2/keyperformanceindicator.go
 platformclientv2/keyperformanceindicatorassessment.go
+platformclientv2/keyperformanceindicatortype.go
 platformclientv2/keyrotationschedule.go
 platformclientv2/keyvalue.go
 platformclientv2/knowledge.go
@@ -6747,6 +6816,7 @@ platformclientv2/parsedcertificate.go
 platformclientv2/participant.go
 platformclientv2/participantattributes.go
 platformclientv2/participantbasic.go
+platformclientv2/participantdataproperties.go
 platformclientv2/participantinfo.go
 platformclientv2/participantmetrics.go
 platformclientv2/passwordrequirements.go
@@ -7750,6 +7820,7 @@ platformclientv2/socialtopicpatchrequest.go
 platformclientv2/socialtopicrequest.go
 platformclientv2/socialtopicresponse.go
 platformclientv2/socialtopicresponseentitylisting.go
+platformclientv2/socialtopicwithdataingestionrulemetadataresponse.go
 platformclientv2/sortitem.go
 platformclientv2/source.go
 platformclientv2/sourcebaseresponse.go
@@ -7768,6 +7839,7 @@ platformclientv2/splittinginformation.go
 platformclientv2/stacategory.go
 platformclientv2/staffinggroupallocation.go
 platformclientv2/staffinggroupallocationsresponsetemplate.go
+platformclientv2/staffinggroupfulltimeequivalentcontribution.go
 platformclientv2/staffinggrouplisting.go
 platformclientv2/staffinggroupmetricchangeresponse.go
 platformclientv2/staffinggroupreference.go
@@ -8197,6 +8269,7 @@ platformclientv2/updatedtopicobject.go
 platformclientv2/updatedtopicsystemmessage.go
 platformclientv2/updateguide.go
 platformclientv2/updateguideversion.go
+platformclientv2/updatekpirequest.go
 platformclientv2/updatemanagementunitrequest.go
 platformclientv2/updatemuagentrequest.go
 platformclientv2/updatemuagentsrequest.go
@@ -8679,6 +8752,15 @@ platformclientv2/wfmbushorttermforecastupdatecompletetopicuserreference.go
 platformclientv2/wfmbushorttermforecastupdatecompletetopicwfmversionedentitymetadata.go
 platformclientv2/wfmbusinessunitreference.go
 platformclientv2/wfmforecastmodificationintervaloffsetvalue.go
+platformclientv2/wfmhistoricaladherenceagentcalculationscompletetopicsecondarypresencereference.go
+platformclientv2/wfmhistoricaladherenceagentcalculationscompletetopicuserreference.go
+platformclientv2/wfmhistoricaladherenceagentcalculationscompletetopicwfmhistoricaladherenceactuals.go
+platformclientv2/wfmhistoricaladherenceagentcalculationscompletetopicwfmhistoricaladherenceagentcalculationscompletenotification.go
+platformclientv2/wfmhistoricaladherenceagentcalculationscompletetopicwfmhistoricaladherenceagentdaymetrics.go
+platformclientv2/wfmhistoricaladherenceagentcalculationscompletetopicwfmhistoricaladherenceagentresult.go
+platformclientv2/wfmhistoricaladherenceagentcalculationscompletetopicwfmhistoricaladherenceexceptioninfo.go
+platformclientv2/wfmhistoricaladherenceagentcalculationscompletetopicwfmhistoricaladherencescheduledactivity.go
+platformclientv2/wfmhistoricaladherenceagentcalculationscompletetopicwfmsecondarypresencelookupitem.go
 platformclientv2/wfmhistoricaladherencebulkcalculationscompletetopicwfmhistoricaladherencebulkcalculationscompletenotification.go
 platformclientv2/wfmhistoricaladherencebulkitem.go
 platformclientv2/wfmhistoricaladherencebulkjobreference.go
@@ -8981,3 +9063,4 @@ platformclientv2/writabledialercontact.go
 platformclientv2/writabledivision.go
 platformclientv2/writableentity.go
 platformclientv2/writablestarrabledivision.go
+platformclientv2/yearmonth.go

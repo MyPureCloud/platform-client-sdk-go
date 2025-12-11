@@ -10,7 +10,16 @@ import (
 // Inactivitytimeoutsettings
 type Inactivitytimeoutsettings struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// TimeoutSeconds - Timeout in seconds for inactivity on the interaction
+	TimeoutSeconds *int `json:"timeoutSeconds,omitempty"`
+
+	// ActionType - Action to take when timeout occurs
+	ActionType *string `json:"actionType,omitempty"`
+
+	// FlowId - Flow ID for architect flow action
+	FlowId *Domainentityref `json:"flowId,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Inactivitytimeoutsettings) SetField(field string, fieldValue interface{}) {
@@ -74,8 +83,20 @@ func (o Inactivitytimeoutsettings) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Inactivitytimeoutsettings
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		TimeoutSeconds *int `json:"timeoutSeconds,omitempty"`
+		
+		ActionType *string `json:"actionType,omitempty"`
+		
+		FlowId *Domainentityref `json:"flowId,omitempty"`
+		Alias
+	}{ 
+		TimeoutSeconds: o.TimeoutSeconds,
+		
+		ActionType: o.ActionType,
+		
+		FlowId: o.FlowId,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -84,6 +105,20 @@ func (o *Inactivitytimeoutsettings) UnmarshalJSON(b []byte) error {
 	err := json.Unmarshal(b, &InactivitytimeoutsettingsMap)
 	if err != nil {
 		return err
+	}
+	
+	if TimeoutSeconds, ok := InactivitytimeoutsettingsMap["timeoutSeconds"].(float64); ok {
+		TimeoutSecondsInt := int(TimeoutSeconds)
+		o.TimeoutSeconds = &TimeoutSecondsInt
+	}
+	
+	if ActionType, ok := InactivitytimeoutsettingsMap["actionType"].(string); ok {
+		o.ActionType = &ActionType
+	}
+    
+	if FlowId, ok := InactivitytimeoutsettingsMap["flowId"].(map[string]interface{}); ok {
+		FlowIdString, _ := json.Marshal(FlowId)
+		json.Unmarshal(FlowIdString, &o.FlowId)
 	}
 	
 

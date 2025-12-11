@@ -33,9 +33,6 @@ type Socialtopicresponse struct {
 	// Status - The status of the social topic.
 	Status *string `json:"status,omitempty"`
 
-	// DataIngestionRulesMetadata - The data ingestion rule metadata.
-	DataIngestionRulesMetadata *[]Dataingestionrulesmetadata `json:"dataIngestionRulesMetadata,omitempty"`
-
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -133,8 +130,6 @@ func (o Socialtopicresponse) MarshalJSON() ([]byte, error) {
 		
 		Status *string `json:"status,omitempty"`
 		
-		DataIngestionRulesMetadata *[]Dataingestionrulesmetadata `json:"dataIngestionRulesMetadata,omitempty"`
-		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -151,8 +146,6 @@ func (o Socialtopicresponse) MarshalJSON() ([]byte, error) {
 		DivisionId: o.DivisionId,
 		
 		Status: o.Status,
-		
-		DataIngestionRulesMetadata: o.DataIngestionRulesMetadata,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -196,11 +189,6 @@ func (o *Socialtopicresponse) UnmarshalJSON(b []byte) error {
 		o.Status = &Status
 	}
     
-	if DataIngestionRulesMetadata, ok := SocialtopicresponseMap["dataIngestionRulesMetadata"].([]interface{}); ok {
-		DataIngestionRulesMetadataString, _ := json.Marshal(DataIngestionRulesMetadata)
-		json.Unmarshal(DataIngestionRulesMetadataString, &o.DataIngestionRulesMetadata)
-	}
-	
 	if SelfUri, ok := SocialtopicresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

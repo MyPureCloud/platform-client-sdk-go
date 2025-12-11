@@ -28,6 +28,12 @@ type Messagemediasettings struct {
 
 	// SubTypeSettings - Map of media subtype to media subtype specific settings.
 	SubTypeSettings *map[string]Messagesubtypesettings `json:"subTypeSettings,omitempty"`
+
+	// EnableInactivityTimeout - Indicates if inactivity timeout is enabled for all subtypes.
+	EnableInactivityTimeout *bool `json:"enableInactivityTimeout,omitempty"`
+
+	// InactivityTimeoutSettings - Inactivity timeout settings for messages
+	InactivityTimeoutSettings *Inactivitytimeoutsettings `json:"inactivityTimeoutSettings,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -104,6 +110,10 @@ func (o Messagemediasettings) MarshalJSON() ([]byte, error) {
 		ManualAnswerAlertToneSeconds *float64 `json:"manualAnswerAlertToneSeconds,omitempty"`
 		
 		SubTypeSettings *map[string]Messagesubtypesettings `json:"subTypeSettings,omitempty"`
+		
+		EnableInactivityTimeout *bool `json:"enableInactivityTimeout,omitempty"`
+		
+		InactivityTimeoutSettings *Inactivitytimeoutsettings `json:"inactivityTimeoutSettings,omitempty"`
 		Alias
 	}{ 
 		EnableAutoAnswer: o.EnableAutoAnswer,
@@ -117,6 +127,10 @@ func (o Messagemediasettings) MarshalJSON() ([]byte, error) {
 		ManualAnswerAlertToneSeconds: o.ManualAnswerAlertToneSeconds,
 		
 		SubTypeSettings: o.SubTypeSettings,
+		
+		EnableInactivityTimeout: o.EnableInactivityTimeout,
+		
+		InactivityTimeoutSettings: o.InactivityTimeoutSettings,
 		Alias:    (Alias)(o),
 	})
 }
@@ -153,6 +167,15 @@ func (o *Messagemediasettings) UnmarshalJSON(b []byte) error {
 	if SubTypeSettings, ok := MessagemediasettingsMap["subTypeSettings"].(map[string]interface{}); ok {
 		SubTypeSettingsString, _ := json.Marshal(SubTypeSettings)
 		json.Unmarshal(SubTypeSettingsString, &o.SubTypeSettings)
+	}
+	
+	if EnableInactivityTimeout, ok := MessagemediasettingsMap["enableInactivityTimeout"].(bool); ok {
+		o.EnableInactivityTimeout = &EnableInactivityTimeout
+	}
+    
+	if InactivityTimeoutSettings, ok := MessagemediasettingsMap["inactivityTimeoutSettings"].(map[string]interface{}); ok {
+		InactivityTimeoutSettingsString, _ := json.Marshal(InactivityTimeoutSettings)
+		json.Unmarshal(InactivityTimeoutSettingsString, &o.InactivityTimeoutSettings)
 	}
 	
 

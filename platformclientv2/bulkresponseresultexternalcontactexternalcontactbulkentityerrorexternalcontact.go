@@ -22,6 +22,9 @@ type Bulkresponseresultexternalcontactexternalcontactbulkentityerrorexternalcont
 
 	// VarError - An error describing why this Bulk operation failed. Only returned on failure.
 	VarError *Bulkentityerrorexternalcontact `json:"error,omitempty"`
+
+	// Status - Status Code for the requested operation.
+	Status *int `json:"status,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +97,8 @@ func (o Bulkresponseresultexternalcontactexternalcontactbulkentityerrorexternalc
 		Entity *Externalcontact `json:"entity,omitempty"`
 		
 		VarError *Bulkentityerrorexternalcontact `json:"error,omitempty"`
+		
+		Status *int `json:"status,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -103,6 +108,8 @@ func (o Bulkresponseresultexternalcontactexternalcontactbulkentityerrorexternalc
 		Entity: o.Entity,
 		
 		VarError: o.VarError,
+		
+		Status: o.Status,
 		Alias:    (Alias)(o),
 	})
 }
@@ -130,6 +137,11 @@ func (o *Bulkresponseresultexternalcontactexternalcontactbulkentityerrorexternal
 	if VarError, ok := BulkresponseresultexternalcontactexternalcontactbulkentityerrorexternalcontactMap["error"].(map[string]interface{}); ok {
 		VarErrorString, _ := json.Marshal(VarError)
 		json.Unmarshal(VarErrorString, &o.VarError)
+	}
+	
+	if Status, ok := BulkresponseresultexternalcontactexternalcontactbulkentityerrorexternalcontactMap["status"].(float64); ok {
+		StatusInt := int(Status)
+		o.Status = &StatusInt
 	}
 	
 

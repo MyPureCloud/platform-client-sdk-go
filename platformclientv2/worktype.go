@@ -84,6 +84,9 @@ type Worktype struct {
 	// DefaultScript - The default script for Workitems created from the Worktype.
 	DefaultScript *Workitemscriptreference `json:"defaultScript,omitempty"`
 
+	// UnassignedDivisionContactsEnabled - When set to true, will allow Workitems to be associated with External Contacts that are not assigned to any division. Default value is true.
+	UnassignedDivisionContactsEnabled *bool `json:"unassignedDivisionContactsEnabled,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -215,6 +218,8 @@ func (o Worktype) MarshalJSON() ([]byte, error) {
 		
 		DefaultScript *Workitemscriptreference `json:"defaultScript,omitempty"`
 		
+		UnassignedDivisionContactsEnabled *bool `json:"unassignedDivisionContactsEnabled,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -265,6 +270,8 @@ func (o Worktype) MarshalJSON() ([]byte, error) {
 		Flow: o.Flow,
 		
 		DefaultScript: o.DefaultScript,
+		
+		UnassignedDivisionContactsEnabled: o.UnassignedDivisionContactsEnabled,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -394,6 +401,10 @@ func (o *Worktype) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(DefaultScriptString, &o.DefaultScript)
 	}
 	
+	if UnassignedDivisionContactsEnabled, ok := WorktypeMap["unassignedDivisionContactsEnabled"].(bool); ok {
+		o.UnassignedDivisionContactsEnabled = &UnassignedDivisionContactsEnabled
+	}
+    
 	if SelfUri, ok := WorktypeMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

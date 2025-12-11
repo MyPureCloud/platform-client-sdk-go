@@ -1096,12 +1096,12 @@ func (a SocialMediaApi) GetSocialmediaEscalationrules(divisionId string, pageNum
 // GetSocialmediaTopic invokes GET /api/v2/socialmedia/topics/{topicId}
 //
 // Get a single social topic.
-func (a SocialMediaApi) GetSocialmediaTopic(topicId string, includeDeleted bool) (*Socialtopicresponse, *APIResponse, error) {
+func (a SocialMediaApi) GetSocialmediaTopic(topicId string, includeDeleted bool) (*Socialtopicwithdataingestionrulemetadataresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/socialmedia/topics/{topicId}"
 	path = strings.Replace(path, "{topicId}", url.PathEscape(fmt.Sprintf("%v", topicId)), -1)
-	defaultReturn := new(Socialtopicresponse)
+	defaultReturn := new(Socialtopicwithdataingestionrulemetadataresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -1161,14 +1161,14 @@ func (a SocialMediaApi) GetSocialmediaTopic(topicId string, includeDeleted bool)
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Socialtopicresponse
+	var successPayload *Socialtopicwithdataingestionrulemetadataresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Socialtopicresponse" == "string" {
+		if "Socialtopicwithdataingestionrulemetadataresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -2388,7 +2388,7 @@ func (a SocialMediaApi) GetSocialmediaTopicDataingestionrulesTwitterTwitterInges
 // GetSocialmediaTopics invokes GET /api/v2/socialmedia/topics
 //
 // Retrieve all social topics.
-func (a SocialMediaApi) GetSocialmediaTopics(pageNumber int, pageSize int, divisionIds []string, includeDeleted bool) (*Socialtopicresponseentitylisting, *APIResponse, error) {
+func (a SocialMediaApi) GetSocialmediaTopics(pageNumber int, pageSize int, divisionIds []string, includeDeleted bool, name string) (*Socialtopicresponseentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/socialmedia/topics"
@@ -2422,6 +2422,8 @@ func (a SocialMediaApi) GetSocialmediaTopics(pageNumber int, pageSize int, divis
 	queryParams["divisionIds"] = a.Configuration.APIClient.ParameterToString(divisionIds, "multi")
 	
 	queryParams["includeDeleted"] = a.Configuration.APIClient.ParameterToString(includeDeleted, "")
+	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

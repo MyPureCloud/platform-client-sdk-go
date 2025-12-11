@@ -207,6 +207,9 @@ type Analyticssession struct {
 	// RoutingRuleType - Routing rule type
 	RoutingRuleType *string `json:"routingRuleType,omitempty"`
 
+	// ScreenMonitoredUserId - The user ID for the participant who is being screen monitored.
+	ScreenMonitoredUserId *string `json:"screenMonitoredUserId,omitempty"`
+
 	// ScreenShareAddressSelf - Direct screen share address
 	ScreenShareAddressSelf *string `json:"screenShareAddressSelf,omitempty"`
 
@@ -493,6 +496,8 @@ func (o Analyticssession) MarshalJSON() ([]byte, error) {
 		
 		RoutingRuleType *string `json:"routingRuleType,omitempty"`
 		
+		ScreenMonitoredUserId *string `json:"screenMonitoredUserId,omitempty"`
+		
 		ScreenShareAddressSelf *string `json:"screenShareAddressSelf,omitempty"`
 		
 		ScreenShareRoomId *string `json:"screenShareRoomId,omitempty"`
@@ -663,6 +668,8 @@ func (o Analyticssession) MarshalJSON() ([]byte, error) {
 		RoutingRule: o.RoutingRule,
 		
 		RoutingRuleType: o.RoutingRuleType,
+		
+		ScreenMonitoredUserId: o.ScreenMonitoredUserId,
 		
 		ScreenShareAddressSelf: o.ScreenShareAddressSelf,
 		
@@ -988,6 +995,10 @@ func (o *Analyticssession) UnmarshalJSON(b []byte) error {
     
 	if RoutingRuleType, ok := AnalyticssessionMap["routingRuleType"].(string); ok {
 		o.RoutingRuleType = &RoutingRuleType
+	}
+    
+	if ScreenMonitoredUserId, ok := AnalyticssessionMap["screenMonitoredUserId"].(string); ok {
+		o.ScreenMonitoredUserId = &ScreenMonitoredUserId
 	}
     
 	if ScreenShareAddressSelf, ok := AnalyticssessionMap["screenShareAddressSelf"].(string); ok {

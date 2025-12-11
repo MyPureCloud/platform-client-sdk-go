@@ -77,11 +77,8 @@ type Flow struct {
 	// WorktypeId
 	WorktypeId *string `json:"worktypeId,omitempty"`
 
-	// VirtualAgentEnabled
+	// VirtualAgentEnabled - Indicates whether virtual agent is enabled for this flow.
 	VirtualAgentEnabled *bool `json:"virtualAgentEnabled,omitempty"`
-
-	// AgenticVirtualAgentEnabled
-	AgenticVirtualAgentEnabled *bool `json:"agenticVirtualAgentEnabled,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -196,8 +193,6 @@ func (o Flow) MarshalJSON() ([]byte, error) {
 		
 		VirtualAgentEnabled *bool `json:"virtualAgentEnabled,omitempty"`
 		
-		AgenticVirtualAgentEnabled *bool `json:"agenticVirtualAgentEnabled,omitempty"`
-		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -246,8 +241,6 @@ func (o Flow) MarshalJSON() ([]byte, error) {
 		WorktypeId: o.WorktypeId,
 		
 		VirtualAgentEnabled: o.VirtualAgentEnabled,
-		
-		AgenticVirtualAgentEnabled: o.AgenticVirtualAgentEnabled,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -365,10 +358,6 @@ func (o *Flow) UnmarshalJSON(b []byte) error {
     
 	if VirtualAgentEnabled, ok := FlowMap["virtualAgentEnabled"].(bool); ok {
 		o.VirtualAgentEnabled = &VirtualAgentEnabled
-	}
-    
-	if AgenticVirtualAgentEnabled, ok := FlowMap["agenticVirtualAgentEnabled"].(bool); ok {
-		o.AgenticVirtualAgentEnabled = &AgenticVirtualAgentEnabled
 	}
     
 	if SelfUri, ok := FlowMap["selfUri"].(string); ok {

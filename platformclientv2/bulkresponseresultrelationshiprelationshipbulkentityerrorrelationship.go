@@ -22,6 +22,9 @@ type Bulkresponseresultrelationshiprelationshipbulkentityerrorrelationship struc
 
 	// VarError - An error describing why this Bulk operation failed. Only returned on failure.
 	VarError *Bulkentityerrorrelationship `json:"error,omitempty"`
+
+	// Status - Status Code for the requested operation.
+	Status *int `json:"status,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +97,8 @@ func (o Bulkresponseresultrelationshiprelationshipbulkentityerrorrelationship) M
 		Entity *Relationship `json:"entity,omitempty"`
 		
 		VarError *Bulkentityerrorrelationship `json:"error,omitempty"`
+		
+		Status *int `json:"status,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -103,6 +108,8 @@ func (o Bulkresponseresultrelationshiprelationshipbulkentityerrorrelationship) M
 		Entity: o.Entity,
 		
 		VarError: o.VarError,
+		
+		Status: o.Status,
 		Alias:    (Alias)(o),
 	})
 }
@@ -130,6 +137,11 @@ func (o *Bulkresponseresultrelationshiprelationshipbulkentityerrorrelationship) 
 	if VarError, ok := BulkresponseresultrelationshiprelationshipbulkentityerrorrelationshipMap["error"].(map[string]interface{}); ok {
 		VarErrorString, _ := json.Marshal(VarError)
 		json.Unmarshal(VarErrorString, &o.VarError)
+	}
+	
+	if Status, ok := BulkresponseresultrelationshiprelationshipbulkentityerrorrelationshipMap["status"].(float64); ok {
+		StatusInt := int(Status)
+		o.Status = &StatusInt
 	}
 	
 

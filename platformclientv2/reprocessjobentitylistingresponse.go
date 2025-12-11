@@ -26,20 +26,20 @@ type Reprocessjobentitylistingresponse struct {
 	// QueueTotal - The total number of queued jobs.
 	QueueTotal *int `json:"queueTotal,omitempty"`
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
 
-	// SelfUri
-	SelfUri *string `json:"selfUri,omitempty"`
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
 
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
 
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
+
+	// SelfUri
+	SelfUri *string `json:"selfUri,omitempty"`
 
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
@@ -118,15 +118,15 @@ func (o Reprocessjobentitylistingresponse) MarshalJSON() ([]byte, error) {
 		
 		QueueTotal *int `json:"queueTotal,omitempty"`
 		
-		LastUri *string `json:"lastUri,omitempty"`
-		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
-		SelfUri *string `json:"selfUri,omitempty"`
+		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		NextUri *string `json:"nextUri,omitempty"`
 		
-		PreviousUri *string `json:"previousUri,omitempty"`
+		LastUri *string `json:"lastUri,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		Alias
@@ -141,15 +141,15 @@ func (o Reprocessjobentitylistingresponse) MarshalJSON() ([]byte, error) {
 		
 		QueueTotal: o.QueueTotal,
 		
-		LastUri: o.LastUri,
-		
 		FirstUri: o.FirstUri,
 		
-		SelfUri: o.SelfUri,
+		PreviousUri: o.PreviousUri,
 		
 		NextUri: o.NextUri,
 		
-		PreviousUri: o.PreviousUri,
+		LastUri: o.LastUri,
+		
+		SelfUri: o.SelfUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
@@ -188,24 +188,24 @@ func (o *Reprocessjobentitylistingresponse) UnmarshalJSON(b []byte) error {
 		o.QueueTotal = &QueueTotalInt
 	}
 	
-	if LastUri, ok := ReprocessjobentitylistingresponseMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
 	if FirstUri, ok := ReprocessjobentitylistingresponseMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
     
-	if SelfUri, ok := ReprocessjobentitylistingresponseMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
+	if PreviousUri, ok := ReprocessjobentitylistingresponseMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
 	}
     
 	if NextUri, ok := ReprocessjobentitylistingresponseMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
     
-	if PreviousUri, ok := ReprocessjobentitylistingresponseMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
+	if LastUri, ok := ReprocessjobentitylistingresponseMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
+	}
+    
+	if SelfUri, ok := ReprocessjobentitylistingresponseMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
 	}
     
 	if PageCount, ok := ReprocessjobentitylistingresponseMap["pageCount"].(float64); ok {

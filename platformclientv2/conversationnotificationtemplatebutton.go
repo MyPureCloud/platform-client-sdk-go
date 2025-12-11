@@ -26,6 +26,9 @@ type Conversationnotificationtemplatebutton struct {
 	// Url - Button URL link.
 	Url *string `json:"url,omitempty"`
 
+	// Payload - Content of the payload to be included in the quick reply response when the button is pressed.
+	Payload *string `json:"payload,omitempty"`
+
 	// Parameters - Template parameters for placeholders in the button.
 	Parameters *[]Conversationnotificationtemplateparameter `json:"parameters,omitempty"`
 }
@@ -103,6 +106,8 @@ func (o Conversationnotificationtemplatebutton) MarshalJSON() ([]byte, error) {
 		
 		Url *string `json:"url,omitempty"`
 		
+		Payload *string `json:"payload,omitempty"`
+		
 		Parameters *[]Conversationnotificationtemplateparameter `json:"parameters,omitempty"`
 		Alias
 	}{ 
@@ -115,6 +120,8 @@ func (o Conversationnotificationtemplatebutton) MarshalJSON() ([]byte, error) {
 		PhoneNumber: o.PhoneNumber,
 		
 		Url: o.Url,
+		
+		Payload: o.Payload,
 		
 		Parameters: o.Parameters,
 		Alias:    (Alias)(o),
@@ -147,6 +154,10 @@ func (o *Conversationnotificationtemplatebutton) UnmarshalJSON(b []byte) error {
     
 	if Url, ok := ConversationnotificationtemplatebuttonMap["url"].(string); ok {
 		o.Url = &Url
+	}
+    
+	if Payload, ok := ConversationnotificationtemplatebuttonMap["payload"].(string); ok {
+		o.Payload = &Payload
 	}
     
 	if Parameters, ok := ConversationnotificationtemplatebuttonMap["parameters"].([]interface{}); ok {

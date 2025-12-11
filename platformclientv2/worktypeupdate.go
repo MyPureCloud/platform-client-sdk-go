@@ -44,6 +44,9 @@ type Worktypeupdate struct {
 	// RuleSettings - Settings for the worktypes rules.
 	RuleSettings *Workitemrulesettings `json:"ruleSettings,omitempty"`
 
+	// UnassignedDivisionContactsEnabled - When set to true, will allow Workitems to be associated with External Contacts that are not assigned to any division. Default value is true.
+	UnassignedDivisionContactsEnabled *bool `json:"unassignedDivisionContactsEnabled,omitempty"`
+
 	// Description - The description of the Worktype. Maximum length of 512 characters.
 	Description *string `json:"description,omitempty"`
 
@@ -151,6 +154,8 @@ func (o Worktypeupdate) MarshalJSON() ([]byte, error) {
 		
 		RuleSettings *Workitemrulesettings `json:"ruleSettings,omitempty"`
 		
+		UnassignedDivisionContactsEnabled *bool `json:"unassignedDivisionContactsEnabled,omitempty"`
+		
 		Description *string `json:"description,omitempty"`
 		
 		DefaultStatusId *string `json:"defaultStatusId,omitempty"`
@@ -187,6 +192,8 @@ func (o Worktypeupdate) MarshalJSON() ([]byte, error) {
 		ServiceLevelTarget: o.ServiceLevelTarget,
 		
 		RuleSettings: o.RuleSettings,
+		
+		UnassignedDivisionContactsEnabled: o.UnassignedDivisionContactsEnabled,
 		
 		Description: o.Description,
 		
@@ -263,6 +270,10 @@ func (o *Worktypeupdate) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(RuleSettingsString, &o.RuleSettings)
 	}
 	
+	if UnassignedDivisionContactsEnabled, ok := WorktypeupdateMap["unassignedDivisionContactsEnabled"].(bool); ok {
+		o.UnassignedDivisionContactsEnabled = &UnassignedDivisionContactsEnabled
+	}
+    
 	if Description, ok := WorktypeupdateMap["description"].(string); ok {
 		o.Description = &Description
 	}

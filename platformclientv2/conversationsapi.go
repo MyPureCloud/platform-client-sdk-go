@@ -1997,6 +1997,288 @@ func (a ConversationsApi) GetConversation(conversationId string) (*Conversation,
 	return successPayload, response, err
 }
 
+// GetConversationCommunicationAgentchecklist invokes GET /api/v2/conversations/{conversationId}/communications/{communicationId}/agentchecklists/{agentChecklistId}
+//
+// Get checklist info for a single checklist.
+func (a ConversationsApi) GetConversationCommunicationAgentchecklist(conversationId string, communicationId string, agentChecklistId string) (*Agentchecklistresponse, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/{conversationId}/communications/{communicationId}/agentchecklists/{agentChecklistId}"
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{communicationId}", url.PathEscape(fmt.Sprintf("%v", communicationId)), -1)
+	path = strings.Replace(path, "{agentChecklistId}", url.PathEscape(fmt.Sprintf("%v", agentChecklistId)), -1)
+	defaultReturn := new(Agentchecklistresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'conversationId' is set
+	if &conversationId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversationCommunicationAgentchecklist")
+	}
+	// verify the required parameter 'communicationId' is set
+	if &communicationId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'communicationId' when calling ConversationsApi->GetConversationCommunicationAgentchecklist")
+	}
+	// verify the required parameter 'agentChecklistId' is set
+	if &agentChecklistId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'agentChecklistId' when calling ConversationsApi->GetConversationCommunicationAgentchecklist")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Agentchecklistresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Agentchecklistresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetConversationCommunicationAgentchecklistJob invokes GET /api/v2/conversations/{conversationId}/communications/{communicationId}/agentchecklists/{agentChecklistId}/jobs/{jobId}
+//
+// Get inference job status
+func (a ConversationsApi) GetConversationCommunicationAgentchecklistJob(conversationId string, communicationId string, agentChecklistId string, jobId string) (*Checklistinferencejobresponse, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/{conversationId}/communications/{communicationId}/agentchecklists/{agentChecklistId}/jobs/{jobId}"
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{communicationId}", url.PathEscape(fmt.Sprintf("%v", communicationId)), -1)
+	path = strings.Replace(path, "{agentChecklistId}", url.PathEscape(fmt.Sprintf("%v", agentChecklistId)), -1)
+	path = strings.Replace(path, "{jobId}", url.PathEscape(fmt.Sprintf("%v", jobId)), -1)
+	defaultReturn := new(Checklistinferencejobresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'conversationId' is set
+	if &conversationId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversationCommunicationAgentchecklistJob")
+	}
+	// verify the required parameter 'communicationId' is set
+	if &communicationId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'communicationId' when calling ConversationsApi->GetConversationCommunicationAgentchecklistJob")
+	}
+	// verify the required parameter 'agentChecklistId' is set
+	if &agentChecklistId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'agentChecklistId' when calling ConversationsApi->GetConversationCommunicationAgentchecklistJob")
+	}
+	// verify the required parameter 'jobId' is set
+	if &jobId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'jobId' when calling ConversationsApi->GetConversationCommunicationAgentchecklistJob")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Checklistinferencejobresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Checklistinferencejobresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetConversationCommunicationAgentchecklists invokes GET /api/v2/conversations/{conversationId}/communications/{communicationId}/agentchecklists
+//
+// Get information of all checklists associated with a conversation.
+func (a ConversationsApi) GetConversationCommunicationAgentchecklists(conversationId string, communicationId string) (*Agentchecklistresponselist, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/{conversationId}/communications/{communicationId}/agentchecklists"
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{communicationId}", url.PathEscape(fmt.Sprintf("%v", communicationId)), -1)
+	defaultReturn := new(Agentchecklistresponselist)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'conversationId' is set
+	if &conversationId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->GetConversationCommunicationAgentchecklists")
+	}
+	// verify the required parameter 'communicationId' is set
+	if &communicationId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'communicationId' when calling ConversationsApi->GetConversationCommunicationAgentchecklists")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Agentchecklistresponselist
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Agentchecklistresponselist" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // GetConversationCommunicationInternalmessage invokes GET /api/v2/conversations/{conversationId}/communications/{communicationId}/internalmessages/{messageId}
 //
 // Get message
@@ -15381,6 +15663,408 @@ func (a ConversationsApi) PostConversationCobrowse(conversationId string) (*Cobr
 	return successPayload, response, err
 }
 
+// PostConversationCommunicationAgentchecklist invokes POST /api/v2/conversations/{conversationId}/communications/{communicationId}/agentchecklists/{agentChecklistId}
+//
+// Agent Checklist activation API
+func (a ConversationsApi) PostConversationCommunicationAgentchecklist(conversationId string, communicationId string, agentChecklistId string, body Checklistactivationpayload) (*Agentchecklistresponse, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/{conversationId}/communications/{communicationId}/agentchecklists/{agentChecklistId}"
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{communicationId}", url.PathEscape(fmt.Sprintf("%v", communicationId)), -1)
+	path = strings.Replace(path, "{agentChecklistId}", url.PathEscape(fmt.Sprintf("%v", agentChecklistId)), -1)
+	defaultReturn := new(Agentchecklistresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'conversationId' is set
+	if &conversationId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PostConversationCommunicationAgentchecklist")
+	}
+	// verify the required parameter 'communicationId' is set
+	if &communicationId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'communicationId' when calling ConversationsApi->PostConversationCommunicationAgentchecklist")
+	}
+	// verify the required parameter 'agentChecklistId' is set
+	if &agentChecklistId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'agentChecklistId' when calling ConversationsApi->PostConversationCommunicationAgentchecklist")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationCommunicationAgentchecklist")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Agentchecklistresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Agentchecklistresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostConversationCommunicationAgentchecklistAgentaction invokes POST /api/v2/conversations/{conversationId}/communications/{communicationId}/agentchecklists/{agentChecklistId}/agentaction
+//
+// API invoked to capture an agent action.
+func (a ConversationsApi) PostConversationCommunicationAgentchecklistAgentaction(conversationId string, communicationId string, agentChecklistId string, body Agentactionpayload) (*Agentchecklistresponse, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/{conversationId}/communications/{communicationId}/agentchecklists/{agentChecklistId}/agentaction"
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{communicationId}", url.PathEscape(fmt.Sprintf("%v", communicationId)), -1)
+	path = strings.Replace(path, "{agentChecklistId}", url.PathEscape(fmt.Sprintf("%v", agentChecklistId)), -1)
+	defaultReturn := new(Agentchecklistresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'conversationId' is set
+	if &conversationId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PostConversationCommunicationAgentchecklistAgentaction")
+	}
+	// verify the required parameter 'communicationId' is set
+	if &communicationId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'communicationId' when calling ConversationsApi->PostConversationCommunicationAgentchecklistAgentaction")
+	}
+	// verify the required parameter 'agentChecklistId' is set
+	if &agentChecklistId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'agentChecklistId' when calling ConversationsApi->PostConversationCommunicationAgentchecklistAgentaction")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationCommunicationAgentchecklistAgentaction")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Agentchecklistresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Agentchecklistresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostConversationCommunicationAgentchecklistJobs invokes POST /api/v2/conversations/{conversationId}/communications/{communicationId}/agentchecklists/{agentChecklistId}/jobs
+//
+// Create inference job
+func (a ConversationsApi) PostConversationCommunicationAgentchecklistJobs(conversationId string, communicationId string, agentChecklistId string, body Checklistinferencejobpayload) (*Checklistinferencejobcreationresponse, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/{conversationId}/communications/{communicationId}/agentchecklists/{agentChecklistId}/jobs"
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{communicationId}", url.PathEscape(fmt.Sprintf("%v", communicationId)), -1)
+	path = strings.Replace(path, "{agentChecklistId}", url.PathEscape(fmt.Sprintf("%v", agentChecklistId)), -1)
+	defaultReturn := new(Checklistinferencejobcreationresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'conversationId' is set
+	if &conversationId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PostConversationCommunicationAgentchecklistJobs")
+	}
+	// verify the required parameter 'communicationId' is set
+	if &communicationId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'communicationId' when calling ConversationsApi->PostConversationCommunicationAgentchecklistJobs")
+	}
+	// verify the required parameter 'agentChecklistId' is set
+	if &agentChecklistId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'agentChecklistId' when calling ConversationsApi->PostConversationCommunicationAgentchecklistJobs")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationCommunicationAgentchecklistJobs")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Checklistinferencejobcreationresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Checklistinferencejobcreationresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostConversationCommunicationAgentchecklistsFinalize invokes POST /api/v2/conversations/{conversationId}/communications/{communicationId}/agentchecklists/finalize
+//
+// API invoked to finalize agent checklist evaluation.
+func (a ConversationsApi) PostConversationCommunicationAgentchecklistsFinalize(conversationId string, communicationId string, body Checklistfinalizepayload) (*Agentchecklistresponselist, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/{conversationId}/communications/{communicationId}/agentchecklists/finalize"
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{communicationId}", url.PathEscape(fmt.Sprintf("%v", communicationId)), -1)
+	defaultReturn := new(Agentchecklistresponselist)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'conversationId' is set
+	if &conversationId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PostConversationCommunicationAgentchecklistsFinalize")
+	}
+	// verify the required parameter 'communicationId' is set
+	if &communicationId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'communicationId' when calling ConversationsApi->PostConversationCommunicationAgentchecklistsFinalize")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationCommunicationAgentchecklistsFinalize")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Agentchecklistresponselist
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Agentchecklistresponselist" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // PostConversationCommunicationInternalmessages invokes POST /api/v2/conversations/{conversationId}/communications/{communicationId}/internalmessages
 //
 // Send internal message
@@ -15829,7 +16513,11 @@ func (a ConversationsApi) PostConversationParticipantInternalmessagesUsersCommun
 
 // PostConversationParticipantReplace invokes POST /api/v2/conversations/{conversationId}/participants/{participantId}/replace
 //
-// Replace this participant with the specified user and/or address
+// Replace this participant (Deprecated)
+//
+// This endpoint is deprecated. Use one of the following endpoints instead: /transfer, /replace/agent, /replace/queue, or /replace/contact/external.
+//
+// Deprecated: PostConversationParticipantReplace is deprecated
 func (a ConversationsApi) PostConversationParticipantReplace(conversationId string, participantId string, body Transferrequest) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -16008,8 +16696,6 @@ func (a ConversationsApi) PostConversationParticipantReplaceAgent(conversationId
 // PostConversationParticipantReplaceContactExternal invokes POST /api/v2/conversations/{conversationId}/participants/{participantId}/replace/contact/external
 //
 // Replace this participant with the an external contact
-//
-// Preview: PostConversationParticipantReplaceContactExternal is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) PostConversationParticipantReplaceContactExternal(conversationId string, participantId string, body Transfertoexternalcontactrequest) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -16098,7 +16784,11 @@ func (a ConversationsApi) PostConversationParticipantReplaceContactExternal(conv
 
 // PostConversationParticipantReplaceExternal invokes POST /api/v2/conversations/{conversationId}/participants/{participantId}/replace/external
 //
-// Replace this participant with the an external contact
+// Replace this participant with the an external contact (Deprecated)
+//
+// This endpoint is deprecated. Use /replace/contact/external endpoint instead.
+//
+// Deprecated: PostConversationParticipantReplaceExternal is deprecated
 func (a ConversationsApi) PostConversationParticipantReplaceExternal(conversationId string, participantId string, body Transfertoexternalrequest) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -16368,8 +17058,6 @@ func (a ConversationsApi) PostConversationParticipantSecureivrsessions(conversat
 // PostConversationParticipantTransfer invokes POST /api/v2/conversations/{conversationId}/participants/{participantId}/transfer
 //
 // Replace this participant by another one using the address of the destination.
-//
-// Preview: PostConversationParticipantTransfer is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) PostConversationParticipantTransfer(conversationId string, participantId string, body Transfertoaddressrequest) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -17067,7 +17755,11 @@ func (a ConversationsApi) PostConversationsCallParticipantCommunicationWrapup(co
 
 // PostConversationsCallParticipantConsult invokes POST /api/v2/conversations/calls/{conversationId}/participants/{participantId}/consult
 //
-// Initiate and update consult transfer
+// Initiate and update consult transfer (Deprecated)
+//
+// This endpoint is deprecated. Use one of the following endpoints instead: /voice/consult, /consult/agent, /consult/queue, or /consult/contact/external.
+//
+// Deprecated: PostConversationsCallParticipantConsult is deprecated
 func (a ConversationsApi) PostConversationsCallParticipantConsult(conversationId string, participantId string, body Consulttransfer) (*Consulttransferresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -17260,8 +17952,6 @@ func (a ConversationsApi) PostConversationsCallParticipantConsultAgent(conversat
 // PostConversationsCallParticipantConsultContactExternal invokes POST /api/v2/conversations/calls/{conversationId}/participants/{participantId}/consult/contact/external
 //
 // Initiate a consult transfer to an external contact
-//
-// Preview: PostConversationsCallParticipantConsultContactExternal is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) PostConversationsCallParticipantConsultContactExternal(conversationId string, participantId string, body Consulttransfertoexternalcontact) (*Consulttransferresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -17357,7 +18047,11 @@ func (a ConversationsApi) PostConversationsCallParticipantConsultContactExternal
 
 // PostConversationsCallParticipantConsultExternal invokes POST /api/v2/conversations/calls/{conversationId}/participants/{participantId}/consult/external
 //
-// Initiate a consult transfer to an external contact
+// Initiate a consult transfer to an external contact (Deprecated)
+//
+// This endpoint is deprecated. Use /consult/contact/external endpoints instead.
+//
+// Deprecated: PostConversationsCallParticipantConsultExternal is deprecated
 func (a ConversationsApi) PostConversationsCallParticipantConsultExternal(conversationId string, participantId string, body Consulttransfertoexternal) (*Consulttransferresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -17720,8 +18414,6 @@ func (a ConversationsApi) PostConversationsCallParticipantReplace(conversationId
 // PostConversationsCallParticipantVoiceConsult invokes POST /api/v2/conversations/calls/{conversationId}/participants/{participantId}/voice/consult
 //
 // Initiate voice consult transfer
-//
-// Preview: PostConversationsCallParticipantVoiceConsult is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) PostConversationsCallParticipantVoiceConsult(conversationId string, participantId string, body Consulttransfertoaddress) (*Consulttransferresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

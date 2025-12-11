@@ -19,6 +19,9 @@ type Creategeneralprogramtopicsdefinitionsjob struct {
 
 	// TestTopicPhraseResults
 	TestTopicPhraseResults *[]Creategeneralprogramtesttopicphraseresults `json:"testTopicPhraseResults,omitempty"`
+
+	// GenAIPhrasesResults
+	GenAIPhrasesResults *[]string `json:"genAIPhrasesResults,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +92,8 @@ func (o Creategeneralprogramtopicsdefinitionsjob) MarshalJSON() ([]byte, error) 
 		State *string `json:"state,omitempty"`
 		
 		TestTopicPhraseResults *[]Creategeneralprogramtesttopicphraseresults `json:"testTopicPhraseResults,omitempty"`
+		
+		GenAIPhrasesResults *[]string `json:"genAIPhrasesResults,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -96,6 +101,8 @@ func (o Creategeneralprogramtopicsdefinitionsjob) MarshalJSON() ([]byte, error) 
 		State: o.State,
 		
 		TestTopicPhraseResults: o.TestTopicPhraseResults,
+		
+		GenAIPhrasesResults: o.GenAIPhrasesResults,
 		Alias:    (Alias)(o),
 	})
 }
@@ -118,6 +125,11 @@ func (o *Creategeneralprogramtopicsdefinitionsjob) UnmarshalJSON(b []byte) error
 	if TestTopicPhraseResults, ok := CreategeneralprogramtopicsdefinitionsjobMap["testTopicPhraseResults"].([]interface{}); ok {
 		TestTopicPhraseResultsString, _ := json.Marshal(TestTopicPhraseResults)
 		json.Unmarshal(TestTopicPhraseResultsString, &o.TestTopicPhraseResults)
+	}
+	
+	if GenAIPhrasesResults, ok := CreategeneralprogramtopicsdefinitionsjobMap["genAIPhrasesResults"].([]interface{}); ok {
+		GenAIPhrasesResultsString, _ := json.Marshal(GenAIPhrasesResults)
+		json.Unmarshal(GenAIPhrasesResultsString, &o.GenAIPhrasesResults)
 	}
 	
 

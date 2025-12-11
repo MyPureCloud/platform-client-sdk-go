@@ -25,6 +25,9 @@ type Sendmessagingtemplaterequest struct {
 
 	// ButtonUrlParameters - A list of Response Management button url parameter substitutions for the response's messaging template
 	ButtonUrlParameters *[]Templateparameter `json:"buttonUrlParameters,omitempty"`
+
+	// CarouselParameters - Template parameters for carousel card components
+	CarouselParameters *Carouselparameters `json:"carouselParameters,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -99,6 +102,8 @@ func (o Sendmessagingtemplaterequest) MarshalJSON() ([]byte, error) {
 		BodyParameters *[]Templateparameter `json:"bodyParameters,omitempty"`
 		
 		ButtonUrlParameters *[]Templateparameter `json:"buttonUrlParameters,omitempty"`
+		
+		CarouselParameters *Carouselparameters `json:"carouselParameters,omitempty"`
 		Alias
 	}{ 
 		ResponseId: o.ResponseId,
@@ -110,6 +115,8 @@ func (o Sendmessagingtemplaterequest) MarshalJSON() ([]byte, error) {
 		BodyParameters: o.BodyParameters,
 		
 		ButtonUrlParameters: o.ButtonUrlParameters,
+		
+		CarouselParameters: o.CarouselParameters,
 		Alias:    (Alias)(o),
 	})
 }
@@ -143,6 +150,11 @@ func (o *Sendmessagingtemplaterequest) UnmarshalJSON(b []byte) error {
 	if ButtonUrlParameters, ok := SendmessagingtemplaterequestMap["buttonUrlParameters"].([]interface{}); ok {
 		ButtonUrlParametersString, _ := json.Marshal(ButtonUrlParameters)
 		json.Unmarshal(ButtonUrlParametersString, &o.ButtonUrlParameters)
+	}
+	
+	if CarouselParameters, ok := SendmessagingtemplaterequestMap["carouselParameters"].(map[string]interface{}); ok {
+		CarouselParametersString, _ := json.Marshal(CarouselParameters)
+		json.Unmarshal(CarouselParametersString, &o.CarouselParameters)
 	}
 	
 

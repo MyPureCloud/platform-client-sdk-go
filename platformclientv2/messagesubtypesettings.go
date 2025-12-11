@@ -13,6 +13,9 @@ type Messagesubtypesettings struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// EnableAutoAnswer - Indicates if auto-answer is enabled for the given media type or subtype (default is false).  Subtype settings take precedence over media type settings.
 	EnableAutoAnswer *bool `json:"enableAutoAnswer,omitempty"`
+
+	// EnableInactivityTimeout - Indicates if inactivity timeout is enabled for the given subtype.
+	EnableInactivityTimeout *bool `json:"enableInactivityTimeout,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +82,13 @@ func (o Messagesubtypesettings) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		EnableAutoAnswer *bool `json:"enableAutoAnswer,omitempty"`
+		
+		EnableInactivityTimeout *bool `json:"enableInactivityTimeout,omitempty"`
 		Alias
 	}{ 
 		EnableAutoAnswer: o.EnableAutoAnswer,
+		
+		EnableInactivityTimeout: o.EnableInactivityTimeout,
 		Alias:    (Alias)(o),
 	})
 }
@@ -95,6 +102,10 @@ func (o *Messagesubtypesettings) UnmarshalJSON(b []byte) error {
 	
 	if EnableAutoAnswer, ok := MessagesubtypesettingsMap["enableAutoAnswer"].(bool); ok {
 		o.EnableAutoAnswer = &EnableAutoAnswer
+	}
+    
+	if EnableInactivityTimeout, ok := MessagesubtypesettingsMap["enableInactivityTimeout"].(bool); ok {
+		o.EnableInactivityTimeout = &EnableInactivityTimeout
 	}
     
 
