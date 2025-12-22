@@ -133,6 +133,9 @@ type Workitemseventsnotificationworkitem struct {
 
 	// UtilizationLabelId
 	UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
+
+	// CaseId
+	CaseId *string `json:"caseId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -279,6 +282,8 @@ func (o Workitemseventsnotificationworkitem) MarshalJSON() ([]byte, error) {
 		ScoredAgents *[]Workitemseventsnotificationscoredagent `json:"scoredAgents,omitempty"`
 		
 		UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
+		
+		CaseId *string `json:"caseId,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -362,6 +367,8 @@ func (o Workitemseventsnotificationworkitem) MarshalJSON() ([]byte, error) {
 		ScoredAgents: o.ScoredAgents,
 		
 		UtilizationLabelId: o.UtilizationLabelId,
+		
+		CaseId: o.CaseId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -547,6 +554,10 @@ func (o *Workitemseventsnotificationworkitem) UnmarshalJSON(b []byte) error {
 	
 	if UtilizationLabelId, ok := WorkitemseventsnotificationworkitemMap["utilizationLabelId"].(string); ok {
 		o.UtilizationLabelId = &UtilizationLabelId
+	}
+    
+	if CaseId, ok := WorkitemseventsnotificationworkitemMap["caseId"].(string); ok {
+		o.CaseId = &CaseId
 	}
     
 

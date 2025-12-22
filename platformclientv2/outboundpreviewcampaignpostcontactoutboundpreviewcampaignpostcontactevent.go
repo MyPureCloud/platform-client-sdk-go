@@ -76,6 +76,9 @@ type Outboundpreviewcampaignpostcontactoutboundpreviewcampaignpostcontactevent s
 
 	// AgentId
 	AgentId *string `json:"agentId,omitempty"`
+
+	// IsPreviewAutoEnded
+	IsPreviewAutoEnded *bool `json:"isPreviewAutoEnded,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -184,6 +187,8 @@ func (o Outboundpreviewcampaignpostcontactoutboundpreviewcampaignpostcontacteven
 		CallAnalysisDisposition *string `json:"callAnalysisDisposition,omitempty"`
 		
 		AgentId *string `json:"agentId,omitempty"`
+		
+		IsPreviewAutoEnded *bool `json:"isPreviewAutoEnded,omitempty"`
 		Alias
 	}{ 
 		EventTime: o.EventTime,
@@ -229,6 +234,8 @@ func (o Outboundpreviewcampaignpostcontactoutboundpreviewcampaignpostcontacteven
 		CallAnalysisDisposition: o.CallAnalysisDisposition,
 		
 		AgentId: o.AgentId,
+		
+		IsPreviewAutoEnded: o.IsPreviewAutoEnded,
 		Alias:    (Alias)(o),
 	})
 }
@@ -329,6 +336,10 @@ func (o *Outboundpreviewcampaignpostcontactoutboundpreviewcampaignpostcontacteve
     
 	if AgentId, ok := OutboundpreviewcampaignpostcontactoutboundpreviewcampaignpostcontacteventMap["agentId"].(string); ok {
 		o.AgentId = &AgentId
+	}
+    
+	if IsPreviewAutoEnded, ok := OutboundpreviewcampaignpostcontactoutboundpreviewcampaignpostcontacteventMap["isPreviewAutoEnded"].(bool); ok {
+		o.IsPreviewAutoEnded = &IsPreviewAutoEnded
 	}
     
 
