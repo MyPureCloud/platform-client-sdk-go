@@ -20,7 +20,7 @@ type Buttonresponse struct {
 	// Payload - Content of the textback payload after clicking a button
 	Payload *string `json:"payload,omitempty"`
 
-	// MessageType - Button response message type that captures QuickReply , Cards and Carousel .This is used  as label for Card selection
+	// MessageType - Button response message type that captures QuickReply , Cards and Carousel.This is used  as label for Card selection
 	MessageType *string `json:"messageType,omitempty"`
 
 	// OriginatingMessageId - Reference to the ID of the original message (e.g., list picker) this button response is replying to.

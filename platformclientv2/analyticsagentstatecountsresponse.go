@@ -13,6 +13,15 @@ type Analyticsagentstatecountsresponse struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// SegmentCounts - List of count by segment types
 	SegmentCounts *[]Agentstatesegmenttypecount `json:"segmentCounts,omitempty"`
+
+	// PresenceCounts - List of count by presences
+	PresenceCounts *[]Agentstatepresencecount `json:"presenceCounts,omitempty"`
+
+	// RoutingStatusCounts - List of count by routing statuses
+	RoutingStatusCounts *[]Agentstateroutingstatuscount `json:"routingStatusCounts,omitempty"`
+
+	// IsOutOfOfficeCounts - List of count by out of office states
+	IsOutOfOfficeCounts *[]Agentstateisoutofofficecount `json:"isOutOfOfficeCounts,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +88,21 @@ func (o Analyticsagentstatecountsresponse) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		SegmentCounts *[]Agentstatesegmenttypecount `json:"segmentCounts,omitempty"`
+		
+		PresenceCounts *[]Agentstatepresencecount `json:"presenceCounts,omitempty"`
+		
+		RoutingStatusCounts *[]Agentstateroutingstatuscount `json:"routingStatusCounts,omitempty"`
+		
+		IsOutOfOfficeCounts *[]Agentstateisoutofofficecount `json:"isOutOfOfficeCounts,omitempty"`
 		Alias
 	}{ 
 		SegmentCounts: o.SegmentCounts,
+		
+		PresenceCounts: o.PresenceCounts,
+		
+		RoutingStatusCounts: o.RoutingStatusCounts,
+		
+		IsOutOfOfficeCounts: o.IsOutOfOfficeCounts,
 		Alias:    (Alias)(o),
 	})
 }
@@ -96,6 +117,21 @@ func (o *Analyticsagentstatecountsresponse) UnmarshalJSON(b []byte) error {
 	if SegmentCounts, ok := AnalyticsagentstatecountsresponseMap["segmentCounts"].([]interface{}); ok {
 		SegmentCountsString, _ := json.Marshal(SegmentCounts)
 		json.Unmarshal(SegmentCountsString, &o.SegmentCounts)
+	}
+	
+	if PresenceCounts, ok := AnalyticsagentstatecountsresponseMap["presenceCounts"].([]interface{}); ok {
+		PresenceCountsString, _ := json.Marshal(PresenceCounts)
+		json.Unmarshal(PresenceCountsString, &o.PresenceCounts)
+	}
+	
+	if RoutingStatusCounts, ok := AnalyticsagentstatecountsresponseMap["routingStatusCounts"].([]interface{}); ok {
+		RoutingStatusCountsString, _ := json.Marshal(RoutingStatusCounts)
+		json.Unmarshal(RoutingStatusCountsString, &o.RoutingStatusCounts)
+	}
+	
+	if IsOutOfOfficeCounts, ok := AnalyticsagentstatecountsresponseMap["isOutOfOfficeCounts"].([]interface{}); ok {
+		IsOutOfOfficeCountsString, _ := json.Marshal(IsOutOfOfficeCounts)
+		json.Unmarshal(IsOutOfOfficeCountsString, &o.IsOutOfOfficeCounts)
 	}
 	
 

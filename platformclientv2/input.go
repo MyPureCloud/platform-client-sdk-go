@@ -28,6 +28,12 @@ type Input struct {
 
 	// IsRequired - Whether the input is required
 	IsRequired *bool `json:"isRequired,omitempty"`
+
+	// KeyboardType - Type of keyboard to be shown
+	KeyboardType *string `json:"keyboardType,omitempty"`
+
+	// AutoCompleteType - A string value representing the keyboard and system information about the expected semantic meaning for the content that users enter
+	AutoCompleteType *string `json:"autoCompleteType,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -104,6 +110,10 @@ func (o Input) MarshalJSON() ([]byte, error) {
 		IsMultipleLine *bool `json:"isMultipleLine,omitempty"`
 		
 		IsRequired *bool `json:"isRequired,omitempty"`
+		
+		KeyboardType *string `json:"keyboardType,omitempty"`
+		
+		AutoCompleteType *string `json:"autoCompleteType,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -117,6 +127,10 @@ func (o Input) MarshalJSON() ([]byte, error) {
 		IsMultipleLine: o.IsMultipleLine,
 		
 		IsRequired: o.IsRequired,
+		
+		KeyboardType: o.KeyboardType,
+		
+		AutoCompleteType: o.AutoCompleteType,
 		Alias:    (Alias)(o),
 	})
 }
@@ -150,6 +164,14 @@ func (o *Input) UnmarshalJSON(b []byte) error {
     
 	if IsRequired, ok := InputMap["isRequired"].(bool); ok {
 		o.IsRequired = &IsRequired
+	}
+    
+	if KeyboardType, ok := InputMap["keyboardType"].(string); ok {
+		o.KeyboardType = &KeyboardType
+	}
+    
+	if AutoCompleteType, ok := InputMap["autoCompleteType"].(string); ok {
+		o.AutoCompleteType = &AutoCompleteType
 	}
     
 

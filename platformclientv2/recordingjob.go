@@ -15,6 +15,9 @@ type Recordingjob struct {
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
+	// User - Details of the user created the job
+	User *Addressableentityref `json:"user,omitempty"`
+
 	// State - The current state of the job.
 	State *string `json:"state,omitempty"`
 
@@ -50,9 +53,6 @@ type Recordingjob struct {
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
-
-	// User - Details of the user created the job
-	User *Addressableentityref `json:"user,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -128,6 +128,8 @@ func (o Recordingjob) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
+		User *Addressableentityref `json:"user,omitempty"`
+		
 		State *string `json:"state,omitempty"`
 		
 		RecordingJobsQuery *Recordingjobsquery `json:"recordingJobsQuery,omitempty"`
@@ -151,11 +153,11 @@ func (o Recordingjob) MarshalJSON() ([]byte, error) {
 		FailedRecordings *string `json:"failedRecordings,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		
-		User *Addressableentityref `json:"user,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
+		
+		User: o.User,
 		
 		State: o.State,
 		
@@ -180,8 +182,6 @@ func (o Recordingjob) MarshalJSON() ([]byte, error) {
 		FailedRecordings: o.FailedRecordings,
 		
 		SelfUri: o.SelfUri,
-		
-		User: o.User,
 		Alias:    (Alias)(o),
 	})
 }
@@ -197,6 +197,11 @@ func (o *Recordingjob) UnmarshalJSON(b []byte) error {
 		o.Id = &Id
 	}
     
+	if User, ok := RecordingjobMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
 	if State, ok := RecordingjobMap["state"].(string); ok {
 		o.State = &State
 	}
@@ -253,11 +258,6 @@ func (o *Recordingjob) UnmarshalJSON(b []byte) error {
 		o.SelfUri = &SelfUri
 	}
     
-	if User, ok := RecordingjobMap["user"].(map[string]interface{}); ok {
-		UserString, _ := json.Marshal(User)
-		json.Unmarshal(UserString, &o.User)
-	}
-	
 
 	return nil
 }

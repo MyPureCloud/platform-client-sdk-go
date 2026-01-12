@@ -7,34 +7,43 @@ import (
 	"strings"
 )
 
-// Contractdefinition
-type Contractdefinition struct { 
+// Agentscoringruleentitylisting
+type Agentscoringruleentitylisting struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Name
-	Name *string `json:"name,omitempty"`
+	// Entities
+	Entities *[]Agentscoringrule `json:"entities,omitempty"`
 
-	// Title
-	Title *string `json:"title,omitempty"`
+	// PageSize
+	PageSize *int `json:"pageSize,omitempty"`
 
-	// Description
-	Description *string `json:"description,omitempty"`
+	// PageNumber
+	PageNumber *int `json:"pageNumber,omitempty"`
 
-	// VarType
-	VarType *[]string `json:"type,omitempty"`
+	// Total
+	Total *int `json:"total,omitempty"`
 
-	// Pattern
-	Pattern *string `json:"pattern,omitempty"`
+	// FirstUri
+	FirstUri *string `json:"firstUri,omitempty"`
 
-	// Items
-	Items *Contractitems `json:"items,omitempty"`
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
 
-	// SelfUri - The URI for this object
+	// NextUri
+	NextUri *string `json:"nextUri,omitempty"`
+
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
+
+	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
+
+	// PageCount
+	PageCount *int `json:"pageCount,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Contractdefinition) SetField(field string, fieldValue interface{}) {
+func (o *Agentscoringruleentitylisting) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -55,7 +64,7 @@ func (o *Contractdefinition) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Contractdefinition) MarshalJSON() ([]byte, error) {
+func (o Agentscoringruleentitylisting) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -93,84 +102,111 @@ func (o Contractdefinition) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Contractdefinition
+	type Alias Agentscoringruleentitylisting
 	
 	return json.Marshal(&struct { 
-		Name *string `json:"name,omitempty"`
+		Entities *[]Agentscoringrule `json:"entities,omitempty"`
 		
-		Title *string `json:"title,omitempty"`
+		PageSize *int `json:"pageSize,omitempty"`
 		
-		Description *string `json:"description,omitempty"`
+		PageNumber *int `json:"pageNumber,omitempty"`
 		
-		VarType *[]string `json:"type,omitempty"`
+		Total *int `json:"total,omitempty"`
 		
-		Pattern *string `json:"pattern,omitempty"`
+		FirstUri *string `json:"firstUri,omitempty"`
 		
-		Items *Contractitems `json:"items,omitempty"`
+		PreviousUri *string `json:"previousUri,omitempty"`
+		
+		NextUri *string `json:"nextUri,omitempty"`
+		
+		LastUri *string `json:"lastUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
+		
+		PageCount *int `json:"pageCount,omitempty"`
 		Alias
 	}{ 
-		Name: o.Name,
+		Entities: o.Entities,
 		
-		Title: o.Title,
+		PageSize: o.PageSize,
 		
-		Description: o.Description,
+		PageNumber: o.PageNumber,
 		
-		VarType: o.VarType,
+		Total: o.Total,
 		
-		Pattern: o.Pattern,
+		FirstUri: o.FirstUri,
 		
-		Items: o.Items,
+		PreviousUri: o.PreviousUri,
+		
+		NextUri: o.NextUri,
+		
+		LastUri: o.LastUri,
 		
 		SelfUri: o.SelfUri,
+		
+		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Contractdefinition) UnmarshalJSON(b []byte) error {
-	var ContractdefinitionMap map[string]interface{}
-	err := json.Unmarshal(b, &ContractdefinitionMap)
+func (o *Agentscoringruleentitylisting) UnmarshalJSON(b []byte) error {
+	var AgentscoringruleentitylistingMap map[string]interface{}
+	err := json.Unmarshal(b, &AgentscoringruleentitylistingMap)
 	if err != nil {
 		return err
 	}
 	
-	if Name, ok := ContractdefinitionMap["name"].(string); ok {
-		o.Name = &Name
-	}
-    
-	if Title, ok := ContractdefinitionMap["title"].(string); ok {
-		o.Title = &Title
-	}
-    
-	if Description, ok := ContractdefinitionMap["description"].(string); ok {
-		o.Description = &Description
-	}
-    
-	if VarType, ok := ContractdefinitionMap["type"].([]interface{}); ok {
-		VarTypeString, _ := json.Marshal(VarType)
-		json.Unmarshal(VarTypeString, &o.VarType)
+	if Entities, ok := AgentscoringruleentitylistingMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
 	}
 	
-	if Pattern, ok := ContractdefinitionMap["pattern"].(string); ok {
-		o.Pattern = &Pattern
-	}
-    
-	if Items, ok := ContractdefinitionMap["items"].(map[string]interface{}); ok {
-		ItemsString, _ := json.Marshal(Items)
-		json.Unmarshal(ItemsString, &o.Items)
+	if PageSize, ok := AgentscoringruleentitylistingMap["pageSize"].(float64); ok {
+		PageSizeInt := int(PageSize)
+		o.PageSize = &PageSizeInt
 	}
 	
-	if SelfUri, ok := ContractdefinitionMap["selfUri"].(string); ok {
+	if PageNumber, ok := AgentscoringruleentitylistingMap["pageNumber"].(float64); ok {
+		PageNumberInt := int(PageNumber)
+		o.PageNumber = &PageNumberInt
+	}
+	
+	if Total, ok := AgentscoringruleentitylistingMap["total"].(float64); ok {
+		TotalInt := int(Total)
+		o.Total = &TotalInt
+	}
+	
+	if FirstUri, ok := AgentscoringruleentitylistingMap["firstUri"].(string); ok {
+		o.FirstUri = &FirstUri
+	}
+    
+	if PreviousUri, ok := AgentscoringruleentitylistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
+	}
+    
+	if NextUri, ok := AgentscoringruleentitylistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
+	}
+    
+	if LastUri, ok := AgentscoringruleentitylistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
+	}
+    
+	if SelfUri, ok := AgentscoringruleentitylistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
     
+	if PageCount, ok := AgentscoringruleentitylistingMap["pageCount"].(float64); ok {
+		PageCountInt := int(PageCount)
+		o.PageCount = &PageCountInt
+	}
+	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Contractdefinition) String() string {
+func (o *Agentscoringruleentitylisting) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

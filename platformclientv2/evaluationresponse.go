@@ -30,6 +30,9 @@ type Evaluationresponse struct {
 	// Agent
 	Agent *User `json:"agent,omitempty"`
 
+	// Calibration
+	Calibration *Addressableentityref `json:"calibration,omitempty"`
+
 	// Status
 	Status *string `json:"status,omitempty"`
 
@@ -107,9 +110,6 @@ type Evaluationresponse struct {
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
-
-	// Calibration
-	Calibration *Addressableentityref `json:"calibration,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -243,6 +243,8 @@ func (o Evaluationresponse) MarshalJSON() ([]byte, error) {
 		
 		Agent *User `json:"agent,omitempty"`
 		
+		Calibration *Addressableentityref `json:"calibration,omitempty"`
+		
 		Status *string `json:"status,omitempty"`
 		
 		Answers *Evaluationscoringset `json:"answers,omitempty"`
@@ -294,8 +296,6 @@ func (o Evaluationresponse) MarshalJSON() ([]byte, error) {
 		AiScoring *Aiscoring `json:"aiScoring,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		
-		Calibration *Addressableentityref `json:"calibration,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -309,6 +309,8 @@ func (o Evaluationresponse) MarshalJSON() ([]byte, error) {
 		Evaluator: o.Evaluator,
 		
 		Agent: o.Agent,
+		
+		Calibration: o.Calibration,
 		
 		Status: o.Status,
 		
@@ -361,8 +363,6 @@ func (o Evaluationresponse) MarshalJSON() ([]byte, error) {
 		AiScoring: o.AiScoring,
 		
 		SelfUri: o.SelfUri,
-		
-		Calibration: o.Calibration,
 		Alias:    (Alias)(o),
 	})
 }
@@ -400,6 +400,11 @@ func (o *Evaluationresponse) UnmarshalJSON(b []byte) error {
 	if Agent, ok := EvaluationresponseMap["agent"].(map[string]interface{}); ok {
 		AgentString, _ := json.Marshal(Agent)
 		json.Unmarshal(AgentString, &o.Agent)
+	}
+	
+	if Calibration, ok := EvaluationresponseMap["calibration"].(map[string]interface{}); ok {
+		CalibrationString, _ := json.Marshal(Calibration)
+		json.Unmarshal(CalibrationString, &o.Calibration)
 	}
 	
 	if Status, ok := EvaluationresponseMap["status"].(string); ok {
@@ -520,11 +525,6 @@ func (o *Evaluationresponse) UnmarshalJSON(b []byte) error {
 		o.SelfUri = &SelfUri
 	}
     
-	if Calibration, ok := EvaluationresponseMap["calibration"].(map[string]interface{}); ok {
-		CalibrationString, _ := json.Marshal(Calibration)
-		json.Unmarshal(CalibrationString, &o.Calibration)
-	}
-	
 
 	return nil
 }

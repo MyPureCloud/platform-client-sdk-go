@@ -15,6 +15,9 @@ type Logcapturedownloadexecutionresponse struct {
 	// Id - Id of file download job.
 	Id *string `json:"id,omitempty"`
 
+	// User - Details of the user that created the job
+	User *Addressableentityref `json:"user,omitempty"`
+
 	// State - Execution state of the download.
 	State *string `json:"state,omitempty"`
 
@@ -26,9 +29,6 @@ type Logcapturedownloadexecutionresponse struct {
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
-
-	// User - Details of the user that created the job
-	User *Addressableentityref `json:"user,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -104,6 +104,8 @@ func (o Logcapturedownloadexecutionresponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
+		User *Addressableentityref `json:"user,omitempty"`
+		
 		State *string `json:"state,omitempty"`
 		
 		DateStart *string `json:"dateStart,omitempty"`
@@ -111,11 +113,11 @@ func (o Logcapturedownloadexecutionresponse) MarshalJSON() ([]byte, error) {
 		FileUrl *string `json:"fileUrl,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		
-		User *Addressableentityref `json:"user,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
+		
+		User: o.User,
 		
 		State: o.State,
 		
@@ -124,8 +126,6 @@ func (o Logcapturedownloadexecutionresponse) MarshalJSON() ([]byte, error) {
 		FileUrl: o.FileUrl,
 		
 		SelfUri: o.SelfUri,
-		
-		User: o.User,
 		Alias:    (Alias)(o),
 	})
 }
@@ -141,6 +141,11 @@ func (o *Logcapturedownloadexecutionresponse) UnmarshalJSON(b []byte) error {
 		o.Id = &Id
 	}
     
+	if User, ok := LogcapturedownloadexecutionresponseMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
 	if State, ok := LogcapturedownloadexecutionresponseMap["state"].(string); ok {
 		o.State = &State
 	}
@@ -158,11 +163,6 @@ func (o *Logcapturedownloadexecutionresponse) UnmarshalJSON(b []byte) error {
 		o.SelfUri = &SelfUri
 	}
     
-	if User, ok := LogcapturedownloadexecutionresponseMap["user"].(map[string]interface{}); ok {
-		UserString, _ := json.Marshal(User)
-		json.Unmarshal(UserString, &o.User)
-	}
-	
 
 	return nil
 }

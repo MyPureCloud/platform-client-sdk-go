@@ -11,14 +11,14 @@ import (
 type Conversationsummaryresolution struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
+	// Confidence - The AI confidence value.
+	Confidence *float32 `json:"confidence,omitempty"`
+
 	// Text - The text of the resolution.
 	Text *string `json:"text,omitempty"`
 
 	// Description - The description.
 	Description *string `json:"description,omitempty"`
-
-	// Confidence - The AI confidence value.
-	Confidence *float32 `json:"confidence,omitempty"`
 
 	// Outcome - The outcome of the conversation's resolution.
 	Outcome *string `json:"outcome,omitempty"`
@@ -87,20 +87,20 @@ func (o Conversationsummaryresolution) MarshalJSON() ([]byte, error) {
 	type Alias Conversationsummaryresolution
 	
 	return json.Marshal(&struct { 
+		Confidence *float32 `json:"confidence,omitempty"`
+		
 		Text *string `json:"text,omitempty"`
 		
 		Description *string `json:"description,omitempty"`
 		
-		Confidence *float32 `json:"confidence,omitempty"`
-		
 		Outcome *string `json:"outcome,omitempty"`
 		Alias
 	}{ 
+		Confidence: o.Confidence,
+		
 		Text: o.Text,
 		
 		Description: o.Description,
-		
-		Confidence: o.Confidence,
 		
 		Outcome: o.Outcome,
 		Alias:    (Alias)(o),
@@ -114,6 +114,11 @@ func (o *Conversationsummaryresolution) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if Confidence, ok := ConversationsummaryresolutionMap["confidence"].(float64); ok {
+		ConfidenceFloat32 := float32(Confidence)
+		o.Confidence = &ConfidenceFloat32
+	}
+	
 	if Text, ok := ConversationsummaryresolutionMap["text"].(string); ok {
 		o.Text = &Text
 	}
@@ -122,11 +127,6 @@ func (o *Conversationsummaryresolution) UnmarshalJSON(b []byte) error {
 		o.Description = &Description
 	}
     
-	if Confidence, ok := ConversationsummaryresolutionMap["confidence"].(float64); ok {
-		ConfidenceFloat32 := float32(Confidence)
-		o.Confidence = &ConfidenceFloat32
-	}
-	
 	if Outcome, ok := ConversationsummaryresolutionMap["outcome"].(string); ok {
 		o.Outcome = &Outcome
 	}

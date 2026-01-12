@@ -15,6 +15,12 @@ type Suggestion struct {
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
+	// Conversation - The conversation that the suggestions correspond to.
+	Conversation *Addressableentityref `json:"conversation,omitempty"`
+
+	// Assistant - The assistant that was used to provide the suggestions.
+	Assistant *Addressableentityref `json:"assistant,omitempty"`
+
 	// VarType - The type of the documents for which the suggestion is.
 	VarType *string `json:"type,omitempty"`
 
@@ -53,12 +59,6 @@ type Suggestion struct {
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
-
-	// Conversation - The conversation that the suggestions correspond to.
-	Conversation *Addressableentityref `json:"conversation,omitempty"`
-
-	// Assistant - The assistant that was used to provide the suggestions.
-	Assistant *Addressableentityref `json:"assistant,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -134,6 +134,10 @@ func (o Suggestion) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
+		Conversation *Addressableentityref `json:"conversation,omitempty"`
+		
+		Assistant *Addressableentityref `json:"assistant,omitempty"`
+		
 		VarType *string `json:"type,omitempty"`
 		
 		Faq *Faq `json:"faq,omitempty"`
@@ -159,13 +163,13 @@ func (o Suggestion) MarshalJSON() ([]byte, error) {
 		Script *Suggestionscript `json:"script,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		
-		Conversation *Addressableentityref `json:"conversation,omitempty"`
-		
-		Assistant *Addressableentityref `json:"assistant,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
+		
+		Conversation: o.Conversation,
+		
+		Assistant: o.Assistant,
 		
 		VarType: o.VarType,
 		
@@ -192,10 +196,6 @@ func (o Suggestion) MarshalJSON() ([]byte, error) {
 		Script: o.Script,
 		
 		SelfUri: o.SelfUri,
-		
-		Conversation: o.Conversation,
-		
-		Assistant: o.Assistant,
 		Alias:    (Alias)(o),
 	})
 }
@@ -211,6 +211,16 @@ func (o *Suggestion) UnmarshalJSON(b []byte) error {
 		o.Id = &Id
 	}
     
+	if Conversation, ok := SuggestionMap["conversation"].(map[string]interface{}); ok {
+		ConversationString, _ := json.Marshal(Conversation)
+		json.Unmarshal(ConversationString, &o.Conversation)
+	}
+	
+	if Assistant, ok := SuggestionMap["assistant"].(map[string]interface{}); ok {
+		AssistantString, _ := json.Marshal(Assistant)
+		json.Unmarshal(AssistantString, &o.Assistant)
+	}
+	
 	if VarType, ok := SuggestionMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
@@ -271,16 +281,6 @@ func (o *Suggestion) UnmarshalJSON(b []byte) error {
 		o.SelfUri = &SelfUri
 	}
     
-	if Conversation, ok := SuggestionMap["conversation"].(map[string]interface{}); ok {
-		ConversationString, _ := json.Marshal(Conversation)
-		json.Unmarshal(ConversationString, &o.Conversation)
-	}
-	
-	if Assistant, ok := SuggestionMap["assistant"].(map[string]interface{}); ok {
-		AssistantString, _ := json.Marshal(Assistant)
-		json.Unmarshal(AssistantString, &o.Assistant)
-	}
-	
 
 	return nil
 }

@@ -6422,7 +6422,7 @@ func (a AnalyticsApi) PostAnalyticsAgentcopilotsAggregatesQuery(body Agentcopilo
 // PostAnalyticsAgentsStatusCounts invokes POST /api/v2/analytics/agents/status/counts
 //
 // Count agents by different groupings
-func (a AnalyticsApi) PostAnalyticsAgentsStatusCounts(body Agentstatecountsrequest) (*Analyticsagentstatecountsresponse, *APIResponse, error) {
+func (a AnalyticsApi) PostAnalyticsAgentsStatusCounts(body Agentstatecountsrequest, groupBy []string) (*Analyticsagentstatecountsresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/analytics/agents/status/counts"
@@ -6453,6 +6453,8 @@ func (a AnalyticsApi) PostAnalyticsAgentsStatusCounts(body Agentstatecountsreque
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["groupBy"] = a.Configuration.APIClient.ParameterToString(groupBy, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

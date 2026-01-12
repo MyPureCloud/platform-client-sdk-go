@@ -30,7 +30,7 @@ type Businessrulesdataschema struct {
 	// CreatedBy - The URI of the user that created this schema.
 	CreatedBy *Domainentityref `json:"createdBy,omitempty"`
 
-	// DateCreated - The date and time this schema was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	// DateCreated - The date and time this schema version was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
 	// JsonSchema - A JSON schema defining the extension to the built-in entity type.

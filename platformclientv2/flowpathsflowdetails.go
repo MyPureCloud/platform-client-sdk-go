@@ -11,6 +11,9 @@ import (
 type Flowpathsflowdetails struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
+	// Flow - The identifier of the flow.
+	Flow *Addressableentityref `json:"flow,omitempty"`
+
 	// Version - The version of the flow.
 	Version *string `json:"version,omitempty"`
 
@@ -19,9 +22,6 @@ type Flowpathsflowdetails struct {
 
 	// Count - Count of all journeys that include this element in the given flow.
 	Count *int `json:"count,omitempty"`
-
-	// Flow - The identifier of the flow.
-	Flow *Addressableentityref `json:"flow,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -87,22 +87,22 @@ func (o Flowpathsflowdetails) MarshalJSON() ([]byte, error) {
 	type Alias Flowpathsflowdetails
 	
 	return json.Marshal(&struct { 
+		Flow *Addressableentityref `json:"flow,omitempty"`
+		
 		Version *string `json:"version,omitempty"`
 		
 		VarType *string `json:"type,omitempty"`
 		
 		Count *int `json:"count,omitempty"`
-		
-		Flow *Addressableentityref `json:"flow,omitempty"`
 		Alias
 	}{ 
+		Flow: o.Flow,
+		
 		Version: o.Version,
 		
 		VarType: o.VarType,
 		
 		Count: o.Count,
-		
-		Flow: o.Flow,
 		Alias:    (Alias)(o),
 	})
 }
@@ -112,6 +112,11 @@ func (o *Flowpathsflowdetails) UnmarshalJSON(b []byte) error {
 	err := json.Unmarshal(b, &FlowpathsflowdetailsMap)
 	if err != nil {
 		return err
+	}
+	
+	if Flow, ok := FlowpathsflowdetailsMap["flow"].(map[string]interface{}); ok {
+		FlowString, _ := json.Marshal(Flow)
+		json.Unmarshal(FlowString, &o.Flow)
 	}
 	
 	if Version, ok := FlowpathsflowdetailsMap["version"].(string); ok {
@@ -125,11 +130,6 @@ func (o *Flowpathsflowdetails) UnmarshalJSON(b []byte) error {
 	if Count, ok := FlowpathsflowdetailsMap["count"].(float64); ok {
 		CountInt := int(Count)
 		o.Count = &CountInt
-	}
-	
-	if Flow, ok := FlowpathsflowdetailsMap["flow"].(map[string]interface{}); ok {
-		FlowString, _ := json.Marshal(Flow)
-		json.Unmarshal(FlowString, &o.Flow)
 	}
 	
 

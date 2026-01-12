@@ -18,6 +18,9 @@ type Botflowsession struct {
 	// Flow - The flow associated to this bot session.
 	Flow *Entity `json:"flow,omitempty"`
 
+	// Conversation - The conversation details, across potentially multiple Bot Flow sessions.
+	Conversation *Addressableentityref `json:"conversation,omitempty"`
+
 	// Channel - Channel-specific information that describes the message channel/provider.
 	Channel *Botchannel `json:"channel,omitempty"`
 
@@ -38,9 +41,6 @@ type Botflowsession struct {
 
 	// DateCompleted - Timestamp indicating when the session was completed. Note: The 'interval' query param uses this timestamp to filter the output. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCompleted *time.Time `json:"dateCompleted,omitempty"`
-
-	// Conversation - The conversation details, across potentially multiple Bot Flow sessions.
-	Conversation *Addressableentityref `json:"conversation,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -126,6 +126,8 @@ func (o Botflowsession) MarshalJSON() ([]byte, error) {
 		
 		Flow *Entity `json:"flow,omitempty"`
 		
+		Conversation *Addressableentityref `json:"conversation,omitempty"`
+		
 		Channel *Botchannel `json:"channel,omitempty"`
 		
 		Language *string `json:"language,omitempty"`
@@ -139,13 +141,13 @@ func (o Botflowsession) MarshalJSON() ([]byte, error) {
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
 		DateCompleted *string `json:"dateCompleted,omitempty"`
-		
-		Conversation *Addressableentityref `json:"conversation,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
 		
 		Flow: o.Flow,
+		
+		Conversation: o.Conversation,
 		
 		Channel: o.Channel,
 		
@@ -160,8 +162,6 @@ func (o Botflowsession) MarshalJSON() ([]byte, error) {
 		DateCreated: DateCreated,
 		
 		DateCompleted: DateCompleted,
-		
-		Conversation: o.Conversation,
 		Alias:    (Alias)(o),
 	})
 }
@@ -180,6 +180,11 @@ func (o *Botflowsession) UnmarshalJSON(b []byte) error {
 	if Flow, ok := BotflowsessionMap["flow"].(map[string]interface{}); ok {
 		FlowString, _ := json.Marshal(Flow)
 		json.Unmarshal(FlowString, &o.Flow)
+	}
+	
+	if Conversation, ok := BotflowsessionMap["conversation"].(map[string]interface{}); ok {
+		ConversationString, _ := json.Marshal(Conversation)
+		json.Unmarshal(ConversationString, &o.Conversation)
 	}
 	
 	if Channel, ok := BotflowsessionMap["channel"].(map[string]interface{}); ok {
@@ -211,11 +216,6 @@ func (o *Botflowsession) UnmarshalJSON(b []byte) error {
 	if dateCompletedString, ok := BotflowsessionMap["dateCompleted"].(string); ok {
 		DateCompleted, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCompletedString)
 		o.DateCompleted = &DateCompleted
-	}
-	
-	if Conversation, ok := BotflowsessionMap["conversation"].(map[string]interface{}); ok {
-		ConversationString, _ := json.Marshal(Conversation)
-		json.Unmarshal(ConversationString, &o.Conversation)
 	}
 	
 

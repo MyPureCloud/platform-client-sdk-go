@@ -2388,7 +2388,7 @@ func (a SocialMediaApi) GetSocialmediaTopicDataingestionrulesTwitterTwitterInges
 // GetSocialmediaTopics invokes GET /api/v2/socialmedia/topics
 //
 // Retrieve all social topics.
-func (a SocialMediaApi) GetSocialmediaTopics(pageNumber int, pageSize int, divisionIds []string, includeDeleted bool, name string) (*Socialtopicresponseentitylisting, *APIResponse, error) {
+func (a SocialMediaApi) GetSocialmediaTopics(pageNumber int, pageSize int, divisionIds []string, includeDeleted bool, name string, ids []string) (*Socialtopicresponseentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/socialmedia/topics"
@@ -2424,6 +2424,8 @@ func (a SocialMediaApi) GetSocialmediaTopics(pageNumber int, pageSize int, divis
 	queryParams["includeDeleted"] = a.Configuration.APIClient.ParameterToString(includeDeleted, "")
 	
 	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
+	
+	queryParams["ids"] = a.Configuration.APIClient.ParameterToString(ids, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

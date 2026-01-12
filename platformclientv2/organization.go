@@ -32,6 +32,9 @@ type Organization struct {
 	// Domain
 	Domain *string `json:"domain,omitempty"`
 
+	// Features - The state of features available for the organization.
+	Features *map[string]bool `json:"features,omitempty"`
+
 	// Version - The current version of the organization.
 	Version *int `json:"version,omitempty"`
 
@@ -52,9 +55,6 @@ type Organization struct {
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
-
-	// Features - The state of features available for the organization.
-	Features *map[string]bool `json:"features,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -134,6 +134,8 @@ func (o Organization) MarshalJSON() ([]byte, error) {
 		
 		Domain *string `json:"domain,omitempty"`
 		
+		Features *map[string]bool `json:"features,omitempty"`
+		
 		Version *int `json:"version,omitempty"`
 		
 		State *string `json:"state,omitempty"`
@@ -147,8 +149,6 @@ func (o Organization) MarshalJSON() ([]byte, error) {
 		ProductPlatform *string `json:"productPlatform,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		
-		Features *map[string]bool `json:"features,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -165,6 +165,8 @@ func (o Organization) MarshalJSON() ([]byte, error) {
 		
 		Domain: o.Domain,
 		
+		Features: o.Features,
+		
 		Version: o.Version,
 		
 		State: o.State,
@@ -178,8 +180,6 @@ func (o Organization) MarshalJSON() ([]byte, error) {
 		ProductPlatform: o.ProductPlatform,
 		
 		SelfUri: o.SelfUri,
-		
-		Features: o.Features,
 		Alias:    (Alias)(o),
 	})
 }
@@ -219,6 +219,11 @@ func (o *Organization) UnmarshalJSON(b []byte) error {
 		o.Domain = &Domain
 	}
     
+	if Features, ok := OrganizationMap["features"].(map[string]interface{}); ok {
+		FeaturesString, _ := json.Marshal(Features)
+		json.Unmarshal(FeaturesString, &o.Features)
+	}
+	
 	if Version, ok := OrganizationMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
@@ -248,11 +253,6 @@ func (o *Organization) UnmarshalJSON(b []byte) error {
 		o.SelfUri = &SelfUri
 	}
     
-	if Features, ok := OrganizationMap["features"].(map[string]interface{}); ok {
-		FeaturesString, _ := json.Marshal(Features)
-		json.Unmarshal(FeaturesString, &o.Features)
-	}
-	
 
 	return nil
 }

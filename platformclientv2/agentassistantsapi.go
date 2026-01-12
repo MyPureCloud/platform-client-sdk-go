@@ -511,6 +511,100 @@ func (a AgentAssistantsApi) GetAssistantQueue(assistantId string, queueId string
 	return successPayload, response, err
 }
 
+// GetAssistantQueueUsersJob invokes GET /api/v2/assistants/{assistantId}/queues/{queueId}/users/jobs/{jobId}
+//
+// Get job details.
+func (a AgentAssistantsApi) GetAssistantQueueUsersJob(assistantId string, queueId string, jobId string) (*Assistantqueueusersjobsresponse, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/assistants/{assistantId}/queues/{queueId}/users/jobs/{jobId}"
+	path = strings.Replace(path, "{assistantId}", url.PathEscape(fmt.Sprintf("%v", assistantId)), -1)
+	path = strings.Replace(path, "{queueId}", url.PathEscape(fmt.Sprintf("%v", queueId)), -1)
+	path = strings.Replace(path, "{jobId}", url.PathEscape(fmt.Sprintf("%v", jobId)), -1)
+	defaultReturn := new(Assistantqueueusersjobsresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'assistantId' is set
+	if &assistantId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'assistantId' when calling AgentAssistantsApi->GetAssistantQueueUsersJob")
+	}
+	// verify the required parameter 'queueId' is set
+	if &queueId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'queueId' when calling AgentAssistantsApi->GetAssistantQueueUsersJob")
+	}
+	// verify the required parameter 'jobId' is set
+	if &jobId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'jobId' when calling AgentAssistantsApi->GetAssistantQueueUsersJob")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Assistantqueueusersjobsresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Assistantqueueusersjobsresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // GetAssistantQueues invokes GET /api/v2/assistants/{assistantId}/queues
 //
 // Get all the queues associated with an assistant.
@@ -1387,6 +1481,102 @@ func (a AgentAssistantsApi) PostAssistantQueueUsersBulkRemove(assistantId string
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Bulkresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostAssistantQueueUsersJobs invokes POST /api/v2/assistants/{assistantId}/queues/{queueId}/users/jobs
+//
+// Start a new job to assistant-queue.
+func (a AgentAssistantsApi) PostAssistantQueueUsersJobs(assistantId string, queueId string, body Assistantqueueusersjobsrequest) (*Assistantqueueusersjobsresponse, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/assistants/{assistantId}/queues/{queueId}/users/jobs"
+	path = strings.Replace(path, "{assistantId}", url.PathEscape(fmt.Sprintf("%v", assistantId)), -1)
+	path = strings.Replace(path, "{queueId}", url.PathEscape(fmt.Sprintf("%v", queueId)), -1)
+	defaultReturn := new(Assistantqueueusersjobsresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'assistantId' is set
+	if &assistantId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'assistantId' when calling AgentAssistantsApi->PostAssistantQueueUsersJobs")
+	}
+	// verify the required parameter 'queueId' is set
+	if &queueId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'queueId' when calling AgentAssistantsApi->PostAssistantQueueUsersJobs")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AgentAssistantsApi->PostAssistantQueueUsersJobs")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Assistantqueueusersjobsresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Assistantqueueusersjobsresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

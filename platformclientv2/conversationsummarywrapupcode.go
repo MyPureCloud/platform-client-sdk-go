@@ -11,20 +11,20 @@ import (
 type Conversationsummarywrapupcode struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
+	// Id - The id of the wrapup code.
+	Id *string `json:"id,omitempty"`
+
 	// Name - The name of the wrapup code.
 	Name *string `json:"name,omitempty"`
 
 	// Description - The description of the wrapup code.
 	Description *string `json:"description,omitempty"`
 
-	// SelfUri - The URI for this object
-	SelfUri *string `json:"selfUri,omitempty"`
-
-	// Id - The id of the wrapup code.
-	Id *string `json:"id,omitempty"`
-
 	// Confidence - The AI confidence value.
 	Confidence *float32 `json:"confidence,omitempty"`
+
+	// SelfUri - The URI for this object
+	SelfUri *string `json:"selfUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -90,26 +90,26 @@ func (o Conversationsummarywrapupcode) MarshalJSON() ([]byte, error) {
 	type Alias Conversationsummarywrapupcode
 	
 	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
 		Name *string `json:"name,omitempty"`
 		
 		Description *string `json:"description,omitempty"`
 		
-		SelfUri *string `json:"selfUri,omitempty"`
-		
-		Id *string `json:"id,omitempty"`
-		
 		Confidence *float32 `json:"confidence,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
+		Id: o.Id,
+		
 		Name: o.Name,
 		
 		Description: o.Description,
 		
-		SelfUri: o.SelfUri,
-		
-		Id: o.Id,
-		
 		Confidence: o.Confidence,
+		
+		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
 	})
 }
@@ -121,6 +121,10 @@ func (o *Conversationsummarywrapupcode) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if Id, ok := ConversationsummarywrapupcodeMap["id"].(string); ok {
+		o.Id = &Id
+	}
+    
 	if Name, ok := ConversationsummarywrapupcodeMap["name"].(string); ok {
 		o.Name = &Name
 	}
@@ -129,19 +133,15 @@ func (o *Conversationsummarywrapupcode) UnmarshalJSON(b []byte) error {
 		o.Description = &Description
 	}
     
-	if SelfUri, ok := ConversationsummarywrapupcodeMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
-	}
-    
-	if Id, ok := ConversationsummarywrapupcodeMap["id"].(string); ok {
-		o.Id = &Id
-	}
-    
 	if Confidence, ok := ConversationsummarywrapupcodeMap["confidence"].(float64); ok {
 		ConfidenceFloat32 := float32(Confidence)
 		o.Confidence = &ConfidenceFloat32
 	}
 	
+	if SelfUri, ok := ConversationsummarywrapupcodeMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+    
 
 	return nil
 }

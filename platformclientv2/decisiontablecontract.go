@@ -15,13 +15,13 @@ type Decisiontablecontract struct {
 	ParentSchema *Domainentityref `json:"parentSchema,omitempty"`
 
 	// RowAuthoringSchema - JSON schema describing required value types for each column in every row in a decision table
-	RowAuthoringSchema *Contractjsonschema `json:"rowAuthoringSchema,omitempty"`
+	RowAuthoringSchema *Jsonschemadocument `json:"rowAuthoringSchema,omitempty"`
 
 	// ExecutionInputSchema - JSON schema for execution input data for a decision table
-	ExecutionInputSchema *Contractjsonschema `json:"executionInputSchema,omitempty"`
+	ExecutionInputSchema *Jsonschemadocument `json:"executionInputSchema,omitempty"`
 
 	// ExecutionOutputSchema - JSON schema for execution output data for a decision table
-	ExecutionOutputSchema *Contractjsonschema `json:"executionOutputSchema,omitempty"`
+	ExecutionOutputSchema *Jsonschemadocument `json:"executionOutputSchema,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,11 +89,11 @@ func (o Decisiontablecontract) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		ParentSchema *Domainentityref `json:"parentSchema,omitempty"`
 		
-		RowAuthoringSchema *Contractjsonschema `json:"rowAuthoringSchema,omitempty"`
+		RowAuthoringSchema *Jsonschemadocument `json:"rowAuthoringSchema,omitempty"`
 		
-		ExecutionInputSchema *Contractjsonschema `json:"executionInputSchema,omitempty"`
+		ExecutionInputSchema *Jsonschemadocument `json:"executionInputSchema,omitempty"`
 		
-		ExecutionOutputSchema *Contractjsonschema `json:"executionOutputSchema,omitempty"`
+		ExecutionOutputSchema *Jsonschemadocument `json:"executionOutputSchema,omitempty"`
 		Alias
 	}{ 
 		ParentSchema: o.ParentSchema,

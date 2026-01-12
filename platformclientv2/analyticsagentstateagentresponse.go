@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -28,6 +29,24 @@ type Analyticsagentstateagentresponse struct {
 
 	// Sessions - List of sessions
 	Sessions *[]Analyticsagentstateagentsessionresult `json:"sessions,omitempty"`
+
+	// SystemPresence - The user's system presence
+	SystemPresence *string `json:"systemPresence,omitempty"`
+
+	// OrganizationPresenceId - The identifier for the user's organization presence
+	OrganizationPresenceId *string `json:"organizationPresenceId,omitempty"`
+
+	// PresenceDate - The timestamp for when the user's presence began. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	PresenceDate *time.Time `json:"presenceDate,omitempty"`
+
+	// RoutingStatus - The user's routing status
+	RoutingStatus *string `json:"routingStatus,omitempty"`
+
+	// RoutingStatusDate - The timestamp for when the user's routing status began. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	RoutingStatusDate *time.Time `json:"routingStatusDate,omitempty"`
+
+	// IsOutOfOffice - Whether the user is out of office
+	IsOutOfOffice *bool `json:"isOutOfOffice,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -59,7 +78,7 @@ func (o Analyticsagentstateagentresponse) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
+		dateTimeFields := []string{ "PresenceDate","RoutingStatusDate", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -92,6 +111,22 @@ func (o Analyticsagentstateagentresponse) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Analyticsagentstateagentresponse
 	
+	PresenceDate := new(string)
+	if o.PresenceDate != nil {
+		
+		*PresenceDate = timeutil.Strftime(o.PresenceDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		PresenceDate = nil
+	}
+	
+	RoutingStatusDate := new(string)
+	if o.RoutingStatusDate != nil {
+		
+		*RoutingStatusDate = timeutil.Strftime(o.RoutingStatusDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		RoutingStatusDate = nil
+	}
+	
 	return json.Marshal(&struct { 
 		UserId *string `json:"userId,omitempty"`
 		
@@ -104,6 +139,18 @@ func (o Analyticsagentstateagentresponse) MarshalJSON() ([]byte, error) {
 		SessionCount *int `json:"sessionCount,omitempty"`
 		
 		Sessions *[]Analyticsagentstateagentsessionresult `json:"sessions,omitempty"`
+		
+		SystemPresence *string `json:"systemPresence,omitempty"`
+		
+		OrganizationPresenceId *string `json:"organizationPresenceId,omitempty"`
+		
+		PresenceDate *string `json:"presenceDate,omitempty"`
+		
+		RoutingStatus *string `json:"routingStatus,omitempty"`
+		
+		RoutingStatusDate *string `json:"routingStatusDate,omitempty"`
+		
+		IsOutOfOffice *bool `json:"isOutOfOffice,omitempty"`
 		Alias
 	}{ 
 		UserId: o.UserId,
@@ -117,6 +164,18 @@ func (o Analyticsagentstateagentresponse) MarshalJSON() ([]byte, error) {
 		SessionCount: o.SessionCount,
 		
 		Sessions: o.Sessions,
+		
+		SystemPresence: o.SystemPresence,
+		
+		OrganizationPresenceId: o.OrganizationPresenceId,
+		
+		PresenceDate: PresenceDate,
+		
+		RoutingStatus: o.RoutingStatus,
+		
+		RoutingStatusDate: RoutingStatusDate,
+		
+		IsOutOfOffice: o.IsOutOfOffice,
 		Alias:    (Alias)(o),
 	})
 }
@@ -154,6 +213,32 @@ func (o *Analyticsagentstateagentresponse) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(SessionsString, &o.Sessions)
 	}
 	
+	if SystemPresence, ok := AnalyticsagentstateagentresponseMap["systemPresence"].(string); ok {
+		o.SystemPresence = &SystemPresence
+	}
+    
+	if OrganizationPresenceId, ok := AnalyticsagentstateagentresponseMap["organizationPresenceId"].(string); ok {
+		o.OrganizationPresenceId = &OrganizationPresenceId
+	}
+    
+	if presenceDateString, ok := AnalyticsagentstateagentresponseMap["presenceDate"].(string); ok {
+		PresenceDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", presenceDateString)
+		o.PresenceDate = &PresenceDate
+	}
+	
+	if RoutingStatus, ok := AnalyticsagentstateagentresponseMap["routingStatus"].(string); ok {
+		o.RoutingStatus = &RoutingStatus
+	}
+    
+	if routingStatusDateString, ok := AnalyticsagentstateagentresponseMap["routingStatusDate"].(string); ok {
+		RoutingStatusDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", routingStatusDateString)
+		o.RoutingStatusDate = &RoutingStatusDate
+	}
+	
+	if IsOutOfOffice, ok := AnalyticsagentstateagentresponseMap["isOutOfOffice"].(bool); ok {
+		o.IsOutOfOffice = &IsOutOfOffice
+	}
+    
 
 	return nil
 }

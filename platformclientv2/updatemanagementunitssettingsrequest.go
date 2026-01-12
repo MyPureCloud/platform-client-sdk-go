@@ -7,34 +7,16 @@ import (
 	"strings"
 )
 
-// Contractpropertydefinition
-type Contractpropertydefinition struct { 
+// Updatemanagementunitssettingsrequest
+type Updatemanagementunitssettingsrequest struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Title
-	Title *string `json:"title,omitempty"`
-
-	// Description
-	Description *string `json:"description,omitempty"`
-
-	// VarType
-	VarType *[]string `json:"type,omitempty"`
-
-	// Pattern
-	Pattern *string `json:"pattern,omitempty"`
-
-	// Format
-	Format *string `json:"format,omitempty"`
-
-	// Items
-	Items *Contractitems `json:"items,omitempty"`
-
-	// Properties
-	Properties *map[string]Contractpropertydefinition `json:"properties,omitempty"`
+	// Enabled - Indicates whether agent availability is enabled for the management unit
+	Enabled *bool `json:"enabled,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Contractpropertydefinition) SetField(field string, fieldValue interface{}) {
+func (o *Updatemanagementunitssettingsrequest) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -55,7 +37,7 @@ func (o *Contractpropertydefinition) SetField(field string, fieldValue interface
 	o.SetFieldNames[field] = true
 }
 
-func (o Contractpropertydefinition) MarshalJSON() ([]byte, error) {
+func (o Updatemanagementunitssettingsrequest) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -93,85 +75,34 @@ func (o Contractpropertydefinition) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Contractpropertydefinition
+	type Alias Updatemanagementunitssettingsrequest
 	
 	return json.Marshal(&struct { 
-		Title *string `json:"title,omitempty"`
-		
-		Description *string `json:"description,omitempty"`
-		
-		VarType *[]string `json:"type,omitempty"`
-		
-		Pattern *string `json:"pattern,omitempty"`
-		
-		Format *string `json:"format,omitempty"`
-		
-		Items *Contractitems `json:"items,omitempty"`
-		
-		Properties *map[string]Contractpropertydefinition `json:"properties,omitempty"`
+		Enabled *bool `json:"enabled,omitempty"`
 		Alias
 	}{ 
-		Title: o.Title,
-		
-		Description: o.Description,
-		
-		VarType: o.VarType,
-		
-		Pattern: o.Pattern,
-		
-		Format: o.Format,
-		
-		Items: o.Items,
-		
-		Properties: o.Properties,
+		Enabled: o.Enabled,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Contractpropertydefinition) UnmarshalJSON(b []byte) error {
-	var ContractpropertydefinitionMap map[string]interface{}
-	err := json.Unmarshal(b, &ContractpropertydefinitionMap)
+func (o *Updatemanagementunitssettingsrequest) UnmarshalJSON(b []byte) error {
+	var UpdatemanagementunitssettingsrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &UpdatemanagementunitssettingsrequestMap)
 	if err != nil {
 		return err
 	}
 	
-	if Title, ok := ContractpropertydefinitionMap["title"].(string); ok {
-		o.Title = &Title
+	if Enabled, ok := UpdatemanagementunitssettingsrequestMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
 	}
     
-	if Description, ok := ContractpropertydefinitionMap["description"].(string); ok {
-		o.Description = &Description
-	}
-    
-	if VarType, ok := ContractpropertydefinitionMap["type"].([]interface{}); ok {
-		VarTypeString, _ := json.Marshal(VarType)
-		json.Unmarshal(VarTypeString, &o.VarType)
-	}
-	
-	if Pattern, ok := ContractpropertydefinitionMap["pattern"].(string); ok {
-		o.Pattern = &Pattern
-	}
-    
-	if Format, ok := ContractpropertydefinitionMap["format"].(string); ok {
-		o.Format = &Format
-	}
-    
-	if Items, ok := ContractpropertydefinitionMap["items"].(map[string]interface{}); ok {
-		ItemsString, _ := json.Marshal(Items)
-		json.Unmarshal(ItemsString, &o.Items)
-	}
-	
-	if Properties, ok := ContractpropertydefinitionMap["properties"].(map[string]interface{}); ok {
-		PropertiesString, _ := json.Marshal(Properties)
-		json.Unmarshal(PropertiesString, &o.Properties)
-	}
-	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Contractpropertydefinition) String() string {
+func (o *Updatemanagementunitssettingsrequest) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

@@ -11,14 +11,14 @@ import (
 type Conversationsummaryfollowup struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
+	// Confidence - The AI confidence value.
+	Confidence *float32 `json:"confidence,omitempty"`
+
 	// Text - The text of the followup.
 	Text *string `json:"text,omitempty"`
 
 	// Description - The description.
 	Description *string `json:"description,omitempty"`
-
-	// Confidence - The AI confidence value.
-	Confidence *float32 `json:"confidence,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,18 +84,18 @@ func (o Conversationsummaryfollowup) MarshalJSON() ([]byte, error) {
 	type Alias Conversationsummaryfollowup
 	
 	return json.Marshal(&struct { 
+		Confidence *float32 `json:"confidence,omitempty"`
+		
 		Text *string `json:"text,omitempty"`
 		
 		Description *string `json:"description,omitempty"`
-		
-		Confidence *float32 `json:"confidence,omitempty"`
 		Alias
 	}{ 
+		Confidence: o.Confidence,
+		
 		Text: o.Text,
 		
 		Description: o.Description,
-		
-		Confidence: o.Confidence,
 		Alias:    (Alias)(o),
 	})
 }
@@ -107,6 +107,11 @@ func (o *Conversationsummaryfollowup) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if Confidence, ok := ConversationsummaryfollowupMap["confidence"].(float64); ok {
+		ConfidenceFloat32 := float32(Confidence)
+		o.Confidence = &ConfidenceFloat32
+	}
+	
 	if Text, ok := ConversationsummaryfollowupMap["text"].(string); ok {
 		o.Text = &Text
 	}
@@ -115,11 +120,6 @@ func (o *Conversationsummaryfollowup) UnmarshalJSON(b []byte) error {
 		o.Description = &Description
 	}
     
-	if Confidence, ok := ConversationsummaryfollowupMap["confidence"].(float64); ok {
-		ConfidenceFloat32 := float32(Confidence)
-		o.Confidence = &ConfidenceFloat32
-	}
-	
 
 	return nil
 }

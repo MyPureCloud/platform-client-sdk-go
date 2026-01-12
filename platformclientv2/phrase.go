@@ -19,9 +19,6 @@ type Phrase struct {
 
 	// Sentiment - The phrase sentiment, default value is Unspecified. Note: Sentiment value for phrases is currently not in use and has no impact to the system.
 	Sentiment *string `json:"sentiment,omitempty"`
-
-	// IsAIGenerated - Indicates whether the phrase is AI generated
-	IsAIGenerated *bool `json:"isAIGenerated,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -92,8 +89,6 @@ func (o Phrase) MarshalJSON() ([]byte, error) {
 		Strictness *string `json:"strictness,omitempty"`
 		
 		Sentiment *string `json:"sentiment,omitempty"`
-		
-		IsAIGenerated *bool `json:"isAIGenerated,omitempty"`
 		Alias
 	}{ 
 		Text: o.Text,
@@ -101,8 +96,6 @@ func (o Phrase) MarshalJSON() ([]byte, error) {
 		Strictness: o.Strictness,
 		
 		Sentiment: o.Sentiment,
-		
-		IsAIGenerated: o.IsAIGenerated,
 		Alias:    (Alias)(o),
 	})
 }
@@ -124,10 +117,6 @@ func (o *Phrase) UnmarshalJSON(b []byte) error {
     
 	if Sentiment, ok := PhraseMap["sentiment"].(string); ok {
 		o.Sentiment = &Sentiment
-	}
-    
-	if IsAIGenerated, ok := PhraseMap["isAIGenerated"].(bool); ok {
-		o.IsAIGenerated = &IsAIGenerated
 	}
     
 

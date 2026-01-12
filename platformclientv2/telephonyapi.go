@@ -33,8 +33,6 @@ func NewTelephonyApiWithConfig(config *Configuration) *TelephonyApi {
 // GetTelephonyAgentGreetings invokes GET /api/v2/telephony/agents/{agentId}/greetings
 //
 // Get an agent's greetings.
-//
-// Preview: GetTelephonyAgentGreetings is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TelephonyApi) GetTelephonyAgentGreetings(agentId string) (*Agentgreeting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -117,8 +115,6 @@ func (a TelephonyApi) GetTelephonyAgentGreetings(agentId string) (*Agentgreeting
 // GetTelephonyAgentsGreetingsMe invokes GET /api/v2/telephony/agents/greetings/me
 //
 // Get the agent's own greetings.
-//
-// Preview: GetTelephonyAgentsGreetingsMe is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TelephonyApi) GetTelephonyAgentsGreetingsMe() (*Selfagentgreeting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -707,8 +703,6 @@ func (a TelephonyApi) PostTelephonySiptracesDownload(sIPSearchPublicRequest Sips
 // PutTelephonyAgentGreetings invokes PUT /api/v2/telephony/agents/{agentId}/greetings
 //
 // Updates an agent's greetings.
-//
-// Preview: PutTelephonyAgentGreetings is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TelephonyApi) PutTelephonyAgentGreetings(agentId string, body Agentgreeting) (*Agentgreeting, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -799,8 +793,6 @@ func (a TelephonyApi) PutTelephonyAgentGreetings(agentId string, body Agentgreet
 // PutTelephonyAgentsGreetingsMe invokes PUT /api/v2/telephony/agents/greetings/me
 //
 // Updates the agent's own greetings.
-//
-// Preview: PutTelephonyAgentsGreetingsMe is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a TelephonyApi) PutTelephonyAgentsGreetingsMe(body Selfagentgreeting) (*Selfagentgreeting, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

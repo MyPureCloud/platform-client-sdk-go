@@ -21,11 +21,11 @@ type Segmentassignment struct {
 	// Segment - The segment the assignment is for.
 	Segment *Segmentassignmentsegment `json:"segment,omitempty"`
 
-	// Session - For session-scoped segments, the session for which the segment was assigned.
-	Session *Segmentassignmentsession `json:"session,omitempty"`
-
 	// ExternalContact - External contact of the customer to which the segment is assigned.
 	ExternalContact *Addressableentityref `json:"externalContact,omitempty"`
+
+	// Session - For session-scoped segments, the session for which the segment was assigned.
+	Session *Segmentassignmentsession `json:"session,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -113,9 +113,9 @@ func (o Segmentassignment) MarshalJSON() ([]byte, error) {
 		
 		Segment *Segmentassignmentsegment `json:"segment,omitempty"`
 		
-		Session *Segmentassignmentsession `json:"session,omitempty"`
-		
 		ExternalContact *Addressableentityref `json:"externalContact,omitempty"`
+		
+		Session *Segmentassignmentsession `json:"session,omitempty"`
 		Alias
 	}{ 
 		DateAssigned: DateAssigned,
@@ -124,9 +124,9 @@ func (o Segmentassignment) MarshalJSON() ([]byte, error) {
 		
 		Segment: o.Segment,
 		
-		Session: o.Session,
-		
 		ExternalContact: o.ExternalContact,
+		
+		Session: o.Session,
 		Alias:    (Alias)(o),
 	})
 }
@@ -153,14 +153,14 @@ func (o *Segmentassignment) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(SegmentString, &o.Segment)
 	}
 	
-	if Session, ok := SegmentassignmentMap["session"].(map[string]interface{}); ok {
-		SessionString, _ := json.Marshal(Session)
-		json.Unmarshal(SessionString, &o.Session)
-	}
-	
 	if ExternalContact, ok := SegmentassignmentMap["externalContact"].(map[string]interface{}); ok {
 		ExternalContactString, _ := json.Marshal(ExternalContact)
 		json.Unmarshal(ExternalContactString, &o.ExternalContact)
+	}
+	
+	if Session, ok := SegmentassignmentMap["session"].(map[string]interface{}); ok {
+		SessionString, _ := json.Marshal(Session)
+		json.Unmarshal(SessionString, &o.Session)
 	}
 	
 

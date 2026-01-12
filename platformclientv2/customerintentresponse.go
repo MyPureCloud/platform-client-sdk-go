@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -7,40 +8,34 @@ import (
 	"strings"
 )
 
-// Contractjsonschema - A JSON Schema document.
-type Contractjsonschema struct { 
+// Customerintentresponse
+type Customerintentresponse struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id
+	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
-	// Schema
-	Schema *string `json:"$schema,omitempty"`
+	// Name - Name of the customer intent
+	Name *string `json:"name,omitempty"`
 
-	// Title
-	Title *string `json:"title,omitempty"`
-
-	// Description
+	// Description - Description of the customer intent
 	Description *string `json:"description,omitempty"`
 
-	// VarType
-	VarType *string `json:"type,omitempty"`
+	// ExpiryTime - Expiry time in hours of the customer intent
+	ExpiryTime *int `json:"expiryTime,omitempty"`
 
-	// Required
-	Required *[]string `json:"required,omitempty"`
+	// Category - Category of the customer intent
+	Category *Addressableentityref `json:"category,omitempty"`
 
-	// Properties
-	Properties *map[string]interface{} `json:"properties,omitempty"`
+	// DateCreated - Creation date of the customer intent. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
-
-	// Definitions
-	Definitions *map[string]Contractdefinition `json:"definitions,omitempty"`
+	// SelfUri - The URI for this object
+	SelfUri *string `json:"selfUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Contractjsonschema) SetField(field string, fieldValue interface{}) {
+func (o *Customerintentresponse) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -61,14 +56,14 @@ func (o *Contractjsonschema) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Contractjsonschema) MarshalJSON() ([]byte, error) {
+func (o Customerintentresponse) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
+		dateTimeFields := []string{ "DateCreated", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -99,102 +94,93 @@ func (o Contractjsonschema) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Contractjsonschema
+	type Alias Customerintentresponse
+	
+	DateCreated := new(string)
+	if o.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
 	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
-		Schema *string `json:"$schema,omitempty"`
-		
-		Title *string `json:"title,omitempty"`
+		Name *string `json:"name,omitempty"`
 		
 		Description *string `json:"description,omitempty"`
 		
-		VarType *string `json:"type,omitempty"`
+		ExpiryTime *int `json:"expiryTime,omitempty"`
 		
-		Required *[]string `json:"required,omitempty"`
+		Category *Addressableentityref `json:"category,omitempty"`
 		
-		Properties *map[string]interface{} `json:"properties,omitempty"`
+		DateCreated *string `json:"dateCreated,omitempty"`
 		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
-		
-		Definitions *map[string]Contractdefinition `json:"definitions,omitempty"`
+		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
 		
-		Schema: o.Schema,
-		
-		Title: o.Title,
+		Name: o.Name,
 		
 		Description: o.Description,
 		
-		VarType: o.VarType,
+		ExpiryTime: o.ExpiryTime,
 		
-		Required: o.Required,
+		Category: o.Category,
 		
-		Properties: o.Properties,
+		DateCreated: DateCreated,
 		
-		AdditionalProperties: o.AdditionalProperties,
-		
-		Definitions: o.Definitions,
+		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Contractjsonschema) UnmarshalJSON(b []byte) error {
-	var ContractjsonschemaMap map[string]interface{}
-	err := json.Unmarshal(b, &ContractjsonschemaMap)
+func (o *Customerintentresponse) UnmarshalJSON(b []byte) error {
+	var CustomerintentresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &CustomerintentresponseMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := ContractjsonschemaMap["id"].(string); ok {
+	if Id, ok := CustomerintentresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
     
-	if Schema, ok := ContractjsonschemaMap["$schema"].(string); ok {
-		o.Schema = &Schema
+	if Name, ok := CustomerintentresponseMap["name"].(string); ok {
+		o.Name = &Name
 	}
     
-	if Title, ok := ContractjsonschemaMap["title"].(string); ok {
-		o.Title = &Title
-	}
-    
-	if Description, ok := ContractjsonschemaMap["description"].(string); ok {
+	if Description, ok := CustomerintentresponseMap["description"].(string); ok {
 		o.Description = &Description
 	}
     
-	if VarType, ok := ContractjsonschemaMap["type"].(string); ok {
-		o.VarType = &VarType
+	if ExpiryTime, ok := CustomerintentresponseMap["expiryTime"].(float64); ok {
+		ExpiryTimeInt := int(ExpiryTime)
+		o.ExpiryTime = &ExpiryTimeInt
+	}
+	
+	if Category, ok := CustomerintentresponseMap["category"].(map[string]interface{}); ok {
+		CategoryString, _ := json.Marshal(Category)
+		json.Unmarshal(CategoryString, &o.Category)
+	}
+	
+	if dateCreatedString, ok := CustomerintentresponseMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if SelfUri, ok := CustomerintentresponseMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
 	}
     
-	if Required, ok := ContractjsonschemaMap["required"].([]interface{}); ok {
-		RequiredString, _ := json.Marshal(Required)
-		json.Unmarshal(RequiredString, &o.Required)
-	}
-	
-	if Properties, ok := ContractjsonschemaMap["properties"].(map[string]interface{}); ok {
-		PropertiesString, _ := json.Marshal(Properties)
-		json.Unmarshal(PropertiesString, &o.Properties)
-	}
-	
-	if AdditionalProperties, ok := ContractjsonschemaMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
-	}
-	
-	if Definitions, ok := ContractjsonschemaMap["definitions"].(map[string]interface{}); ok {
-		DefinitionsString, _ := json.Marshal(Definitions)
-		json.Unmarshal(DefinitionsString, &o.Definitions)
-	}
-	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Contractjsonschema) String() string {
+func (o *Customerintentresponse) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

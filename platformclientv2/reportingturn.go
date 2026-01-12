@@ -21,6 +21,9 @@ type Reportingturn struct {
 	// SessionId - The bot session ID that this reporting turn is grouped under.
 	SessionId *string `json:"sessionId,omitempty"`
 
+	// Conversation - The conversation details, across potentially multiple Bot Flow sessions.
+	Conversation *Addressableentityref `json:"conversation,omitempty"`
+
 	// AskAction - The bot flow 'ask' action associated with this reporting turn (e.g. AskForIntent).
 	AskAction *Reportingturnaction `json:"askAction,omitempty"`
 
@@ -44,9 +47,6 @@ type Reportingturn struct {
 
 	// SessionEndDetails - The details related to end of bot flow session.
 	SessionEndDetails *Sessionenddetails `json:"sessionEndDetails,omitempty"`
-
-	// Conversation - The conversation details, across potentially multiple Bot Flow sessions.
-	Conversation *Addressableentityref `json:"conversation,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -134,6 +134,8 @@ func (o Reportingturn) MarshalJSON() ([]byte, error) {
 		
 		SessionId *string `json:"sessionId,omitempty"`
 		
+		Conversation *Addressableentityref `json:"conversation,omitempty"`
+		
 		AskAction *Reportingturnaction `json:"askAction,omitempty"`
 		
 		Intent *Reportingturnintent `json:"intent,omitempty"`
@@ -149,8 +151,6 @@ func (o Reportingturn) MarshalJSON() ([]byte, error) {
 		AskActionResult *string `json:"askActionResult,omitempty"`
 		
 		SessionEndDetails *Sessionenddetails `json:"sessionEndDetails,omitempty"`
-		
-		Conversation *Addressableentityref `json:"conversation,omitempty"`
 		Alias
 	}{ 
 		UserInput: o.UserInput,
@@ -158,6 +158,8 @@ func (o Reportingturn) MarshalJSON() ([]byte, error) {
 		BotPrompts: o.BotPrompts,
 		
 		SessionId: o.SessionId,
+		
+		Conversation: o.Conversation,
 		
 		AskAction: o.AskAction,
 		
@@ -174,8 +176,6 @@ func (o Reportingturn) MarshalJSON() ([]byte, error) {
 		AskActionResult: o.AskActionResult,
 		
 		SessionEndDetails: o.SessionEndDetails,
-		
-		Conversation: o.Conversation,
 		Alias:    (Alias)(o),
 	})
 }
@@ -200,6 +200,11 @@ func (o *Reportingturn) UnmarshalJSON(b []byte) error {
 		o.SessionId = &SessionId
 	}
     
+	if Conversation, ok := ReportingturnMap["conversation"].(map[string]interface{}); ok {
+		ConversationString, _ := json.Marshal(Conversation)
+		json.Unmarshal(ConversationString, &o.Conversation)
+	}
+	
 	if AskAction, ok := ReportingturnMap["askAction"].(map[string]interface{}); ok {
 		AskActionString, _ := json.Marshal(AskAction)
 		json.Unmarshal(AskActionString, &o.AskAction)
@@ -237,11 +242,6 @@ func (o *Reportingturn) UnmarshalJSON(b []byte) error {
 	if SessionEndDetails, ok := ReportingturnMap["sessionEndDetails"].(map[string]interface{}); ok {
 		SessionEndDetailsString, _ := json.Marshal(SessionEndDetails)
 		json.Unmarshal(SessionEndDetailsString, &o.SessionEndDetails)
-	}
-	
-	if Conversation, ok := ReportingturnMap["conversation"].(map[string]interface{}); ok {
-		ConversationString, _ := json.Marshal(Conversation)
-		json.Unmarshal(ConversationString, &o.Conversation)
 	}
 	
 

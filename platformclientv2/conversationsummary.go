@@ -12,8 +12,14 @@ import (
 type Conversationsummary struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
+	// Id - The id of the summary.
+	Id *string `json:"id,omitempty"`
+
 	// Text - The text of the summary.
 	Text *string `json:"text,omitempty"`
+
+	// Confidence - The AI confidence value.
+	Confidence *float32 `json:"confidence,omitempty"`
 
 	// Status - The status of the conversation summary.
 	Status *string `json:"status,omitempty"`
@@ -41,12 +47,6 @@ type Conversationsummary struct {
 
 	// DateCreated - The created date of the summary. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
-
-	// Id - The id of the summary.
-	Id *string `json:"id,omitempty"`
-
-	// Confidence - The AI confidence value.
-	Confidence *float32 `json:"confidence,omitempty"`
 
 	// Participants - The list of participants.
 	Participants *[]Addressableentityref `json:"participants,omitempty"`
@@ -123,7 +123,11 @@ func (o Conversationsummary) MarshalJSON() ([]byte, error) {
 	}
 	
 	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
 		Text *string `json:"text,omitempty"`
+		
+		Confidence *float32 `json:"confidence,omitempty"`
 		
 		Status *string `json:"status,omitempty"`
 		
@@ -143,14 +147,14 @@ func (o Conversationsummary) MarshalJSON() ([]byte, error) {
 		
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
-		Id *string `json:"id,omitempty"`
-		
-		Confidence *float32 `json:"confidence,omitempty"`
-		
 		Participants *[]Addressableentityref `json:"participants,omitempty"`
 		Alias
 	}{ 
+		Id: o.Id,
+		
 		Text: o.Text,
+		
+		Confidence: o.Confidence,
 		
 		Status: o.Status,
 		
@@ -170,10 +174,6 @@ func (o Conversationsummary) MarshalJSON() ([]byte, error) {
 		
 		DateCreated: DateCreated,
 		
-		Id: o.Id,
-		
-		Confidence: o.Confidence,
-		
 		Participants: o.Participants,
 		Alias:    (Alias)(o),
 	})
@@ -186,10 +186,19 @@ func (o *Conversationsummary) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if Id, ok := ConversationsummaryMap["id"].(string); ok {
+		o.Id = &Id
+	}
+    
 	if Text, ok := ConversationsummaryMap["text"].(string); ok {
 		o.Text = &Text
 	}
     
+	if Confidence, ok := ConversationsummaryMap["confidence"].(float64); ok {
+		ConfidenceFloat32 := float32(Confidence)
+		o.Confidence = &ConfidenceFloat32
+	}
+	
 	if Status, ok := ConversationsummaryMap["status"].(string); ok {
 		o.Status = &Status
 	}
@@ -230,15 +239,6 @@ func (o *Conversationsummary) UnmarshalJSON(b []byte) error {
 	if dateCreatedString, ok := ConversationsummaryMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
-	}
-	
-	if Id, ok := ConversationsummaryMap["id"].(string); ok {
-		o.Id = &Id
-	}
-    
-	if Confidence, ok := ConversationsummaryMap["confidence"].(float64); ok {
-		ConfidenceFloat32 := float32(Confidence)
-		o.Confidence = &ConfidenceFloat32
 	}
 	
 	if Participants, ok := ConversationsummaryMap["participants"].([]interface{}); ok {

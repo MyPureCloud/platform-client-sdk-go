@@ -12,8 +12,14 @@ import (
 type Conversationsessionsummary struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
+	// Id - The id of the summary.
+	Id *string `json:"id,omitempty"`
+
 	// Text - The text of the summary.
 	Text *string `json:"text,omitempty"`
+
+	// Confidence - The AI confidence value.
+	Confidence *float32 `json:"confidence,omitempty"`
 
 	// Status - The status of the conversation summary.
 	Status *string `json:"status,omitempty"`
@@ -42,17 +48,11 @@ type Conversationsessionsummary struct {
 	// DateCreated - The created date of the summary. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
-	// Id - The id of the summary.
-	Id *string `json:"id,omitempty"`
-
-	// Confidence - The AI confidence value.
-	Confidence *float32 `json:"confidence,omitempty"`
+	// Communication - The communication object of the summary.
+	Communication *Entity `json:"communication,omitempty"`
 
 	// Participants - The list of participants.
 	Participants *[]Addressableentityref `json:"participants,omitempty"`
-
-	// Communication - The communication object of the summary.
-	Communication *Entity `json:"communication,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -126,7 +126,11 @@ func (o Conversationsessionsummary) MarshalJSON() ([]byte, error) {
 	}
 	
 	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
 		Text *string `json:"text,omitempty"`
+		
+		Confidence *float32 `json:"confidence,omitempty"`
 		
 		Status *string `json:"status,omitempty"`
 		
@@ -146,16 +150,16 @@ func (o Conversationsessionsummary) MarshalJSON() ([]byte, error) {
 		
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
-		Id *string `json:"id,omitempty"`
-		
-		Confidence *float32 `json:"confidence,omitempty"`
+		Communication *Entity `json:"communication,omitempty"`
 		
 		Participants *[]Addressableentityref `json:"participants,omitempty"`
-		
-		Communication *Entity `json:"communication,omitempty"`
 		Alias
 	}{ 
+		Id: o.Id,
+		
 		Text: o.Text,
+		
+		Confidence: o.Confidence,
 		
 		Status: o.Status,
 		
@@ -175,13 +179,9 @@ func (o Conversationsessionsummary) MarshalJSON() ([]byte, error) {
 		
 		DateCreated: DateCreated,
 		
-		Id: o.Id,
-		
-		Confidence: o.Confidence,
+		Communication: o.Communication,
 		
 		Participants: o.Participants,
-		
-		Communication: o.Communication,
 		Alias:    (Alias)(o),
 	})
 }
@@ -193,10 +193,19 @@ func (o *Conversationsessionsummary) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if Id, ok := ConversationsessionsummaryMap["id"].(string); ok {
+		o.Id = &Id
+	}
+    
 	if Text, ok := ConversationsessionsummaryMap["text"].(string); ok {
 		o.Text = &Text
 	}
     
+	if Confidence, ok := ConversationsessionsummaryMap["confidence"].(float64); ok {
+		ConfidenceFloat32 := float32(Confidence)
+		o.Confidence = &ConfidenceFloat32
+	}
+	
 	if Status, ok := ConversationsessionsummaryMap["status"].(string); ok {
 		o.Status = &Status
 	}
@@ -239,23 +248,14 @@ func (o *Conversationsessionsummary) UnmarshalJSON(b []byte) error {
 		o.DateCreated = &DateCreated
 	}
 	
-	if Id, ok := ConversationsessionsummaryMap["id"].(string); ok {
-		o.Id = &Id
-	}
-    
-	if Confidence, ok := ConversationsessionsummaryMap["confidence"].(float64); ok {
-		ConfidenceFloat32 := float32(Confidence)
-		o.Confidence = &ConfidenceFloat32
+	if Communication, ok := ConversationsessionsummaryMap["communication"].(map[string]interface{}); ok {
+		CommunicationString, _ := json.Marshal(Communication)
+		json.Unmarshal(CommunicationString, &o.Communication)
 	}
 	
 	if Participants, ok := ConversationsessionsummaryMap["participants"].([]interface{}); ok {
 		ParticipantsString, _ := json.Marshal(Participants)
 		json.Unmarshal(ParticipantsString, &o.Participants)
-	}
-	
-	if Communication, ok := ConversationsessionsummaryMap["communication"].(map[string]interface{}); ok {
-		CommunicationString, _ := json.Marshal(Communication)
-		json.Unmarshal(CommunicationString, &o.Communication)
 	}
 	
 

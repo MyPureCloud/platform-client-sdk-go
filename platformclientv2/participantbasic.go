@@ -129,6 +129,12 @@ type Participantbasic struct {
 	// Messages
 	Messages *[]Message `json:"messages,omitempty"`
 
+	// InternalMessages
+	InternalMessages *[]Internalmessage `json:"internalMessages,omitempty"`
+
+	// ScreenMonitorings
+	ScreenMonitorings *[]Screenmonitoring `json:"screenMonitorings,omitempty"`
+
 	// Screenshares
 	Screenshares *[]Screenshare `json:"screenshares,omitempty"`
 
@@ -152,9 +158,6 @@ type Participantbasic struct {
 
 	// EndAcwTime - The timestamp when this participant ended after-call work. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	EndAcwTime *time.Time `json:"endAcwTime,omitempty"`
-
-	// InternalMessages
-	InternalMessages *[]Internalmessage `json:"internalMessages,omitempty"`
 
 	// BargedParticipantId - If this participant barged in a participant's call, then this will be the id of the targeted participant.
 	BargedParticipantId *string `json:"bargedParticipantId,omitempty"`
@@ -341,6 +344,10 @@ func (o Participantbasic) MarshalJSON() ([]byte, error) {
 		
 		Messages *[]Message `json:"messages,omitempty"`
 		
+		InternalMessages *[]Internalmessage `json:"internalMessages,omitempty"`
+		
+		ScreenMonitorings *[]Screenmonitoring `json:"screenMonitorings,omitempty"`
+		
 		Screenshares *[]Screenshare `json:"screenshares,omitempty"`
 		
 		SocialExpressions *[]Socialexpression `json:"socialExpressions,omitempty"`
@@ -356,8 +363,6 @@ func (o Participantbasic) MarshalJSON() ([]byte, error) {
 		StartAcwTime *string `json:"startAcwTime,omitempty"`
 		
 		EndAcwTime *string `json:"endAcwTime,omitempty"`
-		
-		InternalMessages *[]Internalmessage `json:"internalMessages,omitempty"`
 		
 		BargedParticipantId *string `json:"bargedParticipantId,omitempty"`
 		Alias
@@ -440,6 +445,10 @@ func (o Participantbasic) MarshalJSON() ([]byte, error) {
 		
 		Messages: o.Messages,
 		
+		InternalMessages: o.InternalMessages,
+		
+		ScreenMonitorings: o.ScreenMonitorings,
+		
 		Screenshares: o.Screenshares,
 		
 		SocialExpressions: o.SocialExpressions,
@@ -455,8 +464,6 @@ func (o Participantbasic) MarshalJSON() ([]byte, error) {
 		StartAcwTime: StartAcwTime,
 		
 		EndAcwTime: EndAcwTime,
-		
-		InternalMessages: o.InternalMessages,
 		
 		BargedParticipantId: o.BargedParticipantId,
 		Alias:    (Alias)(o),
@@ -641,6 +648,16 @@ func (o *Participantbasic) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(MessagesString, &o.Messages)
 	}
 	
+	if InternalMessages, ok := ParticipantbasicMap["internalMessages"].([]interface{}); ok {
+		InternalMessagesString, _ := json.Marshal(InternalMessages)
+		json.Unmarshal(InternalMessagesString, &o.InternalMessages)
+	}
+	
+	if ScreenMonitorings, ok := ParticipantbasicMap["screenMonitorings"].([]interface{}); ok {
+		ScreenMonitoringsString, _ := json.Marshal(ScreenMonitorings)
+		json.Unmarshal(ScreenMonitoringsString, &o.ScreenMonitorings)
+	}
+	
 	if Screenshares, ok := ParticipantbasicMap["screenshares"].([]interface{}); ok {
 		ScreensharesString, _ := json.Marshal(Screenshares)
 		json.Unmarshal(ScreensharesString, &o.Screenshares)
@@ -677,11 +694,6 @@ func (o *Participantbasic) UnmarshalJSON(b []byte) error {
 	if endAcwTimeString, ok := ParticipantbasicMap["endAcwTime"].(string); ok {
 		EndAcwTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", endAcwTimeString)
 		o.EndAcwTime = &EndAcwTime
-	}
-	
-	if InternalMessages, ok := ParticipantbasicMap["internalMessages"].([]interface{}); ok {
-		InternalMessagesString, _ := json.Marshal(InternalMessages)
-		json.Unmarshal(InternalMessagesString, &o.InternalMessages)
 	}
 	
 	if BargedParticipantId, ok := ParticipantbasicMap["bargedParticipantId"].(string); ok {

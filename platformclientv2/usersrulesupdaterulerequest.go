@@ -19,6 +19,9 @@ type Usersrulesupdaterulerequest struct {
 
 	// Criteria - The criteria of the rule
 	Criteria *[]Usersrulescriteria `json:"criteria,omitempty"`
+
+	// LockedCriteria
+	LockedCriteria *[]Usersrulescriteria `json:"lockedCriteria,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +92,8 @@ func (o Usersrulesupdaterulerequest) MarshalJSON() ([]byte, error) {
 		Description *string `json:"description,omitempty"`
 		
 		Criteria *[]Usersrulescriteria `json:"criteria,omitempty"`
+		
+		LockedCriteria *[]Usersrulescriteria `json:"lockedCriteria,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -96,6 +101,8 @@ func (o Usersrulesupdaterulerequest) MarshalJSON() ([]byte, error) {
 		Description: o.Description,
 		
 		Criteria: o.Criteria,
+		
+		LockedCriteria: o.LockedCriteria,
 		Alias:    (Alias)(o),
 	})
 }
@@ -118,6 +125,11 @@ func (o *Usersrulesupdaterulerequest) UnmarshalJSON(b []byte) error {
 	if Criteria, ok := UsersrulesupdaterulerequestMap["criteria"].([]interface{}); ok {
 		CriteriaString, _ := json.Marshal(Criteria)
 		json.Unmarshal(CriteriaString, &o.Criteria)
+	}
+	
+	if LockedCriteria, ok := UsersrulesupdaterulerequestMap["lockedCriteria"].([]interface{}); ok {
+		LockedCriteriaString, _ := json.Marshal(LockedCriteria)
+		json.Unmarshal(LockedCriteriaString, &o.LockedCriteria)
 	}
 	
 

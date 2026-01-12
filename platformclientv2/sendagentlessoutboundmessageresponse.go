@@ -42,11 +42,11 @@ type Sendagentlessoutboundmessageresponse struct {
 	// Timestamp - The time when the message was sent. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	Timestamp *time.Time `json:"timestamp,omitempty"`
 
-	// SelfUri - The URI for this object
-	SelfUri *string `json:"selfUri,omitempty"`
-
 	// User - Details of the user created the job
 	User *Addressableentityref `json:"user,omitempty"`
+
+	// SelfUri - The URI for this object
+	SelfUri *string `json:"selfUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -140,9 +140,9 @@ func (o Sendagentlessoutboundmessageresponse) MarshalJSON() ([]byte, error) {
 		
 		Timestamp *string `json:"timestamp,omitempty"`
 		
-		SelfUri *string `json:"selfUri,omitempty"`
-		
 		User *Addressableentityref `json:"user,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -165,9 +165,9 @@ func (o Sendagentlessoutboundmessageresponse) MarshalJSON() ([]byte, error) {
 		
 		Timestamp: Timestamp,
 		
-		SelfUri: o.SelfUri,
-		
 		User: o.User,
+		
+		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
 	})
 }
@@ -222,15 +222,15 @@ func (o *Sendagentlessoutboundmessageresponse) UnmarshalJSON(b []byte) error {
 		o.Timestamp = &Timestamp
 	}
 	
-	if SelfUri, ok := SendagentlessoutboundmessageresponseMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
-	}
-    
 	if User, ok := SendagentlessoutboundmessageresponseMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
 	}
 	
+	if SelfUri, ok := SendagentlessoutboundmessageresponseMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+    
 
 	return nil
 }

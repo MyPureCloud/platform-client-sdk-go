@@ -44,6 +44,9 @@ type Bureschedulerequest struct {
 
 	// InduceScheduleVariability - Overrides the default BU level induce schedule variability setting for this reschedule run
 	InduceScheduleVariability *bool `json:"induceScheduleVariability,omitempty"`
+
+	// UseUnavailableTimesSnapshot - Whether to use original unavailable times from schedule generation or latest saved unavailable times for this reschedule run
+	UseUnavailableTimesSnapshot *bool `json:"useUnavailableTimesSnapshot,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -146,6 +149,8 @@ func (o Bureschedulerequest) MarshalJSON() ([]byte, error) {
 		ActivitySmoothingType *string `json:"activitySmoothingType,omitempty"`
 		
 		InduceScheduleVariability *bool `json:"induceScheduleVariability,omitempty"`
+		
+		UseUnavailableTimesSnapshot *bool `json:"useUnavailableTimesSnapshot,omitempty"`
 		Alias
 	}{ 
 		StartDate: StartDate,
@@ -169,6 +174,8 @@ func (o Bureschedulerequest) MarshalJSON() ([]byte, error) {
 		ActivitySmoothingType: o.ActivitySmoothingType,
 		
 		InduceScheduleVariability: o.InduceScheduleVariability,
+		
+		UseUnavailableTimesSnapshot: o.UseUnavailableTimesSnapshot,
 		Alias:    (Alias)(o),
 	})
 }
@@ -227,6 +234,10 @@ func (o *Bureschedulerequest) UnmarshalJSON(b []byte) error {
     
 	if InduceScheduleVariability, ok := BureschedulerequestMap["induceScheduleVariability"].(bool); ok {
 		o.InduceScheduleVariability = &InduceScheduleVariability
+	}
+    
+	if UseUnavailableTimesSnapshot, ok := BureschedulerequestMap["useUnavailableTimesSnapshot"].(bool); ok {
+		o.UseUnavailableTimesSnapshot = &UseUnavailableTimesSnapshot
 	}
     
 

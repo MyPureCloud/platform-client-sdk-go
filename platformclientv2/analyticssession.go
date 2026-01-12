@@ -237,6 +237,9 @@ type Analyticssession struct {
 	// SkipEnabled - (Dialer) Whether the agent can skip the dialer contact
 	SkipEnabled *bool `json:"skipEnabled,omitempty"`
 
+	// SnippetRecording - Whether or not the conversation included a snippet being recorded.
+	SnippetRecording *bool `json:"snippetRecording,omitempty"`
+
 	// TimeoutSeconds - The number of seconds before Genesys Cloud begins the call for a call back (0 disables automatic calling)
 	TimeoutSeconds *int `json:"timeoutSeconds,omitempty"`
 
@@ -516,6 +519,8 @@ func (o Analyticssession) MarshalJSON() ([]byte, error) {
 		
 		SkipEnabled *bool `json:"skipEnabled,omitempty"`
 		
+		SnippetRecording *bool `json:"snippetRecording,omitempty"`
+		
 		TimeoutSeconds *int `json:"timeoutSeconds,omitempty"`
 		
 		UsedRouting *string `json:"usedRouting,omitempty"`
@@ -688,6 +693,8 @@ func (o Analyticssession) MarshalJSON() ([]byte, error) {
 		SharingScreen: o.SharingScreen,
 		
 		SkipEnabled: o.SkipEnabled,
+		
+		SnippetRecording: o.SnippetRecording,
 		
 		TimeoutSeconds: o.TimeoutSeconds,
 		
@@ -1036,6 +1043,10 @@ func (o *Analyticssession) UnmarshalJSON(b []byte) error {
     
 	if SkipEnabled, ok := AnalyticssessionMap["skipEnabled"].(bool); ok {
 		o.SkipEnabled = &SkipEnabled
+	}
+    
+	if SnippetRecording, ok := AnalyticssessionMap["snippetRecording"].(bool); ok {
+		o.SnippetRecording = &SnippetRecording
 	}
     
 	if TimeoutSeconds, ok := AnalyticssessionMap["timeoutSeconds"].(float64); ok {

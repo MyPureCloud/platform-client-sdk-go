@@ -7,19 +7,16 @@ import (
 	"strings"
 )
 
-// Contractitems
-type Contractitems struct { 
+// Bulkremovesourceintentsrequest
+type Bulkremovesourceintentsrequest struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// VarType
-	VarType *[]string `json:"type,omitempty"`
-
-	// Pattern
-	Pattern *string `json:"pattern,omitempty"`
+	// Items - List of ids to delete
+	Items *[]string `json:"items,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Contractitems) SetField(field string, fieldValue interface{}) {
+func (o *Bulkremovesourceintentsrequest) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -40,7 +37,7 @@ func (o *Contractitems) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Contractitems) MarshalJSON() ([]byte, error) {
+func (o Bulkremovesourceintentsrequest) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -78,43 +75,35 @@ func (o Contractitems) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Contractitems
+	type Alias Bulkremovesourceintentsrequest
 	
 	return json.Marshal(&struct { 
-		VarType *[]string `json:"type,omitempty"`
-		
-		Pattern *string `json:"pattern,omitempty"`
+		Items *[]string `json:"items,omitempty"`
 		Alias
 	}{ 
-		VarType: o.VarType,
-		
-		Pattern: o.Pattern,
+		Items: o.Items,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Contractitems) UnmarshalJSON(b []byte) error {
-	var ContractitemsMap map[string]interface{}
-	err := json.Unmarshal(b, &ContractitemsMap)
+func (o *Bulkremovesourceintentsrequest) UnmarshalJSON(b []byte) error {
+	var BulkremovesourceintentsrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &BulkremovesourceintentsrequestMap)
 	if err != nil {
 		return err
 	}
 	
-	if VarType, ok := ContractitemsMap["type"].([]interface{}); ok {
-		VarTypeString, _ := json.Marshal(VarType)
-		json.Unmarshal(VarTypeString, &o.VarType)
+	if Items, ok := BulkremovesourceintentsrequestMap["items"].([]interface{}); ok {
+		ItemsString, _ := json.Marshal(Items)
+		json.Unmarshal(ItemsString, &o.Items)
 	}
 	
-	if Pattern, ok := ContractitemsMap["pattern"].(string); ok {
-		o.Pattern = &Pattern
-	}
-    
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Contractitems) String() string {
+func (o *Bulkremovesourceintentsrequest) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

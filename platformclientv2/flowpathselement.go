@@ -23,14 +23,14 @@ type Flowpathselement struct {
 	// Flows - Details of flows involved in journeys that include this element.
 	Flows *[]Flowpathsflowdetails `json:"flows,omitempty"`
 
-	// FlowOutcomeValue - The value of the flow outcome, if the element type is Outcome.
-	FlowOutcomeValue *string `json:"flowOutcomeValue,omitempty"`
-
 	// FlowMilestone - The flow milestone, set if the element type is Milestone.
 	FlowMilestone *Addressableentityref `json:"flowMilestone,omitempty"`
 
 	// FlowOutcome - The flow outcome, set if the element type is Outcome or Milestone.
 	FlowOutcome *Addressableentityref `json:"flowOutcome,omitempty"`
+
+	// FlowOutcomeValue - The value of the flow outcome, if the element type is Outcome.
+	FlowOutcomeValue *string `json:"flowOutcomeValue,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -104,11 +104,11 @@ func (o Flowpathselement) MarshalJSON() ([]byte, error) {
 		
 		Flows *[]Flowpathsflowdetails `json:"flows,omitempty"`
 		
-		FlowOutcomeValue *string `json:"flowOutcomeValue,omitempty"`
-		
 		FlowMilestone *Addressableentityref `json:"flowMilestone,omitempty"`
 		
 		FlowOutcome *Addressableentityref `json:"flowOutcome,omitempty"`
+		
+		FlowOutcomeValue *string `json:"flowOutcomeValue,omitempty"`
 		Alias
 	}{ 
 		ParentId: o.ParentId,
@@ -119,11 +119,11 @@ func (o Flowpathselement) MarshalJSON() ([]byte, error) {
 		
 		Flows: o.Flows,
 		
-		FlowOutcomeValue: o.FlowOutcomeValue,
-		
 		FlowMilestone: o.FlowMilestone,
 		
 		FlowOutcome: o.FlowOutcome,
+		
+		FlowOutcomeValue: o.FlowOutcomeValue,
 		Alias:    (Alias)(o),
 	})
 }
@@ -153,10 +153,6 @@ func (o *Flowpathselement) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(FlowsString, &o.Flows)
 	}
 	
-	if FlowOutcomeValue, ok := FlowpathselementMap["flowOutcomeValue"].(string); ok {
-		o.FlowOutcomeValue = &FlowOutcomeValue
-	}
-    
 	if FlowMilestone, ok := FlowpathselementMap["flowMilestone"].(map[string]interface{}); ok {
 		FlowMilestoneString, _ := json.Marshal(FlowMilestone)
 		json.Unmarshal(FlowMilestoneString, &o.FlowMilestone)
@@ -167,6 +163,10 @@ func (o *Flowpathselement) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(FlowOutcomeString, &o.FlowOutcome)
 	}
 	
+	if FlowOutcomeValue, ok := FlowpathselementMap["flowOutcomeValue"].(string); ok {
+		o.FlowOutcomeValue = &FlowOutcomeValue
+	}
+    
 
 	return nil
 }
