@@ -22,6 +22,9 @@ type Guidesessionturnrequest struct {
 
 	// InputVariables - The input variables for this turn.
 	InputVariables *[]Guidesessionvariable `json:"inputVariables,omitempty"`
+
+	// KnowledgeSettings - The knowledge settings for this turn.
+	KnowledgeSettings *Knowledgesettings `json:"knowledgeSettings,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +97,8 @@ func (o Guidesessionturnrequest) MarshalJSON() ([]byte, error) {
 		Version *string `json:"version,omitempty"`
 		
 		InputVariables *[]Guidesessionvariable `json:"inputVariables,omitempty"`
+		
+		KnowledgeSettings *Knowledgesettings `json:"knowledgeSettings,omitempty"`
 		Alias
 	}{ 
 		InputEvent: o.InputEvent,
@@ -103,6 +108,8 @@ func (o Guidesessionturnrequest) MarshalJSON() ([]byte, error) {
 		Version: o.Version,
 		
 		InputVariables: o.InputVariables,
+		
+		KnowledgeSettings: o.KnowledgeSettings,
 		Alias:    (Alias)(o),
 	})
 }
@@ -130,6 +137,11 @@ func (o *Guidesessionturnrequest) UnmarshalJSON(b []byte) error {
 	if InputVariables, ok := GuidesessionturnrequestMap["inputVariables"].([]interface{}); ok {
 		InputVariablesString, _ := json.Marshal(InputVariables)
 		json.Unmarshal(InputVariablesString, &o.InputVariables)
+	}
+	
+	if KnowledgeSettings, ok := GuidesessionturnrequestMap["knowledgeSettings"].(map[string]interface{}); ok {
+		KnowledgeSettingsString, _ := json.Marshal(KnowledgeSettings)
+		json.Unmarshal(KnowledgeSettingsString, &o.KnowledgeSettings)
 	}
 	
 

@@ -11,10 +11,10 @@ import (
 type Facebookid struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Ids - The set of scopedIds that this person has. Each scopedId is specific to a page or app that the user interacts with.
+	// Ids - The set of scopedIds that this person has. Each scopedId is specific to a page or app that the user interacts with. Max: 1 Id
 	Ids *[]Facebookscopedid `json:"ids,omitempty"`
 
-	// DisplayName - The displayName of this person's Facebook account. Roughly translates to user.first_name + ' ' + user.last_name in the Facebook API.
+	// DisplayName - The displayName of this person's Facebook account. Roughly translates to user.first_name + ' ' + user.last_name in the Facebook API. Max: 100 characters.
 	DisplayName *string `json:"displayName,omitempty"`
 }
 

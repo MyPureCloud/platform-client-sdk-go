@@ -11,10 +11,10 @@ import (
 type Whatsappid struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// PhoneNumber - The phone number associated with this WhatsApp account
+	// PhoneNumber - The phone number associated with this WhatsApp account. Requires 'E164 without a leading plus' phone number.
 	PhoneNumber *Phonenumber `json:"phoneNumber,omitempty"`
 
-	// DisplayName - The displayName of this person's account in WhatsApp
+	// DisplayName - The displayName of this person's account in WhatsApp. Max: 100 characters.
 	DisplayName *string `json:"displayName,omitempty"`
 }
 

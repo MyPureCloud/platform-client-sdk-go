@@ -11,22 +11,22 @@ import (
 type Contactaddress struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Address1
+	// Address1 - Max: 200 characters. Leading and trailing whitespace stripped.
 	Address1 *string `json:"address1,omitempty"`
 
-	// Address2
+	// Address2 - Max: 200 characters. Leading and trailing whitespace stripped.
 	Address2 *string `json:"address2,omitempty"`
 
-	// City
+	// City - Max: 100 characters. Leading and trailing whitespace stripped.
 	City *string `json:"city,omitempty"`
 
-	// State
+	// State - Max: 50 characters. Leading and trailing whitespace stripped.
 	State *string `json:"state,omitempty"`
 
-	// PostalCode
+	// PostalCode - Max: 25 characters. Leading and trailing whitespace stripped.
 	PostalCode *string `json:"postalCode,omitempty"`
 
-	// CountryCode
+	// CountryCode - Max: 25 characters. Leading and trailing whitespace stripped.
 	CountryCode *string `json:"countryCode,omitempty"`
 }
 

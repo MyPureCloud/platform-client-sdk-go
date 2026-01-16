@@ -98,6 +98,9 @@ type Workplanlistitemresponse struct {
 	// ShiftStartVarianceType - This constraint ensures that an agent starts each workday within a user-defined time threshold
 	ShiftStartVarianceType *string `json:"shiftStartVarianceType,omitempty"`
 
+	// ShiftStartVariancePeriod - The length of the period over which the maximum shift start time variance is applied
+	ShiftStartVariancePeriod *string `json:"shiftStartVariancePeriod,omitempty"`
+
 	// ShiftStartVariances - Variance in minutes among start times of shifts in this work plan. Populate with expand=details
 	ShiftStartVariances *Listwrappershiftstartvariance `json:"shiftStartVariances,omitempty"`
 
@@ -238,6 +241,8 @@ func (o Workplanlistitemresponse) MarshalJSON() ([]byte, error) {
 		
 		ShiftStartVarianceType *string `json:"shiftStartVarianceType,omitempty"`
 		
+		ShiftStartVariancePeriod *string `json:"shiftStartVariancePeriod,omitempty"`
+		
 		ShiftStartVariances *Listwrappershiftstartvariance `json:"shiftStartVariances,omitempty"`
 		
 		Shifts *[]Workplanshift `json:"shifts,omitempty"`
@@ -308,6 +313,8 @@ func (o Workplanlistitemresponse) MarshalJSON() ([]byte, error) {
 		OptionalDays: o.OptionalDays,
 		
 		ShiftStartVarianceType: o.ShiftStartVarianceType,
+		
+		ShiftStartVariancePeriod: o.ShiftStartVariancePeriod,
 		
 		ShiftStartVariances: o.ShiftStartVariances,
 		
@@ -462,6 +469,10 @@ func (o *Workplanlistitemresponse) UnmarshalJSON(b []byte) error {
 	
 	if ShiftStartVarianceType, ok := WorkplanlistitemresponseMap["shiftStartVarianceType"].(string); ok {
 		o.ShiftStartVarianceType = &ShiftStartVarianceType
+	}
+    
+	if ShiftStartVariancePeriod, ok := WorkplanlistitemresponseMap["shiftStartVariancePeriod"].(string); ok {
+		o.ShiftStartVariancePeriod = &ShiftStartVariancePeriod
 	}
     
 	if ShiftStartVariances, ok := WorkplanlistitemresponseMap["shiftStartVariances"].(map[string]interface{}); ok {

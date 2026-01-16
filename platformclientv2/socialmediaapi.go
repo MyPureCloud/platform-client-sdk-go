@@ -2388,11 +2388,11 @@ func (a SocialMediaApi) GetSocialmediaTopicDataingestionrulesTwitterTwitterInges
 // GetSocialmediaTopics invokes GET /api/v2/socialmedia/topics
 //
 // Retrieve all social topics.
-func (a SocialMediaApi) GetSocialmediaTopics(pageNumber int, pageSize int, divisionIds []string, includeDeleted bool, name string, ids []string) (*Socialtopicresponseentitylisting, *APIResponse, error) {
+func (a SocialMediaApi) GetSocialmediaTopics(pageNumber int, pageSize int, divisionIds []string, includeDeleted bool, name string, ids []string) (*Socialtopicwithdataingestionrulemetadataresponseentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/socialmedia/topics"
-	defaultReturn := new(Socialtopicresponseentitylisting)
+	defaultReturn := new(Socialtopicwithdataingestionrulemetadataresponseentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -2457,14 +2457,14 @@ func (a SocialMediaApi) GetSocialmediaTopics(pageNumber int, pageSize int, divis
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Socialtopicresponseentitylisting
+	var successPayload *Socialtopicwithdataingestionrulemetadataresponseentitylisting
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Socialtopicresponseentitylisting" == "string" {
+		if "Socialtopicwithdataingestionrulemetadataresponseentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

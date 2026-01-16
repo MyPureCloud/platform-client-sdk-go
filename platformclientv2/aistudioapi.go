@@ -107,8 +107,6 @@ func (a AIStudioApi) DeleteConversationsSummariesSetting(summarySettingId string
 // DeleteGuideJobs invokes DELETE /api/v2/guides/{guideId}/jobs
 //
 // Start the deletion of a guide.
-//
-// Preview: DeleteGuideJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AIStudioApi) DeleteGuideJobs(guideId string) (*Guidejob, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -361,8 +359,6 @@ func (a AIStudioApi) GetConversationsSummariesSettings(language string, name str
 // GetGuide invokes GET /api/v2/guides/{guideId}
 //
 // Get guide.
-//
-// Preview: GetGuide is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AIStudioApi) GetGuide(guideId string) (*Guide, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -445,8 +441,6 @@ func (a AIStudioApi) GetGuide(guideId string) (*Guide, *APIResponse, error) {
 // GetGuideJob invokes GET /api/v2/guides/{guideId}/jobs/{jobId}
 //
 // Get the specified guide deletion job.
-//
-// Preview: GetGuideJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AIStudioApi) GetGuideJob(guideId string, jobId string) (*Guidejob, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -535,8 +529,6 @@ func (a AIStudioApi) GetGuideJob(guideId string, jobId string) (*Guidejob, *APIR
 // GetGuideVersion invokes GET /api/v2/guides/{guideId}/versions/{versionId}
 //
 // Get a guide version.
-//
-// Preview: GetGuideVersion is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AIStudioApi) GetGuideVersion(guideId string, versionId string) (*Guideversion, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -625,8 +617,6 @@ func (a AIStudioApi) GetGuideVersion(guideId string, versionId string) (*Guideve
 // GetGuideVersionJob invokes GET /api/v2/guides/{guideId}/versions/{versionId}/jobs/{jobId}
 //
 // Get the status of the publishing job for this guide version.
-//
-// Preview: GetGuideVersionJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AIStudioApi) GetGuideVersionJob(guideId string, versionId string, jobId string) (*Guideversionpublishjob, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -721,8 +711,6 @@ func (a AIStudioApi) GetGuideVersionJob(guideId string, versionId string, jobId 
 // GetGuides invokes GET /api/v2/guides
 //
 // Get all guides.
-//
-// Preview: GetGuides is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AIStudioApi) GetGuides(name string, nameContains string, status string, sortBy string, sortOrder string, pageNumber int, pageSize int) (*Guideentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -813,8 +801,6 @@ func (a AIStudioApi) GetGuides(name string, nameContains string, status string, 
 // GetGuidesJob invokes GET /api/v2/guides/jobs/{jobId}
 //
 // Get the status of the guide content generation job.
-//
-// Preview: GetGuidesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AIStudioApi) GetGuidesJob(jobId string) (*Guidecontentgenerationjob, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -897,8 +883,6 @@ func (a AIStudioApi) GetGuidesJob(jobId string) (*Guidecontentgenerationjob, *AP
 // PatchGuide invokes PATCH /api/v2/guides/{guideId}
 //
 // Update a guide.
-//
-// Preview: PatchGuide is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AIStudioApi) PatchGuide(guideId string, body Updateguide) (*Guide, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -989,8 +973,6 @@ func (a AIStudioApi) PatchGuide(guideId string, body Updateguide) (*Guide, *APIR
 // PatchGuideVersion invokes PATCH /api/v2/guides/{guideId}/versions/{versionId}
 //
 // Update a guide version.
-//
-// Preview: PatchGuideVersion is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AIStudioApi) PatchGuideVersion(guideId string, versionId string, body Updateguideversion) (*Guideversion, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -1346,8 +1328,6 @@ func (a AIStudioApi) PostGuideSessionTurns(guideId string, guideSessionId string
 // PostGuideVersionJobs invokes POST /api/v2/guides/{guideId}/versions/{versionId}/jobs
 //
 // Start the publishing of a guide version.
-//
-// Preview: PostGuideVersionJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AIStudioApi) PostGuideVersionJobs(guideId string, versionId string, body Guideversionpublishjobrequest) (*Guideversionpublishjob, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1444,8 +1424,6 @@ func (a AIStudioApi) PostGuideVersionJobs(guideId string, versionId string, body
 // PostGuideVersions invokes POST /api/v2/guides/{guideId}/versions
 //
 // Create a guide version.
-//
-// Preview: PostGuideVersions is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AIStudioApi) PostGuideVersions(guideId string, body Createguideversion) (*Guideversion, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1531,8 +1509,6 @@ func (a AIStudioApi) PostGuideVersions(guideId string, body Createguideversion) 
 // PostGuides invokes POST /api/v2/guides
 //
 // Create a guide.
-//
-// Preview: PostGuides is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AIStudioApi) PostGuides(body Createguide) (*Guide, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1617,8 +1593,6 @@ func (a AIStudioApi) PostGuides(body Createguide) (*Guide, *APIResponse, error) 
 // PostGuidesJobs invokes POST /api/v2/guides/jobs
 //
 // Start a guide content generation job.
-//
-// Preview: PostGuidesJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AIStudioApi) PostGuidesJobs(body Generateguidecontentrequest) (*Guidecontentgenerationjob, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -1692,6 +1666,90 @@ func (a AIStudioApi) PostGuidesJobs(body Generateguidecontentrequest) (*Guidecon
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Guidecontentgenerationjob" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostGuidesUploads invokes POST /api/v2/guides/uploads
+//
+// Generate presigned URL for uploading a file content to generate guide
+func (a AIStudioApi) PostGuidesUploads(body Uploadurlrequest) (*Uploadurlresponse, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/guides/uploads"
+	defaultReturn := new(Uploadurlresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling AIStudioApi->PostGuidesUploads")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Uploadurlresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Uploadurlresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

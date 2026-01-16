@@ -11,10 +11,10 @@ import (
 type Externalid struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// ExternalSource
+	// ExternalSource - The external source of the identifier. Max: 255 characters. Leading and trailing whitespace stripped.
 	ExternalSource *Externalsource `json:"externalSource,omitempty"`
 
-	// Value
+	// Value - The string value of the identifier. Max: 255 characters. Leading and trailing whitespace stripped.
 	Value *string `json:"value,omitempty"`
 }
 

@@ -21,7 +21,7 @@ type Contactidentifier struct {
 	// VarType - The type of this identifier
 	VarType *string `json:"type,omitempty"`
 
-	// Value - The string value of the identifier. Will vary in syntax by type.
+	// Value - The string value of the identifier. Will vary in syntax by type. Max: 255 characters. Leading and trailing whitespace stripped.
 	Value *string `json:"value,omitempty"`
 
 	// DateCreated - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z

@@ -14,7 +14,7 @@ type Externalsource struct {
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
-	// Name - The name of the external source.
+	// Name - The name of the external source. Must be unique. Max: 200 characters. Leading and trailing whitespace stripped.
 	Name *string `json:"name,omitempty"`
 
 	// Active

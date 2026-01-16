@@ -11,7 +11,7 @@ import (
 type Appleopaqueid struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Value
+	// Value - Max: 255 characters. Leading and trailing whitespace stripped.
 	Value *string `json:"value,omitempty"`
 }
 

@@ -11,10 +11,10 @@ import (
 type Lineid struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Ids - The set of Line userIds that this person has. Each userId is specific to the Line channel that the user interacts with.
+	// Ids - The set of Line userIds that this person has. Each userId is specific to the Line channel that the user interacts with. Max 1 Id.
 	Ids *[]Lineuserid `json:"ids,omitempty"`
 
-	// DisplayName - The displayName of this person's account in Line
+	// DisplayName - The displayName of this person's account in Line. Max: 100 characters.
 	DisplayName *string `json:"displayName,omitempty"`
 }
 

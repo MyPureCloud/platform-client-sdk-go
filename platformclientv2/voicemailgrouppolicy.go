@@ -52,6 +52,9 @@ type Voicemailgrouppolicy struct {
 
 	// InteractiveResponseRequired - Whether user should be prompted with a confirmation prompt when connecting to a Group Ring call
 	InteractiveResponseRequired *bool `json:"interactiveResponseRequired,omitempty"`
+
+	// IncludeGroupNumberInUserCallerIdLists - Whether the group phone number should be included in users' caller id lists
+	IncludeGroupNumberInUserCallerIdLists *bool `json:"includeGroupNumberInUserCallerIdLists,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -144,6 +147,8 @@ func (o Voicemailgrouppolicy) MarshalJSON() ([]byte, error) {
 		InteractiveResponsePromptId *string `json:"interactiveResponsePromptId,omitempty"`
 		
 		InteractiveResponseRequired *bool `json:"interactiveResponseRequired,omitempty"`
+		
+		IncludeGroupNumberInUserCallerIdLists *bool `json:"includeGroupNumberInUserCallerIdLists,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -173,6 +178,8 @@ func (o Voicemailgrouppolicy) MarshalJSON() ([]byte, error) {
 		InteractiveResponsePromptId: o.InteractiveResponsePromptId,
 		
 		InteractiveResponseRequired: o.InteractiveResponseRequired,
+		
+		IncludeGroupNumberInUserCallerIdLists: o.IncludeGroupNumberInUserCallerIdLists,
 		Alias:    (Alias)(o),
 	})
 }
@@ -242,6 +249,10 @@ func (o *Voicemailgrouppolicy) UnmarshalJSON(b []byte) error {
     
 	if InteractiveResponseRequired, ok := VoicemailgrouppolicyMap["interactiveResponseRequired"].(bool); ok {
 		o.InteractiveResponseRequired = &InteractiveResponseRequired
+	}
+    
+	if IncludeGroupNumberInUserCallerIdLists, ok := VoicemailgrouppolicyMap["includeGroupNumberInUserCallerIdLists"].(bool); ok {
+		o.IncludeGroupNumberInUserCallerIdLists = &IncludeGroupNumberInUserCallerIdLists
 	}
     
 

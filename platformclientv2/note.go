@@ -24,7 +24,7 @@ type Note struct {
 	// EntityType - This is only need to be set when using Bulk API. Using any other value than contact or organization will result in null being used.
 	EntityType *string `json:"entityType,omitempty"`
 
-	// NoteText
+	// NoteText - Between 1 and 32,000 characters.
 	NoteText *string `json:"noteText,omitempty"`
 
 	// ModifyDate - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z

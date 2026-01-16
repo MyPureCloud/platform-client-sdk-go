@@ -123,9 +123,6 @@ type Queueconversationsocialexpressioneventtopicparticipant struct {
 	// InternalMessages
 	InternalMessages *[]Queueconversationsocialexpressioneventtopicinternalmessage `json:"internalMessages,omitempty"`
 
-	// ScreenMonitorings
-	ScreenMonitorings *[]Queueconversationsocialexpressioneventtopicscreenmonitoring `json:"screenMonitorings,omitempty"`
-
 	// Screenshares
 	Screenshares *[]Queueconversationsocialexpressioneventtopicscreenshare `json:"screenshares,omitempty"`
 
@@ -308,8 +305,6 @@ func (o Queueconversationsocialexpressioneventtopicparticipant) MarshalJSON() ([
 		
 		InternalMessages *[]Queueconversationsocialexpressioneventtopicinternalmessage `json:"internalMessages,omitempty"`
 		
-		ScreenMonitorings *[]Queueconversationsocialexpressioneventtopicscreenmonitoring `json:"screenMonitorings,omitempty"`
-		
 		Screenshares *[]Queueconversationsocialexpressioneventtopicscreenshare `json:"screenshares,omitempty"`
 		
 		SocialExpressions *[]Queueconversationsocialexpressioneventtopicsocialexpression `json:"socialExpressions,omitempty"`
@@ -392,8 +387,6 @@ func (o Queueconversationsocialexpressioneventtopicparticipant) MarshalJSON() ([
 		Messages: o.Messages,
 		
 		InternalMessages: o.InternalMessages,
-		
-		ScreenMonitorings: o.ScreenMonitorings,
 		
 		Screenshares: o.Screenshares,
 		
@@ -576,11 +569,6 @@ func (o *Queueconversationsocialexpressioneventtopicparticipant) UnmarshalJSON(b
 	if InternalMessages, ok := QueueconversationsocialexpressioneventtopicparticipantMap["internalMessages"].([]interface{}); ok {
 		InternalMessagesString, _ := json.Marshal(InternalMessages)
 		json.Unmarshal(InternalMessagesString, &o.InternalMessages)
-	}
-	
-	if ScreenMonitorings, ok := QueueconversationsocialexpressioneventtopicparticipantMap["screenMonitorings"].([]interface{}); ok {
-		ScreenMonitoringsString, _ := json.Marshal(ScreenMonitorings)
-		json.Unmarshal(ScreenMonitoringsString, &o.ScreenMonitorings)
 	}
 	
 	if Screenshares, ok := QueueconversationsocialexpressioneventtopicparticipantMap["screenshares"].([]interface{}); ok {

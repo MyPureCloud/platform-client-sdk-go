@@ -47,6 +47,9 @@ type Assistant struct {
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
+
+	// VariationParent - The parent assistant if this assistant is a variation of an assistant
+	VariationParent *Addressableentityref `json:"variationParent,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -151,6 +154,8 @@ func (o Assistant) MarshalJSON() ([]byte, error) {
 		Copilot *Copilot `json:"copilot,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
+		
+		VariationParent *Addressableentityref `json:"variationParent,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -176,6 +181,8 @@ func (o Assistant) MarshalJSON() ([]byte, error) {
 		Copilot: o.Copilot,
 		
 		SelfUri: o.SelfUri,
+		
+		VariationParent: o.VariationParent,
 		Alias:    (Alias)(o),
 	})
 }
@@ -243,6 +250,11 @@ func (o *Assistant) UnmarshalJSON(b []byte) error {
 		o.SelfUri = &SelfUri
 	}
     
+	if VariationParent, ok := AssistantMap["variationParent"].(map[string]interface{}); ok {
+		VariationParentString, _ := json.Marshal(VariationParent)
+		json.Unmarshal(VariationParentString, &o.VariationParent)
+	}
+	
 
 	return nil
 }

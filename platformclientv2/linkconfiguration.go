@@ -11,7 +11,7 @@ import (
 type Linkconfiguration struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// UriTemplate
+	// UriTemplate - Should be a valid URL (including the http/https protocol, port, and path [if any]). Leading and trailing whitespace stripped. Max 400 characters.
 	UriTemplate *string `json:"uriTemplate,omitempty"`
 }
 

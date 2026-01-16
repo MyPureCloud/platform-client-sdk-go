@@ -50,6 +50,9 @@ type Workplanactivity struct {
 	// MinimumLengthFromShiftEndMinutes - The minimum duration between shift item (e.g., break or meal) end and shift end in minutes
 	MinimumLengthFromShiftEndMinutes *int `json:"minimumLengthFromShiftEndMinutes,omitempty"`
 
+	// MaximumLengthFromShiftEndMinutes - The maximum duration between shift item (e.g., break or meal) end and shift end in minutes
+	MaximumLengthFromShiftEndMinutes *int `json:"maximumLengthFromShiftEndMinutes,omitempty"`
+
 	// Id - ID of the activity. This is required only for the case of updating an existing activity
 	Id *string `json:"id,omitempty"`
 
@@ -149,6 +152,8 @@ func (o Workplanactivity) MarshalJSON() ([]byte, error) {
 		
 		MinimumLengthFromShiftEndMinutes *int `json:"minimumLengthFromShiftEndMinutes,omitempty"`
 		
+		MaximumLengthFromShiftEndMinutes *int `json:"maximumLengthFromShiftEndMinutes,omitempty"`
+		
 		Id *string `json:"id,omitempty"`
 		
 		Delete *bool `json:"delete,omitempty"`
@@ -181,6 +186,8 @@ func (o Workplanactivity) MarshalJSON() ([]byte, error) {
 		MinimumLengthFromShiftStartMinutes: o.MinimumLengthFromShiftStartMinutes,
 		
 		MinimumLengthFromShiftEndMinutes: o.MinimumLengthFromShiftEndMinutes,
+		
+		MaximumLengthFromShiftEndMinutes: o.MaximumLengthFromShiftEndMinutes,
 		
 		Id: o.Id,
 		
@@ -255,6 +262,11 @@ func (o *Workplanactivity) UnmarshalJSON(b []byte) error {
 	if MinimumLengthFromShiftEndMinutes, ok := WorkplanactivityMap["minimumLengthFromShiftEndMinutes"].(float64); ok {
 		MinimumLengthFromShiftEndMinutesInt := int(MinimumLengthFromShiftEndMinutes)
 		o.MinimumLengthFromShiftEndMinutes = &MinimumLengthFromShiftEndMinutesInt
+	}
+	
+	if MaximumLengthFromShiftEndMinutes, ok := WorkplanactivityMap["maximumLengthFromShiftEndMinutes"].(float64); ok {
+		MaximumLengthFromShiftEndMinutesInt := int(MaximumLengthFromShiftEndMinutes)
+		o.MaximumLengthFromShiftEndMinutes = &MaximumLengthFromShiftEndMinutesInt
 	}
 	
 	if Id, ok := WorkplanactivityMap["id"].(string); ok {

@@ -33,6 +33,9 @@ type Recordingemailmessage struct {
 	// From
 	From *Emailaddress `json:"from,omitempty"`
 
+	// ReplyTo - Indicates the address to which the author of the message suggests that replies be sent
+	ReplyTo *Emailaddress `json:"replyTo,omitempty"`
+
 	// Subject
 	Subject *string `json:"subject,omitempty"`
 
@@ -128,6 +131,8 @@ func (o Recordingemailmessage) MarshalJSON() ([]byte, error) {
 		
 		From *Emailaddress `json:"from,omitempty"`
 		
+		ReplyTo *Emailaddress `json:"replyTo,omitempty"`
+		
 		Subject *string `json:"subject,omitempty"`
 		
 		Attachments *[]Emailattachment `json:"attachments,omitempty"`
@@ -148,6 +153,8 @@ func (o Recordingemailmessage) MarshalJSON() ([]byte, error) {
 		Bcc: o.Bcc,
 		
 		From: o.From,
+		
+		ReplyTo: o.ReplyTo,
 		
 		Subject: o.Subject,
 		
@@ -195,6 +202,11 @@ func (o *Recordingemailmessage) UnmarshalJSON(b []byte) error {
 	if From, ok := RecordingemailmessageMap["from"].(map[string]interface{}); ok {
 		FromString, _ := json.Marshal(From)
 		json.Unmarshal(FromString, &o.From)
+	}
+	
+	if ReplyTo, ok := RecordingemailmessageMap["replyTo"].(map[string]interface{}); ok {
+		ReplyToString, _ := json.Marshal(ReplyTo)
+		json.Unmarshal(ReplyToString, &o.ReplyTo)
 	}
 	
 	if Subject, ok := RecordingemailmessageMap["subject"].(string); ok {

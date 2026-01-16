@@ -11,7 +11,7 @@ import (
 type Lineuserid struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// UserId - The unique channel-specific userId for the user
+	// UserId - The unique channel-specific userId for the user. Max: 255 characters.
 	UserId *string `json:"userId,omitempty"`
 }
 

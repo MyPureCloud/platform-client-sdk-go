@@ -1943,6 +1943,7 @@ docs/PatchJourneyViewVersionJob-example.txt
 docs/PatchKnowledgeGuestSessionDocumentsSearchSearchId-example.txt
 docs/PatchKnowledgeKnowledgebase-example.txt
 docs/PatchKnowledgeKnowledgebaseCategory-example.txt
+docs/PatchKnowledgeKnowledgebaseChunksSearchSearchId-example.txt
 docs/PatchKnowledgeKnowledgebaseDocument-example.txt
 docs/PatchKnowledgeKnowledgebaseDocumentFeedbackFeedbackId-example.txt
 docs/PatchKnowledgeKnowledgebaseDocumentVariation-example.txt
@@ -2429,6 +2430,8 @@ docs/PostGuideVersionJobs-example.txt
 docs/PostGuideVersions-example.txt
 docs/PostGuides-example.txt
 docs/PostGuidesJobs-example.txt
+docs/PostGuidesUploads-example.txt
+docs/PostGuidesUploads-example.txt
 docs/PostIdentityproviders-example.txt
 docs/PostInfrastructureascodeJobs-example.txt
 docs/PostIntegrations-example.txt
@@ -3603,6 +3606,7 @@ platformclientv2/audittopicdomainentityref.go
 platformclientv2/audittopicmessageinfo.go
 platformclientv2/audittopicpropertychange.go
 platformclientv2/authenticationsettings.go
+platformclientv2/authoringknowledgesettings.go
 platformclientv2/authorizationapi.go
 platformclientv2/authorizationpolicy.go
 platformclientv2/authorizationpolicyentitylisting.go
@@ -3986,7 +3990,10 @@ platformclientv2/capacityplanstaffinggroupmetricchangeresponse.go
 platformclientv2/capacityplanstaffingrequirementresult.go
 platformclientv2/card.go
 platformclientv2/cardaction.go
+platformclientv2/cardbodytext.go
 platformclientv2/cardparameters.go
+platformclientv2/carousel.go
+platformclientv2/carouselcard.go
 platformclientv2/carouselparameters.go
 platformclientv2/carrierservicesapi.go
 platformclientv2/casemanagementaggregatedatacontainer.go
@@ -4053,6 +4060,7 @@ platformclientv2/checklistinferencejobcreationresponse.go
 platformclientv2/checklistinferencejobpayload.go
 platformclientv2/checklistinferencejobresponse.go
 platformclientv2/checklistitem.go
+platformclientv2/chunksearchregisterrequest.go
 platformclientv2/clientapp.go
 platformclientv2/clientappconfigurationinfo.go
 platformclientv2/clientappentitylisting.go
@@ -4499,7 +4507,6 @@ platformclientv2/conversationeventtopicphonenumbercolumn.go
 platformclientv2/conversationeventtopicqueuemediasettings.go
 platformclientv2/conversationeventtopicrecordersstate.go
 platformclientv2/conversationeventtopicscoredagent.go
-platformclientv2/conversationeventtopicscreenmonitoring.go
 platformclientv2/conversationeventtopicscreenshare.go
 platformclientv2/conversationeventtopicsocialexpression.go
 platformclientv2/conversationeventtopictransferdestination.go
@@ -6221,6 +6228,7 @@ platformclientv2/knowledgeparserecord.go
 platformclientv2/knowledgesearchclientapplication.go
 platformclientv2/knowledgesearchdocumentresponse.go
 platformclientv2/knowledgesetting.go
+platformclientv2/knowledgesettings.go
 platformclientv2/knowledgesuggestionconfig.go
 platformclientv2/knowledgesyncjobreport.go
 platformclientv2/knowledgesyncjobrequest.go
@@ -7026,11 +7034,9 @@ platformclientv2/programinsightssettings.go
 platformclientv2/programinsightssettingsentitylisting.go
 platformclientv2/programjob.go
 platformclientv2/programjobrequest.go
-platformclientv2/programmappings.go
 platformclientv2/programmappingsrequest.go
 platformclientv2/programrequest.go
 platformclientv2/programsentitylisting.go
-platformclientv2/programsmappingsentitylisting.go
 platformclientv2/programtopiclinkstestphrasedetectedphrase.go
 platformclientv2/programtopiclinkstestphrasematchedtranscript.go
 platformclientv2/programtopiclinkstesttopicphraseresults.go
@@ -7245,7 +7251,6 @@ platformclientv2/queueconversationeventtopicphonenumbercolumn.go
 platformclientv2/queueconversationeventtopicqueuemediasettings.go
 platformclientv2/queueconversationeventtopicrecordersstate.go
 platformclientv2/queueconversationeventtopicscoredagent.go
-platformclientv2/queueconversationeventtopicscreenmonitoring.go
 platformclientv2/queueconversationeventtopicscreenshare.go
 platformclientv2/queueconversationeventtopicsocialexpression.go
 platformclientv2/queueconversationeventtopictransferdestination.go
@@ -7339,7 +7344,6 @@ platformclientv2/queueconversationsocialexpressioneventtopicphonenumbercolumn.go
 platformclientv2/queueconversationsocialexpressioneventtopicqueuemediasettings.go
 platformclientv2/queueconversationsocialexpressioneventtopicrecordersstate.go
 platformclientv2/queueconversationsocialexpressioneventtopicscoredagent.go
-platformclientv2/queueconversationsocialexpressioneventtopicscreenmonitoring.go
 platformclientv2/queueconversationsocialexpressioneventtopicscreenshare.go
 platformclientv2/queueconversationsocialexpressioneventtopicsocialexpression.go
 platformclientv2/queueconversationsocialexpressioneventtopictransferdestination.go
@@ -7390,7 +7394,6 @@ platformclientv2/queueconversationvideoeventtopicphonenumbercolumn.go
 platformclientv2/queueconversationvideoeventtopicqueuemediasettings.go
 platformclientv2/queueconversationvideoeventtopicrecordersstate.go
 platformclientv2/queueconversationvideoeventtopicscoredagent.go
-platformclientv2/queueconversationvideoeventtopicscreenmonitoring.go
 platformclientv2/queueconversationvideoeventtopicscreenshare.go
 platformclientv2/queueconversationvideoeventtopicsocialexpression.go
 platformclientv2/queueconversationvideoeventtopictransferdestination.go
@@ -7888,8 +7891,8 @@ platformclientv2/socialmediastatisticalsummary.go
 platformclientv2/socialtopicpatchrequest.go
 platformclientv2/socialtopicrequest.go
 platformclientv2/socialtopicresponse.go
-platformclientv2/socialtopicresponseentitylisting.go
 platformclientv2/socialtopicwithdataingestionrulemetadataresponse.go
+platformclientv2/socialtopicwithdataingestionrulemetadataresponseentitylisting.go
 platformclientv2/sortitem.go
 platformclientv2/source.go
 platformclientv2/sourcebaseresponse.go
@@ -7941,6 +7944,7 @@ platformclientv2/stationsapi.go
 platformclientv2/statisticalresponse.go
 platformclientv2/statisticalsummary.go
 platformclientv2/statuschange.go
+platformclientv2/statusinfo.go
 platformclientv2/stopsettings.go
 platformclientv2/storysetting.go
 platformclientv2/streetaddress.go
@@ -8179,6 +8183,8 @@ platformclientv2/topicjobrequest.go
 platformclientv2/topicoffset.go
 platformclientv2/topicphrase.go
 platformclientv2/topicrequest.go
+platformclientv2/topicsdefinitionsprogrammappings.go
+platformclientv2/topicsdefinitionsprogramsmappingsentitylisting.go
 platformclientv2/topicsentitylisting.go
 platformclientv2/touchpoint.go
 platformclientv2/touchpointresponse.go
@@ -9146,4 +9152,3 @@ platformclientv2/writabledialercontact.go
 platformclientv2/writabledivision.go
 platformclientv2/writableentity.go
 platformclientv2/writablestarrabledivision.go
-platformclientv2/yearmonth.go

@@ -18,19 +18,19 @@ type Externalcontact struct {
 	// Division - The division to which this entity belongs.
 	Division *Writablestarrabledivision `json:"division,omitempty"`
 
-	// FirstName - The first name of the contact.
+	// FirstName - The first name of the contact. Max: 1000 characters. Leading and trailing whitespace stripped.
 	FirstName *string `json:"firstName,omitempty"`
 
-	// MiddleName
+	// MiddleName - The middle name of the contact. Max: 1000 characters. Leading and trailing whitespace stripped.
 	MiddleName *string `json:"middleName,omitempty"`
 
-	// LastName - The last name of the contact.
+	// LastName - The last name of the contact. Max: 1000 characters. Leading and trailing whitespace stripped.
 	LastName *string `json:"lastName,omitempty"`
 
-	// Salutation
+	// Salutation - The salutation of the contact. Max: 1000 characters. Leading and trailing whitespace stripped.
 	Salutation *string `json:"salutation,omitempty"`
 
-	// Title
+	// Title - The title of the contact. Max: 1000 characters. Leading and trailing whitespace stripped.
 	Title *string `json:"title,omitempty"`
 
 	// WorkPhone
@@ -45,37 +45,37 @@ type Externalcontact struct {
 	// OtherPhone
 	OtherPhone *Phonenumber `json:"otherPhone,omitempty"`
 
-	// WorkEmail
+	// WorkEmail - The work email of the contact. Max: 256 characters. Leading and trailing whitespace stripped. Valid email format
 	WorkEmail *string `json:"workEmail,omitempty"`
 
-	// PersonalEmail
+	// PersonalEmail - The personal email of the contact. Max: 256 characters. Leading and trailing whitespace stripped. Valid email format
 	PersonalEmail *string `json:"personalEmail,omitempty"`
 
-	// OtherEmail
+	// OtherEmail - The other email of the contact. Max: 256 characters. Leading and trailing whitespace stripped. Valid email format
 	OtherEmail *string `json:"otherEmail,omitempty"`
 
 	// Address
 	Address *Contactaddress `json:"address,omitempty"`
 
-	// TwitterId
+	// TwitterId - User information for a Twitter account
 	TwitterId *Twitterid `json:"twitterId,omitempty"`
 
 	// LineId
 	LineId *Lineid `json:"lineId,omitempty"`
 
-	// WhatsAppId
+	// WhatsAppId - User information for a WhatsApp account
 	WhatsAppId *Whatsappid `json:"whatsAppId,omitempty"`
 
-	// FacebookId
+	// FacebookId - User information for a Facebook account
 	FacebookId *Facebookid `json:"facebookId,omitempty"`
 
 	// InstagramId - User information for an Instagram account
 	InstagramId *Instagramid `json:"instagramId,omitempty"`
 
-	// AppleOpaqueIds - User information for an Apple account
+	// AppleOpaqueIds - User information for an Apple account. Max: 10 ids
 	AppleOpaqueIds *[]Appleopaqueid `json:"appleOpaqueIds,omitempty"`
 
-	// ExternalIds - A list of external identifiers that identify this contact in an external system
+	// ExternalIds - A list of external identifiers that identify this contact in an external system. Max: 10 ids
 	ExternalIds *[]Externalid `json:"externalIds,omitempty"`
 
 	// Identifiers - Identifiers claimed by this contact
@@ -93,7 +93,7 @@ type Externalcontact struct {
 	// SurveyOptOut
 	SurveyOptOut *bool `json:"surveyOptOut,omitempty"`
 
-	// ExternalSystemUrl - A string that identifies an external system-of-record resource that may have more detailed information on the contact. It should be a valid URL (including the http/https protocol, port, and path [if any]). The value is automatically trimmed of any leading and trailing whitespace.
+	// ExternalSystemUrl - A string that identifies an external system-of-record resource that may have more detailed information on the contact. Should be a valid URL (including the http/https protocol, port, and path [if any]). Leading and trailing whitespace stripped. Max 1000 characters.
 	ExternalSystemUrl *string `json:"externalSystemUrl,omitempty"`
 
 	// Schema - The schema defining custom fields for this contact

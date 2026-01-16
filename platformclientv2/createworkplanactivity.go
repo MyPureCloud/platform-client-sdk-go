@@ -49,6 +49,9 @@ type Createworkplanactivity struct {
 
 	// MinimumLengthFromShiftEndMinutes - The minimum duration between shift item (e.g., break or meal) end and shift end in minutes
 	MinimumLengthFromShiftEndMinutes *int `json:"minimumLengthFromShiftEndMinutes,omitempty"`
+
+	// MaximumLengthFromShiftEndMinutes - The maximum duration between shift item (e.g., break or meal) end and shift end in minutes
+	MaximumLengthFromShiftEndMinutes *int `json:"maximumLengthFromShiftEndMinutes,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -139,6 +142,8 @@ func (o Createworkplanactivity) MarshalJSON() ([]byte, error) {
 		MinimumLengthFromShiftStartMinutes *int `json:"minimumLengthFromShiftStartMinutes,omitempty"`
 		
 		MinimumLengthFromShiftEndMinutes *int `json:"minimumLengthFromShiftEndMinutes,omitempty"`
+		
+		MaximumLengthFromShiftEndMinutes *int `json:"maximumLengthFromShiftEndMinutes,omitempty"`
 		Alias
 	}{ 
 		ActivityCodeId: o.ActivityCodeId,
@@ -166,6 +171,8 @@ func (o Createworkplanactivity) MarshalJSON() ([]byte, error) {
 		MinimumLengthFromShiftStartMinutes: o.MinimumLengthFromShiftStartMinutes,
 		
 		MinimumLengthFromShiftEndMinutes: o.MinimumLengthFromShiftEndMinutes,
+		
+		MaximumLengthFromShiftEndMinutes: o.MaximumLengthFromShiftEndMinutes,
 		Alias:    (Alias)(o),
 	})
 }
@@ -234,6 +241,11 @@ func (o *Createworkplanactivity) UnmarshalJSON(b []byte) error {
 	if MinimumLengthFromShiftEndMinutes, ok := CreateworkplanactivityMap["minimumLengthFromShiftEndMinutes"].(float64); ok {
 		MinimumLengthFromShiftEndMinutesInt := int(MinimumLengthFromShiftEndMinutes)
 		o.MinimumLengthFromShiftEndMinutes = &MinimumLengthFromShiftEndMinutesInt
+	}
+	
+	if MaximumLengthFromShiftEndMinutes, ok := CreateworkplanactivityMap["maximumLengthFromShiftEndMinutes"].(float64); ok {
+		MaximumLengthFromShiftEndMinutesInt := int(MaximumLengthFromShiftEndMinutes)
+		o.MaximumLengthFromShiftEndMinutes = &MaximumLengthFromShiftEndMinutesInt
 	}
 	
 

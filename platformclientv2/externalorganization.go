@@ -15,7 +15,7 @@ type Externalorganization struct {
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
-	// Name - The name of the company.
+	// Name - The name of the company. Max: 1000 characters. Leading and trailing whitespace stripped.
 	Name *string `json:"name,omitempty"`
 
 	// Division - The division to which this entity belongs.
@@ -75,7 +75,7 @@ type Externalorganization struct {
 	// Identifiers - Identifiers claimed by this external org
 	Identifiers *[]Externalorganizationidentifier `json:"identifiers,omitempty"`
 
-	// ExternalIds - A list of external identifiers that identify this External Organization in an external system
+	// ExternalIds - A list of external identifiers that identify this External Organization in an external system. Max 10 items.
 	ExternalIds *[]Externalid `json:"externalIds,omitempty"`
 
 	// ExternalDataSources - Links to the sources of data (e.g. one source might be a CRM) that contributed data to this record.  Read-only, and only populated when requested via expand param.

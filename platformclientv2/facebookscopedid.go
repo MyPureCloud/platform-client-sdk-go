@@ -11,7 +11,7 @@ import (
 type Facebookscopedid struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// ScopedId - The unique page/app-specific scopedId for the user
+	// ScopedId - The unique page/app-specific scopedId for the user. Max: 255 characters.
 	ScopedId *string `json:"scopedId,omitempty"`
 }
 

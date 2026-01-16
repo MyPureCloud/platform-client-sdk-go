@@ -11,13 +11,13 @@ import (
 type Instagramid struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Ids - The set of scopedIds that this person has. Each scopedId is specific to an Instagram page or app that the user interacts with.
+	// Ids - The set of scopedIds that this person has. Each scopedId is specific to an Instagram page or app that the user interacts with. Max 1 id.
 	Ids *[]Instagramscopedid `json:"ids,omitempty"`
 
-	// DisplayName - The displayName of the person who owns this Instagram account
+	// DisplayName - The displayName of the person who owns this Instagram account. Max: 100 characters.
 	DisplayName *string `json:"displayName,omitempty"`
 
-	// Handle - The handle of the person who owns this Instagram account
+	// Handle - The handle of the person who owns this Instagram account. Max: 100 characters.
 	Handle *string `json:"handle,omitempty"`
 }
 

@@ -23,7 +23,7 @@ type Relationship struct {
 	// ExternalOrganization - The external organization this relationship is attached to
 	ExternalOrganization *Externalorganization `json:"externalOrganization,omitempty"`
 
-	// Relationship - The relationship or role of the user to this external organization.Examples: Account Manager, Sales Engineer, Implementation Consultant
+	// Relationship - The relationship or role of the user to this external organization.Examples: Account Manager, Sales Engineer, Implementation Consultant. Between 1 and 100 characters.
 	Relationship *string `json:"relationship,omitempty"`
 
 	// ExternalDataSources - Links to the sources of data (e.g. one source might be a CRM) that contributed data to this record.  Read-only, and only populated when requested via expand param.

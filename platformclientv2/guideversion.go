@@ -38,6 +38,9 @@ type Guideversion struct {
 
 	// Resources - The resources associated with this version of the guide.
 	Resources *Guideversionresources `json:"resources,omitempty"`
+
+	// KnowledgeSettings - The knowledge settings associated with this version of the guide.
+	KnowledgeSettings *Authoringknowledgesettings `json:"knowledgeSettings,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -136,6 +139,8 @@ func (o Guideversion) MarshalJSON() ([]byte, error) {
 		Variables *[]Variable `json:"variables,omitempty"`
 		
 		Resources *Guideversionresources `json:"resources,omitempty"`
+		
+		KnowledgeSettings *Authoringknowledgesettings `json:"knowledgeSettings,omitempty"`
 		Alias
 	}{ 
 		SelfUri: o.SelfUri,
@@ -155,6 +160,8 @@ func (o Guideversion) MarshalJSON() ([]byte, error) {
 		Variables: o.Variables,
 		
 		Resources: o.Resources,
+		
+		KnowledgeSettings: o.KnowledgeSettings,
 		Alias:    (Alias)(o),
 	})
 }
@@ -205,6 +212,11 @@ func (o *Guideversion) UnmarshalJSON(b []byte) error {
 	if Resources, ok := GuideversionMap["resources"].(map[string]interface{}); ok {
 		ResourcesString, _ := json.Marshal(Resources)
 		json.Unmarshal(ResourcesString, &o.Resources)
+	}
+	
+	if KnowledgeSettings, ok := GuideversionMap["knowledgeSettings"].(map[string]interface{}); ok {
+		KnowledgeSettingsString, _ := json.Marshal(KnowledgeSettings)
+		json.Unmarshal(KnowledgeSettingsString, &o.KnowledgeSettings)
 	}
 	
 
