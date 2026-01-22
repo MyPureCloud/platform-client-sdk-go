@@ -36,6 +36,9 @@ type Evaluationform struct {
 	// EvaluationSettings - Settings for evaluations associated with this form
 	EvaluationSettings *Evaluationsettings `json:"evaluationSettings,omitempty"`
 
+	// LatestVersionFormName - The name of the form's most recently published version
+	LatestVersionFormName *string `json:"latestVersionFormName,omitempty"`
+
 	// AiScoring - AI scoring settings for the evaluation form.
 	AiScoring *Aiscoringsettings `json:"aiScoring,omitempty"`
 
@@ -130,6 +133,8 @@ func (o Evaluationform) MarshalJSON() ([]byte, error) {
 		
 		EvaluationSettings *Evaluationsettings `json:"evaluationSettings,omitempty"`
 		
+		LatestVersionFormName *string `json:"latestVersionFormName,omitempty"`
+		
 		AiScoring *Aiscoringsettings `json:"aiScoring,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -150,6 +155,8 @@ func (o Evaluationform) MarshalJSON() ([]byte, error) {
 		PublishedVersions: o.PublishedVersions,
 		
 		EvaluationSettings: o.EvaluationSettings,
+		
+		LatestVersionFormName: o.LatestVersionFormName,
 		
 		AiScoring: o.AiScoring,
 		
@@ -201,6 +208,10 @@ func (o *Evaluationform) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(EvaluationSettingsString, &o.EvaluationSettings)
 	}
 	
+	if LatestVersionFormName, ok := EvaluationformMap["latestVersionFormName"].(string); ok {
+		o.LatestVersionFormName = &LatestVersionFormName
+	}
+    
 	if AiScoring, ok := EvaluationformMap["aiScoring"].(map[string]interface{}); ok {
 		AiScoringString, _ := json.Marshal(AiScoring)
 		json.Unmarshal(AiScoringString, &o.AiScoring)

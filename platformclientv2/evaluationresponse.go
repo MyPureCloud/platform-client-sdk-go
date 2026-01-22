@@ -54,8 +54,14 @@ type Evaluationresponse struct {
 	// AssignedDate - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	AssignedDate *time.Time `json:"assignedDate,omitempty"`
 
+	// CreatedDate - Date the first version of this evaluation was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	CreatedDate *time.Time `json:"createdDate,omitempty"`
+
 	// ChangedDate - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ChangedDate *time.Time `json:"changedDate,omitempty"`
+
+	// SubmittedDate - Date the evaluation was last submitted. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	SubmittedDate *time.Time `json:"submittedDate,omitempty"`
 
 	// RevisionCreatedDate - Date of when evaluation revision is created. Null if there is no revision. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	RevisionCreatedDate *time.Time `json:"revisionCreatedDate,omitempty"`
@@ -65,6 +71,9 @@ type Evaluationresponse struct {
 
 	// MediaType - List of different communication types used in conversation.
 	MediaType *[]string `json:"mediaType,omitempty"`
+
+	// DivisionIds - Evaluation is assigned in the following division(s).
+	DivisionIds *[]string `json:"divisionIds,omitempty"`
 
 	// Rescore - Is only true when evaluation is re-scored.
 	Rescore *bool `json:"rescore,omitempty"`
@@ -141,7 +150,7 @@ func (o Evaluationresponse) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "ReleaseDate","AssignedDate","ChangedDate","RevisionCreatedDate","ConversationDate","ConversationEndDate","DateAssigneeChanged", }
+		dateTimeFields := []string{ "ReleaseDate","AssignedDate","CreatedDate","ChangedDate","SubmittedDate","RevisionCreatedDate","ConversationDate","ConversationEndDate","DateAssigneeChanged", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -190,12 +199,28 @@ func (o Evaluationresponse) MarshalJSON() ([]byte, error) {
 		AssignedDate = nil
 	}
 	
+	CreatedDate := new(string)
+	if o.CreatedDate != nil {
+		
+		*CreatedDate = timeutil.Strftime(o.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		CreatedDate = nil
+	}
+	
 	ChangedDate := new(string)
 	if o.ChangedDate != nil {
 		
 		*ChangedDate = timeutil.Strftime(o.ChangedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ChangedDate = nil
+	}
+	
+	SubmittedDate := new(string)
+	if o.SubmittedDate != nil {
+		
+		*SubmittedDate = timeutil.Strftime(o.SubmittedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		SubmittedDate = nil
 	}
 	
 	RevisionCreatedDate := new(string)
@@ -259,13 +284,19 @@ func (o Evaluationresponse) MarshalJSON() ([]byte, error) {
 		
 		AssignedDate *string `json:"assignedDate,omitempty"`
 		
+		CreatedDate *string `json:"createdDate,omitempty"`
+		
 		ChangedDate *string `json:"changedDate,omitempty"`
+		
+		SubmittedDate *string `json:"submittedDate,omitempty"`
 		
 		RevisionCreatedDate *string `json:"revisionCreatedDate,omitempty"`
 		
 		Queue *Queue `json:"queue,omitempty"`
 		
 		MediaType *[]string `json:"mediaType,omitempty"`
+		
+		DivisionIds *[]string `json:"divisionIds,omitempty"`
 		
 		Rescore *bool `json:"rescore,omitempty"`
 		
@@ -326,13 +357,19 @@ func (o Evaluationresponse) MarshalJSON() ([]byte, error) {
 		
 		AssignedDate: AssignedDate,
 		
+		CreatedDate: CreatedDate,
+		
 		ChangedDate: ChangedDate,
+		
+		SubmittedDate: SubmittedDate,
 		
 		RevisionCreatedDate: RevisionCreatedDate,
 		
 		Queue: o.Queue,
 		
 		MediaType: o.MediaType,
+		
+		DivisionIds: o.DivisionIds,
 		
 		Rescore: o.Rescore,
 		
@@ -439,9 +476,19 @@ func (o *Evaluationresponse) UnmarshalJSON(b []byte) error {
 		o.AssignedDate = &AssignedDate
 	}
 	
+	if createdDateString, ok := EvaluationresponseMap["createdDate"].(string); ok {
+		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
+		o.CreatedDate = &CreatedDate
+	}
+	
 	if changedDateString, ok := EvaluationresponseMap["changedDate"].(string); ok {
 		ChangedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", changedDateString)
 		o.ChangedDate = &ChangedDate
+	}
+	
+	if submittedDateString, ok := EvaluationresponseMap["submittedDate"].(string); ok {
+		SubmittedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", submittedDateString)
+		o.SubmittedDate = &SubmittedDate
 	}
 	
 	if revisionCreatedDateString, ok := EvaluationresponseMap["revisionCreatedDate"].(string); ok {
@@ -457,6 +504,11 @@ func (o *Evaluationresponse) UnmarshalJSON(b []byte) error {
 	if MediaType, ok := EvaluationresponseMap["mediaType"].([]interface{}); ok {
 		MediaTypeString, _ := json.Marshal(MediaType)
 		json.Unmarshal(MediaTypeString, &o.MediaType)
+	}
+	
+	if DivisionIds, ok := EvaluationresponseMap["divisionIds"].([]interface{}); ok {
+		DivisionIdsString, _ := json.Marshal(DivisionIds)
+		json.Unmarshal(DivisionIdsString, &o.DivisionIds)
 	}
 	
 	if Rescore, ok := EvaluationresponseMap["rescore"].(bool); ok {

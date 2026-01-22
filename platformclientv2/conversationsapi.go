@@ -424,6 +424,93 @@ func (a ConversationsApi) DeleteConversationParticipantFlaggedreason(conversatio
 	return response, err
 }
 
+// DeleteConversationsCallParticipantCommunicationPostflowaction invokes DELETE /api/v2/conversations/calls/{conversationId}/participants/{participantId}/communications/{communicationId}/postflowaction
+//
+// Remove mandatory post call actions.
+func (a ConversationsApi) DeleteConversationsCallParticipantCommunicationPostflowaction(conversationId string, participantId string, communicationId string) (*APIResponse, error) {
+	var httpMethod = "DELETE"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/calls/{conversationId}/participants/{participantId}/communications/{communicationId}/postflowaction"
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{participantId}", url.PathEscape(fmt.Sprintf("%v", participantId)), -1)
+	path = strings.Replace(path, "{communicationId}", url.PathEscape(fmt.Sprintf("%v", communicationId)), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'conversationId' is set
+	if &conversationId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->DeleteConversationsCallParticipantCommunicationPostflowaction")
+	}
+	// verify the required parameter 'participantId' is set
+	if &participantId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->DeleteConversationsCallParticipantCommunicationPostflowaction")
+	}
+	// verify the required parameter 'communicationId' is set
+	if &communicationId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'communicationId' when calling ConversationsApi->DeleteConversationsCallParticipantCommunicationPostflowaction")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
 // DeleteConversationsCallParticipantConsult invokes DELETE /api/v2/conversations/calls/{conversationId}/participants/{participantId}/consult
 //
 // Cancel the transfer
@@ -11657,6 +11744,96 @@ func (a ConversationsApi) PatchConversationsCallParticipantCommunication(convers
 		}
 	}
 	return successPayload, response, err
+}
+
+// PatchConversationsCallParticipantCommunicationPostflowaction invokes PATCH /api/v2/conversations/calls/{conversationId}/participants/{participantId}/communications/{communicationId}/postflowaction
+//
+// Set mandatory post call actions.  If both values are null or blank error will occur.
+func (a ConversationsApi) PatchConversationsCallParticipantCommunicationPostflowaction(conversationId string, participantId string, communicationId string, body Mandatorypostcallactioninput) (*APIResponse, error) {
+	var httpMethod = "PATCH"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/calls/{conversationId}/participants/{participantId}/communications/{communicationId}/postflowaction"
+	path = strings.Replace(path, "{conversationId}", url.PathEscape(fmt.Sprintf("%v", conversationId)), -1)
+	path = strings.Replace(path, "{participantId}", url.PathEscape(fmt.Sprintf("%v", participantId)), -1)
+	path = strings.Replace(path, "{communicationId}", url.PathEscape(fmt.Sprintf("%v", communicationId)), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'conversationId' is set
+	if &conversationId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PatchConversationsCallParticipantCommunicationPostflowaction")
+	}
+	// verify the required parameter 'participantId' is set
+	if &participantId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'participantId' when calling ConversationsApi->PatchConversationsCallParticipantCommunicationPostflowaction")
+	}
+	// verify the required parameter 'communicationId' is set
+	if &communicationId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'communicationId' when calling ConversationsApi->PatchConversationsCallParticipantCommunicationPostflowaction")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
 }
 
 // PatchConversationsCallParticipantConsult invokes PATCH /api/v2/conversations/calls/{conversationId}/participants/{participantId}/consult

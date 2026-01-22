@@ -381,7 +381,7 @@ func (a UsersRulesApi) GetUsersRuleDependents(ruleId string, pageSize int, pageN
 // Get the list of users rules
 //
 // Preview: GetUsersRules is a preview method and is subject to both breaking and non-breaking changes at any time without notice
-func (a UsersRulesApi) GetUsersRules(types []string, pageNumber int, pageSize int, expand []string, searchTerm string, sortOrder string) (*Usersrulesrulelist, *APIResponse, error) {
+func (a UsersRulesApi) GetUsersRules(types []string, pageNumber int, pageSize int, expand []string, enabled bool, searchTerm string, sortOrder string) (*Usersrulesrulelist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/rules"
@@ -420,6 +420,8 @@ func (a UsersRulesApi) GetUsersRules(types []string, pageNumber int, pageSize in
 	queryParams["types"] = a.Configuration.APIClient.ParameterToString(types, "multi")
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
+	
+	queryParams["enabled"] = a.Configuration.APIClient.ParameterToString(enabled, "")
 	
 	queryParams["searchTerm"] = a.Configuration.APIClient.ParameterToString(searchTerm, "")
 	

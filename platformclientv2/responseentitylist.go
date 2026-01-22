@@ -23,6 +23,9 @@ type Responseentitylist struct {
 	// Total
 	Total *int `json:"total,omitempty"`
 
+	// PageCount - Total number of pages
+	PageCount *int `json:"pageCount,omitempty"`
+
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
 
@@ -37,9 +40,6 @@ type Responseentitylist struct {
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
-
-	// PageCount
-	PageCount *int `json:"pageCount,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -113,6 +113,8 @@ func (o Responseentitylist) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
+		PageCount *int `json:"pageCount,omitempty"`
+		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
 		PreviousUri *string `json:"previousUri,omitempty"`
@@ -122,8 +124,6 @@ func (o Responseentitylist) MarshalJSON() ([]byte, error) {
 		LastUri *string `json:"lastUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		
-		PageCount *int `json:"pageCount,omitempty"`
 		Alias
 	}{ 
 		Entities: o.Entities,
@@ -134,6 +134,8 @@ func (o Responseentitylist) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
+		PageCount: o.PageCount,
+		
 		FirstUri: o.FirstUri,
 		
 		PreviousUri: o.PreviousUri,
@@ -143,8 +145,6 @@ func (o Responseentitylist) MarshalJSON() ([]byte, error) {
 		LastUri: o.LastUri,
 		
 		SelfUri: o.SelfUri,
-		
-		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
 	})
 }
@@ -176,6 +176,11 @@ func (o *Responseentitylist) UnmarshalJSON(b []byte) error {
 		o.Total = &TotalInt
 	}
 	
+	if PageCount, ok := ResponseentitylistMap["pageCount"].(float64); ok {
+		PageCountInt := int(PageCount)
+		o.PageCount = &PageCountInt
+	}
+	
 	if FirstUri, ok := ResponseentitylistMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
@@ -196,11 +201,6 @@ func (o *Responseentitylist) UnmarshalJSON(b []byte) error {
 		o.SelfUri = &SelfUri
 	}
     
-	if PageCount, ok := ResponseentitylistMap["pageCount"].(float64); ok {
-		PageCountInt := int(PageCount)
-		o.PageCount = &PageCountInt
-	}
-	
 
 	return nil
 }

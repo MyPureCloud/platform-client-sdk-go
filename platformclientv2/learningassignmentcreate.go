@@ -12,6 +12,9 @@ import (
 type Learningassignmentcreate struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
+	// AddToSchedule - If True, adds the assignment to their schedule
+	AddToSchedule *bool `json:"addToSchedule,omitempty"`
+
 	// ModuleId - The Learning module Id associated with this assignment
 	ModuleId *string `json:"moduleId,omitempty"`
 
@@ -96,6 +99,8 @@ func (o Learningassignmentcreate) MarshalJSON() ([]byte, error) {
 	}
 	
 	return json.Marshal(&struct { 
+		AddToSchedule *bool `json:"addToSchedule,omitempty"`
+		
 		ModuleId *string `json:"moduleId,omitempty"`
 		
 		UserId *string `json:"userId,omitempty"`
@@ -105,6 +110,8 @@ func (o Learningassignmentcreate) MarshalJSON() ([]byte, error) {
 		LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
 		Alias
 	}{ 
+		AddToSchedule: o.AddToSchedule,
+		
 		ModuleId: o.ModuleId,
 		
 		UserId: o.UserId,
@@ -123,6 +130,10 @@ func (o *Learningassignmentcreate) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if AddToSchedule, ok := LearningassignmentcreateMap["addToSchedule"].(bool); ok {
+		o.AddToSchedule = &AddToSchedule
+	}
+    
 	if ModuleId, ok := LearningassignmentcreateMap["moduleId"].(string); ok {
 		o.ModuleId = &ModuleId
 	}

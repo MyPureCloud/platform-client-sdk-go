@@ -1240,7 +1240,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsConversationSummaries(c
 // GetSpeechandtextanalyticsDictionaryfeedback invokes GET /api/v2/speechandtextanalytics/dictionaryfeedback
 //
 // Get the list of Speech & Text Analytics dictionary feedbacks
-func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsDictionaryfeedback(dialect string, nextPage string, pageSize int) (*Dictionaryfeedbackentitylisting, *APIResponse, error) {
+func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsDictionaryfeedback(dialect string, transcriptionEngine string, nextPage string, pageSize int) (*Dictionaryfeedbackentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/speechandtextanalytics/dictionaryfeedback"
@@ -1268,6 +1268,8 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsDictionaryfeedback(dial
 	}
 	
 	queryParams["dialect"] = a.Configuration.APIClient.ParameterToString(dialect, "")
+	
+	queryParams["transcriptionEngine"] = a.Configuration.APIClient.ParameterToString(transcriptionEngine, "")
 	
 	queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, "")
 	
@@ -1732,7 +1734,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgramTranscriptioneng
 // GetSpeechandtextanalyticsPrograms invokes GET /api/v2/speechandtextanalytics/programs
 //
 // Get the list of Speech & Text Analytics programs
-func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsPrograms(nextPage string, pageSize int, state string) (*Programsentitylisting, *APIResponse, error) {
+func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsPrograms(nextPage string, pageSize int, state string, name string, sortBy string, sortOrder string) (*Programsentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/speechandtextanalytics/programs"
@@ -1764,6 +1766,12 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsPrograms(nextPage strin
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 	queryParams["state"] = a.Configuration.APIClient.ParameterToString(state, "")
+	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
+	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
+	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

@@ -123,6 +123,9 @@ type Queueconversationvideoeventtopicparticipant struct {
 	// InternalMessages
 	InternalMessages *[]Queueconversationvideoeventtopicinternalmessage `json:"internalMessages,omitempty"`
 
+	// ScreenMonitorings
+	ScreenMonitorings *[]Queueconversationvideoeventtopicscreenmonitoring `json:"screenMonitorings,omitempty"`
+
 	// Screenshares
 	Screenshares *[]Queueconversationvideoeventtopicscreenshare `json:"screenshares,omitempty"`
 
@@ -305,6 +308,8 @@ func (o Queueconversationvideoeventtopicparticipant) MarshalJSON() ([]byte, erro
 		
 		InternalMessages *[]Queueconversationvideoeventtopicinternalmessage `json:"internalMessages,omitempty"`
 		
+		ScreenMonitorings *[]Queueconversationvideoeventtopicscreenmonitoring `json:"screenMonitorings,omitempty"`
+		
 		Screenshares *[]Queueconversationvideoeventtopicscreenshare `json:"screenshares,omitempty"`
 		
 		SocialExpressions *[]Queueconversationvideoeventtopicsocialexpression `json:"socialExpressions,omitempty"`
@@ -387,6 +392,8 @@ func (o Queueconversationvideoeventtopicparticipant) MarshalJSON() ([]byte, erro
 		Messages: o.Messages,
 		
 		InternalMessages: o.InternalMessages,
+		
+		ScreenMonitorings: o.ScreenMonitorings,
 		
 		Screenshares: o.Screenshares,
 		
@@ -569,6 +576,11 @@ func (o *Queueconversationvideoeventtopicparticipant) UnmarshalJSON(b []byte) er
 	if InternalMessages, ok := QueueconversationvideoeventtopicparticipantMap["internalMessages"].([]interface{}); ok {
 		InternalMessagesString, _ := json.Marshal(InternalMessages)
 		json.Unmarshal(InternalMessagesString, &o.InternalMessages)
+	}
+	
+	if ScreenMonitorings, ok := QueueconversationvideoeventtopicparticipantMap["screenMonitorings"].([]interface{}); ok {
+		ScreenMonitoringsString, _ := json.Marshal(ScreenMonitorings)
+		json.Unmarshal(ScreenMonitoringsString, &o.ScreenMonitorings)
 	}
 	
 	if Screenshares, ok := QueueconversationvideoeventtopicparticipantMap["screenshares"].([]interface{}); ok {

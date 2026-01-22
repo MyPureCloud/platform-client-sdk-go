@@ -2400,6 +2400,91 @@ func (a QualityApi) GetQualityFormsEvaluations(pageSize int, pageNumber int, sor
 	return successPayload, response, err
 }
 
+// GetQualityFormsEvaluationsBulk invokes GET /api/v2/quality/forms/evaluations/bulk
+//
+// Retrieve a list of evaluation forms by their ids
+func (a QualityApi) GetQualityFormsEvaluationsBulk(id []string, includeLatestVersionFormName bool) (*Evaluationformresponseentitylisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/quality/forms/evaluations/bulk"
+	defaultReturn := new(Evaluationformresponseentitylisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'id' is set
+	if &id == nil {
+		// true
+		return defaultReturn, nil, errors.New("Missing required parameter 'id' when calling QualityApi->GetQualityFormsEvaluationsBulk")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
+	
+	queryParams["includeLatestVersionFormName"] = a.Configuration.APIClient.ParameterToString(includeLatestVersionFormName, "")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Evaluationformresponseentitylisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Evaluationformresponseentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // GetQualityFormsEvaluationsBulkContexts invokes GET /api/v2/quality/forms/evaluations/bulk/contexts
 //
 // Retrieve a list of the latest published evaluation form versions by context ids
@@ -4603,6 +4688,92 @@ func (a QualityApi) PostQualityEvaluationsScoring(body Evaluationformandscorings
 	return successPayload, response, err
 }
 
+// PostQualityEvaluationsSearch invokes POST /api/v2/quality/evaluations/search
+//
+// Search evaluations based along specified criteria
+//
+// Search Rules: 1. Time Range    - Time Range: Max 3 months (required) 2. Question Group Level Query: Use at least one field containing &#39;questionGroup&#39; in name + exactly one questionGroupId 3. Question Level Query: Use at least one field containing &#39;question&#39; in name + exactly one questionId 4. Mixed Queries: questionId alone is sufficient 5. Search Logic:    - Multiple criteria: AND operation    - Multiple values per criterion: OR operation    EXAMPLE: (agentId₁ OR agentId₂) AND (evaluatorId₁ OR evaluatorId₂) 5. Aggregations:    - Omit or set pageSize &#x3D; 0    - Choose: multiple aggregations OR single aggregation with multiple sub-aggregations    - To aggregate against question fields, one must query by either a questionId OR a single top level TERM questionId aggregation AND query by a single formID or questionGroupId, or list of questionIds    - To aggregate against question group fields, one must query either a questionId/questionGroupId OR a single top level TERM questionGroupId aggregation AND query by a single formID or list of questionGroupIds 
+func (a QualityApi) PostQualityEvaluationsSearch(body Evaluationsearchrequestdto) (*Evaluationsearchresponse, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/quality/evaluations/search"
+	defaultReturn := new(Evaluationsearchresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling QualityApi->PostQualityEvaluationsSearch")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Evaluationsearchresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Evaluationsearchresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // PostQualityForms invokes POST /api/v2/quality/forms
 //
 // Create an evaluation form.
@@ -5195,6 +5366,90 @@ func (a QualityApi) PostQualityPublishedformsSurveys(body Publishform) (*Surveyf
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Surveyform" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostQualitySurveys invokes POST /api/v2/quality/surveys
+//
+// Create a survey for a conversation
+func (a QualityApi) PostQualitySurveys(body Createsurveyrequest) (*Survey, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/quality/surveys"
+	defaultReturn := new(Survey)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling QualityApi->PostQualitySurveys")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Survey
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Survey" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

@@ -17,6 +17,9 @@ type Learningassignmentreschedule struct {
 
 	// LengthInMinutes - The length in minutes of the assignment
 	LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
+
+	// AddToSchedule - If True, adds the assignment to their schedule
+	AddToSchedule *bool `json:"addToSchedule,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -93,11 +96,15 @@ func (o Learningassignmentreschedule) MarshalJSON() ([]byte, error) {
 		DateRecommendedForCompletion *string `json:"dateRecommendedForCompletion,omitempty"`
 		
 		LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
+		
+		AddToSchedule *bool `json:"addToSchedule,omitempty"`
 		Alias
 	}{ 
 		DateRecommendedForCompletion: DateRecommendedForCompletion,
 		
 		LengthInMinutes: o.LengthInMinutes,
+		
+		AddToSchedule: o.AddToSchedule,
 		Alias:    (Alias)(o),
 	})
 }
@@ -119,6 +126,10 @@ func (o *Learningassignmentreschedule) UnmarshalJSON(b []byte) error {
 		o.LengthInMinutes = &LengthInMinutesInt
 	}
 	
+	if AddToSchedule, ok := LearningassignmentrescheduleMap["addToSchedule"].(bool); ok {
+		o.AddToSchedule = &AddToSchedule
+	}
+    
 
 	return nil
 }

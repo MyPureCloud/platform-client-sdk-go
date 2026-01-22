@@ -39,6 +39,15 @@ type Listeddictionaryfeedback struct {
 	// ModifiedBy - The Id of the user who modified the dictionary feedback
 	ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
 
+	// TranscriptionEngine - The transcription engine for the dictionary feedback. Only returned when GenesysExtended feature is enabled.
+	TranscriptionEngine *string `json:"transcriptionEngine,omitempty"`
+
+	// Status - The status of the dictionary feedback. Only returned when GenesysExtended feature is enabled.
+	Status *string `json:"status,omitempty"`
+
+	// DisplayAs - The display name for the dictionary feedback. Only returned when GenesysExtended feature is enabled. This field is only valid for Extended Services transcription engine.
+	DisplayAs *string `json:"displayAs,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -140,6 +149,12 @@ func (o Listeddictionaryfeedback) MarshalJSON() ([]byte, error) {
 		
 		ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
 		
+		TranscriptionEngine *string `json:"transcriptionEngine,omitempty"`
+		
+		Status *string `json:"status,omitempty"`
+		
+		DisplayAs *string `json:"displayAs,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -160,6 +175,12 @@ func (o Listeddictionaryfeedback) MarshalJSON() ([]byte, error) {
 		DateModified: DateModified,
 		
 		ModifiedBy: o.ModifiedBy,
+		
+		TranscriptionEngine: o.TranscriptionEngine,
+		
+		Status: o.Status,
+		
+		DisplayAs: o.DisplayAs,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -214,6 +235,18 @@ func (o *Listeddictionaryfeedback) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ModifiedByString, &o.ModifiedBy)
 	}
 	
+	if TranscriptionEngine, ok := ListeddictionaryfeedbackMap["transcriptionEngine"].(string); ok {
+		o.TranscriptionEngine = &TranscriptionEngine
+	}
+    
+	if Status, ok := ListeddictionaryfeedbackMap["status"].(string); ok {
+		o.Status = &Status
+	}
+    
+	if DisplayAs, ok := ListeddictionaryfeedbackMap["displayAs"].(string); ok {
+		o.DisplayAs = &DisplayAs
+	}
+    
 	if SelfUri, ok := ListeddictionaryfeedbackMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

@@ -51,6 +51,9 @@ type Learningmodule struct {
 	// ReviewAssessmentResults - Allows to view Assessment results in detail
 	ReviewAssessmentResults *Reviewassessmentresults `json:"reviewAssessmentResults,omitempty"`
 
+	// AutoAssign - The auto assignment settings for this module
+	AutoAssign *Learningmoduleautoassignresponse `json:"autoAssign,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -196,6 +199,8 @@ func (o Learningmodule) MarshalJSON() ([]byte, error) {
 		
 		ReviewAssessmentResults *Reviewassessmentresults `json:"reviewAssessmentResults,omitempty"`
 		
+		AutoAssign *Learningmoduleautoassignresponse `json:"autoAssign,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
 		IsArchived *bool `json:"isArchived,omitempty"`
@@ -248,6 +253,8 @@ func (o Learningmodule) MarshalJSON() ([]byte, error) {
 		EnforceContentOrder: o.EnforceContentOrder,
 		
 		ReviewAssessmentResults: o.ReviewAssessmentResults,
+		
+		AutoAssign: o.AutoAssign,
 		
 		SelfUri: o.SelfUri,
 		
@@ -342,6 +349,11 @@ func (o *Learningmodule) UnmarshalJSON(b []byte) error {
 	if ReviewAssessmentResults, ok := LearningmoduleMap["reviewAssessmentResults"].(map[string]interface{}); ok {
 		ReviewAssessmentResultsString, _ := json.Marshal(ReviewAssessmentResults)
 		json.Unmarshal(ReviewAssessmentResultsString, &o.ReviewAssessmentResults)
+	}
+	
+	if AutoAssign, ok := LearningmoduleMap["autoAssign"].(map[string]interface{}); ok {
+		AutoAssignString, _ := json.Marshal(AutoAssign)
+		json.Unmarshal(AutoAssignString, &o.AutoAssign)
 	}
 	
 	if SelfUri, ok := LearningmoduleMap["selfUri"].(string); ok {

@@ -39,10 +39,19 @@ type Dictionaryfeedback struct {
 	// ModifiedBy - The Id of the user who modified the dictionary feedback
 	ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
 
-	// ExamplePhrases - A list of at least 3 and up to 20 unique phrases that are example usage of the term
+	// TranscriptionEngine - The transcription engine for the dictionary feedback. Only returned when GenesysExtended feature is enabled.
+	TranscriptionEngine *string `json:"transcriptionEngine,omitempty"`
+
+	// Status - The status of the dictionary feedback. Only returned when GenesysExtended feature is enabled.
+	Status *string `json:"status,omitempty"`
+
+	// DisplayAs - The display name for the dictionary feedback. Only returned when GenesysExtended feature is enabled. This field is only valid for Extended Services transcription engine.
+	DisplayAs *string `json:"displayAs,omitempty"`
+
+	// ExamplePhrases - A list of at least 3 and up to 20 unique phrases that are example usage of the term. This field is only valid and required for Genesys transcription engine.
 	ExamplePhrases *[]Dictionaryfeedbackexamplephrase `json:"examplePhrases,omitempty"`
 
-	// SoundsLike - A list of up to 10 terms that give examples of how the term sounds
+	// SoundsLike - A list of up to 10 terms that give examples of how the term sounds. This field is only valid for Genesys transcription engine.
 	SoundsLike *[]string `json:"soundsLike,omitempty"`
 
 	// SelfUri - The URI for this object
@@ -146,6 +155,12 @@ func (o Dictionaryfeedback) MarshalJSON() ([]byte, error) {
 		
 		ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
 		
+		TranscriptionEngine *string `json:"transcriptionEngine,omitempty"`
+		
+		Status *string `json:"status,omitempty"`
+		
+		DisplayAs *string `json:"displayAs,omitempty"`
+		
 		ExamplePhrases *[]Dictionaryfeedbackexamplephrase `json:"examplePhrases,omitempty"`
 		
 		SoundsLike *[]string `json:"soundsLike,omitempty"`
@@ -170,6 +185,12 @@ func (o Dictionaryfeedback) MarshalJSON() ([]byte, error) {
 		DateModified: DateModified,
 		
 		ModifiedBy: o.ModifiedBy,
+		
+		TranscriptionEngine: o.TranscriptionEngine,
+		
+		Status: o.Status,
+		
+		DisplayAs: o.DisplayAs,
 		
 		ExamplePhrases: o.ExamplePhrases,
 		
@@ -228,6 +249,18 @@ func (o *Dictionaryfeedback) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ModifiedByString, &o.ModifiedBy)
 	}
 	
+	if TranscriptionEngine, ok := DictionaryfeedbackMap["transcriptionEngine"].(string); ok {
+		o.TranscriptionEngine = &TranscriptionEngine
+	}
+    
+	if Status, ok := DictionaryfeedbackMap["status"].(string); ok {
+		o.Status = &Status
+	}
+    
+	if DisplayAs, ok := DictionaryfeedbackMap["displayAs"].(string); ok {
+		o.DisplayAs = &DisplayAs
+	}
+    
 	if ExamplePhrases, ok := DictionaryfeedbackMap["examplePhrases"].([]interface{}); ok {
 		ExamplePhrasesString, _ := json.Marshal(ExamplePhrases)
 		json.Unmarshal(ExamplePhrasesString, &o.ExamplePhrases)

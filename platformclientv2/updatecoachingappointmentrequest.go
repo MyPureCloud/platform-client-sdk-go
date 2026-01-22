@@ -44,6 +44,9 @@ type Updatecoachingappointmentrequest struct {
 
 	// ShareInsightsData - Whether to share the insight data
 	ShareInsightsData *bool `json:"shareInsightsData,omitempty"`
+
+	// AddToSchedule - If True, adds the appointment to their schedule
+	AddToSchedule *bool `json:"addToSchedule,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -138,6 +141,8 @@ func (o Updatecoachingappointmentrequest) MarshalJSON() ([]byte, error) {
 		Location *string `json:"location,omitempty"`
 		
 		ShareInsightsData *bool `json:"shareInsightsData,omitempty"`
+		
+		AddToSchedule *bool `json:"addToSchedule,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -161,6 +166,8 @@ func (o Updatecoachingappointmentrequest) MarshalJSON() ([]byte, error) {
 		Location: o.Location,
 		
 		ShareInsightsData: o.ShareInsightsData,
+		
+		AddToSchedule: o.AddToSchedule,
 		Alias:    (Alias)(o),
 	})
 }
@@ -220,6 +227,10 @@ func (o *Updatecoachingappointmentrequest) UnmarshalJSON(b []byte) error {
     
 	if ShareInsightsData, ok := UpdatecoachingappointmentrequestMap["shareInsightsData"].(bool); ok {
 		o.ShareInsightsData = &ShareInsightsData
+	}
+    
+	if AddToSchedule, ok := UpdatecoachingappointmentrequestMap["addToSchedule"].(bool); ok {
+		o.AddToSchedule = &AddToSchedule
 	}
     
 

@@ -17,6 +17,9 @@ type Bucopyschedulerequest struct {
 
 	// WeekDate - The start weekDate for the new copy of the schedule. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
 	WeekDate *time.Time `json:"weekDate,omitempty"`
+
+	// IncludeForecast - Whether to include the forecast while copying the schedule
+	IncludeForecast *bool `json:"includeForecast,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -92,11 +95,15 @@ func (o Bucopyschedulerequest) MarshalJSON() ([]byte, error) {
 		Description *string `json:"description,omitempty"`
 		
 		WeekDate *string `json:"weekDate,omitempty"`
+		
+		IncludeForecast *bool `json:"includeForecast,omitempty"`
 		Alias
 	}{ 
 		Description: o.Description,
 		
 		WeekDate: WeekDate,
+		
+		IncludeForecast: o.IncludeForecast,
 		Alias:    (Alias)(o),
 	})
 }
@@ -117,6 +124,10 @@ func (o *Bucopyschedulerequest) UnmarshalJSON(b []byte) error {
 		o.WeekDate = &WeekDate
 	}
 	
+	if IncludeForecast, ok := BucopyschedulerequestMap["includeForecast"].(bool); ok {
+		o.IncludeForecast = &IncludeForecast
+	}
+    
 
 	return nil
 }

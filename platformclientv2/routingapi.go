@@ -11678,7 +11678,7 @@ func (a RoutingApi) PostRoutingSkillgroups(body Skillgroupwithmemberdivisions) (
 // PostRoutingSkills invokes POST /api/v2/routing/skills
 //
 // Create Skill
-func (a RoutingApi) PostRoutingSkills(body Routingskill) (*Routingskill, *APIResponse, error) {
+func (a RoutingApi) PostRoutingSkills(body Createroutingskill) (*Routingskill, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/skills"
