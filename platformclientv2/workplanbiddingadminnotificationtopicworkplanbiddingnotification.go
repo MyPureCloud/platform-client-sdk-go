@@ -20,6 +20,9 @@ type Workplanbiddingadminnotificationtopicworkplanbiddingnotification struct {
 	// Status
 	Status *string `json:"status,omitempty"`
 
+	// BidType
+	BidType *string `json:"bidType,omitempty"`
+
 	// BidWindowStartDate
 	BidWindowStartDate *string `json:"bidWindowStartDate,omitempty"`
 
@@ -108,6 +111,8 @@ func (o Workplanbiddingadminnotificationtopicworkplanbiddingnotification) Marsha
 		
 		Status *string `json:"status,omitempty"`
 		
+		BidType *string `json:"bidType,omitempty"`
+		
 		BidWindowStartDate *string `json:"bidWindowStartDate,omitempty"`
 		
 		BidWindowEndDate *string `json:"bidWindowEndDate,omitempty"`
@@ -126,6 +131,8 @@ func (o Workplanbiddingadminnotificationtopicworkplanbiddingnotification) Marsha
 		BuId: o.BuId,
 		
 		Status: o.Status,
+		
+		BidType: o.BidType,
 		
 		BidWindowStartDate: o.BidWindowStartDate,
 		
@@ -159,6 +166,10 @@ func (o *Workplanbiddingadminnotificationtopicworkplanbiddingnotification) Unmar
     
 	if Status, ok := WorkplanbiddingadminnotificationtopicworkplanbiddingnotificationMap["status"].(string); ok {
 		o.Status = &Status
+	}
+    
+	if BidType, ok := WorkplanbiddingadminnotificationtopicworkplanbiddingnotificationMap["bidType"].(string); ok {
+		o.BidType = &BidType
 	}
     
 	if BidWindowStartDate, ok := WorkplanbiddingadminnotificationtopicworkplanbiddingnotificationMap["bidWindowStartDate"].(string); ok {

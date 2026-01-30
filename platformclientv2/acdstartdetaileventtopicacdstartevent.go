@@ -79,6 +79,9 @@ type Acdstartdetaileventtopicacdstartevent struct {
 
 	// RequestedRoutingSkillIds
 	RequestedRoutingSkillIds *[]string `json:"requestedRoutingSkillIds,omitempty"`
+
+	// SkillExpressionApplied
+	SkillExpressionApplied *bool `json:"skillExpressionApplied,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -189,6 +192,8 @@ func (o Acdstartdetaileventtopicacdstartevent) MarshalJSON() ([]byte, error) {
 		RoutingPriority *int `json:"routingPriority,omitempty"`
 		
 		RequestedRoutingSkillIds *[]string `json:"requestedRoutingSkillIds,omitempty"`
+		
+		SkillExpressionApplied *bool `json:"skillExpressionApplied,omitempty"`
 		Alias
 	}{ 
 		EventTime: o.EventTime,
@@ -236,6 +241,8 @@ func (o Acdstartdetaileventtopicacdstartevent) MarshalJSON() ([]byte, error) {
 		RoutingPriority: o.RoutingPriority,
 		
 		RequestedRoutingSkillIds: o.RequestedRoutingSkillIds,
+		
+		SkillExpressionApplied: o.SkillExpressionApplied,
 		Alias:    (Alias)(o),
 	})
 }
@@ -346,6 +353,10 @@ func (o *Acdstartdetaileventtopicacdstartevent) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(RequestedRoutingSkillIdsString, &o.RequestedRoutingSkillIds)
 	}
 	
+	if SkillExpressionApplied, ok := AcdstartdetaileventtopicacdstarteventMap["skillExpressionApplied"].(bool); ok {
+		o.SkillExpressionApplied = &SkillExpressionApplied
+	}
+    
 
 	return nil
 }

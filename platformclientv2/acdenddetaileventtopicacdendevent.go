@@ -83,6 +83,9 @@ type Acdenddetaileventtopicacdendevent struct {
 	// RequestedRoutingSkillIds
 	RequestedRoutingSkillIds *[]string `json:"requestedRoutingSkillIds,omitempty"`
 
+	// RequestedSkillExpressionIds
+	RequestedSkillExpressionIds *[]string `json:"requestedSkillExpressionIds,omitempty"`
+
 	// RequestedLanguageId
 	RequestedLanguageId *string `json:"requestedLanguageId,omitempty"`
 
@@ -219,6 +222,8 @@ func (o Acdenddetaileventtopicacdendevent) MarshalJSON() ([]byte, error) {
 		
 		RequestedRoutingSkillIds *[]string `json:"requestedRoutingSkillIds,omitempty"`
 		
+		RequestedSkillExpressionIds *[]string `json:"requestedSkillExpressionIds,omitempty"`
+		
 		RequestedLanguageId *string `json:"requestedLanguageId,omitempty"`
 		
 		RequestedRoutingUserIds *[]string `json:"requestedRoutingUserIds,omitempty"`
@@ -283,6 +288,8 @@ func (o Acdenddetaileventtopicacdendevent) MarshalJSON() ([]byte, error) {
 		UsedRouting: o.UsedRouting,
 		
 		RequestedRoutingSkillIds: o.RequestedRoutingSkillIds,
+		
+		RequestedSkillExpressionIds: o.RequestedSkillExpressionIds,
 		
 		RequestedLanguageId: o.RequestedLanguageId,
 		
@@ -409,6 +416,11 @@ func (o *Acdenddetaileventtopicacdendevent) UnmarshalJSON(b []byte) error {
 	if RequestedRoutingSkillIds, ok := AcdenddetaileventtopicacdendeventMap["requestedRoutingSkillIds"].([]interface{}); ok {
 		RequestedRoutingSkillIdsString, _ := json.Marshal(RequestedRoutingSkillIds)
 		json.Unmarshal(RequestedRoutingSkillIdsString, &o.RequestedRoutingSkillIds)
+	}
+	
+	if RequestedSkillExpressionIds, ok := AcdenddetaileventtopicacdendeventMap["requestedSkillExpressionIds"].([]interface{}); ok {
+		RequestedSkillExpressionIdsString, _ := json.Marshal(RequestedSkillExpressionIds)
+		json.Unmarshal(RequestedSkillExpressionIdsString, &o.RequestedSkillExpressionIds)
 	}
 	
 	if RequestedLanguageId, ok := AcdenddetaileventtopicacdendeventMap["requestedLanguageId"].(string); ok {
