@@ -21441,7 +21441,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequ
 //
 // Fetches time off requests matching the conditions specified in the request body
 //
-// Request body requires one of the following: User ID is specified, statuses &#x3D;&#x3D; [Pending] or date range to be specified and less than or equal to 33 days.  All other fields are filters
+// Request body requires one of the following: statuses &#x3D;&#x3D; [Pending] or date range to be specified and less than or equal to 33 days. All other fields are filters
 func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequestsQuery(managementUnitId string, body Timeoffrequestquerybody, forceDownloadService bool) (*Timeoffrequestlisting, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

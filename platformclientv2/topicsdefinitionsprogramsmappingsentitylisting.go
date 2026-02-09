@@ -17,14 +17,14 @@ type Topicsdefinitionsprogramsmappingsentitylisting struct {
 	// PageSize
 	PageSize *int `json:"pageSize,omitempty"`
 
+	// PageCount
+	PageCount *int `json:"pageCount,omitempty"`
+
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
-
-	// PageCount
-	PageCount *int `json:"pageCount,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,22 +94,22 @@ func (o Topicsdefinitionsprogramsmappingsentitylisting) MarshalJSON() ([]byte, e
 		
 		PageSize *int `json:"pageSize,omitempty"`
 		
+		PageCount *int `json:"pageCount,omitempty"`
+		
 		NextUri *string `json:"nextUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		
-		PageCount *int `json:"pageCount,omitempty"`
 		Alias
 	}{ 
 		Entities: o.Entities,
 		
 		PageSize: o.PageSize,
 		
+		PageCount: o.PageCount,
+		
 		NextUri: o.NextUri,
 		
 		SelfUri: o.SelfUri,
-		
-		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
 	})
 }
@@ -131,6 +131,11 @@ func (o *Topicsdefinitionsprogramsmappingsentitylisting) UnmarshalJSON(b []byte)
 		o.PageSize = &PageSizeInt
 	}
 	
+	if PageCount, ok := TopicsdefinitionsprogramsmappingsentitylistingMap["pageCount"].(float64); ok {
+		PageCountInt := int(PageCount)
+		o.PageCount = &PageCountInt
+	}
+	
 	if NextUri, ok := TopicsdefinitionsprogramsmappingsentitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
@@ -139,11 +144,6 @@ func (o *Topicsdefinitionsprogramsmappingsentitylisting) UnmarshalJSON(b []byte)
 		o.SelfUri = &SelfUri
 	}
     
-	if PageCount, ok := TopicsdefinitionsprogramsmappingsentitylistingMap["pageCount"].(float64); ok {
-		PageCountInt := int(PageCount)
-		o.PageCount = &PageCountInt
-	}
-	
 
 	return nil
 }

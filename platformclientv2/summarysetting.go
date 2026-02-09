@@ -45,6 +45,15 @@ type Summarysetting struct {
 	// Prompt - Custom prompt of summary setting.
 	Prompt *string `json:"prompt,omitempty"`
 
+	// ServiceType - Service type for summarization. Can be 'Native' for Genesys native summarization engine or 'External' for external service. If specified as 'External', integrationId must be provided.
+	ServiceType *string `json:"serviceType,omitempty"`
+
+	// IntegrationId - Integration ID for the external summarization service. Required when serviceType is External.
+	IntegrationId *string `json:"integrationId,omitempty"`
+
+	// TimeoutDuration - Timeout duration in seconds for the external summarization service request.
+	TimeoutDuration *int `json:"timeoutDuration,omitempty"`
+
 	// DateCreated - The date and time the setting was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
@@ -156,6 +165,12 @@ func (o Summarysetting) MarshalJSON() ([]byte, error) {
 		
 		Prompt *string `json:"prompt,omitempty"`
 		
+		ServiceType *string `json:"serviceType,omitempty"`
+		
+		IntegrationId *string `json:"integrationId,omitempty"`
+		
+		TimeoutDuration *int `json:"timeoutDuration,omitempty"`
+		
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
 		DateModified *string `json:"dateModified,omitempty"`
@@ -184,6 +199,12 @@ func (o Summarysetting) MarshalJSON() ([]byte, error) {
 		SettingType: o.SettingType,
 		
 		Prompt: o.Prompt,
+		
+		ServiceType: o.ServiceType,
+		
+		IntegrationId: o.IntegrationId,
+		
+		TimeoutDuration: o.TimeoutDuration,
 		
 		DateCreated: DateCreated,
 		
@@ -249,6 +270,19 @@ func (o *Summarysetting) UnmarshalJSON(b []byte) error {
 		o.Prompt = &Prompt
 	}
     
+	if ServiceType, ok := SummarysettingMap["serviceType"].(string); ok {
+		o.ServiceType = &ServiceType
+	}
+    
+	if IntegrationId, ok := SummarysettingMap["integrationId"].(string); ok {
+		o.IntegrationId = &IntegrationId
+	}
+    
+	if TimeoutDuration, ok := SummarysettingMap["timeoutDuration"].(float64); ok {
+		TimeoutDurationInt := int(TimeoutDuration)
+		o.TimeoutDuration = &TimeoutDurationInt
+	}
+	
 	if dateCreatedString, ok := SummarysettingMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated

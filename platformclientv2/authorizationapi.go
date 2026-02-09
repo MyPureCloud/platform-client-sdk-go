@@ -3336,7 +3336,7 @@ func (a AuthorizationApi) PostAuthorizationDivisions(body Authzdivision) (*Authz
 // PostAuthorizationPoliciesTarget invokes POST /api/v2/authorization/policies/targets/{targetName}
 //
 // Add an access control policy for a specified resource target and subject
-func (a AuthorizationApi) PostAuthorizationPoliciesTarget(targetName string, body Authorizationpolicy) (*Authorizationpolicy, *APIResponse, error) {
+func (a AuthorizationApi) PostAuthorizationPoliciesTarget(targetName string, body Authorizationpolicy, skipLockoutCheck bool) (*Authorizationpolicy, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/policies/targets/{targetName}"
@@ -3373,6 +3373,8 @@ func (a AuthorizationApi) PostAuthorizationPoliciesTarget(targetName string, bod
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["skipLockoutCheck"] = a.Configuration.APIClient.ParameterToString(skipLockoutCheck, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -4387,7 +4389,7 @@ func (a AuthorizationApi) PutAuthorizationDivision(divisionId string, body Authz
 // PutAuthorizationPoliciesTarget invokes PUT /api/v2/authorization/policies/targets/{targetName}
 //
 // Add an access control policy for a specified resource target and subject, overwriting any existing policy
-func (a AuthorizationApi) PutAuthorizationPoliciesTarget(targetName string, body Authorizationpolicy) (*Authorizationpolicy, *APIResponse, error) {
+func (a AuthorizationApi) PutAuthorizationPoliciesTarget(targetName string, body Authorizationpolicy, skipLockoutCheck bool) (*Authorizationpolicy, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/policies/targets/{targetName}"
@@ -4424,6 +4426,8 @@ func (a AuthorizationApi) PutAuthorizationPoliciesTarget(targetName string, body
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["skipLockoutCheck"] = a.Configuration.APIClient.ParameterToString(skipLockoutCheck, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -4477,7 +4481,7 @@ func (a AuthorizationApi) PutAuthorizationPoliciesTarget(targetName string, body
 // PutAuthorizationPolicy invokes PUT /api/v2/authorization/policies/{policyId}
 //
 // Update an access control policy with a given ID
-func (a AuthorizationApi) PutAuthorizationPolicy(policyId string, body Authorizationpolicy) (*Authorizationpolicy, *APIResponse, error) {
+func (a AuthorizationApi) PutAuthorizationPolicy(policyId string, body Authorizationpolicy, skipLockoutCheck bool) (*Authorizationpolicy, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/policies/{policyId}"
@@ -4514,6 +4518,8 @@ func (a AuthorizationApi) PutAuthorizationPolicy(policyId string, body Authoriza
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["skipLockoutCheck"] = a.Configuration.APIClient.ParameterToString(skipLockoutCheck, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

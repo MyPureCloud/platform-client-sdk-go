@@ -10,8 +10,10 @@ docs/AgentUIApi.json
 docs/AlertingApi.json
 docs/AnalyticsApi.json
 docs/ArchitectApi.json
+docs/AssistantCopilotVariationsApi.json
 docs/AuditApi.json
 docs/AuthorizationApi.json
+docs/BackgroundAssistantApi.json
 docs/BillingApi.json
 docs/BusinessRulesApi.json
 docs/CarrierServicesApi.json
@@ -66,6 +68,7 @@ docs/DeleteArchitectSystempromptResource-example.txt
 docs/DeleteAssistant-example.txt
 docs/DeleteAssistantQueue-example.txt
 docs/DeleteAssistantQueues-example.txt
+docs/DeleteAssistantVariation-example.txt
 docs/DeleteAssistantsAgentchecklist-example.txt
 docs/DeleteAuthorizationDivision-example.txt
 docs/DeleteAuthorizationDivision-example.txt
@@ -324,6 +327,7 @@ docs/DeleteTelephonyProvidersEdgesTrunkbasesetting-example.txt
 docs/DeleteToken-example.txt
 docs/DeleteTokensMe-example.txt
 docs/DeleteUser-example.txt
+docs/DeleteUserCustomattribute-example.txt
 docs/DeleteUserExternalidAuthorityNameExternalKey-example.txt
 docs/DeleteUserRoutinglanguage-example.txt
 docs/DeleteUserRoutinglanguage-example.txt
@@ -335,6 +339,7 @@ docs/DeleteUserVerifier-example.txt
 docs/DeleteUserrecording-example.txt
 docs/DeleteUsersAgentuiAgentsAutoanswerAgentIdSettings-example.txt
 docs/DeleteUsersAgentuiAgentsAutoanswerAgentIdSettings-example.txt
+docs/DeleteUsersCustomattributesSchema-example.txt
 docs/DeleteUsersRule-example.txt
 docs/DeleteVoicemailMessage-example.txt
 docs/DeleteVoicemailMessages-example.txt
@@ -492,6 +497,8 @@ docs/GetAssistantCopilot-example.txt
 docs/GetAssistantQueue-example.txt
 docs/GetAssistantQueueUsersJob-example.txt
 docs/GetAssistantQueues-example.txt
+docs/GetAssistantVariation-example.txt
+docs/GetAssistantVariations-example.txt
 docs/GetAssistants-example.txt
 docs/GetAssistantsAgentchecklist-example.txt
 docs/GetAssistantsAgentchecklists-example.txt
@@ -1463,6 +1470,7 @@ docs/GetSpeechandtextanalyticsProgramsGeneralJob-example.txt
 docs/GetSpeechandtextanalyticsProgramsMappings-example.txt
 docs/GetSpeechandtextanalyticsProgramsPublishjob-example.txt
 docs/GetSpeechandtextanalyticsProgramsSettingsInsights-example.txt
+docs/GetSpeechandtextanalyticsProgramsTopiclinksJob-example.txt
 docs/GetSpeechandtextanalyticsProgramsTranscriptionenginesDialects-example.txt
 docs/GetSpeechandtextanalyticsProgramsUnpublished-example.txt
 docs/GetSpeechandtextanalyticsReprocessingJob-example.txt
@@ -1614,6 +1622,8 @@ docs/GetUsageSimplesearchExecutionIdResults-example.txt
 docs/GetUser-example.txt
 docs/GetUserAdjacents-example.txt
 docs/GetUserCallforwarding-example.txt
+docs/GetUserCustomattribute-example.txt
+docs/GetUserCustomattributesBulk-example.txt
 docs/GetUserDirectreports-example.txt
 docs/GetUserExternalid-example.txt
 docs/GetUserExternalidAuthorityName-example.txt
@@ -1651,6 +1661,13 @@ docs/GetUsers-example.txt
 docs/GetUsersAgentuiAgentsAutoanswerAgentIdSettings-example.txt
 docs/GetUsersAgentuiAgentsAutoanswerAgentIdSettings-example.txt
 docs/GetUsersChatsMe-example.txt
+docs/GetUsersCustomattributesSchema-example.txt
+docs/GetUsersCustomattributesSchemaVersion-example.txt
+docs/GetUsersCustomattributesSchemaVersions-example.txt
+docs/GetUsersCustomattributesSchemas-example.txt
+docs/GetUsersCustomattributesSchemasCoretype-example.txt
+docs/GetUsersCustomattributesSchemasCoretypes-example.txt
+docs/GetUsersCustomattributesSchemasLimits-example.txt
 docs/GetUsersDevelopmentActivities-example.txt
 docs/GetUsersDevelopmentActivitiesMe-example.txt
 docs/GetUsersDevelopmentActivity-example.txt
@@ -1979,6 +1996,7 @@ docs/PatchRecordingMediaretentionpolicy-example.txt
 docs/PatchRoutingConversation-example.txt
 docs/PatchRoutingEmailDomain-example.txt
 docs/PatchRoutingEmailDomainValidate-example.txt
+docs/PatchRoutingEmailOutboundDomain-example.txt
 docs/PatchRoutingPredictor-example.txt
 docs/PatchRoutingPredictorsKeyperformanceindicator-example.txt
 docs/PatchRoutingQueueMember-example.txt
@@ -2016,6 +2034,8 @@ docs/PatchTeam-example.txt
 docs/PatchTelephonyProvidersEdgesSiteSiteconnections-example.txt
 docs/PatchUser-example.txt
 docs/PatchUserCallforwarding-example.txt
+docs/PatchUserCustomattributes-example.txt
+docs/PatchUserCustomattributesBulk-example.txt
 docs/PatchUserGeolocation-example.txt
 docs/PatchUserGeolocation-example.txt
 docs/PatchUserPresence-example.txt
@@ -2138,6 +2158,7 @@ docs/PostAnalyticsSurveysAggregatesQuery-example.txt
 docs/PostAnalyticsSurveysAggregatesQuery-example.txt
 docs/PostAnalyticsTaskmanagementAggregatesJobs-example.txt
 docs/PostAnalyticsTaskmanagementAggregatesQuery-example.txt
+docs/PostAnalyticsTaskmanagementMetricsQuery-example.txt
 docs/PostAnalyticsTeamsActivityQuery-example.txt
 docs/PostAnalyticsTeamsActivityQuery-example.txt
 docs/PostAnalyticsTranscriptsAggregatesJobs-example.txt
@@ -2174,6 +2195,7 @@ docs/PostAssistantQueueUsersBulkAdd-example.txt
 docs/PostAssistantQueueUsersBulkRemove-example.txt
 docs/PostAssistantQueueUsersJobs-example.txt
 docs/PostAssistantQueueUsersQuery-example.txt
+docs/PostAssistantVariations-example.txt
 docs/PostAssistants-example.txt
 docs/PostAssistantsAgentchecklists-example.txt
 docs/PostAuditsQuery-example.txt
@@ -2200,6 +2222,7 @@ docs/PostAuthorizationSubjectBulkreplace-example.txt
 docs/PostAuthorizationSubjectBulkreplace-example.txt
 docs/PostAuthorizationSubjectDivisionRole-example.txt
 docs/PostAuthorizationSubjectDivisionRole-example.txt
+docs/PostBackgroundassistantToken-example.txt
 docs/PostBusinessrulesDecisiontableExecute-example.txt
 docs/PostBusinessrulesDecisiontableVersionCopy-example.txt
 docs/PostBusinessrulesDecisiontableVersionExecute-example.txt
@@ -2590,6 +2613,7 @@ docs/PostOutboundContactlistfilters-example.txt
 docs/PostOutboundContactlistfiltersBulkRetrieve-example.txt
 docs/PostOutboundContactlistfiltersPreview-example.txt
 docs/PostOutboundContactlists-example.txt
+docs/PostOutboundContactlistsUploads-example.txt
 docs/PostOutboundContactlisttemplates-example.txt
 docs/PostOutboundContactlisttemplatesBulkAdd-example.txt
 docs/PostOutboundContactlisttemplatesBulkRetrieve-example.txt
@@ -2599,6 +2623,7 @@ docs/PostOutboundDnclistEmailaddresses-example.txt
 docs/PostOutboundDnclistExport-example.txt
 docs/PostOutboundDnclistPhonenumbers-example.txt
 docs/PostOutboundDnclists-example.txt
+docs/PostOutboundDnclistsUploads-example.txt
 docs/PostOutboundFilespecificationtemplates-example.txt
 docs/PostOutboundImporttemplates-example.txt
 docs/PostOutboundImporttemplatesBulkAdd-example.txt
@@ -2655,6 +2680,7 @@ docs/PostRoutingEmailDomainRoutes-example.txt
 docs/PostRoutingEmailDomainTestconnection-example.txt
 docs/PostRoutingEmailDomainVerification-example.txt
 docs/PostRoutingEmailDomains-example.txt
+docs/PostRoutingEmailOutboundDomainTestconnection-example.txt
 docs/PostRoutingEmailOutboundDomains-example.txt
 docs/PostRoutingEmailOutboundDomainsSimulated-example.txt
 docs/PostRoutingLanguages-example.txt
@@ -2778,6 +2804,7 @@ docs/PostUserRoutinglanguages-example.txt
 docs/PostUserRoutingskills-example.txt
 docs/PostUserRoutingskills-example.txt
 docs/PostUsers-example.txt
+docs/PostUsersCustomattributesSchemas-example.txt
 docs/PostUsersDevelopmentActivitiesAggregatesQuery-example.txt
 docs/PostUsersMePassword-example.txt
 docs/PostUsersRules-example.txt
@@ -2919,6 +2946,7 @@ docs/PutArchitectSchedulegroup-example.txt
 docs/PutArchitectSystempromptResource-example.txt
 docs/PutAssistantCopilot-example.txt
 docs/PutAssistantQueue-example.txt
+docs/PutAssistantVariation-example.txt
 docs/PutAssistantsAgentchecklist-example.txt
 docs/PutAuthorizationDivision-example.txt
 docs/PutAuthorizationDivision-example.txt
@@ -3142,6 +3170,7 @@ docs/PutTelephonyProvidersEdgesSiteSiteconnections-example.txt
 docs/PutTelephonyProvidersEdgesTrunkbasesetting-example.txt
 docs/PutTokensTimeout-example.txt
 docs/PutUserCallforwarding-example.txt
+docs/PutUserCustomattributes-example.txt
 docs/PutUserGreetingsDefaults-example.txt
 docs/PutUserOutofoffice-example.txt
 docs/PutUserProfileskills-example.txt
@@ -3159,6 +3188,7 @@ docs/PutUserVerifier-example.txt
 docs/PutUserrecording-example.txt
 docs/PutUsersAgentuiAgentsAutoanswerAgentIdSettings-example.txt
 docs/PutUsersAgentuiAgentsAutoanswerAgentIdSettings-example.txt
+docs/PutUsersCustomattributesSchema-example.txt
 docs/PutUsersPresencesBulk-example.txt
 docs/PutVoicemailMessage-example.txt
 docs/PutVoicemailPolicy-example.txt
@@ -3177,7 +3207,6 @@ docs/RecordingApi.json
 docs/ResponseManagementApi.json
 docs/RoutingApi.json
 docs/SCIMApi.json
-docs/ScreenRecordingApi.json
 docs/ScriptsApi.json
 docs/SearchApi.json
 docs/SettingsApi.json
@@ -3555,6 +3584,9 @@ platformclientv2/assignmentvalidation.go
 platformclientv2/assignusers.go
 platformclientv2/assistancecondition.go
 platformclientv2/assistant.go
+platformclientv2/assistantcopilotvariation.go
+platformclientv2/assistantcopilotvariationlisting.go
+platformclientv2/assistantcopilotvariationsapi.go
 platformclientv2/assistantlisting.go
 platformclientv2/assistantqueue.go
 platformclientv2/assistantqueuelisting.go
@@ -3642,6 +3674,8 @@ platformclientv2/availabletimeoffresponse.go
 platformclientv2/availabletopic.go
 platformclientv2/availabletopicentitylisting.go
 platformclientv2/availabletranslations.go
+platformclientv2/backgroundassistantapi.go
+platformclientv2/backgroundassistantuserauthenticatedinfo.go
 platformclientv2/backgroundimagesettings.go
 platformclientv2/baseprogramentity.go
 platformclientv2/basetopicentitiy.go
@@ -3881,6 +3915,7 @@ platformclientv2/butimeoffplanlisting.go
 platformclientv2/butimeoffplanresponse.go
 platformclientv2/button.go
 platformclientv2/buttoncomponent.go
+platformclientv2/buttonquickreplypayload.go
 platformclientv2/buttonresponse.go
 platformclientv2/buupdateagentscheduleshift.go
 platformclientv2/buupdateagentscheduleuploadschema.go
@@ -4011,7 +4046,6 @@ platformclientv2/casemanagementaggregationsort.go
 platformclientv2/casemanagementaggregationview.go
 platformclientv2/casemanagementasyncaggregatequeryresponse.go
 platformclientv2/casemanagementasyncaggregationquery.go
-platformclientv2/casereference.go
 platformclientv2/categoriesentitylisting.go
 platformclientv2/categoriesfilter.go
 platformclientv2/category.go
@@ -4217,6 +4251,7 @@ platformclientv2/contactlistingresponse.go
 platformclientv2/contactlisttemplate.go
 platformclientv2/contactlisttemplatebulkretrievebody.go
 platformclientv2/contactlisttemplateentitylisting.go
+platformclientv2/contactlistuploadurlrequest.go
 platformclientv2/contactphonenumbercolumn.go
 platformclientv2/contactsbulkoperationjob.go
 platformclientv2/contactsbulkoperationjoblisting.go
@@ -5099,6 +5134,7 @@ platformclientv2/dnclistdownloadreadyobject.go
 platformclientv2/dnclistentitylisting.go
 platformclientv2/dnclistimportstatusimportstatus.go
 platformclientv2/dnclistimportstatusobject.go
+platformclientv2/dnclistuploadurlrequest.go
 platformclientv2/dncpatchcustomexclusioncolumnsrequest.go
 platformclientv2/dncpatchemailsrequest.go
 platformclientv2/dncpatchphonenumbersrequest.go
@@ -5865,6 +5901,7 @@ platformclientv2/importtemplate.go
 platformclientv2/importtemplateentitylisting.go
 platformclientv2/importtemplateimportstatusimportstatus.go
 platformclientv2/importtemplateimportstatusobject.go
+platformclientv2/inactivitytimeoutgroupbundle.go
 platformclientv2/inactivitytimeoutsettings.go
 platformclientv2/inbounddomain.go
 platformclientv2/inbounddomaincreaterequest.go
@@ -6677,7 +6714,6 @@ platformclientv2/oauthauthorization.go
 platformclientv2/oauthauthorizationlisting.go
 platformclientv2/oauthclient.go
 platformclientv2/oauthcliententitylisting.go
-platformclientv2/oauthclientlisting.go
 platformclientv2/oauthclientrequest.go
 platformclientv2/oauthlasttokenissued.go
 platformclientv2/oauthscope.go
@@ -6776,6 +6812,7 @@ platformclientv2/outbounddetaileventtopicoutboundinitevent.go
 platformclientv2/outbounddomain.go
 platformclientv2/outbounddomaincreaterequest.go
 platformclientv2/outbounddomainentitylisting.go
+platformclientv2/outbounddomainpatchrequest.go
 platformclientv2/outboundmessagingcampaignpostcontactemaileventtopicemailattributes.go
 platformclientv2/outboundmessagingcampaignpostcontactemaileventtopicoutboundmessagingcampaignpostcontactemailevent.go
 platformclientv2/outboundmessagingcampaignpostcontactsmseventtopicoutboundmessagingcampaignpostcontactsmsevent.go
@@ -7053,6 +7090,7 @@ platformclientv2/programjobrequest.go
 platformclientv2/programmappingsrequest.go
 platformclientv2/programrequest.go
 platformclientv2/programsentitylisting.go
+platformclientv2/programtopiclinksjob.go
 platformclientv2/programtopiclinkstestphrasedetectedphrase.go
 platformclientv2/programtopiclinkstestphrasematchedtranscript.go
 platformclientv2/programtopiclinkstesttopicphraseresults.go
@@ -7725,10 +7763,8 @@ platformclientv2/scorablesurvey.go
 platformclientv2/scoredagent.go
 platformclientv2/screenmonitoring.go
 platformclientv2/screenrecordingactivesessions.go
-platformclientv2/screenrecordingapi.go
 platformclientv2/screenrecordingmetadata.go
 platformclientv2/screenrecordingmetadatarequest.go
-platformclientv2/screenrecordinguserauthenticatedinfo.go
 platformclientv2/screenshare.go
 platformclientv2/script.go
 platformclientv2/scriptentitylisting.go
@@ -8057,6 +8093,7 @@ platformclientv2/surveyquestiongroup.go
 platformclientv2/surveyquestiongroupscore.go
 platformclientv2/surveyquestionscore.go
 platformclientv2/surveyscoringset.go
+platformclientv2/swaprowindexrequest.go
 platformclientv2/syncstatusrequest.go
 platformclientv2/systemmessageobject.go
 platformclientv2/systemmessagesystemmessage.go
@@ -8083,6 +8120,16 @@ platformclientv2/taskmanagementapi.go
 platformclientv2/taskmanagementasyncaggregatequeryresponse.go
 platformclientv2/taskmanagementasyncaggregationquery.go
 platformclientv2/taskmanagementerrordetails.go
+platformclientv2/taskmanagementobservationdatacontainer.go
+platformclientv2/taskmanagementobservationdetailcontainer.go
+platformclientv2/taskmanagementobservationgroupresult.go
+platformclientv2/taskmanagementobservationmetricstats.go
+platformclientv2/taskmanagementobservationpredicate.go
+platformclientv2/taskmanagementobservationquery.go
+platformclientv2/taskmanagementobservationqueryfilter.go
+platformclientv2/taskmanagementobservationqueryresponse.go
+platformclientv2/taskmanagementobservationresult.go
+platformclientv2/taskmanagementquerymetric.go
 platformclientv2/team.go
 platformclientv2/teamactivitydata.go
 platformclientv2/teamactivityentitydata.go
@@ -8451,6 +8498,7 @@ platformclientv2/userconversationseventuserconversationsummary.go
 platformclientv2/userconversationsummary.go
 platformclientv2/usercursorentitylisting.go
 platformclientv2/usercustomattributes.go
+platformclientv2/usercustomattributesupdaterequest.go
 platformclientv2/userdetailqueryclause.go
 platformclientv2/userdetailqueryfilter.go
 platformclientv2/userdetailquerypredicate.go
@@ -8522,11 +8570,13 @@ platformclientv2/usersearchrulepart.go
 platformclientv2/usersettingsforchat.go
 platformclientv2/userskillentitylisting.go
 platformclientv2/userskillgroupentitylisting.go
+platformclientv2/usersrulereference.go
 platformclientv2/usersrulesapi.go
 platformclientv2/usersrulescreaterulerequest.go
 platformclientv2/usersrulescriteria.go
 platformclientv2/usersrulesdependent.go
 platformclientv2/usersrulesdependentlist.go
+platformclientv2/usersrulesdependentrule.go
 platformclientv2/usersrulesgroupitem.go
 platformclientv2/usersruleslastrunmetadata.go
 platformclientv2/usersruleslockedcriteriasettingscriteria.go
@@ -8638,6 +8688,12 @@ platformclientv2/v2wemengagementcelebrationupdatestopiccontestwinnersusers.go
 platformclientv2/v2wemengagementcelebrationupdatestopicengagementcelebration.go
 platformclientv2/v2wemengagementcelebrationupdatestopicsourceentity.go
 platformclientv2/v2wemengagementcelebrationupdatestopicuserid.go
+platformclientv2/v2wfmmainforecastexportforecasteventmainforecasterrorbody.go
+platformclientv2/v2wfmmainforecastexportforecasteventmainforecastexportnotification.go
+platformclientv2/v2wfmmainforecastexporthistoricaleventmainforecasterrorbody.go
+platformclientv2/v2wfmmainforecastexporthistoricaleventmainforecastexportnotification.go
+platformclientv2/v2wfmmainforecastexportsnapshoteventmainforecasterrorbody.go
+platformclientv2/v2wfmmainforecastexportsnapshoteventmainforecastexportnotification.go
 platformclientv2/validateaddressrequest.go
 platformclientv2/validateaddressresponse.go
 platformclientv2/validateagentunavailabletimesrequest.go
@@ -9011,6 +9067,7 @@ platformclientv2/workdayvaluestrenditem.go
 platformclientv2/workflowtargetsettings.go
 platformclientv2/workforcemanagementapi.go
 platformclientv2/workitem.go
+platformclientv2/workitemcasereference.go
 platformclientv2/workitemchangelisting.go
 platformclientv2/workitemcommoncreate.go
 platformclientv2/workitemcreate.go

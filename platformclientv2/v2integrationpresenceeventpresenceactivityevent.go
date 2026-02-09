@@ -35,6 +35,9 @@ type V2integrationpresenceeventpresenceactivityevent struct {
 
 	// PreviousDisplaySourceId
 	PreviousDisplaySourceId *string `json:"previousDisplaySourceId,omitempty"`
+
+	// FuturePresenceDefinition
+	FuturePresenceDefinition *V2integrationpresenceeventorganizationpresence `json:"futurePresenceDefinition,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -123,6 +126,8 @@ func (o V2integrationpresenceeventpresenceactivityevent) MarshalJSON() ([]byte, 
 		CurrentDisplaySourceId *string `json:"currentDisplaySourceId,omitempty"`
 		
 		PreviousDisplaySourceId *string `json:"previousDisplaySourceId,omitempty"`
+		
+		FuturePresenceDefinition *V2integrationpresenceeventorganizationpresence `json:"futurePresenceDefinition,omitempty"`
 		Alias
 	}{ 
 		UserId: o.UserId,
@@ -140,6 +145,8 @@ func (o V2integrationpresenceeventpresenceactivityevent) MarshalJSON() ([]byte, 
 		CurrentDisplaySourceId: o.CurrentDisplaySourceId,
 		
 		PreviousDisplaySourceId: o.PreviousDisplaySourceId,
+		
+		FuturePresenceDefinition: o.FuturePresenceDefinition,
 		Alias:    (Alias)(o),
 	})
 }
@@ -185,6 +192,11 @@ func (o *V2integrationpresenceeventpresenceactivityevent) UnmarshalJSON(b []byte
 		o.PreviousDisplaySourceId = &PreviousDisplaySourceId
 	}
     
+	if FuturePresenceDefinition, ok := V2integrationpresenceeventpresenceactivityeventMap["futurePresenceDefinition"].(map[string]interface{}); ok {
+		FuturePresenceDefinitionString, _ := json.Marshal(FuturePresenceDefinition)
+		json.Unmarshal(FuturePresenceDefinitionString, &o.FuturePresenceDefinition)
+	}
+	
 
 	return nil
 }

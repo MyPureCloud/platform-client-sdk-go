@@ -11,11 +11,17 @@ import (
 type Cardparameters struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
+	// Index - Index of the card in the carousel template
+	Index *int `json:"index,omitempty"`
+
 	// BodyParameters - A list of Response Management carousel card body parameter substitutions for the response's messaging template
 	BodyParameters *[]Templateparameter `json:"bodyParameters,omitempty"`
 
 	// ButtonUrlParameters - A list of Response Management carousel card button URL parameter substitutions for the response's messaging template
 	ButtonUrlParameters *[]Templateparameter `json:"buttonUrlParameters,omitempty"`
+
+	// ButtonQuickReplyPayloads - A list of quick reply button payloads for the carousel card
+	ButtonQuickReplyPayloads *[]Buttonquickreplypayload `json:"buttonQuickReplyPayloads,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -81,14 +87,22 @@ func (o Cardparameters) MarshalJSON() ([]byte, error) {
 	type Alias Cardparameters
 	
 	return json.Marshal(&struct { 
+		Index *int `json:"index,omitempty"`
+		
 		BodyParameters *[]Templateparameter `json:"bodyParameters,omitempty"`
 		
 		ButtonUrlParameters *[]Templateparameter `json:"buttonUrlParameters,omitempty"`
+		
+		ButtonQuickReplyPayloads *[]Buttonquickreplypayload `json:"buttonQuickReplyPayloads,omitempty"`
 		Alias
 	}{ 
+		Index: o.Index,
+		
 		BodyParameters: o.BodyParameters,
 		
 		ButtonUrlParameters: o.ButtonUrlParameters,
+		
+		ButtonQuickReplyPayloads: o.ButtonQuickReplyPayloads,
 		Alias:    (Alias)(o),
 	})
 }
@@ -100,6 +114,11 @@ func (o *Cardparameters) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if Index, ok := CardparametersMap["index"].(float64); ok {
+		IndexInt := int(Index)
+		o.Index = &IndexInt
+	}
+	
 	if BodyParameters, ok := CardparametersMap["bodyParameters"].([]interface{}); ok {
 		BodyParametersString, _ := json.Marshal(BodyParameters)
 		json.Unmarshal(BodyParametersString, &o.BodyParameters)
@@ -108,6 +127,11 @@ func (o *Cardparameters) UnmarshalJSON(b []byte) error {
 	if ButtonUrlParameters, ok := CardparametersMap["buttonUrlParameters"].([]interface{}); ok {
 		ButtonUrlParametersString, _ := json.Marshal(ButtonUrlParameters)
 		json.Unmarshal(ButtonUrlParametersString, &o.ButtonUrlParameters)
+	}
+	
+	if ButtonQuickReplyPayloads, ok := CardparametersMap["buttonQuickReplyPayloads"].([]interface{}); ok {
+		ButtonQuickReplyPayloadsString, _ := json.Marshal(ButtonQuickReplyPayloads)
+		json.Unmarshal(ButtonQuickReplyPayloadsString, &o.ButtonQuickReplyPayloads)
 	}
 	
 

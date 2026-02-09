@@ -26,11 +26,11 @@ type Facebookdataingestionruleversionresponseentitylisting struct {
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
 
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
-
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
+
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
 
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
@@ -115,9 +115,9 @@ func (o Facebookdataingestionruleversionresponseentitylisting) MarshalJSON() ([]
 		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
-		PreviousUri *string `json:"previousUri,omitempty"`
-		
 		NextUri *string `json:"nextUri,omitempty"`
+		
+		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		LastUri *string `json:"lastUri,omitempty"`
 		
@@ -136,9 +136,9 @@ func (o Facebookdataingestionruleversionresponseentitylisting) MarshalJSON() ([]
 		
 		FirstUri: o.FirstUri,
 		
-		PreviousUri: o.PreviousUri,
-		
 		NextUri: o.NextUri,
+		
+		PreviousUri: o.PreviousUri,
 		
 		LastUri: o.LastUri,
 		
@@ -180,12 +180,12 @@ func (o *Facebookdataingestionruleversionresponseentitylisting) UnmarshalJSON(b 
 		o.FirstUri = &FirstUri
 	}
     
-	if PreviousUri, ok := FacebookdataingestionruleversionresponseentitylistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
-	}
-    
 	if NextUri, ok := FacebookdataingestionruleversionresponseentitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
+	}
+    
+	if PreviousUri, ok := FacebookdataingestionruleversionresponseentitylistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
 	}
     
 	if LastUri, ok := FacebookdataingestionruleversionresponseentitylistingMap["lastUri"].(string); ok {

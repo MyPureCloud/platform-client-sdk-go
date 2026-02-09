@@ -7,19 +7,31 @@ import (
 	"strings"
 )
 
-// Casereference
-type Casereference struct { 
+// V2wfmmainforecastexporthistoricaleventmainforecastexportnotification
+type V2wfmmainforecastexporthistoricaleventmainforecastexportnotification struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The globally unique identifier for the object.
+	// ExportType
+	ExportType *string `json:"exportType,omitempty"`
+
+	// BusinessUnitId
+	BusinessUnitId *string `json:"businessUnitId,omitempty"`
+
+	// Id
 	Id *string `json:"id,omitempty"`
 
-	// SelfUri - The URI for this object
-	SelfUri *string `json:"selfUri,omitempty"`
+	// Status
+	Status *string `json:"status,omitempty"`
+
+	// DownloadUrl
+	DownloadUrl *string `json:"downloadUrl,omitempty"`
+
+	// VarError
+	VarError *V2wfmmainforecastexporthistoricaleventmainforecasterrorbody `json:"error,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Casereference) SetField(field string, fieldValue interface{}) {
+func (o *V2wfmmainforecastexporthistoricaleventmainforecastexportnotification) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -40,7 +52,7 @@ func (o *Casereference) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Casereference) MarshalJSON() ([]byte, error) {
+func (o V2wfmmainforecastexporthistoricaleventmainforecastexportnotification) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -78,42 +90,75 @@ func (o Casereference) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Casereference
+	type Alias V2wfmmainforecastexporthistoricaleventmainforecastexportnotification
 	
 	return json.Marshal(&struct { 
+		ExportType *string `json:"exportType,omitempty"`
+		
+		BusinessUnitId *string `json:"businessUnitId,omitempty"`
+		
 		Id *string `json:"id,omitempty"`
 		
-		SelfUri *string `json:"selfUri,omitempty"`
+		Status *string `json:"status,omitempty"`
+		
+		DownloadUrl *string `json:"downloadUrl,omitempty"`
+		
+		VarError *V2wfmmainforecastexporthistoricaleventmainforecasterrorbody `json:"error,omitempty"`
 		Alias
 	}{ 
+		ExportType: o.ExportType,
+		
+		BusinessUnitId: o.BusinessUnitId,
+		
 		Id: o.Id,
 		
-		SelfUri: o.SelfUri,
+		Status: o.Status,
+		
+		DownloadUrl: o.DownloadUrl,
+		
+		VarError: o.VarError,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Casereference) UnmarshalJSON(b []byte) error {
-	var CasereferenceMap map[string]interface{}
-	err := json.Unmarshal(b, &CasereferenceMap)
+func (o *V2wfmmainforecastexporthistoricaleventmainforecastexportnotification) UnmarshalJSON(b []byte) error {
+	var V2wfmmainforecastexporthistoricaleventmainforecastexportnotificationMap map[string]interface{}
+	err := json.Unmarshal(b, &V2wfmmainforecastexporthistoricaleventmainforecastexportnotificationMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := CasereferenceMap["id"].(string); ok {
+	if ExportType, ok := V2wfmmainforecastexporthistoricaleventmainforecastexportnotificationMap["exportType"].(string); ok {
+		o.ExportType = &ExportType
+	}
+    
+	if BusinessUnitId, ok := V2wfmmainforecastexporthistoricaleventmainforecastexportnotificationMap["businessUnitId"].(string); ok {
+		o.BusinessUnitId = &BusinessUnitId
+	}
+    
+	if Id, ok := V2wfmmainforecastexporthistoricaleventmainforecastexportnotificationMap["id"].(string); ok {
 		o.Id = &Id
 	}
     
-	if SelfUri, ok := CasereferenceMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
+	if Status, ok := V2wfmmainforecastexporthistoricaleventmainforecastexportnotificationMap["status"].(string); ok {
+		o.Status = &Status
 	}
     
+	if DownloadUrl, ok := V2wfmmainforecastexporthistoricaleventmainforecastexportnotificationMap["downloadUrl"].(string); ok {
+		o.DownloadUrl = &DownloadUrl
+	}
+    
+	if VarError, ok := V2wfmmainforecastexporthistoricaleventmainforecastexportnotificationMap["error"].(map[string]interface{}); ok {
+		VarErrorString, _ := json.Marshal(VarError)
+		json.Unmarshal(VarErrorString, &o.VarError)
+	}
+	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Casereference) String() string {
+func (o *V2wfmmainforecastexporthistoricaleventmainforecastexportnotification) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

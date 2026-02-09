@@ -26,6 +26,9 @@ type Presenceeventuserpresence struct {
 
 	// ModifiedDate
 	ModifiedDate *time.Time `json:"modifiedDate,omitempty"`
+
+	// FuturePresenceDefinition
+	FuturePresenceDefinition *Presenceeventorganizationpresence `json:"futurePresenceDefinition,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -108,6 +111,8 @@ func (o Presenceeventuserpresence) MarshalJSON() ([]byte, error) {
 		Message *string `json:"message,omitempty"`
 		
 		ModifiedDate *string `json:"modifiedDate,omitempty"`
+		
+		FuturePresenceDefinition *Presenceeventorganizationpresence `json:"futurePresenceDefinition,omitempty"`
 		Alias
 	}{ 
 		Source: o.Source,
@@ -119,6 +124,8 @@ func (o Presenceeventuserpresence) MarshalJSON() ([]byte, error) {
 		Message: o.Message,
 		
 		ModifiedDate: ModifiedDate,
+		
+		FuturePresenceDefinition: o.FuturePresenceDefinition,
 		Alias:    (Alias)(o),
 	})
 }
@@ -150,6 +157,11 @@ func (o *Presenceeventuserpresence) UnmarshalJSON(b []byte) error {
 	if modifiedDateString, ok := PresenceeventuserpresenceMap["modifiedDate"].(string); ok {
 		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
 		o.ModifiedDate = &ModifiedDate
+	}
+	
+	if FuturePresenceDefinition, ok := PresenceeventuserpresenceMap["futurePresenceDefinition"].(map[string]interface{}); ok {
+		FuturePresenceDefinitionString, _ := json.Marshal(FuturePresenceDefinition)
+		json.Unmarshal(FuturePresenceDefinitionString, &o.FuturePresenceDefinition)
 	}
 	
 

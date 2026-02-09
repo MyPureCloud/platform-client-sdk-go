@@ -4431,7 +4431,7 @@ func (a RoutingApi) GetRoutingQueue(queueId string, expand []string) (*Queue, *A
 // GetRoutingQueueAssistant invokes GET /api/v2/routing/queues/{queueId}/assistant
 //
 // Get an assistant associated with a queue.
-func (a RoutingApi) GetRoutingQueueAssistant(queueId string, expand []string) (*Assistantqueue, *APIResponse, error) {
+func (a RoutingApi) GetRoutingQueueAssistant(queueId string, expand []string, languageVariation string, fallbackToPrimaryAssistant bool) (*Assistantqueue, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/assistant"
@@ -4465,6 +4465,10 @@ func (a RoutingApi) GetRoutingQueueAssistant(queueId string, expand []string) (*
 	}
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
+	
+	queryParams["languageVariation"] = a.Configuration.APIClient.ParameterToString(languageVariation, "")
+	
+	queryParams["fallbackToPrimaryAssistant"] = a.Configuration.APIClient.ParameterToString(fallbackToPrimaryAssistant, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -8298,7 +8302,7 @@ func (a RoutingApi) GetUserSkillgroups(userId string, pageSize int, after string
 //
 // Update attributes of an in-queue conversation
 //
-// Returns an object indicating the updated values of all settable attributes. Supported attributes: skillIds, languageId, and priority.
+// Returns an object indicating the updated values of all settable attributes. Supported attributes: skillIds, skillExpression, languageId, and priority.
 func (a RoutingApi) PatchRoutingConversation(conversationId string, body Routingconversationattributesrequest) (*Routingconversationattributesresponse, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -8558,6 +8562,96 @@ func (a RoutingApi) PatchRoutingEmailDomainValidate(domainId string, body Inboun
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Inbounddomain" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PatchRoutingEmailOutboundDomain invokes PATCH /api/v2/routing/email/outbound/domains/{domainId}
+//
+// Update configurable settings for an email domain, such as changing the sending method (e.g., to or from SMTP).
+func (a RoutingApi) PatchRoutingEmailOutboundDomain(domainId string, body Outbounddomainpatchrequest) (*Outbounddomain, *APIResponse, error) {
+	var httpMethod = "PATCH"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/email/outbound/domains/{domainId}"
+	path = strings.Replace(path, "{domainId}", url.PathEscape(fmt.Sprintf("%v", domainId)), -1)
+	defaultReturn := new(Outbounddomain)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'domainId' is set
+	if &domainId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'domainId' when calling RoutingApi->PatchRoutingEmailOutboundDomain")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PatchRoutingEmailOutboundDomain")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Outbounddomain
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Outbounddomain" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -8830,6 +8924,8 @@ func (a RoutingApi) PatchRoutingQueueMember(queueId string, memberId string, bod
 // PatchRoutingQueueMembers invokes PATCH /api/v2/routing/queues/{queueId}/members
 //
 // Join or unjoin a set of up to 100 users for a queue
+//
+// Users can only be joined to queues where they have membership. Non-member user-queue pairs in the request will be disregarded. Note: This operation is processed asynchronously and the response data may not reflect the final state. Changes may take time to propagate. Query the GET endpoint after a delay to retrieve the current membership status.
 func (a RoutingApi) PatchRoutingQueueMembers(queueId string, body []Queuemember) (*Queuememberentitylisting, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -9540,6 +9636,8 @@ func (a RoutingApi) PatchUserQueue(queueId string, userId string, body Userqueue
 // PatchUserQueues invokes PATCH /api/v2/users/{userId}/queues
 //
 // Join or unjoin a set of queues for a user
+//
+// Users can only be joined to queues where they have membership. Non-member user-queue pairs in the request will be disregarded. Note: This operation is processed asynchronously and the response data may not reflect the final state. Changes may take time to propagate. Query the GET endpoint after a delay to retrieve the current membership status.
 func (a RoutingApi) PatchUserQueues(userId string, body []Userqueue, divisionId []string) (*Userqueueentitylisting, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -10742,6 +10840,93 @@ func (a RoutingApi) PostRoutingEmailDomains(body Inbounddomaincreaterequest) (*I
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Inbounddomain" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostRoutingEmailOutboundDomainTestconnection invokes POST /api/v2/routing/email/outbound/domains/{domainId}/testconnection
+//
+// Tests the custom SMTP server integration connection set on this outbound domain
+//
+// The request body is optional. If omitted, this endpoint will just test the connection of the Custom SMTP Server for the outbound domain. If the body is specified, there will be an attempt to send an email message to the server.
+func (a RoutingApi) PostRoutingEmailOutboundDomainTestconnection(domainId string, body Testmessage) (*Testmessage, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/email/outbound/domains/{domainId}/testconnection"
+	path = strings.Replace(path, "{domainId}", url.PathEscape(fmt.Sprintf("%v", domainId)), -1)
+	defaultReturn := new(Testmessage)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'domainId' is set
+	if &domainId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'domainId' when calling RoutingApi->PostRoutingEmailOutboundDomainTestconnection")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Testmessage
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Testmessage" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

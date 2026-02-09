@@ -16,6 +16,15 @@ type Idletokentimeout struct {
 
 	// EnableIdleTokenTimeout - Indicates whether the Token Timeout should be enabled or disabled.
 	EnableIdleTokenTimeout *bool `json:"enableIdleTokenTimeout,omitempty"`
+
+	// InactivityTimeoutUnit - The unit for the inactivity timeout (MINUTES or HOURS).
+	InactivityTimeoutUnit *string `json:"inactivityTimeoutUnit,omitempty"`
+
+	// InactivityTimeoutGroupsEnabled - Indicates whether inactivity timeout groups are enabled.
+	InactivityTimeoutGroupsEnabled *bool `json:"inactivityTimeoutGroupsEnabled,omitempty"`
+
+	// InactivityTimeoutGroupBundles - Group bundle configuration for inactivity timeout.
+	InactivityTimeoutGroupBundles *[]Inactivitytimeoutgroupbundle `json:"inactivityTimeoutGroupBundles,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +93,23 @@ func (o Idletokentimeout) MarshalJSON() ([]byte, error) {
 		IdleTokenTimeoutSeconds *int `json:"idleTokenTimeoutSeconds,omitempty"`
 		
 		EnableIdleTokenTimeout *bool `json:"enableIdleTokenTimeout,omitempty"`
+		
+		InactivityTimeoutUnit *string `json:"inactivityTimeoutUnit,omitempty"`
+		
+		InactivityTimeoutGroupsEnabled *bool `json:"inactivityTimeoutGroupsEnabled,omitempty"`
+		
+		InactivityTimeoutGroupBundles *[]Inactivitytimeoutgroupbundle `json:"inactivityTimeoutGroupBundles,omitempty"`
 		Alias
 	}{ 
 		IdleTokenTimeoutSeconds: o.IdleTokenTimeoutSeconds,
 		
 		EnableIdleTokenTimeout: o.EnableIdleTokenTimeout,
+		
+		InactivityTimeoutUnit: o.InactivityTimeoutUnit,
+		
+		InactivityTimeoutGroupsEnabled: o.InactivityTimeoutGroupsEnabled,
+		
+		InactivityTimeoutGroupBundles: o.InactivityTimeoutGroupBundles,
 		Alias:    (Alias)(o),
 	})
 }
@@ -109,6 +130,19 @@ func (o *Idletokentimeout) UnmarshalJSON(b []byte) error {
 		o.EnableIdleTokenTimeout = &EnableIdleTokenTimeout
 	}
     
+	if InactivityTimeoutUnit, ok := IdletokentimeoutMap["inactivityTimeoutUnit"].(string); ok {
+		o.InactivityTimeoutUnit = &InactivityTimeoutUnit
+	}
+    
+	if InactivityTimeoutGroupsEnabled, ok := IdletokentimeoutMap["inactivityTimeoutGroupsEnabled"].(bool); ok {
+		o.InactivityTimeoutGroupsEnabled = &InactivityTimeoutGroupsEnabled
+	}
+    
+	if InactivityTimeoutGroupBundles, ok := IdletokentimeoutMap["inactivityTimeoutGroupBundles"].([]interface{}); ok {
+		InactivityTimeoutGroupBundlesString, _ := json.Marshal(InactivityTimeoutGroupBundles)
+		json.Unmarshal(InactivityTimeoutGroupBundlesString, &o.InactivityTimeoutGroupBundles)
+	}
+	
 
 	return nil
 }

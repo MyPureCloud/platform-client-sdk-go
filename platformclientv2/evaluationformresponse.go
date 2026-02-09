@@ -45,6 +45,9 @@ type Evaluationformresponse struct {
 	// AiScoring - AI scoring settings for the evaluation form.
 	AiScoring *Aiscoringsettings `json:"aiScoring,omitempty"`
 
+	// Dialect - The language dialect for this evaluation form. Supported dialects: ar, cs, da, de, en-US, es, fi, fr, fr-CA, he, hi, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, th, tr, uk, zh-CN, zh-TW
+	Dialect *string `json:"dialect,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -142,6 +145,8 @@ func (o Evaluationformresponse) MarshalJSON() ([]byte, error) {
 		
 		AiScoring *Aiscoringsettings `json:"aiScoring,omitempty"`
 		
+		Dialect *string `json:"dialect,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -166,6 +171,8 @@ func (o Evaluationformresponse) MarshalJSON() ([]byte, error) {
 		LatestVersionFormName: o.LatestVersionFormName,
 		
 		AiScoring: o.AiScoring,
+		
+		Dialect: o.Dialect,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -228,6 +235,10 @@ func (o *Evaluationformresponse) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(AiScoringString, &o.AiScoring)
 	}
 	
+	if Dialect, ok := EvaluationformresponseMap["dialect"].(string); ok {
+		o.Dialect = &Dialect
+	}
+    
 	if SelfUri, ok := EvaluationformresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

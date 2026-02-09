@@ -30,6 +30,9 @@ type Recordingmessagingmessage struct {
 	// Id - A globally unique identifier for this communication.
 	Id *string `json:"id,omitempty"`
 
+	// Status - Status of the message
+	Status *string `json:"status,omitempty"`
+
 	// Purpose - A well known string that specifies the purpose or type of the participant on this communication.
 	Purpose *string `json:"purpose,omitempty"`
 
@@ -98,6 +101,9 @@ type Recordingmessagingmessage struct {
 
 	// RoadsideAssistance - Roadside Assistance content.
 	RoadsideAssistance *Recordingroadsideassistance `json:"roadsideAssistance,omitempty"`
+
+	// MessageReceipts - List of message receipts
+	MessageReceipts *[]Recordingmessagereceipt `json:"messageReceipts,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -183,6 +189,8 @@ func (o Recordingmessagingmessage) MarshalJSON() ([]byte, error) {
 		
 		Id *string `json:"id,omitempty"`
 		
+		Status *string `json:"status,omitempty"`
+		
 		Purpose *string `json:"purpose,omitempty"`
 		
 		ParticipantId *string `json:"participantId,omitempty"`
@@ -228,6 +236,8 @@ func (o Recordingmessagingmessage) MarshalJSON() ([]byte, error) {
 		Form *Recordingform `json:"form,omitempty"`
 		
 		RoadsideAssistance *Recordingroadsideassistance `json:"roadsideAssistance,omitempty"`
+		
+		MessageReceipts *[]Recordingmessagereceipt `json:"messageReceipts,omitempty"`
 		Alias
 	}{ 
 		From: o.From,
@@ -241,6 +251,8 @@ func (o Recordingmessagingmessage) MarshalJSON() ([]byte, error) {
 		Timestamp: Timestamp,
 		
 		Id: o.Id,
+		
+		Status: o.Status,
 		
 		Purpose: o.Purpose,
 		
@@ -287,6 +299,8 @@ func (o Recordingmessagingmessage) MarshalJSON() ([]byte, error) {
 		Form: o.Form,
 		
 		RoadsideAssistance: o.RoadsideAssistance,
+		
+		MessageReceipts: o.MessageReceipts,
 		Alias:    (Alias)(o),
 	})
 }
@@ -323,6 +337,10 @@ func (o *Recordingmessagingmessage) UnmarshalJSON(b []byte) error {
 	
 	if Id, ok := RecordingmessagingmessageMap["id"].(string); ok {
 		o.Id = &Id
+	}
+    
+	if Status, ok := RecordingmessagingmessageMap["status"].(string); ok {
+		o.Status = &Status
 	}
     
 	if Purpose, ok := RecordingmessagingmessageMap["purpose"].(string); ok {
@@ -433,6 +451,11 @@ func (o *Recordingmessagingmessage) UnmarshalJSON(b []byte) error {
 	if RoadsideAssistance, ok := RecordingmessagingmessageMap["roadsideAssistance"].(map[string]interface{}); ok {
 		RoadsideAssistanceString, _ := json.Marshal(RoadsideAssistance)
 		json.Unmarshal(RoadsideAssistanceString, &o.RoadsideAssistance)
+	}
+	
+	if MessageReceipts, ok := RecordingmessagingmessageMap["messageReceipts"].([]interface{}); ok {
+		MessageReceiptsString, _ := json.Marshal(MessageReceipts)
+		json.Unmarshal(MessageReceiptsString, &o.MessageReceipts)
 	}
 	
 

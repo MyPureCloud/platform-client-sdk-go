@@ -26,17 +26,17 @@ type Managementunitlisting struct {
 	// FirstUri - Deprecated, paging is not supported
 	FirstUri *string `json:"firstUri,omitempty"`
 
-	// PreviousUri - Deprecated, paging is not supported
-	PreviousUri *string `json:"previousUri,omitempty"`
+	// PageCount - Deprecated, paging is not supported
+	PageCount *int `json:"pageCount,omitempty"`
 
 	// NextUri - Deprecated, paging is not supported
 	NextUri *string `json:"nextUri,omitempty"`
 
+	// PreviousUri - Deprecated, paging is not supported
+	PreviousUri *string `json:"previousUri,omitempty"`
+
 	// LastUri - Deprecated, paging is not supported
 	LastUri *string `json:"lastUri,omitempty"`
-
-	// PageCount - Deprecated, paging is not supported
-	PageCount *int `json:"pageCount,omitempty"`
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -115,13 +115,13 @@ func (o Managementunitlisting) MarshalJSON() ([]byte, error) {
 		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
-		PreviousUri *string `json:"previousUri,omitempty"`
+		PageCount *int `json:"pageCount,omitempty"`
 		
 		NextUri *string `json:"nextUri,omitempty"`
 		
-		LastUri *string `json:"lastUri,omitempty"`
+		PreviousUri *string `json:"previousUri,omitempty"`
 		
-		PageCount *int `json:"pageCount,omitempty"`
+		LastUri *string `json:"lastUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
@@ -136,13 +136,13 @@ func (o Managementunitlisting) MarshalJSON() ([]byte, error) {
 		
 		FirstUri: o.FirstUri,
 		
-		PreviousUri: o.PreviousUri,
+		PageCount: o.PageCount,
 		
 		NextUri: o.NextUri,
 		
-		LastUri: o.LastUri,
+		PreviousUri: o.PreviousUri,
 		
-		PageCount: o.PageCount,
+		LastUri: o.LastUri,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -180,23 +180,23 @@ func (o *Managementunitlisting) UnmarshalJSON(b []byte) error {
 		o.FirstUri = &FirstUri
 	}
     
-	if PreviousUri, ok := ManagementunitlistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
+	if PageCount, ok := ManagementunitlistingMap["pageCount"].(float64); ok {
+		PageCountInt := int(PageCount)
+		o.PageCount = &PageCountInt
 	}
-    
+	
 	if NextUri, ok := ManagementunitlistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
+	}
+    
+	if PreviousUri, ok := ManagementunitlistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
 	}
     
 	if LastUri, ok := ManagementunitlistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
 	}
     
-	if PageCount, ok := ManagementunitlistingMap["pageCount"].(float64); ok {
-		PageCountInt := int(PageCount)
-		o.PageCount = &PageCountInt
-	}
-	
 	if SelfUri, ok := ManagementunitlistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

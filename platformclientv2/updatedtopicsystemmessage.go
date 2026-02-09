@@ -29,6 +29,9 @@ type Updatedtopicsystemmessage struct {
 	// OauthClientId
 	OauthClientId *string `json:"oauthClientId,omitempty"`
 
+	// OauthClientOrgId
+	OauthClientOrgId *string `json:"oauthClientOrgId,omitempty"`
+
 	// Reason
 	Reason *string `json:"reason,omitempty"`
 
@@ -114,6 +117,8 @@ func (o Updatedtopicsystemmessage) MarshalJSON() ([]byte, error) {
 		
 		OauthClientId *string `json:"oauthClientId,omitempty"`
 		
+		OauthClientOrgId *string `json:"oauthClientOrgId,omitempty"`
+		
 		Reason *string `json:"reason,omitempty"`
 		
 		Message *string `json:"message,omitempty"`
@@ -132,6 +137,8 @@ func (o Updatedtopicsystemmessage) MarshalJSON() ([]byte, error) {
 		UserId: o.UserId,
 		
 		OauthClientId: o.OauthClientId,
+		
+		OauthClientOrgId: o.OauthClientOrgId,
 		
 		Reason: o.Reason,
 		
@@ -171,6 +178,10 @@ func (o *Updatedtopicsystemmessage) UnmarshalJSON(b []byte) error {
     
 	if OauthClientId, ok := UpdatedtopicsystemmessageMap["oauthClientId"].(string); ok {
 		o.OauthClientId = &OauthClientId
+	}
+    
+	if OauthClientOrgId, ok := UpdatedtopicsystemmessageMap["oauthClientOrgId"].(string); ok {
+		o.OauthClientOrgId = &OauthClientOrgId
 	}
     
 	if Reason, ok := UpdatedtopicsystemmessageMap["reason"].(string); ok {

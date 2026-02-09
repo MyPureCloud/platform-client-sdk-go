@@ -58,6 +58,12 @@ type Callbackmediasettings struct {
 
 	// AnsweringMachineFlow - The inbound flow to transfer to if an answering machine is detected during the outbound call of a customer first callback when answeringMachineReactionType is set to TransferToFlow.
 	AnsweringMachineFlow *Domainentityref `json:"answeringMachineFlow,omitempty"`
+
+	// EdgeGroup - The identifier of the edge group that will place the calls. Can be set to specify custom edge group instead of default one.
+	EdgeGroup *Domainentityref `json:"edgeGroup,omitempty"`
+
+	// Site - The identifier of the site to be used for dialing; can be set in place of an edge group.
+	Site *Domainentityref `json:"site,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -154,6 +160,10 @@ func (o Callbackmediasettings) MarshalJSON() ([]byte, error) {
 		AnsweringMachineReactionType *string `json:"answeringMachineReactionType,omitempty"`
 		
 		AnsweringMachineFlow *Domainentityref `json:"answeringMachineFlow,omitempty"`
+		
+		EdgeGroup *Domainentityref `json:"edgeGroup,omitempty"`
+		
+		Site *Domainentityref `json:"site,omitempty"`
 		Alias
 	}{ 
 		EnableAutoAnswer: o.EnableAutoAnswer,
@@ -187,6 +197,10 @@ func (o Callbackmediasettings) MarshalJSON() ([]byte, error) {
 		AnsweringMachineReactionType: o.AnsweringMachineReactionType,
 		
 		AnsweringMachineFlow: o.AnsweringMachineFlow,
+		
+		EdgeGroup: o.EdgeGroup,
+		
+		Site: o.Site,
 		Alias:    (Alias)(o),
 	})
 }
@@ -268,6 +282,16 @@ func (o *Callbackmediasettings) UnmarshalJSON(b []byte) error {
 	if AnsweringMachineFlow, ok := CallbackmediasettingsMap["answeringMachineFlow"].(map[string]interface{}); ok {
 		AnsweringMachineFlowString, _ := json.Marshal(AnsweringMachineFlow)
 		json.Unmarshal(AnsweringMachineFlowString, &o.AnsweringMachineFlow)
+	}
+	
+	if EdgeGroup, ok := CallbackmediasettingsMap["edgeGroup"].(map[string]interface{}); ok {
+		EdgeGroupString, _ := json.Marshal(EdgeGroup)
+		json.Unmarshal(EdgeGroupString, &o.EdgeGroup)
+	}
+	
+	if Site, ok := CallbackmediasettingsMap["site"].(map[string]interface{}); ok {
+		SiteString, _ := json.Marshal(Site)
+		json.Unmarshal(SiteString, &o.Site)
 	}
 	
 

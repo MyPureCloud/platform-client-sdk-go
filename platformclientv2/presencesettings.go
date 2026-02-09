@@ -20,6 +20,12 @@ type Presencesettings struct {
 	// RestorePresenceSettings - The settings for the restore presence feature
 	RestorePresenceSettings *Restorepresencesettings `json:"restorePresenceSettings,omitempty"`
 
+	// RequestingOffQueueEnabled - Whether requesting off queue is enabled for the organization
+	RequestingOffQueueEnabled *bool `json:"requestingOffQueueEnabled,omitempty"`
+
+	// DefaultPrimaryPresenceRegisteredSourceId - The default primary presence registered source ID for the organization
+	DefaultPrimaryPresenceRegisteredSourceId *string `json:"defaultPrimaryPresenceRegisteredSourceId,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -93,6 +99,10 @@ func (o Presencesettings) MarshalJSON() ([]byte, error) {
 		
 		RestorePresenceSettings *Restorepresencesettings `json:"restorePresenceSettings,omitempty"`
 		
+		RequestingOffQueueEnabled *bool `json:"requestingOffQueueEnabled,omitempty"`
+		
+		DefaultPrimaryPresenceRegisteredSourceId *string `json:"defaultPrimaryPresenceRegisteredSourceId,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -101,6 +111,10 @@ func (o Presencesettings) MarshalJSON() ([]byte, error) {
 		Name: o.Name,
 		
 		RestorePresenceSettings: o.RestorePresenceSettings,
+		
+		RequestingOffQueueEnabled: o.RequestingOffQueueEnabled,
+		
+		DefaultPrimaryPresenceRegisteredSourceId: o.DefaultPrimaryPresenceRegisteredSourceId,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -127,6 +141,14 @@ func (o *Presencesettings) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(RestorePresenceSettingsString, &o.RestorePresenceSettings)
 	}
 	
+	if RequestingOffQueueEnabled, ok := PresencesettingsMap["requestingOffQueueEnabled"].(bool); ok {
+		o.RequestingOffQueueEnabled = &RequestingOffQueueEnabled
+	}
+    
+	if DefaultPrimaryPresenceRegisteredSourceId, ok := PresencesettingsMap["defaultPrimaryPresenceRegisteredSourceId"].(string); ok {
+		o.DefaultPrimaryPresenceRegisteredSourceId = &DefaultPrimaryPresenceRegisteredSourceId
+	}
+    
 	if SelfUri, ok := PresencesettingsMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

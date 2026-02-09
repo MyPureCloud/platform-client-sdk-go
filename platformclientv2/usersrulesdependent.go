@@ -12,8 +12,8 @@ import (
 type Usersrulesdependent struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// RuleId - The id of the rule
-	RuleId *string `json:"ruleId,omitempty"`
+	// Rule - The rule associated with this dependent
+	Rule *Usersrulesdependentrule `json:"rule,omitempty"`
 
 	// TypeId - The type id of the dependent
 	TypeId *string `json:"typeId,omitempty"`
@@ -108,7 +108,7 @@ func (o Usersrulesdependent) MarshalJSON() ([]byte, error) {
 	}
 	
 	return json.Marshal(&struct { 
-		RuleId *string `json:"ruleId,omitempty"`
+		Rule *Usersrulesdependentrule `json:"rule,omitempty"`
 		
 		TypeId *string `json:"typeId,omitempty"`
 		
@@ -125,7 +125,7 @@ func (o Usersrulesdependent) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
-		RuleId: o.RuleId,
+		Rule: o.Rule,
 		
 		TypeId: o.TypeId,
 		
@@ -151,10 +151,11 @@ func (o *Usersrulesdependent) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
-	if RuleId, ok := UsersrulesdependentMap["ruleId"].(string); ok {
-		o.RuleId = &RuleId
+	if Rule, ok := UsersrulesdependentMap["rule"].(map[string]interface{}); ok {
+		RuleString, _ := json.Marshal(Rule)
+		json.Unmarshal(RuleString, &o.Rule)
 	}
-    
+	
 	if TypeId, ok := UsersrulesdependentMap["typeId"].(string); ok {
 		o.TypeId = &TypeId
 	}

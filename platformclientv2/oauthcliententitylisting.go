@@ -12,7 +12,7 @@ type Oauthcliententitylisting struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Entities
-	Entities *[]Oauthclientlisting `json:"entities,omitempty"`
+	Entities *[]Oauthclient `json:"entities,omitempty"`
 
 	// PageSize
 	PageSize *int `json:"pageSize,omitempty"`
@@ -26,11 +26,11 @@ type Oauthcliententitylisting struct {
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
 
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
-
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
+
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
 
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
@@ -105,7 +105,7 @@ func (o Oauthcliententitylisting) MarshalJSON() ([]byte, error) {
 	type Alias Oauthcliententitylisting
 	
 	return json.Marshal(&struct { 
-		Entities *[]Oauthclientlisting `json:"entities,omitempty"`
+		Entities *[]Oauthclient `json:"entities,omitempty"`
 		
 		PageSize *int `json:"pageSize,omitempty"`
 		
@@ -115,9 +115,9 @@ func (o Oauthcliententitylisting) MarshalJSON() ([]byte, error) {
 		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
-		PreviousUri *string `json:"previousUri,omitempty"`
-		
 		NextUri *string `json:"nextUri,omitempty"`
+		
+		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		LastUri *string `json:"lastUri,omitempty"`
 		
@@ -136,9 +136,9 @@ func (o Oauthcliententitylisting) MarshalJSON() ([]byte, error) {
 		
 		FirstUri: o.FirstUri,
 		
-		PreviousUri: o.PreviousUri,
-		
 		NextUri: o.NextUri,
+		
+		PreviousUri: o.PreviousUri,
 		
 		LastUri: o.LastUri,
 		
@@ -180,12 +180,12 @@ func (o *Oauthcliententitylisting) UnmarshalJSON(b []byte) error {
 		o.FirstUri = &FirstUri
 	}
     
-	if PreviousUri, ok := OauthcliententitylistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
-	}
-    
 	if NextUri, ok := OauthcliententitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
+	}
+    
+	if PreviousUri, ok := OauthcliententitylistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
 	}
     
 	if LastUri, ok := OauthcliententitylistingMap["lastUri"].(string); ok {

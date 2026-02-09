@@ -340,7 +340,7 @@ func (a AgentAssistantsApi) DeleteAssistantsAgentchecklist(agentChecklistId stri
 // GetAssistant invokes GET /api/v2/assistants/{assistantId}
 //
 // Get an assistant.
-func (a AgentAssistantsApi) GetAssistant(assistantId string, expand string) (*Assistant, *APIResponse, error) {
+func (a AgentAssistantsApi) GetAssistant(assistantId string, expand string, languageVariation string, fallbackToPrimaryAssistant bool) (*Assistant, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/assistants/{assistantId}"
@@ -374,6 +374,10 @@ func (a AgentAssistantsApi) GetAssistant(assistantId string, expand string) (*As
 	}
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
+	
+	queryParams["languageVariation"] = a.Configuration.APIClient.ParameterToString(languageVariation, "")
+	
+	queryParams["fallbackToPrimaryAssistant"] = a.Configuration.APIClient.ParameterToString(fallbackToPrimaryAssistant, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

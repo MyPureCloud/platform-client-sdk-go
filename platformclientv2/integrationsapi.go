@@ -1387,7 +1387,7 @@ func (a IntegrationsApi) GetIntegrationsActionTemplate(actionId string, fileName
 // GetIntegrationsActions invokes GET /api/v2/integrations/actions
 //
 // Retrieves all actions associated with filters passed in via query param.
-func (a IntegrationsApi) GetIntegrationsActions(pageSize int, pageNumber int, nextPage string, previousPage string, sortBy string, sortOrder string, category string, name string, ids string, secure string, includeAuthActions string) (*Actionentitylisting, *APIResponse, error) {
+func (a IntegrationsApi) GetIntegrationsActions(pageSize int, pageNumber int, nextPage string, previousPage string, sortBy string, sortOrder string, category string, name string, ids string, secure string, includeAuthActions string, includeConfig bool) (*Actionentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/actions"
@@ -1435,6 +1435,8 @@ func (a IntegrationsApi) GetIntegrationsActions(pageSize int, pageNumber int, ne
 	queryParams["secure"] = a.Configuration.APIClient.ParameterToString(secure, "")
 	
 	queryParams["includeAuthActions"] = a.Configuration.APIClient.ParameterToString(includeAuthActions, "")
+	
+	queryParams["includeConfig"] = a.Configuration.APIClient.ParameterToString(includeConfig, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -1731,7 +1733,7 @@ func (a IntegrationsApi) GetIntegrationsActionsCertificatesTruststore() (*Truste
 // GetIntegrationsActionsDrafts invokes GET /api/v2/integrations/actions/drafts
 //
 // Retrieves all action drafts associated with the filters passed in via query param.
-func (a IntegrationsApi) GetIntegrationsActionsDrafts(pageSize int, pageNumber int, nextPage string, previousPage string, sortBy string, sortOrder string, category string, name string, ids string, secure string, includeAuthActions string) (*Actionentitylisting, *APIResponse, error) {
+func (a IntegrationsApi) GetIntegrationsActionsDrafts(pageSize int, pageNumber int, nextPage string, previousPage string, sortBy string, sortOrder string, category string, name string, ids string, secure string, includeAuthActions string, includeConfig bool) (*Actionentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/actions/drafts"
@@ -1779,6 +1781,8 @@ func (a IntegrationsApi) GetIntegrationsActionsDrafts(pageSize int, pageNumber i
 	queryParams["secure"] = a.Configuration.APIClient.ParameterToString(secure, "")
 	
 	queryParams["includeAuthActions"] = a.Configuration.APIClient.ParameterToString(includeAuthActions, "")
+	
+	queryParams["includeConfig"] = a.Configuration.APIClient.ParameterToString(includeConfig, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
