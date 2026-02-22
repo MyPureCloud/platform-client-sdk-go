@@ -34,7 +34,7 @@ type Openmessagingchannel struct {
 	Time *time.Time `json:"time,omitempty"`
 
 	// Metadata - Information about the channel.
-	Metadata *interface{} `json:"metadata,omitempty"`
+	Metadata *Conversationchannelmetadata `json:"metadata,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -122,7 +122,7 @@ func (o Openmessagingchannel) MarshalJSON() ([]byte, error) {
 		
 		Time *string `json:"time,omitempty"`
 		
-		Metadata *interface{} `json:"metadata,omitempty"`
+		Metadata *Conversationchannelmetadata `json:"metadata,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,

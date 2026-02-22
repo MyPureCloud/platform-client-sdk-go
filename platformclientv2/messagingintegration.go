@@ -30,6 +30,9 @@ type Messagingintegration struct {
 	// MessengerType - The type of Messaging Integration
 	MessengerType *string `json:"messengerType,omitempty"`
 
+	// OpenExtensionType - The type of Open Messaging Integration Extension. Only present when 'messengerType' is 'open' and the Open Integration has an extension
+	OpenExtensionType *string `json:"openExtensionType,omitempty"`
+
 	// Recipient - The recipient associated to the Integration. This recipient is used to associate a flow to an integration
 	Recipient *Domainentityref `json:"recipient,omitempty"`
 
@@ -143,6 +146,8 @@ func (o Messagingintegration) MarshalJSON() ([]byte, error) {
 		
 		MessengerType *string `json:"messengerType,omitempty"`
 		
+		OpenExtensionType *string `json:"openExtensionType,omitempty"`
+		
 		Recipient *Domainentityref `json:"recipient,omitempty"`
 		
 		DateCreated *string `json:"dateCreated,omitempty"`
@@ -169,6 +174,8 @@ func (o Messagingintegration) MarshalJSON() ([]byte, error) {
 		Status: o.Status,
 		
 		MessengerType: o.MessengerType,
+		
+		OpenExtensionType: o.OpenExtensionType,
 		
 		Recipient: o.Recipient,
 		
@@ -218,6 +225,10 @@ func (o *Messagingintegration) UnmarshalJSON(b []byte) error {
     
 	if MessengerType, ok := MessagingintegrationMap["messengerType"].(string); ok {
 		o.MessengerType = &MessengerType
+	}
+    
+	if OpenExtensionType, ok := MessagingintegrationMap["openExtensionType"].(string); ok {
+		o.OpenExtensionType = &OpenExtensionType
 	}
     
 	if Recipient, ok := MessagingintegrationMap["recipient"].(map[string]interface{}); ok {

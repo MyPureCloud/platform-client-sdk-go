@@ -10,7 +10,10 @@ import (
 // Conversationchannelmetadata - Information about the channel.
 type Conversationchannelmetadata struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// SubType - Channel subtype
+	SubType *string `json:"subType,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Conversationchannelmetadata) SetField(field string, fieldValue interface{}) {
@@ -74,8 +77,12 @@ func (o Conversationchannelmetadata) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Conversationchannelmetadata
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		SubType *string `json:"subType,omitempty"`
+		Alias
+	}{ 
+		SubType: o.SubType,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -86,6 +93,10 @@ func (o *Conversationchannelmetadata) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if SubType, ok := ConversationchannelmetadataMap["subType"].(string); ok {
+		o.SubType = &SubType
+	}
+    
 
 	return nil
 }

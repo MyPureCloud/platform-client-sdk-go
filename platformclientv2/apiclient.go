@@ -385,7 +385,9 @@ func (c *APIClient) CallAPI(path string, method string,
 	// Set additional headers from parameters
 	if len(headerParams) > 0 {
 		for k, v := range headerParams {
-			httpRequestOptions.SetHeaders(k, v)
+			if v != "" {
+				httpRequestOptions.SetHeaders(k, v)
+			}
 		}
 	}
 

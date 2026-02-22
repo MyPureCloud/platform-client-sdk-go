@@ -7,16 +7,16 @@ import (
 	"strings"
 )
 
-// Buttonquickreplypayload - Quick reply button payload for carousel cards
-type Buttonquickreplypayload struct { 
+// Googlebusinessprofileaccountreference
+type Googlebusinessprofileaccountreference struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Value - Unique payload value for the quick reply button
-	Value *string `json:"value,omitempty"`
+	// Id - ID of the Google Business Profile account
+	Id *string `json:"id,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Buttonquickreplypayload) SetField(field string, fieldValue interface{}) {
+func (o *Googlebusinessprofileaccountreference) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -37,7 +37,7 @@ func (o *Buttonquickreplypayload) SetField(field string, fieldValue interface{})
 	o.SetFieldNames[field] = true
 }
 
-func (o Buttonquickreplypayload) MarshalJSON() ([]byte, error) {
+func (o Googlebusinessprofileaccountreference) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -75,26 +75,26 @@ func (o Buttonquickreplypayload) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Buttonquickreplypayload
+	type Alias Googlebusinessprofileaccountreference
 	
 	return json.Marshal(&struct { 
-		Value *string `json:"value,omitempty"`
+		Id *string `json:"id,omitempty"`
 		Alias
 	}{ 
-		Value: o.Value,
+		Id: o.Id,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Buttonquickreplypayload) UnmarshalJSON(b []byte) error {
-	var ButtonquickreplypayloadMap map[string]interface{}
-	err := json.Unmarshal(b, &ButtonquickreplypayloadMap)
+func (o *Googlebusinessprofileaccountreference) UnmarshalJSON(b []byte) error {
+	var GooglebusinessprofileaccountreferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &GooglebusinessprofileaccountreferenceMap)
 	if err != nil {
 		return err
 	}
 	
-	if Value, ok := ButtonquickreplypayloadMap["value"].(string); ok {
-		o.Value = &Value
+	if Id, ok := GooglebusinessprofileaccountreferenceMap["id"].(string); ok {
+		o.Id = &Id
 	}
     
 
@@ -102,7 +102,7 @@ func (o *Buttonquickreplypayload) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Buttonquickreplypayload) String() string {
+func (o *Googlebusinessprofileaccountreference) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

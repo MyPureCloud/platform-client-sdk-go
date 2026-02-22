@@ -423,9 +423,7 @@ func (a WebDeploymentsApi) GetWebdeploymentsConfigurationVersion(configurationId
 // GetWebdeploymentsConfigurationVersions invokes GET /api/v2/webdeployments/configurations/{configurationId}/versions
 //
 // Get the versions of a configuration
-//
-// This returns the 50 most recent versions for this configuration
-func (a WebDeploymentsApi) GetWebdeploymentsConfigurationVersions(configurationId string) (*Webdeploymentconfigurationversionentitylisting, *APIResponse, error) {
+func (a WebDeploymentsApi) GetWebdeploymentsConfigurationVersions(configurationId string, pageSize string, before string, after string) (*Webdeploymentconfigurationversionentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/webdeployments/configurations/{configurationId}/versions"
@@ -457,6 +455,12 @@ func (a WebDeploymentsApi) GetWebdeploymentsConfigurationVersions(configurationI
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+	queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, "")
+	
+	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -589,7 +593,7 @@ func (a WebDeploymentsApi) GetWebdeploymentsConfigurationVersionsDraft(configura
 // GetWebdeploymentsConfigurations invokes GET /api/v2/webdeployments/configurations
 //
 // View configuration drafts
-func (a WebDeploymentsApi) GetWebdeploymentsConfigurations(showOnlyPublished bool) (*Webdeploymentconfigurationversionentitylisting, *APIResponse, error) {
+func (a WebDeploymentsApi) GetWebdeploymentsConfigurations(pageSize string, before string, after string, showOnlyPublished bool) (*Webdeploymentconfigurationversionentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/webdeployments/configurations"
@@ -615,6 +619,12 @@ func (a WebDeploymentsApi) GetWebdeploymentsConfigurations(showOnlyPublished boo
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+	queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, "")
+	
+	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
 	
 	queryParams["showOnlyPublished"] = a.Configuration.APIClient.ParameterToString(showOnlyPublished, "")
 	
@@ -1002,7 +1012,7 @@ func (a WebDeploymentsApi) GetWebdeploymentsDeploymentIdentityresolution(deploym
 // GetWebdeploymentsDeployments invokes GET /api/v2/webdeployments/deployments
 //
 // Get deployments
-func (a WebDeploymentsApi) GetWebdeploymentsDeployments(expand []string) (*Expandablewebdeploymententitylisting, *APIResponse, error) {
+func (a WebDeploymentsApi) GetWebdeploymentsDeployments(pageSize string, before string, after string, expand []string) (*Expandablewebdeploymententitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/webdeployments/deployments"
@@ -1028,6 +1038,12 @@ func (a WebDeploymentsApi) GetWebdeploymentsDeployments(expand []string) (*Expan
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+	queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, "")
+	
+	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	

@@ -32,8 +32,6 @@ func NewUsersRulesApiWithConfig(config *Configuration) *UsersRulesApi {
 // DeleteUsersRule invokes DELETE /api/v2/users/rules/{ruleId}
 //
 // Delete an existing users rule
-//
-// Preview: DeleteUsersRule is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersRulesApi) DeleteUsersRule(ruleId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -109,8 +107,6 @@ func (a UsersRulesApi) DeleteUsersRule(ruleId string) (*APIResponse, error) {
 // GetUsersRule invokes GET /api/v2/users/rules/{ruleId}
 //
 // Get a users rule
-//
-// Preview: GetUsersRule is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersRulesApi) GetUsersRule(ruleId string) (*Usersrulesrule, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -193,8 +189,6 @@ func (a UsersRulesApi) GetUsersRule(ruleId string) (*Usersrulesrule, *APIRespons
 // GetUsersRuleDependentTypeId invokes GET /api/v2/users/rules/{ruleId}/dependents/{ruleType}/{typeId}
 //
 // Get dependent of a users rule
-//
-// Preview: GetUsersRuleDependentTypeId is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersRulesApi) GetUsersRuleDependentTypeId(ruleId string, ruleType string, typeId string) (*Usersrulesdependent, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -289,8 +283,6 @@ func (a UsersRulesApi) GetUsersRuleDependentTypeId(ruleId string, ruleType strin
 // GetUsersRuleDependents invokes GET /api/v2/users/rules/{ruleId}/dependents
 //
 // Get dependents for a users rule
-//
-// Preview: GetUsersRuleDependents is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersRulesApi) GetUsersRuleDependents(ruleId string, pageSize int, pageNumber int, sortOrder string) (*Usersrulesdependentlist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -379,8 +371,6 @@ func (a UsersRulesApi) GetUsersRuleDependents(ruleId string, pageSize int, pageN
 // GetUsersRules invokes GET /api/v2/users/rules
 //
 // Get the list of users rules
-//
-// Preview: GetUsersRules is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersRulesApi) GetUsersRules(types []string, pageNumber int, pageSize int, expand []string, enabled bool, searchTerm string, sortOrder string) (*Usersrulesrulelist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -476,8 +466,6 @@ func (a UsersRulesApi) GetUsersRules(types []string, pageNumber int, pageSize in
 // GetUsersRulesSetting invokes GET /api/v2/users/rules/settings/{ruleType}
 //
 // Get the settings for a specific users rule type
-//
-// Preview: GetUsersRulesSetting is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersRulesApi) GetUsersRulesSetting(ruleType string) (*Usersrulesrulesettings, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -562,8 +550,6 @@ func (a UsersRulesApi) GetUsersRulesSetting(ruleType string) (*Usersrulesruleset
 // Update an existing users rule
 //
 // This will update an existing users rule with the specified fields.
-//
-// Preview: PatchUsersRule is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersRulesApi) PatchUsersRule(ruleId string, body Usersrulesupdaterulerequest) (*Usersrulesrule, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -656,8 +642,6 @@ func (a UsersRulesApi) PatchUsersRule(ruleId string, body Usersrulesupdaterulere
 // Create a new rule
 //
 // This will create a new rule with the specified fields.
-//
-// Preview: PostUsersRules is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersRulesApi) PostUsersRules(body Usersrulescreaterulerequest) (*Usersrulesrule, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -744,8 +728,6 @@ func (a UsersRulesApi) PostUsersRules(body Usersrulescreaterulerequest) (*Usersr
 // Query the result of a users rule
 //
 // This will query the result of a rule.
-//
-// Preview: PostUsersRulesQuery is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersRulesApi) PostUsersRulesQuery(body Usersrulesqueryrulerequest, pageNumber int, pageSize int) (*Usersrulesqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

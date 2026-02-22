@@ -40,6 +40,9 @@ type Escalationrulerequest struct {
 
 	// TwitterEscalation - The target integration configuration used for a X (formerly Twitter) message escalation.
 	TwitterEscalation *Escalationtarget `json:"twitterEscalation,omitempty"`
+
+	// GoogleBusinessProfileEscalation - The target integration configuration used for a Google Business Profile message escalation.
+	GoogleBusinessProfileEscalation *Escalationtarget `json:"googleBusinessProfileEscalation,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -124,6 +127,8 @@ func (o Escalationrulerequest) MarshalJSON() ([]byte, error) {
 		InstagramEscalation *Escalationtarget `json:"instagramEscalation,omitempty"`
 		
 		TwitterEscalation *Escalationtarget `json:"twitterEscalation,omitempty"`
+		
+		GoogleBusinessProfileEscalation *Escalationtarget `json:"googleBusinessProfileEscalation,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -145,6 +150,8 @@ func (o Escalationrulerequest) MarshalJSON() ([]byte, error) {
 		InstagramEscalation: o.InstagramEscalation,
 		
 		TwitterEscalation: o.TwitterEscalation,
+		
+		GoogleBusinessProfileEscalation: o.GoogleBusinessProfileEscalation,
 		Alias:    (Alias)(o),
 	})
 }
@@ -199,6 +206,11 @@ func (o *Escalationrulerequest) UnmarshalJSON(b []byte) error {
 	if TwitterEscalation, ok := EscalationrulerequestMap["twitterEscalation"].(map[string]interface{}); ok {
 		TwitterEscalationString, _ := json.Marshal(TwitterEscalation)
 		json.Unmarshal(TwitterEscalationString, &o.TwitterEscalation)
+	}
+	
+	if GoogleBusinessProfileEscalation, ok := EscalationrulerequestMap["googleBusinessProfileEscalation"].(map[string]interface{}); ok {
+		GoogleBusinessProfileEscalationString, _ := json.Marshal(GoogleBusinessProfileEscalation)
+		json.Unmarshal(GoogleBusinessProfileEscalationString, &o.GoogleBusinessProfileEscalation)
 	}
 	
 

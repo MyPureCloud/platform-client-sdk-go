@@ -713,8 +713,11 @@ type Viewfilter struct {
 	// SessionExpired - Filter to indicate for if session is expired
 	SessionExpired *bool `json:"sessionExpired,omitempty"`
 
-	// EngagementSource - The engagement sources used to filter the view
-	EngagementSource *[]string `json:"engagementSource,omitempty"`
+	// EngagementSources - The engagement sources used to filter the view
+	EngagementSources *[]string `json:"engagementSources,omitempty"`
+
+	// IsSnippetRecorded - Indicates filtering for snippet recorded
+	IsSnippetRecorded *bool `json:"isSnippetRecorded,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -1248,7 +1251,9 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		
 		SessionExpired *bool `json:"sessionExpired,omitempty"`
 		
-		EngagementSource *[]string `json:"engagementSource,omitempty"`
+		EngagementSources *[]string `json:"engagementSources,omitempty"`
+		
+		IsSnippetRecorded *bool `json:"isSnippetRecorded,omitempty"`
 		Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -1719,7 +1724,9 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		
 		SessionExpired: o.SessionExpired,
 		
-		EngagementSource: o.EngagementSource,
+		EngagementSources: o.EngagementSources,
+		
+		IsSnippetRecorded: o.IsSnippetRecorded,
 		Alias:    (Alias)(o),
 	})
 }
@@ -2847,11 +2854,15 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 		o.SessionExpired = &SessionExpired
 	}
     
-	if EngagementSource, ok := ViewfilterMap["engagementSource"].([]interface{}); ok {
-		EngagementSourceString, _ := json.Marshal(EngagementSource)
-		json.Unmarshal(EngagementSourceString, &o.EngagementSource)
+	if EngagementSources, ok := ViewfilterMap["engagementSources"].([]interface{}); ok {
+		EngagementSourcesString, _ := json.Marshal(EngagementSources)
+		json.Unmarshal(EngagementSourcesString, &o.EngagementSources)
 	}
 	
+	if IsSnippetRecorded, ok := ViewfilterMap["isSnippetRecorded"].(bool); ok {
+		o.IsSnippetRecorded = &IsSnippetRecorded
+	}
+    
 
 	return nil
 }

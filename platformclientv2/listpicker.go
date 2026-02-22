@@ -20,6 +20,9 @@ type Listpicker struct {
 	// Subtitle - Text to show in the description.
 	Subtitle *string `json:"subtitle,omitempty"`
 
+	// Header - Text to show in the header.
+	Header *string `json:"header,omitempty"`
+
 	// Sections - An array of sections in the List Picker.
 	Sections *[]Listpickersection `json:"sections,omitempty"`
 }
@@ -93,6 +96,8 @@ func (o Listpicker) MarshalJSON() ([]byte, error) {
 		
 		Subtitle *string `json:"subtitle,omitempty"`
 		
+		Header *string `json:"header,omitempty"`
+		
 		Sections *[]Listpickersection `json:"sections,omitempty"`
 		Alias
 	}{ 
@@ -101,6 +106,8 @@ func (o Listpicker) MarshalJSON() ([]byte, error) {
 		Title: o.Title,
 		
 		Subtitle: o.Subtitle,
+		
+		Header: o.Header,
 		
 		Sections: o.Sections,
 		Alias:    (Alias)(o),
@@ -124,6 +131,10 @@ func (o *Listpicker) UnmarshalJSON(b []byte) error {
     
 	if Subtitle, ok := ListpickerMap["subtitle"].(string); ok {
 		o.Subtitle = &Subtitle
+	}
+    
+	if Header, ok := ListpickerMap["header"].(string); ok {
+		o.Header = &Header
 	}
     
 	if Sections, ok := ListpickerMap["sections"].([]interface{}); ok {

@@ -20,7 +20,7 @@ type Copilot struct {
 	// DefaultLanguage - Copilot default language, e.g. [en-US, es-US, es-ES]. Once set, it can not be modified.
 	DefaultLanguage *string `json:"defaultLanguage,omitempty"`
 
-	// KnowledgeAnswerConfig - Knowledge answer configuration.
+	// KnowledgeAnswerConfig - Deprecated: Please use AutoSearchConfig and ManualSearchConfig fields instead.
 	KnowledgeAnswerConfig *Knowledgeanswerconfig `json:"knowledgeAnswerConfig,omitempty"`
 
 	// SummaryGenerationConfig - Copilot generated summary configuration.
@@ -29,7 +29,7 @@ type Copilot struct {
 	// WrapupCodePredictionConfig - Copilot generated wrapup code prediction configuration.
 	WrapupCodePredictionConfig *Wrapupcodepredictionconfig `json:"wrapupCodePredictionConfig,omitempty"`
 
-	// AnswerGenerationConfig - Answer generation configuration.
+	// AnswerGenerationConfig - Deprecated: Please use AutoSearchConfig and ManualSearchConfig fields instead.
 	AnswerGenerationConfig *Answergenerationconfig `json:"answerGenerationConfig,omitempty"`
 
 	// NluEngineType - Language understanding engine type.
@@ -40,6 +40,12 @@ type Copilot struct {
 
 	// RuleEngineConfig - Rule engine configuration.
 	RuleEngineConfig *Ruleengineconfig `json:"ruleEngineConfig,omitempty"`
+
+	// AutoSearchConfig - Auto search configuration.
+	AutoSearchConfig *Autosearchconfig `json:"autoSearchConfig,omitempty"`
+
+	// ManualSearchConfig - Manual Search configuration.
+	ManualSearchConfig *Manualsearchconfig `json:"manualSearchConfig,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -128,6 +134,10 @@ func (o Copilot) MarshalJSON() ([]byte, error) {
 		
 		RuleEngineConfig *Ruleengineconfig `json:"ruleEngineConfig,omitempty"`
 		
+		AutoSearchConfig *Autosearchconfig `json:"autoSearchConfig,omitempty"`
+		
+		ManualSearchConfig *Manualsearchconfig `json:"manualSearchConfig,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -150,6 +160,10 @@ func (o Copilot) MarshalJSON() ([]byte, error) {
 		NluConfig: o.NluConfig,
 		
 		RuleEngineConfig: o.RuleEngineConfig,
+		
+		AutoSearchConfig: o.AutoSearchConfig,
+		
+		ManualSearchConfig: o.ManualSearchConfig,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -207,6 +221,16 @@ func (o *Copilot) UnmarshalJSON(b []byte) error {
 	if RuleEngineConfig, ok := CopilotMap["ruleEngineConfig"].(map[string]interface{}); ok {
 		RuleEngineConfigString, _ := json.Marshal(RuleEngineConfig)
 		json.Unmarshal(RuleEngineConfigString, &o.RuleEngineConfig)
+	}
+	
+	if AutoSearchConfig, ok := CopilotMap["autoSearchConfig"].(map[string]interface{}); ok {
+		AutoSearchConfigString, _ := json.Marshal(AutoSearchConfig)
+		json.Unmarshal(AutoSearchConfigString, &o.AutoSearchConfig)
+	}
+	
+	if ManualSearchConfig, ok := CopilotMap["manualSearchConfig"].(map[string]interface{}); ok {
+		ManualSearchConfigString, _ := json.Marshal(ManualSearchConfig)
+		json.Unmarshal(ManualSearchConfigString, &o.ManualSearchConfig)
 	}
 	
 	if SelfUri, ok := CopilotMap["selfUri"].(string); ok {

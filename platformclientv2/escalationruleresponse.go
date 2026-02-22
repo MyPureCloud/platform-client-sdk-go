@@ -51,6 +51,9 @@ type Escalationruleresponse struct {
 	// TwitterEscalation - The target integration configuration used for a X (formerly Twitter) message escalation.
 	TwitterEscalation *Escalationtarget `json:"twitterEscalation,omitempty"`
 
+	// GoogleBusinessProfileEscalation - The target integration configuration used for a Google Business Profile message escalation.
+	GoogleBusinessProfileEscalation *Escalationtarget `json:"googleBusinessProfileEscalation,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -160,6 +163,8 @@ func (o Escalationruleresponse) MarshalJSON() ([]byte, error) {
 		
 		TwitterEscalation *Escalationtarget `json:"twitterEscalation,omitempty"`
 		
+		GoogleBusinessProfileEscalation *Escalationtarget `json:"googleBusinessProfileEscalation,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -188,6 +193,8 @@ func (o Escalationruleresponse) MarshalJSON() ([]byte, error) {
 		InstagramEscalation: o.InstagramEscalation,
 		
 		TwitterEscalation: o.TwitterEscalation,
+		
+		GoogleBusinessProfileEscalation: o.GoogleBusinessProfileEscalation,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -258,6 +265,11 @@ func (o *Escalationruleresponse) UnmarshalJSON(b []byte) error {
 	if TwitterEscalation, ok := EscalationruleresponseMap["twitterEscalation"].(map[string]interface{}); ok {
 		TwitterEscalationString, _ := json.Marshal(TwitterEscalation)
 		json.Unmarshal(TwitterEscalationString, &o.TwitterEscalation)
+	}
+	
+	if GoogleBusinessProfileEscalation, ok := EscalationruleresponseMap["googleBusinessProfileEscalation"].(map[string]interface{}); ok {
+		GoogleBusinessProfileEscalationString, _ := json.Marshal(GoogleBusinessProfileEscalation)
+		json.Unmarshal(GoogleBusinessProfileEscalationString, &o.GoogleBusinessProfileEscalation)
 	}
 	
 	if SelfUri, ok := EscalationruleresponseMap["selfUri"].(string); ok {

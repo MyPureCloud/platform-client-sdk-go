@@ -5377,11 +5377,11 @@ func (a QualityApi) PostQualityPublishedformsSurveys(body Publishform) (*Surveyf
 // PostQualitySurveys invokes POST /api/v2/quality/surveys
 //
 // Create a survey for a conversation
-func (a QualityApi) PostQualitySurveys(body Createsurveyrequest) (*Survey, *APIResponse, error) {
+func (a QualityApi) PostQualitySurveys(body Createsurveyrequest) (*Createsurveyresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/surveys"
-	defaultReturn := new(Survey)
+	defaultReturn := new(Createsurveyresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -5442,14 +5442,14 @@ func (a QualityApi) PostQualitySurveys(body Createsurveyrequest) (*Survey, *APIR
 	// body params
 	postBody = &body
 
-	var successPayload *Survey
+	var successPayload *Createsurveyresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Survey" == "string" {
+		if "Createsurveyresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
