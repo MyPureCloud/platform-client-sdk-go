@@ -4347,7 +4347,7 @@ func (a QualityApi) PostQualityCalibrations(body Calibrationcreate, expand strin
 // PostQualityConversationEvaluations invokes POST /api/v2/quality/conversations/{conversationId}/evaluations
 //
 // Create an evaluation
-func (a QualityApi) PostQualityConversationEvaluations(conversationId string, body Evaluationcreatebody, expand string) (*Evaluation, *APIResponse, error) {
+func (a QualityApi) PostQualityConversationEvaluations(conversationId string, body Evaluationcreatebody, idempotencyKey string, expand string) (*Evaluation, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/conversations/{conversationId}/evaluations"
@@ -4417,6 +4417,10 @@ func (a QualityApi) PostQualityConversationEvaluations(conversationId string, bo
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
+
+	// header params "Idempotency-Key"
+	headerParams["Idempotency-Key"] = idempotencyKey
+
 	// body params
 	postBody = &body
 

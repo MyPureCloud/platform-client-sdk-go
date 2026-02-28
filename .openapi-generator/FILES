@@ -180,6 +180,7 @@ docs/DeleteKnowledgeKnowledgebaseLabel-example.txt
 docs/DeleteKnowledgeKnowledgebaseSourcesSalesforceSourceId-example.txt
 docs/DeleteKnowledgeKnowledgebaseSourcesServicenowSourceId-example.txt
 docs/DeleteKnowledgeKnowledgebaseSynchronizeJob-example.txt
+docs/DeleteKnowledgeSetting-example.txt
 docs/DeleteLanguage-example.txt
 docs/DeleteLanguageunderstandingDomain-example.txt
 docs/DeleteLanguageunderstandingDomainFeedbackFeedbackId-example.txt
@@ -1093,6 +1094,8 @@ docs/GetKnowledgeKnowledgebaseUnansweredGroups-example.txt
 docs/GetKnowledgeKnowledgebaseUploadsUrlsJob-example.txt
 docs/GetKnowledgeKnowledgebaseUploadsUrlsJob-example.txt
 docs/GetKnowledgeKnowledgebases-example.txt
+docs/GetKnowledgeSetting-example.txt
+docs/GetKnowledgeSettings-example.txt
 docs/GetLanguage-example.txt
 docs/GetLanguages-example.txt
 docs/GetLanguagesTranslations-example.txt
@@ -1551,6 +1554,7 @@ docs/GetTeamMembers-example.txt
 docs/GetTeams-example.txt
 docs/GetTelephonyAgentGreetings-example.txt
 docs/GetTelephonyAgentsGreetingsMe-example.txt
+docs/GetTelephonyCallsMetrics-example.txt
 docs/GetTelephonyMediaregions-example.txt
 docs/GetTelephonyProvidersEdge-example.txt
 docs/GetTelephonyProvidersEdgeDiagnosticNslookup-example.txt
@@ -1995,6 +1999,7 @@ docs/PatchKnowledgeKnowledgebaseLabel-example.txt
 docs/PatchKnowledgeKnowledgebaseParseJob-example.txt
 docs/PatchKnowledgeKnowledgebaseSynchronizeJob-example.txt
 docs/PatchKnowledgeKnowledgebaseUnansweredGroupPhrasegroup-example.txt
+docs/PatchKnowledgeSetting-example.txt
 docs/PatchLanguageunderstandingDomain-example.txt
 docs/PatchLanguageunderstandingMinerDraft-example.txt
 docs/PatchLearningAssignment-example.txt
@@ -2566,6 +2571,8 @@ docs/PostKnowledgeKnowledgebaseSynchronizeJobs-example.txt
 docs/PostKnowledgeKnowledgebaseUploadsUrlsJobs-example.txt
 docs/PostKnowledgeKnowledgebaseUploadsUrlsJobs-example.txt
 docs/PostKnowledgeKnowledgebases-example.txt
+docs/PostKnowledgeSearchPreview-example.txt
+docs/PostKnowledgeSettings-example.txt
 docs/PostLanguages-example.txt
 docs/PostLanguageunderstandingDomainFeedback-example.txt
 docs/PostLanguageunderstandingDomainVersionDetect-example.txt
@@ -4380,7 +4387,7 @@ platformclientv2/conversationappsettings.go
 platformclientv2/conversationassociation.go
 platformclientv2/conversationasyncaggregatequeryresponse.go
 platformclientv2/conversationasyncaggregationquery.go
-platformclientv2/conversationattributefilter.go
+platformclientv2/conversationattributeproperties.go
 platformclientv2/conversationbasic.go
 platformclientv2/conversationcallbackeventtopiccallbackconversation.go
 platformclientv2/conversationcallbackeventtopiccallbackmediaparticipant.go
@@ -4690,8 +4697,6 @@ platformclientv2/conversationresponsesuggestionstopicsuggestioncontext.go
 platformclientv2/conversationresponsesuggestionstopicsuggestionfeedback.go
 platformclientv2/conversationroutingdata.go
 platformclientv2/conversationsapi.go
-platformclientv2/conversationschemaattribute.go
-platformclientv2/conversationschemadata.go
 platformclientv2/conversationschemareference.go
 platformclientv2/conversationschemaupdaterequest.go
 platformclientv2/conversationscreenshareeventtopicconversationdivisionmembership.go
@@ -6258,6 +6263,7 @@ platformclientv2/knowledgecontextreference.go
 platformclientv2/knowledgecontextvaluereference.go
 platformclientv2/knowledgeconversationcontext.go
 platformclientv2/knowledgeconversationcontextresponse.go
+platformclientv2/knowledgeconversationturn.go
 platformclientv2/knowledgedocumentalternative.go
 platformclientv2/knowledgedocumentbulkremoverequest.go
 platformclientv2/knowledgedocumentbulkupdateentity.go
@@ -6304,6 +6310,7 @@ platformclientv2/knowledgeexportjobdocumentsfilter.go
 platformclientv2/knowledgeexportjobfilter.go
 platformclientv2/knowledgeexportjobrequest.go
 platformclientv2/knowledgeexportjobresponse.go
+platformclientv2/knowledgegenerationsetting.go
 platformclientv2/knowledgegroupstatistics.go
 platformclientv2/knowledgeguestanswerdocumentresponse.go
 platformclientv2/knowledgeguestanswerdocumentsresponse.go
@@ -6343,10 +6350,17 @@ platformclientv2/knowledgeparsejobrequestimport.go
 platformclientv2/knowledgeparsejobrequestpatch.go
 platformclientv2/knowledgeparsejobresponse.go
 platformclientv2/knowledgeparserecord.go
+platformclientv2/knowledgeretrievedreference.go
 platformclientv2/knowledgesearchclientapplication.go
 platformclientv2/knowledgesearchdocumentresponse.go
+platformclientv2/knowledgesearchpreviewrequest.go
+platformclientv2/knowledgesearchpreviewresponse.go
+platformclientv2/knowledgesearchresult.go
 platformclientv2/knowledgesetting.go
+platformclientv2/knowledgesettinglisting.go
 platformclientv2/knowledgesettings.go
+platformclientv2/knowledgesettingsrequest.go
+platformclientv2/knowledgesettingsresponse.go
 platformclientv2/knowledgesuggestionconfig.go
 platformclientv2/knowledgesyncjobreport.go
 platformclientv2/knowledgesyncjobrequest.go
@@ -6854,6 +6868,7 @@ platformclientv2/optinsettings.go
 platformclientv2/organization.go
 platformclientv2/organizationapi.go
 platformclientv2/organizationauthorizationapi.go
+platformclientv2/organizationcallmetrics.go
 platformclientv2/organizationfeatures.go
 platformclientv2/organizationpresence.go
 platformclientv2/organizationpresencedefinition.go
@@ -8761,6 +8776,7 @@ platformclientv2/v2wfmmainforecastexporthistoricaleventmainforecasterrorbody.go
 platformclientv2/v2wfmmainforecastexporthistoricaleventmainforecastexportnotification.go
 platformclientv2/v2wfmmainforecastexportsnapshoteventmainforecasterrorbody.go
 platformclientv2/v2wfmmainforecastexportsnapshoteventmainforecastexportnotification.go
+platformclientv2/v3sourceref.go
 platformclientv2/validateaddressrequest.go
 platformclientv2/validateaddressresponse.go
 platformclientv2/validateagentunavailabletimesrequest.go

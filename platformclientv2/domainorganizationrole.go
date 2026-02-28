@@ -39,13 +39,13 @@ type Domainorganizationrole struct {
 	// RoleNeedsUpdate - Optional unless patch operation.
 	RoleNeedsUpdate *bool `json:"roleNeedsUpdate,omitempty"`
 
-	// BaseLicense
+	// BaseLicense - Set baseLicense only while updating license using PUT /license endpoint
 	BaseLicense *string `json:"baseLicense,omitempty"`
 
-	// AddonLicenses
+	// AddonLicenses - Set addonLicenses only while updating license using PUT /license endpoint
 	AddonLicenses *[]string `json:"addonLicenses,omitempty"`
 
-	// DateLicenseLastUpdated - The time that this role licenses were most recently updated. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	// DateLicenseLastUpdated - The time that this role licenses were most recently updated using the PUT /license endpoint. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateLicenseLastUpdated *time.Time `json:"dateLicenseLastUpdated,omitempty"`
 
 	// Base

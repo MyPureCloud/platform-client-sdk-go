@@ -30,6 +30,9 @@ type Userpresence struct {
 	// PresenceDefinition
 	PresenceDefinition *Presencedefinition `json:"presenceDefinition,omitempty"`
 
+	// FuturePresenceDefinition - The definition of the user's desired future presence
+	FuturePresenceDefinition *Presencedefinition `json:"futurePresenceDefinition,omitempty"`
+
 	// Message
 	Message *string `json:"message,omitempty"`
 
@@ -123,6 +126,8 @@ func (o Userpresence) MarshalJSON() ([]byte, error) {
 		
 		PresenceDefinition *Presencedefinition `json:"presenceDefinition,omitempty"`
 		
+		FuturePresenceDefinition *Presencedefinition `json:"futurePresenceDefinition,omitempty"`
+		
 		Message *string `json:"message,omitempty"`
 		
 		ModifiedDate *string `json:"modifiedDate,omitempty"`
@@ -141,6 +146,8 @@ func (o Userpresence) MarshalJSON() ([]byte, error) {
 		Primary: o.Primary,
 		
 		PresenceDefinition: o.PresenceDefinition,
+		
+		FuturePresenceDefinition: o.FuturePresenceDefinition,
 		
 		Message: o.Message,
 		
@@ -181,6 +188,11 @@ func (o *Userpresence) UnmarshalJSON(b []byte) error {
 	if PresenceDefinition, ok := UserpresenceMap["presenceDefinition"].(map[string]interface{}); ok {
 		PresenceDefinitionString, _ := json.Marshal(PresenceDefinition)
 		json.Unmarshal(PresenceDefinitionString, &o.PresenceDefinition)
+	}
+	
+	if FuturePresenceDefinition, ok := UserpresenceMap["futurePresenceDefinition"].(map[string]interface{}); ok {
+		FuturePresenceDefinitionString, _ := json.Marshal(FuturePresenceDefinition)
+		json.Unmarshal(FuturePresenceDefinitionString, &o.FuturePresenceDefinition)
 	}
 	
 	if Message, ok := UserpresenceMap["message"].(string); ok {

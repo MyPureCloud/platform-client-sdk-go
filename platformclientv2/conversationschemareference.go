@@ -14,9 +14,6 @@ type Conversationschemareference struct {
 	// Id - The id of the schema.
 	Id *string `json:"id,omitempty"`
 
-	// Version - The version of the schema.
-	Version *int `json:"version,omitempty"`
-
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -86,14 +83,10 @@ func (o Conversationschemareference) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
-		Version *int `json:"version,omitempty"`
-		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
-		
-		Version: o.Version,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -111,11 +104,6 @@ func (o *Conversationschemareference) UnmarshalJSON(b []byte) error {
 		o.Id = &Id
 	}
     
-	if Version, ok := ConversationschemareferenceMap["version"].(float64); ok {
-		VersionInt := int(Version)
-		o.Version = &VersionInt
-	}
-	
 	if SelfUri, ok := ConversationschemareferenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

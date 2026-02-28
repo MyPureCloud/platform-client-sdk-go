@@ -102,6 +102,9 @@ type Recordingmessagingmessage struct {
 	// RoadsideAssistance - Roadside Assistance content.
 	RoadsideAssistance *Recordingroadsideassistance `json:"roadsideAssistance,omitempty"`
 
+	// RichLink - Rich Link content.
+	RichLink *Richlink `json:"richLink,omitempty"`
+
 	// MessageReceipts - List of message receipts
 	MessageReceipts *[]Recordingmessagereceipt `json:"messageReceipts,omitempty"`
 }
@@ -237,6 +240,8 @@ func (o Recordingmessagingmessage) MarshalJSON() ([]byte, error) {
 		
 		RoadsideAssistance *Recordingroadsideassistance `json:"roadsideAssistance,omitempty"`
 		
+		RichLink *Richlink `json:"richLink,omitempty"`
+		
 		MessageReceipts *[]Recordingmessagereceipt `json:"messageReceipts,omitempty"`
 		Alias
 	}{ 
@@ -299,6 +304,8 @@ func (o Recordingmessagingmessage) MarshalJSON() ([]byte, error) {
 		Form: o.Form,
 		
 		RoadsideAssistance: o.RoadsideAssistance,
+		
+		RichLink: o.RichLink,
 		
 		MessageReceipts: o.MessageReceipts,
 		Alias:    (Alias)(o),
@@ -451,6 +458,11 @@ func (o *Recordingmessagingmessage) UnmarshalJSON(b []byte) error {
 	if RoadsideAssistance, ok := RecordingmessagingmessageMap["roadsideAssistance"].(map[string]interface{}); ok {
 		RoadsideAssistanceString, _ := json.Marshal(RoadsideAssistance)
 		json.Unmarshal(RoadsideAssistanceString, &o.RoadsideAssistance)
+	}
+	
+	if RichLink, ok := RecordingmessagingmessageMap["richLink"].(map[string]interface{}); ok {
+		RichLinkString, _ := json.Marshal(RichLink)
+		json.Unmarshal(RichLinkString, &o.RichLink)
 	}
 	
 	if MessageReceipts, ok := RecordingmessagingmessageMap["messageReceipts"].([]interface{}); ok {
