@@ -4378,7 +4378,9 @@ func (a ConversationsApi) GetConversationsCallbackParticipantWrapupcodes(convers
 
 // GetConversationsCallbacks invokes GET /api/v2/conversations/callbacks
 //
-// Get active callback conversations for the logged in user
+// Get the logged-in user's active conversations and their Callback participants state.
+//
+// This endpoint answers three questions:- Is the user involved in any active conversation? - Does that active conversation include Callbacks?  - Is the user directly participating in a Callback within that conversation?
 func (a ConversationsApi) GetConversationsCallbacks() (*Callbackconversationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4454,7 +4456,9 @@ func (a ConversationsApi) GetConversationsCallbacks() (*Callbackconversationenti
 
 // GetConversationsCalls invokes GET /api/v2/conversations/calls
 //
-// Get active call conversations for the logged in user
+// Get the logged-in user's active conversations and their Call participants state.
+//
+// This endpoint answers three questions:- Is the user involved in any active conversation? - Does that active conversation include Calls?  - Is the user directly participating in a Call within that conversation?
 func (a ConversationsApi) GetConversationsCalls() (*Callconversationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -7024,7 +7028,9 @@ func (a ConversationsApi) GetConversationsEmailSettings(conversationId string) (
 
 // GetConversationsEmails invokes GET /api/v2/conversations/emails
 //
-// Get active email conversations for the logged in user
+// Get the logged-in user's active conversations and their Email participants state.
+//
+// This endpoint answers three questions:- Is the user involved in any active conversation? - Does that active conversation include Emails?  - Is the user directly participating in an Email within that conversation?
 func (a ConversationsApi) GetConversationsEmails() (*Emailconversationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -7182,7 +7188,9 @@ func (a ConversationsApi) GetConversationsInternalmessage(conversationId string)
 
 // GetConversationsInternalmessages invokes GET /api/v2/conversations/internalmessages
 //
-// Get active internal message conversations for the logged in user
+// Get the logged-in user's active conversations and their InternalMessage participants state.
+//
+// This endpoint answers three questions:- Is the user involved in any active conversation? - Does that active conversation include InternalMessages?  - Is the user directly participating in an InternalMessage within that conversation?
 func (a ConversationsApi) GetConversationsInternalmessages() (*Internalmessageconversationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -8136,7 +8144,9 @@ func (a ConversationsApi) GetConversationsMessageParticipantWrapupcodes(conversa
 
 // GetConversationsMessages invokes GET /api/v2/conversations/messages
 //
-// Get active message conversations for the logged in user
+// Get the logged-in user's active conversations and their Message participants state.
+//
+// This endpoint answers three questions:- Is the user involved in any active conversation? - Does that active conversation include Messages?  - Is the user directly participating in a Message within that conversation?
 func (a ConversationsApi) GetConversationsMessages() (*Messageconversationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

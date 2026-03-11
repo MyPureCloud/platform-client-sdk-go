@@ -20,6 +20,9 @@ type Inbounddomainpatchrequest struct {
 	// ImapSettings - The IMAP server integration and settings to use for processing inbound emails.
 	ImapSettings *Imapsettings `json:"imapSettings,omitempty"`
 
+	// GraphApiSettings - The GraphAPI server integration and settings to use for processing inbound and outbound emails.
+	GraphApiSettings *Graphapisettings `json:"graphApiSettings,omitempty"`
+
 	// EmailSetting - The email settings to associate with this domain.
 	EmailSetting *Emailsettingreference `json:"emailSetting,omitempty"`
 }
@@ -93,6 +96,8 @@ func (o Inbounddomainpatchrequest) MarshalJSON() ([]byte, error) {
 		
 		ImapSettings *Imapsettings `json:"imapSettings,omitempty"`
 		
+		GraphApiSettings *Graphapisettings `json:"graphApiSettings,omitempty"`
+		
 		EmailSetting *Emailsettingreference `json:"emailSetting,omitempty"`
 		Alias
 	}{ 
@@ -101,6 +106,8 @@ func (o Inbounddomainpatchrequest) MarshalJSON() ([]byte, error) {
 		CustomSMTPServer: o.CustomSMTPServer,
 		
 		ImapSettings: o.ImapSettings,
+		
+		GraphApiSettings: o.GraphApiSettings,
 		
 		EmailSetting: o.EmailSetting,
 		Alias:    (Alias)(o),
@@ -127,6 +134,11 @@ func (o *Inbounddomainpatchrequest) UnmarshalJSON(b []byte) error {
 	if ImapSettings, ok := InbounddomainpatchrequestMap["imapSettings"].(map[string]interface{}); ok {
 		ImapSettingsString, _ := json.Marshal(ImapSettings)
 		json.Unmarshal(ImapSettingsString, &o.ImapSettings)
+	}
+	
+	if GraphApiSettings, ok := InbounddomainpatchrequestMap["graphApiSettings"].(map[string]interface{}); ok {
+		GraphApiSettingsString, _ := json.Marshal(GraphApiSettings)
+		json.Unmarshal(GraphApiSettingsString, &o.GraphApiSettings)
 	}
 	
 	if EmailSetting, ok := InbounddomainpatchrequestMap["emailSetting"].(map[string]interface{}); ok {

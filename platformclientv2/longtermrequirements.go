@@ -18,6 +18,9 @@ type Longtermrequirements struct {
 	// DateGenerationStarted - Date the generation of the requirements started. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateGenerationStarted *time.Time `json:"dateGenerationStarted,omitempty"`
 
+	// Months - The list of months covered by the long-term staffing requirements, formatted as yyyy-MM
+	Months *[]string `json:"months,omitempty"`
+
 	// RequirementResults - List of planning group outputs
 	RequirementResults *[]Planninggrouprequirementoutput `json:"requirementResults,omitempty"`
 }
@@ -97,12 +100,16 @@ func (o Longtermrequirements) MarshalJSON() ([]byte, error) {
 		
 		DateGenerationStarted *string `json:"dateGenerationStarted,omitempty"`
 		
+		Months *[]string `json:"months,omitempty"`
+		
 		RequirementResults *[]Planninggrouprequirementoutput `json:"requirementResults,omitempty"`
 		Alias
 	}{ 
 		ForecastMetadata: o.ForecastMetadata,
 		
 		DateGenerationStarted: DateGenerationStarted,
+		
+		Months: o.Months,
 		
 		RequirementResults: o.RequirementResults,
 		Alias:    (Alias)(o),
@@ -124,6 +131,11 @@ func (o *Longtermrequirements) UnmarshalJSON(b []byte) error {
 	if dateGenerationStartedString, ok := LongtermrequirementsMap["dateGenerationStarted"].(string); ok {
 		DateGenerationStarted, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateGenerationStartedString)
 		o.DateGenerationStarted = &DateGenerationStarted
+	}
+	
+	if Months, ok := LongtermrequirementsMap["months"].([]interface{}); ok {
+		MonthsString, _ := json.Marshal(Months)
+		json.Unmarshal(MonthsString, &o.Months)
 	}
 	
 	if RequirementResults, ok := LongtermrequirementsMap["requirementResults"].([]interface{}); ok {

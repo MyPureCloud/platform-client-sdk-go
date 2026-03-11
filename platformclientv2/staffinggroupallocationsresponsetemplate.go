@@ -13,6 +13,15 @@ type Staffinggroupallocationsresponsetemplate struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// StaffingGroupAllocations - List of staffing group allocations
 	StaffingGroupAllocations *[]Staffinggroupallocation `json:"staffingGroupAllocations,omitempty"`
+
+	// Months - The list of months covered by this capacity plan, formatted as yyyy-MM
+	Months *[]string `json:"months,omitempty"`
+
+	// PlanningGroupAllocations - The planning group allocations
+	PlanningGroupAllocations *[]Capacityplanningplanninggroupallocation `json:"planningGroupAllocations,omitempty"`
+
+	// CapacityPlanMetricsSummary - The total summary of staffing allocation metrics for this capacity plan, for the selected granularity
+	CapacityPlanMetricsSummary *Capacityplanmetricssummary `json:"capacityPlanMetricsSummary,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +88,21 @@ func (o Staffinggroupallocationsresponsetemplate) MarshalJSON() ([]byte, error) 
 	
 	return json.Marshal(&struct { 
 		StaffingGroupAllocations *[]Staffinggroupallocation `json:"staffingGroupAllocations,omitempty"`
+		
+		Months *[]string `json:"months,omitempty"`
+		
+		PlanningGroupAllocations *[]Capacityplanningplanninggroupallocation `json:"planningGroupAllocations,omitempty"`
+		
+		CapacityPlanMetricsSummary *Capacityplanmetricssummary `json:"capacityPlanMetricsSummary,omitempty"`
 		Alias
 	}{ 
 		StaffingGroupAllocations: o.StaffingGroupAllocations,
+		
+		Months: o.Months,
+		
+		PlanningGroupAllocations: o.PlanningGroupAllocations,
+		
+		CapacityPlanMetricsSummary: o.CapacityPlanMetricsSummary,
 		Alias:    (Alias)(o),
 	})
 }
@@ -96,6 +117,21 @@ func (o *Staffinggroupallocationsresponsetemplate) UnmarshalJSON(b []byte) error
 	if StaffingGroupAllocations, ok := StaffinggroupallocationsresponsetemplateMap["staffingGroupAllocations"].([]interface{}); ok {
 		StaffingGroupAllocationsString, _ := json.Marshal(StaffingGroupAllocations)
 		json.Unmarshal(StaffingGroupAllocationsString, &o.StaffingGroupAllocations)
+	}
+	
+	if Months, ok := StaffinggroupallocationsresponsetemplateMap["months"].([]interface{}); ok {
+		MonthsString, _ := json.Marshal(Months)
+		json.Unmarshal(MonthsString, &o.Months)
+	}
+	
+	if PlanningGroupAllocations, ok := StaffinggroupallocationsresponsetemplateMap["planningGroupAllocations"].([]interface{}); ok {
+		PlanningGroupAllocationsString, _ := json.Marshal(PlanningGroupAllocations)
+		json.Unmarshal(PlanningGroupAllocationsString, &o.PlanningGroupAllocations)
+	}
+	
+	if CapacityPlanMetricsSummary, ok := StaffinggroupallocationsresponsetemplateMap["capacityPlanMetricsSummary"].(map[string]interface{}); ok {
+		CapacityPlanMetricsSummaryString, _ := json.Marshal(CapacityPlanMetricsSummary)
+		json.Unmarshal(CapacityPlanMetricsSummaryString, &o.CapacityPlanMetricsSummary)
 	}
 	
 

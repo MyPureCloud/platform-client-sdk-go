@@ -28,6 +28,30 @@ type Staffinggroupallocation struct {
 
 	// PlanningGroupIds - The IDs of the planning groups associated with this staffing group
 	PlanningGroupIds *[]string `json:"planningGroupIds,omitempty"`
+
+	// BaseStartingFullTimeEquivalentCount - The weekly calculated starting full time equivalent count
+	BaseStartingFullTimeEquivalentCount *[]float64 `json:"baseStartingFullTimeEquivalentCount,omitempty"`
+
+	// AttritionFullTimeEquivalentCount - The weekly projected attrition full time equivalent count
+	AttritionFullTimeEquivalentCount *[]float64 `json:"attritionFullTimeEquivalentCount,omitempty"`
+
+	// StaffingGroupPlannedFullTimeEquivalentCount - The weekly calculated staffing group full time equivalent count
+	StaffingGroupPlannedFullTimeEquivalentCount *[]float64 `json:"staffingGroupPlannedFullTimeEquivalentCount,omitempty"`
+
+	// EndOfMonthPlannedFullTimeEquivalentCount - The end of month planned full time equivalent count of this staffing group
+	EndOfMonthPlannedFullTimeEquivalentCount *[]float64 `json:"endOfMonthPlannedFullTimeEquivalentCount,omitempty"`
+
+	// ShrinkageFullTimeEquivalentCount - The weekly projected shrinkage full time equivalent count of this staffing group
+	ShrinkageFullTimeEquivalentCount *[]float64 `json:"shrinkageFullTimeEquivalentCount,omitempty"`
+
+	// NetFullTimeEquivalentCount - The weekly net full time equivalent count of this staffing group
+	NetFullTimeEquivalentCount *[]float64 `json:"netFullTimeEquivalentCount,omitempty"`
+
+	// ExtraTimeUnderTimeFullTimeEquivalentCount - The weekly projected extra or under full time equivalent to the staffing group
+	ExtraTimeUnderTimeFullTimeEquivalentCount *[]float64 `json:"extraTimeUnderTimeFullTimeEquivalentCount,omitempty"`
+
+	// TransfersFullTimeEquivalentCount - The weekly projected full time equivalent transfers of agents into or out of this staffing group
+	TransfersFullTimeEquivalentCount *[]float64 `json:"transfersFullTimeEquivalentCount,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -104,6 +128,22 @@ func (o Staffinggroupallocation) MarshalJSON() ([]byte, error) {
 		StartingWeeklyFullTimeEquivalentCount *float64 `json:"startingWeeklyFullTimeEquivalentCount,omitempty"`
 		
 		PlanningGroupIds *[]string `json:"planningGroupIds,omitempty"`
+		
+		BaseStartingFullTimeEquivalentCount *[]float64 `json:"baseStartingFullTimeEquivalentCount,omitempty"`
+		
+		AttritionFullTimeEquivalentCount *[]float64 `json:"attritionFullTimeEquivalentCount,omitempty"`
+		
+		StaffingGroupPlannedFullTimeEquivalentCount *[]float64 `json:"staffingGroupPlannedFullTimeEquivalentCount,omitempty"`
+		
+		EndOfMonthPlannedFullTimeEquivalentCount *[]float64 `json:"endOfMonthPlannedFullTimeEquivalentCount,omitempty"`
+		
+		ShrinkageFullTimeEquivalentCount *[]float64 `json:"shrinkageFullTimeEquivalentCount,omitempty"`
+		
+		NetFullTimeEquivalentCount *[]float64 `json:"netFullTimeEquivalentCount,omitempty"`
+		
+		ExtraTimeUnderTimeFullTimeEquivalentCount *[]float64 `json:"extraTimeUnderTimeFullTimeEquivalentCount,omitempty"`
+		
+		TransfersFullTimeEquivalentCount *[]float64 `json:"transfersFullTimeEquivalentCount,omitempty"`
 		Alias
 	}{ 
 		StaffingGroupId: o.StaffingGroupId,
@@ -117,6 +157,22 @@ func (o Staffinggroupallocation) MarshalJSON() ([]byte, error) {
 		StartingWeeklyFullTimeEquivalentCount: o.StartingWeeklyFullTimeEquivalentCount,
 		
 		PlanningGroupIds: o.PlanningGroupIds,
+		
+		BaseStartingFullTimeEquivalentCount: o.BaseStartingFullTimeEquivalentCount,
+		
+		AttritionFullTimeEquivalentCount: o.AttritionFullTimeEquivalentCount,
+		
+		StaffingGroupPlannedFullTimeEquivalentCount: o.StaffingGroupPlannedFullTimeEquivalentCount,
+		
+		EndOfMonthPlannedFullTimeEquivalentCount: o.EndOfMonthPlannedFullTimeEquivalentCount,
+		
+		ShrinkageFullTimeEquivalentCount: o.ShrinkageFullTimeEquivalentCount,
+		
+		NetFullTimeEquivalentCount: o.NetFullTimeEquivalentCount,
+		
+		ExtraTimeUnderTimeFullTimeEquivalentCount: o.ExtraTimeUnderTimeFullTimeEquivalentCount,
+		
+		TransfersFullTimeEquivalentCount: o.TransfersFullTimeEquivalentCount,
 		Alias:    (Alias)(o),
 	})
 }
@@ -154,6 +210,46 @@ func (o *Staffinggroupallocation) UnmarshalJSON(b []byte) error {
 	if PlanningGroupIds, ok := StaffinggroupallocationMap["planningGroupIds"].([]interface{}); ok {
 		PlanningGroupIdsString, _ := json.Marshal(PlanningGroupIds)
 		json.Unmarshal(PlanningGroupIdsString, &o.PlanningGroupIds)
+	}
+	
+	if BaseStartingFullTimeEquivalentCount, ok := StaffinggroupallocationMap["baseStartingFullTimeEquivalentCount"].([]interface{}); ok {
+		BaseStartingFullTimeEquivalentCountString, _ := json.Marshal(BaseStartingFullTimeEquivalentCount)
+		json.Unmarshal(BaseStartingFullTimeEquivalentCountString, &o.BaseStartingFullTimeEquivalentCount)
+	}
+	
+	if AttritionFullTimeEquivalentCount, ok := StaffinggroupallocationMap["attritionFullTimeEquivalentCount"].([]interface{}); ok {
+		AttritionFullTimeEquivalentCountString, _ := json.Marshal(AttritionFullTimeEquivalentCount)
+		json.Unmarshal(AttritionFullTimeEquivalentCountString, &o.AttritionFullTimeEquivalentCount)
+	}
+	
+	if StaffingGroupPlannedFullTimeEquivalentCount, ok := StaffinggroupallocationMap["staffingGroupPlannedFullTimeEquivalentCount"].([]interface{}); ok {
+		StaffingGroupPlannedFullTimeEquivalentCountString, _ := json.Marshal(StaffingGroupPlannedFullTimeEquivalentCount)
+		json.Unmarshal(StaffingGroupPlannedFullTimeEquivalentCountString, &o.StaffingGroupPlannedFullTimeEquivalentCount)
+	}
+	
+	if EndOfMonthPlannedFullTimeEquivalentCount, ok := StaffinggroupallocationMap["endOfMonthPlannedFullTimeEquivalentCount"].([]interface{}); ok {
+		EndOfMonthPlannedFullTimeEquivalentCountString, _ := json.Marshal(EndOfMonthPlannedFullTimeEquivalentCount)
+		json.Unmarshal(EndOfMonthPlannedFullTimeEquivalentCountString, &o.EndOfMonthPlannedFullTimeEquivalentCount)
+	}
+	
+	if ShrinkageFullTimeEquivalentCount, ok := StaffinggroupallocationMap["shrinkageFullTimeEquivalentCount"].([]interface{}); ok {
+		ShrinkageFullTimeEquivalentCountString, _ := json.Marshal(ShrinkageFullTimeEquivalentCount)
+		json.Unmarshal(ShrinkageFullTimeEquivalentCountString, &o.ShrinkageFullTimeEquivalentCount)
+	}
+	
+	if NetFullTimeEquivalentCount, ok := StaffinggroupallocationMap["netFullTimeEquivalentCount"].([]interface{}); ok {
+		NetFullTimeEquivalentCountString, _ := json.Marshal(NetFullTimeEquivalentCount)
+		json.Unmarshal(NetFullTimeEquivalentCountString, &o.NetFullTimeEquivalentCount)
+	}
+	
+	if ExtraTimeUnderTimeFullTimeEquivalentCount, ok := StaffinggroupallocationMap["extraTimeUnderTimeFullTimeEquivalentCount"].([]interface{}); ok {
+		ExtraTimeUnderTimeFullTimeEquivalentCountString, _ := json.Marshal(ExtraTimeUnderTimeFullTimeEquivalentCount)
+		json.Unmarshal(ExtraTimeUnderTimeFullTimeEquivalentCountString, &o.ExtraTimeUnderTimeFullTimeEquivalentCount)
+	}
+	
+	if TransfersFullTimeEquivalentCount, ok := StaffinggroupallocationMap["transfersFullTimeEquivalentCount"].([]interface{}); ok {
+		TransfersFullTimeEquivalentCountString, _ := json.Marshal(TransfersFullTimeEquivalentCount)
+		json.Unmarshal(TransfersFullTimeEquivalentCountString, &o.TransfersFullTimeEquivalentCount)
 	}
 	
 

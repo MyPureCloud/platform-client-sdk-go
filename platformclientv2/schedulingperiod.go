@@ -12,11 +12,11 @@ import (
 type Schedulingperiod struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// EarliestStartDate - The earliest date the associated activity plan can begin, in YYYY-MM-DD format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
-	EarliestStartDate *time.Time `json:"earliestStartDate,omitempty"`
-
 	// LatestEndDate - The latest date the associated activity plan can end, in YYYY-MM-DD format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
 	LatestEndDate *time.Time `json:"latestEndDate,omitempty"`
+
+	// EarliestStartDate - The earliest date the associated activity plan can begin, in YYYY-MM-DD format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
+	EarliestStartDate *time.Time `json:"earliestStartDate,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -50,7 +50,7 @@ func (o Schedulingperiod) MarshalJSON() ([]byte, error) {
 		// Known field names that require type overrides
 		dateTimeFields := []string{  }
 		localDateTimeFields := []string{  }
-		dateFields := []string{ "EarliestStartDate","LatestEndDate", }
+		dateFields := []string{ "LatestEndDate","EarliestStartDate", }
 
 		// Construct object
 		newObj := make(map[string]interface{})
@@ -81,13 +81,6 @@ func (o Schedulingperiod) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Schedulingperiod
 	
-	EarliestStartDate := new(string)
-	if o.EarliestStartDate != nil {
-		*EarliestStartDate = timeutil.Strftime(o.EarliestStartDate, "%Y-%m-%d")
-	} else {
-		EarliestStartDate = nil
-	}
-	
 	LatestEndDate := new(string)
 	if o.LatestEndDate != nil {
 		*LatestEndDate = timeutil.Strftime(o.LatestEndDate, "%Y-%m-%d")
@@ -95,15 +88,22 @@ func (o Schedulingperiod) MarshalJSON() ([]byte, error) {
 		LatestEndDate = nil
 	}
 	
+	EarliestStartDate := new(string)
+	if o.EarliestStartDate != nil {
+		*EarliestStartDate = timeutil.Strftime(o.EarliestStartDate, "%Y-%m-%d")
+	} else {
+		EarliestStartDate = nil
+	}
+	
 	return json.Marshal(&struct { 
-		EarliestStartDate *string `json:"earliestStartDate,omitempty"`
-		
 		LatestEndDate *string `json:"latestEndDate,omitempty"`
+		
+		EarliestStartDate *string `json:"earliestStartDate,omitempty"`
 		Alias
 	}{ 
-		EarliestStartDate: EarliestStartDate,
-		
 		LatestEndDate: LatestEndDate,
+		
+		EarliestStartDate: EarliestStartDate,
 		Alias:    (Alias)(o),
 	})
 }
@@ -115,14 +115,14 @@ func (o *Schedulingperiod) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
-	if earliestStartDateString, ok := SchedulingperiodMap["earliestStartDate"].(string); ok {
-		EarliestStartDate, _ := time.Parse("2006-01-02", earliestStartDateString)
-		o.EarliestStartDate = &EarliestStartDate
-	}
-	
 	if latestEndDateString, ok := SchedulingperiodMap["latestEndDate"].(string); ok {
 		LatestEndDate, _ := time.Parse("2006-01-02", latestEndDateString)
 		o.LatestEndDate = &LatestEndDate
+	}
+	
+	if earliestStartDateString, ok := SchedulingperiodMap["earliestStartDate"].(string); ok {
+		EarliestStartDate, _ := time.Parse("2006-01-02", earliestStartDateString)
+		o.EarliestStartDate = &EarliestStartDate
 	}
 	
 

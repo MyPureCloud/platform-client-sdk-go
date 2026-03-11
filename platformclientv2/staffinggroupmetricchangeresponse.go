@@ -27,6 +27,9 @@ type Staffinggroupmetricchangeresponse struct {
 	// Notes - Notes about the staffing groups metric changes
 	Notes *string `json:"notes,omitempty"`
 
+	// TransfersFullTimeEquivalent - Full time equivalent transfer from one staffing group to another
+	TransfersFullTimeEquivalent *Transfersfulltimeequivalent `json:"transfersFullTimeEquivalent,omitempty"`
+
 	// StaffingGroups - The staffing groups affected by the metric change
 	StaffingGroups *[]Staffinggroupreference `json:"staffingGroups,omitempty"`
 
@@ -118,6 +121,8 @@ func (o Staffinggroupmetricchangeresponse) MarshalJSON() ([]byte, error) {
 		
 		Notes *string `json:"notes,omitempty"`
 		
+		TransfersFullTimeEquivalent *Transfersfulltimeequivalent `json:"transfersFullTimeEquivalent,omitempty"`
+		
 		StaffingGroups *[]Staffinggroupreference `json:"staffingGroups,omitempty"`
 		
 		CreatedBy *Userreference `json:"createdBy,omitempty"`
@@ -134,6 +139,8 @@ func (o Staffinggroupmetricchangeresponse) MarshalJSON() ([]byte, error) {
 		Metric: o.Metric,
 		
 		Notes: o.Notes,
+		
+		TransfersFullTimeEquivalent: o.TransfersFullTimeEquivalent,
 		
 		StaffingGroups: o.StaffingGroups,
 		
@@ -173,6 +180,11 @@ func (o *Staffinggroupmetricchangeresponse) UnmarshalJSON(b []byte) error {
 		o.Notes = &Notes
 	}
     
+	if TransfersFullTimeEquivalent, ok := StaffinggroupmetricchangeresponseMap["transfersFullTimeEquivalent"].(map[string]interface{}); ok {
+		TransfersFullTimeEquivalentString, _ := json.Marshal(TransfersFullTimeEquivalent)
+		json.Unmarshal(TransfersFullTimeEquivalentString, &o.TransfersFullTimeEquivalent)
+	}
+	
 	if StaffingGroups, ok := StaffinggroupmetricchangeresponseMap["staffingGroups"].([]interface{}); ok {
 		StaffingGroupsString, _ := json.Marshal(StaffingGroups)
 		json.Unmarshal(StaffingGroupsString, &o.StaffingGroups)

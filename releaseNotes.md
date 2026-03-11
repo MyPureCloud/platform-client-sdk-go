@@ -1,148 +1,182 @@
-Platform API version: 10094
+Platform API version: 10112
 
 
 
 
-# Major Changes (14 changes)
+# Major Changes (3 changes)
 
-**POST /api/v2/quality/conversations/{conversationId}/evaluations** (1 change)
+**GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/capacityplans/{capacityPlanId}/staffinggroupallocations** (1 change)
 
-* Parameter Idempotency-Key was added
+* Parameter granularity was added
 
-**ConversationAttributeFilter** (1 change)
+**GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/capacityplanning/longtermrequirements/automaticbestmethod/weeks/{weekDateId}/forecasts/{forecastId}** (1 change)
 
-* Model ConversationAttributeFilter was removed
+* Parameter granularity was added
 
-**ConversationSchemaAttribute** (1 change)
+**JourneyEventDefinition** (1 change)
 
-* Model ConversationSchemaAttribute was removed
-
-**ConversationSchemaData** (1 change)
-
-* Model ConversationSchemaData was removed
-
-**ConversationSchemaReference** (1 change)
-
-* Property version was removed
-
-**DomainOrganizationRoleUpdate** (9 changes)
-
-* Property defaultRoleId was removed
-* Property unusedPermissions was removed
-* Property userCount was removed
-* Property roleNeedsUpdate was removed
-* Property baseLicense was removed
-* Property addonLicenses was removed
-* Property dateLicenseLastUpdated was removed
-* Property base was removed
-* Property default was removed
+* Enum value Custom was removed from property source
 
 
-# Minor Changes (35 changes)
+# Minor Changes (42 changes)
 
-**/api/v2/knowledge/settings/{knowledgeSettingId}** (4 changes)
-
-* Path was added
-* Operation GET was added
-* Operation DELETE was added
-* Operation PATCH was added
-
-**/api/v2/knowledge/settings** (3 changes)
-
-* Path was added
-* Operation GET was added
-* Operation POST was added
-
-**/api/v2/knowledge/search/preview** (2 changes)
+**/api/v2/knowledge/search** (2 changes)
 
 * Path was added
 * Operation POST was added
 
-**/api/v2/telephony/calls/metrics** (2 changes)
+**ConversationAggregationQuery** (1 change)
 
-* Path was added
-* Operation GET was added
+* Enum value nTakeover was added to property metrics
 
-**ConversationAttributeProperties** (1 change)
+**ConversationAggregationSort** (1 change)
 
-* Model was added
+* Enum value nTakeover was added to property name
 
-**CopilotContextValue** (3 changes)
+**ConversationAggregationView** (1 change)
 
-* Enum value ActiveIntent was added to property type
-* Enum value ConversationAttribute was added to property type
-* Optional property conversationAttributeProperties was added
+* Enum value nTakeover was added to property target
 
-**KnowledgeBaseWithDialectReference** (4 changes)
+**ConversationDetailQueryPredicate** (1 change)
 
-* Enum value fil-PH was added to property languageCode
-* Enum value ms-MY was added to property languageCode
-* Enum value he-IL was added to property languageCode
-* Enum value el-GR was added to property languageCode
+* Enum value nTakeover was added to property metric
 
-**UserPresence** (1 change)
+**KnowledgeAggregationSort** (1 change)
 
-* Optional property futurePresenceDefinition was added
+* Enum value nKnowledgeV3Search was added to property name
 
-**Guide** (1 change)
-
-* Enum value Transcripts was added to property source
-
-**CreateGuide** (1 change)
-
-* Enum value Transcripts was added to property source
-
-**KnowledgeGenerationSetting** (1 change)
+**DynamicUtilizationRule** (1 change)
 
 * Model was added
 
-**KnowledgeSettingsResponse** (1 change)
+**InboundRoute** (2 changes)
+
+* Optional property mailboxFolders was added
+* Optional property status was added
+
+**Variable** (1 change)
+
+* Enum value GuideOnly was added to property scope
+
+**JourneyEventDefinition** (1 change)
+
+* Enum value External was added to property source
+
+**KnowledgeSourcesSearchResponse** (1 change)
 
 * Model was added
 
-**V3SourceRef** (1 change)
+**KnowledgeV3ConversationContextResponse** (1 change)
 
 * Model was added
 
-**KnowledgeSettingsRequest** (1 change)
+**V3KnowledgeSearchClientApplication** (1 change)
 
 * Model was added
 
-**KnowledgeSettingListing** (1 change)
+**KnowledgeSourcesSearchRequest** (1 change)
 
 * Model was added
 
-**KnowledgeRetrievedReference** (1 change)
+**KnowledgeV3ConversationContext** (1 change)
 
 * Model was added
 
-**KnowledgeSearchPreviewResponse** (1 change)
+**InboundDomain** (2 changes)
+
+* Optional property imapSettings was added
+* Optional property graphApiSettings was added
+
+**InboundDomainPatchRequest** (1 change)
+
+* Optional property graphApiSettings was added
+
+**InboundDomainCreateRequest** (2 changes)
+
+* Optional property imapSettings was added
+* Optional property graphApiSettings was added
+
+**SocialMediaAsyncAggregationQuery** (1 change)
+
+* Enum value sourceType was added to property groupBy
+
+**SocialMediaQueryPredicate** (1 change)
+
+* Enum value sourceType was added to property dimension
+
+**RecurrenceSettingsBase** (1 change)
 
 * Model was added
 
-**KnowledgeSearchResult** (1 change)
+**SchedulingPeriodBase** (1 change)
 
 * Model was added
 
-**KnowledgeConversationTurn** (1 change)
+**StaffingGroupAllocation** (8 changes)
 
-* Model was added
+* Optional property baseStartingFullTimeEquivalentCount was added
+* Optional property attritionFullTimeEquivalentCount was added
+* Optional property staffingGroupPlannedFullTimeEquivalentCount was added
+* Optional property endOfMonthPlannedFullTimeEquivalentCount was added
+* Optional property shrinkageFullTimeEquivalentCount was added
+* Optional property netFullTimeEquivalentCount was added
+* Optional property extraTimeUnderTimeFullTimeEquivalentCount was added
+* Optional property transfersFullTimeEquivalentCount was added
 
-**KnowledgeSearchPreviewRequest** (1 change)
+**StaffingGroupAllocationsResponseTemplate** (3 changes)
 
-* Model was added
+* Optional property months was added
+* Optional property planningGroupAllocations was added
+* Optional property capacityPlanMetricsSummary was added
 
-**MutableUserPresence** (1 change)
+**CapacityPlanStaffingGroupMetricChangeResponse** (1 change)
 
-* Optional property futurePresenceDefinition was added
+* Optional property transfersFullTimeEquivalent was added
 
-**RecordingMessagingMessage** (1 change)
+**CreateCapacityPlanStaffingGroupMetricChangeRequest** (1 change)
 
-* Optional property richLink was added
+* Optional property transfersFullTimeEquivalent was added
 
-**OrganizationCallMetrics** (1 change)
+**StaffingGroupMetricChangeResponse** (1 change)
 
-* Model was added
+* Optional property transfersFullTimeEquivalent was added
+
+**LongTermRequirements** (1 change)
+
+* Optional property months was added
+
+**ConversationAsyncAggregationQuery** (1 change)
+
+* Enum value nTakeover was added to property metrics
 
 
-# Point Changes (0 changes)
+# Point Changes (11 changes)
+
+**GET /api/v2/conversations/calls** (2 changes)
+
+* Description was changed
+* Summary was changed
+
+**GET /api/v2/conversations/callbacks** (2 changes)
+
+* Description was changed
+* Summary was changed
+
+**GET /api/v2/conversations/emails** (2 changes)
+
+* Description was changed
+* Summary was changed
+
+**GET /api/v2/conversations/internalmessages** (2 changes)
+
+* Description was changed
+* Summary was changed
+
+**GET /api/v2/conversations/messages** (2 changes)
+
+* Description was changed
+* Summary was changed
+
+**POST /api/v2/taskmanagement/workitems/query** (1 change)
+
+* Description was changed

@@ -29,6 +29,12 @@ type Inbounddomain struct {
 	// CustomSMTPServer - The custom SMTP server integration to use when sending outbound emails from this domain.
 	CustomSMTPServer *Domainentityref `json:"customSMTPServer,omitempty"`
 
+	// ImapSettings - The IMAP server integration and settings to use for processing inbound emails.
+	ImapSettings *Imapsettings `json:"imapSettings,omitempty"`
+
+	// GraphApiSettings - The GraphAPI server integration and settings to use for processing inbound and outbound emails.
+	GraphApiSettings *Graphapisettings `json:"graphApiSettings,omitempty"`
+
 	// EmailSetting - The email settings associated with this domain.
 	EmailSetting *Emailsetting `json:"emailSetting,omitempty"`
 
@@ -111,6 +117,10 @@ func (o Inbounddomain) MarshalJSON() ([]byte, error) {
 		
 		CustomSMTPServer *Domainentityref `json:"customSMTPServer,omitempty"`
 		
+		ImapSettings *Imapsettings `json:"imapSettings,omitempty"`
+		
+		GraphApiSettings *Graphapisettings `json:"graphApiSettings,omitempty"`
+		
 		EmailSetting *Emailsetting `json:"emailSetting,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -127,6 +137,10 @@ func (o Inbounddomain) MarshalJSON() ([]byte, error) {
 		MailFromSettings: o.MailFromSettings,
 		
 		CustomSMTPServer: o.CustomSMTPServer,
+		
+		ImapSettings: o.ImapSettings,
+		
+		GraphApiSettings: o.GraphApiSettings,
 		
 		EmailSetting: o.EmailSetting,
 		
@@ -166,6 +180,16 @@ func (o *Inbounddomain) UnmarshalJSON(b []byte) error {
 	if CustomSMTPServer, ok := InbounddomainMap["customSMTPServer"].(map[string]interface{}); ok {
 		CustomSMTPServerString, _ := json.Marshal(CustomSMTPServer)
 		json.Unmarshal(CustomSMTPServerString, &o.CustomSMTPServer)
+	}
+	
+	if ImapSettings, ok := InbounddomainMap["imapSettings"].(map[string]interface{}); ok {
+		ImapSettingsString, _ := json.Marshal(ImapSettings)
+		json.Unmarshal(ImapSettingsString, &o.ImapSettings)
+	}
+	
+	if GraphApiSettings, ok := InbounddomainMap["graphApiSettings"].(map[string]interface{}); ok {
+		GraphApiSettingsString, _ := json.Marshal(GraphApiSettings)
+		json.Unmarshal(GraphApiSettingsString, &o.GraphApiSettings)
 	}
 	
 	if EmailSetting, ok := InbounddomainMap["emailSetting"].(map[string]interface{}); ok {

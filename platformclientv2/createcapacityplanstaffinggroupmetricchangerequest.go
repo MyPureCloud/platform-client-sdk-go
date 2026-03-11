@@ -26,6 +26,9 @@ type Createcapacityplanstaffinggroupmetricchangerequest struct {
 	// Notes - Notes about the staffing groups metric changes
 	Notes *string `json:"notes,omitempty"`
 
+	// TransfersFullTimeEquivalent - Full time equivalent transfer from one staffing group to another
+	TransfersFullTimeEquivalent *Transfersfulltimeequivalent `json:"transfersFullTimeEquivalent,omitempty"`
+
 	// StaffingGroupIds - The IDs of the staffing groups affected by the metric change
 	StaffingGroupIds *[]string `json:"staffingGroupIds,omitempty"`
 
@@ -106,6 +109,8 @@ func (o Createcapacityplanstaffinggroupmetricchangerequest) MarshalJSON() ([]byt
 		
 		Notes *string `json:"notes,omitempty"`
 		
+		TransfersFullTimeEquivalent *Transfersfulltimeequivalent `json:"transfersFullTimeEquivalent,omitempty"`
+		
 		StaffingGroupIds *[]string `json:"staffingGroupIds,omitempty"`
 		
 		Version *int `json:"version,omitempty"`
@@ -120,6 +125,8 @@ func (o Createcapacityplanstaffinggroupmetricchangerequest) MarshalJSON() ([]byt
 		Metric: o.Metric,
 		
 		Notes: o.Notes,
+		
+		TransfersFullTimeEquivalent: o.TransfersFullTimeEquivalent,
 		
 		StaffingGroupIds: o.StaffingGroupIds,
 		
@@ -157,6 +164,11 @@ func (o *Createcapacityplanstaffinggroupmetricchangerequest) UnmarshalJSON(b []b
 		o.Notes = &Notes
 	}
     
+	if TransfersFullTimeEquivalent, ok := CreatecapacityplanstaffinggroupmetricchangerequestMap["transfersFullTimeEquivalent"].(map[string]interface{}); ok {
+		TransfersFullTimeEquivalentString, _ := json.Marshal(TransfersFullTimeEquivalent)
+		json.Unmarshal(TransfersFullTimeEquivalentString, &o.TransfersFullTimeEquivalent)
+	}
+	
 	if StaffingGroupIds, ok := CreatecapacityplanstaffinggroupmetricchangerequestMap["staffingGroupIds"].([]interface{}); ok {
 		StaffingGroupIdsString, _ := json.Marshal(StaffingGroupIds)
 		json.Unmarshal(StaffingGroupIdsString, &o.StaffingGroupIds)

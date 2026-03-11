@@ -11,14 +11,14 @@ import (
 type Recurrencesettings struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
+	// EndAfter - Settings controlling when to end the recurrence for the activity plan
+	EndAfter *Recurrenceendsettings `json:"endAfter,omitempty"`
+
 	// RecurrencePeriod - The recurrence period of the activity plan
 	RecurrencePeriod *Recurrenceperiod `json:"recurrencePeriod,omitempty"`
 
 	// MinimumTimeBetweenOccurrences - Constraint indicating the minimum time in hours between recurrences of the activity plan
 	MinimumTimeBetweenOccurrences *Recurrenceperiod `json:"minimumTimeBetweenOccurrences,omitempty"`
-
-	// EndAfter - Settings controlling when to end the recurrence for the activity plan
-	EndAfter *Recurrenceendsettings `json:"endAfter,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,18 +84,18 @@ func (o Recurrencesettings) MarshalJSON() ([]byte, error) {
 	type Alias Recurrencesettings
 	
 	return json.Marshal(&struct { 
+		EndAfter *Recurrenceendsettings `json:"endAfter,omitempty"`
+		
 		RecurrencePeriod *Recurrenceperiod `json:"recurrencePeriod,omitempty"`
 		
 		MinimumTimeBetweenOccurrences *Recurrenceperiod `json:"minimumTimeBetweenOccurrences,omitempty"`
-		
-		EndAfter *Recurrenceendsettings `json:"endAfter,omitempty"`
 		Alias
 	}{ 
+		EndAfter: o.EndAfter,
+		
 		RecurrencePeriod: o.RecurrencePeriod,
 		
 		MinimumTimeBetweenOccurrences: o.MinimumTimeBetweenOccurrences,
-		
-		EndAfter: o.EndAfter,
 		Alias:    (Alias)(o),
 	})
 }
@@ -107,6 +107,11 @@ func (o *Recurrencesettings) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if EndAfter, ok := RecurrencesettingsMap["endAfter"].(map[string]interface{}); ok {
+		EndAfterString, _ := json.Marshal(EndAfter)
+		json.Unmarshal(EndAfterString, &o.EndAfter)
+	}
+	
 	if RecurrencePeriod, ok := RecurrencesettingsMap["recurrencePeriod"].(map[string]interface{}); ok {
 		RecurrencePeriodString, _ := json.Marshal(RecurrencePeriod)
 		json.Unmarshal(RecurrencePeriodString, &o.RecurrencePeriod)
@@ -115,11 +120,6 @@ func (o *Recurrencesettings) UnmarshalJSON(b []byte) error {
 	if MinimumTimeBetweenOccurrences, ok := RecurrencesettingsMap["minimumTimeBetweenOccurrences"].(map[string]interface{}); ok {
 		MinimumTimeBetweenOccurrencesString, _ := json.Marshal(MinimumTimeBetweenOccurrences)
 		json.Unmarshal(MinimumTimeBetweenOccurrencesString, &o.MinimumTimeBetweenOccurrences)
-	}
-	
-	if EndAfter, ok := RecurrencesettingsMap["endAfter"].(map[string]interface{}); ok {
-		EndAfterString, _ := json.Marshal(EndAfter)
-		json.Unmarshal(EndAfterString, &o.EndAfter)
 	}
 	
 

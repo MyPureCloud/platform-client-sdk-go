@@ -3854,7 +3854,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitCapacityplan(b
 // GetWorkforcemanagementBusinessunitCapacityplanStaffinggroupallocations invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/capacityplans/{capacityPlanId}/staffinggroupallocations
 //
 // Get a capacity plan's staffing group allocations
-func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitCapacityplanStaffinggroupallocations(businessUnitId string, capacityPlanId string) (*Capacityplanstaffinggroupallocationsresponse, *APIResponse, error) {
+func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitCapacityplanStaffinggroupallocations(businessUnitId string, capacityPlanId string, granularity string) (*Capacityplanstaffinggroupallocationsresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/capacityplans/{capacityPlanId}/staffinggroupallocations"
@@ -3892,6 +3892,8 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitCapacityplanSt
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["granularity"] = a.Configuration.APIClient.ParameterToString(granularity, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -4030,7 +4032,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitCapacityplanSt
 // GetWorkforcemanagementBusinessunitCapacityplanningLongtermrequirementsAutomaticbestmethodWeekForecast invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/capacityplanning/longtermrequirements/automaticbestmethod/weeks/{weekDateId}/forecasts/{forecastId}
 //
 // Get the latest long term staffing requirements for a business unit
-func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitCapacityplanningLongtermrequirementsAutomaticbestmethodWeekForecast(businessUnitId string, weekDateId time.Time, forecastId string) (*Longtermrequirementsresponse, *APIResponse, error) {
+func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitCapacityplanningLongtermrequirementsAutomaticbestmethodWeekForecast(businessUnitId string, weekDateId time.Time, forecastId string, granularity string) (*Longtermrequirementsresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/capacityplanning/longtermrequirements/automaticbestmethod/weeks/{weekDateId}/forecasts/{forecastId}"
@@ -4074,6 +4076,8 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitCapacityplanni
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["granularity"] = a.Configuration.APIClient.ParameterToString(granularity, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
