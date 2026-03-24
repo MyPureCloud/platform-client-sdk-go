@@ -49,7 +49,7 @@ type Response struct {
 	MessagingTemplate *Messagingtemplate `json:"messagingTemplate,omitempty"`
 
 	// Assets - Assets used in the response
-	Assets *[]Addressableentityref `json:"assets,omitempty"`
+	Assets *[]Rmsassetaddressableref `json:"assets,omitempty"`
 
 	// Footer - Footer template definition for responseType.Footer.
 	Footer *Footertemplate `json:"footer,omitempty"`
@@ -153,7 +153,7 @@ func (o Response) MarshalJSON() ([]byte, error) {
 		
 		MessagingTemplate *Messagingtemplate `json:"messagingTemplate,omitempty"`
 		
-		Assets *[]Addressableentityref `json:"assets,omitempty"`
+		Assets *[]Rmsassetaddressableref `json:"assets,omitempty"`
 		
 		Footer *Footertemplate `json:"footer,omitempty"`
 		

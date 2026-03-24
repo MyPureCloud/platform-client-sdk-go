@@ -51,6 +51,9 @@ type Campaignrule struct {
 	// ExecutionSettings - CampaignRule execution settings
 	ExecutionSettings *Campaignruleexecutionsettings `json:"executionSettings,omitempty"`
 
+	// TimeZoneId - The time zone to use for date-time conditions.
+	TimeZoneId *string `json:"timeZoneId,omitempty"`
+
 	// Warnings - A list of current warning conditions associated with the campaign rule.
 	Warnings *[]Campaignrulewarning `json:"warnings,omitempty"`
 
@@ -163,6 +166,8 @@ func (o Campaignrule) MarshalJSON() ([]byte, error) {
 		
 		ExecutionSettings *Campaignruleexecutionsettings `json:"executionSettings,omitempty"`
 		
+		TimeZoneId *string `json:"timeZoneId,omitempty"`
+		
 		Warnings *[]Campaignrulewarning `json:"warnings,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -193,6 +198,8 @@ func (o Campaignrule) MarshalJSON() ([]byte, error) {
 		ConditionGroups: o.ConditionGroups,
 		
 		ExecutionSettings: o.ExecutionSettings,
+		
+		TimeZoneId: o.TimeZoneId,
 		
 		Warnings: o.Warnings,
 		
@@ -268,6 +275,10 @@ func (o *Campaignrule) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ExecutionSettingsString, &o.ExecutionSettings)
 	}
 	
+	if TimeZoneId, ok := CampaignruleMap["timeZoneId"].(string); ok {
+		o.TimeZoneId = &TimeZoneId
+	}
+    
 	if Warnings, ok := CampaignruleMap["warnings"].([]interface{}); ok {
 		WarningsString, _ := json.Marshal(Warnings)
 		json.Unmarshal(WarningsString, &o.Warnings)

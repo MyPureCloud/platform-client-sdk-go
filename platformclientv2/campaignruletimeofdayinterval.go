@@ -10,7 +10,13 @@ import (
 // Campaignruletimeofdayinterval
 type Campaignruletimeofdayinterval struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// Min - Time is represented as an ISO-8601 string without a timezone. For example: HH:mm:ss.SSS
+	Min *string `json:"min,omitempty"`
+
+	// Max - Time is represented as an ISO-8601 string without a timezone. For example: HH:mm:ss.SSS
+	Max *string `json:"max,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Campaignruletimeofdayinterval) SetField(field string, fieldValue interface{}) {
@@ -74,8 +80,16 @@ func (o Campaignruletimeofdayinterval) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Campaignruletimeofdayinterval
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		Min *string `json:"min,omitempty"`
+		
+		Max *string `json:"max,omitempty"`
+		Alias
+	}{ 
+		Min: o.Min,
+		
+		Max: o.Max,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -86,6 +100,14 @@ func (o *Campaignruletimeofdayinterval) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if Min, ok := CampaignruletimeofdayintervalMap["min"].(string); ok {
+		o.Min = &Min
+	}
+    
+	if Max, ok := CampaignruletimeofdayintervalMap["max"].(string); ok {
+		o.Max = &Max
+	}
+    
 
 	return nil
 }

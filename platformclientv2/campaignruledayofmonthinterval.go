@@ -10,7 +10,13 @@ import (
 // Campaignruledayofmonthinterval
 type Campaignruledayofmonthinterval struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// Min - The minimal day of month (exact day: 1-31) for the \"between\" operator
+	Min *string `json:"min,omitempty"`
+
+	// Max - The maximum value of month (exact day: 1-31 or \"LAST_DAY\") for the \"between\" operator
+	Max *string `json:"max,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Campaignruledayofmonthinterval) SetField(field string, fieldValue interface{}) {
@@ -74,8 +80,16 @@ func (o Campaignruledayofmonthinterval) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Campaignruledayofmonthinterval
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		Min *string `json:"min,omitempty"`
+		
+		Max *string `json:"max,omitempty"`
+		Alias
+	}{ 
+		Min: o.Min,
+		
+		Max: o.Max,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -86,6 +100,14 @@ func (o *Campaignruledayofmonthinterval) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if Min, ok := CampaignruledayofmonthintervalMap["min"].(string); ok {
+		o.Min = &Min
+	}
+    
+	if Max, ok := CampaignruledayofmonthintervalMap["max"].(string); ok {
+		o.Max = &Max
+	}
+    
 
 	return nil
 }

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -31,6 +32,9 @@ type Mediaparticipantrequest struct {
 
 	// WrapupSkipped - True to skip wrap-up for this participant.
 	WrapupSkipped *bool `json:"wrapupSkipped,omitempty"`
+
+	// ResumeTime - Time to resume parked communication. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	ResumeTime *time.Time `json:"resumeTime,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -62,7 +66,7 @@ func (o Mediaparticipantrequest) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
+		dateTimeFields := []string{ "ResumeTime", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -95,6 +99,14 @@ func (o Mediaparticipantrequest) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Mediaparticipantrequest
 	
+	ResumeTime := new(string)
+	if o.ResumeTime != nil {
+		
+		*ResumeTime = timeutil.Strftime(o.ResumeTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ResumeTime = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Wrapup *Wrapupinput `json:"wrapup,omitempty"`
 		
@@ -109,6 +121,8 @@ func (o Mediaparticipantrequest) MarshalJSON() ([]byte, error) {
 		Held *bool `json:"held,omitempty"`
 		
 		WrapupSkipped *bool `json:"wrapupSkipped,omitempty"`
+		
+		ResumeTime *string `json:"resumeTime,omitempty"`
 		Alias
 	}{ 
 		Wrapup: o.Wrapup,
@@ -124,6 +138,8 @@ func (o Mediaparticipantrequest) MarshalJSON() ([]byte, error) {
 		Held: o.Held,
 		
 		WrapupSkipped: o.WrapupSkipped,
+		
+		ResumeTime: ResumeTime,
 		Alias:    (Alias)(o),
 	})
 }
@@ -164,6 +180,11 @@ func (o *Mediaparticipantrequest) UnmarshalJSON(b []byte) error {
 		o.WrapupSkipped = &WrapupSkipped
 	}
     
+	if resumeTimeString, ok := MediaparticipantrequestMap["resumeTime"].(string); ok {
+		ResumeTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", resumeTimeString)
+		o.ResumeTime = &ResumeTime
+	}
+	
 
 	return nil
 }

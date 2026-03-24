@@ -4652,6 +4652,88 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitManagementunit
 	return successPayload, response, err
 }
 
+// GetWorkforcemanagementBusinessunitMinimumstaffingSettings invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/minimumstaffing/settings
+//
+// Get minimum staffing settings for a business unit
+func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitMinimumstaffingSettings(businessUnitId string) (*Minimumstaffingresponse, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/minimumstaffing/settings"
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	defaultReturn := new(Minimumstaffingresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'businessUnitId' is set
+	if &businessUnitId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitMinimumstaffingSettings")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Minimumstaffingresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Minimumstaffingresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // GetWorkforcemanagementBusinessunitPlanninggroup invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/planninggroups/{planningGroupId}
 //
 // Get a planning group
@@ -4814,6 +4896,88 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitPlanninggroups
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Planninggrouplist" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetWorkforcemanagementBusinessunitSchedulerSettings invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/scheduler/settings
+//
+// Get scheduler settings for a business unit
+func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitSchedulerSettings(businessUnitId string) (*Buschedulersettingsresponse, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/scheduler/settings"
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	defaultReturn := new(Buschedulersettingsresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'businessUnitId' is set
+	if &businessUnitId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitSchedulerSettings")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Buschedulersettingsresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Buschedulersettingsresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -5782,6 +5946,90 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitTimeoffplans(b
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Butimeoffplanlisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetWorkforcemanagementBusinessunitUsers invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/users
+//
+// Get users in the business unit
+func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitUsers(businessUnitId string, managementUnitIds []string) (*Buuserlisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/users"
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	defaultReturn := new(Buuserlisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'businessUnitId' is set
+	if &businessUnitId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitUsers")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["managementUnitIds"] = a.Configuration.APIClient.ParameterToString(managementUnitIds, "multi")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Buuserlisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Buuserlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -12414,6 +12662,96 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitCapacityplan
 	return successPayload, response, err
 }
 
+// PatchWorkforcemanagementBusinessunitMinimumstaffingSettings invokes PATCH /api/v2/workforcemanagement/businessunits/{businessUnitId}/minimumstaffing/settings
+//
+// Update minimum staffing settings for a business unit
+func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitMinimumstaffingSettings(businessUnitId string, body Minimumstaffingrequest) (*Minimumstaffingresponse, *APIResponse, error) {
+	var httpMethod = "PATCH"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/minimumstaffing/settings"
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	defaultReturn := new(Minimumstaffingresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'businessUnitId' is set
+	if &businessUnitId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PatchWorkforcemanagementBusinessunitMinimumstaffingSettings")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PatchWorkforcemanagementBusinessunitMinimumstaffingSettings")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Minimumstaffingresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Minimumstaffingresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // PatchWorkforcemanagementBusinessunitPlanninggroup invokes PATCH /api/v2/workforcemanagement/businessunits/{businessUnitId}/planninggroups/{planningGroupId}
 //
 // Updates the planning group
@@ -12502,6 +12840,96 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitPlanninggrou
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Planninggroup" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PatchWorkforcemanagementBusinessunitSchedulerSettings invokes PATCH /api/v2/workforcemanagement/businessunits/{businessUnitId}/scheduler/settings
+//
+// Update scheduler settings for a business unit
+func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitSchedulerSettings(businessUnitId string, body Buschedulersettingsrequest) (*Buschedulersettingsresponse, *APIResponse, error) {
+	var httpMethod = "PATCH"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/scheduler/settings"
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	defaultReturn := new(Buschedulersettingsresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'businessUnitId' is set
+	if &businessUnitId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PatchWorkforcemanagementBusinessunitSchedulerSettings")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PatchWorkforcemanagementBusinessunitSchedulerSettings")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Buschedulersettingsresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Buschedulersettingsresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

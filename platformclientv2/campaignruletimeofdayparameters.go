@@ -10,7 +10,13 @@ import (
 // Campaignruletimeofdayparameters
 type Campaignruletimeofdayparameters struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// Interval - The operand for the \"between\" operator
+	Interval *Campaignruletimeofdayinterval `json:"interval,omitempty"`
+
+	// ThresholdValue - Time is represented as an ISO-8601 string without a timezone. For example: HH:mm:ss.SSS
+	ThresholdValue *string `json:"thresholdValue,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Campaignruletimeofdayparameters) SetField(field string, fieldValue interface{}) {
@@ -74,8 +80,16 @@ func (o Campaignruletimeofdayparameters) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Campaignruletimeofdayparameters
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		Interval *Campaignruletimeofdayinterval `json:"interval,omitempty"`
+		
+		ThresholdValue *string `json:"thresholdValue,omitempty"`
+		Alias
+	}{ 
+		Interval: o.Interval,
+		
+		ThresholdValue: o.ThresholdValue,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -86,6 +100,15 @@ func (o *Campaignruletimeofdayparameters) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if Interval, ok := CampaignruletimeofdayparametersMap["interval"].(map[string]interface{}); ok {
+		IntervalString, _ := json.Marshal(Interval)
+		json.Unmarshal(IntervalString, &o.Interval)
+	}
+	
+	if ThresholdValue, ok := CampaignruletimeofdayparametersMap["thresholdValue"].(string); ok {
+		o.ThresholdValue = &ThresholdValue
+	}
+    
 
 	return nil
 }

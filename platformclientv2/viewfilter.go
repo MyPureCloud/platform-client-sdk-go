@@ -710,6 +710,9 @@ type Viewfilter struct {
 	// ContentModerationFlags - A set of Content Moderation Flags for filtering
 	ContentModerationFlags *[]string `json:"contentModerationFlags,omitempty"`
 
+	// SocialSourceTypes - A set of Source Types for social filtering
+	SocialSourceTypes *[]string `json:"socialSourceTypes,omitempty"`
+
 	// SessionExpired - Filter to indicate for if session is expired
 	SessionExpired *bool `json:"sessionExpired,omitempty"`
 
@@ -718,6 +721,9 @@ type Viewfilter struct {
 
 	// IsSnippetRecorded - Indicates filtering for snippet recorded
 	IsSnippetRecorded *bool `json:"isSnippetRecorded,omitempty"`
+
+	// Takeover - Indicates filtering for takeover
+	Takeover *bool `json:"takeover,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -1249,11 +1255,15 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		
 		ContentModerationFlags *[]string `json:"contentModerationFlags,omitempty"`
 		
+		SocialSourceTypes *[]string `json:"socialSourceTypes,omitempty"`
+		
 		SessionExpired *bool `json:"sessionExpired,omitempty"`
 		
 		EngagementSources *[]string `json:"engagementSources,omitempty"`
 		
 		IsSnippetRecorded *bool `json:"isSnippetRecorded,omitempty"`
+		
+		Takeover *bool `json:"takeover,omitempty"`
 		Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -1722,11 +1732,15 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		
 		ContentModerationFlags: o.ContentModerationFlags,
 		
+		SocialSourceTypes: o.SocialSourceTypes,
+		
 		SessionExpired: o.SessionExpired,
 		
 		EngagementSources: o.EngagementSources,
 		
 		IsSnippetRecorded: o.IsSnippetRecorded,
+		
+		Takeover: o.Takeover,
 		Alias:    (Alias)(o),
 	})
 }
@@ -2850,6 +2864,11 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ContentModerationFlagsString, &o.ContentModerationFlags)
 	}
 	
+	if SocialSourceTypes, ok := ViewfilterMap["socialSourceTypes"].([]interface{}); ok {
+		SocialSourceTypesString, _ := json.Marshal(SocialSourceTypes)
+		json.Unmarshal(SocialSourceTypesString, &o.SocialSourceTypes)
+	}
+	
 	if SessionExpired, ok := ViewfilterMap["sessionExpired"].(bool); ok {
 		o.SessionExpired = &SessionExpired
 	}
@@ -2861,6 +2880,10 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	
 	if IsSnippetRecorded, ok := ViewfilterMap["isSnippetRecorded"].(bool); ok {
 		o.IsSnippetRecorded = &IsSnippetRecorded
+	}
+    
+	if Takeover, ok := ViewfilterMap["takeover"].(bool); ok {
+		o.Takeover = &Takeover
 	}
     
 

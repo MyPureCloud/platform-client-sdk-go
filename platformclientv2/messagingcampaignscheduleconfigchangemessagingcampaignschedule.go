@@ -41,9 +41,6 @@ type Messagingcampaignscheduleconfigchangemessagingcampaignschedule struct {
 
 	// Version - Required for updates, must match the version number of the most recent update
 	Version *int `json:"version,omitempty"`
-
-	// GetAdditionalProperties
-	GetAdditionalProperties *map[string]interface{} `json:"getAdditionalProperties,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -144,8 +141,6 @@ func (o Messagingcampaignscheduleconfigchangemessagingcampaignschedule) MarshalJ
 		DateModified *string `json:"dateModified,omitempty"`
 		
 		Version *int `json:"version,omitempty"`
-		
-		GetAdditionalProperties *map[string]interface{} `json:"getAdditionalProperties,omitempty"`
 		Alias
 	}{ 
 		Intervals: o.Intervals,
@@ -167,8 +162,6 @@ func (o Messagingcampaignscheduleconfigchangemessagingcampaignschedule) MarshalJ
 		DateModified: DateModified,
 		
 		Version: o.Version,
-		
-		GetAdditionalProperties: o.GetAdditionalProperties,
 		Alias:    (Alias)(o),
 	})
 }
@@ -225,11 +218,6 @@ func (o *Messagingcampaignscheduleconfigchangemessagingcampaignschedule) Unmarsh
 	if Version, ok := MessagingcampaignscheduleconfigchangemessagingcampaignscheduleMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
-	}
-	
-	if GetAdditionalProperties, ok := MessagingcampaignscheduleconfigchangemessagingcampaignscheduleMap["getAdditionalProperties"].(map[string]interface{}); ok {
-		GetAdditionalPropertiesString, _ := json.Marshal(GetAdditionalProperties)
-		json.Unmarshal(GetAdditionalPropertiesString, &o.GetAdditionalProperties)
 	}
 	
 

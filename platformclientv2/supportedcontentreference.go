@@ -7,11 +7,11 @@ import (
 	"strings"
 )
 
-// Supportedcontentreference - Reference to supported content profile associated with the integration
+// Supportedcontentreference
 type Supportedcontentreference struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The SupportedContent unique identifier associated with this integration
+	// Id - The SupportedContent unique identifier associated with this integration or phone number
 	Id *string `json:"id,omitempty"`
 
 	// Name - The SupportedContent profile name

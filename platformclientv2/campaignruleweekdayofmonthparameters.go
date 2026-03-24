@@ -10,7 +10,13 @@ import (
 // Campaignruleweekdayofmonthparameters
 type Campaignruleweekdayofmonthparameters struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// ThresholdValue - The operand for the \"equals\", \"before\" and \"after\" operators
+	ThresholdValue *Campaignruleweekdayofmonth `json:"thresholdValue,omitempty"`
+
+	// Interval - The operand for the \"between\" operator
+	Interval *Campaignruleweekdayofmonthinterval `json:"interval,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Campaignruleweekdayofmonthparameters) SetField(field string, fieldValue interface{}) {
@@ -74,8 +80,16 @@ func (o Campaignruleweekdayofmonthparameters) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Campaignruleweekdayofmonthparameters
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		ThresholdValue *Campaignruleweekdayofmonth `json:"thresholdValue,omitempty"`
+		
+		Interval *Campaignruleweekdayofmonthinterval `json:"interval,omitempty"`
+		Alias
+	}{ 
+		ThresholdValue: o.ThresholdValue,
+		
+		Interval: o.Interval,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -84,6 +98,16 @@ func (o *Campaignruleweekdayofmonthparameters) UnmarshalJSON(b []byte) error {
 	err := json.Unmarshal(b, &CampaignruleweekdayofmonthparametersMap)
 	if err != nil {
 		return err
+	}
+	
+	if ThresholdValue, ok := CampaignruleweekdayofmonthparametersMap["thresholdValue"].(map[string]interface{}); ok {
+		ThresholdValueString, _ := json.Marshal(ThresholdValue)
+		json.Unmarshal(ThresholdValueString, &o.ThresholdValue)
+	}
+	
+	if Interval, ok := CampaignruleweekdayofmonthparametersMap["interval"].(map[string]interface{}); ok {
+		IntervalString, _ := json.Marshal(Interval)
+		json.Unmarshal(IntervalString, &o.Interval)
 	}
 	
 

@@ -10,7 +10,16 @@ import (
 // Campaignruleweekdayofmonth
 type Campaignruleweekdayofmonth struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// DayOfWeek - Day of week (1-7)
+	DayOfWeek *int `json:"dayOfWeek,omitempty"`
+
+	// Month - Month (1-12)
+	Month *int `json:"month,omitempty"`
+
+	// Occurrence - Occurrence 1-4, -1 (last)
+	Occurrence *int `json:"occurrence,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Campaignruleweekdayofmonth) SetField(field string, fieldValue interface{}) {
@@ -74,8 +83,20 @@ func (o Campaignruleweekdayofmonth) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Campaignruleweekdayofmonth
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		DayOfWeek *int `json:"dayOfWeek,omitempty"`
+		
+		Month *int `json:"month,omitempty"`
+		
+		Occurrence *int `json:"occurrence,omitempty"`
+		Alias
+	}{ 
+		DayOfWeek: o.DayOfWeek,
+		
+		Month: o.Month,
+		
+		Occurrence: o.Occurrence,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -84,6 +105,21 @@ func (o *Campaignruleweekdayofmonth) UnmarshalJSON(b []byte) error {
 	err := json.Unmarshal(b, &CampaignruleweekdayofmonthMap)
 	if err != nil {
 		return err
+	}
+	
+	if DayOfWeek, ok := CampaignruleweekdayofmonthMap["dayOfWeek"].(float64); ok {
+		DayOfWeekInt := int(DayOfWeek)
+		o.DayOfWeek = &DayOfWeekInt
+	}
+	
+	if Month, ok := CampaignruleweekdayofmonthMap["month"].(float64); ok {
+		MonthInt := int(Month)
+		o.Month = &MonthInt
+	}
+	
+	if Occurrence, ok := CampaignruleweekdayofmonthMap["occurrence"].(float64); ok {
+		OccurrenceInt := int(Occurrence)
+		o.Occurrence = &OccurrenceInt
 	}
 	
 

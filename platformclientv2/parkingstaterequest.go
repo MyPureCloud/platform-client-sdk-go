@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -13,6 +14,9 @@ type Parkingstaterequest struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// State - State to set the participant.
 	State *string `json:"state,omitempty"`
+
+	// ResumeTime - Timestamp for resume parked conversation. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	ResumeTime *time.Time `json:"resumeTime,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -44,7 +48,7 @@ func (o Parkingstaterequest) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
+		dateTimeFields := []string{ "ResumeTime", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -77,11 +81,23 @@ func (o Parkingstaterequest) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Parkingstaterequest
 	
+	ResumeTime := new(string)
+	if o.ResumeTime != nil {
+		
+		*ResumeTime = timeutil.Strftime(o.ResumeTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ResumeTime = nil
+	}
+	
 	return json.Marshal(&struct { 
 		State *string `json:"state,omitempty"`
+		
+		ResumeTime *string `json:"resumeTime,omitempty"`
 		Alias
 	}{ 
 		State: o.State,
+		
+		ResumeTime: ResumeTime,
 		Alias:    (Alias)(o),
 	})
 }
@@ -97,6 +113,11 @@ func (o *Parkingstaterequest) UnmarshalJSON(b []byte) error {
 		o.State = &State
 	}
     
+	if resumeTimeString, ok := ParkingstaterequestMap["resumeTime"].(string); ok {
+		ResumeTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", resumeTimeString)
+		o.ResumeTime = &ResumeTime
+	}
+	
 
 	return nil
 }

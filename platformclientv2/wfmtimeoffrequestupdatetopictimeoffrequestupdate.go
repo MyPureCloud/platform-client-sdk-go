@@ -41,6 +41,12 @@ type Wfmtimeoffrequestupdatetopictimeoffrequestupdate struct {
 	// FullDayManagementUnitDates
 	FullDayManagementUnitDates *[]string `json:"fullDayManagementUnitDates,omitempty"`
 
+	// FullDayEarliestStartOffsetMinutes
+	FullDayEarliestStartOffsetMinutes *[]int `json:"fullDayEarliestStartOffsetMinutes,omitempty"`
+
+	// FullDayLatestEndOffsetMinutes
+	FullDayLatestEndOffsetMinutes *[]int `json:"fullDayLatestEndOffsetMinutes,omitempty"`
+
 	// DailyDurationMinutes
 	DailyDurationMinutes *int `json:"dailyDurationMinutes,omitempty"`
 
@@ -155,6 +161,10 @@ func (o Wfmtimeoffrequestupdatetopictimeoffrequestupdate) MarshalJSON() ([]byte,
 		
 		FullDayManagementUnitDates *[]string `json:"fullDayManagementUnitDates,omitempty"`
 		
+		FullDayEarliestStartOffsetMinutes *[]int `json:"fullDayEarliestStartOffsetMinutes,omitempty"`
+		
+		FullDayLatestEndOffsetMinutes *[]int `json:"fullDayLatestEndOffsetMinutes,omitempty"`
+		
 		DailyDurationMinutes *int `json:"dailyDurationMinutes,omitempty"`
 		
 		DurationMinutes *[]int `json:"durationMinutes,omitempty"`
@@ -195,6 +205,10 @@ func (o Wfmtimeoffrequestupdatetopictimeoffrequestupdate) MarshalJSON() ([]byte,
 		PartialDayStartDateTimes: o.PartialDayStartDateTimes,
 		
 		FullDayManagementUnitDates: o.FullDayManagementUnitDates,
+		
+		FullDayEarliestStartOffsetMinutes: o.FullDayEarliestStartOffsetMinutes,
+		
+		FullDayLatestEndOffsetMinutes: o.FullDayLatestEndOffsetMinutes,
 		
 		DailyDurationMinutes: o.DailyDurationMinutes,
 		
@@ -267,6 +281,16 @@ func (o *Wfmtimeoffrequestupdatetopictimeoffrequestupdate) UnmarshalJSON(b []byt
 	if FullDayManagementUnitDates, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["fullDayManagementUnitDates"].([]interface{}); ok {
 		FullDayManagementUnitDatesString, _ := json.Marshal(FullDayManagementUnitDates)
 		json.Unmarshal(FullDayManagementUnitDatesString, &o.FullDayManagementUnitDates)
+	}
+	
+	if FullDayEarliestStartOffsetMinutes, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["fullDayEarliestStartOffsetMinutes"].([]interface{}); ok {
+		FullDayEarliestStartOffsetMinutesString, _ := json.Marshal(FullDayEarliestStartOffsetMinutes)
+		json.Unmarshal(FullDayEarliestStartOffsetMinutesString, &o.FullDayEarliestStartOffsetMinutes)
+	}
+	
+	if FullDayLatestEndOffsetMinutes, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["fullDayLatestEndOffsetMinutes"].([]interface{}); ok {
+		FullDayLatestEndOffsetMinutesString, _ := json.Marshal(FullDayLatestEndOffsetMinutes)
+		json.Unmarshal(FullDayLatestEndOffsetMinutesString, &o.FullDayLatestEndOffsetMinutes)
 	}
 	
 	if DailyDurationMinutes, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["dailyDurationMinutes"].(float64); ok {

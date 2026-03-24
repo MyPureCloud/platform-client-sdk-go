@@ -22,6 +22,9 @@ type Variable struct {
 
 	// Description - The description of the variable used by Guides runtime for input/output handling.
 	Description *string `json:"description,omitempty"`
+
+	// Validation - The validation configuration for the variable. Optional - if not present, no validation is applied.
+	Validation *Variablevalidation `json:"validation,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +97,8 @@ func (o Variable) MarshalJSON() ([]byte, error) {
 		Scope *string `json:"scope,omitempty"`
 		
 		Description *string `json:"description,omitempty"`
+		
+		Validation *Variablevalidation `json:"validation,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -103,6 +108,8 @@ func (o Variable) MarshalJSON() ([]byte, error) {
 		Scope: o.Scope,
 		
 		Description: o.Description,
+		
+		Validation: o.Validation,
 		Alias:    (Alias)(o),
 	})
 }
@@ -130,6 +137,11 @@ func (o *Variable) UnmarshalJSON(b []byte) error {
 		o.Description = &Description
 	}
     
+	if Validation, ok := VariableMap["validation"].(map[string]interface{}); ok {
+		ValidationString, _ := json.Marshal(Validation)
+		json.Unmarshal(ValidationString, &o.Validation)
+	}
+	
 
 	return nil
 }

@@ -10,7 +10,16 @@ import (
 // Campaignruledayofmonthparameters
 type Campaignruledayofmonthparameters struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// ThresholdValue - The operand for the \"before\" and \"after\" operators, can be either exact day (1-31) or \"LAST_DAY\"
+	ThresholdValue *string `json:"thresholdValue,omitempty"`
+
+	// InSet - The operand for the \"in\" operator, each element can be either exact day (1,31) or \"LAST_DAY\", \"EVEN_DAY\", \"ODD_DAY\"
+	InSet *[]string `json:"inSet,omitempty"`
+
+	// Interval - The interval operand for the \"between\" operator
+	Interval *Campaignruledayofmonthinterval `json:"interval,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Campaignruledayofmonthparameters) SetField(field string, fieldValue interface{}) {
@@ -74,8 +83,20 @@ func (o Campaignruledayofmonthparameters) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Campaignruledayofmonthparameters
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		ThresholdValue *string `json:"thresholdValue,omitempty"`
+		
+		InSet *[]string `json:"inSet,omitempty"`
+		
+		Interval *Campaignruledayofmonthinterval `json:"interval,omitempty"`
+		Alias
+	}{ 
+		ThresholdValue: o.ThresholdValue,
+		
+		InSet: o.InSet,
+		
+		Interval: o.Interval,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -84,6 +105,20 @@ func (o *Campaignruledayofmonthparameters) UnmarshalJSON(b []byte) error {
 	err := json.Unmarshal(b, &CampaignruledayofmonthparametersMap)
 	if err != nil {
 		return err
+	}
+	
+	if ThresholdValue, ok := CampaignruledayofmonthparametersMap["thresholdValue"].(string); ok {
+		o.ThresholdValue = &ThresholdValue
+	}
+    
+	if InSet, ok := CampaignruledayofmonthparametersMap["inSet"].([]interface{}); ok {
+		InSetString, _ := json.Marshal(InSet)
+		json.Unmarshal(InSetString, &o.InSet)
+	}
+	
+	if Interval, ok := CampaignruledayofmonthparametersMap["interval"].(map[string]interface{}); ok {
+		IntervalString, _ := json.Marshal(Interval)
+		json.Unmarshal(IntervalString, &o.Interval)
 	}
 	
 

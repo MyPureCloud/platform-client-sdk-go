@@ -22,9 +22,6 @@ type Dialercampaignscheduleconfigchangealteration struct {
 
 	// AdditionalProperties
 	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
-
-	// GetAdditionalProperties
-	GetAdditionalProperties *map[string]interface{} `json:"getAdditionalProperties,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -97,8 +94,6 @@ func (o Dialercampaignscheduleconfigchangealteration) MarshalJSON() ([]byte, err
 		End *string `json:"end,omitempty"`
 		
 		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
-		
-		GetAdditionalProperties *map[string]interface{} `json:"getAdditionalProperties,omitempty"`
 		Alias
 	}{ 
 		VarType: o.VarType,
@@ -108,8 +103,6 @@ func (o Dialercampaignscheduleconfigchangealteration) MarshalJSON() ([]byte, err
 		End: o.End,
 		
 		AdditionalProperties: o.AdditionalProperties,
-		
-		GetAdditionalProperties: o.GetAdditionalProperties,
 		Alias:    (Alias)(o),
 	})
 }
@@ -136,11 +129,6 @@ func (o *Dialercampaignscheduleconfigchangealteration) UnmarshalJSON(b []byte) e
 	if AdditionalProperties, ok := DialercampaignscheduleconfigchangealterationMap["additionalProperties"].(map[string]interface{}); ok {
 		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
 		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
-	}
-	
-	if GetAdditionalProperties, ok := DialercampaignscheduleconfigchangealterationMap["getAdditionalProperties"].(map[string]interface{}); ok {
-		GetAdditionalPropertiesString, _ := json.Marshal(GetAdditionalProperties)
-		json.Unmarshal(GetAdditionalPropertiesString, &o.GetAdditionalProperties)
 	}
 	
 

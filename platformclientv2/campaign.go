@@ -117,6 +117,9 @@ type Campaign struct {
 	// SkillColumns - The skill columns on the ContactList that this Campaign should take into account when dialing
 	SkillColumns *[]string `json:"skillColumns,omitempty"`
 
+	// PreviewAutoEnd - Option to enable preview auto end
+	PreviewAutoEnd *bool `json:"previewAutoEnd,omitempty"`
+
 	// MaxCallsPerAgent - The maximum number of calls that can be placed per agent on this campaign
 	MaxCallsPerAgent *int `json:"maxCallsPerAgent,omitempty"`
 
@@ -285,6 +288,8 @@ func (o Campaign) MarshalJSON() ([]byte, error) {
 		
 		SkillColumns *[]string `json:"skillColumns,omitempty"`
 		
+		PreviewAutoEnd *bool `json:"previewAutoEnd,omitempty"`
+		
 		MaxCallsPerAgent *int `json:"maxCallsPerAgent,omitempty"`
 		
 		MaxCallsPerAgentDecimal *float64 `json:"maxCallsPerAgentDecimal,omitempty"`
@@ -367,6 +372,8 @@ func (o Campaign) MarshalJSON() ([]byte, error) {
 		DynamicContactQueueingSettings: o.DynamicContactQueueingSettings,
 		
 		SkillColumns: o.SkillColumns,
+		
+		PreviewAutoEnd: o.PreviewAutoEnd,
 		
 		MaxCallsPerAgent: o.MaxCallsPerAgent,
 		
@@ -554,6 +561,10 @@ func (o *Campaign) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(SkillColumnsString, &o.SkillColumns)
 	}
 	
+	if PreviewAutoEnd, ok := CampaignMap["previewAutoEnd"].(bool); ok {
+		o.PreviewAutoEnd = &PreviewAutoEnd
+	}
+    
 	if MaxCallsPerAgent, ok := CampaignMap["maxCallsPerAgent"].(float64); ok {
 		MaxCallsPerAgentInt := int(MaxCallsPerAgent)
 		o.MaxCallsPerAgent = &MaxCallsPerAgentInt

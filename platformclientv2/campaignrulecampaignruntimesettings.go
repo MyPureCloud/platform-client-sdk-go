@@ -10,7 +10,10 @@ import (
 // Campaignrulecampaignruntimesettings
 type Campaignrulecampaignruntimesettings struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// IncludeWaitingTime - When true counts all campaign running time, otherwise only running time that a campaign was not waiting. Default: true
+	IncludeWaitingTime *bool `json:"includeWaitingTime,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Campaignrulecampaignruntimesettings) SetField(field string, fieldValue interface{}) {
@@ -74,8 +77,12 @@ func (o Campaignrulecampaignruntimesettings) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Campaignrulecampaignruntimesettings
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		IncludeWaitingTime *bool `json:"includeWaitingTime,omitempty"`
+		Alias
+	}{ 
+		IncludeWaitingTime: o.IncludeWaitingTime,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -86,6 +93,10 @@ func (o *Campaignrulecampaignruntimesettings) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if IncludeWaitingTime, ok := CampaignrulecampaignruntimesettingsMap["includeWaitingTime"].(bool); ok {
+		o.IncludeWaitingTime = &IncludeWaitingTime
+	}
+    
 
 	return nil
 }

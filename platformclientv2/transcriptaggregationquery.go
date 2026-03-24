@@ -37,6 +37,15 @@ type Transcriptaggregationquery struct {
 
 	// AlternateTimeDimension - Dimension to use as the alternative timestamp for data in the aggregate.  Choosing \"eventTime\" uses the actual time of the data event.
 	AlternateTimeDimension *string `json:"alternateTimeDimension,omitempty"`
+
+	// QueryType - Query type to use. Use groupBy for all matching results, and topN/bottomN for N results ordered by the sortMetric. Default is groupBy.
+	QueryType *string `json:"queryType,omitempty"`
+
+	// SortMetric - Required when requesting multiple metrics. Only applicable for topN/bottomN query type.
+	SortMetric *Transcriptaggregationsort `json:"sortMetric,omitempty"`
+
+	// Limit - How many results you want in an ordered list. Only applicable for topN/bottomN query type.
+	Limit *int `json:"limit,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -119,6 +128,12 @@ func (o Transcriptaggregationquery) MarshalJSON() ([]byte, error) {
 		Views *[]Transcriptaggregationview `json:"views,omitempty"`
 		
 		AlternateTimeDimension *string `json:"alternateTimeDimension,omitempty"`
+		
+		QueryType *string `json:"queryType,omitempty"`
+		
+		SortMetric *Transcriptaggregationsort `json:"sortMetric,omitempty"`
+		
+		Limit *int `json:"limit,omitempty"`
 		Alias
 	}{ 
 		Interval: o.Interval,
@@ -138,6 +153,12 @@ func (o Transcriptaggregationquery) MarshalJSON() ([]byte, error) {
 		Views: o.Views,
 		
 		AlternateTimeDimension: o.AlternateTimeDimension,
+		
+		QueryType: o.QueryType,
+		
+		SortMetric: o.SortMetric,
+		
+		Limit: o.Limit,
 		Alias:    (Alias)(o),
 	})
 }
@@ -189,6 +210,20 @@ func (o *Transcriptaggregationquery) UnmarshalJSON(b []byte) error {
 		o.AlternateTimeDimension = &AlternateTimeDimension
 	}
     
+	if QueryType, ok := TranscriptaggregationqueryMap["queryType"].(string); ok {
+		o.QueryType = &QueryType
+	}
+    
+	if SortMetric, ok := TranscriptaggregationqueryMap["sortMetric"].(map[string]interface{}); ok {
+		SortMetricString, _ := json.Marshal(SortMetric)
+		json.Unmarshal(SortMetricString, &o.SortMetric)
+	}
+	
+	if Limit, ok := TranscriptaggregationqueryMap["limit"].(float64); ok {
+		LimitInt := int(Limit)
+		o.Limit = &LimitInt
+	}
+	
 
 	return nil
 }

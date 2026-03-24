@@ -11,7 +11,7 @@ import (
 type Agentlessemailsendrequestdto struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// SenderType - The direction of the message.
+	// SenderType - The type of email domain used to send the agentless message.
 	SenderType *string `json:"senderType,omitempty"`
 
 	// ConversationId - The identifier of the conversation. This must be an email interaction.

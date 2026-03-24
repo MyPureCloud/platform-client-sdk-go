@@ -10,7 +10,16 @@ import (
 // Campaignrulespecificdateparameters
 type Campaignrulespecificdateparameters struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// IncludeYear - If true, includes year in date comparison for specificDate type. When false, only month and day are compared. Default is true. 
+	IncludeYear *bool `json:"includeYear,omitempty"`
+
+	// ThresholdValue - The operand for the \"equals\", \"after\" and \"before\" operators in yyyy-MM-dd (if includeYear=true) or MM-dd (if includeYear=false) format.
+	ThresholdValue *string `json:"thresholdValue,omitempty"`
+
+	// Interval - The operand for the \"between\" operator
+	Interval *Campaignrulespecificdateinterval `json:"interval,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Campaignrulespecificdateparameters) SetField(field string, fieldValue interface{}) {
@@ -74,8 +83,20 @@ func (o Campaignrulespecificdateparameters) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Campaignrulespecificdateparameters
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		IncludeYear *bool `json:"includeYear,omitempty"`
+		
+		ThresholdValue *string `json:"thresholdValue,omitempty"`
+		
+		Interval *Campaignrulespecificdateinterval `json:"interval,omitempty"`
+		Alias
+	}{ 
+		IncludeYear: o.IncludeYear,
+		
+		ThresholdValue: o.ThresholdValue,
+		
+		Interval: o.Interval,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -84,6 +105,19 @@ func (o *Campaignrulespecificdateparameters) UnmarshalJSON(b []byte) error {
 	err := json.Unmarshal(b, &CampaignrulespecificdateparametersMap)
 	if err != nil {
 		return err
+	}
+	
+	if IncludeYear, ok := CampaignrulespecificdateparametersMap["includeYear"].(bool); ok {
+		o.IncludeYear = &IncludeYear
+	}
+    
+	if ThresholdValue, ok := CampaignrulespecificdateparametersMap["thresholdValue"].(string); ok {
+		o.ThresholdValue = &ThresholdValue
+	}
+    
+	if Interval, ok := CampaignrulespecificdateparametersMap["interval"].(map[string]interface{}); ok {
+		IntervalString, _ := json.Marshal(Interval)
+		json.Unmarshal(IntervalString, &o.Interval)
 	}
 	
 

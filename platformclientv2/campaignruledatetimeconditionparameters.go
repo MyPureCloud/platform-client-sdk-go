@@ -10,7 +10,25 @@ import (
 // Campaignruledatetimeconditionparameters
 type Campaignruledatetimeconditionparameters struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// Inverted - If true, inverts the result of evaluating this sub-condition. Default is false
+	Inverted *bool `json:"inverted,omitempty"`
+
+	// TimeOfDay - Parameters for \"timeOfDay\" conditionType
+	TimeOfDay *Campaignruletimeofdayparameters `json:"timeOfDay,omitempty"`
+
+	// DayOfWeek - Parameters for \"dayOfWeek\" conditionType
+	DayOfWeek *Campaignruledayofweekparameters `json:"dayOfWeek,omitempty"`
+
+	// DayOfMonth - Parameters for \"dayOfMonth\" conditionType
+	DayOfMonth *Campaignruledayofmonthparameters `json:"dayOfMonth,omitempty"`
+
+	// SpecificDate - Parameters for \"specificDate\" conditionType
+	SpecificDate *Campaignrulespecificdateparameters `json:"specificDate,omitempty"`
+
+	// WeekDayOfMonth - Parameters for \"weekDayOfMonth\" conditionType
+	WeekDayOfMonth *Campaignruleweekdayofmonthparameters `json:"weekDayOfMonth,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Campaignruledatetimeconditionparameters) SetField(field string, fieldValue interface{}) {
@@ -74,8 +92,32 @@ func (o Campaignruledatetimeconditionparameters) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Campaignruledatetimeconditionparameters
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		Inverted *bool `json:"inverted,omitempty"`
+		
+		TimeOfDay *Campaignruletimeofdayparameters `json:"timeOfDay,omitempty"`
+		
+		DayOfWeek *Campaignruledayofweekparameters `json:"dayOfWeek,omitempty"`
+		
+		DayOfMonth *Campaignruledayofmonthparameters `json:"dayOfMonth,omitempty"`
+		
+		SpecificDate *Campaignrulespecificdateparameters `json:"specificDate,omitempty"`
+		
+		WeekDayOfMonth *Campaignruleweekdayofmonthparameters `json:"weekDayOfMonth,omitempty"`
+		Alias
+	}{ 
+		Inverted: o.Inverted,
+		
+		TimeOfDay: o.TimeOfDay,
+		
+		DayOfWeek: o.DayOfWeek,
+		
+		DayOfMonth: o.DayOfMonth,
+		
+		SpecificDate: o.SpecificDate,
+		
+		WeekDayOfMonth: o.WeekDayOfMonth,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -84,6 +126,35 @@ func (o *Campaignruledatetimeconditionparameters) UnmarshalJSON(b []byte) error 
 	err := json.Unmarshal(b, &CampaignruledatetimeconditionparametersMap)
 	if err != nil {
 		return err
+	}
+	
+	if Inverted, ok := CampaignruledatetimeconditionparametersMap["inverted"].(bool); ok {
+		o.Inverted = &Inverted
+	}
+    
+	if TimeOfDay, ok := CampaignruledatetimeconditionparametersMap["timeOfDay"].(map[string]interface{}); ok {
+		TimeOfDayString, _ := json.Marshal(TimeOfDay)
+		json.Unmarshal(TimeOfDayString, &o.TimeOfDay)
+	}
+	
+	if DayOfWeek, ok := CampaignruledatetimeconditionparametersMap["dayOfWeek"].(map[string]interface{}); ok {
+		DayOfWeekString, _ := json.Marshal(DayOfWeek)
+		json.Unmarshal(DayOfWeekString, &o.DayOfWeek)
+	}
+	
+	if DayOfMonth, ok := CampaignruledatetimeconditionparametersMap["dayOfMonth"].(map[string]interface{}); ok {
+		DayOfMonthString, _ := json.Marshal(DayOfMonth)
+		json.Unmarshal(DayOfMonthString, &o.DayOfMonth)
+	}
+	
+	if SpecificDate, ok := CampaignruledatetimeconditionparametersMap["specificDate"].(map[string]interface{}); ok {
+		SpecificDateString, _ := json.Marshal(SpecificDate)
+		json.Unmarshal(SpecificDateString, &o.SpecificDate)
+	}
+	
+	if WeekDayOfMonth, ok := CampaignruledatetimeconditionparametersMap["weekDayOfMonth"].(map[string]interface{}); ok {
+		WeekDayOfMonthString, _ := json.Marshal(WeekDayOfMonth)
+		json.Unmarshal(WeekDayOfMonthString, &o.WeekDayOfMonth)
 	}
 	
 

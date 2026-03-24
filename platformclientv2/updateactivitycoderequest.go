@@ -38,14 +38,14 @@ type Updateactivitycoderequest struct {
 	// Interruptible - Whether this activity code is considered interruptible
 	Interruptible *bool `json:"interruptible,omitempty"`
 
-	// SecondaryPresences - The secondary presences of this activity code
-	SecondaryPresences *Listwrappersecondarypresence `json:"secondaryPresences,omitempty"`
-
 	// PlanningGroupIds - The planning group IDs associated with this activity code
 	PlanningGroupIds *Listwrapperstring `json:"planningGroupIds,omitempty"`
 
 	// Metadata - Version metadata for the associated business unit's list of activity codes
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
+
+	// SecondaryPresences - The secondary presences of this activity code
+	SecondaryPresences *Listwrappersecondarypresence `json:"secondaryPresences,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -129,11 +129,11 @@ func (o Updateactivitycoderequest) MarshalJSON() ([]byte, error) {
 		
 		Interruptible *bool `json:"interruptible,omitempty"`
 		
-		SecondaryPresences *Listwrappersecondarypresence `json:"secondaryPresences,omitempty"`
-		
 		PlanningGroupIds *Listwrapperstring `json:"planningGroupIds,omitempty"`
 		
 		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
+		
+		SecondaryPresences *Listwrappersecondarypresence `json:"secondaryPresences,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -154,11 +154,11 @@ func (o Updateactivitycoderequest) MarshalJSON() ([]byte, error) {
 		
 		Interruptible: o.Interruptible,
 		
-		SecondaryPresences: o.SecondaryPresences,
-		
 		PlanningGroupIds: o.PlanningGroupIds,
 		
 		Metadata: o.Metadata,
+		
+		SecondaryPresences: o.SecondaryPresences,
 		Alias:    (Alias)(o),
 	})
 }
@@ -207,11 +207,6 @@ func (o *Updateactivitycoderequest) UnmarshalJSON(b []byte) error {
 		o.Interruptible = &Interruptible
 	}
     
-	if SecondaryPresences, ok := UpdateactivitycoderequestMap["secondaryPresences"].(map[string]interface{}); ok {
-		SecondaryPresencesString, _ := json.Marshal(SecondaryPresences)
-		json.Unmarshal(SecondaryPresencesString, &o.SecondaryPresences)
-	}
-	
 	if PlanningGroupIds, ok := UpdateactivitycoderequestMap["planningGroupIds"].(map[string]interface{}); ok {
 		PlanningGroupIdsString, _ := json.Marshal(PlanningGroupIds)
 		json.Unmarshal(PlanningGroupIdsString, &o.PlanningGroupIds)
@@ -220,6 +215,11 @@ func (o *Updateactivitycoderequest) UnmarshalJSON(b []byte) error {
 	if Metadata, ok := UpdateactivitycoderequestMap["metadata"].(map[string]interface{}); ok {
 		MetadataString, _ := json.Marshal(Metadata)
 		json.Unmarshal(MetadataString, &o.Metadata)
+	}
+	
+	if SecondaryPresences, ok := UpdateactivitycoderequestMap["secondaryPresences"].(map[string]interface{}); ok {
+		SecondaryPresencesString, _ := json.Marshal(SecondaryPresences)
+		json.Unmarshal(SecondaryPresencesString, &o.SecondaryPresences)
 	}
 	
 

@@ -17,6 +17,12 @@ type Evaluationscoringset struct {
 	// TotalCriticalScore - Score of only the critical questions
 	TotalCriticalScore *float32 `json:"totalCriticalScore,omitempty"`
 
+	// MaxTotalRawCriticalScore - Maximum total raw score for the critical questions. Raw score is the actual point values before applying weights or percentages.
+	MaxTotalRawCriticalScore *float32 `json:"maxTotalRawCriticalScore,omitempty"`
+
+	// MaxTotalRawScore - Maximum total raw score for all questions. Raw score is the actual point values before applying weights or percentages.
+	MaxTotalRawScore *float32 `json:"maxTotalRawScore,omitempty"`
+
 	// TotalNonCriticalScore - Score of only the non-critical questions
 	TotalNonCriticalScore *float32 `json:"totalNonCriticalScore,omitempty"`
 
@@ -106,6 +112,10 @@ func (o Evaluationscoringset) MarshalJSON() ([]byte, error) {
 		
 		TotalCriticalScore *float32 `json:"totalCriticalScore,omitempty"`
 		
+		MaxTotalRawCriticalScore *float32 `json:"maxTotalRawCriticalScore,omitempty"`
+		
+		MaxTotalRawScore *float32 `json:"maxTotalRawScore,omitempty"`
+		
 		TotalNonCriticalScore *float32 `json:"totalNonCriticalScore,omitempty"`
 		
 		QuestionGroupScores *[]Evaluationquestiongroupscore `json:"questionGroupScores,omitempty"`
@@ -124,6 +134,10 @@ func (o Evaluationscoringset) MarshalJSON() ([]byte, error) {
 		TotalScore: o.TotalScore,
 		
 		TotalCriticalScore: o.TotalCriticalScore,
+		
+		MaxTotalRawCriticalScore: o.MaxTotalRawCriticalScore,
+		
+		MaxTotalRawScore: o.MaxTotalRawScore,
 		
 		TotalNonCriticalScore: o.TotalNonCriticalScore,
 		
@@ -157,6 +171,16 @@ func (o *Evaluationscoringset) UnmarshalJSON(b []byte) error {
 	if TotalCriticalScore, ok := EvaluationscoringsetMap["totalCriticalScore"].(float64); ok {
 		TotalCriticalScoreFloat32 := float32(TotalCriticalScore)
 		o.TotalCriticalScore = &TotalCriticalScoreFloat32
+	}
+	
+	if MaxTotalRawCriticalScore, ok := EvaluationscoringsetMap["maxTotalRawCriticalScore"].(float64); ok {
+		MaxTotalRawCriticalScoreFloat32 := float32(MaxTotalRawCriticalScore)
+		o.MaxTotalRawCriticalScore = &MaxTotalRawCriticalScoreFloat32
+	}
+	
+	if MaxTotalRawScore, ok := EvaluationscoringsetMap["maxTotalRawScore"].(float64); ok {
+		MaxTotalRawScoreFloat32 := float32(MaxTotalRawScore)
+		o.MaxTotalRawScore = &MaxTotalRawScoreFloat32
 	}
 	
 	if TotalNonCriticalScore, ok := EvaluationscoringsetMap["totalNonCriticalScore"].(float64); ok {

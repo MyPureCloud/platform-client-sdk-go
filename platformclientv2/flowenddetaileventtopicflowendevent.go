@@ -79,6 +79,9 @@ type Flowenddetaileventtopicflowendevent struct {
 
 	// TransferType
 	TransferType *string `json:"transferType,omitempty"`
+
+	// UtilizationLabel
+	UtilizationLabel *string `json:"utilizationLabel,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -189,6 +192,8 @@ func (o Flowenddetaileventtopicflowendevent) MarshalJSON() ([]byte, error) {
 		ExitReason *string `json:"exitReason,omitempty"`
 		
 		TransferType *string `json:"transferType,omitempty"`
+		
+		UtilizationLabel *string `json:"utilizationLabel,omitempty"`
 		Alias
 	}{ 
 		EventTime: o.EventTime,
@@ -236,6 +241,8 @@ func (o Flowenddetaileventtopicflowendevent) MarshalJSON() ([]byte, error) {
 		ExitReason: o.ExitReason,
 		
 		TransferType: o.TransferType,
+		
+		UtilizationLabel: o.UtilizationLabel,
 		Alias:    (Alias)(o),
 	})
 }
@@ -341,6 +348,10 @@ func (o *Flowenddetaileventtopicflowendevent) UnmarshalJSON(b []byte) error {
     
 	if TransferType, ok := FlowenddetaileventtopicflowendeventMap["transferType"].(string); ok {
 		o.TransferType = &TransferType
+	}
+    
+	if UtilizationLabel, ok := FlowenddetaileventtopicflowendeventMap["utilizationLabel"].(string); ok {
+		o.UtilizationLabel = &UtilizationLabel
 	}
     
 

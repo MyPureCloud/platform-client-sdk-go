@@ -23,6 +23,12 @@ type Schemaquantitylimits struct {
 	// MaxFieldNameCharacters - The maximum number of schema field name characters allowed.
 	MaxFieldNameCharacters *int `json:"maxFieldNameCharacters,omitempty"`
 
+	// MinFieldTitleCharacters - The minimum number of schema field title characters allowed.
+	MinFieldTitleCharacters *int `json:"minFieldTitleCharacters,omitempty"`
+
+	// MaxFieldTitleCharacters - The maximum number of schema field title characters allowed.
+	MaxFieldTitleCharacters *int `json:"maxFieldTitleCharacters,omitempty"`
+
 	// MinFieldDescriptionCharacters - The minimum number of schema field description characters allowed.
 	MinFieldDescriptionCharacters *int `json:"minFieldDescriptionCharacters,omitempty"`
 
@@ -125,6 +131,10 @@ func (o Schemaquantitylimits) MarshalJSON() ([]byte, error) {
 		
 		MaxFieldNameCharacters *int `json:"maxFieldNameCharacters,omitempty"`
 		
+		MinFieldTitleCharacters *int `json:"minFieldTitleCharacters,omitempty"`
+		
+		MaxFieldTitleCharacters *int `json:"maxFieldTitleCharacters,omitempty"`
+		
 		MinFieldDescriptionCharacters *int `json:"minFieldDescriptionCharacters,omitempty"`
 		
 		MaxFieldDescriptionCharacters *int `json:"maxFieldDescriptionCharacters,omitempty"`
@@ -153,6 +163,10 @@ func (o Schemaquantitylimits) MarshalJSON() ([]byte, error) {
 		MinFieldNameCharacters: o.MinFieldNameCharacters,
 		
 		MaxFieldNameCharacters: o.MaxFieldNameCharacters,
+		
+		MinFieldTitleCharacters: o.MinFieldTitleCharacters,
+		
+		MaxFieldTitleCharacters: o.MaxFieldTitleCharacters,
 		
 		MinFieldDescriptionCharacters: o.MinFieldDescriptionCharacters,
 		
@@ -200,6 +214,16 @@ func (o *Schemaquantitylimits) UnmarshalJSON(b []byte) error {
 	if MaxFieldNameCharacters, ok := SchemaquantitylimitsMap["maxFieldNameCharacters"].(float64); ok {
 		MaxFieldNameCharactersInt := int(MaxFieldNameCharacters)
 		o.MaxFieldNameCharacters = &MaxFieldNameCharactersInt
+	}
+	
+	if MinFieldTitleCharacters, ok := SchemaquantitylimitsMap["minFieldTitleCharacters"].(float64); ok {
+		MinFieldTitleCharactersInt := int(MinFieldTitleCharacters)
+		o.MinFieldTitleCharacters = &MinFieldTitleCharactersInt
+	}
+	
+	if MaxFieldTitleCharacters, ok := SchemaquantitylimitsMap["maxFieldTitleCharacters"].(float64); ok {
+		MaxFieldTitleCharactersInt := int(MaxFieldTitleCharacters)
+		o.MaxFieldTitleCharacters = &MaxFieldTitleCharactersInt
 	}
 	
 	if MinFieldDescriptionCharacters, ok := SchemaquantitylimitsMap["minFieldDescriptionCharacters"].(float64); ok {

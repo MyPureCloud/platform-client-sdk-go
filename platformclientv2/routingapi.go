@@ -6677,6 +6677,8 @@ func (a RoutingApi) GetRoutingSmsIdentityresolutionPhonenumber(addressId string)
 // GetRoutingSmsPhonenumber invokes GET /api/v2/routing/sms/phonenumbers/{phoneNumberId}
 //
 // Get a phone number provisioned for SMS.
+//
+// When no supported content profile is explicitly set on an MMS-capable phone number, the system uses the \&quot;SMS Default\&quot; profile. This default profile allows all media types (*_/_*) for inbound messages and specific image types (image/gif, image/jpeg, image/png) for outbound messages. The \&quot;SMS Default\&quot; profile does not have an ID and cannot be modified. To customize media filtering, create and assign a custom supported content profile using the PATCH endpoint.
 func (a RoutingApi) GetRoutingSmsPhonenumber(phoneNumberId string, expand string) (*Smsphonenumber, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -6761,6 +6763,8 @@ func (a RoutingApi) GetRoutingSmsPhonenumber(phoneNumberId string, expand string
 // GetRoutingSmsPhonenumbers invokes GET /api/v2/routing/sms/phonenumbers
 //
 // Get a list of provisioned phone numbers.
+//
+// When no supported content profile is explicitly set, the system uses the \&quot;SMS Default\&quot; profile. This default profile allows all media types (*_/_*) for inbound messages and specific image types (image/gif, image/jpeg, image/png) for outbound messages. The \&quot;SMS Default\&quot; profile does not have an ID and cannot be modified. To customize media filtering, create and assign a custom supported content profile.
 func (a RoutingApi) GetRoutingSmsPhonenumbers(phoneNumber string, phoneNumberType []string, phoneNumberStatus []string, countryCode []string, pageSize int, pageNumber int, sortBy string, sortOrder string, language string, integrationId string, supportedContentId string, expand []string) (*Smsphonenumberentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -9540,6 +9544,8 @@ func (a RoutingApi) PatchRoutingSkillgroup(skillGroupId string, body Skillgroup)
 // PatchRoutingSmsPhonenumber invokes PATCH /api/v2/routing/sms/phonenumbers/{phoneNumberId}
 //
 // Update a phone number provisioned for SMS.
+//
+// Use this endpoint to assign a custom supported content profile to an MMS-capable phone number. If no supported content profile is set, the phone number uses the \&quot;SMS Default\&quot; profile, which allows all media types (*_/_*) for inbound messages and specific image types (image/gif, image/jpeg, image/png) for outbound messages. To customize media filtering, provide a supported content profile ID in the request body.
 func (a RoutingApi) PatchRoutingSmsPhonenumber(phoneNumberId string, body Smsphonenumberpatchrequest) (*Smsphonenumber, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -12121,6 +12127,8 @@ func (a RoutingApi) PostRoutingSmsAddresses(body Smsaddressprovision) (*Smsaddre
 // PostRoutingSmsPhonenumbers invokes POST /api/v2/routing/sms/phonenumbers
 //
 // Provision a phone number for SMS
+//
+// When provisioning an MMS-capable phone number, if no supported content profile is specified in the request, the system automatically assigns the \&quot;SMS Default\&quot; profile. This default profile allows all media types (*_/_*) for inbound messages and specific image types (image/gif, image/jpeg, image/png) for outbound messages. To use custom media filtering, specify a supported content profile ID in the request body.
 func (a RoutingApi) PostRoutingSmsPhonenumbers(body Smsphonenumberprovision) (*Smsphonenumber, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

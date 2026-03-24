@@ -10,7 +10,10 @@ import (
 // Campaignrulecampaignwaittimesettings
 type Campaignrulecampaignwaittimesettings struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// WaitType - Campaign wait type
+	WaitType *string `json:"waitType,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Campaignrulecampaignwaittimesettings) SetField(field string, fieldValue interface{}) {
@@ -74,8 +77,12 @@ func (o Campaignrulecampaignwaittimesettings) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Campaignrulecampaignwaittimesettings
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		WaitType *string `json:"waitType,omitempty"`
+		Alias
+	}{ 
+		WaitType: o.WaitType,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -86,6 +93,10 @@ func (o *Campaignrulecampaignwaittimesettings) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if WaitType, ok := CampaignrulecampaignwaittimesettingsMap["waitType"].(string); ok {
+		o.WaitType = &WaitType
+	}
+    
 
 	return nil
 }

@@ -79,6 +79,9 @@ type Customerenddetaileventtopiccustomerendevent struct {
 
 	// DivisionId
 	DivisionId *string `json:"divisionId,omitempty"`
+
+	// UtilizationLabel
+	UtilizationLabel *string `json:"utilizationLabel,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -189,6 +192,8 @@ func (o Customerenddetaileventtopiccustomerendevent) MarshalJSON() ([]byte, erro
 		ConversationExternalOrganizationIds *[]string `json:"conversationExternalOrganizationIds,omitempty"`
 		
 		DivisionId *string `json:"divisionId,omitempty"`
+		
+		UtilizationLabel *string `json:"utilizationLabel,omitempty"`
 		Alias
 	}{ 
 		EventTime: o.EventTime,
@@ -236,6 +241,8 @@ func (o Customerenddetaileventtopiccustomerendevent) MarshalJSON() ([]byte, erro
 		ConversationExternalOrganizationIds: o.ConversationExternalOrganizationIds,
 		
 		DivisionId: o.DivisionId,
+		
+		UtilizationLabel: o.UtilizationLabel,
 		Alias:    (Alias)(o),
 	})
 }
@@ -343,6 +350,10 @@ func (o *Customerenddetaileventtopiccustomerendevent) UnmarshalJSON(b []byte) er
 	
 	if DivisionId, ok := CustomerenddetaileventtopiccustomerendeventMap["divisionId"].(string); ok {
 		o.DivisionId = &DivisionId
+	}
+    
+	if UtilizationLabel, ok := CustomerenddetaileventtopiccustomerendeventMap["utilizationLabel"].(string); ok {
+		o.UtilizationLabel = &UtilizationLabel
 	}
     
 

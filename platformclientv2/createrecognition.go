@@ -17,7 +17,7 @@ type Createrecognition struct {
 	// VarType - The type of the recognition
 	VarType *string `json:"type,omitempty"`
 
-	// Title - The title of the recognition. Max length of 100 characters (optional)
+	// Title - The title of the recognition. Max length of 100 characters
 	Title *string `json:"title,omitempty"`
 
 	// Note - The note of the recognition. Max length of 800 characters (optional)

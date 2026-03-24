@@ -280,7 +280,7 @@ func TestAuthentication(t *testing.T) {
 
 func TestCreateUser(t *testing.T) {
 	// Create user
-	password := uuid.New().String() + "!@#$1234asdfASDF"
+	password := uuid.New().String() + "!@#$!@#$&?&?123412345656asdfasdfghghASDFASDFGHGH"
 	newUser := Createuser{Name: &config.userName, Email: &config.userEmail, Password: &password}
 
 	user, response, err := config.usersAPI.PostUsers(newUser)

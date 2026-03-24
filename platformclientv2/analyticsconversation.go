@@ -39,6 +39,12 @@ type Analyticsconversation struct {
 	// InactivityTimeout - The time in the future, after which this conversation would be considered inactive. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	InactivityTimeout *time.Time `json:"inactivityTimeout,omitempty"`
 
+	// AssociatedConversationId - ID of the conversation the initiator is signaling this new conversation is associated with
+	AssociatedConversationId *string `json:"associatedConversationId,omitempty"`
+
+	// ConsultationConversationIds - Set of conversationIds the initiator has signaled this conversation is associated with
+	ConsultationConversationIds *[]string `json:"consultationConversationIds,omitempty"`
+
 	// KnowledgeBaseIds - The unique identifier(s) of the knowledge base(s) used
 	KnowledgeBaseIds *[]string `json:"knowledgeBaseIds,omitempty"`
 
@@ -183,6 +189,10 @@ func (o Analyticsconversation) MarshalJSON() ([]byte, error) {
 		
 		InactivityTimeout *string `json:"inactivityTimeout,omitempty"`
 		
+		AssociatedConversationId *string `json:"associatedConversationId,omitempty"`
+		
+		ConsultationConversationIds *[]string `json:"consultationConversationIds,omitempty"`
+		
 		KnowledgeBaseIds *[]string `json:"knowledgeBaseIds,omitempty"`
 		
 		MediaStatsMinConversationMos *float64 `json:"mediaStatsMinConversationMos,omitempty"`
@@ -221,6 +231,10 @@ func (o Analyticsconversation) MarshalJSON() ([]byte, error) {
 		ExternalTag: o.ExternalTag,
 		
 		InactivityTimeout: InactivityTimeout,
+		
+		AssociatedConversationId: o.AssociatedConversationId,
+		
+		ConsultationConversationIds: o.ConsultationConversationIds,
 		
 		KnowledgeBaseIds: o.KnowledgeBaseIds,
 		
@@ -291,6 +305,15 @@ func (o *Analyticsconversation) UnmarshalJSON(b []byte) error {
 	if inactivityTimeoutString, ok := AnalyticsconversationMap["inactivityTimeout"].(string); ok {
 		InactivityTimeout, _ := time.Parse("2006-01-02T15:04:05.999999Z", inactivityTimeoutString)
 		o.InactivityTimeout = &InactivityTimeout
+	}
+	
+	if AssociatedConversationId, ok := AnalyticsconversationMap["associatedConversationId"].(string); ok {
+		o.AssociatedConversationId = &AssociatedConversationId
+	}
+    
+	if ConsultationConversationIds, ok := AnalyticsconversationMap["consultationConversationIds"].([]interface{}); ok {
+		ConsultationConversationIdsString, _ := json.Marshal(ConsultationConversationIds)
+		json.Unmarshal(ConsultationConversationIdsString, &o.ConsultationConversationIds)
 	}
 	
 	if KnowledgeBaseIds, ok := AnalyticsconversationMap["knowledgeBaseIds"].([]interface{}); ok {

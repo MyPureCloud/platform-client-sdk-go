@@ -76,6 +76,9 @@ type Wrapupdetaileventtopicwrapupevent struct {
 
 	// ConversationExternalOrganizationIds
 	ConversationExternalOrganizationIds *[]string `json:"conversationExternalOrganizationIds,omitempty"`
+
+	// UtilizationLabel
+	UtilizationLabel *string `json:"utilizationLabel,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -184,6 +187,8 @@ func (o Wrapupdetaileventtopicwrapupevent) MarshalJSON() ([]byte, error) {
 		ConversationExternalContactIds *[]string `json:"conversationExternalContactIds,omitempty"`
 		
 		ConversationExternalOrganizationIds *[]string `json:"conversationExternalOrganizationIds,omitempty"`
+		
+		UtilizationLabel *string `json:"utilizationLabel,omitempty"`
 		Alias
 	}{ 
 		EventTime: o.EventTime,
@@ -229,6 +234,8 @@ func (o Wrapupdetaileventtopicwrapupevent) MarshalJSON() ([]byte, error) {
 		ConversationExternalContactIds: o.ConversationExternalContactIds,
 		
 		ConversationExternalOrganizationIds: o.ConversationExternalOrganizationIds,
+		
+		UtilizationLabel: o.UtilizationLabel,
 		Alias:    (Alias)(o),
 	})
 }
@@ -334,6 +341,10 @@ func (o *Wrapupdetaileventtopicwrapupevent) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ConversationExternalOrganizationIdsString, &o.ConversationExternalOrganizationIds)
 	}
 	
+	if UtilizationLabel, ok := WrapupdetaileventtopicwrapupeventMap["utilizationLabel"].(string); ok {
+		o.UtilizationLabel = &UtilizationLabel
+	}
+    
 
 	return nil
 }

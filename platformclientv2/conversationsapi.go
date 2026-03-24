@@ -6509,7 +6509,7 @@ func (a ConversationsApi) GetConversationsEmailMessage(conversationId string, me
 // GetConversationsEmailMessages invokes GET /api/v2/conversations/emails/{conversationId}/messages
 //
 // Get conversation messages
-func (a ConversationsApi) GetConversationsEmailMessages(conversationId string) (*Emailmessagepreviewlisting, *APIResponse, error) {
+func (a ConversationsApi) GetConversationsEmailMessages(conversationId string, includeAgentlessStitchedMessages bool) (*Emailmessagepreviewlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/emails/{conversationId}/messages"
@@ -6541,6 +6541,8 @@ func (a ConversationsApi) GetConversationsEmailMessages(conversationId string) (
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["includeAgentlessStitchedMessages"] = a.Configuration.APIClient.ParameterToString(includeAgentlessStitchedMessages, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

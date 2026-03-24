@@ -10,7 +10,13 @@ import (
 // Campaignrulespecificdateinterval
 type Campaignrulespecificdateinterval struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// Min - The minimum value of the interval in yyyy-MM-dd format (if includeYear=true) or in MM-dd format (if includeYear=false). Required for the \"between\" operator
+	Min *string `json:"min,omitempty"`
+
+	// Max - The maximum value of the interval in yyyy-MM-dd format (if includeYear=true) or in MM-dd format (if includeYear=false). Required for the \"between\" operator
+	Max *string `json:"max,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Campaignrulespecificdateinterval) SetField(field string, fieldValue interface{}) {
@@ -74,8 +80,16 @@ func (o Campaignrulespecificdateinterval) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Campaignrulespecificdateinterval
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		Min *string `json:"min,omitempty"`
+		
+		Max *string `json:"max,omitempty"`
+		Alias
+	}{ 
+		Min: o.Min,
+		
+		Max: o.Max,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -86,6 +100,14 @@ func (o *Campaignrulespecificdateinterval) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if Min, ok := CampaignrulespecificdateintervalMap["min"].(string); ok {
+		o.Min = &Min
+	}
+    
+	if Max, ok := CampaignrulespecificdateintervalMap["max"].(string); ok {
+		o.Max = &Max
+	}
+    
 
 	return nil
 }

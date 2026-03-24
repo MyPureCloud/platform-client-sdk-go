@@ -190,6 +190,8 @@ func (a BusinessRulesApi) DeleteBusinessrulesDecisiontableVersion(tableId string
 // DeleteBusinessrulesDecisiontableVersionRow invokes DELETE /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}/rows/{rowId}
 //
 // Delete a decision table row
+//
+// Required permissions depend on table content: if the table or row contains queue references, routing:queue:view is required in each queue&#39;s division. Future platform objects will require their associated permissions in the relevant divisions when the table or row contains references to them.
 func (a BusinessRulesApi) DeleteBusinessrulesDecisiontableVersionRow(tableId string, tableVersion int, rowId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -1284,6 +1286,8 @@ func (a BusinessRulesApi) GetBusinessrulesSchemasCoretypes() (*Coretypelisting, 
 // PatchBusinessrulesDecisiontable invokes PATCH /api/v2/businessrules/decisiontables/{tableId}
 //
 // Update a decision table
+//
+// Required permissions depend on table content: if the table or row contains queue references, routing:queue:view is required in each queue&#39;s division. Future platform objects will require their associated permissions in the relevant divisions when the table or row contains references to them.
 func (a BusinessRulesApi) PatchBusinessrulesDecisiontable(tableId string, body Updatedecisiontablerequest) (*Decisiontable, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -1752,6 +1756,8 @@ func (a BusinessRulesApi) PostBusinessrulesDecisiontableVersionExecute(tableId s
 // PostBusinessrulesDecisiontableVersionRows invokes POST /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}/rows
 //
 // Create a decision table row
+//
+// Required permissions depend on table content: if the table or row contains queue references, routing:queue:view is required in each queue&#39;s division. Future platform objects will require their associated permissions in the relevant divisions when the table or row contains references to them.
 func (a BusinessRulesApi) PostBusinessrulesDecisiontableVersionRows(tableId string, tableVersion int, body Createdecisiontablerowrequest) (*Decisiontablerow, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2118,6 +2124,8 @@ func (a BusinessRulesApi) PostBusinessrulesDecisiontableVersions(tableId string)
 // PostBusinessrulesDecisiontables invokes POST /api/v2/businessrules/decisiontables
 //
 // Create a decision table
+//
+// Required permissions depend on table content: if the table or row contains queue references, routing:queue:view is required in each queue&#39;s division. Future platform objects will require their associated permissions in the relevant divisions when the table or row contains references to them.
 func (a BusinessRulesApi) PostBusinessrulesDecisiontables(body Createdecisiontablerequest) (*Decisiontableversion, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2374,6 +2382,8 @@ func (a BusinessRulesApi) PutBusinessrulesDecisiontableVersionPublish(tableId st
 // PutBusinessrulesDecisiontableVersionRow invokes PUT /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}/rows/{rowId}
 //
 // Full update a decision table row
+//
+// Required permissions depend on table content: if the table or row contains queue references, routing:queue:view is required in each queue&#39;s division. Future platform objects will require their associated permissions in the relevant divisions when the table or row contains references to them.
 func (a BusinessRulesApi) PutBusinessrulesDecisiontableVersionRow(tableId string, tableVersion int, rowId string, body Putdecisiontablerowrequest) (*Decisiontablerow, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

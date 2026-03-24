@@ -14,13 +14,13 @@ type Buschedulingsettingsresponse struct {
 	// MessageSeverities - Schedule generation message severity configuration
 	MessageSeverities *[]Schedulermessagetypeseverity `json:"messageSeverities,omitempty"`
 
-	// SyncTimeOffProperties - Synchronize set of time off properties from scheduled activities to time off requests when the schedule is published.
+	// SyncTimeOffProperties - Synchronize set of time off properties from scheduled activities to time off requests when the schedule is published
 	SyncTimeOffProperties *[]string `json:"syncTimeOffProperties,omitempty"`
 
 	// ServiceGoalImpact - Configures the max percent increase and decrease of service goals for this business unit
 	ServiceGoalImpact *Wfmservicegoalimpactsettings `json:"serviceGoalImpact,omitempty"`
 
-	// AllowWorkPlanPerMinuteGranularity - Indicates whether or not per minute granularity for scheduling will be enabled for this business unit. Defaults to false.
+	// AllowWorkPlanPerMinuteGranularity - Indicates whether or not per minute granularity for scheduling will be enabled for this business unit. Defaults to false
 	AllowWorkPlanPerMinuteGranularity *bool `json:"allowWorkPlanPerMinuteGranularity,omitempty"`
 
 	// ActivitySmoothingType - The activity smoothing type for schedule generation in this business unit

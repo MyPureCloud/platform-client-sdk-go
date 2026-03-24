@@ -14,7 +14,7 @@ type Userstaffinggroupresponse struct {
 	// User - The user associated with the staffing group
 	User *Userreference `json:"user,omitempty"`
 
-	// StaffingGroup - The staffing group
+	// StaffingGroup - The current staffing group of the user
 	StaffingGroup *Staffinggroupreference `json:"staffingGroup,omitempty"`
 }
 

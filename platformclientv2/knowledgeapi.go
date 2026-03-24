@@ -30,6 +30,88 @@ func NewKnowledgeApiWithConfig(config *Configuration) *KnowledgeApi {
 	}
 }
 
+// DeleteKnowledgeConnection invokes DELETE /api/v2/knowledge/connections/{connectionId}
+//
+// Delete connection
+func (a KnowledgeApi) DeleteKnowledgeConnection(connectionId string) (*Connectionresponse, *APIResponse, error) {
+	var httpMethod = "DELETE"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/knowledge/connections/{connectionId}"
+	path = strings.Replace(path, "{connectionId}", url.PathEscape(fmt.Sprintf("%v", connectionId)), -1)
+	defaultReturn := new(Connectionresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'connectionId' is set
+	if &connectionId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'connectionId' when calling KnowledgeApi->DeleteKnowledgeConnection")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Connectionresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Connectionresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // DeleteKnowledgeKnowledgebase invokes DELETE /api/v2/knowledge/knowledgebases/{knowledgeBaseId}
 //
 // Delete knowledge base
@@ -934,6 +1016,325 @@ func (a KnowledgeApi) DeleteKnowledgeSetting(knowledgeSettingId string) (*APIRes
 		err = errors.New(response.ErrorMessage)
 	}
 	return response, err
+}
+
+// DeleteKnowledgeSource invokes DELETE /api/v2/knowledge/sources/{sourceId}
+//
+// Delete source
+func (a KnowledgeApi) DeleteKnowledgeSource(sourceId string) (*APIResponse, error) {
+	var httpMethod = "DELETE"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/knowledge/sources/{sourceId}"
+	path = strings.Replace(path, "{sourceId}", url.PathEscape(fmt.Sprintf("%v", sourceId)), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'sourceId' is set
+	if &sourceId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'sourceId' when calling KnowledgeApi->DeleteKnowledgeSource")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
+// GetKnowledgeConnection invokes GET /api/v2/knowledge/connections/{connectionId}
+//
+// Get connection
+func (a KnowledgeApi) GetKnowledgeConnection(connectionId string, expand []string) (*Connectionresponse, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/knowledge/connections/{connectionId}"
+	path = strings.Replace(path, "{connectionId}", url.PathEscape(fmt.Sprintf("%v", connectionId)), -1)
+	defaultReturn := new(Connectionresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'connectionId' is set
+	if &connectionId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'connectionId' when calling KnowledgeApi->GetKnowledgeConnection")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Connectionresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Connectionresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetKnowledgeConnectionOptions invokes GET /api/v2/knowledge/connections/{connectionId}/options
+//
+// Get connection options
+func (a KnowledgeApi) GetKnowledgeConnectionOptions(connectionId string, parentId string) (*Connectionoptionlisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/knowledge/connections/{connectionId}/options"
+	path = strings.Replace(path, "{connectionId}", url.PathEscape(fmt.Sprintf("%v", connectionId)), -1)
+	defaultReturn := new(Connectionoptionlisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'connectionId' is set
+	if &connectionId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'connectionId' when calling KnowledgeApi->GetKnowledgeConnectionOptions")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["parentId"] = a.Configuration.APIClient.ParameterToString(parentId, "")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Connectionoptionlisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Connectionoptionlisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetKnowledgeConnections invokes GET /api/v2/knowledge/connections
+//
+// Get connections
+func (a KnowledgeApi) GetKnowledgeConnections() (*Connectionlisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/knowledge/connections"
+	defaultReturn := new(Connectionlisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Connectionlisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Connectionlisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
 }
 
 // GetKnowledgeGuestSessionCategories invokes GET /api/v2/knowledge/guest/sessions/{sessionId}/categories
@@ -4157,6 +4558,511 @@ func (a KnowledgeApi) GetKnowledgeSettings(before string, after string, pageSize
 	return successPayload, response, err
 }
 
+// GetKnowledgeSource invokes GET /api/v2/knowledge/sources/{sourceId}
+//
+// Get source
+func (a KnowledgeApi) GetKnowledgeSource(sourceId string, expand []string) (*V3sourcedetailedwitherrorresponse, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/knowledge/sources/{sourceId}"
+	path = strings.Replace(path, "{sourceId}", url.PathEscape(fmt.Sprintf("%v", sourceId)), -1)
+	defaultReturn := new(V3sourcedetailedwitherrorresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'sourceId' is set
+	if &sourceId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'sourceId' when calling KnowledgeApi->GetKnowledgeSource")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *V3sourcedetailedwitherrorresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "V3sourcedetailedwitherrorresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetKnowledgeSourceSynchronization invokes GET /api/v2/knowledge/sources/{sourceId}/synchronizations/{synchronizationId}
+//
+// Get a specific synchronization of a source.
+func (a KnowledgeApi) GetKnowledgeSourceSynchronization(sourceId string, synchronizationId string) (*V3synchronization, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/knowledge/sources/{sourceId}/synchronizations/{synchronizationId}"
+	path = strings.Replace(path, "{sourceId}", url.PathEscape(fmt.Sprintf("%v", sourceId)), -1)
+	path = strings.Replace(path, "{synchronizationId}", url.PathEscape(fmt.Sprintf("%v", synchronizationId)), -1)
+	defaultReturn := new(V3synchronization)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'sourceId' is set
+	if &sourceId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'sourceId' when calling KnowledgeApi->GetKnowledgeSourceSynchronization")
+	}
+	// verify the required parameter 'synchronizationId' is set
+	if &synchronizationId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'synchronizationId' when calling KnowledgeApi->GetKnowledgeSourceSynchronization")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *V3synchronization
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "V3synchronization" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetKnowledgeSourceSynchronizations invokes GET /api/v2/knowledge/sources/{sourceId}/synchronizations
+//
+// Get synchronizations of a source.
+func (a KnowledgeApi) GetKnowledgeSourceSynchronizations(sourceId string, before string, after string, pageSize string) (*V3synchronizationlisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/knowledge/sources/{sourceId}/synchronizations"
+	path = strings.Replace(path, "{sourceId}", url.PathEscape(fmt.Sprintf("%v", sourceId)), -1)
+	defaultReturn := new(V3synchronizationlisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'sourceId' is set
+	if &sourceId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'sourceId' when calling KnowledgeApi->GetKnowledgeSourceSynchronizations")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, "")
+	
+	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *V3synchronizationlisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "V3synchronizationlisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetKnowledgeSources invokes GET /api/v2/knowledge/sources
+//
+// List sources
+func (a KnowledgeApi) GetKnowledgeSources(expand []string) (*V3sourcewitherrorlisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/knowledge/sources"
+	defaultReturn := new(V3sourcewitherrorlisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *V3sourcewitherrorlisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "V3sourcewitherrorlisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetKnowledgeSourcesSynchronizations invokes GET /api/v2/knowledge/sources/synchronizations
+//
+// Get synchronizations of all sources of the organization.
+func (a KnowledgeApi) GetKnowledgeSourcesSynchronizations(before string, after string, pageSize string) (*V3synchronizationlisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/knowledge/sources/synchronizations"
+	defaultReturn := new(V3synchronizationlisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, "")
+	
+	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *V3synchronizationlisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "V3synchronizationlisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PatchKnowledgeConnection invokes PATCH /api/v2/knowledge/connections/{connectionId}
+//
+// Update connection
+func (a KnowledgeApi) PatchKnowledgeConnection(connectionId string, body Connectionupdaterequest) (*Connectionresponse, *APIResponse, error) {
+	var httpMethod = "PATCH"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/knowledge/connections/{connectionId}"
+	path = strings.Replace(path, "{connectionId}", url.PathEscape(fmt.Sprintf("%v", connectionId)), -1)
+	defaultReturn := new(Connectionresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'connectionId' is set
+	if &connectionId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'connectionId' when calling KnowledgeApi->PatchKnowledgeConnection")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Connectionresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Connectionresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // PatchKnowledgeGuestSessionDocumentsSearchSearchId invokes PATCH /api/v2/knowledge/guest/sessions/{sessionId}/documents/search/{searchId}
 //
 // Update search result.
@@ -5451,6 +6357,186 @@ func (a KnowledgeApi) PatchKnowledgeSetting(knowledgeSettingId string, body Know
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Knowledgesettingsresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PatchKnowledgeSourceSynchronization invokes PATCH /api/v2/knowledge/sources/{sourceId}/synchronizations/{synchronizationId}
+//
+// Update synchronization.
+func (a KnowledgeApi) PatchKnowledgeSourceSynchronization(sourceId string, synchronizationId string, body V3synchronizationupdaterequest) (*V3synchronization, *APIResponse, error) {
+	var httpMethod = "PATCH"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/knowledge/sources/{sourceId}/synchronizations/{synchronizationId}"
+	path = strings.Replace(path, "{sourceId}", url.PathEscape(fmt.Sprintf("%v", sourceId)), -1)
+	path = strings.Replace(path, "{synchronizationId}", url.PathEscape(fmt.Sprintf("%v", synchronizationId)), -1)
+	defaultReturn := new(V3synchronization)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'sourceId' is set
+	if &sourceId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'sourceId' when calling KnowledgeApi->PatchKnowledgeSourceSynchronization")
+	}
+	// verify the required parameter 'synchronizationId' is set
+	if &synchronizationId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'synchronizationId' when calling KnowledgeApi->PatchKnowledgeSourceSynchronization")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling KnowledgeApi->PatchKnowledgeSourceSynchronization")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *V3synchronization
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "V3synchronization" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostKnowledgeConnections invokes POST /api/v2/knowledge/connections
+//
+// Create new connection
+func (a KnowledgeApi) PostKnowledgeConnections(body Connectioncreaterequest) (*Connectioncreateresponse, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/knowledge/connections"
+	defaultReturn := new(Connectioncreateresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling KnowledgeApi->PostKnowledgeConnections")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Connectioncreateresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Connectioncreateresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -8911,6 +9997,271 @@ func (a KnowledgeApi) PostKnowledgeSettings(body Knowledgesettingsrequest) (*Kno
 	return successPayload, response, err
 }
 
+// PostKnowledgeSourceSynchronizationUploads invokes POST /api/v2/knowledge/sources/{sourceId}/synchronizations/{synchronizationId}/uploads
+//
+// Create presigned URL for uploading a file in the synchronization.
+func (a KnowledgeApi) PostKnowledgeSourceSynchronizationUploads(sourceId string, synchronizationId string, body V3synchronizationuploadurlrequest) (*V3synchronizationuploadurlresponse, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/knowledge/sources/{sourceId}/synchronizations/{synchronizationId}/uploads"
+	path = strings.Replace(path, "{sourceId}", url.PathEscape(fmt.Sprintf("%v", sourceId)), -1)
+	path = strings.Replace(path, "{synchronizationId}", url.PathEscape(fmt.Sprintf("%v", synchronizationId)), -1)
+	defaultReturn := new(V3synchronizationuploadurlresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'sourceId' is set
+	if &sourceId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'sourceId' when calling KnowledgeApi->PostKnowledgeSourceSynchronizationUploads")
+	}
+	// verify the required parameter 'synchronizationId' is set
+	if &synchronizationId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'synchronizationId' when calling KnowledgeApi->PostKnowledgeSourceSynchronizationUploads")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling KnowledgeApi->PostKnowledgeSourceSynchronizationUploads")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *V3synchronizationuploadurlresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "V3synchronizationuploadurlresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostKnowledgeSourceSynchronizations invokes POST /api/v2/knowledge/sources/{sourceId}/synchronizations
+//
+// Start a manual synchronization from a source.
+func (a KnowledgeApi) PostKnowledgeSourceSynchronizations(sourceId string, body V3startmanualsyncrequest) (*V3synchronization, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/knowledge/sources/{sourceId}/synchronizations"
+	path = strings.Replace(path, "{sourceId}", url.PathEscape(fmt.Sprintf("%v", sourceId)), -1)
+	defaultReturn := new(V3synchronization)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'sourceId' is set
+	if &sourceId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'sourceId' when calling KnowledgeApi->PostKnowledgeSourceSynchronizations")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *V3synchronization
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "V3synchronization" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostKnowledgeSources invokes POST /api/v2/knowledge/sources
+//
+// Create a new source
+func (a KnowledgeApi) PostKnowledgeSources(body V3sourcecreaterequest) (*V3sourcedetailedresponse, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/knowledge/sources"
+	defaultReturn := new(V3sourcedetailedresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling KnowledgeApi->PostKnowledgeSources")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *V3sourcedetailedresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "V3sourcedetailedresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // PutKnowledgeKnowledgebaseSourcesSalesforceSourceId invokes PUT /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/sources/salesforce/{sourceId}
 //
 // Update Salesforce Knowledge integration source
@@ -9095,6 +10446,96 @@ func (a KnowledgeApi) PutKnowledgeKnowledgebaseSourcesServicenowSourceId(knowled
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Servicenowsourceresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PutKnowledgeSource invokes PUT /api/v2/knowledge/sources/{sourceId}
+//
+// Update the source
+func (a KnowledgeApi) PutKnowledgeSource(sourceId string, body V3sourceupdaterequest) (*V3sourcedetailedresponse, *APIResponse, error) {
+	var httpMethod = "PUT"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/knowledge/sources/{sourceId}"
+	path = strings.Replace(path, "{sourceId}", url.PathEscape(fmt.Sprintf("%v", sourceId)), -1)
+	defaultReturn := new(V3sourcedetailedresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'sourceId' is set
+	if &sourceId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'sourceId' when calling KnowledgeApi->PutKnowledgeSource")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling KnowledgeApi->PutKnowledgeSource")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *V3sourcedetailedresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "V3sourcedetailedresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

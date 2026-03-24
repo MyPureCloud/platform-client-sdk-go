@@ -10,7 +10,13 @@ import (
 // Campaignruledayofweekparameters
 type Campaignruledayofweekparameters struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// InSet - The operand for the \"in\" operator, each value in 1-7 (Monday-Sunday) format
+	InSet *[]int `json:"inSet,omitempty"`
+
+	// Interval - The operand for the \"between\" operator
+	Interval *Campaignruledayofweekinterval `json:"interval,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Campaignruledayofweekparameters) SetField(field string, fieldValue interface{}) {
@@ -74,8 +80,16 @@ func (o Campaignruledayofweekparameters) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Campaignruledayofweekparameters
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		InSet *[]int `json:"inSet,omitempty"`
+		
+		Interval *Campaignruledayofweekinterval `json:"interval,omitempty"`
+		Alias
+	}{ 
+		InSet: o.InSet,
+		
+		Interval: o.Interval,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -84,6 +98,16 @@ func (o *Campaignruledayofweekparameters) UnmarshalJSON(b []byte) error {
 	err := json.Unmarshal(b, &CampaignruledayofweekparametersMap)
 	if err != nil {
 		return err
+	}
+	
+	if InSet, ok := CampaignruledayofweekparametersMap["inSet"].([]interface{}); ok {
+		InSetString, _ := json.Marshal(InSet)
+		json.Unmarshal(InSetString, &o.InSet)
+	}
+	
+	if Interval, ok := CampaignruledayofweekparametersMap["interval"].(map[string]interface{}); ok {
+		IntervalString, _ := json.Marshal(Interval)
+		json.Unmarshal(IntervalString, &o.Interval)
 	}
 	
 

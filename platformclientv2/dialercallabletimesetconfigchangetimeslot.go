@@ -22,9 +22,6 @@ type Dialercallabletimesetconfigchangetimeslot struct {
 
 	// AdditionalProperties
 	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
-
-	// GetAdditionalProperties
-	GetAdditionalProperties *map[string]interface{} `json:"getAdditionalProperties,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -97,8 +94,6 @@ func (o Dialercallabletimesetconfigchangetimeslot) MarshalJSON() ([]byte, error)
 		Day *int `json:"day,omitempty"`
 		
 		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
-		
-		GetAdditionalProperties *map[string]interface{} `json:"getAdditionalProperties,omitempty"`
 		Alias
 	}{ 
 		StartTime: o.StartTime,
@@ -108,8 +103,6 @@ func (o Dialercallabletimesetconfigchangetimeslot) MarshalJSON() ([]byte, error)
 		Day: o.Day,
 		
 		AdditionalProperties: o.AdditionalProperties,
-		
-		GetAdditionalProperties: o.GetAdditionalProperties,
 		Alias:    (Alias)(o),
 	})
 }
@@ -137,11 +130,6 @@ func (o *Dialercallabletimesetconfigchangetimeslot) UnmarshalJSON(b []byte) erro
 	if AdditionalProperties, ok := DialercallabletimesetconfigchangetimeslotMap["additionalProperties"].(map[string]interface{}); ok {
 		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
 		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
-	}
-	
-	if GetAdditionalProperties, ok := DialercallabletimesetconfigchangetimeslotMap["getAdditionalProperties"].(map[string]interface{}); ok {
-		GetAdditionalPropertiesString, _ := json.Marshal(GetAdditionalProperties)
-		json.Unmarshal(GetAdditionalPropertiesString, &o.GetAdditionalProperties)
 	}
 	
 

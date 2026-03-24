@@ -27,7 +27,7 @@ type Bufulldaytimeoffmarker struct {
 	// Paid - Whether the time off marker is paid
 	Paid *bool `json:"paid,omitempty"`
 
-	// PayableMinutes - Payable minutes for the time off marker
+	// PayableMinutes - Payable minutes for the time off marker. Must not exceed lengthMinutes
 	PayableMinutes *int `json:"payableMinutes,omitempty"`
 
 	// TimeOffRequestId - The ID of the time off request

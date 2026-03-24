@@ -19,6 +19,15 @@ type Campaignrulecondition struct {
 
 	// ConditionType - The type of condition to evaluate.
 	ConditionType *string `json:"conditionType,omitempty"`
+
+	// DateTimeParameters - Parameters for conditions (timeOfDay, dayOfWeek, dayOfMonth, weekDayOfMonth and specificDate)
+	DateTimeParameters *Campaignruledatetimeconditionparameters `json:"dateTimeParameters,omitempty"`
+
+	// CampaignRunTimeSettings - Settings for campaignRunTime conditions
+	CampaignRunTimeSettings *Campaignrulecampaignruntimesettings `json:"campaignRunTimeSettings,omitempty"`
+
+	// CampaignWaitTimeSettings - Settings for campaignWaitTime conditions
+	CampaignWaitTimeSettings *Campaignrulecampaignwaittimesettings `json:"campaignWaitTimeSettings,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +98,12 @@ func (o Campaignrulecondition) MarshalJSON() ([]byte, error) {
 		Parameters *Campaignruleparameters `json:"parameters,omitempty"`
 		
 		ConditionType *string `json:"conditionType,omitempty"`
+		
+		DateTimeParameters *Campaignruledatetimeconditionparameters `json:"dateTimeParameters,omitempty"`
+		
+		CampaignRunTimeSettings *Campaignrulecampaignruntimesettings `json:"campaignRunTimeSettings,omitempty"`
+		
+		CampaignWaitTimeSettings *Campaignrulecampaignwaittimesettings `json:"campaignWaitTimeSettings,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -96,6 +111,12 @@ func (o Campaignrulecondition) MarshalJSON() ([]byte, error) {
 		Parameters: o.Parameters,
 		
 		ConditionType: o.ConditionType,
+		
+		DateTimeParameters: o.DateTimeParameters,
+		
+		CampaignRunTimeSettings: o.CampaignRunTimeSettings,
+		
+		CampaignWaitTimeSettings: o.CampaignWaitTimeSettings,
 		Alias:    (Alias)(o),
 	})
 }
@@ -120,6 +141,21 @@ func (o *Campaignrulecondition) UnmarshalJSON(b []byte) error {
 		o.ConditionType = &ConditionType
 	}
     
+	if DateTimeParameters, ok := CampaignruleconditionMap["dateTimeParameters"].(map[string]interface{}); ok {
+		DateTimeParametersString, _ := json.Marshal(DateTimeParameters)
+		json.Unmarshal(DateTimeParametersString, &o.DateTimeParameters)
+	}
+	
+	if CampaignRunTimeSettings, ok := CampaignruleconditionMap["campaignRunTimeSettings"].(map[string]interface{}); ok {
+		CampaignRunTimeSettingsString, _ := json.Marshal(CampaignRunTimeSettings)
+		json.Unmarshal(CampaignRunTimeSettingsString, &o.CampaignRunTimeSettings)
+	}
+	
+	if CampaignWaitTimeSettings, ok := CampaignruleconditionMap["campaignWaitTimeSettings"].(map[string]interface{}); ok {
+		CampaignWaitTimeSettingsString, _ := json.Marshal(CampaignWaitTimeSettings)
+		json.Unmarshal(CampaignWaitTimeSettingsString, &o.CampaignWaitTimeSettings)
+	}
+	
 
 	return nil
 }

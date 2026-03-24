@@ -90,7 +90,7 @@ type Smsphonenumber struct {
 	// Compliance - Compliance configuration for short codes, including help, stop and opt in.
 	Compliance *Compliance `json:"compliance,omitempty"`
 
-	// SupportedContent - Defines the media SupportedContent profile configured for an MMS capable phone number.
+	// SupportedContent - Defines the media SupportedContent profile configured for an MMS capable phone number. If no custom profile is assigned, the phone number uses the system's \"SMS Default\" profile. The \"SMS Default\" profile allows all media types (*_/_*) for inbound messages and specific image types (image/gif, image/jpeg, image/png) for outbound messages. When the \"SMS Default\" profile is in use, this field will contain the profile name and media types, but will not have an 'id' or 'selfUri' field. To customize media filtering, assign a custom supported content profile using the PATCH endpoint.
 	SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
 
 	// SelfUri - The URI for this object

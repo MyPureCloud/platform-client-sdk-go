@@ -31,9 +31,6 @@ type Dialerrulesetconfigchangerule struct {
 
 	// Actions - The list of rule actions to be taken if the conditions are true
 	Actions *[]Dialerrulesetconfigchangeaction `json:"actions,omitempty"`
-
-	// GetAdditionalProperties
-	GetAdditionalProperties *map[string]interface{} `json:"getAdditionalProperties,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -112,8 +109,6 @@ func (o Dialerrulesetconfigchangerule) MarshalJSON() ([]byte, error) {
 		Category *string `json:"category,omitempty"`
 		
 		Actions *[]Dialerrulesetconfigchangeaction `json:"actions,omitempty"`
-		
-		GetAdditionalProperties *map[string]interface{} `json:"getAdditionalProperties,omitempty"`
 		Alias
 	}{ 
 		Conditions: o.Conditions,
@@ -129,8 +124,6 @@ func (o Dialerrulesetconfigchangerule) MarshalJSON() ([]byte, error) {
 		Category: o.Category,
 		
 		Actions: o.Actions,
-		
-		GetAdditionalProperties: o.GetAdditionalProperties,
 		Alias:    (Alias)(o),
 	})
 }
@@ -172,11 +165,6 @@ func (o *Dialerrulesetconfigchangerule) UnmarshalJSON(b []byte) error {
 	if Actions, ok := DialerrulesetconfigchangeruleMap["actions"].([]interface{}); ok {
 		ActionsString, _ := json.Marshal(Actions)
 		json.Unmarshal(ActionsString, &o.Actions)
-	}
-	
-	if GetAdditionalProperties, ok := DialerrulesetconfigchangeruleMap["getAdditionalProperties"].(map[string]interface{}); ok {
-		GetAdditionalPropertiesString, _ := json.Marshal(GetAdditionalProperties)
-		json.Unmarshal(GetAdditionalPropertiesString, &o.GetAdditionalProperties)
 	}
 	
 
