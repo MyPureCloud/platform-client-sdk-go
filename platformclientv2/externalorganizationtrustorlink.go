@@ -12,9 +12,6 @@ import (
 type Externalorganizationtrustorlink struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The globally unique identifier for the object.
-	Id *string `json:"id,omitempty"`
-
 	// Division - The division to which this entity belongs.
 	Division *Writablestarrabledivision `json:"division,omitempty"`
 
@@ -29,9 +26,6 @@ type Externalorganizationtrustorlink struct {
 
 	// ExternalOrganizationUri - The URI for the External Organization that is linked to the trustor org
 	ExternalOrganizationUri *string `json:"externalOrganizationUri,omitempty"`
-
-	// SelfUri - The URI for this object
-	SelfUri *string `json:"selfUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -105,8 +99,6 @@ func (o Externalorganizationtrustorlink) MarshalJSON() ([]byte, error) {
 	}
 	
 	return json.Marshal(&struct { 
-		Id *string `json:"id,omitempty"`
-		
 		Division *Writablestarrabledivision `json:"division,omitempty"`
 		
 		ExternalOrganizationId *string `json:"externalOrganizationId,omitempty"`
@@ -116,12 +108,8 @@ func (o Externalorganizationtrustorlink) MarshalJSON() ([]byte, error) {
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
 		ExternalOrganizationUri *string `json:"externalOrganizationUri,omitempty"`
-		
-		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
-		Id: o.Id,
-		
 		Division: o.Division,
 		
 		ExternalOrganizationId: o.ExternalOrganizationId,
@@ -131,8 +119,6 @@ func (o Externalorganizationtrustorlink) MarshalJSON() ([]byte, error) {
 		DateCreated: DateCreated,
 		
 		ExternalOrganizationUri: o.ExternalOrganizationUri,
-		
-		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
 	})
 }
@@ -144,10 +130,6 @@ func (o *Externalorganizationtrustorlink) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
-	if Id, ok := ExternalorganizationtrustorlinkMap["id"].(string); ok {
-		o.Id = &Id
-	}
-    
 	if Division, ok := ExternalorganizationtrustorlinkMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -168,10 +150,6 @@ func (o *Externalorganizationtrustorlink) UnmarshalJSON(b []byte) error {
 	
 	if ExternalOrganizationUri, ok := ExternalorganizationtrustorlinkMap["externalOrganizationUri"].(string); ok {
 		o.ExternalOrganizationUri = &ExternalOrganizationUri
-	}
-    
-	if SelfUri, ok := ExternalorganizationtrustorlinkMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
 	}
     
 

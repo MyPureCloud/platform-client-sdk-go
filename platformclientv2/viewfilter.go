@@ -716,6 +716,9 @@ type Viewfilter struct {
 	// SessionExpired - Filter to indicate for if session is expired
 	SessionExpired *bool `json:"sessionExpired,omitempty"`
 
+	// ScreenMonitored - Filter to indicate if the interaction was screen monitored
+	ScreenMonitored *bool `json:"screenMonitored,omitempty"`
+
 	// EngagementSources - The engagement sources used to filter the view
 	EngagementSources *[]string `json:"engagementSources,omitempty"`
 
@@ -1259,6 +1262,8 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		
 		SessionExpired *bool `json:"sessionExpired,omitempty"`
 		
+		ScreenMonitored *bool `json:"screenMonitored,omitempty"`
+		
 		EngagementSources *[]string `json:"engagementSources,omitempty"`
 		
 		IsSnippetRecorded *bool `json:"isSnippetRecorded,omitempty"`
@@ -1735,6 +1740,8 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		SocialSourceTypes: o.SocialSourceTypes,
 		
 		SessionExpired: o.SessionExpired,
+		
+		ScreenMonitored: o.ScreenMonitored,
 		
 		EngagementSources: o.EngagementSources,
 		
@@ -2871,6 +2878,10 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	
 	if SessionExpired, ok := ViewfilterMap["sessionExpired"].(bool); ok {
 		o.SessionExpired = &SessionExpired
+	}
+    
+	if ScreenMonitored, ok := ViewfilterMap["screenMonitored"].(bool); ok {
+		o.ScreenMonitored = &ScreenMonitored
 	}
     
 	if EngagementSources, ok := ViewfilterMap["engagementSources"].([]interface{}); ok {

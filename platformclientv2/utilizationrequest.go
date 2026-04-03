@@ -16,6 +16,9 @@ type Utilizationrequest struct {
 
 	// LabelUtilizations - Map of label ids to utilization settings.
 	LabelUtilizations *map[string]Labelutilizationrequest `json:"labelUtilizations,omitempty"`
+
+	// MaxInboundCalls - Max number of inbound voice calls.
+	MaxInboundCalls *int `json:"maxInboundCalls,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Utilizationrequest) MarshalJSON() ([]byte, error) {
 		Utilization *map[string]Mediautilization `json:"utilization,omitempty"`
 		
 		LabelUtilizations *map[string]Labelutilizationrequest `json:"labelUtilizations,omitempty"`
+		
+		MaxInboundCalls *int `json:"maxInboundCalls,omitempty"`
 		Alias
 	}{ 
 		Utilization: o.Utilization,
 		
 		LabelUtilizations: o.LabelUtilizations,
+		
+		MaxInboundCalls: o.MaxInboundCalls,
 		Alias:    (Alias)(o),
 	})
 }
@@ -108,6 +115,11 @@ func (o *Utilizationrequest) UnmarshalJSON(b []byte) error {
 	if LabelUtilizations, ok := UtilizationrequestMap["labelUtilizations"].(map[string]interface{}); ok {
 		LabelUtilizationsString, _ := json.Marshal(LabelUtilizations)
 		json.Unmarshal(LabelUtilizationsString, &o.LabelUtilizations)
+	}
+	
+	if MaxInboundCalls, ok := UtilizationrequestMap["maxInboundCalls"].(float64); ok {
+		MaxInboundCallsInt := int(MaxInboundCalls)
+		o.MaxInboundCalls = &MaxInboundCallsInt
 	}
 	
 

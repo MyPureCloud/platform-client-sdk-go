@@ -7,43 +7,22 @@ import (
 	"strings"
 )
 
-// Credentialtypelisting
-type Credentialtypelisting struct { 
+// Activityplansessionstructurereference
+type Activityplansessionstructurereference struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Entities
-	Entities *[]Credentialtype `json:"entities,omitempty"`
+	// Id - The globally unique identifier for the object.
+	Id *string `json:"id,omitempty"`
 
-	// PageSize
-	PageSize *int `json:"pageSize,omitempty"`
+	// Users - The list of users to delete from this session
+	Users *[]Userreference `json:"users,omitempty"`
 
-	// PageNumber
-	PageNumber *int `json:"pageNumber,omitempty"`
-
-	// Total
-	Total *int `json:"total,omitempty"`
-
-	// FirstUri
-	FirstUri *string `json:"firstUri,omitempty"`
-
-	// NextUri
-	NextUri *string `json:"nextUri,omitempty"`
-
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
-
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
-	// SelfUri
+	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
-
-	// PageCount
-	PageCount *int `json:"pageCount,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Credentialtypelisting) SetField(field string, fieldValue interface{}) {
+func (o *Activityplansessionstructurereference) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -64,7 +43,7 @@ func (o *Credentialtypelisting) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Credentialtypelisting) MarshalJSON() ([]byte, error) {
+func (o Activityplansessionstructurereference) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -102,111 +81,51 @@ func (o Credentialtypelisting) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Credentialtypelisting
+	type Alias Activityplansessionstructurereference
 	
 	return json.Marshal(&struct { 
-		Entities *[]Credentialtype `json:"entities,omitempty"`
+		Id *string `json:"id,omitempty"`
 		
-		PageSize *int `json:"pageSize,omitempty"`
-		
-		PageNumber *int `json:"pageNumber,omitempty"`
-		
-		Total *int `json:"total,omitempty"`
-		
-		FirstUri *string `json:"firstUri,omitempty"`
-		
-		NextUri *string `json:"nextUri,omitempty"`
-		
-		PreviousUri *string `json:"previousUri,omitempty"`
-		
-		LastUri *string `json:"lastUri,omitempty"`
+		Users *[]Userreference `json:"users,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		
-		PageCount *int `json:"pageCount,omitempty"`
 		Alias
 	}{ 
-		Entities: o.Entities,
+		Id: o.Id,
 		
-		PageSize: o.PageSize,
-		
-		PageNumber: o.PageNumber,
-		
-		Total: o.Total,
-		
-		FirstUri: o.FirstUri,
-		
-		NextUri: o.NextUri,
-		
-		PreviousUri: o.PreviousUri,
-		
-		LastUri: o.LastUri,
+		Users: o.Users,
 		
 		SelfUri: o.SelfUri,
-		
-		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Credentialtypelisting) UnmarshalJSON(b []byte) error {
-	var CredentialtypelistingMap map[string]interface{}
-	err := json.Unmarshal(b, &CredentialtypelistingMap)
+func (o *Activityplansessionstructurereference) UnmarshalJSON(b []byte) error {
+	var ActivityplansessionstructurereferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &ActivityplansessionstructurereferenceMap)
 	if err != nil {
 		return err
 	}
 	
-	if Entities, ok := CredentialtypelistingMap["entities"].([]interface{}); ok {
-		EntitiesString, _ := json.Marshal(Entities)
-		json.Unmarshal(EntitiesString, &o.Entities)
-	}
-	
-	if PageSize, ok := CredentialtypelistingMap["pageSize"].(float64); ok {
-		PageSizeInt := int(PageSize)
-		o.PageSize = &PageSizeInt
-	}
-	
-	if PageNumber, ok := CredentialtypelistingMap["pageNumber"].(float64); ok {
-		PageNumberInt := int(PageNumber)
-		o.PageNumber = &PageNumberInt
-	}
-	
-	if Total, ok := CredentialtypelistingMap["total"].(float64); ok {
-		TotalInt := int(Total)
-		o.Total = &TotalInt
-	}
-	
-	if FirstUri, ok := CredentialtypelistingMap["firstUri"].(string); ok {
-		o.FirstUri = &FirstUri
+	if Id, ok := ActivityplansessionstructurereferenceMap["id"].(string); ok {
+		o.Id = &Id
 	}
     
-	if NextUri, ok := CredentialtypelistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
+	if Users, ok := ActivityplansessionstructurereferenceMap["users"].([]interface{}); ok {
+		UsersString, _ := json.Marshal(Users)
+		json.Unmarshal(UsersString, &o.Users)
 	}
-    
-	if PreviousUri, ok := CredentialtypelistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
-	}
-    
-	if LastUri, ok := CredentialtypelistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
-	if SelfUri, ok := CredentialtypelistingMap["selfUri"].(string); ok {
+	
+	if SelfUri, ok := ActivityplansessionstructurereferenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
     
-	if PageCount, ok := CredentialtypelistingMap["pageCount"].(float64); ok {
-		PageCountInt := int(PageCount)
-		o.PageCount = &PageCountInt
-	}
-	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Credentialtypelisting) String() string {
+func (o *Activityplansessionstructurereference) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

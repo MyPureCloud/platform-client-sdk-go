@@ -19,7 +19,7 @@ type Draft struct {
 	Name *string `json:"name,omitempty"`
 
 	// Miner - Miner to which the draft belongs.
-	Miner *Miner `json:"miner,omitempty"`
+	Miner **Miner `json:"miner,omitempty"`
 
 	// Intents - Draft intent object.
 	Intents *[]Draftintents `json:"intents,omitempty"`
@@ -120,7 +120,7 @@ func (o Draft) MarshalJSON() ([]byte, error) {
 		
 		Name *string `json:"name,omitempty"`
 		
-		Miner *Miner `json:"miner,omitempty"`
+		Miner **Miner `json:"miner,omitempty"`
 		
 		Intents *[]Draftintents `json:"intents,omitempty"`
 		

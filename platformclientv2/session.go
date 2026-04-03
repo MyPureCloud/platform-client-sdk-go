@@ -138,6 +138,18 @@ type Session struct {
 	// LastScreen - The app screen name where the customer's last app interaction occurred.
 	LastScreen *string `json:"lastScreen,omitempty"`
 
+	// CaseAssociations - Cases associated with the session - conversation only.
+	CaseAssociations *[]Journeycaseassociation `json:"caseAssociations,omitempty"`
+
+	// CaseEntity - The case this session refers to.
+	CaseEntity *Addressableentityref `json:"caseEntity,omitempty"`
+
+	// CaseReference - The reference for this case.
+	CaseReference *string `json:"caseReference,omitempty"`
+
+	// CaseStatus - The status of this case.
+	CaseStatus *string `json:"caseStatus,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -333,6 +345,14 @@ func (o Session) MarshalJSON() ([]byte, error) {
 		
 		LastScreen *string `json:"lastScreen,omitempty"`
 		
+		CaseAssociations *[]Journeycaseassociation `json:"caseAssociations,omitempty"`
+		
+		CaseEntity *Addressableentityref `json:"caseEntity,omitempty"`
+		
+		CaseReference *string `json:"caseReference,omitempty"`
+		
+		CaseStatus *string `json:"caseStatus,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
 		CreatedDate *string `json:"createdDate,omitempty"`
@@ -427,6 +447,14 @@ func (o Session) MarshalJSON() ([]byte, error) {
 		DivisionIds: o.DivisionIds,
 		
 		LastScreen: o.LastScreen,
+		
+		CaseAssociations: o.CaseAssociations,
+		
+		CaseEntity: o.CaseEntity,
+		
+		CaseReference: o.CaseReference,
+		
+		CaseStatus: o.CaseStatus,
 		
 		SelfUri: o.SelfUri,
 		
@@ -640,6 +668,24 @@ func (o *Session) UnmarshalJSON(b []byte) error {
 	
 	if LastScreen, ok := SessionMap["lastScreen"].(string); ok {
 		o.LastScreen = &LastScreen
+	}
+    
+	if CaseAssociations, ok := SessionMap["caseAssociations"].([]interface{}); ok {
+		CaseAssociationsString, _ := json.Marshal(CaseAssociations)
+		json.Unmarshal(CaseAssociationsString, &o.CaseAssociations)
+	}
+	
+	if CaseEntity, ok := SessionMap["caseEntity"].(map[string]interface{}); ok {
+		CaseEntityString, _ := json.Marshal(CaseEntity)
+		json.Unmarshal(CaseEntityString, &o.CaseEntity)
+	}
+	
+	if CaseReference, ok := SessionMap["caseReference"].(string); ok {
+		o.CaseReference = &CaseReference
+	}
+    
+	if CaseStatus, ok := SessionMap["caseStatus"].(string); ok {
+		o.CaseStatus = &CaseStatus
 	}
     
 	if SelfUri, ok := SessionMap["selfUri"].(string); ok {

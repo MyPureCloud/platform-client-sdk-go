@@ -28,9 +28,6 @@ type Externalorganizationenrichrequest struct {
 
 	// FieldRules - Logic describing how to combine data from the submitted request with data found in the database.
 	FieldRules *Enrichfieldrules `json:"fieldRules,omitempty"`
-
-	// SelfUri - The URI for this object
-	SelfUri *string `json:"selfUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -107,8 +104,6 @@ func (o Externalorganizationenrichrequest) MarshalJSON() ([]byte, error) {
 		ExternalOrganization *Externalorganization `json:"externalOrganization,omitempty"`
 		
 		FieldRules *Enrichfieldrules `json:"fieldRules,omitempty"`
-		
-		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -122,8 +117,6 @@ func (o Externalorganizationenrichrequest) MarshalJSON() ([]byte, error) {
 		ExternalOrganization: o.ExternalOrganization,
 		
 		FieldRules: o.FieldRules,
-		
-		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
 	})
 }
@@ -163,10 +156,6 @@ func (o *Externalorganizationenrichrequest) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(FieldRulesString, &o.FieldRules)
 	}
 	
-	if SelfUri, ok := ExternalorganizationenrichrequestMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
-	}
-    
 
 	return nil
 }

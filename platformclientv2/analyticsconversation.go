@@ -12,8 +12,17 @@ import (
 type Analyticsconversation struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
+	// AccessAttributes - Set of attributes that limit which users can access the conversation
+	AccessAttributes *[]string `json:"accessAttributes,omitempty"`
+
+	// AssociatedConversationId - ID of the conversation the initiator is signaling this new conversation is associated with
+	AssociatedConversationId *string `json:"associatedConversationId,omitempty"`
+
 	// ConferenceStart - The start time of a conference call. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ConferenceStart *time.Time `json:"conferenceStart,omitempty"`
+
+	// ConsultationConversationIds - Set of conversationIds the initiator has signaled this conversation is associated with
+	ConsultationConversationIds *[]string `json:"consultationConversationIds,omitempty"`
 
 	// ConversationEnd - The end time of a conversation. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ConversationEnd *time.Time `json:"conversationEnd,omitempty"`
@@ -38,12 +47,6 @@ type Analyticsconversation struct {
 
 	// InactivityTimeout - The time in the future, after which this conversation would be considered inactive. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	InactivityTimeout *time.Time `json:"inactivityTimeout,omitempty"`
-
-	// AssociatedConversationId - ID of the conversation the initiator is signaling this new conversation is associated with
-	AssociatedConversationId *string `json:"associatedConversationId,omitempty"`
-
-	// ConsultationConversationIds - Set of conversationIds the initiator has signaled this conversation is associated with
-	ConsultationConversationIds *[]string `json:"consultationConversationIds,omitempty"`
 
 	// KnowledgeBaseIds - The unique identifier(s) of the knowledge base(s) used
 	KnowledgeBaseIds *[]string `json:"knowledgeBaseIds,omitempty"`
@@ -171,7 +174,13 @@ func (o Analyticsconversation) MarshalJSON() ([]byte, error) {
 	}
 	
 	return json.Marshal(&struct { 
+		AccessAttributes *[]string `json:"accessAttributes,omitempty"`
+		
+		AssociatedConversationId *string `json:"associatedConversationId,omitempty"`
+		
 		ConferenceStart *string `json:"conferenceStart,omitempty"`
+		
+		ConsultationConversationIds *[]string `json:"consultationConversationIds,omitempty"`
 		
 		ConversationEnd *string `json:"conversationEnd,omitempty"`
 		
@@ -188,10 +197,6 @@ func (o Analyticsconversation) MarshalJSON() ([]byte, error) {
 		ExternalTag *string `json:"externalTag,omitempty"`
 		
 		InactivityTimeout *string `json:"inactivityTimeout,omitempty"`
-		
-		AssociatedConversationId *string `json:"associatedConversationId,omitempty"`
-		
-		ConsultationConversationIds *[]string `json:"consultationConversationIds,omitempty"`
 		
 		KnowledgeBaseIds *[]string `json:"knowledgeBaseIds,omitempty"`
 		
@@ -214,7 +219,13 @@ func (o Analyticsconversation) MarshalJSON() ([]byte, error) {
 		Participants *[]Analyticsparticipant `json:"participants,omitempty"`
 		Alias
 	}{ 
+		AccessAttributes: o.AccessAttributes,
+		
+		AssociatedConversationId: o.AssociatedConversationId,
+		
 		ConferenceStart: ConferenceStart,
+		
+		ConsultationConversationIds: o.ConsultationConversationIds,
 		
 		ConversationEnd: ConversationEnd,
 		
@@ -231,10 +242,6 @@ func (o Analyticsconversation) MarshalJSON() ([]byte, error) {
 		ExternalTag: o.ExternalTag,
 		
 		InactivityTimeout: InactivityTimeout,
-		
-		AssociatedConversationId: o.AssociatedConversationId,
-		
-		ConsultationConversationIds: o.ConsultationConversationIds,
 		
 		KnowledgeBaseIds: o.KnowledgeBaseIds,
 		
@@ -266,9 +273,23 @@ func (o *Analyticsconversation) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if AccessAttributes, ok := AnalyticsconversationMap["accessAttributes"].([]interface{}); ok {
+		AccessAttributesString, _ := json.Marshal(AccessAttributes)
+		json.Unmarshal(AccessAttributesString, &o.AccessAttributes)
+	}
+	
+	if AssociatedConversationId, ok := AnalyticsconversationMap["associatedConversationId"].(string); ok {
+		o.AssociatedConversationId = &AssociatedConversationId
+	}
+    
 	if conferenceStartString, ok := AnalyticsconversationMap["conferenceStart"].(string); ok {
 		ConferenceStart, _ := time.Parse("2006-01-02T15:04:05.999999Z", conferenceStartString)
 		o.ConferenceStart = &ConferenceStart
+	}
+	
+	if ConsultationConversationIds, ok := AnalyticsconversationMap["consultationConversationIds"].([]interface{}); ok {
+		ConsultationConversationIdsString, _ := json.Marshal(ConsultationConversationIds)
+		json.Unmarshal(ConsultationConversationIdsString, &o.ConsultationConversationIds)
 	}
 	
 	if conversationEndString, ok := AnalyticsconversationMap["conversationEnd"].(string); ok {
@@ -305,15 +326,6 @@ func (o *Analyticsconversation) UnmarshalJSON(b []byte) error {
 	if inactivityTimeoutString, ok := AnalyticsconversationMap["inactivityTimeout"].(string); ok {
 		InactivityTimeout, _ := time.Parse("2006-01-02T15:04:05.999999Z", inactivityTimeoutString)
 		o.InactivityTimeout = &InactivityTimeout
-	}
-	
-	if AssociatedConversationId, ok := AnalyticsconversationMap["associatedConversationId"].(string); ok {
-		o.AssociatedConversationId = &AssociatedConversationId
-	}
-    
-	if ConsultationConversationIds, ok := AnalyticsconversationMap["consultationConversationIds"].([]interface{}); ok {
-		ConsultationConversationIdsString, _ := json.Marshal(ConsultationConversationIds)
-		json.Unmarshal(ConsultationConversationIdsString, &o.ConsultationConversationIds)
 	}
 	
 	if KnowledgeBaseIds, ok := AnalyticsconversationMap["knowledgeBaseIds"].([]interface{}); ok {

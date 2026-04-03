@@ -18,7 +18,7 @@ type Minertopic struct {
 	Name *string `json:"name,omitempty"`
 
 	// Miner - The miner to which the topic belongs.
-	Miner **Miner `json:"miner,omitempty"`
+	Miner *Miner `json:"miner,omitempty"`
 
 	// ConversationCount - Number of conversations where a topic has occurred.
 	ConversationCount *int `json:"conversationCount,omitempty"`
@@ -106,7 +106,7 @@ func (o Minertopic) MarshalJSON() ([]byte, error) {
 		
 		Name *string `json:"name,omitempty"`
 		
-		Miner **Miner `json:"miner,omitempty"`
+		Miner *Miner `json:"miner,omitempty"`
 		
 		ConversationCount *int `json:"conversationCount,omitempty"`
 		

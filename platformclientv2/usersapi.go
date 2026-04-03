@@ -572,8 +572,6 @@ func (a UsersApi) DeleteUser(userId string) (*interface{}, *APIResponse, error) 
 // DeleteUserCustomattribute invokes DELETE /api/v2/users/{userId}/customattributes/{schemaId}
 //
 // Delete a custom attributes record.
-//
-// Preview: DeleteUserCustomattribute is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersApi) DeleteUserCustomattribute(userId string, schemaId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -1135,8 +1133,6 @@ func (a UsersApi) DeleteUserVerifier(userId string, verifierId string) (*APIResp
 // DeleteUsersCustomattributesSchema invokes DELETE /api/v2/users/customattributes/schemas/{schemaId}
 //
 // Delete a schema
-//
-// Preview: DeleteUsersCustomattributesSchema is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersApi) DeleteUsersCustomattributesSchema(schemaId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -2480,7 +2476,7 @@ func (a UsersApi) GetRoutingUserUtilization(userId string) (*Agentmaxutilization
 // GetUser invokes GET /api/v2/users/{userId}
 //
 // Get user.
-func (a UsersApi) GetUser(userId string, expand []string, integrationPresenceSource string, state string) (*User, *APIResponse, error) {
+func (a UsersApi) GetUser(userId string, expand []string, integrationPresenceSource string, userCustomAttributeSchemaIds []string, state string) (*User, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/{userId}"
@@ -2516,6 +2512,8 @@ func (a UsersApi) GetUser(userId string, expand []string, integrationPresenceSou
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 	queryParams["integrationPresenceSource"] = a.Configuration.APIClient.ParameterToString(integrationPresenceSource, "")
+	
+	queryParams["userCustomAttributeSchemaIds"] = a.Configuration.APIClient.ParameterToString(userCustomAttributeSchemaIds, "multi")
 	
 	queryParams["state"] = a.Configuration.APIClient.ParameterToString(state, "")
 	
@@ -2734,8 +2732,6 @@ func (a UsersApi) GetUserCallforwarding(userId string) (*Callforwarding, *APIRes
 // GetUserCustomattribute invokes GET /api/v2/users/{userId}/customattributes/{schemaId}
 //
 // Get custom attributes by schema id
-//
-// Preview: GetUserCustomattribute is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersApi) GetUserCustomattribute(userId string, schemaId string) (*Usercustomattributes, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2824,8 +2820,6 @@ func (a UsersApi) GetUserCustomattribute(userId string, schemaId string) (*Userc
 // GetUserCustomattributesBulk invokes GET /api/v2/users/{userId}/customattributes/bulk
 //
 // Get multiple custom attributes records by schema ids
-//
-// Preview: GetUserCustomattributesBulk is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersApi) GetUserCustomattributesBulk(userId string, schemaIds []string) ([]interface{}, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4539,7 +4533,7 @@ func (a UsersApi) GetUserVerifiers(userId string) (*Verifierentitylisting, *APIR
 // GetUsers invokes GET /api/v2/users
 //
 // Get the list of available users.
-func (a UsersApi) GetUsers(pageSize int, pageNumber int, id []string, jabberId []string, sortOrder string, expand []string, integrationPresenceSource string, state string) (*Userentitylisting, *APIResponse, error) {
+func (a UsersApi) GetUsers(pageSize int, pageNumber int, id []string, jabberId []string, sortOrder string, expand []string, integrationPresenceSource string, userCustomAttributeSchemaIds []string, state string) (*Userentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users"
@@ -4579,6 +4573,8 @@ func (a UsersApi) GetUsers(pageSize int, pageNumber int, id []string, jabberId [
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 	queryParams["integrationPresenceSource"] = a.Configuration.APIClient.ParameterToString(integrationPresenceSource, "")
+	
+	queryParams["userCustomAttributeSchemaIds"] = a.Configuration.APIClient.ParameterToString(userCustomAttributeSchemaIds, "multi")
 	
 	queryParams["state"] = a.Configuration.APIClient.ParameterToString(state, "")
 	
@@ -4713,8 +4709,6 @@ func (a UsersApi) GetUsersChatsMe(excludeClosed bool, includePresence bool, afte
 // GetUsersCustomattributesSchema invokes GET /api/v2/users/customattributes/schemas/{schemaId}
 //
 // Get a schema
-//
-// Preview: GetUsersCustomattributesSchema is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersApi) GetUsersCustomattributesSchema(schemaId string) (*Dataschema, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4797,8 +4791,6 @@ func (a UsersApi) GetUsersCustomattributesSchema(schemaId string) (*Dataschema, 
 // GetUsersCustomattributesSchemaVersion invokes GET /api/v2/users/customattributes/schemas/{schemaId}/versions/{versionId}
 //
 // Get a specific version of a schema
-//
-// Preview: GetUsersCustomattributesSchemaVersion is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersApi) GetUsersCustomattributesSchemaVersion(schemaId string, versionId string) (*Dataschema, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4887,8 +4879,6 @@ func (a UsersApi) GetUsersCustomattributesSchemaVersion(schemaId string, version
 // GetUsersCustomattributesSchemaVersions invokes GET /api/v2/users/customattributes/schemas/{schemaId}/versions
 //
 // Get all versions of a user schema
-//
-// Preview: GetUsersCustomattributesSchemaVersions is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersApi) GetUsersCustomattributesSchemaVersions(schemaId string) (*Dataschemalisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4971,8 +4961,6 @@ func (a UsersApi) GetUsersCustomattributesSchemaVersions(schemaId string) (*Data
 // GetUsersCustomattributesSchemas invokes GET /api/v2/users/customattributes/schemas
 //
 // Get a list of schemas.
-//
-// Preview: GetUsersCustomattributesSchemas is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersApi) GetUsersCustomattributesSchemas() (*Dataschemalisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5049,8 +5037,6 @@ func (a UsersApi) GetUsersCustomattributesSchemas() (*Dataschemalisting, *APIRes
 // GetUsersCustomattributesSchemasCoretype invokes GET /api/v2/users/customattributes/schemas/coretypes/{coreTypeName}
 //
 // Get the core types from which all schemas are built.
-//
-// Preview: GetUsersCustomattributesSchemasCoretype is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersApi) GetUsersCustomattributesSchemasCoretype(coreTypeName string) (*Coretype, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5133,8 +5119,6 @@ func (a UsersApi) GetUsersCustomattributesSchemasCoretype(coreTypeName string) (
 // GetUsersCustomattributesSchemasCoretypes invokes GET /api/v2/users/customattributes/schemas/coretypes
 //
 // Get the list of core types enabled for a specific namespace.
-//
-// Preview: GetUsersCustomattributesSchemasCoretypes is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersApi) GetUsersCustomattributesSchemasCoretypes() (*Coretypelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5211,8 +5195,6 @@ func (a UsersApi) GetUsersCustomattributesSchemasCoretypes() (*Coretypelisting, 
 // GetUsersCustomattributesSchemasLimits invokes GET /api/v2/users/customattributes/schemas/limits
 //
 // Get quantitative limits on schemas
-//
-// Preview: GetUsersCustomattributesSchemasLimits is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersApi) GetUsersCustomattributesSchemasLimits() (*Schemaquantitylimits, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5676,7 +5658,7 @@ func (a UsersApi) GetUsersExternalidAuthorityNameExternalKey(authorityName strin
 // Get current user details.
 //
 // This request is not valid when using the Client Credentials OAuth grant.
-func (a UsersApi) GetUsersMe(expand []string, integrationPresenceSource string) (*Userme, *APIResponse, error) {
+func (a UsersApi) GetUsersMe(expand []string, integrationPresenceSource string, userCustomAttributeSchemaIds []string) (*Userme, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/me"
@@ -5706,6 +5688,8 @@ func (a UsersApi) GetUsersMe(expand []string, integrationPresenceSource string) 
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 	queryParams["integrationPresenceSource"] = a.Configuration.APIClient.ParameterToString(integrationPresenceSource, "")
+	
+	queryParams["userCustomAttributeSchemaIds"] = a.Configuration.APIClient.ParameterToString(userCustomAttributeSchemaIds, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -5758,7 +5742,7 @@ func (a UsersApi) GetUsersMe(expand []string, integrationPresenceSource string) 
 // Get list of available users, paged by cursor token, No division filtering available so directory:user:view permission for all divisions is required
 //
 // Preview: GetUsersQuery is a preview method and is subject to both breaking and non-breaking changes at any time without notice
-func (a UsersApi) GetUsersQuery(cursor string, pageSize int, sortOrder string, expand []string, integrationPresenceSource string, state string) (*Usercursorentitylisting, *APIResponse, error) {
+func (a UsersApi) GetUsersQuery(cursor string, pageSize int, sortOrder string, expand []string, integrationPresenceSource string, userCustomAttributeSchemaIds []string, state string) (*Usercursorentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/query"
@@ -5794,6 +5778,8 @@ func (a UsersApi) GetUsersQuery(cursor string, pageSize int, sortOrder string, e
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 	queryParams["integrationPresenceSource"] = a.Configuration.APIClient.ParameterToString(integrationPresenceSource, "")
+	
+	queryParams["userCustomAttributeSchemaIds"] = a.Configuration.APIClient.ParameterToString(userCustomAttributeSchemaIds, "multi")
 	
 	queryParams["state"] = a.Configuration.APIClient.ParameterToString(state, "")
 	
@@ -6113,8 +6099,6 @@ func (a UsersApi) PatchUserCallforwarding(userId string, body Callforwarding) (*
 // PatchUserCustomattributes invokes PATCH /api/v2/users/{userId}/customattributes
 //
 // Update a single custom attributes record by amending the data with only the provided fields.
-//
-// Preview: PatchUserCustomattributes is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersApi) PatchUserCustomattributes(userId string, userCustomAttributes Usercustomattributesupdaterequest) (*Usercustomattributes, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -6205,8 +6189,6 @@ func (a UsersApi) PatchUserCustomattributes(userId string, userCustomAttributes 
 // PatchUserCustomattributesBulk invokes PATCH /api/v2/users/{userId}/customattributes/bulk
 //
 // Update multiple custom attributes records by amending the data with only the provided fields.
-//
-// Preview: PatchUserCustomattributesBulk is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersApi) PatchUserCustomattributesBulk(userId string, userCustomAttributesList []Usercustomattributesupdaterequest) (*Usercustomattributes, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -8317,8 +8299,6 @@ func (a UsersApi) PostUsers(body Createuser) (*User, *APIResponse, error) {
 // PostUsersCustomattributesSchemas invokes POST /api/v2/users/customattributes/schemas
 //
 // Create a schema
-//
-// Preview: PostUsersCustomattributesSchemas is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersApi) PostUsersCustomattributesSchemas(body Dataschema) (*Dataschema, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -9260,8 +9240,6 @@ func (a UsersApi) PutUserCallforwarding(userId string, body Callforwarding) (*Ca
 // PutUserCustomattributes invokes PUT /api/v2/users/{userId}/customattributes
 //
 // Create or update a single custom attributes record. Updating replaces all data with the provided fields.
-//
-// Preview: PutUserCustomattributes is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersApi) PutUserCustomattributes(userId string, userCustomAttributes Usercustomattributesupdaterequest) (*Usercustomattributes, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -10246,8 +10224,6 @@ func (a UsersApi) PutUserVerifier(userId string, verifierId string, body Updatev
 // PutUsersCustomattributesSchema invokes PUT /api/v2/users/customattributes/schemas/{schemaId}
 //
 // Update a schema
-//
-// Preview: PutUsersCustomattributesSchema is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersApi) PutUsersCustomattributesSchema(schemaId string, body Dataschema) (*Dataschema, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

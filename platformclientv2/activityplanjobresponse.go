@@ -14,9 +14,6 @@ type Activityplanjobresponse struct {
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
-	// ActivityPlan - The activity plan associated with this job
-	ActivityPlan *Activityplanreference `json:"activityPlan,omitempty"`
-
 	// Status - The status of the job
 	Status *string `json:"status,omitempty"`
 
@@ -26,11 +23,14 @@ type Activityplanjobresponse struct {
 	// VarError - Error details if status == 'Error'. These are errors that caused the job to fail to complete
 	VarError *Errorbody `json:"error,omitempty"`
 
-	// Occurrence - The occurrence associated with this job if type == 'DeleteOccurrence'
-	Occurrence *Activityplanoccurrencereference `json:"occurrence,omitempty"`
+	// ActivityPlan - The activity plan associated with this job
+	ActivityPlan *Activityplanstructurewithoccurrencesessionsusersreference `json:"activityPlan,omitempty"`
 
 	// VarType - The type of the job
 	VarType *string `json:"type,omitempty"`
+
+	// Occurrence - The occurrence associated with this job if type == 'DeleteOccurrence'
+	Occurrence *Activityplanoccurrencereference `json:"occurrence,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -101,24 +101,22 @@ func (o Activityplanjobresponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
-		ActivityPlan *Activityplanreference `json:"activityPlan,omitempty"`
-		
 		Status *string `json:"status,omitempty"`
 		
 		Exceptions *[]Activityplanjobexception `json:"exceptions,omitempty"`
 		
 		VarError *Errorbody `json:"error,omitempty"`
 		
-		Occurrence *Activityplanoccurrencereference `json:"occurrence,omitempty"`
+		ActivityPlan *Activityplanstructurewithoccurrencesessionsusersreference `json:"activityPlan,omitempty"`
 		
 		VarType *string `json:"type,omitempty"`
+		
+		Occurrence *Activityplanoccurrencereference `json:"occurrence,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
-		
-		ActivityPlan: o.ActivityPlan,
 		
 		Status: o.Status,
 		
@@ -126,9 +124,11 @@ func (o Activityplanjobresponse) MarshalJSON() ([]byte, error) {
 		
 		VarError: o.VarError,
 		
-		Occurrence: o.Occurrence,
+		ActivityPlan: o.ActivityPlan,
 		
 		VarType: o.VarType,
+		
+		Occurrence: o.Occurrence,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -146,11 +146,6 @@ func (o *Activityplanjobresponse) UnmarshalJSON(b []byte) error {
 		o.Id = &Id
 	}
     
-	if ActivityPlan, ok := ActivityplanjobresponseMap["activityPlan"].(map[string]interface{}); ok {
-		ActivityPlanString, _ := json.Marshal(ActivityPlan)
-		json.Unmarshal(ActivityPlanString, &o.ActivityPlan)
-	}
-	
 	if Status, ok := ActivityplanjobresponseMap["status"].(string); ok {
 		o.Status = &Status
 	}
@@ -165,15 +160,20 @@ func (o *Activityplanjobresponse) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(VarErrorString, &o.VarError)
 	}
 	
-	if Occurrence, ok := ActivityplanjobresponseMap["occurrence"].(map[string]interface{}); ok {
-		OccurrenceString, _ := json.Marshal(Occurrence)
-		json.Unmarshal(OccurrenceString, &o.Occurrence)
+	if ActivityPlan, ok := ActivityplanjobresponseMap["activityPlan"].(map[string]interface{}); ok {
+		ActivityPlanString, _ := json.Marshal(ActivityPlan)
+		json.Unmarshal(ActivityPlanString, &o.ActivityPlan)
 	}
 	
 	if VarType, ok := ActivityplanjobresponseMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
     
+	if Occurrence, ok := ActivityplanjobresponseMap["occurrence"].(map[string]interface{}); ok {
+		OccurrenceString, _ := json.Marshal(Occurrence)
+		json.Unmarshal(OccurrenceString, &o.Occurrence)
+	}
+	
 	if SelfUri, ok := ActivityplanjobresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

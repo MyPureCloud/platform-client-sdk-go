@@ -346,7 +346,7 @@ func TestSetProfileSkills(t *testing.T) {
 
 func TestGetUser(t *testing.T) {
 	// Get user
-	user, response, err := config.usersAPI.GetUser(config.userID, []string{"profileSkills"}, "", "")
+	user, response, err := config.usersAPI.GetUser(config.userID, []string{"profileSkills"}, "", make([]string, 0), "")
 	if err != nil {
 		t.Error(err)
 	} else if response != nil && response.Error != nil {

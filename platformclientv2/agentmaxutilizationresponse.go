@@ -17,6 +17,9 @@ type Agentmaxutilizationresponse struct {
 	// LabelUtilizations - Map of label ids to utilization settings.
 	LabelUtilizations *map[string]Labelutilizationresponse `json:"labelUtilizations,omitempty"`
 
+	// MaxInboundCalls - Max number of inbound voice calls.
+	MaxInboundCalls *int `json:"maxInboundCalls,omitempty"`
+
 	// Level
 	Level *string `json:"level,omitempty"`
 }
@@ -88,12 +91,16 @@ func (o Agentmaxutilizationresponse) MarshalJSON() ([]byte, error) {
 		
 		LabelUtilizations *map[string]Labelutilizationresponse `json:"labelUtilizations,omitempty"`
 		
+		MaxInboundCalls *int `json:"maxInboundCalls,omitempty"`
+		
 		Level *string `json:"level,omitempty"`
 		Alias
 	}{ 
 		Utilization: o.Utilization,
 		
 		LabelUtilizations: o.LabelUtilizations,
+		
+		MaxInboundCalls: o.MaxInboundCalls,
 		
 		Level: o.Level,
 		Alias:    (Alias)(o),
@@ -115,6 +122,11 @@ func (o *Agentmaxutilizationresponse) UnmarshalJSON(b []byte) error {
 	if LabelUtilizations, ok := AgentmaxutilizationresponseMap["labelUtilizations"].(map[string]interface{}); ok {
 		LabelUtilizationsString, _ := json.Marshal(LabelUtilizations)
 		json.Unmarshal(LabelUtilizationsString, &o.LabelUtilizations)
+	}
+	
+	if MaxInboundCalls, ok := AgentmaxutilizationresponseMap["maxInboundCalls"].(float64); ok {
+		MaxInboundCallsInt := int(MaxInboundCalls)
+		o.MaxInboundCalls = &MaxInboundCallsInt
 	}
 	
 	if Level, ok := AgentmaxutilizationresponseMap["level"].(string); ok {

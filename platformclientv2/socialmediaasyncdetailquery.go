@@ -26,7 +26,7 @@ type Socialmediaasyncdetailquery struct {
 	// PageSize - The number of results per page
 	PageSize *int `json:"pageSize,omitempty"`
 
-	// Order - Sorting of results based on time
+	// Order - Deprecated: use 'sort' field instead. Sorting of results based on time
 	Order *string `json:"order,omitempty"`
 }
 

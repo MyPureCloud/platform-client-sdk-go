@@ -34,7 +34,7 @@ type Flowversion struct {
 	Debug *bool `json:"debug,omitempty"`
 
 	// CreatedBy
-	CreatedBy *User `json:"createdBy,omitempty"`
+	CreatedBy **User `json:"createdBy,omitempty"`
 
 	// CreatedByClient
 	CreatedByClient *Domainentityref `json:"createdByClient,omitempty"`
@@ -178,7 +178,7 @@ func (o Flowversion) MarshalJSON() ([]byte, error) {
 		
 		Debug *bool `json:"debug,omitempty"`
 		
-		CreatedBy *User `json:"createdBy,omitempty"`
+		CreatedBy **User `json:"createdBy,omitempty"`
 		
 		CreatedByClient *Domainentityref `json:"createdByClient,omitempty"`
 		

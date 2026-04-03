@@ -37,7 +37,7 @@ func TestExampleUsersApi_GetUsers_OnProxy(t *testing.T) {
 	usersAPI := NewUsersApiWithConfig(config)
 
 	// Invoke API
-	_, response, err := usersAPI.GetUsers(100, 1, make([]string, 0), make([]string, 0), "", make([]string, 0), "", "")
+	_, response, err := usersAPI.GetUsers(100, 1, make([]string, 0), make([]string, 0), "", make([]string, 0), "", make([]string, 0), "")
 	if err != nil {
 		fmt.Printf("Error calling GetUsers: %v\n", err)
 	} else {
@@ -73,7 +73,7 @@ func TestExampleUsersApi_GetUsers_WithDefaultProxyAgent(t *testing.T) {
 	usersAPI := NewUsersApiWithConfig(config)
 
 	// Invoke API
-	_, response, err := usersAPI.GetUsers(100, 1, make([]string, 0), make([]string, 0), "", make([]string, 0), "", "")
+	_, response, err := usersAPI.GetUsers(100, 1, make([]string, 0), make([]string, 0), "", make([]string, 0), "", make([]string, 0), "")
 	if err != nil {
 		fmt.Printf("Error calling GetUsers: %v\n", err)
 	} else {
@@ -107,7 +107,7 @@ func TestExampleUsersApi_GetUsers_CustomClient(t *testing.T) {
 	usersAPI := NewUsersApiWithConfig(config)
 
 	// Invoke API
-	_, response, err := usersAPI.GetUsers(100, 1, make([]string, 0), make([]string, 0), "", make([]string, 0), "", "")
+	_, response, err := usersAPI.GetUsers(100, 1, make([]string, 0), make([]string, 0), "", make([]string, 0), "", make([]string, 0), "")
 	if err != nil {
 		fmt.Printf("Error calling GetUsers: %v\n", err)
 	} else {

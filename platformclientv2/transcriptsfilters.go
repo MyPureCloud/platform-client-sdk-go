@@ -20,6 +20,9 @@ type Transcriptsfilters struct {
 	// EndTimeMs - end time to filter by, default value is current time
 	EndTimeMs *int `json:"endTimeMs,omitempty"`
 
+	// Programs - list of programs ids to filter by
+	Programs *[]string `json:"programs,omitempty"`
+
 	// Queues - list of queues ids to filter by
 	Queues *[]string `json:"queues,omitempty"`
 
@@ -96,6 +99,8 @@ func (o Transcriptsfilters) MarshalJSON() ([]byte, error) {
 		
 		EndTimeMs *int `json:"endTimeMs,omitempty"`
 		
+		Programs *[]string `json:"programs,omitempty"`
+		
 		Queues *[]string `json:"queues,omitempty"`
 		
 		Flows *[]string `json:"flows,omitempty"`
@@ -106,6 +111,8 @@ func (o Transcriptsfilters) MarshalJSON() ([]byte, error) {
 		StartTimeMs: o.StartTimeMs,
 		
 		EndTimeMs: o.EndTimeMs,
+		
+		Programs: o.Programs,
 		
 		Queues: o.Queues,
 		
@@ -133,6 +140,11 @@ func (o *Transcriptsfilters) UnmarshalJSON(b []byte) error {
 	if EndTimeMs, ok := TranscriptsfiltersMap["endTimeMs"].(float64); ok {
 		EndTimeMsInt := int(EndTimeMs)
 		o.EndTimeMs = &EndTimeMsInt
+	}
+	
+	if Programs, ok := TranscriptsfiltersMap["programs"].([]interface{}); ok {
+		ProgramsString, _ := json.Marshal(Programs)
+		json.Unmarshal(ProgramsString, &o.Programs)
 	}
 	
 	if Queues, ok := TranscriptsfiltersMap["queues"].([]interface{}); ok {

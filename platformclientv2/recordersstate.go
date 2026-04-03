@@ -19,6 +19,9 @@ type Recordersstate struct {
 
 	// AgentExperienceState - Indicates the state of the agent experience recorder.
 	AgentExperienceState *string `json:"agentExperienceState,omitempty"`
+
+	// SnippetState - Indicates the state of the snippet recording.
+	SnippetState *string `json:"snippetState,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +92,8 @@ func (o Recordersstate) MarshalJSON() ([]byte, error) {
 		CustomerExperienceState *string `json:"customerExperienceState,omitempty"`
 		
 		AgentExperienceState *string `json:"agentExperienceState,omitempty"`
+		
+		SnippetState *string `json:"snippetState,omitempty"`
 		Alias
 	}{ 
 		AdhocState: o.AdhocState,
@@ -96,6 +101,8 @@ func (o Recordersstate) MarshalJSON() ([]byte, error) {
 		CustomerExperienceState: o.CustomerExperienceState,
 		
 		AgentExperienceState: o.AgentExperienceState,
+		
+		SnippetState: o.SnippetState,
 		Alias:    (Alias)(o),
 	})
 }
@@ -117,6 +124,10 @@ func (o *Recordersstate) UnmarshalJSON(b []byte) error {
     
 	if AgentExperienceState, ok := RecordersstateMap["agentExperienceState"].(string); ok {
 		o.AgentExperienceState = &AgentExperienceState
+	}
+    
+	if SnippetState, ok := RecordersstateMap["snippetState"].(string); ok {
+		o.SnippetState = &SnippetState
 	}
     
 

@@ -70,7 +70,7 @@ type Miner struct {
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
 	// LatestDraftVersion - Latest draft details of the miner.
-	LatestDraftVersion **Draft `json:"latestDraftVersion,omitempty"`
+	LatestDraftVersion *Draft `json:"latestDraftVersion,omitempty"`
 
 	// ConversationsFetchedCount - Number of conversations/transcripts fetched.
 	ConversationsFetchedCount *int `json:"conversationsFetchedCount,omitempty"`
@@ -232,7 +232,7 @@ func (o Miner) MarshalJSON() ([]byte, error) {
 		
 		DateModified *string `json:"dateModified,omitempty"`
 		
-		LatestDraftVersion **Draft `json:"latestDraftVersion,omitempty"`
+		LatestDraftVersion *Draft `json:"latestDraftVersion,omitempty"`
 		
 		ConversationsFetchedCount *int `json:"conversationsFetchedCount,omitempty"`
 		

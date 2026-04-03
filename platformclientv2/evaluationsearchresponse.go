@@ -18,7 +18,7 @@ type Evaluationsearchresponse struct {
 	PageNumber *int `json:"pageNumber,omitempty"`
 
 	// Results - Results associated to the search response
-	Results *[]Evaluationresponse `json:"results,omitempty"`
+	Results *[]Evaluationsearchitemresponse `json:"results,omitempty"`
 
 	// Aggregations - Aggregation results
 	Aggregations *map[string]Evaluationsearchaggregationresponse `json:"aggregations,omitempty"`
@@ -91,7 +91,7 @@ func (o Evaluationsearchresponse) MarshalJSON() ([]byte, error) {
 		
 		PageNumber *int `json:"pageNumber,omitempty"`
 		
-		Results *[]Evaluationresponse `json:"results,omitempty"`
+		Results *[]Evaluationsearchitemresponse `json:"results,omitempty"`
 		
 		Aggregations *map[string]Evaluationsearchaggregationresponse `json:"aggregations,omitempty"`
 		Alias

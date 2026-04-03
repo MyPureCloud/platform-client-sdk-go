@@ -14,9 +14,6 @@ type Activityplanrunjobresponse struct {
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
-	// ActivityPlan - The activity plan associated with this job
-	ActivityPlan *Activityplanreference `json:"activityPlan,omitempty"`
-
 	// Status - The status of the job
 	Status *string `json:"status,omitempty"`
 
@@ -25,6 +22,9 @@ type Activityplanrunjobresponse struct {
 
 	// VarError - Error details if status == 'Error'. These are errors that caused the job to fail to complete
 	VarError *Errorbody `json:"error,omitempty"`
+
+	// ActivityPlan - The activity plan associated with this job
+	ActivityPlan *Activityplanreference `json:"activityPlan,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -95,26 +95,26 @@ func (o Activityplanrunjobresponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
-		ActivityPlan *Activityplanreference `json:"activityPlan,omitempty"`
-		
 		Status *string `json:"status,omitempty"`
 		
 		Exceptions *[]Activityplanjobexception `json:"exceptions,omitempty"`
 		
 		VarError *Errorbody `json:"error,omitempty"`
 		
+		ActivityPlan *Activityplanreference `json:"activityPlan,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
-		
-		ActivityPlan: o.ActivityPlan,
 		
 		Status: o.Status,
 		
 		Exceptions: o.Exceptions,
 		
 		VarError: o.VarError,
+		
+		ActivityPlan: o.ActivityPlan,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -132,11 +132,6 @@ func (o *Activityplanrunjobresponse) UnmarshalJSON(b []byte) error {
 		o.Id = &Id
 	}
     
-	if ActivityPlan, ok := ActivityplanrunjobresponseMap["activityPlan"].(map[string]interface{}); ok {
-		ActivityPlanString, _ := json.Marshal(ActivityPlan)
-		json.Unmarshal(ActivityPlanString, &o.ActivityPlan)
-	}
-	
 	if Status, ok := ActivityplanrunjobresponseMap["status"].(string); ok {
 		o.Status = &Status
 	}
@@ -149,6 +144,11 @@ func (o *Activityplanrunjobresponse) UnmarshalJSON(b []byte) error {
 	if VarError, ok := ActivityplanrunjobresponseMap["error"].(map[string]interface{}); ok {
 		VarErrorString, _ := json.Marshal(VarError)
 		json.Unmarshal(VarErrorString, &o.VarError)
+	}
+	
+	if ActivityPlan, ok := ActivityplanrunjobresponseMap["activityPlan"].(map[string]interface{}); ok {
+		ActivityPlanString, _ := json.Marshal(ActivityPlan)
+		json.Unmarshal(ActivityPlanString, &o.ActivityPlan)
 	}
 	
 	if SelfUri, ok := ActivityplanrunjobresponseMap["selfUri"].(string); ok {

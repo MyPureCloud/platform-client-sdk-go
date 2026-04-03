@@ -11,9 +11,6 @@ import (
 type Openmessagingidentityresolutionconfig struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The globally unique identifier for the object.
-	Id *string `json:"id,omitempty"`
-
 	// Division - The division to use when performing identity resolution.
 	Division *Writablestarrabledivision `json:"division,omitempty"`
 
@@ -90,8 +87,6 @@ func (o Openmessagingidentityresolutionconfig) MarshalJSON() ([]byte, error) {
 	type Alias Openmessagingidentityresolutionconfig
 	
 	return json.Marshal(&struct { 
-		Id *string `json:"id,omitempty"`
-		
 		Division *Writablestarrabledivision `json:"division,omitempty"`
 		
 		ResolveIdentities *bool `json:"resolveIdentities,omitempty"`
@@ -101,8 +96,6 @@ func (o Openmessagingidentityresolutionconfig) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
-		Id: o.Id,
-		
 		Division: o.Division,
 		
 		ResolveIdentities: o.ResolveIdentities,
@@ -121,10 +114,6 @@ func (o *Openmessagingidentityresolutionconfig) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
-	if Id, ok := OpenmessagingidentityresolutionconfigMap["id"].(string); ok {
-		o.Id = &Id
-	}
-    
 	if Division, ok := OpenmessagingidentityresolutionconfigMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)

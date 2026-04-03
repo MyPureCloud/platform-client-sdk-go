@@ -12,9 +12,6 @@ import (
 type Externalorganizationidentifier struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The globally unique identifier for the object.
-	Id *string `json:"id,omitempty"`
-
 	// Division - The division to which this entity belongs.
 	Division *Writablestarrabledivision `json:"division,omitempty"`
 
@@ -29,9 +26,6 @@ type Externalorganizationidentifier struct {
 
 	// ExternalSource - The External Source ID of the identifier
 	ExternalSource *Externalsource `json:"externalSource,omitempty"`
-
-	// SelfUri - The URI for this object
-	SelfUri *string `json:"selfUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -105,8 +99,6 @@ func (o Externalorganizationidentifier) MarshalJSON() ([]byte, error) {
 	}
 	
 	return json.Marshal(&struct { 
-		Id *string `json:"id,omitempty"`
-		
 		Division *Writablestarrabledivision `json:"division,omitempty"`
 		
 		VarType *string `json:"type,omitempty"`
@@ -116,12 +108,8 @@ func (o Externalorganizationidentifier) MarshalJSON() ([]byte, error) {
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
 		ExternalSource *Externalsource `json:"externalSource,omitempty"`
-		
-		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
-		Id: o.Id,
-		
 		Division: o.Division,
 		
 		VarType: o.VarType,
@@ -131,8 +119,6 @@ func (o Externalorganizationidentifier) MarshalJSON() ([]byte, error) {
 		DateCreated: DateCreated,
 		
 		ExternalSource: o.ExternalSource,
-		
-		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
 	})
 }
@@ -144,10 +130,6 @@ func (o *Externalorganizationidentifier) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
-	if Id, ok := ExternalorganizationidentifierMap["id"].(string); ok {
-		o.Id = &Id
-	}
-    
 	if Division, ok := ExternalorganizationidentifierMap["division"].(map[string]interface{}); ok {
 		DivisionString, _ := json.Marshal(Division)
 		json.Unmarshal(DivisionString, &o.Division)
@@ -171,10 +153,6 @@ func (o *Externalorganizationidentifier) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ExternalSourceString, &o.ExternalSource)
 	}
 	
-	if SelfUri, ok := ExternalorganizationidentifierMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
-	}
-    
 
 	return nil
 }

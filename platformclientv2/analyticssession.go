@@ -234,6 +234,9 @@ type Analyticssession struct {
 	// SharingScreen - Flag determining if screen share is started or not (true/false)
 	SharingScreen *bool `json:"sharingScreen,omitempty"`
 
+	// SkillExpressionId - Unique identifier for the skill requested for an interaction
+	SkillExpressionId *string `json:"skillExpressionId,omitempty"`
+
 	// SkipEnabled - (Dialer) Whether the agent can skip the dialer contact
 	SkipEnabled *bool `json:"skipEnabled,omitempty"`
 
@@ -517,6 +520,8 @@ func (o Analyticssession) MarshalJSON() ([]byte, error) {
 		
 		SharingScreen *bool `json:"sharingScreen,omitempty"`
 		
+		SkillExpressionId *string `json:"skillExpressionId,omitempty"`
+		
 		SkipEnabled *bool `json:"skipEnabled,omitempty"`
 		
 		SnippetRecording *bool `json:"snippetRecording,omitempty"`
@@ -691,6 +696,8 @@ func (o Analyticssession) MarshalJSON() ([]byte, error) {
 		SessionId: o.SessionId,
 		
 		SharingScreen: o.SharingScreen,
+		
+		SkillExpressionId: o.SkillExpressionId,
 		
 		SkipEnabled: o.SkipEnabled,
 		
@@ -1039,6 +1046,10 @@ func (o *Analyticssession) UnmarshalJSON(b []byte) error {
     
 	if SharingScreen, ok := AnalyticssessionMap["sharingScreen"].(bool); ok {
 		o.SharingScreen = &SharingScreen
+	}
+    
+	if SkillExpressionId, ok := AnalyticssessionMap["skillExpressionId"].(string); ok {
+		o.SkillExpressionId = &SkillExpressionId
 	}
     
 	if SkipEnabled, ok := AnalyticssessionMap["skipEnabled"].(bool); ok {
