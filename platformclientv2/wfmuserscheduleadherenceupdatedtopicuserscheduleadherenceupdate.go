@@ -18,6 +18,9 @@ type Wfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdate struct {
 	// ManagementUnitId
 	ManagementUnitId *string `json:"managementUnitId,omitempty"`
 
+	// BusinessUnitId
+	BusinessUnitId *string `json:"businessUnitId,omitempty"`
+
 	// Team
 	Team *Wfmuserscheduleadherenceupdatedtopicurireference `json:"team,omitempty"`
 
@@ -164,6 +167,8 @@ func (o Wfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdate) Marshal
 		
 		ManagementUnitId *string `json:"managementUnitId,omitempty"`
 		
+		BusinessUnitId *string `json:"businessUnitId,omitempty"`
+		
 		Team *Wfmuserscheduleadherenceupdatedtopicurireference `json:"team,omitempty"`
 		
 		ScheduledActivityCategory *string `json:"scheduledActivityCategory,omitempty"`
@@ -204,6 +209,8 @@ func (o Wfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdate) Marshal
 		User: o.User,
 		
 		ManagementUnitId: o.ManagementUnitId,
+		
+		BusinessUnitId: o.BusinessUnitId,
 		
 		Team: o.Team,
 		
@@ -258,6 +265,10 @@ func (o *Wfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdate) Unmars
 	
 	if ManagementUnitId, ok := WfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdateMap["managementUnitId"].(string); ok {
 		o.ManagementUnitId = &ManagementUnitId
+	}
+    
+	if BusinessUnitId, ok := WfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdateMap["businessUnitId"].(string); ok {
+		o.BusinessUnitId = &BusinessUnitId
 	}
     
 	if Team, ok := WfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdateMap["team"].(map[string]interface{}); ok {

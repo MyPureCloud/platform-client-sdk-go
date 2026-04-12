@@ -14,6 +14,9 @@ type Stepplansworktypereference struct {
 	// Id - The id of the worktype.
 	Id *string `json:"id,omitempty"`
 
+	// Name
+	Name *string `json:"name,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -83,10 +86,14 @@ func (o Stepplansworktypereference) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
+		Name *string `json:"name,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
+		
+		Name: o.Name,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -102,6 +109,10 @@ func (o *Stepplansworktypereference) UnmarshalJSON(b []byte) error {
 	
 	if Id, ok := StepplansworktypereferenceMap["id"].(string); ok {
 		o.Id = &Id
+	}
+    
+	if Name, ok := StepplansworktypereferenceMap["name"].(string); ok {
+		o.Name = &Name
 	}
     
 	if SelfUri, ok := StepplansworktypereferenceMap["selfUri"].(string); ok {

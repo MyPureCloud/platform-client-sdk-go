@@ -84,6 +84,9 @@ type Conversationeventtopicparticipant struct {
 	// MonitoredParticipantId - If this participant is a monitor, then this will be the id of the participant that is being monitored.
 	MonitoredParticipantId *string `json:"monitoredParticipantId,omitempty"`
 
+	// ScreenMonitoredParticipantId - If this participant is a screen monitor, then this will be the id of the participant that is being screen monitored.
+	ScreenMonitoredParticipantId *string `json:"screenMonitoredParticipantId,omitempty"`
+
 	// CoachedParticipantId - If this participant is a coach, then this will be the id of the participant that is being coached.
 	CoachedParticipantId *string `json:"coachedParticipantId,omitempty"`
 
@@ -282,6 +285,8 @@ func (o Conversationeventtopicparticipant) MarshalJSON() ([]byte, error) {
 		
 		MonitoredParticipantId *string `json:"monitoredParticipantId,omitempty"`
 		
+		ScreenMonitoredParticipantId *string `json:"screenMonitoredParticipantId,omitempty"`
+		
 		CoachedParticipantId *string `json:"coachedParticipantId,omitempty"`
 		
 		BargedParticipantId *string `json:"bargedParticipantId,omitempty"`
@@ -366,6 +371,8 @@ func (o Conversationeventtopicparticipant) MarshalJSON() ([]byte, error) {
 		AlertingTimeoutMs: o.AlertingTimeoutMs,
 		
 		MonitoredParticipantId: o.MonitoredParticipantId,
+		
+		ScreenMonitoredParticipantId: o.ScreenMonitoredParticipantId,
 		
 		CoachedParticipantId: o.CoachedParticipantId,
 		
@@ -515,6 +522,10 @@ func (o *Conversationeventtopicparticipant) UnmarshalJSON(b []byte) error {
 	
 	if MonitoredParticipantId, ok := ConversationeventtopicparticipantMap["monitoredParticipantId"].(string); ok {
 		o.MonitoredParticipantId = &MonitoredParticipantId
+	}
+    
+	if ScreenMonitoredParticipantId, ok := ConversationeventtopicparticipantMap["screenMonitoredParticipantId"].(string); ok {
+		o.ScreenMonitoredParticipantId = &ScreenMonitoredParticipantId
 	}
     
 	if CoachedParticipantId, ok := ConversationeventtopicparticipantMap["coachedParticipantId"].(string); ok {

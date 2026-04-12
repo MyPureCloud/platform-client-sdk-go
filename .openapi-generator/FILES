@@ -29,6 +29,7 @@ docs/DeleteAlertingAlertsAll-example.txt
 docs/DeleteAlertingRule-example.txt
 docs/DeleteAnalyticsActionsAggregatesJob-example.txt
 docs/DeleteAnalyticsAgentcopilotsAggregatesJob-example.txt
+docs/DeleteAnalyticsAgentutilizationsAggregatesJob-example.txt
 docs/DeleteAnalyticsBotsAggregatesJob-example.txt
 docs/DeleteAnalyticsCasemanagementAggregatesJob-example.txt
 docs/DeleteAnalyticsConversationsAggregatesJob-example.txt
@@ -252,6 +253,7 @@ docs/DeleteOutboundSequence-example.txt
 docs/DeletePresenceDefinition0-example.txt
 docs/DeletePresenceSource-example.txt
 docs/DeletePresencedefinition-example.txt
+docs/DeleteProcessautomationScheduledtrigger-example.txt
 docs/DeleteProcessautomationTrigger-example.txt
 docs/DeleteQualityCalibration-example.txt
 docs/DeleteQualityConversationEvaluation-example.txt
@@ -400,6 +402,8 @@ docs/GetAnalyticsActionsAggregatesJobResults-example.txt
 docs/GetAnalyticsAgentStatus-example.txt
 docs/GetAnalyticsAgentcopilotsAggregatesJob-example.txt
 docs/GetAnalyticsAgentcopilotsAggregatesJobResults-example.txt
+docs/GetAnalyticsAgentutilizationsAggregatesJob-example.txt
+docs/GetAnalyticsAgentutilizationsAggregatesJobResults-example.txt
 docs/GetAnalyticsBotflowDivisionsReportingturns-example.txt
 docs/GetAnalyticsBotflowReportingturns-example.txt
 docs/GetAnalyticsBotflowSessions-example.txt
@@ -1327,6 +1331,8 @@ docs/GetPresenceSources-example.txt
 docs/GetPresenceUserPrimarysource-example.txt
 docs/GetPresencedefinition-example.txt
 docs/GetPresencedefinitions-example.txt
+docs/GetProcessautomationScheduledtrigger-example.txt
+docs/GetProcessautomationScheduledtriggers-example.txt
 docs/GetProcessautomationTrigger-example.txt
 docs/GetProcessautomationTriggers-example.txt
 docs/GetProcessautomationTriggersTopics-example.txt
@@ -2204,6 +2210,8 @@ docs/PostAnalyticsAgentcopilotsAggregatesJobs-example.txt
 docs/PostAnalyticsAgentcopilotsAggregatesQuery-example.txt
 docs/PostAnalyticsAgentsStatusCounts-example.txt
 docs/PostAnalyticsAgentsStatusQuery-example.txt
+docs/PostAnalyticsAgentutilizationsAggregatesJobs-example.txt
+docs/PostAnalyticsAgentutilizationsAggregatesQuery-example.txt
 docs/PostAnalyticsBotsAggregatesJobs-example.txt
 docs/PostAnalyticsBotsAggregatesQuery-example.txt
 docs/PostAnalyticsCasemanagementAggregatesJobs-example.txt
@@ -2764,6 +2772,7 @@ docs/PostOutboundSequences-example.txt
 docs/PostPresenceDefinitions0-example.txt
 docs/PostPresenceSources-example.txt
 docs/PostPresencedefinitions-example.txt
+docs/PostProcessautomationScheduledtriggers-example.txt
 docs/PostProcessautomationTriggerTest-example.txt
 docs/PostProcessautomationTriggers-example.txt
 docs/PostProcessautomationTriggersTopicTest-example.txt
@@ -3101,6 +3110,7 @@ docs/PutAuthorizationRolesSettings-example.txt
 docs/PutBusinessrulesDecisiontableVersionPublish-example.txt
 docs/PutBusinessrulesDecisiontableVersionRow-example.txt
 docs/PutBusinessrulesSchema-example.txt
+docs/PutCasemanagementCaseplanIntakesettings-example.txt
 docs/PutChatsMessageReactions-example.txt
 docs/PutChatsSettings-example.txt
 docs/PutContentmanagementWorkspace-example.txt
@@ -3242,6 +3252,7 @@ docs/PutPresenceSettings-example.txt
 docs/PutPresenceSource-example.txt
 docs/PutPresenceUserPrimarysource-example.txt
 docs/PutPresencedefinition-example.txt
+docs/PutProcessautomationScheduledtrigger-example.txt
 docs/PutProcessautomationTrigger-example.txt
 docs/PutQualityCalibration-example.txt
 docs/PutQualityConversationEvaluation-example.txt
@@ -3573,6 +3584,16 @@ platformclientv2/agentsworkplansresponse.go
 platformclientv2/agenttimeoffrequestpatch.go
 platformclientv2/agentuiapi.go
 platformclientv2/agentupdatealternativeshifttraderequest.go
+platformclientv2/agentutilizationaggregatedatacontainer.go
+platformclientv2/agentutilizationaggregatequeryclause.go
+platformclientv2/agentutilizationaggregatequeryfilter.go
+platformclientv2/agentutilizationaggregatequerypredicate.go
+platformclientv2/agentutilizationaggregatequeryresponse.go
+platformclientv2/agentutilizationaggregationquery.go
+platformclientv2/agentutilizationaggregationsort.go
+platformclientv2/agentutilizationaggregationview.go
+platformclientv2/agentutilizationasyncaggregatequeryresponse.go
+platformclientv2/agentutilizationasyncaggregationquery.go
 platformclientv2/agentvideosettings.go
 platformclientv2/agentworkplan.go
 platformclientv2/agentworkplanactivity.go
@@ -5032,6 +5053,7 @@ platformclientv2/createresponseassetresponse.go
 platformclientv2/createroomrequest.go
 platformclientv2/createroomresponse.go
 platformclientv2/createroutingskill.go
+platformclientv2/createscheduledtriggerrequest.go
 platformclientv2/createsecuresession.go
 platformclientv2/createservicegoaltemplate.go
 platformclientv2/createsharerequest.go
@@ -6221,6 +6243,7 @@ platformclientv2/instagramscopedid.go
 platformclientv2/intake.go
 platformclientv2/intakesetting.go
 platformclientv2/intakesettingslisting.go
+platformclientv2/intakesettingsupdate.go
 platformclientv2/integration.go
 platformclientv2/integrationaction.go
 platformclientv2/integrationactionfields.go
@@ -6343,6 +6366,8 @@ platformclientv2/journeysegmentassignmenteventsnotificationsession.go
 platformclientv2/journeysegmentrequest.go
 platformclientv2/journeysessioneventsnotificationapp.go
 platformclientv2/journeysessioneventsnotificationbrowser.go
+platformclientv2/journeysessioneventsnotificationcase.go
+platformclientv2/journeysessioneventsnotificationcaseassociation.go
 platformclientv2/journeysessioneventsnotificationconnectedqueue.go
 platformclientv2/journeysessioneventsnotificationconversation.go
 platformclientv2/journeysessioneventsnotificationconversationchannel.go
@@ -7898,6 +7923,8 @@ platformclientv2/reportingexportmetadatajobresponse.go
 platformclientv2/reportinginterval.go
 platformclientv2/reportingturn.go
 platformclientv2/reportingturnaction.go
+platformclientv2/reportingturnbotflowinvocationevent.go
+platformclientv2/reportingturnflow.go
 platformclientv2/reportingturnintent.go
 platformclientv2/reportingturnintentslot.go
 platformclientv2/reportingturnknowledge.go
@@ -8023,6 +8050,8 @@ platformclientv2/samlprovider.go
 platformclientv2/schedule.go
 platformclientv2/scheduleactivity.go
 platformclientv2/scheduledivisionviewentitylisting.go
+platformclientv2/scheduledtrigger.go
+platformclientv2/scheduledtriggerentitylisting.go
 platformclientv2/scheduleentitylisting.go
 platformclientv2/schedulegenerationmessage.go
 platformclientv2/schedulegenerationresult.go
@@ -8663,6 +8692,7 @@ platformclientv2/translatesupportedlanguagelist.go
 platformclientv2/trenddata.go
 platformclientv2/trigger.go
 platformclientv2/triggerentitylisting.go
+platformclientv2/triggerschedule.go
 platformclientv2/triggertarget.go
 platformclientv2/trunk.go
 platformclientv2/trunkbase.go
@@ -8798,6 +8828,7 @@ platformclientv2/updatenotificationsrequest.go
 platformclientv2/updatenotificationsresponse.go
 platformclientv2/updateplanninggrouprequest.go
 platformclientv2/updaterowindexrequest.go
+platformclientv2/updatescheduledtriggerrequest.go
 platformclientv2/updatescheduleuploadresponse.go
 platformclientv2/updatescheduleuploadschema.go
 platformclientv2/updatesegmentassignmentrequest.go
@@ -9215,6 +9246,10 @@ platformclientv2/weekscheduleresponse.go
 platformclientv2/weekshifttradelistresponse.go
 platformclientv2/weekshifttradematchessummaryresponse.go
 platformclientv2/weekshifttraderesponse.go
+platformclientv2/wemcoachingscheduleslotjobcompletetopiccoachingscheduleslotjobcomplete.go
+platformclientv2/wemcoachingscheduleslotjobcompletetopiccoachingscheduleslotjobresults.go
+platformclientv2/wemcoachingscheduleslotjobcompletetopiccoachingscheduleslotjobresultsslot.go
+platformclientv2/wemcoachingscheduleslotjobcompletetopiccoachingscheduleslotjobresultsslotschedule.go
 platformclientv2/wemcoachingusernotificationtopiccoachingappointmentreference.go
 platformclientv2/wemcoachingusernotificationtopiccoachingusernotification.go
 platformclientv2/wfmactivityplanjobcompletetopicactivityplanjobexception.go
@@ -9245,6 +9280,8 @@ platformclientv2/wfmagentadherenceexplanationchangedbusinessunittopicuserreferen
 platformclientv2/wfmagenthistoricaladherencejobreference.go
 platformclientv2/wfmagenthistoricaladherenceresponse.go
 platformclientv2/wfmagenthistoricaladherenceresult.go
+platformclientv2/wfmagentmuschedulesearchcompletetopicagentmuschedulesearchcompletenotification.go
+platformclientv2/wfmagentmuschedulesearchcompletetopicerrorbody.go
 platformclientv2/wfmagentscheduleupdatetopicagentscheduleshiftupdate.go
 platformclientv2/wfmagentscheduleupdatetopicagentscheduleupdatenotification.go
 platformclientv2/wfmagentscheduleupdatetopicuserreference.go
@@ -9373,6 +9410,15 @@ platformclientv2/wfmschedulereference.go
 platformclientv2/wfmscheduletopicwfmschedulenotification.go
 platformclientv2/wfmservicegoalimpact.go
 platformclientv2/wfmservicegoalimpactsettings.go
+platformclientv2/wfmshifttradingjobcompleteeventerrorbody.go
+platformclientv2/wfmshifttradingjobcompleteeventshifttradingjobcompletenotification.go
+platformclientv2/wfmshifttradingjobcompleteeventtradeentity.go
+platformclientv2/wfmshifttradingjobcompleteeventtradeshift.go
+platformclientv2/wfmshifttradingjobcompleteeventtradeside.go
+platformclientv2/wfmshifttradingjobcompleteeventweeksummary.go
+platformclientv2/wfmshifttradingjobcompleteeventweeksummarylist.go
+platformclientv2/wfmshifttradingjobcompleteeventwfmdatetimeinterval.go
+platformclientv2/wfmshifttradingjobcompleteeventwfmversionmetadata.go
 platformclientv2/wfmtimeoffbalancejobtopicerrorbody.go
 platformclientv2/wfmtimeoffbalancejobtopictimeoffbalance.go
 platformclientv2/wfmtimeoffbalancejobtopictimeoffbalancejobnotification.go

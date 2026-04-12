@@ -137,6 +137,18 @@ type Journeysessioneventsnotificationsessionevent struct {
 
 	// LastScreen
 	LastScreen *string `json:"lastScreen,omitempty"`
+
+	// CaseAssociations
+	CaseAssociations *[]Journeysessioneventsnotificationcaseassociation `json:"caseAssociations,omitempty"`
+
+	// CaseEntity
+	CaseEntity *Journeysessioneventsnotificationcase `json:"caseEntity,omitempty"`
+
+	// CaseReference
+	CaseReference *string `json:"caseReference,omitempty"`
+
+	// CaseStatus
+	CaseStatus *string `json:"caseStatus,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -317,6 +329,14 @@ func (o Journeysessioneventsnotificationsessionevent) MarshalJSON() ([]byte, err
 		DivisionIds *[]string `json:"divisionIds,omitempty"`
 		
 		LastScreen *string `json:"lastScreen,omitempty"`
+		
+		CaseAssociations *[]Journeysessioneventsnotificationcaseassociation `json:"caseAssociations,omitempty"`
+		
+		CaseEntity *Journeysessioneventsnotificationcase `json:"caseEntity,omitempty"`
+		
+		CaseReference *string `json:"caseReference,omitempty"`
+		
+		CaseStatus *string `json:"caseStatus,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -402,6 +422,14 @@ func (o Journeysessioneventsnotificationsessionevent) MarshalJSON() ([]byte, err
 		DivisionIds: o.DivisionIds,
 		
 		LastScreen: o.LastScreen,
+		
+		CaseAssociations: o.CaseAssociations,
+		
+		CaseEntity: o.CaseEntity,
+		
+		CaseReference: o.CaseReference,
+		
+		CaseStatus: o.CaseStatus,
 		Alias:    (Alias)(o),
 	})
 }
@@ -607,6 +635,24 @@ func (o *Journeysessioneventsnotificationsessionevent) UnmarshalJSON(b []byte) e
 	
 	if LastScreen, ok := JourneysessioneventsnotificationsessioneventMap["lastScreen"].(string); ok {
 		o.LastScreen = &LastScreen
+	}
+    
+	if CaseAssociations, ok := JourneysessioneventsnotificationsessioneventMap["caseAssociations"].([]interface{}); ok {
+		CaseAssociationsString, _ := json.Marshal(CaseAssociations)
+		json.Unmarshal(CaseAssociationsString, &o.CaseAssociations)
+	}
+	
+	if CaseEntity, ok := JourneysessioneventsnotificationsessioneventMap["caseEntity"].(map[string]interface{}); ok {
+		CaseEntityString, _ := json.Marshal(CaseEntity)
+		json.Unmarshal(CaseEntityString, &o.CaseEntity)
+	}
+	
+	if CaseReference, ok := JourneysessioneventsnotificationsessioneventMap["caseReference"].(string); ok {
+		o.CaseReference = &CaseReference
+	}
+    
+	if CaseStatus, ok := JourneysessioneventsnotificationsessioneventMap["caseStatus"].(string); ok {
+		o.CaseStatus = &CaseStatus
 	}
     
 

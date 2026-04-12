@@ -9059,7 +9059,7 @@ func (a UsersApi) PutRoutingUserDirectroutingbackupSettings(userId string, body 
 
 // PutRoutingUserUtilization invokes PUT /api/v2/routing/users/{userId}/utilization
 //
-// Update the user's max utilization settings.  Include only those media types requiring custom configuration.
+// Update the user's max utilization settings.  Include only those media types requiring custom configuration. Any omitted media types will be set to the organization's default values.
 func (a UsersApi) PutRoutingUserUtilization(userId string, body Utilizationrequest) (*Agentmaxutilizationresponse, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

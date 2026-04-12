@@ -932,8 +932,6 @@ func (a ResponseManagementApi) PostResponsemanagementLibrariesBulk(body Libraryb
 // PostResponsemanagementLibrariesQuery invokes POST /api/v2/responsemanagement/libraries/query
 //
 // Query libraries using criteria. Users can set DivisionId parameter as '*' to fetch libraries that aren't associated with any divisions.
-//
-// Preview: PostResponsemanagementLibrariesQuery is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ResponseManagementApi) PostResponsemanagementLibrariesQuery(body Querycriteriaquery, pageNumber int, pageSize int) (*Libraryentitylisting, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

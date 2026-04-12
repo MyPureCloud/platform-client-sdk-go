@@ -42,6 +42,9 @@ type Authorizationpolicy struct {
 	// Active - Flag for active enforcement. If this value is false or null, the policy will be saved but will not be checked or enforced on users.
 	Active *bool `json:"active,omitempty"`
 
+	// ApplyToClients - Flag to determine whether policy applies to OAuth Clients
+	ApplyToClients *bool `json:"applyToClients,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -137,6 +140,8 @@ func (o Authorizationpolicy) MarshalJSON() ([]byte, error) {
 		
 		Active *bool `json:"active,omitempty"`
 		
+		ApplyToClients *bool `json:"applyToClients,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -159,6 +164,8 @@ func (o Authorizationpolicy) MarshalJSON() ([]byte, error) {
 		PresetAttributes: o.PresetAttributes,
 		
 		Active: o.Active,
+		
+		ApplyToClients: o.ApplyToClients,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -214,6 +221,10 @@ func (o *Authorizationpolicy) UnmarshalJSON(b []byte) error {
 	
 	if Active, ok := AuthorizationpolicyMap["active"].(bool); ok {
 		o.Active = &Active
+	}
+    
+	if ApplyToClients, ok := AuthorizationpolicyMap["applyToClients"].(bool); ok {
+		o.ApplyToClients = &ApplyToClients
 	}
     
 	if SelfUri, ok := AuthorizationpolicyMap["selfUri"].(string); ok {

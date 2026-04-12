@@ -84,6 +84,9 @@ type Queueconversationsocialexpressioneventtopicparticipant struct {
 	// MonitoredParticipantId - If this participant is a monitor, then this will be the id of the participant that is being monitored.
 	MonitoredParticipantId *string `json:"monitoredParticipantId,omitempty"`
 
+	// ScreenMonitoredParticipantId - If this participant is a screen monitor, then this will be the id of the participant that is being screen monitored.
+	ScreenMonitoredParticipantId *string `json:"screenMonitoredParticipantId,omitempty"`
+
 	// CoachedParticipantId - If this participant is a coach, then this will be the id of the participant that is being coached.
 	CoachedParticipantId *string `json:"coachedParticipantId,omitempty"`
 
@@ -282,6 +285,8 @@ func (o Queueconversationsocialexpressioneventtopicparticipant) MarshalJSON() ([
 		
 		MonitoredParticipantId *string `json:"monitoredParticipantId,omitempty"`
 		
+		ScreenMonitoredParticipantId *string `json:"screenMonitoredParticipantId,omitempty"`
+		
 		CoachedParticipantId *string `json:"coachedParticipantId,omitempty"`
 		
 		BargedParticipantId *string `json:"bargedParticipantId,omitempty"`
@@ -366,6 +371,8 @@ func (o Queueconversationsocialexpressioneventtopicparticipant) MarshalJSON() ([
 		AlertingTimeoutMs: o.AlertingTimeoutMs,
 		
 		MonitoredParticipantId: o.MonitoredParticipantId,
+		
+		ScreenMonitoredParticipantId: o.ScreenMonitoredParticipantId,
 		
 		CoachedParticipantId: o.CoachedParticipantId,
 		
@@ -515,6 +522,10 @@ func (o *Queueconversationsocialexpressioneventtopicparticipant) UnmarshalJSON(b
 	
 	if MonitoredParticipantId, ok := QueueconversationsocialexpressioneventtopicparticipantMap["monitoredParticipantId"].(string); ok {
 		o.MonitoredParticipantId = &MonitoredParticipantId
+	}
+    
+	if ScreenMonitoredParticipantId, ok := QueueconversationsocialexpressioneventtopicparticipantMap["screenMonitoredParticipantId"].(string); ok {
+		o.ScreenMonitoredParticipantId = &ScreenMonitoredParticipantId
 	}
     
 	if CoachedParticipantId, ok := QueueconversationsocialexpressioneventtopicparticipantMap["coachedParticipantId"].(string); ok {

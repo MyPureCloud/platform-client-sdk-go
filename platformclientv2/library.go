@@ -30,6 +30,9 @@ type Library struct {
 	// ResponseType - This value is deprecated. Responses representing message templates may be added to any library.
 	ResponseType *string `json:"responseType,omitempty"`
 
+	// Division - The division to which this entity belongs.
+	Division *Writabledivision `json:"division,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -117,6 +120,8 @@ func (o Library) MarshalJSON() ([]byte, error) {
 		
 		ResponseType *string `json:"responseType,omitempty"`
 		
+		Division *Writabledivision `json:"division,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -131,6 +136,8 @@ func (o Library) MarshalJSON() ([]byte, error) {
 		DateCreated: DateCreated,
 		
 		ResponseType: o.ResponseType,
+		
+		Division: o.Division,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -171,6 +178,11 @@ func (o *Library) UnmarshalJSON(b []byte) error {
 		o.ResponseType = &ResponseType
 	}
     
+	if Division, ok := LibraryMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
 	if SelfUri, ok := LibraryMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

@@ -1734,7 +1734,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgramTranscriptioneng
 // GetSpeechandtextanalyticsPrograms invokes GET /api/v2/speechandtextanalytics/programs
 //
 // Get the list of Speech & Text Analytics programs
-func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsPrograms(nextPage string, pageSize int, state string, name string, sortBy string, sortOrder string) (*Programsentitylisting, *APIResponse, error) {
+func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsPrograms(nextPage string, pageSize int, state string, name string, ids []string, sortBy string, sortOrder string) (*Programsentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/speechandtextanalytics/programs"
@@ -1768,6 +1768,8 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsPrograms(nextPage strin
 	queryParams["state"] = a.Configuration.APIClient.ParameterToString(state, "")
 	
 	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
+	
+	queryParams["ids"] = a.Configuration.APIClient.ParameterToString(ids, "multi")
 	
 	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	

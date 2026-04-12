@@ -13792,7 +13792,7 @@ func (a RoutingApi) PutRoutingUserDirectroutingbackupSettings(userId string, bod
 
 // PutRoutingUserUtilization invokes PUT /api/v2/routing/users/{userId}/utilization
 //
-// Update the user's max utilization settings.  Include only those media types requiring custom configuration.
+// Update the user's max utilization settings.  Include only those media types requiring custom configuration. Any omitted media types will be set to the organization's default values.
 func (a RoutingApi) PutRoutingUserUtilization(userId string, body Utilizationrequest) (*Agentmaxutilizationresponse, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -13882,7 +13882,7 @@ func (a RoutingApi) PutRoutingUserUtilization(userId string, body Utilizationreq
 
 // PutRoutingUtilization invokes PUT /api/v2/routing/utilization
 //
-// Update the organization-wide max utilization settings.  Include only those media types requiring custom configuration.
+// Update the organization-wide max utilization settings.  Include only those media types requiring custom configuration. Any omitted media types will be set to the system default values.
 func (a RoutingApi) PutRoutingUtilization(body Utilizationrequest) (*Utilizationresponse, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
