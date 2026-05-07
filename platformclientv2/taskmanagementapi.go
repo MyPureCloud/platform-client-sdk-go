@@ -6322,6 +6322,8 @@ func (a TaskManagementApi) PostTaskmanagementWorktypes(body Worktypecreate) (*Wo
 // PostTaskmanagementWorktypesQuery invokes POST /api/v2/taskmanagement/worktypes/query
 //
 // Query for worktypes
+//
+// Optional request field &#39;expands&#39; may include &#39;schema&#39; to populate the name on each worktype&#39;s schema reference.
 func (a TaskManagementApi) PostTaskmanagementWorktypesQuery(body Worktypequeryrequest) (*Worktypequeryentitylisting, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

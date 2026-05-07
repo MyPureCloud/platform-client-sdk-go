@@ -31,6 +31,9 @@ type Digitalaction struct {
 
 	// SetSmsPhoneNumberActionSettings - The settings for a 'set sms phone number' action.
 	SetSmsPhoneNumberActionSettings *Setsmsphonenumberactionsettings `json:"setSmsPhoneNumberActionSettings,omitempty"`
+
+	// SetWhatsAppIntegrationActionSettings - The settings for a 'set WhatsApp integration' action.
+	SetWhatsAppIntegrationActionSettings *Setwhatsappintegrationactionsettings `json:"setWhatsAppIntegrationActionSettings,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -109,6 +112,8 @@ func (o Digitalaction) MarshalJSON() ([]byte, error) {
 		SetContentTemplateActionSettings *Setcontenttemplateactionsettings `json:"setContentTemplateActionSettings,omitempty"`
 		
 		SetSmsPhoneNumberActionSettings *Setsmsphonenumberactionsettings `json:"setSmsPhoneNumberActionSettings,omitempty"`
+		
+		SetWhatsAppIntegrationActionSettings *Setwhatsappintegrationactionsettings `json:"setWhatsAppIntegrationActionSettings,omitempty"`
 		Alias
 	}{ 
 		UpdateContactColumnActionSettings: o.UpdateContactColumnActionSettings,
@@ -124,6 +129,8 @@ func (o Digitalaction) MarshalJSON() ([]byte, error) {
 		SetContentTemplateActionSettings: o.SetContentTemplateActionSettings,
 		
 		SetSmsPhoneNumberActionSettings: o.SetSmsPhoneNumberActionSettings,
+		
+		SetWhatsAppIntegrationActionSettings: o.SetWhatsAppIntegrationActionSettings,
 		Alias:    (Alias)(o),
 	})
 }
@@ -168,6 +175,11 @@ func (o *Digitalaction) UnmarshalJSON(b []byte) error {
 	if SetSmsPhoneNumberActionSettings, ok := DigitalactionMap["setSmsPhoneNumberActionSettings"].(map[string]interface{}); ok {
 		SetSmsPhoneNumberActionSettingsString, _ := json.Marshal(SetSmsPhoneNumberActionSettings)
 		json.Unmarshal(SetSmsPhoneNumberActionSettingsString, &o.SetSmsPhoneNumberActionSettings)
+	}
+	
+	if SetWhatsAppIntegrationActionSettings, ok := DigitalactionMap["setWhatsAppIntegrationActionSettings"].(map[string]interface{}); ok {
+		SetWhatsAppIntegrationActionSettingsString, _ := json.Marshal(SetWhatsAppIntegrationActionSettings)
+		json.Unmarshal(SetWhatsAppIntegrationActionSettingsString, &o.SetWhatsAppIntegrationActionSettings)
 	}
 	
 

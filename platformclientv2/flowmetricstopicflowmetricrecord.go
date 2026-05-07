@@ -267,6 +267,9 @@ type Flowmetricstopicflowmetricrecord struct {
 	// SessionId - The unique identifier of this session
 	SessionId *string `json:"sessionId,omitempty"`
 
+	// SkillExpressionId - Unique identifier for the skill requested for an interaction
+	SkillExpressionId *string `json:"skillExpressionId,omitempty"`
+
 	// StartingLanguage - Flow starting language, e.g. en-us
 	StartingLanguage *string `json:"startingLanguage,omitempty"`
 
@@ -551,6 +554,8 @@ func (o Flowmetricstopicflowmetricrecord) MarshalJSON() ([]byte, error) {
 		
 		SessionId *string `json:"sessionId,omitempty"`
 		
+		SkillExpressionId *string `json:"skillExpressionId,omitempty"`
+		
 		StartingLanguage *string `json:"startingLanguage,omitempty"`
 		
 		StationId *string `json:"stationId,omitempty"`
@@ -749,6 +754,8 @@ func (o Flowmetricstopicflowmetricrecord) MarshalJSON() ([]byte, error) {
 		SessionDnis: o.SessionDnis,
 		
 		SessionId: o.SessionId,
+		
+		SkillExpressionId: o.SkillExpressionId,
 		
 		StartingLanguage: o.StartingLanguage,
 		
@@ -1143,6 +1150,10 @@ func (o *Flowmetricstopicflowmetricrecord) UnmarshalJSON(b []byte) error {
     
 	if SessionId, ok := FlowmetricstopicflowmetricrecordMap["sessionId"].(string); ok {
 		o.SessionId = &SessionId
+	}
+    
+	if SkillExpressionId, ok := FlowmetricstopicflowmetricrecordMap["skillExpressionId"].(string); ok {
+		o.SkillExpressionId = &SkillExpressionId
 	}
     
 	if StartingLanguage, ok := FlowmetricstopicflowmetricrecordMap["startingLanguage"].(string); ok {

@@ -60,6 +60,9 @@ type Webeventresponse struct {
 	// Authenticated - Indicates whether the event was produced during an authenticated session.
 	Authenticated *bool `json:"authenticated,omitempty"`
 
+	// ExternalId - An external identifier for the customer.
+	ExternalId *string `json:"externalId,omitempty"`
+
 	// CreatedDate - UTC timestamp indicating when the event actually took place, events older than an hour will be rejected. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	CreatedDate *time.Time `json:"createdDate,omitempty"`
 }
@@ -167,6 +170,8 @@ func (o Webeventresponse) MarshalJSON() ([]byte, error) {
 		
 		Authenticated *bool `json:"authenticated,omitempty"`
 		
+		ExternalId *string `json:"externalId,omitempty"`
+		
 		CreatedDate *string `json:"createdDate,omitempty"`
 		Alias
 	}{ 
@@ -201,6 +206,8 @@ func (o Webeventresponse) MarshalJSON() ([]byte, error) {
 		Traits: o.Traits,
 		
 		Authenticated: o.Authenticated,
+		
+		ExternalId: o.ExternalId,
 		
 		CreatedDate: CreatedDate,
 		Alias:    (Alias)(o),
@@ -285,6 +292,10 @@ func (o *Webeventresponse) UnmarshalJSON(b []byte) error {
 	
 	if Authenticated, ok := WebeventresponseMap["authenticated"].(bool); ok {
 		o.Authenticated = &Authenticated
+	}
+    
+	if ExternalId, ok := WebeventresponseMap["externalId"].(string); ok {
+		o.ExternalId = &ExternalId
 	}
     
 	if createdDateString, ok := WebeventresponseMap["createdDate"].(string); ok {

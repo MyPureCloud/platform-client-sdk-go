@@ -22,6 +22,12 @@ type Lastresultbycolumnconditionsettings struct {
 
 	// SmsWrapupCodes - A list of wrapup code identifiers to match for SMS.
 	SmsWrapupCodes *[]string `json:"smsWrapupCodes,omitempty"`
+
+	// WhatsAppColumnName - The name of the contact column to evaluate for WhatsApp.
+	WhatsAppColumnName *string `json:"whatsAppColumnName,omitempty"`
+
+	// WhatsAppWrapupCodes - A list of wrapup code identifiers to match for WhatsApp.
+	WhatsAppWrapupCodes *[]string `json:"whatsAppWrapupCodes,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +100,10 @@ func (o Lastresultbycolumnconditionsettings) MarshalJSON() ([]byte, error) {
 		SmsColumnName *string `json:"smsColumnName,omitempty"`
 		
 		SmsWrapupCodes *[]string `json:"smsWrapupCodes,omitempty"`
+		
+		WhatsAppColumnName *string `json:"whatsAppColumnName,omitempty"`
+		
+		WhatsAppWrapupCodes *[]string `json:"whatsAppWrapupCodes,omitempty"`
 		Alias
 	}{ 
 		EmailColumnName: o.EmailColumnName,
@@ -103,6 +113,10 @@ func (o Lastresultbycolumnconditionsettings) MarshalJSON() ([]byte, error) {
 		SmsColumnName: o.SmsColumnName,
 		
 		SmsWrapupCodes: o.SmsWrapupCodes,
+		
+		WhatsAppColumnName: o.WhatsAppColumnName,
+		
+		WhatsAppWrapupCodes: o.WhatsAppWrapupCodes,
 		Alias:    (Alias)(o),
 	})
 }
@@ -130,6 +144,15 @@ func (o *Lastresultbycolumnconditionsettings) UnmarshalJSON(b []byte) error {
 	if SmsWrapupCodes, ok := LastresultbycolumnconditionsettingsMap["smsWrapupCodes"].([]interface{}); ok {
 		SmsWrapupCodesString, _ := json.Marshal(SmsWrapupCodes)
 		json.Unmarshal(SmsWrapupCodesString, &o.SmsWrapupCodes)
+	}
+	
+	if WhatsAppColumnName, ok := LastresultbycolumnconditionsettingsMap["whatsAppColumnName"].(string); ok {
+		o.WhatsAppColumnName = &WhatsAppColumnName
+	}
+    
+	if WhatsAppWrapupCodes, ok := LastresultbycolumnconditionsettingsMap["whatsAppWrapupCodes"].([]interface{}); ok {
+		WhatsAppWrapupCodesString, _ := json.Marshal(WhatsAppWrapupCodes)
+		json.Unmarshal(WhatsAppWrapupCodesString, &o.WhatsAppWrapupCodes)
 	}
 	
 

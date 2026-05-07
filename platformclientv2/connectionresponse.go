@@ -45,6 +45,9 @@ type Connectionresponse struct {
 	// VarError - Optional error message of the connection.
 	VarError *Errorbody `json:"error,omitempty"`
 
+	// DateExpiry - Expiry date of the authentication credentials. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateExpiry *time.Time `json:"dateExpiry,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -78,7 +81,7 @@ func (o Connectionresponse) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "DateCreated","DateModified", }
+		dateTimeFields := []string{ "DateCreated","DateModified","DateExpiry", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -127,6 +130,14 @@ func (o Connectionresponse) MarshalJSON() ([]byte, error) {
 		DateModified = nil
 	}
 	
+	DateExpiry := new(string)
+	if o.DateExpiry != nil {
+		
+		*DateExpiry = timeutil.Strftime(o.DateExpiry, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateExpiry = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -149,6 +160,8 @@ func (o Connectionresponse) MarshalJSON() ([]byte, error) {
 		Status *string `json:"status,omitempty"`
 		
 		VarError *Errorbody `json:"error,omitempty"`
+		
+		DateExpiry *string `json:"dateExpiry,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
@@ -174,6 +187,8 @@ func (o Connectionresponse) MarshalJSON() ([]byte, error) {
 		Status: o.Status,
 		
 		VarError: o.VarError,
+		
+		DateExpiry: DateExpiry,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -236,6 +251,11 @@ func (o *Connectionresponse) UnmarshalJSON(b []byte) error {
 	if VarError, ok := ConnectionresponseMap["error"].(map[string]interface{}); ok {
 		VarErrorString, _ := json.Marshal(VarError)
 		json.Unmarshal(VarErrorString, &o.VarError)
+	}
+	
+	if dateExpiryString, ok := ConnectionresponseMap["dateExpiry"].(string); ok {
+		DateExpiry, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateExpiryString)
+		o.DateExpiry = &DateExpiry
 	}
 	
 	if SelfUri, ok := ConnectionresponseMap["selfUri"].(string); ok {

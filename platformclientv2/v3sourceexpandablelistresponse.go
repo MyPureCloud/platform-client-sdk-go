@@ -8,8 +8,8 @@ import (
 	"strings"
 )
 
-// V3sourcewitherrorresponse
-type V3sourcewitherrorresponse struct { 
+// V3sourceexpandablelistresponse
+type V3sourceexpandablelistresponse struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Id - The globally unique identifier for the object.
@@ -45,6 +45,9 @@ type V3sourcewitherrorresponse struct {
 	// LastSync - The last synchronization of the source.
 	LastSync *V3sourcelastsynchronization `json:"lastSync,omitempty"`
 
+	// Connection - The connection associated with the source. Needs to be expanded.
+	Connection *Connectionresponse `json:"connection,omitempty"`
+
 	// VarError - Optional error details of an errored source.
 	VarError *Errorbody `json:"error,omitempty"`
 
@@ -53,7 +56,7 @@ type V3sourcewitherrorresponse struct {
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *V3sourcewitherrorresponse) SetField(field string, fieldValue interface{}) {
+func (o *V3sourceexpandablelistresponse) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -74,7 +77,7 @@ func (o *V3sourcewitherrorresponse) SetField(field string, fieldValue interface{
 	o.SetFieldNames[field] = true
 }
 
-func (o V3sourcewitherrorresponse) MarshalJSON() ([]byte, error) {
+func (o V3sourceexpandablelistresponse) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -112,7 +115,7 @@ func (o V3sourcewitherrorresponse) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias V3sourcewitherrorresponse
+	type Alias V3sourceexpandablelistresponse
 	
 	DateCreated := new(string)
 	if o.DateCreated != nil {
@@ -153,6 +156,8 @@ func (o V3sourcewitherrorresponse) MarshalJSON() ([]byte, error) {
 		
 		LastSync *V3sourcelastsynchronization `json:"lastSync,omitempty"`
 		
+		Connection *Connectionresponse `json:"connection,omitempty"`
+		
 		VarError *Errorbody `json:"error,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -180,6 +185,8 @@ func (o V3sourcewitherrorresponse) MarshalJSON() ([]byte, error) {
 		
 		LastSync: o.LastSync,
 		
+		Connection: o.Connection,
+		
 		VarError: o.VarError,
 		
 		SelfUri: o.SelfUri,
@@ -187,68 +194,73 @@ func (o V3sourcewitherrorresponse) MarshalJSON() ([]byte, error) {
 	})
 }
 
-func (o *V3sourcewitherrorresponse) UnmarshalJSON(b []byte) error {
-	var V3sourcewitherrorresponseMap map[string]interface{}
-	err := json.Unmarshal(b, &V3sourcewitherrorresponseMap)
+func (o *V3sourceexpandablelistresponse) UnmarshalJSON(b []byte) error {
+	var V3sourceexpandablelistresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &V3sourceexpandablelistresponseMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := V3sourcewitherrorresponseMap["id"].(string); ok {
+	if Id, ok := V3sourceexpandablelistresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
     
-	if Name, ok := V3sourcewitherrorresponseMap["name"].(string); ok {
+	if Name, ok := V3sourceexpandablelistresponseMap["name"].(string); ok {
 		o.Name = &Name
 	}
     
-	if ConnectionId, ok := V3sourcewitherrorresponseMap["connectionId"].(string); ok {
+	if ConnectionId, ok := V3sourceexpandablelistresponseMap["connectionId"].(string); ok {
 		o.ConnectionId = &ConnectionId
 	}
     
-	if VarType, ok := V3sourcewitherrorresponseMap["type"].(string); ok {
+	if VarType, ok := V3sourceexpandablelistresponseMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
     
-	if TriggerType, ok := V3sourcewitherrorresponseMap["triggerType"].(string); ok {
+	if TriggerType, ok := V3sourceexpandablelistresponseMap["triggerType"].(string); ok {
 		o.TriggerType = &TriggerType
 	}
     
-	if Status, ok := V3sourcewitherrorresponseMap["status"].(string); ok {
+	if Status, ok := V3sourceexpandablelistresponseMap["status"].(string); ok {
 		o.Status = &Status
 	}
     
-	if CreatedBy, ok := V3sourcewitherrorresponseMap["createdBy"].(map[string]interface{}); ok {
+	if CreatedBy, ok := V3sourceexpandablelistresponseMap["createdBy"].(map[string]interface{}); ok {
 		CreatedByString, _ := json.Marshal(CreatedBy)
 		json.Unmarshal(CreatedByString, &o.CreatedBy)
 	}
 	
-	if ModifiedBy, ok := V3sourcewitherrorresponseMap["modifiedBy"].(map[string]interface{}); ok {
+	if ModifiedBy, ok := V3sourceexpandablelistresponseMap["modifiedBy"].(map[string]interface{}); ok {
 		ModifiedByString, _ := json.Marshal(ModifiedBy)
 		json.Unmarshal(ModifiedByString, &o.ModifiedBy)
 	}
 	
-	if dateCreatedString, ok := V3sourcewitherrorresponseMap["dateCreated"].(string); ok {
+	if dateCreatedString, ok := V3sourceexpandablelistresponseMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
 	}
 	
-	if dateModifiedString, ok := V3sourcewitherrorresponseMap["dateModified"].(string); ok {
+	if dateModifiedString, ok := V3sourceexpandablelistresponseMap["dateModified"].(string); ok {
 		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
 		o.DateModified = &DateModified
 	}
 	
-	if LastSync, ok := V3sourcewitherrorresponseMap["lastSync"].(map[string]interface{}); ok {
+	if LastSync, ok := V3sourceexpandablelistresponseMap["lastSync"].(map[string]interface{}); ok {
 		LastSyncString, _ := json.Marshal(LastSync)
 		json.Unmarshal(LastSyncString, &o.LastSync)
 	}
 	
-	if VarError, ok := V3sourcewitherrorresponseMap["error"].(map[string]interface{}); ok {
+	if Connection, ok := V3sourceexpandablelistresponseMap["connection"].(map[string]interface{}); ok {
+		ConnectionString, _ := json.Marshal(Connection)
+		json.Unmarshal(ConnectionString, &o.Connection)
+	}
+	
+	if VarError, ok := V3sourceexpandablelistresponseMap["error"].(map[string]interface{}); ok {
 		VarErrorString, _ := json.Marshal(VarError)
 		json.Unmarshal(VarErrorString, &o.VarError)
 	}
 	
-	if SelfUri, ok := V3sourcewitherrorresponseMap["selfUri"].(string); ok {
+	if SelfUri, ok := V3sourceexpandablelistresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
     
@@ -257,7 +269,7 @@ func (o *V3sourcewitherrorresponse) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *V3sourcewitherrorresponse) String() string {
+func (o *V3sourceexpandablelistresponse) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

@@ -355,6 +355,7 @@ docs/DeleteUsersAgentuiAgentsAutoanswerAgentIdSettings-example.txt
 docs/DeleteUsersAgentuiAgentsAutoanswerAgentIdSettings-example.txt
 docs/DeleteUsersCustomattributesSchema-example.txt
 docs/DeleteUsersRule-example.txt
+docs/DeleteUsersStationsMeAssociatedstation-example.txt
 docs/DeleteVoicemailMessage-example.txt
 docs/DeleteVoicemailMessages-example.txt
 docs/DeleteWebchatDeployment-example.txt
@@ -648,6 +649,7 @@ docs/GetContentmanagementWorkspaceTagvalue-example.txt
 docs/GetContentmanagementWorkspaceTagvalues-example.txt
 docs/GetContentmanagementWorkspaces-example.txt
 docs/GetConversation-example.txt
+docs/GetConversationAssistantCopilotcontext-example.txt
 docs/GetConversationCommunicationAgentchecklist-example.txt
 docs/GetConversationCommunicationAgentchecklistJob-example.txt
 docs/GetConversationCommunicationAgentchecklists-example.txt
@@ -1760,6 +1762,7 @@ docs/GetUsersRules-example.txt
 docs/GetUsersRulesSetting-example.txt
 docs/GetUsersSearch-example.txt
 docs/GetUsersSearch-example.txt
+docs/GetUsersStationsMe-example.txt
 docs/GetVoicemailGroupMailbox-example.txt
 docs/GetVoicemailGroupMessages-example.txt
 docs/GetVoicemailGroupPolicy-example.txt
@@ -2023,6 +2026,7 @@ docs/PatchConversationsMessage-example.txt
 docs/PatchConversationsMessageParticipant-example.txt
 docs/PatchConversationsMessageParticipantAttributes-example.txt
 docs/PatchConversationsMessageParticipantCommunication-example.txt
+docs/PatchConversationsMessageParticipantParkingstate-example.txt
 docs/PatchConversationsMessagingIntegrationsAppleIntegrationId-example.txt
 docs/PatchConversationsMessagingIntegrationsFacebookIntegrationId-example.txt
 docs/PatchConversationsMessagingIntegrationsInstagramIntegrationId-example.txt
@@ -2350,6 +2354,7 @@ docs/PostCasemanagementCaseTerminateJobs-example.txt
 docs/PostCasemanagementCaseplanPublish-example.txt
 docs/PostCasemanagementCaseplanVersions-example.txt
 docs/PostCasemanagementCaseplans-example.txt
+docs/PostCasemanagementCaseplansQuery-example.txt
 docs/PostCasemanagementCases-example.txt
 docs/PostCasemanagementCasesAssociationsQuery-example.txt
 docs/PostCertificateDetails-example.txt
@@ -2488,6 +2493,7 @@ docs/PostEmployeeengagementRecognitions-example.txt
 docs/PostEmployeeperformanceExternalmetricsData-example.txt
 docs/PostEmployeeperformanceExternalmetricsDefinitions-example.txt
 docs/PostEventsConversations-example.txt
+docs/PostEventsRoutingCustomkpiattributions-example.txt
 docs/PostEventsUsersPresence-example.txt
 docs/PostEventsUsersRoutingstatus-example.txt
 docs/PostExternalcontactsBulkContacts-example.txt
@@ -2546,6 +2552,7 @@ docs/PostFlowsActionsPublish-example.txt
 docs/PostFlowsActionsRevert-example.txt
 docs/PostFlowsActionsUnlock-example.txt
 docs/PostFlowsDatatableExportJobs-example.txt
+docs/PostFlowsDatatableImportCsvJobs-example.txt
 docs/PostFlowsDatatableImportJobs-example.txt
 docs/PostFlowsDatatableRows-example.txt
 docs/PostFlowsDatatables-example.txt
@@ -3349,6 +3356,7 @@ docs/PutUsersAgentuiAgentsAutoanswerAgentIdSettings-example.txt
 docs/PutUsersAgentuiAgentsAutoanswerAgentIdSettings-example.txt
 docs/PutUsersCustomattributesSchema-example.txt
 docs/PutUsersPresencesBulk-example.txt
+docs/PutUsersStationsMeAssociatedstationStationId-example.txt
 docs/PutVoicemailMessage-example.txt
 docs/PutVoicemailPolicy-example.txt
 docs/PutVoicemailUserpolicy-example.txt
@@ -3862,6 +3870,7 @@ platformclientv2/batchdownloadjobsubmission.go
 platformclientv2/batchdownloadjobsubmissionresult.go
 platformclientv2/batchdownloadrequest.go
 platformclientv2/batcheventresponse.go
+platformclientv2/batchpredictiveroutingcustomkpiattributioneventrequest.go
 platformclientv2/batchuserpresenceeventrequest.go
 platformclientv2/batchuserroutingstatuseventrequest.go
 platformclientv2/benefitassessment.go
@@ -4247,6 +4256,8 @@ platformclientv2/caseplancreateresponse.go
 platformclientv2/caseplandataschema.go
 platformclientv2/caseplandataschemalisting.go
 platformclientv2/caseplanlisting.go
+platformclientv2/caseplanqueryentitylisting.go
+platformclientv2/caseplanqueryrequest.go
 platformclientv2/caseplanreference.go
 platformclientv2/caseplanupdate.go
 platformclientv2/casepriorityupdate.go
@@ -4670,6 +4681,7 @@ platformclientv2/conversationcontentlistpicker.go
 platformclientv2/conversationcontentlistpickeritem.go
 platformclientv2/conversationcontentlistpickersection.go
 platformclientv2/conversationcontentlocation.go
+platformclientv2/conversationcontentnotificationresponse.go
 platformclientv2/conversationcontentnotificationtemplate.go
 platformclientv2/conversationcontentpaymentrequest.go
 platformclientv2/conversationcontentpaymentresponse.go
@@ -4989,8 +5001,11 @@ platformclientv2/copilotasyncaggregatequeryresponse.go
 platformclientv2/copilotasyncaggregationquery.go
 platformclientv2/copilotcondition.go
 platformclientv2/copilotcontext.go
+platformclientv2/copilotcontextentity.go
 platformclientv2/copilotcontextfilter.go
 platformclientv2/copilotcontextvalue.go
+platformclientv2/copilotcontextvalueitem.go
+platformclientv2/copilotcontextvalues.go
 platformclientv2/copilotfallbackaction.go
 platformclientv2/copilotnludomain.go
 platformclientv2/copilotnludomainversion.go
@@ -5274,6 +5289,9 @@ platformclientv2/dialercampaignscheduleconfigchangerecurrencerange.go
 platformclientv2/dialercampaignscheduleconfigchangescheduleinterval.go
 platformclientv2/dialercampaignscheduleconfigchangeschedulerecurrence.go
 platformclientv2/dialercampaignscheduleconfigchangeurireference.go
+platformclientv2/dialercampaignskillcombinationstatseventcampaignskillcombinationstats.go
+platformclientv2/dialercampaignskillcombinationstatseventskillcombinationdetailnotification.go
+platformclientv2/dialercampaignskillcombinationstatseventurireference.go
 platformclientv2/dialercontact.go
 platformclientv2/dialercontactid.go
 platformclientv2/dialercontactlistconfigchangecontactlist.go
@@ -6154,6 +6172,7 @@ platformclientv2/hristimeofftypesjobreference.go
 platformclientv2/hristimeofftypesjobresponse.go
 platformclientv2/hristimeofftypesresponse.go
 platformclientv2/humanize.go
+platformclientv2/icon.go
 platformclientv2/identifierclaimrequest.go
 platformclientv2/identitynow.go
 platformclientv2/identityprovider.go
@@ -6750,6 +6769,7 @@ platformclientv2/listing.go
 platformclientv2/listpicker.go
 platformclientv2/listpickeritem.go
 platformclientv2/listpickersection.go
+platformclientv2/listvalues.go
 platformclientv2/listwrapperagentworkplanfield.go
 platformclientv2/listwrapperalternativeshiftbusettingsactivitycategory.go
 platformclientv2/listwrapperalternativeshiftbusettingsgranularity.go
@@ -7243,7 +7263,11 @@ platformclientv2/outcomescore.go
 platformclientv2/outcomescoresresult.go
 platformclientv2/outgoingmessagerequest.go
 platformclientv2/outgoingmessageresponse.go
+platformclientv2/outlier.go
+platformclientv2/outlierdata.go
 platformclientv2/outlierinfo.go
+platformclientv2/outlierresultbody.go
+platformclientv2/outlierresulttemplate.go
 platformclientv2/outofoffice.go
 platformclientv2/outofofficeeventoutofoffice.go
 platformclientv2/outofofficeeventuser.go
@@ -7390,6 +7414,7 @@ platformclientv2/posttextrequest.go
 platformclientv2/posttextresponse.go
 platformclientv2/predictionresults.go
 platformclientv2/predictiverouting.go
+platformclientv2/predictiveroutingcustomkpiattributionevent.go
 platformclientv2/predictor.go
 platformclientv2/predictorlisting.go
 platformclientv2/predictormodel.go
@@ -8313,6 +8338,7 @@ platformclientv2/socialmediaasyncdetailquery.go
 platformclientv2/socialmediaasyncdetailqueryresponse.go
 platformclientv2/socialmediadetaildatacontainer.go
 platformclientv2/socialmediadetailmessagecontainer.go
+platformclientv2/socialmediaengagement.go
 platformclientv2/socialmediamessagedata.go
 platformclientv2/socialmediamessageescalationinfo.go
 platformclientv2/socialmediaqueryclause.go
@@ -8596,6 +8622,7 @@ platformclientv2/textbotuserinputevent.go
 platformclientv2/textbotwaitforinputaction.go
 platformclientv2/textmessagelisting.go
 platformclientv2/textstyleproperties.go
+platformclientv2/thirdpartysuggestion.go
 platformclientv2/ticker.go
 platformclientv2/timeallowed.go
 platformclientv2/timeanddatesubcondition.go
@@ -9099,7 +9126,9 @@ platformclientv2/v2wfmmainforecastexportsnapshoteventmainforecastexportnotificat
 platformclientv2/v3knowledgesearchclientapplication.go
 platformclientv2/v3sourcecreaterequest.go
 platformclientv2/v3sourcedetailedresponse.go
-platformclientv2/v3sourcedetailedwitherrorresponse.go
+platformclientv2/v3sourceexpandablelisting.go
+platformclientv2/v3sourceexpandablelistresponse.go
+platformclientv2/v3sourceexpandableresponse.go
 platformclientv2/v3sourcefilter.go
 platformclientv2/v3sourcefilterdetails.go
 platformclientv2/v3sourcefolderdetails.go
@@ -9108,8 +9137,6 @@ platformclientv2/v3sourceref.go
 platformclientv2/v3sourceschedulesettings.go
 platformclientv2/v3sourcesitedetails.go
 platformclientv2/v3sourceupdaterequest.go
-platformclientv2/v3sourcewitherrorlisting.go
-platformclientv2/v3sourcewitherrorresponse.go
 platformclientv2/v3startmanualsyncrequest.go
 platformclientv2/v3synchronization.go
 platformclientv2/v3synchronizationlisting.go
@@ -9252,15 +9279,17 @@ platformclientv2/wemcoachingscheduleslotjobcompletetopiccoachingscheduleslotjobr
 platformclientv2/wemcoachingscheduleslotjobcompletetopiccoachingscheduleslotjobresultsslotschedule.go
 platformclientv2/wemcoachingusernotificationtopiccoachingappointmentreference.go
 platformclientv2/wemcoachingusernotificationtopiccoachingusernotification.go
+platformclientv2/wfmactivityplanjobcompletetopicactivityplanjobcompletenotification.go
 platformclientv2/wfmactivityplanjobcompletetopicactivityplanjobexception.go
-platformclientv2/wfmactivityplanjobcompletetopicactivityplanoccurrencedeletionjobcompletenotification.go
 platformclientv2/wfmactivityplanjobcompletetopicactivityplanoccurrencereference.go
 platformclientv2/wfmactivityplanjobcompletetopicactivityplanreference.go
+platformclientv2/wfmactivityplanjobcompletetopicactivityplansessionreference.go
 platformclientv2/wfmactivityplanjobcompletetopicerrorbody.go
+platformclientv2/wfmactivityplanrunjobcompletetopicactivityplanjobcompletenotification.go
 platformclientv2/wfmactivityplanrunjobcompletetopicactivityplanjobexception.go
 platformclientv2/wfmactivityplanrunjobcompletetopicactivityplanoccurrencereference.go
 platformclientv2/wfmactivityplanrunjobcompletetopicactivityplanreference.go
-platformclientv2/wfmactivityplanrunjobcompletetopicactivityplanrunjobcompletenotification.go
+platformclientv2/wfmactivityplanrunjobcompletetopicactivityplansessionreference.go
 platformclientv2/wfmactivityplanrunjobcompletetopicerrorbody.go
 platformclientv2/wfmadherenceexplanationjobcompletetopicadherenceexplanationchangednotification.go
 platformclientv2/wfmadherenceexplanationjobcompletetopicadherenceexplanationjobnotification.go

@@ -12,7 +12,7 @@ import (
 type Schedulereferencewithbusinessunit struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The unique identifier of the schedule
+	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
 	// WeekDate - The start date for this schedule in the business unit time zone (yyyy-MM-dd format). Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd

@@ -13,6 +13,9 @@ type Identityresolutionautomergeconfig struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// AuthenticatedWebMessaging - Whether automerging is enabled for Authenticated Webmessaging conversations in this channel.
 	AuthenticatedWebMessaging *bool `json:"authenticatedWebMessaging,omitempty"`
+
+	// WebTracking - Whether automerging is enabled for Web Tracking sessions in this channel.
+	WebTracking *bool `json:"webTracking,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +82,13 @@ func (o Identityresolutionautomergeconfig) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		AuthenticatedWebMessaging *bool `json:"authenticatedWebMessaging,omitempty"`
+		
+		WebTracking *bool `json:"webTracking,omitempty"`
 		Alias
 	}{ 
 		AuthenticatedWebMessaging: o.AuthenticatedWebMessaging,
+		
+		WebTracking: o.WebTracking,
 		Alias:    (Alias)(o),
 	})
 }
@@ -95,6 +102,10 @@ func (o *Identityresolutionautomergeconfig) UnmarshalJSON(b []byte) error {
 	
 	if AuthenticatedWebMessaging, ok := IdentityresolutionautomergeconfigMap["authenticatedWebMessaging"].(bool); ok {
 		o.AuthenticatedWebMessaging = &AuthenticatedWebMessaging
+	}
+    
+	if WebTracking, ok := IdentityresolutionautomergeconfigMap["webTracking"].(bool); ok {
+		o.WebTracking = &WebTracking
 	}
     
 

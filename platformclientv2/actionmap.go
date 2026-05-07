@@ -30,13 +30,13 @@ type Actionmap struct {
 	// TriggerWithEventConditions - List of event conditions that must be satisfied to trigger the action map.
 	TriggerWithEventConditions *[]Eventcondition `json:"triggerWithEventConditions,omitempty"`
 
-	// TriggerWithOutcomeProbabilityConditions - (deprecated - use triggerWithOutcomeQuantileConditions instead) Probability conditions for outcomes that must be satisfied to trigger the action map.
+	// TriggerWithOutcomeProbabilityConditions - Deprecated. Probability conditions for outcomes that must be satisfied to trigger the action map.
 	TriggerWithOutcomeProbabilityConditions *[]Outcomeprobabilitycondition `json:"triggerWithOutcomeProbabilityConditions,omitempty"`
 
-	// TriggerWithOutcomePercentileConditions - (deprecated - use triggerWithOutcomeQuantileConditions instead) Percentile conditions for outcomes that must be satisfied to trigger the action map.
+	// TriggerWithOutcomePercentileConditions - Deprecated. Percentile conditions for outcomes that must be satisfied to trigger the action map.
 	TriggerWithOutcomePercentileConditions *[]Outcomepercentilecondition `json:"triggerWithOutcomePercentileConditions,omitempty"`
 
-	// TriggerWithOutcomeQuantileConditions - Quantile conditions for outcomes that must be satisfied to trigger the action map.
+	// TriggerWithOutcomeQuantileConditions - Deprecated. Quantile conditions for outcomes that must be satisfied to trigger the action map. Journey Outcomes is being removed. See https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/
 	TriggerWithOutcomeQuantileConditions *[]Outcomequantilecondition `json:"triggerWithOutcomeQuantileConditions,omitempty"`
 
 	// PageUrlConditions - URL conditions that a page must match for web actions to be displayable.

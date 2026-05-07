@@ -62,6 +62,9 @@ type Okta struct {
 	// MetadataURL
 	MetadataURL *string `json:"metadataURL,omitempty"`
 
+	// ForceAuthn
+	ForceAuthn *bool `json:"forceAuthn,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -163,6 +166,8 @@ func (o Okta) MarshalJSON() ([]byte, error) {
 		
 		MetadataURL *string `json:"metadataURL,omitempty"`
 		
+		ForceAuthn *bool `json:"forceAuthn,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -199,6 +204,8 @@ func (o Okta) MarshalJSON() ([]byte, error) {
 		DisplayOnLogin: o.DisplayOnLogin,
 		
 		MetadataURL: o.MetadataURL,
+		
+		ForceAuthn: o.ForceAuthn,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -279,6 +286,10 @@ func (o *Okta) UnmarshalJSON(b []byte) error {
     
 	if MetadataURL, ok := OktaMap["metadataURL"].(string); ok {
 		o.MetadataURL = &MetadataURL
+	}
+    
+	if ForceAuthn, ok := OktaMap["forceAuthn"].(bool); ok {
+		o.ForceAuthn = &ForceAuthn
 	}
     
 	if SelfUri, ok := OktaMap["selfUri"].(string); ok {

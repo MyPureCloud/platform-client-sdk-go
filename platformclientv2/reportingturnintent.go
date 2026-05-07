@@ -14,6 +14,9 @@ type Reportingturnintent struct {
 	// Name - The name of the intent detected during this reporting turn.
 	Name *string `json:"name,omitempty"`
 
+	// Id - The ID of the intent detected during this reporting turn.
+	Id *string `json:"id,omitempty"`
+
 	// Confidence - The confidence score of the intent detected during this reporting turn.
 	Confidence *float64 `json:"confidence,omitempty"`
 
@@ -86,12 +89,16 @@ func (o Reportingturnintent) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
+		Id *string `json:"id,omitempty"`
+		
 		Confidence *float64 `json:"confidence,omitempty"`
 		
 		Slots *[]Reportingturnintentslot `json:"slots,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
+		
+		Id: o.Id,
 		
 		Confidence: o.Confidence,
 		
@@ -109,6 +116,10 @@ func (o *Reportingturnintent) UnmarshalJSON(b []byte) error {
 	
 	if Name, ok := ReportingturnintentMap["name"].(string); ok {
 		o.Name = &Name
+	}
+    
+	if Id, ok := ReportingturnintentMap["id"].(string); ok {
+		o.Id = &Id
 	}
     
 	if Confidence, ok := ReportingturnintentMap["confidence"].(float64); ok {

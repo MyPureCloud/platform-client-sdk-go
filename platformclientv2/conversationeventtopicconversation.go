@@ -36,6 +36,9 @@ type Conversationeventtopicconversation struct {
 	// UtilizationLabelId
 	UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
 
+	// AccessAttributes
+	AccessAttributes *[]string `json:"accessAttributes,omitempty"`
+
 	// SecurePause
 	SecurePause *bool `json:"securePause,omitempty"`
 
@@ -139,6 +142,8 @@ func (o Conversationeventtopicconversation) MarshalJSON() ([]byte, error) {
 		
 		UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
 		
+		AccessAttributes *[]string `json:"accessAttributes,omitempty"`
+		
 		SecurePause *bool `json:"securePause,omitempty"`
 		
 		InactivityTimeout *string `json:"inactivityTimeout,omitempty"`
@@ -165,6 +170,8 @@ func (o Conversationeventtopicconversation) MarshalJSON() ([]byte, error) {
 		ExternalTag: o.ExternalTag,
 		
 		UtilizationLabelId: o.UtilizationLabelId,
+		
+		AccessAttributes: o.AccessAttributes,
 		
 		SecurePause: o.SecurePause,
 		
@@ -221,6 +228,11 @@ func (o *Conversationeventtopicconversation) UnmarshalJSON(b []byte) error {
 		o.UtilizationLabelId = &UtilizationLabelId
 	}
     
+	if AccessAttributes, ok := ConversationeventtopicconversationMap["accessAttributes"].([]interface{}); ok {
+		AccessAttributesString, _ := json.Marshal(AccessAttributes)
+		json.Unmarshal(AccessAttributesString, &o.AccessAttributes)
+	}
+	
 	if SecurePause, ok := ConversationeventtopicconversationMap["securePause"].(bool); ok {
 		o.SecurePause = &SecurePause
 	}

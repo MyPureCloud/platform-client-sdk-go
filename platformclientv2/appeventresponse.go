@@ -60,6 +60,9 @@ type Appeventresponse struct {
 	// Traits - Traits are attributes intrinsic to the customer that may be sent in selected events (e.g. email, givenName, cellPhone).
 	Traits *map[string]Customeventattribute `json:"traits,omitempty"`
 
+	// ExternalId - An external identifier for the customer.
+	ExternalId *string `json:"externalId,omitempty"`
+
 	// CreatedDate - UTC timestamp indicating when the event actually took place. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	CreatedDate *time.Time `json:"createdDate,omitempty"`
 }
@@ -167,6 +170,8 @@ func (o Appeventresponse) MarshalJSON() ([]byte, error) {
 		
 		Traits *map[string]Customeventattribute `json:"traits,omitempty"`
 		
+		ExternalId *string `json:"externalId,omitempty"`
+		
 		CreatedDate *string `json:"createdDate,omitempty"`
 		Alias
 	}{ 
@@ -201,6 +206,8 @@ func (o Appeventresponse) MarshalJSON() ([]byte, error) {
 		Attributes: o.Attributes,
 		
 		Traits: o.Traits,
+		
+		ExternalId: o.ExternalId,
 		
 		CreatedDate: CreatedDate,
 		Alias:    (Alias)(o),
@@ -287,6 +294,10 @@ func (o *Appeventresponse) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(TraitsString, &o.Traits)
 	}
 	
+	if ExternalId, ok := AppeventresponseMap["externalId"].(string); ok {
+		o.ExternalId = &ExternalId
+	}
+    
 	if createdDateString, ok := AppeventresponseMap["createdDate"].(string); ok {
 		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
 		o.CreatedDate = &CreatedDate

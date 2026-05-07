@@ -62,6 +62,9 @@ type Genericsaml struct {
 	// MetadataURL
 	MetadataURL *string `json:"metadataURL,omitempty"`
 
+	// ForceAuthn
+	ForceAuthn *bool `json:"forceAuthn,omitempty"`
+
 	// EndpointCompression
 	EndpointCompression *bool `json:"endpointCompression,omitempty"`
 
@@ -166,6 +169,8 @@ func (o Genericsaml) MarshalJSON() ([]byte, error) {
 		
 		MetadataURL *string `json:"metadataURL,omitempty"`
 		
+		ForceAuthn *bool `json:"forceAuthn,omitempty"`
+		
 		EndpointCompression *bool `json:"endpointCompression,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -204,6 +209,8 @@ func (o Genericsaml) MarshalJSON() ([]byte, error) {
 		DisplayOnLogin: o.DisplayOnLogin,
 		
 		MetadataURL: o.MetadataURL,
+		
+		ForceAuthn: o.ForceAuthn,
 		
 		EndpointCompression: o.EndpointCompression,
 		
@@ -286,6 +293,10 @@ func (o *Genericsaml) UnmarshalJSON(b []byte) error {
     
 	if MetadataURL, ok := GenericsamlMap["metadataURL"].(string); ok {
 		o.MetadataURL = &MetadataURL
+	}
+    
+	if ForceAuthn, ok := GenericsamlMap["forceAuthn"].(bool); ok {
+		o.ForceAuthn = &ForceAuthn
 	}
     
 	if EndpointCompression, ok := GenericsamlMap["endpointCompression"].(bool); ok {

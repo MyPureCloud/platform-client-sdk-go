@@ -20,8 +20,11 @@ type Sessionmetricdata struct {
 	// Historical - Historical data for the requested session
 	Historical *Historicaldata `json:"historical,omitempty"`
 
-	// ModelMetaData - Contains forecast meta data
+	// ModelMetaData - Contains forecast metadata
 	ModelMetaData *Modelmetadata `json:"modelMetaData,omitempty"`
+
+	// Outliers - Contains forecast outlier data
+	Outliers *Outlierdata `json:"outliers,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +97,8 @@ func (o Sessionmetricdata) MarshalJSON() ([]byte, error) {
 		Historical *Historicaldata `json:"historical,omitempty"`
 		
 		ModelMetaData *Modelmetadata `json:"modelMetaData,omitempty"`
+		
+		Outliers *Outlierdata `json:"outliers,omitempty"`
 		Alias
 	}{ 
 		Model: o.Model,
@@ -103,6 +108,8 @@ func (o Sessionmetricdata) MarshalJSON() ([]byte, error) {
 		Historical: o.Historical,
 		
 		ModelMetaData: o.ModelMetaData,
+		
+		Outliers: o.Outliers,
 		Alias:    (Alias)(o),
 	})
 }
@@ -132,6 +139,11 @@ func (o *Sessionmetricdata) UnmarshalJSON(b []byte) error {
 	if ModelMetaData, ok := SessionmetricdataMap["modelMetaData"].(map[string]interface{}); ok {
 		ModelMetaDataString, _ := json.Marshal(ModelMetaData)
 		json.Unmarshal(ModelMetaDataString, &o.ModelMetaData)
+	}
+	
+	if Outliers, ok := SessionmetricdataMap["outliers"].(map[string]interface{}); ok {
+		OutliersString, _ := json.Marshal(Outliers)
+		json.Unmarshal(OutliersString, &o.Outliers)
 	}
 	
 

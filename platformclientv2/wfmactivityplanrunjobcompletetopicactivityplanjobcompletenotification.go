@@ -7,8 +7,8 @@ import (
 	"strings"
 )
 
-// Wfmactivityplanjobcompletetopicactivityplanoccurrencedeletionjobcompletenotification
-type Wfmactivityplanjobcompletetopicactivityplanoccurrencedeletionjobcompletenotification struct { 
+// Wfmactivityplanrunjobcompletetopicactivityplanjobcompletenotification
+type Wfmactivityplanrunjobcompletetopicactivityplanjobcompletenotification struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Id
@@ -18,23 +18,20 @@ type Wfmactivityplanjobcompletetopicactivityplanoccurrencedeletionjobcompletenot
 	VarType *string `json:"type,omitempty"`
 
 	// ActivityPlan
-	ActivityPlan *Wfmactivityplanjobcompletetopicactivityplanreference `json:"activityPlan,omitempty"`
+	ActivityPlan *Wfmactivityplanrunjobcompletetopicactivityplanreference `json:"activityPlan,omitempty"`
 
 	// Status
 	Status *string `json:"status,omitempty"`
 
 	// Exceptions
-	Exceptions *[]Wfmactivityplanjobcompletetopicactivityplanjobexception `json:"exceptions,omitempty"`
+	Exceptions *[]Wfmactivityplanrunjobcompletetopicactivityplanjobexception `json:"exceptions,omitempty"`
 
 	// VarError
-	VarError *Wfmactivityplanjobcompletetopicerrorbody `json:"error,omitempty"`
-
-	// Occurrence
-	Occurrence *Wfmactivityplanjobcompletetopicactivityplanoccurrencereference `json:"occurrence,omitempty"`
+	VarError *Wfmactivityplanrunjobcompletetopicerrorbody `json:"error,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Wfmactivityplanjobcompletetopicactivityplanoccurrencedeletionjobcompletenotification) SetField(field string, fieldValue interface{}) {
+func (o *Wfmactivityplanrunjobcompletetopicactivityplanjobcompletenotification) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -55,7 +52,7 @@ func (o *Wfmactivityplanjobcompletetopicactivityplanoccurrencedeletionjobcomplet
 	o.SetFieldNames[field] = true
 }
 
-func (o Wfmactivityplanjobcompletetopicactivityplanoccurrencedeletionjobcompletenotification) MarshalJSON() ([]byte, error) {
+func (o Wfmactivityplanrunjobcompletetopicactivityplanjobcompletenotification) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -93,22 +90,20 @@ func (o Wfmactivityplanjobcompletetopicactivityplanoccurrencedeletionjobcomplete
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Wfmactivityplanjobcompletetopicactivityplanoccurrencedeletionjobcompletenotification
+	type Alias Wfmactivityplanrunjobcompletetopicactivityplanjobcompletenotification
 	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
 		VarType *string `json:"type,omitempty"`
 		
-		ActivityPlan *Wfmactivityplanjobcompletetopicactivityplanreference `json:"activityPlan,omitempty"`
+		ActivityPlan *Wfmactivityplanrunjobcompletetopicactivityplanreference `json:"activityPlan,omitempty"`
 		
 		Status *string `json:"status,omitempty"`
 		
-		Exceptions *[]Wfmactivityplanjobcompletetopicactivityplanjobexception `json:"exceptions,omitempty"`
+		Exceptions *[]Wfmactivityplanrunjobcompletetopicactivityplanjobexception `json:"exceptions,omitempty"`
 		
-		VarError *Wfmactivityplanjobcompletetopicerrorbody `json:"error,omitempty"`
-		
-		Occurrence *Wfmactivityplanjobcompletetopicactivityplanoccurrencereference `json:"occurrence,omitempty"`
+		VarError *Wfmactivityplanrunjobcompletetopicerrorbody `json:"error,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -122,49 +117,42 @@ func (o Wfmactivityplanjobcompletetopicactivityplanoccurrencedeletionjobcomplete
 		Exceptions: o.Exceptions,
 		
 		VarError: o.VarError,
-		
-		Occurrence: o.Occurrence,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Wfmactivityplanjobcompletetopicactivityplanoccurrencedeletionjobcompletenotification) UnmarshalJSON(b []byte) error {
-	var WfmactivityplanjobcompletetopicactivityplanoccurrencedeletionjobcompletenotificationMap map[string]interface{}
-	err := json.Unmarshal(b, &WfmactivityplanjobcompletetopicactivityplanoccurrencedeletionjobcompletenotificationMap)
+func (o *Wfmactivityplanrunjobcompletetopicactivityplanjobcompletenotification) UnmarshalJSON(b []byte) error {
+	var WfmactivityplanrunjobcompletetopicactivityplanjobcompletenotificationMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmactivityplanrunjobcompletetopicactivityplanjobcompletenotificationMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := WfmactivityplanjobcompletetopicactivityplanoccurrencedeletionjobcompletenotificationMap["id"].(string); ok {
+	if Id, ok := WfmactivityplanrunjobcompletetopicactivityplanjobcompletenotificationMap["id"].(string); ok {
 		o.Id = &Id
 	}
     
-	if VarType, ok := WfmactivityplanjobcompletetopicactivityplanoccurrencedeletionjobcompletenotificationMap["type"].(string); ok {
+	if VarType, ok := WfmactivityplanrunjobcompletetopicactivityplanjobcompletenotificationMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
     
-	if ActivityPlan, ok := WfmactivityplanjobcompletetopicactivityplanoccurrencedeletionjobcompletenotificationMap["activityPlan"].(map[string]interface{}); ok {
+	if ActivityPlan, ok := WfmactivityplanrunjobcompletetopicactivityplanjobcompletenotificationMap["activityPlan"].(map[string]interface{}); ok {
 		ActivityPlanString, _ := json.Marshal(ActivityPlan)
 		json.Unmarshal(ActivityPlanString, &o.ActivityPlan)
 	}
 	
-	if Status, ok := WfmactivityplanjobcompletetopicactivityplanoccurrencedeletionjobcompletenotificationMap["status"].(string); ok {
+	if Status, ok := WfmactivityplanrunjobcompletetopicactivityplanjobcompletenotificationMap["status"].(string); ok {
 		o.Status = &Status
 	}
     
-	if Exceptions, ok := WfmactivityplanjobcompletetopicactivityplanoccurrencedeletionjobcompletenotificationMap["exceptions"].([]interface{}); ok {
+	if Exceptions, ok := WfmactivityplanrunjobcompletetopicactivityplanjobcompletenotificationMap["exceptions"].([]interface{}); ok {
 		ExceptionsString, _ := json.Marshal(Exceptions)
 		json.Unmarshal(ExceptionsString, &o.Exceptions)
 	}
 	
-	if VarError, ok := WfmactivityplanjobcompletetopicactivityplanoccurrencedeletionjobcompletenotificationMap["error"].(map[string]interface{}); ok {
+	if VarError, ok := WfmactivityplanrunjobcompletetopicactivityplanjobcompletenotificationMap["error"].(map[string]interface{}); ok {
 		VarErrorString, _ := json.Marshal(VarError)
 		json.Unmarshal(VarErrorString, &o.VarError)
-	}
-	
-	if Occurrence, ok := WfmactivityplanjobcompletetopicactivityplanoccurrencedeletionjobcompletenotificationMap["occurrence"].(map[string]interface{}); ok {
-		OccurrenceString, _ := json.Marshal(Occurrence)
-		json.Unmarshal(OccurrenceString, &o.Occurrence)
 	}
 	
 
@@ -172,7 +160,7 @@ func (o *Wfmactivityplanjobcompletetopicactivityplanoccurrencedeletionjobcomplet
 }
 
 // String returns a JSON representation of the model
-func (o *Wfmactivityplanjobcompletetopicactivityplanoccurrencedeletionjobcompletenotification) String() string {
+func (o *Wfmactivityplanrunjobcompletetopicactivityplanjobcompletenotification) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

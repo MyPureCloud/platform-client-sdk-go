@@ -14,7 +14,7 @@ type Querycriteriaitem struct {
 	// Key - The key to filter on
 	Key *string `json:"key,omitempty"`
 
-	// Operator - The operator for comparison
+	// Operator - The operator for comparison. For DivisionId, only EQUALS and NOTEQUALS operators are supported.
 	Operator *string `json:"operator,omitempty"`
 
 	// Value - The target value to match

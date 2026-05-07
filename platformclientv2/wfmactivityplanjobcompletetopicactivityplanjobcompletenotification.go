@@ -7,8 +7,8 @@ import (
 	"strings"
 )
 
-// Wfmactivityplanrunjobcompletetopicactivityplanrunjobcompletenotification
-type Wfmactivityplanrunjobcompletetopicactivityplanrunjobcompletenotification struct { 
+// Wfmactivityplanjobcompletetopicactivityplanjobcompletenotification
+type Wfmactivityplanjobcompletetopicactivityplanjobcompletenotification struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Id
@@ -18,20 +18,20 @@ type Wfmactivityplanrunjobcompletetopicactivityplanrunjobcompletenotification st
 	VarType *string `json:"type,omitempty"`
 
 	// ActivityPlan
-	ActivityPlan *Wfmactivityplanrunjobcompletetopicactivityplanreference `json:"activityPlan,omitempty"`
+	ActivityPlan *Wfmactivityplanjobcompletetopicactivityplanreference `json:"activityPlan,omitempty"`
 
 	// Status
 	Status *string `json:"status,omitempty"`
 
 	// Exceptions
-	Exceptions *[]Wfmactivityplanrunjobcompletetopicactivityplanjobexception `json:"exceptions,omitempty"`
+	Exceptions *[]Wfmactivityplanjobcompletetopicactivityplanjobexception `json:"exceptions,omitempty"`
 
 	// VarError
-	VarError *Wfmactivityplanrunjobcompletetopicerrorbody `json:"error,omitempty"`
+	VarError *Wfmactivityplanjobcompletetopicerrorbody `json:"error,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Wfmactivityplanrunjobcompletetopicactivityplanrunjobcompletenotification) SetField(field string, fieldValue interface{}) {
+func (o *Wfmactivityplanjobcompletetopicactivityplanjobcompletenotification) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -52,7 +52,7 @@ func (o *Wfmactivityplanrunjobcompletetopicactivityplanrunjobcompletenotificatio
 	o.SetFieldNames[field] = true
 }
 
-func (o Wfmactivityplanrunjobcompletetopicactivityplanrunjobcompletenotification) MarshalJSON() ([]byte, error) {
+func (o Wfmactivityplanjobcompletetopicactivityplanjobcompletenotification) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -90,20 +90,20 @@ func (o Wfmactivityplanrunjobcompletetopicactivityplanrunjobcompletenotification
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Wfmactivityplanrunjobcompletetopicactivityplanrunjobcompletenotification
+	type Alias Wfmactivityplanjobcompletetopicactivityplanjobcompletenotification
 	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
 		VarType *string `json:"type,omitempty"`
 		
-		ActivityPlan *Wfmactivityplanrunjobcompletetopicactivityplanreference `json:"activityPlan,omitempty"`
+		ActivityPlan *Wfmactivityplanjobcompletetopicactivityplanreference `json:"activityPlan,omitempty"`
 		
 		Status *string `json:"status,omitempty"`
 		
-		Exceptions *[]Wfmactivityplanrunjobcompletetopicactivityplanjobexception `json:"exceptions,omitempty"`
+		Exceptions *[]Wfmactivityplanjobcompletetopicactivityplanjobexception `json:"exceptions,omitempty"`
 		
-		VarError *Wfmactivityplanrunjobcompletetopicerrorbody `json:"error,omitempty"`
+		VarError *Wfmactivityplanjobcompletetopicerrorbody `json:"error,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -121,36 +121,36 @@ func (o Wfmactivityplanrunjobcompletetopicactivityplanrunjobcompletenotification
 	})
 }
 
-func (o *Wfmactivityplanrunjobcompletetopicactivityplanrunjobcompletenotification) UnmarshalJSON(b []byte) error {
-	var WfmactivityplanrunjobcompletetopicactivityplanrunjobcompletenotificationMap map[string]interface{}
-	err := json.Unmarshal(b, &WfmactivityplanrunjobcompletetopicactivityplanrunjobcompletenotificationMap)
+func (o *Wfmactivityplanjobcompletetopicactivityplanjobcompletenotification) UnmarshalJSON(b []byte) error {
+	var WfmactivityplanjobcompletetopicactivityplanjobcompletenotificationMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmactivityplanjobcompletetopicactivityplanjobcompletenotificationMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := WfmactivityplanrunjobcompletetopicactivityplanrunjobcompletenotificationMap["id"].(string); ok {
+	if Id, ok := WfmactivityplanjobcompletetopicactivityplanjobcompletenotificationMap["id"].(string); ok {
 		o.Id = &Id
 	}
     
-	if VarType, ok := WfmactivityplanrunjobcompletetopicactivityplanrunjobcompletenotificationMap["type"].(string); ok {
+	if VarType, ok := WfmactivityplanjobcompletetopicactivityplanjobcompletenotificationMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
     
-	if ActivityPlan, ok := WfmactivityplanrunjobcompletetopicactivityplanrunjobcompletenotificationMap["activityPlan"].(map[string]interface{}); ok {
+	if ActivityPlan, ok := WfmactivityplanjobcompletetopicactivityplanjobcompletenotificationMap["activityPlan"].(map[string]interface{}); ok {
 		ActivityPlanString, _ := json.Marshal(ActivityPlan)
 		json.Unmarshal(ActivityPlanString, &o.ActivityPlan)
 	}
 	
-	if Status, ok := WfmactivityplanrunjobcompletetopicactivityplanrunjobcompletenotificationMap["status"].(string); ok {
+	if Status, ok := WfmactivityplanjobcompletetopicactivityplanjobcompletenotificationMap["status"].(string); ok {
 		o.Status = &Status
 	}
     
-	if Exceptions, ok := WfmactivityplanrunjobcompletetopicactivityplanrunjobcompletenotificationMap["exceptions"].([]interface{}); ok {
+	if Exceptions, ok := WfmactivityplanjobcompletetopicactivityplanjobcompletenotificationMap["exceptions"].([]interface{}); ok {
 		ExceptionsString, _ := json.Marshal(Exceptions)
 		json.Unmarshal(ExceptionsString, &o.Exceptions)
 	}
 	
-	if VarError, ok := WfmactivityplanrunjobcompletetopicactivityplanrunjobcompletenotificationMap["error"].(map[string]interface{}); ok {
+	if VarError, ok := WfmactivityplanjobcompletetopicactivityplanjobcompletenotificationMap["error"].(map[string]interface{}); ok {
 		VarErrorString, _ := json.Marshal(VarError)
 		json.Unmarshal(VarErrorString, &o.VarError)
 	}
@@ -160,7 +160,7 @@ func (o *Wfmactivityplanrunjobcompletetopicactivityplanrunjobcompletenotificatio
 }
 
 // String returns a JSON representation of the model
-func (o *Wfmactivityplanrunjobcompletetopicactivityplanrunjobcompletenotification) String() string {
+func (o *Wfmactivityplanjobcompletetopicactivityplanjobcompletenotification) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

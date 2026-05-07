@@ -3246,14 +3246,14 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitActivityplan(b
 // GetWorkforcemanagementBusinessunitActivityplanRunsJob invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/activityplans/{activityPlanId}/runs/jobs/{jobId}
 //
 // Gets an activity plan run job
-func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitActivityplanRunsJob(businessUnitId string, activityPlanId string, jobId string) (*Activityplanrunjobresponse, *APIResponse, error) {
+func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitActivityplanRunsJob(businessUnitId string, activityPlanId string, jobId string) (*Activityplanjobresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/activityplans/{activityPlanId}/runs/jobs/{jobId}"
 	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
 	path = strings.Replace(path, "{activityPlanId}", url.PathEscape(fmt.Sprintf("%v", activityPlanId)), -1)
 	path = strings.Replace(path, "{jobId}", url.PathEscape(fmt.Sprintf("%v", jobId)), -1)
-	defaultReturn := new(Activityplanrunjobresponse)
+	defaultReturn := new(Activityplanjobresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -3321,14 +3321,14 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitActivityplanRu
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Activityplanrunjobresponse
+	var successPayload *Activityplanjobresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Activityplanrunjobresponse" == "string" {
+		if "Activityplanjobresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -17453,13 +17453,13 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitActivitycodes
 // Run an activity plan manually
 //
 // Triggers a job running the activity plan. The activity plan cannot be updated until the job completes
-func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitActivityplanRunsJobs(businessUnitId string, activityPlanId string) (*Activityplanjobresponse, *APIResponse, error) {
+func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitActivityplanRunsJobs(businessUnitId string, activityPlanId string) (*Activityplanrunjobresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/activityplans/{activityPlanId}/runs/jobs"
 	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
 	path = strings.Replace(path, "{activityPlanId}", url.PathEscape(fmt.Sprintf("%v", activityPlanId)), -1)
-	defaultReturn := new(Activityplanjobresponse)
+	defaultReturn := new(Activityplanrunjobresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -17522,14 +17522,14 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitActivityplanR
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Activityplanjobresponse
+	var successPayload *Activityplanrunjobresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Activityplanjobresponse" == "string" {
+		if "Activityplanrunjobresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

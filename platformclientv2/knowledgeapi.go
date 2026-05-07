@@ -1180,7 +1180,7 @@ func (a KnowledgeApi) GetKnowledgeConnection(connectionId string, expand []strin
 // GetKnowledgeConnectionOptions invokes GET /api/v2/knowledge/connections/{connectionId}/options
 //
 // Get connection options
-func (a KnowledgeApi) GetKnowledgeConnectionOptions(connectionId string, parentId string) (*Connectionoptionlisting, *APIResponse, error) {
+func (a KnowledgeApi) GetKnowledgeConnectionOptions(connectionId string, after string, pageSize string, parentId string) (*Connectionoptionlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/connections/{connectionId}/options"
@@ -1212,6 +1212,10 @@ func (a KnowledgeApi) GetKnowledgeConnectionOptions(connectionId string, parentI
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 	queryParams["parentId"] = a.Configuration.APIClient.ParameterToString(parentId, "")
 	
@@ -4561,12 +4565,12 @@ func (a KnowledgeApi) GetKnowledgeSettings(before string, after string, pageSize
 // GetKnowledgeSource invokes GET /api/v2/knowledge/sources/{sourceId}
 //
 // Get source
-func (a KnowledgeApi) GetKnowledgeSource(sourceId string, expand []string) (*V3sourcedetailedwitherrorresponse, *APIResponse, error) {
+func (a KnowledgeApi) GetKnowledgeSource(sourceId string, expand []string) (*V3sourceexpandableresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/sources/{sourceId}"
 	path = strings.Replace(path, "{sourceId}", url.PathEscape(fmt.Sprintf("%v", sourceId)), -1)
-	defaultReturn := new(V3sourcedetailedwitherrorresponse)
+	defaultReturn := new(V3sourceexpandableresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -4626,14 +4630,14 @@ func (a KnowledgeApi) GetKnowledgeSource(sourceId string, expand []string) (*V3s
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *V3sourcedetailedwitherrorresponse
+	var successPayload *V3sourceexpandableresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "V3sourcedetailedwitherrorresponse" == "string" {
+		if "V3sourceexpandableresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -4821,11 +4825,11 @@ func (a KnowledgeApi) GetKnowledgeSourceSynchronizations(sourceId string, before
 // GetKnowledgeSources invokes GET /api/v2/knowledge/sources
 //
 // List sources
-func (a KnowledgeApi) GetKnowledgeSources(expand []string) (*V3sourcewitherrorlisting, *APIResponse, error) {
+func (a KnowledgeApi) GetKnowledgeSources(expand []string) (*V3sourceexpandablelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/sources"
-	defaultReturn := new(V3sourcewitherrorlisting)
+	defaultReturn := new(V3sourceexpandablelisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -4880,14 +4884,14 @@ func (a KnowledgeApi) GetKnowledgeSources(expand []string) (*V3sourcewitherrorli
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *V3sourcewitherrorlisting
+	var successPayload *V3sourceexpandablelisting
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "V3sourcewitherrorlisting" == "string" {
+		if "V3sourceexpandablelisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

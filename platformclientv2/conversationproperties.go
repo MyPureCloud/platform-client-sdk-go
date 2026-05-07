@@ -38,7 +38,7 @@ type Conversationproperties struct {
 	// IsMonitored - Indicates filtering for monitored
 	IsMonitored *bool `json:"isMonitored,omitempty"`
 
-	// IsScreenMonitored - Indicates filtering for screenMonitored
+	// IsScreenMonitored - Deprecated: Use screenMonitored
 	IsScreenMonitored *bool `json:"isScreenMonitored,omitempty"`
 
 	// FilterWrapUpNotes - Indicates filtering for WrapUpNotes

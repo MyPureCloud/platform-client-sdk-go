@@ -10,7 +10,10 @@ import (
 // Setwhatsappintegrationactionsettings
 type Setwhatsappintegrationactionsettings struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// WhatsAppIntegrationId - The ID of the WhatsApp integration.
+	WhatsAppIntegrationId *string `json:"whatsAppIntegrationId,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Setwhatsappintegrationactionsettings) SetField(field string, fieldValue interface{}) {
@@ -74,8 +77,12 @@ func (o Setwhatsappintegrationactionsettings) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Setwhatsappintegrationactionsettings
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		WhatsAppIntegrationId *string `json:"whatsAppIntegrationId,omitempty"`
+		Alias
+	}{ 
+		WhatsAppIntegrationId: o.WhatsAppIntegrationId,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -86,6 +93,10 @@ func (o *Setwhatsappintegrationactionsettings) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if WhatsAppIntegrationId, ok := SetwhatsappintegrationactionsettingsMap["whatsAppIntegrationId"].(string); ok {
+		o.WhatsAppIntegrationId = &WhatsAppIntegrationId
+	}
+    
 
 	return nil
 }

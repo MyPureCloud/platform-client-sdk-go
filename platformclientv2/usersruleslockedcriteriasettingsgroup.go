@@ -11,8 +11,8 @@ import (
 type Usersruleslockedcriteriasettingsgroup struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Operator - The operator for this criteria
-	Operator *string `json:"operator,omitempty"`
+	// Operators - The allowed operators for this criteria
+	Operators *[]string `json:"operators,omitempty"`
 
 	// Container - The container that the ids belong to
 	Container *string `json:"container,omitempty"`
@@ -84,14 +84,14 @@ func (o Usersruleslockedcriteriasettingsgroup) MarshalJSON() ([]byte, error) {
 	type Alias Usersruleslockedcriteriasettingsgroup
 	
 	return json.Marshal(&struct { 
-		Operator *string `json:"operator,omitempty"`
+		Operators *[]string `json:"operators,omitempty"`
 		
 		Container *string `json:"container,omitempty"`
 		
 		MaxIdCount *int `json:"maxIdCount,omitempty"`
 		Alias
 	}{ 
-		Operator: o.Operator,
+		Operators: o.Operators,
 		
 		Container: o.Container,
 		
@@ -107,10 +107,11 @@ func (o *Usersruleslockedcriteriasettingsgroup) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
-	if Operator, ok := UsersruleslockedcriteriasettingsgroupMap["operator"].(string); ok {
-		o.Operator = &Operator
+	if Operators, ok := UsersruleslockedcriteriasettingsgroupMap["operators"].([]interface{}); ok {
+		OperatorsString, _ := json.Marshal(Operators)
+		json.Unmarshal(OperatorsString, &o.Operators)
 	}
-    
+	
 	if Container, ok := UsersruleslockedcriteriasettingsgroupMap["container"].(string); ok {
 		o.Container = &Container
 	}

@@ -10,10 +10,7 @@ import (
 // Variablevalidation
 type Variablevalidation struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`
-	// AdditionalProperties
-	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
-}
+	SetFieldNames map[string]bool `json:"-"`}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Variablevalidation) SetField(field string, fieldValue interface{}) {
@@ -77,12 +74,8 @@ func (o Variablevalidation) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Variablevalidation
 	
-	return json.Marshal(&struct { 
-		AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
-		Alias
-	}{ 
-		AdditionalProperties: o.AdditionalProperties,
-		Alias:    (Alias)(o),
+	return json.Marshal(&struct { Alias
+	}{ Alias:    (Alias)(o),
 	})
 }
 
@@ -91,11 +84,6 @@ func (o *Variablevalidation) UnmarshalJSON(b []byte) error {
 	err := json.Unmarshal(b, &VariablevalidationMap)
 	if err != nil {
 		return err
-	}
-	
-	if AdditionalProperties, ok := VariablevalidationMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

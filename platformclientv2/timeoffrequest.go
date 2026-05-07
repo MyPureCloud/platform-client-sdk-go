@@ -12,7 +12,7 @@ import (
 type Timeoffrequest struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The id of the time off request
+	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
 	// User - The user that the time off request belongs to

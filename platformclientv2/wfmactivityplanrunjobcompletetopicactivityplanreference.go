@@ -13,6 +13,9 @@ type Wfmactivityplanrunjobcompletetopicactivityplanreference struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// Id
 	Id *string `json:"id,omitempty"`
+
+	// Occurrences
+	Occurrences *[]Wfmactivityplanrunjobcompletetopicactivityplanoccurrencereference `json:"occurrences,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +82,13 @@ func (o Wfmactivityplanrunjobcompletetopicactivityplanreference) MarshalJSON() (
 	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
+		
+		Occurrences *[]Wfmactivityplanrunjobcompletetopicactivityplanoccurrencereference `json:"occurrences,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
+		
+		Occurrences: o.Occurrences,
 		Alias:    (Alias)(o),
 	})
 }
@@ -97,6 +104,11 @@ func (o *Wfmactivityplanrunjobcompletetopicactivityplanreference) UnmarshalJSON(
 		o.Id = &Id
 	}
     
+	if Occurrences, ok := WfmactivityplanrunjobcompletetopicactivityplanreferenceMap["occurrences"].([]interface{}); ok {
+		OccurrencesString, _ := json.Marshal(Occurrences)
+		json.Unmarshal(OccurrencesString, &o.Occurrences)
+	}
+	
 
 	return nil
 }

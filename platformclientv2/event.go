@@ -30,7 +30,7 @@ type Event struct {
 	// EventType - The name representing the type of event.
 	EventType *string `json:"eventType,omitempty"`
 
-	// OutcomeAchievedEvent - Event where a customer has achieved a specific outcome or goal.
+	// OutcomeAchievedEvent - Deprecated. Event where a customer has achieved a specific outcome or goal. Journey Outcomes is being removed. See https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/
 	OutcomeAchievedEvent *Outcomeachievedevent `json:"outcomeAchievedEvent,omitempty"`
 
 	// SegmentAssignmentEvent - Event that represents a segment being assigned.

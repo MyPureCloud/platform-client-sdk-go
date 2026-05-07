@@ -62,6 +62,9 @@ type Samlprovider struct {
 	// MetadataURL
 	MetadataURL *string `json:"metadataURL,omitempty"`
 
+	// ForceAuthn
+	ForceAuthn *bool `json:"forceAuthn,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -163,6 +166,8 @@ func (o Samlprovider) MarshalJSON() ([]byte, error) {
 		
 		MetadataURL *string `json:"metadataURL,omitempty"`
 		
+		ForceAuthn *bool `json:"forceAuthn,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -199,6 +204,8 @@ func (o Samlprovider) MarshalJSON() ([]byte, error) {
 		DisplayOnLogin: o.DisplayOnLogin,
 		
 		MetadataURL: o.MetadataURL,
+		
+		ForceAuthn: o.ForceAuthn,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -279,6 +286,10 @@ func (o *Samlprovider) UnmarshalJSON(b []byte) error {
     
 	if MetadataURL, ok := SamlproviderMap["metadataURL"].(string); ok {
 		o.MetadataURL = &MetadataURL
+	}
+    
+	if ForceAuthn, ok := SamlproviderMap["forceAuthn"].(bool); ok {
+		o.ForceAuthn = &ForceAuthn
 	}
     
 	if SelfUri, ok := SamlproviderMap["selfUri"].(string); ok {

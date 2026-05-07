@@ -24,7 +24,13 @@ type Variable struct {
 	Description *string `json:"description,omitempty"`
 
 	// Validation - The validation configuration for the variable. Optional - if not present, no validation is applied.
-	Validation *Variablevalidation `json:"validation,omitempty"`
+	Validation *interface{} `json:"validation,omitempty"`
+
+	// ListValues - The values configuration for List variables. Only applicable when type is 'List'.
+	ListValues *interface{} `json:"listValues,omitempty"`
+
+	// ListVariables - The variables that the list result will be stored in. Only applicable when type is 'List'.
+	ListVariables *[]Variable `json:"listVariables,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -98,7 +104,11 @@ func (o Variable) MarshalJSON() ([]byte, error) {
 		
 		Description *string `json:"description,omitempty"`
 		
-		Validation *Variablevalidation `json:"validation,omitempty"`
+		Validation *interface{} `json:"validation,omitempty"`
+		
+		ListValues *interface{} `json:"listValues,omitempty"`
+		
+		ListVariables *[]Variable `json:"listVariables,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -110,6 +120,10 @@ func (o Variable) MarshalJSON() ([]byte, error) {
 		Description: o.Description,
 		
 		Validation: o.Validation,
+		
+		ListValues: o.ListValues,
+		
+		ListVariables: o.ListVariables,
 		Alias:    (Alias)(o),
 	})
 }
@@ -140,6 +154,16 @@ func (o *Variable) UnmarshalJSON(b []byte) error {
 	if Validation, ok := VariableMap["validation"].(map[string]interface{}); ok {
 		ValidationString, _ := json.Marshal(Validation)
 		json.Unmarshal(ValidationString, &o.Validation)
+	}
+	
+	if ListValues, ok := VariableMap["listValues"].(map[string]interface{}); ok {
+		ListValuesString, _ := json.Marshal(ListValues)
+		json.Unmarshal(ListValuesString, &o.ListValues)
+	}
+	
+	if ListVariables, ok := VariableMap["listVariables"].([]interface{}); ok {
+		ListVariablesString, _ := json.Marshal(ListVariables)
+		json.Unmarshal(ListVariablesString, &o.ListVariables)
 	}
 	
 

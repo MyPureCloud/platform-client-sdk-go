@@ -26,6 +26,9 @@ type Worktypequeryrequest struct {
 	// After - The cursor that points to the end of the set of entities that has been returned.
 	After *string `json:"after,omitempty"`
 
+	// Expands - List of entity attributes to be expanded in the result.
+	Expands *string `json:"expands,omitempty"`
+
 	// Sort - Sort
 	Sort *Worktypequerysort `json:"sort,omitempty"`
 }
@@ -103,6 +106,8 @@ func (o Worktypequeryrequest) MarshalJSON() ([]byte, error) {
 		
 		After *string `json:"after,omitempty"`
 		
+		Expands *string `json:"expands,omitempty"`
+		
 		Sort *Worktypequerysort `json:"sort,omitempty"`
 		Alias
 	}{ 
@@ -115,6 +120,8 @@ func (o Worktypequeryrequest) MarshalJSON() ([]byte, error) {
 		Attributes: o.Attributes,
 		
 		After: o.After,
+		
+		Expands: o.Expands,
 		
 		Sort: o.Sort,
 		Alias:    (Alias)(o),
@@ -149,6 +156,10 @@ func (o *Worktypequeryrequest) UnmarshalJSON(b []byte) error {
 	
 	if After, ok := WorktypequeryrequestMap["after"].(string); ok {
 		o.After = &After
+	}
+    
+	if Expands, ok := WorktypequeryrequestMap["expands"].(string); ok {
+		o.Expands = &Expands
 	}
     
 	if Sort, ok := WorktypequeryrequestMap["sort"].(map[string]interface{}); ok {

@@ -44,6 +44,9 @@ type Evaluationquestion struct {
 	// DefaultAnswer - The default selected answer for the question
 	DefaultAnswer *Defaultanswer `json:"defaultAnswer,omitempty"`
 
+	// AutomatedScoringFocus - Focus setting for automated scoring
+	AutomatedScoringFocus *string `json:"automatedScoringFocus,omitempty"`
+
 	// IsKill
 	IsKill *bool `json:"isKill,omitempty"`
 
@@ -136,6 +139,8 @@ func (o Evaluationquestion) MarshalJSON() ([]byte, error) {
 		
 		DefaultAnswer *Defaultanswer `json:"defaultAnswer,omitempty"`
 		
+		AutomatedScoringFocus *string `json:"automatedScoringFocus,omitempty"`
+		
 		IsKill *bool `json:"isKill,omitempty"`
 		
 		IsCritical *bool `json:"isCritical,omitempty"`
@@ -162,6 +167,8 @@ func (o Evaluationquestion) MarshalJSON() ([]byte, error) {
 		MultipleSelectOptionQuestions: o.MultipleSelectOptionQuestions,
 		
 		DefaultAnswer: o.DefaultAnswer,
+		
+		AutomatedScoringFocus: o.AutomatedScoringFocus,
 		
 		IsKill: o.IsKill,
 		
@@ -225,6 +232,10 @@ func (o *Evaluationquestion) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(DefaultAnswerString, &o.DefaultAnswer)
 	}
 	
+	if AutomatedScoringFocus, ok := EvaluationquestionMap["automatedScoringFocus"].(string); ok {
+		o.AutomatedScoringFocus = &AutomatedScoringFocus
+	}
+    
 	if IsKill, ok := EvaluationquestionMap["isKill"].(bool); ok {
 		o.IsKill = &IsKill
 	}

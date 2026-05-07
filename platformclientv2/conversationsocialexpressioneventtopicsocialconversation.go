@@ -30,6 +30,9 @@ type Conversationsocialexpressioneventtopicsocialconversation struct {
 	// UtilizationLabelId
 	UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
 
+	// AccessAttributes
+	AccessAttributes *[]string `json:"accessAttributes,omitempty"`
+
 	// InactivityTimeout
 	InactivityTimeout *time.Time `json:"inactivityTimeout,omitempty"`
 
@@ -120,6 +123,8 @@ func (o Conversationsocialexpressioneventtopicsocialconversation) MarshalJSON() 
 		
 		UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
 		
+		AccessAttributes *[]string `json:"accessAttributes,omitempty"`
+		
 		InactivityTimeout *string `json:"inactivityTimeout,omitempty"`
 		
 		Divisions *[]Conversationsocialexpressioneventtopicconversationdivisionmembership `json:"divisions,omitempty"`
@@ -136,6 +141,8 @@ func (o Conversationsocialexpressioneventtopicsocialconversation) MarshalJSON() 
 		Address: o.Address,
 		
 		UtilizationLabelId: o.UtilizationLabelId,
+		
+		AccessAttributes: o.AccessAttributes,
 		
 		InactivityTimeout: InactivityTimeout,
 		
@@ -177,6 +184,11 @@ func (o *Conversationsocialexpressioneventtopicsocialconversation) UnmarshalJSON
 		o.UtilizationLabelId = &UtilizationLabelId
 	}
     
+	if AccessAttributes, ok := ConversationsocialexpressioneventtopicsocialconversationMap["accessAttributes"].([]interface{}); ok {
+		AccessAttributesString, _ := json.Marshal(AccessAttributes)
+		json.Unmarshal(AccessAttributesString, &o.AccessAttributes)
+	}
+	
 	if inactivityTimeoutString, ok := ConversationsocialexpressioneventtopicsocialconversationMap["inactivityTimeout"].(string); ok {
 		InactivityTimeout, _ := time.Parse("2006-01-02T15:04:05.999999Z", inactivityTimeoutString)
 		o.InactivityTimeout = &InactivityTimeout

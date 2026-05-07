@@ -410,7 +410,11 @@ func (a JourneyApi) DeleteJourneyExternaleventsSchema(schemaId string) (*APIResp
 
 // DeleteJourneyOutcome invokes DELETE /api/v2/journey/outcomes/{outcomeId}
 //
-// Delete an outcome.
+// Deprecated. Delete an outcome.
+//
+// Journey Outcomes is being removed. See https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/
+//
+// Deprecated: DeleteJourneyOutcome is deprecated
 func (a JourneyApi) DeleteJourneyOutcome(outcomeId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -485,7 +489,11 @@ func (a JourneyApi) DeleteJourneyOutcome(outcomeId string) (*APIResponse, error)
 
 // DeleteJourneyOutcomesPredictor invokes DELETE /api/v2/journey/outcomes/predictors/{predictorId}
 //
-// Delete an outcome predictor.
+// Deprecated. Delete an outcome predictor.
+//
+// Journey Outcomes is being removed. See https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/
+//
+// Deprecated: DeleteJourneyOutcomesPredictor is deprecated
 func (a JourneyApi) DeleteJourneyOutcomesPredictor(predictorId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -1312,7 +1320,11 @@ func (a JourneyApi) GetJourneyActionmaps(pageNumber int, pageSize int, sortBy st
 
 // GetJourneyActionmapsEstimatesJob invokes GET /api/v2/journey/actionmaps/estimates/jobs/{jobId}
 //
-// Get status of job.
+// Deprecated. Get status of job.
+//
+// Journey Outcomes is being removed. See https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/
+//
+// Deprecated: GetJourneyActionmapsEstimatesJob is deprecated
 func (a JourneyApi) GetJourneyActionmapsEstimatesJob(jobId string) (*string, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1394,7 +1406,11 @@ func (a JourneyApi) GetJourneyActionmapsEstimatesJob(jobId string) (*string, *AP
 
 // GetJourneyActionmapsEstimatesJobResults invokes GET /api/v2/journey/actionmaps/estimates/jobs/{jobId}/results
 //
-// Get estimates from completed job.
+// Deprecated. Get estimates from completed job.
+//
+// Journey Outcomes is being removed. See https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/
+//
+// Deprecated: GetJourneyActionmapsEstimatesJobResults is deprecated
 func (a JourneyApi) GetJourneyActionmapsEstimatesJobResults(jobId string) (*Actionmapestimateresult, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2627,7 +2643,11 @@ func (a JourneyApi) GetJourneyExternaleventsSchemasLimits() (*Schemaquantitylimi
 
 // GetJourneyOutcome invokes GET /api/v2/journey/outcomes/{outcomeId}
 //
-// Retrieve a single outcome.
+// Deprecated. Retrieve a single outcome.
+//
+// Journey Outcomes is being removed. See https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/
+//
+// Deprecated: GetJourneyOutcome is deprecated
 func (a JourneyApi) GetJourneyOutcome(outcomeId string) (*Outcome, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2709,7 +2729,11 @@ func (a JourneyApi) GetJourneyOutcome(outcomeId string) (*Outcome, *APIResponse,
 
 // GetJourneyOutcomes invokes GET /api/v2/journey/outcomes
 //
-// Retrieve all outcomes.
+// Deprecated. Retrieve all outcomes.
+//
+// Journey Outcomes is being removed. See https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/
+//
+// Deprecated: GetJourneyOutcomes is deprecated
 func (a JourneyApi) GetJourneyOutcomes(pageNumber int, pageSize int, sortBy string, outcomeIds []string, queryFields []string, queryValue string) (*Outcomelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2797,7 +2821,11 @@ func (a JourneyApi) GetJourneyOutcomes(pageNumber int, pageSize int, sortBy stri
 
 // GetJourneyOutcomesAttributionsJob invokes GET /api/v2/journey/outcomes/attributions/jobs/{jobId}
 //
-// Get job status.
+// Deprecated. Get job status.
+//
+// Journey Outcomes is being removed. See https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/
+//
+// Deprecated: GetJourneyOutcomesAttributionsJob is deprecated
 //
 // Preview: GetJourneyOutcomesAttributionsJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a JourneyApi) GetJourneyOutcomesAttributionsJob(jobId string) (*Outcomeattributionjobstateresponse, *APIResponse, error) {
@@ -2881,7 +2909,11 @@ func (a JourneyApi) GetJourneyOutcomesAttributionsJob(jobId string) (*Outcomeatt
 
 // GetJourneyOutcomesAttributionsJobResults invokes GET /api/v2/journey/outcomes/attributions/jobs/{jobId}/results
 //
-// Get outcome attribution entities from completed job.
+// Deprecated. Get outcome attribution entities from completed job.
+//
+// Journey Outcomes is being removed. See https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/
+//
+// Deprecated: GetJourneyOutcomesAttributionsJobResults is deprecated
 //
 // Preview: GetJourneyOutcomesAttributionsJobResults is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a JourneyApi) GetJourneyOutcomesAttributionsJobResults(jobId string) (*Outcomeattributionresponselisting, *APIResponse, error) {
@@ -2965,7 +2997,11 @@ func (a JourneyApi) GetJourneyOutcomesAttributionsJobResults(jobId string) (*Out
 
 // GetJourneyOutcomesPredictor invokes GET /api/v2/journey/outcomes/predictors/{predictorId}
 //
-// Retrieve a single outcome predictor.
+// Deprecated. Retrieve a single outcome predictor.
+//
+// Journey Outcomes is being removed. See https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/
+//
+// Deprecated: GetJourneyOutcomesPredictor is deprecated
 func (a JourneyApi) GetJourneyOutcomesPredictor(predictorId string) (*Outcomepredictor, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3047,7 +3083,11 @@ func (a JourneyApi) GetJourneyOutcomesPredictor(predictorId string) (*Outcomepre
 
 // GetJourneyOutcomesPredictors invokes GET /api/v2/journey/outcomes/predictors
 //
-// Retrieve all outcome predictors.
+// Deprecated. Retrieve all outcome predictors.
+//
+// Journey Outcomes is being removed. See https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/
+//
+// Deprecated: GetJourneyOutcomesPredictors is deprecated
 func (a JourneyApi) GetJourneyOutcomesPredictors() (*Outcomepredictorlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3465,7 +3505,11 @@ func (a JourneyApi) GetJourneySessionEvents(sessionId string, pageSize string, a
 
 // GetJourneySessionOutcomescores invokes GET /api/v2/journey/sessions/{sessionId}/outcomescores
 //
-// Retrieve latest outcome score associated with a session for all outcomes.
+// Deprecated. Retrieve latest outcome score associated with a session for all outcomes.
+//
+// Journey Outcomes is being removed. See https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/
+//
+// Deprecated: GetJourneySessionOutcomescores is deprecated
 func (a JourneyApi) GetJourneySessionOutcomescores(sessionId string) (*Outcomescoresresult, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5281,7 +5325,11 @@ func (a JourneyApi) PatchJourneyExternaleventsConfiguration(configId string, bod
 
 // PatchJourneyOutcome invokes PATCH /api/v2/journey/outcomes/{outcomeId}
 //
-// Update an outcome.
+// Deprecated. Update an outcome.
+//
+// Journey Outcomes is being removed. See https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/
+//
+// Deprecated: PatchJourneyOutcome is deprecated
 func (a JourneyApi) PatchJourneyOutcome(outcomeId string, body Patchoutcome) (*Outcome, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -5887,7 +5935,11 @@ func (a JourneyApi) PostJourneyActionmaps(body Actionmap) (*Actionmap, *APIRespo
 
 // PostJourneyActionmapsEstimatesJobs invokes POST /api/v2/journey/actionmaps/estimates/jobs
 //
-// Query for estimates
+// Deprecated. Query for estimates
+//
+// Journey Outcomes is being removed. See https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/
+//
+// Deprecated: PostJourneyActionmapsEstimatesJobs is deprecated
 func (a JourneyApi) PostJourneyActionmapsEstimatesJobs(body Actionmapestimaterequest) (*Estimatejobasyncresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6615,7 +6667,11 @@ func (a JourneyApi) PostJourneyFlowsPathsQuery(body Flowpathsquery) (*Flowpaths,
 
 // PostJourneyOutcomes invokes POST /api/v2/journey/outcomes
 //
-// Create an outcome.
+// Deprecated. Create an outcome.
+//
+// Journey Outcomes is being removed. See https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/
+//
+// Deprecated: PostJourneyOutcomes is deprecated
 func (a JourneyApi) PostJourneyOutcomes(body Outcomerequest) (*Outcome, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -6694,7 +6750,11 @@ func (a JourneyApi) PostJourneyOutcomes(body Outcomerequest) (*Outcome, *APIResp
 
 // PostJourneyOutcomesAttributionsJobs invokes POST /api/v2/journey/outcomes/attributions/jobs
 //
-// Create Outcome Attributions
+// Deprecated. Create Outcome Attributions
+//
+// Journey Outcomes is being removed. See https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/
+//
+// Deprecated: PostJourneyOutcomesAttributionsJobs is deprecated
 //
 // Preview: PostJourneyOutcomesAttributionsJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a JourneyApi) PostJourneyOutcomesAttributionsJobs(body Outcomeattributionlisting) (*Outcomeattributionasyncresponse, *APIResponse, error) {
@@ -6775,7 +6835,11 @@ func (a JourneyApi) PostJourneyOutcomesAttributionsJobs(body Outcomeattributionl
 
 // PostJourneyOutcomesPredictors invokes POST /api/v2/journey/outcomes/predictors
 //
-// Create an outcome predictor.
+// Deprecated. Create an outcome predictor.
+//
+// Journey Outcomes is being removed. See https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/
+//
+// Deprecated: PostJourneyOutcomesPredictors is deprecated
 func (a JourneyApi) PostJourneyOutcomesPredictors(body Outcomepredictorrequest) (*Outcomepredictor, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

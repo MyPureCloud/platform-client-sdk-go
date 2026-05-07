@@ -45,6 +45,9 @@ type Webeventrequest struct {
 	// Traits - Traits are attributes intrinsic to the customer that may be sent in selected events, e.g. email, givenName, cellPhone. Traits are used to collect information for identity resolution. For example, the same person might be using an application on different devices which might create two sessions with different customerIds. Additional information can be provided as traits to help link those two sessions and customers to a single external contact through common identifiers that were submitted via a form fill, message, or other input in both sessions.
 	Traits *map[string]Customeventattribute `json:"traits,omitempty"`
 
+	// ExternalId - An external identifier for the customer.
+	ExternalId *string `json:"externalId,omitempty"`
+
 	// CreatedDate - UTC timestamp indicating when the event actually took place, events older than an hour will be rejected. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	CreatedDate *time.Time `json:"createdDate,omitempty"`
 }
@@ -142,6 +145,8 @@ func (o Webeventrequest) MarshalJSON() ([]byte, error) {
 		
 		Traits *map[string]Customeventattribute `json:"traits,omitempty"`
 		
+		ExternalId *string `json:"externalId,omitempty"`
+		
 		CreatedDate *string `json:"createdDate,omitempty"`
 		Alias
 	}{ 
@@ -166,6 +171,8 @@ func (o Webeventrequest) MarshalJSON() ([]byte, error) {
 		Attributes: o.Attributes,
 		
 		Traits: o.Traits,
+		
+		ExternalId: o.ExternalId,
 		
 		CreatedDate: CreatedDate,
 		Alias:    (Alias)(o),
@@ -228,6 +235,10 @@ func (o *Webeventrequest) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(TraitsString, &o.Traits)
 	}
 	
+	if ExternalId, ok := WebeventrequestMap["externalId"].(string); ok {
+		o.ExternalId = &ExternalId
+	}
+    
 	if createdDateString, ok := WebeventrequestMap["createdDate"].(string); ok {
 		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
 		o.CreatedDate = &CreatedDate

@@ -16,6 +16,9 @@ type Lastresultoverallconditionsettings struct {
 
 	// SmsWrapupCodes - A list of wrapup code identifiers to match for SMS.
 	SmsWrapupCodes *[]string `json:"smsWrapupCodes,omitempty"`
+
+	// WhatsAppWrapupCodes - A list of wrapup code identifiers to match for WhatsApp.
+	WhatsAppWrapupCodes *[]string `json:"whatsAppWrapupCodes,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Lastresultoverallconditionsettings) MarshalJSON() ([]byte, error) {
 		EmailWrapupCodes *[]string `json:"emailWrapupCodes,omitempty"`
 		
 		SmsWrapupCodes *[]string `json:"smsWrapupCodes,omitempty"`
+		
+		WhatsAppWrapupCodes *[]string `json:"whatsAppWrapupCodes,omitempty"`
 		Alias
 	}{ 
 		EmailWrapupCodes: o.EmailWrapupCodes,
 		
 		SmsWrapupCodes: o.SmsWrapupCodes,
+		
+		WhatsAppWrapupCodes: o.WhatsAppWrapupCodes,
 		Alias:    (Alias)(o),
 	})
 }
@@ -108,6 +115,11 @@ func (o *Lastresultoverallconditionsettings) UnmarshalJSON(b []byte) error {
 	if SmsWrapupCodes, ok := LastresultoverallconditionsettingsMap["smsWrapupCodes"].([]interface{}); ok {
 		SmsWrapupCodesString, _ := json.Marshal(SmsWrapupCodes)
 		json.Unmarshal(SmsWrapupCodesString, &o.SmsWrapupCodes)
+	}
+	
+	if WhatsAppWrapupCodes, ok := LastresultoverallconditionsettingsMap["whatsAppWrapupCodes"].([]interface{}); ok {
+		WhatsAppWrapupCodesString, _ := json.Marshal(WhatsAppWrapupCodes)
+		json.Unmarshal(WhatsAppWrapupCodesString, &o.WhatsAppWrapupCodes)
 	}
 	
 

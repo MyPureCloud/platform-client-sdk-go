@@ -42,6 +42,9 @@ type Appeventrequest struct {
 	// Traits - Traits are attributes intrinsic to the customer that may be sent in selected events, (e.g. email, givenName, cellPhone). Traits are used to collect information for identity resolution. For example, the same person might be using an application on different devices which might create two sessions with different customerIds. Additional information can be provided as traits to help link those two sessions and customers to a single external contact through common identifiers that were submitted via a form fill, message, or other input in both sessions.
 	Traits *map[string]Customeventattribute `json:"traits,omitempty"`
 
+	// ExternalId - An external identifier for the customer.
+	ExternalId *string `json:"externalId,omitempty"`
+
 	// CustomerCookieId - A UUID representing the customer associated with the app event. This is expected to be set per application install or device and can be used to identify a single customer across multiple sessions. This identifier, along with others passed as traits, is used for identity resolution.
 	CustomerCookieId *string `json:"customerCookieId,omitempty"`
 
@@ -140,6 +143,8 @@ func (o Appeventrequest) MarshalJSON() ([]byte, error) {
 		
 		Traits *map[string]Customeventattribute `json:"traits,omitempty"`
 		
+		ExternalId *string `json:"externalId,omitempty"`
+		
 		CustomerCookieId *string `json:"customerCookieId,omitempty"`
 		
 		CreatedDate *string `json:"createdDate,omitempty"`
@@ -164,6 +169,8 @@ func (o Appeventrequest) MarshalJSON() ([]byte, error) {
 		Attributes: o.Attributes,
 		
 		Traits: o.Traits,
+		
+		ExternalId: o.ExternalId,
 		
 		CustomerCookieId: o.CustomerCookieId,
 		
@@ -225,6 +232,10 @@ func (o *Appeventrequest) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(TraitsString, &o.Traits)
 	}
 	
+	if ExternalId, ok := AppeventrequestMap["externalId"].(string); ok {
+		o.ExternalId = &ExternalId
+	}
+    
 	if CustomerCookieId, ok := AppeventrequestMap["customerCookieId"].(string); ok {
 		o.CustomerCookieId = &CustomerCookieId
 	}

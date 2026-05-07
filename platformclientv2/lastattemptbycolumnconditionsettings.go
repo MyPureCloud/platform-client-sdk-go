@@ -17,6 +17,9 @@ type Lastattemptbycolumnconditionsettings struct {
 	// SmsColumnName - The name of the contact column to evaluate for SMS.
 	SmsColumnName *string `json:"smsColumnName,omitempty"`
 
+	// WhatsAppColumnName - The name of the contact column to evaluate for WhatsApp.
+	WhatsAppColumnName *string `json:"whatsAppColumnName,omitempty"`
+
 	// Operator - The operator to use when comparing values.
 	Operator *string `json:"operator,omitempty"`
 
@@ -91,6 +94,8 @@ func (o Lastattemptbycolumnconditionsettings) MarshalJSON() ([]byte, error) {
 		
 		SmsColumnName *string `json:"smsColumnName,omitempty"`
 		
+		WhatsAppColumnName *string `json:"whatsAppColumnName,omitempty"`
+		
 		Operator *string `json:"operator,omitempty"`
 		
 		Value *string `json:"value,omitempty"`
@@ -99,6 +104,8 @@ func (o Lastattemptbycolumnconditionsettings) MarshalJSON() ([]byte, error) {
 		EmailColumnName: o.EmailColumnName,
 		
 		SmsColumnName: o.SmsColumnName,
+		
+		WhatsAppColumnName: o.WhatsAppColumnName,
 		
 		Operator: o.Operator,
 		
@@ -120,6 +127,10 @@ func (o *Lastattemptbycolumnconditionsettings) UnmarshalJSON(b []byte) error {
     
 	if SmsColumnName, ok := LastattemptbycolumnconditionsettingsMap["smsColumnName"].(string); ok {
 		o.SmsColumnName = &SmsColumnName
+	}
+    
+	if WhatsAppColumnName, ok := LastattemptbycolumnconditionsettingsMap["whatsAppColumnName"].(string); ok {
+		o.WhatsAppColumnName = &WhatsAppColumnName
 	}
     
 	if Operator, ok := LastattemptbycolumnconditionsettingsMap["operator"].(string); ok {

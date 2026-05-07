@@ -13,6 +13,15 @@ type Connectionoptionlisting struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// Entities
 	Entities *[]Connectionoption `json:"entities,omitempty"`
+
+	// NextUri
+	NextUri *string `json:"nextUri,omitempty"`
+
+	// SelfUri
+	SelfUri *string `json:"selfUri,omitempty"`
+
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +88,21 @@ func (o Connectionoptionlisting) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		Entities *[]Connectionoption `json:"entities,omitempty"`
+		
+		NextUri *string `json:"nextUri,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		
+		PreviousUri *string `json:"previousUri,omitempty"`
 		Alias
 	}{ 
 		Entities: o.Entities,
+		
+		NextUri: o.NextUri,
+		
+		SelfUri: o.SelfUri,
+		
+		PreviousUri: o.PreviousUri,
 		Alias:    (Alias)(o),
 	})
 }
@@ -98,6 +119,18 @@ func (o *Connectionoptionlisting) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(EntitiesString, &o.Entities)
 	}
 	
+	if NextUri, ok := ConnectionoptionlistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
+	}
+    
+	if SelfUri, ok := ConnectionoptionlistingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+    
+	if PreviousUri, ok := ConnectionoptionlistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
+	}
+    
 
 	return nil
 }

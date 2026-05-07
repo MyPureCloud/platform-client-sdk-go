@@ -36,6 +36,12 @@ type Recordingjobsquery struct {
 	// IncludeScreenRecordings - Whether to include Screen recordings for the action, default value = true 
 	IncludeScreenRecordings *bool `json:"includeScreenRecordings,omitempty"`
 
+	// IncludePolicyBasedRecordings - Whether to include policy-based recordings for the action, default value = true
+	IncludePolicyBasedRecordings *bool `json:"includePolicyBasedRecordings,omitempty"`
+
+	// IncludeSnippetRecordings - Whether to include snippet recordings for the action, default value = true
+	IncludeSnippetRecordings *bool `json:"includeSnippetRecordings,omitempty"`
+
 	// ClearExport - For DELETE action, setting this to true will clear any pending exports for recordings. This field is only used for DELETE action. Default value = false
 	ClearExport *bool `json:"clearExport,omitempty"`
 
@@ -141,6 +147,10 @@ func (o Recordingjobsquery) MarshalJSON() ([]byte, error) {
 		
 		IncludeScreenRecordings *bool `json:"includeScreenRecordings,omitempty"`
 		
+		IncludePolicyBasedRecordings *bool `json:"includePolicyBasedRecordings,omitempty"`
+		
+		IncludeSnippetRecordings *bool `json:"includeSnippetRecordings,omitempty"`
+		
 		ClearExport *bool `json:"clearExport,omitempty"`
 		
 		ConversationQuery *Asyncconversationquery `json:"conversationQuery,omitempty"`
@@ -163,6 +173,10 @@ func (o Recordingjobsquery) MarshalJSON() ([]byte, error) {
 		IncludeRecordingsWithSensitiveData: o.IncludeRecordingsWithSensitiveData,
 		
 		IncludeScreenRecordings: o.IncludeScreenRecordings,
+		
+		IncludePolicyBasedRecordings: o.IncludePolicyBasedRecordings,
+		
+		IncludeSnippetRecordings: o.IncludeSnippetRecordings,
 		
 		ClearExport: o.ClearExport,
 		
@@ -214,6 +228,14 @@ func (o *Recordingjobsquery) UnmarshalJSON(b []byte) error {
     
 	if IncludeScreenRecordings, ok := RecordingjobsqueryMap["includeScreenRecordings"].(bool); ok {
 		o.IncludeScreenRecordings = &IncludeScreenRecordings
+	}
+    
+	if IncludePolicyBasedRecordings, ok := RecordingjobsqueryMap["includePolicyBasedRecordings"].(bool); ok {
+		o.IncludePolicyBasedRecordings = &IncludePolicyBasedRecordings
+	}
+    
+	if IncludeSnippetRecordings, ok := RecordingjobsqueryMap["includeSnippetRecordings"].(bool); ok {
+		o.IncludeSnippetRecordings = &IncludeSnippetRecordings
 	}
     
 	if ClearExport, ok := RecordingjobsqueryMap["clearExport"].(bool); ok {

@@ -11,7 +11,7 @@ import (
 type Requestcontext struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Patterns - A list of one or more patterns to match.
+	// Patterns - A list of one or more patterns to match. Defaults to an empty list if not provided.
 	Patterns *[]Requestcontextpattern `json:"patterns,omitempty"`
 }
 

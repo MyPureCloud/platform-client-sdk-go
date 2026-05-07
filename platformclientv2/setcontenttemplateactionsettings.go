@@ -16,6 +16,9 @@ type Setcontenttemplateactionsettings struct {
 
 	// EmailContentTemplateId - A String containing the Email contentTemplateId.
 	EmailContentTemplateId *string `json:"emailContentTemplateId,omitempty"`
+
+	// WhatsAppContentTemplateId - A string containing the WhatsApp contentTemplateId.
+	WhatsAppContentTemplateId *string `json:"whatsAppContentTemplateId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Setcontenttemplateactionsettings) MarshalJSON() ([]byte, error) {
 		SmsContentTemplateId *string `json:"smsContentTemplateId,omitempty"`
 		
 		EmailContentTemplateId *string `json:"emailContentTemplateId,omitempty"`
+		
+		WhatsAppContentTemplateId *string `json:"whatsAppContentTemplateId,omitempty"`
 		Alias
 	}{ 
 		SmsContentTemplateId: o.SmsContentTemplateId,
 		
 		EmailContentTemplateId: o.EmailContentTemplateId,
+		
+		WhatsAppContentTemplateId: o.WhatsAppContentTemplateId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -106,6 +113,10 @@ func (o *Setcontenttemplateactionsettings) UnmarshalJSON(b []byte) error {
     
 	if EmailContentTemplateId, ok := SetcontenttemplateactionsettingsMap["emailContentTemplateId"].(string); ok {
 		o.EmailContentTemplateId = &EmailContentTemplateId
+	}
+    
+	if WhatsAppContentTemplateId, ok := SetcontenttemplateactionsettingsMap["whatsAppContentTemplateId"].(string); ok {
+		o.WhatsAppContentTemplateId = &WhatsAppContentTemplateId
 	}
     
 

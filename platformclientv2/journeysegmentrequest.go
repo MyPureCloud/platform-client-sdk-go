@@ -23,16 +23,16 @@ type Journeysegmentrequest struct {
 	// Description - A description of the segment.
 	Description *string `json:"description,omitempty"`
 
-	// Color - The hexadecimal color value of the segment.
+	// Color - The hexadecimal color value of the segment. Defaults if not provided.
 	Color *string `json:"color,omitempty"`
 
 	// ShouldDisplayToAgent - Whether or not the segment should be displayed to agent/supervisor users.
 	ShouldDisplayToAgent *bool `json:"shouldDisplayToAgent,omitempty"`
 
-	// Context - The context of the segment.
+	// Context - The context of the segment. Defaults if not provided.
 	Context *Requestcontext `json:"context,omitempty"`
 
-	// Journey - The pattern of rules defining the segment.
+	// Journey - The pattern of rules defining the segment. Defaults if not provided.
 	Journey *Requestjourney `json:"journey,omitempty"`
 
 	// ExternalSegment - Details of an entity corresponding to this segment in an external system.

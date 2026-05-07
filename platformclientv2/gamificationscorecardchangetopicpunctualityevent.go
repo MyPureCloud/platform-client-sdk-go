@@ -20,6 +20,12 @@ type Gamificationscorecardchangetopicpunctualityevent struct {
 	// ActivityCode
 	ActivityCode *string `json:"activityCode,omitempty"`
 
+	// ActivityColor
+	ActivityColor *string `json:"activityColor,omitempty"`
+
+	// ActivityName
+	ActivityName *string `json:"activityName,omitempty"`
+
 	// Points
 	Points *int `json:"points,omitempty"`
 }
@@ -93,6 +99,10 @@ func (o Gamificationscorecardchangetopicpunctualityevent) MarshalJSON() ([]byte,
 		
 		ActivityCode *string `json:"activityCode,omitempty"`
 		
+		ActivityColor *string `json:"activityColor,omitempty"`
+		
+		ActivityName *string `json:"activityName,omitempty"`
+		
 		Points *int `json:"points,omitempty"`
 		Alias
 	}{ 
@@ -101,6 +111,10 @@ func (o Gamificationscorecardchangetopicpunctualityevent) MarshalJSON() ([]byte,
 		DateScheduleStart: o.DateScheduleStart,
 		
 		ActivityCode: o.ActivityCode,
+		
+		ActivityColor: o.ActivityColor,
+		
+		ActivityName: o.ActivityName,
 		
 		Points: o.Points,
 		Alias:    (Alias)(o),
@@ -124,6 +138,14 @@ func (o *Gamificationscorecardchangetopicpunctualityevent) UnmarshalJSON(b []byt
     
 	if ActivityCode, ok := GamificationscorecardchangetopicpunctualityeventMap["activityCode"].(string); ok {
 		o.ActivityCode = &ActivityCode
+	}
+    
+	if ActivityColor, ok := GamificationscorecardchangetopicpunctualityeventMap["activityColor"].(string); ok {
+		o.ActivityColor = &ActivityColor
+	}
+    
+	if ActivityName, ok := GamificationscorecardchangetopicpunctualityeventMap["activityName"].(string); ok {
+		o.ActivityName = &ActivityName
 	}
     
 	if Points, ok := GamificationscorecardchangetopicpunctualityeventMap["points"].(float64); ok {

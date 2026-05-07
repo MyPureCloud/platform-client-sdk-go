@@ -36,6 +36,9 @@ type Queueconversationsocialexpressioneventtopicconversation struct {
 	// UtilizationLabelId
 	UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
 
+	// AccessAttributes
+	AccessAttributes *[]string `json:"accessAttributes,omitempty"`
+
 	// SecurePause
 	SecurePause *bool `json:"securePause,omitempty"`
 
@@ -139,6 +142,8 @@ func (o Queueconversationsocialexpressioneventtopicconversation) MarshalJSON() (
 		
 		UtilizationLabelId *string `json:"utilizationLabelId,omitempty"`
 		
+		AccessAttributes *[]string `json:"accessAttributes,omitempty"`
+		
 		SecurePause *bool `json:"securePause,omitempty"`
 		
 		InactivityTimeout *string `json:"inactivityTimeout,omitempty"`
@@ -165,6 +170,8 @@ func (o Queueconversationsocialexpressioneventtopicconversation) MarshalJSON() (
 		ExternalTag: o.ExternalTag,
 		
 		UtilizationLabelId: o.UtilizationLabelId,
+		
+		AccessAttributes: o.AccessAttributes,
 		
 		SecurePause: o.SecurePause,
 		
@@ -221,6 +228,11 @@ func (o *Queueconversationsocialexpressioneventtopicconversation) UnmarshalJSON(
 		o.UtilizationLabelId = &UtilizationLabelId
 	}
     
+	if AccessAttributes, ok := QueueconversationsocialexpressioneventtopicconversationMap["accessAttributes"].([]interface{}); ok {
+		AccessAttributesString, _ := json.Marshal(AccessAttributes)
+		json.Unmarshal(AccessAttributesString, &o.AccessAttributes)
+	}
+	
 	if SecurePause, ok := QueueconversationsocialexpressioneventtopicconversationMap["securePause"].(bool); ok {
 		o.SecurePause = &SecurePause
 	}

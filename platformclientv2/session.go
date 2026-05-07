@@ -36,7 +36,7 @@ type Session struct {
 	// ShortId - Shortened numeric identifier of 4-6 digits.
 	ShortId *string `json:"shortId,omitempty"`
 
-	// OutcomeAchievements - List of the outcome achievements by the customer in this session.
+	// OutcomeAchievements - Deprecated. List of the outcome achievements by the customer in this session. Journey Outcomes is being removed. See https://help.genesys.cloud/announcements/genesys-cloud/deprecation-journey-outcomes/
 	OutcomeAchievements *[]Outcomeachievement `json:"outcomeAchievements,omitempty"`
 
 	// SegmentAssignments - List of the segment assignments to the customer in this session.

@@ -67,6 +67,9 @@ type Conversationmessagecontent struct {
 
 	// Form - Form content.
 	Form *Conversationcontentform `json:"form,omitempty"`
+
+	// NotificationResponse - Notification response content, e.g. an Apple Invitation acceptance.
+	NotificationResponse *Conversationcontentnotificationresponse `json:"notificationResponse,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -169,6 +172,8 @@ func (o Conversationmessagecontent) MarshalJSON() ([]byte, error) {
 		Push *Conversationcontentpush `json:"push,omitempty"`
 		
 		Form *Conversationcontentform `json:"form,omitempty"`
+		
+		NotificationResponse *Conversationcontentnotificationresponse `json:"notificationResponse,omitempty"`
 		Alias
 	}{ 
 		ContentType: o.ContentType,
@@ -208,6 +213,8 @@ func (o Conversationmessagecontent) MarshalJSON() ([]byte, error) {
 		Push: o.Push,
 		
 		Form: o.Form,
+		
+		NotificationResponse: o.NotificationResponse,
 		Alias:    (Alias)(o),
 	})
 }
@@ -311,6 +318,11 @@ func (o *Conversationmessagecontent) UnmarshalJSON(b []byte) error {
 	if Form, ok := ConversationmessagecontentMap["form"].(map[string]interface{}); ok {
 		FormString, _ := json.Marshal(Form)
 		json.Unmarshal(FormString, &o.Form)
+	}
+	
+	if NotificationResponse, ok := ConversationmessagecontentMap["notificationResponse"].(map[string]interface{}); ok {
+		NotificationResponseString, _ := json.Marshal(NotificationResponse)
+		json.Unmarshal(NotificationResponseString, &o.NotificationResponse)
 	}
 	
 

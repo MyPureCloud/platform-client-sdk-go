@@ -22,6 +22,9 @@ type Knowledgeretrievedreference struct {
 
 	// Url - The url of the file.
 	Url *string `json:"url,omitempty"`
+
+	// UsedForGeneration - Indicates whether a retrieved reference is used for answer generation
+	UsedForGeneration *bool `json:"usedForGeneration,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +97,8 @@ func (o Knowledgeretrievedreference) MarshalJSON() ([]byte, error) {
 		FileName *string `json:"fileName,omitempty"`
 		
 		Url *string `json:"url,omitempty"`
+		
+		UsedForGeneration *bool `json:"usedForGeneration,omitempty"`
 		Alias
 	}{ 
 		Confidence: o.Confidence,
@@ -103,6 +108,8 @@ func (o Knowledgeretrievedreference) MarshalJSON() ([]byte, error) {
 		FileName: o.FileName,
 		
 		Url: o.Url,
+		
+		UsedForGeneration: o.UsedForGeneration,
 		Alias:    (Alias)(o),
 	})
 }
@@ -128,6 +135,10 @@ func (o *Knowledgeretrievedreference) UnmarshalJSON(b []byte) error {
     
 	if Url, ok := KnowledgeretrievedreferenceMap["url"].(string); ok {
 		o.Url = &Url
+	}
+    
+	if UsedForGeneration, ok := KnowledgeretrievedreferenceMap["usedForGeneration"].(bool); ok {
+		o.UsedForGeneration = &UsedForGeneration
 	}
     
 

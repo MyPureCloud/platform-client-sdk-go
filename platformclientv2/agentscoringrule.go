@@ -39,6 +39,9 @@ type Agentscoringrule struct {
 	// Evaluator - The evaluator for evaluations created by this rule.
 	Evaluator *Addressableentityref `json:"evaluator,omitempty"`
 
+	// AgentToScore - Which agent(s) to score. Valid values: First, Last, Each.
+	AgentToScore *string `json:"agentToScore,omitempty"`
+
 	// DateCreated - Date when the rule was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
@@ -146,6 +149,8 @@ func (o Agentscoringrule) MarshalJSON() ([]byte, error) {
 		
 		Evaluator *Addressableentityref `json:"evaluator,omitempty"`
 		
+		AgentToScore *string `json:"agentToScore,omitempty"`
+		
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
 		DateModified *string `json:"dateModified,omitempty"`
@@ -170,6 +175,8 @@ func (o Agentscoringrule) MarshalJSON() ([]byte, error) {
 		Published: o.Published,
 		
 		Evaluator: o.Evaluator,
+		
+		AgentToScore: o.AgentToScore,
 		
 		DateCreated: DateCreated,
 		
@@ -225,6 +232,10 @@ func (o *Agentscoringrule) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(EvaluatorString, &o.Evaluator)
 	}
 	
+	if AgentToScore, ok := AgentscoringruleMap["agentToScore"].(string); ok {
+		o.AgentToScore = &AgentToScore
+	}
+    
 	if dateCreatedString, ok := AgentscoringruleMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated

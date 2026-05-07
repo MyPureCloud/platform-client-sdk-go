@@ -1205,6 +1205,75 @@ func (a UsersApi) DeleteUsersCustomattributesSchema(schemaId string) (*APIRespon
 	return response, err
 }
 
+// DeleteUsersStationsMeAssociatedstation invokes DELETE /api/v2/users/stations/me/associatedstation
+//
+// Clear self associated station
+func (a UsersApi) DeleteUsersStationsMeAssociatedstation() (*APIResponse, error) {
+	var httpMethod = "DELETE"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/users/stations/me/associatedstation"
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
 // GetAnalyticsUsersAggregatesJob invokes GET /api/v2/analytics/users/aggregates/jobs/{jobId}
 //
 // Get status for async query for user aggregates
@@ -4627,7 +4696,7 @@ func (a UsersApi) GetUsers(pageSize int, pageNumber int, id []string, jabberId [
 // GetUsersChatsMe invokes GET /api/v2/users/chats/me
 //
 // Get chats for a user
-func (a UsersApi) GetUsersChatsMe(excludeClosed bool, includePresence bool, after string) (*Chatitemcursorlisting, *APIResponse, error) {
+func (a UsersApi) GetUsersChatsMe(excludeClosed bool, includePresence bool, includeRoomOwners bool, after string) (*Chatitemcursorlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/chats/me"
@@ -4657,6 +4726,8 @@ func (a UsersApi) GetUsersChatsMe(excludeClosed bool, includePresence bool, afte
 	queryParams["excludeClosed"] = a.Configuration.APIClient.ParameterToString(excludeClosed, "")
 	
 	queryParams["includePresence"] = a.Configuration.APIClient.ParameterToString(includePresence, "")
+	
+	queryParams["includeRoomOwners"] = a.Configuration.APIClient.ParameterToString(includeRoomOwners, "")
 	
 	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
 	
@@ -5740,8 +5811,6 @@ func (a UsersApi) GetUsersMe(expand []string, integrationPresenceSource string, 
 // GetUsersQuery invokes GET /api/v2/users/query
 //
 // Get list of available users, paged by cursor token, No division filtering available so directory:user:view permission for all divisions is required
-//
-// Preview: GetUsersQuery is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersApi) GetUsersQuery(cursor string, pageSize int, sortOrder string, expand []string, integrationPresenceSource string, userCustomAttributeSchemaIds []string, state string) (*Usercursorentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5908,6 +5977,82 @@ func (a UsersApi) GetUsersSearch(q64 string, expand []string, integrationPresenc
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Userssearchresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetUsersStationsMe invokes GET /api/v2/users/stations/me
+//
+// Get station information for self
+func (a UsersApi) GetUsersStationsMe() (*Userstations, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/users/stations/me"
+	defaultReturn := new(Userstations)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Userstations
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Userstations" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -10309,5 +10454,80 @@ func (a UsersApi) PutUsersCustomattributesSchema(schemaId string, body Dataschem
 		}
 	}
 	return successPayload, response, err
+}
+
+// PutUsersStationsMeAssociatedstationStationId invokes PUT /api/v2/users/stations/me/associatedstation/{stationId}
+//
+// Set self associated station
+func (a UsersApi) PutUsersStationsMeAssociatedstationStationId(stationId string) (*APIResponse, error) {
+	var httpMethod = "PUT"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/users/stations/me/associatedstation/{stationId}"
+	path = strings.Replace(path, "{stationId}", url.PathEscape(fmt.Sprintf("%v", stationId)), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'stationId' is set
+	if &stationId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'stationId' when calling UsersApi->PutUsersStationsMeAssociatedstationStationId")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
 }
 

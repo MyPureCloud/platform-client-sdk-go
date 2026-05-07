@@ -104,6 +104,12 @@ type Message struct {
 
 	// EngagementSource
 	EngagementSource *string `json:"engagementSource,omitempty"`
+
+	// ResumeTime - Represents the time when a parked message will resume. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	ResumeTime *time.Time `json:"resumeTime,omitempty"`
+
+	// ParkTime - Represents the time when an message was put into parked state. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	ParkTime *time.Time `json:"parkTime,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -135,7 +141,7 @@ func (o Message) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "StartHoldTime","StartAlertingTime","ConnectedTime","DisconnectedTime", }
+		dateTimeFields := []string{ "StartHoldTime","StartAlertingTime","ConnectedTime","DisconnectedTime","ResumeTime","ParkTime", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -200,6 +206,22 @@ func (o Message) MarshalJSON() ([]byte, error) {
 		DisconnectedTime = nil
 	}
 	
+	ResumeTime := new(string)
+	if o.ResumeTime != nil {
+		
+		*ResumeTime = timeutil.Strftime(o.ResumeTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ResumeTime = nil
+	}
+	
+	ParkTime := new(string)
+	if o.ParkTime != nil {
+		
+		*ParkTime = timeutil.Strftime(o.ParkTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ParkTime = nil
+	}
+	
 	return json.Marshal(&struct { 
 		State *string `json:"state,omitempty"`
 		
@@ -262,6 +284,10 @@ func (o Message) MarshalJSON() ([]byte, error) {
 		QueueMediaSettings *Conversationqueuemediasettings `json:"queueMediaSettings,omitempty"`
 		
 		EngagementSource *string `json:"engagementSource,omitempty"`
+		
+		ResumeTime *string `json:"resumeTime,omitempty"`
+		
+		ParkTime *string `json:"parkTime,omitempty"`
 		Alias
 	}{ 
 		State: o.State,
@@ -325,6 +351,10 @@ func (o Message) MarshalJSON() ([]byte, error) {
 		QueueMediaSettings: o.QueueMediaSettings,
 		
 		EngagementSource: o.EngagementSource,
+		
+		ResumeTime: ResumeTime,
+		
+		ParkTime: ParkTime,
 		Alias:    (Alias)(o),
 	})
 }
@@ -473,6 +503,16 @@ func (o *Message) UnmarshalJSON(b []byte) error {
 		o.EngagementSource = &EngagementSource
 	}
     
+	if resumeTimeString, ok := MessageMap["resumeTime"].(string); ok {
+		ResumeTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", resumeTimeString)
+		o.ResumeTime = &ResumeTime
+	}
+	
+	if parkTimeString, ok := MessageMap["parkTime"].(string); ok {
+		ParkTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", parkTimeString)
+		o.ParkTime = &ParkTime
+	}
+	
 
 	return nil
 }

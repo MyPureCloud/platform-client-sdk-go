@@ -237,6 +237,9 @@ type Conversationmetricstopicconversationmetricrecord struct {
 	// SessionId - The unique identifier of this session
 	SessionId *string `json:"sessionId,omitempty"`
 
+	// SkillExpressionId - Unique identifier for the skill requested for an interaction
+	SkillExpressionId *string `json:"skillExpressionId,omitempty"`
+
 	// StationId - Unique identifier for a phone
 	StationId *string `json:"stationId,omitempty"`
 
@@ -486,6 +489,8 @@ func (o Conversationmetricstopicconversationmetricrecord) MarshalJSON() ([]byte,
 		
 		SessionId *string `json:"sessionId,omitempty"`
 		
+		SkillExpressionId *string `json:"skillExpressionId,omitempty"`
+		
 		StationId *string `json:"stationId,omitempty"`
 		
 		TeamId *string `json:"teamId,omitempty"`
@@ -654,6 +659,8 @@ func (o Conversationmetricstopicconversationmetricrecord) MarshalJSON() ([]byte,
 		SessionDnis: o.SessionDnis,
 		
 		SessionId: o.SessionId,
+		
+		SkillExpressionId: o.SkillExpressionId,
 		
 		StationId: o.StationId,
 		
@@ -998,6 +1005,10 @@ func (o *Conversationmetricstopicconversationmetricrecord) UnmarshalJSON(b []byt
     
 	if SessionId, ok := ConversationmetricstopicconversationmetricrecordMap["sessionId"].(string); ok {
 		o.SessionId = &SessionId
+	}
+    
+	if SkillExpressionId, ok := ConversationmetricstopicconversationmetricrecordMap["skillExpressionId"].(string); ok {
+		o.SkillExpressionId = &SkillExpressionId
 	}
     
 	if StationId, ok := ConversationmetricstopicconversationmetricrecordMap["stationId"].(string); ok {
