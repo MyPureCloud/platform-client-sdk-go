@@ -4,7 +4,7 @@ import (
 	"context"
     "crypto/tls"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"reflect"
@@ -442,7 +442,7 @@ func (c *APIClient) CallAPI(path string, method string,
 	}
 
 	// Read response body and log request/response details
-	body, _ := ioutil.ReadAll(res.Body)
+	body, _ := io.ReadAll(res.Body)
 	c.configuration.LoggingConfiguration.trace(method, urlString, requestBody, res.StatusCode, httpRequestOptions.GetHeaders(), res.Header)
 	c.configuration.LoggingConfiguration.debug(method, urlString, requestBody, res.StatusCode, httpRequestOptions.GetHeaders())
 

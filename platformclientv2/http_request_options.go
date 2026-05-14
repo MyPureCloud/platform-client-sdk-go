@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -148,7 +148,7 @@ func (o *HTTPRequestOptions) ToRetryableRequest() (*retryablehttp.Request, error
 
 	// Set form data if present
 	if len(o.GetFormParams()) > 0 {
-		request.SetBody(ioutil.NopCloser(strings.NewReader(o.GetFormParams().Encode())))
+		request.SetBody(io.NopCloser(strings.NewReader(o.GetFormParams().Encode())))
 	}
 
 	// Set request body if present
@@ -156,11 +156,11 @@ func (o *HTTPRequestOptions) ToRetryableRequest() (*retryablehttp.Request, error
 		// Handle string body type differently
 		if body, ok := o.GetBody().(*string); ok {
 			j := []byte(*body)
-			request.SetBody(ioutil.NopCloser(bytes.NewReader(j)))
+			request.SetBody(io.NopCloser(bytes.NewReader(j)))
 		} else {
 			// Marshal non-string body to JSON
 			j, _ := json.Marshal(o.GetBody())
-			request.SetBody(ioutil.NopCloser(bytes.NewReader(j)))
+			request.SetBody(io.NopCloser(bytes.NewReader(j)))
 		}
 	}
 

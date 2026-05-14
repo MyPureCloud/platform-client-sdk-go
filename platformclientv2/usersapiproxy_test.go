@@ -4,7 +4,7 @@ import (
 	"crypto/x509"
 	"encoding/pem"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"os"
 	"testing"
@@ -187,7 +187,7 @@ func getIssuerCertificate() (*x509.Certificate, error) {
 
 // loadCACertificate loads the CA certificate from file
 func loadCACertificate(caCertPath string) (*x509.Certificate, error) {
-	pemData, err := ioutil.ReadFile(caCertPath)
+	pemData, err := os.ReadFile(caCertPath)
 	if err != nil {
 		return nil, fmt.Errorf("failed to read CA certificate: %v", err)
 	}
@@ -246,7 +246,7 @@ func checkCRL(cert *x509.Certificate) (bool, error) {
 		}
 		defer resp.Body.Close()
 
-		crlBytes, err := ioutil.ReadAll(resp.Body)
+		crlBytes, err := io.ReadAll(resp.Body)
 		if err != nil {
 			continue
 		}

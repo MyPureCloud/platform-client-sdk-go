@@ -10,10 +10,9 @@ import (
 	"fmt"
 	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/viper"
-	"io/ioutil"
+	"os"
 	"net/http"
 	"net/url"
-	"os"
 	"log"
 	"path/filepath"
 	"strings"
@@ -224,7 +223,7 @@ func generateDefaultConfig(filePath string, autoReload bool) *Configuration {
 }
 
 func isJsonFile(filePath string) (bool, error) {
-	s, err := ioutil.ReadFile(filePath)
+	s, err := os.ReadFile(filePath)
 	if err != nil {
 		return false, err
 	}
@@ -526,7 +525,7 @@ func (c *Configuration) periodicConfigUpdater() {
 
 func getFileHash(filePath string) (string, error) {
 	hasher := sha256.New()
-	s, err := ioutil.ReadFile(filePath)
+	s, err := os.ReadFile(filePath)
 	if err != nil {
 		return "", err
 	}

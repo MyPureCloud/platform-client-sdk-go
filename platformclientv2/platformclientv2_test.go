@@ -419,7 +419,7 @@ func deleteUserDirectly(api *UsersApi, userId string) (*APIResponse, error) {
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if response.Error != nil {
-		err = fmt.Errorf(response.ErrorMessage)
+		err = fmt.Errorf("Error: %s", response.ErrorMessage)
 	}
 
 	return response, err
@@ -441,9 +441,7 @@ func Example_authorizeDefaultConfiguration() {
 	// Create an API instance using the default config
 	usersAPI := NewUsersApi()
 	fmt.Printf("Users API type: %v", reflect.TypeOf(usersAPI).String())
-	// Output: Users API type: UsersAPI
-
-	// Make requests using usersAPI
+	// Output: Users API type: *platformclientv2.UsersApi
 }
 
 func Example_authorizeNewConfiguration() {
@@ -462,9 +460,7 @@ func Example_authorizeNewConfiguration() {
 	// Create an API instance using the config instance
 	usersAPI := NewUsersApiWithConfig(config)
 	fmt.Printf("Users API type: %v", reflect.TypeOf(usersAPI).String())
-	// Output: Users API type: UsersAPI
-
-	// Make requests using usersAPI
+	// Output: Users API type: *platformclientv2.UsersApi
 }
 
 // disable this test case until Gateway with MTLS certs is done in GO SDK
