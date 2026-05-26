@@ -71,6 +71,7 @@ const (
     eu_central_2 	= "https://api.euc2.pure.cloud"
     mx_central_1 	= "https://api.mxc1.pure.cloud"
     ap_southeast_1 	= "https://api.apse1.pure.cloud"
+	eusc_de_east_1 	= "https://api.edee1.eusc-pure.cloud"
 )
 
 // RetryConfiguration has settings to configure the SDK retry logic

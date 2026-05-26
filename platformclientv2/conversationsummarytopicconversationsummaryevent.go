@@ -63,6 +63,12 @@ type Conversationsummarytopicconversationsummaryevent struct {
 	// TriggerSource
 	TriggerSource *Conversationsummarytopictriggersource `json:"triggerSource,omitempty"`
 
+	// SummarySourceType
+	SummarySourceType *string `json:"summarySourceType,omitempty"`
+
+	// TriggerType
+	TriggerType *string `json:"triggerType,omitempty"`
+
 	// LastEditedBy
 	LastEditedBy *Conversationsummarytopicconversationsummaryparticipant `json:"lastEditedBy,omitempty"`
 
@@ -178,6 +184,10 @@ func (o Conversationsummarytopicconversationsummaryevent) MarshalJSON() ([]byte,
 		
 		TriggerSource *Conversationsummarytopictriggersource `json:"triggerSource,omitempty"`
 		
+		SummarySourceType *string `json:"summarySourceType,omitempty"`
+		
+		TriggerType *string `json:"triggerType,omitempty"`
+		
 		LastEditedBy *Conversationsummarytopicconversationsummaryparticipant `json:"lastEditedBy,omitempty"`
 		
 		ErrorType *string `json:"errorType,omitempty"`
@@ -218,6 +228,10 @@ func (o Conversationsummarytopicconversationsummaryevent) MarshalJSON() ([]byte,
 		WrapUpCodes: o.WrapUpCodes,
 		
 		TriggerSource: o.TriggerSource,
+		
+		SummarySourceType: o.SummarySourceType,
+		
+		TriggerType: o.TriggerType,
 		
 		LastEditedBy: o.LastEditedBy,
 		
@@ -314,6 +328,14 @@ func (o *Conversationsummarytopicconversationsummaryevent) UnmarshalJSON(b []byt
 		json.Unmarshal(TriggerSourceString, &o.TriggerSource)
 	}
 	
+	if SummarySourceType, ok := ConversationsummarytopicconversationsummaryeventMap["summarySourceType"].(string); ok {
+		o.SummarySourceType = &SummarySourceType
+	}
+    
+	if TriggerType, ok := ConversationsummarytopicconversationsummaryeventMap["triggerType"].(string); ok {
+		o.TriggerType = &TriggerType
+	}
+    
 	if LastEditedBy, ok := ConversationsummarytopicconversationsummaryeventMap["lastEditedBy"].(map[string]interface{}); ok {
 		LastEditedByString, _ := json.Marshal(LastEditedBy)
 		json.Unmarshal(LastEditedByString, &o.LastEditedBy)

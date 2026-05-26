@@ -63,6 +63,12 @@ type Conversationsummarytopicvirtualagentsconversationsummaryevent struct {
 	// TriggerSource
 	TriggerSource *Conversationsummarytopicvirtualagentstriggersource `json:"triggerSource,omitempty"`
 
+	// SummarySourceType
+	SummarySourceType *string `json:"summarySourceType,omitempty"`
+
+	// TriggerType
+	TriggerType *string `json:"triggerType,omitempty"`
+
 	// LastEditedBy
 	LastEditedBy *Conversationsummarytopicvirtualagentsconversationsummaryparticipant `json:"lastEditedBy,omitempty"`
 
@@ -178,6 +184,10 @@ func (o Conversationsummarytopicvirtualagentsconversationsummaryevent) MarshalJS
 		
 		TriggerSource *Conversationsummarytopicvirtualagentstriggersource `json:"triggerSource,omitempty"`
 		
+		SummarySourceType *string `json:"summarySourceType,omitempty"`
+		
+		TriggerType *string `json:"triggerType,omitempty"`
+		
 		LastEditedBy *Conversationsummarytopicvirtualagentsconversationsummaryparticipant `json:"lastEditedBy,omitempty"`
 		
 		ErrorType *string `json:"errorType,omitempty"`
@@ -218,6 +228,10 @@ func (o Conversationsummarytopicvirtualagentsconversationsummaryevent) MarshalJS
 		WrapUpCodes: o.WrapUpCodes,
 		
 		TriggerSource: o.TriggerSource,
+		
+		SummarySourceType: o.SummarySourceType,
+		
+		TriggerType: o.TriggerType,
 		
 		LastEditedBy: o.LastEditedBy,
 		
@@ -314,6 +328,14 @@ func (o *Conversationsummarytopicvirtualagentsconversationsummaryevent) Unmarsha
 		json.Unmarshal(TriggerSourceString, &o.TriggerSource)
 	}
 	
+	if SummarySourceType, ok := ConversationsummarytopicvirtualagentsconversationsummaryeventMap["summarySourceType"].(string); ok {
+		o.SummarySourceType = &SummarySourceType
+	}
+    
+	if TriggerType, ok := ConversationsummarytopicvirtualagentsconversationsummaryeventMap["triggerType"].(string); ok {
+		o.TriggerType = &TriggerType
+	}
+    
 	if LastEditedBy, ok := ConversationsummarytopicvirtualagentsconversationsummaryeventMap["lastEditedBy"].(map[string]interface{}); ok {
 		LastEditedByString, _ := json.Marshal(LastEditedBy)
 		json.Unmarshal(LastEditedByString, &o.LastEditedBy)

@@ -20,6 +20,9 @@ type Gamificationscorecardchangetopicpunctualityevent struct {
 	// ActivityCode
 	ActivityCode *string `json:"activityCode,omitempty"`
 
+	// ActivityCodeId
+	ActivityCodeId *string `json:"activityCodeId,omitempty"`
+
 	// ActivityColor
 	ActivityColor *string `json:"activityColor,omitempty"`
 
@@ -99,6 +102,8 @@ func (o Gamificationscorecardchangetopicpunctualityevent) MarshalJSON() ([]byte,
 		
 		ActivityCode *string `json:"activityCode,omitempty"`
 		
+		ActivityCodeId *string `json:"activityCodeId,omitempty"`
+		
 		ActivityColor *string `json:"activityColor,omitempty"`
 		
 		ActivityName *string `json:"activityName,omitempty"`
@@ -111,6 +116,8 @@ func (o Gamificationscorecardchangetopicpunctualityevent) MarshalJSON() ([]byte,
 		DateScheduleStart: o.DateScheduleStart,
 		
 		ActivityCode: o.ActivityCode,
+		
+		ActivityCodeId: o.ActivityCodeId,
 		
 		ActivityColor: o.ActivityColor,
 		
@@ -138,6 +145,10 @@ func (o *Gamificationscorecardchangetopicpunctualityevent) UnmarshalJSON(b []byt
     
 	if ActivityCode, ok := GamificationscorecardchangetopicpunctualityeventMap["activityCode"].(string); ok {
 		o.ActivityCode = &ActivityCode
+	}
+    
+	if ActivityCodeId, ok := GamificationscorecardchangetopicpunctualityeventMap["activityCodeId"].(string); ok {
+		o.ActivityCodeId = &ActivityCodeId
 	}
     
 	if ActivityColor, ok := GamificationscorecardchangetopicpunctualityeventMap["activityColor"].(string); ok {
