@@ -271,7 +271,7 @@ func (a AIStudioApi) GetConversationsSummariesSetting(summarySettingId string) (
 // GetConversationsSummariesSettings invokes GET /api/v2/conversations/summaries/settings
 //
 // Get all summary settings.
-func (a AIStudioApi) GetConversationsSummariesSettings(language string, name string, sortBy string, sortOrder string, pageNumber int, pageSize int) (*Summarysettingentitylisting, *APIResponse, error) {
+func (a AIStudioApi) GetConversationsSummariesSettings(pageNumber int, pageSize int, name string, sortOrder string, language string, sortBy string) (*Summarysettingentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/summaries/settings"
@@ -298,17 +298,17 @@ func (a AIStudioApi) GetConversationsSummariesSettings(language string, name str
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	queryParams["language"] = a.Configuration.APIClient.ParameterToString(language, "")
-	
-	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
-	
-	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
-	
-	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
-	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
+	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
+	
+	queryParams["language"] = a.Configuration.APIClient.ParameterToString(language, "")
+	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

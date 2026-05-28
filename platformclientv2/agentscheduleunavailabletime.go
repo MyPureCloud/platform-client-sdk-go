@@ -12,7 +12,7 @@ type Agentscheduleunavailabletime struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// TimeSpan - Exact date, time and length of the unavailability time span
-	TimeSpan *Unavailabletimestimespan `json:"timeSpan,omitempty"`
+	TimeSpan *Wfmtimespan `json:"timeSpan,omitempty"`
 
 	// Notes - Comments explaining the unavailability time span
 	Notes *string `json:"notes,omitempty"`
@@ -81,7 +81,7 @@ func (o Agentscheduleunavailabletime) MarshalJSON() ([]byte, error) {
 	type Alias Agentscheduleunavailabletime
 	
 	return json.Marshal(&struct { 
-		TimeSpan *Unavailabletimestimespan `json:"timeSpan,omitempty"`
+		TimeSpan *Wfmtimespan `json:"timeSpan,omitempty"`
 		
 		Notes *string `json:"notes,omitempty"`
 		Alias

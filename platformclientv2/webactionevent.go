@@ -17,7 +17,7 @@ type Webactionevent struct {
 	// ActionMap - The action map that triggered the action.
 	ActionMap *Actioneventactionmap `json:"actionMap,omitempty"`
 
-	// ActionTarget - The target for engagement actions.
+	// ActionTarget - Deprecated. The target for engagement actions.
 	ActionTarget *Addressableentityref `json:"actionTarget,omitempty"`
 
 	// TimeToDisposition - Milliseconds elapsed until the action is disposed.

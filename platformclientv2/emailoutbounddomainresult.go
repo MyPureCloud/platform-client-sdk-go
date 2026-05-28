@@ -28,6 +28,9 @@ type Emailoutbounddomainresult struct {
 
 	// EmailSetting - The email settings associated with this domain.
 	EmailSetting *Emailsetting `json:"emailSetting,omitempty"`
+
+	// DmarcVerificationResult - The DMARC verification status for this domain.
+	DmarcVerificationResult *Dmarcresult `json:"dmarcVerificationResult,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -104,6 +107,8 @@ func (o Emailoutbounddomainresult) MarshalJSON() ([]byte, error) {
 		SenderType *string `json:"senderType,omitempty"`
 		
 		EmailSetting *Emailsetting `json:"emailSetting,omitempty"`
+		
+		DmarcVerificationResult *Dmarcresult `json:"dmarcVerificationResult,omitempty"`
 		Alias
 	}{ 
 		DnsCnameBounceRecord: o.DnsCnameBounceRecord,
@@ -117,6 +122,8 @@ func (o Emailoutbounddomainresult) MarshalJSON() ([]byte, error) {
 		SenderType: o.SenderType,
 		
 		EmailSetting: o.EmailSetting,
+		
+		DmarcVerificationResult: o.DmarcVerificationResult,
 		Alias:    (Alias)(o),
 	})
 }
@@ -153,6 +160,11 @@ func (o *Emailoutbounddomainresult) UnmarshalJSON(b []byte) error {
 	if EmailSetting, ok := EmailoutbounddomainresultMap["emailSetting"].(map[string]interface{}); ok {
 		EmailSettingString, _ := json.Marshal(EmailSetting)
 		json.Unmarshal(EmailSettingString, &o.EmailSetting)
+	}
+	
+	if DmarcVerificationResult, ok := EmailoutbounddomainresultMap["dmarcVerificationResult"].(map[string]interface{}); ok {
+		DmarcVerificationResultString, _ := json.Marshal(DmarcVerificationResult)
+		json.Unmarshal(DmarcVerificationResultString, &o.DmarcVerificationResult)
 	}
 	
 

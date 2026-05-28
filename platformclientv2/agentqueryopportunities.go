@@ -8,19 +8,19 @@ import (
 	"strings"
 )
 
-// Unavailabletimestimespan
-type Unavailabletimestimespan struct { 
+// Agentqueryopportunities
+type Agentqueryopportunities struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// StartDate - Start date of the time span. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
-	StartDate *time.Time `json:"startDate,omitempty"`
+	// NextStartDate - The start date to use for the next query to retrieve additional results in ISO-8601 format. Null if there are no more results
+	NextStartDate *time.Time `json:"nextStartDate,omitempty"`
 
-	// LengthMinutes - The length of the time span from the start date in minutes
-	LengthMinutes *int `json:"lengthMinutes,omitempty"`
+	// BusinessUnits - The opportunities for the agent grouped by business unit
+	BusinessUnits *[]Agentbusinessunitopportunities `json:"businessUnits,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Unavailabletimestimespan) SetField(field string, fieldValue interface{}) {
+func (o *Agentqueryopportunities) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -41,14 +41,14 @@ func (o *Unavailabletimestimespan) SetField(field string, fieldValue interface{}
 	o.SetFieldNames[field] = true
 }
 
-func (o Unavailabletimestimespan) MarshalJSON() ([]byte, error) {
+func (o Agentqueryopportunities) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "StartDate", }
+		dateTimeFields := []string{ "NextStartDate", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -79,44 +79,44 @@ func (o Unavailabletimestimespan) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Unavailabletimestimespan
+	type Alias Agentqueryopportunities
 	
-	StartDate := new(string)
-	if o.StartDate != nil {
+	NextStartDate := new(string)
+	if o.NextStartDate != nil {
 		
-		*StartDate = timeutil.Strftime(o.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*NextStartDate = timeutil.Strftime(o.NextStartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
-		StartDate = nil
+		NextStartDate = nil
 	}
 	
 	return json.Marshal(&struct { 
-		StartDate *string `json:"startDate,omitempty"`
+		NextStartDate *string `json:"nextStartDate,omitempty"`
 		
-		LengthMinutes *int `json:"lengthMinutes,omitempty"`
+		BusinessUnits *[]Agentbusinessunitopportunities `json:"businessUnits,omitempty"`
 		Alias
 	}{ 
-		StartDate: StartDate,
+		NextStartDate: NextStartDate,
 		
-		LengthMinutes: o.LengthMinutes,
+		BusinessUnits: o.BusinessUnits,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Unavailabletimestimespan) UnmarshalJSON(b []byte) error {
-	var UnavailabletimestimespanMap map[string]interface{}
-	err := json.Unmarshal(b, &UnavailabletimestimespanMap)
+func (o *Agentqueryopportunities) UnmarshalJSON(b []byte) error {
+	var AgentqueryopportunitiesMap map[string]interface{}
+	err := json.Unmarshal(b, &AgentqueryopportunitiesMap)
 	if err != nil {
 		return err
 	}
 	
-	if startDateString, ok := UnavailabletimestimespanMap["startDate"].(string); ok {
-		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
-		o.StartDate = &StartDate
+	if nextStartDateString, ok := AgentqueryopportunitiesMap["nextStartDate"].(string); ok {
+		NextStartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", nextStartDateString)
+		o.NextStartDate = &NextStartDate
 	}
 	
-	if LengthMinutes, ok := UnavailabletimestimespanMap["lengthMinutes"].(float64); ok {
-		LengthMinutesInt := int(LengthMinutes)
-		o.LengthMinutes = &LengthMinutesInt
+	if BusinessUnits, ok := AgentqueryopportunitiesMap["businessUnits"].([]interface{}); ok {
+		BusinessUnitsString, _ := json.Marshal(BusinessUnits)
+		json.Unmarshal(BusinessUnitsString, &o.BusinessUnits)
 	}
 	
 
@@ -124,7 +124,7 @@ func (o *Unavailabletimestimespan) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Unavailabletimestimespan) String() string {
+func (o *Agentqueryopportunities) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

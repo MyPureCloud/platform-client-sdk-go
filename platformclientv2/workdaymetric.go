@@ -29,6 +29,9 @@ type Workdaymetric struct {
 	// PunctualityEvents - List of schedule activity events for punctuality metrics
 	PunctualityEvents *[]Punctualityevent `json:"punctualityEvents,omitempty"`
 
+	// BusinessUnitId - The id of the business unit associated with this metric, only returned for metrics with punctuality events
+	BusinessUnitId *string `json:"businessUnitId,omitempty"`
+
 	// EvaluationDetails - List of evaluations for quality evaluation score metrics
 	EvaluationDetails *[]Qualityevaluationscoreitem `json:"evaluationDetails,omitempty"`
 }
@@ -108,6 +111,8 @@ func (o Workdaymetric) MarshalJSON() ([]byte, error) {
 		
 		PunctualityEvents *[]Punctualityevent `json:"punctualityEvents,omitempty"`
 		
+		BusinessUnitId *string `json:"businessUnitId,omitempty"`
+		
 		EvaluationDetails *[]Qualityevaluationscoreitem `json:"evaluationDetails,omitempty"`
 		Alias
 	}{ 
@@ -122,6 +127,8 @@ func (o Workdaymetric) MarshalJSON() ([]byte, error) {
 		Value: o.Value,
 		
 		PunctualityEvents: o.PunctualityEvents,
+		
+		BusinessUnitId: o.BusinessUnitId,
 		
 		EvaluationDetails: o.EvaluationDetails,
 		Alias:    (Alias)(o),
@@ -164,6 +171,10 @@ func (o *Workdaymetric) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(PunctualityEventsString, &o.PunctualityEvents)
 	}
 	
+	if BusinessUnitId, ok := WorkdaymetricMap["businessUnitId"].(string); ok {
+		o.BusinessUnitId = &BusinessUnitId
+	}
+    
 	if EvaluationDetails, ok := WorkdaymetricMap["evaluationDetails"].([]interface{}); ok {
 		EvaluationDetailsString, _ := json.Marshal(EvaluationDetails)
 		json.Unmarshal(EvaluationDetailsString, &o.EvaluationDetails)

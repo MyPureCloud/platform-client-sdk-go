@@ -19,6 +19,9 @@ type Knowledgebasecreaterequest struct {
 
 	// CoreLanguage - Core language for knowledge base in which initial content must be created, language codes [en-US, en-UK, en-AU, de-DE] are supported currently. However, the new DX knowledge will support all these language codes, along with 'early preview' language codes [ca-ES, tr-TR, sv-SE, fi-FI, nb-NO, da-DK, ja-JP, ar-AE, zh-CN, zh-TW, zh-HK, ko-KR, pl-PL, hi-IN, th-TH, hu-HU, vi-VN, uk-UA] which might have a lower accuracy.
 	CoreLanguage *string `json:"coreLanguage,omitempty"`
+
+	// ContentSearchEnabled - Flag that indicates the search on content is enabled for the knowledge base.
+	ContentSearchEnabled *bool `json:"contentSearchEnabled,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +92,8 @@ func (o Knowledgebasecreaterequest) MarshalJSON() ([]byte, error) {
 		Description *string `json:"description,omitempty"`
 		
 		CoreLanguage *string `json:"coreLanguage,omitempty"`
+		
+		ContentSearchEnabled *bool `json:"contentSearchEnabled,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -96,6 +101,8 @@ func (o Knowledgebasecreaterequest) MarshalJSON() ([]byte, error) {
 		Description: o.Description,
 		
 		CoreLanguage: o.CoreLanguage,
+		
+		ContentSearchEnabled: o.ContentSearchEnabled,
 		Alias:    (Alias)(o),
 	})
 }
@@ -117,6 +124,10 @@ func (o *Knowledgebasecreaterequest) UnmarshalJSON(b []byte) error {
     
 	if CoreLanguage, ok := KnowledgebasecreaterequestMap["coreLanguage"].(string); ok {
 		o.CoreLanguage = &CoreLanguage
+	}
+    
+	if ContentSearchEnabled, ok := KnowledgebasecreaterequestMap["contentSearchEnabled"].(bool); ok {
+		o.ContentSearchEnabled = &ContentSearchEnabled
 	}
     
 

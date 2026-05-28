@@ -63,6 +63,15 @@ type Agentchecklistresponse struct {
 	// EvaluationFinalizedWithAcwDate - Date when the checklist was finalized with ACW. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	EvaluationFinalizedWithAcwDate *time.Time `json:"evaluationFinalizedWithAcwDate,omitempty"`
 
+	// Success - Whether activation succeeded for this checklist (bulk activation). Omitted for non-bulk responses.
+	Success *bool `json:"success,omitempty"`
+
+	// ErrorCode - Error code when success is false.
+	ErrorCode *string `json:"errorCode,omitempty"`
+
+	// ErrorMessage - Error message when success is false.
+	ErrorMessage *string `json:"errorMessage,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -196,6 +205,12 @@ func (o Agentchecklistresponse) MarshalJSON() ([]byte, error) {
 		
 		EvaluationFinalizedWithAcwDate *string `json:"evaluationFinalizedWithAcwDate,omitempty"`
 		
+		Success *bool `json:"success,omitempty"`
+		
+		ErrorCode *string `json:"errorCode,omitempty"`
+		
+		ErrorMessage *string `json:"errorMessage,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -232,6 +247,12 @@ func (o Agentchecklistresponse) MarshalJSON() ([]byte, error) {
 		EvaluationFinalizedDate: EvaluationFinalizedDate,
 		
 		EvaluationFinalizedWithAcwDate: EvaluationFinalizedWithAcwDate,
+		
+		Success: o.Success,
+		
+		ErrorCode: o.ErrorCode,
+		
+		ErrorMessage: o.ErrorMessage,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -319,6 +340,18 @@ func (o *Agentchecklistresponse) UnmarshalJSON(b []byte) error {
 		o.EvaluationFinalizedWithAcwDate = &EvaluationFinalizedWithAcwDate
 	}
 	
+	if Success, ok := AgentchecklistresponseMap["success"].(bool); ok {
+		o.Success = &Success
+	}
+    
+	if ErrorCode, ok := AgentchecklistresponseMap["errorCode"].(string); ok {
+		o.ErrorCode = &ErrorCode
+	}
+    
+	if ErrorMessage, ok := AgentchecklistresponseMap["errorMessage"].(string); ok {
+		o.ErrorMessage = &ErrorMessage
+	}
+    
 	if SelfUri, ok := AgentchecklistresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

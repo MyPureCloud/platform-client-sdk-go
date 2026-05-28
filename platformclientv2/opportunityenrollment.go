@@ -7,22 +7,16 @@ import (
 	"strings"
 )
 
-// Utilizationtag
-type Utilizationtag struct { 
+// Opportunityenrollment
+type Opportunityenrollment struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
-
-	// Name
-	Name *string `json:"name,omitempty"`
-
-	// SelfUri - The URI for this object
-	SelfUri *string `json:"selfUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Utilizationtag) SetField(field string, fieldValue interface{}) {
+func (o *Opportunityenrollment) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -43,7 +37,7 @@ func (o *Utilizationtag) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Utilizationtag) MarshalJSON() ([]byte, error) {
+func (o Opportunityenrollment) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -81,42 +75,26 @@ func (o Utilizationtag) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Utilizationtag
+	type Alias Opportunityenrollment
 	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
-		
-		Name *string `json:"name,omitempty"`
-		
-		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
-		
-		Name: o.Name,
-		
-		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Utilizationtag) UnmarshalJSON(b []byte) error {
-	var UtilizationtagMap map[string]interface{}
-	err := json.Unmarshal(b, &UtilizationtagMap)
+func (o *Opportunityenrollment) UnmarshalJSON(b []byte) error {
+	var OpportunityenrollmentMap map[string]interface{}
+	err := json.Unmarshal(b, &OpportunityenrollmentMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := UtilizationtagMap["id"].(string); ok {
+	if Id, ok := OpportunityenrollmentMap["id"].(string); ok {
 		o.Id = &Id
-	}
-    
-	if Name, ok := UtilizationtagMap["name"].(string); ok {
-		o.Name = &Name
-	}
-    
-	if SelfUri, ok := UtilizationtagMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
 	}
     
 
@@ -124,7 +102,7 @@ func (o *Utilizationtag) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Utilizationtag) String() string {
+func (o *Opportunityenrollment) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

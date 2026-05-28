@@ -42,6 +42,9 @@ type Knowledgebase struct {
 	// Published - Flag that indicates the knowledge base is published
 	Published *bool `json:"published,omitempty"`
 
+	// ContentSearchEnabled - Flag that indicates the search on content is enabled for the knowledge base.
+	ContentSearchEnabled *bool `json:"contentSearchEnabled,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -153,6 +156,8 @@ func (o Knowledgebase) MarshalJSON() ([]byte, error) {
 		
 		Published *bool `json:"published,omitempty"`
 		
+		ContentSearchEnabled *bool `json:"contentSearchEnabled,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -175,6 +180,8 @@ func (o Knowledgebase) MarshalJSON() ([]byte, error) {
 		ArticleCount: o.ArticleCount,
 		
 		Published: o.Published,
+		
+		ContentSearchEnabled: o.ContentSearchEnabled,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -231,6 +238,10 @@ func (o *Knowledgebase) UnmarshalJSON(b []byte) error {
 	
 	if Published, ok := KnowledgebaseMap["published"].(bool); ok {
 		o.Published = &Published
+	}
+    
+	if ContentSearchEnabled, ok := KnowledgebaseMap["contentSearchEnabled"].(bool); ok {
+		o.ContentSearchEnabled = &ContentSearchEnabled
 	}
     
 	if SelfUri, ok := KnowledgebaseMap["selfUri"].(string); ok {

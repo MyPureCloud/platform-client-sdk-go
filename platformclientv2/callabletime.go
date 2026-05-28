@@ -14,7 +14,7 @@ type Callabletime struct {
 	// TimeSlots - The time intervals for which it is acceptable to place outbound calls.
 	TimeSlots *[]Campaigntimeslot `json:"timeSlots,omitempty"`
 
-	// TimeZoneId - The time zone for the time slots; for example, Africa/Abidjan
+	// TimeZoneId - The time zone for the time slots; for example, Africa/Abidjan. Time zones are represented as a string of the zone name as found in the IANA time zone database. For example: UTC, Etc/UTC, or Europe/London
 	TimeZoneId *string `json:"timeZoneId,omitempty"`
 }
 

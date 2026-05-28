@@ -12,7 +12,7 @@ type Journeyviewchartmetricresultvalue struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Value - Value for this metric
-	Value *int `json:"value,omitempty"`
+	Value *Number `json:"value,omitempty"`
 
 	// GroupByAttributes - Group by attributes for this metric
 	GroupByAttributes *[]Groupbyattribute `json:"groupByAttributes,omitempty"`
@@ -81,7 +81,7 @@ func (o Journeyviewchartmetricresultvalue) MarshalJSON() ([]byte, error) {
 	type Alias Journeyviewchartmetricresultvalue
 	
 	return json.Marshal(&struct { 
-		Value *int `json:"value,omitempty"`
+		Value *Number `json:"value,omitempty"`
 		
 		GroupByAttributes *[]Groupbyattribute `json:"groupByAttributes,omitempty"`
 		Alias
@@ -100,9 +100,9 @@ func (o *Journeyviewchartmetricresultvalue) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
-	if Value, ok := JourneyviewchartmetricresultvalueMap["value"].(float64); ok {
-		ValueInt := int(Value)
-		o.Value = &ValueInt
+	if Value, ok := JourneyviewchartmetricresultvalueMap["value"].(map[string]interface{}); ok {
+		ValueString, _ := json.Marshal(Value)
+		json.Unmarshal(ValueString, &o.Value)
 	}
 	
 	if GroupByAttributes, ok := JourneyviewchartmetricresultvalueMap["groupByAttributes"].([]interface{}); ok {

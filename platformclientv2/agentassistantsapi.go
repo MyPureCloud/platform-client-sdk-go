@@ -872,7 +872,7 @@ func (a AgentAssistantsApi) GetAssistantsAgentchecklist(agentChecklistId string)
 // GetAssistantsAgentchecklists invokes GET /api/v2/assistants/agentchecklists
 //
 // Get the list of agent checklists
-func (a AgentAssistantsApi) GetAssistantsAgentchecklists(before string, after string, pageSize string, namePrefix string, language string, sortOrder string, sortBy string) (*Agentchecklistlisting, *APIResponse, error) {
+func (a AgentAssistantsApi) GetAssistantsAgentchecklists(before string, after string, pageSize string, namePrefix string, language string, sortOrder string, sortBy string, agentChecklistIds []string) (*Agentchecklistlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/assistants/agentchecklists"
@@ -912,6 +912,8 @@ func (a AgentAssistantsApi) GetAssistantsAgentchecklists(before string, after st
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
+	
+	queryParams["agentChecklistIds"] = a.Configuration.APIClient.ParameterToString(agentChecklistIds, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

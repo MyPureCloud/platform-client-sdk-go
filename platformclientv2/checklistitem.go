@@ -24,6 +24,9 @@ type Checklistitem struct {
 	// AutomatedCheckEnabled - Flag to indicate whether automated check is enabled for this checklist item.
 	AutomatedCheckEnabled *bool `json:"automatedCheckEnabled,omitempty"`
 
+	// ExactPhraseMatch - Flag to indicate whether exact phrase matching is applicable for this checklist item.
+	ExactPhraseMatch *bool `json:"exactPhraseMatch,omitempty"`
+
 	// Important - Flag to indicate whether this checklist item is marked as important.
 	Important *bool `json:"important,omitempty"`
 
@@ -133,6 +136,8 @@ func (o Checklistitem) MarshalJSON() ([]byte, error) {
 		
 		AutomatedCheckEnabled *bool `json:"automatedCheckEnabled,omitempty"`
 		
+		ExactPhraseMatch *bool `json:"exactPhraseMatch,omitempty"`
+		
 		Important *bool `json:"important,omitempty"`
 		
 		StateFromModel *string `json:"stateFromModel,omitempty"`
@@ -155,6 +160,8 @@ func (o Checklistitem) MarshalJSON() ([]byte, error) {
 		Description: o.Description,
 		
 		AutomatedCheckEnabled: o.AutomatedCheckEnabled,
+		
+		ExactPhraseMatch: o.ExactPhraseMatch,
 		
 		Important: o.Important,
 		
@@ -194,6 +201,10 @@ func (o *Checklistitem) UnmarshalJSON(b []byte) error {
     
 	if AutomatedCheckEnabled, ok := ChecklistitemMap["automatedCheckEnabled"].(bool); ok {
 		o.AutomatedCheckEnabled = &AutomatedCheckEnabled
+	}
+    
+	if ExactPhraseMatch, ok := ChecklistitemMap["exactPhraseMatch"].(bool); ok {
+		o.ExactPhraseMatch = &ExactPhraseMatch
 	}
     
 	if Important, ok := ChecklistitemMap["important"].(bool); ok {

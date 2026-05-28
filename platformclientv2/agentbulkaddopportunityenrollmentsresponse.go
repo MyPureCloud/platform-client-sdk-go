@@ -7,16 +7,19 @@ import (
 	"strings"
 )
 
-// Createutilizationtagrequest
-type Createutilizationtagrequest struct { 
+// Agentbulkaddopportunityenrollmentsresponse
+type Agentbulkaddopportunityenrollmentsresponse struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Name - The utilization tag name.
-	Name *string `json:"name,omitempty"`
+	// Results - The result for each requested item
+	Results *[]Agentbulkaddopportunityenrollmentresult `json:"results,omitempty"`
+
+	// ErrorCount - The count of failed operations in the bulk request
+	ErrorCount *int `json:"errorCount,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Createutilizationtagrequest) SetField(field string, fieldValue interface{}) {
+func (o *Agentbulkaddopportunityenrollmentsresponse) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -37,7 +40,7 @@ func (o *Createutilizationtagrequest) SetField(field string, fieldValue interfac
 	o.SetFieldNames[field] = true
 }
 
-func (o Createutilizationtagrequest) MarshalJSON() ([]byte, error) {
+func (o Agentbulkaddopportunityenrollmentsresponse) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -75,34 +78,44 @@ func (o Createutilizationtagrequest) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Createutilizationtagrequest
+	type Alias Agentbulkaddopportunityenrollmentsresponse
 	
 	return json.Marshal(&struct { 
-		Name *string `json:"name,omitempty"`
+		Results *[]Agentbulkaddopportunityenrollmentresult `json:"results,omitempty"`
+		
+		ErrorCount *int `json:"errorCount,omitempty"`
 		Alias
 	}{ 
-		Name: o.Name,
+		Results: o.Results,
+		
+		ErrorCount: o.ErrorCount,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Createutilizationtagrequest) UnmarshalJSON(b []byte) error {
-	var CreateutilizationtagrequestMap map[string]interface{}
-	err := json.Unmarshal(b, &CreateutilizationtagrequestMap)
+func (o *Agentbulkaddopportunityenrollmentsresponse) UnmarshalJSON(b []byte) error {
+	var AgentbulkaddopportunityenrollmentsresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &AgentbulkaddopportunityenrollmentsresponseMap)
 	if err != nil {
 		return err
 	}
 	
-	if Name, ok := CreateutilizationtagrequestMap["name"].(string); ok {
-		o.Name = &Name
+	if Results, ok := AgentbulkaddopportunityenrollmentsresponseMap["results"].([]interface{}); ok {
+		ResultsString, _ := json.Marshal(Results)
+		json.Unmarshal(ResultsString, &o.Results)
 	}
-    
+	
+	if ErrorCount, ok := AgentbulkaddopportunityenrollmentsresponseMap["errorCount"].(float64); ok {
+		ErrorCountInt := int(ErrorCount)
+		o.ErrorCount = &ErrorCountInt
+	}
+	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Createutilizationtagrequest) String() string {
+func (o *Agentbulkaddopportunityenrollmentsresponse) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

@@ -17,13 +17,13 @@ type Actionmapaction struct {
 	// MediaType - Media type of action.
 	MediaType *string `json:"mediaType,omitempty"`
 
-	// ActionTargetId - Action target ID.
+	// ActionTargetId - Deprecated. Action target ID.
 	ActionTargetId *string `json:"actionTargetId,omitempty"`
 
-	// IsPacingEnabled - Whether this action should be throttled.
+	// IsPacingEnabled - Deprecated. Whether this action should be throttled.
 	IsPacingEnabled *bool `json:"isPacingEnabled,omitempty"`
 
-	// Props - Additional properties.
+	// Props - Deprecated. Additional properties.
 	Props *Actionproperties `json:"props,omitempty"`
 
 	// ArchitectFlowFields - Architect Flow Id and input contract.

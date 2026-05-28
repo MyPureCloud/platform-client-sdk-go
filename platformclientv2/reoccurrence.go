@@ -20,7 +20,7 @@ type Reoccurrence struct {
 	// End - The end date time of the initial occurrence as an ISO-8601 string in the format YYYY-MM-DDThh:mm:ss
 	End *string `json:"end,omitempty"`
 
-	// TimeZone - The time zone for the recurrence. The time zone of the recurrence is determined by prioritizing the recurrence's time zone if specified, then the schedule's time zone if set, and finally defaulting to UTC if neither defines a time zone. See here for a list of valid time zones https://www.iana.org/time-zones
+	// TimeZone - The time zone for the recurrence. The time zone of the recurrence is determined by prioritizing the recurrence's time zone if specified, then the schedule's time zone if set, and finally defaulting to UTC if neither defines a time zone. See here for a list of valid time zones https://www.iana.org/time-zones. Time zones are represented as a string of the zone name as found in the IANA time zone database. For example: UTC, Etc/UTC, or Europe/London
 	TimeZone *string `json:"timeZone,omitempty"`
 
 	// Pattern - The schedule pattern e.g.: Daily/Weekly

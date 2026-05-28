@@ -41,6 +41,9 @@ type Createcallrequest struct {
 	// RoutingSkillsIds - The skill ID's to use for routing this call (if calling a queue).
 	RoutingSkillsIds *[]string `json:"routingSkillsIds,omitempty"`
 
+	// RoutingSkillExpression - The skill expression to use for routing this call (if calling a queue).
+	RoutingSkillExpression *string `json:"routingSkillExpression,omitempty"`
+
 	// ConversationIds - The list of existing call conversations to merge into a new ad-hoc conference.
 	ConversationIds *[]string `json:"conversationIds,omitempty"`
 
@@ -140,6 +143,8 @@ func (o Createcallrequest) MarshalJSON() ([]byte, error) {
 		
 		RoutingSkillsIds *[]string `json:"routingSkillsIds,omitempty"`
 		
+		RoutingSkillExpression *string `json:"routingSkillExpression,omitempty"`
+		
 		ConversationIds *[]string `json:"conversationIds,omitempty"`
 		
 		Participants *[]Destination `json:"participants,omitempty"`
@@ -170,6 +175,8 @@ func (o Createcallrequest) MarshalJSON() ([]byte, error) {
 		LanguageId: o.LanguageId,
 		
 		RoutingSkillsIds: o.RoutingSkillsIds,
+		
+		RoutingSkillExpression: o.RoutingSkillExpression,
 		
 		ConversationIds: o.ConversationIds,
 		
@@ -234,6 +241,10 @@ func (o *Createcallrequest) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(RoutingSkillsIdsString, &o.RoutingSkillsIds)
 	}
 	
+	if RoutingSkillExpression, ok := CreatecallrequestMap["routingSkillExpression"].(string); ok {
+		o.RoutingSkillExpression = &RoutingSkillExpression
+	}
+    
 	if ConversationIds, ok := CreatecallrequestMap["conversationIds"].([]interface{}); ok {
 		ConversationIdsString, _ := json.Marshal(ConversationIds)
 		json.Unmarshal(ConversationIdsString, &o.ConversationIds)

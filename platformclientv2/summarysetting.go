@@ -18,6 +18,12 @@ type Summarysetting struct {
 	// Name - Name of the summary setting.
 	Name *string `json:"name,omitempty"`
 
+	// DateModified - The date and time the setting was last modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateModified *time.Time `json:"dateModified,omitempty"`
+
+	// InteractionType - The interaction type the setting can be used for
+	InteractionType *string `json:"interactionType,omitempty"`
+
 	// Language - Language of the generated summary, e.g. en-US, it-IT.
 	Language *string `json:"language,omitempty"`
 
@@ -29,6 +35,9 @@ type Summarysetting struct {
 
 	// MaskPII - Displaying PII in the generated summary.
 	MaskPII *Summarysettingpii `json:"maskPII,omitempty"`
+
+	// DateCreated - The date and time the setting was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
 	// ParticipantLabels - How to refer to interaction participants in the generated summary.
 	ParticipantLabels *Summarysettingparticipantlabels `json:"participantLabels,omitempty"`
@@ -53,12 +62,6 @@ type Summarysetting struct {
 
 	// TimeoutDuration - Timeout duration in seconds for the external summarization service request.
 	TimeoutDuration *int `json:"timeoutDuration,omitempty"`
-
-	// DateCreated - The date and time the setting was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
-	DateCreated *time.Time `json:"dateCreated,omitempty"`
-
-	// DateModified - The date and time the setting was last modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
-	DateModified *time.Time `json:"dateModified,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -93,7 +96,7 @@ func (o Summarysetting) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "DateCreated","DateModified", }
+		dateTimeFields := []string{ "DateModified","DateCreated", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -126,14 +129,6 @@ func (o Summarysetting) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Summarysetting
 	
-	DateCreated := new(string)
-	if o.DateCreated != nil {
-		
-		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
-	} else {
-		DateCreated = nil
-	}
-	
 	DateModified := new(string)
 	if o.DateModified != nil {
 		
@@ -142,10 +137,22 @@ func (o Summarysetting) MarshalJSON() ([]byte, error) {
 		DateModified = nil
 	}
 	
+	DateCreated := new(string)
+	if o.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
 		Name *string `json:"name,omitempty"`
+		
+		DateModified *string `json:"dateModified,omitempty"`
+		
+		InteractionType *string `json:"interactionType,omitempty"`
 		
 		Language *string `json:"language,omitempty"`
 		
@@ -154,6 +161,8 @@ func (o Summarysetting) MarshalJSON() ([]byte, error) {
 		Format *string `json:"format,omitempty"`
 		
 		MaskPII *Summarysettingpii `json:"maskPII,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
 		
 		ParticipantLabels *Summarysettingparticipantlabels `json:"participantLabels,omitempty"`
 		
@@ -171,16 +180,16 @@ func (o Summarysetting) MarshalJSON() ([]byte, error) {
 		
 		TimeoutDuration *int `json:"timeoutDuration,omitempty"`
 		
-		DateCreated *string `json:"dateCreated,omitempty"`
-		
-		DateModified *string `json:"dateModified,omitempty"`
-		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
 		
 		Name: o.Name,
+		
+		DateModified: DateModified,
+		
+		InteractionType: o.InteractionType,
 		
 		Language: o.Language,
 		
@@ -189,6 +198,8 @@ func (o Summarysetting) MarshalJSON() ([]byte, error) {
 		Format: o.Format,
 		
 		MaskPII: o.MaskPII,
+		
+		DateCreated: DateCreated,
 		
 		ParticipantLabels: o.ParticipantLabels,
 		
@@ -205,10 +216,6 @@ func (o Summarysetting) MarshalJSON() ([]byte, error) {
 		IntegrationId: o.IntegrationId,
 		
 		TimeoutDuration: o.TimeoutDuration,
-		
-		DateCreated: DateCreated,
-		
-		DateModified: DateModified,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -230,6 +237,15 @@ func (o *Summarysetting) UnmarshalJSON(b []byte) error {
 		o.Name = &Name
 	}
     
+	if dateModifiedString, ok := SummarysettingMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if InteractionType, ok := SummarysettingMap["interactionType"].(string); ok {
+		o.InteractionType = &InteractionType
+	}
+    
 	if Language, ok := SummarysettingMap["language"].(string); ok {
 		o.Language = &Language
 	}
@@ -245,6 +261,11 @@ func (o *Summarysetting) UnmarshalJSON(b []byte) error {
 	if MaskPII, ok := SummarysettingMap["maskPII"].(map[string]interface{}); ok {
 		MaskPIIString, _ := json.Marshal(MaskPII)
 		json.Unmarshal(MaskPIIString, &o.MaskPII)
+	}
+	
+	if dateCreatedString, ok := SummarysettingMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
 	}
 	
 	if ParticipantLabels, ok := SummarysettingMap["participantLabels"].(map[string]interface{}); ok {
@@ -281,16 +302,6 @@ func (o *Summarysetting) UnmarshalJSON(b []byte) error {
 	if TimeoutDuration, ok := SummarysettingMap["timeoutDuration"].(float64); ok {
 		TimeoutDurationInt := int(TimeoutDuration)
 		o.TimeoutDuration = &TimeoutDurationInt
-	}
-	
-	if dateCreatedString, ok := SummarysettingMap["dateCreated"].(string); ok {
-		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
-		o.DateCreated = &DateCreated
-	}
-	
-	if dateModifiedString, ok := SummarysettingMap["dateModified"].(string); ok {
-		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
-		o.DateModified = &DateModified
 	}
 	
 	if SelfUri, ok := SummarysettingMap["selfUri"].(string); ok {

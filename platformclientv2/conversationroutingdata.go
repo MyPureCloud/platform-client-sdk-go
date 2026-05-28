@@ -23,6 +23,12 @@ type Conversationroutingdata struct {
 	// Skills - The skills to use for routing decisions
 	Skills *[]Addressableentityref `json:"skills,omitempty"`
 
+	// SkillExpression - The string with skill expression requested by the caller for routing decisions
+	SkillExpression *string `json:"skillExpression,omitempty"`
+
+	// SkillExpressionId - The internal id of the skill expression, if any, that is currently in use for routing decisions
+	SkillExpressionId *string `json:"skillExpressionId,omitempty"`
+
 	// ScoredAgents - A collection of agents and their assigned scores for this conversation (0 - 100, higher being better), for use in routing to preferred agents
 	ScoredAgents *[]Scoredagent `json:"scoredAgents,omitempty"`
 
@@ -101,6 +107,10 @@ func (o Conversationroutingdata) MarshalJSON() ([]byte, error) {
 		
 		Skills *[]Addressableentityref `json:"skills,omitempty"`
 		
+		SkillExpression *string `json:"skillExpression,omitempty"`
+		
+		SkillExpressionId *string `json:"skillExpressionId,omitempty"`
+		
 		ScoredAgents *[]Scoredagent `json:"scoredAgents,omitempty"`
 		
 		Label *string `json:"label,omitempty"`
@@ -113,6 +123,10 @@ func (o Conversationroutingdata) MarshalJSON() ([]byte, error) {
 		Priority: o.Priority,
 		
 		Skills: o.Skills,
+		
+		SkillExpression: o.SkillExpression,
+		
+		SkillExpressionId: o.SkillExpressionId,
 		
 		ScoredAgents: o.ScoredAgents,
 		
@@ -148,6 +162,14 @@ func (o *Conversationroutingdata) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(SkillsString, &o.Skills)
 	}
 	
+	if SkillExpression, ok := ConversationroutingdataMap["skillExpression"].(string); ok {
+		o.SkillExpression = &SkillExpression
+	}
+    
+	if SkillExpressionId, ok := ConversationroutingdataMap["skillExpressionId"].(string); ok {
+		o.SkillExpressionId = &SkillExpressionId
+	}
+    
 	if ScoredAgents, ok := ConversationroutingdataMap["scoredAgents"].([]interface{}); ok {
 		ScoredAgentsString, _ := json.Marshal(ScoredAgents)
 		json.Unmarshal(ScoredAgentsString, &o.ScoredAgents)

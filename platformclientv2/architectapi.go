@@ -11356,7 +11356,7 @@ func (a ArchitectApi) PostFlowsInstancesQuery(body Criteriaquery, indexOnly bool
 // PostFlowsJobs invokes POST /api/v2/flows/jobs
 //
 // Register Architect Job. Returns a URL where a file, such as an Architect flow YAML file, can be PUT which will then initiate the job.
-func (a ArchitectApi) PostFlowsJobs() (*Registerarchitectjobresponse, *APIResponse, error) {
+func (a ArchitectApi) PostFlowsJobs(body interface{}) (*Registerarchitectjobresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/jobs"
@@ -11413,6 +11413,9 @@ func (a ArchitectApi) PostFlowsJobs() (*Registerarchitectjobresponse, *APIRespon
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
+	// body params
+	postBody = &body
+
 	var successPayload *Registerarchitectjobresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {

@@ -17,6 +17,9 @@ type Routingconversationattributesrequest struct {
 	// SkillIds - Skill requirements for the conversation.  To remove all skill requirements, specify an empty list, i.e. [].
 	SkillIds *[]string `json:"skillIds,omitempty"`
 
+	// SkillExpression - Skill requirements in form of expression for the conversation.  To remove the skill expression, specify an empty string, i.e., \"\".
+	SkillExpression *string `json:"skillExpression,omitempty"`
+
 	// LanguageId - Language requirement for the conversation.  To remove the language requirement, specify an empty string, i.e., \"\".
 	LanguageId *string `json:"languageId,omitempty"`
 
@@ -94,6 +97,8 @@ func (o Routingconversationattributesrequest) MarshalJSON() ([]byte, error) {
 		
 		SkillIds *[]string `json:"skillIds,omitempty"`
 		
+		SkillExpression *string `json:"skillExpression,omitempty"`
+		
 		LanguageId *string `json:"languageId,omitempty"`
 		
 		LabelId *string `json:"labelId,omitempty"`
@@ -104,6 +109,8 @@ func (o Routingconversationattributesrequest) MarshalJSON() ([]byte, error) {
 		Priority: o.Priority,
 		
 		SkillIds: o.SkillIds,
+		
+		SkillExpression: o.SkillExpression,
 		
 		LanguageId: o.LanguageId,
 		
@@ -131,6 +138,10 @@ func (o *Routingconversationattributesrequest) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(SkillIdsString, &o.SkillIds)
 	}
 	
+	if SkillExpression, ok := RoutingconversationattributesrequestMap["skillExpression"].(string); ok {
+		o.SkillExpression = &SkillExpression
+	}
+    
 	if LanguageId, ok := RoutingconversationattributesrequestMap["languageId"].(string); ok {
 		o.LanguageId = &LanguageId
 	}

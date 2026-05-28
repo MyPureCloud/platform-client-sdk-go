@@ -36,6 +36,9 @@ type Opendataingestionruleresponse struct {
 	// Platform - The platform of the data ingestion rule.
 	Platform *string `json:"platform,omitempty"`
 
+	// IngestionRuleInfo - The Info about ingestion rule.
+	IngestionRuleInfo *Messageinfo `json:"ingestionRuleInfo,omitempty"`
+
 	// Countries - The countries is available only on twitter data ingestion rule. ISO 3166-1 alpha-2 country codes where Data Ingestion Rules should apply. Defaults to worldwide.
 	Countries *[]string `json:"countries,omitempty"`
 
@@ -141,6 +144,8 @@ func (o Opendataingestionruleresponse) MarshalJSON() ([]byte, error) {
 		
 		Platform *string `json:"platform,omitempty"`
 		
+		IngestionRuleInfo *Messageinfo `json:"ingestionRuleInfo,omitempty"`
+		
 		Countries *[]string `json:"countries,omitempty"`
 		
 		ExternalSource *Domainentityref `json:"externalSource,omitempty"`
@@ -163,6 +168,8 @@ func (o Opendataingestionruleresponse) MarshalJSON() ([]byte, error) {
 		DateModified: DateModified,
 		
 		Platform: o.Platform,
+		
+		IngestionRuleInfo: o.IngestionRuleInfo,
 		
 		Countries: o.Countries,
 		
@@ -215,6 +222,11 @@ func (o *Opendataingestionruleresponse) UnmarshalJSON(b []byte) error {
 		o.Platform = &Platform
 	}
     
+	if IngestionRuleInfo, ok := OpendataingestionruleresponseMap["ingestionRuleInfo"].(map[string]interface{}); ok {
+		IngestionRuleInfoString, _ := json.Marshal(IngestionRuleInfo)
+		json.Unmarshal(IngestionRuleInfoString, &o.IngestionRuleInfo)
+	}
+	
 	if Countries, ok := OpendataingestionruleresponseMap["countries"].([]interface{}); ok {
 		CountriesString, _ := json.Marshal(Countries)
 		json.Unmarshal(CountriesString, &o.Countries)

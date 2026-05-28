@@ -15,7 +15,7 @@ type Updateunavailabletime struct {
 	Id *string `json:"id,omitempty"`
 
 	// TimeSpan - Exact date, time and length of the unavailability time in granularity of minutes. Must be specified when creating a new unavailable time span
-	TimeSpan *Unavailabletimestimespan `json:"timeSpan,omitempty"`
+	TimeSpan *Wfmtimespan `json:"timeSpan,omitempty"`
 
 	// Notes - Comments explaining the unavailability time span
 	Notes *string `json:"notes,omitempty"`
@@ -89,7 +89,7 @@ func (o Updateunavailabletime) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
-		TimeSpan *Unavailabletimestimespan `json:"timeSpan,omitempty"`
+		TimeSpan *Wfmtimespan `json:"timeSpan,omitempty"`
 		
 		Notes *string `json:"notes,omitempty"`
 		

@@ -25,6 +25,12 @@ type Routingconversationattributesresponse struct {
 
 	// ScoredAgents - Current scored agents on in-queue conversation
 	ScoredAgents *[]Scoredagent `json:"scoredAgents,omitempty"`
+
+	// SkillExpression - Current skill expression on in-queue conversation
+	SkillExpression *string `json:"skillExpression,omitempty"`
+
+	// SkillExpressionId - Current skill expression ID on in-queue conversation
+	SkillExpressionId *string `json:"skillExpressionId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -99,6 +105,10 @@ func (o Routingconversationattributesresponse) MarshalJSON() ([]byte, error) {
 		Label *Utilizationlabel `json:"label,omitempty"`
 		
 		ScoredAgents *[]Scoredagent `json:"scoredAgents,omitempty"`
+		
+		SkillExpression *string `json:"skillExpression,omitempty"`
+		
+		SkillExpressionId *string `json:"skillExpressionId,omitempty"`
 		Alias
 	}{ 
 		Priority: o.Priority,
@@ -110,6 +120,10 @@ func (o Routingconversationattributesresponse) MarshalJSON() ([]byte, error) {
 		Label: o.Label,
 		
 		ScoredAgents: o.ScoredAgents,
+		
+		SkillExpression: o.SkillExpression,
+		
+		SkillExpressionId: o.SkillExpressionId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -146,6 +160,14 @@ func (o *Routingconversationattributesresponse) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ScoredAgentsString, &o.ScoredAgents)
 	}
 	
+	if SkillExpression, ok := RoutingconversationattributesresponseMap["skillExpression"].(string); ok {
+		o.SkillExpression = &SkillExpression
+	}
+    
+	if SkillExpressionId, ok := RoutingconversationattributesresponseMap["skillExpressionId"].(string); ok {
+		o.SkillExpressionId = &SkillExpressionId
+	}
+    
 
 	return nil
 }

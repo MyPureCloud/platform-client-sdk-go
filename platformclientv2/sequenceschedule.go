@@ -33,7 +33,7 @@ type Sequenceschedule struct {
 	// Recurrences - Recurring schedules of the campaign
 	Recurrences *[]Reoccurrence `json:"recurrences,omitempty"`
 
-	// TimeZone - The time zone for this SequenceSchedule. Defaults to UTC if empty or not provided. See here for a list of valid time zones https://www.iana.org/time-zones
+	// TimeZone - The time zone for this SequenceSchedule. Defaults to UTC if empty or not provided. See here for a list of valid time zones https://www.iana.org/time-zones. Time zones are represented as a string of the zone name as found in the IANA time zone database. For example: UTC, Etc/UTC, or Europe/London
 	TimeZone *string `json:"timeZone,omitempty"`
 
 	// Sequence - The CampaignSequence that this SequenceSchedule is for.

@@ -7,12 +7,12 @@ import (
 	"strings"
 )
 
-// Utilizationtagentitylisting
-type Utilizationtagentitylisting struct { 
+// Skillexpressionentitylisting
+type Skillexpressionentitylisting struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Entities
-	Entities *[]Utilizationtag `json:"entities,omitempty"`
+	Entities *[]Skillexpression `json:"entities,omitempty"`
 
 	// PageSize
 	PageSize *int `json:"pageSize,omitempty"`
@@ -43,7 +43,7 @@ type Utilizationtagentitylisting struct {
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Utilizationtagentitylisting) SetField(field string, fieldValue interface{}) {
+func (o *Skillexpressionentitylisting) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -64,7 +64,7 @@ func (o *Utilizationtagentitylisting) SetField(field string, fieldValue interfac
 	o.SetFieldNames[field] = true
 }
 
-func (o Utilizationtagentitylisting) MarshalJSON() ([]byte, error) {
+func (o Skillexpressionentitylisting) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -102,10 +102,10 @@ func (o Utilizationtagentitylisting) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Utilizationtagentitylisting
+	type Alias Skillexpressionentitylisting
 	
 	return json.Marshal(&struct { 
-		Entities *[]Utilizationtag `json:"entities,omitempty"`
+		Entities *[]Skillexpression `json:"entities,omitempty"`
 		
 		PageSize *int `json:"pageSize,omitempty"`
 		
@@ -149,54 +149,54 @@ func (o Utilizationtagentitylisting) MarshalJSON() ([]byte, error) {
 	})
 }
 
-func (o *Utilizationtagentitylisting) UnmarshalJSON(b []byte) error {
-	var UtilizationtagentitylistingMap map[string]interface{}
-	err := json.Unmarshal(b, &UtilizationtagentitylistingMap)
+func (o *Skillexpressionentitylisting) UnmarshalJSON(b []byte) error {
+	var SkillexpressionentitylistingMap map[string]interface{}
+	err := json.Unmarshal(b, &SkillexpressionentitylistingMap)
 	if err != nil {
 		return err
 	}
 	
-	if Entities, ok := UtilizationtagentitylistingMap["entities"].([]interface{}); ok {
+	if Entities, ok := SkillexpressionentitylistingMap["entities"].([]interface{}); ok {
 		EntitiesString, _ := json.Marshal(Entities)
 		json.Unmarshal(EntitiesString, &o.Entities)
 	}
 	
-	if PageSize, ok := UtilizationtagentitylistingMap["pageSize"].(float64); ok {
+	if PageSize, ok := SkillexpressionentitylistingMap["pageSize"].(float64); ok {
 		PageSizeInt := int(PageSize)
 		o.PageSize = &PageSizeInt
 	}
 	
-	if PageNumber, ok := UtilizationtagentitylistingMap["pageNumber"].(float64); ok {
+	if PageNumber, ok := SkillexpressionentitylistingMap["pageNumber"].(float64); ok {
 		PageNumberInt := int(PageNumber)
 		o.PageNumber = &PageNumberInt
 	}
 	
-	if Total, ok := UtilizationtagentitylistingMap["total"].(float64); ok {
+	if Total, ok := SkillexpressionentitylistingMap["total"].(float64); ok {
 		TotalInt := int(Total)
 		o.Total = &TotalInt
 	}
 	
-	if FirstUri, ok := UtilizationtagentitylistingMap["firstUri"].(string); ok {
+	if FirstUri, ok := SkillexpressionentitylistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
     
-	if NextUri, ok := UtilizationtagentitylistingMap["nextUri"].(string); ok {
+	if NextUri, ok := SkillexpressionentitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
     
-	if PreviousUri, ok := UtilizationtagentitylistingMap["previousUri"].(string); ok {
+	if PreviousUri, ok := SkillexpressionentitylistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
 	}
     
-	if LastUri, ok := UtilizationtagentitylistingMap["lastUri"].(string); ok {
+	if LastUri, ok := SkillexpressionentitylistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
 	}
     
-	if SelfUri, ok := UtilizationtagentitylistingMap["selfUri"].(string); ok {
+	if SelfUri, ok := SkillexpressionentitylistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
     
-	if PageCount, ok := UtilizationtagentitylistingMap["pageCount"].(float64); ok {
+	if PageCount, ok := SkillexpressionentitylistingMap["pageCount"].(float64); ok {
 		PageCountInt := int(PageCount)
 		o.PageCount = &PageCountInt
 	}
@@ -206,7 +206,7 @@ func (o *Utilizationtagentitylisting) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Utilizationtagentitylisting) String() string {
+func (o *Skillexpressionentitylisting) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

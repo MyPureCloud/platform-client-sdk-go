@@ -1,6 +1,5 @@
 package platformclientv2
 import (
-	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -8,28 +7,19 @@ import (
 	"strings"
 )
 
-// Mediastatisticspostrequest
-type Mediastatisticspostrequest struct { 
+// Activateexternaleventrequest - Request to activate an external event
+type Activateexternaleventrequest struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// SourceType - Source type of media endpoint
-	SourceType *string `json:"sourceType,omitempty"`
+	// DisplayName - The display name of the external event
+	DisplayName *string `json:"displayName,omitempty"`
 
-	// ClientInfo - Client information associated with media endpoint
-	ClientInfo *Mediastatisticsclientinfo `json:"clientInfo,omitempty"`
-
-	// Rtp - Statistics of sent and received RTP. Reference: https://www.rfc-editor.org/rfc/rfc3550
-	Rtp *Mediartpstatistics `json:"rtp,omitempty"`
-
-	// ReconnectAttempts - Media reconnect attempt count
-	ReconnectAttempts *int `json:"reconnectAttempts,omitempty"`
-
-	// DateCreated - Media endpoint statistics creation time. Format: yyyy-MM-dd'T'HH:mm:ss.SSS'Z'. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
-	DateCreated *time.Time `json:"dateCreated,omitempty"`
+	// Rank - The rank of the external event
+	Rank *int `json:"rank,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Mediastatisticspostrequest) SetField(field string, fieldValue interface{}) {
+func (o *Activateexternaleventrequest) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -50,14 +40,14 @@ func (o *Mediastatisticspostrequest) SetField(field string, fieldValue interface
 	o.SetFieldNames[field] = true
 }
 
-func (o Mediastatisticspostrequest) MarshalJSON() ([]byte, error) {
+func (o Activateexternaleventrequest) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "DateCreated", }
+		dateTimeFields := []string{  }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -88,70 +78,35 @@ func (o Mediastatisticspostrequest) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Mediastatisticspostrequest
-	
-	DateCreated := new(string)
-	if o.DateCreated != nil {
-		
-		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
-	} else {
-		DateCreated = nil
-	}
+	type Alias Activateexternaleventrequest
 	
 	return json.Marshal(&struct { 
-		SourceType *string `json:"sourceType,omitempty"`
+		DisplayName *string `json:"displayName,omitempty"`
 		
-		ClientInfo *Mediastatisticsclientinfo `json:"clientInfo,omitempty"`
-		
-		Rtp *Mediartpstatistics `json:"rtp,omitempty"`
-		
-		ReconnectAttempts *int `json:"reconnectAttempts,omitempty"`
-		
-		DateCreated *string `json:"dateCreated,omitempty"`
+		Rank *int `json:"rank,omitempty"`
 		Alias
 	}{ 
-		SourceType: o.SourceType,
+		DisplayName: o.DisplayName,
 		
-		ClientInfo: o.ClientInfo,
-		
-		Rtp: o.Rtp,
-		
-		ReconnectAttempts: o.ReconnectAttempts,
-		
-		DateCreated: DateCreated,
+		Rank: o.Rank,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Mediastatisticspostrequest) UnmarshalJSON(b []byte) error {
-	var MediastatisticspostrequestMap map[string]interface{}
-	err := json.Unmarshal(b, &MediastatisticspostrequestMap)
+func (o *Activateexternaleventrequest) UnmarshalJSON(b []byte) error {
+	var ActivateexternaleventrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &ActivateexternaleventrequestMap)
 	if err != nil {
 		return err
 	}
 	
-	if SourceType, ok := MediastatisticspostrequestMap["sourceType"].(string); ok {
-		o.SourceType = &SourceType
+	if DisplayName, ok := ActivateexternaleventrequestMap["displayName"].(string); ok {
+		o.DisplayName = &DisplayName
 	}
     
-	if ClientInfo, ok := MediastatisticspostrequestMap["clientInfo"].(map[string]interface{}); ok {
-		ClientInfoString, _ := json.Marshal(ClientInfo)
-		json.Unmarshal(ClientInfoString, &o.ClientInfo)
-	}
-	
-	if Rtp, ok := MediastatisticspostrequestMap["rtp"].(map[string]interface{}); ok {
-		RtpString, _ := json.Marshal(Rtp)
-		json.Unmarshal(RtpString, &o.Rtp)
-	}
-	
-	if ReconnectAttempts, ok := MediastatisticspostrequestMap["reconnectAttempts"].(float64); ok {
-		ReconnectAttemptsInt := int(ReconnectAttempts)
-		o.ReconnectAttempts = &ReconnectAttemptsInt
-	}
-	
-	if dateCreatedString, ok := MediastatisticspostrequestMap["dateCreated"].(string); ok {
-		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
-		o.DateCreated = &DateCreated
+	if Rank, ok := ActivateexternaleventrequestMap["rank"].(float64); ok {
+		RankInt := int(Rank)
+		o.Rank = &RankInt
 	}
 	
 
@@ -159,7 +114,7 @@ func (o *Mediastatisticspostrequest) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Mediastatisticspostrequest) String() string {
+func (o *Activateexternaleventrequest) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

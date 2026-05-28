@@ -111,6 +111,9 @@ type Recording struct {
 	// CreationTime - The creation time of the recording. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	CreationTime *time.Time `json:"creationTime,omitempty"`
 
+	// AssociatedConversationIds - List of associated conversation IDs
+	AssociatedConversationIds *[]string `json:"associatedConversationIds,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -300,6 +303,8 @@ func (o Recording) MarshalJSON() ([]byte, error) {
 		
 		CreationTime *string `json:"creationTime,omitempty"`
 		
+		AssociatedConversationIds *[]string `json:"associatedConversationIds,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -368,6 +373,8 @@ func (o Recording) MarshalJSON() ([]byte, error) {
 		OriginalRecordingStartTime: OriginalRecordingStartTime,
 		
 		CreationTime: CreationTime,
+		
+		AssociatedConversationIds: o.AssociatedConversationIds,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -530,6 +537,11 @@ func (o *Recording) UnmarshalJSON(b []byte) error {
 	if creationTimeString, ok := RecordingMap["creationTime"].(string); ok {
 		CreationTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", creationTimeString)
 		o.CreationTime = &CreationTime
+	}
+	
+	if AssociatedConversationIds, ok := RecordingMap["associatedConversationIds"].([]interface{}); ok {
+		AssociatedConversationIdsString, _ := json.Marshal(AssociatedConversationIds)
+		json.Unmarshal(AssociatedConversationIdsString, &o.AssociatedConversationIds)
 	}
 	
 	if SelfUri, ok := RecordingMap["selfUri"].(string); ok {

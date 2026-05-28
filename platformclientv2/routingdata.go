@@ -26,6 +26,9 @@ type Routingdata struct {
 	// SkillIds - A list of skill identifiers to be considered in routing
 	SkillIds *[]string `json:"skillIds,omitempty"`
 
+	// SkillExpression - Optional skill expression for routing when skillIds are present. Used to match agents by a logical expression over skills.
+	SkillExpression *string `json:"skillExpression,omitempty"`
+
 	// PreferredAgentIds - A list of agents to be preferred in routing
 	PreferredAgentIds *[]string `json:"preferredAgentIds,omitempty"`
 
@@ -109,6 +112,8 @@ func (o Routingdata) MarshalJSON() ([]byte, error) {
 		
 		SkillIds *[]string `json:"skillIds,omitempty"`
 		
+		SkillExpression *string `json:"skillExpression,omitempty"`
+		
 		PreferredAgentIds *[]string `json:"preferredAgentIds,omitempty"`
 		
 		ScoredAgents *[]Scoredagent `json:"scoredAgents,omitempty"`
@@ -125,6 +130,8 @@ func (o Routingdata) MarshalJSON() ([]byte, error) {
 		Priority: o.Priority,
 		
 		SkillIds: o.SkillIds,
+		
+		SkillExpression: o.SkillExpression,
 		
 		PreferredAgentIds: o.PreferredAgentIds,
 		
@@ -164,6 +171,10 @@ func (o *Routingdata) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(SkillIdsString, &o.SkillIds)
 	}
 	
+	if SkillExpression, ok := RoutingdataMap["skillExpression"].(string); ok {
+		o.SkillExpression = &SkillExpression
+	}
+    
 	if PreferredAgentIds, ok := RoutingdataMap["preferredAgentIds"].([]interface{}); ok {
 		PreferredAgentIdsString, _ := json.Marshal(PreferredAgentIds)
 		json.Unmarshal(PreferredAgentIdsString, &o.PreferredAgentIds)

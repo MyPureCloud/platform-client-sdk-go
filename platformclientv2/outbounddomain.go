@@ -29,6 +29,9 @@ type Outbounddomain struct {
 	// EmailSetting - The email settings associated with this domain.
 	EmailSetting *Emailsetting `json:"emailSetting,omitempty"`
 
+	// DmarcVerificationResult - The DMARC verification status for this domain.
+	DmarcVerificationResult *Dmarcresult `json:"dmarcVerificationResult,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -108,6 +111,8 @@ func (o Outbounddomain) MarshalJSON() ([]byte, error) {
 		
 		EmailSetting *Emailsetting `json:"emailSetting,omitempty"`
 		
+		DmarcVerificationResult *Dmarcresult `json:"dmarcVerificationResult,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -122,6 +127,8 @@ func (o Outbounddomain) MarshalJSON() ([]byte, error) {
 		SenderType: o.SenderType,
 		
 		EmailSetting: o.EmailSetting,
+		
+		DmarcVerificationResult: o.DmarcVerificationResult,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -160,6 +167,11 @@ func (o *Outbounddomain) UnmarshalJSON(b []byte) error {
 	if EmailSetting, ok := OutbounddomainMap["emailSetting"].(map[string]interface{}); ok {
 		EmailSettingString, _ := json.Marshal(EmailSetting)
 		json.Unmarshal(EmailSettingString, &o.EmailSetting)
+	}
+	
+	if DmarcVerificationResult, ok := OutbounddomainMap["dmarcVerificationResult"].(map[string]interface{}); ok {
+		DmarcVerificationResultString, _ := json.Marshal(DmarcVerificationResult)
+		json.Unmarshal(DmarcVerificationResultString, &o.DmarcVerificationResult)
 	}
 	
 	if SelfUri, ok := OutbounddomainMap["selfUri"].(string); ok {

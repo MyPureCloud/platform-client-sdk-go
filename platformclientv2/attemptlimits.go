@@ -33,7 +33,7 @@ type Attemptlimits struct {
 	// MaxAttemptsPerNumber - The maximum number of times a phone number can be called within the resetPeriod. Required if maxAttemptsPerContact is not defined.
 	MaxAttemptsPerNumber *int `json:"maxAttemptsPerNumber,omitempty"`
 
-	// TimeZoneId - If the resetPeriod is TODAY, this specifies the timezone in which TODAY occurs. Required if the resetPeriod is TODAY.
+	// TimeZoneId - If the resetPeriod is TODAY, this specifies the timezone in which TODAY occurs. Required if the resetPeriod is TODAY. Time zones are represented as a string of the zone name as found in the IANA time zone database. For example: UTC, Etc/UTC, or Europe/London
 	TimeZoneId *string `json:"timeZoneId,omitempty"`
 
 	// ResetPeriod - After how long the number of attempts will be set back to 0. Defaults to NEVER.

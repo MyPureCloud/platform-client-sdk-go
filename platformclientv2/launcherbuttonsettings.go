@@ -13,6 +13,12 @@ type Launcherbuttonsettings struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// Visibility - The visibility settings for the button
 	Visibility *string `json:"visibility,omitempty"`
+
+	// DisplayType - The display type of the launcher button
+	DisplayType *string `json:"displayType,omitempty"`
+
+	// Icon - The icon for the launcher button
+	Icon *Icon `json:"icon,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +85,17 @@ func (o Launcherbuttonsettings) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		Visibility *string `json:"visibility,omitempty"`
+		
+		DisplayType *string `json:"displayType,omitempty"`
+		
+		Icon *Icon `json:"icon,omitempty"`
 		Alias
 	}{ 
 		Visibility: o.Visibility,
+		
+		DisplayType: o.DisplayType,
+		
+		Icon: o.Icon,
 		Alias:    (Alias)(o),
 	})
 }
@@ -97,6 +111,15 @@ func (o *Launcherbuttonsettings) UnmarshalJSON(b []byte) error {
 		o.Visibility = &Visibility
 	}
     
+	if DisplayType, ok := LauncherbuttonsettingsMap["displayType"].(string); ok {
+		o.DisplayType = &DisplayType
+	}
+    
+	if Icon, ok := LauncherbuttonsettingsMap["icon"].(map[string]interface{}); ok {
+		IconString, _ := json.Marshal(Icon)
+		json.Unmarshal(IconString, &o.Icon)
+	}
+	
 
 	return nil
 }

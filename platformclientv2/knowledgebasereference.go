@@ -17,6 +17,9 @@ type Knowledgebasereference struct {
 	// LanguageCode - Language of the knowledge base
 	LanguageCode *string `json:"languageCode,omitempty"`
 
+	// ContentSearchEnabled - Flag that indicates the search on content is enabled for the knowledge base.
+	ContentSearchEnabled *bool `json:"contentSearchEnabled,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -88,12 +91,16 @@ func (o Knowledgebasereference) MarshalJSON() ([]byte, error) {
 		
 		LanguageCode *string `json:"languageCode,omitempty"`
 		
+		ContentSearchEnabled *bool `json:"contentSearchEnabled,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
 		
 		LanguageCode: o.LanguageCode,
+		
+		ContentSearchEnabled: o.ContentSearchEnabled,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -113,6 +120,10 @@ func (o *Knowledgebasereference) UnmarshalJSON(b []byte) error {
     
 	if LanguageCode, ok := KnowledgebasereferenceMap["languageCode"].(string); ok {
 		o.LanguageCode = &LanguageCode
+	}
+    
+	if ContentSearchEnabled, ok := KnowledgebasereferenceMap["contentSearchEnabled"].(bool); ok {
+		o.ContentSearchEnabled = &ContentSearchEnabled
 	}
     
 	if SelfUri, ok := KnowledgebasereferenceMap["selfUri"].(string); ok {

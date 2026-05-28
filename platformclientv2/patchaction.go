@@ -17,13 +17,13 @@ type Patchaction struct {
 	// ActionTemplate - Action template associated with the action map.
 	ActionTemplate *Actionmapactiontemplate `json:"actionTemplate,omitempty"`
 
-	// ActionTargetId - Action target ID.
+	// ActionTargetId - Deprecated. Action target ID.
 	ActionTargetId *string `json:"actionTargetId,omitempty"`
 
-	// IsPacingEnabled - Whether this action should be throttled.
+	// IsPacingEnabled - Deprecated. Whether this action should be throttled.
 	IsPacingEnabled *bool `json:"isPacingEnabled,omitempty"`
 
-	// Props - Additional properties.
+	// Props - Deprecated. Additional properties.
 	Props *Patchactionproperties `json:"props,omitempty"`
 
 	// ArchitectFlowFields - Architect Flow Id and input contract.

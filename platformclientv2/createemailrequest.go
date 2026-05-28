@@ -23,6 +23,9 @@ type Createemailrequest struct {
 	// SkillIds - The list of skill ID's to use for routing.
 	SkillIds *[]string `json:"skillIds,omitempty"`
 
+	// SkillExpression - The skill expression to use for routing the email conversation (when using queueId).
+	SkillExpression *string `json:"skillExpression,omitempty"`
+
 	// LanguageId - The ID of the language to use for routing.
 	LanguageId *string `json:"languageId,omitempty"`
 
@@ -134,6 +137,8 @@ func (o Createemailrequest) MarshalJSON() ([]byte, error) {
 		
 		SkillIds *[]string `json:"skillIds,omitempty"`
 		
+		SkillExpression *string `json:"skillExpression,omitempty"`
+		
 		LanguageId *string `json:"languageId,omitempty"`
 		
 		Priority *int `json:"priority,omitempty"`
@@ -168,6 +173,8 @@ func (o Createemailrequest) MarshalJSON() ([]byte, error) {
 		Provider: o.Provider,
 		
 		SkillIds: o.SkillIds,
+		
+		SkillExpression: o.SkillExpression,
 		
 		LanguageId: o.LanguageId,
 		
@@ -222,6 +229,10 @@ func (o *Createemailrequest) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(SkillIdsString, &o.SkillIds)
 	}
 	
+	if SkillExpression, ok := CreateemailrequestMap["skillExpression"].(string); ok {
+		o.SkillExpression = &SkillExpression
+	}
+    
 	if LanguageId, ok := CreateemailrequestMap["languageId"].(string); ok {
 		o.LanguageId = &LanguageId
 	}

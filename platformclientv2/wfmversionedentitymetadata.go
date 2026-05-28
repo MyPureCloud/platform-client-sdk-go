@@ -12,9 +12,6 @@ import (
 type Wfmversionedentitymetadata struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Version - The version of the associated entity.  Used to prevent conflicts on concurrent edits
-	Version *int `json:"version,omitempty"`
-
 	// ModifiedBy - The user who last modified the associated entity. The id may be 'System' if it was an automated process
 	ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
 
@@ -26,6 +23,9 @@ type Wfmversionedentitymetadata struct {
 
 	// DateCreated - The date the associated entity was created, if available. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
+
+	// Version - The version of the associated entity.  Used to prevent conflicts on concurrent edits
+	Version *int `json:"version,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -107,8 +107,6 @@ func (o Wfmversionedentitymetadata) MarshalJSON() ([]byte, error) {
 	}
 	
 	return json.Marshal(&struct { 
-		Version *int `json:"version,omitempty"`
-		
 		ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
 		
 		DateModified *string `json:"dateModified,omitempty"`
@@ -116,10 +114,10 @@ func (o Wfmversionedentitymetadata) MarshalJSON() ([]byte, error) {
 		CreatedBy *Userreference `json:"createdBy,omitempty"`
 		
 		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
 		Alias
 	}{ 
-		Version: o.Version,
-		
 		ModifiedBy: o.ModifiedBy,
 		
 		DateModified: DateModified,
@@ -127,6 +125,8 @@ func (o Wfmversionedentitymetadata) MarshalJSON() ([]byte, error) {
 		CreatedBy: o.CreatedBy,
 		
 		DateCreated: DateCreated,
+		
+		Version: o.Version,
 		Alias:    (Alias)(o),
 	})
 }
@@ -136,11 +136,6 @@ func (o *Wfmversionedentitymetadata) UnmarshalJSON(b []byte) error {
 	err := json.Unmarshal(b, &WfmversionedentitymetadataMap)
 	if err != nil {
 		return err
-	}
-	
-	if Version, ok := WfmversionedentitymetadataMap["version"].(float64); ok {
-		VersionInt := int(Version)
-		o.Version = &VersionInt
 	}
 	
 	if ModifiedBy, ok := WfmversionedentitymetadataMap["modifiedBy"].(map[string]interface{}); ok {
@@ -161,6 +156,11 @@ func (o *Wfmversionedentitymetadata) UnmarshalJSON(b []byte) error {
 	if dateCreatedString, ok := WfmversionedentitymetadataMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
+	}
+	
+	if Version, ok := WfmversionedentitymetadataMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
 	}
 	
 

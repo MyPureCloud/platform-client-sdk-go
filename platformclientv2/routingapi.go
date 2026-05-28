@@ -1097,6 +1097,152 @@ func (a RoutingApi) DeleteRoutingSkill(skillId string) (*APIResponse, error) {
 	return response, err
 }
 
+// DeleteRoutingSkillexpression invokes DELETE /api/v2/routing/skillexpressions/{expressionId}
+//
+// Archive a skill expression to remove it from the set of active expressions
+func (a RoutingApi) DeleteRoutingSkillexpression(expressionId string) (*APIResponse, error) {
+	var httpMethod = "DELETE"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/skillexpressions/{expressionId}"
+	path = strings.Replace(path, "{expressionId}", url.PathEscape(fmt.Sprintf("%v", expressionId)), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'expressionId' is set
+	if &expressionId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'expressionId' when calling RoutingApi->DeleteRoutingSkillexpression")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
+// DeleteRoutingSkillexpressions invokes DELETE /api/v2/routing/skillexpressions
+//
+// Archive a set of skill expressions to remove them from the set of active expressions
+func (a RoutingApi) DeleteRoutingSkillexpressions(id []string) (*APIResponse, error) {
+	var httpMethod = "DELETE"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/skillexpressions"
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
 // DeleteRoutingSkillgroup invokes DELETE /api/v2/routing/skillgroups/{skillGroupId}
 //
 // Remove skill group definition
@@ -1557,85 +1703,6 @@ func (a RoutingApi) DeleteRoutingUtilizationLabel(labelId string, forceDelete bo
 	if &labelId == nil {
 		// false
 		return nil, errors.New("Missing required parameter 'labelId' when calling RoutingApi->DeleteRoutingUtilizationLabel")
-	}
-
-	headerParams := make(map[string]string)
-	queryParams := make(map[string]string)
-	formParams := url.Values{}
-	var postBody interface{}
-	var postFileName string
-	var fileBytes []byte
-	// authentication (PureCloud OAuth) required
-
-	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
-	}
-	// add default headers if any
-	for key := range a.Configuration.DefaultHeader {
-		headerParams[key] = a.Configuration.DefaultHeader[key]
-	}
-	
-	queryParams["forceDelete"] = a.Configuration.APIClient.ParameterToString(forceDelete, "")
-	
-
-	// Find an replace keys that were altered to avoid clashes with go keywords 
-	correctedQueryParams := make(map[string]string)
-	for k, v := range queryParams {
-		if k == "varType" {
-			correctedQueryParams["type"] = v
-			continue
-		}
-		correctedQueryParams[k] = v
-	}
-	queryParams = correctedQueryParams
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
-
-	// set Content-Type header
-	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		headerParams["Content-Type"] = localVarHttpContentType
-	}
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-	}
-
-	// set Accept header
-	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		headerParams["Accept"] = localVarHttpHeaderAccept
-	}
-
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
-	if err != nil {
-		// Nothing special to do here, but do avoid processing the response
-	} else if err == nil && response.Error != nil {
-		err = errors.New(response.ErrorMessage)
-	}
-	return response, err
-}
-
-// DeleteRoutingUtilizationTag invokes DELETE /api/v2/routing/utilization/tags/{tagId}
-//
-// Delete an utilization tag
-//
-// Preview: DeleteRoutingUtilizationTag is a preview method and is subject to both breaking and non-breaking changes at any time without notice
-func (a RoutingApi) DeleteRoutingUtilizationTag(tagId string, forceDelete bool) (*APIResponse, error) {
-	var httpMethod = "DELETE"
-	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/routing/utilization/tags/{tagId}"
-	path = strings.Replace(path, "{tagId}", url.PathEscape(fmt.Sprintf("%v", tagId)), -1)
-	if true == false {
-		return nil, errors.New("This message brought to you by the laws of physics being broken")
-	}
-
-	// verify the required parameter 'tagId' is set
-	if &tagId == nil {
-		// false
-		return nil, errors.New("Missing required parameter 'tagId' when calling RoutingApi->DeleteRoutingUtilizationTag")
 	}
 
 	headerParams := make(map[string]string)
@@ -5904,6 +5971,260 @@ func (a RoutingApi) GetRoutingSkill(skillId string) (*Routingskill, *APIResponse
 	return successPayload, response, err
 }
 
+// GetRoutingSkillexpression invokes GET /api/v2/routing/skillexpressions/{expressionId}
+//
+// Get a skill expression by ID
+func (a RoutingApi) GetRoutingSkillexpression(expressionId string, includeArchived bool, format string) (*Skillexpression, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/skillexpressions/{expressionId}"
+	path = strings.Replace(path, "{expressionId}", url.PathEscape(fmt.Sprintf("%v", expressionId)), -1)
+	defaultReturn := new(Skillexpression)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'expressionId' is set
+	if &expressionId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'expressionId' when calling RoutingApi->GetRoutingSkillexpression")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["includeArchived"] = a.Configuration.APIClient.ParameterToString(includeArchived, "")
+	
+	queryParams["format"] = a.Configuration.APIClient.ParameterToString(format, "")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Skillexpression
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Skillexpression" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetRoutingSkillexpressions invokes GET /api/v2/routing/skillexpressions
+//
+// Get skill expressions
+func (a RoutingApi) GetRoutingSkillexpressions(format string, includeArchived bool, id []string) (*Skillexpressionentitylisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/skillexpressions"
+	defaultReturn := new(Skillexpressionentitylisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["format"] = a.Configuration.APIClient.ParameterToString(format, "")
+	
+	queryParams["includeArchived"] = a.Configuration.APIClient.ParameterToString(includeArchived, "")
+	
+	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Skillexpressionentitylisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Skillexpressionentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetRoutingSkillexpressionsQueueQueueId invokes GET /api/v2/routing/skillexpressions/queue/{queueId}
+//
+// Get skill expressions associated with a queue
+func (a RoutingApi) GetRoutingSkillexpressionsQueueQueueId(queueId string, format string, includeArchived bool) (*Skillexpressionentitylisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/skillexpressions/queue/{queueId}"
+	path = strings.Replace(path, "{queueId}", url.PathEscape(fmt.Sprintf("%v", queueId)), -1)
+	defaultReturn := new(Skillexpressionentitylisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'queueId' is set
+	if &queueId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->GetRoutingSkillexpressionsQueueQueueId")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["format"] = a.Configuration.APIClient.ParameterToString(format, "")
+	
+	queryParams["includeArchived"] = a.Configuration.APIClient.ParameterToString(includeArchived, "")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Skillexpressionentitylisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Skillexpressionentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // GetRoutingSkillgroup invokes GET /api/v2/routing/skillgroups/{skillGroupId}
 //
 // Get skill group
@@ -7342,260 +7663,6 @@ func (a RoutingApi) GetRoutingUtilizationLabels(pageSize int, pageNumber int, so
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Utilizationlabelentitylisting" == "string" {
-			copy(response.RawBody, &successPayload)
-		} else {
-			err = json.Unmarshal(response.RawBody, &successPayload)
-		}
-	}
-	return successPayload, response, err
-}
-
-// GetRoutingUtilizationTag invokes GET /api/v2/routing/utilization/tags/{tagId}
-//
-// Get details about this utilization tag
-//
-// Preview: GetRoutingUtilizationTag is a preview method and is subject to both breaking and non-breaking changes at any time without notice
-func (a RoutingApi) GetRoutingUtilizationTag(tagId string) (*Utilizationtag, *APIResponse, error) {
-	var httpMethod = "GET"
-	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/routing/utilization/tags/{tagId}"
-	path = strings.Replace(path, "{tagId}", url.PathEscape(fmt.Sprintf("%v", tagId)), -1)
-	defaultReturn := new(Utilizationtag)
-	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
-	}
-
-	// verify the required parameter 'tagId' is set
-	if &tagId == nil {
-		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'tagId' when calling RoutingApi->GetRoutingUtilizationTag")
-	}
-
-	headerParams := make(map[string]string)
-	queryParams := make(map[string]string)
-	formParams := url.Values{}
-	var postBody interface{}
-	var postFileName string
-	var fileBytes []byte
-	// authentication (PureCloud OAuth) required
-
-	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
-	}
-	// add default headers if any
-	for key := range a.Configuration.DefaultHeader {
-		headerParams[key] = a.Configuration.DefaultHeader[key]
-	}
-	
-
-	// Find an replace keys that were altered to avoid clashes with go keywords 
-	correctedQueryParams := make(map[string]string)
-	for k, v := range queryParams {
-		if k == "varType" {
-			correctedQueryParams["type"] = v
-			continue
-		}
-		correctedQueryParams[k] = v
-	}
-	queryParams = correctedQueryParams
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
-
-	// set Content-Type header
-	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		headerParams["Content-Type"] = localVarHttpContentType
-	}
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-	}
-
-	// set Accept header
-	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		headerParams["Accept"] = localVarHttpHeaderAccept
-	}
-	var successPayload *Utilizationtag
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
-	if err != nil {
-		// Nothing special to do here, but do avoid processing the response
-	} else if err == nil && response.Error != nil {
-		err = errors.New(response.ErrorMessage)
-	} else if response.HasBody {
-		if "Utilizationtag" == "string" {
-			copy(response.RawBody, &successPayload)
-		} else {
-			err = json.Unmarshal(response.RawBody, &successPayload)
-		}
-	}
-	return successPayload, response, err
-}
-
-// GetRoutingUtilizationTagAgents invokes GET /api/v2/routing/utilization/tags/{tagId}/agents
-//
-// Get list of agent ids associated with a utilization tag
-//
-// Preview: GetRoutingUtilizationTagAgents is a preview method and is subject to both breaking and non-breaking changes at any time without notice
-func (a RoutingApi) GetRoutingUtilizationTagAgents(tagId string) ([]interface{}, *APIResponse, error) {
-	var httpMethod = "GET"
-	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/routing/utilization/tags/{tagId}/agents"
-	path = strings.Replace(path, "{tagId}", url.PathEscape(fmt.Sprintf("%v", tagId)), -1)
-	defaultReturn := make([]interface{}, 0)
-	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
-	}
-
-	// verify the required parameter 'tagId' is set
-	if &tagId == nil {
-		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'tagId' when calling RoutingApi->GetRoutingUtilizationTagAgents")
-	}
-
-	headerParams := make(map[string]string)
-	queryParams := make(map[string]string)
-	formParams := url.Values{}
-	var postBody interface{}
-	var postFileName string
-	var fileBytes []byte
-	// authentication (PureCloud OAuth) required
-
-	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
-	}
-	// add default headers if any
-	for key := range a.Configuration.DefaultHeader {
-		headerParams[key] = a.Configuration.DefaultHeader[key]
-	}
-	
-
-	// Find an replace keys that were altered to avoid clashes with go keywords 
-	correctedQueryParams := make(map[string]string)
-	for k, v := range queryParams {
-		if k == "varType" {
-			correctedQueryParams["type"] = v
-			continue
-		}
-		correctedQueryParams[k] = v
-	}
-	queryParams = correctedQueryParams
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
-
-	// set Content-Type header
-	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		headerParams["Content-Type"] = localVarHttpContentType
-	}
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-	}
-
-	// set Accept header
-	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		headerParams["Accept"] = localVarHttpHeaderAccept
-	}
-	var successPayload []interface{}
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
-	if err != nil {
-		// Nothing special to do here, but do avoid processing the response
-	} else if err == nil && response.Error != nil {
-		err = errors.New(response.ErrorMessage)
-	} else if response.HasBody {
-		if "[]interface{}" == "string" {
-			copy(response.RawBody, &successPayload)
-		} else {
-			err = json.Unmarshal(response.RawBody, &successPayload)
-		}
-	}
-	return successPayload, response, err
-}
-
-// GetRoutingUtilizationTags invokes GET /api/v2/routing/utilization/tags
-//
-// Get list of utilization tags
-//
-// Preview: GetRoutingUtilizationTags is a preview method and is subject to both breaking and non-breaking changes at any time without notice
-func (a RoutingApi) GetRoutingUtilizationTags(pageSize int, pageNumber int, sortOrder string, name string) (*Utilizationtagentitylisting, *APIResponse, error) {
-	var httpMethod = "GET"
-	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/routing/utilization/tags"
-	defaultReturn := new(Utilizationtagentitylisting)
-	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
-	}
-
-
-	headerParams := make(map[string]string)
-	queryParams := make(map[string]string)
-	formParams := url.Values{}
-	var postBody interface{}
-	var postFileName string
-	var fileBytes []byte
-	// authentication (PureCloud OAuth) required
-
-	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
-	}
-	// add default headers if any
-	for key := range a.Configuration.DefaultHeader {
-		headerParams[key] = a.Configuration.DefaultHeader[key]
-	}
-	
-	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
-	
-	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
-	
-	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
-	
-	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
-	
-
-	// Find an replace keys that were altered to avoid clashes with go keywords 
-	correctedQueryParams := make(map[string]string)
-	for k, v := range queryParams {
-		if k == "varType" {
-			correctedQueryParams["type"] = v
-			continue
-		}
-		correctedQueryParams[k] = v
-	}
-	queryParams = correctedQueryParams
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
-
-	// set Content-Type header
-	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		headerParams["Content-Type"] = localVarHttpContentType
-	}
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-	}
-
-	// set Accept header
-	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		headerParams["Accept"] = localVarHttpHeaderAccept
-	}
-	var successPayload *Utilizationtagentitylisting
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
-	if err != nil {
-		// Nothing special to do here, but do avoid processing the response
-	} else if err == nil && response.Error != nil {
-		err = errors.New(response.ErrorMessage)
-	} else if response.HasBody {
-		if "Utilizationtagentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -11794,6 +11861,90 @@ func (a RoutingApi) PostRoutingQueues(body Createqueuerequest) (*Queue, *APIResp
 	return successPayload, response, err
 }
 
+// PostRoutingSkillexpressionsValidate invokes POST /api/v2/routing/skillexpressions/validate
+//
+// Validate and normalize a skill expression
+func (a RoutingApi) PostRoutingSkillexpressionsValidate(body Skillexpressiondata) (*Skillexpressionvalidationresult, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/skillexpressions/validate"
+	defaultReturn := new(Skillexpressionvalidationresult)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PostRoutingSkillexpressionsValidate")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Skillexpressionvalidationresult
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Skillexpressionvalidationresult" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // PostRoutingSkillgroupMembersDivisions invokes POST /api/v2/routing/skillgroups/{skillGroupId}/members/divisions
 //
 // Add or remove member divisions for this skill group.
@@ -12456,92 +12607,6 @@ func (a RoutingApi) PostRoutingUtilizationLabels(body Createutilizationlabelrequ
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Utilizationlabel" == "string" {
-			copy(response.RawBody, &successPayload)
-		} else {
-			err = json.Unmarshal(response.RawBody, &successPayload)
-		}
-	}
-	return successPayload, response, err
-}
-
-// PostRoutingUtilizationTags invokes POST /api/v2/routing/utilization/tags
-//
-// Create an utilization tag
-//
-// Preview: PostRoutingUtilizationTags is a preview method and is subject to both breaking and non-breaking changes at any time without notice
-func (a RoutingApi) PostRoutingUtilizationTags(body Createutilizationtagrequest) (*Utilizationtag, *APIResponse, error) {
-	var httpMethod = "POST"
-	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/routing/utilization/tags"
-	defaultReturn := new(Utilizationtag)
-	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
-	}
-
-	// verify the required parameter 'body' is set
-	if &body == nil {
-		// false
-		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PostRoutingUtilizationTags")
-	}
-
-	headerParams := make(map[string]string)
-	queryParams := make(map[string]string)
-	formParams := url.Values{}
-	var postBody interface{}
-	var postFileName string
-	var fileBytes []byte
-	// authentication (PureCloud OAuth) required
-
-	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
-	}
-	// add default headers if any
-	for key := range a.Configuration.DefaultHeader {
-		headerParams[key] = a.Configuration.DefaultHeader[key]
-	}
-	
-
-	// Find an replace keys that were altered to avoid clashes with go keywords 
-	correctedQueryParams := make(map[string]string)
-	for k, v := range queryParams {
-		if k == "varType" {
-			correctedQueryParams["type"] = v
-			continue
-		}
-		correctedQueryParams[k] = v
-	}
-	queryParams = correctedQueryParams
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
-
-	// set Content-Type header
-	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		headerParams["Content-Type"] = localVarHttpContentType
-	}
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-	}
-
-	// set Accept header
-	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		headerParams["Accept"] = localVarHttpHeaderAccept
-	}
-	// body params
-	postBody = &body
-
-	var successPayload *Utilizationtag
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
-	if err != nil {
-		// Nothing special to do here, but do avoid processing the response
-	} else if err == nil && response.Error != nil {
-		err = errors.New(response.ErrorMessage)
-	} else if response.HasBody {
-		if "Utilizationtag" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

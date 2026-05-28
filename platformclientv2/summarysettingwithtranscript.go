@@ -14,11 +14,11 @@ type Summarysettingwithtranscript struct {
 	// Transcript - Example transcript to preview with the setting.
 	Transcript *string `json:"transcript,omitempty"`
 
-	// SummarySetting - Summary setting to preview on the transcript.
-	SummarySetting *Summarysetting `json:"summarySetting,omitempty"`
-
 	// SummaryPreviewSessionId - Session identifier of the summary preview.
 	SummaryPreviewSessionId *string `json:"summaryPreviewSessionId,omitempty"`
+
+	// SummarySetting - Summary setting to preview on the transcript.
+	SummarySetting *Summarysetting `json:"summarySetting,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -86,16 +86,16 @@ func (o Summarysettingwithtranscript) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Transcript *string `json:"transcript,omitempty"`
 		
-		SummarySetting *Summarysetting `json:"summarySetting,omitempty"`
-		
 		SummaryPreviewSessionId *string `json:"summaryPreviewSessionId,omitempty"`
+		
+		SummarySetting *Summarysetting `json:"summarySetting,omitempty"`
 		Alias
 	}{ 
 		Transcript: o.Transcript,
 		
-		SummarySetting: o.SummarySetting,
-		
 		SummaryPreviewSessionId: o.SummaryPreviewSessionId,
+		
+		SummarySetting: o.SummarySetting,
 		Alias:    (Alias)(o),
 	})
 }
@@ -111,15 +111,15 @@ func (o *Summarysettingwithtranscript) UnmarshalJSON(b []byte) error {
 		o.Transcript = &Transcript
 	}
     
+	if SummaryPreviewSessionId, ok := SummarysettingwithtranscriptMap["summaryPreviewSessionId"].(string); ok {
+		o.SummaryPreviewSessionId = &SummaryPreviewSessionId
+	}
+    
 	if SummarySetting, ok := SummarysettingwithtranscriptMap["summarySetting"].(map[string]interface{}); ok {
 		SummarySettingString, _ := json.Marshal(SummarySetting)
 		json.Unmarshal(SummarySettingString, &o.SummarySetting)
 	}
 	
-	if SummaryPreviewSessionId, ok := SummarysettingwithtranscriptMap["summaryPreviewSessionId"].(string); ok {
-		o.SummaryPreviewSessionId = &SummaryPreviewSessionId
-	}
-    
 
 	return nil
 }

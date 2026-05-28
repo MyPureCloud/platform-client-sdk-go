@@ -284,6 +284,8 @@ docs/DeleteRoutingQueueUser-example.txt
 docs/DeleteRoutingQueueWrapupcode-example.txt
 docs/DeleteRoutingSettings-example.txt
 docs/DeleteRoutingSkill-example.txt
+docs/DeleteRoutingSkillexpression-example.txt
+docs/DeleteRoutingSkillexpressions-example.txt
 docs/DeleteRoutingSkillgroup-example.txt
 docs/DeleteRoutingSmsAddress-example.txt
 docs/DeleteRoutingSmsPhonenumber-example.txt
@@ -293,7 +295,6 @@ docs/DeleteRoutingUserUtilization-example.txt
 docs/DeleteRoutingUserUtilization-example.txt
 docs/DeleteRoutingUtilization-example.txt
 docs/DeleteRoutingUtilizationLabel-example.txt
-docs/DeleteRoutingUtilizationTag-example.txt
 docs/DeleteRoutingWrapupcode-example.txt
 docs/DeleteScimUser-example.txt
 docs/DeleteScimV2User-example.txt
@@ -1101,6 +1102,8 @@ docs/GetJourneyViews-example.txt
 docs/GetJourneyViewsDataDetails-example.txt
 docs/GetJourneyViewsEventdefinition-example.txt
 docs/GetJourneyViewsEventdefinitions-example.txt
+docs/GetJourneyViewsEventdefinitionsExternal-example.txt
+docs/GetJourneyViewsEventdefinitionsExternalChanges-example.txt
 docs/GetJourneyViewsJobs-example.txt
 docs/GetJourneyViewsJobsMe-example.txt
 docs/GetJourneyViewsSchedules-example.txt
@@ -1124,6 +1127,7 @@ docs/GetKnowledgeKnowledgebaseDocumentVersionVariation-example.txt
 docs/GetKnowledgeKnowledgebaseDocumentVersionVariations-example.txt
 docs/GetKnowledgeKnowledgebaseDocumentVersions-example.txt
 docs/GetKnowledgeKnowledgebaseDocuments-example.txt
+docs/GetKnowledgeKnowledgebaseDocumentsFeedback-example.txt
 docs/GetKnowledgeKnowledgebaseExportJob-example.txt
 docs/GetKnowledgeKnowledgebaseImportJob-example.txt
 docs/GetKnowledgeKnowledgebaseLabel-example.txt
@@ -1442,6 +1446,9 @@ docs/GetRoutingSettings-example.txt
 docs/GetRoutingSettingsContactcenter-example.txt
 docs/GetRoutingSettingsTranscription-example.txt
 docs/GetRoutingSkill-example.txt
+docs/GetRoutingSkillexpression-example.txt
+docs/GetRoutingSkillexpressions-example.txt
+docs/GetRoutingSkillexpressionsQueueQueueId-example.txt
 docs/GetRoutingSkillgroup-example.txt
 docs/GetRoutingSkillgroupMembers-example.txt
 docs/GetRoutingSkillgroupMembersDivisions-example.txt
@@ -1461,9 +1468,6 @@ docs/GetRoutingUtilization-example.txt
 docs/GetRoutingUtilizationLabel-example.txt
 docs/GetRoutingUtilizationLabelAgents-example.txt
 docs/GetRoutingUtilizationLabels-example.txt
-docs/GetRoutingUtilizationTag-example.txt
-docs/GetRoutingUtilizationTagAgents-example.txt
-docs/GetRoutingUtilizationTags-example.txt
 docs/GetRoutingWrapupcode-example.txt
 docs/GetRoutingWrapupcodes-example.txt
 docs/GetRoutingWrapupcodesDivisionview-example.txt
@@ -1838,6 +1842,7 @@ docs/GetWorkforcemanagementBusinessunitMainforecastContinuousforecastSessionSess
 docs/GetWorkforcemanagementBusinessunitMainforecastContinuousforecastSessionSessionIdSnapshotSnapshotId-example.txt
 docs/GetWorkforcemanagementBusinessunitManagementunits-example.txt
 docs/GetWorkforcemanagementBusinessunitMinimumstaffingSettings-example.txt
+docs/GetWorkforcemanagementBusinessunitOpportunity-example.txt
 docs/GetWorkforcemanagementBusinessunitPlanninggroup-example.txt
 docs/GetWorkforcemanagementBusinessunitPlanninggroups-example.txt
 docs/GetWorkforcemanagementBusinessunitSchedulerSettings-example.txt
@@ -2179,6 +2184,7 @@ docs/PatchWorkforcemanagementBusinessunitActivityplan-example.txt
 docs/PatchWorkforcemanagementBusinessunitAlternativeshiftsSettings-example.txt
 docs/PatchWorkforcemanagementBusinessunitCapacityplan-example.txt
 docs/PatchWorkforcemanagementBusinessunitMinimumstaffingSettings-example.txt
+docs/PatchWorkforcemanagementBusinessunitOpportunity-example.txt
 docs/PatchWorkforcemanagementBusinessunitPlanninggroup-example.txt
 docs/PatchWorkforcemanagementBusinessunitSchedulerSettings-example.txt
 docs/PatchWorkforcemanagementBusinessunitSchedulingRun-example.txt
@@ -2836,6 +2842,7 @@ docs/PostRoutingQueueMembers-example.txt
 docs/PostRoutingQueueUsers-example.txt
 docs/PostRoutingQueueWrapupcodes-example.txt
 docs/PostRoutingQueues-example.txt
+docs/PostRoutingSkillexpressionsValidate-example.txt
 docs/PostRoutingSkillgroupMembersDivisions-example.txt
 docs/PostRoutingSkillgroups-example.txt
 docs/PostRoutingSkills-example.txt
@@ -2844,7 +2851,6 @@ docs/PostRoutingSmsPhonenumbers-example.txt
 docs/PostRoutingSmsPhonenumbersAlphanumeric-example.txt
 docs/PostRoutingSmsPhonenumbersImport-example.txt
 docs/PostRoutingUtilizationLabels-example.txt
-docs/PostRoutingUtilizationTags-example.txt
 docs/PostRoutingWrapupcodes-example.txt
 docs/PostScimUsers-example.txt
 docs/PostScimV2Users-example.txt
@@ -2918,7 +2924,6 @@ docs/PostTelephonyProvidersEdgesCertificateauthorities-example.txt
 docs/PostTelephonyProvidersEdgesDidpools-example.txt
 docs/PostTelephonyProvidersEdgesEdgegroups-example.txt
 docs/PostTelephonyProvidersEdgesExtensionpools-example.txt
-docs/PostTelephonyProvidersEdgesMediastatisticsConversationCommunicationMediaresource-example.txt
 docs/PostTelephonyProvidersEdgesPhoneReboot-example.txt
 docs/PostTelephonyProvidersEdgesPhonebasesettings-example.txt
 docs/PostTelephonyProvidersEdgesPhones-example.txt
@@ -2980,7 +2985,6 @@ docs/PostWebmessagingDeploymentPushdevice-example.txt
 docs/PostWidgetsDeployments-example.txt
 docs/PostWorkforcemanagementAdherenceExplanations-example.txt
 docs/PostWorkforcemanagementAdherenceExplanationsQuery-example.txt
-docs/PostWorkforcemanagementAdherenceHistorical-example.txt
 docs/PostWorkforcemanagementAdherenceHistoricalBulk-example.txt
 docs/PostWorkforcemanagementAgentAdherenceExplanations-example.txt
 docs/PostWorkforcemanagementAgentAdherenceExplanationsQuery-example.txt
@@ -2989,6 +2993,9 @@ docs/PostWorkforcemanagementAgents-example.txt
 docs/PostWorkforcemanagementAgentsIntegrationsHrisQuery-example.txt
 docs/PostWorkforcemanagementAgentsMeAdherenceHistoricalJobs-example.txt
 docs/PostWorkforcemanagementAgentsMePossibleworkshifts-example.txt
+docs/PostWorkforcemanagementAgentsOpportunitiesEnrollmentsBulkAdd-example.txt
+docs/PostWorkforcemanagementAgentsOpportunitiesEnrollmentsBulkStatusesUpdate-example.txt
+docs/PostWorkforcemanagementAgentsOpportunitiesQuery-example.txt
 docs/PostWorkforcemanagementAgentschedulesManagementunitsMine-example.txt
 docs/PostWorkforcemanagementAgentschedulesMine-example.txt
 docs/PostWorkforcemanagementAlternativeshiftsOffersJobs-example.txt
@@ -3008,6 +3015,14 @@ docs/PostWorkforcemanagementBusinessunitCapacityplanningLongtermrequirementsAuto
 docs/PostWorkforcemanagementBusinessunitCapacityplans-example.txt
 docs/PostWorkforcemanagementBusinessunitCapacityplansBulkRemove-example.txt
 docs/PostWorkforcemanagementBusinessunitIntraday-example.txt
+docs/PostWorkforcemanagementBusinessunitOpportunitiesBulkAdd-example.txt
+docs/PostWorkforcemanagementBusinessunitOpportunitiesBulkPublish-example.txt
+docs/PostWorkforcemanagementBusinessunitOpportunitiesBulkRemove-example.txt
+docs/PostWorkforcemanagementBusinessunitOpportunitiesBulkStatusesUpdate-example.txt
+docs/PostWorkforcemanagementBusinessunitOpportunitiesEnrollmentsBulkStatusesUpdate-example.txt
+docs/PostWorkforcemanagementBusinessunitOpportunitiesEnrollmentsQuery-example.txt
+docs/PostWorkforcemanagementBusinessunitOpportunitiesExternalactivitiesQuery-example.txt
+docs/PostWorkforcemanagementBusinessunitOpportunitiesQuery-example.txt
 docs/PostWorkforcemanagementBusinessunitPlanninggroups-example.txt
 docs/PostWorkforcemanagementBusinessunitServicegoaltemplates-example.txt
 docs/PostWorkforcemanagementBusinessunitShifttradingTradesEvaluateJobs-example.txt
@@ -3207,6 +3222,8 @@ docs/PutIntegrationsUnifiedcommunicationThirdpartypresences-example.txt
 docs/PutJourneyExternaleventsSchema-example.txt
 docs/PutJourneyViewSchedules-example.txt
 docs/PutJourneyViewVersion-example.txt
+docs/PutJourneyViewsEventdefinition-example.txt
+docs/PutJourneyViewsEventdefinitionActivate-example.txt
 docs/PutKnowledgeKnowledgebaseSourcesSalesforceSourceId-example.txt
 docs/PutKnowledgeKnowledgebaseSourcesServicenowSourceId-example.txt
 docs/PutKnowledgeSource-example.txt
@@ -3447,6 +3464,8 @@ platformclientv2/actiontarget.go
 platformclientv2/actiontargetlisting.go
 platformclientv2/actiontemplate.go
 platformclientv2/actiontemplatelisting.go
+platformclientv2/activateexternaleventrequest.go
+platformclientv2/activateexternaleventresponse.go
 platformclientv2/activation.go
 platformclientv2/activationtrigger.go
 platformclientv2/activitycode.go
@@ -3482,6 +3501,7 @@ platformclientv2/additionallanguagessynonyms.go
 platformclientv2/additionalmatchcriteria.go
 platformclientv2/additionalmessage.go
 platformclientv2/additionalsocialmediamessage.go
+platformclientv2/addopportunitybody.go
 platformclientv2/address.go
 platformclientv2/addressableentityref.go
 platformclientv2/addressablelicensedefinition.go
@@ -3523,10 +3543,18 @@ platformclientv2/agentactivitychangedtopicoutofoffice.go
 platformclientv2/agentactivitychangedtopicpresence.go
 platformclientv2/agentactivitychangedtopicroutingstatus.go
 platformclientv2/agentactivityentitylisting.go
+platformclientv2/agentaddopportunityenrollment.go
 platformclientv2/agentadherencedaymetrics.go
 platformclientv2/agentadherencescheduledactivity.go
 platformclientv2/agentassistantsapi.go
 platformclientv2/agentbidworkplanoverriderequest.go
+platformclientv2/agentbulkaddopportunityenrollment.go
+platformclientv2/agentbulkaddopportunityenrollmentresult.go
+platformclientv2/agentbulkaddopportunityenrollmentsrequest.go
+platformclientv2/agentbulkaddopportunityenrollmentsresponse.go
+platformclientv2/agentbulkstatusupdateopportunityenrollmentsrequest.go
+platformclientv2/agentbulkstatusupdateopportunityenrollmentsresponse.go
+platformclientv2/agentbusinessunitopportunities.go
 platformclientv2/agentchecklist.go
 platformclientv2/agentchecklistinfo.go
 platformclientv2/agentchecklistitem.go
@@ -3561,6 +3589,7 @@ platformclientv2/agentmuscheduleitem.go
 platformclientv2/agentmuschedulequery.go
 platformclientv2/agentmuscheduleresult.go
 platformclientv2/agentmuscheduleshift.go
+platformclientv2/agentopportunityenrollmentresult.go
 platformclientv2/agentownedmappingpreview.go
 platformclientv2/agentownedmappingpreviewlisting.go
 platformclientv2/agentownedrouting.go
@@ -3568,6 +3597,9 @@ platformclientv2/agentpossibleworkshiftsrequest.go
 platformclientv2/agentpossibleworkshiftsresponse.go
 platformclientv2/agentqueryadherenceexplanationsrequest.go
 platformclientv2/agentqueryadherenceexplanationsresponse.go
+platformclientv2/agentqueryopportunities.go
+platformclientv2/agentqueryopportunitiesresponse.go
+platformclientv2/agentqueryopportunityresult.go
 platformclientv2/agentqueuetimerequest.go
 platformclientv2/agentsbidassignedworkplanoverriderequest.go
 platformclientv2/agentscheduleshiftactivity.go
@@ -3980,6 +4012,8 @@ platformclientv2/buintradayforecastdata.go
 platformclientv2/buintradayresponse.go
 platformclientv2/buintradayscheduledata.go
 platformclientv2/bulistalternativeshifttradesresponse.go
+platformclientv2/bulkaddopportunitiesrequest.go
+platformclientv2/bulkaddopportunitiesresponse.go
 platformclientv2/bulkaddsourceintentsrequest.go
 platformclientv2/bulkcallbackdisconnectrequest.go
 platformclientv2/bulkcallbackpatchrequest.go
@@ -4018,12 +4052,23 @@ platformclientv2/bulkjobterminateresultsresponse.go
 platformclientv2/bulkjobupdate.go
 platformclientv2/bulknotesrequest.go
 platformclientv2/bulknotesresponse.go
+platformclientv2/bulkopportunitiesenrollmentresult.go
+platformclientv2/bulkopportunitieserror.go
+platformclientv2/bulkopportunitiesexternalactivitiesrequest.go
+platformclientv2/bulkopportunitiesreferenceresult.go
+platformclientv2/bulkopportunitiesrequest.go
+platformclientv2/bulkopportunitiesstatusupdaterequest.go
+platformclientv2/bulkopportunitiesstatusupdateresponse.go
+platformclientv2/bulkopportunityenrollmentsstatusupdaterequest.go
 platformclientv2/bulkorganizationsenrichrequest.go
 platformclientv2/bulkorganizationsenrichresponse.go
 platformclientv2/bulkorganizationsrequest.go
 platformclientv2/bulkorganizationsresponse.go
+platformclientv2/bulkpublishopportunitiesresponse.go
 platformclientv2/bulkrelationshipsrequest.go
 platformclientv2/bulkrelationshipsresponse.go
+platformclientv2/bulkremoveopportunitiesresponse.go
+platformclientv2/bulkremoveopportunitiesresult.go
 platformclientv2/bulkremovesourceintentsrequest.go
 platformclientv2/bulkresponse.go
 platformclientv2/bulkresponseresultexternalcontactcontactenrichrequestbulkentityerrorcontactenrichrequest.go
@@ -4041,6 +4086,7 @@ platformclientv2/bulkresult.go
 platformclientv2/bulkresults.go
 platformclientv2/bulkshifttradestateupdaterequest.go
 platformclientv2/bulksourceintentsresponse.go
+platformclientv2/bulkupdateopportunityenrollmentsstatusresponse.go
 platformclientv2/bulkupdateshifttradelistjobrequest.go
 platformclientv2/bulkupdateshifttradestaterequestitem.go
 platformclientv2/bulkupdateshifttradestateresponse.go
@@ -4152,6 +4198,7 @@ platformclientv2/calltarget.go
 platformclientv2/calltoaction.go
 platformclientv2/campaign.go
 platformclientv2/campaignbusinesscategorymetrics.go
+platformclientv2/campaigndiagnosticcampaignaction.go
 platformclientv2/campaigndiagnosticcampaignhealthstate.go
 platformclientv2/campaigndiagnosticcampaignstate.go
 platformclientv2/campaigndiagnosticconfigchange.go
@@ -5088,7 +5135,6 @@ platformclientv2/createuploadsourceurljobresponse.go
 platformclientv2/createuser.go
 platformclientv2/createuserassignmentsrequest.go
 platformclientv2/createutilizationlabelrequest.go
-platformclientv2/createutilizationtagrequest.go
 platformclientv2/createwebchatconversationrequest.go
 platformclientv2/createwebchatconversationresponse.go
 platformclientv2/createwebchatmessagerequest.go
@@ -5608,6 +5654,8 @@ platformclientv2/emailsettingreference.go
 platformclientv2/emailsettings.go
 platformclientv2/emailsetup.go
 platformclientv2/emailssettings.go
+platformclientv2/emailsummarygenerationconfig.go
+platformclientv2/emailsummarysettingsentity.go
 platformclientv2/emailthreadingsettings.go
 platformclientv2/emailuserestablishedevent.go
 platformclientv2/emailusertransferevent.go
@@ -5817,12 +5865,15 @@ platformclientv2/externalcontactsunresolvedcontactchangedtopicwhatsappid.go
 platformclientv2/externaldatasource.go
 platformclientv2/externalestablishedevent.go
 platformclientv2/externalevent.go
+platformclientv2/externaleventchange.go
+platformclientv2/externaleventchangesresponse.go
 platformclientv2/externaleventexternalid.go
 platformclientv2/externaleventidentifiers.go
 platformclientv2/externaleventsconfiguration.go
 platformclientv2/externaleventsconfigurationlisting.go
 platformclientv2/externaleventsrequest.go
 platformclientv2/externaleventsresponse.go
+platformclientv2/externaleventsummary.go
 platformclientv2/externalid.go
 platformclientv2/externalmetricdataitem.go
 platformclientv2/externalmetricdataprocesseditem.go
@@ -6053,6 +6104,7 @@ platformclientv2/getagentsworkplansrequest.go
 platformclientv2/getalertquery.go
 platformclientv2/getcelebrationlisting.go
 platformclientv2/getcontestsessentialslisting.go
+platformclientv2/getexternaleventsresponse.go
 platformclientv2/getflowexecutiondatajobresult.go
 platformclientv2/getmetricdefinitionsresponse.go
 platformclientv2/getmetricresponse.go
@@ -6867,7 +6919,6 @@ platformclientv2/mediasettings.go
 platformclientv2/mediastatistics.go
 platformclientv2/mediastatisticsclientinfo.go
 platformclientv2/mediastatisticslisting.go
-platformclientv2/mediastatisticspostrequest.go
 platformclientv2/mediastatisticstrunkinfo.go
 platformclientv2/mediasummary.go
 platformclientv2/mediasummarydetail.go
@@ -7133,6 +7184,12 @@ platformclientv2/operationcreatoruserresponse.go
 platformclientv2/operationlisting.go
 platformclientv2/operationresponse.go
 platformclientv2/operatorposition.go
+platformclientv2/opportunitiesresultwithpagination.go
+platformclientv2/opportunityenrollment.go
+platformclientv2/opportunityenrollmentcounts.go
+platformclientv2/opportunityreference.go
+platformclientv2/opportunityresult.go
+platformclientv2/opportunityresultwithagentids.go
 platformclientv2/optinsettings.go
 platformclientv2/organization.go
 platformclientv2/organizationapi.go
@@ -7319,6 +7376,7 @@ platformclientv2/patchintegrationaction.go
 platformclientv2/patchintegrationactionfields.go
 platformclientv2/patchjourney.go
 platformclientv2/patchjourneypattern.go
+platformclientv2/patchopportunityrequest.go
 platformclientv2/patchoutcome.go
 platformclientv2/patchpredictorrequest.go
 platformclientv2/patchsegment.go
@@ -7332,6 +7390,7 @@ platformclientv2/pausecriteria.go
 platformclientv2/paymentlineitem.go
 platformclientv2/paymentrequest.go
 platformclientv2/paymentresponse.go
+platformclientv2/pendingandapprovedopportunityenrollmentcounts.go
 platformclientv2/performancepredictioncompleteeventtopicerrorbody.go
 platformclientv2/performancepredictioncompleteeventtopicperformancepredictioncalculationnotification.go
 platformclientv2/performancepredictionoutputs.go
@@ -7509,7 +7568,17 @@ platformclientv2/querycriteriagroup.go
 platformclientv2/querycriteriaitem.go
 platformclientv2/querycriteriaquery.go
 platformclientv2/querydivision.go
+platformclientv2/queryenrollmentopportunityresult.go
+platformclientv2/queryexternalactivityopportunitiesresponse.go
+platformclientv2/queryexternalactivityopportunityresult.go
 platformclientv2/queryfacetinfo.go
+platformclientv2/queryopportunitiesrequest.go
+platformclientv2/queryopportunitiesresponse.go
+platformclientv2/queryopportunityenrollmentmetadata.go
+platformclientv2/queryopportunityenrollmentresult.go
+platformclientv2/queryopportunityenrollmentsrequest.go
+platformclientv2/queryopportunityenrollmentsresponse.go
+platformclientv2/queryopportunityenrollmentsresult.go
 platformclientv2/queryplanninggrouptostaffinggroupsrequest.go
 platformclientv2/queryrequest.go
 platformclientv2/queryrequestclause.go
@@ -7928,6 +7997,7 @@ platformclientv2/referrer.go
 platformclientv2/regiontimezone.go
 platformclientv2/registerarchitectexportjob.go
 platformclientv2/registerarchitectexportjobresponse.go
+platformclientv2/registerarchitectjobrequest.go
 platformclientv2/registerarchitectjobresponse.go
 platformclientv2/relationship.go
 platformclientv2/relationshiplisting.go
@@ -8292,6 +8362,11 @@ platformclientv2/sitesearchrequest.go
 platformclientv2/sitessearchresponse.go
 platformclientv2/skillcombinationinfo.go
 platformclientv2/skillentitylisting.go
+platformclientv2/skillexpression.go
+platformclientv2/skillexpressiondata.go
+platformclientv2/skillexpressionentitylisting.go
+platformclientv2/skillexpressionvalidationerror.go
+platformclientv2/skillexpressionvalidationresult.go
 platformclientv2/skillgroup.go
 platformclientv2/skillgroupcondition.go
 platformclientv2/skillgroupdefinition.go
@@ -8302,6 +8377,7 @@ platformclientv2/skillgroupmemberdivisions.go
 platformclientv2/skillgroupmemberentitylisting.go
 platformclientv2/skillgrouproutingcondition.go
 platformclientv2/skillgroupwithmemberdivisions.go
+platformclientv2/skillreference.go
 platformclientv2/skillstoremove.go
 platformclientv2/smsaddress.go
 platformclientv2/smsaddressentitylisting.go
@@ -8686,6 +8762,7 @@ platformclientv2/transcriptaggregationsort.go
 platformclientv2/transcriptaggregationview.go
 platformclientv2/transcriptasyncaggregatequeryresponse.go
 platformclientv2/transcriptasyncaggregationquery.go
+platformclientv2/transcriptcategories.go
 platformclientv2/transcriptionconfig.go
 platformclientv2/transcriptionenginesrequest.go
 platformclientv2/transcriptionsettings.go
@@ -8807,7 +8884,6 @@ platformclientv2/unansweredphrasegroupupdateresponse.go
 platformclientv2/unavailabletime.go
 platformclientv2/unavailabletimelisting.go
 platformclientv2/unavailabletimesmanagementunitsettings.go
-platformclientv2/unavailabletimestimespan.go
 platformclientv2/unavailabletimesvalidationresult.go
 platformclientv2/unavailabletimesviolationmessageargument.go
 platformclientv2/unifiedcommunicationsintegration.go
@@ -8838,6 +8914,8 @@ platformclientv2/updatedraftinput.go
 platformclientv2/updatedsettingsresponse.go
 platformclientv2/updatedtopicobject.go
 platformclientv2/updatedtopicsystemmessage.go
+platformclientv2/updateexternaleventrequest.go
+platformclientv2/updateexternaleventresponse.go
 platformclientv2/updateexternaleventsconfigurationrequest.go
 platformclientv2/updateguide.go
 platformclientv2/updateguideversion.go
@@ -9041,8 +9119,6 @@ platformclientv2/utilizationlabel.go
 platformclientv2/utilizationlabelentitylisting.go
 platformclientv2/utilizationrequest.go
 platformclientv2/utilizationresponse.go
-platformclientv2/utilizationtag.go
-platformclientv2/utilizationtagentitylisting.go
 platformclientv2/utterance.go
 platformclientv2/v2conversationmessagetypingeventforusertopicconversationeventtyping.go
 platformclientv2/v2conversationmessagetypingeventforusertopicconversationmessageevent.go
@@ -9165,6 +9241,7 @@ platformclientv2/valuewrapperbushorttermforecastreference.go
 platformclientv2/valuewrapperdate.go
 platformclientv2/valuewrappergroupsettings.go
 platformclientv2/valuewrapperhristimeofftype.go
+platformclientv2/valuewrapperinstant.go
 platformclientv2/valuewrapperlocaldate.go
 platformclientv2/valuewrappermonthlyplanningperiodsettings.go
 platformclientv2/valuewrapperplanningperiodsettings.go
@@ -9399,7 +9476,6 @@ platformclientv2/wfmhistoricaladherencecalculationscompletetopicwfmhistoricaladh
 platformclientv2/wfmhistoricaladherencequery.go
 platformclientv2/wfmhistoricaladherencequeryforagent.go
 platformclientv2/wfmhistoricaladherencequeryforteams.go
-platformclientv2/wfmhistoricaladherencequeryforusers.go
 platformclientv2/wfmhistoricaladherenceresponse.go
 platformclientv2/wfmhistoricaladherenceresultwrapper.go
 platformclientv2/wfmhistoricaldataimportpurgecompletetopichistoricaldatadeleteentity.go
@@ -9453,6 +9529,7 @@ platformclientv2/wfmtimeoffbalancejobtopictimeoffbalance.go
 platformclientv2/wfmtimeoffbalancejobtopictimeoffbalancejobnotification.go
 platformclientv2/wfmtimeoffrequestupdatetopictimeoffrequestupdate.go
 platformclientv2/wfmtimeoffrequestupdatetopicuserreference.go
+platformclientv2/wfmtimespan.go
 platformclientv2/wfmupdateagentdetailstopicwfmupdateagentdetailscomplete.go
 platformclientv2/wfmuserentitylisting.go
 platformclientv2/wfmusernotification.go
