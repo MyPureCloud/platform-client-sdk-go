@@ -13,6 +13,12 @@ type Domains struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// AuthorizedDomains - The authorized domains settings for email processing.
 	AuthorizedDomains *Authorizeddomains `json:"authorizedDomains,omitempty"`
+
+	// AllowExistingEmailParticipants - Allow reply and forward to recipients included in the previous email, ignoring the authorized domains list
+	AllowExistingEmailParticipants *bool `json:"allowExistingEmailParticipants,omitempty"`
+
+	// AllowOutboundToAnyDomainAcd - Allow new outbound email (no existing conversation) to be sent to any domain, ignoring the authorized domains list.This setting applies only to new outbound emails sent on behalf of queue or agentless, NOT campaigns.This setting can only be true if allowExistingEmailParticipants is also true.
+	AllowOutboundToAnyDomainAcd *bool `json:"allowOutboundToAnyDomainAcd,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +85,17 @@ func (o Domains) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		AuthorizedDomains *Authorizeddomains `json:"authorizedDomains,omitempty"`
+		
+		AllowExistingEmailParticipants *bool `json:"allowExistingEmailParticipants,omitempty"`
+		
+		AllowOutboundToAnyDomainAcd *bool `json:"allowOutboundToAnyDomainAcd,omitempty"`
 		Alias
 	}{ 
 		AuthorizedDomains: o.AuthorizedDomains,
+		
+		AllowExistingEmailParticipants: o.AllowExistingEmailParticipants,
+		
+		AllowOutboundToAnyDomainAcd: o.AllowOutboundToAnyDomainAcd,
 		Alias:    (Alias)(o),
 	})
 }
@@ -98,6 +112,14 @@ func (o *Domains) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(AuthorizedDomainsString, &o.AuthorizedDomains)
 	}
 	
+	if AllowExistingEmailParticipants, ok := DomainsMap["allowExistingEmailParticipants"].(bool); ok {
+		o.AllowExistingEmailParticipants = &AllowExistingEmailParticipants
+	}
+    
+	if AllowOutboundToAnyDomainAcd, ok := DomainsMap["allowOutboundToAnyDomainAcd"].(bool); ok {
+		o.AllowOutboundToAnyDomainAcd = &AllowOutboundToAnyDomainAcd
+	}
+    
 
 	return nil
 }

@@ -11,11 +11,26 @@ import (
 type V3synchronizationuploadurlresponse struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
+	// FileId - The unique identifier for the upload object.
+	FileId *string `json:"fileId,omitempty"`
+
+	// FileName - Name of the uploaded file.
+	FileName *string `json:"fileName,omitempty"`
+
+	// Metadata - The metadata of the uploaded file
+	Metadata *V3synchronizationuploadmetadata `json:"metadata,omitempty"`
+
+	// Synchronization - The synchronization of the file upload.
+	Synchronization *V3synchronizationref `json:"synchronization,omitempty"`
+
 	// Url - Pre-signed URL to PUT the file to.
 	Url *string `json:"url,omitempty"`
 
 	// Headers - Required headers when uploading a file through PUT request to the URL.
 	Headers *map[string]string `json:"headers,omitempty"`
+
+	// SelfUri - The URI for this object
+	SelfUri *string `json:"selfUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -81,14 +96,34 @@ func (o V3synchronizationuploadurlresponse) MarshalJSON() ([]byte, error) {
 	type Alias V3synchronizationuploadurlresponse
 	
 	return json.Marshal(&struct { 
+		FileId *string `json:"fileId,omitempty"`
+		
+		FileName *string `json:"fileName,omitempty"`
+		
+		Metadata *V3synchronizationuploadmetadata `json:"metadata,omitempty"`
+		
+		Synchronization *V3synchronizationref `json:"synchronization,omitempty"`
+		
 		Url *string `json:"url,omitempty"`
 		
 		Headers *map[string]string `json:"headers,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
+		FileId: o.FileId,
+		
+		FileName: o.FileName,
+		
+		Metadata: o.Metadata,
+		
+		Synchronization: o.Synchronization,
+		
 		Url: o.Url,
 		
 		Headers: o.Headers,
+		
+		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
 	})
 }
@@ -100,6 +135,24 @@ func (o *V3synchronizationuploadurlresponse) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if FileId, ok := V3synchronizationuploadurlresponseMap["fileId"].(string); ok {
+		o.FileId = &FileId
+	}
+    
+	if FileName, ok := V3synchronizationuploadurlresponseMap["fileName"].(string); ok {
+		o.FileName = &FileName
+	}
+    
+	if Metadata, ok := V3synchronizationuploadurlresponseMap["metadata"].(map[string]interface{}); ok {
+		MetadataString, _ := json.Marshal(Metadata)
+		json.Unmarshal(MetadataString, &o.Metadata)
+	}
+	
+	if Synchronization, ok := V3synchronizationuploadurlresponseMap["synchronization"].(map[string]interface{}); ok {
+		SynchronizationString, _ := json.Marshal(Synchronization)
+		json.Unmarshal(SynchronizationString, &o.Synchronization)
+	}
+	
 	if Url, ok := V3synchronizationuploadurlresponseMap["url"].(string); ok {
 		o.Url = &Url
 	}
@@ -109,6 +162,10 @@ func (o *V3synchronizationuploadurlresponse) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(HeadersString, &o.Headers)
 	}
 	
+	if SelfUri, ok := V3synchronizationuploadurlresponseMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+    
 
 	return nil
 }

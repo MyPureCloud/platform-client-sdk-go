@@ -29,6 +29,9 @@ type Buupdatetimeoffplanrequest struct {
 	// RestrictedActivityCodeIds - The IDs of non time-off activity codes to check for conflicts in case the auto approval rule specifies checking activity codes. If these activity codes are present in schedule and overlap with the time-off request duration, the request will not be auto approved
 	RestrictedActivityCodeIds *Setwrapperstring `json:"restrictedActivityCodeIds,omitempty"`
 
+	// OverrideDates - A list of override dates to check for conflicts with time-off request dates. If a conflict is found, the request will not be auto-approved
+	OverrideDates *Listwrapperoverridedate `json:"overrideDates,omitempty"`
+
 	// HrisTimeOffType - Time-off type, if this time-off plan is associated with the integration
 	HrisTimeOffType *Valuewrapperhristimeofftype `json:"hrisTimeOffType,omitempty"`
 
@@ -123,6 +126,8 @@ func (o Buupdatetimeoffplanrequest) MarshalJSON() ([]byte, error) {
 		
 		RestrictedActivityCodeIds *Setwrapperstring `json:"restrictedActivityCodeIds,omitempty"`
 		
+		OverrideDates *Listwrapperoverridedate `json:"overrideDates,omitempty"`
+		
 		HrisTimeOffType *Valuewrapperhristimeofftype `json:"hrisTimeOffType,omitempty"`
 		
 		Enabled *bool `json:"enabled,omitempty"`
@@ -147,6 +152,8 @@ func (o Buupdatetimeoffplanrequest) MarshalJSON() ([]byte, error) {
 		AutoPublishApprovedTimeOffRequests: o.AutoPublishApprovedTimeOffRequests,
 		
 		RestrictedActivityCodeIds: o.RestrictedActivityCodeIds,
+		
+		OverrideDates: o.OverrideDates,
 		
 		HrisTimeOffType: o.HrisTimeOffType,
 		
@@ -195,6 +202,11 @@ func (o *Buupdatetimeoffplanrequest) UnmarshalJSON(b []byte) error {
 	if RestrictedActivityCodeIds, ok := BuupdatetimeoffplanrequestMap["restrictedActivityCodeIds"].(map[string]interface{}); ok {
 		RestrictedActivityCodeIdsString, _ := json.Marshal(RestrictedActivityCodeIds)
 		json.Unmarshal(RestrictedActivityCodeIdsString, &o.RestrictedActivityCodeIds)
+	}
+	
+	if OverrideDates, ok := BuupdatetimeoffplanrequestMap["overrideDates"].(map[string]interface{}); ok {
+		OverrideDatesString, _ := json.Marshal(OverrideDates)
+		json.Unmarshal(OverrideDatesString, &o.OverrideDates)
 	}
 	
 	if HrisTimeOffType, ok := BuupdatetimeoffplanrequestMap["hrisTimeOffType"].(map[string]interface{}); ok {

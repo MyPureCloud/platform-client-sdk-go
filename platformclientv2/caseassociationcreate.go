@@ -11,10 +11,10 @@ import (
 type Caseassociationcreate struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// WorkitemId - The ID of the workitem to associate with the case.
+	// WorkitemId - The ID of the Workitem to associate with the Case.
 	WorkitemId *string `json:"workitemId,omitempty"`
 
-	// ConversationId - The ID of the conversation to associate with the case.
+	// ConversationId - The ID of the Conversation to associate with the Case.
 	ConversationId *string `json:"conversationId,omitempty"`
 }
 

@@ -42,13 +42,13 @@ type Step struct {
 	// Status - The Status of the Step.
 	Status *string `json:"status,omitempty"`
 
-	// Stage - The parent stage of the step.
+	// Stage - The parent Stage of the Step.
 	Stage *Stagereference `json:"stage,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
-	// VarCase - The parent case of the step.
+	// VarCase - The parent Case of the Step.
 	VarCase *Casereference `json:"case,omitempty"`
 }
 

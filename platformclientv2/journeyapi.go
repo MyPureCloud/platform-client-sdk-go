@@ -32,8 +32,6 @@ func NewJourneyApiWithConfig(config *Configuration) *JourneyApi {
 // DeleteAnalyticsJourneysAggregatesJob invokes DELETE /api/v2/analytics/journeys/aggregates/jobs/{jobId}
 //
 // Delete/cancel an async request for journey aggregates
-//
-// Preview: DeleteAnalyticsJourneysAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a JourneyApi) DeleteAnalyticsJourneysAggregatesJob(jobId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -803,8 +801,6 @@ func (a JourneyApi) DeleteJourneyViewSchedules(viewId string) (*Journeyviewsched
 // GetAnalyticsJourneysAggregatesJob invokes GET /api/v2/analytics/journeys/aggregates/jobs/{jobId}
 //
 // Get status for async query for journey aggregates
-//
-// Preview: GetAnalyticsJourneysAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a JourneyApi) GetAnalyticsJourneysAggregatesJob(jobId string) (*Asyncquerystatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -887,8 +883,6 @@ func (a JourneyApi) GetAnalyticsJourneysAggregatesJob(jobId string) (*Asyncquery
 // GetAnalyticsJourneysAggregatesJobResults invokes GET /api/v2/analytics/journeys/aggregates/jobs/{jobId}/results
 //
 // Fetch a page of results for an async aggregates query
-//
-// Preview: GetAnalyticsJourneysAggregatesJobResults is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a JourneyApi) GetAnalyticsJourneysAggregatesJobResults(jobId string, cursor string) (*Journeyasyncaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5766,8 +5760,6 @@ func (a JourneyApi) PatchJourneyViewVersionJob(viewId string, journeyVersionId s
 // PostAnalyticsJourneysAggregatesJobs invokes POST /api/v2/analytics/journeys/aggregates/jobs
 //
 // Query for journey aggregates asynchronously
-//
-// Preview: PostAnalyticsJourneysAggregatesJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a JourneyApi) PostAnalyticsJourneysAggregatesJobs(body Journeyasyncaggregationquery) (*Asyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

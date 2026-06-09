@@ -10,7 +10,10 @@ import (
 // Carousel - A WhatsApp Carousel messaging template definition
 type Carousel struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// Cards - List of cards in a carousels template.
+	Cards *[]Carouselcard `json:"cards,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Carousel) SetField(field string, fieldValue interface{}) {
@@ -74,8 +77,12 @@ func (o Carousel) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Carousel
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		Cards *[]Carouselcard `json:"cards,omitempty"`
+		Alias
+	}{ 
+		Cards: o.Cards,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -84,6 +91,11 @@ func (o *Carousel) UnmarshalJSON(b []byte) error {
 	err := json.Unmarshal(b, &CarouselMap)
 	if err != nil {
 		return err
+	}
+	
+	if Cards, ok := CarouselMap["cards"].([]interface{}); ok {
+		CardsString, _ := json.Marshal(Cards)
+		json.Unmarshal(CardsString, &o.Cards)
 	}
 	
 

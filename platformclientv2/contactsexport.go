@@ -18,9 +18,6 @@ type Contactsexport struct {
 	// DivisionIds - Division IDs of entities
 	DivisionIds *[]string `json:"divisionIds,omitempty"`
 
-	// QueryConditions - Query conditions to apply on export
-	QueryConditions *Contactsexportqueryconditions `json:"queryConditions,omitempty"`
-
 	// CreatedBy - The user that created this request
 	CreatedBy *Domainentityref `json:"createdBy,omitempty"`
 
@@ -32,6 +29,9 @@ type Contactsexport struct {
 
 	// DownloadUrl - The location where the results of the request can be retrieved
 	DownloadUrl *string `json:"downloadUrl,omitempty"`
+
+	// QueryConditions - Query conditions to apply on export
+	QueryConditions *Contactsexportqueryconditions `json:"queryConditions,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -112,8 +112,6 @@ func (o Contactsexport) MarshalJSON() ([]byte, error) {
 		
 		DivisionIds *[]string `json:"divisionIds,omitempty"`
 		
-		QueryConditions *Contactsexportqueryconditions `json:"queryConditions,omitempty"`
-		
 		CreatedBy *Domainentityref `json:"createdBy,omitempty"`
 		
 		DateCreated *string `json:"dateCreated,omitempty"`
@@ -122,14 +120,14 @@ func (o Contactsexport) MarshalJSON() ([]byte, error) {
 		
 		DownloadUrl *string `json:"downloadUrl,omitempty"`
 		
+		QueryConditions *Contactsexportqueryconditions `json:"queryConditions,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
 		
 		DivisionIds: o.DivisionIds,
-		
-		QueryConditions: o.QueryConditions,
 		
 		CreatedBy: o.CreatedBy,
 		
@@ -138,6 +136,8 @@ func (o Contactsexport) MarshalJSON() ([]byte, error) {
 		Status: o.Status,
 		
 		DownloadUrl: o.DownloadUrl,
+		
+		QueryConditions: o.QueryConditions,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -160,11 +160,6 @@ func (o *Contactsexport) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(DivisionIdsString, &o.DivisionIds)
 	}
 	
-	if QueryConditions, ok := ContactsexportMap["queryConditions"].(map[string]interface{}); ok {
-		QueryConditionsString, _ := json.Marshal(QueryConditions)
-		json.Unmarshal(QueryConditionsString, &o.QueryConditions)
-	}
-	
 	if CreatedBy, ok := ContactsexportMap["createdBy"].(map[string]interface{}); ok {
 		CreatedByString, _ := json.Marshal(CreatedBy)
 		json.Unmarshal(CreatedByString, &o.CreatedBy)
@@ -183,6 +178,11 @@ func (o *Contactsexport) UnmarshalJSON(b []byte) error {
 		o.DownloadUrl = &DownloadUrl
 	}
     
+	if QueryConditions, ok := ContactsexportMap["queryConditions"].(map[string]interface{}); ok {
+		QueryConditionsString, _ := json.Marshal(QueryConditions)
+		json.Unmarshal(QueryConditionsString, &o.QueryConditions)
+	}
+	
 	if SelfUri, ok := ContactsexportMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

@@ -17,10 +17,10 @@ type Stepplanupdate struct {
 	// Description - The description of the Stepplan. Maximum length of 512 characters.
 	Description *string `json:"description,omitempty"`
 
-	// WorkitemSettings - The workitemSettings of the Stepplan.
+	// WorkitemSettings - The Workitem settings of the Stepplan.
 	WorkitemSettings *Workitemsettings `json:"workitemSettings,omitempty"`
 
-	// ActivityType - The activityType of the Stepplan.
+	// ActivityType - The activity type of the Stepplan.
 	ActivityType *string `json:"activityType,omitempty"`
 }
 

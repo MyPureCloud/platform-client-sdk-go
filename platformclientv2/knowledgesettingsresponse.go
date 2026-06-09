@@ -30,6 +30,9 @@ type Knowledgesettingsresponse struct {
 	// Stateful - Indicates if stateful search and generation is enabled for the knowledge setting.
 	Stateful *bool `json:"stateful,omitempty"`
 
+	// Filter - Composite tag filter of search results.
+	Filter *V3sourcetagfilter `json:"filter,omitempty"`
+
 	// DateCreated - Knowledge setting created date-time. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
@@ -134,6 +137,8 @@ func (o Knowledgesettingsresponse) MarshalJSON() ([]byte, error) {
 		
 		Stateful *bool `json:"stateful,omitempty"`
 		
+		Filter *V3sourcetagfilter `json:"filter,omitempty"`
+		
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
 		DateModified *string `json:"dateModified,omitempty"`
@@ -154,6 +159,8 @@ func (o Knowledgesettingsresponse) MarshalJSON() ([]byte, error) {
 		GenerationSetting: o.GenerationSetting,
 		
 		Stateful: o.Stateful,
+		
+		Filter: o.Filter,
 		
 		DateCreated: DateCreated,
 		
@@ -199,6 +206,11 @@ func (o *Knowledgesettingsresponse) UnmarshalJSON(b []byte) error {
 		o.Stateful = &Stateful
 	}
     
+	if Filter, ok := KnowledgesettingsresponseMap["filter"].(map[string]interface{}); ok {
+		FilterString, _ := json.Marshal(Filter)
+		json.Unmarshal(FilterString, &o.Filter)
+	}
+	
 	if dateCreatedString, ok := KnowledgesettingsresponseMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated

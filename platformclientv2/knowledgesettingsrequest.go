@@ -25,6 +25,9 @@ type Knowledgesettingsrequest struct {
 
 	// Stateful - Indicates if stateful search and generation is enabled for the knowledge setting.
 	Stateful *bool `json:"stateful,omitempty"`
+
+	// Filter - Composite tag filter of search results.
+	Filter *V3sourcetagfilter `json:"filter,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -99,6 +102,8 @@ func (o Knowledgesettingsrequest) MarshalJSON() ([]byte, error) {
 		GenerationSetting *Knowledgegenerationsetting `json:"generationSetting,omitempty"`
 		
 		Stateful *bool `json:"stateful,omitempty"`
+		
+		Filter *V3sourcetagfilter `json:"filter,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -110,6 +115,8 @@ func (o Knowledgesettingsrequest) MarshalJSON() ([]byte, error) {
 		GenerationSetting: o.GenerationSetting,
 		
 		Stateful: o.Stateful,
+		
+		Filter: o.Filter,
 		Alias:    (Alias)(o),
 	})
 }
@@ -143,6 +150,11 @@ func (o *Knowledgesettingsrequest) UnmarshalJSON(b []byte) error {
 		o.Stateful = &Stateful
 	}
     
+	if Filter, ok := KnowledgesettingsrequestMap["filter"].(map[string]interface{}); ok {
+		FilterString, _ := json.Marshal(Filter)
+		json.Unmarshal(FilterString, &o.Filter)
+	}
+	
 
 	return nil
 }

@@ -35,6 +35,9 @@ type Butimeoffplanresponse struct {
 	// RestrictedActivityCodes - The IDs of non time-off activity codes to check for conflicts in case the auto approval rule specifies checking activity codes. If these activity codes are present in schedule and overlap with the time-off request duration, the request will not be auto approved
 	RestrictedActivityCodes *Activitycodesreference `json:"restrictedActivityCodes,omitempty"`
 
+	// OverrideDates - A list of override dates to check for conflicts with time-off request dates. If a conflict is found, the request will not be auto-approved
+	OverrideDates *[]Overridedate `json:"overrideDates,omitempty"`
+
 	// HrisTimeOffType - Time-off type, if this time-off plan is associated with the integration
 	HrisTimeOffType *Hristimeofftype `json:"hrisTimeOffType,omitempty"`
 
@@ -136,6 +139,8 @@ func (o Butimeoffplanresponse) MarshalJSON() ([]byte, error) {
 		
 		RestrictedActivityCodes *Activitycodesreference `json:"restrictedActivityCodes,omitempty"`
 		
+		OverrideDates *[]Overridedate `json:"overrideDates,omitempty"`
+		
 		HrisTimeOffType *Hristimeofftype `json:"hrisTimeOffType,omitempty"`
 		
 		Enabled *bool `json:"enabled,omitempty"`
@@ -166,6 +171,8 @@ func (o Butimeoffplanresponse) MarshalJSON() ([]byte, error) {
 		AutoPublishApprovedTimeOffRequests: o.AutoPublishApprovedTimeOffRequests,
 		
 		RestrictedActivityCodes: o.RestrictedActivityCodes,
+		
+		OverrideDates: o.OverrideDates,
 		
 		HrisTimeOffType: o.HrisTimeOffType,
 		
@@ -225,6 +232,11 @@ func (o *Butimeoffplanresponse) UnmarshalJSON(b []byte) error {
 	if RestrictedActivityCodes, ok := ButimeoffplanresponseMap["restrictedActivityCodes"].(map[string]interface{}); ok {
 		RestrictedActivityCodesString, _ := json.Marshal(RestrictedActivityCodes)
 		json.Unmarshal(RestrictedActivityCodesString, &o.RestrictedActivityCodes)
+	}
+	
+	if OverrideDates, ok := ButimeoffplanresponseMap["overrideDates"].([]interface{}); ok {
+		OverrideDatesString, _ := json.Marshal(OverrideDates)
+		json.Unmarshal(OverrideDatesString, &o.OverrideDates)
 	}
 	
 	if HrisTimeOffType, ok := ButimeoffplanresponseMap["hrisTimeOffType"].(map[string]interface{}); ok {

@@ -23,6 +23,9 @@ type Estimateavailablefulldaytimeoffresponse struct {
 
 	// Flexible - Whether there is flexibility for a user to choose different hours than the system estimated
 	Flexible *bool `json:"flexible,omitempty"`
+
+	// OverrideDateType - The override date type, if the requested day is an override date
+	OverrideDateType *string `json:"overrideDateType,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -102,6 +105,8 @@ func (o Estimateavailablefulldaytimeoffresponse) MarshalJSON() ([]byte, error) {
 		PayableMinutes *int `json:"payableMinutes,omitempty"`
 		
 		Flexible *bool `json:"flexible,omitempty"`
+		
+		OverrideDateType *string `json:"overrideDateType,omitempty"`
 		Alias
 	}{ 
 		Date: Date,
@@ -111,6 +116,8 @@ func (o Estimateavailablefulldaytimeoffresponse) MarshalJSON() ([]byte, error) {
 		PayableMinutes: o.PayableMinutes,
 		
 		Flexible: o.Flexible,
+		
+		OverrideDateType: o.OverrideDateType,
 		Alias:    (Alias)(o),
 	})
 }
@@ -139,6 +146,10 @@ func (o *Estimateavailablefulldaytimeoffresponse) UnmarshalJSON(b []byte) error 
 	
 	if Flexible, ok := EstimateavailablefulldaytimeoffresponseMap["flexible"].(bool); ok {
 		o.Flexible = &Flexible
+	}
+    
+	if OverrideDateType, ok := EstimateavailablefulldaytimeoffresponseMap["overrideDateType"].(string); ok {
+		o.OverrideDateType = &OverrideDateType
 	}
     
 

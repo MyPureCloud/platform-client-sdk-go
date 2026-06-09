@@ -10,7 +10,16 @@ import (
 // Carouselcard
 type Carouselcard struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// Header - Header for whatsApp carousel card
+	Header *Messageheader `json:"header,omitempty"`
+
+	// Buttons - List of buttons to be included in the whatsApp carousel messages template
+	Buttons *[]Button `json:"buttons,omitempty"`
+
+	// CardBodyText - Optional card body text to be included in the whatsApp carousel messages template
+	CardBodyText *Cardbodytext `json:"cardBodyText,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Carouselcard) SetField(field string, fieldValue interface{}) {
@@ -74,8 +83,20 @@ func (o Carouselcard) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Carouselcard
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		Header *Messageheader `json:"header,omitempty"`
+		
+		Buttons *[]Button `json:"buttons,omitempty"`
+		
+		CardBodyText *Cardbodytext `json:"cardBodyText,omitempty"`
+		Alias
+	}{ 
+		Header: o.Header,
+		
+		Buttons: o.Buttons,
+		
+		CardBodyText: o.CardBodyText,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -84,6 +105,21 @@ func (o *Carouselcard) UnmarshalJSON(b []byte) error {
 	err := json.Unmarshal(b, &CarouselcardMap)
 	if err != nil {
 		return err
+	}
+	
+	if Header, ok := CarouselcardMap["header"].(map[string]interface{}); ok {
+		HeaderString, _ := json.Marshal(Header)
+		json.Unmarshal(HeaderString, &o.Header)
+	}
+	
+	if Buttons, ok := CarouselcardMap["buttons"].([]interface{}); ok {
+		ButtonsString, _ := json.Marshal(Buttons)
+		json.Unmarshal(ButtonsString, &o.Buttons)
+	}
+	
+	if CardBodyText, ok := CarouselcardMap["cardBodyText"].(map[string]interface{}); ok {
+		CardBodyTextString, _ := json.Marshal(CardBodyText)
+		json.Unmarshal(CardBodyTextString, &o.CardBodyText)
 	}
 	
 

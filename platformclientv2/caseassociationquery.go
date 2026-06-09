@@ -14,13 +14,13 @@ type Caseassociationquery struct {
 	// PageSize - The number of entities to return in the response.
 	PageSize *int `json:"pageSize,omitempty"`
 
-	// After - The cursor that points to the end of the set of entities that has been returned.
+	// After - Cursor pointing to the end of the previously returned page of associations.
 	After *string `json:"after,omitempty"`
 
 	// WorkitemId - The Workitem ID to query by.
 	WorkitemId *string `json:"workitemId,omitempty"`
 
-	// ConversationId - The conversation ID to query by.
+	// ConversationId - The Conversation ID to query by.
 	ConversationId *string `json:"conversationId,omitempty"`
 }
 

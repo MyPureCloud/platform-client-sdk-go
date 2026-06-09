@@ -106,6 +106,168 @@ func (a BusinessRulesApi) DeleteBusinessrulesDecisiontable(tableId string, force
 	return response, err
 }
 
+// DeleteBusinessrulesDecisiontableExport invokes DELETE /api/v2/businessrules/decisiontables/{tableId}/exports/{exportJobId}
+//
+// Delete an export job for a decision table
+func (a BusinessRulesApi) DeleteBusinessrulesDecisiontableExport(tableId string, exportJobId string) (*APIResponse, error) {
+	var httpMethod = "DELETE"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/businessrules/decisiontables/{tableId}/exports/{exportJobId}"
+	path = strings.Replace(path, "{tableId}", url.PathEscape(fmt.Sprintf("%v", tableId)), -1)
+	path = strings.Replace(path, "{exportJobId}", url.PathEscape(fmt.Sprintf("%v", exportJobId)), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'tableId' is set
+	if &tableId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'tableId' when calling BusinessRulesApi->DeleteBusinessrulesDecisiontableExport")
+	}
+	// verify the required parameter 'exportJobId' is set
+	if &exportJobId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'exportJobId' when calling BusinessRulesApi->DeleteBusinessrulesDecisiontableExport")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
+// DeleteBusinessrulesDecisiontableImport invokes DELETE /api/v2/businessrules/decisiontables/{tableId}/imports/{importJobId}
+//
+// Delete decision table row import job
+func (a BusinessRulesApi) DeleteBusinessrulesDecisiontableImport(tableId string, importJobId string) (*APIResponse, error) {
+	var httpMethod = "DELETE"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/businessrules/decisiontables/{tableId}/imports/{importJobId}"
+	path = strings.Replace(path, "{tableId}", url.PathEscape(fmt.Sprintf("%v", tableId)), -1)
+	path = strings.Replace(path, "{importJobId}", url.PathEscape(fmt.Sprintf("%v", importJobId)), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'tableId' is set
+	if &tableId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'tableId' when calling BusinessRulesApi->DeleteBusinessrulesDecisiontableImport")
+	}
+	// verify the required parameter 'importJobId' is set
+	if &importJobId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'importJobId' when calling BusinessRulesApi->DeleteBusinessrulesDecisiontableImport")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
 // DeleteBusinessrulesDecisiontableVersion invokes DELETE /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}
 //
 // Delete a decision table version
@@ -425,6 +587,354 @@ func (a BusinessRulesApi) GetBusinessrulesDecisiontable(tableId string) (*Decisi
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Decisiontable" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetBusinessrulesDecisiontableExport invokes GET /api/v2/businessrules/decisiontables/{tableId}/exports/{exportJobId}
+//
+// Get an export job for a decision table
+func (a BusinessRulesApi) GetBusinessrulesDecisiontableExport(tableId string, exportJobId string) (*Decisiontableexportjob, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/businessrules/decisiontables/{tableId}/exports/{exportJobId}"
+	path = strings.Replace(path, "{tableId}", url.PathEscape(fmt.Sprintf("%v", tableId)), -1)
+	path = strings.Replace(path, "{exportJobId}", url.PathEscape(fmt.Sprintf("%v", exportJobId)), -1)
+	defaultReturn := new(Decisiontableexportjob)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'tableId' is set
+	if &tableId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'tableId' when calling BusinessRulesApi->GetBusinessrulesDecisiontableExport")
+	}
+	// verify the required parameter 'exportJobId' is set
+	if &exportJobId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'exportJobId' when calling BusinessRulesApi->GetBusinessrulesDecisiontableExport")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Decisiontableexportjob
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Decisiontableexportjob" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetBusinessrulesDecisiontableExports invokes GET /api/v2/businessrules/decisiontables/{tableId}/exports
+//
+// List export jobs for a decision table
+func (a BusinessRulesApi) GetBusinessrulesDecisiontableExports(tableId string, after string, pageSize string) (*Decisiontableexportjoblisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/businessrules/decisiontables/{tableId}/exports"
+	path = strings.Replace(path, "{tableId}", url.PathEscape(fmt.Sprintf("%v", tableId)), -1)
+	defaultReturn := new(Decisiontableexportjoblisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'tableId' is set
+	if &tableId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'tableId' when calling BusinessRulesApi->GetBusinessrulesDecisiontableExports")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Decisiontableexportjoblisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Decisiontableexportjoblisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetBusinessrulesDecisiontableImport invokes GET /api/v2/businessrules/decisiontables/{tableId}/imports/{importJobId}
+//
+// Get decision table row import job
+func (a BusinessRulesApi) GetBusinessrulesDecisiontableImport(tableId string, importJobId string) (*Decisiontableimportjob, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/businessrules/decisiontables/{tableId}/imports/{importJobId}"
+	path = strings.Replace(path, "{tableId}", url.PathEscape(fmt.Sprintf("%v", tableId)), -1)
+	path = strings.Replace(path, "{importJobId}", url.PathEscape(fmt.Sprintf("%v", importJobId)), -1)
+	defaultReturn := new(Decisiontableimportjob)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'tableId' is set
+	if &tableId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'tableId' when calling BusinessRulesApi->GetBusinessrulesDecisiontableImport")
+	}
+	// verify the required parameter 'importJobId' is set
+	if &importJobId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'importJobId' when calling BusinessRulesApi->GetBusinessrulesDecisiontableImport")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Decisiontableimportjob
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Decisiontableimportjob" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetBusinessrulesDecisiontableImports invokes GET /api/v2/businessrules/decisiontables/{tableId}/imports
+//
+// List decision table row import jobs
+func (a BusinessRulesApi) GetBusinessrulesDecisiontableImports(tableId string, after string, pageSize string) (*Decisiontableimportjoblisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/businessrules/decisiontables/{tableId}/imports"
+	path = strings.Replace(path, "{tableId}", url.PathEscape(fmt.Sprintf("%v", tableId)), -1)
+	defaultReturn := new(Decisiontableimportjoblisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'tableId' is set
+	if &tableId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'tableId' when calling BusinessRulesApi->GetBusinessrulesDecisiontableImports")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Decisiontableimportjoblisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Decisiontableimportjoblisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -1375,6 +1885,102 @@ func (a BusinessRulesApi) PatchBusinessrulesDecisiontable(tableId string, body U
 	return successPayload, response, err
 }
 
+// PatchBusinessrulesDecisiontableImport invokes PATCH /api/v2/businessrules/decisiontables/{tableId}/imports/{importJobId}
+//
+// Update decision table row import job
+func (a BusinessRulesApi) PatchBusinessrulesDecisiontableImport(tableId string, importJobId string, body Updatedecisiontableimportjobrequest) (*Decisiontableimportjob, *APIResponse, error) {
+	var httpMethod = "PATCH"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/businessrules/decisiontables/{tableId}/imports/{importJobId}"
+	path = strings.Replace(path, "{tableId}", url.PathEscape(fmt.Sprintf("%v", tableId)), -1)
+	path = strings.Replace(path, "{importJobId}", url.PathEscape(fmt.Sprintf("%v", importJobId)), -1)
+	defaultReturn := new(Decisiontableimportjob)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'tableId' is set
+	if &tableId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'tableId' when calling BusinessRulesApi->PatchBusinessrulesDecisiontableImport")
+	}
+	// verify the required parameter 'importJobId' is set
+	if &importJobId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'importJobId' when calling BusinessRulesApi->PatchBusinessrulesDecisiontableImport")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling BusinessRulesApi->PatchBusinessrulesDecisiontableImport")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Decisiontableimportjob
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Decisiontableimportjob" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // PatchBusinessrulesDecisiontableVersion invokes PATCH /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}
 //
 // Update a decision table version
@@ -1553,6 +2159,186 @@ func (a BusinessRulesApi) PostBusinessrulesDecisiontableExecute(tableId string, 
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Decisiontableexecutionresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostBusinessrulesDecisiontableExports invokes POST /api/v2/businessrules/decisiontables/{tableId}/exports
+//
+// Create an export job for a decision table version
+func (a BusinessRulesApi) PostBusinessrulesDecisiontableExports(tableId string, body Decisiontableexportjobrequest) (*Decisiontableexportjob, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/businessrules/decisiontables/{tableId}/exports"
+	path = strings.Replace(path, "{tableId}", url.PathEscape(fmt.Sprintf("%v", tableId)), -1)
+	defaultReturn := new(Decisiontableexportjob)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'tableId' is set
+	if &tableId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'tableId' when calling BusinessRulesApi->PostBusinessrulesDecisiontableExports")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling BusinessRulesApi->PostBusinessrulesDecisiontableExports")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Decisiontableexportjob
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Decisiontableexportjob" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostBusinessrulesDecisiontableImports invokes POST /api/v2/businessrules/decisiontables/{tableId}/imports
+//
+// Create a decision table row import job
+func (a BusinessRulesApi) PostBusinessrulesDecisiontableImports(tableId string, body Createdecisiontableimportjobrequest) (*Decisiontableimportjob, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/businessrules/decisiontables/{tableId}/imports"
+	path = strings.Replace(path, "{tableId}", url.PathEscape(fmt.Sprintf("%v", tableId)), -1)
+	defaultReturn := new(Decisiontableimportjob)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'tableId' is set
+	if &tableId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'tableId' when calling BusinessRulesApi->PostBusinessrulesDecisiontableImports")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling BusinessRulesApi->PostBusinessrulesDecisiontableImports")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Decisiontableimportjob
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Decisiontableimportjob" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -1843,6 +2629,293 @@ func (a BusinessRulesApi) PostBusinessrulesDecisiontableVersionRows(tableId stri
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Decisiontablerow" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostBusinessrulesDecisiontableVersionRowsBulkAdd invokes POST /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}/rows/bulk/add
+//
+// Bulk add decision table rows
+//
+// Required permissions depend on table content: if the table or row contains queue references, routing:queue:view is required in each queue&#39;s division. Future platform objects will require their associated permissions in the relevant divisions when the table or row contains references to them.
+func (a BusinessRulesApi) PostBusinessrulesDecisiontableVersionRowsBulkAdd(tableId string, tableVersion int, body Bulkadddecisiontablerowsrequest) (*Bulkadddecisiontablerowsresponse, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}/rows/bulk/add"
+	path = strings.Replace(path, "{tableId}", url.PathEscape(fmt.Sprintf("%v", tableId)), -1)
+	path = strings.Replace(path, "{tableVersion}", url.PathEscape(fmt.Sprintf("%v", tableVersion)), -1)
+	defaultReturn := new(Bulkadddecisiontablerowsresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'tableId' is set
+	if &tableId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'tableId' when calling BusinessRulesApi->PostBusinessrulesDecisiontableVersionRowsBulkAdd")
+	}
+	// verify the required parameter 'tableVersion' is set
+	if &tableVersion == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'tableVersion' when calling BusinessRulesApi->PostBusinessrulesDecisiontableVersionRowsBulkAdd")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling BusinessRulesApi->PostBusinessrulesDecisiontableVersionRowsBulkAdd")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Bulkadddecisiontablerowsresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Bulkadddecisiontablerowsresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostBusinessrulesDecisiontableVersionRowsBulkRemove invokes POST /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}/rows/bulk/remove
+//
+// Bulk delete decision table rows
+//
+// Required permissions depend on table content: if the table or row contains queue references, routing:queue:view is required in each queue&#39;s division. Future platform objects will require their associated permissions in the relevant divisions when the table or row contains references to them.
+func (a BusinessRulesApi) PostBusinessrulesDecisiontableVersionRowsBulkRemove(tableId string, tableVersion int, body Bulkdeletedecisiontablerowsrequest) (*APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}/rows/bulk/remove"
+	path = strings.Replace(path, "{tableId}", url.PathEscape(fmt.Sprintf("%v", tableId)), -1)
+	path = strings.Replace(path, "{tableVersion}", url.PathEscape(fmt.Sprintf("%v", tableVersion)), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'tableId' is set
+	if &tableId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'tableId' when calling BusinessRulesApi->PostBusinessrulesDecisiontableVersionRowsBulkRemove")
+	}
+	// verify the required parameter 'tableVersion' is set
+	if &tableVersion == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'tableVersion' when calling BusinessRulesApi->PostBusinessrulesDecisiontableVersionRowsBulkRemove")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'body' when calling BusinessRulesApi->PostBusinessrulesDecisiontableVersionRowsBulkRemove")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
+// PostBusinessrulesDecisiontableVersionRowsBulkUpdate invokes POST /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}/rows/bulk/update
+//
+// Bulk update decision table rows
+//
+// Required permissions depend on table content: if the table or row contains queue references, routing:queue:view is required in each queue&#39;s division. Future platform objects will require their associated permissions in the relevant divisions when the table or row contains references to them.
+func (a BusinessRulesApi) PostBusinessrulesDecisiontableVersionRowsBulkUpdate(tableId string, tableVersion int, body Bulkupdatedecisiontablerowsrequest) (*Bulkupdatedecisiontablerowsresponse, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}/rows/bulk/update"
+	path = strings.Replace(path, "{tableId}", url.PathEscape(fmt.Sprintf("%v", tableId)), -1)
+	path = strings.Replace(path, "{tableVersion}", url.PathEscape(fmt.Sprintf("%v", tableVersion)), -1)
+	defaultReturn := new(Bulkupdatedecisiontablerowsresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'tableId' is set
+	if &tableId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'tableId' when calling BusinessRulesApi->PostBusinessrulesDecisiontableVersionRowsBulkUpdate")
+	}
+	// verify the required parameter 'tableVersion' is set
+	if &tableVersion == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'tableVersion' when calling BusinessRulesApi->PostBusinessrulesDecisiontableVersionRowsBulkUpdate")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling BusinessRulesApi->PostBusinessrulesDecisiontableVersionRowsBulkUpdate")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Bulkupdatedecisiontablerowsresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Bulkupdatedecisiontablerowsresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

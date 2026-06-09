@@ -27,7 +27,7 @@ type Case struct {
 	// Reference - The reference identifier of the Case.
 	Reference *string `json:"reference,omitempty"`
 
-	// Caseplan - The Caseplan the case was created from.
+	// Caseplan - The Caseplan the Case was created from.
 	Caseplan *Caseplanreference `json:"caseplan,omitempty"`
 
 	// Summary - Overview information for the Case.
@@ -57,7 +57,7 @@ type Case struct {
 	// DateModified - The date the Case was last modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
-	// ModifiedBy - The id of the User who modified the Case.
+	// ModifiedBy - The ID of the User who modified the Case.
 	ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
 
 	// ExternalContact - The External Contact associated with the Case.
@@ -66,7 +66,7 @@ type Case struct {
 	// CustomerIntent - The customer intent for the Case.
 	CustomerIntent *Customerintentreference `json:"customerIntent,omitempty"`
 
-	// CreationStatus - The creation status of the Case
+	// CreationStatus - The creation status of the Case.
 	CreationStatus *string `json:"creationStatus,omitempty"`
 
 	// TtlSeconds - The time-to-live in seconds for the lifetime of the Case.

@@ -14,10 +14,10 @@ type Intakesetting struct {
 	// Property - The property name for this intake setting.
 	Property *string `json:"property,omitempty"`
 
-	// Required - Defines if this property is required for intake
+	// Required - Whether this property is required for intake.
 	Required *bool `json:"required,omitempty"`
 
-	// DisplayOrder - The order where this property should be displayed
+	// DisplayOrder - The display order for this property.
 	DisplayOrder *int `json:"displayOrder,omitempty"`
 }
 

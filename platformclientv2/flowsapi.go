@@ -32,8 +32,6 @@ func NewFlowsApiWithConfig(config *Configuration) *FlowsApi {
 // DeleteAnalyticsFlowsAggregatesJob invokes DELETE /api/v2/analytics/flows/aggregates/jobs/{jobId}
 //
 // Delete/cancel an async request for flow aggregates
-//
-// Preview: DeleteAnalyticsFlowsAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a FlowsApi) DeleteAnalyticsFlowsAggregatesJob(jobId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -109,8 +107,6 @@ func (a FlowsApi) DeleteAnalyticsFlowsAggregatesJob(jobId string) (*APIResponse,
 // GetAnalyticsFlowsAggregatesJob invokes GET /api/v2/analytics/flows/aggregates/jobs/{jobId}
 //
 // Get status for async query for Flow aggregates
-//
-// Preview: GetAnalyticsFlowsAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a FlowsApi) GetAnalyticsFlowsAggregatesJob(jobId string) (*Asyncquerystatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -193,8 +189,6 @@ func (a FlowsApi) GetAnalyticsFlowsAggregatesJob(jobId string) (*Asyncquerystatu
 // GetAnalyticsFlowsAggregatesJobResults invokes GET /api/v2/analytics/flows/aggregates/jobs/{jobId}/results
 //
 // Fetch a page of results for an async aggregates query
-//
-// Preview: GetAnalyticsFlowsAggregatesJobResults is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a FlowsApi) GetAnalyticsFlowsAggregatesJobResults(jobId string, cursor string) (*Flowasyncaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -367,8 +361,6 @@ func (a FlowsApi) PostAnalyticsFlowsActivityQuery(body Flowactivityquery, pageSi
 // PostAnalyticsFlowsAggregatesJobs invokes POST /api/v2/analytics/flows/aggregates/jobs
 //
 // Query for flow aggregates asynchronously
-//
-// Preview: PostAnalyticsFlowsAggregatesJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a FlowsApi) PostAnalyticsFlowsAggregatesJobs(body Flowasyncaggregationquery) (*Asyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

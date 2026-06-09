@@ -11,7 +11,7 @@ import (
 type Workitemsettingsresponse struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Worktype - The worktype information for the workitem settings.
+	// Worktype - The Worktype information for the Workitem settings.
 	Worktype *Stepplansworktypereference `json:"worktype,omitempty"`
 }
 

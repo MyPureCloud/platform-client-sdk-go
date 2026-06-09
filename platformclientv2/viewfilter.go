@@ -713,6 +713,12 @@ type Viewfilter struct {
 	// SocialSourceTypes - A set of Source Types for social filtering
 	SocialSourceTypes *[]string `json:"socialSourceTypes,omitempty"`
 
+	// SocialFollowerRange - The follower range used to filter the view
+	SocialFollowerRange *Socialnumericrange `json:"socialFollowerRange,omitempty"`
+
+	// SocialVerificationStatus - Filter to indicate if the posts from verified user
+	SocialVerificationStatus *bool `json:"socialVerificationStatus,omitempty"`
+
 	// SessionExpired - Filter to indicate for if session is expired
 	SessionExpired *bool `json:"sessionExpired,omitempty"`
 
@@ -1260,6 +1266,10 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		
 		SocialSourceTypes *[]string `json:"socialSourceTypes,omitempty"`
 		
+		SocialFollowerRange *Socialnumericrange `json:"socialFollowerRange,omitempty"`
+		
+		SocialVerificationStatus *bool `json:"socialVerificationStatus,omitempty"`
+		
 		SessionExpired *bool `json:"sessionExpired,omitempty"`
 		
 		ScreenMonitored *bool `json:"screenMonitored,omitempty"`
@@ -1738,6 +1748,10 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		ContentModerationFlags: o.ContentModerationFlags,
 		
 		SocialSourceTypes: o.SocialSourceTypes,
+		
+		SocialFollowerRange: o.SocialFollowerRange,
+		
+		SocialVerificationStatus: o.SocialVerificationStatus,
 		
 		SessionExpired: o.SessionExpired,
 		
@@ -2876,6 +2890,15 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(SocialSourceTypesString, &o.SocialSourceTypes)
 	}
 	
+	if SocialFollowerRange, ok := ViewfilterMap["socialFollowerRange"].(map[string]interface{}); ok {
+		SocialFollowerRangeString, _ := json.Marshal(SocialFollowerRange)
+		json.Unmarshal(SocialFollowerRangeString, &o.SocialFollowerRange)
+	}
+	
+	if SocialVerificationStatus, ok := ViewfilterMap["socialVerificationStatus"].(bool); ok {
+		o.SocialVerificationStatus = &SocialVerificationStatus
+	}
+    
 	if SessionExpired, ok := ViewfilterMap["sessionExpired"].(bool); ok {
 		o.SessionExpired = &SessionExpired
 	}

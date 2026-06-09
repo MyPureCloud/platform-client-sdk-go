@@ -33,7 +33,7 @@ type Caseplancreateresponse struct {
 	// DefaultTtlSeconds - The default TTL in seconds for Cases created from the Caseplan.
 	DefaultTtlSeconds *int `json:"defaultTtlSeconds,omitempty"`
 
-	// DefaultCaseOwner - The default case owner for Cases created from the Caseplan.
+	// DefaultCaseOwner - The default Case owner for Cases created from the Caseplan.
 	DefaultCaseOwner *Userreference `json:"defaultCaseOwner,omitempty"`
 
 	// Latest - The latest version of the Caseplan.
@@ -51,19 +51,19 @@ type Caseplancreateresponse struct {
 	// DatePublished - The Caseplan publication date. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DatePublished *time.Time `json:"datePublished,omitempty"`
 
-	// ModifiedBy - The id of the User who modified the Caseplan.
+	// ModifiedBy - The ID of the User who modified the Caseplan.
 	ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
 
-	// CustomerIntent - The customer intent for the Cases created from the caseplan.
+	// CustomerIntent - The customer intent for Cases created from this Caseplan.
 	CustomerIntent *Customerintentreference `json:"customerIntent,omitempty"`
 
 	// VersionState - The version state of the Caseplan.
 	VersionState *string `json:"versionState,omitempty"`
 
-	// DataSchemas - The schemas that define all data for cases from this Caseplan.
+	// DataSchemas - The schemas that define all data for Cases from this Caseplan.
 	DataSchemas *[]Caseplandataschema `json:"dataSchemas,omitempty"`
 
-	// IntakeSettings - The intake format when collecting data for a case from this caseplan.
+	// IntakeSettings - The intake format when collecting data for a Case from this Caseplan.
 	IntakeSettings *[]Intakesetting `json:"intakeSettings,omitempty"`
 
 	// SelfUri - The URI for this object

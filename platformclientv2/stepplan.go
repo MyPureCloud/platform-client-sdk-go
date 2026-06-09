@@ -36,10 +36,10 @@ type Stepplan struct {
 	// ModifiedBy - The ID of the User who modified the Stepplan.
 	ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
 
-	// ActivityType - The activityType of the Stepplan.
+	// ActivityType - The activity type of the Stepplan.
 	ActivityType *string `json:"activityType,omitempty"`
 
-	// WorkitemSettings - The workitemSettings of the Stepplan.
+	// WorkitemSettings - The Workitem settings of the Stepplan.
 	WorkitemSettings *Workitemsettingsresponse `json:"workitemSettings,omitempty"`
 
 	// SelfUri - The URI for this object

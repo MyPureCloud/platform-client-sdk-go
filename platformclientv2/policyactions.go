@@ -41,7 +41,7 @@ type Policyactions struct {
 	// InitiateScreenRecording
 	InitiateScreenRecording *Initiatescreenrecording `json:"initiateScreenRecording,omitempty"`
 
-	// MediaTranscriptions
+	// MediaTranscriptions - Deprecated. The Voci and Call Journey transcription integrations are no longer supported.
 	MediaTranscriptions *[]Mediatranscription `json:"mediaTranscriptions,omitempty"`
 
 	// IntegrationExport - Policy action for exporting recordings using an integration to 3rd party s3.

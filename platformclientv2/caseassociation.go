@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-// Caseassociation - Represents an association between a case and an interaction
+// Caseassociation - Represents an association between a Case and an interaction.
 type Caseassociation struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
@@ -18,28 +18,28 @@ type Caseassociation struct {
 	// Name
 	Name *string `json:"name,omitempty"`
 
-	// AssociationType - Association type.
+	// AssociationType - The association type.
 	AssociationType *string `json:"associationType,omitempty"`
 
-	// DateAssociated - Interaction association date. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	// DateAssociated - The date of the interaction association. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateAssociated *time.Time `json:"dateAssociated,omitempty"`
 
-	// Workitem - Associated workitem ID.
+	// Workitem - The associated Workitem.
 	Workitem *Workitemreference `json:"workitem,omitempty"`
 
-	// Conversation - Associated conversation ID.
+	// Conversation - The associated Conversation.
 	Conversation *Conversationreference `json:"conversation,omitempty"`
 
-	// Stage - The stage related to this association.
+	// Stage - The Stage related to this association.
 	Stage *Stagereference `json:"stage,omitempty"`
 
-	// Step - The step related to this association.
+	// Step - The Step related to this association.
 	Step *Stepreference `json:"step,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
-	// VarCase - Case ID
+	// VarCase - The Case for this association.
 	VarCase *Casereference `json:"case,omitempty"`
 }
 

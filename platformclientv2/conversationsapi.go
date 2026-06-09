@@ -32,8 +32,6 @@ func NewConversationsApiWithConfig(config *Configuration) *ConversationsApi {
 // DeleteAnalyticsConversationsAggregatesJob invokes DELETE /api/v2/analytics/conversations/aggregates/jobs/{jobId}
 //
 // Delete/cancel an async request for conversation aggregates
-//
-// Preview: DeleteAnalyticsConversationsAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) DeleteAnalyticsConversationsAggregatesJob(jobId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -1673,8 +1671,6 @@ func (a ConversationsApi) GetAnalyticsConversationDetails(conversationId string)
 // GetAnalyticsConversationsAggregatesJob invokes GET /api/v2/analytics/conversations/aggregates/jobs/{jobId}
 //
 // Get status for async query for conversation aggregates
-//
-// Preview: GetAnalyticsConversationsAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) GetAnalyticsConversationsAggregatesJob(jobId string) (*Asyncquerystatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1757,8 +1753,6 @@ func (a ConversationsApi) GetAnalyticsConversationsAggregatesJob(jobId string) (
 // GetAnalyticsConversationsAggregatesJobResults invokes GET /api/v2/analytics/conversations/aggregates/jobs/{jobId}/results
 //
 // Fetch a page of results for an async aggregates query
-//
-// Preview: GetAnalyticsConversationsAggregatesJobResults is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) GetAnalyticsConversationsAggregatesJobResults(jobId string, cursor string) (*Conversationasyncaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -16932,8 +16926,6 @@ func (a ConversationsApi) PostAnalyticsConversationsActivityQuery(body Conversat
 // PostAnalyticsConversationsAggregatesJobs invokes POST /api/v2/analytics/conversations/aggregates/jobs
 //
 // Query for conversation aggregates asynchronously
-//
-// Preview: PostAnalyticsConversationsAggregatesJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ConversationsApi) PostAnalyticsConversationsAggregatesJobs(body Conversationasyncaggregationquery) (*Asyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -24291,7 +24283,7 @@ func (a ConversationsApi) PostConversationsMessages(body Createoutboundmessaging
 //
 // Send an agentless outbound message
 //
-// Send an agentless (api participant) outbound message using a client credential grant. In order to call this endpoint you will need OAuth token generated using OAuth client credentials authorized with at least messaging scope. If there is already a connected conversation between the &#39;fromAddress&#39; and &#39;toAddress&#39; specified, the &#39;useExistingActiveConversation&#39; param can be used to barge in to the ongoing conversation.
+// Send an agentless (api participant) outbound message using a client credential grant. In order to call this endpoint you will need OAuth token generated using OAuth client credentials authorized with at least messaging scope. If there is already a connected conversation between the &#39;fromAddress&#39; and recipient specified, the &#39;useExistingActiveConversation&#39; param can be used to barge in to the ongoing conversation.
 func (a ConversationsApi) PostConversationsMessagesAgentless(body Sendagentlessoutboundmessagerequest, useNormalizedMessage bool) (*Sendagentlessoutboundmessageresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

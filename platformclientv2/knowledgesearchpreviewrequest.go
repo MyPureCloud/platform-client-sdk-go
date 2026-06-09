@@ -25,6 +25,9 @@ type Knowledgesearchpreviewrequest struct {
 
 	// ConversationTurns - List of conversation turns to use for stateful search.
 	ConversationTurns *[]Knowledgeconversationturn `json:"conversationTurns,omitempty"`
+
+	// Filter - Composite tag filter applied to the search preview.
+	Filter *V3sourcetagfilter `json:"filter,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -99,6 +102,8 @@ func (o Knowledgesearchpreviewrequest) MarshalJSON() ([]byte, error) {
 		Stateful *bool `json:"stateful,omitempty"`
 		
 		ConversationTurns *[]Knowledgeconversationturn `json:"conversationTurns,omitempty"`
+		
+		Filter *V3sourcetagfilter `json:"filter,omitempty"`
 		Alias
 	}{ 
 		Query: o.Query,
@@ -110,6 +115,8 @@ func (o Knowledgesearchpreviewrequest) MarshalJSON() ([]byte, error) {
 		Stateful: o.Stateful,
 		
 		ConversationTurns: o.ConversationTurns,
+		
+		Filter: o.Filter,
 		Alias:    (Alias)(o),
 	})
 }
@@ -142,6 +149,11 @@ func (o *Knowledgesearchpreviewrequest) UnmarshalJSON(b []byte) error {
 	if ConversationTurns, ok := KnowledgesearchpreviewrequestMap["conversationTurns"].([]interface{}); ok {
 		ConversationTurnsString, _ := json.Marshal(ConversationTurns)
 		json.Unmarshal(ConversationTurnsString, &o.ConversationTurns)
+	}
+	
+	if Filter, ok := KnowledgesearchpreviewrequestMap["filter"].(map[string]interface{}); ok {
+		FilterString, _ := json.Marshal(Filter)
+		json.Unmarshal(FilterString, &o.Filter)
 	}
 	
 

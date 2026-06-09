@@ -32,8 +32,6 @@ func NewUsersApiWithConfig(config *Configuration) *UsersApi {
 // DeleteAnalyticsUsersAggregatesJob invokes DELETE /api/v2/analytics/users/aggregates/jobs/{jobId}
 //
 // Delete/cancel an async request for user aggregates
-//
-// Preview: DeleteAnalyticsUsersAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersApi) DeleteAnalyticsUsersAggregatesJob(jobId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -1277,8 +1275,6 @@ func (a UsersApi) DeleteUsersStationsMeAssociatedstation() (*APIResponse, error)
 // GetAnalyticsUsersAggregatesJob invokes GET /api/v2/analytics/users/aggregates/jobs/{jobId}
 //
 // Get status for async query for user aggregates
-//
-// Preview: GetAnalyticsUsersAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersApi) GetAnalyticsUsersAggregatesJob(jobId string) (*Asyncquerystatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1361,8 +1357,6 @@ func (a UsersApi) GetAnalyticsUsersAggregatesJob(jobId string) (*Asyncquerystatu
 // GetAnalyticsUsersAggregatesJobResults invokes GET /api/v2/analytics/users/aggregates/jobs/{jobId}/results
 //
 // Fetch a page of results for an async aggregates query
-//
-// Preview: GetAnalyticsUsersAggregatesJobResults is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersApi) GetAnalyticsUsersAggregatesJobResults(jobId string, cursor string) (*Userasyncaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -7160,8 +7154,6 @@ func (a UsersApi) PostAnalyticsUsersActivityQuery(body Useractivityquery, pageSi
 // PostAnalyticsUsersAggregatesJobs invokes POST /api/v2/analytics/users/aggregates/jobs
 //
 // Query for user aggregates asynchronously
-//
-// Preview: PostAnalyticsUsersAggregatesJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a UsersApi) PostAnalyticsUsersAggregatesJobs(body Userasyncaggregationquery) (*Asyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

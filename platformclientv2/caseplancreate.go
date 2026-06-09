@@ -32,13 +32,13 @@ type Caseplancreate struct {
 	// DefaultCaseOwnerId - The ID of the default owner of a Case created from the Caseplan.
 	DefaultCaseOwnerId *string `json:"defaultCaseOwnerId,omitempty"`
 
-	// DivisionId - The ID of the division the Caseplan belongs to. Use '*' for divisionless caseplans.
+	// DivisionId - The ID of the division the Caseplan belongs to. Use '*' for divisionless Caseplans.
 	DivisionId *string `json:"divisionId,omitempty"`
 
-	// DataSchemas - The schemas that define all data for cases from this Caseplan. The schema must be defined in the TaskManagement namespace. Omit or leave null to create a draft Caseplan without a schema; assign a schema before publish.
+	// DataSchemas - The schemas that define all data for Cases from this Caseplan. The schema must be defined in the TaskManagement namespace. Omit or leave null to create a draft Caseplan without a schema; assign a schema before publish.
 	DataSchemas *[]Caseplandataschema `json:"dataSchemas,omitempty"`
 
-	// IntakeSettings - The intake format when collecting data for a case from this caseplan. There can be a maximum of 10 IntakeSettings defined for a Caseplan.
+	// IntakeSettings - The intake format when collecting data for a Case from this Caseplan. There can be a maximum of 10 IntakeSettings defined for a Caseplan.
 	IntakeSettings *[]Intakesetting `json:"intakeSettings,omitempty"`
 }
 

@@ -11,10 +11,10 @@ import (
 type Casecreate struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// CaseplanId - The ID of the caseplan to create the case from.
+	// CaseplanId - The ID of the Caseplan used to create the Case.
 	CaseplanId *string `json:"caseplanId,omitempty"`
 
-	// OwnerId - The ID of the owner of the case.
+	// OwnerId - The ID of the owner of the Case.
 	OwnerId *string `json:"ownerId,omitempty"`
 
 	// Summary - Overview information for the Case. Valid length between 3 and 512 characters.
@@ -23,13 +23,13 @@ type Casecreate struct {
 	// ExternalContactId - The ID of the External Contact associated with the Case.
 	ExternalContactId *string `json:"externalContactId,omitempty"`
 
-	// ConversationId - The ID of conversation associated with the Case.
+	// ConversationId - The ID of the Conversation associated with the Case.
 	ConversationId *string `json:"conversationId,omitempty"`
 
-	// WorkitemId - The ID of the workitem associated with the Case.
+	// WorkitemId - The ID of the Workitem associated with the Case.
 	WorkitemId *string `json:"workitemId,omitempty"`
 
-	// TtlSeconds - The epoch timestamp in seconds specifying the time-to-live for the lifetime of the Case. Can not be greater than 365 days from the current time.
+	// TtlSeconds - Epoch timestamp in seconds for the Case time-to-live. Cannot be more than 365 days after the current time.
 	TtlSeconds *int `json:"ttlSeconds,omitempty"`
 
 	// Intake - The intake data for the Case. Maximum of 10 intake objects allowed.

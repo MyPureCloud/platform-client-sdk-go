@@ -33,8 +33,6 @@ func NewAnalyticsApiWithConfig(config *Configuration) *AnalyticsApi {
 // DeleteAnalyticsActionsAggregatesJob invokes DELETE /api/v2/analytics/actions/aggregates/jobs/{jobId}
 //
 // Delete/cancel an async request for action aggregates
-//
-// Preview: DeleteAnalyticsActionsAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) DeleteAnalyticsActionsAggregatesJob(jobId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -264,8 +262,6 @@ func (a AnalyticsApi) DeleteAnalyticsAgentutilizationsAggregatesJob(jobId string
 // DeleteAnalyticsBotsAggregatesJob invokes DELETE /api/v2/analytics/bots/aggregates/jobs/{jobId}
 //
 // Delete/cancel an async request for bot aggregates
-//
-// Preview: DeleteAnalyticsBotsAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) DeleteAnalyticsBotsAggregatesJob(jobId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -341,8 +337,6 @@ func (a AnalyticsApi) DeleteAnalyticsBotsAggregatesJob(jobId string) (*APIRespon
 // DeleteAnalyticsCasemanagementAggregatesJob invokes DELETE /api/v2/analytics/casemanagement/aggregates/jobs/{jobId}
 //
 // Delete/cancel an async request for case management aggregates
-//
-// Preview: DeleteAnalyticsCasemanagementAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) DeleteAnalyticsCasemanagementAggregatesJob(jobId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -418,8 +412,6 @@ func (a AnalyticsApi) DeleteAnalyticsCasemanagementAggregatesJob(jobId string) (
 // DeleteAnalyticsConversationsAggregatesJob invokes DELETE /api/v2/analytics/conversations/aggregates/jobs/{jobId}
 //
 // Delete/cancel an async request for conversation aggregates
-//
-// Preview: DeleteAnalyticsConversationsAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) DeleteAnalyticsConversationsAggregatesJob(jobId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -647,8 +639,6 @@ func (a AnalyticsApi) DeleteAnalyticsCopilotsAggregatesJob(jobId string) (*APIRe
 // DeleteAnalyticsEvaluationsAggregatesJob invokes DELETE /api/v2/analytics/evaluations/aggregates/jobs/{jobId}
 //
 // Delete/cancel an async request for evaluation aggregates
-//
-// Preview: DeleteAnalyticsEvaluationsAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) DeleteAnalyticsEvaluationsAggregatesJob(jobId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -724,8 +714,6 @@ func (a AnalyticsApi) DeleteAnalyticsEvaluationsAggregatesJob(jobId string) (*AP
 // DeleteAnalyticsFlowexecutionsAggregatesJob invokes DELETE /api/v2/analytics/flowexecutions/aggregates/jobs/{jobId}
 //
 // Delete/cancel an async request for flow execution aggregates
-//
-// Preview: DeleteAnalyticsFlowexecutionsAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) DeleteAnalyticsFlowexecutionsAggregatesJob(jobId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -801,8 +789,6 @@ func (a AnalyticsApi) DeleteAnalyticsFlowexecutionsAggregatesJob(jobId string) (
 // DeleteAnalyticsFlowsAggregatesJob invokes DELETE /api/v2/analytics/flows/aggregates/jobs/{jobId}
 //
 // Delete/cancel an async request for flow aggregates
-//
-// Preview: DeleteAnalyticsFlowsAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) DeleteAnalyticsFlowsAggregatesJob(jobId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -878,8 +864,6 @@ func (a AnalyticsApi) DeleteAnalyticsFlowsAggregatesJob(jobId string) (*APIRespo
 // DeleteAnalyticsJourneysAggregatesJob invokes DELETE /api/v2/analytics/journeys/aggregates/jobs/{jobId}
 //
 // Delete/cancel an async request for journey aggregates
-//
-// Preview: DeleteAnalyticsJourneysAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) DeleteAnalyticsJourneysAggregatesJob(jobId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -955,8 +939,6 @@ func (a AnalyticsApi) DeleteAnalyticsJourneysAggregatesJob(jobId string) (*APIRe
 // DeleteAnalyticsKnowledgeAggregatesJob invokes DELETE /api/v2/analytics/knowledge/aggregates/jobs/{jobId}
 //
 // Delete/cancel an async request for knowledge aggregates
-//
-// Preview: DeleteAnalyticsKnowledgeAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) DeleteAnalyticsKnowledgeAggregatesJob(jobId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -1032,8 +1014,6 @@ func (a AnalyticsApi) DeleteAnalyticsKnowledgeAggregatesJob(jobId string) (*APIR
 // DeleteAnalyticsResolutionsAggregatesJob invokes DELETE /api/v2/analytics/resolutions/aggregates/jobs/{jobId}
 //
 // Delete/cancel an async request for resolution aggregates
-//
-// Preview: DeleteAnalyticsResolutionsAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) DeleteAnalyticsResolutionsAggregatesJob(jobId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -1109,8 +1089,6 @@ func (a AnalyticsApi) DeleteAnalyticsResolutionsAggregatesJob(jobId string) (*AP
 // DeleteAnalyticsSummariesAggregatesJob invokes DELETE /api/v2/analytics/summaries/aggregates/jobs/{jobId}
 //
 // Delete/cancel an async request for summary aggregates
-//
-// Preview: DeleteAnalyticsSummariesAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) DeleteAnalyticsSummariesAggregatesJob(jobId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -1186,8 +1164,6 @@ func (a AnalyticsApi) DeleteAnalyticsSummariesAggregatesJob(jobId string) (*APIR
 // DeleteAnalyticsSurveysAggregatesJob invokes DELETE /api/v2/analytics/surveys/aggregates/jobs/{jobId}
 //
 // Delete/cancel an async request for survey aggregates
-//
-// Preview: DeleteAnalyticsSurveysAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) DeleteAnalyticsSurveysAggregatesJob(jobId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -1263,8 +1239,6 @@ func (a AnalyticsApi) DeleteAnalyticsSurveysAggregatesJob(jobId string) (*APIRes
 // DeleteAnalyticsTaskmanagementAggregatesJob invokes DELETE /api/v2/analytics/taskmanagement/aggregates/jobs/{jobId}
 //
 // Delete/cancel an async request for task management aggregates
-//
-// Preview: DeleteAnalyticsTaskmanagementAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) DeleteAnalyticsTaskmanagementAggregatesJob(jobId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -1340,8 +1314,6 @@ func (a AnalyticsApi) DeleteAnalyticsTaskmanagementAggregatesJob(jobId string) (
 // DeleteAnalyticsTranscriptsAggregatesJob invokes DELETE /api/v2/analytics/transcripts/aggregates/jobs/{jobId}
 //
 // Delete/cancel an async request for transcript aggregates
-//
-// Preview: DeleteAnalyticsTranscriptsAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) DeleteAnalyticsTranscriptsAggregatesJob(jobId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -1417,8 +1389,6 @@ func (a AnalyticsApi) DeleteAnalyticsTranscriptsAggregatesJob(jobId string) (*AP
 // DeleteAnalyticsUsersAggregatesJob invokes DELETE /api/v2/analytics/users/aggregates/jobs/{jobId}
 //
 // Delete/cancel an async request for user aggregates
-//
-// Preview: DeleteAnalyticsUsersAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) DeleteAnalyticsUsersAggregatesJob(jobId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -1569,8 +1539,6 @@ func (a AnalyticsApi) DeleteAnalyticsUsersDetailsJob(jobId string) (*APIResponse
 // GetAnalyticsActionsAggregatesJob invokes GET /api/v2/analytics/actions/aggregates/jobs/{jobId}
 //
 // Get status for async query for action aggregates
-//
-// Preview: GetAnalyticsActionsAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) GetAnalyticsActionsAggregatesJob(jobId string) (*Asyncquerystatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1653,8 +1621,6 @@ func (a AnalyticsApi) GetAnalyticsActionsAggregatesJob(jobId string) (*Asyncquer
 // GetAnalyticsActionsAggregatesJobResults invokes GET /api/v2/analytics/actions/aggregates/jobs/{jobId}/results
 //
 // Fetch a page of results for an async aggregates query
-//
-// Preview: GetAnalyticsActionsAggregatesJobResults is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) GetAnalyticsActionsAggregatesJobResults(jobId string, cursor string) (*Actionasyncaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2453,8 +2419,6 @@ func (a AnalyticsApi) GetAnalyticsBotflowSessions(botFlowId string, after string
 // GetAnalyticsBotsAggregatesJob invokes GET /api/v2/analytics/bots/aggregates/jobs/{jobId}
 //
 // Get status for async query for bot aggregates
-//
-// Preview: GetAnalyticsBotsAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) GetAnalyticsBotsAggregatesJob(jobId string) (*Asyncquerystatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2537,8 +2501,6 @@ func (a AnalyticsApi) GetAnalyticsBotsAggregatesJob(jobId string) (*Asyncqueryst
 // GetAnalyticsBotsAggregatesJobResults invokes GET /api/v2/analytics/bots/aggregates/jobs/{jobId}/results
 //
 // Fetch a page of results for an async aggregates query
-//
-// Preview: GetAnalyticsBotsAggregatesJobResults is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) GetAnalyticsBotsAggregatesJobResults(jobId string, cursor string) (*Botasyncaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2623,8 +2585,6 @@ func (a AnalyticsApi) GetAnalyticsBotsAggregatesJobResults(jobId string, cursor 
 // GetAnalyticsCasemanagementAggregatesJob invokes GET /api/v2/analytics/casemanagement/aggregates/jobs/{jobId}
 //
 // Get status for async query for case management aggregates
-//
-// Preview: GetAnalyticsCasemanagementAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) GetAnalyticsCasemanagementAggregatesJob(jobId string) (*Asyncquerystatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2707,8 +2667,6 @@ func (a AnalyticsApi) GetAnalyticsCasemanagementAggregatesJob(jobId string) (*As
 // GetAnalyticsCasemanagementAggregatesJobResults invokes GET /api/v2/analytics/casemanagement/aggregates/jobs/{jobId}/results
 //
 // Fetch a page of results for an async case management query
-//
-// Preview: GetAnalyticsCasemanagementAggregatesJobResults is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) GetAnalyticsCasemanagementAggregatesJobResults(jobId string, cursor string) (*Casemanagementasyncaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2875,8 +2833,6 @@ func (a AnalyticsApi) GetAnalyticsConversationDetails(conversationId string) (*A
 // GetAnalyticsConversationsAggregatesJob invokes GET /api/v2/analytics/conversations/aggregates/jobs/{jobId}
 //
 // Get status for async query for conversation aggregates
-//
-// Preview: GetAnalyticsConversationsAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) GetAnalyticsConversationsAggregatesJob(jobId string) (*Asyncquerystatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2959,8 +2915,6 @@ func (a AnalyticsApi) GetAnalyticsConversationsAggregatesJob(jobId string) (*Asy
 // GetAnalyticsConversationsAggregatesJobResults invokes GET /api/v2/analytics/conversations/aggregates/jobs/{jobId}/results
 //
 // Fetch a page of results for an async aggregates query
-//
-// Preview: GetAnalyticsConversationsAggregatesJobResults is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) GetAnalyticsConversationsAggregatesJobResults(jobId string, cursor string) (*Conversationasyncaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3780,8 +3734,6 @@ func (a AnalyticsApi) GetAnalyticsDataretentionSettings() (*Analyticsdataretenti
 // GetAnalyticsEvaluationsAggregatesJob invokes GET /api/v2/analytics/evaluations/aggregates/jobs/{jobId}
 //
 // Get status for async query for evaluation aggregates
-//
-// Preview: GetAnalyticsEvaluationsAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) GetAnalyticsEvaluationsAggregatesJob(jobId string) (*Asyncquerystatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3864,8 +3816,6 @@ func (a AnalyticsApi) GetAnalyticsEvaluationsAggregatesJob(jobId string) (*Async
 // GetAnalyticsEvaluationsAggregatesJobResults invokes GET /api/v2/analytics/evaluations/aggregates/jobs/{jobId}/results
 //
 // Fetch a page of results for an async aggregates query
-//
-// Preview: GetAnalyticsEvaluationsAggregatesJobResults is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) GetAnalyticsEvaluationsAggregatesJobResults(jobId string, cursor string) (*Evaluationasyncaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3950,8 +3900,6 @@ func (a AnalyticsApi) GetAnalyticsEvaluationsAggregatesJobResults(jobId string, 
 // GetAnalyticsFlowexecutionsAggregatesJob invokes GET /api/v2/analytics/flowexecutions/aggregates/jobs/{jobId}
 //
 // Get status for async query for flow execution aggregates
-//
-// Preview: GetAnalyticsFlowexecutionsAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) GetAnalyticsFlowexecutionsAggregatesJob(jobId string) (*Asyncquerystatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4034,8 +3982,6 @@ func (a AnalyticsApi) GetAnalyticsFlowexecutionsAggregatesJob(jobId string) (*As
 // GetAnalyticsFlowexecutionsAggregatesJobResults invokes GET /api/v2/analytics/flowexecutions/aggregates/jobs/{jobId}/results
 //
 // Fetch a page of results for an async aggregates query
-//
-// Preview: GetAnalyticsFlowexecutionsAggregatesJobResults is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) GetAnalyticsFlowexecutionsAggregatesJobResults(jobId string, cursor string) (*Flowexecutionasyncaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4120,8 +4066,6 @@ func (a AnalyticsApi) GetAnalyticsFlowexecutionsAggregatesJobResults(jobId strin
 // GetAnalyticsFlowsAggregatesJob invokes GET /api/v2/analytics/flows/aggregates/jobs/{jobId}
 //
 // Get status for async query for Flow aggregates
-//
-// Preview: GetAnalyticsFlowsAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) GetAnalyticsFlowsAggregatesJob(jobId string) (*Asyncquerystatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4204,8 +4148,6 @@ func (a AnalyticsApi) GetAnalyticsFlowsAggregatesJob(jobId string) (*Asyncquerys
 // GetAnalyticsFlowsAggregatesJobResults invokes GET /api/v2/analytics/flows/aggregates/jobs/{jobId}/results
 //
 // Fetch a page of results for an async aggregates query
-//
-// Preview: GetAnalyticsFlowsAggregatesJobResults is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) GetAnalyticsFlowsAggregatesJobResults(jobId string, cursor string) (*Flowasyncaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4290,8 +4232,6 @@ func (a AnalyticsApi) GetAnalyticsFlowsAggregatesJobResults(jobId string, cursor
 // GetAnalyticsJourneysAggregatesJob invokes GET /api/v2/analytics/journeys/aggregates/jobs/{jobId}
 //
 // Get status for async query for journey aggregates
-//
-// Preview: GetAnalyticsJourneysAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) GetAnalyticsJourneysAggregatesJob(jobId string) (*Asyncquerystatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4374,8 +4314,6 @@ func (a AnalyticsApi) GetAnalyticsJourneysAggregatesJob(jobId string) (*Asyncque
 // GetAnalyticsJourneysAggregatesJobResults invokes GET /api/v2/analytics/journeys/aggregates/jobs/{jobId}/results
 //
 // Fetch a page of results for an async aggregates query
-//
-// Preview: GetAnalyticsJourneysAggregatesJobResults is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) GetAnalyticsJourneysAggregatesJobResults(jobId string, cursor string) (*Journeyasyncaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4460,8 +4398,6 @@ func (a AnalyticsApi) GetAnalyticsJourneysAggregatesJobResults(jobId string, cur
 // GetAnalyticsKnowledgeAggregatesJob invokes GET /api/v2/analytics/knowledge/aggregates/jobs/{jobId}
 //
 // Get status for async query for knowledge aggregates
-//
-// Preview: GetAnalyticsKnowledgeAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) GetAnalyticsKnowledgeAggregatesJob(jobId string) (*Asyncquerystatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4544,8 +4480,6 @@ func (a AnalyticsApi) GetAnalyticsKnowledgeAggregatesJob(jobId string) (*Asyncqu
 // GetAnalyticsKnowledgeAggregatesJobResults invokes GET /api/v2/analytics/knowledge/aggregates/jobs/{jobId}/results
 //
 // Fetch a page of results for an async aggregates query
-//
-// Preview: GetAnalyticsKnowledgeAggregatesJobResults is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) GetAnalyticsKnowledgeAggregatesJobResults(jobId string, cursor string) (*Knowledgeasyncaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5228,8 +5162,6 @@ func (a AnalyticsApi) GetAnalyticsReportingSettingsUserDashboards(userId string,
 // GetAnalyticsResolutionsAggregatesJob invokes GET /api/v2/analytics/resolutions/aggregates/jobs/{jobId}
 //
 // Get status for async query for resolution aggregates
-//
-// Preview: GetAnalyticsResolutionsAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) GetAnalyticsResolutionsAggregatesJob(jobId string) (*Asyncquerystatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5312,8 +5244,6 @@ func (a AnalyticsApi) GetAnalyticsResolutionsAggregatesJob(jobId string) (*Async
 // GetAnalyticsResolutionsAggregatesJobResults invokes GET /api/v2/analytics/resolutions/aggregates/jobs/{jobId}/results
 //
 // Fetch a page of results for an async aggregates query
-//
-// Preview: GetAnalyticsResolutionsAggregatesJobResults is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) GetAnalyticsResolutionsAggregatesJobResults(jobId string, cursor string) (*Resolutionasyncaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5398,8 +5328,6 @@ func (a AnalyticsApi) GetAnalyticsResolutionsAggregatesJobResults(jobId string, 
 // GetAnalyticsSummariesAggregatesJob invokes GET /api/v2/analytics/summaries/aggregates/jobs/{jobId}
 //
 // Get status for async query for summary aggregates
-//
-// Preview: GetAnalyticsSummariesAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) GetAnalyticsSummariesAggregatesJob(jobId string) (*Asyncquerystatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5482,8 +5410,6 @@ func (a AnalyticsApi) GetAnalyticsSummariesAggregatesJob(jobId string) (*Asyncqu
 // GetAnalyticsSummariesAggregatesJobResults invokes GET /api/v2/analytics/summaries/aggregates/jobs/{jobId}/results
 //
 // Fetch a page of results for an async aggregates query
-//
-// Preview: GetAnalyticsSummariesAggregatesJobResults is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) GetAnalyticsSummariesAggregatesJobResults(jobId string, cursor string) (*Summaryasyncaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5568,8 +5494,6 @@ func (a AnalyticsApi) GetAnalyticsSummariesAggregatesJobResults(jobId string, cu
 // GetAnalyticsSurveysAggregatesJob invokes GET /api/v2/analytics/surveys/aggregates/jobs/{jobId}
 //
 // Get status for async query for survey aggregates
-//
-// Preview: GetAnalyticsSurveysAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) GetAnalyticsSurveysAggregatesJob(jobId string) (*Asyncquerystatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5652,8 +5576,6 @@ func (a AnalyticsApi) GetAnalyticsSurveysAggregatesJob(jobId string) (*Asyncquer
 // GetAnalyticsSurveysAggregatesJobResults invokes GET /api/v2/analytics/surveys/aggregates/jobs/{jobId}/results
 //
 // Fetch a page of results for an async aggregates query
-//
-// Preview: GetAnalyticsSurveysAggregatesJobResults is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) GetAnalyticsSurveysAggregatesJobResults(jobId string, cursor string) (*Surveyasyncaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5738,8 +5660,6 @@ func (a AnalyticsApi) GetAnalyticsSurveysAggregatesJobResults(jobId string, curs
 // GetAnalyticsTaskmanagementAggregatesJob invokes GET /api/v2/analytics/taskmanagement/aggregates/jobs/{jobId}
 //
 // Get status for async query for task management aggregates
-//
-// Preview: GetAnalyticsTaskmanagementAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) GetAnalyticsTaskmanagementAggregatesJob(jobId string) (*Asyncquerystatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5822,8 +5742,6 @@ func (a AnalyticsApi) GetAnalyticsTaskmanagementAggregatesJob(jobId string) (*As
 // GetAnalyticsTaskmanagementAggregatesJobResults invokes GET /api/v2/analytics/taskmanagement/aggregates/jobs/{jobId}/results
 //
 // Fetch a page of results for an async task management query
-//
-// Preview: GetAnalyticsTaskmanagementAggregatesJobResults is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) GetAnalyticsTaskmanagementAggregatesJobResults(jobId string, cursor string) (*Taskmanagementasyncaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5908,8 +5826,6 @@ func (a AnalyticsApi) GetAnalyticsTaskmanagementAggregatesJobResults(jobId strin
 // GetAnalyticsTranscriptsAggregatesJob invokes GET /api/v2/analytics/transcripts/aggregates/jobs/{jobId}
 //
 // Get status for async query for transcript aggregates
-//
-// Preview: GetAnalyticsTranscriptsAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) GetAnalyticsTranscriptsAggregatesJob(jobId string) (*Asyncquerystatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -5992,8 +5908,6 @@ func (a AnalyticsApi) GetAnalyticsTranscriptsAggregatesJob(jobId string) (*Async
 // GetAnalyticsTranscriptsAggregatesJobResults invokes GET /api/v2/analytics/transcripts/aggregates/jobs/{jobId}/results
 //
 // Fetch a page of results for an async aggregates query
-//
-// Preview: GetAnalyticsTranscriptsAggregatesJobResults is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) GetAnalyticsTranscriptsAggregatesJobResults(jobId string, cursor string) (*Transcriptasyncaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -6078,8 +5992,6 @@ func (a AnalyticsApi) GetAnalyticsTranscriptsAggregatesJobResults(jobId string, 
 // GetAnalyticsUsersAggregatesJob invokes GET /api/v2/analytics/users/aggregates/jobs/{jobId}
 //
 // Get status for async query for user aggregates
-//
-// Preview: GetAnalyticsUsersAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) GetAnalyticsUsersAggregatesJob(jobId string) (*Asyncquerystatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -6162,8 +6074,6 @@ func (a AnalyticsApi) GetAnalyticsUsersAggregatesJob(jobId string) (*Asyncquerys
 // GetAnalyticsUsersAggregatesJobResults invokes GET /api/v2/analytics/users/aggregates/jobs/{jobId}/results
 //
 // Fetch a page of results for an async aggregates query
-//
-// Preview: GetAnalyticsUsersAggregatesJobResults is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) GetAnalyticsUsersAggregatesJobResults(jobId string, cursor string) (*Userasyncaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -6576,8 +6486,6 @@ func (a AnalyticsApi) PatchAnalyticsReportingSettings(body Analyticsreportingset
 // PostAnalyticsActionsAggregatesJobs invokes POST /api/v2/analytics/actions/aggregates/jobs
 //
 // Query for action aggregates asynchronously
-//
-// Preview: PostAnalyticsActionsAggregatesJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) PostAnalyticsActionsAggregatesJobs(body Actionasyncaggregationquery) (*Asyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7258,8 +7166,6 @@ func (a AnalyticsApi) PostAnalyticsAgentutilizationsAggregatesQuery(body Agentut
 // PostAnalyticsBotsAggregatesJobs invokes POST /api/v2/analytics/bots/aggregates/jobs
 //
 // Query for bot aggregates asynchronously
-//
-// Preview: PostAnalyticsBotsAggregatesJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) PostAnalyticsBotsAggregatesJobs(body Botasyncaggregationquery) (*Asyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7428,8 +7334,6 @@ func (a AnalyticsApi) PostAnalyticsBotsAggregatesQuery(body Botaggregationquery)
 // PostAnalyticsCasemanagementAggregatesJobs invokes POST /api/v2/analytics/casemanagement/aggregates/jobs
 //
 // Query for case management aggregates asynchronously
-//
-// Preview: PostAnalyticsCasemanagementAggregatesJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) PostAnalyticsCasemanagementAggregatesJobs(body Casemanagementasyncaggregationquery) (*Asyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7514,8 +7418,6 @@ func (a AnalyticsApi) PostAnalyticsCasemanagementAggregatesJobs(body Casemanagem
 // PostAnalyticsCasemanagementAggregatesQuery invokes POST /api/v2/analytics/casemanagement/aggregates/query
 //
 // Query for case management aggregates
-//
-// Preview: PostAnalyticsCasemanagementAggregatesQuery is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) PostAnalyticsCasemanagementAggregatesQuery(body Casemanagementaggregationquery) (*Casemanagementaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -7778,8 +7680,6 @@ func (a AnalyticsApi) PostAnalyticsConversationsActivityQuery(body Conversationa
 // PostAnalyticsConversationsAggregatesJobs invokes POST /api/v2/analytics/conversations/aggregates/jobs
 //
 // Query for conversation aggregates asynchronously
-//
-// Preview: PostAnalyticsConversationsAggregatesJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) PostAnalyticsConversationsAggregatesJobs(body Conversationasyncaggregationquery) (*Asyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -8374,8 +8274,6 @@ func (a AnalyticsApi) PostAnalyticsDataextractionDownloadsBulk(body Downloadserv
 // PostAnalyticsEvaluationsAggregatesJobs invokes POST /api/v2/analytics/evaluations/aggregates/jobs
 //
 // Query for evaluation aggregates asynchronously
-//
-// Preview: PostAnalyticsEvaluationsAggregatesJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) PostAnalyticsEvaluationsAggregatesJobs(body Evaluationasyncaggregationquery) (*Asyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -8544,8 +8442,6 @@ func (a AnalyticsApi) PostAnalyticsEvaluationsAggregatesQuery(body Evaluationagg
 // PostAnalyticsFlowexecutionsAggregatesJobs invokes POST /api/v2/analytics/flowexecutions/aggregates/jobs
 //
 // Query for flow execution aggregates asynchronously
-//
-// Preview: PostAnalyticsFlowexecutionsAggregatesJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) PostAnalyticsFlowexecutionsAggregatesJobs(body Flowexecutionasyncaggregationquery) (*Asyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -8802,8 +8698,6 @@ func (a AnalyticsApi) PostAnalyticsFlowsActivityQuery(body Flowactivityquery, pa
 // PostAnalyticsFlowsAggregatesJobs invokes POST /api/v2/analytics/flows/aggregates/jobs
 //
 // Query for flow aggregates asynchronously
-//
-// Preview: PostAnalyticsFlowsAggregatesJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) PostAnalyticsFlowsAggregatesJobs(body Flowasyncaggregationquery) (*Asyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -9056,8 +8950,6 @@ func (a AnalyticsApi) PostAnalyticsFlowsObservationsQuery(body Flowobservationqu
 // PostAnalyticsJourneysAggregatesJobs invokes POST /api/v2/analytics/journeys/aggregates/jobs
 //
 // Query for journey aggregates asynchronously
-//
-// Preview: PostAnalyticsJourneysAggregatesJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) PostAnalyticsJourneysAggregatesJobs(body Journeyasyncaggregationquery) (*Asyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -9226,8 +9118,6 @@ func (a AnalyticsApi) PostAnalyticsJourneysAggregatesQuery(body Journeyaggregati
 // PostAnalyticsKnowledgeAggregatesJobs invokes POST /api/v2/analytics/knowledge/aggregates/jobs
 //
 // Query for knowledge aggregates asynchronously
-//
-// Preview: PostAnalyticsKnowledgeAggregatesJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) PostAnalyticsKnowledgeAggregatesJobs(body Knowledgeasyncaggregationquery) (*Asyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -9890,8 +9780,6 @@ func (a AnalyticsApi) PostAnalyticsReportingSettingsDashboardsQuery(body Dashboa
 // PostAnalyticsResolutionsAggregatesJobs invokes POST /api/v2/analytics/resolutions/aggregates/jobs
 //
 // Query for resolution aggregates asynchronously
-//
-// Preview: PostAnalyticsResolutionsAggregatesJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) PostAnalyticsResolutionsAggregatesJobs(body Resolutionasyncaggregationquery) (*Asyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -10148,8 +10036,6 @@ func (a AnalyticsApi) PostAnalyticsRoutingActivityQuery(body Routingactivityquer
 // PostAnalyticsSummariesAggregatesJobs invokes POST /api/v2/analytics/summaries/aggregates/jobs
 //
 // Query for summary aggregates asynchronously
-//
-// Preview: PostAnalyticsSummariesAggregatesJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) PostAnalyticsSummariesAggregatesJobs(body Summaryasyncaggregationquery) (*Asyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -10318,8 +10204,6 @@ func (a AnalyticsApi) PostAnalyticsSummariesAggregatesQuery(body Summaryaggregat
 // PostAnalyticsSurveysAggregatesJobs invokes POST /api/v2/analytics/surveys/aggregates/jobs
 //
 // Query for survey aggregates asynchronously
-//
-// Preview: PostAnalyticsSurveysAggregatesJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) PostAnalyticsSurveysAggregatesJobs(body Surveyasyncaggregationquery) (*Asyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -10488,8 +10372,6 @@ func (a AnalyticsApi) PostAnalyticsSurveysAggregatesQuery(body Surveyaggregation
 // PostAnalyticsTaskmanagementAggregatesJobs invokes POST /api/v2/analytics/taskmanagement/aggregates/jobs
 //
 // Query for task management aggregates asynchronously
-//
-// Preview: PostAnalyticsTaskmanagementAggregatesJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) PostAnalyticsTaskmanagementAggregatesJobs(body Taskmanagementasyncaggregationquery) (*Asyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -10834,8 +10716,6 @@ func (a AnalyticsApi) PostAnalyticsTeamsActivityQuery(body Teamactivityquery, pa
 // PostAnalyticsTranscriptsAggregatesJobs invokes POST /api/v2/analytics/transcripts/aggregates/jobs
 //
 // Query for transcript aggregates asynchronously
-//
-// Preview: PostAnalyticsTranscriptsAggregatesJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) PostAnalyticsTranscriptsAggregatesJobs(body Transcriptasyncaggregationquery) (*Asyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -11092,8 +10972,6 @@ func (a AnalyticsApi) PostAnalyticsUsersActivityQuery(body Useractivityquery, pa
 // PostAnalyticsUsersAggregatesJobs invokes POST /api/v2/analytics/users/aggregates/jobs
 //
 // Query for user aggregates asynchronously
-//
-// Preview: PostAnalyticsUsersAggregatesJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) PostAnalyticsUsersAggregatesJobs(body Userasyncaggregationquery) (*Asyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

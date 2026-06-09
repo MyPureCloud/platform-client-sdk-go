@@ -32,8 +32,6 @@ func NewCaseManagementApiWithConfig(config *Configuration) *CaseManagementApi {
 // DeleteCasemanagementCase invokes DELETE /api/v2/casemanagement/cases/{caseId}
 //
 // Delete a Case.
-//
-// Preview: DeleteCasemanagementCase is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a CaseManagementApi) DeleteCasemanagementCase(caseId string) (*interface{}, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -116,8 +114,6 @@ func (a CaseManagementApi) DeleteCasemanagementCase(caseId string) (*interface{}
 // DeleteCasemanagementCaseplan invokes DELETE /api/v2/casemanagement/caseplans/{caseplanId}
 //
 // Delete a Caseplan.
-//
-// Preview: DeleteCasemanagementCaseplan is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a CaseManagementApi) DeleteCasemanagementCaseplan(caseplanId string) (*interface{}, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -197,11 +193,97 @@ func (a CaseManagementApi) DeleteCasemanagementCaseplan(caseplanId string) (*int
 	return successPayload, response, err
 }
 
+// DeleteCasemanagementCaseplanDataschema invokes DELETE /api/v2/casemanagement/caseplans/{caseplanId}/dataschemas/{schemaKeyName}
+//
+// Remove a data schema from a draft Caseplan.
+func (a CaseManagementApi) DeleteCasemanagementCaseplanDataschema(caseplanId string, schemaKeyName string) (*interface{}, *APIResponse, error) {
+	var httpMethod = "DELETE"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/casemanagement/caseplans/{caseplanId}/dataschemas/{schemaKeyName}"
+	path = strings.Replace(path, "{caseplanId}", url.PathEscape(fmt.Sprintf("%v", caseplanId)), -1)
+	path = strings.Replace(path, "{schemaKeyName}", url.PathEscape(fmt.Sprintf("%v", schemaKeyName)), -1)
+	defaultReturn := new(interface{})
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'caseplanId' is set
+	if &caseplanId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'caseplanId' when calling CaseManagementApi->DeleteCasemanagementCaseplanDataschema")
+	}
+	// verify the required parameter 'schemaKeyName' is set
+	if &schemaKeyName == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'schemaKeyName' when calling CaseManagementApi->DeleteCasemanagementCaseplanDataschema")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *interface{}
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "interface{}" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // GetCasemanagementCase invokes GET /api/v2/casemanagement/cases/{caseId}
 //
 // Get a Case.
-//
-// Preview: GetCasemanagementCase is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a CaseManagementApi) GetCasemanagementCase(caseId string, expands string) (*Case, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -286,8 +368,6 @@ func (a CaseManagementApi) GetCasemanagementCase(caseId string, expands string) 
 // GetCasemanagementCaseAssociation invokes GET /api/v2/casemanagement/cases/{caseId}/associations/{associationId}
 //
 // Get a Case Association.
-//
-// Preview: GetCasemanagementCaseAssociation is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a CaseManagementApi) GetCasemanagementCaseAssociation(caseId string, associationId string) (*Caseassociation, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -375,9 +455,7 @@ func (a CaseManagementApi) GetCasemanagementCaseAssociation(caseId string, assoc
 
 // GetCasemanagementCaseAssociations invokes GET /api/v2/casemanagement/cases/{caseId}/associations
 //
-// Get a list of case associations for a provided case.
-//
-// Preview: GetCasemanagementCaseAssociations is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+// Get a list of Case associations for the Case.
 func (a CaseManagementApi) GetCasemanagementCaseAssociations(caseId string, before string, after string, pageSize string) (*Caseassociationlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -466,8 +544,6 @@ func (a CaseManagementApi) GetCasemanagementCaseAssociations(caseId string, befo
 // GetCasemanagementCaseStage invokes GET /api/v2/casemanagement/cases/{caseId}/stages/{stageId}
 //
 // Get a Stage.
-//
-// Preview: GetCasemanagementCaseStage is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a CaseManagementApi) GetCasemanagementCaseStage(caseId string, stageId string) (*Stage, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -556,8 +632,6 @@ func (a CaseManagementApi) GetCasemanagementCaseStage(caseId string, stageId str
 // GetCasemanagementCaseStageStep invokes GET /api/v2/casemanagement/cases/{caseId}/stages/{stageId}/steps/{stepId}
 //
 // Get a Step.
-//
-// Preview: GetCasemanagementCaseStageStep is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a CaseManagementApi) GetCasemanagementCaseStageStep(caseId string, stageId string, stepId string) (*Step, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -652,8 +726,6 @@ func (a CaseManagementApi) GetCasemanagementCaseStageStep(caseId string, stageId
 // GetCasemanagementCaseStageSteps invokes GET /api/v2/casemanagement/cases/{caseId}/stages/{stageId}/steps
 //
 // Get a list of Steps.
-//
-// Preview: GetCasemanagementCaseStageSteps is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a CaseManagementApi) GetCasemanagementCaseStageSteps(caseId string, stageId string, before string, after string, pageSize string) (*Steplisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -748,8 +820,6 @@ func (a CaseManagementApi) GetCasemanagementCaseStageSteps(caseId string, stageI
 // GetCasemanagementCaseStages invokes GET /api/v2/casemanagement/cases/{caseId}/stages
 //
 // Get a list of Stages.
-//
-// Preview: GetCasemanagementCaseStages is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a CaseManagementApi) GetCasemanagementCaseStages(caseId string, before string, after string, pageSize string) (*Stagelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -838,8 +908,6 @@ func (a CaseManagementApi) GetCasemanagementCaseStages(caseId string, before str
 // GetCasemanagementCaseTerminateJob invokes GET /api/v2/casemanagement/cases/{caseId}/terminate/jobs/{jobId}
 //
 // Get a Terminate Job for a Case.
-//
-// Preview: GetCasemanagementCaseTerminateJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a CaseManagementApi) GetCasemanagementCaseTerminateJob(caseId string, jobId string) (*Terminatejob, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -928,8 +996,6 @@ func (a CaseManagementApi) GetCasemanagementCaseTerminateJob(caseId string, jobI
 // GetCasemanagementCaseplan invokes GET /api/v2/casemanagement/caseplans/{caseplanId}
 //
 // Get a Caseplan.
-//
-// Preview: GetCasemanagementCaseplan is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a CaseManagementApi) GetCasemanagementCaseplan(caseplanId string) (*Caseplan, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1012,8 +1078,6 @@ func (a CaseManagementApi) GetCasemanagementCaseplan(caseplanId string) (*Casepl
 // GetCasemanagementCaseplanVersion invokes GET /api/v2/casemanagement/caseplans/{caseplanId}/versions/{versionId}
 //
 // Get a Caseplan version.
-//
-// Preview: GetCasemanagementCaseplanVersion is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a CaseManagementApi) GetCasemanagementCaseplanVersion(caseplanId string, versionId string) (*Caseplan, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1101,9 +1165,7 @@ func (a CaseManagementApi) GetCasemanagementCaseplanVersion(caseplanId string, v
 
 // GetCasemanagementCaseplanVersionDataschemas invokes GET /api/v2/casemanagement/caseplans/{caseplanId}/versions/{versionId}/dataschemas
 //
-// Get the dataSchemas for a caseplan version.
-//
-// Preview: GetCasemanagementCaseplanVersionDataschemas is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+// Get the data schemas for a Caseplan version.
 func (a CaseManagementApi) GetCasemanagementCaseplanVersionDataschemas(caseplanId string, versionId string) (*Caseplandataschemalisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1192,8 +1254,6 @@ func (a CaseManagementApi) GetCasemanagementCaseplanVersionDataschemas(caseplanI
 // GetCasemanagementCaseplanVersionIntakesettings invokes GET /api/v2/casemanagement/caseplans/{caseplanId}/versions/{versionId}/intakesettings
 //
 // Get the intake settings for a Caseplan version.
-//
-// Preview: GetCasemanagementCaseplanVersionIntakesettings is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a CaseManagementApi) GetCasemanagementCaseplanVersionIntakesettings(caseplanId string, versionId string) (*Intakesettingslisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1282,8 +1342,6 @@ func (a CaseManagementApi) GetCasemanagementCaseplanVersionIntakesettings(casepl
 // GetCasemanagementCaseplanVersionStageplan invokes GET /api/v2/casemanagement/caseplans/{caseplanId}/versions/{versionId}/stageplans/{stageplanId}
 //
 // Get a Stageplan.
-//
-// Preview: GetCasemanagementCaseplanVersionStageplan is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a CaseManagementApi) GetCasemanagementCaseplanVersionStageplan(caseplanId string, versionId string, stageplanId string, expands []string) (*Stageplan, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1380,8 +1438,6 @@ func (a CaseManagementApi) GetCasemanagementCaseplanVersionStageplan(caseplanId 
 // GetCasemanagementCaseplanVersionStageplanStepplan invokes GET /api/v2/casemanagement/caseplans/{caseplanId}/versions/{versionId}/stageplans/{stageplanId}/stepplans/{stepplanId}
 //
 // Get a Stepplan.
-//
-// Preview: GetCasemanagementCaseplanVersionStageplanStepplan is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a CaseManagementApi) GetCasemanagementCaseplanVersionStageplanStepplan(caseplanId string, versionId string, stageplanId string, stepplanId string, expands []string) (*Stepplan, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1484,8 +1540,6 @@ func (a CaseManagementApi) GetCasemanagementCaseplanVersionStageplanStepplan(cas
 // GetCasemanagementCaseplanVersionStageplanStepplans invokes GET /api/v2/casemanagement/caseplans/{caseplanId}/versions/{versionId}/stageplans/{stageplanId}/stepplans
 //
 // Get a list of Stepplans.
-//
-// Preview: GetCasemanagementCaseplanVersionStageplanStepplans is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a CaseManagementApi) GetCasemanagementCaseplanVersionStageplanStepplans(caseplanId string, versionId string, stageplanId string, before string, after string, pageSize string, expands []string) (*Stepplanlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1588,8 +1642,6 @@ func (a CaseManagementApi) GetCasemanagementCaseplanVersionStageplanStepplans(ca
 // GetCasemanagementCaseplanVersionStageplans invokes GET /api/v2/casemanagement/caseplans/{caseplanId}/versions/{versionId}/stageplans
 //
 // Get a list of Stageplans.
-//
-// Preview: GetCasemanagementCaseplanVersionStageplans is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a CaseManagementApi) GetCasemanagementCaseplanVersionStageplans(caseplanId string, versionId string, before string, after string, pageSize string, expands []string) (*Stageplanlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1686,8 +1738,6 @@ func (a CaseManagementApi) GetCasemanagementCaseplanVersionStageplans(caseplanId
 // GetCasemanagementCaseplans invokes GET /api/v2/casemanagement/caseplans
 //
 // Get a list of Caseplans.
-//
-// Preview: GetCasemanagementCaseplans is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a CaseManagementApi) GetCasemanagementCaseplans(after string, pageSize int, customerIntentId string, divisionIds string) (*Caseplanlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1771,9 +1821,7 @@ func (a CaseManagementApi) GetCasemanagementCaseplans(after string, pageSize int
 
 // GetCasemanagementCasesExternalcontact invokes GET /api/v2/casemanagement/cases/externalcontacts/{externalContactId}
 //
-// Get a list of cases for provided external contact id.
-//
-// Preview: GetCasemanagementCasesExternalcontact is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+// Get a list of Cases for an External Contact.
 func (a CaseManagementApi) GetCasemanagementCasesExternalcontact(externalContactId string, after string, pageSize int, divisionIds string, expands []string) (*Caselisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1864,8 +1912,6 @@ func (a CaseManagementApi) GetCasemanagementCasesExternalcontact(externalContact
 // GetCasemanagementCasesReference invokes GET /api/v2/casemanagement/cases/references/{referenceId}
 //
 // Get a Case by reference.
-//
-// Preview: GetCasemanagementCasesReference is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a CaseManagementApi) GetCasemanagementCasesReference(referenceId string, expands string) (*Case, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1949,9 +1995,7 @@ func (a CaseManagementApi) GetCasemanagementCasesReference(referenceId string, e
 
 // PatchCasemanagementCaseDatedue invokes PATCH /api/v2/casemanagement/cases/{caseId}/datedue
 //
-// Update date due of a Case.
-//
-// Preview: PatchCasemanagementCaseDatedue is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+// Update the due date of a Case.
 func (a CaseManagementApi) PatchCasemanagementCaseDatedue(caseId string, body Casedatedueupdate) (*Case, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -2042,8 +2086,6 @@ func (a CaseManagementApi) PatchCasemanagementCaseDatedue(caseId string, body Ca
 // PatchCasemanagementCasePriority invokes PATCH /api/v2/casemanagement/cases/{caseId}/priority
 //
 // Update priority of a Case.
-//
-// Preview: PatchCasemanagementCasePriority is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a CaseManagementApi) PatchCasemanagementCasePriority(caseId string, body Casepriorityupdate) (*Case, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -2134,8 +2176,6 @@ func (a CaseManagementApi) PatchCasemanagementCasePriority(caseId string, body C
 // PatchCasemanagementCaseSummary invokes PATCH /api/v2/casemanagement/cases/{caseId}/summary
 //
 // Update summary of a Case.
-//
-// Preview: PatchCasemanagementCaseSummary is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a CaseManagementApi) PatchCasemanagementCaseSummary(caseId string, body Casesummaryupdate) (*Case, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -2226,8 +2266,6 @@ func (a CaseManagementApi) PatchCasemanagementCaseSummary(caseId string, body Ca
 // PatchCasemanagementCaseplan invokes PATCH /api/v2/casemanagement/caseplans/{caseplanId}
 //
 // Update the attributes of a Caseplan.
-//
-// Preview: PatchCasemanagementCaseplan is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a CaseManagementApi) PatchCasemanagementCaseplan(caseplanId string, body Caseplanupdate) (*Caseplan, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -2318,8 +2356,6 @@ func (a CaseManagementApi) PatchCasemanagementCaseplan(caseplanId string, body C
 // PatchCasemanagementCaseplanStageplan invokes PATCH /api/v2/casemanagement/caseplans/{caseplanId}/stageplans/{stageplanId}
 //
 // Update the attributes of a Stageplan.
-//
-// Preview: PatchCasemanagementCaseplanStageplan is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a CaseManagementApi) PatchCasemanagementCaseplanStageplan(caseplanId string, stageplanId string, body Stageplanupdate) (*Stageplan, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -2416,8 +2452,6 @@ func (a CaseManagementApi) PatchCasemanagementCaseplanStageplan(caseplanId strin
 // PatchCasemanagementCaseplanStageplanStepplan invokes PATCH /api/v2/casemanagement/caseplans/{caseplanId}/stageplans/{stageplanId}/stepplans/{stepplanId}
 //
 // Update the attributes of a Stepplan.
-//
-// Preview: PatchCasemanagementCaseplanStageplanStepplan is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a CaseManagementApi) PatchCasemanagementCaseplanStageplanStepplan(caseplanId string, stageplanId string, stepplanId string, body Stepplanupdate) (*Stepplan, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -2519,9 +2553,7 @@ func (a CaseManagementApi) PatchCasemanagementCaseplanStageplanStepplan(caseplan
 
 // PostCasemanagementCaseAssociations invokes POST /api/v2/casemanagement/cases/{caseId}/associations
 //
-// Create a case association.
-//
-// Preview: PostCasemanagementCaseAssociations is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+// Create a Case association.
 func (a CaseManagementApi) PostCasemanagementCaseAssociations(caseId string, body Caseassociationcreate) (*Caseassociation, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2536,6 +2568,11 @@ func (a CaseManagementApi) PostCasemanagementCaseAssociations(caseId string, bod
 	if &caseId == nil {
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'caseId' when calling CaseManagementApi->PostCasemanagementCaseAssociations")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling CaseManagementApi->PostCasemanagementCaseAssociations")
 	}
 
 	headerParams := make(map[string]string)
@@ -2607,8 +2644,6 @@ func (a CaseManagementApi) PostCasemanagementCaseAssociations(caseId string, bod
 // PostCasemanagementCaseTerminateJobs invokes POST /api/v2/casemanagement/cases/{caseId}/terminate/jobs
 //
 // Create a Terminate Job for a Case.
-//
-// Preview: PostCasemanagementCaseTerminateJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a CaseManagementApi) PostCasemanagementCaseTerminateJobs(caseId string) (*Terminatejob, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2688,11 +2723,99 @@ func (a CaseManagementApi) PostCasemanagementCaseTerminateJobs(caseId string) (*
 	return successPayload, response, err
 }
 
+// PostCasemanagementCaseplanDataschemas invokes POST /api/v2/casemanagement/caseplans/{caseplanId}/dataschemas
+//
+// Add a data schema to a draft Caseplan.
+func (a CaseManagementApi) PostCasemanagementCaseplanDataschemas(caseplanId string, body Caseplandataschemarequest) (*Caseplandataschema, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/casemanagement/caseplans/{caseplanId}/dataschemas"
+	path = strings.Replace(path, "{caseplanId}", url.PathEscape(fmt.Sprintf("%v", caseplanId)), -1)
+	defaultReturn := new(Caseplandataschema)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'caseplanId' is set
+	if &caseplanId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'caseplanId' when calling CaseManagementApi->PostCasemanagementCaseplanDataschemas")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling CaseManagementApi->PostCasemanagementCaseplanDataschemas")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Caseplandataschema
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Caseplandataschema" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // PostCasemanagementCaseplanPublish invokes POST /api/v2/casemanagement/caseplans/{caseplanId}/publish
 //
 // Publish Caseplan.
-//
-// Preview: PostCasemanagementCaseplanPublish is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a CaseManagementApi) PostCasemanagementCaseplanPublish(caseplanId string) (*Caseplan, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2775,8 +2898,6 @@ func (a CaseManagementApi) PostCasemanagementCaseplanPublish(caseplanId string) 
 // PostCasemanagementCaseplanVersions invokes POST /api/v2/casemanagement/caseplans/{caseplanId}/versions
 //
 // Create Caseplan version.
-//
-// Preview: PostCasemanagementCaseplanVersions is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a CaseManagementApi) PostCasemanagementCaseplanVersions(caseplanId string) (*Caseplan, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2859,8 +2980,6 @@ func (a CaseManagementApi) PostCasemanagementCaseplanVersions(caseplanId string)
 // PostCasemanagementCaseplans invokes POST /api/v2/casemanagement/caseplans
 //
 // Create a Caseplan.
-//
-// Preview: PostCasemanagementCaseplans is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a CaseManagementApi) PostCasemanagementCaseplans(body Caseplancreate) (*Caseplancreateresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2944,9 +3063,7 @@ func (a CaseManagementApi) PostCasemanagementCaseplans(body Caseplancreate) (*Ca
 
 // PostCasemanagementCaseplansQuery invokes POST /api/v2/casemanagement/caseplans/query
 //
-// Query for caseplans
-//
-// Preview: PostCasemanagementCaseplansQuery is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+// Query for Caseplans.
 func (a CaseManagementApi) PostCasemanagementCaseplansQuery(body Caseplanqueryrequest) (*Caseplanqueryentitylisting, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3031,8 +3148,6 @@ func (a CaseManagementApi) PostCasemanagementCaseplansQuery(body Caseplanqueryre
 // PostCasemanagementCases invokes POST /api/v2/casemanagement/cases
 //
 // Create a Case.
-//
-// Preview: PostCasemanagementCases is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a CaseManagementApi) PostCasemanagementCases(body Casecreate) (*Case, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3116,9 +3231,7 @@ func (a CaseManagementApi) PostCasemanagementCases(body Casecreate) (*Case, *API
 
 // PostCasemanagementCasesAssociationsQuery invokes POST /api/v2/casemanagement/cases/associations/query
 //
-// Query for case associations
-//
-// Preview: PostCasemanagementCasesAssociationsQuery is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+// Query for Case associations by interaction.
 func (a CaseManagementApi) PostCasemanagementCasesAssociationsQuery(body Caseassociationquery) (*Caseassociationqueryentitylisting, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3128,6 +3241,11 @@ func (a CaseManagementApi) PostCasemanagementCasesAssociationsQuery(body Caseass
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling CaseManagementApi->PostCasemanagementCasesAssociationsQuery")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -3195,11 +3313,105 @@ func (a CaseManagementApi) PostCasemanagementCasesAssociationsQuery(body Caseass
 	return successPayload, response, err
 }
 
+// PutCasemanagementCaseplanDataschema invokes PUT /api/v2/casemanagement/caseplans/{caseplanId}/dataschemas/{schemaKeyName}
+//
+// Update a data schema on a draft Caseplan.
+func (a CaseManagementApi) PutCasemanagementCaseplanDataschema(caseplanId string, schemaKeyName string, body Caseplandataschemarequest) (*Caseplandataschema, *APIResponse, error) {
+	var httpMethod = "PUT"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/casemanagement/caseplans/{caseplanId}/dataschemas/{schemaKeyName}"
+	path = strings.Replace(path, "{caseplanId}", url.PathEscape(fmt.Sprintf("%v", caseplanId)), -1)
+	path = strings.Replace(path, "{schemaKeyName}", url.PathEscape(fmt.Sprintf("%v", schemaKeyName)), -1)
+	defaultReturn := new(Caseplandataschema)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'caseplanId' is set
+	if &caseplanId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'caseplanId' when calling CaseManagementApi->PutCasemanagementCaseplanDataschema")
+	}
+	// verify the required parameter 'schemaKeyName' is set
+	if &schemaKeyName == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'schemaKeyName' when calling CaseManagementApi->PutCasemanagementCaseplanDataschema")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling CaseManagementApi->PutCasemanagementCaseplanDataschema")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Caseplandataschema
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Caseplandataschema" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // PutCasemanagementCaseplanIntakesettings invokes PUT /api/v2/casemanagement/caseplans/{caseplanId}/intakesettings
 //
 // Update the intake settings for a Caseplan.
-//
-// Preview: PutCasemanagementCaseplanIntakesettings is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a CaseManagementApi) PutCasemanagementCaseplanIntakesettings(caseplanId string, body Intakesettingsupdate) (*Intakesettingslisting, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

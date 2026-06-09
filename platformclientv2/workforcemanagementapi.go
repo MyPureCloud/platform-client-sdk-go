@@ -6411,7 +6411,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitTimeoffplan(bu
 // GetWorkforcemanagementBusinessunitTimeoffplans invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/timeoffplans
 //
 // Gets a list of time-off plans
-func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitTimeoffplans(businessUnitId string, managementUnitId string, forceDownloadService bool) (*Butimeoffplanlisting, *APIResponse, error) {
+func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitTimeoffplans(businessUnitId string, managementUnitId string, forceDownloadService bool, expand []string) (*Butimeoffplanlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/timeoffplans"
@@ -6447,6 +6447,8 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitTimeoffplans(b
 	queryParams["managementUnitId"] = a.Configuration.APIClient.ParameterToString(managementUnitId, "")
 	
 	queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, "")
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -7163,7 +7165,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekSchedulePe
 // Get the list of week schedules for the specified week
 //
 // Use \&quot;recent\&quot; (without quotes) for the &#x60;weekId&#x60; path parameter to fetch all schedules for up to +/- 26 weeks from the current date. Response will include any schedule which spans the specified week
-func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekSchedules(businessUnitId string, weekId string, includeOnlyPublished bool, expand string) (*Buschedulelisting, *APIResponse, error) {
+func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekSchedules(businessUnitId string, weekId string, earliestWeekDate time.Time, latestWeekDate time.Time, includeOnlyPublished bool, expand string) (*Buschedulelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekId}/schedules"
@@ -7201,6 +7203,10 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekSchedules(
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["earliestWeekDate"] = a.Configuration.APIClient.ParameterToString(earliestWeekDate, "")
+	
+	queryParams["latestWeekDate"] = a.Configuration.APIClient.ParameterToString(latestWeekDate, "")
 	
 	queryParams["includeOnlyPublished"] = a.Configuration.APIClient.ParameterToString(includeOnlyPublished, "")
 	
@@ -24731,7 +24737,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitUserTimeoff
 // PostWorkforcemanagementManagementunitUserTimeoffrequestsEstimate invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/users/{userId}/timeoffrequests/estimate
 //
 // Estimates available time off for an agent
-func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitUserTimeoffrequestsEstimate(managementUnitId string, userId string, body Estimateavailabletimeoffrequest) (*Estimateavailabletimeoffresponse, *APIResponse, error) {
+func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitUserTimeoffrequestsEstimate(managementUnitId string, userId string, body Estimateavailabletimeoffrequest, includeOnly string) (*Estimateavailabletimeoffresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/users/{userId}/timeoffrequests/estimate"
@@ -24774,6 +24780,8 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitUserTimeoff
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["includeOnly"] = a.Configuration.APIClient.ParameterToString(includeOnly, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -26846,7 +26854,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementTimeoffrequests(body Crea
 // PostWorkforcemanagementTimeoffrequestsEstimate invokes POST /api/v2/workforcemanagement/timeoffrequests/estimate
 //
 // Estimates available time off for current user
-func (a WorkforceManagementApi) PostWorkforcemanagementTimeoffrequestsEstimate(body Estimateavailabletimeoffrequest) (*Estimateavailabletimeoffresponse, *APIResponse, error) {
+func (a WorkforceManagementApi) PostWorkforcemanagementTimeoffrequestsEstimate(body Estimateavailabletimeoffrequest, includeOnly string) (*Estimateavailabletimeoffresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/timeoffrequests/estimate"
@@ -26877,6 +26885,8 @@ func (a WorkforceManagementApi) PostWorkforcemanagementTimeoffrequestsEstimate(b
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["includeOnly"] = a.Configuration.APIClient.ParameterToString(includeOnly, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

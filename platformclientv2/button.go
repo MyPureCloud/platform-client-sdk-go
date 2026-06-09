@@ -19,6 +19,9 @@ type Button struct {
 
 	// ContentText - The text label that will be displayed on the button
 	ContentText *string `json:"contentText,omitempty"`
+
+	// Payload - A payload to uniquely identify a quickReply button in carousel
+	Payload *string `json:"payload,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +92,8 @@ func (o Button) MarshalJSON() ([]byte, error) {
 		Content *string `json:"content,omitempty"`
 		
 		ContentText *string `json:"contentText,omitempty"`
+		
+		Payload *string `json:"payload,omitempty"`
 		Alias
 	}{ 
 		VarType: o.VarType,
@@ -96,6 +101,8 @@ func (o Button) MarshalJSON() ([]byte, error) {
 		Content: o.Content,
 		
 		ContentText: o.ContentText,
+		
+		Payload: o.Payload,
 		Alias:    (Alias)(o),
 	})
 }
@@ -117,6 +124,10 @@ func (o *Button) UnmarshalJSON(b []byte) error {
     
 	if ContentText, ok := ButtonMap["contentText"].(string); ok {
 		o.ContentText = &ContentText
+	}
+    
+	if Payload, ok := ButtonMap["payload"].(string); ok {
+		o.Payload = &Payload
 	}
     
 

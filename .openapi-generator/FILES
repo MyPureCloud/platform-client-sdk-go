@@ -80,11 +80,14 @@ docs/DeleteAuthorizationRole-example.txt
 docs/DeleteAuthorizationSubjectDivisionRole-example.txt
 docs/DeleteAuthorizationSubjectDivisionRole-example.txt
 docs/DeleteBusinessrulesDecisiontable-example.txt
+docs/DeleteBusinessrulesDecisiontableExport-example.txt
+docs/DeleteBusinessrulesDecisiontableImport-example.txt
 docs/DeleteBusinessrulesDecisiontableVersion-example.txt
 docs/DeleteBusinessrulesDecisiontableVersionRow-example.txt
 docs/DeleteBusinessrulesSchema-example.txt
 docs/DeleteCasemanagementCase-example.txt
 docs/DeleteCasemanagementCaseplan-example.txt
+docs/DeleteCasemanagementCaseplanDataschema-example.txt
 docs/DeleteChatsRoomMessage-example.txt
 docs/DeleteChatsRoomMessagesPin-example.txt
 docs/DeleteChatsRoomParticipant-example.txt
@@ -275,6 +278,7 @@ docs/DeleteRoutingDirectroutingbackupSettingsMe-example.txt
 docs/DeleteRoutingEmailDomain-example.txt
 docs/DeleteRoutingEmailDomainRoute-example.txt
 docs/DeleteRoutingEmailOutboundDomain-example.txt
+docs/DeleteRoutingEmailSettingEmailSettingId-example.txt
 docs/DeleteRoutingLanguage-example.txt
 docs/DeleteRoutingPredictor-example.txt
 docs/DeleteRoutingPredictorsKeyperformanceindicator-example.txt
@@ -326,6 +330,7 @@ docs/DeleteTaskmanagementWorktypeFlowsOncreateRule-example.txt
 docs/DeleteTaskmanagementWorktypeStatus-example.txt
 docs/DeleteTeam-example.txt
 docs/DeleteTeamMembers-example.txt
+docs/DeleteTelephonyOrganizationLinkTargetOrganizationId-example.txt
 docs/DeleteTelephonyProvidersEdge-example.txt
 docs/DeleteTelephonyProvidersEdgeLogicalinterface-example.txt
 docs/DeleteTelephonyProvidersEdgeSoftwareupdate-example.txt
@@ -578,6 +583,10 @@ docs/GetBillingContractsInvoices-example.txt
 docs/GetBillingReportsBillableusage-example.txt
 docs/GetBillingTrusteebillingoverviewTrustorOrgId-example.txt
 docs/GetBusinessrulesDecisiontable-example.txt
+docs/GetBusinessrulesDecisiontableExport-example.txt
+docs/GetBusinessrulesDecisiontableExports-example.txt
+docs/GetBusinessrulesDecisiontableImport-example.txt
+docs/GetBusinessrulesDecisiontableImports-example.txt
 docs/GetBusinessrulesDecisiontableVersion-example.txt
 docs/GetBusinessrulesDecisiontableVersionRow-example.txt
 docs/GetBusinessrulesDecisiontableVersionRows-example.txt
@@ -1416,6 +1425,8 @@ docs/GetRoutingEmailDomains-example.txt
 docs/GetRoutingEmailOutboundDomain-example.txt
 docs/GetRoutingEmailOutboundDomainActivation-example.txt
 docs/GetRoutingEmailOutboundDomains-example.txt
+docs/GetRoutingEmailSetting-example.txt
+docs/GetRoutingEmailSettingEmailSettingId-example.txt
 docs/GetRoutingEmailSetup-example.txt
 docs/GetRoutingLanguage-example.txt
 docs/GetRoutingLanguages-example.txt
@@ -1615,6 +1626,9 @@ docs/GetTelephonyAgentGreetings-example.txt
 docs/GetTelephonyAgentsGreetingsMe-example.txt
 docs/GetTelephonyCallsMetrics-example.txt
 docs/GetTelephonyMediaregions-example.txt
+docs/GetTelephonyNumbersRouting-example.txt
+docs/GetTelephonyOrganizationLink-example.txt
+docs/GetTelephonyOrganizationLinkRegions-example.txt
 docs/GetTelephonyProvidersEdge-example.txt
 docs/GetTelephonyProvidersEdgeDiagnosticNslookup-example.txt
 docs/GetTelephonyProvidersEdgeDiagnosticPing-example.txt
@@ -1973,6 +1987,7 @@ docs/PatchAssistantQueues-example.txt
 docs/PatchAuthorizationRole-example.txt
 docs/PatchAuthorizationSettings-example.txt
 docs/PatchBusinessrulesDecisiontable-example.txt
+docs/PatchBusinessrulesDecisiontableImport-example.txt
 docs/PatchBusinessrulesDecisiontableVersion-example.txt
 docs/PatchCasemanagementCaseDatedue-example.txt
 docs/PatchCasemanagementCasePriority-example.txt
@@ -2110,6 +2125,7 @@ docs/PatchRoutingConversation-example.txt
 docs/PatchRoutingEmailDomain-example.txt
 docs/PatchRoutingEmailDomainValidate-example.txt
 docs/PatchRoutingEmailOutboundDomain-example.txt
+docs/PatchRoutingEmailSettingEmailSettingId-example.txt
 docs/PatchRoutingPredictor-example.txt
 docs/PatchRoutingPredictorsKeyperformanceindicator-example.txt
 docs/PatchRoutingQueueMember-example.txt
@@ -2146,6 +2162,7 @@ docs/PatchTaskmanagementWorktypeFlowsOnattributechangeRule-example.txt
 docs/PatchTaskmanagementWorktypeFlowsOncreateRule-example.txt
 docs/PatchTaskmanagementWorktypeStatus-example.txt
 docs/PatchTeam-example.txt
+docs/PatchTelephonyOrganizationLinkApproveRequestingOrganizationId-example.txt
 docs/PatchTelephonyProvidersEdgesSiteSiteconnections-example.txt
 docs/PatchUser-example.txt
 docs/PatchUserCallforwarding-example.txt
@@ -2346,9 +2363,14 @@ docs/PostAuthorizationSubjectDivisionRole-example.txt
 docs/PostAuthorizationSubjectDivisionRole-example.txt
 docs/PostBackgroundassistantToken-example.txt
 docs/PostBusinessrulesDecisiontableExecute-example.txt
+docs/PostBusinessrulesDecisiontableExports-example.txt
+docs/PostBusinessrulesDecisiontableImports-example.txt
 docs/PostBusinessrulesDecisiontableVersionCopy-example.txt
 docs/PostBusinessrulesDecisiontableVersionExecute-example.txt
 docs/PostBusinessrulesDecisiontableVersionRows-example.txt
+docs/PostBusinessrulesDecisiontableVersionRowsBulkAdd-example.txt
+docs/PostBusinessrulesDecisiontableVersionRowsBulkRemove-example.txt
+docs/PostBusinessrulesDecisiontableVersionRowsBulkUpdate-example.txt
 docs/PostBusinessrulesDecisiontableVersionRowsSearch-example.txt
 docs/PostBusinessrulesDecisiontableVersionSync-example.txt
 docs/PostBusinessrulesDecisiontableVersions-example.txt
@@ -2357,6 +2379,7 @@ docs/PostBusinessrulesSchemas-example.txt
 docs/PostCarrierservicesIntegrationsEmergencylocationsMe-example.txt
 docs/PostCasemanagementCaseAssociations-example.txt
 docs/PostCasemanagementCaseTerminateJobs-example.txt
+docs/PostCasemanagementCaseplanDataschemas-example.txt
 docs/PostCasemanagementCaseplanPublish-example.txt
 docs/PostCasemanagementCaseplanVersions-example.txt
 docs/PostCasemanagementCaseplans-example.txt
@@ -2835,6 +2858,7 @@ docs/PostRoutingEmailDomains-example.txt
 docs/PostRoutingEmailOutboundDomainTestconnection-example.txt
 docs/PostRoutingEmailOutboundDomains-example.txt
 docs/PostRoutingEmailOutboundDomainsSimulated-example.txt
+docs/PostRoutingEmailSetting-example.txt
 docs/PostRoutingLanguages-example.txt
 docs/PostRoutingPredictors-example.txt
 docs/PostRoutingPredictorsKeyperformanceindicators-example.txt
@@ -2907,6 +2931,10 @@ docs/PostTeamMembers-example.txt
 docs/PostTeams-example.txt
 docs/PostTeamsSearch-example.txt
 docs/PostTeamsSearch-example.txt
+docs/PostTelephonyNumbersRouting-example.txt
+docs/PostTelephonyNumbersRoutingAll-example.txt
+docs/PostTelephonyNumbersRoutingReset-example.txt
+docs/PostTelephonyOrganizationLink-example.txt
 docs/PostTelephonyProvidersEdgeDiagnosticNslookup-example.txt
 docs/PostTelephonyProvidersEdgeDiagnosticPing-example.txt
 docs/PostTelephonyProvidersEdgeDiagnosticRoute-example.txt
@@ -3132,6 +3160,7 @@ docs/PutAuthorizationRolesSettings-example.txt
 docs/PutBusinessrulesDecisiontableVersionPublish-example.txt
 docs/PutBusinessrulesDecisiontableVersionRow-example.txt
 docs/PutBusinessrulesSchema-example.txt
+docs/PutCasemanagementCaseplanDataschema-example.txt
 docs/PutCasemanagementCaseplanIntakesettings-example.txt
 docs/PutChatsMessageReactions-example.txt
 docs/PutChatsSettings-example.txt
@@ -3607,6 +3636,8 @@ platformclientv2/agentscheduleunavailabletime.go
 platformclientv2/agentscoringrule.go
 platformclientv2/agentscoringruleentitylisting.go
 platformclientv2/agentsintegrationslisting.go
+platformclientv2/agentstateactivitycategorycount.go
+platformclientv2/agentstateadherencestatecount.go
 platformclientv2/agentstateagentqueryclause.go
 platformclientv2/agentstateagentquerypredicate.go
 platformclientv2/agentstatecountsrequest.go
@@ -3739,6 +3770,7 @@ platformclientv2/appleintegration.go
 platformclientv2/appleintegrationentitylisting.go
 platformclientv2/appleintegrationrequest.go
 platformclientv2/appleintegrationupdaterequest.go
+platformclientv2/appleinvitation.go
 platformclientv2/appleopaqueid.go
 platformclientv2/applepay.go
 platformclientv2/approvalnamespace.go
@@ -4012,6 +4044,8 @@ platformclientv2/buintradayforecastdata.go
 platformclientv2/buintradayresponse.go
 platformclientv2/buintradayscheduledata.go
 platformclientv2/bulistalternativeshifttradesresponse.go
+platformclientv2/bulkadddecisiontablerowsrequest.go
+platformclientv2/bulkadddecisiontablerowsresponse.go
 platformclientv2/bulkaddopportunitiesrequest.go
 platformclientv2/bulkaddopportunitiesresponse.go
 platformclientv2/bulkaddsourceintentsrequest.go
@@ -4022,6 +4056,7 @@ platformclientv2/bulkcontactsenrichrequest.go
 platformclientv2/bulkcontactsenrichresponse.go
 platformclientv2/bulkcontactsrequest.go
 platformclientv2/bulkcontactsresponse.go
+platformclientv2/bulkdeletedecisiontablerowsrequest.go
 platformclientv2/bulkdeleteresponse.go
 platformclientv2/bulkentityerrorcontactenrichrequest.go
 platformclientv2/bulkentityerrorentity.go
@@ -4086,6 +4121,8 @@ platformclientv2/bulkresult.go
 platformclientv2/bulkresults.go
 platformclientv2/bulkshifttradestateupdaterequest.go
 platformclientv2/bulksourceintentsresponse.go
+platformclientv2/bulkupdatedecisiontablerowsrequest.go
+platformclientv2/bulkupdatedecisiontablerowsresponse.go
 platformclientv2/bulkupdateopportunityenrollmentsstatusresponse.go
 platformclientv2/bulkupdateshifttradelistjobrequest.go
 platformclientv2/bulkupdateshifttradestaterequestitem.go
@@ -4302,6 +4339,7 @@ platformclientv2/caseplancreate.go
 platformclientv2/caseplancreateresponse.go
 platformclientv2/caseplandataschema.go
 platformclientv2/caseplandataschemalisting.go
+platformclientv2/caseplandataschemarequest.go
 platformclientv2/caseplanlisting.go
 platformclientv2/caseplanqueryentitylisting.go
 platformclientv2/caseplanqueryrequest.go
@@ -4530,6 +4568,7 @@ platformclientv2/contactsexport.go
 platformclientv2/contactsexportfieldfilter.go
 platformclientv2/contactsexportfieldlistfilter.go
 platformclientv2/contactsexportfilter.go
+platformclientv2/contactsexportlisting.go
 platformclientv2/contactsexportqueryconditions.go
 platformclientv2/contactsexportrequest.go
 platformclientv2/contactsort.go
@@ -4981,6 +5020,7 @@ platformclientv2/conversationsummariesgetresponse.go
 platformclientv2/conversationsummary.go
 platformclientv2/conversationsummaryextractedentity.go
 platformclientv2/conversationsummaryfollowup.go
+platformclientv2/conversationsummarylabel.go
 platformclientv2/conversationsummaryreason.go
 platformclientv2/conversationsummaryresolution.go
 platformclientv2/conversationsummarytopicconversationfollowupaction.go
@@ -5086,6 +5126,7 @@ platformclientv2/createcallresponse.go
 platformclientv2/createcapacityplanstaffinggroupmetricchangerequest.go
 platformclientv2/createcoachingappointmentrequest.go
 platformclientv2/createdecisiontablecolumnsrequest.go
+platformclientv2/createdecisiontableimportjobrequest.go
 platformclientv2/createdecisiontablerequest.go
 platformclientv2/createdecisiontablerowrequest.go
 platformclientv2/createemailrequest.go
@@ -5102,6 +5143,7 @@ platformclientv2/createmanagementunitapirequest.go
 platformclientv2/createmanagementunitsettingsrequest.go
 platformclientv2/createmetric.go
 platformclientv2/createobjective.go
+platformclientv2/createorganizationlink.go
 platformclientv2/createoutboundmessagingconversationrequest.go
 platformclientv2/createoutboundmessagingconversationresponse.go
 platformclientv2/createperformanceprofile.go
@@ -5253,9 +5295,18 @@ platformclientv2/decisiontablecolumns.go
 platformclientv2/decisiontablecontract.go
 platformclientv2/decisiontableexecutionrequest.go
 platformclientv2/decisiontableexecutionresponse.go
+platformclientv2/decisiontableexportjob.go
+platformclientv2/decisiontableexportjoberror.go
+platformclientv2/decisiontableexportjoblisting.go
+platformclientv2/decisiontableexportjobrequest.go
+platformclientv2/decisiontableimportjob.go
+platformclientv2/decisiontableimportjoberror.go
+platformclientv2/decisiontableimportjoblisting.go
+platformclientv2/decisiontableimportrowmetrics.go
 platformclientv2/decisiontableinputcolumn.go
 platformclientv2/decisiontableinputcolumnexpression.go
 platformclientv2/decisiontableinputcolumnrequest.go
+platformclientv2/decisiontablejobvalidationerror.go
 platformclientv2/decisiontablelisting.go
 platformclientv2/decisiontableoutputcolumn.go
 platformclientv2/decisiontableoutputcolumnrequest.go
@@ -5421,6 +5472,7 @@ platformclientv2/directroutingmediasettings.go
 platformclientv2/disablesiteconnectionsrequest.go
 platformclientv2/disallowedentitylearningassignmentitem.go
 platformclientv2/disallowedentitylearningassignmentreference.go
+platformclientv2/disasterrecoveryallroutingrequest.go
 platformclientv2/disconnectreason.go
 platformclientv2/disposition.go
 platformclientv2/dispositionamdtimeout.go
@@ -5650,6 +5702,7 @@ platformclientv2/emailroutingestablishedevent.go
 platformclientv2/emailroutingtransferevent.go
 platformclientv2/emailsapi.go
 platformclientv2/emailsetting.go
+platformclientv2/emailsettingentitylisting.go
 platformclientv2/emailsettingreference.go
 platformclientv2/emailsettings.go
 platformclientv2/emailsetup.go
@@ -5784,7 +5837,6 @@ platformclientv2/expandablewebdeploymententitylisting.go
 platformclientv2/expansioncriterium.go
 platformclientv2/expirededgelisting.go
 platformclientv2/exportdetails.go
-platformclientv2/exportlisting.go
 platformclientv2/exportscriptrequest.go
 platformclientv2/exportscriptresponse.go
 platformclientv2/exporturi.go
@@ -7105,6 +7157,10 @@ platformclientv2/nuancemixdlgsettings.go
 platformclientv2/nuanceorganization.go
 platformclientv2/number.go
 platformclientv2/numberplan.go
+platformclientv2/numberrouting.go
+platformclientv2/numberroutinglisting.go
+platformclientv2/numberroutingrequest.go
+platformclientv2/numberroutingresetorganizationrequest.go
 platformclientv2/numericrange.go
 platformclientv2/oauthapi.go
 platformclientv2/oauthappleauthorizationresponse.go
@@ -7196,6 +7252,9 @@ platformclientv2/organizationapi.go
 platformclientv2/organizationauthorizationapi.go
 platformclientv2/organizationcallmetrics.go
 platformclientv2/organizationfeatures.go
+platformclientv2/organizationlink.go
+platformclientv2/organizationlinkapprovalrequest.go
+platformclientv2/organizationlinkresponse.go
 platformclientv2/organizationpresence.go
 platformclientv2/organizationpresencedefinition.go
 platformclientv2/organizationpresencedefinitionentitylisting.go
@@ -7972,6 +8031,7 @@ platformclientv2/recordingmessagereceipt.go
 platformclientv2/recordingmessagereceiptreason.go
 platformclientv2/recordingmessagingmessage.go
 platformclientv2/recordingmetadata.go
+platformclientv2/recordingnotificationresponse.go
 platformclientv2/recordingnotificationtemplate.go
 platformclientv2/recordingretention.go
 platformclientv2/recordingretentioncursorentitylisting.go
@@ -7994,6 +8054,7 @@ platformclientv2/recurrenceperiod.go
 platformclientv2/recurrencesettings.go
 platformclientv2/recurrencesettingsbase.go
 platformclientv2/referrer.go
+platformclientv2/regionresponse.go
 platformclientv2/regiontimezone.go
 platformclientv2/registerarchitectexportjob.go
 platformclientv2/registerarchitectexportjobresponse.go
@@ -8130,6 +8191,7 @@ platformclientv2/routingstatusdetailqueryclause.go
 platformclientv2/routingstatusdetailqueryfilter.go
 platformclientv2/routingstatusdetailquerypredicate.go
 platformclientv2/routingtransferevent.go
+platformclientv2/row.go
 platformclientv2/rowsearchfilter.go
 platformclientv2/rowsearchpredicate.go
 platformclientv2/ruleconfig.go
@@ -8163,6 +8225,9 @@ platformclientv2/schedulermessageseveritycount.go
 platformclientv2/schedulermessagetypeseverity.go
 platformclientv2/schedulesdivisionview.go
 platformclientv2/scheduleuploadprocessingresponse.go
+platformclientv2/schedulevisibilityrange.go
+platformclientv2/schedulevisibilitysettingsrequest.go
+platformclientv2/schedulevisibilitysettingsresponse.go
 platformclientv2/schedulingnoforecastoptionsrequest.go
 platformclientv2/schedulingoptionsrequest.go
 platformclientv2/schedulingperiod.go
@@ -8423,6 +8488,7 @@ platformclientv2/socialmediaquerypredicate.go
 platformclientv2/socialmediaquerysort.go
 platformclientv2/socialmediastatisticalresponse.go
 platformclientv2/socialmediastatisticalsummary.go
+platformclientv2/socialnumericrange.go
 platformclientv2/socialtopicpatchrequest.go
 platformclientv2/socialtopicrequest.go
 platformclientv2/socialtopicresponse.go
@@ -8699,6 +8765,7 @@ platformclientv2/textbotwaitforinputaction.go
 platformclientv2/textmessagelisting.go
 platformclientv2/textstyleproperties.go
 platformclientv2/thirdpartysuggestion.go
+platformclientv2/thirdpartysuggestionsource.go
 platformclientv2/ticker.go
 platformclientv2/timeallowed.go
 platformclientv2/timeanddatesubcondition.go
@@ -8908,6 +8975,7 @@ platformclientv2/updatecoachingappointmentrequest.go
 platformclientv2/updateconferencerequest.go
 platformclientv2/updatecontactcolumnactionsettings.go
 platformclientv2/updatedecisiontablecolumnsrequest.go
+platformclientv2/updatedecisiontableimportjobrequest.go
 platformclientv2/updatedecisiontablerequest.go
 platformclientv2/updatedecisiontableversionrequest.go
 platformclientv2/updatedraftinput.go
@@ -9212,10 +9280,12 @@ platformclientv2/v3sourcelastsynchronization.go
 platformclientv2/v3sourceref.go
 platformclientv2/v3sourceschedulesettings.go
 platformclientv2/v3sourcesitedetails.go
+platformclientv2/v3sourcetagfilter.go
 platformclientv2/v3sourceupdaterequest.go
 platformclientv2/v3startmanualsyncrequest.go
 platformclientv2/v3synchronization.go
 platformclientv2/v3synchronizationlisting.go
+platformclientv2/v3synchronizationref.go
 platformclientv2/v3synchronizationstatistics.go
 platformclientv2/v3synchronizationupdaterequest.go
 platformclientv2/v3synchronizationuploadmetadata.go

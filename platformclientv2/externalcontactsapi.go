@@ -1610,11 +1610,11 @@ func (a ExternalContactsApi) GetExternalcontactsContactsExport(exportId string) 
 // GetExternalcontactsContactsExports invokes GET /api/v2/externalcontacts/contacts/exports
 //
 // List exports for organization
-func (a ExternalContactsApi) GetExternalcontactsContactsExports(divisionIds []string, after string, pageSize int) (*Exportlisting, *APIResponse, error) {
+func (a ExternalContactsApi) GetExternalcontactsContactsExports(divisionIds []string, after string, pageSize int) (*Contactsexportlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/contacts/exports"
-	defaultReturn := new(Exportlisting)
+	defaultReturn := new(Contactsexportlisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -1673,14 +1673,14 @@ func (a ExternalContactsApi) GetExternalcontactsContactsExports(divisionIds []st
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Exportlisting
+	var successPayload *Contactsexportlisting
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Exportlisting" == "string" {
+		if "Contactsexportlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

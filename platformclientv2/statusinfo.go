@@ -10,7 +10,13 @@ import (
 // Statusinfo
 type Statusinfo struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// Code - Status code
+	Code *string `json:"code,omitempty"`
+
+	// Message - Status Message
+	Message *string `json:"message,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Statusinfo) SetField(field string, fieldValue interface{}) {
@@ -74,8 +80,16 @@ func (o Statusinfo) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Statusinfo
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		Code *string `json:"code,omitempty"`
+		
+		Message *string `json:"message,omitempty"`
+		Alias
+	}{ 
+		Code: o.Code,
+		
+		Message: o.Message,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -86,6 +100,14 @@ func (o *Statusinfo) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if Code, ok := StatusinfoMap["code"].(string); ok {
+		o.Code = &Code
+	}
+    
+	if Message, ok := StatusinfoMap["message"].(string); ok {
+		o.Message = &Message
+	}
+    
 
 	return nil
 }

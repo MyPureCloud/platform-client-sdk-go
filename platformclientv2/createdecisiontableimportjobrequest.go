@@ -7,25 +7,19 @@ import (
 	"strings"
 )
 
-// Exportlisting
-type Exportlisting struct { 
+// Createdecisiontableimportjobrequest
+type Createdecisiontableimportjobrequest struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Entities
-	Entities *[]Contactsexport `json:"entities,omitempty"`
+	// ImportMode - How imported rows are merged with existing rows
+	ImportMode *string `json:"importMode,omitempty"`
 
-	// NextUri
-	NextUri *string `json:"nextUri,omitempty"`
-
-	// SelfUri
-	SelfUri *string `json:"selfUri,omitempty"`
-
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
+	// FileName - Name of the file to import. Must include the file extension.
+	FileName *string `json:"fileName,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Exportlisting) SetField(field string, fieldValue interface{}) {
+func (o *Createdecisiontableimportjobrequest) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -46,7 +40,7 @@ func (o *Exportlisting) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Exportlisting) MarshalJSON() ([]byte, error) {
+func (o Createdecisiontableimportjobrequest) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -84,51 +78,34 @@ func (o Exportlisting) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Exportlisting
+	type Alias Createdecisiontableimportjobrequest
 	
 	return json.Marshal(&struct { 
-		Entities *[]Contactsexport `json:"entities,omitempty"`
+		ImportMode *string `json:"importMode,omitempty"`
 		
-		NextUri *string `json:"nextUri,omitempty"`
-		
-		SelfUri *string `json:"selfUri,omitempty"`
-		
-		PreviousUri *string `json:"previousUri,omitempty"`
+		FileName *string `json:"fileName,omitempty"`
 		Alias
 	}{ 
-		Entities: o.Entities,
+		ImportMode: o.ImportMode,
 		
-		NextUri: o.NextUri,
-		
-		SelfUri: o.SelfUri,
-		
-		PreviousUri: o.PreviousUri,
+		FileName: o.FileName,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Exportlisting) UnmarshalJSON(b []byte) error {
-	var ExportlistingMap map[string]interface{}
-	err := json.Unmarshal(b, &ExportlistingMap)
+func (o *Createdecisiontableimportjobrequest) UnmarshalJSON(b []byte) error {
+	var CreatedecisiontableimportjobrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &CreatedecisiontableimportjobrequestMap)
 	if err != nil {
 		return err
 	}
 	
-	if Entities, ok := ExportlistingMap["entities"].([]interface{}); ok {
-		EntitiesString, _ := json.Marshal(Entities)
-		json.Unmarshal(EntitiesString, &o.Entities)
-	}
-	
-	if NextUri, ok := ExportlistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
+	if ImportMode, ok := CreatedecisiontableimportjobrequestMap["importMode"].(string); ok {
+		o.ImportMode = &ImportMode
 	}
     
-	if SelfUri, ok := ExportlistingMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
-	}
-    
-	if PreviousUri, ok := ExportlistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
+	if FileName, ok := CreatedecisiontableimportjobrequestMap["fileName"].(string); ok {
+		o.FileName = &FileName
 	}
     
 
@@ -136,7 +113,7 @@ func (o *Exportlisting) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Exportlisting) String() string {
+func (o *Createdecisiontableimportjobrequest) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

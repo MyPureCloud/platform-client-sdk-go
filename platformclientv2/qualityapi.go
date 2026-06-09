@@ -33,8 +33,6 @@ func NewQualityApiWithConfig(config *Configuration) *QualityApi {
 // DeleteAnalyticsEvaluationsAggregatesJob invokes DELETE /api/v2/analytics/evaluations/aggregates/jobs/{jobId}
 //
 // Delete/cancel an async request for evaluation aggregates
-//
-// Preview: DeleteAnalyticsEvaluationsAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a QualityApi) DeleteAnalyticsEvaluationsAggregatesJob(jobId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -110,8 +108,6 @@ func (a QualityApi) DeleteAnalyticsEvaluationsAggregatesJob(jobId string) (*APIR
 // DeleteAnalyticsSurveysAggregatesJob invokes DELETE /api/v2/analytics/surveys/aggregates/jobs/{jobId}
 //
 // Delete/cancel an async request for survey aggregates
-//
-// Preview: DeleteAnalyticsSurveysAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a QualityApi) DeleteAnalyticsSurveysAggregatesJob(jobId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -674,8 +670,6 @@ func (a QualityApi) DeleteQualityProgramAgentscoringrule(programId string, ruleI
 // GetAnalyticsEvaluationsAggregatesJob invokes GET /api/v2/analytics/evaluations/aggregates/jobs/{jobId}
 //
 // Get status for async query for evaluation aggregates
-//
-// Preview: GetAnalyticsEvaluationsAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a QualityApi) GetAnalyticsEvaluationsAggregatesJob(jobId string) (*Asyncquerystatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -758,8 +752,6 @@ func (a QualityApi) GetAnalyticsEvaluationsAggregatesJob(jobId string) (*Asyncqu
 // GetAnalyticsEvaluationsAggregatesJobResults invokes GET /api/v2/analytics/evaluations/aggregates/jobs/{jobId}/results
 //
 // Fetch a page of results for an async aggregates query
-//
-// Preview: GetAnalyticsEvaluationsAggregatesJobResults is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a QualityApi) GetAnalyticsEvaluationsAggregatesJobResults(jobId string, cursor string) (*Evaluationasyncaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -844,8 +836,6 @@ func (a QualityApi) GetAnalyticsEvaluationsAggregatesJobResults(jobId string, cu
 // GetAnalyticsSurveysAggregatesJob invokes GET /api/v2/analytics/surveys/aggregates/jobs/{jobId}
 //
 // Get status for async query for survey aggregates
-//
-// Preview: GetAnalyticsSurveysAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a QualityApi) GetAnalyticsSurveysAggregatesJob(jobId string) (*Asyncquerystatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -928,8 +918,6 @@ func (a QualityApi) GetAnalyticsSurveysAggregatesJob(jobId string) (*Asyncquerys
 // GetAnalyticsSurveysAggregatesJobResults invokes GET /api/v2/analytics/surveys/aggregates/jobs/{jobId}/results
 //
 // Fetch a page of results for an async aggregates query
-//
-// Preview: GetAnalyticsSurveysAggregatesJobResults is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a QualityApi) GetAnalyticsSurveysAggregatesJobResults(jobId string, cursor string) (*Surveyasyncaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3921,8 +3909,6 @@ func (a QualityApi) PatchQualityFormsSurvey(formId string, body Surveyform) (*Su
 // PostAnalyticsEvaluationsAggregatesJobs invokes POST /api/v2/analytics/evaluations/aggregates/jobs
 //
 // Query for evaluation aggregates asynchronously
-//
-// Preview: PostAnalyticsEvaluationsAggregatesJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a QualityApi) PostAnalyticsEvaluationsAggregatesJobs(body Evaluationasyncaggregationquery) (*Asyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -4091,8 +4077,6 @@ func (a QualityApi) PostAnalyticsEvaluationsAggregatesQuery(body Evaluationaggre
 // PostAnalyticsSurveysAggregatesJobs invokes POST /api/v2/analytics/surveys/aggregates/jobs
 //
 // Query for survey aggregates asynchronously
-//
-// Preview: PostAnalyticsSurveysAggregatesJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a QualityApi) PostAnalyticsSurveysAggregatesJobs(body Surveyasyncaggregationquery) (*Asyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

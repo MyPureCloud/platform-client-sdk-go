@@ -11,7 +11,7 @@ import (
 type Caseplanqueryrequest struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Name - Filter by caseplan name (case-insensitive, partial match). Omitting name returns all caseplans (subject to pagination).
+	// Name - Filter by Caseplan name (case-insensitive, partial match). Omitting name returns all Caseplans (subject to pagination).
 	Name *string `json:"name,omitempty"`
 
 	// PageSize - Number of results per page. Maximum is 200. Default is 25.

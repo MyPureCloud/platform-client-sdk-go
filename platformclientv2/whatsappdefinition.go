@@ -28,6 +28,21 @@ type Whatsappdefinition struct {
 
 	// Header - Header for the message in the standard WhatsApp messages channel
 	Header *Messageheader `json:"header,omitempty"`
+
+	// IntegrationId - WhatsApp integration ID for whatsApp carousels
+	IntegrationId *string `json:"integrationId,omitempty"`
+
+	// Category - Category of whatsApp carousels template.
+	Category *string `json:"category,omitempty"`
+
+	// TemplateStatus - Template status of whatsApp carousels template.
+	TemplateStatus *string `json:"templateStatus,omitempty"`
+
+	// StatusInfo - Status information about the template
+	StatusInfo *Statusinfo `json:"statusInfo,omitempty"`
+
+	// Carousel - Definition for whatsApp carousels template.
+	Carousel *Carousel `json:"carousel,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -104,6 +119,16 @@ func (o Whatsappdefinition) MarshalJSON() ([]byte, error) {
 		MessageFooter *Messagefooter `json:"messageFooter,omitempty"`
 		
 		Header *Messageheader `json:"header,omitempty"`
+		
+		IntegrationId *string `json:"integrationId,omitempty"`
+		
+		Category *string `json:"category,omitempty"`
+		
+		TemplateStatus *string `json:"templateStatus,omitempty"`
+		
+		StatusInfo *Statusinfo `json:"statusInfo,omitempty"`
+		
+		Carousel *Carousel `json:"carousel,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -117,6 +142,16 @@ func (o Whatsappdefinition) MarshalJSON() ([]byte, error) {
 		MessageFooter: o.MessageFooter,
 		
 		Header: o.Header,
+		
+		IntegrationId: o.IntegrationId,
+		
+		Category: o.Category,
+		
+		TemplateStatus: o.TemplateStatus,
+		
+		StatusInfo: o.StatusInfo,
+		
+		Carousel: o.Carousel,
 		Alias:    (Alias)(o),
 	})
 }
@@ -153,6 +188,28 @@ func (o *Whatsappdefinition) UnmarshalJSON(b []byte) error {
 	if Header, ok := WhatsappdefinitionMap["header"].(map[string]interface{}); ok {
 		HeaderString, _ := json.Marshal(Header)
 		json.Unmarshal(HeaderString, &o.Header)
+	}
+	
+	if IntegrationId, ok := WhatsappdefinitionMap["integrationId"].(string); ok {
+		o.IntegrationId = &IntegrationId
+	}
+    
+	if Category, ok := WhatsappdefinitionMap["category"].(string); ok {
+		o.Category = &Category
+	}
+    
+	if TemplateStatus, ok := WhatsappdefinitionMap["templateStatus"].(string); ok {
+		o.TemplateStatus = &TemplateStatus
+	}
+    
+	if StatusInfo, ok := WhatsappdefinitionMap["statusInfo"].(map[string]interface{}); ok {
+		StatusInfoString, _ := json.Marshal(StatusInfo)
+		json.Unmarshal(StatusInfoString, &o.StatusInfo)
+	}
+	
+	if Carousel, ok := WhatsappdefinitionMap["carousel"].(map[string]interface{}); ok {
+		CarouselString, _ := json.Marshal(Carousel)
+		json.Unmarshal(CarouselString, &o.Carousel)
 	}
 	
 

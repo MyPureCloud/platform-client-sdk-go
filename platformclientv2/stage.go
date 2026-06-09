@@ -45,7 +45,7 @@ type Stage struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
-	// VarCase - The parent case of the Stage.
+	// VarCase - The parent Case of the Stage.
 	VarCase *Casereference `json:"case,omitempty"`
 }
 

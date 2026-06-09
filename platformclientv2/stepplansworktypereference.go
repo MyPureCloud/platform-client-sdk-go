@@ -11,7 +11,7 @@ import (
 type Stepplansworktypereference struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The id of the worktype.
+	// Id - The Worktype ID.
 	Id *string `json:"id,omitempty"`
 
 	// Name

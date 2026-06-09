@@ -11,7 +11,7 @@ import (
 type Caseexternalcontactreference struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The globally unique identifier for the object.
+	// Id - The globally unique identifier for the External Contact.
 	Id *string `json:"id,omitempty"`
 
 	// SelfUri - The URI for this object

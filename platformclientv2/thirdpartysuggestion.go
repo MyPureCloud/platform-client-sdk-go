@@ -13,6 +13,12 @@ type Thirdpartysuggestion struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// Text - The third party suggestion text.
 	Text *string `json:"text,omitempty"`
+
+	// Title - The title of the suggestion.
+	Title *string `json:"title,omitempty"`
+
+	// Sources - A list of source references attributing the suggestion to its origin sources.
+	Sources *[]Thirdpartysuggestionsource `json:"sources,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +85,17 @@ func (o Thirdpartysuggestion) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		Text *string `json:"text,omitempty"`
+		
+		Title *string `json:"title,omitempty"`
+		
+		Sources *[]Thirdpartysuggestionsource `json:"sources,omitempty"`
 		Alias
 	}{ 
 		Text: o.Text,
+		
+		Title: o.Title,
+		
+		Sources: o.Sources,
 		Alias:    (Alias)(o),
 	})
 }
@@ -97,6 +111,15 @@ func (o *Thirdpartysuggestion) UnmarshalJSON(b []byte) error {
 		o.Text = &Text
 	}
     
+	if Title, ok := ThirdpartysuggestionMap["title"].(string); ok {
+		o.Title = &Title
+	}
+    
+	if Sources, ok := ThirdpartysuggestionMap["sources"].([]interface{}); ok {
+		SourcesString, _ := json.Marshal(Sources)
+		json.Unmarshal(SourcesString, &o.Sources)
+	}
+	
 
 	return nil
 }

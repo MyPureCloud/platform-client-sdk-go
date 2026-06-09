@@ -4502,7 +4502,7 @@
                     "name": "Dimension",
                     "description": "Left hand side for dimension predicates",
                     "dataType": "string",
-                    "enum": ["agentAssistantId", "cannedResponseId", "cannedResponseLibraryId", "chunkCount", "conversationId", "engagementType", "externalContactId", "feedbackRating", "hasAnswerHighlight", "hasGeneratedAnswer", "knowledgeBaseDocumentId", "knowledgeBaseDocumentVersionId", "mediaType", "messageId", "queueId", "scriptId", "scriptPageId", "searchId", "state", "suggestionId", "suggestionType", "triggerType", "userId", "utteranceId"]
+                    "enum": ["agentAssistantId", "cannedResponseId", "cannedResponseLibraryId", "chunkCount", "conversationId", "knowledgeSettingId", "engagementType", "externalContactId", "feedbackRating", "hasAnswerHighlight", "hasGeneratedAnswer", "knowledgeBaseDocumentId", "knowledgeBaseDocumentVersionId", "mediaType", "messageId", "queueId", "scriptId", "scriptPageId", "searchId", "state", "suggestionId", "suggestionType", "triggerType", "userId", "utteranceId"]
                 }, 
                 {
                     "name": "Operator",
@@ -5696,6 +5696,36 @@
                 {
                     "name": "Entities",
                     "dataType": "[]Agentintegrationsresponse"
+                }
+            ]
+        }, 
+        "agentstateactivitycategorycount": { 
+            "properties": [
+                {
+                    "name": "ActivityCategory",
+                    "description": "Activity category",
+                    "dataType": "string",
+                    "enum": ["OnQueueWork", "Break", "Meal", "Meeting", "OffQueueWork", "TimeOff", "Training", "Unavailable", "Unscheduled"]
+                }, 
+                {
+                    "name": "Count",
+                    "description": "Count of users with this activity category",
+                    "dataType": "int"
+                }
+            ]
+        }, 
+        "agentstateadherencestatecount": { 
+            "properties": [
+                {
+                    "name": "AdherenceState",
+                    "description": "Adherence state",
+                    "dataType": "string",
+                    "enum": ["InAdherence", "OutOfAdherence", "Unscheduled", "Unknown", "Ignored", "Explained"]
+                }, 
+                {
+                    "name": "Count",
+                    "description": "Count of users with this adherence state",
+                    "dataType": "int"
                 }
             ]
         }, 
@@ -10298,6 +10328,11 @@
                 }
             ]
         }, 
+        "appleinvitation": { 
+            "description": "Apple Messages for Business invitation template configuration",
+            "properties": [
+            ]
+        }, 
         "appleopaqueid": { 
             "properties": [
                 {
@@ -10385,7 +10420,7 @@
                     "description": "The namespace of the associated approvers.",
                     "readOnly": true,
                     "dataType": "string",
-                    "enum": ["webchat", "webhooks", "agent.assistant", "agentic.virtual.agents", "analytics.agents", "analytics.alerting", "analytics.data.extraction", "analytics", "analytics.realtime", "analytics.reporting.settings", "anomaly.detection", "architect", "audiohook", "audiohook.monitor", "audit", "auth.api", "authorization", "automation.testing", "bots", "bots.voice", "business.rules", "callback", "case.management", "cobrowse", "content.management", "conversation", "copilot", "dataactions", "datatables", "directory", "dsar", "email", "employee.engagement", "event.orchestration", "external.contacts", "external.events.data.ingestion", "gamification", "gcv", "gdpr", "groups", "guides", "historical.adherence", "infrastructureascode", "integrations", "intent.miner", "internal.messaging", "journey", "knowledge", "language.understanding", "learning", "limit.registry", "marketplace", "mcp", "media.communications", "messaging", "micro.frontend", "notifications", "onboarding", "outbound", "platform.api", "predictive.routing", "presence", "quality", "recording", "response.management", "routing", "scim", "screen.monitoring", "search", "secondary.automation.testing", "skills", "social.media", "speech.and.text.analytics", "speech.integration", "supportability", "task.management", "telephony.configuration", "usage", "users", "users.rules", "voice.transcription", "web.deployments", "web.messaging", "workforce.management.agent.availability", "workforce.management.forecast", "workforce.management", "workforce.management.self.schedule", "workforce.management.shift.trading", "system"]
+                    "enum": ["webchat", "webhooks", "agent.assistant", "agentic.virtual.agents", "analytics.agents", "analytics.alerting", "analytics.data.extraction", "analytics", "analytics.realtime", "analytics.reporting.settings", "anomaly.detection", "architect", "audiohook", "audiohook.monitor", "audit", "auth.api", "authorization", "automation.testing", "bots", "bots.voice", "business.rules", "callback", "case.management", "cobrowse", "content.management", "conversation", "copilot", "dataactions", "datatables", "directory", "dsar", "email", "employee.engagement", "event.orchestration", "external.contacts", "external.events.data.ingestion", "gamification", "gcv", "gdpr", "groups", "guides", "historical.adherence", "infrastructureascode", "integrations", "intent.miner", "internal.messaging", "journey", "knowledge", "language.understanding", "learning", "limit.registry", "marketplace", "mcp", "media.communications", "messaging", "micro.frontend", "notifications", "onboarding", "outbound", "platform.api", "predictive.routing", "presence", "quality", "recording", "response.management", "routing", "scim", "screen.monitoring", "search", "secondary.automation.testing", "skills", "social.media", "speech.and.text.analytics", "speech.integration", "supportability", "task.management", "telephony.configuration", "usage", "users", "users.rules", "voice.transcription", "web.deployments", "web.messaging", "workforce.management.agent.availability", "workforce.management.forecast", "workforce.management", "workforce.management.scheduling.preferences", "workforce.management.self.schedule", "workforce.management.shift.trading", "system"]
                 }, 
                 {
                     "name": "Status",
@@ -17212,6 +17247,11 @@
                     "dataType": "[]string"
                 }, 
                 {
+                    "name": "OverrideDates",
+                    "description": "A list of override dates to check for conflicts with time-off request dates. If a conflict is found, the request will not be auto-approved",
+                    "dataType": "[]Overridedate"
+                }, 
+                {
                     "name": "HrisTimeOffType",
                     "description": "Time-off type, if this time-off plan is associated with the integration",
                     "dataType": "Hristimeofftype"
@@ -17822,6 +17862,32 @@
                 }
             ]
         }, 
+        "bulkadddecisiontablerowsrequest": { 
+            "properties": [
+                {
+                    "name": "Rows",
+                    "description": "The list of rows to create. Maximum 15 rows per request. RowIndex is not supported for bulk add - all rows will be appended to the end of the table in the order provided.",
+                    "required": true,
+                    "dataType": "[]Createdecisiontablerowrequest"
+                }
+            ]
+        }, 
+        "bulkadddecisiontablerowsresponse": { 
+            "properties": [
+                {
+                    "name": "TotalCreated",
+                    "description": "The total number of rows successfully created",
+                    "required": true,
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "Rows",
+                    "description": "The list of created decision table rows",
+                    "required": true,
+                    "dataType": "[]Decisiontablerow"
+                }
+            ]
+        }, 
         "bulkaddopportunitiesrequest": { 
             "properties": [
                 {
@@ -17947,6 +18013,16 @@
                     "name": "ErrorIndexes",
                     "description": "The indexes of all failed operations in the results field.",
                     "dataType": "[]int"
+                }
+            ]
+        }, 
+        "bulkdeletedecisiontablerowsrequest": { 
+            "properties": [
+                {
+                    "name": "RowIds",
+                    "description": "The set of unique row IDs to be deleted. Maximum 49 rows per request.",
+                    "required": true,
+                    "dataType": "[]string"
                 }
             ]
         }, 
@@ -19266,6 +19342,32 @@
                     "name": "ErrorResultIds",
                     "description": "List of ids failed to be added or removed",
                     "dataType": "[]string"
+                }
+            ]
+        }, 
+        "bulkupdatedecisiontablerowsrequest": { 
+            "properties": [
+                {
+                    "name": "Rows",
+                    "description": "The list of rows to update. Maximum 15 rows per request. Each row must have a unique rowId.",
+                    "required": true,
+                    "dataType": "[]Row"
+                }
+            ]
+        }, 
+        "bulkupdatedecisiontablerowsresponse": { 
+            "properties": [
+                {
+                    "name": "TotalUpdated",
+                    "description": "The total number of rows successfully updated",
+                    "required": true,
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "Rows",
+                    "description": "The list of updated decision table rows",
+                    "required": true,
+                    "dataType": "[]Decisiontablerow"
                 }
             ]
         }, 
@@ -20900,6 +21002,11 @@
                     "dataType": "Activitycodesreference"
                 }, 
                 {
+                    "name": "OverrideDates",
+                    "description": "A list of override dates to check for conflicts with time-off request dates. If a conflict is found, the request will not be auto-approved",
+                    "dataType": "[]Overridedate"
+                }, 
+                {
                     "name": "HrisTimeOffType",
                     "description": "Time-off type, if this time-off plan is associated with the integration",
                     "dataType": "Hristimeofftype"
@@ -20956,6 +21063,11 @@
                 {
                     "name": "ContentText",
                     "description": "The text label that will be displayed on the button",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Payload",
+                    "description": "A payload to uniquely identify a quickReply button in carousel",
                     "dataType": "string"
                 }
             ]
@@ -21130,6 +21242,11 @@
                     "name": "RestrictedActivityCodeIds",
                     "description": "The IDs of non time-off activity codes to check for conflicts in case the auto approval rule specifies checking activity codes. If these activity codes are present in schedule and overlap with the time-off request duration, the request will not be auto approved",
                     "dataType": "Setwrapperstring"
+                }, 
+                {
+                    "name": "OverrideDates",
+                    "description": "A list of override dates to check for conflicts with time-off request dates. If a conflict is found, the request will not be auto-approved",
+                    "dataType": "Listwrapperoverridedate"
                 }, 
                 {
                     "name": "HrisTimeOffType",
@@ -26196,6 +26313,19 @@
         }, 
         "cardbodytext": { 
             "properties": [
+                {
+                    "name": "Content",
+                    "description": "Body content for carousel card.",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "ContentType",
+                    "description": "Body content type for carousel card. Allowed value: text/plain",
+                    "required": true,
+                    "dataType": "string",
+                    "enum": ["text/plain"]
+                }
             ]
         }, 
         "cardparameters": { 
@@ -26221,10 +26351,33 @@
         "carousel": { 
             "description": "A WhatsApp Carousel messaging template definition",
             "properties": [
+                {
+                    "name": "Cards",
+                    "description": "List of cards in a carousels template.",
+                    "required": true,
+                    "dataType": "[]Carouselcard"
+                }
             ]
         }, 
         "carouselcard": { 
             "properties": [
+                {
+                    "name": "Header",
+                    "description": "Header for whatsApp carousel card",
+                    "required": true,
+                    "dataType": "Messageheader"
+                }, 
+                {
+                    "name": "Buttons",
+                    "description": "List of buttons to be included in the whatsApp carousel messages template",
+                    "required": true,
+                    "dataType": "[]Button"
+                }, 
+                {
+                    "name": "CardBodyText",
+                    "description": "Optional card body text to be included in the whatsApp carousel messages template",
+                    "dataType": "Cardbodytext"
+                }
             ]
         }, 
         "carouselparameters": { 
@@ -26267,7 +26420,7 @@
                 }, 
                 {
                     "name": "Caseplan",
-                    "description": "The Caseplan the case was created from.",
+                    "description": "The Caseplan the Case was created from.",
                     "dataType": "Caseplanreference"
                 }, 
                 {
@@ -26319,7 +26472,7 @@
                 }, 
                 {
                     "name": "ModifiedBy",
-                    "description": "The id of the User who modified the Case.",
+                    "description": "The ID of the User who modified the Case.",
                     "dataType": "Userreference"
                 }, 
                 {
@@ -26334,7 +26487,7 @@
                 }, 
                 {
                     "name": "CreationStatus",
-                    "description": "The creation status of the Case",
+                    "description": "The creation status of the Case.",
                     "dataType": "string",
                     "enum": ["Pending", "InProgress", "Completed", "Failed"]
                 }, 
@@ -26352,7 +26505,7 @@
             ]
         }, 
         "caseassociation": { 
-            "description": "Represents an association between a case and an interaction",
+            "description": "Represents an association between a Case and an interaction.",
             "properties": [
                 {
                     "name": "Id",
@@ -26365,33 +26518,33 @@
                 }, 
                 {
                     "name": "AssociationType",
-                    "description": "Association type.",
+                    "description": "The association type.",
                     "dataType": "string",
                     "enum": ["Activity", "Enquiry", "Initiation"]
                 }, 
                 {
                     "name": "DateAssociated",
-                    "description": "Interaction association date. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z",
+                    "description": "The date of the interaction association. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z",
                     "dataType": "time.Time"
                 }, 
                 {
                     "name": "Workitem",
-                    "description": "Associated workitem ID.",
+                    "description": "The associated Workitem.",
                     "dataType": "Workitemreference"
                 }, 
                 {
                     "name": "Conversation",
-                    "description": "Associated conversation ID.",
+                    "description": "The associated Conversation.",
                     "dataType": "Conversationreference"
                 }, 
                 {
                     "name": "Stage",
-                    "description": "The stage related to this association.",
+                    "description": "The Stage related to this association.",
                     "dataType": "Stagereference"
                 }, 
                 {
                     "name": "Step",
-                    "description": "The step related to this association.",
+                    "description": "The Step related to this association.",
                     "dataType": "Stepreference"
                 }, 
                 {
@@ -26402,7 +26555,7 @@
                 }, 
                 {
                     "name": "VarCase",
-                    "description": "Case ID",
+                    "description": "The Case for this association.",
                     "dataType": "Casereference"
                 }
             ]
@@ -26411,12 +26564,12 @@
             "properties": [
                 {
                     "name": "WorkitemId",
-                    "description": "The ID of the workitem to associate with the case.",
+                    "description": "The ID of the Workitem to associate with the Case.",
                     "dataType": "string"
                 }, 
                 {
                     "name": "ConversationId",
-                    "description": "The ID of the conversation to associate with the case.",
+                    "description": "The ID of the Conversation to associate with the Case.",
                     "dataType": "string"
                 }
             ]
@@ -26450,7 +26603,7 @@
                 }, 
                 {
                     "name": "After",
-                    "description": "The cursor that points to the end of the set of entities that has been returned.",
+                    "description": "Cursor pointing to the end of the previously returned page of associations.",
                     "dataType": "string"
                 }, 
                 {
@@ -26460,7 +26613,7 @@
                 }, 
                 {
                     "name": "ConversationId",
-                    "description": "The conversation ID to query by.",
+                    "description": "The Conversation ID to query by.",
                     "dataType": "string"
                 }
             ]
@@ -26493,13 +26646,13 @@
             "properties": [
                 {
                     "name": "CaseplanId",
-                    "description": "The ID of the caseplan to create the case from.",
+                    "description": "The ID of the Caseplan used to create the Case.",
                     "required": true,
                     "dataType": "string"
                 }, 
                 {
                     "name": "OwnerId",
-                    "description": "The ID of the owner of the case.",
+                    "description": "The ID of the owner of the Case.",
                     "dataType": "string"
                 }, 
                 {
@@ -26515,17 +26668,17 @@
                 }, 
                 {
                     "name": "ConversationId",
-                    "description": "The ID of conversation associated with the Case.",
+                    "description": "The ID of the Conversation associated with the Case.",
                     "dataType": "string"
                 }, 
                 {
                     "name": "WorkitemId",
-                    "description": "The ID of the workitem associated with the Case.",
+                    "description": "The ID of the Workitem associated with the Case.",
                     "dataType": "string"
                 }, 
                 {
                     "name": "TtlSeconds",
-                    "description": "The epoch timestamp in seconds specifying the time-to-live for the lifetime of the Case. Can not be greater than 365 days from the current time.",
+                    "description": "Epoch timestamp in seconds for the Case time-to-live. Cannot be more than 365 days after the current time.",
                     "dataType": "int"
                 }, 
                 {
@@ -26549,7 +26702,7 @@
             "properties": [
                 {
                     "name": "Id",
-                    "description": "The globally unique identifier for the object.",
+                    "description": "The globally unique identifier for the External Contact.",
                     "dataType": "string"
                 }, 
                 {
@@ -26880,7 +27033,7 @@
                 }, 
                 {
                     "name": "DefaultCaseOwner",
-                    "description": "The default case owner for Cases created from the Caseplan.",
+                    "description": "The default Case owner for Cases created from the Caseplan.",
                     "dataType": "Userreference"
                 }, 
                 {
@@ -26910,12 +27063,12 @@
                 }, 
                 {
                     "name": "ModifiedBy",
-                    "description": "The id of the User who modified the Caseplan.",
+                    "description": "The ID of the User who modified the Caseplan.",
                     "dataType": "Userreference"
                 }, 
                 {
                     "name": "CustomerIntent",
-                    "description": "The customer intent for the Cases created from the caseplan.",
+                    "description": "The customer intent for Cases created from this Caseplan.",
                     "dataType": "Customerintentreference"
                 }, 
                 {
@@ -26974,18 +27127,18 @@
                 }, 
                 {
                     "name": "DivisionId",
-                    "description": "The ID of the division the Caseplan belongs to. Use '*' for divisionless caseplans.",
+                    "description": "The ID of the division the Caseplan belongs to. Use '*' for divisionless Caseplans.",
                     "required": true,
                     "dataType": "string"
                 }, 
                 {
                     "name": "DataSchemas",
-                    "description": "The schemas that define all data for cases from this Caseplan. The schema must be defined in the TaskManagement namespace. Omit or leave null to create a draft Caseplan without a schema; assign a schema before publish.",
+                    "description": "The schemas that define all data for Cases from this Caseplan. The schema must be defined in the TaskManagement namespace. Omit or leave null to create a draft Caseplan without a schema; assign a schema before publish.",
                     "dataType": "[]Caseplandataschema"
                 }, 
                 {
                     "name": "IntakeSettings",
-                    "description": "The intake format when collecting data for a case from this caseplan. There can be a maximum of 10 IntakeSettings defined for a Caseplan.",
+                    "description": "The intake format when collecting data for a Case from this Caseplan. There can be a maximum of 10 IntakeSettings defined for a Caseplan.",
                     "dataType": "[]Intakesetting"
                 }
             ]
@@ -27030,7 +27183,7 @@
                 }, 
                 {
                     "name": "DefaultCaseOwner",
-                    "description": "The default case owner for Cases created from the Caseplan.",
+                    "description": "The default Case owner for Cases created from the Caseplan.",
                     "dataType": "Userreference"
                 }, 
                 {
@@ -27060,12 +27213,12 @@
                 }, 
                 {
                     "name": "ModifiedBy",
-                    "description": "The id of the User who modified the Caseplan.",
+                    "description": "The ID of the User who modified the Caseplan.",
                     "dataType": "Userreference"
                 }, 
                 {
                     "name": "CustomerIntent",
-                    "description": "The customer intent for the Cases created from the caseplan.",
+                    "description": "The customer intent for Cases created from this Caseplan.",
                     "dataType": "Customerintentreference"
                 }, 
                 {
@@ -27076,12 +27229,12 @@
                 }, 
                 {
                     "name": "DataSchemas",
-                    "description": "The schemas that define all data for cases from this Caseplan.",
+                    "description": "The schemas that define all data for Cases from this Caseplan.",
                     "dataType": "[]Caseplandataschema"
                 }, 
                 {
                     "name": "IntakeSettings",
-                    "description": "The intake format when collecting data for a case from this caseplan.",
+                    "description": "The intake format when collecting data for a Case from this Caseplan.",
                     "dataType": "[]Intakesetting"
                 }, 
                 {
@@ -27096,7 +27249,7 @@
             "properties": [
                 {
                     "name": "Id",
-                    "description": "The id of the schema.",
+                    "description": "The schema ID.",
                     "required": true,
                     "dataType": "string"
                 }, 
@@ -27113,6 +27266,16 @@
                 {
                     "name": "Entities",
                     "dataType": "[]Caseplandataschema"
+                }
+            ]
+        }, 
+        "caseplandataschemarequest": { 
+            "properties": [
+                {
+                    "name": "Id",
+                    "description": "The schema ID.",
+                    "required": true,
+                    "dataType": "string"
                 }
             ]
         }, 
@@ -27164,7 +27327,7 @@
             "properties": [
                 {
                     "name": "Name",
-                    "description": "Filter by caseplan name (case-insensitive, partial match). Omitting name returns all caseplans (subject to pagination).",
+                    "description": "Filter by Caseplan name (case-insensitive, partial match). Omitting name returns all Caseplans (subject to pagination).",
                     "dataType": "string"
                 }, 
                 {
@@ -34307,11 +34470,6 @@
                     "dataType": "[]string"
                 }, 
                 {
-                    "name": "QueryConditions",
-                    "description": "Query conditions to apply on export",
-                    "dataType": "Contactsexportqueryconditions"
-                }, 
-                {
                     "name": "CreatedBy",
                     "description": "The user that created this request",
                     "readOnly": true,
@@ -34335,6 +34493,11 @@
                     "description": "The location where the results of the request can be retrieved",
                     "readOnly": true,
                     "dataType": "string"
+                }, 
+                {
+                    "name": "QueryConditions",
+                    "description": "Query conditions to apply on export",
+                    "dataType": "Contactsexportqueryconditions"
                 }, 
                 {
                     "name": "SelfUri",
@@ -34404,6 +34567,26 @@
                     "name": "Not",
                     "description": "Boolean negation of filters",
                     "dataType": "*Contactsexportfilter"
+                }
+            ]
+        }, 
+        "contactsexportlisting": { 
+            "properties": [
+                {
+                    "name": "Entities",
+                    "dataType": "[]Contactsexport"
+                }, 
+                {
+                    "name": "NextUri",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "SelfUri",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "PreviousUri",
+                    "dataType": "string"
                 }
             ]
         }, 
@@ -46999,7 +47182,7 @@
                     "readOnly": true,
                     "required": true,
                     "dataType": "string",
-                    "enum": ["Deployment", "Subject", "Unknown", "Topic", "IngestionRule", "IngestionRuleVersion", "PhoneNumber"]
+                    "enum": ["Deployment", "Subject", "Unknown", "Topic", "IngestionRule", "IngestionRuleVersion", "PhoneNumber", "Bsuid", "ParentBsuid", "Username"]
                 }, 
                 {
                     "name": "Value",
@@ -48700,6 +48883,26 @@
                     "name": "Description",
                     "description": "The description.",
                     "dataType": "string"
+                }
+            ]
+        }, 
+        "conversationsummarylabel": { 
+            "properties": [
+                {
+                    "name": "Name",
+                    "description": "The label name",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Description",
+                    "description": "The label description",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "VarType",
+                    "description": "The type of the label",
+                    "dataType": "string",
+                    "enum": ["Unknown", "CustomerSetting"]
                 }
             ]
         }, 
@@ -51553,6 +51756,23 @@
                 }
             ]
         }, 
+        "createdecisiontableimportjobrequest": { 
+            "properties": [
+                {
+                    "name": "ImportMode",
+                    "description": "How imported rows are merged with existing rows",
+                    "required": true,
+                    "dataType": "string",
+                    "enum": ["Append", "Replace"]
+                }, 
+                {
+                    "name": "FileName",
+                    "description": "Name of the file to import. Must include the file extension.",
+                    "required": true,
+                    "dataType": "string"
+                }
+            ]
+        }, 
         "createdecisiontablerequest": { 
             "properties": [
                 {
@@ -52090,6 +52310,22 @@
                     "name": "DateStart",
                     "description": "start date of the objective. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd",
                     "dataType": "time.Time"
+                }
+            ]
+        }, 
+        "createorganizationlink": { 
+            "properties": [
+                {
+                    "name": "TargetOrganizationId",
+                    "description": "Id for the linking organization.",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "TargetRegion",
+                    "description": "Region where target organization is hosted.",
+                    "required": true,
+                    "dataType": "string"
                 }
             ]
         }, 
@@ -56940,6 +57176,362 @@
                 }
             ]
         }, 
+        "decisiontableexportjob": { 
+            "properties": [
+                {
+                    "name": "Id",
+                    "description": "The globally unique identifier for the object.",
+                    "readOnly": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "TableVersion",
+                    "description": "The version of the decision table that was exported.",
+                    "readOnly": true,
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "Status",
+                    "description": "Current status of the export job.",
+                    "readOnly": true,
+                    "dataType": "string",
+                    "enum": ["Pending", "Complete", "Failed"]
+                }, 
+                {
+                    "name": "CreatedBy",
+                    "description": "The user who created the export job.",
+                    "readOnly": true,
+                    "dataType": "Addressableentityref"
+                }, 
+                {
+                    "name": "DateCreated",
+                    "description": "Date when this export job was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z",
+                    "readOnly": true,
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "DateModified",
+                    "description": "Date when this export job was last modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z",
+                    "readOnly": true,
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "FileName",
+                    "description": "Name of the exported file.",
+                    "readOnly": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Download",
+                    "description": "Reference to the download resource for obtaining the exported file.",
+                    "readOnly": true,
+                    "dataType": "Addressableentityref"
+                }, 
+                {
+                    "name": "DateDownloadExpires",
+                    "description": "Date when the download link expires. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z",
+                    "readOnly": true,
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "ExportType",
+                    "description": "The type of export that was performed.",
+                    "readOnly": true,
+                    "dataType": "string",
+                    "enum": ["Template", "Populated"]
+                }, 
+                {
+                    "name": "TotalRows",
+                    "description": "Total number of rows to export (set when row loading begins).",
+                    "readOnly": true,
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "RowsExported",
+                    "description": "The number of rows exported.",
+                    "readOnly": true,
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "Format",
+                    "description": "The format of the exported file.",
+                    "readOnly": true,
+                    "dataType": "string",
+                    "enum": ["Csv"]
+                }, 
+                {
+                    "name": "VarError",
+                    "description": "Error details if the export job failed.",
+                    "readOnly": true,
+                    "dataType": "Decisiontableexportjoberror"
+                }, 
+                {
+                    "name": "SelfUri",
+                    "description": "The URI for this object",
+                    "readOnly": true,
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "decisiontableexportjoberror": { 
+            "description": "Error details when a decision table export job fails",
+            "properties": [
+                {
+                    "name": "ErrorCode",
+                    "description": "The error code for this job failure.",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "ErrorMessage",
+                    "description": "A human-readable error message.",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "MessageWithParams",
+                    "description": "Parameterized message template for the aggregate failure (when applicable)",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "MessageParams",
+                    "description": "Parameters for messageWithParams",
+                    "dataType": "map[string]string"
+                }, 
+                {
+                    "name": "ValidationErrors",
+                    "description": "Validation failures for the export job",
+                    "dataType": "[]Decisiontablejobvalidationerror"
+                }
+            ]
+        }, 
+        "decisiontableexportjoblisting": { 
+            "properties": [
+                {
+                    "name": "Entities",
+                    "dataType": "[]Decisiontableexportjob"
+                }, 
+                {
+                    "name": "NextUri",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "SelfUri",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "PreviousUri",
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "decisiontableexportjobrequest": { 
+            "properties": [
+                {
+                    "name": "TableVersion",
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "ExportType",
+                    "description": "The type of export to perform.",
+                    "required": true,
+                    "dataType": "string",
+                    "enum": ["Template", "Populated"]
+                }, 
+                {
+                    "name": "Format",
+                    "description": "The format of the exported file.",
+                    "required": true,
+                    "dataType": "string",
+                    "enum": ["Csv"]
+                }
+            ]
+        }, 
+        "decisiontableimportjob": { 
+            "description": "State of a decision table row import job",
+            "properties": [
+                {
+                    "name": "Id",
+                    "description": "The globally unique identifier for the object.",
+                    "readOnly": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "TableVersion",
+                    "description": "The table version to be replaced by this import",
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "Status",
+                    "description": "Current status of the import job",
+                    "required": true,
+                    "dataType": "string",
+                    "enum": ["Uploading", "Processing", "Complete", "Failed", "Cancelled"]
+                }, 
+                {
+                    "name": "UploadUrl",
+                    "description": "Pre-signed URL to upload the import file (PUT)",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "UploadHeaders",
+                    "description": "Headers required when uploading file with data to be imported to uploadUrl",
+                    "dataType": "map[string]string"
+                }, 
+                {
+                    "name": "ImportMode",
+                    "description": "Whether rows are appended to existing rows or rows are replaced",
+                    "required": true,
+                    "dataType": "string",
+                    "enum": ["Append", "Replace"]
+                }, 
+                {
+                    "name": "FileName",
+                    "description": "Original file name supplied when the job was created, including the file extension",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "CreatedBy",
+                    "description": "The user who created the job",
+                    "readOnly": true,
+                    "dataType": "Addressableentityref"
+                }, 
+                {
+                    "name": "DateCreated",
+                    "description": "When the job was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z",
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "DateModified",
+                    "description": "When the job was last updated. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z",
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "DateCompleted",
+                    "description": "When processing finished, successfully or not. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z",
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "DateExpires",
+                    "description": "When upload credentials expire. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z",
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "RowMetrics",
+                    "description": "Row-level metrics populated incrementally during import processing",
+                    "dataType": "Decisiontableimportrowmetrics"
+                }, 
+                {
+                    "name": "VarError",
+                    "description": "Present when the import job could not be successfully finished",
+                    "dataType": "Decisiontableimportjoberror"
+                }, 
+                {
+                    "name": "SelfUri",
+                    "description": "The URI for this object",
+                    "readOnly": true,
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "decisiontableimportjoberror": { 
+            "description": "Error details when a decision table import job fails",
+            "properties": [
+                {
+                    "name": "ErrorCode",
+                    "description": "The error code for this job failure.",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "ErrorMessage",
+                    "description": "A human-readable error message.",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "MessageWithParams",
+                    "description": "Parameterized message template for the aggregate failure (when applicable)",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "MessageParams",
+                    "description": "Parameters for messageWithParams",
+                    "dataType": "map[string]string"
+                }, 
+                {
+                    "name": "ValidationErrors",
+                    "description": "Validation failures for individual rows or the file structure",
+                    "dataType": "[]Decisiontablejobvalidationerror"
+                }
+            ]
+        }, 
+        "decisiontableimportjoblisting": { 
+            "properties": [
+                {
+                    "name": "Entities",
+                    "dataType": "[]Decisiontableimportjob"
+                }, 
+                {
+                    "name": "NextUri",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "SelfUri",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "PreviousUri",
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "decisiontableimportrowmetrics": { 
+            "description": "Progress metrics for a decision table import job",
+            "properties": [
+                {
+                    "name": "TotalRows",
+                    "description": "Total number of rows in the import file (set after parsing completes)",
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "RowsParsed",
+                    "description": "Number of rows successfully parsed so far",
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "RowParseFailed",
+                    "description": "Number of rows that failed to parse",
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "RowsCreated",
+                    "description": "Number of rows successfully created so far",
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "RowsUpdated",
+                    "description": "Number of rows successfully updated so far",
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "RowsDeleted",
+                    "description": "Number of rows deleted (Replace mode only)",
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "RowCreateFailed",
+                    "description": "Number of rows that failed during batch create",
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "RowUpdateFailed",
+                    "description": "Number of rows that failed during batch update",
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "RowDeleteFailed",
+                    "description": "Number of rows that failed during delete",
+                    "dataType": "int"
+                }
+            ]
+        }, 
         "decisiontableinputcolumn": { 
             "properties": [
                 {
@@ -56990,6 +57582,60 @@
                     "description": "The input column condition expression, comprising the left side and comparator of a logical condition in the form of left|comparator|right, where each row of the decision table will provide the right side to form a complete condition",
                     "required": true,
                     "dataType": "Decisiontableinputcolumnexpression"
+                }
+            ]
+        }, 
+        "decisiontablejobvalidationerror": { 
+            "description": "Validation error for a decision table import or export job (e.g. import file row or header, export division checks)",
+            "properties": [
+                {
+                    "name": "Message",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Code",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Status",
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "EntityId",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "EntityName",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "MessageWithParams",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "MessageParams",
+                    "dataType": "map[string]string"
+                }, 
+                {
+                    "name": "ContextId",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Details",
+                    "dataType": "[]Detail"
+                }, 
+                {
+                    "name": "Errors",
+                    "dataType": "[]Errorbody"
+                }, 
+                {
+                    "name": "Limit",
+                    "dataType": "Limit"
+                }, 
+                {
+                    "name": "RowNumber",
+                    "description": "Row number in the import file when applicable (1-based for data rows; 0 may be used for file-level issues such as headers)",
+                    "dataType": "int"
                 }
             ]
         }, 
@@ -57559,7 +58205,7 @@
                 {
                     "name": "VarType",
                     "dataType": "string",
-                    "enum": ["ACDLANGUAGE", "ACDSKILL", "ACDWRAPUPCODE", "AGENTICVIRTUALAGENT", "AGENTICVIRTUALAGENTVERSION", "AUDIOCONNECTORBOT", "BOTCONNECTORBOT", "BOTCONNECTORINTEGRATION", "BOTFLOW", "BRIDGEACTION", "COMMONMODULEFLOW", "COMPOSERSCRIPT", "CONTACTLIST", "CONVERSATIONCUSTOMATTRIBUTESCHEMA", "CONVERSATIONSUMMARYSETTING", "DATAACTION", "DATATABLE", "DECISIONTABLE", "DIALOGENGINEBOT", "DIALOGENGINEBOTVERSION", "DIALOGFLOWAGENT", "DIALOGFLOWCXAGENT", "DIGITALAUDIO", "DIGITALBOTCONNECTOR", "DIGITALBOTCONNECTORINTEGRATION", "DIGITALBOTFLOW", "DIVISION", "EMAILROUTE", "EMAILSENDFLOW", "EMERGENCYGROUP", "FILE", "FLOWACTION", "FLOWDATATYPE", "FLOWMILESTONE", "FLOWOUTCOME", "GRAMMAR", "GROUP", "GUIDE", "GUIDEVERSION", "IMAGE", "INBOUNDCALLFLOW", "INBOUNDCHATFLOW", "INBOUNDEMAILFLOW", "INBOUNDSHORTMESSAGEFLOW", "INQUEUECALLFLOW", "INQUEUEEMAILFLOW", "INQUEUESHORTMESSAGEFLOW", "IVRCONFIGURATION", "KNOWLEDGEBASE", "KNOWLEDGEBASEDOCUMENT", "KNOWLEDGESETTING", "LANGUAGE", "LEXBOT", "LEXBOTALIAS", "LEXV2BOT", "LEXV2BOTALIAS", "NLUDOMAIN", "NUANCEMIXBOT", "NUANCEMIXINTEGRATION", "OAUTHCLIENT", "OUTBOUNDCALLFLOW", "QUEUE", "RECORDINGPOLICY", "RESPONSE", "RESPONSEASSET", "SCHEDULE", "SCHEDULEGROUP", "SECUREACTION", "SECURECALLFLOW", "SMSPHONENUMBER", "STTENGINE", "SURVEYFORM", "SURVEYINVITEFLOW", "SYSTEMPROMPT", "TTSENGINE", "TTSVOICE", "USER", "USERPROMPT", "UTILIZATIONLABEL", "VIDEO", "VOICEFLOW", "VOICEMAILFLOW", "VOICESURVEYFLOW", "WIDGET", "WORKFLOW", "WORKITEMFLOW", "WORKTYPE"]
+                    "enum": ["ACDLANGUAGE", "ACDSKILL", "ACDWRAPUPCODE", "AGENTICVIRTUALAGENT", "AGENTICVIRTUALAGENTVERSION", "AUDIOCONNECTORBOT", "BOTCONNECTORBOT", "BOTCONNECTORINTEGRATION", "BOTFLOW", "BRIDGEACTION", "COMMONMODULEFLOW", "COMPOSERSCRIPT", "CONTACTLIST", "CONVERSATIONCUSTOMATTRIBUTESCHEMA", "CONVERSATIONSUMMARYSETTING", "CUSTOMERSEGMENT", "DATAACTION", "DATATABLE", "DECISIONTABLE", "DIALOGENGINEBOT", "DIALOGENGINEBOTVERSION", "DIALOGFLOWAGENT", "DIALOGFLOWCXAGENT", "DIGITALAUDIO", "DIGITALBOTCONNECTOR", "DIGITALBOTCONNECTORINTEGRATION", "DIGITALBOTFLOW", "DIVISION", "EMAILROUTE", "EMAILSENDFLOW", "EMERGENCYGROUP", "FILE", "FLOWACTION", "FLOWDATATYPE", "FLOWMILESTONE", "FLOWOUTCOME", "GRAMMAR", "GROUP", "GUIDE", "GUIDEVERSION", "IMAGE", "INBOUNDCALLFLOW", "INBOUNDCHATFLOW", "INBOUNDEMAILFLOW", "INBOUNDSHORTMESSAGEFLOW", "INQUEUECALLFLOW", "INQUEUEEMAILFLOW", "INQUEUESHORTMESSAGEFLOW", "IVRCONFIGURATION", "KNOWLEDGEBASE", "KNOWLEDGEBASEDOCUMENT", "KNOWLEDGESETTING", "LANGUAGE", "LEXBOT", "LEXBOTALIAS", "LEXV2BOT", "LEXV2BOTALIAS", "NLUDOMAIN", "NUANCEMIXBOT", "NUANCEMIXINTEGRATION", "OAUTHCLIENT", "OUTBOUNDCALLFLOW", "QUEUE", "RECORDINGPOLICY", "RESPONSE", "RESPONSEASSET", "SCHEDULE", "SCHEDULEGROUP", "SECUREACTION", "SECURECALLFLOW", "SMSPHONENUMBER", "STTENGINE", "SURVEYFORM", "SURVEYINVITEFLOW", "SYSTEMPROMPT", "TTSENGINE", "TTSVOICE", "USER", "USERPROMPT", "UTILIZATIONLABEL", "VIDEO", "VOICEFLOW", "VOICEMAILFLOW", "VOICESURVEYFLOW", "WIDGET", "WORKFLOW", "WORKITEMFLOW", "WORKTYPE"]
                 }, 
                 {
                     "name": "Deleted",
@@ -57599,7 +58245,7 @@
                 {
                     "name": "VarType",
                     "dataType": "string",
-                    "enum": ["ACDLANGUAGE", "ACDSKILL", "ACDWRAPUPCODE", "AGENTICVIRTUALAGENT", "AGENTICVIRTUALAGENTVERSION", "AUDIOCONNECTORBOT", "BOTCONNECTORBOT", "BOTCONNECTORINTEGRATION", "BOTFLOW", "BRIDGEACTION", "COMMONMODULEFLOW", "COMPOSERSCRIPT", "CONTACTLIST", "CONVERSATIONCUSTOMATTRIBUTESCHEMA", "CONVERSATIONSUMMARYSETTING", "DATAACTION", "DATATABLE", "DECISIONTABLE", "DIALOGENGINEBOT", "DIALOGENGINEBOTVERSION", "DIALOGFLOWAGENT", "DIALOGFLOWCXAGENT", "DIGITALAUDIO", "DIGITALBOTCONNECTOR", "DIGITALBOTCONNECTORINTEGRATION", "DIGITALBOTFLOW", "DIVISION", "EMAILROUTE", "EMAILSENDFLOW", "EMERGENCYGROUP", "FILE", "FLOWACTION", "FLOWDATATYPE", "FLOWMILESTONE", "FLOWOUTCOME", "GRAMMAR", "GROUP", "GUIDE", "GUIDEVERSION", "IMAGE", "INBOUNDCALLFLOW", "INBOUNDCHATFLOW", "INBOUNDEMAILFLOW", "INBOUNDSHORTMESSAGEFLOW", "INQUEUECALLFLOW", "INQUEUEEMAILFLOW", "INQUEUESHORTMESSAGEFLOW", "IVRCONFIGURATION", "KNOWLEDGEBASE", "KNOWLEDGEBASEDOCUMENT", "KNOWLEDGESETTING", "LANGUAGE", "LEXBOT", "LEXBOTALIAS", "LEXV2BOT", "LEXV2BOTALIAS", "NLUDOMAIN", "NUANCEMIXBOT", "NUANCEMIXINTEGRATION", "OAUTHCLIENT", "OUTBOUNDCALLFLOW", "QUEUE", "RECORDINGPOLICY", "RESPONSE", "RESPONSEASSET", "SCHEDULE", "SCHEDULEGROUP", "SECUREACTION", "SECURECALLFLOW", "SMSPHONENUMBER", "STTENGINE", "SURVEYFORM", "SURVEYINVITEFLOW", "SYSTEMPROMPT", "TTSENGINE", "TTSVOICE", "USER", "USERPROMPT", "UTILIZATIONLABEL", "VIDEO", "VOICEFLOW", "VOICEMAILFLOW", "VOICESURVEYFLOW", "WIDGET", "WORKFLOW", "WORKITEMFLOW", "WORKTYPE"]
+                    "enum": ["ACDLANGUAGE", "ACDSKILL", "ACDWRAPUPCODE", "AGENTICVIRTUALAGENT", "AGENTICVIRTUALAGENTVERSION", "AUDIOCONNECTORBOT", "BOTCONNECTORBOT", "BOTCONNECTORINTEGRATION", "BOTFLOW", "BRIDGEACTION", "COMMONMODULEFLOW", "COMPOSERSCRIPT", "CONTACTLIST", "CONVERSATIONCUSTOMATTRIBUTESCHEMA", "CONVERSATIONSUMMARYSETTING", "CUSTOMERSEGMENT", "DATAACTION", "DATATABLE", "DECISIONTABLE", "DIALOGENGINEBOT", "DIALOGENGINEBOTVERSION", "DIALOGFLOWAGENT", "DIALOGFLOWCXAGENT", "DIGITALAUDIO", "DIGITALBOTCONNECTOR", "DIGITALBOTCONNECTORINTEGRATION", "DIGITALBOTFLOW", "DIVISION", "EMAILROUTE", "EMAILSENDFLOW", "EMERGENCYGROUP", "FILE", "FLOWACTION", "FLOWDATATYPE", "FLOWMILESTONE", "FLOWOUTCOME", "GRAMMAR", "GROUP", "GUIDE", "GUIDEVERSION", "IMAGE", "INBOUNDCALLFLOW", "INBOUNDCHATFLOW", "INBOUNDEMAILFLOW", "INBOUNDSHORTMESSAGEFLOW", "INQUEUECALLFLOW", "INQUEUEEMAILFLOW", "INQUEUESHORTMESSAGEFLOW", "IVRCONFIGURATION", "KNOWLEDGEBASE", "KNOWLEDGEBASEDOCUMENT", "KNOWLEDGESETTING", "LANGUAGE", "LEXBOT", "LEXBOTALIAS", "LEXV2BOT", "LEXV2BOTALIAS", "NLUDOMAIN", "NUANCEMIXBOT", "NUANCEMIXINTEGRATION", "OAUTHCLIENT", "OUTBOUNDCALLFLOW", "QUEUE", "RECORDINGPOLICY", "RESPONSE", "RESPONSEASSET", "SCHEDULE", "SCHEDULEGROUP", "SECUREACTION", "SECURECALLFLOW", "SMSPHONENUMBER", "STTENGINE", "SURVEYFORM", "SURVEYINVITEFLOW", "SYSTEMPROMPT", "TTSENGINE", "TTSVOICE", "USER", "USERPROMPT", "UTILIZATIONLABEL", "VIDEO", "VOICEFLOW", "VOICEMAILFLOW", "VOICESURVEYFLOW", "WIDGET", "WORKFLOW", "WORKITEMFLOW", "WORKTYPE"]
                 }, 
                 {
                     "name": "Deleted",
@@ -62082,6 +62728,29 @@
                 }
             ]
         }, 
+        "disasterrecoveryallroutingrequest": { 
+            "description": "Disaster Recovery all numbers routing request body",
+            "properties": [
+                {
+                    "name": "SourceOrganizationId",
+                    "description": "Value for login Organization Id",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "SwitchOrganizationId",
+                    "description": "Organization Id that will receive the routing",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "TargetRegion",
+                    "description": "Region for rerouting",
+                    "required": true,
+                    "dataType": "string"
+                }
+            ]
+        }, 
         "disconnectreason": { 
             "properties": [
                 {
@@ -66232,6 +66901,16 @@
                     "name": "AuthorizedDomains",
                     "description": "The authorized domains settings for email processing.",
                     "dataType": "Authorizeddomains"
+                }, 
+                {
+                    "name": "AllowExistingEmailParticipants",
+                    "description": "Allow reply and forward to recipients included in the previous email, ignoring the authorized domains list",
+                    "dataType": "bool"
+                }, 
+                {
+                    "name": "AllowOutboundToAnyDomainAcd",
+                    "description": "Allow new outbound email (no existing conversation) to be sent to any domain, ignoring the authorized domains list.This setting applies only to new outbound emails sent on behalf of queue or agentless, NOT campaigns.This setting can only be true if allowExistingEmailParticipants is also true.",
+                    "dataType": "bool"
                 }
             ]
         }, 
@@ -70085,6 +70764,50 @@
                 }
             ]
         }, 
+        "emailsettingentitylisting": { 
+            "properties": [
+                {
+                    "name": "Entities",
+                    "dataType": "[]Emailsetting"
+                }, 
+                {
+                    "name": "PageSize",
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "PageNumber",
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "Total",
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "FirstUri",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "NextUri",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "PreviousUri",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "LastUri",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "SelfUri",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "PageCount",
+                    "dataType": "int"
+                }
+            ]
+        }, 
         "emailsettingreference": { 
             "description": "Email Setting reference for email routing settings",
             "properties": [
@@ -71389,6 +72112,12 @@
                     "description": "Whether there is flexibility for a user to choose different hours than the system estimated",
                     "required": true,
                     "dataType": "bool"
+                }, 
+                {
+                    "name": "OverrideDateType",
+                    "description": "The override date type, if the requested day is an override date",
+                    "dataType": "string",
+                    "enum": ["Blocked", "ManualReview"]
                 }
             ]
         }, 
@@ -71432,6 +72161,12 @@
                     "description": "Whether there is flexibility for a user to choose different hours than the system estimated",
                     "required": true,
                     "dataType": "bool"
+                }, 
+                {
+                    "name": "OverrideDateType",
+                    "description": "The override date type, if the partial day request overlaps with an override date",
+                    "dataType": "string",
+                    "enum": ["Blocked", "ManualReview"]
                 }
             ]
         }, 
@@ -74694,26 +75429,6 @@
                     "description": "The export type for the flow. Default: 'Yaml'.",
                     "dataType": "string",
                     "enum": ["Architect", "Yaml"]
-                }
-            ]
-        }, 
-        "exportlisting": { 
-            "properties": [
-                {
-                    "name": "Entities",
-                    "dataType": "[]Contactsexport"
-                }, 
-                {
-                    "name": "NextUri",
-                    "dataType": "string"
-                }, 
-                {
-                    "name": "SelfUri",
-                    "dataType": "string"
-                }, 
-                {
-                    "name": "PreviousUri",
-                    "dataType": "string"
                 }
             ]
         }, 
@@ -91529,13 +92244,13 @@
                 }, 
                 {
                     "name": "Required",
-                    "description": "Defines if this property is required for intake",
+                    "description": "Whether this property is required for intake.",
                     "required": true,
                     "dataType": "bool"
                 }, 
                 {
                     "name": "DisplayOrder",
-                    "description": "The order where this property should be displayed",
+                    "description": "The display order for this property.",
                     "required": true,
                     "dataType": "int"
                 }
@@ -102711,6 +103426,11 @@
                     "name": "ConversationTurns",
                     "description": "List of conversation turns to use for stateful search.",
                     "dataType": "[]Knowledgeconversationturn"
+                }, 
+                {
+                    "name": "Filter",
+                    "description": "Composite tag filter applied to the search preview.",
+                    "dataType": "V3sourcetagfilter"
                 }
             ]
         }, 
@@ -102839,6 +103559,11 @@
                     "name": "Stateful",
                     "description": "Indicates if stateful search and generation is enabled for the knowledge setting.",
                     "dataType": "bool"
+                }, 
+                {
+                    "name": "Filter",
+                    "description": "Composite tag filter of search results.",
+                    "dataType": "V3sourcetagfilter"
                 }
             ]
         }, 
@@ -102873,6 +103598,11 @@
                     "name": "Stateful",
                     "description": "Indicates if stateful search and generation is enabled for the knowledge setting.",
                     "dataType": "bool"
+                }, 
+                {
+                    "name": "Filter",
+                    "description": "Composite tag filter of search results.",
+                    "dataType": "V3sourcetagfilter"
                 }, 
                 {
                     "name": "DateCreated",
@@ -106846,7 +107576,7 @@
                     "name": "ResponseType",
                     "description": "This value is deprecated. Responses representing message templates may be added to any library.",
                     "dataType": "string",
-                    "enum": ["MessagingTemplate", "CampaignSmsTemplate", "CampaignEmailTemplate", "Footer", "Form"]
+                    "enum": ["MessagingTemplate", "CampaignSmsTemplate", "CampaignEmailTemplate", "Footer", "Form", "AppleInvitation"]
                 }, 
                 {
                     "name": "Division",
@@ -107036,7 +107766,7 @@
                 {
                     "name": "Namespace",
                     "dataType": "string",
-                    "enum": ["webchat", "webhooks", "agent.assistant", "agentic.virtual.agents", "analytics.agents", "analytics.alerting", "analytics.data.extraction", "analytics", "analytics.realtime", "analytics.reporting.settings", "anomaly.detection", "architect", "audiohook", "audiohook.monitor", "audit", "auth.api", "authorization", "automation.testing", "bots", "bots.voice", "business.rules", "callback", "case.management", "cobrowse", "content.management", "conversation", "copilot", "dataactions", "datatables", "directory", "dsar", "email", "employee.engagement", "event.orchestration", "external.contacts", "external.events.data.ingestion", "gamification", "gcv", "gdpr", "groups", "guides", "historical.adherence", "infrastructureascode", "integrations", "intent.miner", "internal.messaging", "journey", "knowledge", "language.understanding", "learning", "limit.registry", "marketplace", "mcp", "media.communications", "messaging", "micro.frontend", "notifications", "onboarding", "outbound", "platform.api", "predictive.routing", "presence", "quality", "recording", "response.management", "routing", "scim", "screen.monitoring", "search", "secondary.automation.testing", "skills", "social.media", "speech.and.text.analytics", "speech.integration", "supportability", "task.management", "telephony.configuration", "usage", "users", "users.rules", "voice.transcription", "web.deployments", "web.messaging", "workforce.management.agent.availability", "workforce.management.forecast", "workforce.management", "workforce.management.self.schedule", "workforce.management.shift.trading", "system"]
+                    "enum": ["webchat", "webhooks", "agent.assistant", "agentic.virtual.agents", "analytics.agents", "analytics.alerting", "analytics.data.extraction", "analytics", "analytics.realtime", "analytics.reporting.settings", "anomaly.detection", "architect", "audiohook", "audiohook.monitor", "audit", "auth.api", "authorization", "automation.testing", "bots", "bots.voice", "business.rules", "callback", "case.management", "cobrowse", "content.management", "conversation", "copilot", "dataactions", "datatables", "directory", "dsar", "email", "employee.engagement", "event.orchestration", "external.contacts", "external.events.data.ingestion", "gamification", "gcv", "gdpr", "groups", "guides", "historical.adherence", "infrastructureascode", "integrations", "intent.miner", "internal.messaging", "journey", "knowledge", "language.understanding", "learning", "limit.registry", "marketplace", "mcp", "media.communications", "messaging", "micro.frontend", "notifications", "onboarding", "outbound", "platform.api", "predictive.routing", "presence", "quality", "recording", "response.management", "routing", "scim", "screen.monitoring", "search", "secondary.automation.testing", "skills", "social.media", "speech.and.text.analytics", "speech.integration", "supportability", "task.management", "telephony.configuration", "usage", "users", "users.rules", "voice.transcription", "web.deployments", "web.messaging", "workforce.management.agent.availability", "workforce.management.forecast", "workforce.management", "workforce.management.scheduling.preferences", "workforce.management.self.schedule", "workforce.management.shift.trading", "system"]
                 }, 
                 {
                     "name": "Value",
@@ -107063,7 +107793,7 @@
                     "description": "Namespace the key belongs to (see https://developer.mypurecloud.com/api/rest/v2/organization/limits.html#available_limits)",
                     "required": true,
                     "dataType": "string",
-                    "enum": ["webchat", "webhooks", "agent.assistant", "agentic.virtual.agents", "analytics.agents", "analytics.alerting", "analytics.data.extraction", "analytics", "analytics.realtime", "analytics.reporting.settings", "anomaly.detection", "architect", "audiohook", "audiohook.monitor", "audit", "auth.api", "authorization", "automation.testing", "bots", "bots.voice", "business.rules", "callback", "case.management", "cobrowse", "content.management", "conversation", "copilot", "dataactions", "datatables", "directory", "dsar", "email", "employee.engagement", "event.orchestration", "external.contacts", "external.events.data.ingestion", "gamification", "gcv", "gdpr", "groups", "guides", "historical.adherence", "infrastructureascode", "integrations", "intent.miner", "internal.messaging", "journey", "knowledge", "language.understanding", "learning", "limit.registry", "marketplace", "mcp", "media.communications", "messaging", "micro.frontend", "notifications", "onboarding", "outbound", "platform.api", "predictive.routing", "presence", "quality", "recording", "response.management", "routing", "scim", "screen.monitoring", "search", "secondary.automation.testing", "skills", "social.media", "speech.and.text.analytics", "speech.integration", "supportability", "task.management", "telephony.configuration", "usage", "users", "users.rules", "voice.transcription", "web.deployments", "web.messaging", "workforce.management.agent.availability", "workforce.management.forecast", "workforce.management", "workforce.management.self.schedule", "workforce.management.shift.trading", "system"]
+                    "enum": ["webchat", "webhooks", "agent.assistant", "agentic.virtual.agents", "analytics.agents", "analytics.alerting", "analytics.data.extraction", "analytics", "analytics.realtime", "analytics.reporting.settings", "anomaly.detection", "architect", "audiohook", "audiohook.monitor", "audit", "auth.api", "authorization", "automation.testing", "bots", "bots.voice", "business.rules", "callback", "case.management", "cobrowse", "content.management", "conversation", "copilot", "dataactions", "datatables", "directory", "dsar", "email", "employee.engagement", "event.orchestration", "external.contacts", "external.events.data.ingestion", "gamification", "gcv", "gdpr", "groups", "guides", "historical.adherence", "infrastructureascode", "integrations", "intent.miner", "internal.messaging", "journey", "knowledge", "language.understanding", "learning", "limit.registry", "marketplace", "mcp", "media.communications", "messaging", "micro.frontend", "notifications", "onboarding", "outbound", "platform.api", "predictive.routing", "presence", "quality", "recording", "response.management", "routing", "scim", "screen.monitoring", "search", "secondary.automation.testing", "skills", "social.media", "speech.and.text.analytics", "speech.integration", "supportability", "task.management", "telephony.configuration", "usage", "users", "users.rules", "voice.transcription", "web.deployments", "web.messaging", "workforce.management.agent.availability", "workforce.management.forecast", "workforce.management", "workforce.management.scheduling.preferences", "workforce.management.self.schedule", "workforce.management.shift.trading", "system"]
                 }, 
                 {
                     "name": "RequestedValue",
@@ -110851,7 +111581,7 @@
                     "name": "VarType",
                     "description": "Defines the content type of the Header in message",
                     "dataType": "string",
-                    "enum": ["Text", "Image"]
+                    "enum": ["Text", "Image", "Video"]
                 }, 
                 {
                     "name": "Content",
@@ -116079,6 +116809,101 @@
                 }
             ]
         }, 
+        "numberrouting": { 
+            "properties": [
+                {
+                    "name": "NumberId",
+                    "description": "Phone number Id that has a disaster recovery linking",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "OwnerOrganizationId",
+                    "description": "Owner organization of numberId",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "CarrierCode",
+                    "description": "Code that indicates which carrier manages the number ie. VERIZON",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "PendingOrganizationId",
+                    "description": "OrganizationId where the number will be routed to during a change routing event",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Region",
+                    "description": "The current region where the number is located",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Status",
+                    "description": "The current status of the number routing",
+                    "dataType": "string",
+                    "enum": ["Normal", "Redirected", "Pending"]
+                }, 
+                {
+                    "name": "ActiveOrganizationId",
+                    "description": "The orgId where the number is currently routing to",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "LinkedOrganizationIds",
+                    "description": "List of linked organizations ids",
+                    "dataType": "[]string"
+                }
+            ]
+        }, 
+        "numberroutinglisting": { 
+            "properties": [
+                {
+                    "name": "Entities",
+                    "dataType": "[]Numberrouting"
+                }, 
+                {
+                    "name": "NextUri",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "SelfUri",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "PreviousUri",
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "numberroutingrequest": { 
+            "properties": [
+                {
+                    "name": "OrganizationId",
+                    "description": "Target organization Id where number will be routed to",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "NumberId",
+                    "description": "Number Id to be routed.",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "TargetRegion",
+                    "description": "Region where target organization is hosted.",
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "numberroutingresetorganizationrequest": { 
+            "description": "Number Routing reset routing request body",
+            "properties": [
+                {
+                    "name": "ResetOrganizationId",
+                    "description": "Organization Id where all rerouted numbers will be reset to",
+                    "required": true,
+                    "dataType": "string"
+                }
+            ]
+        }, 
         "numericrange": { 
             "properties": [
                 {
@@ -119329,6 +120154,85 @@
                 {
                     "name": "Custserv",
                     "dataType": "bool"
+                }
+            ]
+        }, 
+        "organizationlink": { 
+            "properties": [
+                {
+                    "name": "SourceOrganizationId",
+                    "description": "Organization Id for the login organization.",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "TargetOrganizationId",
+                    "description": "Organization Id for the linking organization.",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "SourceRegion",
+                    "description": "Region where context organization is hosted, ie. us-east-1",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "TargetRegion",
+                    "description": "Region where linking organization is hosted, ie. us-east-2",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Status",
+                    "description": "Status of the linking.",
+                    "dataType": "string",
+                    "enum": ["Approved", "Pending", "ApprovalPending", "Rejected"]
+                }
+            ]
+        }, 
+        "organizationlinkapprovalrequest": { 
+            "properties": [
+                {
+                    "name": "Approval",
+                    "description": "Value for approving or rejecting an organization link, true is approved, false is rejected",
+                    "required": true,
+                    "dataType": "bool"
+                }
+            ]
+        }, 
+        "organizationlinkresponse": { 
+            "properties": [
+                {
+                    "name": "SourceOrganizationId",
+                    "description": "Organization Id for the login organization.",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "TargetOrganizationId",
+                    "description": "Organization Id for the linking organization.",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "SourceRegion",
+                    "description": "Region where context organization is hosted, ie. us-east-1",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "TargetRegion",
+                    "description": "Region where linking organization is hosted, ie. us-east-2",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "TargetName",
+                    "description": "Name for the linking organization.",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Status",
+                    "description": "Status of the linking.",
+                    "dataType": "string",
+                    "enum": ["Approved", "Pending", "ApprovalPending", "Rejected"]
                 }
             ]
         }, 
@@ -127431,6 +128335,7 @@
                 }, 
                 {
                     "name": "MediaTranscriptions",
+                    "description": "Deprecated. The Voci and Call Journey transcription integrations are no longer supported.",
                     "dataType": "[]Mediatranscription"
                 }, 
                 {
@@ -145090,7 +145995,7 @@
                     "name": "ContentType",
                     "description": "Indicates the content type for this message",
                     "dataType": "string",
-                    "enum": ["QuickReply", "Story", "Card", "Carousel", "Attachment", "Location", "Notification", "GenericTemplate", "ListTemplate", "Postback", "Reactions", "Mention", "ButtonResponse", "DatePicker", "ListPicker", "InteractiveApplication", "PaymentRequest", "PaymentResponse", "Form", "RichLink", "RoadsideAssistance"]
+                    "enum": ["QuickReply", "Story", "Card", "Carousel", "Attachment", "Location", "Notification", "GenericTemplate", "ListTemplate", "Postback", "Reactions", "Mention", "ButtonResponse", "DatePicker", "ListPicker", "InteractiveApplication", "PaymentRequest", "PaymentResponse", "Form", "RichLink", "RoadsideAssistance", "NotificationResponse"]
                 }, 
                 {
                     "name": "SocialVisibility",
@@ -145252,6 +146157,31 @@
                     "name": "SelfUri",
                     "description": "The URI for this object",
                     "readOnly": true,
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "recordingnotificationresponse": { 
+            "properties": [
+                {
+                    "name": "OriginatingMessageId",
+                    "description": "Reference to the ID of the original outbound notification message this response is for (e.g. the Apple requestIdentifier).",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "ReferenceId",
+                    "description": "The business context reference associated with the notification (e.g. order ID, case ID). May be empty if the provider does not return it.",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "NotificationStatus",
+                    "description": "The status of the notification response.",
+                    "dataType": "string",
+                    "enum": ["Accepted", "Declined"]
+                }, 
+                {
+                    "name": "NotificationText",
+                    "description": "The localized display text of the user's response (e.g. \"Yes\").",
                     "dataType": "string"
                 }
             ]
@@ -145760,6 +146690,15 @@
                     "required": true,
                     "dataType": "string",
                     "enum": ["internal", "search", "social", "email", "unknown", "paid"]
+                }
+            ]
+        }, 
+        "regionresponse": { 
+            "properties": [
+                {
+                    "name": "RegionName",
+                    "description": "Name of the valid linking region, ie. us-east-1",
+                    "dataType": "string"
                 }
             ]
         }, 
@@ -146758,7 +147697,7 @@
                 {
                     "name": "ActionType",
                     "dataType": "string",
-                    "enum": ["AskForAuthenticationAction", "AddFlowMilestoneAction", "AskForNLUIntentAction", "AskForBooleanAction", "AskForPaymentAction", "AskForSlotAction", "AskSurveyQuestionAction", "AskForNLUNextIntentAction", "BotState", "CallAgenticVirtualAgentAction", "CallBotFlowAction", "CallDigitalBotFlowAction", "CallTaskAction", "CallGuideAction", "ClearSlotAction", "ClearUtilizationLabelAction", "DisconnectAction", "EndTaskAction", "ExitBotFlowAction", "UpdateVariableAction", "CommunicateAction", "DecisionAction", "FindEmergencyGroupAction", "FindGrammarAction", "FindGrammarByIdAction", "FindGroupAction", "FindLanguageSkillAction", "FindQueueAction", "FindQueueByIdAction", "FindScheduleAction", "FindScheduleGroupAction", "FindSkillAction", "FindSystemPromptAction", "FindUserAction", "FindUserByIdAction", "FindUsersByIdAction", "FindUserPromptAction", "FindUtilizationLabelAction", "FormAction", "SwitchAction", "DataAction", "DataTableLookupAction", "GetExternalContactAction", "GetExternalOrganizationAction", "LoopAction", "ExitLoopAction", "NextLoopAction", "LoopUntilAction", "SetActiveIntentAction", "SetFlowOutcomeAction", "InitializeFlowOutcomeAction", "AskForStringAction", "SendResponseAction", "GetResponseAction", "ExtractSecureDataAction", "SecureAction", "TransferTaskAction", "DigitalMenuAction", "WaitForInputAction", "EvaluateScheduleAction", "EvaluateScheduleGroupAction", "PromoteExternalContactAction", "ShowKnowledgeArticleAction", "SendKnowledgeFeedbackAction", "SetLocaleAction", "ScreenPopAction", "SetUtilizationLabelAction", "SetWrapupCodeAction", "TransferPureMatchAction", "TransferUserAction", "TransferGroupAction", "TransferExternalAction", "GetAttributesAction", "SetAttributesAction", "SendInteractiveApplicationAction", "SendRichLinkAction", "SendDigitalContentAction", "Unknown"]
+                    "enum": ["AskForAuthenticationAction", "AddFlowMilestoneAction", "AskForNLUIntentAction", "AskForBooleanAction", "AskForPaymentAction", "AskForSlotAction", "AskSurveyQuestionAction", "AskForNLUNextIntentAction", "AssignCustomerSegmentAction", "BotState", "CallAgenticVirtualAgentAction", "CallBotFlowAction", "CallDigitalBotFlowAction", "CallTaskAction", "CallGuideAction", "ClearSlotAction", "ClearUtilizationLabelAction", "DisconnectAction", "EndTaskAction", "ExitBotFlowAction", "UpdateVariableAction", "CommunicateAction", "DecisionAction", "FindEmergencyGroupAction", "FindGrammarAction", "FindGrammarByIdAction", "FindGroupAction", "FindLanguageSkillAction", "FindQueueAction", "FindQueueByIdAction", "FindScheduleAction", "FindScheduleGroupAction", "FindSkillAction", "FindSystemPromptAction", "FindUserAction", "FindUserByIdAction", "FindUsersByIdAction", "FindUserPromptAction", "FindUtilizationLabelAction", "FormAction", "SwitchAction", "DataAction", "DataTableLookupAction", "GetExternalContactAction", "GetExternalOrganizationAction", "GetAssignedCustomerSegmentsAction", "LoopAction", "ExitLoopAction", "NextLoopAction", "LoopUntilAction", "SetActiveIntentAction", "SetFlowOutcomeAction", "InitializeFlowOutcomeAction", "AskForStringAction", "SendResponseAction", "GetResponseAction", "ExtractSecureDataAction", "SecureAction", "TransferTaskAction", "DigitalMenuAction", "WaitForInputAction", "EvaluateScheduleAction", "EvaluateScheduleGroupAction", "PromoteExternalContactAction", "ShowKnowledgeArticleAction", "SendKnowledgeFeedbackAction", "SetLocaleAction", "ScreenPopAction", "SetUtilizationLabelAction", "SetWrapupCodeAction", "TransferPureMatchAction", "TransferUserAction", "TransferGroupAction", "TransferExternalAction", "GetAttributesAction", "SetAttributesAction", "SendInteractiveApplicationAction", "SendRichLinkAction", "SendDigitalContentAction", "Unknown"]
                 }
             ]
         }, 
@@ -148067,7 +149006,7 @@
                     "name": "ResponseType",
                     "description": "The response type represented by the response.",
                     "dataType": "string",
-                    "enum": ["MessagingTemplate", "CampaignSmsTemplate", "CampaignEmailTemplate", "Footer", "Form"]
+                    "enum": ["MessagingTemplate", "CampaignSmsTemplate", "CampaignEmailTemplate", "Footer", "Form", "AppleInvitation"]
                 }, 
                 {
                     "name": "MessagingTemplate",
@@ -149806,6 +150745,28 @@
                 }
             ]
         }, 
+        "row": { 
+            "properties": [
+                {
+                    "name": "RowId",
+                    "description": "The ID of the row to update",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Inputs",
+                    "description": "The input values of the row. The key for this map is the column ID the row value relates. Column IDs are available from the decision table entity.",
+                    "required": true,
+                    "dataType": "map[string]Decisiontablerowparametervalue"
+                }, 
+                {
+                    "name": "Outputs",
+                    "description": "The output values of the row. The key for this map is the column ID the row value relates. Column IDs are available from the decision table entity.",
+                    "required": true,
+                    "dataType": "map[string]Decisiontablerowparametervalue"
+                }
+            ]
+        }, 
         "rowsearchfilter": { 
             "properties": [
                 {
@@ -151066,6 +152027,52 @@
                     "name": "Result",
                     "description": "The result of the operation.  Null unless status == Complete",
                     "dataType": "Buschedulemetadata"
+                }
+            ]
+        }, 
+        "schedulevisibilityrange": { 
+            "properties": [
+                {
+                    "name": "EndDate",
+                    "description": "The schedule visibility end time in ISO-8601, the schedule is visible up to (but not including) that exact time)",
+                    "required": true,
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "EndBusinessUnitDate",
+                    "description": "The schedule visibility end date interpreted in the business unit time zone in yyyy-MM-dd format, the schedule is visible up to (but not including) that exact date. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd",
+                    "required": true,
+                    "dataType": "time.Time"
+                }
+            ]
+        }, 
+        "schedulevisibilitysettingsrequest": { 
+            "properties": [
+                {
+                    "name": "Enabled",
+                    "description": "Whether schedule visibility controls are enabled for this management unit",
+                    "dataType": "bool"
+                }, 
+                {
+                    "name": "FutureWeeks",
+                    "description": "The number of weeks into the future that agents can see schedules in this management unit. 0 means current week",
+                    "dataType": "int"
+                }
+            ]
+        }, 
+        "schedulevisibilitysettingsresponse": { 
+            "properties": [
+                {
+                    "name": "Enabled",
+                    "description": "Whether schedule visibility controls are enabled for this management unit",
+                    "required": true,
+                    "dataType": "bool"
+                }, 
+                {
+                    "name": "FutureWeeks",
+                    "description": "The number of weeks into the future that agents can see schedules in this management unit. 0 means current week",
+                    "required": true,
+                    "dataType": "int"
                 }
             ]
         }, 
@@ -153706,8 +154713,7 @@
                 }, 
                 {
                     "name": "ToAddress",
-                    "description": "The messaging address of the recipient of the message. For an SMS messenger type, the phone number address must be in E.164 format. E.g. +13175555555 or +34234234234. For WhatsApp messenger type, use a WhatsApp ID of a phone number. E.g for a E.164 formatted phone number `+13175555555`, a WhatsApp ID would be 13175555555",
-                    "required": true,
+                    "description": "The messaging address of the recipient of the message. For an SMS messenger type, the phone number address must be in E.164 format. E.g. +13175555555 or +34234234234. For WhatsApp messenger type, use a WhatsApp ID of a phone number. E.g for a E.164 formatted phone number `+13175555555`, a WhatsApp ID would be 13175555555.",
                     "dataType": "string"
                 }, 
                 {
@@ -153715,7 +154721,7 @@
                     "description": "The recipient messaging address messenger type.",
                     "required": true,
                     "dataType": "string",
-                    "enum": ["sms", "whatsapp", "open"]
+                    "enum": ["sms", "whatsapp", "open", "webmessaging"]
                 }, 
                 {
                     "name": "TextBody",
@@ -153761,7 +154767,7 @@
                     "name": "MessengerType",
                     "description": "Type of messenger.",
                     "dataType": "string",
-                    "enum": ["sms", "whatsapp", "open"]
+                    "enum": ["sms", "whatsapp", "open", "webmessaging"]
                 }, 
                 {
                     "name": "TextBody",
@@ -158520,12 +159526,6 @@
                     "dataType": "Socialmediaqueryfilter"
                 }, 
                 {
-                    "name": "TopicIds",
-                    "description": "List of topicIds to query in",
-                    "readOnly": true,
-                    "dataType": "[]string"
-                }, 
-                {
                     "name": "PageSize",
                     "description": "The number of results per page",
                     "dataType": "int"
@@ -158829,6 +159829,35 @@
                 {
                     "name": "P99",
                     "dataType": "int"
+                }
+            ]
+        }, 
+        "socialnumericrange": { 
+            "properties": [
+                {
+                    "name": "Eq",
+                    "description": "Equals to",
+                    "dataType": "float32"
+                }, 
+                {
+                    "name": "Gt",
+                    "description": "Greater than",
+                    "dataType": "float32"
+                }, 
+                {
+                    "name": "Gte",
+                    "description": "Greater than or equal to",
+                    "dataType": "float32"
+                }, 
+                {
+                    "name": "Lt",
+                    "description": "Less than",
+                    "dataType": "float32"
+                }, 
+                {
+                    "name": "Lte",
+                    "description": "Less than or equal to",
+                    "dataType": "float32"
                 }
             ]
         }, 
@@ -159810,7 +160839,7 @@
                 }, 
                 {
                     "name": "VarCase",
-                    "description": "The parent case of the Stage.",
+                    "description": "The parent Case of the Stage.",
                     "dataType": "Casereference"
                 }
             ]
@@ -160448,7 +161477,7 @@
                     "description": "The namespace for the status change",
                     "readOnly": true,
                     "dataType": "string",
-                    "enum": ["webchat", "webhooks", "agent.assistant", "agentic.virtual.agents", "analytics.agents", "analytics.alerting", "analytics.data.extraction", "analytics", "analytics.realtime", "analytics.reporting.settings", "anomaly.detection", "architect", "audiohook", "audiohook.monitor", "audit", "auth.api", "authorization", "automation.testing", "bots", "bots.voice", "business.rules", "callback", "case.management", "cobrowse", "content.management", "conversation", "copilot", "dataactions", "datatables", "directory", "dsar", "email", "employee.engagement", "event.orchestration", "external.contacts", "external.events.data.ingestion", "gamification", "gcv", "gdpr", "groups", "guides", "historical.adherence", "infrastructureascode", "integrations", "intent.miner", "internal.messaging", "journey", "knowledge", "language.understanding", "learning", "limit.registry", "marketplace", "mcp", "media.communications", "messaging", "micro.frontend", "notifications", "onboarding", "outbound", "platform.api", "predictive.routing", "presence", "quality", "recording", "response.management", "routing", "scim", "screen.monitoring", "search", "secondary.automation.testing", "skills", "social.media", "speech.and.text.analytics", "speech.integration", "supportability", "task.management", "telephony.configuration", "usage", "users", "users.rules", "voice.transcription", "web.deployments", "web.messaging", "workforce.management.agent.availability", "workforce.management.forecast", "workforce.management", "workforce.management.self.schedule", "workforce.management.shift.trading", "system"]
+                    "enum": ["webchat", "webhooks", "agent.assistant", "agentic.virtual.agents", "analytics.agents", "analytics.alerting", "analytics.data.extraction", "analytics", "analytics.realtime", "analytics.reporting.settings", "anomaly.detection", "architect", "audiohook", "audiohook.monitor", "audit", "auth.api", "authorization", "automation.testing", "bots", "bots.voice", "business.rules", "callback", "case.management", "cobrowse", "content.management", "conversation", "copilot", "dataactions", "datatables", "directory", "dsar", "email", "employee.engagement", "event.orchestration", "external.contacts", "external.events.data.ingestion", "gamification", "gcv", "gdpr", "groups", "guides", "historical.adherence", "infrastructureascode", "integrations", "intent.miner", "internal.messaging", "journey", "knowledge", "language.understanding", "learning", "limit.registry", "marketplace", "mcp", "media.communications", "messaging", "micro.frontend", "notifications", "onboarding", "outbound", "platform.api", "predictive.routing", "presence", "quality", "recording", "response.management", "routing", "scim", "screen.monitoring", "search", "secondary.automation.testing", "skills", "social.media", "speech.and.text.analytics", "speech.integration", "supportability", "task.management", "telephony.configuration", "usage", "users", "users.rules", "voice.transcription", "web.deployments", "web.messaging", "workforce.management.agent.availability", "workforce.management.forecast", "workforce.management", "workforce.management.scheduling.preferences", "workforce.management.self.schedule", "workforce.management.shift.trading", "system"]
                 }, 
                 {
                     "name": "Message",
@@ -160467,6 +161496,18 @@
         }, 
         "statusinfo": { 
             "properties": [
+                {
+                    "name": "Code",
+                    "description": "Status code",
+                    "readOnly": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Message",
+                    "description": "Status Message",
+                    "readOnly": true,
+                    "dataType": "string"
+                }
             ]
         }, 
         "step": { 
@@ -160525,7 +161566,7 @@
                 }, 
                 {
                     "name": "Stage",
-                    "description": "The parent stage of the step.",
+                    "description": "The parent Stage of the Step.",
                     "dataType": "Stagereference"
                 }, 
                 {
@@ -160536,7 +161577,7 @@
                 }, 
                 {
                     "name": "VarCase",
-                    "description": "The parent case of the step.",
+                    "description": "The parent Case of the Step.",
                     "dataType": "Casereference"
                 }
             ]
@@ -160606,13 +161647,13 @@
                 }, 
                 {
                     "name": "ActivityType",
-                    "description": "The activityType of the Stepplan.",
+                    "description": "The activity type of the Stepplan.",
                     "dataType": "string",
                     "enum": ["Unknown", "None", "Workitem"]
                 }, 
                 {
                     "name": "WorkitemSettings",
-                    "description": "The workitemSettings of the Stepplan.",
+                    "description": "The Workitem settings of the Stepplan.",
                     "dataType": "Workitemsettingsresponse"
                 }, 
                 {
@@ -160647,7 +161688,7 @@
             "properties": [
                 {
                     "name": "Id",
-                    "description": "The id of the worktype.",
+                    "description": "The Worktype ID.",
                     "dataType": "string"
                 }, 
                 {
@@ -160676,12 +161717,12 @@
                 }, 
                 {
                     "name": "WorkitemSettings",
-                    "description": "The workitemSettings of the Stepplan.",
+                    "description": "The Workitem settings of the Stepplan.",
                     "dataType": "Workitemsettings"
                 }, 
                 {
                     "name": "ActivityType",
-                    "description": "The activityType of the Stepplan.",
+                    "description": "The activity type of the Stepplan.",
                     "dataType": "string",
                     "enum": ["Unknown", "None", "Workitem"]
                 }
@@ -164827,12 +165868,12 @@
                 }, 
                 {
                     "name": "DateCreated",
-                    "description": "The job creation date. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z",
+                    "description": "The Job creation date. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z",
                     "dataType": "time.Time"
                 }, 
                 {
                     "name": "DateModified",
-                    "description": "The job modification date. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z",
+                    "description": "The Job modification date. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z",
                     "dataType": "time.Time"
                 }, 
                 {
@@ -165875,6 +166916,30 @@
                 {
                     "name": "Text",
                     "description": "The third party suggestion text.",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Title",
+                    "description": "The title of the suggestion.",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Sources",
+                    "description": "A list of source references attributing the suggestion to its origin sources.",
+                    "dataType": "[]Thirdpartysuggestionsource"
+                }
+            ]
+        }, 
+        "thirdpartysuggestionsource": { 
+            "properties": [
+                {
+                    "name": "Name",
+                    "description": "The third party source name.",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Url",
+                    "description": "The link to the source document or page.",
                     "dataType": "string"
                 }
             ]
@@ -172267,6 +173332,17 @@
                     "name": "Outputs",
                     "description": "The output columns of the decision table.",
                     "dataType": "[]Decisiontableoutputcolumnrequest"
+                }
+            ]
+        }, 
+        "updatedecisiontableimportjobrequest": { 
+            "properties": [
+                {
+                    "name": "Status",
+                    "description": "Updated status for the job",
+                    "required": true,
+                    "dataType": "string",
+                    "enum": ["Uploading", "Processing", "Complete", "Failed", "Cancelled"]
                 }
             ]
         }, 
@@ -180851,6 +181927,25 @@
                 }
             ]
         }, 
+        "v3sourcetagfilter": { 
+            "properties": [
+                {
+                    "name": "AllOf",
+                    "description": "Tags that must all be present (AND).",
+                    "dataType": "[]string"
+                }, 
+                {
+                    "name": "AnyOfGroups",
+                    "description": "OR groups ANDed together; within each group at least one tag must match.",
+                    "dataType": "[][]string"
+                }, 
+                {
+                    "name": "NoneOf",
+                    "description": "Tags that must not be present on matching chunks.",
+                    "dataType": "[]string"
+                }
+            ]
+        }, 
         "v3sourceupdaterequest": { 
             "properties": [
                 {
@@ -180983,6 +182078,28 @@
                 }
             ]
         }, 
+        "v3synchronizationref": { 
+            "properties": [
+                {
+                    "name": "Id",
+                    "description": "Synchronization Id.",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Source",
+                    "description": "Source.",
+                    "required": true,
+                    "dataType": "V3sourceref"
+                }, 
+                {
+                    "name": "SelfUri",
+                    "description": "The URI for this object",
+                    "readOnly": true,
+                    "dataType": "string"
+                }
+            ]
+        }, 
         "v3synchronizationstatistics": { 
             "properties": [
                 {
@@ -181054,6 +182171,26 @@
         "v3synchronizationuploadurlresponse": { 
             "properties": [
                 {
+                    "name": "FileId",
+                    "description": "The unique identifier for the upload object.",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "FileName",
+                    "description": "Name of the uploaded file.",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Metadata",
+                    "description": "The metadata of the uploaded file",
+                    "dataType": "V3synchronizationuploadmetadata"
+                }, 
+                {
+                    "name": "Synchronization",
+                    "description": "The synchronization of the file upload.",
+                    "dataType": "V3synchronizationref"
+                }, 
+                {
                     "name": "Url",
                     "description": "Pre-signed URL to PUT the file to.",
                     "dataType": "string"
@@ -181062,6 +182199,12 @@
                     "name": "Headers",
                     "description": "Required headers when uploading a file through PUT request to the URL.",
                     "dataType": "map[string]string"
+                }, 
+                {
+                    "name": "SelfUri",
+                    "description": "The URI for this object",
+                    "readOnly": true,
+                    "dataType": "string"
                 }
             ]
         }, 
@@ -182867,6 +184010,16 @@
                     "name": "SocialSourceTypes",
                     "description": "A set of Source Types for social filtering",
                     "dataType": "[]string"
+                }, 
+                {
+                    "name": "SocialFollowerRange",
+                    "description": "The follower range used to filter the view",
+                    "dataType": "Socialnumericrange"
+                }, 
+                {
+                    "name": "SocialVerificationStatus",
+                    "description": "Filter to indicate if the posts from verified user",
+                    "dataType": "bool"
                 }, 
                 {
                     "name": "SessionExpired",
@@ -191381,6 +192534,34 @@
                     "name": "Header",
                     "description": "Header for the message in the standard WhatsApp messages channel",
                     "dataType": "Messageheader"
+                }, 
+                {
+                    "name": "IntegrationId",
+                    "description": "WhatsApp integration ID for whatsApp carousels",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Category",
+                    "description": "Category of whatsApp carousels template.",
+                    "dataType": "string",
+                    "enum": ["marketing"]
+                }, 
+                {
+                    "name": "TemplateStatus",
+                    "description": "Template status of whatsApp carousels template.",
+                    "readOnly": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "StatusInfo",
+                    "description": "Status information about the template",
+                    "readOnly": true,
+                    "dataType": "Statusinfo"
+                }, 
+                {
+                    "name": "Carousel",
+                    "description": "Definition for whatsApp carousels template.",
+                    "dataType": "Carousel"
                 }
             ]
         }, 
@@ -194244,7 +195425,7 @@
             "properties": [
                 {
                     "name": "Worktype",
-                    "description": "The worktype information for the workitem settings.",
+                    "description": "The Worktype information for the Workitem settings.",
                     "dataType": "Stepplansworktypereference"
                 }
             ]
@@ -207515,6 +208696,42 @@
                 }
             ]
         },
+        "DELETE /api/v2/businessrules/decisiontables/{tableId}/exports/{exportJobId}": {
+            "className": "BusinessRulesApi",
+            "operationId": "deletebusinessrulesdecisiontableexport",
+            "functionName": "DeleteBusinessrulesDecisiontableExport",
+            "signature": "DeleteBusinessrulesDecisiontableExport(tableId, exportJobId)",
+            "parameters": [
+                {
+                    "name": "tableId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "exportJobId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ]
+        },
+        "DELETE /api/v2/businessrules/decisiontables/{tableId}/imports/{importJobId}": {
+            "className": "BusinessRulesApi",
+            "operationId": "deletebusinessrulesdecisiontableimport",
+            "functionName": "DeleteBusinessrulesDecisiontableImport",
+            "signature": "DeleteBusinessrulesDecisiontableImport(tableId, importJobId)",
+            "parameters": [
+                {
+                    "name": "tableId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "importJobId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ]
+        },
         "DELETE /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}": {
             "className": "BusinessRulesApi",
             "operationId": "deletebusinessrulesdecisiontableversion",
@@ -207582,6 +208799,92 @@
                 }
             ],
             "return": "Decisiontable"
+        },
+        "GET /api/v2/businessrules/decisiontables/{tableId}/exports/{exportJobId}": {
+            "className": "BusinessRulesApi",
+            "operationId": "getbusinessrulesdecisiontableexport",
+            "functionName": "GetBusinessrulesDecisiontableExport",
+            "signature": "GetBusinessrulesDecisiontableExport(tableId, exportJobId)",
+            "parameters": [
+                {
+                    "name": "tableId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "exportJobId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ],
+            "return": "Decisiontableexportjob"
+        },
+        "GET /api/v2/businessrules/decisiontables/{tableId}/exports": {
+            "className": "BusinessRulesApi",
+            "operationId": "getbusinessrulesdecisiontableexports",
+            "functionName": "GetBusinessrulesDecisiontableExports",
+            "signature": "GetBusinessrulesDecisiontableExports(tableId, after, pageSize)",
+            "parameters": [
+                {
+                    "name": "tableId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "after",
+                    "type": "string",
+                    "required": "false"
+                },
+                {
+                    "name": "pageSize",
+                    "type": "string",
+                    "required": "false"
+                }
+            ],
+            "return": "Decisiontableexportjoblisting"
+        },
+        "GET /api/v2/businessrules/decisiontables/{tableId}/imports/{importJobId}": {
+            "className": "BusinessRulesApi",
+            "operationId": "getbusinessrulesdecisiontableimport",
+            "functionName": "GetBusinessrulesDecisiontableImport",
+            "signature": "GetBusinessrulesDecisiontableImport(tableId, importJobId)",
+            "parameters": [
+                {
+                    "name": "tableId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "importJobId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ],
+            "return": "Decisiontableimportjob"
+        },
+        "GET /api/v2/businessrules/decisiontables/{tableId}/imports": {
+            "className": "BusinessRulesApi",
+            "operationId": "getbusinessrulesdecisiontableimports",
+            "functionName": "GetBusinessrulesDecisiontableImports",
+            "signature": "GetBusinessrulesDecisiontableImports(tableId, after, pageSize)",
+            "parameters": [
+                {
+                    "name": "tableId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "after",
+                    "type": "string",
+                    "required": "false"
+                },
+                {
+                    "name": "pageSize",
+                    "type": "string",
+                    "required": "false"
+                }
+            ],
+            "return": "Decisiontableimportjoblisting"
         },
         "GET /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}": {
             "className": "BusinessRulesApi",
@@ -207815,6 +209118,30 @@
             ],
             "return": "Decisiontable"
         },
+        "PATCH /api/v2/businessrules/decisiontables/{tableId}/imports/{importJobId}": {
+            "className": "BusinessRulesApi",
+            "operationId": "patchbusinessrulesdecisiontableimport",
+            "functionName": "PatchBusinessrulesDecisiontableImport",
+            "signature": "PatchBusinessrulesDecisiontableImport(tableId, importJobId, body)",
+            "parameters": [
+                {
+                    "name": "tableId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "importJobId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Updatedecisiontableimportjobrequest",
+                    "required": "true"
+                }
+            ],
+            "return": "Decisiontableimportjob"
+        },
         "PATCH /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}": {
             "className": "BusinessRulesApi",
             "operationId": "patchbusinessrulesdecisiontableversion",
@@ -207857,6 +209184,44 @@
                 }
             ],
             "return": "Decisiontableexecutionresponse"
+        },
+        "POST /api/v2/businessrules/decisiontables/{tableId}/exports": {
+            "className": "BusinessRulesApi",
+            "operationId": "postbusinessrulesdecisiontableexports",
+            "functionName": "PostBusinessrulesDecisiontableExports",
+            "signature": "PostBusinessrulesDecisiontableExports(tableId, body)",
+            "parameters": [
+                {
+                    "name": "tableId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Decisiontableexportjobrequest",
+                    "required": "true"
+                }
+            ],
+            "return": "Decisiontableexportjob"
+        },
+        "POST /api/v2/businessrules/decisiontables/{tableId}/imports": {
+            "className": "BusinessRulesApi",
+            "operationId": "postbusinessrulesdecisiontableimports",
+            "functionName": "PostBusinessrulesDecisiontableImports",
+            "signature": "PostBusinessrulesDecisiontableImports(tableId, body)",
+            "parameters": [
+                {
+                    "name": "tableId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Createdecisiontableimportjobrequest",
+                    "required": "true"
+                }
+            ],
+            "return": "Decisiontableimportjob"
         },
         "POST /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}/copy": {
             "className": "BusinessRulesApi",
@@ -207929,6 +209294,77 @@
                 }
             ],
             "return": "Decisiontablerow"
+        },
+        "POST /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}/rows/bulk/add": {
+            "className": "BusinessRulesApi",
+            "operationId": "postbusinessrulesdecisiontableversionrowsbulkadd",
+            "functionName": "PostBusinessrulesDecisiontableVersionRowsBulkAdd",
+            "signature": "PostBusinessrulesDecisiontableVersionRowsBulkAdd(tableId, tableVersion, body)",
+            "parameters": [
+                {
+                    "name": "tableId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "tableVersion",
+                    "type": "int",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Bulkadddecisiontablerowsrequest",
+                    "required": "true"
+                }
+            ],
+            "return": "Bulkadddecisiontablerowsresponse"
+        },
+        "POST /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}/rows/bulk/remove": {
+            "className": "BusinessRulesApi",
+            "operationId": "postbusinessrulesdecisiontableversionrowsbulkremove",
+            "functionName": "PostBusinessrulesDecisiontableVersionRowsBulkRemove",
+            "signature": "PostBusinessrulesDecisiontableVersionRowsBulkRemove(tableId, tableVersion, body)",
+            "parameters": [
+                {
+                    "name": "tableId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "tableVersion",
+                    "type": "int",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Bulkdeletedecisiontablerowsrequest",
+                    "required": "true"
+                }
+            ]
+        },
+        "POST /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}/rows/bulk/update": {
+            "className": "BusinessRulesApi",
+            "operationId": "postbusinessrulesdecisiontableversionrowsbulkupdate",
+            "functionName": "PostBusinessrulesDecisiontableVersionRowsBulkUpdate",
+            "signature": "PostBusinessrulesDecisiontableVersionRowsBulkUpdate(tableId, tableVersion, body)",
+            "parameters": [
+                {
+                    "name": "tableId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "tableVersion",
+                    "type": "int",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Bulkupdatedecisiontablerowsrequest",
+                    "required": "true"
+                }
+            ],
+            "return": "Bulkupdatedecisiontablerowsresponse"
         },
         "POST /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}/rows/search": {
             "className": "BusinessRulesApi",
@@ -208144,6 +209580,25 @@
             "parameters": [
                 {
                     "name": "caseplanId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ],
+            "return": "interface{}"
+        },
+        "DELETE /api/v2/casemanagement/caseplans/{caseplanId}/dataschemas/{schemaKeyName}": {
+            "className": "CaseManagementApi",
+            "operationId": "deletecasemanagementcaseplandataschema",
+            "functionName": "DeleteCasemanagementCaseplanDataschema",
+            "signature": "DeleteCasemanagementCaseplanDataschema(caseplanId, schemaKeyName)",
+            "parameters": [
+                {
+                    "name": "caseplanId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "schemaKeyName",
                     "type": "string",
                     "required": "true"
                 }
@@ -208784,7 +210239,7 @@
                 {
                     "name": "body",
                     "type": "Caseassociationcreate",
-                    "required": "false"
+                    "required": "true"
                 }
             ],
             "return": "Caseassociation"
@@ -208802,6 +210257,25 @@
                 }
             ],
             "return": "Terminatejob"
+        },
+        "POST /api/v2/casemanagement/caseplans/{caseplanId}/dataschemas": {
+            "className": "CaseManagementApi",
+            "operationId": "postcasemanagementcaseplandataschemas",
+            "functionName": "PostCasemanagementCaseplanDataschemas",
+            "signature": "PostCasemanagementCaseplanDataschemas(caseplanId, body)",
+            "parameters": [
+                {
+                    "name": "caseplanId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Caseplandataschemarequest",
+                    "required": "true"
+                }
+            ],
+            "return": "Caseplandataschema"
         },
         "POST /api/v2/casemanagement/caseplans/{caseplanId}/publish": {
             "className": "CaseManagementApi",
@@ -208882,10 +210356,34 @@
                 {
                     "name": "body",
                     "type": "Caseassociationquery",
-                    "required": "false"
+                    "required": "true"
                 }
             ],
             "return": "Caseassociationqueryentitylisting"
+        },
+        "PUT /api/v2/casemanagement/caseplans/{caseplanId}/dataschemas/{schemaKeyName}": {
+            "className": "CaseManagementApi",
+            "operationId": "putcasemanagementcaseplandataschema",
+            "functionName": "PutCasemanagementCaseplanDataschema",
+            "signature": "PutCasemanagementCaseplanDataschema(caseplanId, schemaKeyName, body)",
+            "parameters": [
+                {
+                    "name": "caseplanId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "schemaKeyName",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Caseplandataschemarequest",
+                    "required": "true"
+                }
+            ],
+            "return": "Caseplandataschema"
         },
         "PUT /api/v2/casemanagement/caseplans/{caseplanId}/intakesettings": {
             "className": "CaseManagementApi",
@@ -217809,7 +219307,7 @@
                     "required": "false"
                 }
             ],
-            "return": "Exportlisting"
+            "return": "Contactsexportlisting"
         },
         "GET /api/v2/externalcontacts/contacts/schemas/{schemaId}": {
             "className": "ExternalContactsApi",
@@ -241890,6 +243388,19 @@
                 }
             ]
         },
+        "DELETE /api/v2/routing/email/setting/{emailSettingId}": {
+            "className": "RoutingApi",
+            "operationId": "deleteroutingemailsettingemailsettingid",
+            "functionName": "DeleteRoutingEmailSettingEmailSettingId",
+            "signature": "DeleteRoutingEmailSettingEmailSettingId(emailSettingId)",
+            "parameters": [
+                {
+                    "name": "emailSettingId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ]
+        },
         "DELETE /api/v2/routing/languages/{languageId}": {
             "className": "RoutingApi",
             "operationId": "deleteroutinglanguage",
@@ -242511,6 +244022,39 @@
                 }
             ],
             "return": "Outbounddomainentitylisting"
+        },
+        "GET /api/v2/routing/email/setting": {
+            "className": "RoutingApi",
+            "operationId": "getroutingemailsetting",
+            "functionName": "GetRoutingEmailSetting",
+            "signature": "GetRoutingEmailSetting(pageSize, pageNumber)",
+            "parameters": [
+                {
+                    "name": "pageSize",
+                    "type": "int",
+                    "required": "false"
+                },
+                {
+                    "name": "pageNumber",
+                    "type": "int",
+                    "required": "false"
+                }
+            ],
+            "return": "Emailsettingentitylisting"
+        },
+        "GET /api/v2/routing/email/setting/{emailSettingId}": {
+            "className": "RoutingApi",
+            "operationId": "getroutingemailsettingemailsettingid",
+            "functionName": "GetRoutingEmailSettingEmailSettingId",
+            "signature": "GetRoutingEmailSettingEmailSettingId(emailSettingId)",
+            "parameters": [
+                {
+                    "name": "emailSettingId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ],
+            "return": "Emailsetting"
         },
         "GET /api/v2/routing/email/setup": {
             "className": "RoutingApi",
@@ -244029,6 +245573,25 @@
             ],
             "return": "Outbounddomain"
         },
+        "PATCH /api/v2/routing/email/setting/{emailSettingId}": {
+            "className": "RoutingApi",
+            "operationId": "patchroutingemailsettingemailsettingid",
+            "functionName": "PatchRoutingEmailSettingEmailSettingId",
+            "signature": "PatchRoutingEmailSettingEmailSettingId(emailSettingId, body)",
+            "parameters": [
+                {
+                    "name": "emailSettingId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Emailsetting",
+                    "required": "true"
+                }
+            ],
+            "return": "Emailsetting"
+        },
         "PATCH /api/v2/routing/predictors/{predictorId}": {
             "className": "RoutingApi",
             "operationId": "patchroutingpredictor",
@@ -244556,6 +246119,20 @@
                 }
             ],
             "return": "Emailoutbounddomainresult"
+        },
+        "POST /api/v2/routing/email/setting": {
+            "className": "RoutingApi",
+            "operationId": "postroutingemailsetting",
+            "functionName": "PostRoutingEmailSetting",
+            "signature": "PostRoutingEmailSetting(body)",
+            "parameters": [
+                {
+                    "name": "body",
+                    "type": "Emailsetting",
+                    "required": "true"
+                }
+            ],
+            "return": "Emailsetting"
         },
         "POST /api/v2/routing/languages": {
             "className": "RoutingApi",
@@ -251021,6 +252598,19 @@
             "return": "Teamssearchresponse"
         }
     , 
+        "DELETE /api/v2/telephony/organization/link/{targetOrganizationId}": {
+            "className": "TelephonyApi",
+            "operationId": "deletetelephonyorganizationlinktargetorganizationid",
+            "functionName": "DeleteTelephonyOrganizationLinkTargetOrganizationId",
+            "signature": "DeleteTelephonyOrganizationLinkTargetOrganizationId(targetOrganizationId)",
+            "parameters": [
+                {
+                    "name": "targetOrganizationId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ]
+        },
         "GET /api/v2/telephony/agents/{agentId}/greetings": {
             "className": "TelephonyApi",
             "operationId": "gettelephonyagentgreetings",
@@ -251064,6 +252654,66 @@
             "signature": "GetTelephonyMediaregions()",
             
             "return": "Mediaregions"
+        },
+        "GET /api/v2/telephony/numbers/routing": {
+            "className": "TelephonyApi",
+            "operationId": "gettelephonynumbersrouting",
+            "functionName": "GetTelephonyNumbersRouting",
+            "signature": "GetTelephonyNumbersRouting(before, after, pageSize, numberId, activeRoutingOrganizationId, ownerOrganizationId, status)",
+            "parameters": [
+                {
+                    "name": "before",
+                    "type": "string",
+                    "required": "false"
+                },
+                {
+                    "name": "after",
+                    "type": "string",
+                    "required": "false"
+                },
+                {
+                    "name": "pageSize",
+                    "type": "string",
+                    "required": "false"
+                },
+                {
+                    "name": "numberId",
+                    "type": "string",
+                    "required": "false"
+                },
+                {
+                    "name": "activeRoutingOrganizationId",
+                    "type": "string",
+                    "required": "false"
+                },
+                {
+                    "name": "ownerOrganizationId",
+                    "type": "string",
+                    "required": "false"
+                },
+                {
+                    "name": "status",
+                    "type": "string",
+                    "required": "false"
+                }
+            ],
+            "return": "Numberroutinglisting"
+        },
+        "GET /api/v2/telephony/organization/link": {
+            "className": "TelephonyApi",
+            "operationId": "gettelephonyorganizationlink",
+            "functionName": "GetTelephonyOrganizationLink",
+            "signature": "GetTelephonyOrganizationLink()",
+            
+            "return": "[]Organizationlinkresponse"
+        },
+        "GET /api/v2/telephony/organization/link/regions": {
+            "className": "TelephonyApi",
+            "operationId": "gettelephonyorganizationlinkregions",
+            "functionName": "GetTelephonyOrganizationLinkRegions",
+            "signature": "GetTelephonyOrganizationLinkRegions()",
+            
+            "return": "[]Regionresponse"
         },
         "GET /api/v2/telephony/settings": {
             "className": "TelephonyApi",
@@ -251158,6 +252808,77 @@
                 }
             ],
             "return": "Signedurlresponse"
+        },
+        "PATCH /api/v2/telephony/organization/link/approve/{requestingOrganizationId}": {
+            "className": "TelephonyApi",
+            "operationId": "patchtelephonyorganizationlinkapproverequestingorganizationid",
+            "functionName": "PatchTelephonyOrganizationLinkApproveRequestingOrganizationId",
+            "signature": "PatchTelephonyOrganizationLinkApproveRequestingOrganizationId(requestingOrganizationId, body)",
+            "parameters": [
+                {
+                    "name": "requestingOrganizationId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Organizationlinkapprovalrequest",
+                    "required": "true"
+                }
+            ]
+        },
+        "POST /api/v2/telephony/numbers/routing": {
+            "className": "TelephonyApi",
+            "operationId": "posttelephonynumbersrouting",
+            "functionName": "PostTelephonyNumbersRouting",
+            "signature": "PostTelephonyNumbersRouting(body)",
+            "parameters": [
+                {
+                    "name": "body",
+                    "type": "[]Numberroutingrequest",
+                    "required": "true"
+                }
+            ]
+        },
+        "POST /api/v2/telephony/numbers/routing/all": {
+            "className": "TelephonyApi",
+            "operationId": "posttelephonynumbersroutingall",
+            "functionName": "PostTelephonyNumbersRoutingAll",
+            "signature": "PostTelephonyNumbersRoutingAll(body)",
+            "parameters": [
+                {
+                    "name": "body",
+                    "type": "Disasterrecoveryallroutingrequest",
+                    "required": "true"
+                }
+            ]
+        },
+        "POST /api/v2/telephony/numbers/routing/reset": {
+            "className": "TelephonyApi",
+            "operationId": "posttelephonynumbersroutingreset",
+            "functionName": "PostTelephonyNumbersRoutingReset",
+            "signature": "PostTelephonyNumbersRoutingReset(body)",
+            "parameters": [
+                {
+                    "name": "body",
+                    "type": "Numberroutingresetorganizationrequest",
+                    "required": "true"
+                }
+            ]
+        },
+        "POST /api/v2/telephony/organization/link": {
+            "className": "TelephonyApi",
+            "operationId": "posttelephonyorganizationlink",
+            "functionName": "PostTelephonyOrganizationLink",
+            "signature": "PostTelephonyOrganizationLink(body)",
+            "parameters": [
+                {
+                    "name": "body",
+                    "type": "Createorganizationlink",
+                    "required": "true"
+                }
+            ],
+            "return": "Organizationlink"
         },
         "POST /api/v2/telephony/siptraces/download": {
             "className": "TelephonyApi",
@@ -259632,7 +261353,7 @@
             "className": "WorkforceManagementApi",
             "operationId": "getworkforcemanagementbusinessunittimeoffplans",
             "functionName": "GetWorkforcemanagementBusinessunitTimeoffplans",
-            "signature": "GetWorkforcemanagementBusinessunitTimeoffplans(businessUnitId, managementUnitId, forceDownloadService)",
+            "signature": "GetWorkforcemanagementBusinessunitTimeoffplans(businessUnitId, managementUnitId, forceDownloadService, expand)",
             "parameters": [
                 {
                     "name": "businessUnitId",
@@ -259647,6 +261368,11 @@
                 {
                     "name": "forceDownloadService",
                     "type": "bool",
+                    "required": "false"
+                },
+                {
+                    "name": "expand",
+                    "type": "[]string",
                     "required": "false"
                 }
             ],
@@ -259839,7 +261565,7 @@
             "className": "WorkforceManagementApi",
             "operationId": "getworkforcemanagementbusinessunitweekschedules",
             "functionName": "GetWorkforcemanagementBusinessunitWeekSchedules",
-            "signature": "GetWorkforcemanagementBusinessunitWeekSchedules(businessUnitId, weekId, includeOnlyPublished, expand)",
+            "signature": "GetWorkforcemanagementBusinessunitWeekSchedules(businessUnitId, weekId, earliestWeekDate, latestWeekDate, includeOnlyPublished, expand)",
             "parameters": [
                 {
                     "name": "businessUnitId",
@@ -259850,6 +261576,16 @@
                     "name": "weekId",
                     "type": "string",
                     "required": "true"
+                },
+                {
+                    "name": "earliestWeekDate",
+                    "type": "time.Time",
+                    "required": "false"
+                },
+                {
+                    "name": "latestWeekDate",
+                    "type": "time.Time",
+                    "required": "false"
                 },
                 {
                     "name": "includeOnlyPublished",
@@ -263847,7 +265583,7 @@
             "className": "WorkforceManagementApi",
             "operationId": "postworkforcemanagementmanagementunitusertimeoffrequestsestimate",
             "functionName": "PostWorkforcemanagementManagementunitUserTimeoffrequestsEstimate",
-            "signature": "PostWorkforcemanagementManagementunitUserTimeoffrequestsEstimate(managementUnitId, userId, body)",
+            "signature": "PostWorkforcemanagementManagementunitUserTimeoffrequestsEstimate(managementUnitId, userId, body, includeOnly)",
             "parameters": [
                 {
                     "name": "managementUnitId",
@@ -263863,6 +265599,11 @@
                     "name": "body",
                     "type": "Estimateavailabletimeoffrequest",
                     "required": "true"
+                },
+                {
+                    "name": "includeOnly",
+                    "type": "string",
+                    "required": "false"
                 }
             ],
             "return": "Estimateavailabletimeoffresponse"
@@ -264339,12 +266080,17 @@
             "className": "WorkforceManagementApi",
             "operationId": "postworkforcemanagementtimeoffrequestsestimate",
             "functionName": "PostWorkforcemanagementTimeoffrequestsEstimate",
-            "signature": "PostWorkforcemanagementTimeoffrequestsEstimate(body)",
+            "signature": "PostWorkforcemanagementTimeoffrequestsEstimate(body, includeOnly)",
             "parameters": [
                 {
                     "name": "body",
                     "type": "Estimateavailabletimeoffrequest",
                     "required": "true"
+                },
+                {
+                    "name": "includeOnly",
+                    "type": "string",
+                    "required": "false"
                 }
             ],
             "return": "Estimateavailabletimeoffresponse"
@@ -273206,6 +274952,42 @@
                 }
             ]
         },
+        "DELETE /api/v2/businessrules/decisiontables/{tableId}/exports/{exportJobId}": {
+            "className": "BusinessRulesApi",
+            "operationId": "deletebusinessrulesdecisiontableexport",
+            "functionName": "DeleteBusinessrulesDecisiontableExport",
+            "signature": "DeleteBusinessrulesDecisiontableExport(tableId, exportJobId)",
+            "parameters": [
+                {
+                    "name": "tableId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "exportJobId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ]
+        },
+        "DELETE /api/v2/businessrules/decisiontables/{tableId}/imports/{importJobId}": {
+            "className": "BusinessRulesApi",
+            "operationId": "deletebusinessrulesdecisiontableimport",
+            "functionName": "DeleteBusinessrulesDecisiontableImport",
+            "signature": "DeleteBusinessrulesDecisiontableImport(tableId, importJobId)",
+            "parameters": [
+                {
+                    "name": "tableId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "importJobId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ]
+        },
         "DELETE /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}": {
             "className": "BusinessRulesApi",
             "operationId": "deletebusinessrulesdecisiontableversion",
@@ -273273,6 +275055,92 @@
                 }
             ],
             "return": "Decisiontable"
+        },
+        "GET /api/v2/businessrules/decisiontables/{tableId}/exports/{exportJobId}": {
+            "className": "BusinessRulesApi",
+            "operationId": "getbusinessrulesdecisiontableexport",
+            "functionName": "GetBusinessrulesDecisiontableExport",
+            "signature": "GetBusinessrulesDecisiontableExport(tableId, exportJobId)",
+            "parameters": [
+                {
+                    "name": "tableId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "exportJobId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ],
+            "return": "Decisiontableexportjob"
+        },
+        "GET /api/v2/businessrules/decisiontables/{tableId}/exports": {
+            "className": "BusinessRulesApi",
+            "operationId": "getbusinessrulesdecisiontableexports",
+            "functionName": "GetBusinessrulesDecisiontableExports",
+            "signature": "GetBusinessrulesDecisiontableExports(tableId, after, pageSize)",
+            "parameters": [
+                {
+                    "name": "tableId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "after",
+                    "type": "string",
+                    "required": "false"
+                },
+                {
+                    "name": "pageSize",
+                    "type": "string",
+                    "required": "false"
+                }
+            ],
+            "return": "Decisiontableexportjoblisting"
+        },
+        "GET /api/v2/businessrules/decisiontables/{tableId}/imports/{importJobId}": {
+            "className": "BusinessRulesApi",
+            "operationId": "getbusinessrulesdecisiontableimport",
+            "functionName": "GetBusinessrulesDecisiontableImport",
+            "signature": "GetBusinessrulesDecisiontableImport(tableId, importJobId)",
+            "parameters": [
+                {
+                    "name": "tableId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "importJobId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ],
+            "return": "Decisiontableimportjob"
+        },
+        "GET /api/v2/businessrules/decisiontables/{tableId}/imports": {
+            "className": "BusinessRulesApi",
+            "operationId": "getbusinessrulesdecisiontableimports",
+            "functionName": "GetBusinessrulesDecisiontableImports",
+            "signature": "GetBusinessrulesDecisiontableImports(tableId, after, pageSize)",
+            "parameters": [
+                {
+                    "name": "tableId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "after",
+                    "type": "string",
+                    "required": "false"
+                },
+                {
+                    "name": "pageSize",
+                    "type": "string",
+                    "required": "false"
+                }
+            ],
+            "return": "Decisiontableimportjoblisting"
         },
         "GET /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}": {
             "className": "BusinessRulesApi",
@@ -273506,6 +275374,30 @@
             ],
             "return": "Decisiontable"
         },
+        "PATCH /api/v2/businessrules/decisiontables/{tableId}/imports/{importJobId}": {
+            "className": "BusinessRulesApi",
+            "operationId": "patchbusinessrulesdecisiontableimport",
+            "functionName": "PatchBusinessrulesDecisiontableImport",
+            "signature": "PatchBusinessrulesDecisiontableImport(tableId, importJobId, body)",
+            "parameters": [
+                {
+                    "name": "tableId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "importJobId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Updatedecisiontableimportjobrequest",
+                    "required": "true"
+                }
+            ],
+            "return": "Decisiontableimportjob"
+        },
         "PATCH /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}": {
             "className": "BusinessRulesApi",
             "operationId": "patchbusinessrulesdecisiontableversion",
@@ -273548,6 +275440,44 @@
                 }
             ],
             "return": "Decisiontableexecutionresponse"
+        },
+        "POST /api/v2/businessrules/decisiontables/{tableId}/exports": {
+            "className": "BusinessRulesApi",
+            "operationId": "postbusinessrulesdecisiontableexports",
+            "functionName": "PostBusinessrulesDecisiontableExports",
+            "signature": "PostBusinessrulesDecisiontableExports(tableId, body)",
+            "parameters": [
+                {
+                    "name": "tableId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Decisiontableexportjobrequest",
+                    "required": "true"
+                }
+            ],
+            "return": "Decisiontableexportjob"
+        },
+        "POST /api/v2/businessrules/decisiontables/{tableId}/imports": {
+            "className": "BusinessRulesApi",
+            "operationId": "postbusinessrulesdecisiontableimports",
+            "functionName": "PostBusinessrulesDecisiontableImports",
+            "signature": "PostBusinessrulesDecisiontableImports(tableId, body)",
+            "parameters": [
+                {
+                    "name": "tableId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Createdecisiontableimportjobrequest",
+                    "required": "true"
+                }
+            ],
+            "return": "Decisiontableimportjob"
         },
         "POST /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}/copy": {
             "className": "BusinessRulesApi",
@@ -273620,6 +275550,77 @@
                 }
             ],
             "return": "Decisiontablerow"
+        },
+        "POST /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}/rows/bulk/add": {
+            "className": "BusinessRulesApi",
+            "operationId": "postbusinessrulesdecisiontableversionrowsbulkadd",
+            "functionName": "PostBusinessrulesDecisiontableVersionRowsBulkAdd",
+            "signature": "PostBusinessrulesDecisiontableVersionRowsBulkAdd(tableId, tableVersion, body)",
+            "parameters": [
+                {
+                    "name": "tableId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "tableVersion",
+                    "type": "int",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Bulkadddecisiontablerowsrequest",
+                    "required": "true"
+                }
+            ],
+            "return": "Bulkadddecisiontablerowsresponse"
+        },
+        "POST /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}/rows/bulk/remove": {
+            "className": "BusinessRulesApi",
+            "operationId": "postbusinessrulesdecisiontableversionrowsbulkremove",
+            "functionName": "PostBusinessrulesDecisiontableVersionRowsBulkRemove",
+            "signature": "PostBusinessrulesDecisiontableVersionRowsBulkRemove(tableId, tableVersion, body)",
+            "parameters": [
+                {
+                    "name": "tableId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "tableVersion",
+                    "type": "int",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Bulkdeletedecisiontablerowsrequest",
+                    "required": "true"
+                }
+            ]
+        },
+        "POST /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}/rows/bulk/update": {
+            "className": "BusinessRulesApi",
+            "operationId": "postbusinessrulesdecisiontableversionrowsbulkupdate",
+            "functionName": "PostBusinessrulesDecisiontableVersionRowsBulkUpdate",
+            "signature": "PostBusinessrulesDecisiontableVersionRowsBulkUpdate(tableId, tableVersion, body)",
+            "parameters": [
+                {
+                    "name": "tableId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "tableVersion",
+                    "type": "int",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Bulkupdatedecisiontablerowsrequest",
+                    "required": "true"
+                }
+            ],
+            "return": "Bulkupdatedecisiontablerowsresponse"
         },
         "POST /api/v2/businessrules/decisiontables/{tableId}/versions/{tableVersion}/rows/search": {
             "className": "BusinessRulesApi",
@@ -273835,6 +275836,25 @@
             "parameters": [
                 {
                     "name": "caseplanId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ],
+            "return": "interface{}"
+        },
+        "DELETE /api/v2/casemanagement/caseplans/{caseplanId}/dataschemas/{schemaKeyName}": {
+            "className": "CaseManagementApi",
+            "operationId": "deletecasemanagementcaseplandataschema",
+            "functionName": "DeleteCasemanagementCaseplanDataschema",
+            "signature": "DeleteCasemanagementCaseplanDataschema(caseplanId, schemaKeyName)",
+            "parameters": [
+                {
+                    "name": "caseplanId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "schemaKeyName",
                     "type": "string",
                     "required": "true"
                 }
@@ -274475,7 +276495,7 @@
                 {
                     "name": "body",
                     "type": "Caseassociationcreate",
-                    "required": "false"
+                    "required": "true"
                 }
             ],
             "return": "Caseassociation"
@@ -274493,6 +276513,25 @@
                 }
             ],
             "return": "Terminatejob"
+        },
+        "POST /api/v2/casemanagement/caseplans/{caseplanId}/dataschemas": {
+            "className": "CaseManagementApi",
+            "operationId": "postcasemanagementcaseplandataschemas",
+            "functionName": "PostCasemanagementCaseplanDataschemas",
+            "signature": "PostCasemanagementCaseplanDataschemas(caseplanId, body)",
+            "parameters": [
+                {
+                    "name": "caseplanId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Caseplandataschemarequest",
+                    "required": "true"
+                }
+            ],
+            "return": "Caseplandataschema"
         },
         "POST /api/v2/casemanagement/caseplans/{caseplanId}/publish": {
             "className": "CaseManagementApi",
@@ -274573,10 +276612,34 @@
                 {
                     "name": "body",
                     "type": "Caseassociationquery",
-                    "required": "false"
+                    "required": "true"
                 }
             ],
             "return": "Caseassociationqueryentitylisting"
+        },
+        "PUT /api/v2/casemanagement/caseplans/{caseplanId}/dataschemas/{schemaKeyName}": {
+            "className": "CaseManagementApi",
+            "operationId": "putcasemanagementcaseplandataschema",
+            "functionName": "PutCasemanagementCaseplanDataschema",
+            "signature": "PutCasemanagementCaseplanDataschema(caseplanId, schemaKeyName, body)",
+            "parameters": [
+                {
+                    "name": "caseplanId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "schemaKeyName",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Caseplandataschemarequest",
+                    "required": "true"
+                }
+            ],
+            "return": "Caseplandataschema"
         },
         "PUT /api/v2/casemanagement/caseplans/{caseplanId}/intakesettings": {
             "className": "CaseManagementApi",
@@ -283500,7 +285563,7 @@
                     "required": "false"
                 }
             ],
-            "return": "Exportlisting"
+            "return": "Contactsexportlisting"
         },
         "GET /api/v2/externalcontacts/contacts/schemas/{schemaId}": {
             "className": "ExternalContactsApi",
@@ -307581,6 +309644,19 @@
                 }
             ]
         },
+        "DELETE /api/v2/routing/email/setting/{emailSettingId}": {
+            "className": "RoutingApi",
+            "operationId": "deleteroutingemailsettingemailsettingid",
+            "functionName": "DeleteRoutingEmailSettingEmailSettingId",
+            "signature": "DeleteRoutingEmailSettingEmailSettingId(emailSettingId)",
+            "parameters": [
+                {
+                    "name": "emailSettingId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ]
+        },
         "DELETE /api/v2/routing/languages/{languageId}": {
             "className": "RoutingApi",
             "operationId": "deleteroutinglanguage",
@@ -308202,6 +310278,39 @@
                 }
             ],
             "return": "Outbounddomainentitylisting"
+        },
+        "GET /api/v2/routing/email/setting": {
+            "className": "RoutingApi",
+            "operationId": "getroutingemailsetting",
+            "functionName": "GetRoutingEmailSetting",
+            "signature": "GetRoutingEmailSetting(pageSize, pageNumber)",
+            "parameters": [
+                {
+                    "name": "pageSize",
+                    "type": "int",
+                    "required": "false"
+                },
+                {
+                    "name": "pageNumber",
+                    "type": "int",
+                    "required": "false"
+                }
+            ],
+            "return": "Emailsettingentitylisting"
+        },
+        "GET /api/v2/routing/email/setting/{emailSettingId}": {
+            "className": "RoutingApi",
+            "operationId": "getroutingemailsettingemailsettingid",
+            "functionName": "GetRoutingEmailSettingEmailSettingId",
+            "signature": "GetRoutingEmailSettingEmailSettingId(emailSettingId)",
+            "parameters": [
+                {
+                    "name": "emailSettingId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ],
+            "return": "Emailsetting"
         },
         "GET /api/v2/routing/email/setup": {
             "className": "RoutingApi",
@@ -309720,6 +311829,25 @@
             ],
             "return": "Outbounddomain"
         },
+        "PATCH /api/v2/routing/email/setting/{emailSettingId}": {
+            "className": "RoutingApi",
+            "operationId": "patchroutingemailsettingemailsettingid",
+            "functionName": "PatchRoutingEmailSettingEmailSettingId",
+            "signature": "PatchRoutingEmailSettingEmailSettingId(emailSettingId, body)",
+            "parameters": [
+                {
+                    "name": "emailSettingId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Emailsetting",
+                    "required": "true"
+                }
+            ],
+            "return": "Emailsetting"
+        },
         "PATCH /api/v2/routing/predictors/{predictorId}": {
             "className": "RoutingApi",
             "operationId": "patchroutingpredictor",
@@ -310247,6 +312375,20 @@
                 }
             ],
             "return": "Emailoutbounddomainresult"
+        },
+        "POST /api/v2/routing/email/setting": {
+            "className": "RoutingApi",
+            "operationId": "postroutingemailsetting",
+            "functionName": "PostRoutingEmailSetting",
+            "signature": "PostRoutingEmailSetting(body)",
+            "parameters": [
+                {
+                    "name": "body",
+                    "type": "Emailsetting",
+                    "required": "true"
+                }
+            ],
+            "return": "Emailsetting"
         },
         "POST /api/v2/routing/languages": {
             "className": "RoutingApi",
@@ -316712,6 +318854,19 @@
             "return": "Teamssearchresponse"
         }
     , 
+        "DELETE /api/v2/telephony/organization/link/{targetOrganizationId}": {
+            "className": "TelephonyApi",
+            "operationId": "deletetelephonyorganizationlinktargetorganizationid",
+            "functionName": "DeleteTelephonyOrganizationLinkTargetOrganizationId",
+            "signature": "DeleteTelephonyOrganizationLinkTargetOrganizationId(targetOrganizationId)",
+            "parameters": [
+                {
+                    "name": "targetOrganizationId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ]
+        },
         "GET /api/v2/telephony/agents/{agentId}/greetings": {
             "className": "TelephonyApi",
             "operationId": "gettelephonyagentgreetings",
@@ -316755,6 +318910,66 @@
             "signature": "GetTelephonyMediaregions()",
             
             "return": "Mediaregions"
+        },
+        "GET /api/v2/telephony/numbers/routing": {
+            "className": "TelephonyApi",
+            "operationId": "gettelephonynumbersrouting",
+            "functionName": "GetTelephonyNumbersRouting",
+            "signature": "GetTelephonyNumbersRouting(before, after, pageSize, numberId, activeRoutingOrganizationId, ownerOrganizationId, status)",
+            "parameters": [
+                {
+                    "name": "before",
+                    "type": "string",
+                    "required": "false"
+                },
+                {
+                    "name": "after",
+                    "type": "string",
+                    "required": "false"
+                },
+                {
+                    "name": "pageSize",
+                    "type": "string",
+                    "required": "false"
+                },
+                {
+                    "name": "numberId",
+                    "type": "string",
+                    "required": "false"
+                },
+                {
+                    "name": "activeRoutingOrganizationId",
+                    "type": "string",
+                    "required": "false"
+                },
+                {
+                    "name": "ownerOrganizationId",
+                    "type": "string",
+                    "required": "false"
+                },
+                {
+                    "name": "status",
+                    "type": "string",
+                    "required": "false"
+                }
+            ],
+            "return": "Numberroutinglisting"
+        },
+        "GET /api/v2/telephony/organization/link": {
+            "className": "TelephonyApi",
+            "operationId": "gettelephonyorganizationlink",
+            "functionName": "GetTelephonyOrganizationLink",
+            "signature": "GetTelephonyOrganizationLink()",
+            
+            "return": "[]Organizationlinkresponse"
+        },
+        "GET /api/v2/telephony/organization/link/regions": {
+            "className": "TelephonyApi",
+            "operationId": "gettelephonyorganizationlinkregions",
+            "functionName": "GetTelephonyOrganizationLinkRegions",
+            "signature": "GetTelephonyOrganizationLinkRegions()",
+            
+            "return": "[]Regionresponse"
         },
         "GET /api/v2/telephony/settings": {
             "className": "TelephonyApi",
@@ -316849,6 +319064,77 @@
                 }
             ],
             "return": "Signedurlresponse"
+        },
+        "PATCH /api/v2/telephony/organization/link/approve/{requestingOrganizationId}": {
+            "className": "TelephonyApi",
+            "operationId": "patchtelephonyorganizationlinkapproverequestingorganizationid",
+            "functionName": "PatchTelephonyOrganizationLinkApproveRequestingOrganizationId",
+            "signature": "PatchTelephonyOrganizationLinkApproveRequestingOrganizationId(requestingOrganizationId, body)",
+            "parameters": [
+                {
+                    "name": "requestingOrganizationId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Organizationlinkapprovalrequest",
+                    "required": "true"
+                }
+            ]
+        },
+        "POST /api/v2/telephony/numbers/routing": {
+            "className": "TelephonyApi",
+            "operationId": "posttelephonynumbersrouting",
+            "functionName": "PostTelephonyNumbersRouting",
+            "signature": "PostTelephonyNumbersRouting(body)",
+            "parameters": [
+                {
+                    "name": "body",
+                    "type": "[]Numberroutingrequest",
+                    "required": "true"
+                }
+            ]
+        },
+        "POST /api/v2/telephony/numbers/routing/all": {
+            "className": "TelephonyApi",
+            "operationId": "posttelephonynumbersroutingall",
+            "functionName": "PostTelephonyNumbersRoutingAll",
+            "signature": "PostTelephonyNumbersRoutingAll(body)",
+            "parameters": [
+                {
+                    "name": "body",
+                    "type": "Disasterrecoveryallroutingrequest",
+                    "required": "true"
+                }
+            ]
+        },
+        "POST /api/v2/telephony/numbers/routing/reset": {
+            "className": "TelephonyApi",
+            "operationId": "posttelephonynumbersroutingreset",
+            "functionName": "PostTelephonyNumbersRoutingReset",
+            "signature": "PostTelephonyNumbersRoutingReset(body)",
+            "parameters": [
+                {
+                    "name": "body",
+                    "type": "Numberroutingresetorganizationrequest",
+                    "required": "true"
+                }
+            ]
+        },
+        "POST /api/v2/telephony/organization/link": {
+            "className": "TelephonyApi",
+            "operationId": "posttelephonyorganizationlink",
+            "functionName": "PostTelephonyOrganizationLink",
+            "signature": "PostTelephonyOrganizationLink(body)",
+            "parameters": [
+                {
+                    "name": "body",
+                    "type": "Createorganizationlink",
+                    "required": "true"
+                }
+            ],
+            "return": "Organizationlink"
         },
         "POST /api/v2/telephony/siptraces/download": {
             "className": "TelephonyApi",
@@ -325323,7 +327609,7 @@
             "className": "WorkforceManagementApi",
             "operationId": "getworkforcemanagementbusinessunittimeoffplans",
             "functionName": "GetWorkforcemanagementBusinessunitTimeoffplans",
-            "signature": "GetWorkforcemanagementBusinessunitTimeoffplans(businessUnitId, managementUnitId, forceDownloadService)",
+            "signature": "GetWorkforcemanagementBusinessunitTimeoffplans(businessUnitId, managementUnitId, forceDownloadService, expand)",
             "parameters": [
                 {
                     "name": "businessUnitId",
@@ -325338,6 +327624,11 @@
                 {
                     "name": "forceDownloadService",
                     "type": "bool",
+                    "required": "false"
+                },
+                {
+                    "name": "expand",
+                    "type": "[]string",
                     "required": "false"
                 }
             ],
@@ -325530,7 +327821,7 @@
             "className": "WorkforceManagementApi",
             "operationId": "getworkforcemanagementbusinessunitweekschedules",
             "functionName": "GetWorkforcemanagementBusinessunitWeekSchedules",
-            "signature": "GetWorkforcemanagementBusinessunitWeekSchedules(businessUnitId, weekId, includeOnlyPublished, expand)",
+            "signature": "GetWorkforcemanagementBusinessunitWeekSchedules(businessUnitId, weekId, earliestWeekDate, latestWeekDate, includeOnlyPublished, expand)",
             "parameters": [
                 {
                     "name": "businessUnitId",
@@ -325541,6 +327832,16 @@
                     "name": "weekId",
                     "type": "string",
                     "required": "true"
+                },
+                {
+                    "name": "earliestWeekDate",
+                    "type": "time.Time",
+                    "required": "false"
+                },
+                {
+                    "name": "latestWeekDate",
+                    "type": "time.Time",
+                    "required": "false"
                 },
                 {
                     "name": "includeOnlyPublished",
@@ -329538,7 +331839,7 @@
             "className": "WorkforceManagementApi",
             "operationId": "postworkforcemanagementmanagementunitusertimeoffrequestsestimate",
             "functionName": "PostWorkforcemanagementManagementunitUserTimeoffrequestsEstimate",
-            "signature": "PostWorkforcemanagementManagementunitUserTimeoffrequestsEstimate(managementUnitId, userId, body)",
+            "signature": "PostWorkforcemanagementManagementunitUserTimeoffrequestsEstimate(managementUnitId, userId, body, includeOnly)",
             "parameters": [
                 {
                     "name": "managementUnitId",
@@ -329554,6 +331855,11 @@
                     "name": "body",
                     "type": "Estimateavailabletimeoffrequest",
                     "required": "true"
+                },
+                {
+                    "name": "includeOnly",
+                    "type": "string",
+                    "required": "false"
                 }
             ],
             "return": "Estimateavailabletimeoffresponse"
@@ -330030,12 +332336,17 @@
             "className": "WorkforceManagementApi",
             "operationId": "postworkforcemanagementtimeoffrequestsestimate",
             "functionName": "PostWorkforcemanagementTimeoffrequestsEstimate",
-            "signature": "PostWorkforcemanagementTimeoffrequestsEstimate(body)",
+            "signature": "PostWorkforcemanagementTimeoffrequestsEstimate(body, includeOnly)",
             "parameters": [
                 {
                     "name": "body",
                     "type": "Estimateavailabletimeoffrequest",
                     "required": "true"
+                },
+                {
+                    "name": "includeOnly",
+                    "type": "string",
+                    "required": "false"
                 }
             ],
             "return": "Estimateavailabletimeoffresponse"

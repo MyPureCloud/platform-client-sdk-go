@@ -10,7 +10,13 @@ import (
 // Cardbodytext
 type Cardbodytext struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// Content - Body content for carousel card.
+	Content *string `json:"content,omitempty"`
+
+	// ContentType - Body content type for carousel card. Allowed value: text/plain
+	ContentType *string `json:"contentType,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Cardbodytext) SetField(field string, fieldValue interface{}) {
@@ -74,8 +80,16 @@ func (o Cardbodytext) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Cardbodytext
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		Content *string `json:"content,omitempty"`
+		
+		ContentType *string `json:"contentType,omitempty"`
+		Alias
+	}{ 
+		Content: o.Content,
+		
+		ContentType: o.ContentType,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -86,6 +100,14 @@ func (o *Cardbodytext) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if Content, ok := CardbodytextMap["content"].(string); ok {
+		o.Content = &Content
+	}
+    
+	if ContentType, ok := CardbodytextMap["contentType"].(string); ok {
+		o.ContentType = &ContentType
+	}
+    
 
 	return nil
 }

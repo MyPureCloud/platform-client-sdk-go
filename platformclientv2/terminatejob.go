@@ -24,10 +24,10 @@ type Terminatejob struct {
 	// CreatedBy - The ID of the User who created this Job.
 	CreatedBy *Userreference `json:"createdBy,omitempty"`
 
-	// DateCreated - The job creation date. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	// DateCreated - The Job creation date. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
-	// DateModified - The job modification date. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	// DateModified - The Job modification date. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
 	// SelfUri - The URI for this object
