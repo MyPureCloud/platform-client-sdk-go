@@ -42,10 +42,13 @@ type Listeddictionaryfeedback struct {
 	// TranscriptionEngine - The transcription engine for the dictionary feedback. Only returned when GenesysExtended feature is enabled.
 	TranscriptionEngine *string `json:"transcriptionEngine,omitempty"`
 
-	// Status - The status of the dictionary feedback. Only returned when GenesysExtended feature is enabled.
+	// Status - The status of the dictionary feedback
 	Status *string `json:"status,omitempty"`
 
-	// DisplayAs - The display name for the dictionary feedback. Only returned when GenesysExtended feature is enabled. This field is only valid for Extended Services transcription engine.
+	// InvalidReason - The reason the dictionary feedback is invalid
+	InvalidReason *string `json:"invalidReason,omitempty"`
+
+	// DisplayAs - The display name for the dictionary feedback.
 	DisplayAs *string `json:"displayAs,omitempty"`
 
 	// SelfUri - The URI for this object
@@ -153,6 +156,8 @@ func (o Listeddictionaryfeedback) MarshalJSON() ([]byte, error) {
 		
 		Status *string `json:"status,omitempty"`
 		
+		InvalidReason *string `json:"invalidReason,omitempty"`
+		
 		DisplayAs *string `json:"displayAs,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -179,6 +184,8 @@ func (o Listeddictionaryfeedback) MarshalJSON() ([]byte, error) {
 		TranscriptionEngine: o.TranscriptionEngine,
 		
 		Status: o.Status,
+		
+		InvalidReason: o.InvalidReason,
 		
 		DisplayAs: o.DisplayAs,
 		
@@ -241,6 +248,10 @@ func (o *Listeddictionaryfeedback) UnmarshalJSON(b []byte) error {
     
 	if Status, ok := ListeddictionaryfeedbackMap["status"].(string); ok {
 		o.Status = &Status
+	}
+    
+	if InvalidReason, ok := ListeddictionaryfeedbackMap["invalidReason"].(string); ok {
+		o.InvalidReason = &InvalidReason
 	}
     
 	if DisplayAs, ok := ListeddictionaryfeedbackMap["displayAs"].(string); ok {

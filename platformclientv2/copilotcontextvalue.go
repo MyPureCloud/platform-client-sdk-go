@@ -17,9 +17,6 @@ type Copilotcontextvalue struct {
 	// VarType - Type of the context.
 	VarType *string `json:"type,omitempty"`
 
-	// ParticipantDataProperties - Participant data properties.
-	ParticipantDataProperties *Participantdataproperties `json:"participantDataProperties,omitempty"`
-
 	// ConversationAttributeProperties - Conversation attribute properties.
 	ConversationAttributeProperties *Conversationattributeproperties `json:"conversationAttributeProperties,omitempty"`
 }
@@ -91,16 +88,12 @@ func (o Copilotcontextvalue) MarshalJSON() ([]byte, error) {
 		
 		VarType *string `json:"type,omitempty"`
 		
-		ParticipantDataProperties *Participantdataproperties `json:"participantDataProperties,omitempty"`
-		
 		ConversationAttributeProperties *Conversationattributeproperties `json:"conversationAttributeProperties,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
 		
 		VarType: o.VarType,
-		
-		ParticipantDataProperties: o.ParticipantDataProperties,
 		
 		ConversationAttributeProperties: o.ConversationAttributeProperties,
 		Alias:    (Alias)(o),
@@ -122,11 +115,6 @@ func (o *Copilotcontextvalue) UnmarshalJSON(b []byte) error {
 		o.VarType = &VarType
 	}
     
-	if ParticipantDataProperties, ok := CopilotcontextvalueMap["participantDataProperties"].(map[string]interface{}); ok {
-		ParticipantDataPropertiesString, _ := json.Marshal(ParticipantDataProperties)
-		json.Unmarshal(ParticipantDataPropertiesString, &o.ParticipantDataProperties)
-	}
-	
 	if ConversationAttributeProperties, ok := CopilotcontextvalueMap["conversationAttributeProperties"].(map[string]interface{}); ok {
 		ConversationAttributePropertiesString, _ := json.Marshal(ConversationAttributeProperties)
 		json.Unmarshal(ConversationAttributePropertiesString, &o.ConversationAttributeProperties)

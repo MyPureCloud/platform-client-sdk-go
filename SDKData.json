@@ -3484,6 +3484,95 @@
                 }
             ]
         }, 
+        "adminagentschedulebidbiddingpreference": { 
+            "properties": [
+                {
+                    "name": "Agent",
+                    "description": "The agent to whom this schedule bid preference applies",
+                    "required": true,
+                    "dataType": "Userreference"
+                }, 
+                {
+                    "name": "Submitted",
+                    "description": "Indicates whether the preference has been submitted",
+                    "required": true,
+                    "dataType": "bool"
+                }, 
+                {
+                    "name": "AssignedScheduleSetId",
+                    "description": "The schedule set assigned to the agent by the bid process. This will be set after bid is processed",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "OverriddenScheduleSetId",
+                    "description": "The schedule set that overrides the assigned schedule set for the agent",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "OverrideReason",
+                    "description": "The reason the assigned schedule set has been overridden. This must be null if no override schedule is set",
+                    "dataType": "string",
+                    "enum": ["UnableToBid", "ChangeOfCircumstance", "NewHire", "EmployeeMove"]
+                }, 
+                {
+                    "name": "AgentScheduleBidPreferencePriorities",
+                    "description": "The agent schedule set preferences",
+                    "required": true,
+                    "dataType": "[]Agentschedulebiddingpreferencepriority"
+                }, 
+                {
+                    "name": "EndDate",
+                    "description": "The end date of this scheduling set preference relative to the business unit time zone in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd",
+                    "dataType": "time.Time"
+                }
+            ]
+        }, 
+        "adminagentschedulebidpreferenceresponse": { 
+            "properties": [
+                {
+                    "name": "Result",
+                    "description": "The agents' schedule set preferences",
+                    "dataType": "Adminagentschedulesetpreferences"
+                }, 
+                {
+                    "name": "DownloadUrl",
+                    "description": "URL to retrieve results when the response contains a large dataset. If provided, the downloaded data will follow the same schema as the result.",
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "adminagentschedulesetpreferences": { 
+            "properties": [
+                {
+                    "name": "Id",
+                    "description": "The globally unique identifier for the object.",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Bid",
+                    "description": "The schedule bid",
+                    "dataType": "Schedulebidreference"
+                }, 
+                {
+                    "name": "BidGroup",
+                    "description": "The schedule bid group",
+                    "dataType": "Schedulebidgroupreference"
+                }, 
+                {
+                    "name": "AgentsScheduleBidPreferences",
+                    "description": "The agents' schedule bidding preferences",
+                    "required": true,
+                    "dataType": "[]Adminagentschedulebidbiddingpreference"
+                }, 
+                {
+                    "name": "SelfUri",
+                    "description": "The URI for this object",
+                    "readOnly": true,
+                    "dataType": "string"
+                }
+            ]
+        }, 
         "adminagentworkplanbiddingpreference": { 
             "properties": [
                 {
@@ -4010,6 +4099,65 @@
                     "description": "End offset in seconds relative to query start time",
                     "required": true,
                     "dataType": "int"
+                }
+            ]
+        }, 
+        "agentassignedschedulesetlist": { 
+            "properties": [
+                {
+                    "name": "AgentAssignedShiftSets",
+                    "description": "The shift sets, along with the assigned agents",
+                    "required": true,
+                    "dataType": "[]Agentassignedshiftset"
+                }
+            ]
+        }, 
+        "agentassignedshiftset": { 
+            "properties": [
+                {
+                    "name": "Id",
+                    "description": "The ID of the shift set",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "EffectiveWorkPlan",
+                    "description": "The work plan or work plan rotation used for generating the shift set",
+                    "required": true,
+                    "dataType": "Shiftseteffectiveworkplan"
+                }, 
+                {
+                    "name": "Shifts",
+                    "description": "The scheduled shifts",
+                    "required": true,
+                    "dataType": "[]Schedulebidscheduledshift"
+                }, 
+                {
+                    "name": "Agents",
+                    "description": "The details of the agents assigned to this shift set",
+                    "required": true,
+                    "dataType": "[]Assignedagentdetails"
+                }
+            ]
+        }, 
+        "agentbidschedulesetoverriderequest": { 
+            "properties": [
+                {
+                    "name": "AgentId",
+                    "description": "The ID of the agent",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "OverrideScheduleSetId",
+                    "description": "If provided, the schedule set overrides the agent's assigned schedule set",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "OverrideReason",
+                    "description": "The reason the assigned schedule set has been overridden. This must be null if no override schedule is set",
+                    "dataType": "string",
+                    "enum": ["UnableToBid", "ChangeOfCircumstance", "NewHire", "EmployeeMove"]
                 }
             ]
         }, 
@@ -4777,6 +4925,48 @@
                 }
             ]
         }, 
+        "agenteffectivebid": { 
+            "properties": [
+                {
+                    "name": "Id",
+                    "description": "The ID of the schedule bid",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Name",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "EffectiveDate",
+                    "description": "The effective date of the bid relative to the business unit time zone in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd",
+                    "required": true,
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "EndDate",
+                    "description": "The end date of the bid, relative to the business unit time zone in yyyy-MM-dd format. Null denotes an active schedule bid. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd",
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "DownloadUrl",
+                    "description": "The download URL to fetch the list of schedule sets and the agents assigned to them",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "DownloadTemplate",
+                    "description": "This field will always be null. Effective schedule sets are returned through the download URL. The schema is included here for documentation purposes",
+                    "dataType": "Agentassignedschedulesetlist"
+                }, 
+                {
+                    "name": "SelfUri",
+                    "description": "The URI for this object",
+                    "readOnly": true,
+                    "dataType": "string"
+                }
+            ]
+        }, 
         "agentevaluatoractivity": { 
             "properties": [
                 {
@@ -5517,6 +5707,16 @@
                 }
             ]
         }, 
+        "agentsbidassignedschedulesetoverriderequest": { 
+            "properties": [
+                {
+                    "name": "AgentScheduleSetOverrides",
+                    "description": "The agent schedule set overrides",
+                    "required": true,
+                    "dataType": "[]Agentbidschedulesetoverriderequest"
+                }
+            ]
+        }, 
         "agentsbidassignedworkplanoverriderequest": { 
             "properties": [
                 {
@@ -5524,6 +5724,160 @@
                     "description": "The list of agent work plan overrides",
                     "required": true,
                     "dataType": "[]Agentbidworkplanoverriderequest"
+                }
+            ]
+        }, 
+        "agentschedulebid": { 
+            "properties": [
+                {
+                    "name": "Id",
+                    "description": "The ID of the schedule bid",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Name",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "BidWindowStartDate",
+                    "description": "The bid start date when agents can start participating in schedule bidding relative to the business unit time zone in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd",
+                    "required": true,
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "BidWindowEndDate",
+                    "description": "The bid end date relative to the business unit time zone in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd",
+                    "required": true,
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "EffectiveDate",
+                    "description": "The date when schedule sets would be effective for schedule generation relative to the business unit time zone in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd",
+                    "required": true,
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "Status",
+                    "description": "The state of the bid",
+                    "required": true,
+                    "dataType": "string",
+                    "enum": ["Draft", "Locked", "Optimized", "Scheduled", "Open", "Closed", "Processed", "Published"]
+                }, 
+                {
+                    "name": "BidType",
+                    "description": "The type of the bid",
+                    "required": true,
+                    "dataType": "string",
+                    "enum": ["WorkPlanBid", "ScheduleBid"]
+                }, 
+                {
+                    "name": "SelfUri",
+                    "description": "The URI for this object",
+                    "readOnly": true,
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "agentschedulebiddingpreferencepriority": { 
+            "properties": [
+                {
+                    "name": "ScheduleSetId",
+                    "description": "The ID of the schedule set that belongs to agent's bid group",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Priority",
+                    "description": "The agent's priority for this schedule set. Lower numbers indicate higher priority, with 1 being the highest priority. Minimum value is 1. Null if priority is not set for the schedule set",
+                    "dataType": "int"
+                }
+            ]
+        }, 
+        "agentschedulebiddingpreferenceresponse": { 
+            "properties": [
+                {
+                    "name": "Id",
+                    "description": "The globally unique identifier for the object.",
+                    "readOnly": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Submitted",
+                    "description": "Whether the preference is submitted",
+                    "required": true,
+                    "dataType": "bool"
+                }, 
+                {
+                    "name": "AssignedScheduleSetId",
+                    "description": "The schedule set assigned to the agent by the bid process. Will be set after bid is processed",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "OverriddenScheduleSetId",
+                    "description": "The schedule set that overrides the assigned schedule set for the agent",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "OverrideReason",
+                    "description": "The reason why the assigned schedule set has been overridden. This must be null without an override schedule set",
+                    "dataType": "string",
+                    "enum": ["UnableToBid", "ChangeOfCircumstance", "NewHire", "EmployeeMove"]
+                }, 
+                {
+                    "name": "AgentScheduleBidPreferences",
+                    "description": "The schedule bidding preferences",
+                    "required": true,
+                    "dataType": "[]Agentschedulebiddingpreferencepriority"
+                }, 
+                {
+                    "name": "SelfUri",
+                    "description": "The URI for this object",
+                    "readOnly": true,
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "agentschedulebids": { 
+            "properties": [
+                {
+                    "name": "Id",
+                    "description": "The globally unique identifier for the object.",
+                    "readOnly": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "BusinessUnit",
+                    "description": "The business unit to which the bids belong",
+                    "required": true,
+                    "dataType": "Businessunitreference"
+                }, 
+                {
+                    "name": "AgentScheduleBids",
+                    "description": "Schedule bid summaries associated with this agent",
+                    "required": true,
+                    "dataType": "[]Agentschedulebid"
+                }, 
+                {
+                    "name": "SelfUri",
+                    "description": "The URI for this object",
+                    "readOnly": true,
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "agentschedulebidschedulesetresponse": { 
+            "properties": [
+                {
+                    "name": "DownloadUrl",
+                    "description": "The download URL to fetch the schedule set of the bid group to which the agent belongs",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "DownloadTemplate",
+                    "description": "Schedule sets always come through downloadUrl, the schema included here is just for documentation",
+                    "dataType": "Bidgroupscheduleset"
                 }
             ]
         }, 
@@ -5691,6 +6045,16 @@
                 }
             ]
         }, 
+        "agentseffectiveschedulesetresponse": { 
+            "properties": [
+                {
+                    "name": "EffectiveBids",
+                    "description": "Bids that are effective from the startDate until the weekCount",
+                    "required": true,
+                    "dataType": "[]Agenteffectivebid"
+                }
+            ]
+        }, 
         "agentsintegrationslisting": { 
             "properties": [
                 {
@@ -5705,7 +6069,7 @@
                     "name": "ActivityCategory",
                     "description": "Activity category",
                     "dataType": "string",
-                    "enum": ["OnQueueWork", "Break", "Meal", "Meeting", "OffQueueWork", "TimeOff", "Training", "Unavailable", "Unscheduled"]
+                    "enum": ["OnQueueWork", "Break", "Meal", "Meeting", "OffQueueWork", "TimeOff", "Training", "Unavailable", "Unscheduled", "Unknown"]
                 }, 
                 {
                     "name": "Count",
@@ -6467,6 +6831,12 @@
                     "description": "The work plan fields visible to agents whenever work plan preferences are made",
                     "required": true,
                     "dataType": "[]string"
+                }, 
+                {
+                    "name": "BidType",
+                    "description": "The type of the bid",
+                    "dataType": "string",
+                    "enum": ["WorkPlanBid", "ScheduleBid"]
                 }, 
                 {
                     "name": "SelfUri",
@@ -8912,6 +9282,11 @@
                     "enum": ["AppleMessagesForBusiness", "Discord", "Email", "Facebook", "FacebookMessenger", "Glassdoor", "GoogleBusinessProfile", "Instagram", "KakaoTalk", "Line", "LinkedIn", "MicrosoftTeams", "MobileChat", "Other", "QQ", "Reddit", "ServiceNow", "SFDC", "SMS", "Snapchat", "Telegram", "Threads", "Trustpilot", "Unspecified", "Viber", "WebChat", "WeChat", "Weibo", "WhatsApp", "X", "Yelp", "YouTube", "Zendesk", "OpenMessaging"]
                 }, 
                 {
+                    "name": "ErrorCodeDescription",
+                    "description": "Error code description extracted from the first disconnectReason",
+                    "dataType": "string"
+                }, 
+                {
                     "name": "ExtendedDeliveryStatus",
                     "description": "Extended delivery status",
                     "dataType": "string"
@@ -10528,7 +10903,7 @@
                     "name": "Command",
                     "description": "The command executed by the Architect Job",
                     "dataType": "string",
-                    "enum": ["Publish", "Create", "Update", "Export"]
+                    "enum": ["Publish", "Create", "Update", "Export", "Validate"]
                 }, 
                 {
                     "name": "DownloadUrl",
@@ -10971,7 +11346,7 @@
                     "name": "Command",
                     "description": "The command executed by the Architect Job",
                     "dataType": "string",
-                    "enum": ["Publish", "Create", "Update", "Export"]
+                    "enum": ["Publish", "Create", "Update", "Export", "Validate"]
                 }, 
                 {
                     "name": "Messages",
@@ -11207,6 +11582,39 @@
                     "name": "DurationSeconds",
                     "description": "Duration (in seconds) for the transcoded audio file.",
                     "dataType": "float32"
+                }
+            ]
+        }, 
+        "architectvalidatejobstateresponse": { 
+            "properties": [
+                {
+                    "name": "Id",
+                    "description": "The globally unique identifier for the object.",
+                    "readOnly": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Status",
+                    "description": "Status of the Architect Validate Job",
+                    "dataType": "string",
+                    "enum": ["Registered", "Started", "Success", "Failure"]
+                }, 
+                {
+                    "name": "Command",
+                    "description": "The command executed by the Architect Job",
+                    "dataType": "string",
+                    "enum": ["Publish", "Create", "Update", "Export", "Validate"]
+                }, 
+                {
+                    "name": "Messages",
+                    "description": "Warnings and Errors messages of the Architect Job",
+                    "dataType": "[]Architectjobmessage"
+                }, 
+                {
+                    "name": "SelfUri",
+                    "description": "The URI for this object",
+                    "readOnly": true,
+                    "dataType": "string"
                 }
             ]
         }, 
@@ -11684,6 +12092,21 @@
                     "description": "True if the assessment was passed",
                     "readOnly": true,
                     "dataType": "bool"
+                }
+            ]
+        }, 
+        "assignedagentdetails": { 
+            "properties": [
+                {
+                    "name": "Id",
+                    "description": "The ID of the agent",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "EndDate",
+                    "description": "The end date of this schedule set for the agent, relative to the business unit time zone in yyyy-MM-dd format. Null denotes an ongoing schedule set. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd",
+                    "dataType": "time.Time"
                 }
             ]
         }, 
@@ -13469,7 +13892,7 @@
                 {
                     "name": "ServiceName",
                     "dataType": "string",
-                    "enum": ["LanguageUnderstanding", "ContentManagement", "PeoplePermissions", "Presence", "Architect", "ContactCenter", "Quality", "SpeechAndTextAnalytics", "PredictiveEngagement", "Knowledge", "Coaching", "Learning", "UsersRules", "Gamification", "EmployeeEngagement", "WorkforceManagement", "Triggers", "ProcessAutomation", "ResponseManagement", "Groups", "Telephony", "Outbound", "Routing", "Integrations", "Webhooks", "AnalyticsReporting", "Limits", "EmployeePerformance", "Datatables", "Messaging", "WebDeployments", "Supportability", "Callback", "Directory", "Locations", "ExternalContacts", "TaskManagement", "SCIM", "NumberPurchasing", "Marketplace", "LogCapture", "GDPR", "DSAR", "ExternalContactsExport", "AgentConfig", "Emails", "Scripter", "Billing", "JourneyAnalytics", "NerService", "Onboarding", "SocialListening", "BusinessRules", "SocialEscalationRules", "Alerting", "Assistants"]
+                    "enum": ["LanguageUnderstanding", "ContentManagement", "PeoplePermissions", "Presence", "Architect", "ContactCenter", "Quality", "SpeechAndTextAnalytics", "PredictiveEngagement", "Knowledge", "Coaching", "Learning", "UsersRules", "Gamification", "EmployeeEngagement", "WorkforceManagement", "Triggers", "ProcessAutomation", "ResponseManagement", "Groups", "Telephony", "Outbound", "Routing", "Integrations", "Webhooks", "AnalyticsReporting", "Limits", "EmployeePerformance", "Datatables", "Messaging", "WebDeployments", "Supportability", "Callback", "Directory", "Locations", "ExternalContacts", "TaskManagement", "SCIM", "NumberPurchasing", "Marketplace", "LogCapture", "GDPR", "DSAR", "ExternalContactsExport", "AgentConfig", "Emails", "Scripter", "Billing", "JourneyAnalytics", "NerService", "Onboarding", "SocialListening", "BusinessRules", "SocialEscalationRules", "Alerting", "Assistants", "AnomalyDetection", "Conversations", "Copilot"]
                 }, 
                 {
                     "name": "Level",
@@ -13486,12 +13909,12 @@
                 {
                     "name": "Action",
                     "dataType": "string",
-                    "enum": ["View", "Create", "Update", "Delete", "Move", "Copy", "Download", "ShareAdd", "ShareRemove", "Fax", "Convert", "Receive", "VersionCreate", "TagAdd", "TagRemove", "TagUpdate", "Add", "Remove", "MemberAdd", "MemberUpdate", "MemberRemove", "Authenticate", "AuthenticationFailed", "SingleLogout", "SingleLogoutFailed", "Authorize", "Deauthorize", "AuthorizationChanged", "ChangePassword", "Revoke", "LicenseUpdate", "Checkin", "Checkout", "Deactivate", "Debug", "Publish", "Revert", "Save", "Transcode", "Upload", "WrapupCodeAdd", "WrapupCodeRemove", "Read", "Execute", "Abandon", "Archive", "Export", "RestoreRequest", "RestoreComplete", "UpdateRetention", "ApplyProtection", "RevokeProtection", "Start", "Stop", "Rotate", "DeleteAll", "Reassign", "Unarchive", "Activate", "Assign", "Unassign", "Reset", "Reschedule", "Complete", "Cancel", "Unpublish", "Purge", "Processed", "Enable", "Disable", "Recycle", "Append", "ContactsUpdated", "ContactsDeleted", "Restore", "Block", "Unblock", "Open", "Approved", "Rejected", "Rollback", "ImplementingChange", "ChangeImplemented", "ImplementingRollback", "RollbackImplemented", "InReview", "Active", "Deleted", "Write", "Replace", "UpdateInService", "UpdateOutOfService", "Cycle", "Scale", "AsgInservice", "AwsOutofservice", "AsgTerminate", "Detach", "Terminate", "BlockUpgrade", "UnblockUpgrade", "AsgSwapInstanceType", "RecreateAsg", "DeleteUnconfiguredEdge", "GetAsgList", "GetAsg", "UpgradeOrganizationSite", "UpdateAwsConfig", "GetAwsConfig", "DeleteGhostEdgeRecord", "UpgradeCleanup", "IpAllowlistClear", "AddPairingRole", "Verify", "RestoreDeleted", "RestoreAll", "Approve", "Reject", "Reverse", "Send", "BulkDelete", "HardDelete", "SoftDelete", "Submit", "EnableCapture", "DownloadCapture", "Succeeded", "Failed", "Initiate", "ReverseManually", "Calculate", "Provisioned", "UpdateAborted", "Edit"]
+                    "enum": ["View", "Create", "Update", "Delete", "Move", "Copy", "Download", "ShareAdd", "ShareRemove", "Fax", "Convert", "Receive", "VersionCreate", "TagAdd", "TagRemove", "TagUpdate", "Add", "Remove", "MemberAdd", "MemberUpdate", "MemberRemove", "Authenticate", "AuthenticationFailed", "SingleLogout", "SingleLogoutFailed", "Authorize", "Deauthorize", "AuthorizationChanged", "ChangePassword", "Revoke", "LicenseUpdate", "Checkin", "Checkout", "Deactivate", "Debug", "Publish", "Revert", "Save", "Transcode", "Upload", "WrapupCodeAdd", "WrapupCodeRemove", "Read", "Execute", "Abandon", "Archive", "Export", "RestoreRequest", "RestoreComplete", "UpdateRetention", "ApplyProtection", "RevokeProtection", "Start", "Stop", "Rotate", "DeleteAll", "Reassign", "Unarchive", "Activate", "Assign", "Unassign", "Reset", "Reschedule", "Complete", "Cancel", "Unpublish", "Purge", "Processed", "Enable", "Disable", "Recycle", "Append", "ContactsUpdated", "ContactsDeleted", "Restore", "Block", "Unblock", "Open", "Approved", "Rejected", "Rollback", "ImplementingChange", "ChangeImplemented", "ImplementingRollback", "RollbackImplemented", "InReview", "Active", "Deleted", "Write", "Replace", "UpdateInService", "UpdateOutOfService", "Cycle", "Scale", "AsgInservice", "AwsOutofservice", "AsgTerminate", "Detach", "Terminate", "BlockUpgrade", "UnblockUpgrade", "AsgSwapInstanceType", "RecreateAsg", "DeleteUnconfiguredEdge", "GetAsgList", "GetAsg", "UpgradeOrganizationSite", "UpdateAwsConfig", "GetAwsConfig", "DeleteGhostEdgeRecord", "UpgradeCleanup", "IpAllowlistClear", "AddPairingRole", "Verify", "RestoreDeleted", "RestoreAll", "Approve", "Reject", "Reverse", "Send", "BulkDelete", "HardDelete", "SoftDelete", "Submit", "EnableCapture", "DownloadCapture", "Succeeded", "Failed", "Initiate", "ReverseManually", "Calculate", "GetAllResults", "GetAllResultsDownload", "GetChartResults", "GetChartResultsDownload", "Provisioned", "UpdateAborted", "Edit"]
                 }, 
                 {
                     "name": "EntityType",
                     "dataType": "string",
-                    "enum": ["Feedback", "Document", "Workspace", "Tag", "UserSamlAuthentication", "AccessToken", "OAuthClientAuthorization", "AuthOrganization", "OAuthClient", "AuthUser", "OrganizationAuthorizationTrust", "OrganizationAuthorizationUserTrust", "MFAVerifier", "IdentityProvider", "Role", "RoleSettings", "Policy", "VoicemailUserPolicy", "UserPresence", "DependencyTrackingBuild", "Flow", "Prompt", "PromptResource", "FlowOutcome", "FlowMilestone", "Grammar", "GrammarLanguage", "AgentRoutingInfo", "Queue", "WrapupCode", "MaxOrgRoutingUtilizationCapacity", "ConversationAttributes", "RoutingUtilizationTag", "Evaluation", "Calibration", "Survey", "AgentScoringRule", "EvaluationForm", "SurveyForm", "Recording", "ScreenRecording", "SnippetRecording", "BulkActions", "OrphanedRecording", "RecordingAnnotation", "RecordingSettings", "SnippetRecordingSettings", "ScreenMonitoring", "RecordingKey", "RecordingKeyConfig", "Topic", "Program", "Category", "SentimentFeedback", "DictionaryFeedback", "InteractionReprocessingJob", "Segment", "Outcome", "ActionMap", "ActionTemplate", "ClickstreamSettings", "EventType", "SessionType", "KnowledgeBase", "KnowledgeCategory", "KnowledgeContext", "KnowledgeContextValue", "KnowledgeDocument", "KnowledgeDocumentVariation", "KnowledgeLabel", "KnowledgeTraining", "KnowledgeSearchFeedback", "KnowledgeBaseSource", "KnowledgeFabricSource", "TranscriptionSettings", "SpeechTextAnalyticsSettings", "Appointment", "Annotation", "Organization", "Module", "Rule", "Assignment", "Contest", "Recognition", "ActivityCode", "ActivityPlan", "ActivityPlanOccurrence", "ActivityPlanOccurrenceSession", "ActivityPlanOccurrenceSessionUser", "AdherenceExplanation", "AlternativeShift", "BusinessUnit", "Forecast", "ManagementUnit", "PlanningGroup", "Schedule", "ServiceGoalTemplate", "ShiftTrade", "SelfSchedule", "TimeOffLimit", "TimeOffPlan", "TimeOffRequest", "WorkPlan", "WorkPlanBid", "WorkPlanBidGroup", "WorkPlanRotation", "HistoricalData", "StaffingGroup", "CapacityPlan", "ScheduleSetBid", "ScheduleSetBidGroup", "Opportunity", "Trigger", "Response", "ResponseLibrary", "ResponseAsset", "SkillGroup", "DirectoryGroup", "Team", "SkillGroupDefinition", "Edge", "EdgeGroup", "VoicemailPolicy", "RoutingTranscriptionSettings", "Trunk", "TrunkBase", "ScheduleGroup", "EmergencyGroup", "IVR", "AlertablePresencesOverrides", "CallerIdGroup", "DID", "DIDPool", "Extension", "ExtensionPool", "Phone", "PhoneBase", "Line", "LineBase", "OutboundRoute", "NumberPlan", "Site", "AttemptLimits", "CallableTimeSet", "Campaign", "CampaignRule", "CampaignSchedule", "Sequence", "SequenceSchedule", "ContactList", "ContactListFilter", "ContactListTemplate", "DigitalRuleSet", "DNCList", "FileSpecificationTemplate", "ImportTemplate", "OrganizationSettings", "CallAnalysisResponseSet", "RuleSet", "WrapUpCodeMapping", "MessagingCampaign", "MessagingCampaignSchedule", "EmailCampaignSchedule", "WhatsAppCampaignSchedule", "Predictor", "KpiSpecification", "Metric", "Status", "Profile", "ProfileMembers", "Action", "ActionDraft", "Integration", "Webhook", "DashboardSettings", "InsightSettings", "AnalyticsReportingSettings", "CustomCalculations", "SavedViews", "ScheduledExports", "Exports", "ExportPdfTemplates", "ChangeRequest", "Migration", "Suspension", "ExternalMetricsDefinition", "ExternalMetricsData", "Schema", "Row", "Bulk", "SupportedContent", "ConversationPhoneNumber", "ConversationRecipient", "ConversationAccount", "ConversationDefaultSupportedContent", "ConversationThreadingWindow", "Deployment", "Configuration", "ConfigurationVersion", "EdgePreferences", "EdgeTraceLevel", "OrganizationIntegrationsAccess", "SupportFile", "EdgeLogZip", "Pcaps", "MediaDiagnosticsTraceFile", "EdgePcaps", "EdgeLog", "OrganizationLink", "NumberRouting", "OrganizationFeature", "Product", "User", "Location", "Conversation", "OrganizationSuspension", "OperationalEvent", "Sender", "GcvByocBlock", "AllowAndBlockNumber", "Participant", "ContactSchema", "ExternalOrganizationSchema", "Workbin", "Worktype", "BulkJob", "Credential", "NumberOrder", "EnterpriseAgreement", "VendorListing", "GdprRequest", "DsarRequest", "ExportRequest", "DefaultPanelSettings", "InboundDomain", "OutboundDomain", "InboundRoute", "EmailSetting", "OrganizationLimits", "RoutingSkill", "RoutingLanguage", "ComposerPage", "ComposerPublishedScript", "ComposerScript", "ComposerTemplate", "IntentMiner", "TopicMiner", "SoftSuspension", "JourneyView", "CustomEntity", "DirectoryFeature", "RuleCategory", "DecisionTable", "DecisionTableVersion", "DecisionTableRow", "DecisionTableImportJob", "DecisionTableExportJob", "EscalationRule", "Rules", "Contact", "Note", "Relationship", "ExternalOrg", "SocialMediaMessage", "Assistant", "AssistantQueue"]
+                    "enum": ["Feedback", "Document", "Workspace", "Tag", "UserSamlAuthentication", "AccessToken", "OAuthClientAuthorization", "AuthOrganization", "OAuthClient", "AuthUser", "OrganizationAuthorizationTrust", "OrganizationAuthorizationUserTrust", "MFAVerifier", "IdentityProvider", "Role", "RoleSettings", "Policy", "VoicemailUserPolicy", "UserPresence", "DependencyTrackingBuild", "Flow", "Prompt", "PromptResource", "FlowOutcome", "FlowMilestone", "Grammar", "GrammarLanguage", "AgentRoutingInfo", "Queue", "WrapupCode", "MaxOrgRoutingUtilizationCapacity", "ConversationAttributes", "RoutingUtilizationTag", "Evaluation", "Calibration", "Survey", "AgentScoringRule", "EvaluationForm", "SurveyForm", "Recording", "ScreenRecording", "SnippetRecording", "BulkActions", "OrphanedRecording", "RecordingAnnotation", "RecordingSettings", "SnippetRecordingSettings", "ScreenMonitoring", "RecordingKey", "RecordingKeyConfig", "Topic", "Program", "Category", "SentimentFeedback", "DictionaryFeedback", "InteractionReprocessingJob", "Segment", "Outcome", "ActionMap", "ActionTemplate", "ClickstreamSettings", "EventType", "SessionType", "KnowledgeBase", "KnowledgeCategory", "KnowledgeContext", "KnowledgeContextValue", "KnowledgeDocument", "KnowledgeDocumentVariation", "KnowledgeLabel", "KnowledgeTraining", "KnowledgeSearchFeedback", "KnowledgeBaseSource", "KnowledgeFabricSource", "TranscriptionSettings", "SpeechTextAnalyticsSettings", "Appointment", "Annotation", "Organization", "Module", "Rule", "Assignment", "Contest", "Recognition", "ActivityCode", "ActivityPlan", "ActivityPlanOccurrence", "ActivityPlanOccurrenceSession", "ActivityPlanOccurrenceSessionUser", "AdherenceExplanation", "AlternativeShift", "BusinessUnit", "Forecast", "ManagementUnit", "PlanningGroup", "Schedule", "ServiceGoalTemplate", "ShiftTrade", "SelfSchedule", "TimeOffLimit", "TimeOffPlan", "TimeOffRequest", "WorkPlan", "WorkPlanBid", "WorkPlanBidGroup", "WorkPlanRotation", "HistoricalData", "StaffingGroup", "CapacityPlan", "ScheduleSetBid", "ScheduleSetBidGroup", "Opportunity", "DecisionMetrics", "Trigger", "Response", "ResponseLibrary", "ResponseAsset", "SkillGroup", "DirectoryGroup", "Team", "SkillGroupDefinition", "Edge", "EdgeGroup", "VoicemailPolicy", "RoutingTranscriptionSettings", "Trunk", "TrunkBase", "ScheduleGroup", "EmergencyGroup", "IVR", "AlertablePresencesOverrides", "CallerIdGroup", "DID", "DIDPool", "Extension", "ExtensionPool", "Phone", "PhoneBase", "Line", "LineBase", "OutboundRoute", "NumberPlan", "Site", "AttemptLimits", "CallableTimeSet", "Campaign", "CampaignRule", "CampaignSchedule", "Sequence", "SequenceSchedule", "ContactList", "ContactListFilter", "ContactListTemplate", "DigitalRuleSet", "DNCList", "FileSpecificationTemplate", "ImportTemplate", "OrganizationSettings", "CallAnalysisResponseSet", "RuleSet", "WrapUpCodeMapping", "MessagingCampaign", "MessagingCampaignSchedule", "EmailCampaignSchedule", "WhatsAppCampaignSchedule", "Predictor", "KpiSpecification", "Metric", "Status", "Profile", "ProfileMembers", "Action", "ActionDraft", "Integration", "Webhook", "DashboardSettings", "InsightSettings", "AnalyticsReportingSettings", "CustomCalculations", "SavedViews", "AnalyticsLakehouseSettings", "ScheduledExports", "Exports", "ExportPdfTemplates", "ChangeRequest", "Migration", "Suspension", "ExternalMetricsDefinition", "ExternalMetricsData", "Schema", "Row", "Bulk", "SupportedContent", "ConversationPhoneNumber", "ConversationRecipient", "ConversationAccount", "ConversationDefaultSupportedContent", "ConversationThreadingWindow", "Deployment", "Configuration", "ConfigurationVersion", "EdgePreferences", "EdgeTraceLevel", "OrganizationIntegrationsAccess", "SupportFile", "EdgeLogZip", "Pcaps", "MediaDiagnosticsTraceFile", "EdgePcaps", "EdgeLog", "OrganizationLink", "NumberRouting", "OrganizationFeature", "Product", "User", "Location", "Conversation", "OrganizationSuspension", "OperationalEvent", "Sender", "GcvByocBlock", "AllowAndBlockNumber", "Participant", "ContactSchema", "ExternalOrganizationSchema", "Workbin", "Worktype", "BulkJob", "Credential", "NumberOrder", "EnterpriseAgreement", "VendorListing", "GdprRequest", "DsarRequest", "ExportRequest", "DefaultPanelSettings", "InboundDomain", "OutboundDomain", "InboundRoute", "EmailSetting", "OrganizationLimits", "RoutingSkill", "RoutingLanguage", "ComposerPage", "ComposerPublishedScript", "ComposerScript", "ComposerTemplate", "IntentMiner", "TopicMiner", "SoftSuspension", "JourneyView", "CustomEntity", "DirectoryFeature", "RuleCategory", "DecisionTable", "DecisionTableVersion", "DecisionTableRow", "DecisionTableImportJob", "DecisionTableExportJob", "EscalationRule", "Rules", "Contact", "Note", "Relationship", "ExternalOrg", "SocialMediaMessage", "Assistant", "AssistantQueue", "QueueAnomaly", "MonitoredQueue", "AnomalyDetectionSettings", "ConversationAccessAttributes", "Settings", "Agent"]
                 }, 
                 {
                     "name": "Entity",
@@ -14744,6 +15167,16 @@
                 }
             ]
         }, 
+        "bidgroupscheduleset": { 
+            "properties": [
+                {
+                    "name": "ShiftSets",
+                    "description": "The shift sets that will be used for schedule generation",
+                    "required": true,
+                    "dataType": "[]Shiftset"
+                }
+            ]
+        }, 
         "bidgroupworkplanrequest": { 
             "properties": [
                 {
@@ -14809,6 +15242,50 @@
                 }
             ]
         }, 
+        "bidgroupworkplanrotationrequest": { 
+            "properties": [
+                {
+                    "name": "WorkPlanRotationId",
+                    "description": "The ID of the work plan rotation used in the bid group",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "AgentCount",
+                    "description": "The count of agents that can be assigned to this work plan rotation",
+                    "required": true,
+                    "dataType": "int"
+                }
+            ]
+        }, 
+        "bidgroupworkplanrotationresponse": { 
+            "properties": [
+                {
+                    "name": "Id",
+                    "description": "The globally unique identifier for the object.",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "ManagementUnit",
+                    "description": "The management unit to which the work plan rotation belongs",
+                    "required": true,
+                    "dataType": "Managementunitreference"
+                }, 
+                {
+                    "name": "AgentCount",
+                    "description": "The count of agents that can be assigned to this work plan rotation",
+                    "required": true,
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "SelfUri",
+                    "description": "The URI for this object",
+                    "readOnly": true,
+                    "dataType": "string"
+                }
+            ]
+        }, 
         "billingcharge": { 
             "properties": [
                 {
@@ -14861,6 +15338,16 @@
                     "name": "OverageCurrency",
                     "description": "The currency in which the overage charge is billed.",
                     "dataType": "string"
+                }, 
+                {
+                    "name": "ConvertedTokenCount",
+                    "description": "AI Token Count after the conversion for AI Products.",
+                    "dataType": "float32"
+                }, 
+                {
+                    "name": "TokenConversionRate",
+                    "description": "AI Token Conversion Rate — Units per token conversion ratio.",
+                    "dataType": "float32"
                 }
             ]
         }, 
@@ -21835,6 +22322,11 @@
                     "dataType": "[]Campaigntimeslot"
                 }, 
                 {
+                    "name": "Name",
+                    "description": "The name for the callable time.",
+                    "dataType": "string"
+                }, 
+                {
                     "name": "TimeZoneId",
                     "description": "The time zone for the time slots; for example, Africa/Abidjan. Time zones are represented as a string of the zone name as found in the IANA time zone database. For example: UTC, Etc/UTC, or Europe/London",
                     "required": true,
@@ -26796,7 +27288,7 @@
                     "name": "Dimension",
                     "description": "Left hand side for dimension predicates",
                     "dataType": "string",
-                    "enum": ["caseId", "caseplanId", "customerIntentId", "divisionId", "ownerId", "priority", "status"]
+                    "enum": ["associationType", "caseId", "caseplanId", "conversationId", "customerIntentId", "divisionId", "ownerId", "priority", "stageId", "status", "stepId", "workitemId"]
                 }, 
                 {
                     "name": "Operator",
@@ -26883,7 +27375,7 @@
                     "description": "Name of the metric used for sorting values.",
                     "required": true,
                     "dataType": "string",
-                    "enum": ["nCasesOpened", "nCasesOverSla", "nCasesPurged", "nCasesStatusChanged", "nCasesTerminated", "tCasesResolved", "tCasesStatus"]
+                    "enum": ["nCaseAssociationsCreated", "nCasesDeleted", "nCasesOpened", "nCasesOverSla", "nCasesPurged", "nCasesStatusChanged", "nCasesTerminated", "tCasesResolved", "tCasesStatus"]
                 }, 
                 {
                     "name": "Function",
@@ -26901,7 +27393,7 @@
                     "description": "Target metric name",
                     "required": true,
                     "dataType": "string",
-                    "enum": ["nCasesOpened", "nCasesOverSla", "nCasesPurged", "nCasesStatusChanged", "nCasesTerminated", "oCasesServiceLevel", "tCasesResolved", "tCasesStatus"]
+                    "enum": ["nCaseAssociationsCreated", "nCasesDeleted", "nCasesOpened", "nCasesOverSla", "nCasesPurged", "nCasesStatusChanged", "nCasesTerminated", "oCasesServiceLevel", "tCasesResolved", "tCasesStatus"]
                 }, 
                 {
                     "name": "Name",
@@ -27329,6 +27821,12 @@
                     "name": "Name",
                     "description": "Filter by Caseplan name (case-insensitive, partial match). Omitting name returns all Caseplans (subject to pagination).",
                     "dataType": "string"
+                }, 
+                {
+                    "name": "NameSearchType",
+                    "description": "Type of name search to perform. Default is BEGINS_WITH.",
+                    "dataType": "string",
+                    "enum": ["BEGINS_WITH", "CONTAINS"]
                 }, 
                 {
                     "name": "PageSize",
@@ -33236,7 +33734,7 @@
                     "description": "The type of this identifier",
                     "required": true,
                     "dataType": "string",
-                    "enum": ["SocialLine", "SocialFacebook", "SocialTwitter", "SocialWhatsapp", "SocialInstagram", "AppleOpaqueId", "Email", "Phone", "Cookie", "ExternalId"]
+                    "enum": ["SocialLine", "SocialFacebook", "SocialTwitter", "SocialWhatsapp", "SocialInstagram", "SocialWhatsappBsuid", "AppleOpaqueId", "Email", "Phone", "Cookie", "ExternalId"]
                 }, 
                 {
                     "name": "Value",
@@ -34374,6 +34872,11 @@
                     "dataType": "string"
                 }, 
                 {
+                    "name": "CallableTimeColumnName",
+                    "description": "A name of the callableTimeColumn",
+                    "dataType": "string"
+                }, 
+                {
                     "name": "CallableTimeColumn",
                     "description": "A column that indicates the timezone to use for a given contact when checking callable times. Not allowed if 'automaticTimeZoneMapping' is set to true.",
                     "dataType": "string"
@@ -34482,6 +34985,12 @@
                     "dataType": "time.Time"
                 }, 
                 {
+                    "name": "DateCompletion",
+                    "description": "When the request reached a terminal state. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z",
+                    "readOnly": true,
+                    "dataType": "time.Time"
+                }, 
+                {
                     "name": "Status",
                     "description": "The status of the request",
                     "readOnly": true,
@@ -34495,6 +35004,12 @@
                     "dataType": "string"
                 }, 
                 {
+                    "name": "ResultRowCount",
+                    "description": "Number of rows returned by the export query",
+                    "readOnly": true,
+                    "dataType": "int"
+                }, 
+                {
                     "name": "QueryConditions",
                     "description": "Query conditions to apply on export",
                     "dataType": "Contactsexportqueryconditions"
@@ -34503,6 +35018,23 @@
                     "name": "SelfUri",
                     "description": "The URI for this object",
                     "readOnly": true,
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "contactsexportcomparisonfieldfilter": { 
+            "properties": [
+                {
+                    "name": "Field",
+                    "description": "Field name to apply the filter",
+                    "required": true,
+                    "dataType": "string",
+                    "enum": ["CreateDate", "ModifyDate"]
+                }, 
+                {
+                    "name": "Value",
+                    "description": "Value to compare field's value against",
+                    "required": true,
                     "dataType": "string"
                 }
             ]
@@ -34552,6 +35084,16 @@
                     "name": "In",
                     "description": "Filtered field should match one of the listed values",
                     "dataType": "Contactsexportfieldlistfilter"
+                }, 
+                {
+                    "name": "Lte",
+                    "description": "Filtered field should be less than or equal to the value",
+                    "dataType": "Contactsexportcomparisonfieldfilter"
+                }, 
+                {
+                    "name": "Gte",
+                    "description": "Filtered field should be greater than or equal to the value",
+                    "dataType": "Contactsexportcomparisonfieldfilter"
                 }, 
                 {
                     "name": "And",
@@ -34835,55 +35377,6 @@
                     "name": "DateTime",
                     "description": "The date and times of the event being scheduled. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z",
                     "dataType": "time.Time"
-                }
-            ]
-        }, 
-        "contentfilerequest": { 
-            "properties": [
-                {
-                    "name": "UploadKey",
-                    "description": "Key that identifies the file in the storage including the file name",
-                    "dataType": "string"
-                }, 
-                {
-                    "name": "Name",
-                    "description": "The name of the file",
-                    "dataType": "string"
-                }
-            ]
-        }, 
-        "contentfileresponse": { 
-            "properties": [
-                {
-                    "name": "Name",
-                    "description": "The name of the file",
-                    "required": true,
-                    "dataType": "string"
-                }, 
-                {
-                    "name": "VarType",
-                    "description": "The file format",
-                    "required": true,
-                    "dataType": "string",
-                    "enum": ["Pdf", "Docx", "Doc"]
-                }, 
-                {
-                    "name": "Checksum",
-                    "description": "The checksum of the file",
-                    "required": true,
-                    "dataType": "string"
-                }, 
-                {
-                    "name": "Size",
-                    "description": "The size of the file in bytes",
-                    "required": true,
-                    "dataType": "int"
-                }, 
-                {
-                    "name": "ContentUrl",
-                    "description": "Public download url for content. Needs to be expanded",
-                    "required": true,
-                    "dataType": "string"
                 }
             ]
         }, 
@@ -44467,6 +44960,19 @@
                 }
             ]
         }, 
+        "conversationintentsuggestionstopicqueryreformulationcontext": { 
+            "properties": [
+                {
+                    "name": "KnowledgeClassification",
+                    "dataType": "string",
+                    "enum": ["Unknown", "Yes", "No", "Maybe"]
+                }, 
+                {
+                    "name": "ReformulatedQuery",
+                    "dataType": "string"
+                }
+            ]
+        }, 
         "conversationintentsuggestionstopicsuggestedintent": { 
             "properties": [
                 {
@@ -44545,6 +45051,10 @@
                 {
                     "name": "Language",
                     "dataType": "string"
+                }, 
+                {
+                    "name": "QueryReformulationContext",
+                    "dataType": "Conversationintentsuggestionstopicqueryreformulationcontext"
                 }
             ]
         }, 
@@ -44683,6 +45193,19 @@
                 }
             ]
         }, 
+        "conversationknowledgearticlesuggestionstopicqueryreformulationcontext": { 
+            "properties": [
+                {
+                    "name": "KnowledgeClassification",
+                    "dataType": "string",
+                    "enum": ["Unknown", "Yes", "No", "Maybe"]
+                }, 
+                {
+                    "name": "ReformulatedQuery",
+                    "dataType": "string"
+                }
+            ]
+        }, 
         "conversationknowledgearticlesuggestionstopicsuggestedarticle": { 
             "properties": [
                 {
@@ -44797,6 +45320,10 @@
                 {
                     "name": "Language",
                     "dataType": "string"
+                }, 
+                {
+                    "name": "QueryReformulationContext",
+                    "dataType": "Conversationknowledgearticlesuggestionstopicqueryreformulationcontext"
                 }
             ]
         }, 
@@ -44869,6 +45396,19 @@
                 {
                     "name": "ActiveIntent",
                     "dataType": "Conversationknowledgesearchsuggestionstopicsuggestedintent"
+                }
+            ]
+        }, 
+        "conversationknowledgesearchsuggestionstopicqueryreformulationcontext": { 
+            "properties": [
+                {
+                    "name": "KnowledgeClassification",
+                    "dataType": "string",
+                    "enum": ["Unknown", "Yes", "No", "Maybe"]
+                }, 
+                {
+                    "name": "ReformulatedQuery",
+                    "dataType": "string"
                 }
             ]
         }, 
@@ -44994,6 +45534,10 @@
                 {
                     "name": "Language",
                     "dataType": "string"
+                }, 
+                {
+                    "name": "QueryReformulationContext",
+                    "dataType": "Conversationknowledgesearchsuggestionstopicqueryreformulationcontext"
                 }
             ]
         }, 
@@ -47256,6 +47800,19 @@
                 }
             ]
         }, 
+        "conversationresponsesuggestionstopicqueryreformulationcontext": { 
+            "properties": [
+                {
+                    "name": "KnowledgeClassification",
+                    "dataType": "string",
+                    "enum": ["Unknown", "Yes", "No", "Maybe"]
+                }, 
+                {
+                    "name": "ReformulatedQuery",
+                    "dataType": "string"
+                }
+            ]
+        }, 
         "conversationresponsesuggestionstopicsuggestedcannedresponse": { 
             "properties": [
                 {
@@ -47346,6 +47903,10 @@
                 {
                     "name": "Language",
                     "dataType": "string"
+                }, 
+                {
+                    "name": "QueryReformulationContext",
+                    "dataType": "Conversationresponsesuggestionstopicqueryreformulationcontext"
                 }
             ]
         }, 
@@ -47978,6 +48539,19 @@
                 }
             ]
         }, 
+        "conversationscriptsuggestionstopicqueryreformulationcontext": { 
+            "properties": [
+                {
+                    "name": "KnowledgeClassification",
+                    "dataType": "string",
+                    "enum": ["Unknown", "Yes", "No", "Maybe"]
+                }, 
+                {
+                    "name": "ReformulatedQuery",
+                    "dataType": "string"
+                }
+            ]
+        }, 
         "conversationscriptsuggestionstopicscriptsuggestionevent": { 
             "properties": [
                 {
@@ -48119,6 +48693,10 @@
                 {
                     "name": "Language",
                     "dataType": "string"
+                }, 
+                {
+                    "name": "QueryReformulationContext",
+                    "dataType": "Conversationscriptsuggestionstopicqueryreformulationcontext"
                 }
             ]
         }, 
@@ -48853,6 +49431,21 @@
                 }
             ]
         }, 
+        "conversationsummaryeditedby": { 
+            "properties": [
+                {
+                    "name": "User",
+                    "description": "The user that edited the summary.",
+                    "dataType": "Addressableentityref"
+                }, 
+                {
+                    "name": "Purpose",
+                    "description": "The participant purpose of the user.",
+                    "dataType": "string",
+                    "enum": ["Unknown", "Acd", "Agent", "Customer", "Workflow"]
+                }
+            ]
+        }, 
         "conversationsummaryextractedentity": { 
             "properties": [
                 {
@@ -49123,6 +49716,27 @@
                 {
                     "name": "DurationMs",
                     "dataType": "int"
+                }, 
+                {
+                    "name": "Labels",
+                    "dataType": "[]Conversationsummarytopicconversationsummarylabel"
+                }
+            ]
+        }, 
+        "conversationsummarytopicconversationsummarylabel": { 
+            "properties": [
+                {
+                    "name": "Name",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Description",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "VarType",
+                    "dataType": "string",
+                    "enum": ["Unknown", "CustomerSetting"]
                 }
             ]
         }, 
@@ -49363,6 +49977,27 @@
                 {
                     "name": "DurationMs",
                     "dataType": "int"
+                }, 
+                {
+                    "name": "Labels",
+                    "dataType": "[]Conversationsummarytopicvirtualagentsconversationsummarylabel"
+                }
+            ]
+        }, 
+        "conversationsummarytopicvirtualagentsconversationsummarylabel": { 
+            "properties": [
+                {
+                    "name": "Name",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Description",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "VarType",
+                    "dataType": "string",
+                    "enum": ["Unknown", "CustomerSetting"]
                 }
             ]
         }, 
@@ -49429,6 +50064,27 @@
                 }
             ]
         }, 
+        "conversationsummarytriggersource": { 
+            "properties": [
+                {
+                    "name": "SourceType",
+                    "description": "The configuration entity for which summarization is triggered.",
+                    "dataType": "string",
+                    "enum": ["Unknown", "AgentAssistant", "Program", "Flow", "Copilot"]
+                }, 
+                {
+                    "name": "SourceId",
+                    "description": "The id value for the source type.",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "SourceOutcome",
+                    "description": "The reason a trigger source finished processing. Only applies to Flow trigger source types.",
+                    "dataType": "string",
+                    "enum": ["Unknown", "Contained", "Transfer"]
+                }
+            ]
+        }, 
         "conversationsummarywrapupcode": { 
             "properties": [
                 {
@@ -49465,6 +50121,19 @@
                     "name": "ExternalTag",
                     "description": "The external tag associated with the conversation.",
                     "required": true,
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "conversationthirdpartyactionsuggestionstopicqueryreformulationcontext": { 
+            "properties": [
+                {
+                    "name": "KnowledgeClassification",
+                    "dataType": "string",
+                    "enum": ["Unknown", "Yes", "No", "Maybe"]
+                }, 
+                {
+                    "name": "ReformulatedQuery",
                     "dataType": "string"
                 }
             ]
@@ -49547,6 +50216,10 @@
                 {
                     "name": "Language",
                     "dataType": "string"
+                }, 
+                {
+                    "name": "QueryReformulationContext",
+                    "dataType": "Conversationthirdpartyactionsuggestionstopicqueryreformulationcontext"
                 }
             ]
         }, 
@@ -49610,6 +50283,26 @@
             "properties": [
                 {
                     "name": "Text",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Title",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Sources",
+                    "dataType": "[]Conversationthirdpartyactionsuggestionstopicthirdpartysuggestionsource"
+                }
+            ]
+        }, 
+        "conversationthirdpartyactionsuggestionstopicthirdpartysuggestionsource": { 
+            "properties": [
+                {
+                    "name": "Name",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Url",
                     "dataType": "string"
                 }
             ]
@@ -50660,12 +51353,7 @@
                     "description": "Type of the context.",
                     "required": true,
                     "dataType": "string",
-                    "enum": ["ActiveIntent", "ConversationAttribute", "ParticipantData"]
-                }, 
-                {
-                    "name": "ParticipantDataProperties",
-                    "description": "Participant data properties.",
-                    "dataType": "Participantdataproperties"
+                    "enum": ["ActiveIntent", "ConversationAttribute"]
                 }, 
                 {
                     "name": "ConversationAttributeProperties",
@@ -50858,6 +51546,16 @@
                 {
                     "name": "Description",
                     "description": "The description of newly created decision table.",
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "copyschedulebid": { 
+            "properties": [
+                {
+                    "name": "Name",
+                    "description": "The name of the new schedule bid",
+                    "required": true,
                     "dataType": "string"
                 }
             ]
@@ -52894,6 +53592,64 @@
                 }
             ]
         }, 
+        "createschedulebid": { 
+            "properties": [
+                {
+                    "name": "Name",
+                    "description": "The name of the schedule bid",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Forecast",
+                    "description": "The selected forecast used for schedule set generation for this bid",
+                    "dataType": "Bushorttermforecastweekreference"
+                }, 
+                {
+                    "name": "BidWindowStartDate",
+                    "description": "The bid start date where agents start participating in schedule bidding relative to the business unit time zone in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd",
+                    "required": true,
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "BidWindowEndDate",
+                    "description": "The bid end date relative to the business unit time zone in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd",
+                    "required": true,
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "EffectiveDate",
+                    "description": "The date when schedule sets would be effective for schedule generation relative to the business unit time zone in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd",
+                    "required": true,
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "WeeksToSchedule",
+                    "description": "The number of weeks to generate schedule set through this bid",
+                    "required": true,
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "EndOverridesAndRotations",
+                    "description": "If true, all existing overrides, work plan rotations will be ended one day before effective date of this bid",
+                    "dataType": "bool"
+                }, 
+                {
+                    "name": "AgentRankingType",
+                    "description": "The type of agent ranking selected for this bid",
+                    "required": true,
+                    "dataType": "string",
+                    "enum": ["HireDate", "Performance"]
+                }, 
+                {
+                    "name": "RankingTiebreakerType",
+                    "description": "Ranking tiebreaker to be used",
+                    "required": true,
+                    "dataType": "string",
+                    "enum": ["HireDate", "Performance", "Custom", "RandomlyAssign"]
+                }
+            ]
+        }, 
         "createscheduledtriggerrequest": { 
             "properties": [
                 {
@@ -53879,6 +54635,11 @@
                     "required": true,
                     "dataType": "string",
                     "enum": ["HireDate", "Performance", "Custom", "RandomlyAssign"]
+                }, 
+                {
+                    "name": "EndOverridesAndRotations",
+                    "description": "If true, all existing overrides, workplan rotations will be ended one day before effective date of this bid",
+                    "dataType": "bool"
                 }, 
                 {
                     "name": "WorkPlanFieldsVisibleToAgents",
@@ -61862,19 +62623,25 @@
                 }, 
                 {
                     "name": "Status",
-                    "description": "The status of the dictionary feedback. Only returned when GenesysExtended feature is enabled.",
+                    "description": "The status of the dictionary feedback",
                     "readOnly": true,
                     "dataType": "string",
-                    "enum": ["Active", "Pending", "Failed", "Saved"]
+                    "enum": ["Active", "Pending", "Failed", "Saved", "Invalid"]
+                }, 
+                {
+                    "name": "InvalidReason",
+                    "description": "The reason the dictionary feedback is invalid",
+                    "readOnly": true,
+                    "dataType": "string"
                 }, 
                 {
                     "name": "DisplayAs",
-                    "description": "The display name for the dictionary feedback. Only returned when GenesysExtended feature is enabled. This field is only valid for Extended Services transcription engine.",
+                    "description": "The display name for the dictionary feedback.",
                     "dataType": "string"
                 }, 
                 {
                     "name": "ExamplePhrases",
-                    "description": "A list of at least 3 and up to 20 unique phrases that are example usage of the term. This field is only valid and required for Genesys transcription engine.",
+                    "description": "A list of at least 3 and up to 20 unique phrases that are example usage of the term. This field is only valid for Genesys transcription engine. Not applicable for English and Spanish dialects",
                     "dataType": "[]Dictionaryfeedbackexamplephrase"
                 }, 
                 {
@@ -62767,6 +63534,11 @@
                 {
                     "name": "Phrase",
                     "description": "Human readable English description of the disconnect reason.",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Reason",
+                    "description": "Final disconnect reason code that triggered the disposition result.",
                     "dataType": "string"
                 }
             ]
@@ -64436,26 +65208,6 @@
                 }
             ]
         }, 
-        "documentbodyrequest": { 
-            "properties": [
-                {
-                    "name": "Blocks",
-                    "description": "The list of building blocks for the document body.",
-                    "required": true,
-                    "dataType": "[]Documentbodyblock"
-                }
-            ]
-        }, 
-        "documentbodyresponse": { 
-            "properties": [
-                {
-                    "name": "Blocks",
-                    "description": "The list of building blocks for the document body.",
-                    "required": true,
-                    "dataType": "[]Documentbodyblock"
-                }
-            ]
-        }, 
         "documentbodytable": { 
             "properties": [
                 {
@@ -65513,7 +66265,7 @@
                 {
                     "name": "Body",
                     "description": "The content for the variation.",
-                    "dataType": "Documentbodyrequest"
+                    "dataType": "Documentbody"
                 }, 
                 {
                     "name": "SelfUri",
@@ -65573,7 +66325,7 @@
                 {
                     "name": "Body",
                     "description": "The content for the variation.",
-                    "dataType": "Documentbodyresponse"
+                    "dataType": "Documentbody"
                 }, 
                 {
                     "name": "SelfUri",
@@ -69397,6 +70149,11 @@
                     "name": "VarType",
                     "description": "Indicates the type of the email column. For example, 'work' or 'personal'.",
                     "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "ContactableTimeColumnName",
+                    "description": "A name of the contactableTimeColumn",
                     "dataType": "string"
                 }, 
                 {
@@ -82167,7 +82924,7 @@
                     "name": "FlowType",
                     "description": "The type of this flow",
                     "dataType": "string",
-                    "enum": ["bot", "commonmodule", "digitalbot", "inboundcall", "inboundchat", "inboundemail", "inboundshortmessage", "inqueuecall", "inqueueemail", "inqueueshortmessage", "outboundcall", "securecall", "speech", "surveyinvite", "voice", "voicemail", "voicesurvey", "workflow", "workitem"]
+                    "enum": ["bot", "commonmodule", "digitalbot", "emailsend", "inboundcall", "inboundchat", "inboundemail", "inboundshortmessage", "inqueuecall", "inqueueemail", "inqueueshortmessage", "outboundcall", "securecall", "speech", "surveyinvite", "voice", "voicemail", "voicesurvey", "workflow", "workitem"]
                 }, 
                 {
                     "name": "FlowVersion",
@@ -89726,7 +90483,7 @@
             "properties": [
                 {
                     "name": "IdleTokenTimeoutSeconds",
-                    "description": "Token timeout length in seconds. Must be at least 5 minutes and 8 hours or less (if HIPAA is disabled) or 15 minutes or less (if HIPAA is enabled).",
+                    "description": "Token timeout length in seconds. Must be at least 5 minutes and at most 8 hours. HIPAA-enabled organizations may be subject to a stricter 15-minute maximum during rollout.",
                     "dataType": "int"
                 }, 
                 {
@@ -100211,62 +100968,6 @@
                 }
             ]
         }, 
-        "knowledgedocumentcreaterequest": { 
-            "properties": [
-                {
-                    "name": "Id",
-                    "description": "The globally unique identifier for the object.",
-                    "readOnly": true,
-                    "dataType": "string"
-                }, 
-                {
-                    "name": "Title",
-                    "description": "Document title.",
-                    "required": true,
-                    "dataType": "string"
-                }, 
-                {
-                    "name": "Visible",
-                    "description": "Indicates if the knowledge document should be included in search results.",
-                    "dataType": "bool"
-                }, 
-                {
-                    "name": "Alternatives",
-                    "description": "List of alternate phrases related to the title which improves search results.",
-                    "dataType": "[]Knowledgedocumentalternative"
-                }, 
-                {
-                    "name": "CategoryId",
-                    "description": "The category associated with the document.",
-                    "dataType": "string"
-                }, 
-                {
-                    "name": "LabelIds",
-                    "description": "The ids of labels associated with the document.",
-                    "dataType": "[]string"
-                }, 
-                {
-                    "name": "ExternalId",
-                    "description": "The external id associated with the document.",
-                    "dataType": "string"
-                }, 
-                {
-                    "name": "ExternalUrl",
-                    "description": "The URL to external document.",
-                    "dataType": "string"
-                }, 
-                {
-                    "name": "SelfUri",
-                    "description": "The URI for this object",
-                    "readOnly": true,
-                    "dataType": "string"
-                }
-            ]
-        }, 
-        "knowledgedocumentdescriptor": { 
-            "properties": [
-            ]
-        }, 
         "knowledgedocumentfeedback": { 
             "properties": [
                 {
@@ -100931,7 +101632,7 @@
                 {
                     "name": "Body",
                     "description": "The content for the variation.",
-                    "dataType": "Documentbodyresponse"
+                    "dataType": "Documentbody"
                 }, 
                 {
                     "name": "Chunks",
@@ -101688,7 +102389,7 @@
                 {
                     "name": "Body",
                     "description": "The content for the variation.",
-                    "dataType": "Documentbodyresponse"
+                    "dataType": "Documentbody"
                 }, 
                 {
                     "name": "SelfUri",
@@ -101788,10 +102489,6 @@
                 {
                     "name": "SourceId",
                     "dataType": "string"
-                }, 
-                {
-                    "name": "IncludeDocumentsWithFileBody",
-                    "dataType": "bool"
                 }
             ]
         }, 
@@ -102366,7 +103063,7 @@
                 {
                     "name": "Body",
                     "description": "The content for the variation.",
-                    "dataType": "Documentbodyresponse"
+                    "dataType": "Documentbody"
                 }, 
                 {
                     "name": "SelfUri",
@@ -108384,14 +109081,20 @@
                 }, 
                 {
                     "name": "Status",
-                    "description": "The status of the dictionary feedback. Only returned when GenesysExtended feature is enabled.",
+                    "description": "The status of the dictionary feedback",
                     "readOnly": true,
                     "dataType": "string",
-                    "enum": ["Active", "Pending", "Failed", "Saved"]
+                    "enum": ["Active", "Pending", "Failed", "Saved", "Invalid"]
+                }, 
+                {
+                    "name": "InvalidReason",
+                    "description": "The reason the dictionary feedback is invalid",
+                    "readOnly": true,
+                    "dataType": "string"
                 }, 
                 {
                     "name": "DisplayAs",
-                    "description": "The display name for the dictionary feedback. Only returned when GenesysExtended feature is enabled. This field is only valid for Extended Services transcription engine.",
+                    "description": "The display name for the dictionary feedback.",
                     "dataType": "string"
                 }, 
                 {
@@ -108650,6 +109353,14 @@
                 }
             ]
         }, 
+        "listwrapperbidgroupworkplanrotationrequest": { 
+            "properties": [
+                {
+                    "name": "Values",
+                    "dataType": "[]Bidgroupworkplanrotationrequest"
+                }
+            ]
+        }, 
         "listwrapperfixedavailability": { 
             "properties": [
                 {
@@ -108696,6 +109407,14 @@
                 {
                     "name": "Values",
                     "dataType": "[]Requireddaterange"
+                }
+            ]
+        }, 
+        "listwrapperschedulesetrequest": { 
+            "properties": [
+                {
+                    "name": "Values",
+                    "dataType": "[]Schedulesetrequest"
                 }
             ]
         }, 
@@ -111581,7 +112300,7 @@
                     "name": "VarType",
                     "description": "Defines the content type of the Header in message",
                     "dataType": "string",
-                    "enum": ["Text", "Image", "Video"]
+                    "enum": ["Text", "Image", "Video", "Document"]
                 }, 
                 {
                     "name": "Content",
@@ -118997,6 +119716,16 @@
                     "name": "Url",
                     "description": "The URL of the social post on the native platform.",
                     "dataType": "string"
+                }, 
+                {
+                    "name": "MentionIds",
+                    "description": "IDs of accounts referenced by name within the message text or caption (for example '@brandpage' in a post body or comment). A 'mention' here uses the same convention as Meta (Facebook, Instagram) and LinkedIn, where it denotes a textual reference to an account. Distinct from tagIds, which represent explicit associations with the message. Null or absent when no accounts are referenced in the text.",
+                    "dataType": "[]string"
+                }, 
+                {
+                    "name": "TagIds",
+                    "description": "IDs of accounts attached to the message itself, independent of the text (for example a person tagged in an Instagram photo so their profile is linked from the image). A 'tag' here uses the same convention as Meta (Facebook, Instagram) and LinkedIn, where it denotes an explicit association with content rather than a textual reference. Distinct from mentionIds, which represent in-text/caption references. Null or absent when no accounts are tagged on the message.",
+                    "dataType": "[]string"
                 }
             ]
         }, 
@@ -119462,6 +120191,16 @@
                     "name": "EntityVersion",
                     "description": "The version of the entity in the providing service",
                     "dataType": "string"
+                }, 
+                {
+                    "name": "PhoneNumber",
+                    "description": "The phone number associated with the event",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "ExternalContactId",
+                    "description": "The external contact ID associated with the event",
+                    "dataType": "string"
                 }
             ]
         }, 
@@ -119525,6 +120264,14 @@
                 }, 
                 {
                     "name": "EntityToken",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "PhoneNumber",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "ExternalContactId",
                     "dataType": "string"
                 }, 
                 {
@@ -120678,6 +121425,11 @@
                     "name": "InactivityTimeoutExclusions",
                     "description": "The list of exempt apis from inactivity timeout.",
                     "dataType": "[]string"
+                }, 
+                {
+                    "name": "UniversalLogout",
+                    "description": "Indicates whether universal logout is enabled for the organization.",
+                    "dataType": "bool"
                 }
             ]
         }, 
@@ -125257,16 +126009,6 @@
                 {
                     "name": "BargedParticipantId",
                     "description": "If this participant barged in a participant's call, then this will be the id of the targeted participant.",
-                    "dataType": "string"
-                }
-            ]
-        }, 
-        "participantdataproperties": { 
-            "properties": [
-                {
-                    "name": "Name",
-                    "description": "Participant data name.",
-                    "required": true,
                     "dataType": "string"
                 }
             ]
@@ -131638,6 +132380,22 @@
             "properties": [
             ]
         }, 
+        "queryeffectiveschedulesetsrequest": { 
+            "properties": [
+                {
+                    "name": "StartDate",
+                    "description": "The start date for querying effective bids relative to the business unit time zone in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd",
+                    "required": true,
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "WeekCount",
+                    "description": "The number of weeks to query for effective bids",
+                    "required": true,
+                    "dataType": "int"
+                }
+            ]
+        }, 
         "queryenrollmentopportunityresult": { 
             "properties": [
                 {
@@ -131918,6 +132676,17 @@
                     "name": "StaffingGroupIds",
                     "description": "The list of staffing group IDs to request capacity group associations",
                     "dataType": "[]string"
+                }
+            ]
+        }, 
+        "queryprocessingconfig": { 
+            "properties": [
+                {
+                    "name": "KnowledgeQueryProcessing",
+                    "description": "Knowledge query processing mode applied before retrieval.",
+                    "required": true,
+                    "dataType": "string",
+                    "enum": ["ClassificationOnly", "ClassificationAndReformulation", "None"]
                 }
             ]
         }, 
@@ -144483,6 +145252,32 @@
                 }
             ]
         }, 
+        "ratingfilter": { 
+            "properties": [
+                {
+                    "name": "Operator",
+                    "description": "The comparison operator for review rating filtering.",
+                    "required": true,
+                    "dataType": "string",
+                    "enum": ["EqualTo", "GreaterThan", "GreaterThanOrEqualTo", "LessThan", "LessThanOrEqualTo", "Between"]
+                }, 
+                {
+                    "name": "From",
+                    "description": "The lower bound for the Between operator",
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "To",
+                    "description": "The upper bound for the Between operator",
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "Values",
+                    "description": "One or more rating values to filter by",
+                    "dataType": "[]int"
+                }
+            ]
+        }, 
         "reaction": { 
             "properties": [
                 {
@@ -146215,6 +147010,11 @@
                     "dataType": "[]Recordingtemplatebutton"
                 }, 
                 {
+                    "name": "Carousel",
+                    "description": "The template carousel",
+                    "dataType": "Recordingtemplatecarousel"
+                }, 
+                {
                     "name": "Footer",
                     "description": "The template footer.",
                     "dataType": "Recordingtemplatefooter"
@@ -146800,6 +147600,43 @@
                 }
             ]
         }, 
+        "registerarchitectvalidatejob": { 
+            "properties": [
+                {
+                    "name": "Flows",
+                    "description": "A list of the flows to be validated.",
+                    "required": true,
+                    "dataType": "[]Validatedetails"
+                }
+            ]
+        }, 
+        "registerarchitectvalidatejobresponse": { 
+            "properties": [
+                {
+                    "name": "Id",
+                    "description": "The globally unique identifier for the object.",
+                    "readOnly": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Status",
+                    "description": "The status of the validate job.",
+                    "dataType": "string",
+                    "enum": ["Registered", "Started", "Success", "Failure"]
+                }, 
+                {
+                    "name": "TotalFlows",
+                    "description": "The number of flows submitted for validation.",
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "SelfUri",
+                    "description": "The URI for this object",
+                    "readOnly": true,
+                    "dataType": "string"
+                }
+            ]
+        }, 
         "relationship": { 
             "properties": [
                 {
@@ -147219,7 +148056,7 @@
                     "description": "The type of view export job to be created",
                     "required": true,
                     "dataType": "string",
-                    "enum": ["QUEUE_PERFORMANCE_SUMMARY_VIEW", "QUEUE_PERFORMANCE_DETAIL_VIEW", "INTERACTION_SEARCH_VIEW", "AGENT_PERFORMANCE_SUMMARY_VIEW", "AGENT_PERFORMANCE_DETAIL_VIEW", "AGENT_STATUS_SUMMARY_VIEW", "AGENT_STATUS_DETAIL_VIEW", "AGENT_EVALUATION_SUMMARY_VIEW", "AGENT_EVALUATION_DETAIL_VIEW", "AGENT_QUEUE_DETAIL_VIEW", "AGENT_INTERACTION_DETAIL_VIEW", "ABANDON_INSIGHTS_VIEW", "SKILLS_PERFORMANCE_VIEW", "SURVEY_FORM_PERFORMANCE_SUMMARY_VIEW", "SURVEY_FORM_PERFORMANCE_DETAIL_VIEW", "DNIS_PERFORMANCE_SUMMARY_VIEW", "DNIS_PERFORMANCE_DETAIL_VIEW", "WRAP_UP_PERFORMANCE_SUMMARY_VIEW", "AGENT_WRAP_UP_PERFORMANCE_DETAIL_VIEW", "QUEUE_ACTIVITY_SUMMARY_VIEW", "QUEUE_ACTIVITY_DETAIL_VIEW", "AGENT_QUEUE_ACTIVITY_SUMMARY_VIEW", "QUEUE_AGENT_DETAIL_VIEW", "QUEUE_INTERACTION_DETAIL_VIEW", "AGENT_SCHEDULE_DETAIL_VIEW", "IVR_PERFORMANCE_SUMMARY_VIEW", "IVR_PERFORMANCE_DETAIL_VIEW", "ANSWER_INSIGHTS_VIEW", "HANDLE_INSIGHTS_VIEW", "TALK_INSIGHTS_VIEW", "HOLD_INSIGHTS_VIEW", "ACW_INSIGHTS_VIEW", "WAIT_INSIGHTS_VIEW", "AGENT_WRAP_UP_PERFORMANCE_INTERVAL_DETAIL_VIEW", "FLOW_OUTCOME_SUMMARY_VIEW", "FLOW_OUTCOME_PERFORMANCE_DETAIL_VIEW", "FLOW_OUTCOME_PERFORMANCE_INTERVAL_DETAIL_VIEW", "FLOW_DESTINATION_SUMMARY_VIEW", "FLOW_DESTINATION_DETAIL_VIEW", "API_USAGE_VIEW", "SCHEDULED_CALLBACKS_VIEW", "CONTENT_SEARCH_VIEW", "LANDING_PAGE", "DASHBOARD_SUMMARY", "DASHBOARD_DETAIL", "DASHBOARD_USERS", "DASHBOARD_USERS_DETAIL", "JOURNEY_ACTION_MAP_SUMMARY_VIEW", "JOURNEY_OUTCOME_SUMMARY_VIEW", "JOURNEY_SEGMENT_SUMMARY_VIEW", "AGENT_DEVELOPMENT_DETAIL_VIEW", "AGENT_DEVELOPMENT_DETAIL_ME_VIEW", "AGENT_DEVELOPMENT_SUMMARY_VIEW", "AGENT_PERFORMANCE_ME_VIEW", "AGENT_STATUS_ME_VIEW", "AGENT_EVALUATION_ME_VIEW", "AGENT_SCORECARD_VIEW", "AGENT_SCORECARD_ME_VIEW", "AGENT_GAMIFICATION_LEADERSHIP_VIEW", "AGENT_SCHEDULE_ME_VIEW", "BOT_PERFORMANCE_SUMMARY_VIEW", "BOT_PERFORMANCE_DETAIL_VIEW", "SCHEDULED_EXPORTS_VIEW", "TOPIC_TREND_SUMMARY_VIEW", "TOPIC_TREND_DETAIL_VIEW", "ACTION_MAP_BLOCKED_CONSTRAINTS_DETAIL_VIEW", "ACTION_MAP_BLOCKED_CONSTRAINTS_INTERVAL_DETAIL_VIEW", "FLOW_MILESTONE_PERFORMANCE_DETAIL_VIEW", "FLOW_MILESTONE_PERFORMANCE_INTERVAL_DETAIL_VIEW", "AGENT_TOPIC_SUMMARY_VIEW", "AGENT_TOPIC_DETAIL_VIEW", "QUEUE_TOPIC_SUMMARY_VIEW", "QUEUE_TOPIC_DETAIL_VIEW", "FLOW_TOPIC_SUMMARY_VIEW", "FLOW_TOPIC_DETAIL_VIEW", "AGENT_INTERACTIONS_ME_VIEW", "ALERT_RULES_VIEW", "CONFIGURE_ALERT_RULE_VIEW", "PREDICTIVE_ROUTING_VIEW", "PREDICTIVE_ROUTING_QUEUE_OVERVIEW", "PREDICTIVE_ROUTING_MODEL_VIEW", "PREDICTIVE_ROUTING_IMPACT_VIEW", "DATA_ACTIONS_PERFORMANCE_SUMMARY_VIEW", "DATA_ACTIONS_PERFORMANCE_DETAIL_VIEW", "AGENT_TIMELINE_SUMMARY_VIEW", "AGENT_TIMELINE_DETAIL_VIEW", "AGENT_LOGIN_LOGOUT_SUMMARY_VIEW", "AGENT_LOGIN_LOGOUT_DETAIL_VIEW", "CAMPAIGN_PERFORMANCE_SUMMARY_VIEW", "CAMPAIGN_PERFORMANCE_DETAIL_VIEW", "KNOWLEDGE_PERFORMANCE_VIEW", "AGENT_SCORECARD_INSIGHTS_SUMMARY_VIEW", "AGENT_SCORECARD_INSIGHTS_DETAIL_VIEW", "QUEUE_WRAPUP_DETAIL_VIEW", "INTERACTION_DETAIL_VIEW", "CAMPAIGN_INTERACTION_DETAIL_VIEW", "CAMPAIGN_ATTEMPT_DETAIL_VIEW", "WORKITEM_PERFORMANCE_SUMMARY_VIEW", "AGENT_ASSIST_PERFORMANCE_VIEW", "CONTACT_CENTER_PERFORMANCE_VIEW", "QUEUE_ROUTING_PERFORMANCE_VIEW", "AGENT_WORKITEM_PERFORMANCE_SUMMARY_VIEW", "AGENT_WORKITEM_PERFORMANCE_DETAIL_VIEW", "QUEUE_WORKITEM_PERFORMANCE_SUMMARY_VIEW", "QUEUE_WORKITEM_PERFORMANCE_DETAIL_VIEW", "EMAIL_AGENT_PERFORMANCE_SUMMARY_VIEW", "EMAIL_AGENT_PERFORMANCE_DETAIL_VIEW", "MESSAGING_AGENT_PERFORMANCE_SUMMARY_VIEW", "MESSAGING_AGENT_PERFORMANCE_DETAIL_VIEW", "EMAIL_QUEUE_PERFORMANCE_SUMMARY_VIEW", "EMAIL_QUEUE_PERFORMANCE_DETAIL_VIEW", "MESSAGING_QUEUE_PERFORMANCE_SUMMARY_VIEW", "MESSAGING_QUEUE_PERFORMANCE_DETAIL_VIEW", "SOCIAL_LISTENING_VIEW", "SOCIAL_LISTENING_POSTS_VIEW", "AGENT_PERFORMANCE_TIMELINE_DETAIL_VIEW", "DASHBOARD_SLIDESHOWS", "DASHBOARD_SLIDESHOWS_DETAIL", "AGENT_COPILOT_PERFORMANCE_VIEW", "AGENT_ASSIGNED_EVALUATION_ME_VIEW", "VIRTUAL_AGENT_PERFORMANCE_VIEW", "CONTENT_EXPLORATION_VIEW", "EVALUATION_PERFORMANCE_SUMMARY_VIEW", "EVALUATION_PERFORMANCE_DETAIL_VIEW", "EVALUATION_PERFORMANCE_QUESTION_GROUP_DETAIL_VIEW", "EVALUATION_PERFORMANCE_QUESTION_DETAIL_VIEW", "QUEUE_WORKITEM_ACTIVITY_SUMMARY_VIEW", "QUEUE_WORKITEM_ACTIVITY_DETAIL_VIEW", "DIGITAL_ADOPTION_VIEW", "DIGITAL_INTENT_VIEW", "DIGITAL_PERFORMANCE_VIEW", "COPILOT_USAGE_VIEW", "PREDICTIVE_ROUTING_THROUGHPUT_VIEW", "QUEUE_SKILL_EXPRESSION_PERFORMANCE_VIEW"]
+                    "enum": ["QUEUE_PERFORMANCE_SUMMARY_VIEW", "QUEUE_PERFORMANCE_DETAIL_VIEW", "INTERACTION_SEARCH_VIEW", "AGENT_PERFORMANCE_SUMMARY_VIEW", "AGENT_PERFORMANCE_DETAIL_VIEW", "AGENT_STATUS_SUMMARY_VIEW", "AGENT_STATUS_DETAIL_VIEW", "AGENT_EVALUATION_SUMMARY_VIEW", "AGENT_EVALUATION_DETAIL_VIEW", "AGENT_QUEUE_DETAIL_VIEW", "AGENT_INTERACTION_DETAIL_VIEW", "ABANDON_INSIGHTS_VIEW", "SKILLS_PERFORMANCE_VIEW", "SURVEY_FORM_PERFORMANCE_SUMMARY_VIEW", "SURVEY_FORM_PERFORMANCE_DETAIL_VIEW", "DNIS_PERFORMANCE_SUMMARY_VIEW", "DNIS_PERFORMANCE_DETAIL_VIEW", "WRAP_UP_PERFORMANCE_SUMMARY_VIEW", "AGENT_WRAP_UP_PERFORMANCE_DETAIL_VIEW", "QUEUE_ACTIVITY_SUMMARY_VIEW", "QUEUE_ACTIVITY_DETAIL_VIEW", "AGENT_QUEUE_ACTIVITY_SUMMARY_VIEW", "QUEUE_AGENT_DETAIL_VIEW", "QUEUE_INTERACTION_DETAIL_VIEW", "AGENT_SCHEDULE_DETAIL_VIEW", "IVR_PERFORMANCE_SUMMARY_VIEW", "IVR_PERFORMANCE_DETAIL_VIEW", "ANSWER_INSIGHTS_VIEW", "HANDLE_INSIGHTS_VIEW", "TALK_INSIGHTS_VIEW", "HOLD_INSIGHTS_VIEW", "ACW_INSIGHTS_VIEW", "WAIT_INSIGHTS_VIEW", "AGENT_WRAP_UP_PERFORMANCE_INTERVAL_DETAIL_VIEW", "FLOW_OUTCOME_SUMMARY_VIEW", "FLOW_OUTCOME_PERFORMANCE_DETAIL_VIEW", "FLOW_OUTCOME_PERFORMANCE_INTERVAL_DETAIL_VIEW", "FLOW_DESTINATION_SUMMARY_VIEW", "FLOW_DESTINATION_DETAIL_VIEW", "API_USAGE_VIEW", "SCHEDULED_CALLBACKS_VIEW", "CONTENT_SEARCH_VIEW", "LANDING_PAGE", "DASHBOARD_SUMMARY", "DASHBOARD_DETAIL", "DASHBOARD_USERS", "DASHBOARD_USERS_DETAIL", "JOURNEY_ACTION_MAP_SUMMARY_VIEW", "JOURNEY_OUTCOME_SUMMARY_VIEW", "JOURNEY_SEGMENT_SUMMARY_VIEW", "AGENT_DEVELOPMENT_DETAIL_VIEW", "AGENT_DEVELOPMENT_DETAIL_ME_VIEW", "AGENT_DEVELOPMENT_SUMMARY_VIEW", "AGENT_PERFORMANCE_ME_VIEW", "AGENT_STATUS_ME_VIEW", "AGENT_EVALUATION_ME_VIEW", "AGENT_SCORECARD_VIEW", "AGENT_SCORECARD_ME_VIEW", "AGENT_GAMIFICATION_LEADERSHIP_VIEW", "AGENT_SCHEDULE_ME_VIEW", "BOT_PERFORMANCE_SUMMARY_VIEW", "BOT_PERFORMANCE_DETAIL_VIEW", "SCHEDULED_EXPORTS_VIEW", "TOPIC_TREND_SUMMARY_VIEW", "TOPIC_TREND_DETAIL_VIEW", "ACTION_MAP_BLOCKED_CONSTRAINTS_DETAIL_VIEW", "ACTION_MAP_BLOCKED_CONSTRAINTS_INTERVAL_DETAIL_VIEW", "FLOW_MILESTONE_PERFORMANCE_DETAIL_VIEW", "FLOW_MILESTONE_PERFORMANCE_INTERVAL_DETAIL_VIEW", "AGENT_TOPIC_SUMMARY_VIEW", "AGENT_TOPIC_DETAIL_VIEW", "QUEUE_TOPIC_SUMMARY_VIEW", "QUEUE_TOPIC_DETAIL_VIEW", "FLOW_TOPIC_SUMMARY_VIEW", "FLOW_TOPIC_DETAIL_VIEW", "AGENT_INTERACTIONS_ME_VIEW", "ALERT_RULES_VIEW", "CONFIGURE_ALERT_RULE_VIEW", "PREDICTIVE_ROUTING_VIEW", "PREDICTIVE_ROUTING_QUEUE_OVERVIEW", "PREDICTIVE_ROUTING_MODEL_VIEW", "PREDICTIVE_ROUTING_IMPACT_VIEW", "DATA_ACTIONS_PERFORMANCE_SUMMARY_VIEW", "DATA_ACTIONS_PERFORMANCE_DETAIL_VIEW", "AGENT_TIMELINE_SUMMARY_VIEW", "AGENT_TIMELINE_DETAIL_VIEW", "AGENT_LOGIN_LOGOUT_SUMMARY_VIEW", "AGENT_LOGIN_LOGOUT_DETAIL_VIEW", "CAMPAIGN_PERFORMANCE_SUMMARY_VIEW", "CAMPAIGN_PERFORMANCE_DETAIL_VIEW", "KNOWLEDGE_PERFORMANCE_VIEW", "AGENT_SCORECARD_INSIGHTS_SUMMARY_VIEW", "AGENT_SCORECARD_INSIGHTS_DETAIL_VIEW", "QUEUE_WRAPUP_DETAIL_VIEW", "INTERACTION_DETAIL_VIEW", "CAMPAIGN_INTERACTION_DETAIL_VIEW", "CAMPAIGN_ATTEMPT_DETAIL_VIEW", "WORKITEM_PERFORMANCE_SUMMARY_VIEW", "AGENT_ASSIST_PERFORMANCE_VIEW", "CONTACT_CENTER_PERFORMANCE_VIEW", "QUEUE_ROUTING_PERFORMANCE_VIEW", "AGENT_WORKITEM_PERFORMANCE_SUMMARY_VIEW", "AGENT_WORKITEM_PERFORMANCE_DETAIL_VIEW", "QUEUE_WORKITEM_PERFORMANCE_SUMMARY_VIEW", "QUEUE_WORKITEM_PERFORMANCE_DETAIL_VIEW", "EMAIL_AGENT_PERFORMANCE_SUMMARY_VIEW", "EMAIL_AGENT_PERFORMANCE_DETAIL_VIEW", "MESSAGING_AGENT_PERFORMANCE_SUMMARY_VIEW", "MESSAGING_AGENT_PERFORMANCE_DETAIL_VIEW", "EMAIL_QUEUE_PERFORMANCE_SUMMARY_VIEW", "EMAIL_QUEUE_PERFORMANCE_DETAIL_VIEW", "MESSAGING_QUEUE_PERFORMANCE_SUMMARY_VIEW", "MESSAGING_QUEUE_PERFORMANCE_DETAIL_VIEW", "SOCIAL_LISTENING_VIEW", "SOCIAL_LISTENING_POSTS_VIEW", "AGENT_PERFORMANCE_TIMELINE_DETAIL_VIEW", "DASHBOARD_SLIDESHOWS", "DASHBOARD_SLIDESHOWS_DETAIL", "AGENT_COPILOT_PERFORMANCE_VIEW", "AGENT_ASSIGNED_EVALUATION_ME_VIEW", "VIRTUAL_AGENT_PERFORMANCE_VIEW", "CONTENT_EXPLORATION_VIEW", "EVALUATION_PERFORMANCE_SUMMARY_VIEW", "EVALUATION_PERFORMANCE_DETAIL_VIEW", "EVALUATION_PERFORMANCE_QUESTION_GROUP_DETAIL_VIEW", "EVALUATION_PERFORMANCE_QUESTION_DETAIL_VIEW", "QUEUE_WORKITEM_ACTIVITY_SUMMARY_VIEW", "QUEUE_WORKITEM_ACTIVITY_DETAIL_VIEW", "DIGITAL_ADOPTION_VIEW", "DIGITAL_INTENT_VIEW", "DIGITAL_PERFORMANCE_VIEW", "COPILOT_USAGE_VIEW", "PREDICTIVE_ROUTING_THROUGHPUT_VIEW", "QUEUE_SKILL_EXPRESSION_PERFORMANCE_VIEW", "AGENTIC_VIRTUAL_AGENT_PERFORMANCE_VIEW"]
                 }, 
                 {
                     "name": "Filter",
@@ -147356,7 +148193,7 @@
                     "description": "The type of view export job to be created",
                     "required": true,
                     "dataType": "string",
-                    "enum": ["QUEUE_PERFORMANCE_SUMMARY_VIEW", "QUEUE_PERFORMANCE_DETAIL_VIEW", "INTERACTION_SEARCH_VIEW", "AGENT_PERFORMANCE_SUMMARY_VIEW", "AGENT_PERFORMANCE_DETAIL_VIEW", "AGENT_STATUS_SUMMARY_VIEW", "AGENT_STATUS_DETAIL_VIEW", "AGENT_EVALUATION_SUMMARY_VIEW", "AGENT_EVALUATION_DETAIL_VIEW", "AGENT_QUEUE_DETAIL_VIEW", "AGENT_INTERACTION_DETAIL_VIEW", "ABANDON_INSIGHTS_VIEW", "SKILLS_PERFORMANCE_VIEW", "SURVEY_FORM_PERFORMANCE_SUMMARY_VIEW", "SURVEY_FORM_PERFORMANCE_DETAIL_VIEW", "DNIS_PERFORMANCE_SUMMARY_VIEW", "DNIS_PERFORMANCE_DETAIL_VIEW", "WRAP_UP_PERFORMANCE_SUMMARY_VIEW", "AGENT_WRAP_UP_PERFORMANCE_DETAIL_VIEW", "QUEUE_ACTIVITY_SUMMARY_VIEW", "QUEUE_ACTIVITY_DETAIL_VIEW", "AGENT_QUEUE_ACTIVITY_SUMMARY_VIEW", "QUEUE_AGENT_DETAIL_VIEW", "QUEUE_INTERACTION_DETAIL_VIEW", "AGENT_SCHEDULE_DETAIL_VIEW", "IVR_PERFORMANCE_SUMMARY_VIEW", "IVR_PERFORMANCE_DETAIL_VIEW", "ANSWER_INSIGHTS_VIEW", "HANDLE_INSIGHTS_VIEW", "TALK_INSIGHTS_VIEW", "HOLD_INSIGHTS_VIEW", "ACW_INSIGHTS_VIEW", "WAIT_INSIGHTS_VIEW", "AGENT_WRAP_UP_PERFORMANCE_INTERVAL_DETAIL_VIEW", "FLOW_OUTCOME_SUMMARY_VIEW", "FLOW_OUTCOME_PERFORMANCE_DETAIL_VIEW", "FLOW_OUTCOME_PERFORMANCE_INTERVAL_DETAIL_VIEW", "FLOW_DESTINATION_SUMMARY_VIEW", "FLOW_DESTINATION_DETAIL_VIEW", "API_USAGE_VIEW", "SCHEDULED_CALLBACKS_VIEW", "CONTENT_SEARCH_VIEW", "LANDING_PAGE", "DASHBOARD_SUMMARY", "DASHBOARD_DETAIL", "DASHBOARD_USERS", "DASHBOARD_USERS_DETAIL", "JOURNEY_ACTION_MAP_SUMMARY_VIEW", "JOURNEY_OUTCOME_SUMMARY_VIEW", "JOURNEY_SEGMENT_SUMMARY_VIEW", "AGENT_DEVELOPMENT_DETAIL_VIEW", "AGENT_DEVELOPMENT_DETAIL_ME_VIEW", "AGENT_DEVELOPMENT_SUMMARY_VIEW", "AGENT_PERFORMANCE_ME_VIEW", "AGENT_STATUS_ME_VIEW", "AGENT_EVALUATION_ME_VIEW", "AGENT_SCORECARD_VIEW", "AGENT_SCORECARD_ME_VIEW", "AGENT_GAMIFICATION_LEADERSHIP_VIEW", "AGENT_SCHEDULE_ME_VIEW", "BOT_PERFORMANCE_SUMMARY_VIEW", "BOT_PERFORMANCE_DETAIL_VIEW", "SCHEDULED_EXPORTS_VIEW", "TOPIC_TREND_SUMMARY_VIEW", "TOPIC_TREND_DETAIL_VIEW", "ACTION_MAP_BLOCKED_CONSTRAINTS_DETAIL_VIEW", "ACTION_MAP_BLOCKED_CONSTRAINTS_INTERVAL_DETAIL_VIEW", "FLOW_MILESTONE_PERFORMANCE_DETAIL_VIEW", "FLOW_MILESTONE_PERFORMANCE_INTERVAL_DETAIL_VIEW", "AGENT_TOPIC_SUMMARY_VIEW", "AGENT_TOPIC_DETAIL_VIEW", "QUEUE_TOPIC_SUMMARY_VIEW", "QUEUE_TOPIC_DETAIL_VIEW", "FLOW_TOPIC_SUMMARY_VIEW", "FLOW_TOPIC_DETAIL_VIEW", "AGENT_INTERACTIONS_ME_VIEW", "ALERT_RULES_VIEW", "CONFIGURE_ALERT_RULE_VIEW", "PREDICTIVE_ROUTING_VIEW", "PREDICTIVE_ROUTING_QUEUE_OVERVIEW", "PREDICTIVE_ROUTING_MODEL_VIEW", "PREDICTIVE_ROUTING_IMPACT_VIEW", "DATA_ACTIONS_PERFORMANCE_SUMMARY_VIEW", "DATA_ACTIONS_PERFORMANCE_DETAIL_VIEW", "AGENT_TIMELINE_SUMMARY_VIEW", "AGENT_TIMELINE_DETAIL_VIEW", "AGENT_LOGIN_LOGOUT_SUMMARY_VIEW", "AGENT_LOGIN_LOGOUT_DETAIL_VIEW", "CAMPAIGN_PERFORMANCE_SUMMARY_VIEW", "CAMPAIGN_PERFORMANCE_DETAIL_VIEW", "KNOWLEDGE_PERFORMANCE_VIEW", "AGENT_SCORECARD_INSIGHTS_SUMMARY_VIEW", "AGENT_SCORECARD_INSIGHTS_DETAIL_VIEW", "QUEUE_WRAPUP_DETAIL_VIEW", "INTERACTION_DETAIL_VIEW", "CAMPAIGN_INTERACTION_DETAIL_VIEW", "CAMPAIGN_ATTEMPT_DETAIL_VIEW", "WORKITEM_PERFORMANCE_SUMMARY_VIEW", "AGENT_ASSIST_PERFORMANCE_VIEW", "CONTACT_CENTER_PERFORMANCE_VIEW", "QUEUE_ROUTING_PERFORMANCE_VIEW", "AGENT_WORKITEM_PERFORMANCE_SUMMARY_VIEW", "AGENT_WORKITEM_PERFORMANCE_DETAIL_VIEW", "QUEUE_WORKITEM_PERFORMANCE_SUMMARY_VIEW", "QUEUE_WORKITEM_PERFORMANCE_DETAIL_VIEW", "EMAIL_AGENT_PERFORMANCE_SUMMARY_VIEW", "EMAIL_AGENT_PERFORMANCE_DETAIL_VIEW", "MESSAGING_AGENT_PERFORMANCE_SUMMARY_VIEW", "MESSAGING_AGENT_PERFORMANCE_DETAIL_VIEW", "EMAIL_QUEUE_PERFORMANCE_SUMMARY_VIEW", "EMAIL_QUEUE_PERFORMANCE_DETAIL_VIEW", "MESSAGING_QUEUE_PERFORMANCE_SUMMARY_VIEW", "MESSAGING_QUEUE_PERFORMANCE_DETAIL_VIEW", "SOCIAL_LISTENING_VIEW", "SOCIAL_LISTENING_POSTS_VIEW", "AGENT_PERFORMANCE_TIMELINE_DETAIL_VIEW", "DASHBOARD_SLIDESHOWS", "DASHBOARD_SLIDESHOWS_DETAIL", "AGENT_COPILOT_PERFORMANCE_VIEW", "AGENT_ASSIGNED_EVALUATION_ME_VIEW", "VIRTUAL_AGENT_PERFORMANCE_VIEW", "CONTENT_EXPLORATION_VIEW", "EVALUATION_PERFORMANCE_SUMMARY_VIEW", "EVALUATION_PERFORMANCE_DETAIL_VIEW", "EVALUATION_PERFORMANCE_QUESTION_GROUP_DETAIL_VIEW", "EVALUATION_PERFORMANCE_QUESTION_DETAIL_VIEW", "QUEUE_WORKITEM_ACTIVITY_SUMMARY_VIEW", "QUEUE_WORKITEM_ACTIVITY_DETAIL_VIEW", "DIGITAL_ADOPTION_VIEW", "DIGITAL_INTENT_VIEW", "DIGITAL_PERFORMANCE_VIEW", "COPILOT_USAGE_VIEW", "PREDICTIVE_ROUTING_THROUGHPUT_VIEW", "QUEUE_SKILL_EXPRESSION_PERFORMANCE_VIEW"]
+                    "enum": ["QUEUE_PERFORMANCE_SUMMARY_VIEW", "QUEUE_PERFORMANCE_DETAIL_VIEW", "INTERACTION_SEARCH_VIEW", "AGENT_PERFORMANCE_SUMMARY_VIEW", "AGENT_PERFORMANCE_DETAIL_VIEW", "AGENT_STATUS_SUMMARY_VIEW", "AGENT_STATUS_DETAIL_VIEW", "AGENT_EVALUATION_SUMMARY_VIEW", "AGENT_EVALUATION_DETAIL_VIEW", "AGENT_QUEUE_DETAIL_VIEW", "AGENT_INTERACTION_DETAIL_VIEW", "ABANDON_INSIGHTS_VIEW", "SKILLS_PERFORMANCE_VIEW", "SURVEY_FORM_PERFORMANCE_SUMMARY_VIEW", "SURVEY_FORM_PERFORMANCE_DETAIL_VIEW", "DNIS_PERFORMANCE_SUMMARY_VIEW", "DNIS_PERFORMANCE_DETAIL_VIEW", "WRAP_UP_PERFORMANCE_SUMMARY_VIEW", "AGENT_WRAP_UP_PERFORMANCE_DETAIL_VIEW", "QUEUE_ACTIVITY_SUMMARY_VIEW", "QUEUE_ACTIVITY_DETAIL_VIEW", "AGENT_QUEUE_ACTIVITY_SUMMARY_VIEW", "QUEUE_AGENT_DETAIL_VIEW", "QUEUE_INTERACTION_DETAIL_VIEW", "AGENT_SCHEDULE_DETAIL_VIEW", "IVR_PERFORMANCE_SUMMARY_VIEW", "IVR_PERFORMANCE_DETAIL_VIEW", "ANSWER_INSIGHTS_VIEW", "HANDLE_INSIGHTS_VIEW", "TALK_INSIGHTS_VIEW", "HOLD_INSIGHTS_VIEW", "ACW_INSIGHTS_VIEW", "WAIT_INSIGHTS_VIEW", "AGENT_WRAP_UP_PERFORMANCE_INTERVAL_DETAIL_VIEW", "FLOW_OUTCOME_SUMMARY_VIEW", "FLOW_OUTCOME_PERFORMANCE_DETAIL_VIEW", "FLOW_OUTCOME_PERFORMANCE_INTERVAL_DETAIL_VIEW", "FLOW_DESTINATION_SUMMARY_VIEW", "FLOW_DESTINATION_DETAIL_VIEW", "API_USAGE_VIEW", "SCHEDULED_CALLBACKS_VIEW", "CONTENT_SEARCH_VIEW", "LANDING_PAGE", "DASHBOARD_SUMMARY", "DASHBOARD_DETAIL", "DASHBOARD_USERS", "DASHBOARD_USERS_DETAIL", "JOURNEY_ACTION_MAP_SUMMARY_VIEW", "JOURNEY_OUTCOME_SUMMARY_VIEW", "JOURNEY_SEGMENT_SUMMARY_VIEW", "AGENT_DEVELOPMENT_DETAIL_VIEW", "AGENT_DEVELOPMENT_DETAIL_ME_VIEW", "AGENT_DEVELOPMENT_SUMMARY_VIEW", "AGENT_PERFORMANCE_ME_VIEW", "AGENT_STATUS_ME_VIEW", "AGENT_EVALUATION_ME_VIEW", "AGENT_SCORECARD_VIEW", "AGENT_SCORECARD_ME_VIEW", "AGENT_GAMIFICATION_LEADERSHIP_VIEW", "AGENT_SCHEDULE_ME_VIEW", "BOT_PERFORMANCE_SUMMARY_VIEW", "BOT_PERFORMANCE_DETAIL_VIEW", "SCHEDULED_EXPORTS_VIEW", "TOPIC_TREND_SUMMARY_VIEW", "TOPIC_TREND_DETAIL_VIEW", "ACTION_MAP_BLOCKED_CONSTRAINTS_DETAIL_VIEW", "ACTION_MAP_BLOCKED_CONSTRAINTS_INTERVAL_DETAIL_VIEW", "FLOW_MILESTONE_PERFORMANCE_DETAIL_VIEW", "FLOW_MILESTONE_PERFORMANCE_INTERVAL_DETAIL_VIEW", "AGENT_TOPIC_SUMMARY_VIEW", "AGENT_TOPIC_DETAIL_VIEW", "QUEUE_TOPIC_SUMMARY_VIEW", "QUEUE_TOPIC_DETAIL_VIEW", "FLOW_TOPIC_SUMMARY_VIEW", "FLOW_TOPIC_DETAIL_VIEW", "AGENT_INTERACTIONS_ME_VIEW", "ALERT_RULES_VIEW", "CONFIGURE_ALERT_RULE_VIEW", "PREDICTIVE_ROUTING_VIEW", "PREDICTIVE_ROUTING_QUEUE_OVERVIEW", "PREDICTIVE_ROUTING_MODEL_VIEW", "PREDICTIVE_ROUTING_IMPACT_VIEW", "DATA_ACTIONS_PERFORMANCE_SUMMARY_VIEW", "DATA_ACTIONS_PERFORMANCE_DETAIL_VIEW", "AGENT_TIMELINE_SUMMARY_VIEW", "AGENT_TIMELINE_DETAIL_VIEW", "AGENT_LOGIN_LOGOUT_SUMMARY_VIEW", "AGENT_LOGIN_LOGOUT_DETAIL_VIEW", "CAMPAIGN_PERFORMANCE_SUMMARY_VIEW", "CAMPAIGN_PERFORMANCE_DETAIL_VIEW", "KNOWLEDGE_PERFORMANCE_VIEW", "AGENT_SCORECARD_INSIGHTS_SUMMARY_VIEW", "AGENT_SCORECARD_INSIGHTS_DETAIL_VIEW", "QUEUE_WRAPUP_DETAIL_VIEW", "INTERACTION_DETAIL_VIEW", "CAMPAIGN_INTERACTION_DETAIL_VIEW", "CAMPAIGN_ATTEMPT_DETAIL_VIEW", "WORKITEM_PERFORMANCE_SUMMARY_VIEW", "AGENT_ASSIST_PERFORMANCE_VIEW", "CONTACT_CENTER_PERFORMANCE_VIEW", "QUEUE_ROUTING_PERFORMANCE_VIEW", "AGENT_WORKITEM_PERFORMANCE_SUMMARY_VIEW", "AGENT_WORKITEM_PERFORMANCE_DETAIL_VIEW", "QUEUE_WORKITEM_PERFORMANCE_SUMMARY_VIEW", "QUEUE_WORKITEM_PERFORMANCE_DETAIL_VIEW", "EMAIL_AGENT_PERFORMANCE_SUMMARY_VIEW", "EMAIL_AGENT_PERFORMANCE_DETAIL_VIEW", "MESSAGING_AGENT_PERFORMANCE_SUMMARY_VIEW", "MESSAGING_AGENT_PERFORMANCE_DETAIL_VIEW", "EMAIL_QUEUE_PERFORMANCE_SUMMARY_VIEW", "EMAIL_QUEUE_PERFORMANCE_DETAIL_VIEW", "MESSAGING_QUEUE_PERFORMANCE_SUMMARY_VIEW", "MESSAGING_QUEUE_PERFORMANCE_DETAIL_VIEW", "SOCIAL_LISTENING_VIEW", "SOCIAL_LISTENING_POSTS_VIEW", "AGENT_PERFORMANCE_TIMELINE_DETAIL_VIEW", "DASHBOARD_SLIDESHOWS", "DASHBOARD_SLIDESHOWS_DETAIL", "AGENT_COPILOT_PERFORMANCE_VIEW", "AGENT_ASSIGNED_EVALUATION_ME_VIEW", "VIRTUAL_AGENT_PERFORMANCE_VIEW", "CONTENT_EXPLORATION_VIEW", "EVALUATION_PERFORMANCE_SUMMARY_VIEW", "EVALUATION_PERFORMANCE_DETAIL_VIEW", "EVALUATION_PERFORMANCE_QUESTION_GROUP_DETAIL_VIEW", "EVALUATION_PERFORMANCE_QUESTION_DETAIL_VIEW", "QUEUE_WORKITEM_ACTIVITY_SUMMARY_VIEW", "QUEUE_WORKITEM_ACTIVITY_DETAIL_VIEW", "DIGITAL_ADOPTION_VIEW", "DIGITAL_INTENT_VIEW", "DIGITAL_PERFORMANCE_VIEW", "COPILOT_USAGE_VIEW", "PREDICTIVE_ROUTING_THROUGHPUT_VIEW", "QUEUE_SKILL_EXPRESSION_PERFORMANCE_VIEW", "AGENTIC_VIRTUAL_AGENT_PERFORMANCE_VIEW"]
                 }, 
                 {
                     "name": "ExportErrorMessagesType",
@@ -147555,7 +148392,7 @@
                     "name": "ViewType",
                     "description": "The view type of the export metadata",
                     "dataType": "string",
-                    "enum": ["QUEUE_PERFORMANCE_SUMMARY_VIEW", "QUEUE_PERFORMANCE_DETAIL_VIEW", "INTERACTION_SEARCH_VIEW", "AGENT_PERFORMANCE_SUMMARY_VIEW", "AGENT_PERFORMANCE_DETAIL_VIEW", "AGENT_STATUS_SUMMARY_VIEW", "AGENT_STATUS_DETAIL_VIEW", "AGENT_EVALUATION_SUMMARY_VIEW", "AGENT_EVALUATION_DETAIL_VIEW", "AGENT_QUEUE_DETAIL_VIEW", "AGENT_INTERACTION_DETAIL_VIEW", "ABANDON_INSIGHTS_VIEW", "SKILLS_PERFORMANCE_VIEW", "SURVEY_FORM_PERFORMANCE_SUMMARY_VIEW", "SURVEY_FORM_PERFORMANCE_DETAIL_VIEW", "DNIS_PERFORMANCE_SUMMARY_VIEW", "DNIS_PERFORMANCE_DETAIL_VIEW", "WRAP_UP_PERFORMANCE_SUMMARY_VIEW", "AGENT_WRAP_UP_PERFORMANCE_DETAIL_VIEW", "QUEUE_ACTIVITY_SUMMARY_VIEW", "QUEUE_ACTIVITY_DETAIL_VIEW", "AGENT_QUEUE_ACTIVITY_SUMMARY_VIEW", "QUEUE_AGENT_DETAIL_VIEW", "QUEUE_INTERACTION_DETAIL_VIEW", "AGENT_SCHEDULE_DETAIL_VIEW", "IVR_PERFORMANCE_SUMMARY_VIEW", "IVR_PERFORMANCE_DETAIL_VIEW", "ANSWER_INSIGHTS_VIEW", "HANDLE_INSIGHTS_VIEW", "TALK_INSIGHTS_VIEW", "HOLD_INSIGHTS_VIEW", "ACW_INSIGHTS_VIEW", "WAIT_INSIGHTS_VIEW", "AGENT_WRAP_UP_PERFORMANCE_INTERVAL_DETAIL_VIEW", "FLOW_OUTCOME_SUMMARY_VIEW", "FLOW_OUTCOME_PERFORMANCE_DETAIL_VIEW", "FLOW_OUTCOME_PERFORMANCE_INTERVAL_DETAIL_VIEW", "FLOW_DESTINATION_SUMMARY_VIEW", "FLOW_DESTINATION_DETAIL_VIEW", "API_USAGE_VIEW", "SCHEDULED_CALLBACKS_VIEW", "CONTENT_SEARCH_VIEW", "LANDING_PAGE", "DASHBOARD_SUMMARY", "DASHBOARD_DETAIL", "DASHBOARD_USERS", "DASHBOARD_USERS_DETAIL", "JOURNEY_ACTION_MAP_SUMMARY_VIEW", "JOURNEY_OUTCOME_SUMMARY_VIEW", "JOURNEY_SEGMENT_SUMMARY_VIEW", "AGENT_DEVELOPMENT_DETAIL_VIEW", "AGENT_DEVELOPMENT_DETAIL_ME_VIEW", "AGENT_DEVELOPMENT_SUMMARY_VIEW", "AGENT_PERFORMANCE_ME_VIEW", "AGENT_STATUS_ME_VIEW", "AGENT_EVALUATION_ME_VIEW", "AGENT_SCORECARD_VIEW", "AGENT_SCORECARD_ME_VIEW", "AGENT_GAMIFICATION_LEADERSHIP_VIEW", "AGENT_SCHEDULE_ME_VIEW", "BOT_PERFORMANCE_SUMMARY_VIEW", "BOT_PERFORMANCE_DETAIL_VIEW", "SCHEDULED_EXPORTS_VIEW", "TOPIC_TREND_SUMMARY_VIEW", "TOPIC_TREND_DETAIL_VIEW", "ACTION_MAP_BLOCKED_CONSTRAINTS_DETAIL_VIEW", "ACTION_MAP_BLOCKED_CONSTRAINTS_INTERVAL_DETAIL_VIEW", "FLOW_MILESTONE_PERFORMANCE_DETAIL_VIEW", "FLOW_MILESTONE_PERFORMANCE_INTERVAL_DETAIL_VIEW", "AGENT_TOPIC_SUMMARY_VIEW", "AGENT_TOPIC_DETAIL_VIEW", "QUEUE_TOPIC_SUMMARY_VIEW", "QUEUE_TOPIC_DETAIL_VIEW", "FLOW_TOPIC_SUMMARY_VIEW", "FLOW_TOPIC_DETAIL_VIEW", "AGENT_INTERACTIONS_ME_VIEW", "ALERT_RULES_VIEW", "CONFIGURE_ALERT_RULE_VIEW", "PREDICTIVE_ROUTING_VIEW", "PREDICTIVE_ROUTING_QUEUE_OVERVIEW", "PREDICTIVE_ROUTING_MODEL_VIEW", "PREDICTIVE_ROUTING_IMPACT_VIEW", "DATA_ACTIONS_PERFORMANCE_SUMMARY_VIEW", "DATA_ACTIONS_PERFORMANCE_DETAIL_VIEW", "AGENT_TIMELINE_SUMMARY_VIEW", "AGENT_TIMELINE_DETAIL_VIEW", "AGENT_LOGIN_LOGOUT_SUMMARY_VIEW", "AGENT_LOGIN_LOGOUT_DETAIL_VIEW", "CAMPAIGN_PERFORMANCE_SUMMARY_VIEW", "CAMPAIGN_PERFORMANCE_DETAIL_VIEW", "KNOWLEDGE_PERFORMANCE_VIEW", "AGENT_SCORECARD_INSIGHTS_SUMMARY_VIEW", "AGENT_SCORECARD_INSIGHTS_DETAIL_VIEW", "QUEUE_WRAPUP_DETAIL_VIEW", "INTERACTION_DETAIL_VIEW", "CAMPAIGN_INTERACTION_DETAIL_VIEW", "CAMPAIGN_ATTEMPT_DETAIL_VIEW", "WORKITEM_PERFORMANCE_SUMMARY_VIEW", "AGENT_ASSIST_PERFORMANCE_VIEW", "CONTACT_CENTER_PERFORMANCE_VIEW", "QUEUE_ROUTING_PERFORMANCE_VIEW", "AGENT_WORKITEM_PERFORMANCE_SUMMARY_VIEW", "AGENT_WORKITEM_PERFORMANCE_DETAIL_VIEW", "QUEUE_WORKITEM_PERFORMANCE_SUMMARY_VIEW", "QUEUE_WORKITEM_PERFORMANCE_DETAIL_VIEW", "EMAIL_AGENT_PERFORMANCE_SUMMARY_VIEW", "EMAIL_AGENT_PERFORMANCE_DETAIL_VIEW", "MESSAGING_AGENT_PERFORMANCE_SUMMARY_VIEW", "MESSAGING_AGENT_PERFORMANCE_DETAIL_VIEW", "EMAIL_QUEUE_PERFORMANCE_SUMMARY_VIEW", "EMAIL_QUEUE_PERFORMANCE_DETAIL_VIEW", "MESSAGING_QUEUE_PERFORMANCE_SUMMARY_VIEW", "MESSAGING_QUEUE_PERFORMANCE_DETAIL_VIEW", "SOCIAL_LISTENING_VIEW", "SOCIAL_LISTENING_POSTS_VIEW", "AGENT_PERFORMANCE_TIMELINE_DETAIL_VIEW", "DASHBOARD_SLIDESHOWS", "DASHBOARD_SLIDESHOWS_DETAIL", "AGENT_COPILOT_PERFORMANCE_VIEW", "AGENT_ASSIGNED_EVALUATION_ME_VIEW", "VIRTUAL_AGENT_PERFORMANCE_VIEW", "CONTENT_EXPLORATION_VIEW", "EVALUATION_PERFORMANCE_SUMMARY_VIEW", "EVALUATION_PERFORMANCE_DETAIL_VIEW", "EVALUATION_PERFORMANCE_QUESTION_GROUP_DETAIL_VIEW", "EVALUATION_PERFORMANCE_QUESTION_DETAIL_VIEW", "QUEUE_WORKITEM_ACTIVITY_SUMMARY_VIEW", "QUEUE_WORKITEM_ACTIVITY_DETAIL_VIEW", "DIGITAL_ADOPTION_VIEW", "DIGITAL_INTENT_VIEW", "DIGITAL_PERFORMANCE_VIEW", "COPILOT_USAGE_VIEW", "PREDICTIVE_ROUTING_THROUGHPUT_VIEW", "QUEUE_SKILL_EXPRESSION_PERFORMANCE_VIEW"]
+                    "enum": ["QUEUE_PERFORMANCE_SUMMARY_VIEW", "QUEUE_PERFORMANCE_DETAIL_VIEW", "INTERACTION_SEARCH_VIEW", "AGENT_PERFORMANCE_SUMMARY_VIEW", "AGENT_PERFORMANCE_DETAIL_VIEW", "AGENT_STATUS_SUMMARY_VIEW", "AGENT_STATUS_DETAIL_VIEW", "AGENT_EVALUATION_SUMMARY_VIEW", "AGENT_EVALUATION_DETAIL_VIEW", "AGENT_QUEUE_DETAIL_VIEW", "AGENT_INTERACTION_DETAIL_VIEW", "ABANDON_INSIGHTS_VIEW", "SKILLS_PERFORMANCE_VIEW", "SURVEY_FORM_PERFORMANCE_SUMMARY_VIEW", "SURVEY_FORM_PERFORMANCE_DETAIL_VIEW", "DNIS_PERFORMANCE_SUMMARY_VIEW", "DNIS_PERFORMANCE_DETAIL_VIEW", "WRAP_UP_PERFORMANCE_SUMMARY_VIEW", "AGENT_WRAP_UP_PERFORMANCE_DETAIL_VIEW", "QUEUE_ACTIVITY_SUMMARY_VIEW", "QUEUE_ACTIVITY_DETAIL_VIEW", "AGENT_QUEUE_ACTIVITY_SUMMARY_VIEW", "QUEUE_AGENT_DETAIL_VIEW", "QUEUE_INTERACTION_DETAIL_VIEW", "AGENT_SCHEDULE_DETAIL_VIEW", "IVR_PERFORMANCE_SUMMARY_VIEW", "IVR_PERFORMANCE_DETAIL_VIEW", "ANSWER_INSIGHTS_VIEW", "HANDLE_INSIGHTS_VIEW", "TALK_INSIGHTS_VIEW", "HOLD_INSIGHTS_VIEW", "ACW_INSIGHTS_VIEW", "WAIT_INSIGHTS_VIEW", "AGENT_WRAP_UP_PERFORMANCE_INTERVAL_DETAIL_VIEW", "FLOW_OUTCOME_SUMMARY_VIEW", "FLOW_OUTCOME_PERFORMANCE_DETAIL_VIEW", "FLOW_OUTCOME_PERFORMANCE_INTERVAL_DETAIL_VIEW", "FLOW_DESTINATION_SUMMARY_VIEW", "FLOW_DESTINATION_DETAIL_VIEW", "API_USAGE_VIEW", "SCHEDULED_CALLBACKS_VIEW", "CONTENT_SEARCH_VIEW", "LANDING_PAGE", "DASHBOARD_SUMMARY", "DASHBOARD_DETAIL", "DASHBOARD_USERS", "DASHBOARD_USERS_DETAIL", "JOURNEY_ACTION_MAP_SUMMARY_VIEW", "JOURNEY_OUTCOME_SUMMARY_VIEW", "JOURNEY_SEGMENT_SUMMARY_VIEW", "AGENT_DEVELOPMENT_DETAIL_VIEW", "AGENT_DEVELOPMENT_DETAIL_ME_VIEW", "AGENT_DEVELOPMENT_SUMMARY_VIEW", "AGENT_PERFORMANCE_ME_VIEW", "AGENT_STATUS_ME_VIEW", "AGENT_EVALUATION_ME_VIEW", "AGENT_SCORECARD_VIEW", "AGENT_SCORECARD_ME_VIEW", "AGENT_GAMIFICATION_LEADERSHIP_VIEW", "AGENT_SCHEDULE_ME_VIEW", "BOT_PERFORMANCE_SUMMARY_VIEW", "BOT_PERFORMANCE_DETAIL_VIEW", "SCHEDULED_EXPORTS_VIEW", "TOPIC_TREND_SUMMARY_VIEW", "TOPIC_TREND_DETAIL_VIEW", "ACTION_MAP_BLOCKED_CONSTRAINTS_DETAIL_VIEW", "ACTION_MAP_BLOCKED_CONSTRAINTS_INTERVAL_DETAIL_VIEW", "FLOW_MILESTONE_PERFORMANCE_DETAIL_VIEW", "FLOW_MILESTONE_PERFORMANCE_INTERVAL_DETAIL_VIEW", "AGENT_TOPIC_SUMMARY_VIEW", "AGENT_TOPIC_DETAIL_VIEW", "QUEUE_TOPIC_SUMMARY_VIEW", "QUEUE_TOPIC_DETAIL_VIEW", "FLOW_TOPIC_SUMMARY_VIEW", "FLOW_TOPIC_DETAIL_VIEW", "AGENT_INTERACTIONS_ME_VIEW", "ALERT_RULES_VIEW", "CONFIGURE_ALERT_RULE_VIEW", "PREDICTIVE_ROUTING_VIEW", "PREDICTIVE_ROUTING_QUEUE_OVERVIEW", "PREDICTIVE_ROUTING_MODEL_VIEW", "PREDICTIVE_ROUTING_IMPACT_VIEW", "DATA_ACTIONS_PERFORMANCE_SUMMARY_VIEW", "DATA_ACTIONS_PERFORMANCE_DETAIL_VIEW", "AGENT_TIMELINE_SUMMARY_VIEW", "AGENT_TIMELINE_DETAIL_VIEW", "AGENT_LOGIN_LOGOUT_SUMMARY_VIEW", "AGENT_LOGIN_LOGOUT_DETAIL_VIEW", "CAMPAIGN_PERFORMANCE_SUMMARY_VIEW", "CAMPAIGN_PERFORMANCE_DETAIL_VIEW", "KNOWLEDGE_PERFORMANCE_VIEW", "AGENT_SCORECARD_INSIGHTS_SUMMARY_VIEW", "AGENT_SCORECARD_INSIGHTS_DETAIL_VIEW", "QUEUE_WRAPUP_DETAIL_VIEW", "INTERACTION_DETAIL_VIEW", "CAMPAIGN_INTERACTION_DETAIL_VIEW", "CAMPAIGN_ATTEMPT_DETAIL_VIEW", "WORKITEM_PERFORMANCE_SUMMARY_VIEW", "AGENT_ASSIST_PERFORMANCE_VIEW", "CONTACT_CENTER_PERFORMANCE_VIEW", "QUEUE_ROUTING_PERFORMANCE_VIEW", "AGENT_WORKITEM_PERFORMANCE_SUMMARY_VIEW", "AGENT_WORKITEM_PERFORMANCE_DETAIL_VIEW", "QUEUE_WORKITEM_PERFORMANCE_SUMMARY_VIEW", "QUEUE_WORKITEM_PERFORMANCE_DETAIL_VIEW", "EMAIL_AGENT_PERFORMANCE_SUMMARY_VIEW", "EMAIL_AGENT_PERFORMANCE_DETAIL_VIEW", "MESSAGING_AGENT_PERFORMANCE_SUMMARY_VIEW", "MESSAGING_AGENT_PERFORMANCE_DETAIL_VIEW", "EMAIL_QUEUE_PERFORMANCE_SUMMARY_VIEW", "EMAIL_QUEUE_PERFORMANCE_DETAIL_VIEW", "MESSAGING_QUEUE_PERFORMANCE_SUMMARY_VIEW", "MESSAGING_QUEUE_PERFORMANCE_DETAIL_VIEW", "SOCIAL_LISTENING_VIEW", "SOCIAL_LISTENING_POSTS_VIEW", "AGENT_PERFORMANCE_TIMELINE_DETAIL_VIEW", "DASHBOARD_SLIDESHOWS", "DASHBOARD_SLIDESHOWS_DETAIL", "AGENT_COPILOT_PERFORMANCE_VIEW", "AGENT_ASSIGNED_EVALUATION_ME_VIEW", "VIRTUAL_AGENT_PERFORMANCE_VIEW", "CONTENT_EXPLORATION_VIEW", "EVALUATION_PERFORMANCE_SUMMARY_VIEW", "EVALUATION_PERFORMANCE_DETAIL_VIEW", "EVALUATION_PERFORMANCE_QUESTION_GROUP_DETAIL_VIEW", "EVALUATION_PERFORMANCE_QUESTION_DETAIL_VIEW", "QUEUE_WORKITEM_ACTIVITY_SUMMARY_VIEW", "QUEUE_WORKITEM_ACTIVITY_DETAIL_VIEW", "DIGITAL_ADOPTION_VIEW", "DIGITAL_INTENT_VIEW", "DIGITAL_PERFORMANCE_VIEW", "COPILOT_USAGE_VIEW", "PREDICTIVE_ROUTING_THROUGHPUT_VIEW", "QUEUE_SKILL_EXPRESSION_PERFORMANCE_VIEW", "AGENTIC_VIRTUAL_AGENT_PERFORMANCE_VIEW"]
                 }, 
                 {
                     "name": "DateLimitations",
@@ -151390,6 +152227,465 @@
                 }
             ]
         }, 
+        "schedulebid": { 
+            "properties": [
+                {
+                    "name": "Id",
+                    "description": "The ID of the schedule bid",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Name",
+                    "description": "The name of the schedule bid",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "BidWindowStartDate",
+                    "description": "The bid start date when agents can start participating in schedule bidding relative to the business unit time zone in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd",
+                    "required": true,
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "BidWindowEndDate",
+                    "description": "The bid end date relative to the business unit time zone in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd",
+                    "required": true,
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "EffectiveDate",
+                    "description": "The date when schedule sets would be effective for schedule generation relative to the business unit time zone in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd",
+                    "required": true,
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "Status",
+                    "description": "The state of the bid",
+                    "required": true,
+                    "dataType": "string",
+                    "enum": ["Draft", "Locked", "Optimized", "Scheduled", "Open", "Closed", "Processed", "Published"]
+                }, 
+                {
+                    "name": "BidType",
+                    "description": "The type of the bid",
+                    "required": true,
+                    "dataType": "string",
+                    "enum": ["WorkPlanBid", "ScheduleBid"]
+                }, 
+                {
+                    "name": "Forecast",
+                    "description": "The selected forecast used for schedule set generation for this bid",
+                    "dataType": "Bushorttermforecastweekreference"
+                }, 
+                {
+                    "name": "WeeksToSchedule",
+                    "description": "The number of weeks to generate schedule sets through this bid",
+                    "required": true,
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "EndOverridesAndRotations",
+                    "description": "If true, all existing overrides, work plan rotations will be ended one day before effective date of this bid",
+                    "required": true,
+                    "dataType": "bool"
+                }, 
+                {
+                    "name": "AgentRankingType",
+                    "description": "The type of agent ranking selected for this bid",
+                    "required": true,
+                    "dataType": "string",
+                    "enum": ["HireDate", "Performance"]
+                }, 
+                {
+                    "name": "RankingTiebreakerType",
+                    "description": "Ranking tiebreaker",
+                    "required": true,
+                    "dataType": "string",
+                    "enum": ["HireDate", "Performance", "Custom", "RandomlyAssign"]
+                }, 
+                {
+                    "name": "PublishedDate",
+                    "description": "The date the schedule bid is published. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z",
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "EndDate",
+                    "description": "The end date until which schedule sets can be used for schedule generation. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd",
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "Metadata",
+                    "description": "The metadata of this bid",
+                    "required": true,
+                    "dataType": "Workplanbidmetadata"
+                }, 
+                {
+                    "name": "SelfUri",
+                    "description": "The URI for this object",
+                    "readOnly": true,
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "schedulebiddingadminnotificationtopicschedulebiddingnotification": { 
+            "properties": [
+                {
+                    "name": "Id",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "BuId",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Status",
+                    "dataType": "string",
+                    "enum": ["Unknown", "Draft", "Locked", "Scheduled", "Optimized", "Open", "Closed", "Processed", "Published"]
+                }, 
+                {
+                    "name": "BidType",
+                    "dataType": "string",
+                    "enum": ["Unknown", "WorkPlanBid", "ScheduleBid"]
+                }
+            ]
+        }, 
+        "schedulebidgroup": { 
+            "properties": [
+                {
+                    "name": "Name",
+                    "description": "The name of the schedule bid group",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "ManagementUnit",
+                    "description": "The management unit to which this bid group belongs",
+                    "required": true,
+                    "dataType": "Managementunitreference"
+                }, 
+                {
+                    "name": "Agents",
+                    "description": "The agents who participate in this bid group",
+                    "required": true,
+                    "dataType": "[]Userreference"
+                }, 
+                {
+                    "name": "WorkPlans",
+                    "description": "The work plans used in this bid group",
+                    "dataType": "[]Workplanreference"
+                }, 
+                {
+                    "name": "WorkPlanRotations",
+                    "description": "The work plan rotations used in this bid group",
+                    "dataType": "[]Bidgroupworkplanrotationresponse"
+                }, 
+                {
+                    "name": "PlanningGroups",
+                    "description": "The planning groups selected in this bid group",
+                    "required": true,
+                    "dataType": "[]Planninggroupreference"
+                }, 
+                {
+                    "name": "DownloadUrl",
+                    "description": "The downloadUrl to fetch Schedule sets. It will be populated if the status of this bid is 'Optimized'",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "DownloadTemplate",
+                    "description": "Schedule sets always come through downloadUrl, the schema included here is just for documentation",
+                    "dataType": "Bidgroupscheduleset"
+                }
+            ]
+        }, 
+        "schedulebidgroupcreate": { 
+            "properties": [
+                {
+                    "name": "Name",
+                    "description": "The name of the schedule bid group",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "ManagementUnitId",
+                    "description": "The ID of the management unit to which this bid group belongs",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "AgentIds",
+                    "description": "The IDs of the agents who participate in this bid group",
+                    "required": true,
+                    "dataType": "[]string"
+                }, 
+                {
+                    "name": "WorkPlanIds",
+                    "description": "The IDs of the work plans used in this bid group",
+                    "dataType": "[]string"
+                }, 
+                {
+                    "name": "WorkPlanRotations",
+                    "description": "The work plan rotations used in this bid group",
+                    "dataType": "[]Bidgroupworkplanrotationrequest"
+                }, 
+                {
+                    "name": "PlanningGroupIds",
+                    "description": "The IDs of the planning groups selected in this bid group",
+                    "required": true,
+                    "dataType": "[]string"
+                }
+            ]
+        }, 
+        "schedulebidgroupreference": { 
+            "properties": [
+                {
+                    "name": "Id",
+                    "description": "The globally unique identifier for the object.",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "SelfUri",
+                    "description": "The URI for this object",
+                    "readOnly": true,
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "schedulebidgroupresponse": { 
+            "properties": [
+                {
+                    "name": "Id",
+                    "description": "The globally unique identifier for the object.",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "ScheduleBidGroup",
+                    "description": "The schedule bid group",
+                    "required": true,
+                    "dataType": "Schedulebidgroup"
+                }, 
+                {
+                    "name": "Metadata",
+                    "description": "The metadata of the bid group",
+                    "required": true,
+                    "dataType": "Workplanbidmetadata"
+                }, 
+                {
+                    "name": "SelfUri",
+                    "description": "The URI for this object",
+                    "readOnly": true,
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "schedulebidgroupsummary": { 
+            "properties": [
+                {
+                    "name": "Id",
+                    "description": "The globally unique identifier for the object.",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Name",
+                    "description": "The name assigned to this bid group",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "ManagementUnit",
+                    "description": "The management unit to which this bid group belongs",
+                    "required": true,
+                    "dataType": "Managementunitreference"
+                }, 
+                {
+                    "name": "AgentCount",
+                    "description": "The number of agents in this bid group",
+                    "required": true,
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "WorkPlanCount",
+                    "description": "The number of work plans in this bid group or the number of work plans in rotations",
+                    "required": true,
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "WorkPlanRotationCount",
+                    "description": "The number of work plan rotations used in this bid group",
+                    "required": true,
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "PlanningGroupCount",
+                    "description": "The number of planning groups in this bid group",
+                    "required": true,
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "ScheduleSetError",
+                    "description": "Schedule set optimization error details for this bid group. Present only when optimization fails",
+                    "dataType": "Scheduleseterror"
+                }, 
+                {
+                    "name": "SelfUri",
+                    "description": "The URI for this object",
+                    "readOnly": true,
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "schedulebidgroupsummarylist": { 
+            "properties": [
+                {
+                    "name": "ScheduleBidGroupSummaries",
+                    "description": "Schedule bid group summary",
+                    "required": true,
+                    "dataType": "[]Schedulebidgroupsummary"
+                }
+            ]
+        }, 
+        "schedulebidgroupupdate": { 
+            "properties": [
+                {
+                    "name": "Name",
+                    "description": "The name of the schedule bid group",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "ManagementUnitId",
+                    "description": "The ID of the management unit to which this bid group belongs",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "AgentIds",
+                    "description": "The IDs of the agents who participate in this bid group",
+                    "dataType": "Setwrapperstring"
+                }, 
+                {
+                    "name": "WorkPlanIds",
+                    "description": "The IDs of the work plans used in this bid group",
+                    "dataType": "Setwrapperstring"
+                }, 
+                {
+                    "name": "WorkPlanRotations",
+                    "description": "The work plan rotations used in this bid group",
+                    "dataType": "Listwrapperbidgroupworkplanrotationrequest"
+                }, 
+                {
+                    "name": "PlanningGroupIds",
+                    "description": "The IDs of the planning groups selected in this bid group",
+                    "dataType": "Setwrapperstring"
+                }, 
+                {
+                    "name": "ScheduleSets",
+                    "description": "The schedule sets generated for this bid group",
+                    "dataType": "Listwrapperschedulesetrequest"
+                }
+            ]
+        }, 
+        "schedulebidlistresponse": { 
+            "properties": [
+                {
+                    "name": "Entities",
+                    "dataType": "[]Schedulebid"
+                }
+            ]
+        }, 
+        "schedulebidreference": { 
+            "properties": [
+                {
+                    "name": "Id",
+                    "description": "The ID of the schedule bid",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Name",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "SelfUri",
+                    "description": "The URI for this object",
+                    "readOnly": true,
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "schedulebidscheduledactivity": { 
+            "properties": [
+                {
+                    "name": "StartDate",
+                    "description": "The start date/time of this activity. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z",
+                    "required": true,
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "LengthMinutes",
+                    "description": "The length of this activity in minutes",
+                    "required": true,
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "Description",
+                    "description": "The description of this activity",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "ActivityCategory",
+                    "description": "The activity code's category",
+                    "required": true,
+                    "dataType": "string",
+                    "enum": ["OnQueueWork", "Break", "Meal", "Meeting", "OffQueueWork", "TimeOff", "Training", "Unavailable"]
+                }, 
+                {
+                    "name": "ActivityCodeId",
+                    "description": "The ID of the activity code associated with this activity",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Paid",
+                    "description": "Whether this activity is paid",
+                    "dataType": "bool"
+                }
+            ]
+        }, 
+        "schedulebidscheduledshift": { 
+            "properties": [
+                {
+                    "name": "WorkPlanShiftId",
+                    "description": "The ID of the work plan shift that was used in schedule generation",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "WorkPlanId",
+                    "description": "The ID of the work plan from which the shift comes",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "StartDate",
+                    "description": "The start date of the scheduled shift. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z",
+                    "required": true,
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "LengthMinutes",
+                    "description": "The length of the shift in minutes",
+                    "required": true,
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "Activities",
+                    "description": "The activities associated with this shift",
+                    "required": true,
+                    "dataType": "[]Schedulebidscheduledactivity"
+                }
+            ]
+        }, 
         "scheduledivisionviewentitylisting": { 
             "properties": [
                 {
@@ -152007,6 +153303,42 @@
                     "description": "The URI for this object",
                     "readOnly": true,
                     "dataType": "string"
+                }
+            ]
+        }, 
+        "scheduleseterror": { 
+            "properties": [
+                {
+                    "name": "ErrorCode",
+                    "description": "Error code that indicates why schedule set optimization failed. At least one of workPlans or workPlanRotations is set if there is an error during optimization",
+                    "required": true,
+                    "dataType": "string",
+                    "enum": ["InvalidWorkPlans", "InvalidWorkPlanRotations"]
+                }, 
+                {
+                    "name": "WorkPlans",
+                    "description": "Work plans involved in the optimization failure",
+                    "dataType": "[]Workplanreference"
+                }, 
+                {
+                    "name": "WorkPlanRotations",
+                    "description": "Work plan rotations involved in the optimization failure",
+                    "dataType": "[]Workplanrotationreference"
+                }
+            ]
+        }, 
+        "schedulesetrequest": { 
+            "properties": [
+                {
+                    "name": "ScheduleSetId",
+                    "description": "The ID of the schedule set",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "OverrideAgentCount",
+                    "description": "The overridden agent count for the schedule set",
+                    "dataType": "int"
                 }
             ]
         }, 
@@ -156055,6 +157387,64 @@
                     "name": "RedirectUrl",
                     "description": "The redirect URL for the connection.",
                     "dataType": "string"
+                }
+            ]
+        }, 
+        "shiftset": { 
+            "properties": [
+                {
+                    "name": "Id",
+                    "description": "The ID of the shift set",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Name",
+                    "description": "The name given for the shift set",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "EffectiveWorkPlan",
+                    "description": "The work plan or work plan rotation used for generating the shift set",
+                    "required": true,
+                    "dataType": "Shiftseteffectiveworkplan"
+                }, 
+                {
+                    "name": "Shifts",
+                    "description": "The scheduled shifts",
+                    "required": true,
+                    "dataType": "[]Schedulebidscheduledshift"
+                }, 
+                {
+                    "name": "SuggestedAgentCount",
+                    "description": "The suggested agent count",
+                    "required": true,
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "OverrideAgentCount",
+                    "description": "The override agent count. If it is null, it falls back to using the suggestedAgentCount",
+                    "dataType": "int"
+                }
+            ]
+        }, 
+        "shiftseteffectiveworkplan": { 
+            "properties": [
+                {
+                    "name": "WorkPlanId",
+                    "description": "The ID of the work plan",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "WorkPlanRotationId",
+                    "description": "The ID of the work plan rotation",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "PositionInRotation",
+                    "description": "The position in rotation",
+                    "dataType": "int"
                 }
             ]
         }, 
@@ -173075,6 +174465,22 @@
                 }
             ]
         }, 
+        "updateagentschedulebiddingpreference": { 
+            "properties": [
+                {
+                    "name": "Submitted",
+                    "description": "Whether the preference is submitted",
+                    "required": true,
+                    "dataType": "bool"
+                }, 
+                {
+                    "name": "AgentScheduleBidPreferences",
+                    "description": "The schedule bidding preferences",
+                    "required": true,
+                    "dataType": "[]Agentschedulebiddingpreferencepriority"
+                }
+            ]
+        }, 
         "updateagentworkplanbiddingpreference": { 
             "properties": [
                 {
@@ -173775,6 +175181,63 @@
                 }
             ]
         }, 
+        "updateschedulebid": { 
+            "properties": [
+                {
+                    "name": "Name",
+                    "description": "The name of the schedule bid",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Forecast",
+                    "description": "The selected forecast used for schedule set generation for this bid",
+                    "dataType": "Bushorttermforecastweekreference"
+                }, 
+                {
+                    "name": "BidWindowStartDate",
+                    "description": "The bid start date where agents start participating in schedule bidding relative to the business unit time zone in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd",
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "BidWindowEndDate",
+                    "description": "The bid end date relative to the business unit time zone in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd",
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "EffectiveDate",
+                    "description": "The date when schedule sets would be effective for schedule generation relative to the business unit time zone in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd",
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "WeeksToSchedule",
+                    "description": "The number of weeks to generate schedule set through this bid",
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "EndOverridesAndRotations",
+                    "description": "If true, all existing overrides, work plan rotations will be ended one day before effective date of this bid",
+                    "dataType": "bool"
+                }, 
+                {
+                    "name": "AgentRankingType",
+                    "description": "The type of agent ranking selected for this bid",
+                    "dataType": "string",
+                    "enum": ["HireDate", "Performance"]
+                }, 
+                {
+                    "name": "RankingTiebreakerType",
+                    "description": "Ranking tiebreaker to be used",
+                    "dataType": "string",
+                    "enum": ["HireDate", "Performance", "Custom", "RandomlyAssign"]
+                }, 
+                {
+                    "name": "Status",
+                    "description": "The state of the bid",
+                    "dataType": "string",
+                    "enum": ["Draft", "Locked", "Optimized", "Scheduled", "Open", "Closed", "Processed", "Published"]
+                }
+            ]
+        }, 
         "updatescheduledtriggerrequest": { 
             "properties": [
                 {
@@ -174384,6 +175847,11 @@
                     "description": "Ranking tiebreaker",
                     "dataType": "string",
                     "enum": ["HireDate", "Performance", "Custom", "RandomlyAssign"]
+                }, 
+                {
+                    "name": "EndOverridesAndRotations",
+                    "description": "If true, all existing overrides, workplan rotations will be ended one day before effective date of this bid",
+                    "dataType": "bool"
                 }, 
                 {
                     "name": "WorkPlanFieldsVisibleToAgents",
@@ -180856,6 +182324,23 @@
                 }
             ]
         }, 
+        "v2sessionconversationssummarysettingsprevieweventconversationsummarylabel": { 
+            "properties": [
+                {
+                    "name": "Name",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Description",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "VarType",
+                    "dataType": "string",
+                    "enum": ["CUSTOMER_SETTING", "UNKNOWN"]
+                }
+            ]
+        }, 
         "v2sessionconversationssummarysettingsprevieweventconversationsummarymessage": { 
             "properties": [
                 {
@@ -180918,6 +182403,10 @@
                 {
                     "name": "ExtractedEntities",
                     "dataType": "[]V2sessionconversationssummarysettingsprevieweventconversationsummaryextractedentity"
+                }, 
+                {
+                    "name": "Labels",
+                    "dataType": "[]V2sessionconversationssummarysettingsprevieweventconversationsummarylabel"
                 }, 
                 {
                     "name": "ErrorType",
@@ -182277,6 +183766,16 @@
                     "description": "List of user ids to assign to a performance profile",
                     "required": true,
                     "dataType": "[]string"
+                }
+            ]
+        }, 
+        "validatedetails": { 
+            "properties": [
+                {
+                    "name": "Flow",
+                    "description": "The flow to validate. If you do not provide the flow ID, you must provide both the name and type.",
+                    "required": true,
+                    "dataType": "Architectflowreference"
                 }
             ]
         }, 
@@ -187442,7 +188941,7 @@
                 }, 
                 {
                     "name": "Users",
-                    "dataType": "[]string"
+                    "dataType": "[]Wfmactivityplanjobcompletetopicuserreference"
                 }
             ]
         }, 
@@ -187463,6 +188962,14 @@
                 {
                     "name": "MessageParams",
                     "dataType": "map[string]string"
+                }
+            ]
+        }, 
+        "wfmactivityplanjobcompletetopicuserreference": { 
+            "properties": [
+                {
+                    "name": "Id",
+                    "dataType": "string"
                 }
             ]
         }, 
@@ -187541,7 +189048,7 @@
                 }, 
                 {
                     "name": "Users",
-                    "dataType": "[]string"
+                    "dataType": "[]Wfmactivityplanrunjobcompletetopicuserreference"
                 }
             ]
         }, 
@@ -187562,6 +189069,14 @@
                 {
                     "name": "MessageParams",
                     "dataType": "map[string]string"
+                }
+            ]
+        }, 
+        "wfmactivityplanrunjobcompletetopicuserreference": { 
+            "properties": [
+                {
+                    "name": "Id",
+                    "dataType": "string"
                 }
             ]
         }, 
@@ -188021,6 +189536,46 @@
                 }
             ]
         }, 
+        "wfmagentmanagementunitschedulechangedtopicagentmuschedulechangednotification": { 
+            "properties": [
+                {
+                    "name": "Agents",
+                    "dataType": "[]Wfmagentmanagementunitschedulechangedtopicagentmuuserschedulechanged"
+                }, 
+                {
+                    "name": "VisibilityRange",
+                    "dataType": "Wfmagentmanagementunitschedulechangedtopicagentmuschedulevisibilityrange"
+                }
+            ]
+        }, 
+        "wfmagentmanagementunitschedulechangedtopicagentmuschedulevisibilityrange": { 
+            "properties": [
+                {
+                    "name": "EndBusinessUnitDate",
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "EndDate",
+                    "dataType": "time.Time"
+                }
+            ]
+        }, 
+        "wfmagentmanagementunitschedulechangedtopicagentmuuserschedulechanged": { 
+            "properties": [
+                {
+                    "name": "AgentId",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "StartDate",
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "EndDate",
+                    "dataType": "time.Time"
+                }
+            ]
+        }, 
         "wfmagentmuschedulesearchcompletetopicagentmuschedulesearchcompletenotification": { 
             "properties": [
                 {
@@ -188092,6 +189647,22 @@
                 {
                     "name": "Updates",
                     "dataType": "[]Wfmagentscheduleupdatetopicagentscheduleshiftupdate"
+                }, 
+                {
+                    "name": "VisibilityRange",
+                    "dataType": "Wfmagentscheduleupdatetopicagentschedulevisibilityrange"
+                }
+            ]
+        }, 
+        "wfmagentscheduleupdatetopicagentschedulevisibilityrange": { 
+            "properties": [
+                {
+                    "name": "EndBusinessUnitDate",
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "EndDate",
+                    "dataType": "time.Time"
                 }
             ]
         }, 
@@ -192150,6 +193721,11 @@
                 }
             ]
         }, 
+        "whatsappbusinessscopedid": { 
+            "description": "A WhatsAppBusinessScopedId record",
+            "properties": [
+            ]
+        }, 
         "whatsappcallingconfigurationrequest": { 
             "properties": [
             ]
@@ -192474,6 +194050,16 @@
                     "name": "VarType",
                     "description": "Indicates the type of the whatsApp column. For example, 'work' or 'personal'.",
                     "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "ContactableTimeColumnName",
+                    "description": "A name of the contactableTimeColumn",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "ContactableTimeColumn",
+                    "description": "A column that indicates the timezone to use for a given contact when checking contactable times.",
                     "dataType": "string"
                 }
             ]
@@ -197326,6 +198912,19 @@
                     "name": "PublishedDate",
                     "description": "The date the work plan bid published. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z",
                     "dataType": "time.Time"
+                }, 
+                {
+                    "name": "BidType",
+                    "description": "The type of bid created",
+                    "required": true,
+                    "dataType": "string",
+                    "enum": ["WorkPlanBid", "ScheduleBid"]
+                }, 
+                {
+                    "name": "EndOverridesAndRotations",
+                    "description": "If true, all existing overrides, workplan rotations will be ended one day before effective date of this bid",
+                    "required": true,
+                    "dataType": "bool"
                 }, 
                 {
                     "name": "WorkPlanFieldsVisibleToAgents",
@@ -206035,6 +207634,25 @@
             ],
             "return": "Flowoutcomedivisionviewentitylisting"
         },
+        "GET /api/v2/flows/validate/jobs/{jobId}": {
+            "className": "ArchitectApi",
+            "operationId": "getflowsvalidatejob",
+            "functionName": "GetFlowsValidateJob",
+            "signature": "GetFlowsValidateJob(jobId, expand)",
+            "parameters": [
+                {
+                    "name": "jobId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "expand",
+                    "type": "[]string",
+                    "required": "false"
+                }
+            ],
+            "return": "Architectvalidatejobstateresponse"
+        },
         "PATCH /api/v2/architect/grammars/{grammarId}": {
             "className": "ArchitectApi",
             "operationId": "patcharchitectgrammar",
@@ -206716,6 +208334,20 @@
                 }
             ],
             "return": "Flowoutcome"
+        },
+        "POST /api/v2/flows/validate/jobs": {
+            "className": "ArchitectApi",
+            "operationId": "postflowsvalidatejobs",
+            "functionName": "PostFlowsValidateJobs",
+            "signature": "PostFlowsValidateJobs(body)",
+            "parameters": [
+                {
+                    "name": "body",
+                    "type": "Registerarchitectvalidatejob",
+                    "required": "true"
+                }
+            ],
+            "return": "Registerarchitectvalidatejobresponse"
         },
         "PUT /api/v2/architect/emergencygroups/{emergencyGroupId}": {
             "className": "ArchitectApi",
@@ -231027,7 +232659,7 @@
                 },
                 {
                     "name": "body",
-                    "type": "Knowledgedocumentcreaterequest",
+                    "type": "Knowledgedocumentreq",
                     "required": "true"
                 }
             ],
@@ -260082,6 +261714,47 @@
                 }
             ]
         },
+        "DELETE /api/v2/workforcemanagement/businessunits/{businessUnitId}/schedulebids/{bidId}": {
+            "className": "WorkforceManagementApi",
+            "operationId": "deleteworkforcemanagementbusinessunitschedulebid",
+            "functionName": "DeleteWorkforcemanagementBusinessunitSchedulebid",
+            "signature": "DeleteWorkforcemanagementBusinessunitSchedulebid(businessUnitId, bidId)",
+            "parameters": [
+                {
+                    "name": "businessUnitId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "bidId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ]
+        },
+        "DELETE /api/v2/workforcemanagement/businessunits/{businessUnitId}/schedulebids/{bidId}/groups/{bidGroupId}": {
+            "className": "WorkforceManagementApi",
+            "operationId": "deleteworkforcemanagementbusinessunitschedulebidgroup",
+            "functionName": "DeleteWorkforcemanagementBusinessunitSchedulebidGroup",
+            "signature": "DeleteWorkforcemanagementBusinessunitSchedulebidGroup(businessUnitId, bidId, bidGroupId)",
+            "parameters": [
+                {
+                    "name": "businessUnitId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "bidId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "bidGroupId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ]
+        },
         "DELETE /api/v2/workforcemanagement/businessunits/{businessUnitId}/scheduling/runs/{runId}": {
             "className": "WorkforceManagementApi",
             "operationId": "deleteworkforcemanagementbusinessunitschedulingrun",
@@ -261034,6 +262707,116 @@
                 }
             ],
             "return": "Planninggrouplist"
+        },
+        "GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/schedulebids/{bidId}": {
+            "className": "WorkforceManagementApi",
+            "operationId": "getworkforcemanagementbusinessunitschedulebid",
+            "functionName": "GetWorkforcemanagementBusinessunitSchedulebid",
+            "signature": "GetWorkforcemanagementBusinessunitSchedulebid(businessUnitId, bidId)",
+            "parameters": [
+                {
+                    "name": "businessUnitId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "bidId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ],
+            "return": "Schedulebid"
+        },
+        "GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/schedulebids/{bidId}/groups/{bidGroupId}": {
+            "className": "WorkforceManagementApi",
+            "operationId": "getworkforcemanagementbusinessunitschedulebidgroup",
+            "functionName": "GetWorkforcemanagementBusinessunitSchedulebidGroup",
+            "signature": "GetWorkforcemanagementBusinessunitSchedulebidGroup(businessUnitId, bidId, bidGroupId)",
+            "parameters": [
+                {
+                    "name": "businessUnitId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "bidId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "bidGroupId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ],
+            "return": "Schedulebidgroupresponse"
+        },
+        "GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/schedulebids/{bidId}/groups/{bidGroupId}/preferences": {
+            "className": "WorkforceManagementApi",
+            "operationId": "getworkforcemanagementbusinessunitschedulebidgrouppreferences",
+            "functionName": "GetWorkforcemanagementBusinessunitSchedulebidGroupPreferences",
+            "signature": "GetWorkforcemanagementBusinessunitSchedulebidGroupPreferences(businessUnitId, bidId, bidGroupId, forceDownloadService, expand)",
+            "parameters": [
+                {
+                    "name": "businessUnitId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "bidId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "bidGroupId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "forceDownloadService",
+                    "type": "bool",
+                    "required": "false"
+                },
+                {
+                    "name": "expand",
+                    "type": "[]string",
+                    "required": "false"
+                }
+            ],
+            "return": "Adminagentschedulebidpreferenceresponse"
+        },
+        "GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/schedulebids/{bidId}/groups/summary": {
+            "className": "WorkforceManagementApi",
+            "operationId": "getworkforcemanagementbusinessunitschedulebidgroupssummary",
+            "functionName": "GetWorkforcemanagementBusinessunitSchedulebidGroupsSummary",
+            "signature": "GetWorkforcemanagementBusinessunitSchedulebidGroupsSummary(businessUnitId, bidId)",
+            "parameters": [
+                {
+                    "name": "businessUnitId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "bidId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ],
+            "return": "Schedulebidgroupsummarylist"
+        },
+        "GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/schedulebids": {
+            "className": "WorkforceManagementApi",
+            "operationId": "getworkforcemanagementbusinessunitschedulebids",
+            "functionName": "GetWorkforcemanagementBusinessunitSchedulebids",
+            "signature": "GetWorkforcemanagementBusinessunitSchedulebids(businessUnitId)",
+            "parameters": [
+                {
+                    "name": "businessUnitId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ],
+            "return": "Schedulebidlistresponse"
         },
         "GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/scheduler/settings": {
             "className": "WorkforceManagementApi",
@@ -262533,6 +264316,42 @@
             
             "return": "Notificationsresponse"
         },
+        "GET /api/v2/workforcemanagement/schedulebids/{bidId}/preference": {
+            "className": "WorkforceManagementApi",
+            "operationId": "getworkforcemanagementschedulebidpreference",
+            "functionName": "GetWorkforcemanagementSchedulebidPreference",
+            "signature": "GetWorkforcemanagementSchedulebidPreference(bidId)",
+            "parameters": [
+                {
+                    "name": "bidId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ],
+            "return": "Agentschedulebiddingpreferenceresponse"
+        },
+        "GET /api/v2/workforcemanagement/schedulebids/{bidId}/schedulesets": {
+            "className": "WorkforceManagementApi",
+            "operationId": "getworkforcemanagementschedulebidschedulesets",
+            "functionName": "GetWorkforcemanagementSchedulebidSchedulesets",
+            "signature": "GetWorkforcemanagementSchedulebidSchedulesets(bidId)",
+            "parameters": [
+                {
+                    "name": "bidId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ],
+            "return": "Agentschedulebidschedulesetresponse"
+        },
+        "GET /api/v2/workforcemanagement/schedulebids": {
+            "className": "WorkforceManagementApi",
+            "operationId": "getworkforcemanagementschedulebids",
+            "functionName": "GetWorkforcemanagementSchedulebids",
+            "signature": "GetWorkforcemanagementSchedulebids()",
+            
+            "return": "Agentschedulebids"
+        },
         "GET /api/v2/workforcemanagement/schedulingjobs/{jobId}": {
             "className": "WorkforceManagementApi",
             "operationId": "getworkforcemanagementschedulingjob",
@@ -263028,6 +264847,88 @@
                 }
             ],
             "return": "Planninggroup"
+        },
+        "PATCH /api/v2/workforcemanagement/businessunits/{businessUnitId}/schedulebids/{bidId}": {
+            "className": "WorkforceManagementApi",
+            "operationId": "patchworkforcemanagementbusinessunitschedulebid",
+            "functionName": "PatchWorkforcemanagementBusinessunitSchedulebid",
+            "signature": "PatchWorkforcemanagementBusinessunitSchedulebid(businessUnitId, bidId, body)",
+            "parameters": [
+                {
+                    "name": "businessUnitId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "bidId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Updateschedulebid",
+                    "required": "true"
+                }
+            ],
+            "return": "Schedulebid"
+        },
+        "PATCH /api/v2/workforcemanagement/businessunits/{businessUnitId}/schedulebids/{bidId}/groups/{bidGroupId}": {
+            "className": "WorkforceManagementApi",
+            "operationId": "patchworkforcemanagementbusinessunitschedulebidgroup",
+            "functionName": "PatchWorkforcemanagementBusinessunitSchedulebidGroup",
+            "signature": "PatchWorkforcemanagementBusinessunitSchedulebidGroup(businessUnitId, bidId, bidGroupId, body)",
+            "parameters": [
+                {
+                    "name": "businessUnitId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "bidId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "bidGroupId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Schedulebidgroupupdate",
+                    "required": "true"
+                }
+            ],
+            "return": "Schedulebidgroupresponse"
+        },
+        "PATCH /api/v2/workforcemanagement/businessunits/{businessUnitId}/schedulebids/{bidId}/groups/{bidGroupId}/preferences": {
+            "className": "WorkforceManagementApi",
+            "operationId": "patchworkforcemanagementbusinessunitschedulebidgrouppreferences",
+            "functionName": "PatchWorkforcemanagementBusinessunitSchedulebidGroupPreferences",
+            "signature": "PatchWorkforcemanagementBusinessunitSchedulebidGroupPreferences(businessUnitId, bidId, bidGroupId, body)",
+            "parameters": [
+                {
+                    "name": "businessUnitId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "bidId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "bidGroupId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Agentsbidassignedschedulesetoverriderequest",
+                    "required": "true"
+                }
+            ],
+            "return": "Adminagentschedulebidpreferenceresponse"
         },
         "PATCH /api/v2/workforcemanagement/businessunits/{businessUnitId}/scheduler/settings": {
             "className": "WorkforceManagementApi",
@@ -264385,6 +266286,92 @@
                 }
             ],
             "return": "Planninggroup"
+        },
+        "POST /api/v2/workforcemanagement/businessunits/{businessUnitId}/schedulebids/{bidId}/copy": {
+            "className": "WorkforceManagementApi",
+            "operationId": "postworkforcemanagementbusinessunitschedulebidcopy",
+            "functionName": "PostWorkforcemanagementBusinessunitSchedulebidCopy",
+            "signature": "PostWorkforcemanagementBusinessunitSchedulebidCopy(businessUnitId, bidId, body)",
+            "parameters": [
+                {
+                    "name": "businessUnitId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "bidId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Copyschedulebid",
+                    "required": "true"
+                }
+            ],
+            "return": "Schedulebid"
+        },
+        "POST /api/v2/workforcemanagement/businessunits/{businessUnitId}/schedulebids/{bidId}/groups": {
+            "className": "WorkforceManagementApi",
+            "operationId": "postworkforcemanagementbusinessunitschedulebidgroups",
+            "functionName": "PostWorkforcemanagementBusinessunitSchedulebidGroups",
+            "signature": "PostWorkforcemanagementBusinessunitSchedulebidGroups(businessUnitId, bidId, body)",
+            "parameters": [
+                {
+                    "name": "businessUnitId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "bidId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Schedulebidgroupcreate",
+                    "required": "true"
+                }
+            ],
+            "return": "Schedulebidgroupresponse"
+        },
+        "POST /api/v2/workforcemanagement/businessunits/{businessUnitId}/schedulebids": {
+            "className": "WorkforceManagementApi",
+            "operationId": "postworkforcemanagementbusinessunitschedulebids",
+            "functionName": "PostWorkforcemanagementBusinessunitSchedulebids",
+            "signature": "PostWorkforcemanagementBusinessunitSchedulebids(businessUnitId, body)",
+            "parameters": [
+                {
+                    "name": "businessUnitId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Createschedulebid",
+                    "required": "true"
+                }
+            ],
+            "return": "Schedulebid"
+        },
+        "POST /api/v2/workforcemanagement/businessunits/{businessUnitId}/schedulebids/effectiveschedulesets": {
+            "className": "WorkforceManagementApi",
+            "operationId": "postworkforcemanagementbusinessunitschedulebidseffectiveschedulesets",
+            "functionName": "PostWorkforcemanagementBusinessunitSchedulebidsEffectiveschedulesets",
+            "signature": "PostWorkforcemanagementBusinessunitSchedulebidsEffectiveschedulesets(businessUnitId, body)",
+            "parameters": [
+                {
+                    "name": "businessUnitId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Queryeffectiveschedulesetsrequest",
+                    "required": "true"
+                }
+            ],
+            "return": "Agentseffectiveschedulesetresponse"
         },
         "POST /api/v2/workforcemanagement/businessunits/{businessUnitId}/servicegoaltemplates": {
             "className": "WorkforceManagementApi",
@@ -266203,6 +268190,25 @@
                 }
             ],
             "return": "Timeofflimit"
+        },
+        "PUT /api/v2/workforcemanagement/schedulebids/{bidId}/preference": {
+            "className": "WorkforceManagementApi",
+            "operationId": "putworkforcemanagementschedulebidpreference",
+            "functionName": "PutWorkforcemanagementSchedulebidPreference",
+            "signature": "PutWorkforcemanagementSchedulebidPreference(bidId, body)",
+            "parameters": [
+                {
+                    "name": "bidId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Updateagentschedulebiddingpreference",
+                    "required": "true"
+                }
+            ],
+            "return": "Agentschedulebiddingpreferenceresponse"
         }
     , 
         "DELETE /api/v2/conversations/summaries/settings/{summarySettingId}": {
@@ -272291,6 +274297,25 @@
             ],
             "return": "Flowoutcomedivisionviewentitylisting"
         },
+        "GET /api/v2/flows/validate/jobs/{jobId}": {
+            "className": "ArchitectApi",
+            "operationId": "getflowsvalidatejob",
+            "functionName": "GetFlowsValidateJob",
+            "signature": "GetFlowsValidateJob(jobId, expand)",
+            "parameters": [
+                {
+                    "name": "jobId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "expand",
+                    "type": "[]string",
+                    "required": "false"
+                }
+            ],
+            "return": "Architectvalidatejobstateresponse"
+        },
         "PATCH /api/v2/architect/grammars/{grammarId}": {
             "className": "ArchitectApi",
             "operationId": "patcharchitectgrammar",
@@ -272972,6 +274997,20 @@
                 }
             ],
             "return": "Flowoutcome"
+        },
+        "POST /api/v2/flows/validate/jobs": {
+            "className": "ArchitectApi",
+            "operationId": "postflowsvalidatejobs",
+            "functionName": "PostFlowsValidateJobs",
+            "signature": "PostFlowsValidateJobs(body)",
+            "parameters": [
+                {
+                    "name": "body",
+                    "type": "Registerarchitectvalidatejob",
+                    "required": "true"
+                }
+            ],
+            "return": "Registerarchitectvalidatejobresponse"
         },
         "PUT /api/v2/architect/emergencygroups/{emergencyGroupId}": {
             "className": "ArchitectApi",
@@ -297283,7 +299322,7 @@
                 },
                 {
                     "name": "body",
-                    "type": "Knowledgedocumentcreaterequest",
+                    "type": "Knowledgedocumentreq",
                     "required": "true"
                 }
             ],
@@ -326338,6 +328377,47 @@
                 }
             ]
         },
+        "DELETE /api/v2/workforcemanagement/businessunits/{businessUnitId}/schedulebids/{bidId}": {
+            "className": "WorkforceManagementApi",
+            "operationId": "deleteworkforcemanagementbusinessunitschedulebid",
+            "functionName": "DeleteWorkforcemanagementBusinessunitSchedulebid",
+            "signature": "DeleteWorkforcemanagementBusinessunitSchedulebid(businessUnitId, bidId)",
+            "parameters": [
+                {
+                    "name": "businessUnitId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "bidId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ]
+        },
+        "DELETE /api/v2/workforcemanagement/businessunits/{businessUnitId}/schedulebids/{bidId}/groups/{bidGroupId}": {
+            "className": "WorkforceManagementApi",
+            "operationId": "deleteworkforcemanagementbusinessunitschedulebidgroup",
+            "functionName": "DeleteWorkforcemanagementBusinessunitSchedulebidGroup",
+            "signature": "DeleteWorkforcemanagementBusinessunitSchedulebidGroup(businessUnitId, bidId, bidGroupId)",
+            "parameters": [
+                {
+                    "name": "businessUnitId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "bidId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "bidGroupId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ]
+        },
         "DELETE /api/v2/workforcemanagement/businessunits/{businessUnitId}/scheduling/runs/{runId}": {
             "className": "WorkforceManagementApi",
             "operationId": "deleteworkforcemanagementbusinessunitschedulingrun",
@@ -327290,6 +329370,116 @@
                 }
             ],
             "return": "Planninggrouplist"
+        },
+        "GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/schedulebids/{bidId}": {
+            "className": "WorkforceManagementApi",
+            "operationId": "getworkforcemanagementbusinessunitschedulebid",
+            "functionName": "GetWorkforcemanagementBusinessunitSchedulebid",
+            "signature": "GetWorkforcemanagementBusinessunitSchedulebid(businessUnitId, bidId)",
+            "parameters": [
+                {
+                    "name": "businessUnitId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "bidId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ],
+            "return": "Schedulebid"
+        },
+        "GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/schedulebids/{bidId}/groups/{bidGroupId}": {
+            "className": "WorkforceManagementApi",
+            "operationId": "getworkforcemanagementbusinessunitschedulebidgroup",
+            "functionName": "GetWorkforcemanagementBusinessunitSchedulebidGroup",
+            "signature": "GetWorkforcemanagementBusinessunitSchedulebidGroup(businessUnitId, bidId, bidGroupId)",
+            "parameters": [
+                {
+                    "name": "businessUnitId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "bidId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "bidGroupId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ],
+            "return": "Schedulebidgroupresponse"
+        },
+        "GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/schedulebids/{bidId}/groups/{bidGroupId}/preferences": {
+            "className": "WorkforceManagementApi",
+            "operationId": "getworkforcemanagementbusinessunitschedulebidgrouppreferences",
+            "functionName": "GetWorkforcemanagementBusinessunitSchedulebidGroupPreferences",
+            "signature": "GetWorkforcemanagementBusinessunitSchedulebidGroupPreferences(businessUnitId, bidId, bidGroupId, forceDownloadService, expand)",
+            "parameters": [
+                {
+                    "name": "businessUnitId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "bidId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "bidGroupId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "forceDownloadService",
+                    "type": "bool",
+                    "required": "false"
+                },
+                {
+                    "name": "expand",
+                    "type": "[]string",
+                    "required": "false"
+                }
+            ],
+            "return": "Adminagentschedulebidpreferenceresponse"
+        },
+        "GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/schedulebids/{bidId}/groups/summary": {
+            "className": "WorkforceManagementApi",
+            "operationId": "getworkforcemanagementbusinessunitschedulebidgroupssummary",
+            "functionName": "GetWorkforcemanagementBusinessunitSchedulebidGroupsSummary",
+            "signature": "GetWorkforcemanagementBusinessunitSchedulebidGroupsSummary(businessUnitId, bidId)",
+            "parameters": [
+                {
+                    "name": "businessUnitId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "bidId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ],
+            "return": "Schedulebidgroupsummarylist"
+        },
+        "GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/schedulebids": {
+            "className": "WorkforceManagementApi",
+            "operationId": "getworkforcemanagementbusinessunitschedulebids",
+            "functionName": "GetWorkforcemanagementBusinessunitSchedulebids",
+            "signature": "GetWorkforcemanagementBusinessunitSchedulebids(businessUnitId)",
+            "parameters": [
+                {
+                    "name": "businessUnitId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ],
+            "return": "Schedulebidlistresponse"
         },
         "GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/scheduler/settings": {
             "className": "WorkforceManagementApi",
@@ -328789,6 +330979,42 @@
             
             "return": "Notificationsresponse"
         },
+        "GET /api/v2/workforcemanagement/schedulebids/{bidId}/preference": {
+            "className": "WorkforceManagementApi",
+            "operationId": "getworkforcemanagementschedulebidpreference",
+            "functionName": "GetWorkforcemanagementSchedulebidPreference",
+            "signature": "GetWorkforcemanagementSchedulebidPreference(bidId)",
+            "parameters": [
+                {
+                    "name": "bidId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ],
+            "return": "Agentschedulebiddingpreferenceresponse"
+        },
+        "GET /api/v2/workforcemanagement/schedulebids/{bidId}/schedulesets": {
+            "className": "WorkforceManagementApi",
+            "operationId": "getworkforcemanagementschedulebidschedulesets",
+            "functionName": "GetWorkforcemanagementSchedulebidSchedulesets",
+            "signature": "GetWorkforcemanagementSchedulebidSchedulesets(bidId)",
+            "parameters": [
+                {
+                    "name": "bidId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ],
+            "return": "Agentschedulebidschedulesetresponse"
+        },
+        "GET /api/v2/workforcemanagement/schedulebids": {
+            "className": "WorkforceManagementApi",
+            "operationId": "getworkforcemanagementschedulebids",
+            "functionName": "GetWorkforcemanagementSchedulebids",
+            "signature": "GetWorkforcemanagementSchedulebids()",
+            
+            "return": "Agentschedulebids"
+        },
         "GET /api/v2/workforcemanagement/schedulingjobs/{jobId}": {
             "className": "WorkforceManagementApi",
             "operationId": "getworkforcemanagementschedulingjob",
@@ -329284,6 +331510,88 @@
                 }
             ],
             "return": "Planninggroup"
+        },
+        "PATCH /api/v2/workforcemanagement/businessunits/{businessUnitId}/schedulebids/{bidId}": {
+            "className": "WorkforceManagementApi",
+            "operationId": "patchworkforcemanagementbusinessunitschedulebid",
+            "functionName": "PatchWorkforcemanagementBusinessunitSchedulebid",
+            "signature": "PatchWorkforcemanagementBusinessunitSchedulebid(businessUnitId, bidId, body)",
+            "parameters": [
+                {
+                    "name": "businessUnitId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "bidId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Updateschedulebid",
+                    "required": "true"
+                }
+            ],
+            "return": "Schedulebid"
+        },
+        "PATCH /api/v2/workforcemanagement/businessunits/{businessUnitId}/schedulebids/{bidId}/groups/{bidGroupId}": {
+            "className": "WorkforceManagementApi",
+            "operationId": "patchworkforcemanagementbusinessunitschedulebidgroup",
+            "functionName": "PatchWorkforcemanagementBusinessunitSchedulebidGroup",
+            "signature": "PatchWorkforcemanagementBusinessunitSchedulebidGroup(businessUnitId, bidId, bidGroupId, body)",
+            "parameters": [
+                {
+                    "name": "businessUnitId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "bidId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "bidGroupId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Schedulebidgroupupdate",
+                    "required": "true"
+                }
+            ],
+            "return": "Schedulebidgroupresponse"
+        },
+        "PATCH /api/v2/workforcemanagement/businessunits/{businessUnitId}/schedulebids/{bidId}/groups/{bidGroupId}/preferences": {
+            "className": "WorkforceManagementApi",
+            "operationId": "patchworkforcemanagementbusinessunitschedulebidgrouppreferences",
+            "functionName": "PatchWorkforcemanagementBusinessunitSchedulebidGroupPreferences",
+            "signature": "PatchWorkforcemanagementBusinessunitSchedulebidGroupPreferences(businessUnitId, bidId, bidGroupId, body)",
+            "parameters": [
+                {
+                    "name": "businessUnitId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "bidId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "bidGroupId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Agentsbidassignedschedulesetoverriderequest",
+                    "required": "true"
+                }
+            ],
+            "return": "Adminagentschedulebidpreferenceresponse"
         },
         "PATCH /api/v2/workforcemanagement/businessunits/{businessUnitId}/scheduler/settings": {
             "className": "WorkforceManagementApi",
@@ -330641,6 +332949,92 @@
                 }
             ],
             "return": "Planninggroup"
+        },
+        "POST /api/v2/workforcemanagement/businessunits/{businessUnitId}/schedulebids/{bidId}/copy": {
+            "className": "WorkforceManagementApi",
+            "operationId": "postworkforcemanagementbusinessunitschedulebidcopy",
+            "functionName": "PostWorkforcemanagementBusinessunitSchedulebidCopy",
+            "signature": "PostWorkforcemanagementBusinessunitSchedulebidCopy(businessUnitId, bidId, body)",
+            "parameters": [
+                {
+                    "name": "businessUnitId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "bidId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Copyschedulebid",
+                    "required": "true"
+                }
+            ],
+            "return": "Schedulebid"
+        },
+        "POST /api/v2/workforcemanagement/businessunits/{businessUnitId}/schedulebids/{bidId}/groups": {
+            "className": "WorkforceManagementApi",
+            "operationId": "postworkforcemanagementbusinessunitschedulebidgroups",
+            "functionName": "PostWorkforcemanagementBusinessunitSchedulebidGroups",
+            "signature": "PostWorkforcemanagementBusinessunitSchedulebidGroups(businessUnitId, bidId, body)",
+            "parameters": [
+                {
+                    "name": "businessUnitId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "bidId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Schedulebidgroupcreate",
+                    "required": "true"
+                }
+            ],
+            "return": "Schedulebidgroupresponse"
+        },
+        "POST /api/v2/workforcemanagement/businessunits/{businessUnitId}/schedulebids": {
+            "className": "WorkforceManagementApi",
+            "operationId": "postworkforcemanagementbusinessunitschedulebids",
+            "functionName": "PostWorkforcemanagementBusinessunitSchedulebids",
+            "signature": "PostWorkforcemanagementBusinessunitSchedulebids(businessUnitId, body)",
+            "parameters": [
+                {
+                    "name": "businessUnitId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Createschedulebid",
+                    "required": "true"
+                }
+            ],
+            "return": "Schedulebid"
+        },
+        "POST /api/v2/workforcemanagement/businessunits/{businessUnitId}/schedulebids/effectiveschedulesets": {
+            "className": "WorkforceManagementApi",
+            "operationId": "postworkforcemanagementbusinessunitschedulebidseffectiveschedulesets",
+            "functionName": "PostWorkforcemanagementBusinessunitSchedulebidsEffectiveschedulesets",
+            "signature": "PostWorkforcemanagementBusinessunitSchedulebidsEffectiveschedulesets(businessUnitId, body)",
+            "parameters": [
+                {
+                    "name": "businessUnitId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Queryeffectiveschedulesetsrequest",
+                    "required": "true"
+                }
+            ],
+            "return": "Agentseffectiveschedulesetresponse"
         },
         "POST /api/v2/workforcemanagement/businessunits/{businessUnitId}/servicegoaltemplates": {
             "className": "WorkforceManagementApi",
@@ -332459,6 +334853,25 @@
                 }
             ],
             "return": "Timeofflimit"
+        },
+        "PUT /api/v2/workforcemanagement/schedulebids/{bidId}/preference": {
+            "className": "WorkforceManagementApi",
+            "operationId": "putworkforcemanagementschedulebidpreference",
+            "functionName": "PutWorkforcemanagementSchedulebidPreference",
+            "signature": "PutWorkforcemanagementSchedulebidPreference(bidId, body)",
+            "parameters": [
+                {
+                    "name": "bidId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Updateagentschedulebiddingpreference",
+                    "required": "true"
+                }
+            ],
+            "return": "Agentschedulebiddingpreferenceresponse"
         }
      }
 }

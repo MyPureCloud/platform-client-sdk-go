@@ -28,6 +28,9 @@ type Orgauthsettings struct {
 
 	// InactivityTimeoutExclusions - The list of exempt apis from inactivity timeout.
 	InactivityTimeoutExclusions *[]string `json:"inactivityTimeoutExclusions,omitempty"`
+
+	// UniversalLogout - Indicates whether universal logout is enabled for the organization.
+	UniversalLogout *bool `json:"universalLogout,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -104,6 +107,8 @@ func (o Orgauthsettings) MarshalJSON() ([]byte, error) {
 		PasswordRequirements *Passwordrequirements `json:"passwordRequirements,omitempty"`
 		
 		InactivityTimeoutExclusions *[]string `json:"inactivityTimeoutExclusions,omitempty"`
+		
+		UniversalLogout *bool `json:"universalLogout,omitempty"`
 		Alias
 	}{ 
 		MultifactorAuthenticationRequired: o.MultifactorAuthenticationRequired,
@@ -117,6 +122,8 @@ func (o Orgauthsettings) MarshalJSON() ([]byte, error) {
 		PasswordRequirements: o.PasswordRequirements,
 		
 		InactivityTimeoutExclusions: o.InactivityTimeoutExclusions,
+		
+		UniversalLogout: o.UniversalLogout,
 		Alias:    (Alias)(o),
 	})
 }
@@ -156,6 +163,10 @@ func (o *Orgauthsettings) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(InactivityTimeoutExclusionsString, &o.InactivityTimeoutExclusions)
 	}
 	
+	if UniversalLogout, ok := OrgauthsettingsMap["universalLogout"].(bool); ok {
+		o.UniversalLogout = &UniversalLogout
+	}
+    
 
 	return nil
 }

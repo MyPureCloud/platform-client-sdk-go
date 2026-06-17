@@ -7,16 +7,22 @@ import (
 	"strings"
 )
 
-// Documentbodyrequest
-type Documentbodyrequest struct { 
+// Conversationsummarytopicvirtualagentsconversationsummarylabel
+type Conversationsummarytopicvirtualagentsconversationsummarylabel struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Blocks - The list of building blocks for the document body.
-	Blocks *[]Documentbodyblock `json:"blocks,omitempty"`
+	// Name
+	Name *string `json:"name,omitempty"`
+
+	// Description
+	Description *string `json:"description,omitempty"`
+
+	// VarType
+	VarType *string `json:"type,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Documentbodyrequest) SetField(field string, fieldValue interface{}) {
+func (o *Conversationsummarytopicvirtualagentsconversationsummarylabel) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -37,7 +43,7 @@ func (o *Documentbodyrequest) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Documentbodyrequest) MarshalJSON() ([]byte, error) {
+func (o Conversationsummarytopicvirtualagentsconversationsummarylabel) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -75,35 +81,50 @@ func (o Documentbodyrequest) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Documentbodyrequest
+	type Alias Conversationsummarytopicvirtualagentsconversationsummarylabel
 	
 	return json.Marshal(&struct { 
-		Blocks *[]Documentbodyblock `json:"blocks,omitempty"`
+		Name *string `json:"name,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
 		Alias
 	}{ 
-		Blocks: o.Blocks,
+		Name: o.Name,
+		
+		Description: o.Description,
+		
+		VarType: o.VarType,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Documentbodyrequest) UnmarshalJSON(b []byte) error {
-	var DocumentbodyrequestMap map[string]interface{}
-	err := json.Unmarshal(b, &DocumentbodyrequestMap)
+func (o *Conversationsummarytopicvirtualagentsconversationsummarylabel) UnmarshalJSON(b []byte) error {
+	var ConversationsummarytopicvirtualagentsconversationsummarylabelMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationsummarytopicvirtualagentsconversationsummarylabelMap)
 	if err != nil {
 		return err
 	}
 	
-	if Blocks, ok := DocumentbodyrequestMap["blocks"].([]interface{}); ok {
-		BlocksString, _ := json.Marshal(Blocks)
-		json.Unmarshal(BlocksString, &o.Blocks)
+	if Name, ok := ConversationsummarytopicvirtualagentsconversationsummarylabelMap["name"].(string); ok {
+		o.Name = &Name
 	}
-	
+    
+	if Description, ok := ConversationsummarytopicvirtualagentsconversationsummarylabelMap["description"].(string); ok {
+		o.Description = &Description
+	}
+    
+	if VarType, ok := ConversationsummarytopicvirtualagentsconversationsummarylabelMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+    
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Documentbodyrequest) String() string {
+func (o *Conversationsummarytopicvirtualagentsconversationsummarylabel) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

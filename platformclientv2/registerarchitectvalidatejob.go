@@ -7,28 +7,16 @@ import (
 	"strings"
 )
 
-// Contentfileresponse
-type Contentfileresponse struct { 
+// Registerarchitectvalidatejob
+type Registerarchitectvalidatejob struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Name - The name of the file
-	Name *string `json:"name,omitempty"`
-
-	// VarType - The file format
-	VarType *string `json:"type,omitempty"`
-
-	// Checksum - The checksum of the file
-	Checksum *string `json:"checksum,omitempty"`
-
-	// Size - The size of the file in bytes
-	Size *int `json:"size,omitempty"`
-
-	// ContentUrl - Public download url for content. Needs to be expanded
-	ContentUrl *string `json:"contentUrl,omitempty"`
+	// Flows - A list of the flows to be validated.
+	Flows *[]Validatedetails `json:"flows,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Contentfileresponse) SetField(field string, fieldValue interface{}) {
+func (o *Registerarchitectvalidatejob) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -49,7 +37,7 @@ func (o *Contentfileresponse) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Contentfileresponse) MarshalJSON() ([]byte, error) {
+func (o Registerarchitectvalidatejob) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -87,67 +75,35 @@ func (o Contentfileresponse) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Contentfileresponse
+	type Alias Registerarchitectvalidatejob
 	
 	return json.Marshal(&struct { 
-		Name *string `json:"name,omitempty"`
-		
-		VarType *string `json:"type,omitempty"`
-		
-		Checksum *string `json:"checksum,omitempty"`
-		
-		Size *int `json:"size,omitempty"`
-		
-		ContentUrl *string `json:"contentUrl,omitempty"`
+		Flows *[]Validatedetails `json:"flows,omitempty"`
 		Alias
 	}{ 
-		Name: o.Name,
-		
-		VarType: o.VarType,
-		
-		Checksum: o.Checksum,
-		
-		Size: o.Size,
-		
-		ContentUrl: o.ContentUrl,
+		Flows: o.Flows,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Contentfileresponse) UnmarshalJSON(b []byte) error {
-	var ContentfileresponseMap map[string]interface{}
-	err := json.Unmarshal(b, &ContentfileresponseMap)
+func (o *Registerarchitectvalidatejob) UnmarshalJSON(b []byte) error {
+	var RegisterarchitectvalidatejobMap map[string]interface{}
+	err := json.Unmarshal(b, &RegisterarchitectvalidatejobMap)
 	if err != nil {
 		return err
 	}
 	
-	if Name, ok := ContentfileresponseMap["name"].(string); ok {
-		o.Name = &Name
-	}
-    
-	if VarType, ok := ContentfileresponseMap["type"].(string); ok {
-		o.VarType = &VarType
-	}
-    
-	if Checksum, ok := ContentfileresponseMap["checksum"].(string); ok {
-		o.Checksum = &Checksum
-	}
-    
-	if Size, ok := ContentfileresponseMap["size"].(float64); ok {
-		SizeInt := int(Size)
-		o.Size = &SizeInt
+	if Flows, ok := RegisterarchitectvalidatejobMap["flows"].([]interface{}); ok {
+		FlowsString, _ := json.Marshal(Flows)
+		json.Unmarshal(FlowsString, &o.Flows)
 	}
 	
-	if ContentUrl, ok := ContentfileresponseMap["contentUrl"].(string); ok {
-		o.ContentUrl = &ContentUrl
-	}
-    
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Contentfileresponse) String() string {
+func (o *Registerarchitectvalidatejob) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

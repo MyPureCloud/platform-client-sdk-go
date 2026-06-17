@@ -44,6 +44,12 @@ type Operationalevent struct {
 
 	// EntityVersion - The version of the entity in the providing service
 	EntityVersion *string `json:"entityVersion,omitempty"`
+
+	// PhoneNumber - The phone number associated with the event
+	PhoneNumber *string `json:"phoneNumber,omitempty"`
+
+	// ExternalContactId - The external contact ID associated with the event
+	ExternalContactId *string `json:"externalContactId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -138,6 +144,10 @@ func (o Operationalevent) MarshalJSON() ([]byte, error) {
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
 		EntityVersion *string `json:"entityVersion,omitempty"`
+		
+		PhoneNumber *string `json:"phoneNumber,omitempty"`
+		
+		ExternalContactId *string `json:"externalContactId,omitempty"`
 		Alias
 	}{ 
 		EventDefinition: o.EventDefinition,
@@ -161,6 +171,10 @@ func (o Operationalevent) MarshalJSON() ([]byte, error) {
 		DateCreated: DateCreated,
 		
 		EntityVersion: o.EntityVersion,
+		
+		PhoneNumber: o.PhoneNumber,
+		
+		ExternalContactId: o.ExternalContactId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -217,6 +231,14 @@ func (o *Operationalevent) UnmarshalJSON(b []byte) error {
 	
 	if EntityVersion, ok := OperationaleventMap["entityVersion"].(string); ok {
 		o.EntityVersion = &EntityVersion
+	}
+    
+	if PhoneNumber, ok := OperationaleventMap["phoneNumber"].(string); ok {
+		o.PhoneNumber = &PhoneNumber
+	}
+    
+	if ExternalContactId, ok := OperationaleventMap["externalContactId"].(string); ok {
+		o.ExternalContactId = &ExternalContactId
 	}
     
 

@@ -17,6 +17,9 @@ type Contactphonenumbercolumn struct {
 	// VarType - Indicates the type of the phone column. For example, 'cell' or 'home'.
 	VarType *string `json:"type,omitempty"`
 
+	// CallableTimeColumnName - A name of the callableTimeColumn
+	CallableTimeColumnName *string `json:"callableTimeColumnName,omitempty"`
+
 	// CallableTimeColumn - A column that indicates the timezone to use for a given contact when checking callable times. Not allowed if 'automaticTimeZoneMapping' is set to true.
 	CallableTimeColumn *string `json:"callableTimeColumn,omitempty"`
 }
@@ -88,12 +91,16 @@ func (o Contactphonenumbercolumn) MarshalJSON() ([]byte, error) {
 		
 		VarType *string `json:"type,omitempty"`
 		
+		CallableTimeColumnName *string `json:"callableTimeColumnName,omitempty"`
+		
 		CallableTimeColumn *string `json:"callableTimeColumn,omitempty"`
 		Alias
 	}{ 
 		ColumnName: o.ColumnName,
 		
 		VarType: o.VarType,
+		
+		CallableTimeColumnName: o.CallableTimeColumnName,
 		
 		CallableTimeColumn: o.CallableTimeColumn,
 		Alias:    (Alias)(o),
@@ -113,6 +120,10 @@ func (o *Contactphonenumbercolumn) UnmarshalJSON(b []byte) error {
     
 	if VarType, ok := ContactphonenumbercolumnMap["type"].(string); ok {
 		o.VarType = &VarType
+	}
+    
+	if CallableTimeColumnName, ok := ContactphonenumbercolumnMap["callableTimeColumnName"].(string); ok {
+		o.CallableTimeColumnName = &CallableTimeColumnName
 	}
     
 	if CallableTimeColumn, ok := ContactphonenumbercolumnMap["callableTimeColumn"].(string); ok {

@@ -23,6 +23,9 @@ type Wfmagentscheduleupdatetopicagentscheduleupdatenotification struct {
 
 	// Updates
 	Updates *[]Wfmagentscheduleupdatetopicagentscheduleshiftupdate `json:"updates,omitempty"`
+
+	// VisibilityRange
+	VisibilityRange *Wfmagentscheduleupdatetopicagentschedulevisibilityrange `json:"visibilityRange,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -111,6 +114,8 @@ func (o Wfmagentscheduleupdatetopicagentscheduleupdatenotification) MarshalJSON(
 		EndDate *string `json:"endDate,omitempty"`
 		
 		Updates *[]Wfmagentscheduleupdatetopicagentscheduleshiftupdate `json:"updates,omitempty"`
+		
+		VisibilityRange *Wfmagentscheduleupdatetopicagentschedulevisibilityrange `json:"visibilityRange,omitempty"`
 		Alias
 	}{ 
 		User: o.User,
@@ -120,6 +125,8 @@ func (o Wfmagentscheduleupdatetopicagentscheduleupdatenotification) MarshalJSON(
 		EndDate: EndDate,
 		
 		Updates: o.Updates,
+		
+		VisibilityRange: o.VisibilityRange,
 		Alias:    (Alias)(o),
 	})
 }
@@ -149,6 +156,11 @@ func (o *Wfmagentscheduleupdatetopicagentscheduleupdatenotification) UnmarshalJS
 	if Updates, ok := WfmagentscheduleupdatetopicagentscheduleupdatenotificationMap["updates"].([]interface{}); ok {
 		UpdatesString, _ := json.Marshal(Updates)
 		json.Unmarshal(UpdatesString, &o.Updates)
+	}
+	
+	if VisibilityRange, ok := WfmagentscheduleupdatetopicagentscheduleupdatenotificationMap["visibilityRange"].(map[string]interface{}); ok {
+		VisibilityRangeString, _ := json.Marshal(VisibilityRange)
+		json.Unmarshal(VisibilityRangeString, &o.VisibilityRange)
 	}
 	
 

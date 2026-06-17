@@ -7,16 +7,25 @@ import (
 	"strings"
 )
 
-// Documentbodyresponse
-type Documentbodyresponse struct { 
+// Bidgroupworkplanrotationresponse
+type Bidgroupworkplanrotationresponse struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Blocks - The list of building blocks for the document body.
-	Blocks *[]Documentbodyblock `json:"blocks,omitempty"`
+	// Id - The globally unique identifier for the object.
+	Id *string `json:"id,omitempty"`
+
+	// ManagementUnit - The management unit to which the work plan rotation belongs
+	ManagementUnit *Managementunitreference `json:"managementUnit,omitempty"`
+
+	// AgentCount - The count of agents that can be assigned to this work plan rotation
+	AgentCount *int `json:"agentCount,omitempty"`
+
+	// SelfUri - The URI for this object
+	SelfUri *string `json:"selfUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Documentbodyresponse) SetField(field string, fieldValue interface{}) {
+func (o *Bidgroupworkplanrotationresponse) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -37,7 +46,7 @@ func (o *Documentbodyresponse) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Documentbodyresponse) MarshalJSON() ([]byte, error) {
+func (o Bidgroupworkplanrotationresponse) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -75,35 +84,60 @@ func (o Documentbodyresponse) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Documentbodyresponse
+	type Alias Bidgroupworkplanrotationresponse
 	
 	return json.Marshal(&struct { 
-		Blocks *[]Documentbodyblock `json:"blocks,omitempty"`
+		Id *string `json:"id,omitempty"`
+		
+		ManagementUnit *Managementunitreference `json:"managementUnit,omitempty"`
+		
+		AgentCount *int `json:"agentCount,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
-		Blocks: o.Blocks,
+		Id: o.Id,
+		
+		ManagementUnit: o.ManagementUnit,
+		
+		AgentCount: o.AgentCount,
+		
+		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Documentbodyresponse) UnmarshalJSON(b []byte) error {
-	var DocumentbodyresponseMap map[string]interface{}
-	err := json.Unmarshal(b, &DocumentbodyresponseMap)
+func (o *Bidgroupworkplanrotationresponse) UnmarshalJSON(b []byte) error {
+	var BidgroupworkplanrotationresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &BidgroupworkplanrotationresponseMap)
 	if err != nil {
 		return err
 	}
 	
-	if Blocks, ok := DocumentbodyresponseMap["blocks"].([]interface{}); ok {
-		BlocksString, _ := json.Marshal(Blocks)
-		json.Unmarshal(BlocksString, &o.Blocks)
+	if Id, ok := BidgroupworkplanrotationresponseMap["id"].(string); ok {
+		o.Id = &Id
+	}
+    
+	if ManagementUnit, ok := BidgroupworkplanrotationresponseMap["managementUnit"].(map[string]interface{}); ok {
+		ManagementUnitString, _ := json.Marshal(ManagementUnit)
+		json.Unmarshal(ManagementUnitString, &o.ManagementUnit)
 	}
 	
+	if AgentCount, ok := BidgroupworkplanrotationresponseMap["agentCount"].(float64); ok {
+		AgentCountInt := int(AgentCount)
+		o.AgentCount = &AgentCountInt
+	}
+	
+	if SelfUri, ok := BidgroupworkplanrotationresponseMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+    
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Documentbodyresponse) String() string {
+func (o *Bidgroupworkplanrotationresponse) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

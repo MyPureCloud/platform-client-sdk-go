@@ -7,19 +7,16 @@ import (
 	"strings"
 )
 
-// Contentfilerequest
-type Contentfilerequest struct { 
+// Schedulebidlistresponse
+type Schedulebidlistresponse struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// UploadKey - Key that identifies the file in the storage including the file name
-	UploadKey *string `json:"uploadKey,omitempty"`
-
-	// Name - The name of the file
-	Name *string `json:"name,omitempty"`
+	// Entities
+	Entities *[]Schedulebid `json:"entities,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Contentfilerequest) SetField(field string, fieldValue interface{}) {
+func (o *Schedulebidlistresponse) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -40,7 +37,7 @@ func (o *Contentfilerequest) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Contentfilerequest) MarshalJSON() ([]byte, error) {
+func (o Schedulebidlistresponse) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -78,42 +75,35 @@ func (o Contentfilerequest) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Contentfilerequest
+	type Alias Schedulebidlistresponse
 	
 	return json.Marshal(&struct { 
-		UploadKey *string `json:"uploadKey,omitempty"`
-		
-		Name *string `json:"name,omitempty"`
+		Entities *[]Schedulebid `json:"entities,omitempty"`
 		Alias
 	}{ 
-		UploadKey: o.UploadKey,
-		
-		Name: o.Name,
+		Entities: o.Entities,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Contentfilerequest) UnmarshalJSON(b []byte) error {
-	var ContentfilerequestMap map[string]interface{}
-	err := json.Unmarshal(b, &ContentfilerequestMap)
+func (o *Schedulebidlistresponse) UnmarshalJSON(b []byte) error {
+	var SchedulebidlistresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &SchedulebidlistresponseMap)
 	if err != nil {
 		return err
 	}
 	
-	if UploadKey, ok := ContentfilerequestMap["uploadKey"].(string); ok {
-		o.UploadKey = &UploadKey
+	if Entities, ok := SchedulebidlistresponseMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
 	}
-    
-	if Name, ok := ContentfilerequestMap["name"].(string); ok {
-		o.Name = &Name
-	}
-    
+	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Contentfilerequest) String() string {
+func (o *Schedulebidlistresponse) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

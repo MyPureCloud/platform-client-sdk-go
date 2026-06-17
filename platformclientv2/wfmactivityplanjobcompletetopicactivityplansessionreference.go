@@ -15,7 +15,7 @@ type Wfmactivityplanjobcompletetopicactivityplansessionreference struct {
 	Id *string `json:"id,omitempty"`
 
 	// Users
-	Users *[]string `json:"users,omitempty"`
+	Users *[]Wfmactivityplanjobcompletetopicuserreference `json:"users,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -83,7 +83,7 @@ func (o Wfmactivityplanjobcompletetopicactivityplansessionreference) MarshalJSON
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
-		Users *[]string `json:"users,omitempty"`
+		Users *[]Wfmactivityplanjobcompletetopicuserreference `json:"users,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,

@@ -1609,7 +1609,7 @@ func (a ExternalContactsApi) GetExternalcontactsContactsExport(exportId string) 
 
 // GetExternalcontactsContactsExports invokes GET /api/v2/externalcontacts/contacts/exports
 //
-// List exports for organization
+// List contact exports for organization
 func (a ExternalContactsApi) GetExternalcontactsContactsExports(divisionIds []string, after string, pageSize int) (*Contactsexportlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

@@ -19,9 +19,6 @@ type Knowledgeexportjobdocumentsfilter struct {
 
 	// SourceId
 	SourceId *string `json:"sourceId,omitempty"`
-
-	// IncludeDocumentsWithFileBody
-	IncludeDocumentsWithFileBody *bool `json:"includeDocumentsWithFileBody,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -92,8 +89,6 @@ func (o Knowledgeexportjobdocumentsfilter) MarshalJSON() ([]byte, error) {
 		Entities *[]Entity `json:"entities,omitempty"`
 		
 		SourceId *string `json:"sourceId,omitempty"`
-		
-		IncludeDocumentsWithFileBody *bool `json:"includeDocumentsWithFileBody,omitempty"`
 		Alias
 	}{ 
 		Interval: o.Interval,
@@ -101,8 +96,6 @@ func (o Knowledgeexportjobdocumentsfilter) MarshalJSON() ([]byte, error) {
 		Entities: o.Entities,
 		
 		SourceId: o.SourceId,
-		
-		IncludeDocumentsWithFileBody: o.IncludeDocumentsWithFileBody,
 		Alias:    (Alias)(o),
 	})
 }
@@ -125,10 +118,6 @@ func (o *Knowledgeexportjobdocumentsfilter) UnmarshalJSON(b []byte) error {
 	
 	if SourceId, ok := KnowledgeexportjobdocumentsfilterMap["sourceId"].(string); ok {
 		o.SourceId = &SourceId
-	}
-    
-	if IncludeDocumentsWithFileBody, ok := KnowledgeexportjobdocumentsfilterMap["includeDocumentsWithFileBody"].(bool); ok {
-		o.IncludeDocumentsWithFileBody = &IncludeDocumentsWithFileBody
 	}
     
 

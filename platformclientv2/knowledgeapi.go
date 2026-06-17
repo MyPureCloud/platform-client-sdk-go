@@ -8009,7 +8009,7 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseDocumentViews(knowledgeBaseId st
 // PostKnowledgeKnowledgebaseDocuments invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents
 //
 // Create document.
-func (a KnowledgeApi) PostKnowledgeKnowledgebaseDocuments(knowledgeBaseId string, body Knowledgedocumentcreaterequest) (*Knowledgedocumentresponse, *APIResponse, error) {
+func (a KnowledgeApi) PostKnowledgeKnowledgebaseDocuments(knowledgeBaseId string, body Knowledgedocumentreq) (*Knowledgedocumentresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/documents"

@@ -14,6 +14,9 @@ type Caseplanqueryrequest struct {
 	// Name - Filter by Caseplan name (case-insensitive, partial match). Omitting name returns all Caseplans (subject to pagination).
 	Name *string `json:"name,omitempty"`
 
+	// NameSearchType - Type of name search to perform. Default is BEGINS_WITH.
+	NameSearchType *string `json:"nameSearchType,omitempty"`
+
 	// PageSize - Number of results per page. Maximum is 200. Default is 25.
 	PageSize *int `json:"pageSize,omitempty"`
 
@@ -89,6 +92,8 @@ func (o Caseplanqueryrequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
+		NameSearchType *string `json:"nameSearchType,omitempty"`
+		
 		PageSize *int `json:"pageSize,omitempty"`
 		
 		After *string `json:"after,omitempty"`
@@ -97,6 +102,8 @@ func (o Caseplanqueryrequest) MarshalJSON() ([]byte, error) {
 		Alias
 	}{ 
 		Name: o.Name,
+		
+		NameSearchType: o.NameSearchType,
 		
 		PageSize: o.PageSize,
 		
@@ -116,6 +123,10 @@ func (o *Caseplanqueryrequest) UnmarshalJSON(b []byte) error {
 	
 	if Name, ok := CaseplanqueryrequestMap["name"].(string); ok {
 		o.Name = &Name
+	}
+    
+	if NameSearchType, ok := CaseplanqueryrequestMap["nameSearchType"].(string); ok {
+		o.NameSearchType = &NameSearchType
 	}
     
 	if PageSize, ok := CaseplanqueryrequestMap["pageSize"].(float64); ok {

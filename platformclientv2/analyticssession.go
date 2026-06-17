@@ -117,6 +117,9 @@ type Analyticssession struct {
 	// EngagementSource - Open Messaging engagement source type
 	EngagementSource *string `json:"engagementSource,omitempty"`
 
+	// ErrorCodeDescription - Error code description extracted from the first disconnectReason
+	ErrorCodeDescription *string `json:"errorCodeDescription,omitempty"`
+
 	// ExtendedDeliveryStatus - Extended delivery status
 	ExtendedDeliveryStatus *string `json:"extendedDeliveryStatus,omitempty"`
 
@@ -442,6 +445,8 @@ func (o Analyticssession) MarshalJSON() ([]byte, error) {
 		
 		EngagementSource *string `json:"engagementSource,omitempty"`
 		
+		ErrorCodeDescription *string `json:"errorCodeDescription,omitempty"`
+		
 		ExtendedDeliveryStatus *string `json:"extendedDeliveryStatus,omitempty"`
 		
 		FlowInType *string `json:"flowInType,omitempty"`
@@ -618,6 +623,8 @@ func (o Analyticssession) MarshalJSON() ([]byte, error) {
 		EligibleAgentCounts: o.EligibleAgentCounts,
 		
 		EngagementSource: o.EngagementSource,
+		
+		ErrorCodeDescription: o.ErrorCodeDescription,
 		
 		ExtendedDeliveryStatus: o.ExtendedDeliveryStatus,
 		
@@ -884,6 +891,10 @@ func (o *Analyticssession) UnmarshalJSON(b []byte) error {
 	
 	if EngagementSource, ok := AnalyticssessionMap["engagementSource"].(string); ok {
 		o.EngagementSource = &EngagementSource
+	}
+    
+	if ErrorCodeDescription, ok := AnalyticssessionMap["errorCodeDescription"].(string); ok {
+		o.ErrorCodeDescription = &ErrorCodeDescription
 	}
     
 	if ExtendedDeliveryStatus, ok := AnalyticssessionMap["extendedDeliveryStatus"].(string); ok {

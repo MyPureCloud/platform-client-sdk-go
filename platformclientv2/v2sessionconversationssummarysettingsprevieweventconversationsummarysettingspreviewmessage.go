@@ -48,6 +48,9 @@ type V2sessionconversationssummarysettingsprevieweventconversationsummarysetting
 	// ExtractedEntities
 	ExtractedEntities *[]V2sessionconversationssummarysettingsprevieweventconversationsummaryextractedentity `json:"extractedEntities,omitempty"`
 
+	// Labels
+	Labels *[]V2sessionconversationssummarysettingsprevieweventconversationsummarylabel `json:"labels,omitempty"`
+
 	// ErrorType
 	ErrorType *string `json:"errorType,omitempty"`
 
@@ -150,6 +153,8 @@ func (o V2sessionconversationssummarysettingsprevieweventconversationsummarysett
 		
 		ExtractedEntities *[]V2sessionconversationssummarysettingsprevieweventconversationsummaryextractedentity `json:"extractedEntities,omitempty"`
 		
+		Labels *[]V2sessionconversationssummarysettingsprevieweventconversationsummarylabel `json:"labels,omitempty"`
+		
 		ErrorType *string `json:"errorType,omitempty"`
 		
 		DurationMs *int `json:"durationMs,omitempty"`
@@ -178,6 +183,8 @@ func (o V2sessionconversationssummarysettingsprevieweventconversationsummarysett
 		FollowupActions: o.FollowupActions,
 		
 		ExtractedEntities: o.ExtractedEntities,
+		
+		Labels: o.Labels,
 		
 		ErrorType: o.ErrorType,
 		
@@ -245,6 +252,11 @@ func (o *V2sessionconversationssummarysettingsprevieweventconversationsummaryset
 	if ExtractedEntities, ok := V2sessionconversationssummarysettingsprevieweventconversationsummarysettingspreviewmessageMap["extractedEntities"].([]interface{}); ok {
 		ExtractedEntitiesString, _ := json.Marshal(ExtractedEntities)
 		json.Unmarshal(ExtractedEntitiesString, &o.ExtractedEntities)
+	}
+	
+	if Labels, ok := V2sessionconversationssummarysettingsprevieweventconversationsummarysettingspreviewmessageMap["labels"].([]interface{}); ok {
+		LabelsString, _ := json.Marshal(Labels)
+		json.Unmarshal(LabelsString, &o.Labels)
 	}
 	
 	if ErrorType, ok := V2sessionconversationssummarysettingsprevieweventconversationsummarysettingspreviewmessageMap["errorType"].(string); ok {

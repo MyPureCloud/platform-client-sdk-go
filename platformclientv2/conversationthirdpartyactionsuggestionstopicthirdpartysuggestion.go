@@ -13,6 +13,12 @@ type Conversationthirdpartyactionsuggestionstopicthirdpartysuggestion struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// Text
 	Text *string `json:"text,omitempty"`
+
+	// Title
+	Title *string `json:"title,omitempty"`
+
+	// Sources
+	Sources *[]Conversationthirdpartyactionsuggestionstopicthirdpartysuggestionsource `json:"sources,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +85,17 @@ func (o Conversationthirdpartyactionsuggestionstopicthirdpartysuggestion) Marsha
 	
 	return json.Marshal(&struct { 
 		Text *string `json:"text,omitempty"`
+		
+		Title *string `json:"title,omitempty"`
+		
+		Sources *[]Conversationthirdpartyactionsuggestionstopicthirdpartysuggestionsource `json:"sources,omitempty"`
 		Alias
 	}{ 
 		Text: o.Text,
+		
+		Title: o.Title,
+		
+		Sources: o.Sources,
 		Alias:    (Alias)(o),
 	})
 }
@@ -97,6 +111,15 @@ func (o *Conversationthirdpartyactionsuggestionstopicthirdpartysuggestion) Unmar
 		o.Text = &Text
 	}
     
+	if Title, ok := ConversationthirdpartyactionsuggestionstopicthirdpartysuggestionMap["title"].(string); ok {
+		o.Title = &Title
+	}
+    
+	if Sources, ok := ConversationthirdpartyactionsuggestionstopicthirdpartysuggestionMap["sources"].([]interface{}); ok {
+		SourcesString, _ := json.Marshal(Sources)
+		json.Unmarshal(SourcesString, &o.Sources)
+	}
+	
 
 	return nil
 }

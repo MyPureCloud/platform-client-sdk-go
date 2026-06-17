@@ -6068,6 +6068,25 @@
     "return": "Flowoutcomedivisionviewentitylisting",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewArchitectApiWithConfig(config)\n\nvar pageNumber int // Page number\nvar pageSize int // Page size\nvar sortBy string // Sort by\nvar sortOrder string // Sort order\nvar id []string // ID\nvar name string // Name\nvar divisionId []string // division ID(s)\n// Get a pageable list of basic flow outcome information objects filterable by query parameters.\ndata, response, err := apiInstance.GetFlowsOutcomesDivisionviews(pageNumber, pageSize, sortBy, sortOrder, id, name, divisionId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetFlowsOutcomesDivisionviews: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
+  "getflowsvalidatejob": {
+    "operationId": "getflowsvalidatejob",
+    "functionName": "GetFlowsValidateJob",
+    "signature": "GetFlowsValidateJob(jobId, expand)",
+    "parameters": [
+      {
+        "name": "jobId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "expand",
+        "type": "[]string",
+        "required": "false"
+      }
+    ],
+    "return": "Architectvalidatejobstateresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewArchitectApiWithConfig(config)\n\nvar jobId string // Job ID\nvar expand []string // Which fields, if any, to expand.\n// Fetch Architect Validate Job Status\ndata, response, err := apiInstance.GetFlowsValidateJob(jobId, expand)\nif err != nil {\n\tfmt.Printf(\"Error calling GetFlowsValidateJob: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
   "patcharchitectgrammar": {
     "operationId": "patcharchitectgrammar",
     "functionName": "PatchArchitectGrammar",
@@ -6748,6 +6767,20 @@
     ],
     "return": "Flowoutcome",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewArchitectApiWithConfig(config)\n\nvar body platformclientv2.Flowoutcome // \n// Create a flow outcome\ndata, response, err := apiInstance.PostFlowsOutcomes(body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostFlowsOutcomes: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "postflowsvalidatejobs": {
+    "operationId": "postflowsvalidatejobs",
+    "functionName": "PostFlowsValidateJobs",
+    "signature": "PostFlowsValidateJobs(body)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Registerarchitectvalidatejob",
+        "required": "true"
+      }
+    ],
+    "return": "Registerarchitectvalidatejobresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewArchitectApiWithConfig(config)\n\nvar body platformclientv2.Registerarchitectvalidatejob // \n// Register Architect Validate Job\ndata, response, err := apiInstance.PostFlowsValidateJobs(body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostFlowsValidateJobs: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "putarchitectemergencygroup": {
     "operationId": "putarchitectemergencygroup",
@@ -19046,7 +19079,7 @@
       }
     ],
     "return": "Contactsexportlisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewExternalContactsApiWithConfig(config)\n\nvar divisionIds []string // Division IDs of entities\nvar after string // The cursor that points to the end of the set of entities\nvar pageSize int // Number of entities to return\n// List exports for organization\ndata, response, err := apiInstance.GetExternalcontactsContactsExports(divisionIds, after, pageSize)\nif err != nil {\n\tfmt.Printf(\"Error calling GetExternalcontactsContactsExports: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewExternalContactsApiWithConfig(config)\n\nvar divisionIds []string // Division IDs of entities\nvar after string // The cursor that points to the end of the set of entities\nvar pageSize int // Number of entities to return\n// List contact exports for organization\ndata, response, err := apiInstance.GetExternalcontactsContactsExports(divisionIds, after, pageSize)\nif err != nil {\n\tfmt.Printf(\"Error calling GetExternalcontactsContactsExports: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getexternalcontactscontactsschema": {
     "operationId": "getexternalcontactscontactsschema",
@@ -30442,12 +30475,12 @@
       },
       {
         "name": "body",
-        "type": "Knowledgedocumentcreaterequest",
+        "type": "Knowledgedocumentreq",
         "required": "true"
       }
     ],
     "return": "Knowledgedocumentresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)\n\nvar knowledgeBaseId string // Knowledge base ID\nvar body platformclientv2.Knowledgedocumentcreaterequest // \n// Create document.\ndata, response, err := apiInstance.PostKnowledgeKnowledgebaseDocuments(knowledgeBaseId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostKnowledgeKnowledgebaseDocuments: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)\n\nvar knowledgeBaseId string // Knowledge base ID\nvar body platformclientv2.Knowledgedocumentreq // \n// Create document.\ndata, response, err := apiInstance.PostKnowledgeKnowledgebaseDocuments(knowledgeBaseId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostKnowledgeKnowledgebaseDocuments: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "postknowledgeknowledgebasedocumentsanswers": {
     "operationId": "postknowledgeknowledgebasedocumentsanswers",
@@ -48718,7 +48751,7 @@
       }
     ],
     "return": "Dictionaryfeedbackentitylisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSpeechTextAnalyticsApiWithConfig(config)\n\nvar dialect string // The key for filter the listing by dialect, dialect format is {language}-{country} where language follows ISO 639-1 standard and country follows ISO 3166-1 alpha 2 standard\nvar transcriptionEngine string // Filter by transcription engine, If not provided, all transcription engines will be considered\nvar nextPage string // The key for listing the next page\nvar pageSize int // The page size for the listing\n// Get the list of Speech & Text Analytics dictionary feedbacks\ndata, response, err := apiInstance.GetSpeechandtextanalyticsDictionaryfeedback(dialect, transcriptionEngine, nextPage, pageSize)\nif err != nil {\n\tfmt.Printf(\"Error calling GetSpeechandtextanalyticsDictionaryfeedback: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSpeechTextAnalyticsApiWithConfig(config)\n\nvar dialect string // The key for filter the listing by dialect, dialect format is {language}-{country} where language follows ISO 639-1 standard and country follows ISO 3166-1 alpha 2 standard\nvar transcriptionEngine string // Filter by transcription engine, If not provided, all transcription engines will be considered\nvar nextPage string // The key for listing the next page\nvar pageSize int // The page size for the listing. Default is 500 per page. Note: organizations may store up to 1000 dictionary terms per dialect; use nextPage to paginate beyond the first page when listing a full dialect vocabulary.\n// Get the list of Speech & Text Analytics dictionary feedbacks\ndata, response, err := apiInstance.GetSpeechandtextanalyticsDictionaryfeedback(dialect, transcriptionEngine, nextPage, pageSize)\nif err != nil {\n\tfmt.Printf(\"Error calling GetSpeechandtextanalyticsDictionaryfeedback: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getspeechandtextanalyticsdictionaryfeedbackdictionaryfeedbackid": {
     "operationId": "getspeechandtextanalyticsdictionaryfeedbackdictionaryfeedbackid",
@@ -57304,6 +57337,47 @@
     ],
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit.\nvar planningGroupId string // The ID of a planning group to delete\n// Deletes the planning group\nresponse, err := apiInstance.DeleteWorkforcemanagementBusinessunitPlanninggroup(businessUnitId, planningGroupId)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteWorkforcemanagementBusinessunitPlanninggroup: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
   },
+  "deleteworkforcemanagementbusinessunitschedulebid": {
+    "operationId": "deleteworkforcemanagementbusinessunitschedulebid",
+    "functionName": "DeleteWorkforcemanagementBusinessunitSchedulebid",
+    "signature": "DeleteWorkforcemanagementBusinessunitSchedulebid(businessUnitId, bidId)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "bidId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar bidId string // The ID of the schedule bid\n// Delete a schedule bid\nresponse, err := apiInstance.DeleteWorkforcemanagementBusinessunitSchedulebid(businessUnitId, bidId)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteWorkforcemanagementBusinessunitSchedulebid: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
+  },
+  "deleteworkforcemanagementbusinessunitschedulebidgroup": {
+    "operationId": "deleteworkforcemanagementbusinessunitschedulebidgroup",
+    "functionName": "DeleteWorkforcemanagementBusinessunitSchedulebidGroup",
+    "signature": "DeleteWorkforcemanagementBusinessunitSchedulebidGroup(businessUnitId, bidId, bidGroupId)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "bidId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "bidGroupId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar bidId string // The ID of the schedule bid associated with the bid groups\nvar bidGroupId string // Schedule Bid Group id\n// Delete a schedule bid group by bid group Id\nresponse, err := apiInstance.DeleteWorkforcemanagementBusinessunitSchedulebidGroup(businessUnitId, bidId, bidGroupId)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteWorkforcemanagementBusinessunitSchedulebidGroup: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
+  },
   "deleteworkforcemanagementbusinessunitschedulingrun": {
     "operationId": "deleteworkforcemanagementbusinessunitschedulingrun",
     "functionName": "DeleteWorkforcemanagementBusinessunitSchedulingRun",
@@ -58253,6 +58327,116 @@
     ],
     "return": "Planninggrouplist",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit.\n// Gets list of planning groups\ndata, response, err := apiInstance.GetWorkforcemanagementBusinessunitPlanninggroups(businessUnitId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementBusinessunitPlanninggroups: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getworkforcemanagementbusinessunitschedulebid": {
+    "operationId": "getworkforcemanagementbusinessunitschedulebid",
+    "functionName": "GetWorkforcemanagementBusinessunitSchedulebid",
+    "signature": "GetWorkforcemanagementBusinessunitSchedulebid(businessUnitId, bidId)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "bidId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Schedulebid",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar bidId string // The ID of the schedule bid\n// Get a schedule bid\ndata, response, err := apiInstance.GetWorkforcemanagementBusinessunitSchedulebid(businessUnitId, bidId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementBusinessunitSchedulebid: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getworkforcemanagementbusinessunitschedulebidgroup": {
+    "operationId": "getworkforcemanagementbusinessunitschedulebidgroup",
+    "functionName": "GetWorkforcemanagementBusinessunitSchedulebidGroup",
+    "signature": "GetWorkforcemanagementBusinessunitSchedulebidGroup(businessUnitId, bidId, bidGroupId)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "bidId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "bidGroupId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Schedulebidgroupresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar bidId string // The ID of the schedule bid associated with the bid groups\nvar bidGroupId string // Schedule Bid Group id\n// Get a schedule bid group\ndata, response, err := apiInstance.GetWorkforcemanagementBusinessunitSchedulebidGroup(businessUnitId, bidId, bidGroupId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementBusinessunitSchedulebidGroup: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getworkforcemanagementbusinessunitschedulebidgrouppreferences": {
+    "operationId": "getworkforcemanagementbusinessunitschedulebidgrouppreferences",
+    "functionName": "GetWorkforcemanagementBusinessunitSchedulebidGroupPreferences",
+    "signature": "GetWorkforcemanagementBusinessunitSchedulebidGroupPreferences(businessUnitId, bidId, bidGroupId, forceDownloadService, expand)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "bidId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "bidGroupId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "forceDownloadService",
+        "type": "bool",
+        "required": "false"
+      },
+      {
+        "name": "expand",
+        "type": "[]string",
+        "required": "false"
+      }
+    ],
+    "return": "Adminagentschedulebidpreferenceresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar bidId string // The ID of the schedule bid associated with the bid groups\nvar bidGroupId string // The ID of the schedule bid group\nvar forceDownloadService bool // Force the result of this operation to be sent via download service. For testing/app development purposes\nvar expand []string // Include to fetch agents' preferences with priorities\n// Get agents schedule bid preferences for a bid group\ndata, response, err := apiInstance.GetWorkforcemanagementBusinessunitSchedulebidGroupPreferences(businessUnitId, bidId, bidGroupId, forceDownloadService, expand)\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementBusinessunitSchedulebidGroupPreferences: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getworkforcemanagementbusinessunitschedulebidgroupssummary": {
+    "operationId": "getworkforcemanagementbusinessunitschedulebidgroupssummary",
+    "functionName": "GetWorkforcemanagementBusinessunitSchedulebidGroupsSummary",
+    "signature": "GetWorkforcemanagementBusinessunitSchedulebidGroupsSummary(businessUnitId, bidId)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "bidId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Schedulebidgroupsummarylist",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar bidId string // The ID of the schedule bid associated with the bid groups\n// Get summary of bid groups that belong to a schedule bid\ndata, response, err := apiInstance.GetWorkforcemanagementBusinessunitSchedulebidGroupsSummary(businessUnitId, bidId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementBusinessunitSchedulebidGroupsSummary: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getworkforcemanagementbusinessunitschedulebids": {
+    "operationId": "getworkforcemanagementbusinessunitschedulebids",
+    "functionName": "GetWorkforcemanagementBusinessunitSchedulebids",
+    "signature": "GetWorkforcemanagementBusinessunitSchedulebids(businessUnitId)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Schedulebidlistresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\n// Get list of schedule bids\ndata, response, err := apiInstance.GetWorkforcemanagementBusinessunitSchedulebids(businessUnitId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementBusinessunitSchedulebids: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getworkforcemanagementbusinessunitschedulersettings": {
     "operationId": "getworkforcemanagementbusinessunitschedulersettings",
@@ -59747,6 +59931,41 @@
     "return": "Notificationsresponse",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\n// Get a list of notifications for the current user\ndata, response, err := apiInstance.GetWorkforcemanagementNotifications()\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementNotifications: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
+  "getworkforcemanagementschedulebidpreference": {
+    "operationId": "getworkforcemanagementschedulebidpreference",
+    "functionName": "GetWorkforcemanagementSchedulebidPreference",
+    "signature": "GetWorkforcemanagementSchedulebidPreference(bidId)",
+    "parameters": [
+      {
+        "name": "bidId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Agentschedulebiddingpreferenceresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar bidId string // The ID of the schedule bid\n// Gets an agent's schedule bidding preference\ndata, response, err := apiInstance.GetWorkforcemanagementSchedulebidPreference(bidId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementSchedulebidPreference: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getworkforcemanagementschedulebidschedulesets": {
+    "operationId": "getworkforcemanagementschedulebidschedulesets",
+    "functionName": "GetWorkforcemanagementSchedulebidSchedulesets",
+    "signature": "GetWorkforcemanagementSchedulebidSchedulesets(bidId)",
+    "parameters": [
+      {
+        "name": "bidId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Agentschedulebidschedulesetresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar bidId string // The ID of the schedule bid\n// Gets an agent's schedule sets for a bid\ndata, response, err := apiInstance.GetWorkforcemanagementSchedulebidSchedulesets(bidId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementSchedulebidSchedulesets: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getworkforcemanagementschedulebids": {
+    "operationId": "getworkforcemanagementschedulebids",
+    "functionName": "GetWorkforcemanagementSchedulebids",
+    "signature": "GetWorkforcemanagementSchedulebids()",
+    "return": "Agentschedulebids",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\n// Gets the list of schedule bids that belong to an agent. It will fetch an open bid or upcoming bid or a bid that is closed recently\ndata, response, err := apiInstance.GetWorkforcemanagementSchedulebids()\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementSchedulebids: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
   "getworkforcemanagementschedulingjob": {
     "operationId": "getworkforcemanagementschedulingjob",
     "functionName": "GetWorkforcemanagementSchedulingjob",
@@ -60238,6 +60457,88 @@
     ],
     "return": "Planninggroup",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit.\nvar planningGroupId string // The ID of a planning group to update\nvar body platformclientv2.Updateplanninggrouprequest // body\n// Updates the planning group\ndata, response, err := apiInstance.PatchWorkforcemanagementBusinessunitPlanninggroup(businessUnitId, planningGroupId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchWorkforcemanagementBusinessunitPlanninggroup: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "patchworkforcemanagementbusinessunitschedulebid": {
+    "operationId": "patchworkforcemanagementbusinessunitschedulebid",
+    "functionName": "PatchWorkforcemanagementBusinessunitSchedulebid",
+    "signature": "PatchWorkforcemanagementBusinessunitSchedulebid(businessUnitId, bidId, body)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "bidId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Updateschedulebid",
+        "required": "true"
+      }
+    ],
+    "return": "Schedulebid",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar bidId string // The ID of the schedule bid\nvar body platformclientv2.Updateschedulebid // The schedule bid to be updated\n// Update a schedule bid\ndata, response, err := apiInstance.PatchWorkforcemanagementBusinessunitSchedulebid(businessUnitId, bidId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchWorkforcemanagementBusinessunitSchedulebid: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "patchworkforcemanagementbusinessunitschedulebidgroup": {
+    "operationId": "patchworkforcemanagementbusinessunitschedulebidgroup",
+    "functionName": "PatchWorkforcemanagementBusinessunitSchedulebidGroup",
+    "signature": "PatchWorkforcemanagementBusinessunitSchedulebidGroup(businessUnitId, bidId, bidGroupId, body)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "bidId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "bidGroupId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Schedulebidgroupupdate",
+        "required": "true"
+      }
+    ],
+    "return": "Schedulebidgroupresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar bidId string // The ID of the schedule bid associated with the bid groups\nvar bidGroupId string // Schedule Bid Group id\nvar body platformclientv2.Schedulebidgroupupdate // body\n// Update a schedule bid group by bid group Id\ndata, response, err := apiInstance.PatchWorkforcemanagementBusinessunitSchedulebidGroup(businessUnitId, bidId, bidGroupId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchWorkforcemanagementBusinessunitSchedulebidGroup: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "patchworkforcemanagementbusinessunitschedulebidgrouppreferences": {
+    "operationId": "patchworkforcemanagementbusinessunitschedulebidgrouppreferences",
+    "functionName": "PatchWorkforcemanagementBusinessunitSchedulebidGroupPreferences",
+    "signature": "PatchWorkforcemanagementBusinessunitSchedulebidGroupPreferences(businessUnitId, bidId, bidGroupId, body)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "bidId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "bidGroupId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Agentsbidassignedschedulesetoverriderequest",
+        "required": "true"
+      }
+    ],
+    "return": "Adminagentschedulebidpreferenceresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar bidId string // The ID of the schedule bid associated with the bid groups\nvar bidGroupId string // The ID of the schedule bid group\nvar body platformclientv2.Agentsbidassignedschedulesetoverriderequest // body\n// Overrides the assigned schedule bid for the specified agents\ndata, response, err := apiInstance.PatchWorkforcemanagementBusinessunitSchedulebidGroupPreferences(businessUnitId, bidId, bidGroupId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchWorkforcemanagementBusinessunitSchedulebidGroupPreferences: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "patchworkforcemanagementbusinessunitschedulersettings": {
     "operationId": "patchworkforcemanagementbusinessunitschedulersettings",
@@ -61595,6 +61896,92 @@
     ],
     "return": "Planninggroup",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit.\nvar body platformclientv2.Createplanninggrouprequest // body\n// Adds a new planning group\ndata, response, err := apiInstance.PostWorkforcemanagementBusinessunitPlanninggroups(businessUnitId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementBusinessunitPlanninggroups: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "postworkforcemanagementbusinessunitschedulebidcopy": {
+    "operationId": "postworkforcemanagementbusinessunitschedulebidcopy",
+    "functionName": "PostWorkforcemanagementBusinessunitSchedulebidCopy",
+    "signature": "PostWorkforcemanagementBusinessunitSchedulebidCopy(businessUnitId, bidId, body)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "bidId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Copyschedulebid",
+        "required": "true"
+      }
+    ],
+    "return": "Schedulebid",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar bidId string // The ID of the schedule bid to copy\nvar body platformclientv2.Copyschedulebid // body\n// Copy a schedule bid\ndata, response, err := apiInstance.PostWorkforcemanagementBusinessunitSchedulebidCopy(businessUnitId, bidId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementBusinessunitSchedulebidCopy: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "postworkforcemanagementbusinessunitschedulebidgroups": {
+    "operationId": "postworkforcemanagementbusinessunitschedulebidgroups",
+    "functionName": "PostWorkforcemanagementBusinessunitSchedulebidGroups",
+    "signature": "PostWorkforcemanagementBusinessunitSchedulebidGroups(businessUnitId, bidId, body)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "bidId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Schedulebidgroupcreate",
+        "required": "true"
+      }
+    ],
+    "return": "Schedulebidgroupresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar bidId string // The ID of the schedule bid associated with the bid groups\nvar body platformclientv2.Schedulebidgroupcreate // body\n// Add a bid group in a given schedule bid\ndata, response, err := apiInstance.PostWorkforcemanagementBusinessunitSchedulebidGroups(businessUnitId, bidId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementBusinessunitSchedulebidGroups: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "postworkforcemanagementbusinessunitschedulebids": {
+    "operationId": "postworkforcemanagementbusinessunitschedulebids",
+    "functionName": "PostWorkforcemanagementBusinessunitSchedulebids",
+    "signature": "PostWorkforcemanagementBusinessunitSchedulebids(businessUnitId, body)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Createschedulebid",
+        "required": "true"
+      }
+    ],
+    "return": "Schedulebid",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar body platformclientv2.Createschedulebid // The schedule bid to be created\n// Create a new schedule bid\ndata, response, err := apiInstance.PostWorkforcemanagementBusinessunitSchedulebids(businessUnitId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementBusinessunitSchedulebids: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "postworkforcemanagementbusinessunitschedulebidseffectiveschedulesets": {
+    "operationId": "postworkforcemanagementbusinessunitschedulebidseffectiveschedulesets",
+    "functionName": "PostWorkforcemanagementBusinessunitSchedulebidsEffectiveschedulesets",
+    "signature": "PostWorkforcemanagementBusinessunitSchedulebidsEffectiveschedulesets(businessUnitId, body)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Queryeffectiveschedulesetsrequest",
+        "required": "true"
+      }
+    ],
+    "return": "Agentseffectiveschedulesetresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar body platformclientv2.Queryeffectiveschedulesetsrequest // body\n// Fetch all the agents with effective schedule set for the given BU\ndata, response, err := apiInstance.PostWorkforcemanagementBusinessunitSchedulebidsEffectiveschedulesets(businessUnitId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementBusinessunitSchedulebidsEffectiveschedulesets: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "postworkforcemanagementbusinessunitservicegoaltemplates": {
     "operationId": "postworkforcemanagementbusinessunitservicegoaltemplates",
@@ -63413,5 +63800,24 @@
     ],
     "return": "Timeofflimit",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit.\nvar timeOffLimitId string // The ID of the time off limit object to set values for\nvar body platformclientv2.Settimeofflimitvaluesrequest // body\n// Sets daily values for a date range of time off limit object\ndata, response, err := apiInstance.PutWorkforcemanagementManagementunitTimeofflimitValues(managementUnitId, timeOffLimitId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PutWorkforcemanagementManagementunitTimeofflimitValues: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "putworkforcemanagementschedulebidpreference": {
+    "operationId": "putworkforcemanagementschedulebidpreference",
+    "functionName": "PutWorkforcemanagementSchedulebidPreference",
+    "signature": "PutWorkforcemanagementSchedulebidPreference(bidId, body)",
+    "parameters": [
+      {
+        "name": "bidId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Updateagentschedulebiddingpreference",
+        "required": "true"
+      }
+    ],
+    "return": "Agentschedulebiddingpreferenceresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar bidId string // The ID of the schedule bid\nvar body platformclientv2.Updateagentschedulebiddingpreference // body\n// Update an agent's schedule set preference\ndata, response, err := apiInstance.PutWorkforcemanagementSchedulebidPreference(bidId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PutWorkforcemanagementSchedulebidPreference: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   }
 }

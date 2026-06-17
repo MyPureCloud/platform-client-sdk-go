@@ -37,7 +37,7 @@ type Documentvariationrequest struct {
 	Name *string `json:"name,omitempty"`
 
 	// Body - The content for the variation.
-	Body *Documentbodyrequest `json:"body,omitempty"`
+	Body *Documentbody `json:"body,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -138,7 +138,7 @@ func (o Documentvariationrequest) MarshalJSON() ([]byte, error) {
 		
 		Name *string `json:"name,omitempty"`
 		
-		Body *Documentbodyrequest `json:"body,omitempty"`
+		Body *Documentbody `json:"body,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias

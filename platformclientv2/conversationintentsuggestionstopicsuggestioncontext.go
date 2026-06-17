@@ -37,6 +37,9 @@ type Conversationintentsuggestionstopicsuggestioncontext struct {
 
 	// Language
 	Language *string `json:"language,omitempty"`
+
+	// QueryReformulationContext
+	QueryReformulationContext *Conversationintentsuggestionstopicqueryreformulationcontext `json:"queryReformulationContext,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -119,6 +122,8 @@ func (o Conversationintentsuggestionstopicsuggestioncontext) MarshalJSON() ([]by
 		QueryStatement *string `json:"queryStatement,omitempty"`
 		
 		Language *string `json:"language,omitempty"`
+		
+		QueryReformulationContext *Conversationintentsuggestionstopicqueryreformulationcontext `json:"queryReformulationContext,omitempty"`
 		Alias
 	}{ 
 		QueueId: o.QueueId,
@@ -138,6 +143,8 @@ func (o Conversationintentsuggestionstopicsuggestioncontext) MarshalJSON() ([]by
 		QueryStatement: o.QueryStatement,
 		
 		Language: o.Language,
+		
+		QueryReformulationContext: o.QueryReformulationContext,
 		Alias:    (Alias)(o),
 	})
 }
@@ -185,6 +192,11 @@ func (o *Conversationintentsuggestionstopicsuggestioncontext) UnmarshalJSON(b []
 		o.Language = &Language
 	}
     
+	if QueryReformulationContext, ok := ConversationintentsuggestionstopicsuggestioncontextMap["queryReformulationContext"].(map[string]interface{}); ok {
+		QueryReformulationContextString, _ := json.Marshal(QueryReformulationContext)
+		json.Unmarshal(QueryReformulationContextString, &o.QueryReformulationContext)
+	}
+	
 
 	return nil
 }

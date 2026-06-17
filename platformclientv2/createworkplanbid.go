@@ -33,6 +33,9 @@ type Createworkplanbid struct {
 	// RankingTiebreakerType - Ranking tiebreaker to be used
 	RankingTiebreakerType *string `json:"rankingTiebreakerType,omitempty"`
 
+	// EndOverridesAndRotations - If true, all existing overrides, workplan rotations will be ended one day before effective date of this bid
+	EndOverridesAndRotations *bool `json:"endOverridesAndRotations,omitempty"`
+
 	// WorkPlanFieldsVisibleToAgents - The work plan fields visible to agents whenever work plan preferences are made
 	WorkPlanFieldsVisibleToAgents *[]string `json:"workPlanFieldsVisibleToAgents,omitempty"`
 }
@@ -135,6 +138,8 @@ func (o Createworkplanbid) MarshalJSON() ([]byte, error) {
 		
 		RankingTiebreakerType *string `json:"rankingTiebreakerType,omitempty"`
 		
+		EndOverridesAndRotations *bool `json:"endOverridesAndRotations,omitempty"`
+		
 		WorkPlanFieldsVisibleToAgents *[]string `json:"workPlanFieldsVisibleToAgents,omitempty"`
 		Alias
 	}{ 
@@ -151,6 +156,8 @@ func (o Createworkplanbid) MarshalJSON() ([]byte, error) {
 		AgentRankingType: o.AgentRankingType,
 		
 		RankingTiebreakerType: o.RankingTiebreakerType,
+		
+		EndOverridesAndRotations: o.EndOverridesAndRotations,
 		
 		WorkPlanFieldsVisibleToAgents: o.WorkPlanFieldsVisibleToAgents,
 		Alias:    (Alias)(o),
@@ -194,6 +201,10 @@ func (o *Createworkplanbid) UnmarshalJSON(b []byte) error {
     
 	if RankingTiebreakerType, ok := CreateworkplanbidMap["rankingTiebreakerType"].(string); ok {
 		o.RankingTiebreakerType = &RankingTiebreakerType
+	}
+    
+	if EndOverridesAndRotations, ok := CreateworkplanbidMap["endOverridesAndRotations"].(bool); ok {
+		o.EndOverridesAndRotations = &EndOverridesAndRotations
 	}
     
 	if WorkPlanFieldsVisibleToAgents, ok := CreateworkplanbidMap["workPlanFieldsVisibleToAgents"].([]interface{}); ok {

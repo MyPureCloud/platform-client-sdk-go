@@ -17,6 +17,12 @@ type Contactsexportfilter struct {
 	// In - Filtered field should match one of the listed values
 	In *Contactsexportfieldlistfilter `json:"in,omitempty"`
 
+	// Lte - Filtered field should be less than or equal to the value
+	Lte *Contactsexportcomparisonfieldfilter `json:"lte,omitempty"`
+
+	// Gte - Filtered field should be greater than or equal to the value
+	Gte *Contactsexportcomparisonfieldfilter `json:"gte,omitempty"`
+
 	// And - Boolean AND combination of filters
 	And *[]Contactsexportfilter `json:"and,omitempty"`
 
@@ -94,6 +100,10 @@ func (o Contactsexportfilter) MarshalJSON() ([]byte, error) {
 		
 		In *Contactsexportfieldlistfilter `json:"in,omitempty"`
 		
+		Lte *Contactsexportcomparisonfieldfilter `json:"lte,omitempty"`
+		
+		Gte *Contactsexportcomparisonfieldfilter `json:"gte,omitempty"`
+		
 		And *[]Contactsexportfilter `json:"and,omitempty"`
 		
 		Or *[]Contactsexportfilter `json:"or,omitempty"`
@@ -104,6 +114,10 @@ func (o Contactsexportfilter) MarshalJSON() ([]byte, error) {
 		Eq: o.Eq,
 		
 		In: o.In,
+		
+		Lte: o.Lte,
+		
+		Gte: o.Gte,
 		
 		And: o.And,
 		
@@ -129,6 +143,16 @@ func (o *Contactsexportfilter) UnmarshalJSON(b []byte) error {
 	if In, ok := ContactsexportfilterMap["in"].(map[string]interface{}); ok {
 		InString, _ := json.Marshal(In)
 		json.Unmarshal(InString, &o.In)
+	}
+	
+	if Lte, ok := ContactsexportfilterMap["lte"].(map[string]interface{}); ok {
+		LteString, _ := json.Marshal(Lte)
+		json.Unmarshal(LteString, &o.Lte)
+	}
+	
+	if Gte, ok := ContactsexportfilterMap["gte"].(map[string]interface{}); ok {
+		GteString, _ := json.Marshal(Gte)
+		json.Unmarshal(GteString, &o.Gte)
 	}
 	
 	if And, ok := ContactsexportfilterMap["and"].([]interface{}); ok {

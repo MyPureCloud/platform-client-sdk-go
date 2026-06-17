@@ -24,11 +24,17 @@ type Contactsexport struct {
 	// DateCreated - When the request was submitted. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
+	// DateCompletion - When the request reached a terminal state. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateCompletion *time.Time `json:"dateCompletion,omitempty"`
+
 	// Status - The status of the request
 	Status *string `json:"status,omitempty"`
 
 	// DownloadUrl - The location where the results of the request can be retrieved
 	DownloadUrl *string `json:"downloadUrl,omitempty"`
+
+	// ResultRowCount - Number of rows returned by the export query
+	ResultRowCount *int `json:"resultRowCount,omitempty"`
 
 	// QueryConditions - Query conditions to apply on export
 	QueryConditions *Contactsexportqueryconditions `json:"queryConditions,omitempty"`
@@ -66,7 +72,7 @@ func (o Contactsexport) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "DateCreated", }
+		dateTimeFields := []string{ "DateCreated","DateCompletion", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -107,6 +113,14 @@ func (o Contactsexport) MarshalJSON() ([]byte, error) {
 		DateCreated = nil
 	}
 	
+	DateCompletion := new(string)
+	if o.DateCompletion != nil {
+		
+		*DateCompletion = timeutil.Strftime(o.DateCompletion, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCompletion = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -116,9 +130,13 @@ func (o Contactsexport) MarshalJSON() ([]byte, error) {
 		
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
+		DateCompletion *string `json:"dateCompletion,omitempty"`
+		
 		Status *string `json:"status,omitempty"`
 		
 		DownloadUrl *string `json:"downloadUrl,omitempty"`
+		
+		ResultRowCount *int `json:"resultRowCount,omitempty"`
 		
 		QueryConditions *Contactsexportqueryconditions `json:"queryConditions,omitempty"`
 		
@@ -133,9 +151,13 @@ func (o Contactsexport) MarshalJSON() ([]byte, error) {
 		
 		DateCreated: DateCreated,
 		
+		DateCompletion: DateCompletion,
+		
 		Status: o.Status,
 		
 		DownloadUrl: o.DownloadUrl,
+		
+		ResultRowCount: o.ResultRowCount,
 		
 		QueryConditions: o.QueryConditions,
 		
@@ -170,6 +192,11 @@ func (o *Contactsexport) UnmarshalJSON(b []byte) error {
 		o.DateCreated = &DateCreated
 	}
 	
+	if dateCompletionString, ok := ContactsexportMap["dateCompletion"].(string); ok {
+		DateCompletion, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCompletionString)
+		o.DateCompletion = &DateCompletion
+	}
+	
 	if Status, ok := ContactsexportMap["status"].(string); ok {
 		o.Status = &Status
 	}
@@ -178,6 +205,11 @@ func (o *Contactsexport) UnmarshalJSON(b []byte) error {
 		o.DownloadUrl = &DownloadUrl
 	}
     
+	if ResultRowCount, ok := ContactsexportMap["resultRowCount"].(float64); ok {
+		ResultRowCountInt := int(ResultRowCount)
+		o.ResultRowCount = &ResultRowCountInt
+	}
+	
 	if QueryConditions, ok := ContactsexportMap["queryConditions"].(map[string]interface{}); ok {
 		QueryConditionsString, _ := json.Marshal(QueryConditions)
 		json.Unmarshal(QueryConditionsString, &o.QueryConditions)

@@ -1,0 +1,187 @@
+package platformclientv2
+import (
+	"time"
+	"github.com/leekchan/timeutil"
+	"reflect"
+	"encoding/json"
+	"strconv"
+	"strings"
+)
+
+// Adminagentschedulebidbiddingpreference
+type Adminagentschedulebidbiddingpreference struct { 
+	// SetFieldNames defines the list of fields to use for controlled JSON serialization
+	SetFieldNames map[string]bool `json:"-"`
+	// Agent - The agent to whom this schedule bid preference applies
+	Agent *Userreference `json:"agent,omitempty"`
+
+	// Submitted - Indicates whether the preference has been submitted
+	Submitted *bool `json:"submitted,omitempty"`
+
+	// AssignedScheduleSetId - The schedule set assigned to the agent by the bid process. This will be set after bid is processed
+	AssignedScheduleSetId *string `json:"assignedScheduleSetId,omitempty"`
+
+	// OverriddenScheduleSetId - The schedule set that overrides the assigned schedule set for the agent
+	OverriddenScheduleSetId *string `json:"overriddenScheduleSetId,omitempty"`
+
+	// OverrideReason - The reason the assigned schedule set has been overridden. This must be null if no override schedule is set
+	OverrideReason *string `json:"overrideReason,omitempty"`
+
+	// AgentScheduleBidPreferencePriorities - The agent schedule set preferences
+	AgentScheduleBidPreferencePriorities *[]Agentschedulebiddingpreferencepriority `json:"agentScheduleBidPreferencePriorities,omitempty"`
+
+	// EndDate - The end date of this scheduling set preference relative to the business unit time zone in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
+	EndDate *time.Time `json:"endDate,omitempty"`
+}
+
+// SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
+func (o *Adminagentschedulebidbiddingpreference) SetField(field string, fieldValue interface{}) {
+	// Get Value object for field
+	target := reflect.ValueOf(o)
+	targetField := reflect.Indirect(target).FieldByName(field)
+
+	// Set value
+	if fieldValue != nil {
+		targetField.Set(reflect.ValueOf(fieldValue))
+	} else {
+		// Must create a new Value (creates **type) then get its element (*type), which will be nil pointer of the appropriate type
+		x := reflect.Indirect(reflect.New(targetField.Type()))
+		targetField.Set(x)
+	}
+
+	// Add field to set field names list
+	if o.SetFieldNames == nil {
+		o.SetFieldNames = make(map[string]bool)
+	}
+	o.SetFieldNames[field] = true
+}
+
+func (o Adminagentschedulebidbiddingpreference) MarshalJSON() ([]byte, error) {
+	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
+	if len(o.SetFieldNames) > 0 {
+		// Get reflection Value
+		val := reflect.ValueOf(o)
+
+		// Known field names that require type overrides
+		dateTimeFields := []string{  }
+		localDateTimeFields := []string{  }
+		dateFields := []string{ "EndDate", }
+
+		// Construct object
+		newObj := make(map[string]interface{})
+		for fieldName := range o.SetFieldNames {
+			// Get initial field value
+			fieldValue := val.FieldByName(fieldName).Interface()
+
+			// Apply value formatting overrides
+			if fieldValue == nil || reflect.ValueOf(fieldValue).IsNil()  {
+				// Do nothing. Just catching this case to avoid trying to custom serialize a nil value
+			} else if contains(dateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%fZ")
+			} else if contains(localDateTimeFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%dT%H:%M:%S.%f")
+			} else if contains(dateFields, fieldName) {
+				fieldValue = timeutil.Strftime(toTime(fieldValue), "%Y-%m-%d")
+			}
+
+			// Assign value to field using JSON tag name
+			newObj[getFieldName(reflect.TypeOf(&o), fieldName)] = fieldValue
+		}
+
+		// Marshal and return dynamically constructed interface
+		return json.Marshal(newObj)
+	}
+
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Adminagentschedulebidbiddingpreference
+	
+	EndDate := new(string)
+	if o.EndDate != nil {
+		*EndDate = timeutil.Strftime(o.EndDate, "%Y-%m-%d")
+	} else {
+		EndDate = nil
+	}
+	
+	return json.Marshal(&struct { 
+		Agent *Userreference `json:"agent,omitempty"`
+		
+		Submitted *bool `json:"submitted,omitempty"`
+		
+		AssignedScheduleSetId *string `json:"assignedScheduleSetId,omitempty"`
+		
+		OverriddenScheduleSetId *string `json:"overriddenScheduleSetId,omitempty"`
+		
+		OverrideReason *string `json:"overrideReason,omitempty"`
+		
+		AgentScheduleBidPreferencePriorities *[]Agentschedulebiddingpreferencepriority `json:"agentScheduleBidPreferencePriorities,omitempty"`
+		
+		EndDate *string `json:"endDate,omitempty"`
+		Alias
+	}{ 
+		Agent: o.Agent,
+		
+		Submitted: o.Submitted,
+		
+		AssignedScheduleSetId: o.AssignedScheduleSetId,
+		
+		OverriddenScheduleSetId: o.OverriddenScheduleSetId,
+		
+		OverrideReason: o.OverrideReason,
+		
+		AgentScheduleBidPreferencePriorities: o.AgentScheduleBidPreferencePriorities,
+		
+		EndDate: EndDate,
+		Alias:    (Alias)(o),
+	})
+}
+
+func (o *Adminagentschedulebidbiddingpreference) UnmarshalJSON(b []byte) error {
+	var AdminagentschedulebidbiddingpreferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &AdminagentschedulebidbiddingpreferenceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Agent, ok := AdminagentschedulebidbiddingpreferenceMap["agent"].(map[string]interface{}); ok {
+		AgentString, _ := json.Marshal(Agent)
+		json.Unmarshal(AgentString, &o.Agent)
+	}
+	
+	if Submitted, ok := AdminagentschedulebidbiddingpreferenceMap["submitted"].(bool); ok {
+		o.Submitted = &Submitted
+	}
+    
+	if AssignedScheduleSetId, ok := AdminagentschedulebidbiddingpreferenceMap["assignedScheduleSetId"].(string); ok {
+		o.AssignedScheduleSetId = &AssignedScheduleSetId
+	}
+    
+	if OverriddenScheduleSetId, ok := AdminagentschedulebidbiddingpreferenceMap["overriddenScheduleSetId"].(string); ok {
+		o.OverriddenScheduleSetId = &OverriddenScheduleSetId
+	}
+    
+	if OverrideReason, ok := AdminagentschedulebidbiddingpreferenceMap["overrideReason"].(string); ok {
+		o.OverrideReason = &OverrideReason
+	}
+    
+	if AgentScheduleBidPreferencePriorities, ok := AdminagentschedulebidbiddingpreferenceMap["agentScheduleBidPreferencePriorities"].([]interface{}); ok {
+		AgentScheduleBidPreferencePrioritiesString, _ := json.Marshal(AgentScheduleBidPreferencePriorities)
+		json.Unmarshal(AgentScheduleBidPreferencePrioritiesString, &o.AgentScheduleBidPreferencePriorities)
+	}
+	
+	if endDateString, ok := AdminagentschedulebidbiddingpreferenceMap["endDate"].(string); ok {
+		EndDate, _ := time.Parse("2006-01-02", endDateString)
+		o.EndDate = &EndDate
+	}
+	
+
+	return nil
+}
+
+// String returns a JSON representation of the model
+func (o *Adminagentschedulebidbiddingpreference) String() string {
+	j, _ := json.Marshal(o)
+	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
+
+	return str
+}

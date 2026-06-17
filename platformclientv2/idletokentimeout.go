@@ -11,7 +11,7 @@ import (
 type Idletokentimeout struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// IdleTokenTimeoutSeconds - Token timeout length in seconds. Must be at least 5 minutes and 8 hours or less (if HIPAA is disabled) or 15 minutes or less (if HIPAA is enabled).
+	// IdleTokenTimeoutSeconds - Token timeout length in seconds. Must be at least 5 minutes and at most 8 hours. HIPAA-enabled organizations may be subject to a stricter 15-minute maximum during rollout.
 	IdleTokenTimeoutSeconds *int `json:"idleTokenTimeoutSeconds,omitempty"`
 
 	// EnableIdleTokenTimeout - Indicates whether the Token Timeout should be enabled or disabled.

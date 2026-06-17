@@ -33,6 +33,9 @@ type Agentworkplanbid struct {
 	// WorkPlanFieldsVisibleToAgents - The work plan fields visible to agents whenever work plan preferences are made
 	WorkPlanFieldsVisibleToAgents *[]string `json:"workPlanFieldsVisibleToAgents,omitempty"`
 
+	// BidType - The type of the bid
+	BidType *string `json:"bidType,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -135,6 +138,8 @@ func (o Agentworkplanbid) MarshalJSON() ([]byte, error) {
 		
 		WorkPlanFieldsVisibleToAgents *[]string `json:"workPlanFieldsVisibleToAgents,omitempty"`
 		
+		BidType *string `json:"bidType,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -151,6 +156,8 @@ func (o Agentworkplanbid) MarshalJSON() ([]byte, error) {
 		Status: o.Status,
 		
 		WorkPlanFieldsVisibleToAgents: o.WorkPlanFieldsVisibleToAgents,
+		
+		BidType: o.BidType,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -196,6 +203,10 @@ func (o *Agentworkplanbid) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(WorkPlanFieldsVisibleToAgentsString, &o.WorkPlanFieldsVisibleToAgents)
 	}
 	
+	if BidType, ok := AgentworkplanbidMap["bidType"].(string); ok {
+		o.BidType = &BidType
+	}
+    
 	if SelfUri, ok := AgentworkplanbidMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

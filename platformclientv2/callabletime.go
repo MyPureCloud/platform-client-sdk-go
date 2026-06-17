@@ -14,6 +14,9 @@ type Callabletime struct {
 	// TimeSlots - The time intervals for which it is acceptable to place outbound calls.
 	TimeSlots *[]Campaigntimeslot `json:"timeSlots,omitempty"`
 
+	// Name - The name for the callable time.
+	Name *string `json:"name,omitempty"`
+
 	// TimeZoneId - The time zone for the time slots; for example, Africa/Abidjan. Time zones are represented as a string of the zone name as found in the IANA time zone database. For example: UTC, Etc/UTC, or Europe/London
 	TimeZoneId *string `json:"timeZoneId,omitempty"`
 }
@@ -83,10 +86,14 @@ func (o Callabletime) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		TimeSlots *[]Campaigntimeslot `json:"timeSlots,omitempty"`
 		
+		Name *string `json:"name,omitempty"`
+		
 		TimeZoneId *string `json:"timeZoneId,omitempty"`
 		Alias
 	}{ 
 		TimeSlots: o.TimeSlots,
+		
+		Name: o.Name,
 		
 		TimeZoneId: o.TimeZoneId,
 		Alias:    (Alias)(o),
@@ -105,6 +112,10 @@ func (o *Callabletime) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(TimeSlotsString, &o.TimeSlots)
 	}
 	
+	if Name, ok := CallabletimeMap["name"].(string); ok {
+		o.Name = &Name
+	}
+    
 	if TimeZoneId, ok := CallabletimeMap["timeZoneId"].(string); ok {
 		o.TimeZoneId = &TimeZoneId
 	}

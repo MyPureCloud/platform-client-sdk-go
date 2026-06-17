@@ -7,40 +7,25 @@ import (
 	"strings"
 )
 
-// Knowledgedocumentcreaterequest
-type Knowledgedocumentcreaterequest struct { 
+// Schedulebidgroupresponse
+type Schedulebidgroupresponse struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
-	// Title - Document title.
-	Title *string `json:"title,omitempty"`
+	// ScheduleBidGroup - The schedule bid group
+	ScheduleBidGroup *Schedulebidgroup `json:"scheduleBidGroup,omitempty"`
 
-	// Visible - Indicates if the knowledge document should be included in search results.
-	Visible *bool `json:"visible,omitempty"`
-
-	// Alternatives - List of alternate phrases related to the title which improves search results.
-	Alternatives *[]Knowledgedocumentalternative `json:"alternatives,omitempty"`
-
-	// CategoryId - The category associated with the document.
-	CategoryId *string `json:"categoryId,omitempty"`
-
-	// LabelIds - The ids of labels associated with the document.
-	LabelIds *[]string `json:"labelIds,omitempty"`
-
-	// ExternalId - The external id associated with the document.
-	ExternalId *string `json:"externalId,omitempty"`
-
-	// ExternalUrl - The URL to external document.
-	ExternalUrl *string `json:"externalUrl,omitempty"`
+	// Metadata - The metadata of the bid group
+	Metadata *Workplanbidmetadata `json:"metadata,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Knowledgedocumentcreaterequest) SetField(field string, fieldValue interface{}) {
+func (o *Schedulebidgroupresponse) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -61,7 +46,7 @@ func (o *Knowledgedocumentcreaterequest) SetField(field string, fieldValue inter
 	o.SetFieldNames[field] = true
 }
 
-func (o Knowledgedocumentcreaterequest) MarshalJSON() ([]byte, error) {
+func (o Schedulebidgroupresponse) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -99,91 +84,51 @@ func (o Knowledgedocumentcreaterequest) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Knowledgedocumentcreaterequest
+	type Alias Schedulebidgroupresponse
 	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
-		Title *string `json:"title,omitempty"`
+		ScheduleBidGroup *Schedulebidgroup `json:"scheduleBidGroup,omitempty"`
 		
-		Visible *bool `json:"visible,omitempty"`
-		
-		Alternatives *[]Knowledgedocumentalternative `json:"alternatives,omitempty"`
-		
-		CategoryId *string `json:"categoryId,omitempty"`
-		
-		LabelIds *[]string `json:"labelIds,omitempty"`
-		
-		ExternalId *string `json:"externalId,omitempty"`
-		
-		ExternalUrl *string `json:"externalUrl,omitempty"`
+		Metadata *Workplanbidmetadata `json:"metadata,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
 		
-		Title: o.Title,
+		ScheduleBidGroup: o.ScheduleBidGroup,
 		
-		Visible: o.Visible,
-		
-		Alternatives: o.Alternatives,
-		
-		CategoryId: o.CategoryId,
-		
-		LabelIds: o.LabelIds,
-		
-		ExternalId: o.ExternalId,
-		
-		ExternalUrl: o.ExternalUrl,
+		Metadata: o.Metadata,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Knowledgedocumentcreaterequest) UnmarshalJSON(b []byte) error {
-	var KnowledgedocumentcreaterequestMap map[string]interface{}
-	err := json.Unmarshal(b, &KnowledgedocumentcreaterequestMap)
+func (o *Schedulebidgroupresponse) UnmarshalJSON(b []byte) error {
+	var SchedulebidgroupresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &SchedulebidgroupresponseMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := KnowledgedocumentcreaterequestMap["id"].(string); ok {
+	if Id, ok := SchedulebidgroupresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
     
-	if Title, ok := KnowledgedocumentcreaterequestMap["title"].(string); ok {
-		o.Title = &Title
-	}
-    
-	if Visible, ok := KnowledgedocumentcreaterequestMap["visible"].(bool); ok {
-		o.Visible = &Visible
-	}
-    
-	if Alternatives, ok := KnowledgedocumentcreaterequestMap["alternatives"].([]interface{}); ok {
-		AlternativesString, _ := json.Marshal(Alternatives)
-		json.Unmarshal(AlternativesString, &o.Alternatives)
+	if ScheduleBidGroup, ok := SchedulebidgroupresponseMap["scheduleBidGroup"].(map[string]interface{}); ok {
+		ScheduleBidGroupString, _ := json.Marshal(ScheduleBidGroup)
+		json.Unmarshal(ScheduleBidGroupString, &o.ScheduleBidGroup)
 	}
 	
-	if CategoryId, ok := KnowledgedocumentcreaterequestMap["categoryId"].(string); ok {
-		o.CategoryId = &CategoryId
-	}
-    
-	if LabelIds, ok := KnowledgedocumentcreaterequestMap["labelIds"].([]interface{}); ok {
-		LabelIdsString, _ := json.Marshal(LabelIds)
-		json.Unmarshal(LabelIdsString, &o.LabelIds)
+	if Metadata, ok := SchedulebidgroupresponseMap["metadata"].(map[string]interface{}); ok {
+		MetadataString, _ := json.Marshal(Metadata)
+		json.Unmarshal(MetadataString, &o.Metadata)
 	}
 	
-	if ExternalId, ok := KnowledgedocumentcreaterequestMap["externalId"].(string); ok {
-		o.ExternalId = &ExternalId
-	}
-    
-	if ExternalUrl, ok := KnowledgedocumentcreaterequestMap["externalUrl"].(string); ok {
-		o.ExternalUrl = &ExternalUrl
-	}
-    
-	if SelfUri, ok := KnowledgedocumentcreaterequestMap["selfUri"].(string); ok {
+	if SelfUri, ok := SchedulebidgroupresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
     
@@ -192,7 +137,7 @@ func (o *Knowledgedocumentcreaterequest) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Knowledgedocumentcreaterequest) String() string {
+func (o *Schedulebidgroupresponse) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

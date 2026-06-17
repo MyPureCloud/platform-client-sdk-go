@@ -26,6 +26,9 @@ type Recordingnotificationtemplate struct {
 	// Buttons - Template buttons
 	Buttons *[]Recordingtemplatebutton `json:"buttons,omitempty"`
 
+	// Carousel - The template carousel
+	Carousel *Recordingtemplatecarousel `json:"carousel,omitempty"`
+
 	// Footer - The template footer.
 	Footer *Recordingtemplatefooter `json:"footer,omitempty"`
 }
@@ -103,6 +106,8 @@ func (o Recordingnotificationtemplate) MarshalJSON() ([]byte, error) {
 		
 		Buttons *[]Recordingtemplatebutton `json:"buttons,omitempty"`
 		
+		Carousel *Recordingtemplatecarousel `json:"carousel,omitempty"`
+		
 		Footer *Recordingtemplatefooter `json:"footer,omitempty"`
 		Alias
 	}{ 
@@ -115,6 +120,8 @@ func (o Recordingnotificationtemplate) MarshalJSON() ([]byte, error) {
 		Body: o.Body,
 		
 		Buttons: o.Buttons,
+		
+		Carousel: o.Carousel,
 		
 		Footer: o.Footer,
 		Alias:    (Alias)(o),
@@ -149,6 +156,11 @@ func (o *Recordingnotificationtemplate) UnmarshalJSON(b []byte) error {
 	if Buttons, ok := RecordingnotificationtemplateMap["buttons"].([]interface{}); ok {
 		ButtonsString, _ := json.Marshal(Buttons)
 		json.Unmarshal(ButtonsString, &o.Buttons)
+	}
+	
+	if Carousel, ok := RecordingnotificationtemplateMap["carousel"].(map[string]interface{}); ok {
+		CarouselString, _ := json.Marshal(Carousel)
+		json.Unmarshal(CarouselString, &o.Carousel)
 	}
 	
 	if Footer, ok := RecordingnotificationtemplateMap["footer"].(map[string]interface{}); ok {

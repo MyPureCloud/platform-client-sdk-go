@@ -42,6 +42,12 @@ type Workplanbid struct {
 	// PublishedDate - The date the work plan bid published. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	PublishedDate *time.Time `json:"publishedDate,omitempty"`
 
+	// BidType - The type of bid created
+	BidType *string `json:"bidType,omitempty"`
+
+	// EndOverridesAndRotations - If true, all existing overrides, workplan rotations will be ended one day before effective date of this bid
+	EndOverridesAndRotations *bool `json:"endOverridesAndRotations,omitempty"`
+
 	// WorkPlanFieldsVisibleToAgents - The work plan fields visible to agents whenever work plan preferences are made
 	WorkPlanFieldsVisibleToAgents *[]string `json:"workPlanFieldsVisibleToAgents,omitempty"`
 
@@ -164,6 +170,10 @@ func (o Workplanbid) MarshalJSON() ([]byte, error) {
 		
 		PublishedDate *string `json:"publishedDate,omitempty"`
 		
+		BidType *string `json:"bidType,omitempty"`
+		
+		EndOverridesAndRotations *bool `json:"endOverridesAndRotations,omitempty"`
+		
 		WorkPlanFieldsVisibleToAgents *[]string `json:"workPlanFieldsVisibleToAgents,omitempty"`
 		
 		Metadata *Workplanbidmetadata `json:"metadata,omitempty"`
@@ -190,6 +200,10 @@ func (o Workplanbid) MarshalJSON() ([]byte, error) {
 		RankingTiebreakerType: o.RankingTiebreakerType,
 		
 		PublishedDate: PublishedDate,
+		
+		BidType: o.BidType,
+		
+		EndOverridesAndRotations: o.EndOverridesAndRotations,
 		
 		WorkPlanFieldsVisibleToAgents: o.WorkPlanFieldsVisibleToAgents,
 		
@@ -252,6 +266,14 @@ func (o *Workplanbid) UnmarshalJSON(b []byte) error {
 		o.PublishedDate = &PublishedDate
 	}
 	
+	if BidType, ok := WorkplanbidMap["bidType"].(string); ok {
+		o.BidType = &BidType
+	}
+    
+	if EndOverridesAndRotations, ok := WorkplanbidMap["endOverridesAndRotations"].(bool); ok {
+		o.EndOverridesAndRotations = &EndOverridesAndRotations
+	}
+    
 	if WorkPlanFieldsVisibleToAgents, ok := WorkplanbidMap["workPlanFieldsVisibleToAgents"].([]interface{}); ok {
 		WorkPlanFieldsVisibleToAgentsString, _ := json.Marshal(WorkPlanFieldsVisibleToAgents)
 		json.Unmarshal(WorkPlanFieldsVisibleToAgentsString, &o.WorkPlanFieldsVisibleToAgents)

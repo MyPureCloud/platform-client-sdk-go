@@ -77,6 +77,9 @@ type Conversationsummarytopicvirtualagentsconversationsummaryevent struct {
 
 	// DurationMs
 	DurationMs *int `json:"durationMs,omitempty"`
+
+	// Labels
+	Labels *[]Conversationsummarytopicvirtualagentsconversationsummarylabel `json:"labels,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -193,6 +196,8 @@ func (o Conversationsummarytopicvirtualagentsconversationsummaryevent) MarshalJS
 		ErrorType *string `json:"errorType,omitempty"`
 		
 		DurationMs *int `json:"durationMs,omitempty"`
+		
+		Labels *[]Conversationsummarytopicvirtualagentsconversationsummarylabel `json:"labels,omitempty"`
 		Alias
 	}{ 
 		ConversationId: o.ConversationId,
@@ -238,6 +243,8 @@ func (o Conversationsummarytopicvirtualagentsconversationsummaryevent) MarshalJS
 		ErrorType: o.ErrorType,
 		
 		DurationMs: o.DurationMs,
+		
+		Labels: o.Labels,
 		Alias:    (Alias)(o),
 	})
 }
@@ -348,6 +355,11 @@ func (o *Conversationsummarytopicvirtualagentsconversationsummaryevent) Unmarsha
 	if DurationMs, ok := ConversationsummarytopicvirtualagentsconversationsummaryeventMap["durationMs"].(float64); ok {
 		DurationMsInt := int(DurationMs)
 		o.DurationMs = &DurationMsInt
+	}
+	
+	if Labels, ok := ConversationsummarytopicvirtualagentsconversationsummaryeventMap["labels"].([]interface{}); ok {
+		LabelsString, _ := json.Marshal(Labels)
+		json.Unmarshal(LabelsString, &o.Labels)
 	}
 	
 

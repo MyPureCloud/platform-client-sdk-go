@@ -42,13 +42,16 @@ type Dictionaryfeedback struct {
 	// TranscriptionEngine - The transcription engine for the dictionary feedback. Only returned when GenesysExtended feature is enabled.
 	TranscriptionEngine *string `json:"transcriptionEngine,omitempty"`
 
-	// Status - The status of the dictionary feedback. Only returned when GenesysExtended feature is enabled.
+	// Status - The status of the dictionary feedback
 	Status *string `json:"status,omitempty"`
 
-	// DisplayAs - The display name for the dictionary feedback. Only returned when GenesysExtended feature is enabled. This field is only valid for Extended Services transcription engine.
+	// InvalidReason - The reason the dictionary feedback is invalid
+	InvalidReason *string `json:"invalidReason,omitempty"`
+
+	// DisplayAs - The display name for the dictionary feedback.
 	DisplayAs *string `json:"displayAs,omitempty"`
 
-	// ExamplePhrases - A list of at least 3 and up to 20 unique phrases that are example usage of the term. This field is only valid and required for Genesys transcription engine.
+	// ExamplePhrases - A list of at least 3 and up to 20 unique phrases that are example usage of the term. This field is only valid for Genesys transcription engine. Not applicable for English and Spanish dialects
 	ExamplePhrases *[]Dictionaryfeedbackexamplephrase `json:"examplePhrases,omitempty"`
 
 	// SoundsLike - A list of up to 10 terms that give examples of how the term sounds. This field is only valid for Genesys transcription engine.
@@ -159,6 +162,8 @@ func (o Dictionaryfeedback) MarshalJSON() ([]byte, error) {
 		
 		Status *string `json:"status,omitempty"`
 		
+		InvalidReason *string `json:"invalidReason,omitempty"`
+		
 		DisplayAs *string `json:"displayAs,omitempty"`
 		
 		ExamplePhrases *[]Dictionaryfeedbackexamplephrase `json:"examplePhrases,omitempty"`
@@ -189,6 +194,8 @@ func (o Dictionaryfeedback) MarshalJSON() ([]byte, error) {
 		TranscriptionEngine: o.TranscriptionEngine,
 		
 		Status: o.Status,
+		
+		InvalidReason: o.InvalidReason,
 		
 		DisplayAs: o.DisplayAs,
 		
@@ -255,6 +262,10 @@ func (o *Dictionaryfeedback) UnmarshalJSON(b []byte) error {
     
 	if Status, ok := DictionaryfeedbackMap["status"].(string); ok {
 		o.Status = &Status
+	}
+    
+	if InvalidReason, ok := DictionaryfeedbackMap["invalidReason"].(string); ok {
+		o.InvalidReason = &InvalidReason
 	}
     
 	if DisplayAs, ok := DictionaryfeedbackMap["displayAs"].(string); ok {

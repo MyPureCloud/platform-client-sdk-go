@@ -40,6 +40,12 @@ type Billingcharge struct {
 
 	// OverageCurrency - The currency in which the overage charge is billed.
 	OverageCurrency *string `json:"overageCurrency,omitempty"`
+
+	// ConvertedTokenCount - AI Token Count after the conversion for AI Products.
+	ConvertedTokenCount *float32 `json:"convertedTokenCount,omitempty"`
+
+	// TokenConversionRate - AI Token Conversion Rate — Units per token conversion ratio.
+	TokenConversionRate *float32 `json:"tokenConversionRate,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -124,6 +130,10 @@ func (o Billingcharge) MarshalJSON() ([]byte, error) {
 		OverageCharge *float32 `json:"overageCharge,omitempty"`
 		
 		OverageCurrency *string `json:"overageCurrency,omitempty"`
+		
+		ConvertedTokenCount *float32 `json:"convertedTokenCount,omitempty"`
+		
+		TokenConversionRate *float32 `json:"tokenConversionRate,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -145,6 +155,10 @@ func (o Billingcharge) MarshalJSON() ([]byte, error) {
 		OverageCharge: o.OverageCharge,
 		
 		OverageCurrency: o.OverageCurrency,
+		
+		ConvertedTokenCount: o.ConvertedTokenCount,
+		
+		TokenConversionRate: o.TokenConversionRate,
 		Alias:    (Alias)(o),
 	})
 }
@@ -202,6 +216,16 @@ func (o *Billingcharge) UnmarshalJSON(b []byte) error {
     
 	if OverageCurrency, ok := BillingchargeMap["overageCurrency"].(string); ok {
 		o.OverageCurrency = &OverageCurrency
+	}
+    
+	if ConvertedTokenCount, ok := BillingchargeMap["convertedTokenCount"].(float64); ok {
+		ConvertedTokenCountFloat32 := float32(ConvertedTokenCount)
+		o.ConvertedTokenCount = &ConvertedTokenCountFloat32
+	}
+    
+	if TokenConversionRate, ok := BillingchargeMap["tokenConversionRate"].(float64); ok {
+		TokenConversionRateFloat32 := float32(TokenConversionRate)
+		o.TokenConversionRate = &TokenConversionRateFloat32
 	}
     
 

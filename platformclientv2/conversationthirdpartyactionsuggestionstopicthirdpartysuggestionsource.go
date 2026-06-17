@@ -7,16 +7,19 @@ import (
 	"strings"
 )
 
-// Participantdataproperties
-type Participantdataproperties struct { 
+// Conversationthirdpartyactionsuggestionstopicthirdpartysuggestionsource
+type Conversationthirdpartyactionsuggestionstopicthirdpartysuggestionsource struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Name - Participant data name.
+	// Name
 	Name *string `json:"name,omitempty"`
+
+	// Url
+	Url *string `json:"url,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Participantdataproperties) SetField(field string, fieldValue interface{}) {
+func (o *Conversationthirdpartyactionsuggestionstopicthirdpartysuggestionsource) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -37,7 +40,7 @@ func (o *Participantdataproperties) SetField(field string, fieldValue interface{
 	o.SetFieldNames[field] = true
 }
 
-func (o Participantdataproperties) MarshalJSON() ([]byte, error) {
+func (o Conversationthirdpartyactionsuggestionstopicthirdpartysuggestionsource) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -75,26 +78,34 @@ func (o Participantdataproperties) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Participantdataproperties
+	type Alias Conversationthirdpartyactionsuggestionstopicthirdpartysuggestionsource
 	
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
+		
+		Url *string `json:"url,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
+		
+		Url: o.Url,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Participantdataproperties) UnmarshalJSON(b []byte) error {
-	var ParticipantdatapropertiesMap map[string]interface{}
-	err := json.Unmarshal(b, &ParticipantdatapropertiesMap)
+func (o *Conversationthirdpartyactionsuggestionstopicthirdpartysuggestionsource) UnmarshalJSON(b []byte) error {
+	var ConversationthirdpartyactionsuggestionstopicthirdpartysuggestionsourceMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationthirdpartyactionsuggestionstopicthirdpartysuggestionsourceMap)
 	if err != nil {
 		return err
 	}
 	
-	if Name, ok := ParticipantdatapropertiesMap["name"].(string); ok {
+	if Name, ok := ConversationthirdpartyactionsuggestionstopicthirdpartysuggestionsourceMap["name"].(string); ok {
 		o.Name = &Name
+	}
+    
+	if Url, ok := ConversationthirdpartyactionsuggestionstopicthirdpartysuggestionsourceMap["url"].(string); ok {
+		o.Url = &Url
 	}
     
 
@@ -102,7 +113,7 @@ func (o *Participantdataproperties) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Participantdataproperties) String() string {
+func (o *Conversationthirdpartyactionsuggestionstopicthirdpartysuggestionsource) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

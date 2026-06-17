@@ -7,13 +7,16 @@ import (
 	"strings"
 )
 
-// Knowledgedocumentdescriptor
-type Knowledgedocumentdescriptor struct { 
+// Bidgroupscheduleset
+type Bidgroupscheduleset struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// ShiftSets - The shift sets that will be used for schedule generation
+	ShiftSets *[]Shiftset `json:"shiftSets,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Knowledgedocumentdescriptor) SetField(field string, fieldValue interface{}) {
+func (o *Bidgroupscheduleset) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -34,7 +37,7 @@ func (o *Knowledgedocumentdescriptor) SetField(field string, fieldValue interfac
 	o.SetFieldNames[field] = true
 }
 
-func (o Knowledgedocumentdescriptor) MarshalJSON() ([]byte, error) {
+func (o Bidgroupscheduleset) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -72,18 +75,27 @@ func (o Knowledgedocumentdescriptor) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Knowledgedocumentdescriptor
+	type Alias Bidgroupscheduleset
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		ShiftSets *[]Shiftset `json:"shiftSets,omitempty"`
+		Alias
+	}{ 
+		ShiftSets: o.ShiftSets,
+		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Knowledgedocumentdescriptor) UnmarshalJSON(b []byte) error {
-	var KnowledgedocumentdescriptorMap map[string]interface{}
-	err := json.Unmarshal(b, &KnowledgedocumentdescriptorMap)
+func (o *Bidgroupscheduleset) UnmarshalJSON(b []byte) error {
+	var BidgroupschedulesetMap map[string]interface{}
+	err := json.Unmarshal(b, &BidgroupschedulesetMap)
 	if err != nil {
 		return err
+	}
+	
+	if ShiftSets, ok := BidgroupschedulesetMap["shiftSets"].([]interface{}); ok {
+		ShiftSetsString, _ := json.Marshal(ShiftSets)
+		json.Unmarshal(ShiftSetsString, &o.ShiftSets)
 	}
 	
 
@@ -91,7 +103,7 @@ func (o *Knowledgedocumentdescriptor) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Knowledgedocumentdescriptor) String() string {
+func (o *Bidgroupscheduleset) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

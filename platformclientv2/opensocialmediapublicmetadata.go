@@ -22,6 +22,12 @@ type Opensocialmediapublicmetadata struct {
 
 	// Url - The URL of the social post on the native platform.
 	Url *string `json:"url,omitempty"`
+
+	// MentionIds - IDs of accounts referenced by name within the message text or caption (for example '@brandpage' in a post body or comment). A 'mention' here uses the same convention as Meta (Facebook, Instagram) and LinkedIn, where it denotes a textual reference to an account. Distinct from tagIds, which represent explicit associations with the message. Null or absent when no accounts are referenced in the text.
+	MentionIds *[]string `json:"mentionIds,omitempty"`
+
+	// TagIds - IDs of accounts attached to the message itself, independent of the text (for example a person tagged in an Instagram photo so their profile is linked from the image). A 'tag' here uses the same convention as Meta (Facebook, Instagram) and LinkedIn, where it denotes an explicit association with content rather than a textual reference. Distinct from mentionIds, which represent in-text/caption references. Null or absent when no accounts are tagged on the message.
+	TagIds *[]string `json:"tagIds,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +100,10 @@ func (o Opensocialmediapublicmetadata) MarshalJSON() ([]byte, error) {
 		Source *string `json:"source,omitempty"`
 		
 		Url *string `json:"url,omitempty"`
+		
+		MentionIds *[]string `json:"mentionIds,omitempty"`
+		
+		TagIds *[]string `json:"tagIds,omitempty"`
 		Alias
 	}{ 
 		RootId: o.RootId,
@@ -103,6 +113,10 @@ func (o Opensocialmediapublicmetadata) MarshalJSON() ([]byte, error) {
 		Source: o.Source,
 		
 		Url: o.Url,
+		
+		MentionIds: o.MentionIds,
+		
+		TagIds: o.TagIds,
 		Alias:    (Alias)(o),
 	})
 }
@@ -130,6 +144,16 @@ func (o *Opensocialmediapublicmetadata) UnmarshalJSON(b []byte) error {
 		o.Url = &Url
 	}
     
+	if MentionIds, ok := OpensocialmediapublicmetadataMap["mentionIds"].([]interface{}); ok {
+		MentionIdsString, _ := json.Marshal(MentionIds)
+		json.Unmarshal(MentionIdsString, &o.MentionIds)
+	}
+	
+	if TagIds, ok := OpensocialmediapublicmetadataMap["tagIds"].([]interface{}); ok {
+		TagIdsString, _ := json.Marshal(TagIds)
+		json.Unmarshal(TagIdsString, &o.TagIds)
+	}
+	
 
 	return nil
 }
