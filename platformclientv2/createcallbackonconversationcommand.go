@@ -21,6 +21,9 @@ type Createcallbackonconversationcommand struct {
 	// RoutingData - The routing data to be used for the callback. Either queueId or routingData is required.
 	RoutingData *Routingdata `json:"routingData,omitempty"`
 
+	// CustomerFirstCallbackDeliveryMode - How customer-first callback agent reservation is applied for this callback. useAgentReservation forces reservation on; noAgentReservation forces it off; useQueueSetting uses the queue configuration.
+	CustomerFirstCallbackDeliveryMode *string `json:"customerFirstCallbackDeliveryMode,omitempty"`
+
 	// CallbackUserName - The name of the party to be called back.
 	CallbackUserName *string `json:"callbackUserName,omitempty"`
 
@@ -123,6 +126,8 @@ func (o Createcallbackonconversationcommand) MarshalJSON() ([]byte, error) {
 		
 		RoutingData *Routingdata `json:"routingData,omitempty"`
 		
+		CustomerFirstCallbackDeliveryMode *string `json:"customerFirstCallbackDeliveryMode,omitempty"`
+		
 		CallbackUserName *string `json:"callbackUserName,omitempty"`
 		
 		CallbackNumbers *[]string `json:"callbackNumbers,omitempty"`
@@ -145,6 +150,8 @@ func (o Createcallbackonconversationcommand) MarshalJSON() ([]byte, error) {
 		QueueId: o.QueueId,
 		
 		RoutingData: o.RoutingData,
+		
+		CustomerFirstCallbackDeliveryMode: o.CustomerFirstCallbackDeliveryMode,
 		
 		CallbackUserName: o.CallbackUserName,
 		
@@ -185,6 +192,10 @@ func (o *Createcallbackonconversationcommand) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(RoutingDataString, &o.RoutingData)
 	}
 	
+	if CustomerFirstCallbackDeliveryMode, ok := CreatecallbackonconversationcommandMap["customerFirstCallbackDeliveryMode"].(string); ok {
+		o.CustomerFirstCallbackDeliveryMode = &CustomerFirstCallbackDeliveryMode
+	}
+    
 	if CallbackUserName, ok := CreatecallbackonconversationcommandMap["callbackUserName"].(string); ok {
 		o.CallbackUserName = &CallbackUserName
 	}

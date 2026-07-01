@@ -21,16 +21,16 @@ type Billingcharge struct {
 	Organizations *[]Namedentity `json:"organizations,omitempty"`
 
 	// PrepaidQuantity - The quantity of usage that is prepaid.
-	PrepaidQuantity *int `json:"prepaidQuantity,omitempty"`
+	PrepaidQuantity *float32 `json:"prepaidQuantity,omitempty"`
 
 	// FairuseQuantity - The quantity of usage allowed under fair use policies.
-	FairuseQuantity *int `json:"fairuseQuantity,omitempty"`
+	FairuseQuantity *float32 `json:"fairuseQuantity,omitempty"`
 
 	// ActualQuantity - The actual quantity of usage.
-	ActualQuantity *int `json:"actualQuantity,omitempty"`
+	ActualQuantity *float32 `json:"actualQuantity,omitempty"`
 
 	// OverageQuantity - The quantity of usage that exceeds prepaid or fair use limits.
-	OverageQuantity *int `json:"overageQuantity,omitempty"`
+	OverageQuantity *float32 `json:"overageQuantity,omitempty"`
 
 	// OverageRate - The rate charged per unit of overage.
 	OverageRate *float32 `json:"overageRate,omitempty"`
@@ -117,13 +117,13 @@ func (o Billingcharge) MarshalJSON() ([]byte, error) {
 		
 		Organizations *[]Namedentity `json:"organizations,omitempty"`
 		
-		PrepaidQuantity *int `json:"prepaidQuantity,omitempty"`
+		PrepaidQuantity *float32 `json:"prepaidQuantity,omitempty"`
 		
-		FairuseQuantity *int `json:"fairuseQuantity,omitempty"`
+		FairuseQuantity *float32 `json:"fairuseQuantity,omitempty"`
 		
-		ActualQuantity *int `json:"actualQuantity,omitempty"`
+		ActualQuantity *float32 `json:"actualQuantity,omitempty"`
 		
-		OverageQuantity *int `json:"overageQuantity,omitempty"`
+		OverageQuantity *float32 `json:"overageQuantity,omitempty"`
 		
 		OverageRate *float32 `json:"overageRate,omitempty"`
 		
@@ -185,25 +185,25 @@ func (o *Billingcharge) UnmarshalJSON(b []byte) error {
 	}
 	
 	if PrepaidQuantity, ok := BillingchargeMap["prepaidQuantity"].(float64); ok {
-		PrepaidQuantityInt := int(PrepaidQuantity)
-		o.PrepaidQuantity = &PrepaidQuantityInt
+		PrepaidQuantityFloat32 := float32(PrepaidQuantity)
+		o.PrepaidQuantity = &PrepaidQuantityFloat32
 	}
-	
+    
 	if FairuseQuantity, ok := BillingchargeMap["fairuseQuantity"].(float64); ok {
-		FairuseQuantityInt := int(FairuseQuantity)
-		o.FairuseQuantity = &FairuseQuantityInt
+		FairuseQuantityFloat32 := float32(FairuseQuantity)
+		o.FairuseQuantity = &FairuseQuantityFloat32
 	}
-	
+    
 	if ActualQuantity, ok := BillingchargeMap["actualQuantity"].(float64); ok {
-		ActualQuantityInt := int(ActualQuantity)
-		o.ActualQuantity = &ActualQuantityInt
+		ActualQuantityFloat32 := float32(ActualQuantity)
+		o.ActualQuantity = &ActualQuantityFloat32
 	}
-	
+    
 	if OverageQuantity, ok := BillingchargeMap["overageQuantity"].(float64); ok {
-		OverageQuantityInt := int(OverageQuantity)
-		o.OverageQuantity = &OverageQuantityInt
+		OverageQuantityFloat32 := float32(OverageQuantity)
+		o.OverageQuantity = &OverageQuantityFloat32
 	}
-	
+    
 	if OverageRate, ok := BillingchargeMap["overageRate"].(float64); ok {
 		OverageRateFloat32 := float32(OverageRate)
 		o.OverageRate = &OverageRateFloat32

@@ -22,6 +22,12 @@ type Knowledgesearchpreviewresponse struct {
 
 	// Result - Content matching the search query.
 	Result *Knowledgesearchresult `json:"result,omitempty"`
+
+	// Application - The touchpoint application used for the preview.
+	Application *V3knowledgesearchpreviewclientapplication `json:"application,omitempty"`
+
+	// ConversationContext - The channel context used for the preview.
+	ConversationContext *Knowledgev3previewconversationcontext `json:"conversationContext,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +100,10 @@ func (o Knowledgesearchpreviewresponse) MarshalJSON() ([]byte, error) {
 		SessionId *string `json:"sessionId,omitempty"`
 		
 		Result *Knowledgesearchresult `json:"result,omitempty"`
+		
+		Application *V3knowledgesearchpreviewclientapplication `json:"application,omitempty"`
+		
+		ConversationContext *Knowledgev3previewconversationcontext `json:"conversationContext,omitempty"`
 		Alias
 	}{ 
 		Query: o.Query,
@@ -103,6 +113,10 @@ func (o Knowledgesearchpreviewresponse) MarshalJSON() ([]byte, error) {
 		SessionId: o.SessionId,
 		
 		Result: o.Result,
+		
+		Application: o.Application,
+		
+		ConversationContext: o.ConversationContext,
 		Alias:    (Alias)(o),
 	})
 }
@@ -129,6 +143,16 @@ func (o *Knowledgesearchpreviewresponse) UnmarshalJSON(b []byte) error {
 	if Result, ok := KnowledgesearchpreviewresponseMap["result"].(map[string]interface{}); ok {
 		ResultString, _ := json.Marshal(Result)
 		json.Unmarshal(ResultString, &o.Result)
+	}
+	
+	if Application, ok := KnowledgesearchpreviewresponseMap["application"].(map[string]interface{}); ok {
+		ApplicationString, _ := json.Marshal(Application)
+		json.Unmarshal(ApplicationString, &o.Application)
+	}
+	
+	if ConversationContext, ok := KnowledgesearchpreviewresponseMap["conversationContext"].(map[string]interface{}); ok {
+		ConversationContextString, _ := json.Marshal(ConversationContext)
+		json.Unmarshal(ConversationContextString, &o.ConversationContext)
 	}
 	
 

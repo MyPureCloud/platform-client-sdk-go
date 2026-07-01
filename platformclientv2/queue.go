@@ -124,7 +124,7 @@ type Queue struct {
 	OutboundMessagingAddresses *Queuemessagingaddresses `json:"outboundMessagingAddresses,omitempty"`
 
 	// OutboundEmailAddress - The default email address to use for outbound email from this queue.
-	OutboundEmailAddress **Queueemailaddress `json:"outboundEmailAddress,omitempty"`
+	OutboundEmailAddress *Queueemailaddress `json:"outboundEmailAddress,omitempty"`
 
 	// PeerId - The ID of an associated external queue.
 	PeerId *string `json:"peerId,omitempty"`
@@ -289,7 +289,7 @@ func (o Queue) MarshalJSON() ([]byte, error) {
 		
 		OutboundMessagingAddresses *Queuemessagingaddresses `json:"outboundMessagingAddresses,omitempty"`
 		
-		OutboundEmailAddress **Queueemailaddress `json:"outboundEmailAddress,omitempty"`
+		OutboundEmailAddress *Queueemailaddress `json:"outboundEmailAddress,omitempty"`
 		
 		PeerId *string `json:"peerId,omitempty"`
 		

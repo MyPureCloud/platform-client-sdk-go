@@ -11,10 +11,10 @@ import (
 type Sendagentlessoutboundmessagerequest struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// FromAddress - The messaging address of the sender of the message. For an SMS messenger type, this must be a currently provisioned SMS phone number. For a WhatsApp messenger type use the provisioned WhatsApp integration’s ID
+	// FromAddress - The messaging address of the sender of the message. For an SMS messenger type, this must be a currently provisioned SMS phone number. For a WhatsApp, Open and Apple messenger types use the provisioned integration’s ID. For WebMessaging use the DeploymentId
 	FromAddress *string `json:"fromAddress,omitempty"`
 
-	// ToAddress - The messaging address of the recipient of the message. For an SMS messenger type, the phone number address must be in E.164 format. E.g. +13175555555 or +34234234234. For WhatsApp messenger type, use a WhatsApp ID of a phone number. E.g for a E.164 formatted phone number `+13175555555`, a WhatsApp ID would be 13175555555.
+	// ToAddress - The messaging address of the recipient of the message. For an Apple Invitation and SMS messenger type, the phone number address must be in E.164 format. E.g. +13175555555 or +34234234234. For WhatsApp messenger type, use a WhatsApp ID of a phone number. E.g for a E.164 formatted phone number `+13175555555`, a WhatsApp ID would be 13175555555. For WebMessaging this cannot be used, instead use externalContactId
 	ToAddress *string `json:"toAddress,omitempty"`
 
 	// ToAddressMessengerType - The recipient messaging address messenger type.

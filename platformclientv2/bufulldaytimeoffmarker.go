@@ -15,6 +15,12 @@ type Bufulldaytimeoffmarker struct {
 	// BusinessUnitDate - The date of the time off marker, interpreted in the business unit's time zone. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
 	BusinessUnitDate *time.Time `json:"businessUnitDate,omitempty"`
 
+	// StartOffsetMinutes - The start offset in minutes for the time-off marker
+	StartOffsetMinutes *int `json:"startOffsetMinutes,omitempty"`
+
+	// EndOffsetMinutes - The end offset in minutes for the time-off marker
+	EndOffsetMinutes *int `json:"endOffsetMinutes,omitempty"`
+
 	// LengthMinutes - The length of the time off marker in minutes
 	LengthMinutes *int `json:"lengthMinutes,omitempty"`
 
@@ -112,6 +118,10 @@ func (o Bufulldaytimeoffmarker) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		BusinessUnitDate *string `json:"businessUnitDate,omitempty"`
 		
+		StartOffsetMinutes *int `json:"startOffsetMinutes,omitempty"`
+		
+		EndOffsetMinutes *int `json:"endOffsetMinutes,omitempty"`
+		
 		LengthMinutes *int `json:"lengthMinutes,omitempty"`
 		
 		Description *string `json:"description,omitempty"`
@@ -130,6 +140,10 @@ func (o Bufulldaytimeoffmarker) MarshalJSON() ([]byte, error) {
 		Alias
 	}{ 
 		BusinessUnitDate: BusinessUnitDate,
+		
+		StartOffsetMinutes: o.StartOffsetMinutes,
+		
+		EndOffsetMinutes: o.EndOffsetMinutes,
 		
 		LengthMinutes: o.LengthMinutes,
 		
@@ -160,6 +174,16 @@ func (o *Bufulldaytimeoffmarker) UnmarshalJSON(b []byte) error {
 	if businessUnitDateString, ok := BufulldaytimeoffmarkerMap["businessUnitDate"].(string); ok {
 		BusinessUnitDate, _ := time.Parse("2006-01-02", businessUnitDateString)
 		o.BusinessUnitDate = &BusinessUnitDate
+	}
+	
+	if StartOffsetMinutes, ok := BufulldaytimeoffmarkerMap["startOffsetMinutes"].(float64); ok {
+		StartOffsetMinutesInt := int(StartOffsetMinutes)
+		o.StartOffsetMinutes = &StartOffsetMinutesInt
+	}
+	
+	if EndOffsetMinutes, ok := BufulldaytimeoffmarkerMap["endOffsetMinutes"].(float64); ok {
+		EndOffsetMinutesInt := int(EndOffsetMinutes)
+		o.EndOffsetMinutes = &EndOffsetMinutesInt
 	}
 	
 	if LengthMinutes, ok := BufulldaytimeoffmarkerMap["lengthMinutes"].(float64); ok {

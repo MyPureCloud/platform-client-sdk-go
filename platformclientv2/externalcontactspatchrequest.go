@@ -11,7 +11,7 @@ import (
 type Externalcontactspatchrequest struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Changes - A list of changes to apply to the provided contact entity
+	// Changes - A list of changes to apply to the provided entity
 	Changes *[]Contactspatchchange `json:"changes,omitempty"`
 }
 

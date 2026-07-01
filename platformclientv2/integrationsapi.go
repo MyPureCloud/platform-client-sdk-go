@@ -515,7 +515,7 @@ func (a IntegrationsApi) GetIntegrationConfigCurrent(integrationId string) (*Int
 // GetIntegrations invokes GET /api/v2/integrations
 //
 // List integrations
-func (a IntegrationsApi) GetIntegrations(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, ids []string, integrationType string, reportedState string) (*Integrationentitylisting, *APIResponse, error) {
+func (a IntegrationsApi) GetIntegrations(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, ids []string, integrationType string, reportedState string, credentialId string) (*Integrationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations"
@@ -559,6 +559,8 @@ func (a IntegrationsApi) GetIntegrations(pageSize int, pageNumber int, sortBy st
 	queryParams["integrationType"] = a.Configuration.APIClient.ParameterToString(integrationType, "")
 	
 	queryParams["reportedState"] = a.Configuration.APIClient.ParameterToString(reportedState, "")
+	
+	queryParams["credentialId"] = a.Configuration.APIClient.ParameterToString(credentialId, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

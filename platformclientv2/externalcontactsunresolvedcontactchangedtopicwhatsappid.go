@@ -16,6 +16,12 @@ type Externalcontactsunresolvedcontactchangedtopicwhatsappid struct {
 
 	// DisplayName
 	DisplayName *string `json:"displayName,omitempty"`
+
+	// Username
+	Username *string `json:"username,omitempty"`
+
+	// WhatsAppBusinessScopedIds
+	WhatsAppBusinessScopedIds *[]Externalcontactsunresolvedcontactchangedtopicwhatsappbusinessscopedid `json:"whatsAppBusinessScopedIds,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +90,19 @@ func (o Externalcontactsunresolvedcontactchangedtopicwhatsappid) MarshalJSON() (
 		PhoneNumber *Externalcontactsunresolvedcontactchangedtopicphonenumber `json:"phoneNumber,omitempty"`
 		
 		DisplayName *string `json:"displayName,omitempty"`
+		
+		Username *string `json:"username,omitempty"`
+		
+		WhatsAppBusinessScopedIds *[]Externalcontactsunresolvedcontactchangedtopicwhatsappbusinessscopedid `json:"whatsAppBusinessScopedIds,omitempty"`
 		Alias
 	}{ 
 		PhoneNumber: o.PhoneNumber,
 		
 		DisplayName: o.DisplayName,
+		
+		Username: o.Username,
+		
+		WhatsAppBusinessScopedIds: o.WhatsAppBusinessScopedIds,
 		Alias:    (Alias)(o),
 	})
 }
@@ -109,6 +123,15 @@ func (o *Externalcontactsunresolvedcontactchangedtopicwhatsappid) UnmarshalJSON(
 		o.DisplayName = &DisplayName
 	}
     
+	if Username, ok := ExternalcontactsunresolvedcontactchangedtopicwhatsappidMap["username"].(string); ok {
+		o.Username = &Username
+	}
+    
+	if WhatsAppBusinessScopedIds, ok := ExternalcontactsunresolvedcontactchangedtopicwhatsappidMap["whatsAppBusinessScopedIds"].([]interface{}); ok {
+		WhatsAppBusinessScopedIdsString, _ := json.Marshal(WhatsAppBusinessScopedIds)
+		json.Unmarshal(WhatsAppBusinessScopedIdsString, &o.WhatsAppBusinessScopedIds)
+	}
+	
 
 	return nil
 }

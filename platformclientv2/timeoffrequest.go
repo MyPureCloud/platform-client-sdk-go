@@ -51,6 +51,12 @@ type Timeoffrequest struct {
 	// PayableMinutes - Payable minutes for each day of this time off request
 	PayableMinutes *[]int `json:"payableMinutes,omitempty"`
 
+	// FullDayEarliestStartOffsetMinutes - Earliest start offset in minutes for each full-day request date. Values may be null when time-off estimation is disabled or no estimate is available
+	FullDayEarliestStartOffsetMinutes *[]int `json:"fullDayEarliestStartOffsetMinutes,omitempty"`
+
+	// FullDayLatestEndOffsetMinutes - Latest end offset in minutes for each full-day request date. Values may be null when time-off estimation is disabled or no estimate is available
+	FullDayLatestEndOffsetMinutes *[]int `json:"fullDayLatestEndOffsetMinutes,omitempty"`
+
 	// Notes - Notes about the time off request
 	Notes *string `json:"notes,omitempty"`
 
@@ -181,6 +187,10 @@ func (o Timeoffrequest) MarshalJSON() ([]byte, error) {
 		
 		PayableMinutes *[]int `json:"payableMinutes,omitempty"`
 		
+		FullDayEarliestStartOffsetMinutes *[]int `json:"fullDayEarliestStartOffsetMinutes,omitempty"`
+		
+		FullDayLatestEndOffsetMinutes *[]int `json:"fullDayLatestEndOffsetMinutes,omitempty"`
+		
 		Notes *string `json:"notes,omitempty"`
 		
 		SubmittedBy *Userreference `json:"submittedBy,omitempty"`
@@ -223,6 +233,10 @@ func (o Timeoffrequest) MarshalJSON() ([]byte, error) {
 		DurationMinutes: o.DurationMinutes,
 		
 		PayableMinutes: o.PayableMinutes,
+		
+		FullDayEarliestStartOffsetMinutes: o.FullDayEarliestStartOffsetMinutes,
+		
+		FullDayLatestEndOffsetMinutes: o.FullDayLatestEndOffsetMinutes,
 		
 		Notes: o.Notes,
 		
@@ -306,6 +320,16 @@ func (o *Timeoffrequest) UnmarshalJSON(b []byte) error {
 	if PayableMinutes, ok := TimeoffrequestMap["payableMinutes"].([]interface{}); ok {
 		PayableMinutesString, _ := json.Marshal(PayableMinutes)
 		json.Unmarshal(PayableMinutesString, &o.PayableMinutes)
+	}
+	
+	if FullDayEarliestStartOffsetMinutes, ok := TimeoffrequestMap["fullDayEarliestStartOffsetMinutes"].([]interface{}); ok {
+		FullDayEarliestStartOffsetMinutesString, _ := json.Marshal(FullDayEarliestStartOffsetMinutes)
+		json.Unmarshal(FullDayEarliestStartOffsetMinutesString, &o.FullDayEarliestStartOffsetMinutes)
+	}
+	
+	if FullDayLatestEndOffsetMinutes, ok := TimeoffrequestMap["fullDayLatestEndOffsetMinutes"].([]interface{}); ok {
+		FullDayLatestEndOffsetMinutesString, _ := json.Marshal(FullDayLatestEndOffsetMinutes)
+		json.Unmarshal(FullDayLatestEndOffsetMinutesString, &o.FullDayLatestEndOffsetMinutes)
 	}
 	
 	if Notes, ok := TimeoffrequestMap["notes"].(string); ok {

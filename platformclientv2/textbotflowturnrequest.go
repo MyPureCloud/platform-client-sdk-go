@@ -20,6 +20,9 @@ type Textbotflowturnrequest struct {
 	// InputEventUserInput - The data for the input event of this turn if it is a user input event. Only one inputEvent may be set.
 	InputEventUserInput *Textbotuserinputevent `json:"inputEventUserInput,omitempty"`
 
+	// InputEventRichMedia - The data for the Rich Media input event of this turn if it is a Rich Media input event. Only one inputEvent may be set. Only ButtonResponse, PaymentResponse, Form, Presence are supported.
+	InputEventRichMedia *Textbotsrichmediainputevent `json:"inputEventRichMedia,omitempty"`
+
 	// InputEventError - The data for the input event of this turn if it is an error event. Only one inputEvent may be set.
 	InputEventError *Textboterrorinputevent `json:"inputEventError,omitempty"`
 }
@@ -93,6 +96,8 @@ func (o Textbotflowturnrequest) MarshalJSON() ([]byte, error) {
 		
 		InputEventUserInput *Textbotuserinputevent `json:"inputEventUserInput,omitempty"`
 		
+		InputEventRichMedia *Textbotsrichmediainputevent `json:"inputEventRichMedia,omitempty"`
+		
 		InputEventError *Textboterrorinputevent `json:"inputEventError,omitempty"`
 		Alias
 	}{ 
@@ -101,6 +106,8 @@ func (o Textbotflowturnrequest) MarshalJSON() ([]byte, error) {
 		InputEventType: o.InputEventType,
 		
 		InputEventUserInput: o.InputEventUserInput,
+		
+		InputEventRichMedia: o.InputEventRichMedia,
 		
 		InputEventError: o.InputEventError,
 		Alias:    (Alias)(o),
@@ -126,6 +133,11 @@ func (o *Textbotflowturnrequest) UnmarshalJSON(b []byte) error {
 	if InputEventUserInput, ok := TextbotflowturnrequestMap["inputEventUserInput"].(map[string]interface{}); ok {
 		InputEventUserInputString, _ := json.Marshal(InputEventUserInput)
 		json.Unmarshal(InputEventUserInputString, &o.InputEventUserInput)
+	}
+	
+	if InputEventRichMedia, ok := TextbotflowturnrequestMap["inputEventRichMedia"].(map[string]interface{}); ok {
+		InputEventRichMediaString, _ := json.Marshal(InputEventRichMedia)
+		json.Unmarshal(InputEventRichMediaString, &o.InputEventRichMedia)
 	}
 	
 	if InputEventError, ok := TextbotflowturnrequestMap["inputEventError"].(map[string]interface{}); ok {

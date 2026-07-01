@@ -19,6 +19,9 @@ type Queueconversationvideoeventtopicdisconnectreason struct {
 
 	// Phrase - Human readable English description of the disconnect reason.
 	Phrase *string `json:"phrase,omitempty"`
+
+	// Reason - Final disconnect reason code that triggered the disposition result.
+	Reason *string `json:"reason,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +92,8 @@ func (o Queueconversationvideoeventtopicdisconnectreason) MarshalJSON() ([]byte,
 		Code *int `json:"code,omitempty"`
 		
 		Phrase *string `json:"phrase,omitempty"`
+		
+		Reason *string `json:"reason,omitempty"`
 		Alias
 	}{ 
 		VarType: o.VarType,
@@ -96,6 +101,8 @@ func (o Queueconversationvideoeventtopicdisconnectreason) MarshalJSON() ([]byte,
 		Code: o.Code,
 		
 		Phrase: o.Phrase,
+		
+		Reason: o.Reason,
 		Alias:    (Alias)(o),
 	})
 }
@@ -118,6 +125,10 @@ func (o *Queueconversationvideoeventtopicdisconnectreason) UnmarshalJSON(b []byt
 	
 	if Phrase, ok := QueueconversationvideoeventtopicdisconnectreasonMap["phrase"].(string); ok {
 		o.Phrase = &Phrase
+	}
+    
+	if Reason, ok := QueueconversationvideoeventtopicdisconnectreasonMap["reason"].(string); ok {
+		o.Reason = &Reason
 	}
     
 

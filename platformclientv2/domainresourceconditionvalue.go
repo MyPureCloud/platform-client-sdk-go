@@ -12,13 +12,13 @@ type Domainresourceconditionvalue struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// User
-	User *User `json:"user,omitempty"`
+	User *Userfullreference `json:"user,omitempty"`
 
 	// Queue
-	Queue *Queue `json:"queue,omitempty"`
+	Queue *Queuefullreference `json:"queue,omitempty"`
 
 	// Team
-	Team *Team `json:"team,omitempty"`
+	Team *Teamfullreference `json:"team,omitempty"`
 
 	// Value
 	Value *string `json:"value,omitempty"`
@@ -90,11 +90,11 @@ func (o Domainresourceconditionvalue) MarshalJSON() ([]byte, error) {
 	type Alias Domainresourceconditionvalue
 	
 	return json.Marshal(&struct { 
-		User *User `json:"user,omitempty"`
+		User *Userfullreference `json:"user,omitempty"`
 		
-		Queue *Queue `json:"queue,omitempty"`
+		Queue *Queuefullreference `json:"queue,omitempty"`
 		
-		Team *Team `json:"team,omitempty"`
+		Team *Teamfullreference `json:"team,omitempty"`
 		
 		Value *string `json:"value,omitempty"`
 		

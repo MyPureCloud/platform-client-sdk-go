@@ -14,6 +14,9 @@ type Videosettings struct {
 	// Enabled - whether or not video is enabled
 	Enabled *bool `json:"enabled,omitempty"`
 
+	// Channels - The channels on which video chat is available
+	Channels *[]string `json:"channels,omitempty"`
+
 	// Agent - Video Settings for agent
 	Agent *Agentvideosettings `json:"agent,omitempty"`
 
@@ -86,12 +89,16 @@ func (o Videosettings) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Enabled *bool `json:"enabled,omitempty"`
 		
+		Channels *[]string `json:"channels,omitempty"`
+		
 		Agent *Agentvideosettings `json:"agent,omitempty"`
 		
 		User *Uservideosettings `json:"user,omitempty"`
 		Alias
 	}{ 
 		Enabled: o.Enabled,
+		
+		Channels: o.Channels,
 		
 		Agent: o.Agent,
 		
@@ -111,6 +118,11 @@ func (o *Videosettings) UnmarshalJSON(b []byte) error {
 		o.Enabled = &Enabled
 	}
     
+	if Channels, ok := VideosettingsMap["channels"].([]interface{}); ok {
+		ChannelsString, _ := json.Marshal(Channels)
+		json.Unmarshal(ChannelsString, &o.Channels)
+	}
+	
 	if Agent, ok := VideosettingsMap["agent"].(map[string]interface{}); ok {
 		AgentString, _ := json.Marshal(Agent)
 		json.Unmarshal(AgentString, &o.Agent)

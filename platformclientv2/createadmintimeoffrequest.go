@@ -27,6 +27,12 @@ type Createadmintimeoffrequest struct {
 	// FullDayManagementUnitDates - A set of dates in yyyy-MM-dd format.  Should be interpreted in the management unit's configured time zone
 	FullDayManagementUnitDates *[]string `json:"fullDayManagementUnitDates,omitempty"`
 
+	// FullDayEarliestStartOffsetMinutes - Earliest start offset in minutes for each full-day request date. Values may be null when time-off estimation is disabled or no estimate is available
+	FullDayEarliestStartOffsetMinutes *[]int `json:"fullDayEarliestStartOffsetMinutes,omitempty"`
+
+	// FullDayLatestEndOffsetMinutes - Latest end offset in minutes for each full-day request date. Values may be null when time-off estimation is disabled or no estimate is available
+	FullDayLatestEndOffsetMinutes *[]int `json:"fullDayLatestEndOffsetMinutes,omitempty"`
+
 	// PartialDayStartDateTimes - A set of start date-times in ISO-8601 format for partial day requests
 	PartialDayStartDateTimes *[]time.Time `json:"partialDayStartDateTimes,omitempty"`
 
@@ -116,6 +122,10 @@ func (o Createadmintimeoffrequest) MarshalJSON() ([]byte, error) {
 		
 		FullDayManagementUnitDates *[]string `json:"fullDayManagementUnitDates,omitempty"`
 		
+		FullDayEarliestStartOffsetMinutes *[]int `json:"fullDayEarliestStartOffsetMinutes,omitempty"`
+		
+		FullDayLatestEndOffsetMinutes *[]int `json:"fullDayLatestEndOffsetMinutes,omitempty"`
+		
 		PartialDayStartDateTimes *[]time.Time `json:"partialDayStartDateTimes,omitempty"`
 		
 		DailyDurationMinutes *int `json:"dailyDurationMinutes,omitempty"`
@@ -136,6 +146,10 @@ func (o Createadmintimeoffrequest) MarshalJSON() ([]byte, error) {
 		Notes: o.Notes,
 		
 		FullDayManagementUnitDates: o.FullDayManagementUnitDates,
+		
+		FullDayEarliestStartOffsetMinutes: o.FullDayEarliestStartOffsetMinutes,
+		
+		FullDayLatestEndOffsetMinutes: o.FullDayLatestEndOffsetMinutes,
 		
 		PartialDayStartDateTimes: o.PartialDayStartDateTimes,
 		
@@ -177,6 +191,16 @@ func (o *Createadmintimeoffrequest) UnmarshalJSON(b []byte) error {
 	if FullDayManagementUnitDates, ok := CreateadmintimeoffrequestMap["fullDayManagementUnitDates"].([]interface{}); ok {
 		FullDayManagementUnitDatesString, _ := json.Marshal(FullDayManagementUnitDates)
 		json.Unmarshal(FullDayManagementUnitDatesString, &o.FullDayManagementUnitDates)
+	}
+	
+	if FullDayEarliestStartOffsetMinutes, ok := CreateadmintimeoffrequestMap["fullDayEarliestStartOffsetMinutes"].([]interface{}); ok {
+		FullDayEarliestStartOffsetMinutesString, _ := json.Marshal(FullDayEarliestStartOffsetMinutes)
+		json.Unmarshal(FullDayEarliestStartOffsetMinutesString, &o.FullDayEarliestStartOffsetMinutes)
+	}
+	
+	if FullDayLatestEndOffsetMinutes, ok := CreateadmintimeoffrequestMap["fullDayLatestEndOffsetMinutes"].([]interface{}); ok {
+		FullDayLatestEndOffsetMinutesString, _ := json.Marshal(FullDayLatestEndOffsetMinutes)
+		json.Unmarshal(FullDayLatestEndOffsetMinutesString, &o.FullDayLatestEndOffsetMinutes)
 	}
 	
 	if PartialDayStartDateTimes, ok := CreateadmintimeoffrequestMap["partialDayStartDateTimes"].([]interface{}); ok {

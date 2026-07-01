@@ -106,6 +106,7 @@ docs/DeleteConversation-example.txt
 docs/DeleteConversationCustomattribute-example.txt
 docs/DeleteConversationParticipantCode-example.txt
 docs/DeleteConversationParticipantFlaggedreason-example.txt
+docs/DeleteConversationParticipantScreenmonitorsSession-example.txt
 docs/DeleteConversationRecordingAnnotation-example.txt
 docs/DeleteConversationsCallParticipantCommunicationPostflowaction-example.txt
 docs/DeleteConversationsCallParticipantConsult-example.txt
@@ -353,6 +354,7 @@ docs/DeleteUserRoutinglanguage-example.txt
 docs/DeleteUserRoutinglanguage-example.txt
 docs/DeleteUserRoutingskill-example.txt
 docs/DeleteUserRoutingskill-example.txt
+docs/DeleteUserScreenmonitorsSession-example.txt
 docs/DeleteUserStationAssociatedstation-example.txt
 docs/DeleteUserStationDefaultstation-example.txt
 docs/DeleteUserVerifier-example.txt
@@ -669,6 +671,7 @@ docs/GetConversationCommunicationInternalmessage-example.txt
 docs/GetConversationCommunicationInternalmessages-example.txt
 docs/GetConversationCustomattribute-example.txt
 docs/GetConversationCustomattributes-example.txt
+docs/GetConversationParticipantScreenmonitorsSession-example.txt
 docs/GetConversationParticipantSecureivrsession-example.txt
 docs/GetConversationParticipantSecureivrsessions-example.txt
 docs/GetConversationParticipantWrapup-example.txt
@@ -896,6 +899,7 @@ docs/GetFlowsInstancesSettingsLoglevels-example.txt
 docs/GetFlowsInstancesSettingsLoglevelsCharacteristics-example.txt
 docs/GetFlowsInstancesSettingsLoglevelsDefault-example.txt
 docs/GetFlowsJob-example.txt
+docs/GetFlowsLookup-example.txt
 docs/GetFlowsMilestone-example.txt
 docs/GetFlowsMilestones-example.txt
 docs/GetFlowsMilestonesDivisionviews-example.txt
@@ -1504,6 +1508,9 @@ docs/GetScimV2Schemas-example.txt
 docs/GetScimV2Serviceproviderconfig-example.txt
 docs/GetScimV2User-example.txt
 docs/GetScimV2Users-example.txt
+docs/GetScreenmonitorsSessionsDetails-example.txt
+docs/GetScreenmonitorsSettings-example.txt
+docs/GetScreenmonitorsUserSessions-example.txt
 docs/GetScript-example.txt
 docs/GetScriptPage-example.txt
 docs/GetScriptPages-example.txt
@@ -1746,6 +1753,7 @@ docs/GetUserRoutinglanguages-example.txt
 docs/GetUserRoutingskills-example.txt
 docs/GetUserRoutingskills-example.txt
 docs/GetUserRoutingstatus-example.txt
+docs/GetUserScreenmonitorsSession-example.txt
 docs/GetUserSkillgroups-example.txt
 docs/GetUserSkillgroups-example.txt
 docs/GetUserState-example.txt
@@ -1849,6 +1857,7 @@ docs/GetWorkforcemanagementBusinessunitAlternativeshiftsSettings-example.txt
 docs/GetWorkforcemanagementBusinessunitAlternativeshiftsTrade-example.txt
 docs/GetWorkforcemanagementBusinessunitAlternativeshiftsTradesSearchJob-example.txt
 docs/GetWorkforcemanagementBusinessunitCapacityplan-example.txt
+docs/GetWorkforcemanagementBusinessunitCapacityplanForecast-example.txt
 docs/GetWorkforcemanagementBusinessunitCapacityplanStaffinggroupallocations-example.txt
 docs/GetWorkforcemanagementBusinessunitCapacityplanStaffingrequirements-example.txt
 docs/GetWorkforcemanagementBusinessunitCapacityplanningLongtermrequirementsAutomaticbestmethodWeekForecast-example.txt
@@ -2078,7 +2087,11 @@ docs/PatchEmployeeengagementCelebration-example.txt
 docs/PatchEmployeeperformanceExternalmetricsDefinition-example.txt
 docs/PatchExternalcontactsContact-example.txt
 docs/PatchExternalcontactsContactIdentifiers-example.txt
+docs/PatchExternalcontactsContactNote-example.txt
+docs/PatchExternalcontactsOrganization-example.txt
 docs/PatchExternalcontactsOrganizationIdentifiers-example.txt
+docs/PatchExternalcontactsOrganizationNote-example.txt
+docs/PatchExternalcontactsRelationship-example.txt
 docs/PatchFlowsInstancesSettingsExecutiondata-example.txt
 docs/PatchGamificationContest-example.txt
 docs/PatchGeolocationsSettings-example.txt
@@ -2439,6 +2452,7 @@ docs/PostConversationParticipantReplaceAgent-example.txt
 docs/PostConversationParticipantReplaceContactExternal-example.txt
 docs/PostConversationParticipantReplaceExternal-example.txt
 docs/PostConversationParticipantReplaceQueue-example.txt
+docs/PostConversationParticipantScreenmonitorsSessions-example.txt
 docs/PostConversationParticipantSecureivrsessions-example.txt
 docs/PostConversationParticipantTransfer-example.txt
 docs/PostConversationRecordingAnnotations-example.txt
@@ -2893,6 +2907,7 @@ docs/PostRoutingUtilizationLabels-example.txt
 docs/PostRoutingWrapupcodes-example.txt
 docs/PostScimUsers-example.txt
 docs/PostScimV2Users-example.txt
+docs/PostScreenmonitorsSessionsUsersDetails-example.txt
 docs/PostScreenrecordingToken-example.txt
 docs/PostScriptExport-example.txt
 docs/PostScriptsPublished-example.txt
@@ -2998,6 +3013,7 @@ docs/PostUserRoutinglanguages-example.txt
 docs/PostUserRoutinglanguages-example.txt
 docs/PostUserRoutingskills-example.txt
 docs/PostUserRoutingskills-example.txt
+docs/PostUserScreenmonitorsSessions-example.txt
 docs/PostUsers-example.txt
 docs/PostUsersCustomattributesSchemas-example.txt
 docs/PostUsersDevelopmentActivitiesAggregatesQuery-example.txt
@@ -3366,6 +3382,7 @@ docs/PutScimGroup-example.txt
 docs/PutScimUser-example.txt
 docs/PutScimV2Group-example.txt
 docs/PutScimV2User-example.txt
+docs/PutScreenmonitorsSettings-example.txt
 docs/PutSocialmediaEscalationrule-example.txt
 docs/PutSocialmediaTopicDataingestionrulesFacebookFacebookIngestionRuleId-example.txt
 docs/PutSocialmediaTopicDataingestionrulesGooglebusinessprofileGoogleBusinessProfileIngestionRuleId-example.txt
@@ -3440,6 +3457,7 @@ docs/RecordingApi.json
 docs/ResponseManagementApi.json
 docs/RoutingApi.json
 docs/SCIMApi.json
+docs/ScreenMonitoringApi.json
 docs/ScriptsApi.json
 docs/SearchApi.json
 docs/SettingsApi.json
@@ -3805,6 +3823,7 @@ platformclientv2/appleintegrationentitylisting.go
 platformclientv2/appleintegrationrequest.go
 platformclientv2/appleintegrationupdaterequest.go
 platformclientv2/appleinvitation.go
+platformclientv2/appleinvitationnotificationparameters.go
 platformclientv2/appleopaqueid.go
 platformclientv2/applepay.go
 platformclientv2/approvalnamespace.go
@@ -4206,6 +4225,7 @@ platformclientv2/bushorttermforecastweekreference.go
 platformclientv2/businessrulesapi.go
 platformclientv2/businessrulesdataschema.go
 platformclientv2/businessrulesdataschemalisting.go
+platformclientv2/businessrulesparentschemaref.go
 platformclientv2/businessrulesschemacreaterequest.go
 platformclientv2/businessrulesschemaupdaterequest.go
 platformclientv2/businessunitactivitycode.go
@@ -4329,6 +4349,9 @@ platformclientv2/campaignstats.go
 platformclientv2/campaigntimeslot.go
 platformclientv2/cannedresponselibraries.go
 platformclientv2/capacityplandeleterequest.go
+platformclientv2/capacityplanforecastinputsresponse.go
+platformclientv2/capacityplanforecastinputstemplate.go
+platformclientv2/capacityplanforecastmetrics.go
 platformclientv2/capacityplanlistitem.go
 platformclientv2/capacityplanmetadata.go
 platformclientv2/capacityplanmetricssummary.go
@@ -5917,6 +5940,7 @@ platformclientv2/externalcontactscontactchangedtopicobject.go
 platformclientv2/externalcontactscontactchangedtopicphonenumber.go
 platformclientv2/externalcontactscontactchangedtopicticker.go
 platformclientv2/externalcontactscontactchangedtopictwitterid.go
+platformclientv2/externalcontactscontactchangedtopicwhatsappbusinessscopedid.go
 platformclientv2/externalcontactscontactchangedtopicwhatsappid.go
 platformclientv2/externalcontactscontactnotechangedtopicdivision.go
 platformclientv2/externalcontactscontactnotechangedtopicnote.go
@@ -5962,6 +5986,7 @@ platformclientv2/externalcontactsunresolvedcontactchangedtopicobject.go
 platformclientv2/externalcontactsunresolvedcontactchangedtopicphonenumber.go
 platformclientv2/externalcontactsunresolvedcontactchangedtopicticker.go
 platformclientv2/externalcontactsunresolvedcontactchangedtopictwitterid.go
+platformclientv2/externalcontactsunresolvedcontactchangedtopicwhatsappbusinessscopedid.go
 platformclientv2/externalcontactsunresolvedcontactchangedtopicwhatsappid.go
 platformclientv2/externaldatasource.go
 platformclientv2/externalestablishedevent.go
@@ -6137,6 +6162,7 @@ platformclientv2/followersfilter.go
 platformclientv2/footertemplate.go
 platformclientv2/forecastabandonrateresponse.go
 platformclientv2/forecastaveragespeedofanswerresponse.go
+platformclientv2/forecastinputplanninggroupdata.go
 platformclientv2/forecastmetadata.go
 platformclientv2/forecastplanninggroupdata.go
 platformclientv2/forecastplanninggroupresponse.go
@@ -6769,6 +6795,7 @@ platformclientv2/knowledgesyncjobstatistics.go
 platformclientv2/knowledgesyncrequest.go
 platformclientv2/knowledgev3conversationcontext.go
 platformclientv2/knowledgev3conversationcontextresponse.go
+platformclientv2/knowledgev3previewconversationcontext.go
 platformclientv2/kpiresult.go
 platformclientv2/label.go
 platformclientv2/labelcreaterequest.go
@@ -7689,6 +7716,7 @@ platformclientv2/queryopportunityenrollmentsresponse.go
 platformclientv2/queryopportunityenrollmentsresult.go
 platformclientv2/queryplanninggrouptostaffinggroupsrequest.go
 platformclientv2/queryprocessingconfig.go
+platformclientv2/queryreformulationcontext.go
 platformclientv2/queryrequest.go
 platformclientv2/queryrequestclause.go
 platformclientv2/queryrequestfilter.go
@@ -8007,6 +8035,7 @@ platformclientv2/queueconversationvideoeventtopicworkflow.go
 platformclientv2/queueconversationvideoeventtopicwrapup.go
 platformclientv2/queueemailaddress.go
 platformclientv2/queueentitylisting.go
+platformclientv2/queuefullreference.go
 platformclientv2/queuemediasettings.go
 platformclientv2/queuemember.go
 platformclientv2/queuememberentitylisting.go
@@ -8341,6 +8370,13 @@ platformclientv2/scimv2user.go
 platformclientv2/scorablesurvey.go
 platformclientv2/scoredagent.go
 platformclientv2/screenmonitoring.go
+platformclientv2/screenmonitoringapi.go
+platformclientv2/screenmonitoringdetails.go
+platformclientv2/screenmonitoringsession.go
+platformclientv2/screenmonitoringsessionentitylisting.go
+platformclientv2/screenmonitoringuserdetails.go
+platformclientv2/screenmonitoringuserdetailsentitylisting.go
+platformclientv2/screenmonitorsettings.go
 platformclientv2/screenrecordingactivesessions.go
 platformclientv2/screenrecordingmetadata.go
 platformclientv2/screenrecordingmetadatarequest.go
@@ -8579,6 +8615,7 @@ platformclientv2/speechtextanalyticsconversationsummary.go
 platformclientv2/speechtextanalyticsconversationsummarylisting.go
 platformclientv2/speechtextanalyticssettingsrequest.go
 platformclientv2/speechtextanalyticssettingsresponse.go
+platformclientv2/speechtextanalyticssummarylabel.go
 platformclientv2/splittinginformation.go
 platformclientv2/stacategory.go
 platformclientv2/staffinggroupallocation.go
@@ -8598,6 +8635,7 @@ platformclientv2/stageplanreference.go
 platformclientv2/stageplanupdate.go
 platformclientv2/stagereference.go
 platformclientv2/starrabledivision.go
+platformclientv2/startscreenmonitorresponsebody.go
 platformclientv2/stateventcampaigntopicintervalmetrics.go
 platformclientv2/stateventcampaigntopicmetricstats.go
 platformclientv2/stateventcampaigntopicstatsnotification.go
@@ -8771,6 +8809,7 @@ platformclientv2/teamactivityquerypredicate.go
 platformclientv2/teamactivityresponse.go
 platformclientv2/teamaddmemberfailure.go
 platformclientv2/teamentitylisting.go
+platformclientv2/teamfullreference.go
 platformclientv2/teammemberaddlistingresponse.go
 platformclientv2/teammemberentitylisting.go
 platformclientv2/teammembers.go
@@ -9157,6 +9196,7 @@ platformclientv2/userentitylisting.go
 platformclientv2/userestablishedevent.go
 platformclientv2/userexpands.go
 platformclientv2/userexternalidentifier.go
+platformclientv2/userfullreference.go
 platformclientv2/usergreetingeventgreeting.go
 platformclientv2/usergreetingeventgreetingaudiofile.go
 platformclientv2/usergreetingeventgreetingowner.go
@@ -9341,6 +9381,7 @@ platformclientv2/v2wfmmainforecastexporthistoricaleventmainforecastexportnotific
 platformclientv2/v2wfmmainforecastexportsnapshoteventmainforecasterrorbody.go
 platformclientv2/v2wfmmainforecastexportsnapshoteventmainforecastexportnotification.go
 platformclientv2/v3knowledgesearchclientapplication.go
+platformclientv2/v3knowledgesearchpreviewclientapplication.go
 platformclientv2/v3sourcecreaterequest.go
 platformclientv2/v3sourcedetailedresponse.go
 platformclientv2/v3sourceexpandablelisting.go

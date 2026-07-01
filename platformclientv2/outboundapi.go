@@ -5065,6 +5065,8 @@ func (a OutboundApi) GetOutboundContactlistfilters(pageSize int, pageNumber int,
 // GetOutboundContactlists invokes GET /api/v2/outbound/contactlists
 //
 // Query a list of contact lists.
+//
+// Any ContactList field can be used as a query parameter to filter results. Multiple values can be specified for a field, and filter type prefixes can be used inline. Example: dateCreated&#x3D;greaterthan:2025-01-01T00:00:00.000Z&amp;dateCreated&#x3D;lessthan:2027-01-01T00:00:00.000Z. See https://developer.genesys.cloud/routing/outbound/filter-type for available filter types.
 func (a OutboundApi) GetOutboundContactlists(includeImportStatus bool, includeSize bool, pageSize int, pageNumber int, allowEmptyResult bool, filterType string, name string, id []string, divisionId []string, sortBy string, sortOrder string) (*Contactlistentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

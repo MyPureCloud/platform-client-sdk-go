@@ -26,6 +26,12 @@ type Updatebusinessunitsettingsrequest struct {
 	// Notifications - Notification settings
 	Notifications *Bunotificationsettingsrequest `json:"notifications,omitempty"`
 
+	// Learning - Learning settings
+	Learning *Buactivitysettingsrequest `json:"learning,omitempty"`
+
+	// Coaching - Coaching settings
+	Coaching *Buactivitysettingsrequest `json:"coaching,omitempty"`
+
 	// Metadata - Version metadata for this business unit
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 }
@@ -103,6 +109,10 @@ func (o Updatebusinessunitsettingsrequest) MarshalJSON() ([]byte, error) {
 		
 		Notifications *Bunotificationsettingsrequest `json:"notifications,omitempty"`
 		
+		Learning *Buactivitysettingsrequest `json:"learning,omitempty"`
+		
+		Coaching *Buactivitysettingsrequest `json:"coaching,omitempty"`
+		
 		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 		Alias
 	}{ 
@@ -115,6 +125,10 @@ func (o Updatebusinessunitsettingsrequest) MarshalJSON() ([]byte, error) {
 		Scheduling: o.Scheduling,
 		
 		Notifications: o.Notifications,
+		
+		Learning: o.Learning,
+		
+		Coaching: o.Coaching,
 		
 		Metadata: o.Metadata,
 		Alias:    (Alias)(o),
@@ -149,6 +163,16 @@ func (o *Updatebusinessunitsettingsrequest) UnmarshalJSON(b []byte) error {
 	if Notifications, ok := UpdatebusinessunitsettingsrequestMap["notifications"].(map[string]interface{}); ok {
 		NotificationsString, _ := json.Marshal(Notifications)
 		json.Unmarshal(NotificationsString, &o.Notifications)
+	}
+	
+	if Learning, ok := UpdatebusinessunitsettingsrequestMap["learning"].(map[string]interface{}); ok {
+		LearningString, _ := json.Marshal(Learning)
+		json.Unmarshal(LearningString, &o.Learning)
+	}
+	
+	if Coaching, ok := UpdatebusinessunitsettingsrequestMap["coaching"].(map[string]interface{}); ok {
+		CoachingString, _ := json.Marshal(Coaching)
+		json.Unmarshal(CoachingString, &o.Coaching)
 	}
 	
 	if Metadata, ok := UpdatebusinessunitsettingsrequestMap["metadata"].(map[string]interface{}); ok {

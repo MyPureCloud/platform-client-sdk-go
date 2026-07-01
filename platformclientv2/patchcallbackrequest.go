@@ -32,6 +32,9 @@ type Patchcallbackrequest struct {
 
 	// ValidateCallbackNumbers - validateCallbackNumbers
 	ValidateCallbackNumbers *bool `json:"validateCallbackNumbers,omitempty"`
+
+	// CustomerFirstCallbackDeliveryMode - How customer-first callback agent reservation is applied for this callback. useAgentReservation forces reservation on; noAgentReservation forces it off; useQueueSetting uses the queue configuration.
+	CustomerFirstCallbackDeliveryMode *string `json:"customerFirstCallbackDeliveryMode,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -118,6 +121,8 @@ func (o Patchcallbackrequest) MarshalJSON() ([]byte, error) {
 		CallbackNumbers *[]string `json:"callbackNumbers,omitempty"`
 		
 		ValidateCallbackNumbers *bool `json:"validateCallbackNumbers,omitempty"`
+		
+		CustomerFirstCallbackDeliveryMode *string `json:"customerFirstCallbackDeliveryMode,omitempty"`
 		Alias
 	}{ 
 		ConversationId: o.ConversationId,
@@ -133,6 +138,8 @@ func (o Patchcallbackrequest) MarshalJSON() ([]byte, error) {
 		CallbackNumbers: o.CallbackNumbers,
 		
 		ValidateCallbackNumbers: o.ValidateCallbackNumbers,
+		
+		CustomerFirstCallbackDeliveryMode: o.CustomerFirstCallbackDeliveryMode,
 		Alias:    (Alias)(o),
 	})
 }
@@ -172,6 +179,10 @@ func (o *Patchcallbackrequest) UnmarshalJSON(b []byte) error {
 	
 	if ValidateCallbackNumbers, ok := PatchcallbackrequestMap["validateCallbackNumbers"].(bool); ok {
 		o.ValidateCallbackNumbers = &ValidateCallbackNumbers
+	}
+    
+	if CustomerFirstCallbackDeliveryMode, ok := PatchcallbackrequestMap["customerFirstCallbackDeliveryMode"].(string); ok {
+		o.CustomerFirstCallbackDeliveryMode = &CustomerFirstCallbackDeliveryMode
 	}
     
 

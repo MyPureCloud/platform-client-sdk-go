@@ -17,6 +17,9 @@ type Buschedulingsettingsrequest struct {
 	// SyncTimeOffProperties - Synchronize set of time off properties from scheduled activities to time off requests when the schedule is published
 	SyncTimeOffProperties *Setwrappersynctimeoffproperty `json:"syncTimeOffProperties,omitempty"`
 
+	// EnableTimeOffFullDayEstimation - Enables start and end time estimation for full-day time-off requests. When enabled, syncTimeOffProperties must include FullDayEarliestStartOffsetMinutes and FullDayLatestEndOffsetMinutes
+	EnableTimeOffFullDayEstimation *bool `json:"enableTimeOffFullDayEstimation,omitempty"`
+
 	// ServiceGoalImpact - Configures the max percent increase and decrease of service goals for this business unit
 	ServiceGoalImpact *Wfmservicegoalimpactsettings `json:"serviceGoalImpact,omitempty"`
 
@@ -97,6 +100,8 @@ func (o Buschedulingsettingsrequest) MarshalJSON() ([]byte, error) {
 		
 		SyncTimeOffProperties *Setwrappersynctimeoffproperty `json:"syncTimeOffProperties,omitempty"`
 		
+		EnableTimeOffFullDayEstimation *bool `json:"enableTimeOffFullDayEstimation,omitempty"`
+		
 		ServiceGoalImpact *Wfmservicegoalimpactsettings `json:"serviceGoalImpact,omitempty"`
 		
 		AllowWorkPlanPerMinuteGranularity *bool `json:"allowWorkPlanPerMinuteGranularity,omitempty"`
@@ -109,6 +114,8 @@ func (o Buschedulingsettingsrequest) MarshalJSON() ([]byte, error) {
 		MessageSeverities: o.MessageSeverities,
 		
 		SyncTimeOffProperties: o.SyncTimeOffProperties,
+		
+		EnableTimeOffFullDayEstimation: o.EnableTimeOffFullDayEstimation,
 		
 		ServiceGoalImpact: o.ServiceGoalImpact,
 		
@@ -138,6 +145,10 @@ func (o *Buschedulingsettingsrequest) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(SyncTimeOffPropertiesString, &o.SyncTimeOffProperties)
 	}
 	
+	if EnableTimeOffFullDayEstimation, ok := BuschedulingsettingsrequestMap["enableTimeOffFullDayEstimation"].(bool); ok {
+		o.EnableTimeOffFullDayEstimation = &EnableTimeOffFullDayEstimation
+	}
+    
 	if ServiceGoalImpact, ok := BuschedulingsettingsrequestMap["serviceGoalImpact"].(map[string]interface{}); ok {
 		ServiceGoalImpactString, _ := json.Marshal(ServiceGoalImpact)
 		json.Unmarshal(ServiceGoalImpactString, &o.ServiceGoalImpact)

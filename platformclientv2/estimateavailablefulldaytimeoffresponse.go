@@ -26,6 +26,12 @@ type Estimateavailablefulldaytimeoffresponse struct {
 
 	// OverrideDateType - The override date type, if the requested day is an override date
 	OverrideDateType *string `json:"overrideDateType,omitempty"`
+
+	// EarliestStartOffsetMinutes - Earliest start time in minutes from midnight for full day request. Value may be null when time-off estimation is disabled
+	EarliestStartOffsetMinutes *int `json:"earliestStartOffsetMinutes,omitempty"`
+
+	// LatestEndOffsetMinutes - Latest end time in minutes from midnight for full day request. Value may be null when time-off estimation is disabled
+	LatestEndOffsetMinutes *int `json:"latestEndOffsetMinutes,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -107,6 +113,10 @@ func (o Estimateavailablefulldaytimeoffresponse) MarshalJSON() ([]byte, error) {
 		Flexible *bool `json:"flexible,omitempty"`
 		
 		OverrideDateType *string `json:"overrideDateType,omitempty"`
+		
+		EarliestStartOffsetMinutes *int `json:"earliestStartOffsetMinutes,omitempty"`
+		
+		LatestEndOffsetMinutes *int `json:"latestEndOffsetMinutes,omitempty"`
 		Alias
 	}{ 
 		Date: Date,
@@ -118,6 +128,10 @@ func (o Estimateavailablefulldaytimeoffresponse) MarshalJSON() ([]byte, error) {
 		Flexible: o.Flexible,
 		
 		OverrideDateType: o.OverrideDateType,
+		
+		EarliestStartOffsetMinutes: o.EarliestStartOffsetMinutes,
+		
+		LatestEndOffsetMinutes: o.LatestEndOffsetMinutes,
 		Alias:    (Alias)(o),
 	})
 }
@@ -152,6 +166,16 @@ func (o *Estimateavailablefulldaytimeoffresponse) UnmarshalJSON(b []byte) error 
 		o.OverrideDateType = &OverrideDateType
 	}
     
+	if EarliestStartOffsetMinutes, ok := EstimateavailablefulldaytimeoffresponseMap["earliestStartOffsetMinutes"].(float64); ok {
+		EarliestStartOffsetMinutesInt := int(EarliestStartOffsetMinutes)
+		o.EarliestStartOffsetMinutes = &EarliestStartOffsetMinutesInt
+	}
+	
+	if LatestEndOffsetMinutes, ok := EstimateavailablefulldaytimeoffresponseMap["latestEndOffsetMinutes"].(float64); ok {
+		LatestEndOffsetMinutesInt := int(LatestEndOffsetMinutes)
+		o.LatestEndOffsetMinutes = &LatestEndOffsetMinutesInt
+	}
+	
 
 	return nil
 }

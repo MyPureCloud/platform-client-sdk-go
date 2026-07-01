@@ -18,7 +18,7 @@ type Caseplancreateresponse struct {
 	// Name - The name of the Caseplan.
 	Name *string `json:"name,omitempty"`
 
-	// Division - The division to which this entity belongs.
+	// Division - The division to which this Caseplan belongs.
 	Division *Starrabledivision `json:"division,omitempty"`
 
 	// Description - The description of the Caseplan.

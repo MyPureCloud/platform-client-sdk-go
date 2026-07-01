@@ -10,7 +10,19 @@ import (
 // Appleinvitation - Apple Messages for Business invitation template configuration
 type Appleinvitation struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// BusinessName - The business name displayed in the invitation
+	BusinessName *string `json:"businessName,omitempty"`
+
+	// TranscriptMessage - The transcript message displayed in the invitation
+	TranscriptMessage *string `json:"transcriptMessage,omitempty"`
+
+	// TemplateType - The template type for the invitation
+	TemplateType *string `json:"templateType,omitempty"`
+
+	// Locale - The locale for the invitation
+	Locale *string `json:"locale,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Appleinvitation) SetField(field string, fieldValue interface{}) {
@@ -74,8 +86,24 @@ func (o Appleinvitation) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Appleinvitation
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		BusinessName *string `json:"businessName,omitempty"`
+		
+		TranscriptMessage *string `json:"transcriptMessage,omitempty"`
+		
+		TemplateType *string `json:"templateType,omitempty"`
+		
+		Locale *string `json:"locale,omitempty"`
+		Alias
+	}{ 
+		BusinessName: o.BusinessName,
+		
+		TranscriptMessage: o.TranscriptMessage,
+		
+		TemplateType: o.TemplateType,
+		
+		Locale: o.Locale,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -86,6 +114,22 @@ func (o *Appleinvitation) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if BusinessName, ok := AppleinvitationMap["businessName"].(string); ok {
+		o.BusinessName = &BusinessName
+	}
+    
+	if TranscriptMessage, ok := AppleinvitationMap["transcriptMessage"].(string); ok {
+		o.TranscriptMessage = &TranscriptMessage
+	}
+    
+	if TemplateType, ok := AppleinvitationMap["templateType"].(string); ok {
+		o.TemplateType = &TemplateType
+	}
+    
+	if Locale, ok := AppleinvitationMap["locale"].(string); ok {
+		o.Locale = &Locale
+	}
+    
 
 	return nil
 }

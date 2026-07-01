@@ -19,6 +19,12 @@ type Agenttimeoffrequestpatch struct {
 
 	// Notes - Notes about the time off request. Can only be edited while the request is still pending
 	Notes *string `json:"notes,omitempty"`
+
+	// FullDayEarliestStartOffsetMinutes - Earliest start offset in minutes for each full-day request date. Values may be null when time-off estimation is disabled or no estimate is available
+	FullDayEarliestStartOffsetMinutes *Listwrapperinteger `json:"fullDayEarliestStartOffsetMinutes,omitempty"`
+
+	// FullDayLatestEndOffsetMinutes - Latest end offset in minutes for each full-day request date. Values may be null when time-off estimation is disabled or no estimate is available
+	FullDayLatestEndOffsetMinutes *Listwrapperinteger `json:"fullDayLatestEndOffsetMinutes,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +95,10 @@ func (o Agenttimeoffrequestpatch) MarshalJSON() ([]byte, error) {
 		Status *string `json:"status,omitempty"`
 		
 		Notes *string `json:"notes,omitempty"`
+		
+		FullDayEarliestStartOffsetMinutes *Listwrapperinteger `json:"fullDayEarliestStartOffsetMinutes,omitempty"`
+		
+		FullDayLatestEndOffsetMinutes *Listwrapperinteger `json:"fullDayLatestEndOffsetMinutes,omitempty"`
 		Alias
 	}{ 
 		MarkedAsRead: o.MarkedAsRead,
@@ -96,6 +106,10 @@ func (o Agenttimeoffrequestpatch) MarshalJSON() ([]byte, error) {
 		Status: o.Status,
 		
 		Notes: o.Notes,
+		
+		FullDayEarliestStartOffsetMinutes: o.FullDayEarliestStartOffsetMinutes,
+		
+		FullDayLatestEndOffsetMinutes: o.FullDayLatestEndOffsetMinutes,
 		Alias:    (Alias)(o),
 	})
 }
@@ -119,6 +133,16 @@ func (o *Agenttimeoffrequestpatch) UnmarshalJSON(b []byte) error {
 		o.Notes = &Notes
 	}
     
+	if FullDayEarliestStartOffsetMinutes, ok := AgenttimeoffrequestpatchMap["fullDayEarliestStartOffsetMinutes"].(map[string]interface{}); ok {
+		FullDayEarliestStartOffsetMinutesString, _ := json.Marshal(FullDayEarliestStartOffsetMinutes)
+		json.Unmarshal(FullDayEarliestStartOffsetMinutesString, &o.FullDayEarliestStartOffsetMinutes)
+	}
+	
+	if FullDayLatestEndOffsetMinutes, ok := AgenttimeoffrequestpatchMap["fullDayLatestEndOffsetMinutes"].(map[string]interface{}); ok {
+		FullDayLatestEndOffsetMinutesString, _ := json.Marshal(FullDayLatestEndOffsetMinutes)
+		json.Unmarshal(FullDayLatestEndOffsetMinutesString, &o.FullDayLatestEndOffsetMinutes)
+	}
+	
 
 	return nil
 }

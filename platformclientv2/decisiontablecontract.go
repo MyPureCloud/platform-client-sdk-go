@@ -12,7 +12,7 @@ type Decisiontablecontract struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// ParentSchema - DSS schema entity defining source properties for the decision table contract schemas
-	ParentSchema *Domainentityref `json:"parentSchema,omitempty"`
+	ParentSchema *Businessrulesparentschemaref `json:"parentSchema,omitempty"`
 
 	// RowAuthoringSchema - JSON schema describing required value types for each column in every row in a decision table
 	RowAuthoringSchema *Jsonschemadocument `json:"rowAuthoringSchema,omitempty"`
@@ -87,7 +87,7 @@ func (o Decisiontablecontract) MarshalJSON() ([]byte, error) {
 	type Alias Decisiontablecontract
 	
 	return json.Marshal(&struct { 
-		ParentSchema *Domainentityref `json:"parentSchema,omitempty"`
+		ParentSchema *Businessrulesparentschemaref `json:"parentSchema,omitempty"`
 		
 		RowAuthoringSchema *Jsonschemadocument `json:"rowAuthoringSchema,omitempty"`
 		

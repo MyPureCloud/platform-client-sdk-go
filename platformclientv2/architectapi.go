@@ -7506,6 +7506,99 @@ func (a ArchitectApi) GetFlowsJob(jobId string, expand []string) (*Architectjobs
 	return successPayload, response, err
 }
 
+// GetFlowsLookup invokes GET /api/v2/flows/lookup
+//
+// Look up flows by ID
+//
+// Returns only flows matching the specified ID(s). Returns an empty listing if no flows match the given IDs.
+func (a ArchitectApi) GetFlowsLookup(id []string, pageNumber int, pageSize int, sortBy string, sortOrder string) (*Flowentitylisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/flows/lookup"
+	defaultReturn := new(Flowentitylisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'id' is set
+	if &id == nil {
+		// true
+		return defaultReturn, nil, errors.New("Missing required parameter 'id' when calling ArchitectApi->GetFlowsLookup")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
+	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
+	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Flowentitylisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Flowentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // GetFlowsMilestone invokes GET /api/v2/flows/milestones/{milestoneId}
 //
 // Get a flow milestone

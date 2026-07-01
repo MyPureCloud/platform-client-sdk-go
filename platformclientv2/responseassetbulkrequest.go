@@ -13,6 +13,12 @@ type Responseassetbulkrequest struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// AssetIds - List of Response Asset IDs (max 50)
 	AssetIds *[]string `json:"assetIds,omitempty"`
+
+	// SortBy - The field in the resource that you want to sort the results by. Allowed values: name, dateCreated, dateModified, contentLength
+	SortBy *string `json:"sortBy,omitempty"`
+
+	// SortOrder - The sort order for results
+	SortOrder *string `json:"sortOrder,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +85,17 @@ func (o Responseassetbulkrequest) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		AssetIds *[]string `json:"assetIds,omitempty"`
+		
+		SortBy *string `json:"sortBy,omitempty"`
+		
+		SortOrder *string `json:"sortOrder,omitempty"`
 		Alias
 	}{ 
 		AssetIds: o.AssetIds,
+		
+		SortBy: o.SortBy,
+		
+		SortOrder: o.SortOrder,
 		Alias:    (Alias)(o),
 	})
 }
@@ -98,6 +112,14 @@ func (o *Responseassetbulkrequest) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(AssetIdsString, &o.AssetIds)
 	}
 	
+	if SortBy, ok := ResponseassetbulkrequestMap["sortBy"].(string); ok {
+		o.SortBy = &SortBy
+	}
+    
+	if SortOrder, ok := ResponseassetbulkrequestMap["sortOrder"].(string); ok {
+		o.SortOrder = &SortOrder
+	}
+    
 
 	return nil
 }

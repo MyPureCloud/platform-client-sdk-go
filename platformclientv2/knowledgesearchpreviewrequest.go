@@ -28,6 +28,12 @@ type Knowledgesearchpreviewrequest struct {
 
 	// Filter - Composite tag filter applied to the search preview.
 	Filter *V3sourcetagfilter `json:"filter,omitempty"`
+
+	// Application - The touchpoint application to simulate for the preview.
+	Application *V3knowledgesearchpreviewclientapplication `json:"application,omitempty"`
+
+	// ConversationContext - The channel context to simulate for the preview.
+	ConversationContext *Knowledgev3previewconversationcontext `json:"conversationContext,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -104,6 +110,10 @@ func (o Knowledgesearchpreviewrequest) MarshalJSON() ([]byte, error) {
 		ConversationTurns *[]Knowledgeconversationturn `json:"conversationTurns,omitempty"`
 		
 		Filter *V3sourcetagfilter `json:"filter,omitempty"`
+		
+		Application *V3knowledgesearchpreviewclientapplication `json:"application,omitempty"`
+		
+		ConversationContext *Knowledgev3previewconversationcontext `json:"conversationContext,omitempty"`
 		Alias
 	}{ 
 		Query: o.Query,
@@ -117,6 +127,10 @@ func (o Knowledgesearchpreviewrequest) MarshalJSON() ([]byte, error) {
 		ConversationTurns: o.ConversationTurns,
 		
 		Filter: o.Filter,
+		
+		Application: o.Application,
+		
+		ConversationContext: o.ConversationContext,
 		Alias:    (Alias)(o),
 	})
 }
@@ -154,6 +168,16 @@ func (o *Knowledgesearchpreviewrequest) UnmarshalJSON(b []byte) error {
 	if Filter, ok := KnowledgesearchpreviewrequestMap["filter"].(map[string]interface{}); ok {
 		FilterString, _ := json.Marshal(Filter)
 		json.Unmarshal(FilterString, &o.Filter)
+	}
+	
+	if Application, ok := KnowledgesearchpreviewrequestMap["application"].(map[string]interface{}); ok {
+		ApplicationString, _ := json.Marshal(Application)
+		json.Unmarshal(ApplicationString, &o.Application)
+	}
+	
+	if ConversationContext, ok := KnowledgesearchpreviewrequestMap["conversationContext"].(map[string]interface{}); ok {
+		ConversationContextString, _ := json.Marshal(ConversationContext)
+		json.Unmarshal(ConversationContextString, &o.ConversationContext)
 	}
 	
 

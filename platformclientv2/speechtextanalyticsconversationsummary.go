@@ -21,6 +21,12 @@ type Speechtextanalyticsconversationsummary struct {
 	// Language - Language of the summary
 	Language *string `json:"language,omitempty"`
 
+	// SummaryId - The id of the summary
+	SummaryId *string `json:"summaryId,omitempty"`
+
+	// AgentId - The id of the agent associated with the summary
+	AgentId *string `json:"agentId,omitempty"`
+
 	// SourceId - The id of the source (program, agent assistant, or flow) from which summarization is triggered
 	SourceId *string `json:"sourceId,omitempty"`
 
@@ -32,6 +38,9 @@ type Speechtextanalyticsconversationsummary struct {
 
 	// DateCreated - Timestamp of when the summary was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
+
+	// Insights - Insights of the conversation
+	Insights *[]Conversationinsight `json:"insights,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -111,6 +120,10 @@ func (o Speechtextanalyticsconversationsummary) MarshalJSON() ([]byte, error) {
 		
 		Language *string `json:"language,omitempty"`
 		
+		SummaryId *string `json:"summaryId,omitempty"`
+		
+		AgentId *string `json:"agentId,omitempty"`
+		
 		SourceId *string `json:"sourceId,omitempty"`
 		
 		Summary *string `json:"summary,omitempty"`
@@ -118,6 +131,8 @@ func (o Speechtextanalyticsconversationsummary) MarshalJSON() ([]byte, error) {
 		Generated *bool `json:"generated,omitempty"`
 		
 		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		Insights *[]Conversationinsight `json:"insights,omitempty"`
 		Alias
 	}{ 
 		SummaryType: o.SummaryType,
@@ -126,6 +141,10 @@ func (o Speechtextanalyticsconversationsummary) MarshalJSON() ([]byte, error) {
 		
 		Language: o.Language,
 		
+		SummaryId: o.SummaryId,
+		
+		AgentId: o.AgentId,
+		
 		SourceId: o.SourceId,
 		
 		Summary: o.Summary,
@@ -133,6 +152,8 @@ func (o Speechtextanalyticsconversationsummary) MarshalJSON() ([]byte, error) {
 		Generated: o.Generated,
 		
 		DateCreated: DateCreated,
+		
+		Insights: o.Insights,
 		Alias:    (Alias)(o),
 	})
 }
@@ -156,6 +177,14 @@ func (o *Speechtextanalyticsconversationsummary) UnmarshalJSON(b []byte) error {
 		o.Language = &Language
 	}
     
+	if SummaryId, ok := SpeechtextanalyticsconversationsummaryMap["summaryId"].(string); ok {
+		o.SummaryId = &SummaryId
+	}
+    
+	if AgentId, ok := SpeechtextanalyticsconversationsummaryMap["agentId"].(string); ok {
+		o.AgentId = &AgentId
+	}
+    
 	if SourceId, ok := SpeechtextanalyticsconversationsummaryMap["sourceId"].(string); ok {
 		o.SourceId = &SourceId
 	}
@@ -171,6 +200,11 @@ func (o *Speechtextanalyticsconversationsummary) UnmarshalJSON(b []byte) error {
 	if dateCreatedString, ok := SpeechtextanalyticsconversationsummaryMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
+	}
+	
+	if Insights, ok := SpeechtextanalyticsconversationsummaryMap["insights"].([]interface{}); ok {
+		InsightsString, _ := json.Marshal(Insights)
+		json.Unmarshal(InsightsString, &o.Insights)
 	}
 	
 

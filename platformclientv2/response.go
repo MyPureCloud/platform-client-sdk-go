@@ -24,7 +24,7 @@ type Response struct {
 	// Libraries - One or more libraries response is associated with.
 	Libraries *[]Domainentityref `json:"libraries,omitempty"`
 
-	// Texts - One or more texts associated with the response.
+	// Texts - One or more texts associated with the response. Required for responseTypes: Standard, Footer, MessagingTemplate and CampaignEmailTemplate
 	Texts *[]Responsetext `json:"texts,omitempty"`
 
 	// CreatedBy - User that created the response
@@ -53,6 +53,9 @@ type Response struct {
 
 	// Footer - Footer template definition for responseType.Footer.
 	Footer *Footertemplate `json:"footer,omitempty"`
+
+	// AppleInvitation - Apple Messages for Business invitation template definition for responseType.AppleInvitation.
+	AppleInvitation *Appleinvitation `json:"appleInvitation,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -157,6 +160,8 @@ func (o Response) MarshalJSON() ([]byte, error) {
 		
 		Footer *Footertemplate `json:"footer,omitempty"`
 		
+		AppleInvitation *Appleinvitation `json:"appleInvitation,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -187,6 +192,8 @@ func (o Response) MarshalJSON() ([]byte, error) {
 		Assets: o.Assets,
 		
 		Footer: o.Footer,
+		
+		AppleInvitation: o.AppleInvitation,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -264,6 +271,11 @@ func (o *Response) UnmarshalJSON(b []byte) error {
 	if Footer, ok := ResponseMap["footer"].(map[string]interface{}); ok {
 		FooterString, _ := json.Marshal(Footer)
 		json.Unmarshal(FooterString, &o.Footer)
+	}
+	
+	if AppleInvitation, ok := ResponseMap["appleInvitation"].(map[string]interface{}); ok {
+		AppleInvitationString, _ := json.Marshal(AppleInvitation)
+		json.Unmarshal(AppleInvitationString, &o.AppleInvitation)
 	}
 	
 	if SelfUri, ok := ResponseMap["selfUri"].(string); ok {

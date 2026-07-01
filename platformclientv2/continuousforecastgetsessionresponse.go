@@ -20,11 +20,11 @@ type Continuousforecastgetsessionresponse struct {
 	// State - State of the latest session
 	State *string `json:"state,omitempty"`
 
+	// ForecastDataState - State of the forecast data
+	ForecastDataState *string `json:"forecastDataState,omitempty"`
+
 	// ErrorCode - Failed session error code
 	ErrorCode *string `json:"errorCode,omitempty"`
-
-	// RetrainInProgress - True if a model retrain is currently running for the organization, false if not
-	RetrainInProgress *bool `json:"retrainInProgress,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -96,9 +96,9 @@ func (o Continuousforecastgetsessionresponse) MarshalJSON() ([]byte, error) {
 		
 		State *string `json:"state,omitempty"`
 		
-		ErrorCode *string `json:"errorCode,omitempty"`
+		ForecastDataState *string `json:"forecastDataState,omitempty"`
 		
-		RetrainInProgress *bool `json:"retrainInProgress,omitempty"`
+		ErrorCode *string `json:"errorCode,omitempty"`
 		Alias
 	}{ 
 		SessionId: o.SessionId,
@@ -107,9 +107,9 @@ func (o Continuousforecastgetsessionresponse) MarshalJSON() ([]byte, error) {
 		
 		State: o.State,
 		
-		ErrorCode: o.ErrorCode,
+		ForecastDataState: o.ForecastDataState,
 		
-		RetrainInProgress: o.RetrainInProgress,
+		ErrorCode: o.ErrorCode,
 		Alias:    (Alias)(o),
 	})
 }
@@ -133,12 +133,12 @@ func (o *Continuousforecastgetsessionresponse) UnmarshalJSON(b []byte) error {
 		o.State = &State
 	}
     
-	if ErrorCode, ok := ContinuousforecastgetsessionresponseMap["errorCode"].(string); ok {
-		o.ErrorCode = &ErrorCode
+	if ForecastDataState, ok := ContinuousforecastgetsessionresponseMap["forecastDataState"].(string); ok {
+		o.ForecastDataState = &ForecastDataState
 	}
     
-	if RetrainInProgress, ok := ContinuousforecastgetsessionresponseMap["retrainInProgress"].(bool); ok {
-		o.RetrainInProgress = &RetrainInProgress
+	if ErrorCode, ok := ContinuousforecastgetsessionresponseMap["errorCode"].(string); ok {
+		o.ErrorCode = &ErrorCode
 	}
     
 

@@ -1004,7 +1004,7 @@ func (a LearningApi) GetLearningModuleVersion(moduleId string, versionId string,
 // GetLearningModules invokes GET /api/v2/learning/modules
 //
 // Get all learning modules of an organization
-func (a LearningApi) GetLearningModules(isArchived bool, types []string, pageSize int, pageNumber int, sortOrder string, sortBy string, searchTerm string, expand []string, isPublished string, statuses []string, externalIds []string) (*Learningmodulelist, *APIResponse, error) {
+func (a LearningApi) GetLearningModules(types []string, pageSize int, pageNumber int, sortOrder string, sortBy string, searchTerm string, expand []string, statuses []string, externalIds []string) (*Learningmodulelist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/learning/modules"
@@ -1031,8 +1031,6 @@ func (a LearningApi) GetLearningModules(isArchived bool, types []string, pageSiz
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	queryParams["isArchived"] = a.Configuration.APIClient.ParameterToString(isArchived, "")
-	
 	queryParams["types"] = a.Configuration.APIClient.ParameterToString(types, "multi")
 	
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
@@ -1046,8 +1044,6 @@ func (a LearningApi) GetLearningModules(isArchived bool, types []string, pageSiz
 	queryParams["searchTerm"] = a.Configuration.APIClient.ParameterToString(searchTerm, "")
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
-	
-	queryParams["isPublished"] = a.Configuration.APIClient.ParameterToString(isPublished, "")
 	
 	queryParams["statuses"] = a.Configuration.APIClient.ParameterToString(statuses, "multi")
 	

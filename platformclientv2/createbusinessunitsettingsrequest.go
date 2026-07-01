@@ -25,6 +25,12 @@ type Createbusinessunitsettingsrequest struct {
 
 	// Notifications - Notification settings
 	Notifications *Bunotificationsettingsrequest `json:"notifications,omitempty"`
+
+	// Learning - Learning settings
+	Learning *Buactivitysettingsrequest `json:"learning,omitempty"`
+
+	// Coaching - Coaching settings
+	Coaching *Buactivitysettingsrequest `json:"coaching,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -99,6 +105,10 @@ func (o Createbusinessunitsettingsrequest) MarshalJSON() ([]byte, error) {
 		Scheduling *Buschedulingsettingsrequest `json:"scheduling,omitempty"`
 		
 		Notifications *Bunotificationsettingsrequest `json:"notifications,omitempty"`
+		
+		Learning *Buactivitysettingsrequest `json:"learning,omitempty"`
+		
+		Coaching *Buactivitysettingsrequest `json:"coaching,omitempty"`
 		Alias
 	}{ 
 		StartDayOfWeek: o.StartDayOfWeek,
@@ -110,6 +120,10 @@ func (o Createbusinessunitsettingsrequest) MarshalJSON() ([]byte, error) {
 		Scheduling: o.Scheduling,
 		
 		Notifications: o.Notifications,
+		
+		Learning: o.Learning,
+		
+		Coaching: o.Coaching,
 		Alias:    (Alias)(o),
 	})
 }
@@ -142,6 +156,16 @@ func (o *Createbusinessunitsettingsrequest) UnmarshalJSON(b []byte) error {
 	if Notifications, ok := CreatebusinessunitsettingsrequestMap["notifications"].(map[string]interface{}); ok {
 		NotificationsString, _ := json.Marshal(Notifications)
 		json.Unmarshal(NotificationsString, &o.Notifications)
+	}
+	
+	if Learning, ok := CreatebusinessunitsettingsrequestMap["learning"].(map[string]interface{}); ok {
+		LearningString, _ := json.Marshal(Learning)
+		json.Unmarshal(LearningString, &o.Learning)
+	}
+	
+	if Coaching, ok := CreatebusinessunitsettingsrequestMap["coaching"].(map[string]interface{}); ok {
+		CoachingString, _ := json.Marshal(Coaching)
+		json.Unmarshal(CoachingString, &o.Coaching)
 	}
 	
 
