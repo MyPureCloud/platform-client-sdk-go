@@ -14,6 +14,9 @@ type Customerintentreference struct {
 	// Id - The ID of the customer intent.
 	Id *string `json:"id,omitempty"`
 
+	// Name
+	Name *string `json:"name,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -83,10 +86,14 @@ func (o Customerintentreference) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
+		Name *string `json:"name,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
+		
+		Name: o.Name,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -102,6 +109,10 @@ func (o *Customerintentreference) UnmarshalJSON(b []byte) error {
 	
 	if Id, ok := CustomerintentreferenceMap["id"].(string); ok {
 		o.Id = &Id
+	}
+    
+	if Name, ok := CustomerintentreferenceMap["name"].(string); ok {
+		o.Name = &Name
 	}
     
 	if SelfUri, ok := CustomerintentreferenceMap["selfUri"].(string); ok {

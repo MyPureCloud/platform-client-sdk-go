@@ -64,6 +64,9 @@ type Createactivityplanrequest struct {
 
 	// FixedAvailability - Fixed availability configuration for the activity plan
 	FixedAvailability *[]Fixedavailability `json:"fixedAvailability,omitempty"`
+
+	// StartTimeIncrementMinutes - The valid start times available when scheduling sessions
+	StartTimeIncrementMinutes *int `json:"startTimeIncrementMinutes,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -164,6 +167,8 @@ func (o Createactivityplanrequest) MarshalJSON() ([]byte, error) {
 		CountsAsPaidTime *bool `json:"countsAsPaidTime,omitempty"`
 		
 		FixedAvailability *[]Fixedavailability `json:"fixedAvailability,omitempty"`
+		
+		StartTimeIncrementMinutes *int `json:"startTimeIncrementMinutes,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -201,6 +206,8 @@ func (o Createactivityplanrequest) MarshalJSON() ([]byte, error) {
 		CountsAsPaidTime: o.CountsAsPaidTime,
 		
 		FixedAvailability: o.FixedAvailability,
+		
+		StartTimeIncrementMinutes: o.StartTimeIncrementMinutes,
 		Alias:    (Alias)(o),
 	})
 }
@@ -292,6 +299,11 @@ func (o *Createactivityplanrequest) UnmarshalJSON(b []byte) error {
 	if FixedAvailability, ok := CreateactivityplanrequestMap["fixedAvailability"].([]interface{}); ok {
 		FixedAvailabilityString, _ := json.Marshal(FixedAvailability)
 		json.Unmarshal(FixedAvailabilityString, &o.FixedAvailability)
+	}
+	
+	if StartTimeIncrementMinutes, ok := CreateactivityplanrequestMap["startTimeIncrementMinutes"].(float64); ok {
+		StartTimeIncrementMinutesInt := int(StartTimeIncrementMinutes)
+		o.StartTimeIncrementMinutes = &StartTimeIncrementMinutesInt
 	}
 	
 

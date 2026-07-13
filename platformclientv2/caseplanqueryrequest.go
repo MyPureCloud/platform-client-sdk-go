@@ -17,14 +17,20 @@ type Caseplanqueryrequest struct {
 	// NameSearchType - Type of name search to perform. Default is BEGINS_WITH.
 	NameSearchType *string `json:"nameSearchType,omitempty"`
 
+	// DivisionIds - Divisions to filter by. Accepts a list of UUIDs and/or '*'.
+	DivisionIds *[]string `json:"divisionIds,omitempty"`
+
+	// Filters - List of filter objects to be used in the search. Valid filter names are: 'id', 'name', 'divisionId'. Multiple filters are combined with AND logic.
+	Filters *[]Caseplanfilter `json:"filters,omitempty"`
+
+	// Attributes - List of entity attributes to be retrieved in the result.
+	Attributes *[]string `json:"attributes,omitempty"`
+
 	// PageSize - Number of results per page. Maximum is 200. Default is 25.
 	PageSize *int `json:"pageSize,omitempty"`
 
 	// After - Cursor for pagination. Use the \"after\" value from the previous response.
 	After *string `json:"after,omitempty"`
-
-	// DivisionIds - Divisions to filter by. Accepts a list of UUIDs and/or '*'.
-	DivisionIds *[]string `json:"divisionIds,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,22 +100,30 @@ func (o Caseplanqueryrequest) MarshalJSON() ([]byte, error) {
 		
 		NameSearchType *string `json:"nameSearchType,omitempty"`
 		
+		DivisionIds *[]string `json:"divisionIds,omitempty"`
+		
+		Filters *[]Caseplanfilter `json:"filters,omitempty"`
+		
+		Attributes *[]string `json:"attributes,omitempty"`
+		
 		PageSize *int `json:"pageSize,omitempty"`
 		
 		After *string `json:"after,omitempty"`
-		
-		DivisionIds *[]string `json:"divisionIds,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
 		
 		NameSearchType: o.NameSearchType,
 		
+		DivisionIds: o.DivisionIds,
+		
+		Filters: o.Filters,
+		
+		Attributes: o.Attributes,
+		
 		PageSize: o.PageSize,
 		
 		After: o.After,
-		
-		DivisionIds: o.DivisionIds,
 		Alias:    (Alias)(o),
 	})
 }
@@ -129,6 +143,21 @@ func (o *Caseplanqueryrequest) UnmarshalJSON(b []byte) error {
 		o.NameSearchType = &NameSearchType
 	}
     
+	if DivisionIds, ok := CaseplanqueryrequestMap["divisionIds"].([]interface{}); ok {
+		DivisionIdsString, _ := json.Marshal(DivisionIds)
+		json.Unmarshal(DivisionIdsString, &o.DivisionIds)
+	}
+	
+	if Filters, ok := CaseplanqueryrequestMap["filters"].([]interface{}); ok {
+		FiltersString, _ := json.Marshal(Filters)
+		json.Unmarshal(FiltersString, &o.Filters)
+	}
+	
+	if Attributes, ok := CaseplanqueryrequestMap["attributes"].([]interface{}); ok {
+		AttributesString, _ := json.Marshal(Attributes)
+		json.Unmarshal(AttributesString, &o.Attributes)
+	}
+	
 	if PageSize, ok := CaseplanqueryrequestMap["pageSize"].(float64); ok {
 		PageSizeInt := int(PageSize)
 		o.PageSize = &PageSizeInt
@@ -138,11 +167,6 @@ func (o *Caseplanqueryrequest) UnmarshalJSON(b []byte) error {
 		o.After = &After
 	}
     
-	if DivisionIds, ok := CaseplanqueryrequestMap["divisionIds"].([]interface{}); ok {
-		DivisionIdsString, _ := json.Marshal(DivisionIds)
-		json.Unmarshal(DivisionIdsString, &o.DivisionIds)
-	}
-	
 
 	return nil
 }

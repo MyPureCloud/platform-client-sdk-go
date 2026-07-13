@@ -16,6 +16,9 @@ type Wfmshifttradingjobcompleteeventtradeside struct {
 
 	// Shift
 	Shift *Wfmshifttradingjobcompleteeventtradeshift `json:"shift,omitempty"`
+
+	// ReviewNote
+	ReviewNote *string `json:"reviewNote,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Wfmshifttradingjobcompleteeventtradeside) MarshalJSON() ([]byte, error) 
 		UserId *string `json:"userId,omitempty"`
 		
 		Shift *Wfmshifttradingjobcompleteeventtradeshift `json:"shift,omitempty"`
+		
+		ReviewNote *string `json:"reviewNote,omitempty"`
 		Alias
 	}{ 
 		UserId: o.UserId,
 		
 		Shift: o.Shift,
+		
+		ReviewNote: o.ReviewNote,
 		Alias:    (Alias)(o),
 	})
 }
@@ -109,6 +116,10 @@ func (o *Wfmshifttradingjobcompleteeventtradeside) UnmarshalJSON(b []byte) error
 		json.Unmarshal(ShiftString, &o.Shift)
 	}
 	
+	if ReviewNote, ok := WfmshifttradingjobcompleteeventtradesideMap["reviewNote"].(string); ok {
+		o.ReviewNote = &ReviewNote
+	}
+    
 
 	return nil
 }

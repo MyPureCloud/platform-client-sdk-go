@@ -29,6 +29,9 @@ type Systempromptasset struct {
 	// MediaUri
 	MediaUri *string `json:"mediaUri,omitempty"`
 
+	// AudioFormat - Audio format info
+	AudioFormat *Audioformat `json:"audioFormat,omitempty"`
+
 	// TtsString
 	TtsString *string `json:"ttsString,omitempty"`
 
@@ -129,6 +132,8 @@ func (o Systempromptasset) MarshalJSON() ([]byte, error) {
 		
 		MediaUri *string `json:"mediaUri,omitempty"`
 		
+		AudioFormat *Audioformat `json:"audioFormat,omitempty"`
+		
 		TtsString *string `json:"ttsString,omitempty"`
 		
 		Text *string `json:"text,omitempty"`
@@ -157,6 +162,8 @@ func (o Systempromptasset) MarshalJSON() ([]byte, error) {
 		DurationSeconds: o.DurationSeconds,
 		
 		MediaUri: o.MediaUri,
+		
+		AudioFormat: o.AudioFormat,
 		
 		TtsString: o.TtsString,
 		
@@ -208,6 +215,11 @@ func (o *Systempromptasset) UnmarshalJSON(b []byte) error {
 		o.MediaUri = &MediaUri
 	}
     
+	if AudioFormat, ok := SystempromptassetMap["audioFormat"].(map[string]interface{}); ok {
+		AudioFormatString, _ := json.Marshal(AudioFormat)
+		json.Unmarshal(AudioFormatString, &o.AudioFormat)
+	}
+	
 	if TtsString, ok := SystempromptassetMap["ttsString"].(string); ok {
 		o.TtsString = &TtsString
 	}

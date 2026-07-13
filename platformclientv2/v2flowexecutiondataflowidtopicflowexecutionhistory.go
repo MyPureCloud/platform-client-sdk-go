@@ -62,6 +62,12 @@ type V2flowexecutiondataflowidtopicflowexecutionhistory struct {
 
 	// Warnings - If the flow encountered a warning during execution, this is an array of the warnings.
 	Warnings *[]V2flowexecutiondataflowidtopicflowerrorwarninginfo `json:"warnings,omitempty"`
+
+	// ExecutionHistoryUri - A signed URI to download the execution history data.
+	ExecutionHistoryUri *string `json:"executionHistoryUri,omitempty"`
+
+	// ExecutionHistoryUriTtl - Time to live in seconds for the executionHistoryUri.
+	ExecutionHistoryUriTtl *int `json:"executionHistoryUriTtl,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -176,6 +182,10 @@ func (o V2flowexecutiondataflowidtopicflowexecutionhistory) MarshalJSON() ([]byt
 		StartDateTime *string `json:"startDateTime,omitempty"`
 		
 		Warnings *[]V2flowexecutiondataflowidtopicflowerrorwarninginfo `json:"warnings,omitempty"`
+		
+		ExecutionHistoryUri *string `json:"executionHistoryUri,omitempty"`
+		
+		ExecutionHistoryUriTtl *int `json:"executionHistoryUriTtl,omitempty"`
 		Alias
 	}{ 
 		ExecutionId: o.ExecutionId,
@@ -211,6 +221,10 @@ func (o V2flowexecutiondataflowidtopicflowexecutionhistory) MarshalJSON() ([]byt
 		StartDateTime: StartDateTime,
 		
 		Warnings: o.Warnings,
+		
+		ExecutionHistoryUri: o.ExecutionHistoryUri,
+		
+		ExecutionHistoryUriTtl: o.ExecutionHistoryUriTtl,
 		Alias:    (Alias)(o),
 	})
 }
@@ -294,6 +308,15 @@ func (o *V2flowexecutiondataflowidtopicflowexecutionhistory) UnmarshalJSON(b []b
 	if Warnings, ok := V2flowexecutiondataflowidtopicflowexecutionhistoryMap["warnings"].([]interface{}); ok {
 		WarningsString, _ := json.Marshal(Warnings)
 		json.Unmarshal(WarningsString, &o.Warnings)
+	}
+	
+	if ExecutionHistoryUri, ok := V2flowexecutiondataflowidtopicflowexecutionhistoryMap["executionHistoryUri"].(string); ok {
+		o.ExecutionHistoryUri = &ExecutionHistoryUri
+	}
+    
+	if ExecutionHistoryUriTtl, ok := V2flowexecutiondataflowidtopicflowexecutionhistoryMap["executionHistoryUriTtl"].(float64); ok {
+		ExecutionHistoryUriTtlInt := int(ExecutionHistoryUriTtl)
+		o.ExecutionHistoryUriTtl = &ExecutionHistoryUriTtlInt
 	}
 	
 

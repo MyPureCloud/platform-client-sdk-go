@@ -40,6 +40,21 @@ type Updateactivityplanrequest struct {
 
 	// FixedAvailability - Fixed availability configuration for the activity plan
 	FixedAvailability *Listwrapperfixedavailability `json:"fixedAvailability,omitempty"`
+
+	// ActivityCodeId - The activity code associated with the activity plan
+	ActivityCodeId *string `json:"activityCodeId,omitempty"`
+
+	// VarType - The type of the activity plan
+	VarType *string `json:"type,omitempty"`
+
+	// LengthMinutes - The length in minutes of the activity plan
+	LengthMinutes *int `json:"lengthMinutes,omitempty"`
+
+	// CountsAsPaidTime - Whether the activity should count as paid time
+	CountsAsPaidTime *bool `json:"countsAsPaidTime,omitempty"`
+
+	// RecurrenceSettings - Settings controlling recurrence for the activity plan. If not set the activity plan will only occur once
+	RecurrenceSettings *Recurrencesettingsbase `json:"recurrenceSettings,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -124,6 +139,16 @@ func (o Updateactivityplanrequest) MarshalJSON() ([]byte, error) {
 		State *string `json:"state,omitempty"`
 		
 		FixedAvailability *Listwrapperfixedavailability `json:"fixedAvailability,omitempty"`
+		
+		ActivityCodeId *string `json:"activityCodeId,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
+		
+		LengthMinutes *int `json:"lengthMinutes,omitempty"`
+		
+		CountsAsPaidTime *bool `json:"countsAsPaidTime,omitempty"`
+		
+		RecurrenceSettings *Recurrencesettingsbase `json:"recurrenceSettings,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -145,6 +170,16 @@ func (o Updateactivityplanrequest) MarshalJSON() ([]byte, error) {
 		State: o.State,
 		
 		FixedAvailability: o.FixedAvailability,
+		
+		ActivityCodeId: o.ActivityCodeId,
+		
+		VarType: o.VarType,
+		
+		LengthMinutes: o.LengthMinutes,
+		
+		CountsAsPaidTime: o.CountsAsPaidTime,
+		
+		RecurrenceSettings: o.RecurrenceSettings,
 		Alias:    (Alias)(o),
 	})
 }
@@ -200,6 +235,28 @@ func (o *Updateactivityplanrequest) UnmarshalJSON(b []byte) error {
 	if FixedAvailability, ok := UpdateactivityplanrequestMap["fixedAvailability"].(map[string]interface{}); ok {
 		FixedAvailabilityString, _ := json.Marshal(FixedAvailability)
 		json.Unmarshal(FixedAvailabilityString, &o.FixedAvailability)
+	}
+	
+	if ActivityCodeId, ok := UpdateactivityplanrequestMap["activityCodeId"].(string); ok {
+		o.ActivityCodeId = &ActivityCodeId
+	}
+    
+	if VarType, ok := UpdateactivityplanrequestMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+    
+	if LengthMinutes, ok := UpdateactivityplanrequestMap["lengthMinutes"].(float64); ok {
+		LengthMinutesInt := int(LengthMinutes)
+		o.LengthMinutes = &LengthMinutesInt
+	}
+	
+	if CountsAsPaidTime, ok := UpdateactivityplanrequestMap["countsAsPaidTime"].(bool); ok {
+		o.CountsAsPaidTime = &CountsAsPaidTime
+	}
+    
+	if RecurrenceSettings, ok := UpdateactivityplanrequestMap["recurrenceSettings"].(map[string]interface{}); ok {
+		RecurrenceSettingsString, _ := json.Marshal(RecurrenceSettings)
+		json.Unmarshal(RecurrenceSettingsString, &o.RecurrenceSettings)
 	}
 	
 

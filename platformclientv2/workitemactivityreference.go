@@ -7,43 +7,19 @@ import (
 	"strings"
 )
 
-// Ucintegrationlisting
-type Ucintegrationlisting struct { 
+// Workitemactivityreference
+type Workitemactivityreference struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Entities
-	Entities *[]Ucintegration `json:"entities,omitempty"`
+	// Id - The globally unique identifier for the object.
+	Id *string `json:"id,omitempty"`
 
-	// PageSize
-	PageSize *int `json:"pageSize,omitempty"`
-
-	// PageNumber
-	PageNumber *int `json:"pageNumber,omitempty"`
-
-	// Total
-	Total *int `json:"total,omitempty"`
-
-	// FirstUri
-	FirstUri *string `json:"firstUri,omitempty"`
-
-	// NextUri
-	NextUri *string `json:"nextUri,omitempty"`
-
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
-
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
-	// SelfUri
+	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
-
-	// PageCount
-	PageCount *int `json:"pageCount,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Ucintegrationlisting) SetField(field string, fieldValue interface{}) {
+func (o *Workitemactivityreference) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -64,7 +40,7 @@ func (o *Ucintegrationlisting) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Ucintegrationlisting) MarshalJSON() ([]byte, error) {
+func (o Workitemactivityreference) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -102,111 +78,42 @@ func (o Ucintegrationlisting) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Ucintegrationlisting
+	type Alias Workitemactivityreference
 	
 	return json.Marshal(&struct { 
-		Entities *[]Ucintegration `json:"entities,omitempty"`
-		
-		PageSize *int `json:"pageSize,omitempty"`
-		
-		PageNumber *int `json:"pageNumber,omitempty"`
-		
-		Total *int `json:"total,omitempty"`
-		
-		FirstUri *string `json:"firstUri,omitempty"`
-		
-		NextUri *string `json:"nextUri,omitempty"`
-		
-		PreviousUri *string `json:"previousUri,omitempty"`
-		
-		LastUri *string `json:"lastUri,omitempty"`
+		Id *string `json:"id,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		
-		PageCount *int `json:"pageCount,omitempty"`
 		Alias
 	}{ 
-		Entities: o.Entities,
-		
-		PageSize: o.PageSize,
-		
-		PageNumber: o.PageNumber,
-		
-		Total: o.Total,
-		
-		FirstUri: o.FirstUri,
-		
-		NextUri: o.NextUri,
-		
-		PreviousUri: o.PreviousUri,
-		
-		LastUri: o.LastUri,
+		Id: o.Id,
 		
 		SelfUri: o.SelfUri,
-		
-		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Ucintegrationlisting) UnmarshalJSON(b []byte) error {
-	var UcintegrationlistingMap map[string]interface{}
-	err := json.Unmarshal(b, &UcintegrationlistingMap)
+func (o *Workitemactivityreference) UnmarshalJSON(b []byte) error {
+	var WorkitemactivityreferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &WorkitemactivityreferenceMap)
 	if err != nil {
 		return err
 	}
 	
-	if Entities, ok := UcintegrationlistingMap["entities"].([]interface{}); ok {
-		EntitiesString, _ := json.Marshal(Entities)
-		json.Unmarshal(EntitiesString, &o.Entities)
-	}
-	
-	if PageSize, ok := UcintegrationlistingMap["pageSize"].(float64); ok {
-		PageSizeInt := int(PageSize)
-		o.PageSize = &PageSizeInt
-	}
-	
-	if PageNumber, ok := UcintegrationlistingMap["pageNumber"].(float64); ok {
-		PageNumberInt := int(PageNumber)
-		o.PageNumber = &PageNumberInt
-	}
-	
-	if Total, ok := UcintegrationlistingMap["total"].(float64); ok {
-		TotalInt := int(Total)
-		o.Total = &TotalInt
-	}
-	
-	if FirstUri, ok := UcintegrationlistingMap["firstUri"].(string); ok {
-		o.FirstUri = &FirstUri
+	if Id, ok := WorkitemactivityreferenceMap["id"].(string); ok {
+		o.Id = &Id
 	}
     
-	if NextUri, ok := UcintegrationlistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
-	}
-    
-	if PreviousUri, ok := UcintegrationlistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
-	}
-    
-	if LastUri, ok := UcintegrationlistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
-	if SelfUri, ok := UcintegrationlistingMap["selfUri"].(string); ok {
+	if SelfUri, ok := WorkitemactivityreferenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
     
-	if PageCount, ok := UcintegrationlistingMap["pageCount"].(float64); ok {
-		PageCountInt := int(PageCount)
-		o.PageCount = &PageCountInt
-	}
-	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Ucintegrationlisting) String() string {
+func (o *Workitemactivityreference) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

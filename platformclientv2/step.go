@@ -45,6 +45,9 @@ type Step struct {
 	// Stage - The parent Stage of the Step.
 	Stage *Stagereference `json:"stage,omitempty"`
 
+	// WorkitemActivity - The workitem activity linked to this step. Present only for workitem-type steps that have been activated.
+	WorkitemActivity *Workitemactivityreference `json:"workitemActivity,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -169,6 +172,8 @@ func (o Step) MarshalJSON() ([]byte, error) {
 		
 		Stage *Stagereference `json:"stage,omitempty"`
 		
+		WorkitemActivity *Workitemactivityreference `json:"workitemActivity,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
 		VarCase *Casereference `json:"case,omitempty"`
@@ -195,6 +200,8 @@ func (o Step) MarshalJSON() ([]byte, error) {
 		Status: o.Status,
 		
 		Stage: o.Stage,
+		
+		WorkitemActivity: o.WorkitemActivity,
 		
 		SelfUri: o.SelfUri,
 		
@@ -259,6 +266,11 @@ func (o *Step) UnmarshalJSON(b []byte) error {
 	if Stage, ok := StepMap["stage"].(map[string]interface{}); ok {
 		StageString, _ := json.Marshal(Stage)
 		json.Unmarshal(StageString, &o.Stage)
+	}
+	
+	if WorkitemActivity, ok := StepMap["workitemActivity"].(map[string]interface{}); ok {
+		WorkitemActivityString, _ := json.Marshal(WorkitemActivity)
+		json.Unmarshal(WorkitemActivityString, &o.WorkitemActivity)
 	}
 	
 	if SelfUri, ok := StepMap["selfUri"].(string); ok {

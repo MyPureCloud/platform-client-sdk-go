@@ -14,6 +14,12 @@ type Caseexternalcontactreference struct {
 	// Id - The globally unique identifier for the External Contact.
 	Id *string `json:"id,omitempty"`
 
+	// FirstName - The first name of the contact.
+	FirstName *string `json:"firstName,omitempty"`
+
+	// LastName - The last name of the contact.
+	LastName *string `json:"lastName,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -83,10 +89,18 @@ func (o Caseexternalcontactreference) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
+		FirstName *string `json:"firstName,omitempty"`
+		
+		LastName *string `json:"lastName,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
+		
+		FirstName: o.FirstName,
+		
+		LastName: o.LastName,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -102,6 +116,14 @@ func (o *Caseexternalcontactreference) UnmarshalJSON(b []byte) error {
 	
 	if Id, ok := CaseexternalcontactreferenceMap["id"].(string); ok {
 		o.Id = &Id
+	}
+    
+	if FirstName, ok := CaseexternalcontactreferenceMap["firstName"].(string); ok {
+		o.FirstName = &FirstName
+	}
+    
+	if LastName, ok := CaseexternalcontactreferenceMap["lastName"].(string); ok {
+		o.LastName = &LastName
 	}
     
 	if SelfUri, ok := CaseexternalcontactreferenceMap["selfUri"].(string); ok {

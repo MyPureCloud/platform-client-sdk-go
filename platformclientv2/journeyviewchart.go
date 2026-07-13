@@ -20,6 +20,9 @@ type Journeyviewchart struct {
 	// Version - The version of the journey view chart
 	Version *int `json:"version,omitempty"`
 
+	// Rank - The rank of the journey view chart for ordering display
+	Rank *int `json:"rank,omitempty"`
+
 	// GroupByTime - A time unit to group the metrics by. There is a limit on the number of groupBy properties which can be specified.
 	GroupByTime *string `json:"groupByTime,omitempty"`
 
@@ -108,6 +111,8 @@ func (o Journeyviewchart) MarshalJSON() ([]byte, error) {
 		
 		Version *int `json:"version,omitempty"`
 		
+		Rank *int `json:"rank,omitempty"`
+		
 		GroupByTime *string `json:"groupByTime,omitempty"`
 		
 		GroupByAttributes *[]Journeyviewchartgroupbyattribute `json:"groupByAttributes,omitempty"`
@@ -126,6 +131,8 @@ func (o Journeyviewchart) MarshalJSON() ([]byte, error) {
 		Name: o.Name,
 		
 		Version: o.Version,
+		
+		Rank: o.Rank,
 		
 		GroupByTime: o.GroupByTime,
 		
@@ -160,6 +167,11 @@ func (o *Journeyviewchart) UnmarshalJSON(b []byte) error {
 	if Version, ok := JourneyviewchartMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
+	}
+	
+	if Rank, ok := JourneyviewchartMap["rank"].(float64); ok {
+		RankInt := int(Rank)
+		o.Rank = &RankInt
 	}
 	
 	if GroupByTime, ok := JourneyviewchartMap["groupByTime"].(string); ok {

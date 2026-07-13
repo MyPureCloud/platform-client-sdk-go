@@ -110,6 +110,9 @@ type Queueconversationeventtopiccall struct {
 
 	// TransferSource - Indicates how call reaches the agent.
 	TransferSource *string `json:"transferSource,omitempty"`
+
+	// PublicIpAddress - The reported client IP of the phone for the call.
+	PublicIpAddress *string `json:"publicIpAddress,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -272,6 +275,8 @@ func (o Queueconversationeventtopiccall) MarshalJSON() ([]byte, error) {
 		Disposition *Queueconversationeventtopicdisposition `json:"disposition,omitempty"`
 		
 		TransferSource *string `json:"transferSource,omitempty"`
+		
+		PublicIpAddress *string `json:"publicIpAddress,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -339,6 +344,8 @@ func (o Queueconversationeventtopiccall) MarshalJSON() ([]byte, error) {
 		Disposition: o.Disposition,
 		
 		TransferSource: o.TransferSource,
+		
+		PublicIpAddress: o.PublicIpAddress,
 		Alias:    (Alias)(o),
 	})
 }
@@ -494,6 +501,10 @@ func (o *Queueconversationeventtopiccall) UnmarshalJSON(b []byte) error {
 	
 	if TransferSource, ok := QueueconversationeventtopiccallMap["transferSource"].(string); ok {
 		o.TransferSource = &TransferSource
+	}
+    
+	if PublicIpAddress, ok := QueueconversationeventtopiccallMap["publicIpAddress"].(string); ok {
+		o.PublicIpAddress = &PublicIpAddress
 	}
     
 

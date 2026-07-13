@@ -733,6 +733,9 @@ type Viewfilter struct {
 
 	// Takeover - Indicates filtering for takeover
 	Takeover *bool `json:"takeover,omitempty"`
+
+	// SocialPostTypes - The social post types used to filter the view
+	SocialPostTypes *[]string `json:"socialPostTypes,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -1279,6 +1282,8 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		IsSnippetRecorded *bool `json:"isSnippetRecorded,omitempty"`
 		
 		Takeover *bool `json:"takeover,omitempty"`
+		
+		SocialPostTypes *[]string `json:"socialPostTypes,omitempty"`
 		Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -1762,6 +1767,8 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		IsSnippetRecorded: o.IsSnippetRecorded,
 		
 		Takeover: o.Takeover,
+		
+		SocialPostTypes: o.SocialPostTypes,
 		Alias:    (Alias)(o),
 	})
 }
@@ -2920,6 +2927,11 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 		o.Takeover = &Takeover
 	}
     
+	if SocialPostTypes, ok := ViewfilterMap["socialPostTypes"].([]interface{}); ok {
+		SocialPostTypesString, _ := json.Marshal(SocialPostTypes)
+		json.Unmarshal(SocialPostTypesString, &o.SocialPostTypes)
+	}
+	
 
 	return nil
 }

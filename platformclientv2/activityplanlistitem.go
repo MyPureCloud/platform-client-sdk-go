@@ -57,6 +57,9 @@ type Activityplanlistitem struct {
 	// ModifiedBy - The last user to modify this activity plan. The id may be 'System' if it was an automated process
 	ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
 
+	// InitialSchedulePeriod - The initial schedule period of the activity plan
+	InitialSchedulePeriod *Schedulingperiodbase `json:"initialSchedulePeriod,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -178,6 +181,8 @@ func (o Activityplanlistitem) MarshalJSON() ([]byte, error) {
 		
 		ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
 		
+		InitialSchedulePeriod *Schedulingperiodbase `json:"initialSchedulePeriod,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -210,6 +215,8 @@ func (o Activityplanlistitem) MarshalJSON() ([]byte, error) {
 		ModifiedDate: ModifiedDate,
 		
 		ModifiedBy: o.ModifiedBy,
+		
+		InitialSchedulePeriod: o.InitialSchedulePeriod,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -290,6 +297,11 @@ func (o *Activityplanlistitem) UnmarshalJSON(b []byte) error {
 	if ModifiedBy, ok := ActivityplanlistitemMap["modifiedBy"].(map[string]interface{}); ok {
 		ModifiedByString, _ := json.Marshal(ModifiedBy)
 		json.Unmarshal(ModifiedByString, &o.ModifiedBy)
+	}
+	
+	if InitialSchedulePeriod, ok := ActivityplanlistitemMap["initialSchedulePeriod"].(map[string]interface{}); ok {
+		InitialSchedulePeriodString, _ := json.Marshal(InitialSchedulePeriod)
+		json.Unmarshal(InitialSchedulePeriodString, &o.InitialSchedulePeriod)
 	}
 	
 	if SelfUri, ok := ActivityplanlistitemMap["selfUri"].(string); ok {

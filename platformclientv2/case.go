@@ -34,7 +34,7 @@ type Case struct {
 	Summary *string `json:"summary,omitempty"`
 
 	// Owner - The owner of the Case.
-	Owner *Userreference `json:"owner,omitempty"`
+	Owner *Caseuserreference `json:"owner,omitempty"`
 
 	// Status - The status of the Case.
 	Status *string `json:"status,omitempty"`
@@ -58,7 +58,7 @@ type Case struct {
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
 	// ModifiedBy - The ID of the User who modified the Case.
-	ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
+	ModifiedBy *Caseuserreference `json:"modifiedBy,omitempty"`
 
 	// ExternalContact - The External Contact associated with the Case.
 	ExternalContact *Caseexternalcontactreference `json:"externalContact,omitempty"`
@@ -193,7 +193,7 @@ func (o Case) MarshalJSON() ([]byte, error) {
 		
 		Summary *string `json:"summary,omitempty"`
 		
-		Owner *Userreference `json:"owner,omitempty"`
+		Owner *Caseuserreference `json:"owner,omitempty"`
 		
 		Status *string `json:"status,omitempty"`
 		
@@ -209,7 +209,7 @@ func (o Case) MarshalJSON() ([]byte, error) {
 		
 		DateModified *string `json:"dateModified,omitempty"`
 		
-		ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
+		ModifiedBy *Caseuserreference `json:"modifiedBy,omitempty"`
 		
 		ExternalContact *Caseexternalcontactreference `json:"externalContact,omitempty"`
 		

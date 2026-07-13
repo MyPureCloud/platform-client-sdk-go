@@ -87,6 +87,9 @@ type Activityplanresponse struct {
 	// LastRunBy - The last user to run this activity plan
 	LastRunBy *Userreference `json:"lastRunBy,omitempty"`
 
+	// StartTimeIncrementMinutes - The valid start times available when scheduling sessions
+	StartTimeIncrementMinutes *int `json:"startTimeIncrementMinutes,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -228,6 +231,8 @@ func (o Activityplanresponse) MarshalJSON() ([]byte, error) {
 		
 		LastRunBy *Userreference `json:"lastRunBy,omitempty"`
 		
+		StartTimeIncrementMinutes *int `json:"startTimeIncrementMinutes,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -280,6 +285,8 @@ func (o Activityplanresponse) MarshalJSON() ([]byte, error) {
 		LastRunDate: LastRunDate,
 		
 		LastRunBy: o.LastRunBy,
+		
+		StartTimeIncrementMinutes: o.StartTimeIncrementMinutes,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -408,6 +415,11 @@ func (o *Activityplanresponse) UnmarshalJSON(b []byte) error {
 	if LastRunBy, ok := ActivityplanresponseMap["lastRunBy"].(map[string]interface{}); ok {
 		LastRunByString, _ := json.Marshal(LastRunBy)
 		json.Unmarshal(LastRunByString, &o.LastRunBy)
+	}
+	
+	if StartTimeIncrementMinutes, ok := ActivityplanresponseMap["startTimeIncrementMinutes"].(float64); ok {
+		StartTimeIncrementMinutesInt := int(StartTimeIncrementMinutes)
+		o.StartTimeIncrementMinutes = &StartTimeIncrementMinutesInt
 	}
 	
 	if SelfUri, ok := ActivityplanresponseMap["selfUri"].(string); ok {

@@ -39,11 +39,11 @@ type Managementunit struct {
 	// ModifiedBy - The user who last modified this entity.  Deprecated, use field from settings.metadata instead
 	ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
 
-	// Version - The version of the underlying entity.  Deprecated, use field from settings.metadata instead
-	Version *int `json:"version,omitempty"`
-
 	// DateModified - The date and time at which this entity was last modified.  Deprecated, use field from settings.metadata instead. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateModified *time.Time `json:"dateModified,omitempty"`
+
+	// Version - The version of the underlying entity.  Deprecated, use field from settings.metadata instead
+	Version *int `json:"version,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -138,9 +138,9 @@ func (o Managementunit) MarshalJSON() ([]byte, error) {
 		
 		ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
 		
-		Version *int `json:"version,omitempty"`
-		
 		DateModified *string `json:"dateModified,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
@@ -163,9 +163,9 @@ func (o Managementunit) MarshalJSON() ([]byte, error) {
 		
 		ModifiedBy: o.ModifiedBy,
 		
-		Version: o.Version,
-		
 		DateModified: DateModified,
+		
+		Version: o.Version,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -220,14 +220,14 @@ func (o *Managementunit) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ModifiedByString, &o.ModifiedBy)
 	}
 	
-	if Version, ok := ManagementunitMap["version"].(float64); ok {
-		VersionInt := int(Version)
-		o.Version = &VersionInt
-	}
-	
 	if dateModifiedString, ok := ManagementunitMap["dateModified"].(string); ok {
 		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
 		o.DateModified = &DateModified
+	}
+	
+	if Version, ok := ManagementunitMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
 	}
 	
 	if SelfUri, ok := ManagementunitMap["selfUri"].(string); ok {

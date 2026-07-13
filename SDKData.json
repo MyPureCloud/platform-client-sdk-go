@@ -2109,6 +2109,11 @@
                     "dataType": "Userreference"
                 }, 
                 {
+                    "name": "InitialSchedulePeriod",
+                    "description": "The initial schedule period of the activity plan",
+                    "dataType": "Schedulingperiodbase"
+                }, 
+                {
                     "name": "SelfUri",
                     "description": "The URI for this object",
                     "readOnly": true,
@@ -2315,6 +2320,11 @@
                     "name": "LastRunBy",
                     "description": "The last user to run this activity plan",
                     "dataType": "Userreference"
+                }, 
+                {
+                    "name": "StartTimeIncrementMinutes",
+                    "description": "The valid start times available when scheduling sessions",
+                    "dataType": "int"
                 }, 
                 {
                     "name": "SelfUri",
@@ -4660,7 +4670,7 @@
                     "name": "Dimension",
                     "description": "Left hand side for dimension predicates",
                     "dataType": "string",
-                    "enum": ["agentAssistantId", "cannedResponseId", "cannedResponseLibraryId", "chunkCount", "conversationId", "knowledgeSettingId", "engagementType", "externalContactId", "feedbackRating", "hasAnswerHighlight", "hasGeneratedAnswer", "knowledgeBaseDocumentId", "knowledgeBaseDocumentVersionId", "mediaType", "messageId", "queueId", "scriptId", "scriptPageId", "searchId", "state", "suggestionId", "suggestionType", "triggerType", "userId", "utteranceId"]
+                    "enum": ["agentAssistantId", "cannedResponseId", "cannedResponseLibraryId", "chunkCount", "conversationId", "engagementType", "externalContactId", "feedbackRating", "hasAnswerHighlight", "hasGeneratedAnswer", "knowledgeBaseDocumentId", "knowledgeBaseDocumentVersionId", "knowledgeSettingId", "mediaType", "messageId", "queueId", "scriptId", "scriptPageId", "searchId", "state", "suggestionId", "suggestionType", "triggerType", "userId", "utteranceId"]
                 }, 
                 {
                     "name": "Operator",
@@ -4763,7 +4773,7 @@
                     "description": "Name of the metric used for sorting values.",
                     "required": true,
                     "dataType": "string",
-                    "enum": ["nCannedResponseSuggestions", "nDistinctSuggestions", "nKnowledgeAnswerSuggestions", "nKnowledgeArticleSuggestions", "nKnowledgeSearchSuggestions", "nScriptSuggestions"]
+                    "enum": ["nCannedResponseSuggestions", "nDistinctConversations", "nDistinctSuggestions", "nKnowledgeAnswerSuggestions", "nKnowledgeArticleSuggestions", "nKnowledgeSearchSuggestions", "nScriptSuggestions"]
                 }, 
                 {
                     "name": "Function",
@@ -4781,7 +4791,7 @@
                     "description": "Target metric name",
                     "required": true,
                     "dataType": "string",
-                    "enum": ["nCannedResponseSuggestions", "nDistinctSuggestions", "nKnowledgeAnswerSuggestions", "nKnowledgeArticleSuggestions", "nKnowledgeSearchSuggestions", "nScriptSuggestions", "nDistinctConversations"]
+                    "enum": ["nCannedResponseSuggestions", "nDistinctConversations", "nDistinctSuggestions", "nKnowledgeAnswerSuggestions", "nKnowledgeArticleSuggestions", "nKnowledgeSearchSuggestions", "nScriptSuggestions"]
                 }, 
                 {
                     "name": "Name",
@@ -10850,7 +10860,7 @@
                     "description": "The namespace of the associated approvers.",
                     "readOnly": true,
                     "dataType": "string",
-                    "enum": ["web.messaging", "webhooks", "agent.assistant", "agentic.virtual.agents", "analytics.agents", "analytics.alerting", "analytics.data.extraction", "analytics", "analytics.realtime", "analytics.reporting.settings", "anomaly.detection", "architect", "audiohook", "audiohook.monitor", "audit", "auth.api", "authorization", "automation.testing", "bots", "bots.voice", "business.rules", "callback", "case.management", "cobrowse", "content.management", "conversation", "copilot", "dataactions", "datatables", "directory", "dsar", "email", "employee.engagement", "event.orchestration", "external.contacts", "external.events.data.ingestion", "gamification", "gcv", "gdpr", "groups", "guides", "historical.adherence", "infrastructureascode", "integrations", "intent.miner", "internal.messaging", "journey", "knowledge", "language.understanding", "learning", "limit.registry", "marketplace", "mcp", "media.communications", "messaging", "micro.frontend", "multi.org", "notifications", "onboarding", "outbound", "platform.api", "predictive.routing", "presence", "quality", "recording", "response.management", "routing", "scim", "screen.monitoring", "search", "secondary.automation.testing", "skills", "social.media", "speech.and.text.analytics", "speech.integration", "supportability", "task.management", "telephony.configuration", "usage", "users", "users.rules", "voice.transcription", "web.deployments", "webchat", "workforce.management.agent.availability", "workforce.management.forecast", "workforce.management", "workforce.management.scheduling.preferences", "workforce.management.self.schedule", "workforce.management.shift.trading", "system"]
+                    "enum": ["web.deployments", "web.messaging", "agent.assistant", "agentic.virtual.agents", "analytics.agents", "analytics.alerting", "analytics.data.extraction", "analytics", "analytics.realtime", "analytics.reporting.settings", "anomaly.detection", "architect", "audiohook", "audiohook.monitor", "audit", "auth.api", "authorization", "automation.testing", "bots", "bots.voice", "business.rules", "callback", "case.management", "cobrowse", "content.management", "conversation", "copilot", "dataactions", "datatables", "directory", "dsar", "email", "employee.engagement", "event.orchestration", "external.contacts", "external.events.data.ingestion", "gamification", "gcv", "gdpr", "groups", "guides", "historical.adherence", "infrastructureascode", "integrations", "intent.miner", "internal.messaging", "journey", "knowledge", "language.understanding", "learning", "limit.registry", "marketplace", "mcp.analytics.aggregates", "mcp", "media.communications", "messaging", "micro.frontend", "multi.org", "notifications", "onboarding", "outbound", "platform.api", "predictive.routing", "presence", "quality", "recording", "response.management", "routing", "scim", "screen.monitoring", "search", "secondary.automation.testing", "skills", "social.media", "speech.and.text.analytics", "speech.integration", "supportability", "task.management", "telephony.configuration", "usage", "users", "users.rules", "voice.transcription", "webchat", "webhooks", "workforce.management.adherence", "workforce.management.agent.availability", "workforce.management.forecast", "workforce.management", "workforce.management.scheduling.preferences", "workforce.management.self.schedule", "workforce.management.shift.trading", "system"]
                 }, 
                 {
                     "name": "Status",
@@ -13475,6 +13485,35 @@
                 }
             ]
         }, 
+        "audioformat": { 
+            "properties": [
+                {
+                    "name": "Channels",
+                    "description": "Number of audio channels",
+                    "readOnly": true,
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "BitsPerSample",
+                    "description": "Bits per audio sample",
+                    "readOnly": true,
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "SampleRate",
+                    "description": "Sample rate in hertz (Hz), for example 8000 or 16000",
+                    "readOnly": true,
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "Encoding",
+                    "description": "Audio encoding",
+                    "readOnly": true,
+                    "dataType": "string",
+                    "enum": ["ULAW", "ALAW", "PCM"]
+                }
+            ]
+        }, 
         "audiostate": { 
             "properties": [
                 {
@@ -13945,7 +13984,7 @@
                 {
                     "name": "ServiceName",
                     "dataType": "string",
-                    "enum": ["LanguageUnderstanding", "ContentManagement", "PeoplePermissions", "Presence", "Architect", "ContactCenter", "Quality", "SpeechAndTextAnalytics", "PredictiveEngagement", "Knowledge", "Coaching", "Learning", "UsersRules", "Gamification", "EmployeeEngagement", "WorkforceManagement", "Triggers", "ProcessAutomation", "ResponseManagement", "Groups", "Telephony", "Outbound", "Routing", "Integrations", "Webhooks", "AnalyticsReporting", "Limits", "EmployeePerformance", "Datatables", "Messaging", "WebDeployments", "Supportability", "Callback", "Directory", "Locations", "ExternalContacts", "TaskManagement", "SCIM", "NumberPurchasing", "Marketplace", "LogCapture", "GDPR", "DSAR", "ExternalContactsExport", "AgentConfig", "Emails", "Scripter", "Billing", "JourneyAnalytics", "NerService", "Onboarding", "SocialListening", "BusinessRules", "SocialEscalationRules", "Alerting", "Assistants", "AnomalyDetection", "Conversations", "GenesysCloudCopilot"]
+                    "enum": ["LanguageUnderstanding", "ContentManagement", "PeoplePermissions", "Presence", "Architect", "ContactCenter", "Quality", "SpeechAndTextAnalytics", "PredictiveEngagement", "Knowledge", "Coaching", "Learning", "UsersRules", "Gamification", "EmployeeEngagement", "WorkforceManagement", "Triggers", "ProcessAutomation", "ResponseManagement", "Groups", "Telephony", "Outbound", "Routing", "Integrations", "Webhooks", "AnalyticsReporting", "EmbeddedAnalytics", "Limits", "EmployeePerformance", "Datatables", "Messaging", "WebDeployments", "Supportability", "Callback", "Directory", "Locations", "ExternalContacts", "TaskManagement", "SCIM", "NumberPurchasing", "Marketplace", "LogCapture", "GDPR", "DSAR", "ExternalContactsExport", "AgentConfig", "Emails", "Scripter", "Billing", "JourneyAnalytics", "NerService", "Onboarding", "SocialListening", "BusinessRules", "SocialEscalationRules", "Alerting", "Assistants", "AnomalyDetection", "Conversations", "GenesysCloudCopilot"]
                 }, 
                 {
                     "name": "Level",
@@ -13967,7 +14006,7 @@
                 {
                     "name": "EntityType",
                     "dataType": "string",
-                    "enum": ["Feedback", "Document", "Workspace", "Tag", "UserSamlAuthentication", "AccessToken", "OAuthClientAuthorization", "AuthOrganization", "OAuthClient", "AuthUser", "OrganizationAuthorizationTrust", "OrganizationAuthorizationUserTrust", "MFAVerifier", "IdentityProvider", "Role", "RoleSettings", "Policy", "VoicemailUserPolicy", "UserPresence", "DependencyTrackingBuild", "Flow", "Prompt", "PromptResource", "FlowOutcome", "FlowMilestone", "Grammar", "GrammarLanguage", "AgentRoutingInfo", "Queue", "WrapupCode", "MaxOrgRoutingUtilizationCapacity", "ConversationAttributes", "RoutingUtilizationTag", "Evaluation", "Calibration", "Survey", "AgentScoringRule", "EvaluationForm", "SurveyForm", "Recording", "ScreenRecording", "SnippetRecording", "BulkActions", "OrphanedRecording", "RecordingAnnotation", "RecordingSettings", "SnippetRecordingSettings", "ScreenMonitoring", "RecordingKey", "RecordingKeyConfig", "Topic", "Program", "Category", "SentimentFeedback", "DictionaryFeedback", "InteractionReprocessingJob", "Segment", "Outcome", "ActionMap", "ActionTemplate", "ClickstreamSettings", "EventType", "SessionType", "KnowledgeBase", "KnowledgeCategory", "KnowledgeContext", "KnowledgeContextValue", "KnowledgeDocument", "KnowledgeDocumentVariation", "KnowledgeLabel", "KnowledgeTraining", "KnowledgeSearchFeedback", "KnowledgeBaseSource", "KnowledgeFabricSource", "TranscriptionSettings", "SpeechTextAnalyticsSettings", "Appointment", "Annotation", "Organization", "Module", "Rule", "Assignment", "Contest", "Recognition", "ActivityCode", "ActivityPlan", "ActivityPlanOccurrence", "ActivityPlanOccurrenceSession", "ActivityPlanOccurrenceSessionUser", "AdherenceExplanation", "AlternativeShift", "BusinessUnit", "Forecast", "ManagementUnit", "PlanningGroup", "Schedule", "ServiceGoalTemplate", "ShiftTrade", "SelfSchedule", "TimeOffLimit", "TimeOffPlan", "TimeOffRequest", "WorkPlan", "WorkPlanBid", "WorkPlanBidGroup", "WorkPlanRotation", "HistoricalData", "StaffingGroup", "CapacityPlan", "ScheduleSetBid", "ScheduleSetBidGroup", "Opportunity", "DecisionMetrics", "Trigger", "Response", "ResponseLibrary", "ResponseAsset", "SkillGroup", "DirectoryGroup", "Team", "SkillGroupDefinition", "Edge", "EdgeGroup", "VoicemailPolicy", "RoutingTranscriptionSettings", "Trunk", "TrunkBase", "ScheduleGroup", "EmergencyGroup", "IVR", "AlertablePresencesOverrides", "CallerIdGroup", "DID", "DIDPool", "Extension", "ExtensionPool", "Phone", "PhoneBase", "Line", "LineBase", "OutboundRoute", "NumberPlan", "Site", "AttemptLimits", "CallableTimeSet", "Campaign", "CampaignRule", "CampaignSchedule", "Sequence", "SequenceSchedule", "ContactList", "ContactListFilter", "ContactListTemplate", "DigitalRuleSet", "DNCList", "FileSpecificationTemplate", "ImportTemplate", "OrganizationSettings", "CallAnalysisResponseSet", "RuleSet", "WrapUpCodeMapping", "MessagingCampaign", "MessagingCampaignSchedule", "EmailCampaignSchedule", "WhatsAppCampaignSchedule", "Predictor", "KpiSpecification", "Metric", "Status", "Profile", "ProfileMembers", "Action", "ActionDraft", "Integration", "Webhook", "DashboardSettings", "InsightSettings", "AnalyticsReportingSettings", "CustomCalculations", "SavedViews", "AnalyticsLakehouseSettings", "ScheduledExports", "Exports", "ExportPdfTemplates", "ChangeRequest", "Migration", "Suspension", "ExternalMetricsDefinition", "ExternalMetricsData", "Schema", "Row", "Bulk", "SupportedContent", "ConversationPhoneNumber", "ConversationRecipient", "ConversationAccount", "ConversationDefaultSupportedContent", "ConversationThreadingWindow", "Deployment", "Configuration", "ConfigurationVersion", "EdgePreferences", "EdgeTraceLevel", "OrganizationIntegrationsAccess", "SupportFile", "EdgeLogZip", "Pcaps", "MediaDiagnosticsTraceFile", "EdgePcaps", "EdgeLog", "OrganizationLink", "NumberRouting", "OrganizationFeature", "Product", "User", "Location", "Conversation", "OrganizationSuspension", "OperationalEvent", "Sender", "GcvByocBlock", "AllowAndBlockNumber", "Participant", "ContactSchema", "ExternalOrganizationSchema", "Workbin", "Worktype", "BulkJob", "Credential", "NumberOrder", "EnterpriseAgreement", "VendorListing", "GdprRequest", "DsarRequest", "ExportRequest", "DefaultPanelSettings", "InboundDomain", "OutboundDomain", "InboundRoute", "EmailSetting", "OrganizationLimits", "RoutingSkill", "RoutingLanguage", "ComposerPage", "ComposerPublishedScript", "ComposerScript", "ComposerTemplate", "IntentMiner", "TopicMiner", "SoftSuspension", "JourneyView", "CustomEntity", "DirectoryFeature", "RuleCategory", "DecisionTable", "DecisionTableVersion", "DecisionTableSnapshot", "DecisionTableRow", "DecisionTableImportJob", "DecisionTableExportJob", "EscalationRule", "Rules", "Contact", "Note", "Relationship", "ExternalOrg", "SocialMediaMessage", "Assistant", "AssistantQueue", "QueueAnomaly", "MonitoredQueue", "AnomalyDetectionSettings", "ConversationAccessAttributes", "Settings", "Agent"]
+                    "enum": ["Feedback", "Document", "Workspace", "Tag", "UserSamlAuthentication", "AccessToken", "OAuthClientAuthorization", "AuthOrganization", "OAuthClient", "AuthUser", "OrganizationAuthorizationTrust", "OrganizationAuthorizationUserTrust", "MFAVerifier", "IdentityProvider", "Role", "RoleSettings", "Policy", "VoicemailUserPolicy", "UserPresence", "DependencyTrackingBuild", "Flow", "Prompt", "PromptResource", "FlowOutcome", "FlowMilestone", "Grammar", "GrammarLanguage", "AgentRoutingInfo", "Queue", "WrapupCode", "MaxOrgRoutingUtilizationCapacity", "ConversationAttributes", "RoutingUtilizationTag", "Evaluation", "Calibration", "Survey", "AgentScoringRule", "EvaluationForm", "SurveyForm", "Recording", "ScreenRecording", "SnippetRecording", "BulkActions", "OrphanedRecording", "RecordingAnnotation", "RecordingSettings", "SnippetRecordingSettings", "ScreenMonitoring", "RecordingKey", "RecordingKeyConfig", "Topic", "Program", "Category", "SentimentFeedback", "DictionaryFeedback", "InteractionReprocessingJob", "Segment", "Outcome", "ActionMap", "ActionTemplate", "ClickstreamSettings", "EventType", "SessionType", "KnowledgeBase", "KnowledgeCategory", "KnowledgeContext", "KnowledgeContextValue", "KnowledgeDocument", "KnowledgeDocumentVariation", "KnowledgeLabel", "KnowledgeTraining", "KnowledgeSearchFeedback", "KnowledgeBaseSource", "KnowledgeFabricSource", "TranscriptionSettings", "SpeechTextAnalyticsSettings", "Appointment", "Annotation", "Organization", "Module", "Rule", "Assignment", "Contest", "Recognition", "ActivityCode", "ActivityPlan", "ActivityPlanOccurrence", "ActivityPlanOccurrenceSession", "ActivityPlanOccurrenceSessionUser", "AdherenceAdjustment", "AdherenceAdjustmentReasonCode", "AdherenceExplanation", "AgentSchedulingPreferences", "AlternativeShift", "BusinessUnit", "Forecast", "ManagementUnit", "PlanningGroup", "Schedule", "ServiceGoalTemplate", "ShiftTrade", "SelfSchedule", "TimeOffLimit", "TimeOffPlan", "TimeOffRequest", "WorkPlan", "WorkPlanBid", "WorkPlanBidGroup", "WorkPlanRotation", "HistoricalData", "StaffingGroup", "CapacityPlan", "ScheduleSetBid", "ScheduleSetBidGroup", "Opportunity", "DecisionMetrics", "Trigger", "Response", "ResponseLibrary", "ResponseAsset", "SkillGroup", "DirectoryGroup", "Team", "SkillGroupDefinition", "Edge", "EdgeGroup", "VoicemailPolicy", "RoutingTranscriptionSettings", "Trunk", "TrunkBase", "ScheduleGroup", "EmergencyGroup", "IVR", "AlertablePresencesOverrides", "CallerIdGroup", "DID", "DIDPool", "Extension", "ExtensionPool", "Phone", "PhoneBase", "Line", "LineBase", "OutboundRoute", "NumberPlan", "Site", "AttemptLimits", "CallableTimeSet", "Campaign", "CampaignRule", "CampaignSchedule", "Sequence", "SequenceSchedule", "ContactList", "ContactListFilter", "ContactListTemplate", "DigitalRuleSet", "DNCList", "FileSpecificationTemplate", "ImportTemplate", "OrganizationSettings", "CallAnalysisResponseSet", "RuleSet", "WrapUpCodeMapping", "MessagingCampaign", "MessagingCampaignSchedule", "EmailCampaignSchedule", "WhatsAppCampaignSchedule", "Predictor", "KpiSpecification", "Metric", "Status", "Profile", "ProfileMembers", "Action", "ActionDraft", "Integration", "Webhook", "DashboardSettings", "InsightSettings", "AnalyticsReportingSettings", "CustomCalculations", "SavedViews", "AnalyticsLakehouseSettings", "Users", "Analyses", "Dashboard", "ScheduledExports", "Exports", "ExportPdfTemplates", "ChangeRequest", "Migration", "Suspension", "ExternalMetricsDefinition", "ExternalMetricsData", "Schema", "Row", "Bulk", "SupportedContent", "ConversationPhoneNumber", "ConversationRecipient", "ConversationAccount", "ConversationDefaultSupportedContent", "ConversationThreadingWindow", "Deployment", "Configuration", "ConfigurationVersion", "EdgePreferences", "EdgeTraceLevel", "OrganizationIntegrationsAccess", "SupportFile", "EdgeLogZip", "Pcaps", "MediaDiagnosticsTraceFile", "EdgePcaps", "EdgeLog", "OrganizationLink", "NumberRouting", "OrganizationFeature", "Product", "User", "Location", "Conversation", "OrganizationSuspension", "OperationalEvent", "Sender", "GcvByocBlock", "AllowAndBlockNumber", "Participant", "ContactSchema", "ExternalOrganizationSchema", "Workbin", "Worktype", "BulkJob", "Credential", "NumberOrder", "EnterpriseAgreement", "VendorListing", "GdprRequest", "DsarRequest", "ExportRequest", "DefaultPanelSettings", "InboundDomain", "OutboundDomain", "InboundRoute", "EmailSetting", "OrganizationLimits", "RoutingSkill", "RoutingLanguage", "ComposerPage", "ComposerPublishedScript", "ComposerScript", "ComposerTemplate", "IntentMiner", "TopicMiner", "SoftSuspension", "JourneyView", "CustomEntity", "DirectoryFeature", "RuleCategory", "DecisionTable", "DecisionTableVersion", "DecisionTableSnapshot", "DecisionTableRow", "DecisionTableImportJob", "DecisionTableExportJob", "EscalationRule", "Rules", "Contact", "Note", "Relationship", "ExternalOrg", "SocialMediaMessage", "Assistant", "AssistantQueue", "QueueAnomaly", "MonitoredQueue", "AnomalyDetectionSettings", "ConversationAccessAttributes", "Settings", "Agent", "GraphSettings"]
                 }, 
                 {
                     "name": "Entity",
@@ -27104,7 +27143,7 @@
                 {
                     "name": "Owner",
                     "description": "The owner of the Case.",
-                    "dataType": "Userreference"
+                    "dataType": "Caseuserreference"
                 }, 
                 {
                     "name": "Status",
@@ -27146,7 +27185,7 @@
                 {
                     "name": "ModifiedBy",
                     "description": "The ID of the User who modified the Case.",
-                    "dataType": "Userreference"
+                    "dataType": "Caseuserreference"
                 }, 
                 {
                     "name": "ExternalContact",
@@ -27376,6 +27415,16 @@
                 {
                     "name": "Id",
                     "description": "The globally unique identifier for the External Contact.",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "FirstName",
+                    "description": "The first name of the contact.",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "LastName",
+                    "description": "The last name of the contact.",
                     "dataType": "string"
                 }, 
                 {
@@ -27972,6 +28021,29 @@
                 }
             ]
         }, 
+        "caseplanfilter": { 
+            "properties": [
+                {
+                    "name": "Name",
+                    "description": "Attribute name. Valid values: id, name, divisionId.",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Operator",
+                    "description": "Filter operator.",
+                    "required": true,
+                    "dataType": "string",
+                    "enum": ["IN", "CONTAINS", "BEGINS_WITH"]
+                }, 
+                {
+                    "name": "Values",
+                    "description": "List of values to be used in the filter.",
+                    "required": true,
+                    "dataType": "[]string"
+                }
+            ]
+        }, 
         "caseplanlisting": { 
             "properties": [
                 {
@@ -28030,6 +28102,21 @@
                     "enum": ["BEGINS_WITH", "CONTAINS"]
                 }, 
                 {
+                    "name": "DivisionIds",
+                    "description": "Divisions to filter by. Accepts a list of UUIDs and/or '*'.",
+                    "dataType": "[]string"
+                }, 
+                {
+                    "name": "Filters",
+                    "description": "List of filter objects to be used in the search. Valid filter names are: 'id', 'name', 'divisionId'. Multiple filters are combined with AND logic.",
+                    "dataType": "[]Caseplanfilter"
+                }, 
+                {
+                    "name": "Attributes",
+                    "description": "List of entity attributes to be retrieved in the result.",
+                    "dataType": "[]string"
+                }, 
+                {
                     "name": "PageSize",
                     "description": "Number of results per page. Maximum is 200. Default is 25.",
                     "dataType": "int"
@@ -28038,11 +28125,6 @@
                     "name": "After",
                     "description": "Cursor for pagination. Use the \"after\" value from the previous response.",
                     "dataType": "string"
-                }, 
-                {
-                    "name": "DivisionIds",
-                    "description": "Divisions to filter by. Accepts a list of UUIDs and/or '*'.",
-                    "dataType": "[]string"
                 }
             ]
         }, 
@@ -28148,6 +28230,31 @@
                     "name": "Summary",
                     "description": "Overview information for the Case. Valid length between 3 and 512 characters.",
                     "required": true,
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "caseuserreference": { 
+            "properties": [
+                {
+                    "name": "Id",
+                    "description": "The globally unique identifier for the object.",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Name",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Presence",
+                    "description": "Active presence",
+                    "readOnly": true,
+                    "dataType": "Userpresence"
+                }, 
+                {
+                    "name": "SelfUri",
+                    "description": "The URI for this object",
+                    "readOnly": true,
                     "dataType": "string"
                 }
             ]
@@ -35247,7 +35354,7 @@
                     "description": "Field name to apply the filter",
                     "required": true,
                     "dataType": "string",
-                    "enum": ["DivisionId", "ContactClassification", "ExternalOrganizationId"]
+                    "enum": ["DivisionId", "ContactClassification", "ExternalOrganizationId", "ExternalSourceId", "SchemaId", "SchemaVersion"]
                 }, 
                 {
                     "name": "Value",
@@ -35264,7 +35371,7 @@
                     "description": "Field name to apply the filter",
                     "required": true,
                     "dataType": "string",
-                    "enum": ["DivisionId", "ContactClassification", "ExternalOrganizationId"]
+                    "enum": ["DivisionId", "ContactClassification", "ExternalOrganizationId", "ExternalSourceId", "SchemaId", "SchemaVersion"]
                 }, 
                 {
                     "name": "Values",
@@ -37065,6 +37172,24 @@
                 }
             ]
         }, 
+        "conversationaccessattributesresponse": { 
+            "properties": [
+                {
+                    "name": "AccessAttributes",
+                    "description": "The attributes that define which users may access a conversation",
+                    "dataType": "[]string"
+                }
+            ]
+        }, 
+        "conversationaccessattributesupdate": { 
+            "properties": [
+                {
+                    "name": "AccessAttributes",
+                    "description": "The attributes that define which users may access a conversation. Values must be non-null, non-blank, and contain only alphanumeric characters, hyphens, and underscores.",
+                    "dataType": "[]string"
+                }
+            ]
+        }, 
         "conversationactivitydata": { 
             "properties": [
                 {
@@ -37547,7 +37672,7 @@
                     "description": "Name of the metric used for sorting values.",
                     "required": true,
                     "dataType": "string",
-                    "enum": ["nBlindTransferred", "nBotInteractions", "nCallbackAttempts", "nCallbackOverSla", "nCallbackScheduled", "nCfcOffered", "nCobrowseSessions", "nConnected", "nConsult", "nConsultTransferred", "nConversations", "nError", "nOffered", "nOutbound", "nOutboundAbandoned", "nOutboundAttempted", "nOutboundConnected", "nOverSla", "nStateTransitionError", "nTakeover", "nTransferred", "oAudioMessageCount", "oExternalAudioMessageCount", "oExternalMediaCount", "oMediaCount", "oMessageCount", "oMessageSegmentCount", "oMessageTurn", "oServiceTarget", "oSkillExpressionApplications", "tAbandon", "tAcd", "tActiveCallback", "tActiveCallbackComplete", "tAcw", "tAgentResponseTime", "tAgentVideoConnected", "tAlert", "tAnswered", "tAverageAgentResponseTime", "tAverageCustomerResponseTime", "tBarging", "tCallbackAbandon", "tCallbackConnect", "tCallbackNotReached", "tCfcAbandon", "tCfcAcd", "tCfcAnswered", "tCfcFlowOut", "tCoaching", "tCoachingComplete", "tConnected", "tContacting", "tDialing", "tFirstConnect", "tFirstDial", "tFirstEngagement", "tFirstResponse", "tFlowOut", "tHandle", "tHeld", "tHeldComplete", "tIvr", "tMonitoring", "tMonitoringComplete", "tNotResponding", "tPark", "tParkComplete", "tScreenMonitoring", "tSnippetRecord", "tTalk", "tTalkComplete", "tTransmitting", "tUserResponseTime", "tVoicemail"]
+                    "enum": ["nBlindTransferred", "nBotInteractions", "nCallbackAttempts", "nCallbackOverSla", "nCallbackScheduled", "nCfcOffered", "nCobrowseSessions", "nConnected", "nConsult", "nConsultTransferred", "nConversations", "nError", "nOffered", "nOutbound", "nOutboundAbandoned", "nOutboundAttempted", "nOutboundConnected", "nOverSla", "nStateTransitionError", "nTakeover", "nTransferred", "oAudioMessageCount", "oExternalAudioMessageCount", "oExternalMediaCount", "oMediaCount", "oMessageCount", "oMessageSegmentCount", "oMessageTurn", "oServiceTarget", "oSkillExpressionApplications", "tAbandon", "tAcd", "tActiveCallback", "tActiveCallbackComplete", "tAcw", "tAgentResponseTime", "tAgentVideoConnected", "tAlert", "tAnswered", "tAverageAgentResponseTime", "tAverageCustomerResponseTime", "tBarging", "tCallbackAbandon", "tCallbackConnect", "tCallbackNotReached", "tCallbackVirtualWait", "tCfcAbandon", "tCfcAcd", "tCfcAnswered", "tCfcFlowOut", "tCoaching", "tCoachingComplete", "tConnected", "tContacting", "tDialing", "tFirstConnect", "tFirstDial", "tFirstEngagement", "tFirstResponse", "tFlowOut", "tHandle", "tHeld", "tHeldComplete", "tIvr", "tMonitoring", "tMonitoringComplete", "tNotResponding", "tPark", "tParkComplete", "tScreenMonitoring", "tSnippetRecord", "tTalk", "tTalkComplete", "tTransmitting", "tUserResponseTime", "tVoicemail"]
                 }, 
                 {
                     "name": "Function",
@@ -37565,7 +37690,7 @@
                     "description": "Target metric name",
                     "required": true,
                     "dataType": "string",
-                    "enum": ["nBlindTransferred", "nBotInteractions", "nCallbackAttempts", "nCallbackOverSla", "nCallbackScheduled", "nCfcOffered", "nCobrowseSessions", "nConnected", "nConsult", "nConsultTransferred", "nConversations", "nError", "nOffered", "nOutbound", "nOutboundAbandoned", "nOutboundAttempted", "nOutboundConnected", "nOverSla", "nStateTransitionError", "nTakeover", "nTransferred", "oAudioMessageCount", "oCallbackServiceLevel", "oExternalAudioMessageCount", "oExternalMediaCount", "oMediaCount", "oMessageCount", "oMessageSegmentCount", "oMessageTurn", "oServiceLevel", "oServiceTarget", "oSkillExpressionApplications", "tAbandon", "tAcd", "tActiveCallback", "tActiveCallbackComplete", "tAcw", "tAgentResponseTime", "tAgentVideoConnected", "tAlert", "tAnswered", "tAverageAgentResponseTime", "tAverageCustomerResponseTime", "tBarging", "tCallbackAbandon", "tCallbackConnect", "tCallbackNotReached", "tCfcAbandon", "tCfcAcd", "tCfcAnswered", "tCfcFlowOut", "tCoaching", "tCoachingComplete", "tConnected", "tContacting", "tDialing", "tFirstConnect", "tFirstDial", "tFirstEngagement", "tFirstResponse", "tFlowOut", "tHandle", "tHeld", "tHeldComplete", "tIvr", "tMonitoring", "tMonitoringComplete", "tNotResponding", "tPark", "tParkComplete", "tScreenMonitoring", "tShortAbandon", "tSnippetRecord", "tTalk", "tTalkComplete", "tTransmitting", "tUserResponseTime", "tVoicemail", "tWait"]
+                    "enum": ["nBlindTransferred", "nBotInteractions", "nCallbackAttempts", "nCallbackOverSla", "nCallbackScheduled", "nCfcOffered", "nCobrowseSessions", "nConnected", "nConsult", "nConsultTransferred", "nConversations", "nError", "nOffered", "nOutbound", "nOutboundAbandoned", "nOutboundAttempted", "nOutboundConnected", "nOverSla", "nStateTransitionError", "nTakeover", "nTransferred", "oAudioMessageCount", "oCallbackServiceLevel", "oExternalAudioMessageCount", "oExternalMediaCount", "oMediaCount", "oMessageCount", "oMessageSegmentCount", "oMessageTurn", "oServiceLevel", "oServiceTarget", "oSkillExpressionApplications", "tAbandon", "tAcd", "tActiveCallback", "tActiveCallbackComplete", "tAcw", "tAgentResponseTime", "tAgentVideoConnected", "tAlert", "tAnswered", "tAverageAgentResponseTime", "tAverageCustomerResponseTime", "tBarging", "tCallbackAbandon", "tCallbackConnect", "tCallbackNotReached", "tCallbackVirtualWait", "tCfcAbandon", "tCfcAcd", "tCfcAnswered", "tCfcFlowOut", "tCoaching", "tCoachingComplete", "tConnected", "tContacting", "tDialing", "tFirstConnect", "tFirstDial", "tFirstEngagement", "tFirstResponse", "tFlowOut", "tHandle", "tHeld", "tHeldComplete", "tIvr", "tMonitoring", "tMonitoringComplete", "tNotResponding", "tPark", "tParkComplete", "tScreenMonitoring", "tShortAbandon", "tSnippetRecord", "tTalk", "tTalkComplete", "tTransmitting", "tUserResponseTime", "tVoicemail", "tWait"]
                 }, 
                 {
                     "name": "Name",
@@ -38741,6 +38866,10 @@
                 {
                     "name": "FaxStatus",
                     "dataType": "Conversationcalleventtopicfaxstatus"
+                }, 
+                {
+                    "name": "PublicIpAddress",
+                    "dataType": "string"
                 }
             ]
         }, 
@@ -41850,7 +41979,7 @@
                     "name": "Metric",
                     "description": "Left hand side for metric predicates",
                     "dataType": "string",
-                    "enum": ["nBlindTransferred", "nBotInteractions", "nCallbackAttempts", "nCallbackOverSla", "nCallbackScheduled", "nCfcOffered", "nCobrowseSessions", "nConnected", "nConsult", "nConsultTransferred", "nConversations", "nError", "nFlow", "nFlowMilestone", "nFlowOutcome", "nFlowOutcomeFailed", "nOffered", "nOutbound", "nOutboundAbandoned", "nOutboundAttempted", "nOutboundConnected", "nOverSla", "nStateTransitionError", "nTakeover", "nTransferred", "oAudioMessageCount", "oExternalAudioMessageCount", "oExternalMediaCount", "oFlowMilestone", "oMediaCount", "oMessageCount", "oMessageSegmentCount", "oMessageTurn", "oSkillExpressionApplications", "tAbandon", "tAcd", "tActiveCallback", "tActiveCallbackComplete", "tAcw", "tAgentResponseTime", "tAgentVideoConnected", "tAlert", "tAnswered", "tAverageAgentResponseTime", "tAverageCustomerResponseTime", "tBarging", "tCfcAbandon", "tCfcAcd", "tCfcAnswered", "tCfcFlowOut", "tCoaching", "tCoachingComplete", "tConnected", "tContacting", "tConversationDuration", "tDialing", "tFirstConnect", "tFirstDial", "tFirstEngagement", "tFirstResponse", "tFlow", "tFlowDisconnect", "tFlowExit", "tFlowOut", "tFlowOutcome", "tHandle", "tHeld", "tHeldComplete", "tIvr", "tMonitoring", "tMonitoringComplete", "tNotResponding", "tPark", "tParkComplete", "tScreenMonitoring", "tShortAbandon", "tSnippetRecord", "tTalk", "tTalkComplete", "tTransmitting", "tUserResponseTime", "tVoicemail"]
+                    "enum": ["nBlindTransferred", "nBotInteractions", "nCallbackAttempts", "nCallbackOverSla", "nCallbackScheduled", "nCfcOffered", "nCobrowseSessions", "nConnected", "nConsult", "nConsultTransferred", "nConversations", "nError", "nFlow", "nFlowMilestone", "nFlowOutcome", "nFlowOutcomeFailed", "nOffered", "nOutbound", "nOutboundAbandoned", "nOutboundAttempted", "nOutboundConnected", "nOverSla", "nStateTransitionError", "nTakeover", "nTransferred", "oAudioMessageCount", "oExternalAudioMessageCount", "oExternalMediaCount", "oFlowMilestone", "oMediaCount", "oMessageCount", "oMessageSegmentCount", "oMessageTurn", "oSkillExpressionApplications", "tAbandon", "tAcd", "tActiveCallback", "tActiveCallbackComplete", "tAcw", "tAgentResponseTime", "tAgentVideoConnected", "tAlert", "tAnswered", "tAverageAgentResponseTime", "tAverageCustomerResponseTime", "tBarging", "tCallbackAbandon", "tCallbackConnect", "tCallbackNotReached", "tCallbackVirtualWait", "tCfcAbandon", "tCfcAcd", "tCfcAnswered", "tCfcFlowOut", "tCoaching", "tCoachingComplete", "tConnected", "tContacting", "tConversationDuration", "tDialing", "tFirstConnect", "tFirstDial", "tFirstEngagement", "tFirstResponse", "tFlow", "tFlowDisconnect", "tFlowExit", "tFlowOut", "tFlowOutcome", "tHandle", "tHeld", "tHeldComplete", "tIvr", "tMonitoring", "tMonitoringComplete", "tNotResponding", "tPark", "tParkComplete", "tScreenMonitoring", "tShortAbandon", "tSnippetRecord", "tTalk", "tTalkComplete", "tTransmitting", "tUserResponseTime", "tVoicemail"]
                 }, 
                 {
                     "name": "Operator",
@@ -42917,6 +43046,11 @@
                 {
                     "name": "TransferSource",
                     "description": "Indicates how call reaches the agent.",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "PublicIpAddress",
+                    "description": "The reported client IP of the phone for the call.",
                     "dataType": "string"
                 }
             ]
@@ -46896,7 +47030,7 @@
                     "name": "Metric",
                     "description": "Metric name",
                     "dataType": "string",
-                    "enum": ["nBlindTransferred", "nBotInteractions", "nCallbackAttempts", "nCallbackScheduled", "nCfcOffered", "nCobrowseSessions", "nConnected", "nConsult", "nConsultTransferred", "nConversations", "nError", "nOffered", "nOutbound", "nOutboundAbandoned", "nOutboundAttempted", "nOutboundConnected", "nOverSla", "nTakeover", "nTransferred", "oAudioMessageCount", "oExternalAudioMessageCount", "oExternalMediaCount", "oMediaCount", "oMessageCount", "oMessageSegmentCount", "oMessageTurn", "oSkillExpressionApplications", "tAbandon", "tAcd", "tActiveCallback", "tActiveCallbackComplete", "tAcw", "tAgentResponseTime", "tAgentVideoConnected", "tAlert", "tAnswered", "tAverageAgentResponseTime", "tAverageCustomerResponseTime", "tBarging", "tCfcAbandon", "tCfcAcd", "tCfcAnswered", "tCfcFlowOut", "tCoaching", "tCoachingComplete", "tConnected", "tContacting", "tDialing", "tFirstConnect", "tFirstDial", "tFirstEngagement", "tFirstResponse", "tFlowOut", "tHandle", "tHeld", "tHeldComplete", "tIvr", "tMonitoring", "tMonitoringComplete", "tNotResponding", "tPark", "tParkComplete", "tScreenMonitoring", "tSnippetRecord", "tTalk", "tTalkComplete", "tTransmitting", "tUserResponseTime", "tVoicemail"]
+                    "enum": ["nBlindTransferred", "nBotInteractions", "nCallbackAttempts", "nCallbackScheduled", "nCfcOffered", "nCobrowseSessions", "nConnected", "nConsult", "nConsultTransferred", "nConversations", "nError", "nOffered", "nOutbound", "nOutboundAbandoned", "nOutboundAttempted", "nOutboundConnected", "nOverSla", "nTakeover", "nTransferred", "oAudioMessageCount", "oExternalAudioMessageCount", "oExternalMediaCount", "oMediaCount", "oMessageCount", "oMessageSegmentCount", "oMessageTurn", "oSkillExpressionApplications", "tAbandon", "tAcd", "tActiveCallback", "tActiveCallbackComplete", "tAcw", "tAgentResponseTime", "tAgentVideoConnected", "tAlert", "tAnswered", "tAverageAgentResponseTime", "tAverageCustomerResponseTime", "tBarging", "tCallbackAbandon", "tCallbackConnect", "tCallbackNotReached", "tCfcAbandon", "tCfcAcd", "tCfcAnswered", "tCfcFlowOut", "tCoaching", "tCoachingComplete", "tConnected", "tContacting", "tDialing", "tFirstConnect", "tFirstDial", "tFirstEngagement", "tFirstResponse", "tFlowOut", "tHandle", "tHeld", "tHeldComplete", "tIvr", "tMonitoring", "tMonitoringComplete", "tNotResponding", "tPark", "tParkComplete", "tScreenMonitoring", "tSnippetRecord", "tTalk", "tTalkComplete", "tTransmitting", "tUserResponseTime", "tVoicemail"]
                 }, 
                 {
                     "name": "MetricDate",
@@ -52073,6 +52207,11 @@
                     "name": "FixedAvailability",
                     "description": "Fixed availability configuration for the activity plan",
                     "dataType": "[]Fixedavailability"
+                }, 
+                {
+                    "name": "StartTimeIncrementMinutes",
+                    "description": "The valid start times available when scheduling sessions",
+                    "dataType": "int"
                 }
             ]
         }, 
@@ -52771,6 +52910,15 @@
                     "description": "The output values of the row. The key for this map is the column ID the row value relates. Column IDs are available from the decision table entity",
                     "required": true,
                     "dataType": "map[string]Decisiontablerowparametervalue"
+                }
+            ]
+        }, 
+        "createdecisiontableversionrequest": { 
+            "properties": [
+                {
+                    "name": "SourceVersion",
+                    "description": "The published, superseded, or snapshot version to create the new draft from. When not provided or null, the published version is used. Must be at least 1 when provided.",
+                    "dataType": "int"
                 }
             ]
         }, 
@@ -56420,6 +56568,10 @@
                     "dataType": "string"
                 }, 
                 {
+                    "name": "Name",
+                    "dataType": "string"
+                }, 
+                {
                     "name": "SelfUri",
                     "description": "The URI for this object",
                     "readOnly": true,
@@ -58843,6 +58995,32 @@
                     "name": "Literal",
                     "description": "A literal parameter value",
                     "dataType": "Literal"
+                }
+            ]
+        }, 
+        "decisiontablesnapshot": { 
+            "properties": [
+                {
+                    "name": "Name",
+                    "description": "Snapshot name",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Notes",
+                    "description": "Optional snapshot notes",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "DateCreated",
+                    "description": "UTC date time when the snapshot was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z",
+                    "readOnly": true,
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "CreatedBy",
+                    "description": "The user who created the snapshot.",
+                    "readOnly": true,
+                    "dataType": "Addressableentityref"
                 }
             ]
         }, 
@@ -73487,6 +73665,39 @@
                     "dataType": "Evaluationsource"
                 }, 
                 {
+                    "name": "DisputeCount",
+                    "description": "The number of times this evaluation has been disputed",
+                    "readOnly": true,
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "Version",
+                    "description": "The evaluation version number",
+                    "readOnly": true,
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "VersionHistory",
+                    "description": "List of all versions of the evaluation",
+                    "readOnly": true,
+                    "dataType": "Pagelessdomainentitylistingevaluationversion"
+                }, 
+                {
+                    "name": "DeclinedReview",
+                    "description": "Is true when the evaluation review was declined",
+                    "dataType": "bool"
+                }, 
+                {
+                    "name": "EvaluationContextId",
+                    "description": "The shared id for different versions of an evaluation",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "RetractedEvaluation",
+                    "description": "The previous evaluation version",
+                    "dataType": "Evaluationreference"
+                }, 
+                {
                     "name": "AiScoring",
                     "description": "AI scoring details for the evaluation.",
                     "readOnly": true,
@@ -74992,6 +75203,39 @@
                     "dataType": "Evaluationsource"
                 }, 
                 {
+                    "name": "DisputeCount",
+                    "description": "The number of times this evaluation has been disputed",
+                    "readOnly": true,
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "Version",
+                    "description": "The evaluation version number",
+                    "readOnly": true,
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "VersionHistory",
+                    "description": "List of all versions of the evaluation",
+                    "readOnly": true,
+                    "dataType": "Pagelessdomainentitylistingevaluationversion"
+                }, 
+                {
+                    "name": "DeclinedReview",
+                    "description": "Is true when the evaluation review was declined",
+                    "dataType": "bool"
+                }, 
+                {
+                    "name": "EvaluationContextId",
+                    "description": "The shared id for different versions of an evaluation",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "RetractedEvaluation",
+                    "description": "The previous evaluation version",
+                    "dataType": "Evaluationreference"
+                }, 
+                {
                     "name": "AiScoring",
                     "description": "AI scoring details for the evaluation.",
                     "readOnly": true,
@@ -75441,6 +75685,39 @@
                     "description": "The source that created the evaluation.",
                     "readOnly": true,
                     "dataType": "Evaluationsource"
+                }, 
+                {
+                    "name": "DisputeCount",
+                    "description": "The number of times this evaluation has been disputed",
+                    "readOnly": true,
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "Version",
+                    "description": "The evaluation version number",
+                    "readOnly": true,
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "VersionHistory",
+                    "description": "List of all versions of the evaluation",
+                    "readOnly": true,
+                    "dataType": "Pagelessdomainentitylistingevaluationversion"
+                }, 
+                {
+                    "name": "DeclinedReview",
+                    "description": "Is true when the evaluation review was declined",
+                    "dataType": "bool"
+                }, 
+                {
+                    "name": "EvaluationContextId",
+                    "description": "The shared id for different versions of an evaluation",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "RetractedEvaluation",
+                    "description": "The previous evaluation version",
+                    "dataType": "Evaluationreference"
                 }, 
                 {
                     "name": "AiScoring",
@@ -76041,7 +76318,7 @@
                 {
                     "name": "Category",
                     "dataType": "string",
-                    "enum": ["CALLBACK", "CALL_RESTRICTION", "CALL_RULE", "CAMPAIGN", "CAMPAIGN_RULE", "CONTACT", "CONTACT_LIST_FILTER", "DIGITAL_RULE", "DNC_LIST", "ENTITY_LIMIT", "IMPORT_ERROR", "MESSAGE_RESTRICTION", "MESSAGING_CAMPAIGN", "IMPORT_TEMPLATE", "ORGANIZATION_CONFIGURATION", "SCHEDULE", "MESSAGING_CAMPAIGN_SCHEDULE", "EMAIL_CAMPAIGN_SCHEDULE", "WHATSAPP_CAMPAIGN_SCHEDULE"]
+                    "enum": ["CALLBACK", "CALL_RESTRICTION", "CALL_RULE", "CAMPAIGN", "CAMPAIGN_RULE", "CONTACT", "CONTACT_LIST_FILTER", "DIGITAL_RULE", "DNC_LIST", "ENTITY_LIMIT", "IMPORT_ERROR", "MESSAGE_RESTRICTION", "MESSAGING_CAMPAIGN", "IMPORT_TEMPLATE", "ORGANIZATION_CONFIGURATION", "SCHEDULE", "MESSAGING_CAMPAIGN_SCHEDULE", "EMAIL_CAMPAIGN_SCHEDULE", "WHATSAPP_CAMPAIGN_SCHEDULE", "RETENTION_POLICY"]
                 }, 
                 {
                     "name": "CorrelationId",
@@ -76064,7 +76341,7 @@
                 {
                     "name": "Code",
                     "dataType": "string",
-                    "enum": ["ACTIVE_CAMPAIGNS_LIMIT_EXCEEDED", "ALL_CAMPAIGNS_BLACKLISTED", "ANOTHER_CAMPAIGN_STARTING", "APPROACHING_CONTACT_LIMIT", "APPROACHING_DNC_LIST_PHONE_NUMBER_LIMIT", "APPROACHING_DNC_ORGANIZATION_PHONE_NUMBER_LIMIT", "APPROACHING_ENTITY_LIMIT", "AUTOMATIC_TIME_ZONE_ZIP_CODE_INVALID", "CAMPAIGN_BLACKLISTED", "CAMPAIGN_BUILD_CONTACT_QUEUE_ERROR", "CAMPAIGN_CHECK_JOB_DUPLICATE", "CAMPAIGN_CONTENT_TEMPLATE_SUBSTITUTION_MISMATCH", "CAMPAIGN_CALLS_PER_AGENT_LOW", "CAMPAIGN_EMAIL_BODY_CHARACTER_LIMIT_EXCEEDED", "CAMPAIGN_EMAIL_SUBJECT_CHARACTER_LIMIT_EXCEEDED", "CAMPAIGN_WHATSAPP_HEADER_VALUE_LIMIT_EXCEEDED", "CAMPAIGN_WHATSAPP_BUTTON_URL_VALUE_LIMIT_EXCEEDED", "CAMPAIGN_INVALIDATED", "CAMPAIGN_FORCE_STOPPED", "CAMPAIGN_MESSAGE_CHARACTER_LIMIT_EXCEEDED", "CAMPAIGN_START_ERROR", "CAMPAIGN_RULE_START_ERROR", "CAMPAIGN_SCRIPT_STAGE_MISSING", "CAMPAIGN_SET_DIALING_MODE_ERROR", "CAMPAIGN_STOPPED", "CAMPAIGN_THROTTLED", "CAMPAIGN_QUEUE_MEMBERS_LIMIT_EXCEEDED", "CAMPAIGN_WEIGHT_ZERO", "INVALID_CALLABLE_TIME_ZONE", "CALLBACK_CREATION_INVALID_NUMBER", "CALL_RULE_INVALID_CONTACT_COLUMN", "CALL_RULE_MISSING_DATA_ACTION_INPUT", "CALL_RULE_MISMATCH_TYPE", "CALL_RULE_INVALID_OPERATOR", "CALL_RULE_NO_DNC_LISTS_CONFIGURED", "CALL_RULE_UPDATED_PHONE_COLUMN", "CONTACT_LIST_FILTER_EVALUATION_FAILED", "CONTACT_LIST_FILTER_INTERNAL_ERROR", "CONTACT_COLUMNS_LIMIT_EXCEEDED", "CONTACT_COLUMN_LENGTH_LIMIT_EXCEEDED", "CONTACT_ID_LENGTH_LIMIT_EXCEEDED", "CONTACT_DATUM_LENGTH_LIMIT_EXCEEDED", "CONTACT_ZIP_CODE_COLUMN_VALUE_INVALID", "DATA_ACTION_EXECUTION_FAILED", "DATA_ACTION_AUTHENTICATION_FAILURE", "DATA_ACTION_NOT_FOUND", "DATA_ACTION_TOO_MANY_REQUESTS", "DATA_ACTION_TOO_MANY_REQUESTS_REMOTE", "ACTION_EXECUTION_FAILED", "ACTION_EXECUTION_FAILED_INVALID_PARAMETER", "DIGITAL_RULE_EVALUATION_FAILED", "DIGITAL_RULE_INTERNAL_ERROR", "DIGITAL_RULE_NO_DNC_LISTS_CONFIGURED", "DIGITAL_RULE_UPDATED_CONTACT_ADDRESS", "DIGITAL_RULE_SMS_PHONE_NUMBER_TYPE_MISMATCH", "DIGITAL_RULE_ERROR_SKIPPED", "DNC_AUTHENTICATION_FAILURE", "EXCEEDED_CONTACT_LIMIT", "EXCEEDED_DNC_RECORD_LIMIT", "EXCEEDED_DNC_PHONE_NUMBER_LENGTH", "INACTIVE_EDGES_FAILED_PLACE_CALLS", "INACTIVE_EDGES_TURNED_CAMPAIGN_OFF", "INVALID_AGENT", "INVALID_EMAIL_ADDRESS", "INVALID_PHONE_NUMBER", "IMPORT_FAILED_TO_READ_HEADERS", "IMPORT_COULD_NOT_PARSE_AN_ENTRY", "IMPORT_CONTACT_DOES_NOT_MATCH_LIST_FORMAT", "IMPORT_ENTRY_DOES_NOT_ALIGN_WITH_HEADERS", "IMPORT_INVALID_CUSTOM_ID", "IMPORT_INVALID_DATA", "IMPORT_INVALID_EMAIL_ADDRESSES", "IMPORT_INVALID_PHONE_NUMBERS", "IMPORT_INVALID_EXPIRATION_DATE", "IMPORT_EXPIRATION_DATE_EXCEEDS_MAX_DAYS", "IMPORT_COLUMN_EXCEEDS_LENGTH_LIMIT", "IMPORT_DATUM_EXCEEDS_LENGTH_LIMIT", "IMPORT_MISSING_CUSTOM_ID", "IMPORT_NO_COLUMNS_DEFINED", "IMPORT_COLUMNS_DO_NOT_EXIST_ON_LIST", "IMPORT_LIST_NO_LONGER_EXISTS", "IMPORT_NO_LISTS_CREATED_NO_CONTACTS_MATCH_FILTER", "IMPORT_TARGET_CONTACT_LIST_NAME_EXISTS", "IMPORT_FAILED_CONTACT_ZIP_CODE_COLUMN_VALUE_INVALID", "IMPORT_FAILED_CONTACT_DATA_GREATER_THAN_MAX_LENGTH", "IMPORT_FAILED_CONTACT_DATA_NOT_WITHIN_MIN_MAX_RANGE", "IMPORT_FAILED_CONTACT_DATA_INVALID_DATATYPE", "IMPORT_TOO_MANY_COLUMNS", "IMPORT_TOO_MANY_EXTRA_COLUMNS", "IMPORT_CONTACT_LIST_NAME_LENGTH_EXCEEDED", "ORGANIZATION_HAS_NO_DOMAIN_SET", "QUEUE_NOT_FOUND", "RECYCLE_CAMPAIGN", "SCHEDULED_CAMPAIGN_INVALID", "SCHEDULE_UNKNOWN_ERROR", "SMS_CONTENT_TEMPLATE_NOT_FOUND", "RECURRING_SCHEDULE_NEXT_OCCURRENCE_FAILURE", "RECURRING_SCHEDULE_ENDED", "RECURRING_SCHEDULE_MISSED_OCCURRENCES", "VERSION_CONFLICT"]
+                    "enum": ["ACTIVE_CAMPAIGNS_LIMIT_EXCEEDED", "ALL_CAMPAIGNS_BLACKLISTED", "ANOTHER_CAMPAIGN_STARTING", "APPROACHING_CONTACT_LIMIT", "APPROACHING_DNC_LIST_PHONE_NUMBER_LIMIT", "APPROACHING_DNC_ORGANIZATION_PHONE_NUMBER_LIMIT", "APPROACHING_ENTITY_LIMIT", "AUTOMATIC_TIME_ZONE_ZIP_CODE_INVALID", "CAMPAIGN_BLACKLISTED", "CAMPAIGN_BUILD_CONTACT_QUEUE_ERROR", "CAMPAIGN_CHECK_JOB_DUPLICATE", "CAMPAIGN_CONTENT_TEMPLATE_SUBSTITUTION_MISMATCH", "CAMPAIGN_CALLS_PER_AGENT_LOW", "CAMPAIGN_EMAIL_BODY_CHARACTER_LIMIT_EXCEEDED", "CAMPAIGN_EMAIL_SUBJECT_CHARACTER_LIMIT_EXCEEDED", "CAMPAIGN_WHATSAPP_HEADER_VALUE_LIMIT_EXCEEDED", "CAMPAIGN_WHATSAPP_BUTTON_URL_VALUE_LIMIT_EXCEEDED", "CAMPAIGN_INVALIDATED", "CAMPAIGN_FORCE_STOPPED", "CAMPAIGN_MESSAGE_CHARACTER_LIMIT_EXCEEDED", "CAMPAIGN_START_ERROR", "CAMPAIGN_RULE_START_ERROR", "CAMPAIGN_SCRIPT_STAGE_MISSING", "CAMPAIGN_SET_DIALING_MODE_ERROR", "CAMPAIGN_STOPPED", "CAMPAIGN_THROTTLED", "CAMPAIGN_QUEUE_MEMBERS_LIMIT_EXCEEDED", "CAMPAIGN_WEIGHT_ZERO", "INVALID_CALLABLE_TIME_ZONE", "CALLBACK_CREATION_INVALID_NUMBER", "CALL_RULE_INVALID_CONTACT_COLUMN", "CALL_RULE_MISSING_DATA_ACTION_INPUT", "CALL_RULE_MISMATCH_TYPE", "CALL_RULE_INVALID_OPERATOR", "CALL_RULE_NO_DNC_LISTS_CONFIGURED", "CALL_RULE_UPDATED_PHONE_COLUMN", "CONTACT_LIST_FILTER_EVALUATION_FAILED", "CONTACT_LIST_FILTER_INTERNAL_ERROR", "CONTACT_COLUMNS_LIMIT_EXCEEDED", "CONTACT_COLUMN_LENGTH_LIMIT_EXCEEDED", "CONTACT_ID_LENGTH_LIMIT_EXCEEDED", "CONTACT_DATUM_LENGTH_LIMIT_EXCEEDED", "CONTACT_ZIP_CODE_COLUMN_VALUE_INVALID", "DATA_ACTION_EXECUTION_FAILED", "DATA_ACTION_AUTHENTICATION_FAILURE", "DATA_ACTION_NOT_FOUND", "DATA_ACTION_TOO_MANY_REQUESTS", "DATA_ACTION_TOO_MANY_REQUESTS_REMOTE", "ACTION_EXECUTION_FAILED", "ACTION_EXECUTION_FAILED_INVALID_PARAMETER", "DIGITAL_RULE_EVALUATION_FAILED", "DIGITAL_RULE_INTERNAL_ERROR", "DIGITAL_RULE_NO_DNC_LISTS_CONFIGURED", "DIGITAL_RULE_UPDATED_CONTACT_ADDRESS", "DIGITAL_RULE_SMS_PHONE_NUMBER_TYPE_MISMATCH", "DIGITAL_RULE_ERROR_SKIPPED", "DNC_AUTHENTICATION_FAILURE", "EXCEEDED_CONTACT_LIMIT", "EXCEEDED_DNC_RECORD_LIMIT", "EXCEEDED_DNC_PHONE_NUMBER_LENGTH", "INACTIVE_EDGES_FAILED_PLACE_CALLS", "INACTIVE_EDGES_TURNED_CAMPAIGN_OFF", "INVALID_AGENT", "INVALID_EMAIL_ADDRESS", "INVALID_PHONE_NUMBER", "IMPORT_FAILED_TO_READ_HEADERS", "IMPORT_COULD_NOT_PARSE_AN_ENTRY", "IMPORT_CONTACT_DOES_NOT_MATCH_LIST_FORMAT", "IMPORT_ENTRY_DOES_NOT_ALIGN_WITH_HEADERS", "IMPORT_INVALID_CUSTOM_ID", "IMPORT_INVALID_DATA", "IMPORT_INVALID_EMAIL_ADDRESSES", "IMPORT_INVALID_PHONE_NUMBERS", "IMPORT_INVALID_EXPIRATION_DATE", "IMPORT_EXPIRATION_DATE_EXCEEDS_MAX_DAYS", "IMPORT_COLUMN_EXCEEDS_LENGTH_LIMIT", "IMPORT_DATUM_EXCEEDS_LENGTH_LIMIT", "IMPORT_MISSING_CUSTOM_ID", "IMPORT_NO_COLUMNS_DEFINED", "IMPORT_COLUMNS_DO_NOT_EXIST_ON_LIST", "IMPORT_LIST_NO_LONGER_EXISTS", "IMPORT_NO_LISTS_CREATED_NO_CONTACTS_MATCH_FILTER", "IMPORT_TARGET_CONTACT_LIST_NAME_EXISTS", "IMPORT_FAILED_CONTACT_ZIP_CODE_COLUMN_VALUE_INVALID", "IMPORT_FAILED_CONTACT_DATA_GREATER_THAN_MAX_LENGTH", "IMPORT_FAILED_CONTACT_DATA_NOT_WITHIN_MIN_MAX_RANGE", "IMPORT_FAILED_CONTACT_DATA_INVALID_DATATYPE", "IMPORT_TOO_MANY_COLUMNS", "IMPORT_TOO_MANY_EXTRA_COLUMNS", "IMPORT_INVALID_RETENTION_TYPE", "IMPORT_INVALID_RETENTION_DAYS_MUST_BE_SET", "IMPORT_INVALID_RETENTION_DAYS_MUST_NOT_BE_SET", "IMPORT_INVALID_RETENTION_DAYS_MUST_BE_POSITIVE", "IMPORT_INVALID_RETENTION_DAYS_EXCEEDS_LIMIT", "IMPORT_INVALID_RETENTION_EXPIRATION_DATE_MUST_BE_SET", "IMPORT_INVALID_RETENTION_EXPIRATION_DATE_MUST_NOT_BE_SET", "IMPORT_INVALID_RETENTION_EXPIRATION_DATE_INVALID_FORMAT", "IMPORT_INVALID_RETENTION_EXPIRATION_DATE_NO_SECONDS", "IMPORT_INVALID_RETENTION_EXPIRATION_DATE_EXCEEDS_LIMIT", "IMPORT_INVALID_RETENTION_MISSING_TYPE", "IMPORT_INVALID_RETENTION_MISSING_PREFERRED_TIMEZONE", "IMPORT_INVALID_RETENTION_EXPIRATION_IN_PAST", "IMPORT_CONTACT_LIST_NAME_LENGTH_EXCEEDED", "FAILED_TO_DELETE_CONTACT_LIST", "RESOURCE_NOT_FOUND", "INVALID_CONTACT_UPDATE", "ORGANIZATION_HAS_NO_DOMAIN_SET", "QUEUE_NOT_FOUND", "RECYCLE_CAMPAIGN", "SCHEDULED_CAMPAIGN_INVALID", "SCHEDULE_UNKNOWN_ERROR", "SMS_CONTENT_TEMPLATE_NOT_FOUND", "RECURRING_SCHEDULE_NEXT_OCCURRENCE_FAILURE", "RECURRING_SCHEDULE_ENDED", "RECURRING_SCHEDULE_MISSED_OCCURRENCES", "VERSION_CONFLICT"]
                 }, 
                 {
                     "name": "Message",
@@ -98062,6 +98339,11 @@
                     "dataType": "int"
                 }, 
                 {
+                    "name": "Rank",
+                    "description": "The rank of the journey view chart for ordering display",
+                    "dataType": "int"
+                }, 
+                {
                     "name": "GroupByTime",
                     "description": "A time unit to group the metrics by. There is a limit on the number of groupBy properties which can be specified.",
                     "dataType": "string",
@@ -108824,7 +109106,7 @@
                 {
                     "name": "Namespace",
                     "dataType": "string",
-                    "enum": ["web.messaging", "webhooks", "agent.assistant", "agentic.virtual.agents", "analytics.agents", "analytics.alerting", "analytics.data.extraction", "analytics", "analytics.realtime", "analytics.reporting.settings", "anomaly.detection", "architect", "audiohook", "audiohook.monitor", "audit", "auth.api", "authorization", "automation.testing", "bots", "bots.voice", "business.rules", "callback", "case.management", "cobrowse", "content.management", "conversation", "copilot", "dataactions", "datatables", "directory", "dsar", "email", "employee.engagement", "event.orchestration", "external.contacts", "external.events.data.ingestion", "gamification", "gcv", "gdpr", "groups", "guides", "historical.adherence", "infrastructureascode", "integrations", "intent.miner", "internal.messaging", "journey", "knowledge", "language.understanding", "learning", "limit.registry", "marketplace", "mcp", "media.communications", "messaging", "micro.frontend", "multi.org", "notifications", "onboarding", "outbound", "platform.api", "predictive.routing", "presence", "quality", "recording", "response.management", "routing", "scim", "screen.monitoring", "search", "secondary.automation.testing", "skills", "social.media", "speech.and.text.analytics", "speech.integration", "supportability", "task.management", "telephony.configuration", "usage", "users", "users.rules", "voice.transcription", "web.deployments", "webchat", "workforce.management.agent.availability", "workforce.management.forecast", "workforce.management", "workforce.management.scheduling.preferences", "workforce.management.self.schedule", "workforce.management.shift.trading", "system"]
+                    "enum": ["web.deployments", "web.messaging", "agent.assistant", "agentic.virtual.agents", "analytics.agents", "analytics.alerting", "analytics.data.extraction", "analytics", "analytics.realtime", "analytics.reporting.settings", "anomaly.detection", "architect", "audiohook", "audiohook.monitor", "audit", "auth.api", "authorization", "automation.testing", "bots", "bots.voice", "business.rules", "callback", "case.management", "cobrowse", "content.management", "conversation", "copilot", "dataactions", "datatables", "directory", "dsar", "email", "employee.engagement", "event.orchestration", "external.contacts", "external.events.data.ingestion", "gamification", "gcv", "gdpr", "groups", "guides", "historical.adherence", "infrastructureascode", "integrations", "intent.miner", "internal.messaging", "journey", "knowledge", "language.understanding", "learning", "limit.registry", "marketplace", "mcp.analytics.aggregates", "mcp", "media.communications", "messaging", "micro.frontend", "multi.org", "notifications", "onboarding", "outbound", "platform.api", "predictive.routing", "presence", "quality", "recording", "response.management", "routing", "scim", "screen.monitoring", "search", "secondary.automation.testing", "skills", "social.media", "speech.and.text.analytics", "speech.integration", "supportability", "task.management", "telephony.configuration", "usage", "users", "users.rules", "voice.transcription", "webchat", "webhooks", "workforce.management.adherence", "workforce.management.agent.availability", "workforce.management.forecast", "workforce.management", "workforce.management.scheduling.preferences", "workforce.management.self.schedule", "workforce.management.shift.trading", "system"]
                 }, 
                 {
                     "name": "Value",
@@ -108851,7 +109133,7 @@
                     "description": "Namespace the key belongs to (see https://developer.mypurecloud.com/api/rest/v2/organization/limits.html#available_limits)",
                     "required": true,
                     "dataType": "string",
-                    "enum": ["web.messaging", "webhooks", "agent.assistant", "agentic.virtual.agents", "analytics.agents", "analytics.alerting", "analytics.data.extraction", "analytics", "analytics.realtime", "analytics.reporting.settings", "anomaly.detection", "architect", "audiohook", "audiohook.monitor", "audit", "auth.api", "authorization", "automation.testing", "bots", "bots.voice", "business.rules", "callback", "case.management", "cobrowse", "content.management", "conversation", "copilot", "dataactions", "datatables", "directory", "dsar", "email", "employee.engagement", "event.orchestration", "external.contacts", "external.events.data.ingestion", "gamification", "gcv", "gdpr", "groups", "guides", "historical.adherence", "infrastructureascode", "integrations", "intent.miner", "internal.messaging", "journey", "knowledge", "language.understanding", "learning", "limit.registry", "marketplace", "mcp", "media.communications", "messaging", "micro.frontend", "multi.org", "notifications", "onboarding", "outbound", "platform.api", "predictive.routing", "presence", "quality", "recording", "response.management", "routing", "scim", "screen.monitoring", "search", "secondary.automation.testing", "skills", "social.media", "speech.and.text.analytics", "speech.integration", "supportability", "task.management", "telephony.configuration", "usage", "users", "users.rules", "voice.transcription", "web.deployments", "webchat", "workforce.management.agent.availability", "workforce.management.forecast", "workforce.management", "workforce.management.scheduling.preferences", "workforce.management.self.schedule", "workforce.management.shift.trading", "system"]
+                    "enum": ["web.deployments", "web.messaging", "agent.assistant", "agentic.virtual.agents", "analytics.agents", "analytics.alerting", "analytics.data.extraction", "analytics", "analytics.realtime", "analytics.reporting.settings", "anomaly.detection", "architect", "audiohook", "audiohook.monitor", "audit", "auth.api", "authorization", "automation.testing", "bots", "bots.voice", "business.rules", "callback", "case.management", "cobrowse", "content.management", "conversation", "copilot", "dataactions", "datatables", "directory", "dsar", "email", "employee.engagement", "event.orchestration", "external.contacts", "external.events.data.ingestion", "gamification", "gcv", "gdpr", "groups", "guides", "historical.adherence", "infrastructureascode", "integrations", "intent.miner", "internal.messaging", "journey", "knowledge", "language.understanding", "learning", "limit.registry", "marketplace", "mcp.analytics.aggregates", "mcp", "media.communications", "messaging", "micro.frontend", "multi.org", "notifications", "onboarding", "outbound", "platform.api", "predictive.routing", "presence", "quality", "recording", "response.management", "routing", "scim", "screen.monitoring", "search", "secondary.automation.testing", "skills", "social.media", "speech.and.text.analytics", "speech.integration", "supportability", "task.management", "telephony.configuration", "usage", "users", "users.rules", "voice.transcription", "webchat", "webhooks", "workforce.management.adherence", "workforce.management.agent.availability", "workforce.management.forecast", "workforce.management", "workforce.management.scheduling.preferences", "workforce.management.self.schedule", "workforce.management.shift.trading", "system"]
                 }, 
                 {
                     "name": "RequestedValue",
@@ -111020,16 +111302,16 @@
                     "dataType": "Userreference"
                 }, 
                 {
-                    "name": "Version",
-                    "description": "The version of the underlying entity.  Deprecated, use field from settings.metadata instead",
-                    "readOnly": true,
-                    "dataType": "int"
-                }, 
-                {
                     "name": "DateModified",
                     "description": "The date and time at which this entity was last modified.  Deprecated, use field from settings.metadata instead. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z",
                     "readOnly": true,
                     "dataType": "time.Time"
+                }, 
+                {
+                    "name": "Version",
+                    "description": "The version of the underlying entity.  Deprecated, use field from settings.metadata instead",
+                    "readOnly": true,
+                    "dataType": "int"
                 }, 
                 {
                     "name": "SelfUri",
@@ -117378,6 +117660,193 @@
                 }
             ]
         }, 
+        "notesexport": { 
+            "properties": [
+                {
+                    "name": "Id",
+                    "description": "The globally unique identifier for the object.",
+                    "readOnly": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "DivisionIds",
+                    "description": "Division IDs of entities",
+                    "dataType": "[]string"
+                }, 
+                {
+                    "name": "CreatedBy",
+                    "description": "The user that created this request",
+                    "readOnly": true,
+                    "dataType": "Domainentityref"
+                }, 
+                {
+                    "name": "DateCreated",
+                    "description": "When the request was submitted. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z",
+                    "readOnly": true,
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "DateCompletion",
+                    "description": "When the request reached a terminal state. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z",
+                    "readOnly": true,
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "Status",
+                    "description": "The status of the request",
+                    "readOnly": true,
+                    "dataType": "string",
+                    "enum": ["RUNNING", "SUCCEEDED", "FAILED"]
+                }, 
+                {
+                    "name": "DownloadUrl",
+                    "description": "The location where the results of the request can be retrieved",
+                    "readOnly": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "ResultRowCount",
+                    "description": "Number of rows returned by the export query",
+                    "readOnly": true,
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "QueryConditions",
+                    "description": "Query conditions to apply on export",
+                    "dataType": "Notesexportqueryconditions"
+                }, 
+                {
+                    "name": "SelfUri",
+                    "description": "The URI for this object",
+                    "readOnly": true,
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "notesexportcomparisonfieldfilter": { 
+            "properties": [
+                {
+                    "name": "Field",
+                    "description": "Field name to apply the filter",
+                    "required": true,
+                    "dataType": "string",
+                    "enum": ["CreateDate", "ModifyDate"]
+                }, 
+                {
+                    "name": "Value",
+                    "description": "Value to compare field's value against",
+                    "required": true,
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "notesexportfieldfilter": { 
+            "properties": [
+                {
+                    "name": "Field",
+                    "description": "Field name to apply the filter",
+                    "required": true,
+                    "dataType": "string",
+                    "enum": ["DivisionId", "EntityType"]
+                }, 
+                {
+                    "name": "Value",
+                    "description": "Value to check field's value against",
+                    "required": true,
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "notesexportfieldlistfilter": { 
+            "properties": [
+                {
+                    "name": "Field",
+                    "description": "Field name to apply the filter",
+                    "required": true,
+                    "dataType": "string",
+                    "enum": ["DivisionId", "EntityType"]
+                }, 
+                {
+                    "name": "Values",
+                    "description": "Values to check field's value against",
+                    "required": true,
+                    "dataType": "[]string"
+                }
+            ]
+        }, 
+        "notesexportfilter": { 
+            "properties": [
+                {
+                    "name": "Eq",
+                    "description": "Filtered field should have the same value",
+                    "dataType": "Notesexportfieldfilter"
+                }, 
+                {
+                    "name": "In",
+                    "description": "Filtered field should match one of the listed values",
+                    "dataType": "Notesexportfieldlistfilter"
+                }, 
+                {
+                    "name": "Lte",
+                    "description": "Filtered field should be less than or equal to the value",
+                    "dataType": "Notesexportcomparisonfieldfilter"
+                }, 
+                {
+                    "name": "Gte",
+                    "description": "Filtered field should be greater than or equal to the value",
+                    "dataType": "Notesexportcomparisonfieldfilter"
+                }, 
+                {
+                    "name": "And",
+                    "description": "Boolean AND combination of filters",
+                    "dataType": "[]Notesexportfilter"
+                }, 
+                {
+                    "name": "Or",
+                    "description": "Boolean OR combination of filters",
+                    "dataType": "[]Notesexportfilter"
+                }, 
+                {
+                    "name": "Not",
+                    "description": "Boolean negation of filters",
+                    "dataType": "*Notesexportfilter"
+                }
+            ]
+        }, 
+        "notesexportlisting": { 
+            "properties": [
+                {
+                    "name": "Entities",
+                    "dataType": "[]Notesexport"
+                }, 
+                {
+                    "name": "NextUri",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "SelfUri",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "PreviousUri",
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "notesexportqueryconditions": { 
+            "properties": [
+                {
+                    "name": "Filters",
+                    "description": "Filters to apply on export",
+                    "dataType": "*Notesexportfilter"
+                }, 
+                {
+                    "name": "Limit",
+                    "description": "Maximum result count in export, default is 180 000 000",
+                    "dataType": "int"
+                }
+            ]
+        }, 
         "notificationsresponse": { 
             "properties": [
                 {
@@ -121726,6 +122195,193 @@
                 }, 
                 {
                     "name": "PageCount",
+                    "dataType": "int"
+                }
+            ]
+        }, 
+        "organizationsexport": { 
+            "properties": [
+                {
+                    "name": "Id",
+                    "description": "The globally unique identifier for the object.",
+                    "readOnly": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "DivisionIds",
+                    "description": "Division IDs of entities",
+                    "dataType": "[]string"
+                }, 
+                {
+                    "name": "CreatedBy",
+                    "description": "The user that created this request",
+                    "readOnly": true,
+                    "dataType": "Domainentityref"
+                }, 
+                {
+                    "name": "DateCreated",
+                    "description": "When the request was submitted. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z",
+                    "readOnly": true,
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "DateCompletion",
+                    "description": "When the request reached a terminal state. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z",
+                    "readOnly": true,
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "Status",
+                    "description": "The status of the request",
+                    "readOnly": true,
+                    "dataType": "string",
+                    "enum": ["RUNNING", "SUCCEEDED", "FAILED"]
+                }, 
+                {
+                    "name": "DownloadUrl",
+                    "description": "The location where the results of the request can be retrieved",
+                    "readOnly": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "ResultRowCount",
+                    "description": "Number of rows returned by the export query",
+                    "readOnly": true,
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "QueryConditions",
+                    "description": "Query conditions to apply on export",
+                    "dataType": "Organizationsexportqueryconditions"
+                }, 
+                {
+                    "name": "SelfUri",
+                    "description": "The URI for this object",
+                    "readOnly": true,
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "organizationsexportcomparisonfieldfilter": { 
+            "properties": [
+                {
+                    "name": "Field",
+                    "description": "Field name to apply the filter",
+                    "required": true,
+                    "dataType": "string",
+                    "enum": ["CreateDate", "ModifyDate"]
+                }, 
+                {
+                    "name": "Value",
+                    "description": "Value to compare field's value against",
+                    "required": true,
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "organizationsexportfieldfilter": { 
+            "properties": [
+                {
+                    "name": "Field",
+                    "description": "Field name to apply the filter",
+                    "required": true,
+                    "dataType": "string",
+                    "enum": ["DivisionId", "SchemaId", "SchemaVersion"]
+                }, 
+                {
+                    "name": "Value",
+                    "description": "Value to check field's value against",
+                    "required": true,
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "organizationsexportfieldlistfilter": { 
+            "properties": [
+                {
+                    "name": "Field",
+                    "description": "Field name to apply the filter",
+                    "required": true,
+                    "dataType": "string",
+                    "enum": ["DivisionId", "SchemaId", "SchemaVersion"]
+                }, 
+                {
+                    "name": "Values",
+                    "description": "Values to check field's value against",
+                    "required": true,
+                    "dataType": "[]string"
+                }
+            ]
+        }, 
+        "organizationsexportfilter": { 
+            "properties": [
+                {
+                    "name": "Eq",
+                    "description": "Filtered field should have the same value",
+                    "dataType": "Organizationsexportfieldfilter"
+                }, 
+                {
+                    "name": "In",
+                    "description": "Filtered field should match one of the listed values",
+                    "dataType": "Organizationsexportfieldlistfilter"
+                }, 
+                {
+                    "name": "Lte",
+                    "description": "Filtered field should be less than or equal to the value",
+                    "dataType": "Organizationsexportcomparisonfieldfilter"
+                }, 
+                {
+                    "name": "Gte",
+                    "description": "Filtered field should be greater than or equal to the value",
+                    "dataType": "Organizationsexportcomparisonfieldfilter"
+                }, 
+                {
+                    "name": "And",
+                    "description": "Boolean AND combination of filters",
+                    "dataType": "[]Organizationsexportfilter"
+                }, 
+                {
+                    "name": "Or",
+                    "description": "Boolean OR combination of filters",
+                    "dataType": "[]Organizationsexportfilter"
+                }, 
+                {
+                    "name": "Not",
+                    "description": "Boolean negation of filters",
+                    "dataType": "*Organizationsexportfilter"
+                }
+            ]
+        }, 
+        "organizationsexportlisting": { 
+            "properties": [
+                {
+                    "name": "Entities",
+                    "dataType": "[]Organizationsexport"
+                }, 
+                {
+                    "name": "NextUri",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "SelfUri",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "PreviousUri",
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "organizationsexportqueryconditions": { 
+            "properties": [
+                {
+                    "name": "Filters",
+                    "description": "Filters to apply on export",
+                    "dataType": "*Organizationsexportfilter"
+                }, 
+                {
+                    "name": "Limit",
+                    "description": "Maximum result count in export, default is 180 000 000",
                     "dataType": "int"
                 }
             ]
@@ -131415,6 +132071,12 @@
                     "dataType": "string"
                 }, 
                 {
+                    "name": "AudioFormat",
+                    "description": "Audio format info",
+                    "readOnly": true,
+                    "dataType": "Audioformat"
+                }, 
+                {
                     "name": "TtsString",
                     "description": "Text to speech of the resource",
                     "dataType": "string"
@@ -131488,6 +132150,12 @@
                     "description": "URI of the resource audio",
                     "readOnly": true,
                     "dataType": "string"
+                }, 
+                {
+                    "name": "AudioFormat",
+                    "description": "Audio format info",
+                    "readOnly": true,
+                    "dataType": "Audioformat"
                 }, 
                 {
                     "name": "TtsString",
@@ -134505,6 +135173,10 @@
                 {
                     "name": "FaxStatus",
                     "dataType": "Queueconversationcalleventtopicfaxstatus"
+                }, 
+                {
+                    "name": "PublicIpAddress",
+                    "dataType": "string"
                 }
             ]
         }, 
@@ -136848,6 +137520,11 @@
                 {
                     "name": "TransferSource",
                     "description": "Indicates how call reaches the agent.",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "PublicIpAddress",
+                    "description": "The reported client IP of the phone for the call.",
                     "dataType": "string"
                 }
             ]
@@ -140404,6 +141081,11 @@
                     "name": "TransferSource",
                     "description": "Indicates how call reaches the agent.",
                     "dataType": "string"
+                }, 
+                {
+                    "name": "PublicIpAddress",
+                    "description": "The reported client IP of the phone for the call.",
+                    "dataType": "string"
                 }
             ]
         }, 
@@ -142697,6 +143379,11 @@
                 {
                     "name": "TransferSource",
                     "description": "Indicates how call reaches the agent.",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "PublicIpAddress",
+                    "description": "The reported client IP of the phone for the call.",
                     "dataType": "string"
                 }
             ]
@@ -147753,6 +148440,11 @@
                     "name": "RecordingBatchDownloadUrlTtl",
                     "description": "The duration in minutes for which the generated URL for recording batch download remains valid.The default duration is set to 60 minutes, with a minimum allowable duration of 2 minutes and a maximum of 60 minutes.",
                     "dataType": "int"
+                }, 
+                {
+                    "name": "StopRecordingWhenOnlyExternalParticipants",
+                    "description": "Whether to stop recording in conference when only external participants remain",
+                    "dataType": "bool"
                 }
             ]
         }, 
@@ -148344,6 +149036,193 @@
                 }
             ]
         }, 
+        "relationshipsexport": { 
+            "properties": [
+                {
+                    "name": "Id",
+                    "description": "The globally unique identifier for the object.",
+                    "readOnly": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "DivisionIds",
+                    "description": "Division IDs of entities",
+                    "dataType": "[]string"
+                }, 
+                {
+                    "name": "CreatedBy",
+                    "description": "The user that created this request",
+                    "readOnly": true,
+                    "dataType": "Domainentityref"
+                }, 
+                {
+                    "name": "DateCreated",
+                    "description": "When the request was submitted. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z",
+                    "readOnly": true,
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "DateCompletion",
+                    "description": "When the request reached a terminal state. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z",
+                    "readOnly": true,
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "Status",
+                    "description": "The status of the request",
+                    "readOnly": true,
+                    "dataType": "string",
+                    "enum": ["RUNNING", "SUCCEEDED", "FAILED"]
+                }, 
+                {
+                    "name": "DownloadUrl",
+                    "description": "The location where the results of the request can be retrieved",
+                    "readOnly": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "ResultRowCount",
+                    "description": "Number of rows returned by the export query",
+                    "readOnly": true,
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "QueryConditions",
+                    "description": "Query conditions to apply on export",
+                    "dataType": "Relationshipsexportqueryconditions"
+                }, 
+                {
+                    "name": "SelfUri",
+                    "description": "The URI for this object",
+                    "readOnly": true,
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "relationshipsexportcomparisonfieldfilter": { 
+            "properties": [
+                {
+                    "name": "Field",
+                    "description": "Field name to apply the filter",
+                    "required": true,
+                    "dataType": "string",
+                    "enum": ["CreateDate", "ModifyDate"]
+                }, 
+                {
+                    "name": "Value",
+                    "description": "Value to compare field's value against",
+                    "required": true,
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "relationshipsexportfieldfilter": { 
+            "properties": [
+                {
+                    "name": "Field",
+                    "description": "Field name to apply the filter",
+                    "required": true,
+                    "dataType": "string",
+                    "enum": ["DivisionId", "UserId"]
+                }, 
+                {
+                    "name": "Value",
+                    "description": "Value to check field's value against",
+                    "required": true,
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "relationshipsexportfieldlistfilter": { 
+            "properties": [
+                {
+                    "name": "Field",
+                    "description": "Field name to apply the filter",
+                    "required": true,
+                    "dataType": "string",
+                    "enum": ["DivisionId", "UserId"]
+                }, 
+                {
+                    "name": "Values",
+                    "description": "Values to check field's value against",
+                    "required": true,
+                    "dataType": "[]string"
+                }
+            ]
+        }, 
+        "relationshipsexportfilter": { 
+            "properties": [
+                {
+                    "name": "Eq",
+                    "description": "Filtered field should have the same value",
+                    "dataType": "Relationshipsexportfieldfilter"
+                }, 
+                {
+                    "name": "In",
+                    "description": "Filtered field should match one of the listed values",
+                    "dataType": "Relationshipsexportfieldlistfilter"
+                }, 
+                {
+                    "name": "Lte",
+                    "description": "Filtered field should be less than or equal to the value",
+                    "dataType": "Relationshipsexportcomparisonfieldfilter"
+                }, 
+                {
+                    "name": "Gte",
+                    "description": "Filtered field should be greater than or equal to the value",
+                    "dataType": "Relationshipsexportcomparisonfieldfilter"
+                }, 
+                {
+                    "name": "And",
+                    "description": "Boolean AND combination of filters",
+                    "dataType": "[]Relationshipsexportfilter"
+                }, 
+                {
+                    "name": "Or",
+                    "description": "Boolean OR combination of filters",
+                    "dataType": "[]Relationshipsexportfilter"
+                }, 
+                {
+                    "name": "Not",
+                    "description": "Boolean negation of filters",
+                    "dataType": "*Relationshipsexportfilter"
+                }
+            ]
+        }, 
+        "relationshipsexportlisting": { 
+            "properties": [
+                {
+                    "name": "Entities",
+                    "dataType": "[]Relationshipsexport"
+                }, 
+                {
+                    "name": "NextUri",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "SelfUri",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "PreviousUri",
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "relationshipsexportqueryconditions": { 
+            "properties": [
+                {
+                    "name": "Filters",
+                    "description": "Filters to apply on export",
+                    "dataType": "*Relationshipsexportfilter"
+                }, 
+                {
+                    "name": "Limit",
+                    "description": "Maximum result count in export, default is 180 000 000",
+                    "dataType": "int"
+                }
+            ]
+        }, 
         "removeentitiesrequest": { 
             "properties": [
                 {
@@ -148543,7 +149422,7 @@
                 {
                     "name": "ViewType",
                     "dataType": "string",
-                    "enum": ["QUEUE_PERFORMANCE_SUMMARY_VIEW", "QUEUE_PERFORMANCE_DETAIL_VIEW", "INTERACTION_SEARCH_VIEW", "AGENT_PERFORMANCE_SUMMARY_VIEW", "AGENT_PERFORMANCE_DETAIL_VIEW", "AGENT_STATUS_SUMMARY_VIEW", "AGENT_STATUS_DETAIL_VIEW", "AGENT_EVALUATION_SUMMARY_VIEW", "AGENT_EVALUATION_DETAIL_VIEW", "AGENT_QUEUE_DETAIL_VIEW", "AGENT_INTERACTION_DETAIL_VIEW", "ABANDON_INSIGHTS_VIEW", "SKILLS_PERFORMANCE_VIEW", "SURVEY_FORM_PERFORMANCE_SUMMARY_VIEW", "SURVEY_FORM_PERFORMANCE_DETAIL_VIEW", "DNIS_PERFORMANCE_SUMMARY_VIEW", "DNIS_PERFORMANCE_DETAIL_VIEW", "WRAP_UP_PERFORMANCE_SUMMARY_VIEW", "AGENT_WRAP_UP_PERFORMANCE_DETAIL_VIEW", "QUEUE_ACTIVITY_SUMMARY_VIEW", "QUEUE_ACTIVITY_DETAIL_VIEW", "AGENT_QUEUE_ACTIVITY_SUMMARY_VIEW", "QUEUE_AGENT_DETAIL_VIEW", "QUEUE_INTERACTION_DETAIL_VIEW", "AGENT_SCHEDULE_DETAIL_VIEW", "IVR_PERFORMANCE_SUMMARY_VIEW", "IVR_PERFORMANCE_DETAIL_VIEW", "ANSWER_INSIGHTS_VIEW", "HANDLE_INSIGHTS_VIEW", "TALK_INSIGHTS_VIEW", "HOLD_INSIGHTS_VIEW", "ACW_INSIGHTS_VIEW", "WAIT_INSIGHTS_VIEW", "AGENT_WRAP_UP_PERFORMANCE_INTERVAL_DETAIL_VIEW", "FLOW_OUTCOME_SUMMARY_VIEW", "FLOW_OUTCOME_PERFORMANCE_DETAIL_VIEW", "FLOW_OUTCOME_PERFORMANCE_INTERVAL_DETAIL_VIEW", "FLOW_DESTINATION_SUMMARY_VIEW", "FLOW_DESTINATION_DETAIL_VIEW", "SCHEDULED_CALLBACKS_VIEW", "CONTENT_SEARCH_VIEW", "JOURNEY_ACTION_MAP_SUMMARY_VIEW", "JOURNEY_OUTCOME_SUMMARY_VIEW", "JOURNEY_SEGMENT_SUMMARY_VIEW", "AGENT_DEVELOPMENT_DETAIL_VIEW", "AGENT_DEVELOPMENT_DETAIL_ME_VIEW", "AGENT_DEVELOPMENT_SUMMARY_VIEW", "AGENT_SCORECARD_VIEW", "AGENT_SCORECARD_ME_VIEW", "AGENT_GAMIFICATION_LEADERSHIP_VIEW", "AGENT_SCHEDULE_ME_VIEW", "BOT_PERFORMANCE_SUMMARY_VIEW", "BOT_PERFORMANCE_DETAIL_VIEW", "TOPIC_TREND_SUMMARY_VIEW", "TOPIC_TREND_DETAIL_VIEW", "ACTION_MAP_BLOCKED_CONSTRAINTS_DETAIL_VIEW", "ACTION_MAP_BLOCKED_CONSTRAINTS_INTERVAL_DETAIL_VIEW", "FLOW_MILESTONE_PERFORMANCE_DETAIL_VIEW", "FLOW_MILESTONE_PERFORMANCE_INTERVAL_DETAIL_VIEW", "AGENT_TOPIC_SUMMARY_VIEW", "AGENT_TOPIC_DETAIL_VIEW", "QUEUE_TOPIC_SUMMARY_VIEW", "QUEUE_TOPIC_DETAIL_VIEW", "FLOW_TOPIC_SUMMARY_VIEW", "FLOW_TOPIC_DETAIL_VIEW", "AGENT_INTERACTIONS_ME_VIEW", "DATA_ACTIONS_PERFORMANCE_SUMMARY_VIEW", "DATA_ACTIONS_PERFORMANCE_DETAIL_VIEW", "AGENT_TIMELINE_SUMMARY_VIEW", "AGENT_TIMELINE_DETAIL_VIEW", "AGENT_LOGIN_LOGOUT_SUMMARY_VIEW", "AGENT_LOGIN_LOGOUT_DETAIL_VIEW", "CAMPAIGN_PERFORMANCE_SUMMARY_VIEW", "CAMPAIGN_PERFORMANCE_DETAIL_VIEW", "QUEUE_WRAPUP_DETAIL_VIEW", "CAMPAIGN_INTERACTION_DETAIL_VIEW", "CAMPAIGN_ATTEMPT_DETAIL_VIEW", "WORKITEM_PERFORMANCE_SUMMARY_VIEW", "QUEUE_ROUTING_PERFORMANCE_VIEW", "AGENT_WORKITEM_PERFORMANCE_SUMMARY_VIEW", "AGENT_WORKITEM_PERFORMANCE_DETAIL_VIEW", "QUEUE_WORKITEM_PERFORMANCE_SUMMARY_VIEW", "QUEUE_WORKITEM_PERFORMANCE_DETAIL_VIEW", "EMAIL_AGENT_PERFORMANCE_SUMMARY_VIEW", "EMAIL_AGENT_PERFORMANCE_DETAIL_VIEW", "MESSAGING_AGENT_PERFORMANCE_SUMMARY_VIEW", "MESSAGING_AGENT_PERFORMANCE_DETAIL_VIEW", "EMAIL_QUEUE_PERFORMANCE_SUMMARY_VIEW", "EMAIL_QUEUE_PERFORMANCE_DETAIL_VIEW", "MESSAGING_QUEUE_PERFORMANCE_SUMMARY_VIEW", "MESSAGING_QUEUE_PERFORMANCE_DETAIL_VIEW", "AGENT_PERFORMANCE_TIMELINE_DETAIL_VIEW", "EVALUATION_PERFORMANCE_SUMMARY_VIEW", "EVALUATION_PERFORMANCE_DETAIL_VIEW", "EVALUATION_PERFORMANCE_QUESTION_GROUP_DETAIL_VIEW", "EVALUATION_PERFORMANCE_QUESTION_DETAIL_VIEW", "CONTENT_EXPLORATION_VIEW"]
+                    "enum": ["QUEUE_PERFORMANCE_SUMMARY_VIEW", "QUEUE_PERFORMANCE_DETAIL_VIEW", "INTERACTION_SEARCH_VIEW", "AGENT_PERFORMANCE_SUMMARY_VIEW", "AGENT_PERFORMANCE_DETAIL_VIEW", "AGENT_STATUS_SUMMARY_VIEW", "AGENT_STATUS_DETAIL_VIEW", "AGENT_EVALUATION_SUMMARY_VIEW", "AGENT_EVALUATION_DETAIL_VIEW", "AGENT_QUEUE_DETAIL_VIEW", "AGENT_INTERACTION_DETAIL_VIEW", "ABANDON_INSIGHTS_VIEW", "SKILLS_PERFORMANCE_VIEW", "SURVEY_FORM_PERFORMANCE_SUMMARY_VIEW", "SURVEY_FORM_PERFORMANCE_DETAIL_VIEW", "DNIS_PERFORMANCE_SUMMARY_VIEW", "DNIS_PERFORMANCE_DETAIL_VIEW", "WRAP_UP_PERFORMANCE_SUMMARY_VIEW", "AGENT_WRAP_UP_PERFORMANCE_DETAIL_VIEW", "QUEUE_ACTIVITY_SUMMARY_VIEW", "QUEUE_ACTIVITY_DETAIL_VIEW", "AGENT_QUEUE_ACTIVITY_SUMMARY_VIEW", "QUEUE_AGENT_DETAIL_VIEW", "QUEUE_INTERACTION_DETAIL_VIEW", "AGENT_SCHEDULE_DETAIL_VIEW", "IVR_PERFORMANCE_SUMMARY_VIEW", "IVR_PERFORMANCE_DETAIL_VIEW", "ANSWER_INSIGHTS_VIEW", "HANDLE_INSIGHTS_VIEW", "TALK_INSIGHTS_VIEW", "HOLD_INSIGHTS_VIEW", "ACW_INSIGHTS_VIEW", "WAIT_INSIGHTS_VIEW", "AGENT_WRAP_UP_PERFORMANCE_INTERVAL_DETAIL_VIEW", "FLOW_OUTCOME_SUMMARY_VIEW", "FLOW_OUTCOME_PERFORMANCE_DETAIL_VIEW", "FLOW_OUTCOME_PERFORMANCE_INTERVAL_DETAIL_VIEW", "FLOW_DESTINATION_SUMMARY_VIEW", "FLOW_DESTINATION_DETAIL_VIEW", "SCHEDULED_CALLBACKS_VIEW", "CONTENT_SEARCH_VIEW", "JOURNEY_ACTION_MAP_SUMMARY_VIEW", "JOURNEY_OUTCOME_SUMMARY_VIEW", "JOURNEY_SEGMENT_SUMMARY_VIEW", "AGENT_DEVELOPMENT_DETAIL_VIEW", "AGENT_DEVELOPMENT_DETAIL_ME_VIEW", "AGENT_DEVELOPMENT_SUMMARY_VIEW", "AGENT_SCORECARD_VIEW", "AGENT_SCORECARD_ME_VIEW", "AGENT_GAMIFICATION_LEADERSHIP_VIEW", "AGENT_SCHEDULE_ME_VIEW", "BOT_PERFORMANCE_SUMMARY_VIEW", "BOT_PERFORMANCE_DETAIL_VIEW", "TOPIC_TREND_SUMMARY_VIEW", "TOPIC_TREND_DETAIL_VIEW", "ACTION_MAP_BLOCKED_CONSTRAINTS_DETAIL_VIEW", "ACTION_MAP_BLOCKED_CONSTRAINTS_INTERVAL_DETAIL_VIEW", "FLOW_MILESTONE_PERFORMANCE_DETAIL_VIEW", "FLOW_MILESTONE_PERFORMANCE_INTERVAL_DETAIL_VIEW", "AGENT_TOPIC_SUMMARY_VIEW", "AGENT_TOPIC_DETAIL_VIEW", "QUEUE_TOPIC_SUMMARY_VIEW", "QUEUE_TOPIC_DETAIL_VIEW", "FLOW_TOPIC_SUMMARY_VIEW", "FLOW_TOPIC_DETAIL_VIEW", "AGENT_INTERACTIONS_ME_VIEW", "DATA_ACTIONS_PERFORMANCE_SUMMARY_VIEW", "DATA_ACTIONS_PERFORMANCE_DETAIL_VIEW", "AGENT_TIMELINE_SUMMARY_VIEW", "AGENT_TIMELINE_DETAIL_VIEW", "AGENT_LOGIN_LOGOUT_SUMMARY_VIEW", "AGENT_LOGIN_LOGOUT_DETAIL_VIEW", "CAMPAIGN_PERFORMANCE_SUMMARY_VIEW", "CAMPAIGN_PERFORMANCE_DETAIL_VIEW", "QUEUE_WRAPUP_DETAIL_VIEW", "CAMPAIGN_INTERACTION_DETAIL_VIEW", "CAMPAIGN_ATTEMPT_DETAIL_VIEW", "WORKITEM_PERFORMANCE_SUMMARY_VIEW", "QUEUE_ROUTING_PERFORMANCE_VIEW", "AGENT_WORKITEM_PERFORMANCE_SUMMARY_VIEW", "AGENT_WORKITEM_PERFORMANCE_DETAIL_VIEW", "QUEUE_WORKITEM_PERFORMANCE_SUMMARY_VIEW", "QUEUE_WORKITEM_PERFORMANCE_DETAIL_VIEW", "EMAIL_AGENT_PERFORMANCE_SUMMARY_VIEW", "EMAIL_AGENT_PERFORMANCE_DETAIL_VIEW", "MESSAGING_AGENT_PERFORMANCE_SUMMARY_VIEW", "MESSAGING_AGENT_PERFORMANCE_DETAIL_VIEW", "EMAIL_QUEUE_PERFORMANCE_SUMMARY_VIEW", "EMAIL_QUEUE_PERFORMANCE_DETAIL_VIEW", "MESSAGING_QUEUE_PERFORMANCE_SUMMARY_VIEW", "MESSAGING_QUEUE_PERFORMANCE_DETAIL_VIEW", "AGENT_PERFORMANCE_TIMELINE_DETAIL_VIEW", "EVALUATION_PERFORMANCE_SUMMARY_VIEW", "EVALUATION_PERFORMANCE_DETAIL_VIEW", "EVALUATION_PERFORMANCE_QUESTION_GROUP_DETAIL_VIEW", "EVALUATION_PERFORMANCE_QUESTION_DETAIL_VIEW", "CONTENT_EXPLORATION_VIEW", "CALLBACK_QUEUE_PERFORMANCE_SUMMARY_VIEW", "CALLBACK_QUEUE_PERFORMANCE_DETAIL_VIEW"]
                 }, 
                 {
                     "name": "ExportErrorMessagesType",
@@ -149148,7 +150027,7 @@
                 {
                     "name": "ActionType",
                     "dataType": "string",
-                    "enum": ["AskForAuthenticationAction", "AddFlowMilestoneAction", "AskForNLUIntentAction", "AskForBooleanAction", "AskForPaymentAction", "AskForSlotAction", "AskSurveyQuestionAction", "AskForNLUNextIntentAction", "AssignCustomerSegmentAction", "BotState", "CallAgenticVirtualAgentAction", "CallBotFlowAction", "CallDigitalBotFlowAction", "CallTaskAction", "CallGuideAction", "ClearSlotAction", "ClearUtilizationLabelAction", "DisconnectAction", "EndTaskAction", "ExitBotFlowAction", "UpdateVariableAction", "CommunicateAction", "DecisionAction", "FindEmergencyGroupAction", "FindGrammarAction", "FindGrammarByIdAction", "FindGroupAction", "FindLanguageSkillAction", "FindQueueAction", "FindQueueByIdAction", "FindScheduleAction", "FindScheduleGroupAction", "FindSkillAction", "FindSystemPromptAction", "FindUserAction", "FindUserByIdAction", "FindUsersByIdAction", "FindUserPromptAction", "FindUtilizationLabelAction", "FormAction", "SwitchAction", "DataAction", "DataTableLookupAction", "GetExternalContactAction", "GetExternalOrganizationAction", "GetAssignedCustomerSegmentsAction", "LoopAction", "ExitLoopAction", "NextLoopAction", "LoopUntilAction", "SetActiveIntentAction", "SetFlowOutcomeAction", "InitializeFlowOutcomeAction", "AskForStringAction", "SendResponseAction", "GetResponseAction", "ExtractSecureDataAction", "SecureAction", "TransferTaskAction", "DigitalMenuAction", "WaitForInputAction", "EvaluateScheduleAction", "EvaluateScheduleGroupAction", "PromoteExternalContactAction", "ShowKnowledgeArticleAction", "SendKnowledgeFeedbackAction", "SetLocaleAction", "ScreenPopAction", "SetUtilizationLabelAction", "SetWrapupCodeAction", "TransferPureMatchAction", "TransferUserAction", "TransferGroupAction", "TransferExternalAction", "GetAttributesAction", "SetAttributesAction", "SendInteractiveApplicationAction", "SendRichLinkAction", "SendDigitalContentAction", "Unknown"]
+                    "enum": ["AskForAuthenticationAction", "AddFlowMilestoneAction", "AskForNLUIntentAction", "AskForBooleanAction", "AskForPaymentAction", "AskForSlotAction", "AskSurveyQuestionAction", "AskForNLUNextIntentAction", "AssignCustomerSegmentAction", "BotState", "CallAgenticVirtualAgentAction", "CallBotFlowAction", "CallDigitalBotFlowAction", "CallTaskAction", "CallGuideAction", "ClearSlotAction", "ClearUtilizationLabelAction", "DisconnectAction", "EndTaskAction", "ExitBotFlowAction", "UpdateVariableAction", "CommunicateAction", "DecisionAction", "FindEmergencyGroupAction", "FindGrammarAction", "FindGrammarByIdAction", "FindGroupAction", "FindLanguageSkillAction", "FindQueueAction", "FindQueueByIdAction", "FindScheduleAction", "FindScheduleGroupAction", "FindSkillAction", "FindSystemPromptAction", "FindUserAction", "FindUserByIdAction", "FindUsersByIdAction", "FindUserPromptAction", "FindUtilizationLabelAction", "FormAction", "SwitchAction", "DataAction", "DataTableLookupAction", "GetExternalContactAction", "GetExternalOrganizationAction", "GetAssignedCustomerSegmentsAction", "LoopAction", "ExitLoopAction", "NextLoopAction", "LoopUntilAction", "SetActiveIntentAction", "SetFlowOutcomeAction", "InitializeFlowOutcomeAction", "AskForStringAction", "SendResponseAction", "GetResponseAction", "ExtractSecureDataAction", "SecureAction", "TransferTaskAction", "DigitalMenuAction", "WaitForInputAction", "EvaluateScheduleAction", "EvaluateScheduleGroupAction", "PromoteExternalContactAction", "ShowKnowledgeArticleAction", "SendKnowledgeFeedbackAction", "SetLocaleAction", "ScreenPopAction", "SetUtilizationLabelAction", "SetWrapupCodeAction", "TransferPureMatchAction", "TransferUserAction", "TransferGroupAction", "TransferExternalAction", "GetAttributesAction", "SetAttributesAction", "SendInteractiveApplicationAction", "SendRichLinkAction", "SendDigitalContentAction", "AgenticAskForIntentAction", "Unknown"]
                 }
             ]
         }, 
@@ -163641,7 +164520,7 @@
                     "description": "The namespace for the status change",
                     "readOnly": true,
                     "dataType": "string",
-                    "enum": ["web.messaging", "webhooks", "agent.assistant", "agentic.virtual.agents", "analytics.agents", "analytics.alerting", "analytics.data.extraction", "analytics", "analytics.realtime", "analytics.reporting.settings", "anomaly.detection", "architect", "audiohook", "audiohook.monitor", "audit", "auth.api", "authorization", "automation.testing", "bots", "bots.voice", "business.rules", "callback", "case.management", "cobrowse", "content.management", "conversation", "copilot", "dataactions", "datatables", "directory", "dsar", "email", "employee.engagement", "event.orchestration", "external.contacts", "external.events.data.ingestion", "gamification", "gcv", "gdpr", "groups", "guides", "historical.adherence", "infrastructureascode", "integrations", "intent.miner", "internal.messaging", "journey", "knowledge", "language.understanding", "learning", "limit.registry", "marketplace", "mcp", "media.communications", "messaging", "micro.frontend", "multi.org", "notifications", "onboarding", "outbound", "platform.api", "predictive.routing", "presence", "quality", "recording", "response.management", "routing", "scim", "screen.monitoring", "search", "secondary.automation.testing", "skills", "social.media", "speech.and.text.analytics", "speech.integration", "supportability", "task.management", "telephony.configuration", "usage", "users", "users.rules", "voice.transcription", "web.deployments", "webchat", "workforce.management.agent.availability", "workforce.management.forecast", "workforce.management", "workforce.management.scheduling.preferences", "workforce.management.self.schedule", "workforce.management.shift.trading", "system"]
+                    "enum": ["web.deployments", "web.messaging", "agent.assistant", "agentic.virtual.agents", "analytics.agents", "analytics.alerting", "analytics.data.extraction", "analytics", "analytics.realtime", "analytics.reporting.settings", "anomaly.detection", "architect", "audiohook", "audiohook.monitor", "audit", "auth.api", "authorization", "automation.testing", "bots", "bots.voice", "business.rules", "callback", "case.management", "cobrowse", "content.management", "conversation", "copilot", "dataactions", "datatables", "directory", "dsar", "email", "employee.engagement", "event.orchestration", "external.contacts", "external.events.data.ingestion", "gamification", "gcv", "gdpr", "groups", "guides", "historical.adherence", "infrastructureascode", "integrations", "intent.miner", "internal.messaging", "journey", "knowledge", "language.understanding", "learning", "limit.registry", "marketplace", "mcp.analytics.aggregates", "mcp", "media.communications", "messaging", "micro.frontend", "multi.org", "notifications", "onboarding", "outbound", "platform.api", "predictive.routing", "presence", "quality", "recording", "response.management", "routing", "scim", "screen.monitoring", "search", "secondary.automation.testing", "skills", "social.media", "speech.and.text.analytics", "speech.integration", "supportability", "task.management", "telephony.configuration", "usage", "users", "users.rules", "voice.transcription", "webchat", "webhooks", "workforce.management.adherence", "workforce.management.agent.availability", "workforce.management.forecast", "workforce.management", "workforce.management.scheduling.preferences", "workforce.management.self.schedule", "workforce.management.shift.trading", "system"]
                 }, 
                 {
                     "name": "Message",
@@ -163732,6 +164611,12 @@
                     "name": "Stage",
                     "description": "The parent Stage of the Step.",
                     "dataType": "Stagereference"
+                }, 
+                {
+                    "name": "WorkitemActivity",
+                    "description": "The workitem activity linked to this step. Present only for workitem-type steps that have been activated.",
+                    "readOnly": true,
+                    "dataType": "Workitemactivityreference"
                 }, 
                 {
                     "name": "SelfUri",
@@ -166692,6 +167577,12 @@
                 {
                     "name": "MediaUri",
                     "dataType": "string"
+                }, 
+                {
+                    "name": "AudioFormat",
+                    "description": "Audio format info",
+                    "readOnly": true,
+                    "dataType": "Audioformat"
                 }, 
                 {
                     "name": "TtsString",
@@ -171263,7 +172154,7 @@
                 {
                     "name": "VarType",
                     "dataType": "string",
-                    "enum": ["EXACT", "EXACT_PHRASE", "PHRASE", "DATE_RANGE", "RANGE", "GREATER_THAN", "LESS_THAN"]
+                    "enum": ["EXACT", "EXACT_PHRASE", "PHRASE", "DATE_RANGE", "RANGE", "GREATER_THAN", "LESS_THAN", "REQUIRED_FIELDS"]
                 }, 
                 {
                     "name": "Fields",
@@ -174480,128 +175371,6 @@
                 }
             ]
         }, 
-        "ucintegration": { 
-            "description": "UC Integration UI configuration data",
-            "properties": [
-                {
-                    "name": "Id",
-                    "description": "The globally unique identifier for the object.",
-                    "readOnly": true,
-                    "dataType": "string"
-                }, 
-                {
-                    "name": "Name",
-                    "dataType": "string"
-                }, 
-                {
-                    "name": "UcIntegrationKey",
-                    "description": "ucIntegrationKey",
-                    "readOnly": true,
-                    "required": true,
-                    "dataType": "string"
-                }, 
-                {
-                    "name": "IntegrationPresenceSource",
-                    "description": "integrationPresenceType",
-                    "readOnly": true,
-                    "required": true,
-                    "dataType": "string",
-                    "enum": ["MicrosoftTeams", "ZoomPhone", "EightByEight"]
-                }, 
-                {
-                    "name": "PbxPermission",
-                    "description": "pbxPermission",
-                    "readOnly": true,
-                    "required": true,
-                    "dataType": "string"
-                }, 
-                {
-                    "name": "Icon",
-                    "description": "icon",
-                    "readOnly": true,
-                    "required": true,
-                    "dataType": "Ucicon"
-                }, 
-                {
-                    "name": "BadgeIcons",
-                    "description": "badgeIcon",
-                    "readOnly": true,
-                    "required": true,
-                    "dataType": "map[string]Ucicon"
-                }, 
-                {
-                    "name": "I10n",
-                    "description": "i10n",
-                    "readOnly": true,
-                    "required": true,
-                    "dataType": "map[string]Uci10n"
-                }, 
-                {
-                    "name": "PolledPresence",
-                    "description": "polledPresence",
-                    "readOnly": true,
-                    "required": true,
-                    "dataType": "bool"
-                }, 
-                {
-                    "name": "UserPermissions",
-                    "description": "userPermissions",
-                    "readOnly": true,
-                    "required": true,
-                    "dataType": "[]string"
-                }, 
-                {
-                    "name": "SelfUri",
-                    "description": "The URI for this object",
-                    "readOnly": true,
-                    "dataType": "string"
-                }
-            ]
-        }, 
-        "ucintegrationlisting": { 
-            "properties": [
-                {
-                    "name": "Entities",
-                    "dataType": "[]Ucintegration"
-                }, 
-                {
-                    "name": "PageSize",
-                    "dataType": "int"
-                }, 
-                {
-                    "name": "PageNumber",
-                    "dataType": "int"
-                }, 
-                {
-                    "name": "Total",
-                    "dataType": "int"
-                }, 
-                {
-                    "name": "FirstUri",
-                    "dataType": "string"
-                }, 
-                {
-                    "name": "NextUri",
-                    "dataType": "string"
-                }, 
-                {
-                    "name": "PreviousUri",
-                    "dataType": "string"
-                }, 
-                {
-                    "name": "LastUri",
-                    "dataType": "string"
-                }, 
-                {
-                    "name": "SelfUri",
-                    "dataType": "string"
-                }, 
-                {
-                    "name": "PageCount",
-                    "dataType": "int"
-                }
-            ]
-        }, 
         "ucthirdpartypresence": { 
             "description": "Update a Genesys Cloud user's presence from a given 3rd-party integration",
             "properties": [
@@ -175300,6 +176069,32 @@
                     "name": "FixedAvailability",
                     "description": "Fixed availability configuration for the activity plan",
                     "dataType": "Listwrapperfixedavailability"
+                }, 
+                {
+                    "name": "ActivityCodeId",
+                    "description": "The activity code associated with the activity plan",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "VarType",
+                    "description": "The type of the activity plan",
+                    "dataType": "string",
+                    "enum": ["Individual", "Group"]
+                }, 
+                {
+                    "name": "LengthMinutes",
+                    "description": "The length in minutes of the activity plan",
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "CountsAsPaidTime",
+                    "description": "Whether the activity should count as paid time",
+                    "dataType": "bool"
+                }, 
+                {
+                    "name": "RecurrenceSettings",
+                    "description": "Settings controlling recurrence for the activity plan. If not set the activity plan will only occur once",
+                    "dataType": "Recurrencesettingsbase"
                 }
             ]
         }, 
@@ -176781,6 +177576,61 @@
                     "description": "Version metadata for this work plan rotation",
                     "required": true,
                     "dataType": "Wfmversionedentitymetadata"
+                }
+            ]
+        }, 
+        "uploadattachmentrequest": { 
+            "properties": [
+                {
+                    "name": "Name",
+                    "description": "Name of the attachment file to upload. It must not start with a dot and not end with a forward slash. Whitespace and the following characters are not allowed: \\{^}%`]\">[~<#|",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "ContentLengthBytes",
+                    "description": "The length of the file to upload in bytes",
+                    "required": true,
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "ContentMd5",
+                    "description": "Content MD5 of the file to upload",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "InlineImage",
+                    "description": "Whether or not the attachment should be attached inline",
+                    "dataType": "bool"
+                }
+            ]
+        }, 
+        "uploadattachmentresponse": { 
+            "properties": [
+                {
+                    "name": "AttachmentId",
+                    "description": "The attachment ID",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Name",
+                    "description": "The name of the attachment file",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Url",
+                    "description": "Pre-signed URL to upload the file",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Headers",
+                    "description": "Required headers when uploading a file through PUT request to the URL",
+                    "dataType": "map[string]string"
+                }, 
+                {
+                    "name": "ConversationId",
+                    "description": "The conversation ID",
+                    "dataType": "string"
                 }
             ]
         }, 
@@ -182575,6 +183425,16 @@
                     "name": "Warnings",
                     "description": "If the flow encountered a warning during execution, this is an array of the warnings.",
                     "dataType": "[]V2flowexecutiondataflowidtopicflowerrorwarninginfo"
+                }, 
+                {
+                    "name": "ExecutionHistoryUri",
+                    "description": "A signed URI to download the execution history data.",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "ExecutionHistoryUriTtl",
+                    "description": "Time to live in seconds for the executionHistoryUri.",
+                    "dataType": "int"
                 }
             ]
         }, 
@@ -184626,6 +185486,65 @@
                 }
             ]
         }, 
+        "v3synchronizationdeletion": { 
+            "properties": [
+                {
+                    "name": "FileId",
+                    "description": "The unique identifier for the deletion object.",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "FileName",
+                    "description": "Name of the file marked for deletion.",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Synchronization",
+                    "description": "The synchronization of the file deletion.",
+                    "dataType": "V3synchronizationref"
+                }, 
+                {
+                    "name": "SelfUri",
+                    "description": "The URI for this object",
+                    "readOnly": true,
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "v3synchronizationdeletionlisting": { 
+            "properties": [
+                {
+                    "name": "Entities",
+                    "dataType": "[]V3synchronizationdeletion"
+                }, 
+                {
+                    "name": "NextUri",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "SelfUri",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "PreviousUri",
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "v3synchronizationfiledeletionrequest": { 
+            "properties": [
+                {
+                    "name": "FileId",
+                    "description": "The identifier of the file to mark for deletion. Mutually exclusive with fileName.",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "FileName",
+                    "description": "Name of the file to mark for deletion. It must not start with a dot and not end with a forward slash. Whitespace and the following characters are not allowed: \\{^}%`]\">[~<#|. Mutually exclusive with fileId.",
+                    "dataType": "string"
+                }
+            ]
+        }, 
         "v3synchronizationlisting": { 
             "properties": [
                 {
@@ -184689,6 +185608,56 @@
                     "description": "The status of the synchronization.",
                     "dataType": "string",
                     "enum": ["Completed", "Cancelled"]
+                }
+            ]
+        }, 
+        "v3synchronizationupload": { 
+            "properties": [
+                {
+                    "name": "FileId",
+                    "description": "The unique identifier for the upload object.",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "FileName",
+                    "description": "Name of the uploaded file.",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Metadata",
+                    "description": "The metadata of the uploaded file",
+                    "dataType": "V3synchronizationuploadmetadata"
+                }, 
+                {
+                    "name": "Synchronization",
+                    "description": "The synchronization of the file upload.",
+                    "dataType": "V3synchronizationref"
+                }, 
+                {
+                    "name": "SelfUri",
+                    "description": "The URI for this object",
+                    "readOnly": true,
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "v3synchronizationuploadlisting": { 
+            "properties": [
+                {
+                    "name": "Entities",
+                    "dataType": "[]V3synchronizationupload"
+                }, 
+                {
+                    "name": "NextUri",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "SelfUri",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "PreviousUri",
+                    "dataType": "string"
                 }
             ]
         }, 
@@ -186628,6 +187597,11 @@
                     "name": "Takeover",
                     "description": "Indicates filtering for takeover",
                     "dataType": "bool"
+                }, 
+                {
+                    "name": "SocialPostTypes",
+                    "description": "The social post types used to filter the view",
+                    "dataType": "[]string"
                 }
             ]
         }, 
@@ -193675,6 +194649,10 @@
                 {
                     "name": "Shift",
                     "dataType": "Wfmshifttradingjobcompleteeventtradeshift"
+                }, 
+                {
+                    "name": "ReviewNote",
+                    "dataType": "string"
                 }
             ]
         }, 
@@ -196626,6 +197604,22 @@
                     "name": "Script",
                     "description": "The script that will be executed for the Workitem.",
                     "dataType": "Workitemscriptreference"
+                }, 
+                {
+                    "name": "SelfUri",
+                    "description": "The URI for this object",
+                    "readOnly": true,
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "workitemactivityreference": { 
+            "properties": [
+                {
+                    "name": "Id",
+                    "description": "The globally unique identifier for the object.",
+                    "readOnly": true,
+                    "dataType": "string"
                 }, 
                 {
                     "name": "SelfUri",
@@ -212173,12 +213167,17 @@
             "className": "BusinessRulesApi",
             "operationId": "postbusinessrulesdecisiontableversions",
             "functionName": "PostBusinessrulesDecisiontableVersions",
-            "signature": "PostBusinessrulesDecisiontableVersions(tableId)",
+            "signature": "PostBusinessrulesDecisiontableVersions(tableId, body)",
             "parameters": [
                 {
                     "name": "tableId",
                     "type": "string",
                     "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Createdecisiontableversionrequest",
+                    "required": "false"
                 }
             ],
             "return": "Decisiontableversion"
@@ -215453,6 +216452,20 @@
                 }
             ],
             "return": "Conversation"
+        },
+        "GET /api/v2/conversations/{conversationId}/accessattributes": {
+            "className": "ConversationsApi",
+            "operationId": "getconversationaccessattributes",
+            "functionName": "GetConversationAccessattributes",
+            "signature": "GetConversationAccessattributes(conversationId)",
+            "parameters": [
+                {
+                    "name": "conversationId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ],
+            "return": "Conversationaccessattributesresponse"
         },
         "GET /api/v2/conversations/{conversationId}/assistant/copilotcontext": {
             "className": "ConversationsApi",
@@ -220035,6 +221048,25 @@
             ],
             "return": "Emailmessage"
         },
+        "POST /api/v2/conversations/emails/{conversationId}/messages/draft/attachments/uploads": {
+            "className": "ConversationsApi",
+            "operationId": "postconversationsemailmessagesdraftattachmentsuploads",
+            "functionName": "PostConversationsEmailMessagesDraftAttachmentsUploads",
+            "signature": "PostConversationsEmailMessagesDraftAttachmentsUploads(conversationId, body)",
+            "parameters": [
+                {
+                    "name": "conversationId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Uploadattachmentrequest",
+                    "required": "true"
+                }
+            ],
+            "return": "Uploadattachmentresponse"
+        },
         "POST /api/v2/conversations/emails/{conversationId}/participants/{participantId}/communications/{communicationId}/wrapup": {
             "className": "ConversationsApi",
             "operationId": "postconversationsemailparticipantcommunicationwrapup",
@@ -220793,6 +221825,25 @@
                 }
             ],
             "return": "Meetingidrecord"
+        },
+        "PUT /api/v2/conversations/{conversationId}/accessattributes": {
+            "className": "ConversationsApi",
+            "operationId": "putconversationaccessattributes",
+            "functionName": "PutConversationAccessattributes",
+            "signature": "PutConversationAccessattributes(conversationId, body)",
+            "parameters": [
+                {
+                    "name": "conversationId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Conversationaccessattributesupdate",
+                    "required": "true"
+                }
+            ],
+            "return": "string"
         },
         "PUT /api/v2/conversations/{conversationId}/customattributes": {
             "className": "ConversationsApi",
@@ -222349,6 +223400,44 @@
             ],
             "return": "Contactimportsettingsentitylisting"
         },
+        "GET /api/v2/externalcontacts/notes/exports/{exportId}": {
+            "className": "ExternalContactsApi",
+            "operationId": "getexternalcontactsnotesexport",
+            "functionName": "GetExternalcontactsNotesExport",
+            "signature": "GetExternalcontactsNotesExport(exportId)",
+            "parameters": [
+                {
+                    "name": "exportId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ],
+            "return": "Notesexport"
+        },
+        "GET /api/v2/externalcontacts/notes/exports": {
+            "className": "ExternalContactsApi",
+            "operationId": "getexternalcontactsnotesexports",
+            "functionName": "GetExternalcontactsNotesExports",
+            "signature": "GetExternalcontactsNotesExports(divisionIds, after, pageSize)",
+            "parameters": [
+                {
+                    "name": "divisionIds",
+                    "type": "[]string",
+                    "required": "false"
+                },
+                {
+                    "name": "after",
+                    "type": "string",
+                    "required": "false"
+                },
+                {
+                    "name": "pageSize",
+                    "type": "int",
+                    "required": "false"
+                }
+            ],
+            "return": "Notesexportlisting"
+        },
         "GET /api/v2/externalcontacts/organizations/{externalOrganizationId}": {
             "className": "ExternalContactsApi",
             "operationId": "getexternalcontactsorganization",
@@ -222567,6 +223656,44 @@
             ],
             "return": "Externalorganizationlisting"
         },
+        "GET /api/v2/externalcontacts/organizations/exports/{exportId}": {
+            "className": "ExternalContactsApi",
+            "operationId": "getexternalcontactsorganizationsexport",
+            "functionName": "GetExternalcontactsOrganizationsExport",
+            "signature": "GetExternalcontactsOrganizationsExport(exportId)",
+            "parameters": [
+                {
+                    "name": "exportId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ],
+            "return": "Organizationsexport"
+        },
+        "GET /api/v2/externalcontacts/organizations/exports": {
+            "className": "ExternalContactsApi",
+            "operationId": "getexternalcontactsorganizationsexports",
+            "functionName": "GetExternalcontactsOrganizationsExports",
+            "signature": "GetExternalcontactsOrganizationsExports(divisionIds, after, pageSize)",
+            "parameters": [
+                {
+                    "name": "divisionIds",
+                    "type": "[]string",
+                    "required": "false"
+                },
+                {
+                    "name": "after",
+                    "type": "string",
+                    "required": "false"
+                },
+                {
+                    "name": "pageSize",
+                    "type": "int",
+                    "required": "false"
+                }
+            ],
+            "return": "Organizationsexportlisting"
+        },
         "GET /api/v2/externalcontacts/organizations/schemas/{schemaId}": {
             "className": "ExternalContactsApi",
             "operationId": "getexternalcontactsorganizationsschema",
@@ -222670,6 +223797,44 @@
                 }
             ],
             "return": "Relationship"
+        },
+        "GET /api/v2/externalcontacts/relationships/exports/{exportId}": {
+            "className": "ExternalContactsApi",
+            "operationId": "getexternalcontactsrelationshipsexport",
+            "functionName": "GetExternalcontactsRelationshipsExport",
+            "signature": "GetExternalcontactsRelationshipsExport(exportId)",
+            "parameters": [
+                {
+                    "name": "exportId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ],
+            "return": "Relationshipsexport"
+        },
+        "GET /api/v2/externalcontacts/relationships/exports": {
+            "className": "ExternalContactsApi",
+            "operationId": "getexternalcontactsrelationshipsexports",
+            "functionName": "GetExternalcontactsRelationshipsExports",
+            "signature": "GetExternalcontactsRelationshipsExports(divisionIds, after, pageSize)",
+            "parameters": [
+                {
+                    "name": "divisionIds",
+                    "type": "[]string",
+                    "required": "false"
+                },
+                {
+                    "name": "after",
+                    "type": "string",
+                    "required": "false"
+                },
+                {
+                    "name": "pageSize",
+                    "type": "int",
+                    "required": "false"
+                }
+            ],
+            "return": "Relationshipsexportlisting"
         },
         "GET /api/v2/externalcontacts/reversewhitepageslookup": {
             "className": "ExternalContactsApi",
@@ -223596,6 +224761,20 @@
             ],
             "return": "Externalcontact"
         },
+        "POST /api/v2/externalcontacts/notes/exports": {
+            "className": "ExternalContactsApi",
+            "operationId": "postexternalcontactsnotesexports",
+            "functionName": "PostExternalcontactsNotesExports",
+            "signature": "PostExternalcontactsNotesExports(body)",
+            "parameters": [
+                {
+                    "name": "body",
+                    "type": "Notesexport",
+                    "required": "true"
+                }
+            ],
+            "return": "Notesexport"
+        },
         "POST /api/v2/externalcontacts/organizations/{externalOrganizationId}/notes": {
             "className": "ExternalContactsApi",
             "operationId": "postexternalcontactsorganizationnotes",
@@ -223648,6 +224827,20 @@
             ],
             "return": "Externalorganization"
         },
+        "POST /api/v2/externalcontacts/organizations/exports": {
+            "className": "ExternalContactsApi",
+            "operationId": "postexternalcontactsorganizationsexports",
+            "functionName": "PostExternalcontactsOrganizationsExports",
+            "signature": "PostExternalcontactsOrganizationsExports(body)",
+            "parameters": [
+                {
+                    "name": "body",
+                    "type": "Organizationsexport",
+                    "required": "true"
+                }
+            ],
+            "return": "Organizationsexport"
+        },
         "POST /api/v2/externalcontacts/organizations/schemas": {
             "className": "ExternalContactsApi",
             "operationId": "postexternalcontactsorganizationsschemas",
@@ -223675,6 +224868,20 @@
                 }
             ],
             "return": "Relationship"
+        },
+        "POST /api/v2/externalcontacts/relationships/exports": {
+            "className": "ExternalContactsApi",
+            "operationId": "postexternalcontactsrelationshipsexports",
+            "functionName": "PostExternalcontactsRelationshipsExports",
+            "signature": "PostExternalcontactsRelationshipsExports(body)",
+            "parameters": [
+                {
+                    "name": "body",
+                    "type": "Relationshipsexport",
+                    "required": "true"
+                }
+            ],
+            "return": "Relationshipsexport"
         },
         "PUT /api/v2/externalcontacts/contacts/{contactId}": {
             "className": "ExternalContactsApi",
@@ -228154,45 +229361,6 @@
             ],
             "return": "Clientappentitylisting"
         },
-        "GET /api/v2/integrations/clientapps/unifiedcommunications": {
-            "className": "IntegrationsApi",
-            "operationId": "getintegrationsclientappsunifiedcommunications",
-            "functionName": "GetIntegrationsClientappsUnifiedcommunications",
-            "signature": "GetIntegrationsClientappsUnifiedcommunications(pageSize, pageNumber, sortBy, expand, nextPage, previousPage)",
-            "parameters": [
-                {
-                    "name": "pageSize",
-                    "type": "int",
-                    "required": "false"
-                },
-                {
-                    "name": "pageNumber",
-                    "type": "int",
-                    "required": "false"
-                },
-                {
-                    "name": "sortBy",
-                    "type": "string",
-                    "required": "false"
-                },
-                {
-                    "name": "expand",
-                    "type": "[]string",
-                    "required": "false"
-                },
-                {
-                    "name": "nextPage",
-                    "type": "string",
-                    "required": "false"
-                },
-                {
-                    "name": "previousPage",
-                    "type": "string",
-                    "required": "false"
-                }
-            ],
-            "return": "Ucintegrationlisting"
-        },
         "GET /api/v2/integrations/credentials/{credentialId}": {
             "className": "IntegrationsApi",
             "operationId": "getintegrationscredential",
@@ -231752,6 +232920,52 @@
                 }
             ]
         },
+        "DELETE /api/v2/knowledge/sources/{sourceId}/synchronizations/{synchronizationId}/deletions/{fileId}": {
+            "className": "KnowledgeApi",
+            "operationId": "deleteknowledgesourcesynchronizationdeletion",
+            "functionName": "DeleteKnowledgeSourceSynchronizationDeletion",
+            "signature": "DeleteKnowledgeSourceSynchronizationDeletion(sourceId, synchronizationId, fileId)",
+            "parameters": [
+                {
+                    "name": "sourceId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "synchronizationId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "fileId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ]
+        },
+        "DELETE /api/v2/knowledge/sources/{sourceId}/synchronizations/{synchronizationId}/uploads/{fileId}": {
+            "className": "KnowledgeApi",
+            "operationId": "deleteknowledgesourcesynchronizationupload",
+            "functionName": "DeleteKnowledgeSourceSynchronizationUpload",
+            "signature": "DeleteKnowledgeSourceSynchronizationUpload(sourceId, synchronizationId, fileId)",
+            "parameters": [
+                {
+                    "name": "sourceId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "synchronizationId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "fileId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ]
+        },
         "GET /api/v2/knowledge/connections/{connectionId}": {
             "className": "KnowledgeApi",
             "operationId": "getknowledgeconnection",
@@ -233060,6 +234274,122 @@
             ],
             "return": "V3synchronization"
         },
+        "GET /api/v2/knowledge/sources/{sourceId}/synchronizations/{synchronizationId}/deletions/{fileId}": {
+            "className": "KnowledgeApi",
+            "operationId": "getknowledgesourcesynchronizationdeletion",
+            "functionName": "GetKnowledgeSourceSynchronizationDeletion",
+            "signature": "GetKnowledgeSourceSynchronizationDeletion(sourceId, synchronizationId, fileId)",
+            "parameters": [
+                {
+                    "name": "sourceId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "synchronizationId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "fileId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ],
+            "return": "V3synchronizationdeletion"
+        },
+        "GET /api/v2/knowledge/sources/{sourceId}/synchronizations/{synchronizationId}/deletions": {
+            "className": "KnowledgeApi",
+            "operationId": "getknowledgesourcesynchronizationdeletions",
+            "functionName": "GetKnowledgeSourceSynchronizationDeletions",
+            "signature": "GetKnowledgeSourceSynchronizationDeletions(sourceId, synchronizationId, before, after, pageSize)",
+            "parameters": [
+                {
+                    "name": "sourceId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "synchronizationId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "before",
+                    "type": "string",
+                    "required": "false"
+                },
+                {
+                    "name": "after",
+                    "type": "string",
+                    "required": "false"
+                },
+                {
+                    "name": "pageSize",
+                    "type": "string",
+                    "required": "false"
+                }
+            ],
+            "return": "V3synchronizationdeletionlisting"
+        },
+        "GET /api/v2/knowledge/sources/{sourceId}/synchronizations/{synchronizationId}/uploads/{fileId}": {
+            "className": "KnowledgeApi",
+            "operationId": "getknowledgesourcesynchronizationupload",
+            "functionName": "GetKnowledgeSourceSynchronizationUpload",
+            "signature": "GetKnowledgeSourceSynchronizationUpload(sourceId, synchronizationId, fileId)",
+            "parameters": [
+                {
+                    "name": "sourceId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "synchronizationId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "fileId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ],
+            "return": "V3synchronizationupload"
+        },
+        "GET /api/v2/knowledge/sources/{sourceId}/synchronizations/{synchronizationId}/uploads": {
+            "className": "KnowledgeApi",
+            "operationId": "getknowledgesourcesynchronizationuploads",
+            "functionName": "GetKnowledgeSourceSynchronizationUploads",
+            "signature": "GetKnowledgeSourceSynchronizationUploads(sourceId, synchronizationId, before, after, pageSize)",
+            "parameters": [
+                {
+                    "name": "sourceId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "synchronizationId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "before",
+                    "type": "string",
+                    "required": "false"
+                },
+                {
+                    "name": "after",
+                    "type": "string",
+                    "required": "false"
+                },
+                {
+                    "name": "pageSize",
+                    "type": "string",
+                    "required": "false"
+                }
+            ],
+            "return": "V3synchronizationuploadlisting"
+        },
         "GET /api/v2/knowledge/sources/{sourceId}/synchronizations": {
             "className": "KnowledgeApi",
             "operationId": "getknowledgesourcesynchronizations",
@@ -234313,6 +235643,30 @@
                 }
             ],
             "return": "Knowledgesettingsresponse"
+        },
+        "POST /api/v2/knowledge/sources/{sourceId}/synchronizations/{synchronizationId}/deletions": {
+            "className": "KnowledgeApi",
+            "operationId": "postknowledgesourcesynchronizationdeletions",
+            "functionName": "PostKnowledgeSourceSynchronizationDeletions",
+            "signature": "PostKnowledgeSourceSynchronizationDeletions(sourceId, synchronizationId, body)",
+            "parameters": [
+                {
+                    "name": "sourceId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "synchronizationId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "V3synchronizationfiledeletionrequest",
+                    "required": "true"
+                }
+            ],
+            "return": "V3synchronizationdeletion"
         },
         "POST /api/v2/knowledge/sources/{sourceId}/synchronizations/{synchronizationId}/uploads": {
             "className": "KnowledgeApi",
@@ -279150,12 +280504,17 @@
             "className": "BusinessRulesApi",
             "operationId": "postbusinessrulesdecisiontableversions",
             "functionName": "PostBusinessrulesDecisiontableVersions",
-            "signature": "PostBusinessrulesDecisiontableVersions(tableId)",
+            "signature": "PostBusinessrulesDecisiontableVersions(tableId, body)",
             "parameters": [
                 {
                     "name": "tableId",
                     "type": "string",
                     "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Createdecisiontableversionrequest",
+                    "required": "false"
                 }
             ],
             "return": "Decisiontableversion"
@@ -282430,6 +283789,20 @@
                 }
             ],
             "return": "Conversation"
+        },
+        "GET /api/v2/conversations/{conversationId}/accessattributes": {
+            "className": "ConversationsApi",
+            "operationId": "getconversationaccessattributes",
+            "functionName": "GetConversationAccessattributes",
+            "signature": "GetConversationAccessattributes(conversationId)",
+            "parameters": [
+                {
+                    "name": "conversationId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ],
+            "return": "Conversationaccessattributesresponse"
         },
         "GET /api/v2/conversations/{conversationId}/assistant/copilotcontext": {
             "className": "ConversationsApi",
@@ -287012,6 +288385,25 @@
             ],
             "return": "Emailmessage"
         },
+        "POST /api/v2/conversations/emails/{conversationId}/messages/draft/attachments/uploads": {
+            "className": "ConversationsApi",
+            "operationId": "postconversationsemailmessagesdraftattachmentsuploads",
+            "functionName": "PostConversationsEmailMessagesDraftAttachmentsUploads",
+            "signature": "PostConversationsEmailMessagesDraftAttachmentsUploads(conversationId, body)",
+            "parameters": [
+                {
+                    "name": "conversationId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Uploadattachmentrequest",
+                    "required": "true"
+                }
+            ],
+            "return": "Uploadattachmentresponse"
+        },
         "POST /api/v2/conversations/emails/{conversationId}/participants/{participantId}/communications/{communicationId}/wrapup": {
             "className": "ConversationsApi",
             "operationId": "postconversationsemailparticipantcommunicationwrapup",
@@ -287770,6 +289162,25 @@
                 }
             ],
             "return": "Meetingidrecord"
+        },
+        "PUT /api/v2/conversations/{conversationId}/accessattributes": {
+            "className": "ConversationsApi",
+            "operationId": "putconversationaccessattributes",
+            "functionName": "PutConversationAccessattributes",
+            "signature": "PutConversationAccessattributes(conversationId, body)",
+            "parameters": [
+                {
+                    "name": "conversationId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Conversationaccessattributesupdate",
+                    "required": "true"
+                }
+            ],
+            "return": "string"
         },
         "PUT /api/v2/conversations/{conversationId}/customattributes": {
             "className": "ConversationsApi",
@@ -289326,6 +290737,44 @@
             ],
             "return": "Contactimportsettingsentitylisting"
         },
+        "GET /api/v2/externalcontacts/notes/exports/{exportId}": {
+            "className": "ExternalContactsApi",
+            "operationId": "getexternalcontactsnotesexport",
+            "functionName": "GetExternalcontactsNotesExport",
+            "signature": "GetExternalcontactsNotesExport(exportId)",
+            "parameters": [
+                {
+                    "name": "exportId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ],
+            "return": "Notesexport"
+        },
+        "GET /api/v2/externalcontacts/notes/exports": {
+            "className": "ExternalContactsApi",
+            "operationId": "getexternalcontactsnotesexports",
+            "functionName": "GetExternalcontactsNotesExports",
+            "signature": "GetExternalcontactsNotesExports(divisionIds, after, pageSize)",
+            "parameters": [
+                {
+                    "name": "divisionIds",
+                    "type": "[]string",
+                    "required": "false"
+                },
+                {
+                    "name": "after",
+                    "type": "string",
+                    "required": "false"
+                },
+                {
+                    "name": "pageSize",
+                    "type": "int",
+                    "required": "false"
+                }
+            ],
+            "return": "Notesexportlisting"
+        },
         "GET /api/v2/externalcontacts/organizations/{externalOrganizationId}": {
             "className": "ExternalContactsApi",
             "operationId": "getexternalcontactsorganization",
@@ -289544,6 +290993,44 @@
             ],
             "return": "Externalorganizationlisting"
         },
+        "GET /api/v2/externalcontacts/organizations/exports/{exportId}": {
+            "className": "ExternalContactsApi",
+            "operationId": "getexternalcontactsorganizationsexport",
+            "functionName": "GetExternalcontactsOrganizationsExport",
+            "signature": "GetExternalcontactsOrganizationsExport(exportId)",
+            "parameters": [
+                {
+                    "name": "exportId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ],
+            "return": "Organizationsexport"
+        },
+        "GET /api/v2/externalcontacts/organizations/exports": {
+            "className": "ExternalContactsApi",
+            "operationId": "getexternalcontactsorganizationsexports",
+            "functionName": "GetExternalcontactsOrganizationsExports",
+            "signature": "GetExternalcontactsOrganizationsExports(divisionIds, after, pageSize)",
+            "parameters": [
+                {
+                    "name": "divisionIds",
+                    "type": "[]string",
+                    "required": "false"
+                },
+                {
+                    "name": "after",
+                    "type": "string",
+                    "required": "false"
+                },
+                {
+                    "name": "pageSize",
+                    "type": "int",
+                    "required": "false"
+                }
+            ],
+            "return": "Organizationsexportlisting"
+        },
         "GET /api/v2/externalcontacts/organizations/schemas/{schemaId}": {
             "className": "ExternalContactsApi",
             "operationId": "getexternalcontactsorganizationsschema",
@@ -289647,6 +291134,44 @@
                 }
             ],
             "return": "Relationship"
+        },
+        "GET /api/v2/externalcontacts/relationships/exports/{exportId}": {
+            "className": "ExternalContactsApi",
+            "operationId": "getexternalcontactsrelationshipsexport",
+            "functionName": "GetExternalcontactsRelationshipsExport",
+            "signature": "GetExternalcontactsRelationshipsExport(exportId)",
+            "parameters": [
+                {
+                    "name": "exportId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ],
+            "return": "Relationshipsexport"
+        },
+        "GET /api/v2/externalcontacts/relationships/exports": {
+            "className": "ExternalContactsApi",
+            "operationId": "getexternalcontactsrelationshipsexports",
+            "functionName": "GetExternalcontactsRelationshipsExports",
+            "signature": "GetExternalcontactsRelationshipsExports(divisionIds, after, pageSize)",
+            "parameters": [
+                {
+                    "name": "divisionIds",
+                    "type": "[]string",
+                    "required": "false"
+                },
+                {
+                    "name": "after",
+                    "type": "string",
+                    "required": "false"
+                },
+                {
+                    "name": "pageSize",
+                    "type": "int",
+                    "required": "false"
+                }
+            ],
+            "return": "Relationshipsexportlisting"
         },
         "GET /api/v2/externalcontacts/reversewhitepageslookup": {
             "className": "ExternalContactsApi",
@@ -290573,6 +292098,20 @@
             ],
             "return": "Externalcontact"
         },
+        "POST /api/v2/externalcontacts/notes/exports": {
+            "className": "ExternalContactsApi",
+            "operationId": "postexternalcontactsnotesexports",
+            "functionName": "PostExternalcontactsNotesExports",
+            "signature": "PostExternalcontactsNotesExports(body)",
+            "parameters": [
+                {
+                    "name": "body",
+                    "type": "Notesexport",
+                    "required": "true"
+                }
+            ],
+            "return": "Notesexport"
+        },
         "POST /api/v2/externalcontacts/organizations/{externalOrganizationId}/notes": {
             "className": "ExternalContactsApi",
             "operationId": "postexternalcontactsorganizationnotes",
@@ -290625,6 +292164,20 @@
             ],
             "return": "Externalorganization"
         },
+        "POST /api/v2/externalcontacts/organizations/exports": {
+            "className": "ExternalContactsApi",
+            "operationId": "postexternalcontactsorganizationsexports",
+            "functionName": "PostExternalcontactsOrganizationsExports",
+            "signature": "PostExternalcontactsOrganizationsExports(body)",
+            "parameters": [
+                {
+                    "name": "body",
+                    "type": "Organizationsexport",
+                    "required": "true"
+                }
+            ],
+            "return": "Organizationsexport"
+        },
         "POST /api/v2/externalcontacts/organizations/schemas": {
             "className": "ExternalContactsApi",
             "operationId": "postexternalcontactsorganizationsschemas",
@@ -290652,6 +292205,20 @@
                 }
             ],
             "return": "Relationship"
+        },
+        "POST /api/v2/externalcontacts/relationships/exports": {
+            "className": "ExternalContactsApi",
+            "operationId": "postexternalcontactsrelationshipsexports",
+            "functionName": "PostExternalcontactsRelationshipsExports",
+            "signature": "PostExternalcontactsRelationshipsExports(body)",
+            "parameters": [
+                {
+                    "name": "body",
+                    "type": "Relationshipsexport",
+                    "required": "true"
+                }
+            ],
+            "return": "Relationshipsexport"
         },
         "PUT /api/v2/externalcontacts/contacts/{contactId}": {
             "className": "ExternalContactsApi",
@@ -295131,45 +296698,6 @@
             ],
             "return": "Clientappentitylisting"
         },
-        "GET /api/v2/integrations/clientapps/unifiedcommunications": {
-            "className": "IntegrationsApi",
-            "operationId": "getintegrationsclientappsunifiedcommunications",
-            "functionName": "GetIntegrationsClientappsUnifiedcommunications",
-            "signature": "GetIntegrationsClientappsUnifiedcommunications(pageSize, pageNumber, sortBy, expand, nextPage, previousPage)",
-            "parameters": [
-                {
-                    "name": "pageSize",
-                    "type": "int",
-                    "required": "false"
-                },
-                {
-                    "name": "pageNumber",
-                    "type": "int",
-                    "required": "false"
-                },
-                {
-                    "name": "sortBy",
-                    "type": "string",
-                    "required": "false"
-                },
-                {
-                    "name": "expand",
-                    "type": "[]string",
-                    "required": "false"
-                },
-                {
-                    "name": "nextPage",
-                    "type": "string",
-                    "required": "false"
-                },
-                {
-                    "name": "previousPage",
-                    "type": "string",
-                    "required": "false"
-                }
-            ],
-            "return": "Ucintegrationlisting"
-        },
         "GET /api/v2/integrations/credentials/{credentialId}": {
             "className": "IntegrationsApi",
             "operationId": "getintegrationscredential",
@@ -298729,6 +300257,52 @@
                 }
             ]
         },
+        "DELETE /api/v2/knowledge/sources/{sourceId}/synchronizations/{synchronizationId}/deletions/{fileId}": {
+            "className": "KnowledgeApi",
+            "operationId": "deleteknowledgesourcesynchronizationdeletion",
+            "functionName": "DeleteKnowledgeSourceSynchronizationDeletion",
+            "signature": "DeleteKnowledgeSourceSynchronizationDeletion(sourceId, synchronizationId, fileId)",
+            "parameters": [
+                {
+                    "name": "sourceId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "synchronizationId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "fileId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ]
+        },
+        "DELETE /api/v2/knowledge/sources/{sourceId}/synchronizations/{synchronizationId}/uploads/{fileId}": {
+            "className": "KnowledgeApi",
+            "operationId": "deleteknowledgesourcesynchronizationupload",
+            "functionName": "DeleteKnowledgeSourceSynchronizationUpload",
+            "signature": "DeleteKnowledgeSourceSynchronizationUpload(sourceId, synchronizationId, fileId)",
+            "parameters": [
+                {
+                    "name": "sourceId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "synchronizationId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "fileId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ]
+        },
         "GET /api/v2/knowledge/connections/{connectionId}": {
             "className": "KnowledgeApi",
             "operationId": "getknowledgeconnection",
@@ -300037,6 +301611,122 @@
             ],
             "return": "V3synchronization"
         },
+        "GET /api/v2/knowledge/sources/{sourceId}/synchronizations/{synchronizationId}/deletions/{fileId}": {
+            "className": "KnowledgeApi",
+            "operationId": "getknowledgesourcesynchronizationdeletion",
+            "functionName": "GetKnowledgeSourceSynchronizationDeletion",
+            "signature": "GetKnowledgeSourceSynchronizationDeletion(sourceId, synchronizationId, fileId)",
+            "parameters": [
+                {
+                    "name": "sourceId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "synchronizationId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "fileId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ],
+            "return": "V3synchronizationdeletion"
+        },
+        "GET /api/v2/knowledge/sources/{sourceId}/synchronizations/{synchronizationId}/deletions": {
+            "className": "KnowledgeApi",
+            "operationId": "getknowledgesourcesynchronizationdeletions",
+            "functionName": "GetKnowledgeSourceSynchronizationDeletions",
+            "signature": "GetKnowledgeSourceSynchronizationDeletions(sourceId, synchronizationId, before, after, pageSize)",
+            "parameters": [
+                {
+                    "name": "sourceId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "synchronizationId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "before",
+                    "type": "string",
+                    "required": "false"
+                },
+                {
+                    "name": "after",
+                    "type": "string",
+                    "required": "false"
+                },
+                {
+                    "name": "pageSize",
+                    "type": "string",
+                    "required": "false"
+                }
+            ],
+            "return": "V3synchronizationdeletionlisting"
+        },
+        "GET /api/v2/knowledge/sources/{sourceId}/synchronizations/{synchronizationId}/uploads/{fileId}": {
+            "className": "KnowledgeApi",
+            "operationId": "getknowledgesourcesynchronizationupload",
+            "functionName": "GetKnowledgeSourceSynchronizationUpload",
+            "signature": "GetKnowledgeSourceSynchronizationUpload(sourceId, synchronizationId, fileId)",
+            "parameters": [
+                {
+                    "name": "sourceId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "synchronizationId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "fileId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ],
+            "return": "V3synchronizationupload"
+        },
+        "GET /api/v2/knowledge/sources/{sourceId}/synchronizations/{synchronizationId}/uploads": {
+            "className": "KnowledgeApi",
+            "operationId": "getknowledgesourcesynchronizationuploads",
+            "functionName": "GetKnowledgeSourceSynchronizationUploads",
+            "signature": "GetKnowledgeSourceSynchronizationUploads(sourceId, synchronizationId, before, after, pageSize)",
+            "parameters": [
+                {
+                    "name": "sourceId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "synchronizationId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "before",
+                    "type": "string",
+                    "required": "false"
+                },
+                {
+                    "name": "after",
+                    "type": "string",
+                    "required": "false"
+                },
+                {
+                    "name": "pageSize",
+                    "type": "string",
+                    "required": "false"
+                }
+            ],
+            "return": "V3synchronizationuploadlisting"
+        },
         "GET /api/v2/knowledge/sources/{sourceId}/synchronizations": {
             "className": "KnowledgeApi",
             "operationId": "getknowledgesourcesynchronizations",
@@ -301290,6 +302980,30 @@
                 }
             ],
             "return": "Knowledgesettingsresponse"
+        },
+        "POST /api/v2/knowledge/sources/{sourceId}/synchronizations/{synchronizationId}/deletions": {
+            "className": "KnowledgeApi",
+            "operationId": "postknowledgesourcesynchronizationdeletions",
+            "functionName": "PostKnowledgeSourceSynchronizationDeletions",
+            "signature": "PostKnowledgeSourceSynchronizationDeletions(sourceId, synchronizationId, body)",
+            "parameters": [
+                {
+                    "name": "sourceId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "synchronizationId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "V3synchronizationfiledeletionrequest",
+                    "required": "true"
+                }
+            ],
+            "return": "V3synchronizationdeletion"
         },
         "POST /api/v2/knowledge/sources/{sourceId}/synchronizations/{synchronizationId}/uploads": {
             "className": "KnowledgeApi",

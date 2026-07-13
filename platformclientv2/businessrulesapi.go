@@ -3114,8 +3114,8 @@ func (a BusinessRulesApi) PostBusinessrulesDecisiontableVersionSync(tableId stri
 
 // PostBusinessrulesDecisiontableVersions invokes POST /api/v2/businessrules/decisiontables/{tableId}/versions
 //
-// Create a new decision table version
-func (a BusinessRulesApi) PostBusinessrulesDecisiontableVersions(tableId string) (*Decisiontableversion, *APIResponse, error) {
+// Create a new decision table version. When sourceVersion is not provided, the draft is created from the published version.
+func (a BusinessRulesApi) PostBusinessrulesDecisiontableVersions(tableId string, body Createdecisiontableversionrequest) (*Decisiontableversion, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/businessrules/decisiontables/{tableId}/versions"
@@ -3178,6 +3178,9 @@ func (a BusinessRulesApi) PostBusinessrulesDecisiontableVersions(tableId string)
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
+	// body params
+	postBody = &body
+
 	var successPayload *Decisiontableversion
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {

@@ -117,6 +117,24 @@ type Evaluation struct {
 	// EvaluationSource - The source that created the evaluation.
 	EvaluationSource *Evaluationsource `json:"evaluationSource,omitempty"`
 
+	// DisputeCount - The number of times this evaluation has been disputed
+	DisputeCount *int `json:"disputeCount,omitempty"`
+
+	// Version - The evaluation version number
+	Version *int `json:"version,omitempty"`
+
+	// VersionHistory - List of all versions of the evaluation
+	VersionHistory *Pagelessdomainentitylistingevaluationversion `json:"versionHistory,omitempty"`
+
+	// DeclinedReview - Is true when the evaluation review was declined
+	DeclinedReview *bool `json:"declinedReview,omitempty"`
+
+	// EvaluationContextId - The shared id for different versions of an evaluation
+	EvaluationContextId *string `json:"evaluationContextId,omitempty"`
+
+	// RetractedEvaluation - The previous evaluation version
+	RetractedEvaluation *Evaluationreference `json:"retractedEvaluation,omitempty"`
+
 	// AiScoring - AI scoring details for the evaluation.
 	AiScoring *Aiscoring `json:"aiScoring,omitempty"`
 
@@ -329,6 +347,18 @@ func (o Evaluation) MarshalJSON() ([]byte, error) {
 		
 		EvaluationSource *Evaluationsource `json:"evaluationSource,omitempty"`
 		
+		DisputeCount *int `json:"disputeCount,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
+		
+		VersionHistory *Pagelessdomainentitylistingevaluationversion `json:"versionHistory,omitempty"`
+		
+		DeclinedReview *bool `json:"declinedReview,omitempty"`
+		
+		EvaluationContextId *string `json:"evaluationContextId,omitempty"`
+		
+		RetractedEvaluation *Evaluationreference `json:"retractedEvaluation,omitempty"`
+		
 		AiScoring *Aiscoring `json:"aiScoring,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -403,6 +433,18 @@ func (o Evaluation) MarshalJSON() ([]byte, error) {
 		HasAssistanceFailed: o.HasAssistanceFailed,
 		
 		EvaluationSource: o.EvaluationSource,
+		
+		DisputeCount: o.DisputeCount,
+		
+		Version: o.Version,
+		
+		VersionHistory: o.VersionHistory,
+		
+		DeclinedReview: o.DeclinedReview,
+		
+		EvaluationContextId: o.EvaluationContextId,
+		
+		RetractedEvaluation: o.RetractedEvaluation,
 		
 		AiScoring: o.AiScoring,
 		
@@ -578,6 +620,34 @@ func (o *Evaluation) UnmarshalJSON(b []byte) error {
 	if EvaluationSource, ok := EvaluationMap["evaluationSource"].(map[string]interface{}); ok {
 		EvaluationSourceString, _ := json.Marshal(EvaluationSource)
 		json.Unmarshal(EvaluationSourceString, &o.EvaluationSource)
+	}
+	
+	if DisputeCount, ok := EvaluationMap["disputeCount"].(float64); ok {
+		DisputeCountInt := int(DisputeCount)
+		o.DisputeCount = &DisputeCountInt
+	}
+	
+	if Version, ok := EvaluationMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if VersionHistory, ok := EvaluationMap["versionHistory"].(map[string]interface{}); ok {
+		VersionHistoryString, _ := json.Marshal(VersionHistory)
+		json.Unmarshal(VersionHistoryString, &o.VersionHistory)
+	}
+	
+	if DeclinedReview, ok := EvaluationMap["declinedReview"].(bool); ok {
+		o.DeclinedReview = &DeclinedReview
+	}
+    
+	if EvaluationContextId, ok := EvaluationMap["evaluationContextId"].(string); ok {
+		o.EvaluationContextId = &EvaluationContextId
+	}
+    
+	if RetractedEvaluation, ok := EvaluationMap["retractedEvaluation"].(map[string]interface{}); ok {
+		RetractedEvaluationString, _ := json.Marshal(RetractedEvaluation)
+		json.Unmarshal(RetractedEvaluationString, &o.RetractedEvaluation)
 	}
 	
 	if AiScoring, ok := EvaluationMap["aiScoring"].(map[string]interface{}); ok {

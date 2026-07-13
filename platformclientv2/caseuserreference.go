@@ -7,8 +7,8 @@ import (
 	"strings"
 )
 
-// Ucintegration - UC Integration UI configuration data
-type Ucintegration struct { 
+// Caseuserreference
+type Caseuserreference struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Id - The globally unique identifier for the object.
@@ -17,36 +17,15 @@ type Ucintegration struct {
 	// Name
 	Name *string `json:"name,omitempty"`
 
-	// UcIntegrationKey - ucIntegrationKey
-	UcIntegrationKey *string `json:"ucIntegrationKey,omitempty"`
-
-	// IntegrationPresenceSource - integrationPresenceType
-	IntegrationPresenceSource *string `json:"integrationPresenceSource,omitempty"`
-
-	// PbxPermission - pbxPermission
-	PbxPermission *string `json:"pbxPermission,omitempty"`
-
-	// Icon - icon
-	Icon *Ucicon `json:"icon,omitempty"`
-
-	// BadgeIcons - badgeIcon
-	BadgeIcons *map[string]Ucicon `json:"badgeIcons,omitempty"`
-
-	// I10n - i10n
-	I10n *map[string]Uci10n `json:"i10n,omitempty"`
-
-	// PolledPresence - polledPresence
-	PolledPresence *bool `json:"polledPresence,omitempty"`
-
-	// UserPermissions - userPermissions
-	UserPermissions *[]string `json:"userPermissions,omitempty"`
+	// Presence - Active presence
+	Presence *Userpresence `json:"presence,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Ucintegration) SetField(field string, fieldValue interface{}) {
+func (o *Caseuserreference) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -67,7 +46,7 @@ func (o *Ucintegration) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Ucintegration) MarshalJSON() ([]byte, error) {
+func (o Caseuserreference) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -105,28 +84,14 @@ func (o Ucintegration) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Ucintegration
+	type Alias Caseuserreference
 	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
 		Name *string `json:"name,omitempty"`
 		
-		UcIntegrationKey *string `json:"ucIntegrationKey,omitempty"`
-		
-		IntegrationPresenceSource *string `json:"integrationPresenceSource,omitempty"`
-		
-		PbxPermission *string `json:"pbxPermission,omitempty"`
-		
-		Icon *Ucicon `json:"icon,omitempty"`
-		
-		BadgeIcons *map[string]Ucicon `json:"badgeIcons,omitempty"`
-		
-		I10n *map[string]Uci10n `json:"i10n,omitempty"`
-		
-		PolledPresence *bool `json:"polledPresence,omitempty"`
-		
-		UserPermissions *[]string `json:"userPermissions,omitempty"`
+		Presence *Userpresence `json:"presence,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
@@ -135,79 +100,34 @@ func (o Ucintegration) MarshalJSON() ([]byte, error) {
 		
 		Name: o.Name,
 		
-		UcIntegrationKey: o.UcIntegrationKey,
-		
-		IntegrationPresenceSource: o.IntegrationPresenceSource,
-		
-		PbxPermission: o.PbxPermission,
-		
-		Icon: o.Icon,
-		
-		BadgeIcons: o.BadgeIcons,
-		
-		I10n: o.I10n,
-		
-		PolledPresence: o.PolledPresence,
-		
-		UserPermissions: o.UserPermissions,
+		Presence: o.Presence,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Ucintegration) UnmarshalJSON(b []byte) error {
-	var UcintegrationMap map[string]interface{}
-	err := json.Unmarshal(b, &UcintegrationMap)
+func (o *Caseuserreference) UnmarshalJSON(b []byte) error {
+	var CaseuserreferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &CaseuserreferenceMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := UcintegrationMap["id"].(string); ok {
+	if Id, ok := CaseuserreferenceMap["id"].(string); ok {
 		o.Id = &Id
 	}
     
-	if Name, ok := UcintegrationMap["name"].(string); ok {
+	if Name, ok := CaseuserreferenceMap["name"].(string); ok {
 		o.Name = &Name
 	}
     
-	if UcIntegrationKey, ok := UcintegrationMap["ucIntegrationKey"].(string); ok {
-		o.UcIntegrationKey = &UcIntegrationKey
-	}
-    
-	if IntegrationPresenceSource, ok := UcintegrationMap["integrationPresenceSource"].(string); ok {
-		o.IntegrationPresenceSource = &IntegrationPresenceSource
-	}
-    
-	if PbxPermission, ok := UcintegrationMap["pbxPermission"].(string); ok {
-		o.PbxPermission = &PbxPermission
-	}
-    
-	if Icon, ok := UcintegrationMap["icon"].(map[string]interface{}); ok {
-		IconString, _ := json.Marshal(Icon)
-		json.Unmarshal(IconString, &o.Icon)
+	if Presence, ok := CaseuserreferenceMap["presence"].(map[string]interface{}); ok {
+		PresenceString, _ := json.Marshal(Presence)
+		json.Unmarshal(PresenceString, &o.Presence)
 	}
 	
-	if BadgeIcons, ok := UcintegrationMap["badgeIcons"].(map[string]interface{}); ok {
-		BadgeIconsString, _ := json.Marshal(BadgeIcons)
-		json.Unmarshal(BadgeIconsString, &o.BadgeIcons)
-	}
-	
-	if I10n, ok := UcintegrationMap["i10n"].(map[string]interface{}); ok {
-		I10nString, _ := json.Marshal(I10n)
-		json.Unmarshal(I10nString, &o.I10n)
-	}
-	
-	if PolledPresence, ok := UcintegrationMap["polledPresence"].(bool); ok {
-		o.PolledPresence = &PolledPresence
-	}
-    
-	if UserPermissions, ok := UcintegrationMap["userPermissions"].([]interface{}); ok {
-		UserPermissionsString, _ := json.Marshal(UserPermissions)
-		json.Unmarshal(UserPermissionsString, &o.UserPermissions)
-	}
-	
-	if SelfUri, ok := UcintegrationMap["selfUri"].(string); ok {
+	if SelfUri, ok := CaseuserreferenceMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
     
@@ -216,7 +136,7 @@ func (o *Ucintegration) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Ucintegration) String() string {
+func (o *Caseuserreference) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

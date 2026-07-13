@@ -194,6 +194,8 @@ docs/DeleteKnowledgeKnowledgebaseSourcesServicenowSourceId-example.txt
 docs/DeleteKnowledgeKnowledgebaseSynchronizeJob-example.txt
 docs/DeleteKnowledgeSetting-example.txt
 docs/DeleteKnowledgeSource-example.txt
+docs/DeleteKnowledgeSourceSynchronizationDeletion-example.txt
+docs/DeleteKnowledgeSourceSynchronizationUpload-example.txt
 docs/DeleteLanguage-example.txt
 docs/DeleteLanguageunderstandingDomain-example.txt
 docs/DeleteLanguageunderstandingDomainFeedbackFeedbackId-example.txt
@@ -663,6 +665,7 @@ docs/GetContentmanagementWorkspaceTagvalue-example.txt
 docs/GetContentmanagementWorkspaceTagvalues-example.txt
 docs/GetContentmanagementWorkspaces-example.txt
 docs/GetConversation-example.txt
+docs/GetConversationAccessattributes-example.txt
 docs/GetConversationAssistantCopilotcontext-example.txt
 docs/GetConversationCommunicationAgentchecklist-example.txt
 docs/GetConversationCommunicationAgentchecklistJob-example.txt
@@ -835,6 +838,8 @@ docs/GetExternalcontactsImportJob-example.txt
 docs/GetExternalcontactsImportJobs-example.txt
 docs/GetExternalcontactsImportSetting-example.txt
 docs/GetExternalcontactsImportSettings-example.txt
+docs/GetExternalcontactsNotesExport-example.txt
+docs/GetExternalcontactsNotesExports-example.txt
 docs/GetExternalcontactsOrganization-example.txt
 docs/GetExternalcontactsOrganizationContacts-example.txt
 docs/GetExternalcontactsOrganizationIdentifiers-example.txt
@@ -842,6 +847,8 @@ docs/GetExternalcontactsOrganizationNote-example.txt
 docs/GetExternalcontactsOrganizationNotes-example.txt
 docs/GetExternalcontactsOrganizationRelationships-example.txt
 docs/GetExternalcontactsOrganizations-example.txt
+docs/GetExternalcontactsOrganizationsExport-example.txt
+docs/GetExternalcontactsOrganizationsExports-example.txt
 docs/GetExternalcontactsOrganizationsSchema-example.txt
 docs/GetExternalcontactsOrganizationsSchemaVersion-example.txt
 docs/GetExternalcontactsOrganizationsSchemaVersions-example.txt
@@ -850,6 +857,8 @@ docs/GetExternalcontactsOrganizationsSchemasCoretype-example.txt
 docs/GetExternalcontactsOrganizationsSchemasCoretypes-example.txt
 docs/GetExternalcontactsOrganizationsSchemasLimits-example.txt
 docs/GetExternalcontactsRelationship-example.txt
+docs/GetExternalcontactsRelationshipsExport-example.txt
+docs/GetExternalcontactsRelationshipsExports-example.txt
 docs/GetExternalcontactsReversewhitepageslookup-example.txt
 docs/GetExternalcontactsScanContacts-example.txt
 docs/GetExternalcontactsScanContactsDivisionviewsAll-example.txt
@@ -1032,7 +1041,6 @@ docs/GetIntegrationsBotconnectorIntegrationIdBotVersions-example.txt
 docs/GetIntegrationsBotconnectorIntegrationIdBots-example.txt
 docs/GetIntegrationsBotconnectorIntegrationIdBotsSummaries-example.txt
 docs/GetIntegrationsClientapps-example.txt
-docs/GetIntegrationsClientappsUnifiedcommunications-example.txt
 docs/GetIntegrationsCredential-example.txt
 docs/GetIntegrationsCredentials-example.txt
 docs/GetIntegrationsCredentialsListing-example.txt
@@ -1165,6 +1173,10 @@ docs/GetKnowledgeSetting-example.txt
 docs/GetKnowledgeSettings-example.txt
 docs/GetKnowledgeSource-example.txt
 docs/GetKnowledgeSourceSynchronization-example.txt
+docs/GetKnowledgeSourceSynchronizationDeletion-example.txt
+docs/GetKnowledgeSourceSynchronizationDeletions-example.txt
+docs/GetKnowledgeSourceSynchronizationUpload-example.txt
+docs/GetKnowledgeSourceSynchronizationUploads-example.txt
 docs/GetKnowledgeSourceSynchronizations-example.txt
 docs/GetKnowledgeSources-example.txt
 docs/GetKnowledgeSourcesSynchronizations-example.txt
@@ -2494,6 +2506,7 @@ docs/PostConversationsCustomattributesSearch-example.txt
 docs/PostConversationsEmailInboundmessages-example.txt
 docs/PostConversationsEmailMessages-example.txt
 docs/PostConversationsEmailMessagesDraftAttachmentsCopy-example.txt
+docs/PostConversationsEmailMessagesDraftAttachmentsUploads-example.txt
 docs/PostConversationsEmailParticipantCommunicationWrapup-example.txt
 docs/PostConversationsEmailParticipantReplace-example.txt
 docs/PostConversationsEmailReconnect-example.txt
@@ -2593,11 +2606,14 @@ docs/PostExternalcontactsImportCsvUploads-example.txt
 docs/PostExternalcontactsImportJobs-example.txt
 docs/PostExternalcontactsImportSettings-example.txt
 docs/PostExternalcontactsMergeContacts-example.txt
+docs/PostExternalcontactsNotesExports-example.txt
 docs/PostExternalcontactsOrganizationNotes-example.txt
 docs/PostExternalcontactsOrganizations-example.txt
 docs/PostExternalcontactsOrganizationsEnrich-example.txt
+docs/PostExternalcontactsOrganizationsExports-example.txt
 docs/PostExternalcontactsOrganizationsSchemas-example.txt
 docs/PostExternalcontactsRelationships-example.txt
+docs/PostExternalcontactsRelationshipsExports-example.txt
 docs/PostFlowHistory-example.txt
 docs/PostFlowInstancesSettingsLoglevels-example.txt
 docs/PostFlowVersions-example.txt
@@ -2734,6 +2750,7 @@ docs/PostKnowledgeKnowledgebases-example.txt
 docs/PostKnowledgeSearch-example.txt
 docs/PostKnowledgeSearchPreview-example.txt
 docs/PostKnowledgeSettings-example.txt
+docs/PostKnowledgeSourceSynchronizationDeletions-example.txt
 docs/PostKnowledgeSourceSynchronizationUploads-example.txt
 docs/PostKnowledgeSourceSynchronizations-example.txt
 docs/PostKnowledgeSources-example.txt
@@ -3202,6 +3219,7 @@ docs/PutChatsSettings-example.txt
 docs/PutContentmanagementWorkspace-example.txt
 docs/PutContentmanagementWorkspaceMember-example.txt
 docs/PutContentmanagementWorkspaceTagvalue-example.txt
+docs/PutConversationAccessattributes-example.txt
 docs/PutConversationCustomattributes-example.txt
 docs/PutConversationCustomattributesBulk-example.txt
 docs/PutConversationParticipantFlaggedreason-example.txt
@@ -3921,6 +3939,7 @@ platformclientv2/atzmtimeslot.go
 platformclientv2/atzmtimeslotwithtimezone.go
 platformclientv2/audioconnectorintegration.go
 platformclientv2/audioconnectorintegrationentitylisting.go
+platformclientv2/audioformat.go
 platformclientv2/audiostate.go
 platformclientv2/audioupdatedevent.go
 platformclientv2/auditapi.go
@@ -4402,6 +4421,7 @@ platformclientv2/caseplancreateresponse.go
 platformclientv2/caseplandataschema.go
 platformclientv2/caseplandataschemalisting.go
 platformclientv2/caseplandataschemarequest.go
+platformclientv2/caseplanfilter.go
 platformclientv2/caseplanlisting.go
 platformclientv2/caseplanqueryentitylisting.go
 platformclientv2/caseplanqueryrequest.go
@@ -4410,6 +4430,7 @@ platformclientv2/caseplanupdate.go
 platformclientv2/casepriorityupdate.go
 platformclientv2/casereference.go
 platformclientv2/casesummaryupdate.go
+platformclientv2/caseuserreference.go
 platformclientv2/categoriesentitylisting.go
 platformclientv2/categoriesfilter.go
 platformclientv2/category.go
@@ -4697,6 +4718,8 @@ platformclientv2/continuousforecastsessionresponse.go
 platformclientv2/continuousforecastsnapshotresponse.go
 platformclientv2/contractual.go
 platformclientv2/conversation.go
+platformclientv2/conversationaccessattributesresponse.go
+platformclientv2/conversationaccessattributesupdate.go
 platformclientv2/conversationactivitydata.go
 platformclientv2/conversationactivityentitydata.go
 platformclientv2/conversationactivitymetricvalue.go
@@ -5202,6 +5225,7 @@ platformclientv2/createdecisiontablecolumnsrequest.go
 platformclientv2/createdecisiontableimportjobrequest.go
 platformclientv2/createdecisiontablerequest.go
 platformclientv2/createdecisiontablerowrequest.go
+platformclientv2/createdecisiontableversionrequest.go
 platformclientv2/createemailrequest.go
 platformclientv2/createexternaleventsconfigurationrequest.go
 platformclientv2/creategeneralprogramtestphrasedetectedphrase.go
@@ -5389,6 +5413,7 @@ platformclientv2/decisiontablerowentityref.go
 platformclientv2/decisiontablerowexecutionoutput.go
 platformclientv2/decisiontablerowlisting.go
 platformclientv2/decisiontablerowparametervalue.go
+platformclientv2/decisiontablesnapshot.go
 platformclientv2/decisiontableversion.go
 platformclientv2/decisiontableversionentity.go
 platformclientv2/decisiontableversionlisting.go
@@ -7215,6 +7240,13 @@ platformclientv2/nluutterance.go
 platformclientv2/nluutterancesegment.go
 platformclientv2/note.go
 platformclientv2/notelisting.go
+platformclientv2/notesexport.go
+platformclientv2/notesexportcomparisonfieldfilter.go
+platformclientv2/notesexportfieldfilter.go
+platformclientv2/notesexportfieldlistfilter.go
+platformclientv2/notesexportfilter.go
+platformclientv2/notesexportlisting.go
+platformclientv2/notesexportqueryconditions.go
 platformclientv2/notificationsapi.go
 platformclientv2/notificationsresponse.go
 platformclientv2/notificationssettings.go
@@ -7340,6 +7372,13 @@ platformclientv2/organizationpublicapiusage.go
 platformclientv2/organizationpublicapiusagequeryrequest.go
 platformclientv2/organizationpublicapiusageresultsresponse.go
 platformclientv2/organizationroleentitylisting.go
+platformclientv2/organizationsexport.go
+platformclientv2/organizationsexportcomparisonfieldfilter.go
+platformclientv2/organizationsexportfieldfilter.go
+platformclientv2/organizationsexportfieldlistfilter.go
+platformclientv2/organizationsexportfilter.go
+platformclientv2/organizationsexportlisting.go
+platformclientv2/organizationsexportqueryconditions.go
 platformclientv2/organizationusagequeryresponse.go
 platformclientv2/orgauthsettings.go
 platformclientv2/orgoauthclient.go
@@ -8144,6 +8183,13 @@ platformclientv2/registerarchitectvalidatejob.go
 platformclientv2/registerarchitectvalidatejobresponse.go
 platformclientv2/relationship.go
 platformclientv2/relationshiplisting.go
+platformclientv2/relationshipsexport.go
+platformclientv2/relationshipsexportcomparisonfieldfilter.go
+platformclientv2/relationshipsexportfieldfilter.go
+platformclientv2/relationshipsexportfieldlistfilter.go
+platformclientv2/relationshipsexportfilter.go
+platformclientv2/relationshipsexportlisting.go
+platformclientv2/relationshipsexportqueryconditions.go
 platformclientv2/removeentitiesrequest.go
 platformclientv2/removeentity.go
 platformclientv2/reoccurrence.go
@@ -9046,8 +9092,6 @@ platformclientv2/typedattribute.go
 platformclientv2/typingsetting.go
 platformclientv2/uci10n.go
 platformclientv2/ucicon.go
-platformclientv2/ucintegration.go
-platformclientv2/ucintegrationlisting.go
 platformclientv2/ucthirdpartypresence.go
 platformclientv2/ucuserpresence.go
 platformclientv2/unansweredgroup.go
@@ -9136,6 +9180,8 @@ platformclientv2/updateverifierrequest.go
 platformclientv2/updateworkplanbid.go
 platformclientv2/updateworkplanrotationagentrequest.go
 platformclientv2/updateworkplanrotationrequest.go
+platformclientv2/uploadattachmentrequest.go
+platformclientv2/uploadattachmentresponse.go
 platformclientv2/uploadmediarequest.go
 platformclientv2/uploadsapi.go
 platformclientv2/uploadurlrequest.go
@@ -9398,10 +9444,15 @@ platformclientv2/v3sourcetagfilter.go
 platformclientv2/v3sourceupdaterequest.go
 platformclientv2/v3startmanualsyncrequest.go
 platformclientv2/v3synchronization.go
+platformclientv2/v3synchronizationdeletion.go
+platformclientv2/v3synchronizationdeletionlisting.go
+platformclientv2/v3synchronizationfiledeletionrequest.go
 platformclientv2/v3synchronizationlisting.go
 platformclientv2/v3synchronizationref.go
 platformclientv2/v3synchronizationstatistics.go
 platformclientv2/v3synchronizationupdaterequest.go
+platformclientv2/v3synchronizationupload.go
+platformclientv2/v3synchronizationuploadlisting.go
 platformclientv2/v3synchronizationuploadmetadata.go
 platformclientv2/v3synchronizationuploadurlrequest.go
 platformclientv2/v3synchronizationuploadurlresponse.go
@@ -9816,6 +9867,7 @@ platformclientv2/workdayvaluestrenditem.go
 platformclientv2/workflowtargetsettings.go
 platformclientv2/workforcemanagementapi.go
 platformclientv2/workitem.go
+platformclientv2/workitemactivityreference.go
 platformclientv2/workitemcasereference.go
 platformclientv2/workitemchangelisting.go
 platformclientv2/workitemcommoncreate.go

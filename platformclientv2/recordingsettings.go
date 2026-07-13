@@ -25,6 +25,9 @@ type Recordingsettings struct {
 
 	// RecordingBatchDownloadUrlTtl - The duration in minutes for which the generated URL for recording batch download remains valid.The default duration is set to 60 minutes, with a minimum allowable duration of 2 minutes and a maximum of 60 minutes.
 	RecordingBatchDownloadUrlTtl *int `json:"recordingBatchDownloadUrlTtl,omitempty"`
+
+	// StopRecordingWhenOnlyExternalParticipants - Whether to stop recording in conference when only external participants remain
+	StopRecordingWhenOnlyExternalParticipants *bool `json:"stopRecordingWhenOnlyExternalParticipants,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -99,6 +102,8 @@ func (o Recordingsettings) MarshalJSON() ([]byte, error) {
 		RecordingPlaybackUrlTtl *int `json:"recordingPlaybackUrlTtl,omitempty"`
 		
 		RecordingBatchDownloadUrlTtl *int `json:"recordingBatchDownloadUrlTtl,omitempty"`
+		
+		StopRecordingWhenOnlyExternalParticipants *bool `json:"stopRecordingWhenOnlyExternalParticipants,omitempty"`
 		Alias
 	}{ 
 		MaxSimultaneousStreams: o.MaxSimultaneousStreams,
@@ -110,6 +115,8 @@ func (o Recordingsettings) MarshalJSON() ([]byte, error) {
 		RecordingPlaybackUrlTtl: o.RecordingPlaybackUrlTtl,
 		
 		RecordingBatchDownloadUrlTtl: o.RecordingBatchDownloadUrlTtl,
+		
+		StopRecordingWhenOnlyExternalParticipants: o.StopRecordingWhenOnlyExternalParticipants,
 		Alias:    (Alias)(o),
 	})
 }
@@ -145,6 +152,10 @@ func (o *Recordingsettings) UnmarshalJSON(b []byte) error {
 		o.RecordingBatchDownloadUrlTtl = &RecordingBatchDownloadUrlTtlInt
 	}
 	
+	if StopRecordingWhenOnlyExternalParticipants, ok := RecordingsettingsMap["stopRecordingWhenOnlyExternalParticipants"].(bool); ok {
+		o.StopRecordingWhenOnlyExternalParticipants = &StopRecordingWhenOnlyExternalParticipants
+	}
+    
 
 	return nil
 }

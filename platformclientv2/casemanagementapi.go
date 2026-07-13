@@ -3064,6 +3064,8 @@ func (a CaseManagementApi) PostCasemanagementCaseplans(body Caseplancreate) (*Ca
 // PostCasemanagementCaseplansQuery invokes POST /api/v2/casemanagement/caseplans/query
 //
 // Query for Caseplans.
+//
+// This endpoint supports two filtering modes. The recommended approach uses &#39;filters&#39; (generic filter model) and &#39;attributes&#39; (field projection). During the migration period, the legacy fields &#39;name&#39;, &#39;nameSearchType&#39;, and &#39;divisionIds&#39; remain available as an alternative.
 func (a CaseManagementApi) PostCasemanagementCaseplansQuery(body Caseplanqueryrequest) (*Caseplanqueryentitylisting, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

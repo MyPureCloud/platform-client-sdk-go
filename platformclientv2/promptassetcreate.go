@@ -26,6 +26,9 @@ type Promptassetcreate struct {
 	// MediaUri - URI of the resource audio
 	MediaUri *string `json:"mediaUri,omitempty"`
 
+	// AudioFormat - Audio format info
+	AudioFormat *Audioformat `json:"audioFormat,omitempty"`
+
 	// TtsString - Text to speech of the resource
 	TtsString *string `json:"ttsString,omitempty"`
 
@@ -124,6 +127,8 @@ func (o Promptassetcreate) MarshalJSON() ([]byte, error) {
 		
 		MediaUri *string `json:"mediaUri,omitempty"`
 		
+		AudioFormat *Audioformat `json:"audioFormat,omitempty"`
+		
 		TtsString *string `json:"ttsString,omitempty"`
 		
 		Text *string `json:"text,omitempty"`
@@ -150,6 +155,8 @@ func (o Promptassetcreate) MarshalJSON() ([]byte, error) {
 		Language: o.Language,
 		
 		MediaUri: o.MediaUri,
+		
+		AudioFormat: o.AudioFormat,
 		
 		TtsString: o.TtsString,
 		
@@ -197,6 +204,11 @@ func (o *Promptassetcreate) UnmarshalJSON(b []byte) error {
 		o.MediaUri = &MediaUri
 	}
     
+	if AudioFormat, ok := PromptassetcreateMap["audioFormat"].(map[string]interface{}); ok {
+		AudioFormatString, _ := json.Marshal(AudioFormat)
+		json.Unmarshal(AudioFormatString, &o.AudioFormat)
+	}
+	
 	if TtsString, ok := PromptassetcreateMap["ttsString"].(string); ok {
 		o.TtsString = &TtsString
 	}

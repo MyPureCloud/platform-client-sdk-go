@@ -185,6 +185,9 @@ type Conversationcalleventtopiccallmediaparticipant struct {
 
 	// FaxStatus
 	FaxStatus *Conversationcalleventtopicfaxstatus `json:"faxStatus,omitempty"`
+
+	// PublicIpAddress
+	PublicIpAddress *string `json:"publicIpAddress,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -437,6 +440,8 @@ func (o Conversationcalleventtopiccallmediaparticipant) MarshalJSON() ([]byte, e
 		ConsultParticipantId *string `json:"consultParticipantId,omitempty"`
 		
 		FaxStatus *Conversationcalleventtopicfaxstatus `json:"faxStatus,omitempty"`
+		
+		PublicIpAddress *string `json:"publicIpAddress,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -554,6 +559,8 @@ func (o Conversationcalleventtopiccallmediaparticipant) MarshalJSON() ([]byte, e
 		ConsultParticipantId: o.ConsultParticipantId,
 		
 		FaxStatus: o.FaxStatus,
+		
+		PublicIpAddress: o.PublicIpAddress,
 		Alias:    (Alias)(o),
 	})
 }
@@ -825,6 +832,10 @@ func (o *Conversationcalleventtopiccallmediaparticipant) UnmarshalJSON(b []byte)
 		json.Unmarshal(FaxStatusString, &o.FaxStatus)
 	}
 	
+	if PublicIpAddress, ok := ConversationcalleventtopiccallmediaparticipantMap["publicIpAddress"].(string); ok {
+		o.PublicIpAddress = &PublicIpAddress
+	}
+    
 
 	return nil
 }
