@@ -111,6 +111,94 @@ func (a CaseManagementApi) DeleteCasemanagementCase(caseId string) (*interface{}
 	return successPayload, response, err
 }
 
+// DeleteCasemanagementCaseCommentsMeCommentId invokes DELETE /api/v2/casemanagement/cases/{caseId}/comments/me/{commentId}
+//
+// Delete my Comment.
+func (a CaseManagementApi) DeleteCasemanagementCaseCommentsMeCommentId(caseId string, commentId string) (*interface{}, *APIResponse, error) {
+	var httpMethod = "DELETE"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/casemanagement/cases/{caseId}/comments/me/{commentId}"
+	path = strings.Replace(path, "{caseId}", url.PathEscape(fmt.Sprintf("%v", caseId)), -1)
+	path = strings.Replace(path, "{commentId}", url.PathEscape(fmt.Sprintf("%v", commentId)), -1)
+	defaultReturn := new(interface{})
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'caseId' is set
+	if &caseId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'caseId' when calling CaseManagementApi->DeleteCasemanagementCaseCommentsMeCommentId")
+	}
+	// verify the required parameter 'commentId' is set
+	if &commentId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'commentId' when calling CaseManagementApi->DeleteCasemanagementCaseCommentsMeCommentId")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *interface{}
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "interface{}" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // DeleteCasemanagementCaseplan invokes DELETE /api/v2/casemanagement/caseplans/{caseplanId}
 //
 // Delete a Caseplan.
@@ -284,7 +372,7 @@ func (a CaseManagementApi) DeleteCasemanagementCaseplanDataschema(caseplanId str
 // GetCasemanagementCase invokes GET /api/v2/casemanagement/cases/{caseId}
 //
 // Get a Case.
-func (a CaseManagementApi) GetCasemanagementCase(caseId string, expands string) (*Case, *APIResponse, error) {
+func (a CaseManagementApi) GetCasemanagementCase(caseId string, expands []string) (*Case, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/casemanagement/cases/{caseId}"
@@ -317,7 +405,7 @@ func (a CaseManagementApi) GetCasemanagementCase(caseId string, expands string) 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	queryParams["expands"] = a.Configuration.APIClient.ParameterToString(expands, "")
+	queryParams["expands"] = a.Configuration.APIClient.ParameterToString(expands, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -533,6 +621,182 @@ func (a CaseManagementApi) GetCasemanagementCaseAssociations(caseId string, befo
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Caseassociationlisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetCasemanagementCaseComment invokes GET /api/v2/casemanagement/cases/{caseId}/comments/{commentId}
+//
+// Get a Comment.
+func (a CaseManagementApi) GetCasemanagementCaseComment(caseId string, commentId string) (*Comment, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/casemanagement/cases/{caseId}/comments/{commentId}"
+	path = strings.Replace(path, "{caseId}", url.PathEscape(fmt.Sprintf("%v", caseId)), -1)
+	path = strings.Replace(path, "{commentId}", url.PathEscape(fmt.Sprintf("%v", commentId)), -1)
+	defaultReturn := new(Comment)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'caseId' is set
+	if &caseId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'caseId' when calling CaseManagementApi->GetCasemanagementCaseComment")
+	}
+	// verify the required parameter 'commentId' is set
+	if &commentId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'commentId' when calling CaseManagementApi->GetCasemanagementCaseComment")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Comment
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Comment" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetCasemanagementCaseComments invokes GET /api/v2/casemanagement/cases/{caseId}/comments
+//
+// Get comments for a Case.
+func (a CaseManagementApi) GetCasemanagementCaseComments(caseId string, after string, pageSize int, sortOrder string) (*Commentlisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/casemanagement/cases/{caseId}/comments"
+	path = strings.Replace(path, "{caseId}", url.PathEscape(fmt.Sprintf("%v", caseId)), -1)
+	defaultReturn := new(Commentlisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'caseId' is set
+	if &caseId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'caseId' when calling CaseManagementApi->GetCasemanagementCaseComments")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Commentlisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Commentlisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -1912,7 +2176,7 @@ func (a CaseManagementApi) GetCasemanagementCasesExternalcontact(externalContact
 // GetCasemanagementCasesReference invokes GET /api/v2/casemanagement/cases/references/{referenceId}
 //
 // Get a Case by reference.
-func (a CaseManagementApi) GetCasemanagementCasesReference(referenceId string, expands string) (*Case, *APIResponse, error) {
+func (a CaseManagementApi) GetCasemanagementCasesReference(referenceId string, expands []string) (*Case, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/casemanagement/cases/references/{referenceId}"
@@ -1945,7 +2209,7 @@ func (a CaseManagementApi) GetCasemanagementCasesReference(referenceId string, e
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	queryParams["expands"] = a.Configuration.APIClient.ParameterToString(expands, "")
+	queryParams["expands"] = a.Configuration.APIClient.ParameterToString(expands, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -2633,6 +2897,96 @@ func (a CaseManagementApi) PostCasemanagementCaseAssociations(caseId string, bod
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Caseassociation" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostCasemanagementCaseComments invokes POST /api/v2/casemanagement/cases/{caseId}/comments
+//
+// Add a comment to a Case.
+func (a CaseManagementApi) PostCasemanagementCaseComments(caseId string, body Commentcreate) (*Comment, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/casemanagement/cases/{caseId}/comments"
+	path = strings.Replace(path, "{caseId}", url.PathEscape(fmt.Sprintf("%v", caseId)), -1)
+	defaultReturn := new(Comment)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'caseId' is set
+	if &caseId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'caseId' when calling CaseManagementApi->PostCasemanagementCaseComments")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling CaseManagementApi->PostCasemanagementCaseComments")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Comment
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Comment" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

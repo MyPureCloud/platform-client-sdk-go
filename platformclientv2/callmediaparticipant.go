@@ -182,6 +182,9 @@ type Callmediaparticipant struct {
 
 	// TransferSource - Indicates how call reaches the agent.
 	TransferSource *string `json:"transferSource,omitempty"`
+
+	// ClientIpAddress - The reported client IP of the phone for the call.
+	ClientIpAddress *string `json:"clientIpAddress,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -440,6 +443,8 @@ func (o Callmediaparticipant) MarshalJSON() ([]byte, error) {
 		Disposition *Disposition `json:"disposition,omitempty"`
 		
 		TransferSource *string `json:"transferSource,omitempty"`
+		
+		ClientIpAddress *string `json:"clientIpAddress,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -555,6 +560,8 @@ func (o Callmediaparticipant) MarshalJSON() ([]byte, error) {
 		Disposition: o.Disposition,
 		
 		TransferSource: o.TransferSource,
+		
+		ClientIpAddress: o.ClientIpAddress,
 		Alias:    (Alias)(o),
 	})
 }
@@ -820,6 +827,10 @@ func (o *Callmediaparticipant) UnmarshalJSON(b []byte) error {
 	
 	if TransferSource, ok := CallmediaparticipantMap["transferSource"].(string); ok {
 		o.TransferSource = &TransferSource
+	}
+    
+	if ClientIpAddress, ok := CallmediaparticipantMap["clientIpAddress"].(string); ok {
+		o.ClientIpAddress = &ClientIpAddress
 	}
     
 

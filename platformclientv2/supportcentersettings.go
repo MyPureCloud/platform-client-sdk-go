@@ -11,28 +11,28 @@ import (
 type Supportcentersettings struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Enabled - Whether or not knowledge portal (previously support center) is enabled
+	// Enabled - Whether or not knowledge portal (previously support center) is enabled.
 	Enabled *bool `json:"enabled,omitempty"`
 
-	// KnowledgeBase - The knowledge base for knowledge portal (previously support center)
+	// KnowledgeBase - The knowledge base for knowledge portal (previously support center). Required if support center is enabled
 	KnowledgeBase *Addressableentityref `json:"knowledgeBase,omitempty"`
 
-	// CustomMessages - Customizable display texts for knowledge portal (previously support center)
+	// CustomMessages - Customizable display texts for knowledge portal (previously support center). Required if support center is enabled, must contain both Welcome and Fallback message entries
 	CustomMessages *[]Supportcentercustommessage `json:"customMessages,omitempty"`
 
 	// RouterType - Router type for knowledge portal (previously support center)
 	RouterType *string `json:"routerType,omitempty"`
 
-	// Screens - Available screens for the knowledge portal (previously support center) with its modules
+	// Screens - Available screens for the knowledge portal (previously support center) with its modules. Required if support center is enabled
 	Screens *[]Supportcenterscreen `json:"screens,omitempty"`
 
-	// EnabledCategories - Featured categories for knowledge portal (previously support center) home screen
+	// EnabledCategories - Featured categories for knowledge portal (previously support center) home screen. Required if support center is enabled
 	EnabledCategories *[]Supportcentercategory `json:"enabledCategories,omitempty"`
 
 	// LabelFilter - Document label filter. If set, only documents having at least one of the specified labels will be returned by knowledge document query operations.
 	LabelFilter *Supportcenterlabelfilter `json:"labelFilter,omitempty"`
 
-	// StyleSetting - Style attributes for knowledge portal (previously support center)
+	// StyleSetting - Style attributes for knowledge portal (previously support center). Required if support center is enabled
 	StyleSetting *Supportcenterstylesetting `json:"styleSetting,omitempty"`
 
 	// Feedback - Customer feedback settings

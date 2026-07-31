@@ -20,6 +20,9 @@ type Caseuserreference struct {
 	// Presence - Active presence
 	Presence *Userpresence `json:"presence,omitempty"`
 
+	// Images - Profile images for the user
+	Images *[]Image `json:"images,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -93,6 +96,8 @@ func (o Caseuserreference) MarshalJSON() ([]byte, error) {
 		
 		Presence *Userpresence `json:"presence,omitempty"`
 		
+		Images *[]Image `json:"images,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -101,6 +106,8 @@ func (o Caseuserreference) MarshalJSON() ([]byte, error) {
 		Name: o.Name,
 		
 		Presence: o.Presence,
+		
+		Images: o.Images,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -125,6 +132,11 @@ func (o *Caseuserreference) UnmarshalJSON(b []byte) error {
 	if Presence, ok := CaseuserreferenceMap["presence"].(map[string]interface{}); ok {
 		PresenceString, _ := json.Marshal(Presence)
 		json.Unmarshal(PresenceString, &o.Presence)
+	}
+	
+	if Images, ok := CaseuserreferenceMap["images"].([]interface{}); ok {
+		ImagesString, _ := json.Marshal(Images)
+		json.Unmarshal(ImagesString, &o.Images)
 	}
 	
 	if SelfUri, ok := CaseuserreferenceMap["selfUri"].(string); ok {

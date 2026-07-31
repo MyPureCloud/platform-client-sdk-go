@@ -14,7 +14,7 @@ type Sendmessagingtemplaterequest struct {
 	// ResponseId - Unique identifier for a Response Management response to fetch and apply pre-configured message content when sending outbound responses.
 	ResponseId *string `json:"responseId,omitempty"`
 
-	// Parameters - A list of Response Management response substitutions for the response's messaging template. (Deprecated) use bodyParameters instead.
+	// Parameters - (Deprecated) use bodyParameters instead.
 	Parameters *[]Templateparameter `json:"parameters,omitempty"`
 
 	// HeaderParameters - A list of Response Management header parameter substitutions for the response's messaging template

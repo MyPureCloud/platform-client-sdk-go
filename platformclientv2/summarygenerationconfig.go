@@ -16,6 +16,15 @@ type Summarygenerationconfig struct {
 
 	// SummarySetting - Configured summary setting object.
 	SummarySetting *Summarysettingentity `json:"summarySetting,omitempty"`
+
+	// RetentionSeconds - Summary retention time in seconds. Can only be modified on the parent assistant.
+	RetentionSeconds *int `json:"retentionSeconds,omitempty"`
+
+	// OnDemandSummaryConfig - On-demand summary configuration.
+	OnDemandSummaryConfig *Ondemandsummaryconfig `json:"onDemandSummaryConfig,omitempty"`
+
+	// ModelConfig - Model configuration for summarization.
+	ModelConfig *Modelconfig `json:"modelConfig,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +93,23 @@ func (o Summarygenerationconfig) MarshalJSON() ([]byte, error) {
 		Enabled *bool `json:"enabled,omitempty"`
 		
 		SummarySetting *Summarysettingentity `json:"summarySetting,omitempty"`
+		
+		RetentionSeconds *int `json:"retentionSeconds,omitempty"`
+		
+		OnDemandSummaryConfig *Ondemandsummaryconfig `json:"onDemandSummaryConfig,omitempty"`
+		
+		ModelConfig *Modelconfig `json:"modelConfig,omitempty"`
 		Alias
 	}{ 
 		Enabled: o.Enabled,
 		
 		SummarySetting: o.SummarySetting,
+		
+		RetentionSeconds: o.RetentionSeconds,
+		
+		OnDemandSummaryConfig: o.OnDemandSummaryConfig,
+		
+		ModelConfig: o.ModelConfig,
 		Alias:    (Alias)(o),
 	})
 }
@@ -107,6 +128,21 @@ func (o *Summarygenerationconfig) UnmarshalJSON(b []byte) error {
 	if SummarySetting, ok := SummarygenerationconfigMap["summarySetting"].(map[string]interface{}); ok {
 		SummarySettingString, _ := json.Marshal(SummarySetting)
 		json.Unmarshal(SummarySettingString, &o.SummarySetting)
+	}
+	
+	if RetentionSeconds, ok := SummarygenerationconfigMap["retentionSeconds"].(float64); ok {
+		RetentionSecondsInt := int(RetentionSeconds)
+		o.RetentionSeconds = &RetentionSecondsInt
+	}
+	
+	if OnDemandSummaryConfig, ok := SummarygenerationconfigMap["onDemandSummaryConfig"].(map[string]interface{}); ok {
+		OnDemandSummaryConfigString, _ := json.Marshal(OnDemandSummaryConfig)
+		json.Unmarshal(OnDemandSummaryConfigString, &o.OnDemandSummaryConfig)
+	}
+	
+	if ModelConfig, ok := SummarygenerationconfigMap["modelConfig"].(map[string]interface{}); ok {
+		ModelConfigString, _ := json.Marshal(ModelConfig)
+		json.Unmarshal(ModelConfigString, &o.ModelConfig)
 	}
 	
 

@@ -20,6 +20,9 @@ type Sttengineentity struct {
 	// GrammarBased - The STT engine is intended to be used for Grammars
 	GrammarBased *bool `json:"grammarBased,omitempty"`
 
+	// ReplacedBy - If this STT engine has been deprecated, the STT engine that should be used as a replacement
+	ReplacedBy *Addressableentityref `json:"replacedBy,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -93,6 +96,8 @@ func (o Sttengineentity) MarshalJSON() ([]byte, error) {
 		
 		GrammarBased *bool `json:"grammarBased,omitempty"`
 		
+		ReplacedBy *Addressableentityref `json:"replacedBy,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -101,6 +106,8 @@ func (o Sttengineentity) MarshalJSON() ([]byte, error) {
 		Name: o.Name,
 		
 		GrammarBased: o.GrammarBased,
+		
+		ReplacedBy: o.ReplacedBy,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -126,6 +133,11 @@ func (o *Sttengineentity) UnmarshalJSON(b []byte) error {
 		o.GrammarBased = &GrammarBased
 	}
     
+	if ReplacedBy, ok := SttengineentityMap["replacedBy"].(map[string]interface{}); ok {
+		ReplacedByString, _ := json.Marshal(ReplacedBy)
+		json.Unmarshal(ReplacedByString, &o.ReplacedBy)
+	}
+	
 	if SelfUri, ok := SttengineentityMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

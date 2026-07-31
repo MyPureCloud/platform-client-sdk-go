@@ -54,7 +54,7 @@ type Campaignruleparameters struct {
 	EmailContentTemplate *Domainentityref `json:"emailContentTemplate,omitempty"`
 
 	// ForDuration - ISO-8601 Duration for which condition expression must be continuously true before condition is evaluated as true
-	ForDuration *Duration `json:"forDuration,omitempty"`
+	ForDuration *string `json:"forDuration,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -148,7 +148,7 @@ func (o Campaignruleparameters) MarshalJSON() ([]byte, error) {
 		
 		EmailContentTemplate *Domainentityref `json:"emailContentTemplate,omitempty"`
 		
-		ForDuration *Duration `json:"forDuration,omitempty"`
+		ForDuration *string `json:"forDuration,omitempty"`
 		Alias
 	}{ 
 		Operator: o.Operator,
@@ -257,11 +257,10 @@ func (o *Campaignruleparameters) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(EmailContentTemplateString, &o.EmailContentTemplate)
 	}
 	
-	if ForDuration, ok := CampaignruleparametersMap["forDuration"].(map[string]interface{}); ok {
-		ForDurationString, _ := json.Marshal(ForDuration)
-		json.Unmarshal(ForDurationString, &o.ForDuration)
+	if ForDuration, ok := CampaignruleparametersMap["forDuration"].(string); ok {
+		o.ForDuration = &ForDuration
 	}
-	
+    
 
 	return nil
 }

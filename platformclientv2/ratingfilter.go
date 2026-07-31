@@ -14,12 +14,6 @@ type Ratingfilter struct {
 	// Operator - The comparison operator for review rating filtering.
 	Operator *string `json:"operator,omitempty"`
 
-	// From - The lower bound for the Between operator
-	From *int `json:"from,omitempty"`
-
-	// To - The upper bound for the Between operator
-	To *int `json:"to,omitempty"`
-
 	// Values - One or more rating values to filter by
 	Values *[]int `json:"values,omitempty"`
 }
@@ -89,18 +83,10 @@ func (o Ratingfilter) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Operator *string `json:"operator,omitempty"`
 		
-		From *int `json:"from,omitempty"`
-		
-		To *int `json:"to,omitempty"`
-		
 		Values *[]int `json:"values,omitempty"`
 		Alias
 	}{ 
 		Operator: o.Operator,
-		
-		From: o.From,
-		
-		To: o.To,
 		
 		Values: o.Values,
 		Alias:    (Alias)(o),
@@ -118,16 +104,6 @@ func (o *Ratingfilter) UnmarshalJSON(b []byte) error {
 		o.Operator = &Operator
 	}
     
-	if From, ok := RatingfilterMap["from"].(float64); ok {
-		FromInt := int(From)
-		o.From = &FromInt
-	}
-	
-	if To, ok := RatingfilterMap["to"].(float64); ok {
-		ToInt := int(To)
-		o.To = &ToInt
-	}
-	
 	if Values, ok := RatingfilterMap["values"].([]interface{}); ok {
 		ValuesString, _ := json.Marshal(Values)
 		json.Unmarshal(ValuesString, &o.Values)

@@ -11,7 +11,7 @@ import (
 type Supportcenterfeedbacksettings struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Enabled - Whether or not requesting customer feedback on article content and article search results is enabled
+	// Enabled - Whether or not requesting customer feedback on article content and article search results is enabled. Required if support center is enabled
 	Enabled *bool `json:"enabled,omitempty"`
 }
 

@@ -18,6 +18,9 @@ type Routingskill struct {
 	// Name - The name of the skill.
 	Name *string `json:"name,omitempty"`
 
+	// Division - The id of the division this skill belongs to.
+	Division *Division `json:"division,omitempty"`
+
 	// DateModified - Date last modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
@@ -106,6 +109,8 @@ func (o Routingskill) MarshalJSON() ([]byte, error) {
 		
 		Name *string `json:"name,omitempty"`
 		
+		Division *Division `json:"division,omitempty"`
+		
 		DateModified *string `json:"dateModified,omitempty"`
 		
 		State *string `json:"state,omitempty"`
@@ -118,6 +123,8 @@ func (o Routingskill) MarshalJSON() ([]byte, error) {
 		Id: o.Id,
 		
 		Name: o.Name,
+		
+		Division: o.Division,
 		
 		DateModified: DateModified,
 		
@@ -145,6 +152,11 @@ func (o *Routingskill) UnmarshalJSON(b []byte) error {
 		o.Name = &Name
 	}
     
+	if Division, ok := RoutingskillMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
 	if dateModifiedString, ok := RoutingskillMap["dateModified"].(string); ok {
 		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
 		o.DateModified = &DateModified

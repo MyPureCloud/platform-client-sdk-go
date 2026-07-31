@@ -12,7 +12,7 @@ type Timeoffrequestlisting struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Entities - List of time off requests
-	Entities *[]Timeoffrequest `json:"entities,omitempty"`
+	Entities *[]Timeoffrequestlistitem `json:"entities,omitempty"`
 
 	// DownloadUrl - URL from which to fetch results for requests with a large result set. If populated, the downloaded data will conform to the same schema as would normally be returned, excepting downloaded data will never itself contain a downloadUrl
 	DownloadUrl *string `json:"downloadUrl,omitempty"`
@@ -81,7 +81,7 @@ func (o Timeoffrequestlisting) MarshalJSON() ([]byte, error) {
 	type Alias Timeoffrequestlisting
 	
 	return json.Marshal(&struct { 
-		Entities *[]Timeoffrequest `json:"entities,omitempty"`
+		Entities *[]Timeoffrequestlistitem `json:"entities,omitempty"`
 		
 		DownloadUrl *string `json:"downloadUrl,omitempty"`
 		Alias

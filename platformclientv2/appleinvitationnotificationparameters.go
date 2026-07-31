@@ -11,7 +11,7 @@ import (
 type Appleinvitationnotificationparameters struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// ReferenceId - Provides context for the notification message, such as an order number or case ID.
+	// ReferenceId - An opaque, caller-supplied string that provides business context for the notification message (e.g., an order number or case ID).
 	ReferenceId *string `json:"referenceId,omitempty"`
 }
 

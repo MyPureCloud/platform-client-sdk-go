@@ -17,7 +17,7 @@ type Appleinvitation struct {
 	// TranscriptMessage - The transcript message displayed in the invitation
 	TranscriptMessage *string `json:"transcriptMessage,omitempty"`
 
-	// TemplateType - The template type for the invitation
+	// TemplateType - The template type for the invitation. Only 'WithImage' is supported.
 	TemplateType *string `json:"templateType,omitempty"`
 
 	// Locale - The locale for the invitation

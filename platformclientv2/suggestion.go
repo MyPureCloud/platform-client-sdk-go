@@ -57,6 +57,9 @@ type Suggestion struct {
 	// Script - The suggested script that was provided as the suggestion.
 	Script *Suggestionscript `json:"script,omitempty"`
 
+	// ThirdPartySuggestion - The third-party suggestion.
+	ThirdPartySuggestion *Thirdpartysuggestion `json:"thirdPartySuggestion,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -162,6 +165,8 @@ func (o Suggestion) MarshalJSON() ([]byte, error) {
 		
 		Script *Suggestionscript `json:"script,omitempty"`
 		
+		ThirdPartySuggestion *Thirdpartysuggestion `json:"thirdPartySuggestion,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -194,6 +199,8 @@ func (o Suggestion) MarshalJSON() ([]byte, error) {
 		CannedResponse: o.CannedResponse,
 		
 		Script: o.Script,
+		
+		ThirdPartySuggestion: o.ThirdPartySuggestion,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -275,6 +282,11 @@ func (o *Suggestion) UnmarshalJSON(b []byte) error {
 	if Script, ok := SuggestionMap["script"].(map[string]interface{}); ok {
 		ScriptString, _ := json.Marshal(Script)
 		json.Unmarshal(ScriptString, &o.Script)
+	}
+	
+	if ThirdPartySuggestion, ok := SuggestionMap["thirdPartySuggestion"].(map[string]interface{}); ok {
+		ThirdPartySuggestionString, _ := json.Marshal(ThirdPartySuggestion)
+		json.Unmarshal(ThirdPartySuggestionString, &o.ThirdPartySuggestion)
 	}
 	
 	if SelfUri, ok := SuggestionMap["selfUri"].(string); ok {

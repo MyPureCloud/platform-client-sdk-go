@@ -41,6 +41,9 @@ type Updateactivitycoderequest struct {
 	// PlanningGroupIds - The planning group IDs associated with this activity code
 	PlanningGroupIds *Listwrapperstring `json:"planningGroupIds,omitempty"`
 
+	// Style - The style configuration for the activity code
+	Style *Valuewrapperactivitycodestyle `json:"style,omitempty"`
+
 	// Metadata - Version metadata for the associated business unit's list of activity codes
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 
@@ -131,6 +134,8 @@ func (o Updateactivitycoderequest) MarshalJSON() ([]byte, error) {
 		
 		PlanningGroupIds *Listwrapperstring `json:"planningGroupIds,omitempty"`
 		
+		Style *Valuewrapperactivitycodestyle `json:"style,omitempty"`
+		
 		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 		
 		SecondaryPresences *Listwrappersecondarypresence `json:"secondaryPresences,omitempty"`
@@ -155,6 +160,8 @@ func (o Updateactivitycoderequest) MarshalJSON() ([]byte, error) {
 		Interruptible: o.Interruptible,
 		
 		PlanningGroupIds: o.PlanningGroupIds,
+		
+		Style: o.Style,
 		
 		Metadata: o.Metadata,
 		
@@ -210,6 +217,11 @@ func (o *Updateactivitycoderequest) UnmarshalJSON(b []byte) error {
 	if PlanningGroupIds, ok := UpdateactivitycoderequestMap["planningGroupIds"].(map[string]interface{}); ok {
 		PlanningGroupIdsString, _ := json.Marshal(PlanningGroupIds)
 		json.Unmarshal(PlanningGroupIdsString, &o.PlanningGroupIds)
+	}
+	
+	if Style, ok := UpdateactivitycoderequestMap["style"].(map[string]interface{}); ok {
+		StyleString, _ := json.Marshal(Style)
+		json.Unmarshal(StyleString, &o.Style)
 	}
 	
 	if Metadata, ok := UpdateactivitycoderequestMap["metadata"].(map[string]interface{}); ok {

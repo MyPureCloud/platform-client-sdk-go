@@ -53,6 +53,9 @@ type Businessunitactivitycode struct {
 	// PlanningGroups - Planning groups associated with this activity code
 	PlanningGroups *[]Planninggroupreference `json:"planningGroups,omitempty"`
 
+	// Style - The style configuration for the activity code
+	Style *Activitycodestyle `json:"style,omitempty"`
+
 	// Metadata - Version metadata of this activity code
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 
@@ -151,6 +154,8 @@ func (o Businessunitactivitycode) MarshalJSON() ([]byte, error) {
 		
 		PlanningGroups *[]Planninggroupreference `json:"planningGroups,omitempty"`
 		
+		Style *Activitycodestyle `json:"style,omitempty"`
+		
 		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -183,6 +188,8 @@ func (o Businessunitactivitycode) MarshalJSON() ([]byte, error) {
 		SecondaryPresences: o.SecondaryPresences,
 		
 		PlanningGroups: o.PlanningGroups,
+		
+		Style: o.Style,
 		
 		Metadata: o.Metadata,
 		
@@ -255,6 +262,11 @@ func (o *Businessunitactivitycode) UnmarshalJSON(b []byte) error {
 	if PlanningGroups, ok := BusinessunitactivitycodeMap["planningGroups"].([]interface{}); ok {
 		PlanningGroupsString, _ := json.Marshal(PlanningGroups)
 		json.Unmarshal(PlanningGroupsString, &o.PlanningGroups)
+	}
+	
+	if Style, ok := BusinessunitactivitycodeMap["style"].(map[string]interface{}); ok {
+		StyleString, _ := json.Marshal(Style)
+		json.Unmarshal(StyleString, &o.Style)
 	}
 	
 	if Metadata, ok := BusinessunitactivitycodeMap["metadata"].(map[string]interface{}); ok {

@@ -108,8 +108,6 @@ func (a AnalyticsApi) DeleteAnalyticsActionsAggregatesJob(jobId string) (*APIRes
 // DeleteAnalyticsAgentcopilotsAggregatesJob invokes DELETE /api/v2/analytics/agentcopilots/aggregates/jobs/{jobId}
 //
 // Delete/cancel an async request for agent copilot aggregates
-//
-// Preview: DeleteAnalyticsAgentcopilotsAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) DeleteAnalyticsAgentcopilotsAggregatesJob(jobId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -1787,8 +1785,6 @@ func (a AnalyticsApi) GetAnalyticsAgentStatus(userId string) (*Analyticsagentsta
 // GetAnalyticsAgentcopilotsAggregatesJob invokes GET /api/v2/analytics/agentcopilots/aggregates/jobs/{jobId}
 //
 // Get status for async query for agent copilot aggregates
-//
-// Preview: GetAnalyticsAgentcopilotsAggregatesJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) GetAnalyticsAgentcopilotsAggregatesJob(jobId string) (*Asyncquerystatus, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1871,8 +1867,6 @@ func (a AnalyticsApi) GetAnalyticsAgentcopilotsAggregatesJob(jobId string) (*Asy
 // GetAnalyticsAgentcopilotsAggregatesJobResults invokes GET /api/v2/analytics/agentcopilots/aggregates/jobs/{jobId}/results
 //
 // Fetch a page of results for an async aggregates query
-//
-// Preview: GetAnalyticsAgentcopilotsAggregatesJobResults is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) GetAnalyticsAgentcopilotsAggregatesJobResults(jobId string, cursor string) (*Agentcopilotasyncaggregatequeryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -6654,8 +6648,6 @@ func (a AnalyticsApi) PostAnalyticsActionsAggregatesQuery(body Actionaggregation
 // PostAnalyticsAgentcopilotsAggregatesJobs invokes POST /api/v2/analytics/agentcopilots/aggregates/jobs
 //
 // Query for agent copilot aggregates asynchronously
-//
-// Preview: PostAnalyticsAgentcopilotsAggregatesJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) PostAnalyticsAgentcopilotsAggregatesJobs(body Agentcopilotasyncaggregationquery) (*Asyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

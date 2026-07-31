@@ -28,6 +28,9 @@ type Architectpromptresourcenotificationpromptresourcenotification struct {
 
 	// DurationSeconds - Duration (in seconds) for the transcoded audio file.
 	DurationSeconds *float32 `json:"durationSeconds,omitempty"`
+
+	// AudioFormat
+	AudioFormat *Architectpromptresourcenotificationpromptresourceaudioformat `json:"audioFormat,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -104,6 +107,8 @@ func (o Architectpromptresourcenotificationpromptresourcenotification) MarshalJS
 		UploadStatus *string `json:"uploadStatus,omitempty"`
 		
 		DurationSeconds *float32 `json:"durationSeconds,omitempty"`
+		
+		AudioFormat *Architectpromptresourcenotificationpromptresourceaudioformat `json:"audioFormat,omitempty"`
 		Alias
 	}{ 
 		PromptId: o.PromptId,
@@ -117,6 +122,8 @@ func (o Architectpromptresourcenotificationpromptresourcenotification) MarshalJS
 		UploadStatus: o.UploadStatus,
 		
 		DurationSeconds: o.DurationSeconds,
+		
+		AudioFormat: o.AudioFormat,
 		Alias:    (Alias)(o),
 	})
 }
@@ -153,6 +160,11 @@ func (o *Architectpromptresourcenotificationpromptresourcenotification) Unmarsha
 		o.DurationSeconds = &DurationSecondsFloat32
 	}
     
+	if AudioFormat, ok := ArchitectpromptresourcenotificationpromptresourcenotificationMap["audioFormat"].(map[string]interface{}); ok {
+		AudioFormatString, _ := json.Marshal(AudioFormat)
+		json.Unmarshal(AudioFormatString, &o.AudioFormat)
+	}
+	
 
 	return nil
 }

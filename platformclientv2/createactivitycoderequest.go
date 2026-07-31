@@ -43,6 +43,9 @@ type Createactivitycoderequest struct {
 
 	// PlanningGroupIds - The planning group IDs associated with this activity code
 	PlanningGroupIds *[]string `json:"planningGroupIds,omitempty"`
+
+	// Style - The style configuration for the activity code
+	Style *Activitycodestyle `json:"style,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -129,6 +132,8 @@ func (o Createactivitycoderequest) MarshalJSON() ([]byte, error) {
 		SecondaryPresences *[]Secondarypresence `json:"secondaryPresences,omitempty"`
 		
 		PlanningGroupIds *[]string `json:"planningGroupIds,omitempty"`
+		
+		Style *Activitycodestyle `json:"style,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -152,6 +157,8 @@ func (o Createactivitycoderequest) MarshalJSON() ([]byte, error) {
 		SecondaryPresences: o.SecondaryPresences,
 		
 		PlanningGroupIds: o.PlanningGroupIds,
+		
+		Style: o.Style,
 		Alias:    (Alias)(o),
 	})
 }
@@ -208,6 +215,11 @@ func (o *Createactivitycoderequest) UnmarshalJSON(b []byte) error {
 	if PlanningGroupIds, ok := CreateactivitycoderequestMap["planningGroupIds"].([]interface{}); ok {
 		PlanningGroupIdsString, _ := json.Marshal(PlanningGroupIds)
 		json.Unmarshal(PlanningGroupIdsString, &o.PlanningGroupIds)
+	}
+	
+	if Style, ok := CreateactivitycoderequestMap["style"].(map[string]interface{}); ok {
+		StyleString, _ := json.Marshal(Style)
+		json.Unmarshal(StyleString, &o.Style)
 	}
 	
 

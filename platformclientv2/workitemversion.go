@@ -28,7 +28,7 @@ type Workitemversion struct {
 	Description *string `json:"description,omitempty"`
 
 	// Language - The language of the Workitem.
-	Language *Languagereference `json:"language,omitempty"`
+	Language *Workitemlanguagereference `json:"language,omitempty"`
 
 	// UtilizationLabel - The utilization label of the Workitem.
 	UtilizationLabel *Workitemutilizationlabelreference `json:"utilizationLabel,omitempty"`
@@ -97,7 +97,7 @@ type Workitemversion struct {
 	AlertTimeoutSeconds *int `json:"alertTimeoutSeconds,omitempty"`
 
 	// Skills - The skills of the Workitem.
-	Skills *[]Routingskillreference `json:"skills,omitempty"`
+	Skills *[]Workitemroutingskillreference `json:"skills,omitempty"`
 
 	// PreferredAgents - The preferred agents of the Workitem.
 	PreferredAgents *[]Userreference `json:"preferredAgents,omitempty"`
@@ -256,7 +256,7 @@ func (o Workitemversion) MarshalJSON() ([]byte, error) {
 		
 		Description *string `json:"description,omitempty"`
 		
-		Language *Languagereference `json:"language,omitempty"`
+		Language *Workitemlanguagereference `json:"language,omitempty"`
 		
 		UtilizationLabel *Workitemutilizationlabelreference `json:"utilizationLabel,omitempty"`
 		
@@ -302,7 +302,7 @@ func (o Workitemversion) MarshalJSON() ([]byte, error) {
 		
 		AlertTimeoutSeconds *int `json:"alertTimeoutSeconds,omitempty"`
 		
-		Skills *[]Routingskillreference `json:"skills,omitempty"`
+		Skills *[]Workitemroutingskillreference `json:"skills,omitempty"`
 		
 		PreferredAgents *[]Userreference `json:"preferredAgents,omitempty"`
 		

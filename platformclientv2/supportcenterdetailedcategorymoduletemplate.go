@@ -14,7 +14,7 @@ type Supportcenterdetailedcategorymoduletemplate struct {
 	// Active - Whether this template is active or not
 	Active *bool `json:"active,omitempty"`
 
-	// Sidebar - Sidebar settings for the template
+	// Sidebar - Sidebar settings for the template. Required if support center is enabled
 	Sidebar *Supportcenterdetailedcategorymodulesidebar `json:"sidebar,omitempty"`
 }
 

@@ -15,7 +15,7 @@ type Temporalunit struct {
 	DurationEstimated *bool `json:"durationEstimated,omitempty"`
 
 	// Duration
-	Duration *Duration `json:"duration,omitempty"`
+	Duration *string `json:"duration,omitempty"`
 
 	// TimeBased
 	TimeBased *bool `json:"timeBased,omitempty"`
@@ -89,7 +89,7 @@ func (o Temporalunit) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		DurationEstimated *bool `json:"durationEstimated,omitempty"`
 		
-		Duration *Duration `json:"duration,omitempty"`
+		Duration *string `json:"duration,omitempty"`
 		
 		TimeBased *bool `json:"timeBased,omitempty"`
 		
@@ -118,11 +118,10 @@ func (o *Temporalunit) UnmarshalJSON(b []byte) error {
 		o.DurationEstimated = &DurationEstimated
 	}
     
-	if Duration, ok := TemporalunitMap["duration"].(map[string]interface{}); ok {
-		DurationString, _ := json.Marshal(Duration)
-		json.Unmarshal(DurationString, &o.Duration)
+	if Duration, ok := TemporalunitMap["duration"].(string); ok {
+		o.Duration = &Duration
 	}
-	
+    
 	if TimeBased, ok := TemporalunitMap["timeBased"].(bool); ok {
 		o.TimeBased = &TimeBased
 	}

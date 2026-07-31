@@ -11,7 +11,7 @@ import (
 type Supportcentercompactcategorymoduletemplate struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Active - Whether this template is active or not
+	// Active - Whether this template is active or not. Required if support center is enabled
 	Active *bool `json:"active,omitempty"`
 }
 

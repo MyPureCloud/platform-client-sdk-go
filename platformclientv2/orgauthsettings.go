@@ -31,6 +31,9 @@ type Orgauthsettings struct {
 
 	// UniversalLogout - Indicates whether universal logout is enabled for the organization.
 	UniversalLogout *bool `json:"universalLogout,omitempty"`
+
+	// TokenStorageLocation - The browser storage location used for authentication tokens.
+	TokenStorageLocation *string `json:"tokenStorageLocation,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -109,6 +112,8 @@ func (o Orgauthsettings) MarshalJSON() ([]byte, error) {
 		InactivityTimeoutExclusions *[]string `json:"inactivityTimeoutExclusions,omitempty"`
 		
 		UniversalLogout *bool `json:"universalLogout,omitempty"`
+		
+		TokenStorageLocation *string `json:"tokenStorageLocation,omitempty"`
 		Alias
 	}{ 
 		MultifactorAuthenticationRequired: o.MultifactorAuthenticationRequired,
@@ -124,6 +129,8 @@ func (o Orgauthsettings) MarshalJSON() ([]byte, error) {
 		InactivityTimeoutExclusions: o.InactivityTimeoutExclusions,
 		
 		UniversalLogout: o.UniversalLogout,
+		
+		TokenStorageLocation: o.TokenStorageLocation,
 		Alias:    (Alias)(o),
 	})
 }
@@ -165,6 +172,10 @@ func (o *Orgauthsettings) UnmarshalJSON(b []byte) error {
 	
 	if UniversalLogout, ok := OrgauthsettingsMap["universalLogout"].(bool); ok {
 		o.UniversalLogout = &UniversalLogout
+	}
+    
+	if TokenStorageLocation, ok := OrgauthsettingsMap["tokenStorageLocation"].(string); ok {
+		o.TokenStorageLocation = &TokenStorageLocation
 	}
     
 

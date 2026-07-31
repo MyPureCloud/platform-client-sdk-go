@@ -114,6 +114,9 @@ type Call struct {
 	// QueueMediaSettings - Represents the queue settings for this media type.
 	QueueMediaSettings *Conversationqueuemediasettings `json:"queueMediaSettings,omitempty"`
 
+	// ClientIpAddress - The reported client IP of the phone for the call.
+	ClientIpAddress *string `json:"clientIpAddress,omitempty"`
+
 	// Disposition - Call resolution data for Dialer bulk make calls commands.
 	Disposition *Disposition `json:"disposition,omitempty"`
 }
@@ -281,6 +284,8 @@ func (o Call) MarshalJSON() ([]byte, error) {
 		
 		QueueMediaSettings *Conversationqueuemediasettings `json:"queueMediaSettings,omitempty"`
 		
+		ClientIpAddress *string `json:"clientIpAddress,omitempty"`
+		
 		Disposition *Disposition `json:"disposition,omitempty"`
 		Alias
 	}{ 
@@ -351,6 +356,8 @@ func (o Call) MarshalJSON() ([]byte, error) {
 		TransferSource: o.TransferSource,
 		
 		QueueMediaSettings: o.QueueMediaSettings,
+		
+		ClientIpAddress: o.ClientIpAddress,
 		
 		Disposition: o.Disposition,
 		Alias:    (Alias)(o),
@@ -514,6 +521,10 @@ func (o *Call) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(QueueMediaSettingsString, &o.QueueMediaSettings)
 	}
 	
+	if ClientIpAddress, ok := CallMap["clientIpAddress"].(string); ok {
+		o.ClientIpAddress = &ClientIpAddress
+	}
+    
 	if Disposition, ok := CallMap["disposition"].(map[string]interface{}); ok {
 		DispositionString, _ := json.Marshal(Disposition)
 		json.Unmarshal(DispositionString, &o.Disposition)

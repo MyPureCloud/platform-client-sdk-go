@@ -11,10 +11,10 @@ import (
 type Supportcentermodulesetting struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// VarType - Screen module type
+	// VarType - Screen module type. Required if support center is enabled
 	VarType *string `json:"type,omitempty"`
 
-	// Enabled - Whether or not knowledge portal (previously support center) screen module is enabled
+	// Enabled - Whether or not knowledge portal (previously support center) screen module is enabled. If not provided, the module is treated as hidden
 	Enabled *bool `json:"enabled,omitempty"`
 
 	// CompactCategoryModuleTemplate - Compact category module template

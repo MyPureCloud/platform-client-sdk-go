@@ -14,6 +14,9 @@ type Billingcharge struct {
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
+	// Name - The name of the object.
+	Name *string `json:"name,omitempty"`
+
 	// Product - Represents the details of a product.
 	Product *Billingproduct `json:"product,omitempty"`
 
@@ -113,6 +116,8 @@ func (o Billingcharge) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
+		Name *string `json:"name,omitempty"`
+		
 		Product *Billingproduct `json:"product,omitempty"`
 		
 		Organizations *[]Namedentity `json:"organizations,omitempty"`
@@ -137,6 +142,8 @@ func (o Billingcharge) MarshalJSON() ([]byte, error) {
 		Alias
 	}{ 
 		Id: o.Id,
+		
+		Name: o.Name,
 		
 		Product: o.Product,
 		
@@ -172,6 +179,10 @@ func (o *Billingcharge) UnmarshalJSON(b []byte) error {
 	
 	if Id, ok := BillingchargeMap["id"].(string); ok {
 		o.Id = &Id
+	}
+    
+	if Name, ok := BillingchargeMap["name"].(string); ok {
+		o.Name = &Name
 	}
     
 	if Product, ok := BillingchargeMap["product"].(map[string]interface{}); ok {

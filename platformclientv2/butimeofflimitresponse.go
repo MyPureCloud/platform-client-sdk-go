@@ -20,8 +20,14 @@ type Butimeofflimitresponse struct {
 	// ManagementUnit - The management unit to which this time-off limit is associated. If staffingGroup is set, then the limit is associated with that staffing group, which belongs to this management unit.At least one of managementUnit and staffingGroup must be set
 	ManagementUnit *Managementunitreference `json:"managementUnit,omitempty"`
 
+	// Granularity - Granularity choice for time off limit
+	Granularity *string `json:"granularity,omitempty"`
+
 	// Metadata - Version metadata for the time-off limit
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
+
+	// FullDayTimeOffStartTime - The start time of full day time off requests associated with this limit interval in HH:mm format.
+	FullDayTimeOffStartTime *string `json:"fullDayTimeOffStartTime,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -96,7 +102,11 @@ func (o Butimeofflimitresponse) MarshalJSON() ([]byte, error) {
 		
 		ManagementUnit *Managementunitreference `json:"managementUnit,omitempty"`
 		
+		Granularity *string `json:"granularity,omitempty"`
+		
 		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
+		
+		FullDayTimeOffStartTime *string `json:"fullDayTimeOffStartTime,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
@@ -107,7 +117,11 @@ func (o Butimeofflimitresponse) MarshalJSON() ([]byte, error) {
 		
 		ManagementUnit: o.ManagementUnit,
 		
+		Granularity: o.Granularity,
+		
 		Metadata: o.Metadata,
+		
+		FullDayTimeOffStartTime: o.FullDayTimeOffStartTime,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -135,11 +149,19 @@ func (o *Butimeofflimitresponse) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ManagementUnitString, &o.ManagementUnit)
 	}
 	
+	if Granularity, ok := ButimeofflimitresponseMap["granularity"].(string); ok {
+		o.Granularity = &Granularity
+	}
+    
 	if Metadata, ok := ButimeofflimitresponseMap["metadata"].(map[string]interface{}); ok {
 		MetadataString, _ := json.Marshal(Metadata)
 		json.Unmarshal(MetadataString, &o.Metadata)
 	}
 	
+	if FullDayTimeOffStartTime, ok := ButimeofflimitresponseMap["fullDayTimeOffStartTime"].(string); ok {
+		o.FullDayTimeOffStartTime = &FullDayTimeOffStartTime
+	}
+    
 	if SelfUri, ok := ButimeofflimitresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

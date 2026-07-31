@@ -8,8 +8,8 @@ import (
 	"strings"
 )
 
-// Timeoffrequest
-type Timeoffrequest struct { 
+// Timeoffrequestlistitem
+type Timeoffrequestlistitem struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Id - The globally unique identifier for the object.
@@ -21,7 +21,7 @@ type Timeoffrequest struct {
 	// IsFullDayRequest - Whether this is a full day request (false means partial day)
 	IsFullDayRequest *bool `json:"isFullDayRequest,omitempty"`
 
-	// MarkedAsRead - Whether this request has been marked as read by the agent
+	// MarkedAsRead - Deprecated - Always returns true.
 	MarkedAsRead *bool `json:"markedAsRead,omitempty"`
 
 	// ActivityCodeId - The ID of the activity code associated with this time off request. Activity code must be of the TimeOff category
@@ -83,7 +83,7 @@ type Timeoffrequest struct {
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Timeoffrequest) SetField(field string, fieldValue interface{}) {
+func (o *Timeoffrequestlistitem) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -104,7 +104,7 @@ func (o *Timeoffrequest) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Timeoffrequest) MarshalJSON() ([]byte, error) {
+func (o Timeoffrequestlistitem) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -142,7 +142,7 @@ func (o Timeoffrequest) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Timeoffrequest
+	type Alias Timeoffrequestlistitem
 	
 	SubmittedDate := new(string)
 	if o.SubmittedDate != nil {
@@ -257,116 +257,116 @@ func (o Timeoffrequest) MarshalJSON() ([]byte, error) {
 	})
 }
 
-func (o *Timeoffrequest) UnmarshalJSON(b []byte) error {
-	var TimeoffrequestMap map[string]interface{}
-	err := json.Unmarshal(b, &TimeoffrequestMap)
+func (o *Timeoffrequestlistitem) UnmarshalJSON(b []byte) error {
+	var TimeoffrequestlistitemMap map[string]interface{}
+	err := json.Unmarshal(b, &TimeoffrequestlistitemMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := TimeoffrequestMap["id"].(string); ok {
+	if Id, ok := TimeoffrequestlistitemMap["id"].(string); ok {
 		o.Id = &Id
 	}
     
-	if User, ok := TimeoffrequestMap["user"].(map[string]interface{}); ok {
+	if User, ok := TimeoffrequestlistitemMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
 	}
 	
-	if IsFullDayRequest, ok := TimeoffrequestMap["isFullDayRequest"].(bool); ok {
+	if IsFullDayRequest, ok := TimeoffrequestlistitemMap["isFullDayRequest"].(bool); ok {
 		o.IsFullDayRequest = &IsFullDayRequest
 	}
     
-	if MarkedAsRead, ok := TimeoffrequestMap["markedAsRead"].(bool); ok {
+	if MarkedAsRead, ok := TimeoffrequestlistitemMap["markedAsRead"].(bool); ok {
 		o.MarkedAsRead = &MarkedAsRead
 	}
     
-	if ActivityCodeId, ok := TimeoffrequestMap["activityCodeId"].(string); ok {
+	if ActivityCodeId, ok := TimeoffrequestlistitemMap["activityCodeId"].(string); ok {
 		o.ActivityCodeId = &ActivityCodeId
 	}
     
-	if Paid, ok := TimeoffrequestMap["paid"].(bool); ok {
+	if Paid, ok := TimeoffrequestlistitemMap["paid"].(bool); ok {
 		o.Paid = &Paid
 	}
     
-	if Status, ok := TimeoffrequestMap["status"].(string); ok {
+	if Status, ok := TimeoffrequestlistitemMap["status"].(string); ok {
 		o.Status = &Status
 	}
     
-	if Substatus, ok := TimeoffrequestMap["substatus"].(string); ok {
+	if Substatus, ok := TimeoffrequestlistitemMap["substatus"].(string); ok {
 		o.Substatus = &Substatus
 	}
     
-	if PartialDayStartDateTimes, ok := TimeoffrequestMap["partialDayStartDateTimes"].([]interface{}); ok {
+	if PartialDayStartDateTimes, ok := TimeoffrequestlistitemMap["partialDayStartDateTimes"].([]interface{}); ok {
 		PartialDayStartDateTimesString, _ := json.Marshal(PartialDayStartDateTimes)
 		json.Unmarshal(PartialDayStartDateTimesString, &o.PartialDayStartDateTimes)
 	}
 	
-	if FullDayManagementUnitDates, ok := TimeoffrequestMap["fullDayManagementUnitDates"].([]interface{}); ok {
+	if FullDayManagementUnitDates, ok := TimeoffrequestlistitemMap["fullDayManagementUnitDates"].([]interface{}); ok {
 		FullDayManagementUnitDatesString, _ := json.Marshal(FullDayManagementUnitDates)
 		json.Unmarshal(FullDayManagementUnitDatesString, &o.FullDayManagementUnitDates)
 	}
 	
-	if DailyDurationMinutes, ok := TimeoffrequestMap["dailyDurationMinutes"].(float64); ok {
+	if DailyDurationMinutes, ok := TimeoffrequestlistitemMap["dailyDurationMinutes"].(float64); ok {
 		DailyDurationMinutesInt := int(DailyDurationMinutes)
 		o.DailyDurationMinutes = &DailyDurationMinutesInt
 	}
 	
-	if DurationMinutes, ok := TimeoffrequestMap["durationMinutes"].([]interface{}); ok {
+	if DurationMinutes, ok := TimeoffrequestlistitemMap["durationMinutes"].([]interface{}); ok {
 		DurationMinutesString, _ := json.Marshal(DurationMinutes)
 		json.Unmarshal(DurationMinutesString, &o.DurationMinutes)
 	}
 	
-	if PayableMinutes, ok := TimeoffrequestMap["payableMinutes"].([]interface{}); ok {
+	if PayableMinutes, ok := TimeoffrequestlistitemMap["payableMinutes"].([]interface{}); ok {
 		PayableMinutesString, _ := json.Marshal(PayableMinutes)
 		json.Unmarshal(PayableMinutesString, &o.PayableMinutes)
 	}
 	
-	if FullDayEarliestStartOffsetMinutes, ok := TimeoffrequestMap["fullDayEarliestStartOffsetMinutes"].([]interface{}); ok {
+	if FullDayEarliestStartOffsetMinutes, ok := TimeoffrequestlistitemMap["fullDayEarliestStartOffsetMinutes"].([]interface{}); ok {
 		FullDayEarliestStartOffsetMinutesString, _ := json.Marshal(FullDayEarliestStartOffsetMinutes)
 		json.Unmarshal(FullDayEarliestStartOffsetMinutesString, &o.FullDayEarliestStartOffsetMinutes)
 	}
 	
-	if FullDayLatestEndOffsetMinutes, ok := TimeoffrequestMap["fullDayLatestEndOffsetMinutes"].([]interface{}); ok {
+	if FullDayLatestEndOffsetMinutes, ok := TimeoffrequestlistitemMap["fullDayLatestEndOffsetMinutes"].([]interface{}); ok {
 		FullDayLatestEndOffsetMinutesString, _ := json.Marshal(FullDayLatestEndOffsetMinutes)
 		json.Unmarshal(FullDayLatestEndOffsetMinutesString, &o.FullDayLatestEndOffsetMinutes)
 	}
 	
-	if Notes, ok := TimeoffrequestMap["notes"].(string); ok {
+	if Notes, ok := TimeoffrequestlistitemMap["notes"].(string); ok {
 		o.Notes = &Notes
 	}
     
-	if SubmittedBy, ok := TimeoffrequestMap["submittedBy"].(map[string]interface{}); ok {
+	if SubmittedBy, ok := TimeoffrequestlistitemMap["submittedBy"].(map[string]interface{}); ok {
 		SubmittedByString, _ := json.Marshal(SubmittedBy)
 		json.Unmarshal(SubmittedByString, &o.SubmittedBy)
 	}
 	
-	if submittedDateString, ok := TimeoffrequestMap["submittedDate"].(string); ok {
+	if submittedDateString, ok := TimeoffrequestlistitemMap["submittedDate"].(string); ok {
 		SubmittedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", submittedDateString)
 		o.SubmittedDate = &SubmittedDate
 	}
 	
-	if ReviewedBy, ok := TimeoffrequestMap["reviewedBy"].(map[string]interface{}); ok {
+	if ReviewedBy, ok := TimeoffrequestlistitemMap["reviewedBy"].(map[string]interface{}); ok {
 		ReviewedByString, _ := json.Marshal(ReviewedBy)
 		json.Unmarshal(ReviewedByString, &o.ReviewedBy)
 	}
 	
-	if reviewedDateString, ok := TimeoffrequestMap["reviewedDate"].(string); ok {
+	if reviewedDateString, ok := TimeoffrequestlistitemMap["reviewedDate"].(string); ok {
 		ReviewedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", reviewedDateString)
 		o.ReviewedDate = &ReviewedDate
 	}
 	
-	if SyncVersion, ok := TimeoffrequestMap["syncVersion"].(float64); ok {
+	if SyncVersion, ok := TimeoffrequestlistitemMap["syncVersion"].(float64); ok {
 		SyncVersionInt := int(SyncVersion)
 		o.SyncVersion = &SyncVersionInt
 	}
 	
-	if Metadata, ok := TimeoffrequestMap["metadata"].(map[string]interface{}); ok {
+	if Metadata, ok := TimeoffrequestlistitemMap["metadata"].(map[string]interface{}); ok {
 		MetadataString, _ := json.Marshal(Metadata)
 		json.Unmarshal(MetadataString, &o.Metadata)
 	}
 	
-	if SelfUri, ok := TimeoffrequestMap["selfUri"].(string); ok {
+	if SelfUri, ok := TimeoffrequestlistitemMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
     
@@ -375,7 +375,7 @@ func (o *Timeoffrequest) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Timeoffrequest) String() string {
+func (o *Timeoffrequestlistitem) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

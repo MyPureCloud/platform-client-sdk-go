@@ -11,10 +11,10 @@ import (
 type Supportcentercustommessage struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// DefaultValue - Default value for the message
+	// DefaultValue - Default value for the message. Required for each custom message entry
 	DefaultValue *string `json:"defaultValue,omitempty"`
 
-	// VarType - Type of the message
+	// VarType - Type of the message. Required for each custom message entry
 	VarType *string `json:"type,omitempty"`
 }
 

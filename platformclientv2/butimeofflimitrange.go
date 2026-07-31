@@ -15,6 +15,9 @@ type Butimeofflimitrange struct {
 	// StartDate - Start date of the range. The end date is determined by the size of 'limitMinutesPerDay'. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
 	StartDate *time.Time `json:"startDate,omitempty"`
 
+	// LimitMinutesPerFifteenMinutes - The list of time-off limit values in minutes per fifteen minute interval. It must be set if 'granularity' on time-off limit is fifteen minutes. If count of limit minutes array exceeds a day for given 'startDate', the slots overflowing into next day, should not be duplicated in another range entry with next day as 'startDate'.For example startDate 03/01/2026 - limitMinutesPerFifteenMinutes with 120 intervals, 03/02/2026 - limitMinutesPerFifteenMinutes with 20 intervals has overlap and not allowed
+	LimitMinutesPerFifteenMinutes *[]int `json:"limitMinutesPerFifteenMinutes,omitempty"`
+
 	// LimitMinutesPerDay - The list of time-off limit values in minutes per day. If 'null' is specified, then the day-specific value is cleared. Such a day will have a value of 0
 	LimitMinutesPerDay *[]int `json:"limitMinutesPerDay,omitempty"`
 }
@@ -91,10 +94,14 @@ func (o Butimeofflimitrange) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		StartDate *string `json:"startDate,omitempty"`
 		
+		LimitMinutesPerFifteenMinutes *[]int `json:"limitMinutesPerFifteenMinutes,omitempty"`
+		
 		LimitMinutesPerDay *[]int `json:"limitMinutesPerDay,omitempty"`
 		Alias
 	}{ 
 		StartDate: StartDate,
+		
+		LimitMinutesPerFifteenMinutes: o.LimitMinutesPerFifteenMinutes,
 		
 		LimitMinutesPerDay: o.LimitMinutesPerDay,
 		Alias:    (Alias)(o),
@@ -111,6 +118,11 @@ func (o *Butimeofflimitrange) UnmarshalJSON(b []byte) error {
 	if startDateString, ok := ButimeofflimitrangeMap["startDate"].(string); ok {
 		StartDate, _ := time.Parse("2006-01-02", startDateString)
 		o.StartDate = &StartDate
+	}
+	
+	if LimitMinutesPerFifteenMinutes, ok := ButimeofflimitrangeMap["limitMinutesPerFifteenMinutes"].([]interface{}); ok {
+		LimitMinutesPerFifteenMinutesString, _ := json.Marshal(LimitMinutesPerFifteenMinutes)
+		json.Unmarshal(LimitMinutesPerFifteenMinutesString, &o.LimitMinutesPerFifteenMinutes)
 	}
 	
 	if LimitMinutesPerDay, ok := ButimeofflimitrangeMap["limitMinutesPerDay"].([]interface{}); ok {

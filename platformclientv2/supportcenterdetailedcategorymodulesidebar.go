@@ -11,7 +11,7 @@ import (
 type Supportcenterdetailedcategorymodulesidebar struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Enabled - Whether sidebar is enabled or not
+	// Enabled - Whether sidebar is enabled or not. Required if support center is enabled
 	Enabled *bool `json:"enabled,omitempty"`
 }
 

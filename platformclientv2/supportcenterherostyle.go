@@ -11,10 +11,10 @@ import (
 type Supportcenterherostyle struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// BackgroundColor - Background color for hero section, in hexadecimal format, eg #ffffff
+	// BackgroundColor - Background color for hero section, in hexadecimal format, eg #ffffff. Required when heroStyle is provided
 	BackgroundColor *string `json:"backgroundColor,omitempty"`
 
-	// TextColor - Text color for hero section, in hexadecimal format, eg #ffffff
+	// TextColor - Text color for hero section, in hexadecimal format, eg #ffffff. Required when heroStyle is provided
 	TextColor *string `json:"textColor,omitempty"`
 
 	// Image - Background image for hero section

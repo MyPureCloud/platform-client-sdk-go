@@ -18,6 +18,9 @@ type Surveyform struct {
 	// Name - The survey form name
 	Name *string `json:"name,omitempty"`
 
+	// Division - The division to which this entity belongs.
+	Division *Writablestarrabledivision `json:"division,omitempty"`
+
 	// ModifiedDate - Last modified date. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ModifiedDate *time.Time `json:"modifiedDate,omitempty"`
 
@@ -44,6 +47,9 @@ type Surveyform struct {
 
 	// PublishedVersions - List of published version of this form
 	PublishedVersions *Domainentitylistingsurveyform `json:"publishedVersions,omitempty"`
+
+	// Redacted - Is this form redacted
+	Redacted *bool `json:"redacted,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -124,6 +130,8 @@ func (o Surveyform) MarshalJSON() ([]byte, error) {
 		
 		Name *string `json:"name,omitempty"`
 		
+		Division *Writablestarrabledivision `json:"division,omitempty"`
+		
 		ModifiedDate *string `json:"modifiedDate,omitempty"`
 		
 		Published *bool `json:"published,omitempty"`
@@ -142,12 +150,16 @@ func (o Surveyform) MarshalJSON() ([]byte, error) {
 		
 		PublishedVersions *Domainentitylistingsurveyform `json:"publishedVersions,omitempty"`
 		
+		Redacted *bool `json:"redacted,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
 		
 		Name: o.Name,
+		
+		Division: o.Division,
 		
 		ModifiedDate: ModifiedDate,
 		
@@ -166,6 +178,8 @@ func (o Surveyform) MarshalJSON() ([]byte, error) {
 		QuestionGroups: o.QuestionGroups,
 		
 		PublishedVersions: o.PublishedVersions,
+		
+		Redacted: o.Redacted,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -187,6 +201,11 @@ func (o *Surveyform) UnmarshalJSON(b []byte) error {
 		o.Name = &Name
 	}
     
+	if Division, ok := SurveyformMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
 	if modifiedDateString, ok := SurveyformMap["modifiedDate"].(string); ok {
 		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
 		o.ModifiedDate = &ModifiedDate
@@ -226,6 +245,10 @@ func (o *Surveyform) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(PublishedVersionsString, &o.PublishedVersions)
 	}
 	
+	if Redacted, ok := SurveyformMap["redacted"].(bool); ok {
+		o.Redacted = &Redacted
+	}
+    
 	if SelfUri, ok := SurveyformMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

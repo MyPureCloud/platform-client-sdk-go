@@ -17,8 +17,14 @@ type Verifier struct {
 	// Name
 	Name *string `json:"name,omitempty"`
 
+	// VarType - The type of verifier.
+	VarType *string `json:"type,omitempty"`
+
 	// Enabled - Indicates whether this verifier is enabled.
 	Enabled *bool `json:"enabled,omitempty"`
+
+	// Credential - The WebAuthn credential associated with this verifier.
+	Credential *Credential `json:"credential,omitempty"`
 
 	// VarDefault - Indicates whether this is the default verifier.
 	VarDefault *bool `json:"default,omitempty"`
@@ -94,7 +100,11 @@ func (o Verifier) MarshalJSON() ([]byte, error) {
 		
 		Name *string `json:"name,omitempty"`
 		
+		VarType *string `json:"type,omitempty"`
+		
 		Enabled *bool `json:"enabled,omitempty"`
+		
+		Credential *Credential `json:"credential,omitempty"`
 		
 		VarDefault *bool `json:"default,omitempty"`
 		
@@ -105,7 +115,11 @@ func (o Verifier) MarshalJSON() ([]byte, error) {
 		
 		Name: o.Name,
 		
+		VarType: o.VarType,
+		
 		Enabled: o.Enabled,
+		
+		Credential: o.Credential,
 		
 		VarDefault: o.VarDefault,
 		
@@ -129,10 +143,19 @@ func (o *Verifier) UnmarshalJSON(b []byte) error {
 		o.Name = &Name
 	}
     
+	if VarType, ok := VerifierMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+    
 	if Enabled, ok := VerifierMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
 	}
     
+	if Credential, ok := VerifierMap["credential"].(map[string]interface{}); ok {
+		CredentialString, _ := json.Marshal(Credential)
+		json.Unmarshal(CredentialString, &o.Credential)
+	}
+	
 	if VarDefault, ok := VerifierMap["default"].(bool); ok {
 		o.VarDefault = &VarDefault
 	}

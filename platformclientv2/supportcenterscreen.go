@@ -11,10 +11,10 @@ import (
 type Supportcenterscreen struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// VarType - The type of the screen
+	// VarType - The type of the screen. Required if support center is enabled
 	VarType *string `json:"type,omitempty"`
 
-	// ModuleSettings - Module settings for the screen, valid modules for each screenType: Home: Search, Categories, TopViewedArticles; Category: Search, Categories; SearchResults: Search, Results; Article: Search, Article;
+	// ModuleSettings - Module settings for the screen, valid modules for each screenType: Home: Search, Categories, TopViewedArticles; Category: Search, Categories; SearchResults: Search, Results; Article: Search, Article; Required if support center is enabled
 	ModuleSettings *[]Supportcentermodulesetting `json:"moduleSettings,omitempty"`
 }
 

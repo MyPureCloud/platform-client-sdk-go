@@ -16,6 +16,9 @@ type Availabletimeoffrequest struct {
 
 	// DateRanges - A list of date ranges of available time off minutes. A maximum number of date ranges is 30. The maximum total number of days in all ranges is 366. If no ranges are specified, then only the presence of the associated time off limit object will be checked. In such case, if the association exists, then the response will contain a list with of a single element filled with timeOffLimitId only.
 	DateRanges *[]Localdaterange `json:"dateRanges,omitempty"`
+
+	// SupportedGranularities - Granularity of time off limits supported to query availability information. Default is 'Daily'
+	SupportedGranularities *[]string `json:"supportedGranularities,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Availabletimeoffrequest) MarshalJSON() ([]byte, error) {
 		ActivityCodeId *string `json:"activityCodeId,omitempty"`
 		
 		DateRanges *[]Localdaterange `json:"dateRanges,omitempty"`
+		
+		SupportedGranularities *[]string `json:"supportedGranularities,omitempty"`
 		Alias
 	}{ 
 		ActivityCodeId: o.ActivityCodeId,
 		
 		DateRanges: o.DateRanges,
+		
+		SupportedGranularities: o.SupportedGranularities,
 		Alias:    (Alias)(o),
 	})
 }
@@ -107,6 +114,11 @@ func (o *Availabletimeoffrequest) UnmarshalJSON(b []byte) error {
 	if DateRanges, ok := AvailabletimeoffrequestMap["dateRanges"].([]interface{}); ok {
 		DateRangesString, _ := json.Marshal(DateRanges)
 		json.Unmarshal(DateRangesString, &o.DateRanges)
+	}
+	
+	if SupportedGranularities, ok := AvailabletimeoffrequestMap["supportedGranularities"].([]interface{}); ok {
+		SupportedGranularitiesString, _ := json.Marshal(SupportedGranularities)
+		json.Unmarshal(SupportedGranularitiesString, &o.SupportedGranularities)
 	}
 	
 

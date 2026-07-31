@@ -14,7 +14,7 @@ type Whatsappdefinition struct {
 	// Name - The messaging template name.
 	Name *string `json:"name,omitempty"`
 
-	// Namespace - The messaging template namespace.
+	// Namespace - The messaging template namespace. This field is deprecated.
 	Namespace *string `json:"namespace,omitempty"`
 
 	// Language - The messaging template language configured for this template. This is a WhatsApp specific value. For example, 'en_US'

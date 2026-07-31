@@ -135,6 +135,9 @@ type Campaign struct {
 	// DiagnosticsSettings - Campaign diagnostics settings
 	DiagnosticsSettings *Diagnosticssettings `json:"diagnosticsSettings,omitempty"`
 
+	// PreciseDialingEnabled - Option to enable precise dialing
+	PreciseDialingEnabled *bool `json:"preciseDialingEnabled,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -300,6 +303,8 @@ func (o Campaign) MarshalJSON() ([]byte, error) {
 		
 		DiagnosticsSettings *Diagnosticssettings `json:"diagnosticsSettings,omitempty"`
 		
+		PreciseDialingEnabled *bool `json:"preciseDialingEnabled,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -384,6 +389,8 @@ func (o Campaign) MarshalJSON() ([]byte, error) {
 		DynamicLineBalancingSettings: o.DynamicLineBalancingSettings,
 		
 		DiagnosticsSettings: o.DiagnosticsSettings,
+		
+		PreciseDialingEnabled: o.PreciseDialingEnabled,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -588,6 +595,10 @@ func (o *Campaign) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(DiagnosticsSettingsString, &o.DiagnosticsSettings)
 	}
 	
+	if PreciseDialingEnabled, ok := CampaignMap["preciseDialingEnabled"].(bool); ok {
+		o.PreciseDialingEnabled = &PreciseDialingEnabled
+	}
+    
 	if SelfUri, ok := CampaignMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

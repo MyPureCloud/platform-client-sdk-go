@@ -11,22 +11,22 @@ import (
 type Supportcenterglobalstyle struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// BackgroundColor - Global background color, in hexadecimal format, eg #ffffff
+	// BackgroundColor - Global background color, in hexadecimal format, eg #ffffff. Required when globalStyle is provided
 	BackgroundColor *string `json:"backgroundColor,omitempty"`
 
-	// PrimaryColor - Global primary color, in hexadecimal format, eg #ffffff
+	// PrimaryColor - Global primary color, in hexadecimal format, eg #ffffff. Required when globalStyle is provided
 	PrimaryColor *string `json:"primaryColor,omitempty"`
 
-	// PrimaryColorDark - Global dark primary color, in hexadecimal format, eg #ffffff
+	// PrimaryColorDark - Global dark primary color, in hexadecimal format, eg #ffffff. Required when globalStyle is provided
 	PrimaryColorDark *string `json:"primaryColorDark,omitempty"`
 
-	// PrimaryColorLight - Global light primary color, in hexadecimal format, eg #ffffff
+	// PrimaryColorLight - Global light primary color, in hexadecimal format, eg #ffffff. Required when globalStyle is provided
 	PrimaryColorLight *string `json:"primaryColorLight,omitempty"`
 
-	// TextColor - Global text color, in hexadecimal format, eg #ffffff
+	// TextColor - Global text color, in hexadecimal format, eg #ffffff. Required when globalStyle is provided
 	TextColor *string `json:"textColor,omitempty"`
 
-	// FontFamily - Global font family
+	// FontFamily - Global font family. Required when globalStyle is provided
 	FontFamily *string `json:"fontFamily,omitempty"`
 }
 

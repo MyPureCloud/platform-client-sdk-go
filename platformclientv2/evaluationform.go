@@ -18,6 +18,9 @@ type Evaluationform struct {
 	// Name - The evaluation form name
 	Name *string `json:"name,omitempty"`
 
+	// Division - The division to which this entity belongs.
+	Division *Writablestarrabledivision `json:"division,omitempty"`
+
 	// ModifiedDate - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ModifiedDate *time.Time `json:"modifiedDate,omitempty"`
 
@@ -41,6 +44,9 @@ type Evaluationform struct {
 
 	// AiScoring - AI scoring settings for the evaluation form.
 	AiScoring *Aiscoringsettings `json:"aiScoring,omitempty"`
+
+	// Redacted - Is this form redacted
+	Redacted *bool `json:"redacted,omitempty"`
 
 	// Dialect - The language dialect for this evaluation form. Supported dialects: ar, cs, da, de, en-US, es, fi, fr, fr-CA, he, hi, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, th, tr, uk, zh-CN, zh-TW
 	Dialect *string `json:"dialect,omitempty"`
@@ -124,6 +130,8 @@ func (o Evaluationform) MarshalJSON() ([]byte, error) {
 		
 		Name *string `json:"name,omitempty"`
 		
+		Division *Writablestarrabledivision `json:"division,omitempty"`
+		
 		ModifiedDate *string `json:"modifiedDate,omitempty"`
 		
 		Published *bool `json:"published,omitempty"`
@@ -140,6 +148,8 @@ func (o Evaluationform) MarshalJSON() ([]byte, error) {
 		
 		AiScoring *Aiscoringsettings `json:"aiScoring,omitempty"`
 		
+		Redacted *bool `json:"redacted,omitempty"`
+		
 		Dialect *string `json:"dialect,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -148,6 +158,8 @@ func (o Evaluationform) MarshalJSON() ([]byte, error) {
 		Id: o.Id,
 		
 		Name: o.Name,
+		
+		Division: o.Division,
 		
 		ModifiedDate: ModifiedDate,
 		
@@ -164,6 +176,8 @@ func (o Evaluationform) MarshalJSON() ([]byte, error) {
 		LatestVersionFormName: o.LatestVersionFormName,
 		
 		AiScoring: o.AiScoring,
+		
+		Redacted: o.Redacted,
 		
 		Dialect: o.Dialect,
 		
@@ -187,6 +201,11 @@ func (o *Evaluationform) UnmarshalJSON(b []byte) error {
 		o.Name = &Name
 	}
     
+	if Division, ok := EvaluationformMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
 	if modifiedDateString, ok := EvaluationformMap["modifiedDate"].(string); ok {
 		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
 		o.ModifiedDate = &ModifiedDate
@@ -224,6 +243,10 @@ func (o *Evaluationform) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(AiScoringString, &o.AiScoring)
 	}
 	
+	if Redacted, ok := EvaluationformMap["redacted"].(bool); ok {
+		o.Redacted = &Redacted
+	}
+    
 	if Dialect, ok := EvaluationformMap["dialect"].(string); ok {
 		o.Dialect = &Dialect
 	}

@@ -19,6 +19,9 @@ type Aianswer struct {
 
 	// FailureType - Describes the type of error associated with the AI answer.
 	FailureType *string `json:"failureType,omitempty"`
+
+	// MarkedNotApplicable - Indicates whether the AI answer is marked as not applicable.
+	MarkedNotApplicable *bool `json:"markedNotApplicable,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +92,8 @@ func (o Aianswer) MarshalJSON() ([]byte, error) {
 		Explanation *string `json:"explanation,omitempty"`
 		
 		FailureType *string `json:"failureType,omitempty"`
+		
+		MarkedNotApplicable *bool `json:"markedNotApplicable,omitempty"`
 		Alias
 	}{ 
 		AnswerId: o.AnswerId,
@@ -96,6 +101,8 @@ func (o Aianswer) MarshalJSON() ([]byte, error) {
 		Explanation: o.Explanation,
 		
 		FailureType: o.FailureType,
+		
+		MarkedNotApplicable: o.MarkedNotApplicable,
 		Alias:    (Alias)(o),
 	})
 }
@@ -117,6 +124,10 @@ func (o *Aianswer) UnmarshalJSON(b []byte) error {
     
 	if FailureType, ok := AianswerMap["failureType"].(string); ok {
 		o.FailureType = &FailureType
+	}
+    
+	if MarkedNotApplicable, ok := AianswerMap["markedNotApplicable"].(bool); ok {
+		o.MarkedNotApplicable = &MarkedNotApplicable
 	}
     
 

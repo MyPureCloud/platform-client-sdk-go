@@ -45,6 +45,12 @@ type Decisiontableversion struct {
 	// DatePublished - UTC date time indicating when this decision table version was published. Null if never published. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DatePublished *time.Time `json:"datePublished,omitempty"`
 
+	// CreatedBy - The user who created this decision table version.
+	CreatedBy *Addressableentityref `json:"createdBy,omitempty"`
+
+	// PublishedBy - The user who published this decision table version.
+	PublishedBy *Addressableentityref `json:"publishedBy,omitempty"`
+
 	// Columns - The column definitions of this decision table version.
 	Columns *Decisiontablecolumns `json:"columns,omitempty"`
 
@@ -164,6 +170,10 @@ func (o Decisiontableversion) MarshalJSON() ([]byte, error) {
 		
 		DatePublished *string `json:"datePublished,omitempty"`
 		
+		CreatedBy *Addressableentityref `json:"createdBy,omitempty"`
+		
+		PublishedBy *Addressableentityref `json:"publishedBy,omitempty"`
+		
 		Columns *Decisiontablecolumns `json:"columns,omitempty"`
 		
 		Contract *Decisiontablecontract `json:"contract,omitempty"`
@@ -192,6 +202,10 @@ func (o Decisiontableversion) MarshalJSON() ([]byte, error) {
 		DateModified: DateModified,
 		
 		DatePublished: DatePublished,
+		
+		CreatedBy: o.CreatedBy,
+		
+		PublishedBy: o.PublishedBy,
 		
 		Columns: o.Columns,
 		
@@ -257,6 +271,16 @@ func (o *Decisiontableversion) UnmarshalJSON(b []byte) error {
 	if datePublishedString, ok := DecisiontableversionMap["datePublished"].(string); ok {
 		DatePublished, _ := time.Parse("2006-01-02T15:04:05.999999Z", datePublishedString)
 		o.DatePublished = &DatePublished
+	}
+	
+	if CreatedBy, ok := DecisiontableversionMap["createdBy"].(map[string]interface{}); ok {
+		CreatedByString, _ := json.Marshal(CreatedBy)
+		json.Unmarshal(CreatedByString, &o.CreatedBy)
+	}
+	
+	if PublishedBy, ok := DecisiontableversionMap["publishedBy"].(map[string]interface{}); ok {
+		PublishedByString, _ := json.Marshal(PublishedBy)
+		json.Unmarshal(PublishedByString, &o.PublishedBy)
 	}
 	
 	if Columns, ok := DecisiontableversionMap["columns"].(map[string]interface{}); ok {

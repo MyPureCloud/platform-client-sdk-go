@@ -16,6 +16,12 @@ type Bucreatetimeofflimitrequest struct {
 
 	// ManagementUnitId - The ID of the management unit to which this time-off limit is associated. One of managementUnitId or staffingGroupId must be set. This must not be set if staffingGroupId has value
 	ManagementUnitId *string `json:"managementUnitId,omitempty"`
+
+	// Granularity - Granularity choice for time off limit
+	Granularity *string `json:"granularity,omitempty"`
+
+	// FullDayTimeOffStartTime - The start time of full day time off requests associated with this limit interval in HH:mm format.Setting this value is allowed only for time-off limit with fifteen minutes granularity
+	FullDayTimeOffStartTime *string `json:"fullDayTimeOffStartTime,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +90,19 @@ func (o Bucreatetimeofflimitrequest) MarshalJSON() ([]byte, error) {
 		StaffingGroupId *string `json:"staffingGroupId,omitempty"`
 		
 		ManagementUnitId *string `json:"managementUnitId,omitempty"`
+		
+		Granularity *string `json:"granularity,omitempty"`
+		
+		FullDayTimeOffStartTime *string `json:"fullDayTimeOffStartTime,omitempty"`
 		Alias
 	}{ 
 		StaffingGroupId: o.StaffingGroupId,
 		
 		ManagementUnitId: o.ManagementUnitId,
+		
+		Granularity: o.Granularity,
+		
+		FullDayTimeOffStartTime: o.FullDayTimeOffStartTime,
 		Alias:    (Alias)(o),
 	})
 }
@@ -106,6 +120,14 @@ func (o *Bucreatetimeofflimitrequest) UnmarshalJSON(b []byte) error {
     
 	if ManagementUnitId, ok := BucreatetimeofflimitrequestMap["managementUnitId"].(string); ok {
 		o.ManagementUnitId = &ManagementUnitId
+	}
+    
+	if Granularity, ok := BucreatetimeofflimitrequestMap["granularity"].(string); ok {
+		o.Granularity = &Granularity
+	}
+    
+	if FullDayTimeOffStartTime, ok := BucreatetimeofflimitrequestMap["fullDayTimeOffStartTime"].(string); ok {
+		o.FullDayTimeOffStartTime = &FullDayTimeOffStartTime
 	}
     
 

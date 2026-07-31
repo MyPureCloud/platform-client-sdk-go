@@ -18,6 +18,9 @@ type Evaluationformresponse struct {
 	// Name - The evaluation form name
 	Name *string `json:"name,omitempty"`
 
+	// Division - The division to which this entity belongs.
+	Division *Writablestarrabledivision `json:"division,omitempty"`
+
 	// ModifiedDate - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ModifiedDate *time.Time `json:"modifiedDate,omitempty"`
 
@@ -127,6 +130,8 @@ func (o Evaluationformresponse) MarshalJSON() ([]byte, error) {
 		
 		Name *string `json:"name,omitempty"`
 		
+		Division *Writablestarrabledivision `json:"division,omitempty"`
+		
 		ModifiedDate *string `json:"modifiedDate,omitempty"`
 		
 		Published *bool `json:"published,omitempty"`
@@ -153,6 +158,8 @@ func (o Evaluationformresponse) MarshalJSON() ([]byte, error) {
 		Id: o.Id,
 		
 		Name: o.Name,
+		
+		Division: o.Division,
 		
 		ModifiedDate: ModifiedDate,
 		
@@ -194,6 +201,11 @@ func (o *Evaluationformresponse) UnmarshalJSON(b []byte) error {
 		o.Name = &Name
 	}
     
+	if Division, ok := EvaluationformresponseMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
 	if modifiedDateString, ok := EvaluationformresponseMap["modifiedDate"].(string); ok {
 		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
 		o.ModifiedDate = &ModifiedDate

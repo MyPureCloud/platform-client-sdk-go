@@ -21,7 +21,7 @@ type Timeoffrequestresponse struct {
 	// IsFullDayRequest - Whether this is a full day request (false means partial day)
 	IsFullDayRequest *bool `json:"isFullDayRequest,omitempty"`
 
-	// MarkedAsRead - Whether this request has been marked as read by the agent
+	// MarkedAsRead - Deprecated - Always returns true.
 	MarkedAsRead *bool `json:"markedAsRead,omitempty"`
 
 	// ActivityCodeId - The ID of the activity code associated with this time off request. Activity code must be of the TimeOff category

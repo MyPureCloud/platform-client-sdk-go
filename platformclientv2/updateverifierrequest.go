@@ -11,11 +11,14 @@ import (
 type Updateverifierrequest struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Name - The name of the verifier.
+	// Name - The name of the verifier. Maximum length is 100 characters.
 	Name *string `json:"name,omitempty"`
 
 	// Enabled - Indicates whether this verifier will be enabled.
 	Enabled *bool `json:"enabled,omitempty"`
+
+	// Credential - The WebAuthn credential associated with this verifier.
+	Credential *Credential `json:"credential,omitempty"`
 
 	// VarDefault - Indicates whether this will be the default verifier.
 	VarDefault *bool `json:"default,omitempty"`
@@ -88,12 +91,16 @@ func (o Updateverifierrequest) MarshalJSON() ([]byte, error) {
 		
 		Enabled *bool `json:"enabled,omitempty"`
 		
+		Credential *Credential `json:"credential,omitempty"`
+		
 		VarDefault *bool `json:"default,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
 		
 		Enabled: o.Enabled,
+		
+		Credential: o.Credential,
 		
 		VarDefault: o.VarDefault,
 		Alias:    (Alias)(o),
@@ -115,6 +122,11 @@ func (o *Updateverifierrequest) UnmarshalJSON(b []byte) error {
 		o.Enabled = &Enabled
 	}
     
+	if Credential, ok := UpdateverifierrequestMap["credential"].(map[string]interface{}); ok {
+		CredentialString, _ := json.Marshal(Credential)
+		json.Unmarshal(CredentialString, &o.Credential)
+	}
+	
 	if VarDefault, ok := UpdateverifierrequestMap["default"].(bool); ok {
 		o.VarDefault = &VarDefault
 	}

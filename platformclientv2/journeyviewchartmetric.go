@@ -22,6 +22,9 @@ type Journeyviewchartmetric struct {
 
 	// DisplayLabel - A display label for the metric
 	DisplayLabel *string `json:"displayLabel,omitempty"`
+
+	// Attribute - Attribute name
+	Attribute *string `json:"attribute,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +97,8 @@ func (o Journeyviewchartmetric) MarshalJSON() ([]byte, error) {
 		Aggregate *string `json:"aggregate,omitempty"`
 		
 		DisplayLabel *string `json:"displayLabel,omitempty"`
+		
+		Attribute *string `json:"attribute,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -103,6 +108,8 @@ func (o Journeyviewchartmetric) MarshalJSON() ([]byte, error) {
 		Aggregate: o.Aggregate,
 		
 		DisplayLabel: o.DisplayLabel,
+		
+		Attribute: o.Attribute,
 		Alias:    (Alias)(o),
 	})
 }
@@ -128,6 +135,10 @@ func (o *Journeyviewchartmetric) UnmarshalJSON(b []byte) error {
     
 	if DisplayLabel, ok := JourneyviewchartmetricMap["displayLabel"].(string); ok {
 		o.DisplayLabel = &DisplayLabel
+	}
+    
+	if Attribute, ok := JourneyviewchartmetricMap["attribute"].(string); ok {
+		o.Attribute = &Attribute
 	}
     
 

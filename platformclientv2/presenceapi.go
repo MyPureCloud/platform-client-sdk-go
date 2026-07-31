@@ -342,7 +342,7 @@ func (a PresenceApi) GetPresenceDefinition(definitionId string, localeCode strin
 
 // GetPresenceDefinitions invokes GET /api/v2/presence/definitions
 //
-// Get a list of Presence Definitions
+// Get a list of Presence Definitions. View permission enforcement only applies to presence definitions assigned to a division
 func (a PresenceApi) GetPresenceDefinitions(deactivated string, divisionId []string, localeCode string) (*Organizationpresencedefinitionentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
