@@ -17,7 +17,7 @@ type Journeyviewelementfilterpredicate struct {
 	// Values - the values of the attribute to filter on
 	Values *[]string `json:"values,omitempty"`
 
-	// Operator - Optional operator, default is Matches. Valid values: Matches
+	// Operator - Optional operator, default is Matches. Valid values: Matches, NotMatches
 	Operator *string `json:"operator,omitempty"`
 
 	// NoValue - set this to true if no specific value to be considered

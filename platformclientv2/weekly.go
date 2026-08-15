@@ -15,7 +15,7 @@ type Weekly struct {
 	DownloadUrl *string `json:"downloadUrl,omitempty"`
 
 	// DownloadResult - Result will always come via downloadUrls; however the schema is included for documentation
-	DownloadResult *[]Timeseries `json:"downloadResult,omitempty"`
+	DownloadResult *[]Continuousforecasttimeseries `json:"downloadResult,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -83,7 +83,7 @@ func (o Weekly) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		DownloadUrl *string `json:"downloadUrl,omitempty"`
 		
-		DownloadResult *[]Timeseries `json:"downloadResult,omitempty"`
+		DownloadResult *[]Continuousforecasttimeseries `json:"downloadResult,omitempty"`
 		Alias
 	}{ 
 		DownloadUrl: o.DownloadUrl,

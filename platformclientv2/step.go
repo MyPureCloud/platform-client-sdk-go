@@ -48,6 +48,9 @@ type Step struct {
 	// WorkitemActivity - The workitem activity linked to this step. Present only for workitem-type steps that have been activated.
 	WorkitemActivity *Workitemactivityreference `json:"workitemActivity,omitempty"`
 
+	// FailureReason - The reason the Step failed, if applicable.
+	FailureReason *Failurereason `json:"failureReason,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -174,6 +177,8 @@ func (o Step) MarshalJSON() ([]byte, error) {
 		
 		WorkitemActivity *Workitemactivityreference `json:"workitemActivity,omitempty"`
 		
+		FailureReason *Failurereason `json:"failureReason,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
 		VarCase *Casereference `json:"case,omitempty"`
@@ -202,6 +207,8 @@ func (o Step) MarshalJSON() ([]byte, error) {
 		Stage: o.Stage,
 		
 		WorkitemActivity: o.WorkitemActivity,
+		
+		FailureReason: o.FailureReason,
 		
 		SelfUri: o.SelfUri,
 		
@@ -271,6 +278,11 @@ func (o *Step) UnmarshalJSON(b []byte) error {
 	if WorkitemActivity, ok := StepMap["workitemActivity"].(map[string]interface{}); ok {
 		WorkitemActivityString, _ := json.Marshal(WorkitemActivity)
 		json.Unmarshal(WorkitemActivityString, &o.WorkitemActivity)
+	}
+	
+	if FailureReason, ok := StepMap["failureReason"].(map[string]interface{}); ok {
+		FailureReasonString, _ := json.Marshal(FailureReason)
+		json.Unmarshal(FailureReasonString, &o.FailureReason)
 	}
 	
 	if SelfUri, ok := StepMap["selfUri"].(string); ok {

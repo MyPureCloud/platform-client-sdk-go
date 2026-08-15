@@ -6209,6 +6209,8 @@ func (a UsersApi) GetUsersStationsMe() (*Userstations, *APIResponse, error) {
 // PatchUser invokes PATCH /api/v2/users/{userId}
 //
 // Update user
+//
+// Updating some fields, like a user&#39;s extension, requires the telephony:extension:assign permission for the relevant division. Without it, the request will return 403 Forbidden.
 func (a UsersApi) PatchUser(userId string, body Updateuser) (*User, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables

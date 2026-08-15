@@ -20,6 +20,9 @@ type Journeyviewchartdisplayattributes struct {
 	// MetricsTitle - A title for the metrics (aka the y axis)
 	MetricsTitle *string `json:"metricsTitle,omitempty"`
 
+	// SecondaryMetricsTitle - A title for the metrics on secondary axis
+	SecondaryMetricsTitle *string `json:"secondaryMetricsTitle,omitempty"`
+
 	// ShowLegend - Whether to show a legend
 	ShowLegend *bool `json:"showLegend,omitempty"`
 }
@@ -93,6 +96,8 @@ func (o Journeyviewchartdisplayattributes) MarshalJSON() ([]byte, error) {
 		
 		MetricsTitle *string `json:"metricsTitle,omitempty"`
 		
+		SecondaryMetricsTitle *string `json:"secondaryMetricsTitle,omitempty"`
+		
 		ShowLegend *bool `json:"showLegend,omitempty"`
 		Alias
 	}{ 
@@ -101,6 +106,8 @@ func (o Journeyviewchartdisplayattributes) MarshalJSON() ([]byte, error) {
 		GroupByTitle: o.GroupByTitle,
 		
 		MetricsTitle: o.MetricsTitle,
+		
+		SecondaryMetricsTitle: o.SecondaryMetricsTitle,
 		
 		ShowLegend: o.ShowLegend,
 		Alias:    (Alias)(o),
@@ -124,6 +131,10 @@ func (o *Journeyviewchartdisplayattributes) UnmarshalJSON(b []byte) error {
     
 	if MetricsTitle, ok := JourneyviewchartdisplayattributesMap["metricsTitle"].(string); ok {
 		o.MetricsTitle = &MetricsTitle
+	}
+    
+	if SecondaryMetricsTitle, ok := JourneyviewchartdisplayattributesMap["secondaryMetricsTitle"].(string); ok {
+		o.SecondaryMetricsTitle = &SecondaryMetricsTitle
 	}
     
 	if ShowLegend, ok := JourneyviewchartdisplayattributesMap["showLegend"].(bool); ok {

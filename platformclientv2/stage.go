@@ -42,6 +42,9 @@ type Stage struct {
 	// Status - The Status of the Stage.
 	Status *string `json:"status,omitempty"`
 
+	// FailureReason - The reason the Stage failed, if applicable.
+	FailureReason *Failurereason `json:"failureReason,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -164,6 +167,8 @@ func (o Stage) MarshalJSON() ([]byte, error) {
 		
 		Status *string `json:"status,omitempty"`
 		
+		FailureReason *Failurereason `json:"failureReason,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
 		VarCase *Casereference `json:"case,omitempty"`
@@ -188,6 +193,8 @@ func (o Stage) MarshalJSON() ([]byte, error) {
 		Version: o.Version,
 		
 		Status: o.Status,
+		
+		FailureReason: o.FailureReason,
 		
 		SelfUri: o.SelfUri,
 		
@@ -249,6 +256,11 @@ func (o *Stage) UnmarshalJSON(b []byte) error {
 		o.Status = &Status
 	}
     
+	if FailureReason, ok := StageMap["failureReason"].(map[string]interface{}); ok {
+		FailureReasonString, _ := json.Marshal(FailureReason)
+		json.Unmarshal(FailureReasonString, &o.FailureReason)
+	}
+	
 	if SelfUri, ok := StageMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

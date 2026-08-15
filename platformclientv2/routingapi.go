@@ -632,8 +632,6 @@ func (a RoutingApi) DeleteRoutingPredictor(predictorId string) (*APIResponse, er
 // DeleteRoutingPredictorsKeyperformanceindicator invokes DELETE /api/v2/routing/predictors/keyperformanceindicators/{kpiId}
 //
 // Delete a custom Key Performance Indicator.
-//
-// Preview: DeleteRoutingPredictorsKeyperformanceindicator is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a RoutingApi) DeleteRoutingPredictorsKeyperformanceindicator(kpiId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -4407,8 +4405,6 @@ func (a RoutingApi) GetRoutingPredictors(before string, after string, limit stri
 // GetRoutingPredictorsKeyperformanceindicator invokes GET /api/v2/routing/predictors/keyperformanceindicators/{kpiId}
 //
 // Retrieve a single Key Performance Indicator.
-//
-// Preview: GetRoutingPredictorsKeyperformanceindicator is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a RoutingApi) GetRoutingPredictorsKeyperformanceindicator(kpiId string, expand []string) (*Keyperformanceindicator, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -4573,8 +4569,6 @@ func (a RoutingApi) GetRoutingPredictorsKeyperformanceindicators(kpiGroup string
 // GetRoutingPredictorsKeyperformanceindicatortypes invokes GET /api/v2/routing/predictors/keyperformanceindicatortypes
 //
 // Get a list of Key Performance Indicators Types available.
-//
-// Preview: GetRoutingPredictorsKeyperformanceindicatortypes is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a RoutingApi) GetRoutingPredictorsKeyperformanceindicatortypes() ([]Keyperformanceindicatortype, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -9146,8 +9140,6 @@ func (a RoutingApi) PatchRoutingPredictor(predictorId string, body Patchpredicto
 // PatchRoutingPredictorsKeyperformanceindicator invokes PATCH /api/v2/routing/predictors/keyperformanceindicators/{kpiId}
 //
 // Update a custom Key Performance Indicator.
-//
-// Preview: PatchRoutingPredictorsKeyperformanceindicator is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a RoutingApi) PatchRoutingPredictorsKeyperformanceindicator(kpiId string, body Updatekpirequest) (*Keyperformanceindicator, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -11843,8 +11835,6 @@ func (a RoutingApi) PostRoutingPredictors(body Createpredictorrequest) (*Predict
 // PostRoutingPredictorsKeyperformanceindicators invokes POST /api/v2/routing/predictors/keyperformanceindicators
 //
 // Create a custom Key Performance Indicator.
-//
-// Preview: PostRoutingPredictorsKeyperformanceindicators is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a RoutingApi) PostRoutingPredictorsKeyperformanceindicators(body Createkpirequest) (*Keyperformanceindicator, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

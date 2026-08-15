@@ -11,25 +11,25 @@ import (
 type Createtimeoffplanrequest struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Name - The name of this time off plan.
+	// Name - Deprecated. The name of this time off plan.
 	Name *string `json:"name,omitempty"`
 
-	// ActivityCodeIds - The set of activity code IDs to associate with this time off plan.
+	// ActivityCodeIds - Deprecated. The set of activity code IDs to associate with this time off plan.
 	ActivityCodeIds *[]string `json:"activityCodeIds,omitempty"`
 
-	// TimeOffLimitIds - The set of time off limit IDs to associate with this time off plan.
+	// TimeOffLimitIds - Deprecated. The set of time off limit IDs to associate with this time off plan.
 	TimeOffLimitIds *[]string `json:"timeOffLimitIds,omitempty"`
 
-	// AutoApprovalRule - Auto approval rule for the time off plan.
+	// AutoApprovalRule - Deprecated. Auto approval rule for the time off plan.
 	AutoApprovalRule *string `json:"autoApprovalRule,omitempty"`
 
-	// DaysBeforeStartToExpireFromWaitlist - The number of days before the time off request start date for when the request will be expired from the waitlist.
+	// DaysBeforeStartToExpireFromWaitlist - Deprecated. The number of days before the time off request start date for when the request will be expired from the waitlist.
 	DaysBeforeStartToExpireFromWaitlist *int `json:"daysBeforeStartToExpireFromWaitlist,omitempty"`
 
-	// HrisTimeOffType - Time off type, if this time off plan is associated with the integration.
+	// HrisTimeOffType - Deprecated. Time off type, if this time off plan is associated with the integration.
 	HrisTimeOffType *Hristimeofftype `json:"hrisTimeOffType,omitempty"`
 
-	// Active - Whether this time off plan should be used by agents.
+	// Active - Deprecated. Whether this time off plan should be used by agents.
 	Active *bool `json:"active,omitempty"`
 }
 

@@ -14,7 +14,7 @@ type Settimeofflimitvaluesrequest struct {
 	// Values
 	Values *[]Timeofflimitrange `json:"values,omitempty"`
 
-	// Metadata - Version metadata for the time off limit
+	// Metadata - Deprecated. Version metadata for the time off limit
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 }
 

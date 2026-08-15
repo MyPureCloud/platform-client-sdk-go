@@ -1422,7 +1422,9 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunit(manageme
 
 // DeleteWorkforcemanagementManagementunitTimeofflimit invokes DELETE /api/v2/workforcemanagement/managementunits/{managementUnitId}/timeofflimits/{timeOffLimitId}
 //
-// Deletes a time off limit object
+// Deletes a time off limit object. Deprecated: Use /api/v2/workforcemanagement/businessunits/{businessUnitId}/timeofflimits/{timeOffLimitId} instead
+//
+// Deprecated: DeleteWorkforcemanagementManagementunitTimeofflimit is deprecated
 func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunitTimeofflimit(managementUnitId string, timeOffLimitId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -1503,7 +1505,9 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunitTimeoffli
 
 // DeleteWorkforcemanagementManagementunitTimeoffplan invokes DELETE /api/v2/workforcemanagement/managementunits/{managementUnitId}/timeoffplans/{timeOffPlanId}
 //
-// Deletes a time off plan
+// Deletes a time off plan. Deprecated: Use /api/v2/workforcemanagement/businessunits/{businessUnitId}/timeoffplans/{timeOffPlanId} instead
+//
+// Deprecated: DeleteWorkforcemanagementManagementunitTimeoffplan is deprecated
 func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunitTimeoffplan(managementUnitId string, timeOffPlanId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -4718,6 +4722,270 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitMainforecastCo
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Continuousforecastgetsessionresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetWorkforcemanagementBusinessunitMainforecastContinuousforecastSessionExportForecastJob invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/mainforecast/continuousforecast/session/export/forecast/jobs/{jobId}
+//
+// Get status of the session export job
+func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitMainforecastContinuousforecastSessionExportForecastJob(businessUnitId string, jobId string) (*Aggregatedsessionexportjobstatus, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/mainforecast/continuousforecast/session/export/forecast/jobs/{jobId}"
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{jobId}", url.PathEscape(fmt.Sprintf("%v", jobId)), -1)
+	defaultReturn := new(Aggregatedsessionexportjobstatus)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'businessUnitId' is set
+	if &businessUnitId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitMainforecastContinuousforecastSessionExportForecastJob")
+	}
+	// verify the required parameter 'jobId' is set
+	if &jobId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'jobId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitMainforecastContinuousforecastSessionExportForecastJob")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Aggregatedsessionexportjobstatus
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Aggregatedsessionexportjobstatus" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetWorkforcemanagementBusinessunitMainforecastContinuousforecastSessionExportHistoricalJob invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/mainforecast/continuousforecast/session/export/historical/jobs/{jobId}
+//
+// Get status of the historical export job
+func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitMainforecastContinuousforecastSessionExportHistoricalJob(businessUnitId string, jobId string) (*Aggregatedhistoricalexportjobstatus, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/mainforecast/continuousforecast/session/export/historical/jobs/{jobId}"
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{jobId}", url.PathEscape(fmt.Sprintf("%v", jobId)), -1)
+	defaultReturn := new(Aggregatedhistoricalexportjobstatus)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'businessUnitId' is set
+	if &businessUnitId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitMainforecastContinuousforecastSessionExportHistoricalJob")
+	}
+	// verify the required parameter 'jobId' is set
+	if &jobId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'jobId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitMainforecastContinuousforecastSessionExportHistoricalJob")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Aggregatedhistoricalexportjobstatus
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Aggregatedhistoricalexportjobstatus" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetWorkforcemanagementBusinessunitMainforecastContinuousforecastSessionExportSnapshotJob invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/mainforecast/continuousforecast/session/export/snapshot/jobs/{jobId}
+//
+// Get status of the snapshot export job
+func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitMainforecastContinuousforecastSessionExportSnapshotJob(businessUnitId string, jobId string) (*Aggregatedsnapshotexportjobstatus, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/mainforecast/continuousforecast/session/export/snapshot/jobs/{jobId}"
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{jobId}", url.PathEscape(fmt.Sprintf("%v", jobId)), -1)
+	defaultReturn := new(Aggregatedsnapshotexportjobstatus)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'businessUnitId' is set
+	if &businessUnitId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitMainforecastContinuousforecastSessionExportSnapshotJob")
+	}
+	// verify the required parameter 'jobId' is set
+	if &jobId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'jobId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitMainforecastContinuousforecastSessionExportSnapshotJob")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Aggregatedsnapshotexportjobstatus
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Aggregatedsnapshotexportjobstatus" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -10832,7 +11100,9 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitShifttradesU
 //
 // Gets a time off limit object
 //
-// Returns properties of time off limit object, but not daily values.
+// Returns properties of time off limit object, but not daily values. Deprecated: Use /api/v2/workforcemanagement/businessunits/{businessUnitId}/timeofflimits/{timeOffLimitId} instead
+//
+// Deprecated: GetWorkforcemanagementManagementunitTimeofflimit is deprecated
 func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitTimeofflimit(managementUnitId string, timeOffLimitId string) (*Timeofflimit, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -10922,7 +11192,9 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitTimeofflimit
 //
 // Gets a list of time off limit objects under management unit.
 //
-// Currently only one time off limit object is allowed under management unit, so the list contains either 0 or 1 element.
+// Currently only one time off limit object is allowed under management unit, so the list contains either 0 or 1 element. Deprecated: Use /api/v2/workforcemanagement/businessunits/{businessUnitId}/timeofflimits instead
+//
+// Deprecated: GetWorkforcemanagementManagementunitTimeofflimits is deprecated
 func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitTimeofflimits(managementUnitId string) (*Timeofflimitlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -11004,7 +11276,9 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitTimeofflimit
 
 // GetWorkforcemanagementManagementunitTimeoffplan invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/timeoffplans/{timeOffPlanId}
 //
-// Gets a time off plan
+// Gets a time off plan. Deprecated: Use /api/v2/workforcemanagement/businessunits/{businessUnitId}/timeoffplans/{timeOffPlanId} instead
+//
+// Deprecated: GetWorkforcemanagementManagementunitTimeoffplan is deprecated
 func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitTimeoffplan(managementUnitId string, timeOffPlanId string) (*Timeoffplan, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -11092,7 +11366,9 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitTimeoffplan(
 
 // GetWorkforcemanagementManagementunitTimeoffplans invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/timeoffplans
 //
-// Gets a list of time off plans
+// Gets a list of time off plans. Deprecated: Use /api/v2/workforcemanagement/businessunits/{businessUnitId}/timeoffplans instead
+//
+// Deprecated: GetWorkforcemanagementManagementunitTimeoffplans is deprecated
 func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitTimeoffplans(managementUnitId string) (*Timeoffplanlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -16674,7 +16950,9 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitAgentsWork
 //
 // Updates a time off limit object.
 //
-// Updates time off limit object properties, but not daily values.
+// Updates time off limit object properties, but not daily values. Deprecated: Updating defaultLimitMinutes is no longer supported
+//
+// Deprecated: PatchWorkforcemanagementManagementunitTimeofflimit is deprecated
 func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitTimeofflimit(managementUnitId string, timeOffLimitId string, body Updatetimeofflimitrequest) (*Timeofflimit, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -16770,7 +17048,9 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitTimeofflim
 
 // PatchWorkforcemanagementManagementunitTimeoffplan invokes PATCH /api/v2/workforcemanagement/managementunits/{managementUnitId}/timeoffplans/{timeOffPlanId}
 //
-// Updates a time off plan
+// Updates a time off plan. Deprecated: Use /api/v2/workforcemanagement/businessunits/{businessUnitId}/timeoffplans/{timeOffPlanId} instead
+//
+// Deprecated: PatchWorkforcemanagementManagementunitTimeoffplan is deprecated
 func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitTimeoffplan(managementUnitId string, timeOffPlanId string, body Updatetimeoffplanrequest) (*Timeoffplan, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
@@ -20912,6 +21192,276 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitIntraday(busi
 	return successPayload, response, err
 }
 
+// PostWorkforcemanagementBusinessunitMainforecastContinuousforecastSessionExportForecastJobs invokes POST /api/v2/workforcemanagement/businessunits/{businessUnitId}/mainforecast/continuousforecast/session/export/forecast/jobs
+//
+// Create a session export job
+func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitMainforecastContinuousforecastSessionExportForecastJobs(businessUnitId string, body Aggregatedexportjobrequest) (*Aggregatedsessionexportjobresponse, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/mainforecast/continuousforecast/session/export/forecast/jobs"
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	defaultReturn := new(Aggregatedsessionexportjobresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'businessUnitId' is set
+	if &businessUnitId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitMainforecastContinuousforecastSessionExportForecastJobs")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitMainforecastContinuousforecastSessionExportForecastJobs")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Aggregatedsessionexportjobresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Aggregatedsessionexportjobresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostWorkforcemanagementBusinessunitMainforecastContinuousforecastSessionExportHistoricalJobs invokes POST /api/v2/workforcemanagement/businessunits/{businessUnitId}/mainforecast/continuousforecast/session/export/historical/jobs
+//
+// Create a historical export job
+func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitMainforecastContinuousforecastSessionExportHistoricalJobs(businessUnitId string, body Aggregatedexportjobrequest) (*Aggregatedhistoricalexportjobresponse, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/mainforecast/continuousforecast/session/export/historical/jobs"
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	defaultReturn := new(Aggregatedhistoricalexportjobresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'businessUnitId' is set
+	if &businessUnitId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitMainforecastContinuousforecastSessionExportHistoricalJobs")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitMainforecastContinuousforecastSessionExportHistoricalJobs")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Aggregatedhistoricalexportjobresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Aggregatedhistoricalexportjobresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostWorkforcemanagementBusinessunitMainforecastContinuousforecastSessionExportSnapshotJobs invokes POST /api/v2/workforcemanagement/businessunits/{businessUnitId}/mainforecast/continuousforecast/session/export/snapshot/jobs
+//
+// Create a snapshot export job
+func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitMainforecastContinuousforecastSessionExportSnapshotJobs(businessUnitId string, body Aggregatedexportsnapshotjobrequest) (*Aggregatedsnapshotexportjobresponse, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/mainforecast/continuousforecast/session/export/snapshot/jobs"
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	defaultReturn := new(Aggregatedsnapshotexportjobresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'businessUnitId' is set
+	if &businessUnitId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitMainforecastContinuousforecastSessionExportSnapshotJobs")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitMainforecastContinuousforecastSessionExportSnapshotJobs")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Aggregatedsnapshotexportjobresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Aggregatedsnapshotexportjobresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // PostWorkforcemanagementBusinessunitOpportunitiesBulkAdd invokes POST /api/v2/workforcemanagement/businessunits/{businessUnitId}/opportunities/bulk/add
 //
 // Bulk add opportunities
@@ -23422,7 +23972,9 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitTimeofflimits
 
 // PostWorkforcemanagementBusinessunitTimeofflimitsValuesQuery invokes POST /api/v2/workforcemanagement/businessunits/{businessUnitId}/timeofflimits/values/query
 //
-// Retrieves time-off limit related values based on a given set of filters.
+// Retrieves time-off limit related values based on a given set of filters. Deprecated: Use /api/v2/workforcemanagement/businessunits/{businessUnitId}/timeofflimits/{timeOffLimitId}/values/query instead
+//
+// Deprecated: PostWorkforcemanagementBusinessunitTimeofflimitsValuesQuery is deprecated
 func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitTimeofflimitsValuesQuery(businessUnitId string, body Querytimeofflimitvaluesrequest) (*Butimeofflimitvaluesresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -26544,7 +27096,9 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitShrinkageJo
 //
 // Creates a new time off limit object under management unit.
 //
-// Only one limit object is allowed under management unit, so an attempt to create second object will fail.
+// Only one limit object is allowed under management unit, so an attempt to create second object will fail. Deprecated: Use /api/v2/workforcemanagement/businessunits/{businessUnitId}/timeofflimits instead
+//
+// Deprecated: PostWorkforcemanagementManagementunitTimeofflimits is deprecated
 func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeofflimits(managementUnitId string, body Createtimeofflimitrequest) (*Timeofflimit, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -26634,7 +27188,9 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeofflimi
 
 // PostWorkforcemanagementManagementunitTimeofflimitsValuesQuery invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/timeofflimits/values/query
 //
-// Retrieves time off limit related values based on a given set of filters.
+// Retrieves time off limit related values based on a given set of filters. Deprecated: Use /api/v2/workforcemanagement/businessunits/{businessUnitId}/timeofflimits/{timeOffLimitId}/values/query instead
+//
+// Deprecated: PostWorkforcemanagementManagementunitTimeofflimitsValuesQuery is deprecated
 func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeofflimitsValuesQuery(managementUnitId string, body Querytimeofflimitvaluesrequest) (*Querytimeofflimitvaluesresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -26724,7 +27280,9 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeofflimi
 
 // PostWorkforcemanagementManagementunitTimeoffplans invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/timeoffplans
 //
-// Creates a new time off plan
+// Creates a new time off plan. Deprecated: Use /api/v2/workforcemanagement/businessunits/{businessUnitId}/timeoffplans instead
+//
+// Deprecated: PostWorkforcemanagementManagementunitTimeoffplans is deprecated
 func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffplans(managementUnitId string, body Createtimeoffplanrequest) (*Timeoffplan, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -30013,7 +30571,9 @@ func (a WorkforceManagementApi) PutWorkforcemanagementBusinessunitTimeofflimitVa
 //
 // Sets daily values for a date range of time off limit object
 //
-// Note that only limit daily values can be set through API, allocated and waitlisted values are read-only for time off limit API
+// Note that only limit daily values can be set through API, allocated and waitlisted values are read-only for time off limit API. Deprecated: Use /api/v2/workforcemanagement/businessunits/{businessUnitId}/timeofflimits/{timeOffLimitId}/values instead
+//
+// Deprecated: PutWorkforcemanagementManagementunitTimeofflimitValues is deprecated
 func (a WorkforceManagementApi) PutWorkforcemanagementManagementunitTimeofflimitValues(managementUnitId string, timeOffLimitId string, body Settimeofflimitvaluesrequest) (*Timeofflimit, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

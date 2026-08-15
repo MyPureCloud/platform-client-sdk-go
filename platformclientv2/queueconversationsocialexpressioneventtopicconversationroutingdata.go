@@ -25,6 +25,9 @@ type Queueconversationsocialexpressioneventtopicconversationroutingdata struct {
 
 	// ScoredAgents - A collection of agents and their assigned scores for this conversation (0 - 100, higher being better), for use in routing to preferred agents
 	ScoredAgents *[]Queueconversationsocialexpressioneventtopicscoredagent `json:"scoredAgents,omitempty"`
+
+	// SkillExpressionId - A UriReference for a resource
+	SkillExpressionId *Queueconversationsocialexpressioneventtopicurireference `json:"skillExpressionId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -99,6 +102,8 @@ func (o Queueconversationsocialexpressioneventtopicconversationroutingdata) Mars
 		Skills *[]Queueconversationsocialexpressioneventtopicurireference `json:"skills,omitempty"`
 		
 		ScoredAgents *[]Queueconversationsocialexpressioneventtopicscoredagent `json:"scoredAgents,omitempty"`
+		
+		SkillExpressionId *Queueconversationsocialexpressioneventtopicurireference `json:"skillExpressionId,omitempty"`
 		Alias
 	}{ 
 		Queue: o.Queue,
@@ -110,6 +115,8 @@ func (o Queueconversationsocialexpressioneventtopicconversationroutingdata) Mars
 		Skills: o.Skills,
 		
 		ScoredAgents: o.ScoredAgents,
+		
+		SkillExpressionId: o.SkillExpressionId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -144,6 +151,11 @@ func (o *Queueconversationsocialexpressioneventtopicconversationroutingdata) Unm
 	if ScoredAgents, ok := QueueconversationsocialexpressioneventtopicconversationroutingdataMap["scoredAgents"].([]interface{}); ok {
 		ScoredAgentsString, _ := json.Marshal(ScoredAgents)
 		json.Unmarshal(ScoredAgentsString, &o.ScoredAgents)
+	}
+	
+	if SkillExpressionId, ok := QueueconversationsocialexpressioneventtopicconversationroutingdataMap["skillExpressionId"].(map[string]interface{}); ok {
+		SkillExpressionIdString, _ := json.Marshal(SkillExpressionId)
+		json.Unmarshal(SkillExpressionIdString, &o.SkillExpressionId)
 	}
 	
 

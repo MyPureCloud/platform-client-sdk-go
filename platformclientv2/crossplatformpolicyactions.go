@@ -35,9 +35,6 @@ type Crossplatformpolicyactions struct {
 	// RetentionDuration
 	RetentionDuration *Retentionduration `json:"retentionDuration,omitempty"`
 
-	// MediaTranscriptions
-	MediaTranscriptions *[]Mediatranscription `json:"mediaTranscriptions,omitempty"`
-
 	// IntegrationExport - Policy action for exporting recordings using an integration to 3rd party s3.
 	IntegrationExport *Integrationexport `json:"integrationExport,omitempty"`
 }
@@ -121,8 +118,6 @@ func (o Crossplatformpolicyactions) MarshalJSON() ([]byte, error) {
 		
 		RetentionDuration *Retentionduration `json:"retentionDuration,omitempty"`
 		
-		MediaTranscriptions *[]Mediatranscription `json:"mediaTranscriptions,omitempty"`
-		
 		IntegrationExport *Integrationexport `json:"integrationExport,omitempty"`
 		Alias
 	}{ 
@@ -141,8 +136,6 @@ func (o Crossplatformpolicyactions) MarshalJSON() ([]byte, error) {
 		AssignCalibrations: o.AssignCalibrations,
 		
 		RetentionDuration: o.RetentionDuration,
-		
-		MediaTranscriptions: o.MediaTranscriptions,
 		
 		IntegrationExport: o.IntegrationExport,
 		Alias:    (Alias)(o),
@@ -191,11 +184,6 @@ func (o *Crossplatformpolicyactions) UnmarshalJSON(b []byte) error {
 	if RetentionDuration, ok := CrossplatformpolicyactionsMap["retentionDuration"].(map[string]interface{}); ok {
 		RetentionDurationString, _ := json.Marshal(RetentionDuration)
 		json.Unmarshal(RetentionDurationString, &o.RetentionDuration)
-	}
-	
-	if MediaTranscriptions, ok := CrossplatformpolicyactionsMap["mediaTranscriptions"].([]interface{}); ok {
-		MediaTranscriptionsString, _ := json.Marshal(MediaTranscriptions)
-		json.Unmarshal(MediaTranscriptionsString, &o.MediaTranscriptions)
 	}
 	
 	if IntegrationExport, ok := CrossplatformpolicyactionsMap["integrationExport"].(map[string]interface{}); ok {

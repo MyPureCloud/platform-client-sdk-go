@@ -12,13 +12,13 @@ import (
 type Timeofflimitrange struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// StartDate - Start date of the range. The end date is determined by 'granularity' and the size of 'limitMinutesPerInterval'. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
+	// StartDate - Deprecated. Start date of the range. The end date is determined by 'granularity' and the size of 'limitMinutesPerInterval'. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
 	StartDate *time.Time `json:"startDate,omitempty"`
 
-	// Granularity - Granularity choice for the time-off limit
+	// Granularity - Deprecated. Granularity choice for the time-off limit
 	Granularity *string `json:"granularity,omitempty"`
 
-	// LimitMinutesPerInterval - The list of time off limit values in minutes per granularity interval. If 'null' is specified, then interval specific value is cleared. Such interval will have 'defaultLimitMinutes' value
+	// LimitMinutesPerInterval - Deprecated. The list of time off limit values in minutes per granularity interval. If 'null' is specified, then interval specific value is cleared. Such interval will have 'defaultLimitMinutes' value
 	LimitMinutesPerInterval *[]int `json:"limitMinutesPerInterval,omitempty"`
 }
 

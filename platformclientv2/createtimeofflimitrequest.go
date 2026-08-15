@@ -11,10 +11,10 @@ import (
 type Createtimeofflimitrequest struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Granularity - Granularity choice for time off limit. If not specified, 'Daily' is assumed
+	// Granularity - Deprecated. Granularity choice for time off limit. If not specified, 'Daily' is assumed
 	Granularity *string `json:"granularity,omitempty"`
 
-	// DefaultLimitMinutes - The default limit value in minutes per granularity. If not specified, then 0 is assumed, which means there are no time off minutes available
+	// DefaultLimitMinutes - Deprecated. The default limit value in minutes per granularity. If not specified, then 0 is assumed, which means there are no time off minutes available
 	DefaultLimitMinutes *int `json:"defaultLimitMinutes,omitempty"`
 }
 

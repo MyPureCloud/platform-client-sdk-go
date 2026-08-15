@@ -18,6 +18,9 @@ type Learningassignment struct {
 	// Assessment - The assessment associated with this assignment
 	Assessment *Learningassessment `json:"assessment,omitempty"`
 
+	// DateCompleted - The date the assignment was completed. If not yet completed, this will be null. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateCompleted *time.Time `json:"dateCompleted,omitempty"`
+
 	// CreatedBy - The user who created the assignment
 	CreatedBy *Userreference `json:"createdBy,omitempty"`
 
@@ -117,7 +120,7 @@ func (o Learningassignment) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "DateCreated","DateModified","DateRecommendedForCompletion", }
+		dateTimeFields := []string{ "DateCompleted","DateCreated","DateModified","DateRecommendedForCompletion", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -150,6 +153,14 @@ func (o Learningassignment) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Learningassignment
 	
+	DateCompleted := new(string)
+	if o.DateCompleted != nil {
+		
+		*DateCompleted = timeutil.Strftime(o.DateCompleted, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCompleted = nil
+	}
+	
 	DateCreated := new(string)
 	if o.DateCreated != nil {
 		
@@ -178,6 +189,8 @@ func (o Learningassignment) MarshalJSON() ([]byte, error) {
 		Id *string `json:"id,omitempty"`
 		
 		Assessment *Learningassessment `json:"assessment,omitempty"`
+		
+		DateCompleted *string `json:"dateCompleted,omitempty"`
 		
 		CreatedBy *Userreference `json:"createdBy,omitempty"`
 		
@@ -229,6 +242,8 @@ func (o Learningassignment) MarshalJSON() ([]byte, error) {
 		Id: o.Id,
 		
 		Assessment: o.Assessment,
+		
+		DateCompleted: DateCompleted,
 		
 		CreatedBy: o.CreatedBy,
 		
@@ -293,6 +308,11 @@ func (o *Learningassignment) UnmarshalJSON(b []byte) error {
 	if Assessment, ok := LearningassignmentMap["assessment"].(map[string]interface{}); ok {
 		AssessmentString, _ := json.Marshal(Assessment)
 		json.Unmarshal(AssessmentString, &o.Assessment)
+	}
+	
+	if dateCompletedString, ok := LearningassignmentMap["dateCompleted"].(string); ok {
+		DateCompleted, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCompletedString)
+		o.DateCompleted = &DateCompleted
 	}
 	
 	if CreatedBy, ok := LearningassignmentMap["createdBy"].(map[string]interface{}); ok {

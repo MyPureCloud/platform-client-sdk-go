@@ -20,6 +20,9 @@ type Architectjobmessage struct {
 
 	// Text - The text of the message.
 	Text *string `json:"text,omitempty"`
+
+	// Details - Structured information about the message, absent from the large majority of messages. Populated only by publish jobs, and only on errors raised when a Genesys Cloud entity reference in the flow definition could not be resolved. Export and validate jobs resolve an existing flow by id rather than processing a flow definition, so they never return it. Holds one entry per request captured within the failing lookup, ordered oldest request first, and more than one entry is normal. Entries for requests that succeeded are included alongside the request that failed. A lookup failure usually also produces a separate message with similar text and no details.
+	Details *[]Architectjobmessagedetail `json:"details,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -98,6 +101,8 @@ func (o Architectjobmessage) MarshalJSON() ([]byte, error) {
 		VarType *string `json:"type,omitempty"`
 		
 		Text *string `json:"text,omitempty"`
+		
+		Details *[]Architectjobmessagedetail `json:"details,omitempty"`
 		Alias
 	}{ 
 		DateTime: DateTime,
@@ -105,6 +110,8 @@ func (o Architectjobmessage) MarshalJSON() ([]byte, error) {
 		VarType: o.VarType,
 		
 		Text: o.Text,
+		
+		Details: o.Details,
 		Alias:    (Alias)(o),
 	})
 }
@@ -129,6 +136,11 @@ func (o *Architectjobmessage) UnmarshalJSON(b []byte) error {
 		o.Text = &Text
 	}
     
+	if Details, ok := ArchitectjobmessageMap["details"].([]interface{}); ok {
+		DetailsString, _ := json.Marshal(Details)
+		json.Unmarshal(DetailsString, &o.Details)
+	}
+	
 
 	return nil
 }

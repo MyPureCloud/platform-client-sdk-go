@@ -24,6 +24,9 @@ type Conversationsummarytopicvirtualagentsconversationsummaryevent struct {
 	// CommunicationIds
 	CommunicationIds *[]string `json:"communicationIds,omitempty"`
 
+	// LatestCommunicationId
+	LatestCommunicationId *string `json:"latestCommunicationId,omitempty"`
+
 	// CreatedDate
 	CreatedDate *time.Time `json:"createdDate,omitempty"`
 
@@ -161,6 +164,8 @@ func (o Conversationsummarytopicvirtualagentsconversationsummaryevent) MarshalJS
 		
 		CommunicationIds *[]string `json:"communicationIds,omitempty"`
 		
+		LatestCommunicationId *string `json:"latestCommunicationId,omitempty"`
+		
 		CreatedDate *string `json:"createdDate,omitempty"`
 		
 		MessageType *string `json:"messageType,omitempty"`
@@ -207,6 +212,8 @@ func (o Conversationsummarytopicvirtualagentsconversationsummaryevent) MarshalJS
 		Participants: o.Participants,
 		
 		CommunicationIds: o.CommunicationIds,
+		
+		LatestCommunicationId: o.LatestCommunicationId,
 		
 		CreatedDate: CreatedDate,
 		
@@ -274,6 +281,10 @@ func (o *Conversationsummarytopicvirtualagentsconversationsummaryevent) Unmarsha
 		json.Unmarshal(CommunicationIdsString, &o.CommunicationIds)
 	}
 	
+	if LatestCommunicationId, ok := ConversationsummarytopicvirtualagentsconversationsummaryeventMap["latestCommunicationId"].(string); ok {
+		o.LatestCommunicationId = &LatestCommunicationId
+	}
+    
 	if createdDateString, ok := ConversationsummarytopicvirtualagentsconversationsummaryeventMap["createdDate"].(string); ok {
 		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
 		o.CreatedDate = &CreatedDate

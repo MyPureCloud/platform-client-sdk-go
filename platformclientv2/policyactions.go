@@ -41,9 +41,6 @@ type Policyactions struct {
 	// InitiateScreenRecording
 	InitiateScreenRecording *Initiatescreenrecording `json:"initiateScreenRecording,omitempty"`
 
-	// MediaTranscriptions - Deprecated. The Voci and Call Journey transcription integrations are no longer supported.
-	MediaTranscriptions *[]Mediatranscription `json:"mediaTranscriptions,omitempty"`
-
 	// IntegrationExport - Policy action for exporting recordings using an integration to 3rd party s3.
 	IntegrationExport *Integrationexport `json:"integrationExport,omitempty"`
 }
@@ -131,8 +128,6 @@ func (o Policyactions) MarshalJSON() ([]byte, error) {
 		
 		InitiateScreenRecording *Initiatescreenrecording `json:"initiateScreenRecording,omitempty"`
 		
-		MediaTranscriptions *[]Mediatranscription `json:"mediaTranscriptions,omitempty"`
-		
 		IntegrationExport *Integrationexport `json:"integrationExport,omitempty"`
 		Alias
 	}{ 
@@ -155,8 +150,6 @@ func (o Policyactions) MarshalJSON() ([]byte, error) {
 		RetentionDuration: o.RetentionDuration,
 		
 		InitiateScreenRecording: o.InitiateScreenRecording,
-		
-		MediaTranscriptions: o.MediaTranscriptions,
 		
 		IntegrationExport: o.IntegrationExport,
 		Alias:    (Alias)(o),
@@ -215,11 +208,6 @@ func (o *Policyactions) UnmarshalJSON(b []byte) error {
 	if InitiateScreenRecording, ok := PolicyactionsMap["initiateScreenRecording"].(map[string]interface{}); ok {
 		InitiateScreenRecordingString, _ := json.Marshal(InitiateScreenRecording)
 		json.Unmarshal(InitiateScreenRecordingString, &o.InitiateScreenRecording)
-	}
-	
-	if MediaTranscriptions, ok := PolicyactionsMap["mediaTranscriptions"].([]interface{}); ok {
-		MediaTranscriptionsString, _ := json.Marshal(MediaTranscriptions)
-		json.Unmarshal(MediaTranscriptionsString, &o.MediaTranscriptions)
 	}
 	
 	if IntegrationExport, ok := PolicyactionsMap["integrationExport"].(map[string]interface{}); ok {

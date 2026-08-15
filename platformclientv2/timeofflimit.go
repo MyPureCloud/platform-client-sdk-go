@@ -14,13 +14,13 @@ type Timeofflimit struct {
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
-	// Granularity - Granularity choice for the time off limit
+	// Granularity - Deprecated. Granularity choice for the time off limit
 	Granularity *string `json:"granularity,omitempty"`
 
-	// DefaultLimitMinutes - The default time off limit value in minutes per granularity interval
+	// DefaultLimitMinutes - Deprecated. The default time off limit value in minutes per granularity interval
 	DefaultLimitMinutes *int `json:"defaultLimitMinutes,omitempty"`
 
-	// Metadata - Version metadata for the time off limit
+	// Metadata - Deprecated. Version metadata for the time off limit
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 
 	// SelfUri - The URI for this object

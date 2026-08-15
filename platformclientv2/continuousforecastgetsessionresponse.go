@@ -20,9 +20,6 @@ type Continuousforecastgetsessionresponse struct {
 	// State - State of the latest session
 	State *string `json:"state,omitempty"`
 
-	// ForecastDataState - State of the forecast data
-	ForecastDataState *string `json:"forecastDataState,omitempty"`
-
 	// ErrorCode - Failed session error code
 	ErrorCode *string `json:"errorCode,omitempty"`
 }
@@ -96,8 +93,6 @@ func (o Continuousforecastgetsessionresponse) MarshalJSON() ([]byte, error) {
 		
 		State *string `json:"state,omitempty"`
 		
-		ForecastDataState *string `json:"forecastDataState,omitempty"`
-		
 		ErrorCode *string `json:"errorCode,omitempty"`
 		Alias
 	}{ 
@@ -106,8 +101,6 @@ func (o Continuousforecastgetsessionresponse) MarshalJSON() ([]byte, error) {
 		LastSuccessfulSessionId: o.LastSuccessfulSessionId,
 		
 		State: o.State,
-		
-		ForecastDataState: o.ForecastDataState,
 		
 		ErrorCode: o.ErrorCode,
 		Alias:    (Alias)(o),
@@ -131,10 +124,6 @@ func (o *Continuousforecastgetsessionresponse) UnmarshalJSON(b []byte) error {
     
 	if State, ok := ContinuousforecastgetsessionresponseMap["state"].(string); ok {
 		o.State = &State
-	}
-    
-	if ForecastDataState, ok := ContinuousforecastgetsessionresponseMap["forecastDataState"].(string); ok {
-		o.ForecastDataState = &ForecastDataState
 	}
     
 	if ErrorCode, ok := ContinuousforecastgetsessionresponseMap["errorCode"].(string); ok {

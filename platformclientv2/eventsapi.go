@@ -116,8 +116,6 @@ func (a EventsApi) PostEventsConversations(body Batchconversationeventrequest) (
 // PostEventsRoutingCustomkpiattributions invokes POST /api/v2/events/routing/customkpiattributions
 //
 // Publish Predictive Routing Custom Kpi Attribution Batch Events
-//
-// Preview: PostEventsRoutingCustomkpiattributions is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a EventsApi) PostEventsRoutingCustomkpiattributions(body Batchpredictiveroutingcustomkpiattributioneventrequest) (*Batcheventresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

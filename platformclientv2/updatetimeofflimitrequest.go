@@ -11,10 +11,10 @@ import (
 type Updatetimeofflimitrequest struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// DefaultLimitMinutes - The default time off limit value in minutes per granularity
+	// DefaultLimitMinutes - Deprecated. The default time off limit value in minutes per granularity
 	DefaultLimitMinutes *int `json:"defaultLimitMinutes,omitempty"`
 
-	// Metadata - Version metadata for the time off limit
+	// Metadata - Deprecated. Version metadata for the time off limit
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 }
 

@@ -72,6 +72,9 @@ type Case struct {
 	// TtlSeconds - The time-to-live in seconds for the lifetime of the Case.
 	TtlSeconds *int `json:"ttlSeconds,omitempty"`
 
+	// FailureReason - The reason the Case failed, if applicable.
+	FailureReason *Failurereason `json:"failureReason,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -219,6 +222,8 @@ func (o Case) MarshalJSON() ([]byte, error) {
 		
 		TtlSeconds *int `json:"ttlSeconds,omitempty"`
 		
+		FailureReason *Failurereason `json:"failureReason,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -261,6 +266,8 @@ func (o Case) MarshalJSON() ([]byte, error) {
 		CreationStatus: o.CreationStatus,
 		
 		TtlSeconds: o.TtlSeconds,
+		
+		FailureReason: o.FailureReason,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -365,6 +372,11 @@ func (o *Case) UnmarshalJSON(b []byte) error {
 	if TtlSeconds, ok := CaseMap["ttlSeconds"].(float64); ok {
 		TtlSecondsInt := int(TtlSeconds)
 		o.TtlSeconds = &TtlSecondsInt
+	}
+	
+	if FailureReason, ok := CaseMap["failureReason"].(map[string]interface{}); ok {
+		FailureReasonString, _ := json.Marshal(FailureReason)
+		json.Unmarshal(FailureReasonString, &o.FailureReason)
 	}
 	
 	if SelfUri, ok := CaseMap["selfUri"].(string); ok {
