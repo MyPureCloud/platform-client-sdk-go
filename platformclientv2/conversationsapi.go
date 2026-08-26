@@ -7223,7 +7223,7 @@ func (a ConversationsApi) GetConversationsMessageCommunicationMessagesMediaMedia
 // GetConversationsMessageDetails invokes GET /api/v2/conversations/messages/{messageId}/details
 //
 // Get message
-func (a ConversationsApi) GetConversationsMessageDetails(messageId string, useNormalizedMessage bool) (*Messagedata, *APIResponse, error) {
+func (a ConversationsApi) GetConversationsMessageDetails(messageId string) (*Messagedata, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messages/{messageId}/details"
@@ -7255,8 +7255,6 @@ func (a ConversationsApi) GetConversationsMessageDetails(messageId string, useNo
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["useNormalizedMessage"] = a.Configuration.APIClient.ParameterToString(useNormalizedMessage, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -7307,7 +7305,7 @@ func (a ConversationsApi) GetConversationsMessageDetails(messageId string, useNo
 // GetConversationsMessageMessage invokes GET /api/v2/conversations/messages/{conversationId}/messages/{messageId}
 //
 // Get conversation message
-func (a ConversationsApi) GetConversationsMessageMessage(conversationId string, messageId string, useNormalizedMessage bool) (*Messagedata, *APIResponse, error) {
+func (a ConversationsApi) GetConversationsMessageMessage(conversationId string, messageId string) (*Messagedata, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messages/{conversationId}/messages/{messageId}"
@@ -7345,8 +7343,6 @@ func (a ConversationsApi) GetConversationsMessageMessage(conversationId string, 
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["useNormalizedMessage"] = a.Configuration.APIClient.ParameterToString(useNormalizedMessage, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -21871,7 +21867,7 @@ func (a ConversationsApi) PostConversationsKeyconfigurationsValidate(body Conver
 // Send message
 //
 // Send message on existing conversation/communication. Only one message body field can be accepted, per request. Example: 1 textBody, 1 mediaId, or 1 messageTemplate.
-func (a ConversationsApi) PostConversationsMessageCommunicationMessages(conversationId string, communicationId string, body Additionalmessage, useNormalizedMessage bool) (*Messagedata, *APIResponse, error) {
+func (a ConversationsApi) PostConversationsMessageCommunicationMessages(conversationId string, communicationId string, body Additionalmessage) (*Messagedata, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messages/{conversationId}/communications/{communicationId}/messages"
@@ -21914,8 +21910,6 @@ func (a ConversationsApi) PostConversationsMessageCommunicationMessages(conversa
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["useNormalizedMessage"] = a.Configuration.APIClient.ParameterToString(useNormalizedMessage, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -22720,7 +22714,7 @@ func (a ConversationsApi) PostConversationsMessageInboundOpenStructuredResponse(
 // Get messages in batch
 //
 // The path parameter [conversationId] should contain the conversationId of the conversation being filtered. The body should contain the messageId(s) of messages being requested. For example: [\&quot;a3069a33b-bbb1-4703-9d68-061d9e9db96e\&quot;, \&quot;55bc6be3-078c-4a49-a4e6-1e05776ed7e8\&quot;]. The max messages you can request in the body is 1,000. Best practice is to limit to only the messages you need in each request, rather than request large batches by default.
-func (a ConversationsApi) PostConversationsMessageMessagesBulk(conversationId string, useNormalizedMessage bool, body []string) (*Textmessagelisting, *APIResponse, error) {
+func (a ConversationsApi) PostConversationsMessageMessagesBulk(conversationId string, body []string) (*Textmessagelisting, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messages/{conversationId}/messages/bulk"
@@ -22752,8 +22746,6 @@ func (a ConversationsApi) PostConversationsMessageMessagesBulk(conversationId st
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["useNormalizedMessage"] = a.Configuration.APIClient.ParameterToString(useNormalizedMessage, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -23252,7 +23244,7 @@ func (a ConversationsApi) PostConversationsMessages(body Createoutboundmessaging
 // Send an agentless outbound message
 //
 // Send an agentless (api participant) outbound message using a client credential grant. In order to call this endpoint you will need OAuth token generated using OAuth client credentials authorized with at least messaging scope. If there is already a connected conversation between the &#39;fromAddress&#39; and recipient specified, the &#39;useExistingActiveConversation&#39; param can be used to barge in to the ongoing conversation.
-func (a ConversationsApi) PostConversationsMessagesAgentless(body Sendagentlessoutboundmessagerequest, useNormalizedMessage bool) (*Sendagentlessoutboundmessageresponse, *APIResponse, error) {
+func (a ConversationsApi) PostConversationsMessagesAgentless(body Sendagentlessoutboundmessagerequest) (*Sendagentlessoutboundmessageresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messages/agentless"
@@ -23283,8 +23275,6 @@ func (a ConversationsApi) PostConversationsMessagesAgentless(body Sendagentlesso
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["useNormalizedMessage"] = a.Configuration.APIClient.ParameterToString(useNormalizedMessage, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

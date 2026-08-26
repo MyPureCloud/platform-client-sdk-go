@@ -17,6 +17,9 @@ type Suggestioncontext struct {
 	// MediaType - The media type of the conversation in which the suggestion event was raised.
 	MediaType *string `json:"mediaType,omitempty"`
 
+	// ParticipantType - The type of the participant whose turn triggered the suggestion.
+	ParticipantType *string `json:"participantType,omitempty"`
+
 	// User - The agent participant who received the raised suggestion, if any.
 	User *Userreference `json:"user,omitempty"`
 
@@ -100,6 +103,8 @@ func (o Suggestioncontext) MarshalJSON() ([]byte, error) {
 		
 		MediaType *string `json:"mediaType,omitempty"`
 		
+		ParticipantType *string `json:"participantType,omitempty"`
+		
 		User *Userreference `json:"user,omitempty"`
 		
 		ExternalContact *Addressableentityref `json:"externalContact,omitempty"`
@@ -114,6 +119,8 @@ func (o Suggestioncontext) MarshalJSON() ([]byte, error) {
 		Queue: o.Queue,
 		
 		MediaType: o.MediaType,
+		
+		ParticipantType: o.ParticipantType,
 		
 		User: o.User,
 		
@@ -142,6 +149,10 @@ func (o *Suggestioncontext) UnmarshalJSON(b []byte) error {
 	
 	if MediaType, ok := SuggestioncontextMap["mediaType"].(string); ok {
 		o.MediaType = &MediaType
+	}
+    
+	if ParticipantType, ok := SuggestioncontextMap["participantType"].(string); ok {
+		o.ParticipantType = &ParticipantType
 	}
     
 	if User, ok := SuggestioncontextMap["user"].(map[string]interface{}); ok {

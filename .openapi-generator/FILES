@@ -86,6 +86,7 @@ docs/DeleteBusinessrulesDecisiontableExport-example.txt
 docs/DeleteBusinessrulesDecisiontableImport-example.txt
 docs/DeleteBusinessrulesDecisiontableVersion-example.txt
 docs/DeleteBusinessrulesDecisiontableVersionRow-example.txt
+docs/DeleteBusinessrulesDecisiontableVersionSnapshot-example.txt
 docs/DeleteBusinessrulesSchema-example.txt
 docs/DeleteCasemanagementCase-example.txt
 docs/DeleteCasemanagementCaseCommentsMeCommentId-example.txt
@@ -607,6 +608,8 @@ docs/GetBusinessrulesDecisiontableVersions-example.txt
 docs/GetBusinessrulesDecisiontables-example.txt
 docs/GetBusinessrulesDecisiontablesSearch-example.txt
 docs/GetBusinessrulesSchema-example.txt
+docs/GetBusinessrulesSchemaVersion-example.txt
+docs/GetBusinessrulesSchemaVersions-example.txt
 docs/GetBusinessrulesSchemas-example.txt
 docs/GetBusinessrulesSchemasCoretype-example.txt
 docs/GetBusinessrulesSchemasCoretypes-example.txt
@@ -837,6 +840,14 @@ docs/GetExternalcontactsContactsSchemasCoretypes-example.txt
 docs/GetExternalcontactsContactsSchemasLimits-example.txt
 docs/GetExternalcontactsExternalsource-example.txt
 docs/GetExternalcontactsExternalsources-example.txt
+docs/GetExternalcontactsGraphsClusterscan-example.txt
+docs/GetExternalcontactsGraphsClusterscanCluster-example.txt
+docs/GetExternalcontactsGraphsClusterscanClusters-example.txt
+docs/GetExternalcontactsGraphsClusterscanStatistics-example.txt
+docs/GetExternalcontactsGraphsClusterscans-example.txt
+docs/GetExternalcontactsGraphsClusterscansLatest-example.txt
+docs/GetExternalcontactsGraphsClusterscansLatestStatistics-example.txt
+docs/GetExternalcontactsGraphsSettings-example.txt
 docs/GetExternalcontactsImportCsvSetting-example.txt
 docs/GetExternalcontactsImportCsvSettings-example.txt
 docs/GetExternalcontactsImportCsvUploadDetails-example.txt
@@ -879,6 +890,7 @@ docs/GetExternalcontactsSettings-example.txt
 docs/GetFaxDocument-example.txt
 docs/GetFaxDocumentContent-example.txt
 docs/GetFaxDocuments-example.txt
+docs/GetFaxFaxIdStatus-example.txt
 docs/GetFaxSettings-example.txt
 docs/GetFaxSummary-example.txt
 docs/GetFieldconfig-example.txt
@@ -1666,6 +1678,8 @@ docs/GetTelephonyMediaregions-example.txt
 docs/GetTelephonyNumbersRouting-example.txt
 docs/GetTelephonyOrganizationLink-example.txt
 docs/GetTelephonyOrganizationLinkRegions-example.txt
+docs/GetTelephonyPrefixes-example.txt
+docs/GetTelephonyPrefixesSimulateCall-example.txt
 docs/GetTelephonyProvidersEdge-example.txt
 docs/GetTelephonyProvidersEdgeDiagnosticNslookup-example.txt
 docs/GetTelephonyProvidersEdgeDiagnosticPing-example.txt
@@ -1734,6 +1748,7 @@ docs/GetTelephonyProvidersEdgesTrunkMetrics-example.txt
 docs/GetTelephonyProvidersEdgesTrunkbasesetting-example.txt
 docs/GetTelephonyProvidersEdgesTrunkbasesettings-example.txt
 docs/GetTelephonyProvidersEdgesTrunkbasesettingsAvailablemetabases-example.txt
+docs/GetTelephonyProvidersEdgesTrunkbasesettingsSiteSiteId-example.txt
 docs/GetTelephonyProvidersEdgesTrunkbasesettingsTemplate-example.txt
 docs/GetTelephonyProvidersEdgesTrunks-example.txt
 docs/GetTelephonyProvidersEdgesTrunksMetrics-example.txt
@@ -2422,11 +2437,13 @@ docs/PostBusinessrulesDecisiontableExports-example.txt
 docs/PostBusinessrulesDecisiontableImports-example.txt
 docs/PostBusinessrulesDecisiontableVersionCopy-example.txt
 docs/PostBusinessrulesDecisiontableVersionExecute-example.txt
+docs/PostBusinessrulesDecisiontableVersionRollback-example.txt
 docs/PostBusinessrulesDecisiontableVersionRows-example.txt
 docs/PostBusinessrulesDecisiontableVersionRowsBulkAdd-example.txt
 docs/PostBusinessrulesDecisiontableVersionRowsBulkRemove-example.txt
 docs/PostBusinessrulesDecisiontableVersionRowsBulkUpdate-example.txt
 docs/PostBusinessrulesDecisiontableVersionRowsSearch-example.txt
+docs/PostBusinessrulesDecisiontableVersionSnapshot-example.txt
 docs/PostBusinessrulesDecisiontableVersionSync-example.txt
 docs/PostBusinessrulesDecisiontableVersions-example.txt
 docs/PostBusinessrulesDecisiontables-example.txt
@@ -3000,6 +3017,7 @@ docs/PostTelephonyNumbersRouting-example.txt
 docs/PostTelephonyNumbersRoutingAll-example.txt
 docs/PostTelephonyNumbersRoutingReset-example.txt
 docs/PostTelephonyOrganizationLink-example.txt
+docs/PostTelephonyPrefixesBulk-example.txt
 docs/PostTelephonyProvidersEdgeDiagnosticNslookup-example.txt
 docs/PostTelephonyProvidersEdgeDiagnosticPing-example.txt
 docs/PostTelephonyProvidersEdgeDiagnosticRoute-example.txt
@@ -3007,6 +3025,7 @@ docs/PostTelephonyProvidersEdgeDiagnosticTracepath-example.txt
 docs/PostTelephonyProvidersEdgeLogicalinterfaces-example.txt
 docs/PostTelephonyProvidersEdgeLogsJobUpload-example.txt
 docs/PostTelephonyProvidersEdgeLogsJobs-example.txt
+docs/PostTelephonyProvidersEdgeOfflineconfiguration-example.txt
 docs/PostTelephonyProvidersEdgeReboot-example.txt
 docs/PostTelephonyProvidersEdgeSoftwareupdate-example.txt
 docs/PostTelephonyProvidersEdgeStatuscode-example.txt
@@ -3026,6 +3045,8 @@ docs/PostTelephonyProvidersEdgesSites-example.txt
 docs/PostTelephonyProvidersEdgesSitesSearch-example.txt
 docs/PostTelephonyProvidersEdgesSitesSearch-example.txt
 docs/PostTelephonyProvidersEdgesTrunkbasesettings-example.txt
+docs/PostTelephonyProvidersEdgesTrunkbasesettingsSearch-example.txt
+docs/PostTelephonyProvidersEdgesTrunksSearch-example.txt
 docs/PostTelephonySiptracesDownload-example.txt
 docs/PostTextbotsBotflowsSessionTurns-example.txt
 docs/PostTextbotsBotflowsSessions-example.txt
@@ -3280,6 +3301,8 @@ docs/PutExternalcontactsContactNote-example.txt
 docs/PutExternalcontactsContactsSchema-example.txt
 docs/PutExternalcontactsConversation-example.txt
 docs/PutExternalcontactsExternalsource-example.txt
+docs/PutExternalcontactsGraphsClusterscanClusterMerge-example.txt
+docs/PutExternalcontactsGraphsSettings-example.txt
 docs/PutExternalcontactsImportCsvSetting-example.txt
 docs/PutExternalcontactsImportJob-example.txt
 docs/PutExternalcontactsImportSetting-example.txt
@@ -4204,6 +4227,7 @@ platformclientv2/bulkentityerrorexternalcontact.go
 platformclientv2/bulkentityerrorexternalorganization.go
 platformclientv2/bulkentityerrorexternalorganizationenrichrequest.go
 platformclientv2/bulkentityerrornote.go
+platformclientv2/bulkentityerrorprefix.go
 platformclientv2/bulkentityerrorrelationship.go
 platformclientv2/bulkerror.go
 platformclientv2/bulkerrordetail.go
@@ -4239,6 +4263,8 @@ platformclientv2/bulkorganizationsenrichrequest.go
 platformclientv2/bulkorganizationsenrichresponse.go
 platformclientv2/bulkorganizationsrequest.go
 platformclientv2/bulkorganizationsresponse.go
+platformclientv2/bulkprefixesrequest.go
+platformclientv2/bulkprefixesresponse.go
 platformclientv2/bulkpublishopportunitiesresponse.go
 platformclientv2/bulkrelationshipsrequest.go
 platformclientv2/bulkrelationshipsresponse.go
@@ -4254,6 +4280,7 @@ platformclientv2/bulkresponseresultexternalorganizationexternalorganizationbulke
 platformclientv2/bulkresponseresultexternalorganizationexternalorganizationenrichrequestbulkentityerrorexternalorganizationenrichrequest.go
 platformclientv2/bulkresponseresultnoteentitybulkentityerrorentity.go
 platformclientv2/bulkresponseresultnotenotebulkentityerrornote.go
+platformclientv2/bulkresponseresultprefixprefixbulkentityerrorprefix.go
 platformclientv2/bulkresponseresultrelationshipentitybulkentityerrorentity.go
 platformclientv2/bulkresponseresultrelationshiprelationshipbulkentityerrorrelationship.go
 platformclientv2/bulkresponseresultvoidentitybulkentityerrorentity.go
@@ -4378,6 +4405,7 @@ platformclientv2/callmediapolicyconditions.go
 platformclientv2/callmessage.go
 platformclientv2/callrecord.go
 platformclientv2/callroute.go
+platformclientv2/callsimulationresult.go
 platformclientv2/calltarget.go
 platformclientv2/calltoaction.go
 platformclientv2/campaign.go
@@ -4440,6 +4468,8 @@ platformclientv2/capacityplandeleterequest.go
 platformclientv2/capacityplanforecastinputsresponse.go
 platformclientv2/capacityplanforecastinputstemplate.go
 platformclientv2/capacityplanforecastmetrics.go
+platformclientv2/capacityplanimportedforecast.go
+platformclientv2/capacityplanimportedforecastrequest.go
 platformclientv2/capacityplanlistitem.go
 platformclientv2/capacityplanmetadata.go
 platformclientv2/capacityplanmetricssummary.go
@@ -4568,6 +4598,12 @@ platformclientv2/clientusagequeryresponse.go
 platformclientv2/cloneduser.go
 platformclientv2/cloneduserentitylisting.go
 platformclientv2/closebuttonstyleproperties.go
+platformclientv2/cluster.go
+platformclientv2/clusterlist.go
+platformclientv2/clusterscan.go
+platformclientv2/clusterscanlist.go
+platformclientv2/clusterscanstatistics.go
+platformclientv2/clusterstatistics.go
 platformclientv2/coachingannotation.go
 platformclientv2/coachingannotationcreaterequest.go
 platformclientv2/coachingannotationlist.go
@@ -4733,6 +4769,7 @@ platformclientv2/contactsexportqueryconditions.go
 platformclientv2/contactsexportrequest.go
 platformclientv2/contactsort.go
 platformclientv2/contactspatchchange.go
+platformclientv2/contactvertex.go
 platformclientv2/contentactions.go
 platformclientv2/contentbuttonresponse.go
 platformclientv2/contentcard.go
@@ -5270,6 +5307,7 @@ platformclientv2/copilotfallbackaction.go
 platformclientv2/copilotnludomain.go
 platformclientv2/copilotnludomainversion.go
 platformclientv2/copilotrule.go
+platformclientv2/copilotsentimentsettings.go
 platformclientv2/copilottranscriptionconfig.go
 platformclientv2/copyattachmentsrequest.go
 platformclientv2/copybuforecastrequest.go
@@ -5304,6 +5342,7 @@ platformclientv2/createdecisiontablecolumnsrequest.go
 platformclientv2/createdecisiontableimportjobrequest.go
 platformclientv2/createdecisiontablerequest.go
 platformclientv2/createdecisiontablerowrequest.go
+platformclientv2/createdecisiontablesnapshotrequest.go
 platformclientv2/createdecisiontableversionrequest.go
 platformclientv2/createemailrequest.go
 platformclientv2/createexternaleventsconfigurationrequest.go
@@ -5847,6 +5886,10 @@ platformclientv2/edgemetricstopicurireference.go
 platformclientv2/edgenetworkdiagnostic.go
 platformclientv2/edgenetworkdiagnosticrequest.go
 platformclientv2/edgenetworkdiagnosticresponse.go
+platformclientv2/edgeofflineconfiguration.go
+platformclientv2/edgeofflineconfigurationinterface.go
+platformclientv2/edgeofflineconfigurationnetwork.go
+platformclientv2/edgeofflineconfigurationresponse.go
 platformclientv2/edgerebootparameters.go
 platformclientv2/edgeservicestaterequest.go
 platformclientv2/edgesoftwareupdatetopicdomainedgesoftwareupdate.go
@@ -6400,7 +6443,11 @@ platformclientv2/grammarlanguage.go
 platformclientv2/grammarlanguagefilemetadata.go
 platformclientv2/grammarlanguageupdate.go
 platformclientv2/grammarlisting.go
+platformclientv2/graph.go
 platformclientv2/graphapisettings.go
+platformclientv2/graphedge.go
+platformclientv2/graphsettings.go
+platformclientv2/graphvertices.go
 platformclientv2/greeting.go
 platformclientv2/greetingaudiofile.go
 platformclientv2/greetinglisting.go
@@ -6486,6 +6533,7 @@ platformclientv2/hristimeofftypesresponse.go
 platformclientv2/humanize.go
 platformclientv2/icon.go
 platformclientv2/identifierclaimrequest.go
+platformclientv2/identifiervertex.go
 platformclientv2/identitynow.go
 platformclientv2/identityprovider.go
 platformclientv2/identityproviderapi.go
@@ -7198,6 +7246,8 @@ platformclientv2/memberentity.go
 platformclientv2/membergroup.go
 platformclientv2/memberlisting.go
 platformclientv2/mergecontactsrequest.go
+platformclientv2/mergeerror.go
+platformclientv2/mergeinfo.go
 platformclientv2/mergeoperation.go
 platformclientv2/mergerequest.go
 platformclientv2/message.go
@@ -7509,6 +7559,7 @@ platformclientv2/outbounddomain.go
 platformclientv2/outbounddomaincreaterequest.go
 platformclientv2/outbounddomainentitylisting.go
 platformclientv2/outbounddomainpatchrequest.go
+platformclientv2/outboundfaxstatus.go
 platformclientv2/outboundmessagingcampaignpostcontactemaileventtopicemailattributes.go
 platformclientv2/outboundmessagingcampaignpostcontactemaileventtopicoutboundmessagingcampaignpostcontactemailevent.go
 platformclientv2/outboundmessagingcampaignpostcontactsmseventtopicoutboundmessagingcampaignpostcontactsmsevent.go
@@ -7772,6 +7823,9 @@ platformclientv2/predictormodelretrainingerror.go
 platformclientv2/predictormodels.go
 platformclientv2/predictorschedule.go
 platformclientv2/predictorworkloadbalancing.go
+platformclientv2/prefix.go
+platformclientv2/prefixlisting.go
+platformclientv2/prefixlistingitem.go
 platformclientv2/preprocessingrule.go
 platformclientv2/presenceapi.go
 platformclientv2/presencedefinition.go
@@ -8414,6 +8468,7 @@ platformclientv2/roledivision.go
 platformclientv2/roledivisiongrants.go
 platformclientv2/roledivisionpair.go
 platformclientv2/rolesettings.go
+platformclientv2/rollbackdecisiontableversionrequest.go
 platformclientv2/room.go
 platformclientv2/roomparticipant.go
 platformclientv2/roomparticipantresponse.go
@@ -8996,6 +9051,8 @@ platformclientv2/teamsearchrequest.go
 platformclientv2/teamssearchresponse.go
 platformclientv2/telephonyapi.go
 platformclientv2/telephonyprovidersedgeapi.go
+platformclientv2/telephonysearchcriteria.go
+platformclientv2/telephonysearchrequest.go
 platformclientv2/telephonysettings.go
 platformclientv2/templateparameter.go
 platformclientv2/temporalunit.go
@@ -9154,10 +9211,12 @@ platformclientv2/trunk.go
 platformclientv2/trunkbase.go
 platformclientv2/trunkbaseassignment.go
 platformclientv2/trunkbaseentitylisting.go
+platformclientv2/trunkbasessearchresponse.go
 platformclientv2/trunkconnectedstatus.go
 platformclientv2/trunkentitylisting.go
 platformclientv2/trunkerrorinfo.go
 platformclientv2/trunkerrorinfodetails.go
+platformclientv2/trunkinstancesearchresponse.go
 platformclientv2/trunkinstancetopictrunk.go
 platformclientv2/trunkinstancetopictrunkconnectedstatus.go
 platformclientv2/trunkinstancetopictrunkerrorinfo.go
@@ -9609,6 +9668,7 @@ platformclientv2/validationservicerequest.go
 platformclientv2/valuewrapperactivitycodestyle.go
 platformclientv2/valuewrapperactivityplanservicegoalimpactoverrides.go
 platformclientv2/valuewrapperbushorttermforecastreference.go
+platformclientv2/valuewrappercapacityplanimportedforecastrequest.go
 platformclientv2/valuewrapperdate.go
 platformclientv2/valuewrappergroupsettings.go
 platformclientv2/valuewrapperhristimeofftype.go

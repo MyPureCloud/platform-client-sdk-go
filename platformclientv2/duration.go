@@ -23,6 +23,9 @@ type Duration struct {
 	// Negative
 	Negative *bool `json:"negative,omitempty"`
 
+	// Positive
+	Positive *bool `json:"positive,omitempty"`
+
 	// Units
 	Units *[]Temporalunit `json:"units,omitempty"`
 }
@@ -98,6 +101,8 @@ func (o Duration) MarshalJSON() ([]byte, error) {
 		
 		Negative *bool `json:"negative,omitempty"`
 		
+		Positive *bool `json:"positive,omitempty"`
+		
 		Units *[]Temporalunit `json:"units,omitempty"`
 		Alias
 	}{ 
@@ -108,6 +113,8 @@ func (o Duration) MarshalJSON() ([]byte, error) {
 		Nano: o.Nano,
 		
 		Negative: o.Negative,
+		
+		Positive: o.Positive,
 		
 		Units: o.Units,
 		Alias:    (Alias)(o),
@@ -137,6 +144,10 @@ func (o *Duration) UnmarshalJSON(b []byte) error {
 	
 	if Negative, ok := DurationMap["negative"].(bool); ok {
 		o.Negative = &Negative
+	}
+    
+	if Positive, ok := DurationMap["positive"].(bool); ok {
+		o.Positive = &Positive
 	}
     
 	if Units, ok := DurationMap["units"].([]interface{}); ok {

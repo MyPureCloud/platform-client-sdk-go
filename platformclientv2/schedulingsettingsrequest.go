@@ -28,6 +28,9 @@ type Schedulingsettingsrequest struct {
 
 	// StartDayOfWeekend - Start day of weekend for scheduling
 	StartDayOfWeekend *string `json:"startDayOfWeekend,omitempty"`
+
+	// ScheduleVisibility - Schedule visibility settings for agents
+	ScheduleVisibility *Schedulevisibilitysettingsrequest `json:"scheduleVisibility,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -104,6 +107,8 @@ func (o Schedulingsettingsrequest) MarshalJSON() ([]byte, error) {
 		MonthlyPlanningPeriod *Valuewrappermonthlyplanningperiodsettings `json:"monthlyPlanningPeriod,omitempty"`
 		
 		StartDayOfWeekend *string `json:"startDayOfWeekend,omitempty"`
+		
+		ScheduleVisibility *Schedulevisibilitysettingsrequest `json:"scheduleVisibility,omitempty"`
 		Alias
 	}{ 
 		MaxOccupancyPercentForDeferredWork: o.MaxOccupancyPercentForDeferredWork,
@@ -117,6 +122,8 @@ func (o Schedulingsettingsrequest) MarshalJSON() ([]byte, error) {
 		MonthlyPlanningPeriod: o.MonthlyPlanningPeriod,
 		
 		StartDayOfWeekend: o.StartDayOfWeekend,
+		
+		ScheduleVisibility: o.ScheduleVisibility,
 		Alias:    (Alias)(o),
 	})
 }
@@ -156,6 +163,11 @@ func (o *Schedulingsettingsrequest) UnmarshalJSON(b []byte) error {
 		o.StartDayOfWeekend = &StartDayOfWeekend
 	}
     
+	if ScheduleVisibility, ok := SchedulingsettingsrequestMap["scheduleVisibility"].(map[string]interface{}); ok {
+		ScheduleVisibilityString, _ := json.Marshal(ScheduleVisibility)
+		json.Unmarshal(ScheduleVisibilityString, &o.ScheduleVisibility)
+	}
+	
 
 	return nil
 }

@@ -11,7 +11,7 @@ import (
 type Weekly struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// DownloadUrl - Download URL to fetch the result of weekly time series. This field is populated only if session state is Complete
+	// DownloadUrl - Download URL to fetch the result of weekly time series. This field is populated only if session state is Complete. The downloaded data contains Newline Delimited JSON (NDJSON): one JSON object per line
 	DownloadUrl *string `json:"downloadUrl,omitempty"`
 
 	// DownloadResult - Result will always come via downloadUrls; however the schema is included for documentation

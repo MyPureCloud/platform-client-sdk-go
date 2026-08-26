@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -11,10 +12,16 @@ import (
 type Userstaffinggroupresponse struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
+	// StartDate - Effective start date of the user assignment in ISO-8601 format or empty value. Empty value means no limit on start-date.
+	StartDate *time.Time `json:"startDate,omitempty"`
+
+	// EndDate - Effective end date of the user assignment in ISO-8601 format or empty value. Empty value means no limit on end-date.
+	EndDate *time.Time `json:"endDate,omitempty"`
+
 	// User - The user associated with the staffing group
 	User *Userreference `json:"user,omitempty"`
 
-	// StaffingGroup - The current staffing group of the user
+	// StaffingGroup - The staffing group associated with the user
 	StaffingGroup *Staffinggroupreference `json:"staffingGroup,omitempty"`
 }
 
@@ -49,7 +56,7 @@ func (o Userstaffinggroupresponse) MarshalJSON() ([]byte, error) {
 		// Known field names that require type overrides
 		dateTimeFields := []string{  }
 		localDateTimeFields := []string{  }
-		dateFields := []string{  }
+		dateFields := []string{ "StartDate","EndDate", }
 
 		// Construct object
 		newObj := make(map[string]interface{})
@@ -80,12 +87,34 @@ func (o Userstaffinggroupresponse) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Userstaffinggroupresponse
 	
+	StartDate := new(string)
+	if o.StartDate != nil {
+		*StartDate = timeutil.Strftime(o.StartDate, "%Y-%m-%d")
+	} else {
+		StartDate = nil
+	}
+	
+	EndDate := new(string)
+	if o.EndDate != nil {
+		*EndDate = timeutil.Strftime(o.EndDate, "%Y-%m-%d")
+	} else {
+		EndDate = nil
+	}
+	
 	return json.Marshal(&struct { 
+		StartDate *string `json:"startDate,omitempty"`
+		
+		EndDate *string `json:"endDate,omitempty"`
+		
 		User *Userreference `json:"user,omitempty"`
 		
 		StaffingGroup *Staffinggroupreference `json:"staffingGroup,omitempty"`
 		Alias
 	}{ 
+		StartDate: StartDate,
+		
+		EndDate: EndDate,
+		
 		User: o.User,
 		
 		StaffingGroup: o.StaffingGroup,
@@ -98,6 +127,16 @@ func (o *Userstaffinggroupresponse) UnmarshalJSON(b []byte) error {
 	err := json.Unmarshal(b, &UserstaffinggroupresponseMap)
 	if err != nil {
 		return err
+	}
+	
+	if startDateString, ok := UserstaffinggroupresponseMap["startDate"].(string); ok {
+		StartDate, _ := time.Parse("2006-01-02", startDateString)
+		o.StartDate = &StartDate
+	}
+	
+	if endDateString, ok := UserstaffinggroupresponseMap["endDate"].(string); ok {
+		EndDate, _ := time.Parse("2006-01-02", endDateString)
+		o.EndDate = &EndDate
 	}
 	
 	if User, ok := UserstaffinggroupresponseMap["user"].(map[string]interface{}); ok {

@@ -30,11 +30,11 @@ type Screenmonitoringsession struct {
 	// DateCreated - The date and time when the screen monitoring session was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
-	// ScreenMonitoringId - The unique identifier for this screen monitoring session
-	ScreenMonitoringId *string `json:"screenMonitoringId,omitempty"`
-
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
+
+	// ScreenMonitoringId - The unique identifier for this screen monitoring session
+	ScreenMonitoringId *string `json:"screenMonitoringId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -120,9 +120,9 @@ func (o Screenmonitoringsession) MarshalJSON() ([]byte, error) {
 		
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
-		ScreenMonitoringId *string `json:"screenMonitoringId,omitempty"`
-		
 		SelfUri *string `json:"selfUri,omitempty"`
+		
+		ScreenMonitoringId *string `json:"screenMonitoringId,omitempty"`
 		Alias
 	}{ 
 		SourceUser: o.SourceUser,
@@ -137,9 +137,9 @@ func (o Screenmonitoringsession) MarshalJSON() ([]byte, error) {
 		
 		DateCreated: DateCreated,
 		
-		ScreenMonitoringId: o.ScreenMonitoringId,
-		
 		SelfUri: o.SelfUri,
+		
+		ScreenMonitoringId: o.ScreenMonitoringId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -179,12 +179,12 @@ func (o *Screenmonitoringsession) UnmarshalJSON(b []byte) error {
 		o.DateCreated = &DateCreated
 	}
 	
-	if ScreenMonitoringId, ok := ScreenmonitoringsessionMap["screenMonitoringId"].(string); ok {
-		o.ScreenMonitoringId = &ScreenMonitoringId
-	}
-    
 	if SelfUri, ok := ScreenmonitoringsessionMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
+	}
+    
+	if ScreenMonitoringId, ok := ScreenmonitoringsessionMap["screenMonitoringId"].(string); ok {
+		o.ScreenMonitoringId = &ScreenMonitoringId
 	}
     
 

@@ -11,7 +11,7 @@ import (
 type Quarterhourly struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// DownloadUrls - List of download URLs to fetch the result of quarter hour time series. This field is populated only if session state is Complete
+	// DownloadUrls - List of download URLs to fetch the result of quarter hour time series. This field is populated only if session state is Complete. The downloaded data contains Newline Delimited JSON (NDJSON): one JSON object per line
 	DownloadUrls *[]string `json:"downloadUrls,omitempty"`
 
 	// DownloadResult - Result will always come via downloadUrls; however the schema is included for documentation

@@ -14,11 +14,11 @@ type Nludetectionresponse struct {
 	// Version - The NLU domain version which performed the detection.
 	Version *Nludomainversion `json:"version,omitempty"`
 
-	// Output
-	Output *Nludetectionoutput `json:"output,omitempty"`
-
 	// Input
 	Input *Nludetectioninput `json:"input,omitempty"`
+
+	// Output
+	Output *Nludetectionoutput `json:"output,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -86,16 +86,16 @@ func (o Nludetectionresponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Version *Nludomainversion `json:"version,omitempty"`
 		
-		Output *Nludetectionoutput `json:"output,omitempty"`
-		
 		Input *Nludetectioninput `json:"input,omitempty"`
+		
+		Output *Nludetectionoutput `json:"output,omitempty"`
 		Alias
 	}{ 
 		Version: o.Version,
 		
-		Output: o.Output,
-		
 		Input: o.Input,
+		
+		Output: o.Output,
 		Alias:    (Alias)(o),
 	})
 }
@@ -112,14 +112,14 @@ func (o *Nludetectionresponse) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(VersionString, &o.Version)
 	}
 	
-	if Output, ok := NludetectionresponseMap["output"].(map[string]interface{}); ok {
-		OutputString, _ := json.Marshal(Output)
-		json.Unmarshal(OutputString, &o.Output)
-	}
-	
 	if Input, ok := NludetectionresponseMap["input"].(map[string]interface{}); ok {
 		InputString, _ := json.Marshal(Input)
 		json.Unmarshal(InputString, &o.Input)
+	}
+	
+	if Output, ok := NludetectionresponseMap["output"].(map[string]interface{}); ok {
+		OutputString, _ := json.Marshal(Output)
+		json.Unmarshal(OutputString, &o.Output)
 	}
 	
 

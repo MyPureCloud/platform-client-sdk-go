@@ -27,11 +27,11 @@ type Domainedgesoftwareversiondto struct {
 	// EdgeUri
 	EdgeUri *string `json:"edgeUri,omitempty"`
 
-	// LatestRelease
-	LatestRelease *bool `json:"latestRelease,omitempty"`
-
 	// Current
 	Current *bool `json:"current,omitempty"`
+
+	// LatestRelease
+	LatestRelease *bool `json:"latestRelease,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -118,9 +118,9 @@ func (o Domainedgesoftwareversiondto) MarshalJSON() ([]byte, error) {
 		
 		EdgeUri *string `json:"edgeUri,omitempty"`
 		
-		LatestRelease *bool `json:"latestRelease,omitempty"`
-		
 		Current *bool `json:"current,omitempty"`
+		
+		LatestRelease *bool `json:"latestRelease,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
@@ -135,9 +135,9 @@ func (o Domainedgesoftwareversiondto) MarshalJSON() ([]byte, error) {
 		
 		EdgeUri: o.EdgeUri,
 		
-		LatestRelease: o.LatestRelease,
-		
 		Current: o.Current,
+		
+		LatestRelease: o.LatestRelease,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -172,12 +172,12 @@ func (o *Domainedgesoftwareversiondto) UnmarshalJSON(b []byte) error {
 		o.EdgeUri = &EdgeUri
 	}
     
-	if LatestRelease, ok := DomainedgesoftwareversiondtoMap["latestRelease"].(bool); ok {
-		o.LatestRelease = &LatestRelease
-	}
-    
 	if Current, ok := DomainedgesoftwareversiondtoMap["current"].(bool); ok {
 		o.Current = &Current
+	}
+    
+	if LatestRelease, ok := DomainedgesoftwareversiondtoMap["latestRelease"].(bool); ok {
+		o.LatestRelease = &LatestRelease
 	}
     
 	if SelfUri, ok := DomainedgesoftwareversiondtoMap["selfUri"].(string); ok {

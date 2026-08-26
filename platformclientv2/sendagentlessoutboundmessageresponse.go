@@ -27,12 +27,6 @@ type Sendagentlessoutboundmessageresponse struct {
 	// MessengerType - Type of messenger.
 	MessengerType *string `json:"messengerType,omitempty"`
 
-	// TextBody - The body of the text message. (Deprecated - Instead use message.normalizedMessage.text)
-	TextBody *string `json:"textBody,omitempty"`
-
-	// MessagingTemplate - The messaging template sent. (Deprecated - Instead use message.normalizedMessage.content[#].template)
-	MessagingTemplate *Sendmessagingtemplaterequest `json:"messagingTemplate,omitempty"`
-
 	// UseExistingActiveConversation - Use an existing active conversation to send the agentless outbound message. Set this parameter to 'true' to use active conversation. Default value: false
 	UseExistingActiveConversation *bool `json:"useExistingActiveConversation,omitempty"`
 
@@ -130,10 +124,6 @@ func (o Sendagentlessoutboundmessageresponse) MarshalJSON() ([]byte, error) {
 		
 		MessengerType *string `json:"messengerType,omitempty"`
 		
-		TextBody *string `json:"textBody,omitempty"`
-		
-		MessagingTemplate *Sendmessagingtemplaterequest `json:"messagingTemplate,omitempty"`
-		
 		UseExistingActiveConversation *bool `json:"useExistingActiveConversation,omitempty"`
 		
 		Message *Messagedata `json:"message,omitempty"`
@@ -154,10 +144,6 @@ func (o Sendagentlessoutboundmessageresponse) MarshalJSON() ([]byte, error) {
 		ToAddress: o.ToAddress,
 		
 		MessengerType: o.MessengerType,
-		
-		TextBody: o.TextBody,
-		
-		MessagingTemplate: o.MessagingTemplate,
 		
 		UseExistingActiveConversation: o.UseExistingActiveConversation,
 		
@@ -199,15 +185,6 @@ func (o *Sendagentlessoutboundmessageresponse) UnmarshalJSON(b []byte) error {
 		o.MessengerType = &MessengerType
 	}
     
-	if TextBody, ok := SendagentlessoutboundmessageresponseMap["textBody"].(string); ok {
-		o.TextBody = &TextBody
-	}
-    
-	if MessagingTemplate, ok := SendagentlessoutboundmessageresponseMap["messagingTemplate"].(map[string]interface{}); ok {
-		MessagingTemplateString, _ := json.Marshal(MessagingTemplate)
-		json.Unmarshal(MessagingTemplateString, &o.MessagingTemplate)
-	}
-	
 	if UseExistingActiveConversation, ok := SendagentlessoutboundmessageresponseMap["useExistingActiveConversation"].(bool); ok {
 		o.UseExistingActiveConversation = &UseExistingActiveConversation
 	}

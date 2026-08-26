@@ -36,14 +36,8 @@ type Messagedata struct {
 	// MessengerType - Type of text messenger.
 	MessengerType *string `json:"messengerType,omitempty"`
 
-	// TextBody - The body of the text message. (Deprecated - Instead use normalizedMessage.text)
-	TextBody *string `json:"textBody,omitempty"`
-
 	// Status - The status of the message.
 	Status *string `json:"status,omitempty"`
-
-	// Media - The media details associated to a message. (Deprecated - Instead use normalizedMessage.content[index].attachment)
-	Media *[]Messagemedia `json:"media,omitempty"`
 
 	// NormalizedMessage - The message into normalized format
 	NormalizedMessage *Conversationnormalizedmessage `json:"normalizedMessage,omitempty"`
@@ -148,11 +142,7 @@ func (o Messagedata) MarshalJSON() ([]byte, error) {
 		
 		MessengerType *string `json:"messengerType,omitempty"`
 		
-		TextBody *string `json:"textBody,omitempty"`
-		
 		Status *string `json:"status,omitempty"`
-		
-		Media *[]Messagemedia `json:"media,omitempty"`
 		
 		NormalizedMessage *Conversationnormalizedmessage `json:"normalizedMessage,omitempty"`
 		
@@ -181,11 +171,7 @@ func (o Messagedata) MarshalJSON() ([]byte, error) {
 		
 		MessengerType: o.MessengerType,
 		
-		TextBody: o.TextBody,
-		
 		Status: o.Status,
-		
-		Media: o.Media,
 		
 		NormalizedMessage: o.NormalizedMessage,
 		
@@ -240,19 +226,10 @@ func (o *Messagedata) UnmarshalJSON(b []byte) error {
 		o.MessengerType = &MessengerType
 	}
     
-	if TextBody, ok := MessagedataMap["textBody"].(string); ok {
-		o.TextBody = &TextBody
-	}
-    
 	if Status, ok := MessagedataMap["status"].(string); ok {
 		o.Status = &Status
 	}
     
-	if Media, ok := MessagedataMap["media"].([]interface{}); ok {
-		MediaString, _ := json.Marshal(Media)
-		json.Unmarshal(MediaString, &o.Media)
-	}
-	
 	if NormalizedMessage, ok := MessagedataMap["normalizedMessage"].(map[string]interface{}); ok {
 		NormalizedMessageString, _ := json.Marshal(NormalizedMessage)
 		json.Unmarshal(NormalizedMessageString, &o.NormalizedMessage)

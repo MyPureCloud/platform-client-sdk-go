@@ -57,6 +57,9 @@ type Groupcreate struct {
 	// CallsEnabled - Allow calls to be placed to this group.
 	CallsEnabled *bool `json:"callsEnabled,omitempty"`
 
+	// Email - Email address for the group.
+	Email *string `json:"email,omitempty"`
+
 	// OwnerIds - Owners of the group
 	OwnerIds *[]string `json:"ownerIds,omitempty"`
 
@@ -165,6 +168,8 @@ func (o Groupcreate) MarshalJSON() ([]byte, error) {
 		
 		CallsEnabled *bool `json:"callsEnabled,omitempty"`
 		
+		Email *string `json:"email,omitempty"`
+		
 		OwnerIds *[]string `json:"ownerIds,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -199,6 +204,8 @@ func (o Groupcreate) MarshalJSON() ([]byte, error) {
 		IncludeOwners: o.IncludeOwners,
 		
 		CallsEnabled: o.CallsEnabled,
+		
+		Email: o.Email,
 		
 		OwnerIds: o.OwnerIds,
 		
@@ -277,6 +284,10 @@ func (o *Groupcreate) UnmarshalJSON(b []byte) error {
     
 	if CallsEnabled, ok := GroupcreateMap["callsEnabled"].(bool); ok {
 		o.CallsEnabled = &CallsEnabled
+	}
+    
+	if Email, ok := GroupcreateMap["email"].(string); ok {
+		o.Email = &Email
 	}
     
 	if OwnerIds, ok := GroupcreateMap["ownerIds"].([]interface{}); ok {

@@ -42,6 +42,9 @@ type Decisiontable struct {
 	// LatestVersionStatus - The status of the most recently created decision table version. Lets clients distinguish e.g. a Draft latest version from a Superseded one without an extra request.
 	LatestVersionStatus *string `json:"latestVersionStatus,omitempty"`
 
+	// SnapshotCount - Number of snapshotted versions on this decision table.
+	SnapshotCount *int `json:"snapshotCount,omitempty"`
+
 	// Columns - The column definitions of this decision table.
 	Columns *Decisiontablecolumns `json:"columns,omitempty"`
 
@@ -159,6 +162,8 @@ func (o Decisiontable) MarshalJSON() ([]byte, error) {
 		
 		LatestVersionStatus *string `json:"latestVersionStatus,omitempty"`
 		
+		SnapshotCount *int `json:"snapshotCount,omitempty"`
+		
 		Columns *Decisiontablecolumns `json:"columns,omitempty"`
 		
 		PublishedContract *Decisiontablecontract `json:"publishedContract,omitempty"`
@@ -185,6 +190,8 @@ func (o Decisiontable) MarshalJSON() ([]byte, error) {
 		Latest: o.Latest,
 		
 		LatestVersionStatus: o.LatestVersionStatus,
+		
+		SnapshotCount: o.SnapshotCount,
 		
 		Columns: o.Columns,
 		
@@ -248,6 +255,11 @@ func (o *Decisiontable) UnmarshalJSON(b []byte) error {
 		o.LatestVersionStatus = &LatestVersionStatus
 	}
     
+	if SnapshotCount, ok := DecisiontableMap["snapshotCount"].(float64); ok {
+		SnapshotCountInt := int(SnapshotCount)
+		o.SnapshotCount = &SnapshotCountInt
+	}
+	
 	if Columns, ok := DecisiontableMap["columns"].(map[string]interface{}); ok {
 		ColumnsString, _ := json.Marshal(Columns)
 		json.Unmarshal(ColumnsString, &o.Columns)

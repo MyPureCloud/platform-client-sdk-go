@@ -51,11 +51,17 @@ type Decisiontableversion struct {
 	// PublishedBy - The user who published this decision table version.
 	PublishedBy *Addressableentityref `json:"publishedBy,omitempty"`
 
+	// RollbackReason - Optional note recorded when this version was last published via rollback. Present while Published after rollback; cleared when Superseded. Not set on normal publish.
+	RollbackReason *string `json:"rollbackReason,omitempty"`
+
 	// Columns - The column definitions of this decision table version.
 	Columns *Decisiontablecolumns `json:"columns,omitempty"`
 
 	// Contract - The contract information for this decision table version.
 	Contract *Decisiontablecontract `json:"contract,omitempty"`
+
+	// Snapshot - Snapshot metadata on this version, if one exists.
+	Snapshot *Decisiontablesnapshot `json:"snapshot,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -174,9 +180,13 @@ func (o Decisiontableversion) MarshalJSON() ([]byte, error) {
 		
 		PublishedBy *Addressableentityref `json:"publishedBy,omitempty"`
 		
+		RollbackReason *string `json:"rollbackReason,omitempty"`
+		
 		Columns *Decisiontablecolumns `json:"columns,omitempty"`
 		
 		Contract *Decisiontablecontract `json:"contract,omitempty"`
+		
+		Snapshot *Decisiontablesnapshot `json:"snapshot,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
@@ -207,9 +217,13 @@ func (o Decisiontableversion) MarshalJSON() ([]byte, error) {
 		
 		PublishedBy: o.PublishedBy,
 		
+		RollbackReason: o.RollbackReason,
+		
 		Columns: o.Columns,
 		
 		Contract: o.Contract,
+		
+		Snapshot: o.Snapshot,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -283,6 +297,10 @@ func (o *Decisiontableversion) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(PublishedByString, &o.PublishedBy)
 	}
 	
+	if RollbackReason, ok := DecisiontableversionMap["rollbackReason"].(string); ok {
+		o.RollbackReason = &RollbackReason
+	}
+    
 	if Columns, ok := DecisiontableversionMap["columns"].(map[string]interface{}); ok {
 		ColumnsString, _ := json.Marshal(Columns)
 		json.Unmarshal(ColumnsString, &o.Columns)
@@ -291,6 +309,11 @@ func (o *Decisiontableversion) UnmarshalJSON(b []byte) error {
 	if Contract, ok := DecisiontableversionMap["contract"].(map[string]interface{}); ok {
 		ContractString, _ := json.Marshal(Contract)
 		json.Unmarshal(ContractString, &o.Contract)
+	}
+	
+	if Snapshot, ok := DecisiontableversionMap["snapshot"].(map[string]interface{}); ok {
+		SnapshotString, _ := json.Marshal(Snapshot)
+		json.Unmarshal(SnapshotString, &o.Snapshot)
 	}
 	
 	if SelfUri, ok := DecisiontableversionMap["selfUri"].(string); ok {

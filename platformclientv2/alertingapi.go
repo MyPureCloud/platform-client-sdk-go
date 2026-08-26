@@ -421,9 +421,9 @@ func (a AlertingApi) GetAlertingRule(ruleId string) (*Commonrule, *APIResponse, 
 
 // PatchAlertingAlert invokes PATCH /api/v2/alerting/alerts/{alertId}
 //
-// Allows an entity to mute/snooze an alert or update the unread status of the alert.
+// Allows an entity to mute/snooze an alert, update the unread status of the alert, or close an alert.
 //
-// Snoozing an alert temporarily stop it from resending notifications to individualsas well as other services within Genesys Cloud for a given period.  Muting an alert will only block the notifications to individuals.
+// Snoozing an alert temporarily stop it from resending notifications to individualsas well as other services within Genesys Cloud for a given period.  Muting an alert will only block the notifications to individuals. Closing an alert will mark it as closed.
 func (a AlertingApi) PatchAlertingAlert(alertId string, body Alertrequest) (*Commonalert, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables

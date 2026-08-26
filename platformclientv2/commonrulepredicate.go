@@ -29,6 +29,9 @@ type Commonrulepredicate struct {
 	// Topic - The operational console topic corresponding to the metric.
 	Topic *string `json:"topic,omitempty"`
 
+	// Characteristic - The anomaly detection characteristic being evaluated with respect to the metric.
+	Characteristic *string `json:"characteristic,omitempty"`
+
 	// Entity - The entity whose metric is being represented.
 	Entity *Commonrulepredicateentity `json:"entity,omitempty"`
 
@@ -114,6 +117,8 @@ func (o Commonrulepredicate) MarshalJSON() ([]byte, error) {
 		
 		Topic *string `json:"topic,omitempty"`
 		
+		Characteristic *string `json:"characteristic,omitempty"`
+		
 		Entity *Commonrulepredicateentity `json:"entity,omitempty"`
 		
 		MediaType *string `json:"mediaType,omitempty"`
@@ -132,6 +137,8 @@ func (o Commonrulepredicate) MarshalJSON() ([]byte, error) {
 		Status: o.Status,
 		
 		Topic: o.Topic,
+		
+		Characteristic: o.Characteristic,
 		
 		Entity: o.Entity,
 		
@@ -171,6 +178,10 @@ func (o *Commonrulepredicate) UnmarshalJSON(b []byte) error {
     
 	if Topic, ok := CommonrulepredicateMap["topic"].(string); ok {
 		o.Topic = &Topic
+	}
+    
+	if Characteristic, ok := CommonrulepredicateMap["characteristic"].(string); ok {
+		o.Characteristic = &Characteristic
 	}
     
 	if Entity, ok := CommonrulepredicateMap["entity"].(map[string]interface{}); ok {
