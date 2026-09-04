@@ -7,25 +7,16 @@ import (
 	"strings"
 )
 
-// Continuousforecastgetsessionresponse
-type Continuousforecastgetsessionresponse struct { 
+// Contactsearchoperation
+type Contactsearchoperation struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// SessionId - The ID of the latest session, regardless of the session's status
-	SessionId *string `json:"sessionId,omitempty"`
-
-	// LastSuccessfulSessionId - The ID of the last session that has a state of Complete
-	LastSuccessfulSessionId *string `json:"lastSuccessfulSessionId,omitempty"`
-
-	// State - The state of the latest session
-	State *string `json:"state,omitempty"`
-
-	// ErrorCode - The error code if the latest session has a state of Error
-	ErrorCode *string `json:"errorCode,omitempty"`
+	// SimpleSearch - Simple Search operation to execute
+	SimpleSearch *Contactsimplesearch `json:"simpleSearch,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Continuousforecastgetsessionresponse) SetField(field string, fieldValue interface{}) {
+func (o *Contactsearchoperation) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -46,7 +37,7 @@ func (o *Continuousforecastgetsessionresponse) SetField(field string, fieldValue
 	o.SetFieldNames[field] = true
 }
 
-func (o Continuousforecastgetsessionresponse) MarshalJSON() ([]byte, error) {
+func (o Contactsearchoperation) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -84,58 +75,35 @@ func (o Continuousforecastgetsessionresponse) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Continuousforecastgetsessionresponse
+	type Alias Contactsearchoperation
 	
 	return json.Marshal(&struct { 
-		SessionId *string `json:"sessionId,omitempty"`
-		
-		LastSuccessfulSessionId *string `json:"lastSuccessfulSessionId,omitempty"`
-		
-		State *string `json:"state,omitempty"`
-		
-		ErrorCode *string `json:"errorCode,omitempty"`
+		SimpleSearch *Contactsimplesearch `json:"simpleSearch,omitempty"`
 		Alias
 	}{ 
-		SessionId: o.SessionId,
-		
-		LastSuccessfulSessionId: o.LastSuccessfulSessionId,
-		
-		State: o.State,
-		
-		ErrorCode: o.ErrorCode,
+		SimpleSearch: o.SimpleSearch,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Continuousforecastgetsessionresponse) UnmarshalJSON(b []byte) error {
-	var ContinuousforecastgetsessionresponseMap map[string]interface{}
-	err := json.Unmarshal(b, &ContinuousforecastgetsessionresponseMap)
+func (o *Contactsearchoperation) UnmarshalJSON(b []byte) error {
+	var ContactsearchoperationMap map[string]interface{}
+	err := json.Unmarshal(b, &ContactsearchoperationMap)
 	if err != nil {
 		return err
 	}
 	
-	if SessionId, ok := ContinuousforecastgetsessionresponseMap["sessionId"].(string); ok {
-		o.SessionId = &SessionId
+	if SimpleSearch, ok := ContactsearchoperationMap["simpleSearch"].(map[string]interface{}); ok {
+		SimpleSearchString, _ := json.Marshal(SimpleSearch)
+		json.Unmarshal(SimpleSearchString, &o.SimpleSearch)
 	}
-    
-	if LastSuccessfulSessionId, ok := ContinuousforecastgetsessionresponseMap["lastSuccessfulSessionId"].(string); ok {
-		o.LastSuccessfulSessionId = &LastSuccessfulSessionId
-	}
-    
-	if State, ok := ContinuousforecastgetsessionresponseMap["state"].(string); ok {
-		o.State = &State
-	}
-    
-	if ErrorCode, ok := ContinuousforecastgetsessionresponseMap["errorCode"].(string); ok {
-		o.ErrorCode = &ErrorCode
-	}
-    
+	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Continuousforecastgetsessionresponse) String() string {
+func (o *Contactsearchoperation) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

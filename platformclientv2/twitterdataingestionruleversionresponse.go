@@ -39,11 +39,11 @@ type Twitterdataingestionruleversionresponse struct {
 	// IngestionRuleInfo - The Info about ingestion rule.
 	IngestionRuleInfo *Messageinfo `json:"ingestionRuleInfo,omitempty"`
 
-	// Countries - ISO 3166-1 alpha-2 country codes where Data Ingestion Rules should apply. Defaults to worldwide.
-	Countries *[]string `json:"countries,omitempty"`
-
 	// SearchTerms - Search terms for X (formally Twitter).
 	SearchTerms *string `json:"searchTerms,omitempty"`
+
+	// Countries - ISO 3166-1 alpha-2 country codes where Data Ingestion Rules should apply. Defaults to worldwide.
+	Countries *[]string `json:"countries,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -146,9 +146,9 @@ func (o Twitterdataingestionruleversionresponse) MarshalJSON() ([]byte, error) {
 		
 		IngestionRuleInfo *Messageinfo `json:"ingestionRuleInfo,omitempty"`
 		
-		Countries *[]string `json:"countries,omitempty"`
-		
 		SearchTerms *string `json:"searchTerms,omitempty"`
+		
+		Countries *[]string `json:"countries,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
@@ -171,9 +171,9 @@ func (o Twitterdataingestionruleversionresponse) MarshalJSON() ([]byte, error) {
 		
 		IngestionRuleInfo: o.IngestionRuleInfo,
 		
-		Countries: o.Countries,
-		
 		SearchTerms: o.SearchTerms,
+		
+		Countries: o.Countries,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -227,15 +227,15 @@ func (o *Twitterdataingestionruleversionresponse) UnmarshalJSON(b []byte) error 
 		json.Unmarshal(IngestionRuleInfoString, &o.IngestionRuleInfo)
 	}
 	
+	if SearchTerms, ok := TwitterdataingestionruleversionresponseMap["searchTerms"].(string); ok {
+		o.SearchTerms = &SearchTerms
+	}
+    
 	if Countries, ok := TwitterdataingestionruleversionresponseMap["countries"].([]interface{}); ok {
 		CountriesString, _ := json.Marshal(Countries)
 		json.Unmarshal(CountriesString, &o.Countries)
 	}
 	
-	if SearchTerms, ok := TwitterdataingestionruleversionresponseMap["searchTerms"].(string); ok {
-		o.SearchTerms = &SearchTerms
-	}
-    
 	if SelfUri, ok := TwitterdataingestionruleversionresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

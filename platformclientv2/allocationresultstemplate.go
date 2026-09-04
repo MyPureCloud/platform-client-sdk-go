@@ -7,25 +7,22 @@ import (
 	"strings"
 )
 
-// Continuousforecastgetsessionresponse
-type Continuousforecastgetsessionresponse struct { 
+// Allocationresultstemplate
+type Allocationresultstemplate struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// SessionId - The ID of the latest session, regardless of the session's status
-	SessionId *string `json:"sessionId,omitempty"`
+	// PlanningGroupId - The ID of the associated planning group
+	PlanningGroupId *string `json:"planningGroupId,omitempty"`
 
-	// LastSuccessfulSessionId - The ID of the last session that has a state of Complete
-	LastSuccessfulSessionId *string `json:"lastSuccessfulSessionId,omitempty"`
+	// AssignedAgentsPerInterval - Assigned agent allocation per interval used to generate the performance prediction
+	AssignedAgentsPerInterval *[]float64 `json:"assignedAgentsPerInterval,omitempty"`
 
-	// State - The state of the latest session
-	State *string `json:"state,omitempty"`
-
-	// ErrorCode - The error code if the latest session has a state of Error
-	ErrorCode *string `json:"errorCode,omitempty"`
+	// HeadcountMultiplierPerInterval - Headcount multiplier per interval used to generate the performance prediction
+	HeadcountMultiplierPerInterval *[]float64 `json:"headcountMultiplierPerInterval,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Continuousforecastgetsessionresponse) SetField(field string, fieldValue interface{}) {
+func (o *Allocationresultstemplate) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -46,7 +43,7 @@ func (o *Continuousforecastgetsessionresponse) SetField(field string, fieldValue
 	o.SetFieldNames[field] = true
 }
 
-func (o Continuousforecastgetsessionresponse) MarshalJSON() ([]byte, error) {
+func (o Allocationresultstemplate) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -84,58 +81,52 @@ func (o Continuousforecastgetsessionresponse) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Continuousforecastgetsessionresponse
+	type Alias Allocationresultstemplate
 	
 	return json.Marshal(&struct { 
-		SessionId *string `json:"sessionId,omitempty"`
+		PlanningGroupId *string `json:"planningGroupId,omitempty"`
 		
-		LastSuccessfulSessionId *string `json:"lastSuccessfulSessionId,omitempty"`
+		AssignedAgentsPerInterval *[]float64 `json:"assignedAgentsPerInterval,omitempty"`
 		
-		State *string `json:"state,omitempty"`
-		
-		ErrorCode *string `json:"errorCode,omitempty"`
+		HeadcountMultiplierPerInterval *[]float64 `json:"headcountMultiplierPerInterval,omitempty"`
 		Alias
 	}{ 
-		SessionId: o.SessionId,
+		PlanningGroupId: o.PlanningGroupId,
 		
-		LastSuccessfulSessionId: o.LastSuccessfulSessionId,
+		AssignedAgentsPerInterval: o.AssignedAgentsPerInterval,
 		
-		State: o.State,
-		
-		ErrorCode: o.ErrorCode,
+		HeadcountMultiplierPerInterval: o.HeadcountMultiplierPerInterval,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Continuousforecastgetsessionresponse) UnmarshalJSON(b []byte) error {
-	var ContinuousforecastgetsessionresponseMap map[string]interface{}
-	err := json.Unmarshal(b, &ContinuousforecastgetsessionresponseMap)
+func (o *Allocationresultstemplate) UnmarshalJSON(b []byte) error {
+	var AllocationresultstemplateMap map[string]interface{}
+	err := json.Unmarshal(b, &AllocationresultstemplateMap)
 	if err != nil {
 		return err
 	}
 	
-	if SessionId, ok := ContinuousforecastgetsessionresponseMap["sessionId"].(string); ok {
-		o.SessionId = &SessionId
+	if PlanningGroupId, ok := AllocationresultstemplateMap["planningGroupId"].(string); ok {
+		o.PlanningGroupId = &PlanningGroupId
 	}
     
-	if LastSuccessfulSessionId, ok := ContinuousforecastgetsessionresponseMap["lastSuccessfulSessionId"].(string); ok {
-		o.LastSuccessfulSessionId = &LastSuccessfulSessionId
+	if AssignedAgentsPerInterval, ok := AllocationresultstemplateMap["assignedAgentsPerInterval"].([]interface{}); ok {
+		AssignedAgentsPerIntervalString, _ := json.Marshal(AssignedAgentsPerInterval)
+		json.Unmarshal(AssignedAgentsPerIntervalString, &o.AssignedAgentsPerInterval)
 	}
-    
-	if State, ok := ContinuousforecastgetsessionresponseMap["state"].(string); ok {
-		o.State = &State
+	
+	if HeadcountMultiplierPerInterval, ok := AllocationresultstemplateMap["headcountMultiplierPerInterval"].([]interface{}); ok {
+		HeadcountMultiplierPerIntervalString, _ := json.Marshal(HeadcountMultiplierPerInterval)
+		json.Unmarshal(HeadcountMultiplierPerIntervalString, &o.HeadcountMultiplierPerInterval)
 	}
-    
-	if ErrorCode, ok := ContinuousforecastgetsessionresponseMap["errorCode"].(string); ok {
-		o.ErrorCode = &ErrorCode
-	}
-    
+	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Continuousforecastgetsessionresponse) String() string {
+func (o *Allocationresultstemplate) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

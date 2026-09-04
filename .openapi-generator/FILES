@@ -92,6 +92,7 @@ docs/DeleteCasemanagementCase-example.txt
 docs/DeleteCasemanagementCaseCommentsMeCommentId-example.txt
 docs/DeleteCasemanagementCaseplan-example.txt
 docs/DeleteCasemanagementCaseplanDataschema-example.txt
+docs/DeleteCasemanagementCaseplanStageplan-example.txt
 docs/DeleteChatsRoomMessage-example.txt
 docs/DeleteChatsRoomMessagesPin-example.txt
 docs/DeleteChatsRoomParticipant-example.txt
@@ -2454,6 +2455,8 @@ docs/PostCasemanagementCaseComments-example.txt
 docs/PostCasemanagementCaseTerminateJobs-example.txt
 docs/PostCasemanagementCaseplanDataschemas-example.txt
 docs/PostCasemanagementCaseplanPublish-example.txt
+docs/PostCasemanagementCaseplanStageplanReposition-example.txt
+docs/PostCasemanagementCaseplanStageplans-example.txt
 docs/PostCasemanagementCaseplanVersions-example.txt
 docs/PostCasemanagementCaseplans-example.txt
 docs/PostCasemanagementCaseplansQuery-example.txt
@@ -2628,6 +2631,7 @@ docs/PostExternalcontactsContactsEnrich-example.txt
 docs/PostExternalcontactsContactsExports-example.txt
 docs/PostExternalcontactsContactsMerge-example.txt
 docs/PostExternalcontactsContactsSchemas-example.txt
+docs/PostExternalcontactsContactsSearch-example.txt
 docs/PostExternalcontactsExternalsources-example.txt
 docs/PostExternalcontactsIdentifierlookup-example.txt
 docs/PostExternalcontactsIdentifierlookupContacts-example.txt
@@ -3794,7 +3798,6 @@ platformclientv2/agentutilizationaggregatequeryfilter.go
 platformclientv2/agentutilizationaggregatequerypredicate.go
 platformclientv2/agentutilizationaggregatequeryresponse.go
 platformclientv2/agentutilizationaggregationquery.go
-platformclientv2/agentutilizationaggregationsort.go
 platformclientv2/agentutilizationaggregationview.go
 platformclientv2/agentutilizationasyncaggregatequeryresponse.go
 platformclientv2/agentutilizationasyncaggregationquery.go
@@ -3837,6 +3840,8 @@ platformclientv2/alertrequest.go
 platformclientv2/alertruleproperties.go
 platformclientv2/alertsummary.go
 platformclientv2/alertsummaryentity.go
+platformclientv2/allocationoutputstemplate.go
+platformclientv2/allocationresultstemplate.go
 platformclientv2/alltimepoints.go
 platformclientv2/alteration.go
 platformclientv2/alternativeshiftagentscheduledshift.go
@@ -4759,6 +4764,8 @@ platformclientv2/contactlistuploadurlrequest.go
 platformclientv2/contactphonenumbercolumn.go
 platformclientv2/contactsbulkoperationjob.go
 platformclientv2/contactsbulkoperationjoblisting.go
+platformclientv2/contactsearchoperation.go
+platformclientv2/contactsearchrequest.go
 platformclientv2/contactsexport.go
 platformclientv2/contactsexportcomparisonfieldfilter.go
 platformclientv2/contactsexportfieldfilter.go
@@ -4767,6 +4774,7 @@ platformclientv2/contactsexportfilter.go
 platformclientv2/contactsexportlisting.go
 platformclientv2/contactsexportqueryconditions.go
 platformclientv2/contactsexportrequest.go
+platformclientv2/contactsimplesearch.go
 platformclientv2/contactsort.go
 platformclientv2/contactspatchchange.go
 platformclientv2/contactvertex.go
@@ -5487,8 +5495,6 @@ platformclientv2/dataextractionfileschemalisting.go
 platformclientv2/dataextractionfileurl.go
 platformclientv2/dataextractionfileurllisting.go
 platformclientv2/dataingestionrulecriteria.go
-platformclientv2/dataingestionruleresponse.go
-platformclientv2/dataingestionruleresponseentitylisting.go
 platformclientv2/dataingestionrulesmetadata.go
 platformclientv2/dataingestionrulestatuspatchrequest.go
 platformclientv2/dataprivacyapi.go
@@ -6397,6 +6403,8 @@ platformclientv2/generatebuforecastrequest.go
 platformclientv2/generatedguidecontent.go
 platformclientv2/generateguidecontentrequest.go
 platformclientv2/generatemeetingidrequest.go
+platformclientv2/genericdataingestionruleresponse.go
+platformclientv2/genericdataingestionruleresponseentitylisting.go
 platformclientv2/genericsaml.go
 platformclientv2/generictemplate.go
 platformclientv2/genesysbotconnector.go
@@ -8858,8 +8866,10 @@ platformclientv2/staffingrequirementsplanninggroupdata.go
 platformclientv2/stage.go
 platformclientv2/stagelisting.go
 platformclientv2/stageplan.go
+platformclientv2/stageplancreate.go
 platformclientv2/stageplanlisting.go
 platformclientv2/stageplanreference.go
+platformclientv2/stageplanreposition.go
 platformclientv2/stageplanupdate.go
 platformclientv2/stagereference.go
 platformclientv2/starrabledivision.go

@@ -38,6 +38,9 @@ type V2mobiusrulestopicconditionrulepredicate struct {
 	// Topic
 	Topic *string `json:"topic,omitempty"`
 
+	// Characteristic
+	Characteristic *string `json:"characteristic,omitempty"`
+
 	// ComparisonOperator
 	ComparisonOperator *string `json:"comparisonOperator,omitempty"`
 }
@@ -123,6 +126,8 @@ func (o V2mobiusrulestopicconditionrulepredicate) MarshalJSON() ([]byte, error) 
 		
 		Topic *string `json:"topic,omitempty"`
 		
+		Characteristic *string `json:"characteristic,omitempty"`
+		
 		ComparisonOperator *string `json:"comparisonOperator,omitempty"`
 		Alias
 	}{ 
@@ -143,6 +148,8 @@ func (o V2mobiusrulestopicconditionrulepredicate) MarshalJSON() ([]byte, error) 
 		MediaType: o.MediaType,
 		
 		Topic: o.Topic,
+		
+		Characteristic: o.Characteristic,
 		
 		ComparisonOperator: o.ComparisonOperator,
 		Alias:    (Alias)(o),
@@ -192,6 +199,10 @@ func (o *V2mobiusrulestopicconditionrulepredicate) UnmarshalJSON(b []byte) error
     
 	if Topic, ok := V2mobiusrulestopicconditionrulepredicateMap["topic"].(string); ok {
 		o.Topic = &Topic
+	}
+    
+	if Characteristic, ok := V2mobiusrulestopicconditionrulepredicateMap["characteristic"].(string); ok {
+		o.Characteristic = &Characteristic
 	}
     
 	if ComparisonOperator, ok := V2mobiusrulestopicconditionrulepredicateMap["comparisonOperator"].(string); ok {

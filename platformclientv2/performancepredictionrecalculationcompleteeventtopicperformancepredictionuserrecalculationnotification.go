@@ -17,6 +17,9 @@ type Performancepredictionrecalculationcompleteeventtopicperformancepredictionus
 	// DownloadUrl
 	DownloadUrl *string `json:"downloadUrl,omitempty"`
 
+	// AllocationDownloadUrl
+	AllocationDownloadUrl *string `json:"allocationDownloadUrl,omitempty"`
+
 	// State
 	State *string `json:"state,omitempty"`
 
@@ -91,6 +94,8 @@ func (o Performancepredictionrecalculationcompleteeventtopicperformancepredictio
 		
 		DownloadUrl *string `json:"downloadUrl,omitempty"`
 		
+		AllocationDownloadUrl *string `json:"allocationDownloadUrl,omitempty"`
+		
 		State *string `json:"state,omitempty"`
 		
 		VarError *Performancepredictionrecalculationcompleteeventtopicerrorbody `json:"error,omitempty"`
@@ -99,6 +104,8 @@ func (o Performancepredictionrecalculationcompleteeventtopicperformancepredictio
 		OperationId: o.OperationId,
 		
 		DownloadUrl: o.DownloadUrl,
+		
+		AllocationDownloadUrl: o.AllocationDownloadUrl,
 		
 		State: o.State,
 		
@@ -120,6 +127,10 @@ func (o *Performancepredictionrecalculationcompleteeventtopicperformancepredicti
     
 	if DownloadUrl, ok := PerformancepredictionrecalculationcompleteeventtopicperformancepredictionuserrecalculationnotificationMap["downloadUrl"].(string); ok {
 		o.DownloadUrl = &DownloadUrl
+	}
+    
+	if AllocationDownloadUrl, ok := PerformancepredictionrecalculationcompleteeventtopicperformancepredictionuserrecalculationnotificationMap["allocationDownloadUrl"].(string); ok {
+		o.AllocationDownloadUrl = &AllocationDownloadUrl
 	}
     
 	if State, ok := PerformancepredictionrecalculationcompleteeventtopicperformancepredictionuserrecalculationnotificationMap["state"].(string); ok {

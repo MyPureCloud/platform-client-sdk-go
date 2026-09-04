@@ -17,6 +17,9 @@ type Sendagentlessoutboundmessagerequest struct {
 	// ToAddress - The messaging address of the recipient of the message. For an Apple Invitation and SMS messenger type, the phone number address must be in E.164 format. E.g. +13175555555 or +34234234234. For WhatsApp messenger type, use a WhatsApp ID of a phone number. E.g for a E.164 formatted phone number `+13175555555`, a WhatsApp ID would be 13175555555. For WebMessaging this cannot be used, instead use externalContactId
 	ToAddress *string `json:"toAddress,omitempty"`
 
+	// ExternalContactId - The externalContactId of the recipient of the message. Supported for WebMessaging, SMS, and Open messenger types only. For WebMessaging it is required.
+	ExternalContactId *string `json:"externalContactId,omitempty"`
+
 	// ToAddressMessengerType - The recipient messaging address messenger type.
 	ToAddressMessengerType *string `json:"toAddressMessengerType,omitempty"`
 
@@ -97,6 +100,8 @@ func (o Sendagentlessoutboundmessagerequest) MarshalJSON() ([]byte, error) {
 		
 		ToAddress *string `json:"toAddress,omitempty"`
 		
+		ExternalContactId *string `json:"externalContactId,omitempty"`
+		
 		ToAddressMessengerType *string `json:"toAddressMessengerType,omitempty"`
 		
 		TextBody *string `json:"textBody,omitempty"`
@@ -109,6 +114,8 @@ func (o Sendagentlessoutboundmessagerequest) MarshalJSON() ([]byte, error) {
 		FromAddress: o.FromAddress,
 		
 		ToAddress: o.ToAddress,
+		
+		ExternalContactId: o.ExternalContactId,
 		
 		ToAddressMessengerType: o.ToAddressMessengerType,
 		
@@ -134,6 +141,10 @@ func (o *Sendagentlessoutboundmessagerequest) UnmarshalJSON(b []byte) error {
     
 	if ToAddress, ok := SendagentlessoutboundmessagerequestMap["toAddress"].(string); ok {
 		o.ToAddress = &ToAddress
+	}
+    
+	if ExternalContactId, ok := SendagentlessoutboundmessagerequestMap["externalContactId"].(string); ok {
+		o.ExternalContactId = &ExternalContactId
 	}
     
 	if ToAddressMessengerType, ok := SendagentlessoutboundmessagerequestMap["toAddressMessengerType"].(string); ok {

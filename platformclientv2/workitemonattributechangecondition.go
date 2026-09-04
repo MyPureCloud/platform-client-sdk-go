@@ -14,11 +14,17 @@ type Workitemonattributechangecondition struct {
 	// Attribute - The name of the workitem attribute whose change will be evaluated as part of the rule.
 	Attribute *string `json:"attribute,omitempty"`
 
-	// NewValue - The new value of the attribute. If the attribute is updated to this value this part of the condition will be met.
+	// NewValue - The new value of the attribute. If the attribute is updated to this value this part of the condition will be met. Required for exact-match conditions (when operator is not set).
 	NewValue *string `json:"newValue,omitempty"`
 
 	// OldValue - The old value of the attribute. If the attribute was updated from this value this part of the condition will be met.
 	OldValue *string `json:"oldValue,omitempty"`
+
+	// Operator - The comparison operator used to evaluate the priority attribute against the value. Only supported for the priority attribute.
+	Operator *string `json:"operator,omitempty"`
+
+	// Value - The numeric value compared against the priority attribute using the operator. Required when operator is set. Only supported for the priority attribute.
+	Value *int `json:"value,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +95,10 @@ func (o Workitemonattributechangecondition) MarshalJSON() ([]byte, error) {
 		NewValue *string `json:"newValue,omitempty"`
 		
 		OldValue *string `json:"oldValue,omitempty"`
+		
+		Operator *string `json:"operator,omitempty"`
+		
+		Value *int `json:"value,omitempty"`
 		Alias
 	}{ 
 		Attribute: o.Attribute,
@@ -96,6 +106,10 @@ func (o Workitemonattributechangecondition) MarshalJSON() ([]byte, error) {
 		NewValue: o.NewValue,
 		
 		OldValue: o.OldValue,
+		
+		Operator: o.Operator,
+		
+		Value: o.Value,
 		Alias:    (Alias)(o),
 	})
 }
@@ -119,6 +133,15 @@ func (o *Workitemonattributechangecondition) UnmarshalJSON(b []byte) error {
 		o.OldValue = &OldValue
 	}
     
+	if Operator, ok := WorkitemonattributechangeconditionMap["operator"].(string); ok {
+		o.Operator = &Operator
+	}
+    
+	if Value, ok := WorkitemonattributechangeconditionMap["value"].(float64); ok {
+		ValueInt := int(Value)
+		o.Value = &ValueInt
+	}
+	
 
 	return nil
 }

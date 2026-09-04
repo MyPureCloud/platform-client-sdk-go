@@ -1265,12 +1265,12 @@ func (a SocialMediaApi) GetSocialmediaTopic(topicId string, includeDeleted bool)
 // GetSocialmediaTopicDataingestionrules invokes GET /api/v2/socialmedia/topics/{topicId}/dataingestionrules
 //
 // Retrieve all social topic data ingestion rules with pagination.
-func (a SocialMediaApi) GetSocialmediaTopicDataingestionrules(topicId string, pageNumber int, pageSize int, includeDeleted bool) (*Dataingestionruleresponseentitylisting, *APIResponse, error) {
+func (a SocialMediaApi) GetSocialmediaTopicDataingestionrules(topicId string, pageNumber int, pageSize int, includeDeleted bool) (*Genericdataingestionruleresponseentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/socialmedia/topics/{topicId}/dataingestionrules"
 	path = strings.Replace(path, "{topicId}", url.PathEscape(fmt.Sprintf("%v", topicId)), -1)
-	defaultReturn := new(Dataingestionruleresponseentitylisting)
+	defaultReturn := new(Genericdataingestionruleresponseentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -1334,14 +1334,14 @@ func (a SocialMediaApi) GetSocialmediaTopicDataingestionrules(topicId string, pa
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Dataingestionruleresponseentitylisting
+	var successPayload *Genericdataingestionruleresponseentitylisting
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Dataingestionruleresponseentitylisting" == "string" {
+		if "Genericdataingestionruleresponseentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

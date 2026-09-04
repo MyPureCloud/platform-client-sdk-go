@@ -8,8 +8,8 @@ import (
 	"strings"
 )
 
-// Dataingestionruleresponse
-type Dataingestionruleresponse struct { 
+// Genericdataingestionruleresponse
+type Genericdataingestionruleresponse struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Id - ID of the data ingestion rule.
@@ -39,7 +39,7 @@ type Dataingestionruleresponse struct {
 	// IngestionRuleInfo - The Info about ingestion rule.
 	IngestionRuleInfo *Messageinfo `json:"ingestionRuleInfo,omitempty"`
 
-	// Countries - The countries is available only on twitter data ingestion rule. ISO 3166-1 alpha-2 country codes where Data Ingestion Rules should apply. Defaults to worldwide.
+	// Countries - ISO 3166-1 alpha-2 country codes where Data Ingestion Rules should apply. Defaults to worldwide.
 	Countries *[]string `json:"countries,omitempty"`
 
 	// SelfUri - The URI for this object
@@ -47,7 +47,7 @@ type Dataingestionruleresponse struct {
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Dataingestionruleresponse) SetField(field string, fieldValue interface{}) {
+func (o *Genericdataingestionruleresponse) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -68,7 +68,7 @@ func (o *Dataingestionruleresponse) SetField(field string, fieldValue interface{
 	o.SetFieldNames[field] = true
 }
 
-func (o Dataingestionruleresponse) MarshalJSON() ([]byte, error) {
+func (o Genericdataingestionruleresponse) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -106,7 +106,7 @@ func (o Dataingestionruleresponse) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Dataingestionruleresponse
+	type Alias Genericdataingestionruleresponse
 	
 	DateCreated := new(string)
 	if o.DateCreated != nil {
@@ -173,59 +173,59 @@ func (o Dataingestionruleresponse) MarshalJSON() ([]byte, error) {
 	})
 }
 
-func (o *Dataingestionruleresponse) UnmarshalJSON(b []byte) error {
-	var DataingestionruleresponseMap map[string]interface{}
-	err := json.Unmarshal(b, &DataingestionruleresponseMap)
+func (o *Genericdataingestionruleresponse) UnmarshalJSON(b []byte) error {
+	var GenericdataingestionruleresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &GenericdataingestionruleresponseMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := DataingestionruleresponseMap["id"].(string); ok {
+	if Id, ok := GenericdataingestionruleresponseMap["id"].(string); ok {
 		o.Id = &Id
 	}
     
-	if Name, ok := DataingestionruleresponseMap["name"].(string); ok {
+	if Name, ok := GenericdataingestionruleresponseMap["name"].(string); ok {
 		o.Name = &Name
 	}
     
-	if Description, ok := DataingestionruleresponseMap["description"].(string); ok {
+	if Description, ok := GenericdataingestionruleresponseMap["description"].(string); ok {
 		o.Description = &Description
 	}
     
-	if Status, ok := DataingestionruleresponseMap["status"].(string); ok {
+	if Status, ok := GenericdataingestionruleresponseMap["status"].(string); ok {
 		o.Status = &Status
 	}
     
-	if Version, ok := DataingestionruleresponseMap["version"].(float64); ok {
+	if Version, ok := GenericdataingestionruleresponseMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
 	}
 	
-	if dateCreatedString, ok := DataingestionruleresponseMap["dateCreated"].(string); ok {
+	if dateCreatedString, ok := GenericdataingestionruleresponseMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
 	}
 	
-	if dateModifiedString, ok := DataingestionruleresponseMap["dateModified"].(string); ok {
+	if dateModifiedString, ok := GenericdataingestionruleresponseMap["dateModified"].(string); ok {
 		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
 		o.DateModified = &DateModified
 	}
 	
-	if Platform, ok := DataingestionruleresponseMap["platform"].(string); ok {
+	if Platform, ok := GenericdataingestionruleresponseMap["platform"].(string); ok {
 		o.Platform = &Platform
 	}
     
-	if IngestionRuleInfo, ok := DataingestionruleresponseMap["ingestionRuleInfo"].(map[string]interface{}); ok {
+	if IngestionRuleInfo, ok := GenericdataingestionruleresponseMap["ingestionRuleInfo"].(map[string]interface{}); ok {
 		IngestionRuleInfoString, _ := json.Marshal(IngestionRuleInfo)
 		json.Unmarshal(IngestionRuleInfoString, &o.IngestionRuleInfo)
 	}
 	
-	if Countries, ok := DataingestionruleresponseMap["countries"].([]interface{}); ok {
+	if Countries, ok := GenericdataingestionruleresponseMap["countries"].([]interface{}); ok {
 		CountriesString, _ := json.Marshal(Countries)
 		json.Unmarshal(CountriesString, &o.Countries)
 	}
 	
-	if SelfUri, ok := DataingestionruleresponseMap["selfUri"].(string); ok {
+	if SelfUri, ok := GenericdataingestionruleresponseMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
     
@@ -234,7 +234,7 @@ func (o *Dataingestionruleresponse) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Dataingestionruleresponse) String() string {
+func (o *Genericdataingestionruleresponse) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

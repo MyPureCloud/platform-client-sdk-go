@@ -7,25 +7,28 @@ import (
 	"strings"
 )
 
-// Continuousforecastgetsessionresponse
-type Continuousforecastgetsessionresponse struct { 
+// Contactsearchrequest
+type Contactsearchrequest struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// SessionId - The ID of the latest session, regardless of the session's status
-	SessionId *string `json:"sessionId,omitempty"`
+	// PageNumber - Page number (limited to fetching first 1,000 records; pageNumber * pageSize must be <= 1,000)
+	PageNumber *int `json:"pageNumber,omitempty"`
 
-	// LastSuccessfulSessionId - The ID of the last session that has a state of Complete
-	LastSuccessfulSessionId *string `json:"lastSuccessfulSessionId,omitempty"`
+	// PageSize - Page size (limited to fetching first 1,000 records; pageNumber * pageSize must be <= 1,000)
+	PageSize *int `json:"pageSize,omitempty"`
 
-	// State - The state of the latest session
-	State *string `json:"state,omitempty"`
+	// DivisionIds - Which divisions to search, up to 50
+	DivisionIds *[]string `json:"divisionIds,omitempty"`
 
-	// ErrorCode - The error code if the latest session has a state of Error
-	ErrorCode *string `json:"errorCode,omitempty"`
+	// Expand - Which fields, if any, to expand
+	Expand *[]string `json:"expand,omitempty"`
+
+	// Operation - Search operation to execute, currently supports {@code simpleSearch} only.
+	Operation *Contactsearchoperation `json:"operation,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Continuousforecastgetsessionresponse) SetField(field string, fieldValue interface{}) {
+func (o *Contactsearchrequest) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -46,7 +49,7 @@ func (o *Continuousforecastgetsessionresponse) SetField(field string, fieldValue
 	o.SetFieldNames[field] = true
 }
 
-func (o Continuousforecastgetsessionresponse) MarshalJSON() ([]byte, error) {
+func (o Contactsearchrequest) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -84,58 +87,71 @@ func (o Continuousforecastgetsessionresponse) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Continuousforecastgetsessionresponse
+	type Alias Contactsearchrequest
 	
 	return json.Marshal(&struct { 
-		SessionId *string `json:"sessionId,omitempty"`
+		PageNumber *int `json:"pageNumber,omitempty"`
 		
-		LastSuccessfulSessionId *string `json:"lastSuccessfulSessionId,omitempty"`
+		PageSize *int `json:"pageSize,omitempty"`
 		
-		State *string `json:"state,omitempty"`
+		DivisionIds *[]string `json:"divisionIds,omitempty"`
 		
-		ErrorCode *string `json:"errorCode,omitempty"`
+		Expand *[]string `json:"expand,omitempty"`
+		
+		Operation *Contactsearchoperation `json:"operation,omitempty"`
 		Alias
 	}{ 
-		SessionId: o.SessionId,
+		PageNumber: o.PageNumber,
 		
-		LastSuccessfulSessionId: o.LastSuccessfulSessionId,
+		PageSize: o.PageSize,
 		
-		State: o.State,
+		DivisionIds: o.DivisionIds,
 		
-		ErrorCode: o.ErrorCode,
+		Expand: o.Expand,
+		
+		Operation: o.Operation,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Continuousforecastgetsessionresponse) UnmarshalJSON(b []byte) error {
-	var ContinuousforecastgetsessionresponseMap map[string]interface{}
-	err := json.Unmarshal(b, &ContinuousforecastgetsessionresponseMap)
+func (o *Contactsearchrequest) UnmarshalJSON(b []byte) error {
+	var ContactsearchrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &ContactsearchrequestMap)
 	if err != nil {
 		return err
 	}
 	
-	if SessionId, ok := ContinuousforecastgetsessionresponseMap["sessionId"].(string); ok {
-		o.SessionId = &SessionId
+	if PageNumber, ok := ContactsearchrequestMap["pageNumber"].(float64); ok {
+		PageNumberInt := int(PageNumber)
+		o.PageNumber = &PageNumberInt
 	}
-    
-	if LastSuccessfulSessionId, ok := ContinuousforecastgetsessionresponseMap["lastSuccessfulSessionId"].(string); ok {
-		o.LastSuccessfulSessionId = &LastSuccessfulSessionId
+	
+	if PageSize, ok := ContactsearchrequestMap["pageSize"].(float64); ok {
+		PageSizeInt := int(PageSize)
+		o.PageSize = &PageSizeInt
 	}
-    
-	if State, ok := ContinuousforecastgetsessionresponseMap["state"].(string); ok {
-		o.State = &State
+	
+	if DivisionIds, ok := ContactsearchrequestMap["divisionIds"].([]interface{}); ok {
+		DivisionIdsString, _ := json.Marshal(DivisionIds)
+		json.Unmarshal(DivisionIdsString, &o.DivisionIds)
 	}
-    
-	if ErrorCode, ok := ContinuousforecastgetsessionresponseMap["errorCode"].(string); ok {
-		o.ErrorCode = &ErrorCode
+	
+	if Expand, ok := ContactsearchrequestMap["expand"].([]interface{}); ok {
+		ExpandString, _ := json.Marshal(Expand)
+		json.Unmarshal(ExpandString, &o.Expand)
 	}
-    
+	
+	if Operation, ok := ContactsearchrequestMap["operation"].(map[string]interface{}); ok {
+		OperationString, _ := json.Marshal(Operation)
+		json.Unmarshal(OperationString, &o.Operation)
+	}
+	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Continuousforecastgetsessionresponse) String() string {
+func (o *Contactsearchrequest) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

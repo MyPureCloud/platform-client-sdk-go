@@ -12,7 +12,7 @@ import (
 type Performancepredictionuploadschema struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// CalculationStartDate - Date as an ISO-8601 string, corresponding to the beginning of the performance prediction results
+	// CalculationStartDate - The beginning of the performance prediction results, in ISO-8601 format
 	CalculationStartDate *time.Time `json:"calculationStartDate,omitempty"`
 
 	// OnQueueTimes - List of agent on-queue times by management unit

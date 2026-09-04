@@ -107,6 +107,9 @@ type Recordingmessagingmessage struct {
 
 	// MessageReceipts - List of message receipts
 	MessageReceipts *[]Recordingmessagereceipt `json:"messageReceipts,omitempty"`
+
+	// NotificationResponse - Notification Response content.
+	NotificationResponse *Recordingnotificationresponse `json:"notificationResponse,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -243,6 +246,8 @@ func (o Recordingmessagingmessage) MarshalJSON() ([]byte, error) {
 		RichLink *Richlink `json:"richLink,omitempty"`
 		
 		MessageReceipts *[]Recordingmessagereceipt `json:"messageReceipts,omitempty"`
+		
+		NotificationResponse *Recordingnotificationresponse `json:"notificationResponse,omitempty"`
 		Alias
 	}{ 
 		From: o.From,
@@ -308,6 +313,8 @@ func (o Recordingmessagingmessage) MarshalJSON() ([]byte, error) {
 		RichLink: o.RichLink,
 		
 		MessageReceipts: o.MessageReceipts,
+		
+		NotificationResponse: o.NotificationResponse,
 		Alias:    (Alias)(o),
 	})
 }
@@ -468,6 +475,11 @@ func (o *Recordingmessagingmessage) UnmarshalJSON(b []byte) error {
 	if MessageReceipts, ok := RecordingmessagingmessageMap["messageReceipts"].([]interface{}); ok {
 		MessageReceiptsString, _ := json.Marshal(MessageReceipts)
 		json.Unmarshal(MessageReceiptsString, &o.MessageReceipts)
+	}
+	
+	if NotificationResponse, ok := RecordingmessagingmessageMap["notificationResponse"].(map[string]interface{}); ok {
+		NotificationResponseString, _ := json.Marshal(NotificationResponse)
+		json.Unmarshal(NotificationResponseString, &o.NotificationResponse)
 	}
 	
 

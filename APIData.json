@@ -9982,6 +9982,25 @@
     "return": "interface{}",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewCaseManagementApiWithConfig(config)\n\nvar caseplanId string // Caseplan identifier.\nvar schemaKeyName string // Schema key (for example \\\"default\\\").\n// Remove a data schema from a draft Caseplan.\ndata, response, err := apiInstance.DeleteCasemanagementCaseplanDataschema(caseplanId, schemaKeyName)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteCasemanagementCaseplanDataschema: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
+  "deletecasemanagementcaseplanstageplan": {
+    "operationId": "deletecasemanagementcaseplanstageplan",
+    "functionName": "DeleteCasemanagementCaseplanStageplan",
+    "signature": "DeleteCasemanagementCaseplanStageplan(caseplanId, stageplanId)",
+    "parameters": [
+      {
+        "name": "caseplanId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "stageplanId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "interface{}",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewCaseManagementApiWithConfig(config)\n\nvar caseplanId string // Caseplan identifier.\nvar stageplanId string // Stageplan identifier.\n// Delete a Stageplan from a draft Caseplan.\ndata, response, err := apiInstance.DeleteCasemanagementCaseplanStageplan(caseplanId, stageplanId)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteCasemanagementCaseplanStageplan: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
   "getcasemanagementcase": {
     "operationId": "getcasemanagementcase",
     "functionName": "GetCasemanagementCase",
@@ -10781,6 +10800,49 @@
     ],
     "return": "Caseplan",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewCaseManagementApiWithConfig(config)\n\nvar caseplanId string // Caseplan identifier.\n// Publish Caseplan.\ndata, response, err := apiInstance.PostCasemanagementCaseplanPublish(caseplanId)\nif err != nil {\n\tfmt.Printf(\"Error calling PostCasemanagementCaseplanPublish: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "postcasemanagementcaseplanstageplanreposition": {
+    "operationId": "postcasemanagementcaseplanstageplanreposition",
+    "functionName": "PostCasemanagementCaseplanStageplanReposition",
+    "signature": "PostCasemanagementCaseplanStageplanReposition(caseplanId, stageplanId, body)",
+    "parameters": [
+      {
+        "name": "caseplanId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "stageplanId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Stageplanreposition",
+        "required": "true"
+      }
+    ],
+    "return": "interface{}",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewCaseManagementApiWithConfig(config)\n\nvar caseplanId string // Caseplan identifier.\nvar stageplanId string // Stageplan identifier.\nvar body platformclientv2.Stageplanreposition // Stageplan reposition request.\n// Reposition a Stageplan within a draft Caseplan.\ndata, response, err := apiInstance.PostCasemanagementCaseplanStageplanReposition(caseplanId, stageplanId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostCasemanagementCaseplanStageplanReposition: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "postcasemanagementcaseplanstageplans": {
+    "operationId": "postcasemanagementcaseplanstageplans",
+    "functionName": "PostCasemanagementCaseplanStageplans",
+    "signature": "PostCasemanagementCaseplanStageplans(caseplanId, body)",
+    "parameters": [
+      {
+        "name": "caseplanId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Stageplancreate",
+        "required": "true"
+      }
+    ],
+    "return": "Stageplan",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewCaseManagementApiWithConfig(config)\n\nvar caseplanId string // Caseplan identifier.\nvar body platformclientv2.Stageplancreate // Stageplan create request.\n// Create a Stageplan on a draft Caseplan.\ndata, response, err := apiInstance.PostCasemanagementCaseplanStageplans(caseplanId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostCasemanagementCaseplanStageplans: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "postcasemanagementcaseplanversions": {
     "operationId": "postcasemanagementcaseplanversions",
@@ -21014,6 +21076,20 @@
     ],
     "return": "Dataschema",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewExternalContactsApiWithConfig(config)\n\nvar body platformclientv2.Dataschema // Schema\n// Create a schema\ndata, response, err := apiInstance.PostExternalcontactsContactsSchemas(body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostExternalcontactsContactsSchemas: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "postexternalcontactscontactssearch": {
+    "operationId": "postexternalcontactscontactssearch",
+    "functionName": "PostExternalcontactsContactsSearch",
+    "signature": "PostExternalcontactsContactsSearch(body)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Contactsearchrequest",
+        "required": "true"
+      }
+    ],
+    "return": "Contactlisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewExternalContactsApiWithConfig(config)\n\nvar body platformclientv2.Contactsearchrequest // Search request\n// Search for external contacts\ndata, response, err := apiInstance.PostExternalcontactsContactsSearch(body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostExternalcontactsContactsSearch: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "postexternalcontactsexternalsources": {
     "operationId": "postexternalcontactsexternalsources",
@@ -34357,7 +34433,7 @@
         "required": "true"
       }
     ],
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewMobileDevicesApiWithConfig(config)\n\nvar deviceId string // Device ID\n// Delete device\nresponse, err := apiInstance.DeleteMobiledevice(deviceId)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteMobiledevice: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewMobileDevicesApiWithConfig(config)\n\nvar deviceId string // Device ID\n// (Deprecated, see https://apicentral.genesys.cloud/api-explorer#webmessaging for alternative) Delete device\nresponse, err := apiInstance.DeleteMobiledevice(deviceId)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteMobiledevice: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
   },
   "getmobiledevice": {
     "operationId": "getmobiledevice",
@@ -34371,7 +34447,7 @@
       }
     ],
     "return": "Userdevice",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewMobileDevicesApiWithConfig(config)\n\nvar deviceId string // Device ID\n// Get device\ndata, response, err := apiInstance.GetMobiledevice(deviceId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetMobiledevice: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewMobileDevicesApiWithConfig(config)\n\nvar deviceId string // Device ID\n// (Deprecated) Get device\ndata, response, err := apiInstance.GetMobiledevice(deviceId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetMobiledevice: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getmobiledevices": {
     "operationId": "getmobiledevices",
@@ -34395,7 +34471,7 @@
       }
     ],
     "return": "Directoryuserdeviceslisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewMobileDevicesApiWithConfig(config)\n\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar sortOrder string // Ascending or descending sort order\n// Get a list of all devices.\ndata, response, err := apiInstance.GetMobiledevices(pageSize, pageNumber, sortOrder)\nif err != nil {\n\tfmt.Printf(\"Error calling GetMobiledevices: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewMobileDevicesApiWithConfig(config)\n\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar sortOrder string // Ascending or descending sort order\n// (Deprecated) Get a list of all devices.\ndata, response, err := apiInstance.GetMobiledevices(pageSize, pageNumber, sortOrder)\nif err != nil {\n\tfmt.Printf(\"Error calling GetMobiledevices: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "postmobiledevices": {
     "operationId": "postmobiledevices",
@@ -34409,7 +34485,7 @@
       }
     ],
     "return": "Userdevice",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewMobileDevicesApiWithConfig(config)\n\nvar body platformclientv2.Userdevice // Device\n// Create User device\ndata, response, err := apiInstance.PostMobiledevices(body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostMobiledevices: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewMobileDevicesApiWithConfig(config)\n\nvar body platformclientv2.Userdevice // Device\n// (Deprecated, see https://apicentral.genesys.cloud/api-explorer#webmessaging for alternative) Create User device\ndata, response, err := apiInstance.PostMobiledevices(body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostMobiledevices: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "putmobiledevice": {
     "operationId": "putmobiledevice",
@@ -34428,7 +34504,7 @@
       }
     ],
     "return": "Userdevice",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewMobileDevicesApiWithConfig(config)\n\nvar deviceId string // Device ID\nvar body platformclientv2.Userdevice // Device\n// Update device\ndata, response, err := apiInstance.PutMobiledevice(deviceId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PutMobiledevice: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewMobileDevicesApiWithConfig(config)\n\nvar deviceId string // Device ID\nvar body platformclientv2.Userdevice // Device\n// (Deprecated, see https://apicentral.genesys.cloud/api-explorer#webmessaging for alternative) Update device\ndata, response, err := apiInstance.PutMobiledevice(deviceId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PutMobiledevice: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "deletenotificationschannelsubscriptions": {
     "operationId": "deletenotificationschannelsubscriptions",
@@ -48719,7 +48795,7 @@
         "required": "false"
       }
     ],
-    "return": "Dataingestionruleresponseentitylisting",
+    "return": "Genericdataingestionruleresponseentitylisting",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSocialMediaApiWithConfig(config)\n\nvar topicId string // topicId\nvar pageNumber int // Page number\nvar pageSize int // Page size\nvar includeDeleted bool // Determines whether to include soft-deleted items in the result.\n// Retrieve all social topic data ingestion rules with pagination.\ndata, response, err := apiInstance.GetSocialmediaTopicDataingestionrules(topicId, pageNumber, pageSize, includeDeleted)\nif err != nil {\n\tfmt.Printf(\"Error calling GetSocialmediaTopicDataingestionrules: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getsocialmediatopicdataingestionrulesfacebookfacebookingestionruleid": {

@@ -369,6 +369,96 @@ func (a CaseManagementApi) DeleteCasemanagementCaseplanDataschema(caseplanId str
 	return successPayload, response, err
 }
 
+// DeleteCasemanagementCaseplanStageplan invokes DELETE /api/v2/casemanagement/caseplans/{caseplanId}/stageplans/{stageplanId}
+//
+// Delete a Stageplan from a draft Caseplan.
+//
+// Preview: DeleteCasemanagementCaseplanStageplan is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+func (a CaseManagementApi) DeleteCasemanagementCaseplanStageplan(caseplanId string, stageplanId string) (*interface{}, *APIResponse, error) {
+	var httpMethod = "DELETE"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/casemanagement/caseplans/{caseplanId}/stageplans/{stageplanId}"
+	path = strings.Replace(path, "{caseplanId}", url.PathEscape(fmt.Sprintf("%v", caseplanId)), -1)
+	path = strings.Replace(path, "{stageplanId}", url.PathEscape(fmt.Sprintf("%v", stageplanId)), -1)
+	defaultReturn := new(interface{})
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'caseplanId' is set
+	if &caseplanId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'caseplanId' when calling CaseManagementApi->DeleteCasemanagementCaseplanStageplan")
+	}
+	// verify the required parameter 'stageplanId' is set
+	if &stageplanId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'stageplanId' when calling CaseManagementApi->DeleteCasemanagementCaseplanStageplan")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *interface{}
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "interface{}" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // GetCasemanagementCase invokes GET /api/v2/casemanagement/cases/{caseId}
 //
 // Get a Case.
@@ -3501,6 +3591,196 @@ func (a CaseManagementApi) PostCasemanagementCaseplanPublish(caseplanId string) 
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Caseplan" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostCasemanagementCaseplanStageplanReposition invokes POST /api/v2/casemanagement/caseplans/{caseplanId}/stageplans/{stageplanId}/reposition
+//
+// Reposition a Stageplan within a draft Caseplan.
+//
+// Preview: PostCasemanagementCaseplanStageplanReposition is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+func (a CaseManagementApi) PostCasemanagementCaseplanStageplanReposition(caseplanId string, stageplanId string, body Stageplanreposition) (*interface{}, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/casemanagement/caseplans/{caseplanId}/stageplans/{stageplanId}/reposition"
+	path = strings.Replace(path, "{caseplanId}", url.PathEscape(fmt.Sprintf("%v", caseplanId)), -1)
+	path = strings.Replace(path, "{stageplanId}", url.PathEscape(fmt.Sprintf("%v", stageplanId)), -1)
+	defaultReturn := new(interface{})
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'caseplanId' is set
+	if &caseplanId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'caseplanId' when calling CaseManagementApi->PostCasemanagementCaseplanStageplanReposition")
+	}
+	// verify the required parameter 'stageplanId' is set
+	if &stageplanId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'stageplanId' when calling CaseManagementApi->PostCasemanagementCaseplanStageplanReposition")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling CaseManagementApi->PostCasemanagementCaseplanStageplanReposition")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *interface{}
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "interface{}" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostCasemanagementCaseplanStageplans invokes POST /api/v2/casemanagement/caseplans/{caseplanId}/stageplans
+//
+// Create a Stageplan on a draft Caseplan.
+//
+// Preview: PostCasemanagementCaseplanStageplans is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+func (a CaseManagementApi) PostCasemanagementCaseplanStageplans(caseplanId string, body Stageplancreate) (*Stageplan, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/casemanagement/caseplans/{caseplanId}/stageplans"
+	path = strings.Replace(path, "{caseplanId}", url.PathEscape(fmt.Sprintf("%v", caseplanId)), -1)
+	defaultReturn := new(Stageplan)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'caseplanId' is set
+	if &caseplanId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'caseplanId' when calling CaseManagementApi->PostCasemanagementCaseplanStageplans")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling CaseManagementApi->PostCasemanagementCaseplanStageplans")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Stageplan
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Stageplan" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

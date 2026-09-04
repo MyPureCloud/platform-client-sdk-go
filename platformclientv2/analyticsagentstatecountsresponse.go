@@ -22,6 +22,15 @@ type Analyticsagentstatecountsresponse struct {
 
 	// IsOutOfOfficeCounts - List of count by out of office states
 	IsOutOfOfficeCounts *[]Agentstateisoutofofficecount `json:"isOutOfOfficeCounts,omitempty"`
+
+	// AdherenceStateCounts - List of count by adherence state
+	AdherenceStateCounts *[]Agentstateadherencestatecount `json:"adherenceStateCounts,omitempty"`
+
+	// ScheduledActivityCategoryCounts - List of count by scheduled activity category
+	ScheduledActivityCategoryCounts *[]Agentstateactivitycategorycount `json:"scheduledActivityCategoryCounts,omitempty"`
+
+	// ActualActivityCategoryCounts - List of count by actual activity category
+	ActualActivityCategoryCounts *[]Agentstateactivitycategorycount `json:"actualActivityCategoryCounts,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +103,12 @@ func (o Analyticsagentstatecountsresponse) MarshalJSON() ([]byte, error) {
 		RoutingStatusCounts *[]Agentstateroutingstatuscount `json:"routingStatusCounts,omitempty"`
 		
 		IsOutOfOfficeCounts *[]Agentstateisoutofofficecount `json:"isOutOfOfficeCounts,omitempty"`
+		
+		AdherenceStateCounts *[]Agentstateadherencestatecount `json:"adherenceStateCounts,omitempty"`
+		
+		ScheduledActivityCategoryCounts *[]Agentstateactivitycategorycount `json:"scheduledActivityCategoryCounts,omitempty"`
+		
+		ActualActivityCategoryCounts *[]Agentstateactivitycategorycount `json:"actualActivityCategoryCounts,omitempty"`
 		Alias
 	}{ 
 		SegmentCounts: o.SegmentCounts,
@@ -103,6 +118,12 @@ func (o Analyticsagentstatecountsresponse) MarshalJSON() ([]byte, error) {
 		RoutingStatusCounts: o.RoutingStatusCounts,
 		
 		IsOutOfOfficeCounts: o.IsOutOfOfficeCounts,
+		
+		AdherenceStateCounts: o.AdherenceStateCounts,
+		
+		ScheduledActivityCategoryCounts: o.ScheduledActivityCategoryCounts,
+		
+		ActualActivityCategoryCounts: o.ActualActivityCategoryCounts,
 		Alias:    (Alias)(o),
 	})
 }
@@ -132,6 +153,21 @@ func (o *Analyticsagentstatecountsresponse) UnmarshalJSON(b []byte) error {
 	if IsOutOfOfficeCounts, ok := AnalyticsagentstatecountsresponseMap["isOutOfOfficeCounts"].([]interface{}); ok {
 		IsOutOfOfficeCountsString, _ := json.Marshal(IsOutOfOfficeCounts)
 		json.Unmarshal(IsOutOfOfficeCountsString, &o.IsOutOfOfficeCounts)
+	}
+	
+	if AdherenceStateCounts, ok := AnalyticsagentstatecountsresponseMap["adherenceStateCounts"].([]interface{}); ok {
+		AdherenceStateCountsString, _ := json.Marshal(AdherenceStateCounts)
+		json.Unmarshal(AdherenceStateCountsString, &o.AdherenceStateCounts)
+	}
+	
+	if ScheduledActivityCategoryCounts, ok := AnalyticsagentstatecountsresponseMap["scheduledActivityCategoryCounts"].([]interface{}); ok {
+		ScheduledActivityCategoryCountsString, _ := json.Marshal(ScheduledActivityCategoryCounts)
+		json.Unmarshal(ScheduledActivityCategoryCountsString, &o.ScheduledActivityCategoryCounts)
+	}
+	
+	if ActualActivityCategoryCounts, ok := AnalyticsagentstatecountsresponseMap["actualActivityCategoryCounts"].([]interface{}); ok {
+		ActualActivityCategoryCountsString, _ := json.Marshal(ActualActivityCategoryCounts)
+		json.Unmarshal(ActualActivityCategoryCountsString, &o.ActualActivityCategoryCounts)
 	}
 	
 

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -7,25 +8,22 @@ import (
 	"strings"
 )
 
-// Continuousforecastgetsessionresponse
-type Continuousforecastgetsessionresponse struct { 
+// Allocationoutputstemplate
+type Allocationoutputstemplate struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// SessionId - The ID of the latest session, regardless of the session's status
-	SessionId *string `json:"sessionId,omitempty"`
+	// CalculationStartDate - The beginning of the allocation results, in ISO-8601 format
+	CalculationStartDate *time.Time `json:"calculationStartDate,omitempty"`
 
-	// LastSuccessfulSessionId - The ID of the last session that has a state of Complete
-	LastSuccessfulSessionId *string `json:"lastSuccessfulSessionId,omitempty"`
+	// CalculationIntervalLengthMinutes - Interval length of the response metrics
+	CalculationIntervalLengthMinutes *int `json:"calculationIntervalLengthMinutes,omitempty"`
 
-	// State - The state of the latest session
-	State *string `json:"state,omitempty"`
-
-	// ErrorCode - The error code if the latest session has a state of Error
-	ErrorCode *string `json:"errorCode,omitempty"`
+	// PlanningGroupAllocationResults - Planning group level allocation results
+	PlanningGroupAllocationResults *[]Allocationresultstemplate `json:"planningGroupAllocationResults,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Continuousforecastgetsessionresponse) SetField(field string, fieldValue interface{}) {
+func (o *Allocationoutputstemplate) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -46,14 +44,14 @@ func (o *Continuousforecastgetsessionresponse) SetField(field string, fieldValue
 	o.SetFieldNames[field] = true
 }
 
-func (o Continuousforecastgetsessionresponse) MarshalJSON() ([]byte, error) {
+func (o Allocationoutputstemplate) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
+		dateTimeFields := []string{ "CalculationStartDate", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -84,58 +82,61 @@ func (o Continuousforecastgetsessionresponse) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Continuousforecastgetsessionresponse
+	type Alias Allocationoutputstemplate
+	
+	CalculationStartDate := new(string)
+	if o.CalculationStartDate != nil {
+		
+		*CalculationStartDate = timeutil.Strftime(o.CalculationStartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		CalculationStartDate = nil
+	}
 	
 	return json.Marshal(&struct { 
-		SessionId *string `json:"sessionId,omitempty"`
+		CalculationStartDate *string `json:"calculationStartDate,omitempty"`
 		
-		LastSuccessfulSessionId *string `json:"lastSuccessfulSessionId,omitempty"`
+		CalculationIntervalLengthMinutes *int `json:"calculationIntervalLengthMinutes,omitempty"`
 		
-		State *string `json:"state,omitempty"`
-		
-		ErrorCode *string `json:"errorCode,omitempty"`
+		PlanningGroupAllocationResults *[]Allocationresultstemplate `json:"planningGroupAllocationResults,omitempty"`
 		Alias
 	}{ 
-		SessionId: o.SessionId,
+		CalculationStartDate: CalculationStartDate,
 		
-		LastSuccessfulSessionId: o.LastSuccessfulSessionId,
+		CalculationIntervalLengthMinutes: o.CalculationIntervalLengthMinutes,
 		
-		State: o.State,
-		
-		ErrorCode: o.ErrorCode,
+		PlanningGroupAllocationResults: o.PlanningGroupAllocationResults,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Continuousforecastgetsessionresponse) UnmarshalJSON(b []byte) error {
-	var ContinuousforecastgetsessionresponseMap map[string]interface{}
-	err := json.Unmarshal(b, &ContinuousforecastgetsessionresponseMap)
+func (o *Allocationoutputstemplate) UnmarshalJSON(b []byte) error {
+	var AllocationoutputstemplateMap map[string]interface{}
+	err := json.Unmarshal(b, &AllocationoutputstemplateMap)
 	if err != nil {
 		return err
 	}
 	
-	if SessionId, ok := ContinuousforecastgetsessionresponseMap["sessionId"].(string); ok {
-		o.SessionId = &SessionId
+	if calculationStartDateString, ok := AllocationoutputstemplateMap["calculationStartDate"].(string); ok {
+		CalculationStartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", calculationStartDateString)
+		o.CalculationStartDate = &CalculationStartDate
 	}
-    
-	if LastSuccessfulSessionId, ok := ContinuousforecastgetsessionresponseMap["lastSuccessfulSessionId"].(string); ok {
-		o.LastSuccessfulSessionId = &LastSuccessfulSessionId
+	
+	if CalculationIntervalLengthMinutes, ok := AllocationoutputstemplateMap["calculationIntervalLengthMinutes"].(float64); ok {
+		CalculationIntervalLengthMinutesInt := int(CalculationIntervalLengthMinutes)
+		o.CalculationIntervalLengthMinutes = &CalculationIntervalLengthMinutesInt
 	}
-    
-	if State, ok := ContinuousforecastgetsessionresponseMap["state"].(string); ok {
-		o.State = &State
+	
+	if PlanningGroupAllocationResults, ok := AllocationoutputstemplateMap["planningGroupAllocationResults"].([]interface{}); ok {
+		PlanningGroupAllocationResultsString, _ := json.Marshal(PlanningGroupAllocationResults)
+		json.Unmarshal(PlanningGroupAllocationResultsString, &o.PlanningGroupAllocationResults)
 	}
-    
-	if ErrorCode, ok := ContinuousforecastgetsessionresponseMap["errorCode"].(string); ok {
-		o.ErrorCode = &ErrorCode
-	}
-    
+	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Continuousforecastgetsessionresponse) String() string {
+func (o *Allocationoutputstemplate) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

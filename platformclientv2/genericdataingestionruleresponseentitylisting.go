@@ -7,12 +7,12 @@ import (
 	"strings"
 )
 
-// Dataingestionruleresponseentitylisting
-type Dataingestionruleresponseentitylisting struct { 
+// Genericdataingestionruleresponseentitylisting
+type Genericdataingestionruleresponseentitylisting struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Entities
-	Entities *[]Dataingestionruleresponse `json:"entities,omitempty"`
+	Entities *[]Genericdataingestionruleresponse `json:"entities,omitempty"`
 
 	// PageSize
 	PageSize *int `json:"pageSize,omitempty"`
@@ -43,7 +43,7 @@ type Dataingestionruleresponseentitylisting struct {
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Dataingestionruleresponseentitylisting) SetField(field string, fieldValue interface{}) {
+func (o *Genericdataingestionruleresponseentitylisting) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -64,7 +64,7 @@ func (o *Dataingestionruleresponseentitylisting) SetField(field string, fieldVal
 	o.SetFieldNames[field] = true
 }
 
-func (o Dataingestionruleresponseentitylisting) MarshalJSON() ([]byte, error) {
+func (o Genericdataingestionruleresponseentitylisting) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -102,10 +102,10 @@ func (o Dataingestionruleresponseentitylisting) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Dataingestionruleresponseentitylisting
+	type Alias Genericdataingestionruleresponseentitylisting
 	
 	return json.Marshal(&struct { 
-		Entities *[]Dataingestionruleresponse `json:"entities,omitempty"`
+		Entities *[]Genericdataingestionruleresponse `json:"entities,omitempty"`
 		
 		PageSize *int `json:"pageSize,omitempty"`
 		
@@ -149,54 +149,54 @@ func (o Dataingestionruleresponseentitylisting) MarshalJSON() ([]byte, error) {
 	})
 }
 
-func (o *Dataingestionruleresponseentitylisting) UnmarshalJSON(b []byte) error {
-	var DataingestionruleresponseentitylistingMap map[string]interface{}
-	err := json.Unmarshal(b, &DataingestionruleresponseentitylistingMap)
+func (o *Genericdataingestionruleresponseentitylisting) UnmarshalJSON(b []byte) error {
+	var GenericdataingestionruleresponseentitylistingMap map[string]interface{}
+	err := json.Unmarshal(b, &GenericdataingestionruleresponseentitylistingMap)
 	if err != nil {
 		return err
 	}
 	
-	if Entities, ok := DataingestionruleresponseentitylistingMap["entities"].([]interface{}); ok {
+	if Entities, ok := GenericdataingestionruleresponseentitylistingMap["entities"].([]interface{}); ok {
 		EntitiesString, _ := json.Marshal(Entities)
 		json.Unmarshal(EntitiesString, &o.Entities)
 	}
 	
-	if PageSize, ok := DataingestionruleresponseentitylistingMap["pageSize"].(float64); ok {
+	if PageSize, ok := GenericdataingestionruleresponseentitylistingMap["pageSize"].(float64); ok {
 		PageSizeInt := int(PageSize)
 		o.PageSize = &PageSizeInt
 	}
 	
-	if PageNumber, ok := DataingestionruleresponseentitylistingMap["pageNumber"].(float64); ok {
+	if PageNumber, ok := GenericdataingestionruleresponseentitylistingMap["pageNumber"].(float64); ok {
 		PageNumberInt := int(PageNumber)
 		o.PageNumber = &PageNumberInt
 	}
 	
-	if Total, ok := DataingestionruleresponseentitylistingMap["total"].(float64); ok {
+	if Total, ok := GenericdataingestionruleresponseentitylistingMap["total"].(float64); ok {
 		TotalInt := int(Total)
 		o.Total = &TotalInt
 	}
 	
-	if LastUri, ok := DataingestionruleresponseentitylistingMap["lastUri"].(string); ok {
+	if LastUri, ok := GenericdataingestionruleresponseentitylistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
 	}
     
-	if FirstUri, ok := DataingestionruleresponseentitylistingMap["firstUri"].(string); ok {
+	if FirstUri, ok := GenericdataingestionruleresponseentitylistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
     
-	if SelfUri, ok := DataingestionruleresponseentitylistingMap["selfUri"].(string); ok {
+	if SelfUri, ok := GenericdataingestionruleresponseentitylistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
     
-	if NextUri, ok := DataingestionruleresponseentitylistingMap["nextUri"].(string); ok {
+	if NextUri, ok := GenericdataingestionruleresponseentitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
 	}
     
-	if PreviousUri, ok := DataingestionruleresponseentitylistingMap["previousUri"].(string); ok {
+	if PreviousUri, ok := GenericdataingestionruleresponseentitylistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
 	}
     
-	if PageCount, ok := DataingestionruleresponseentitylistingMap["pageCount"].(float64); ok {
+	if PageCount, ok := GenericdataingestionruleresponseentitylistingMap["pageCount"].(float64); ok {
 		PageCountInt := int(PageCount)
 		o.PageCount = &PageCountInt
 	}
@@ -206,7 +206,7 @@ func (o *Dataingestionruleresponseentitylisting) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Dataingestionruleresponseentitylisting) String() string {
+func (o *Genericdataingestionruleresponseentitylisting) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

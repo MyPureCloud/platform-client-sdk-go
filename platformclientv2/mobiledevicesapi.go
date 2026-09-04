@@ -31,7 +31,9 @@ func NewMobileDevicesApiWithConfig(config *Configuration) *MobileDevicesApi {
 
 // DeleteMobiledevice invokes DELETE /api/v2/mobiledevices/{deviceId}
 //
-// Delete device
+// (Deprecated, see https://apicentral.genesys.cloud/api-explorer#webmessaging for alternative) Delete device
+//
+// Deprecated: DeleteMobiledevice is deprecated
 func (a MobileDevicesApi) DeleteMobiledevice(deviceId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -106,7 +108,9 @@ func (a MobileDevicesApi) DeleteMobiledevice(deviceId string) (*APIResponse, err
 
 // GetMobiledevice invokes GET /api/v2/mobiledevices/{deviceId}
 //
-// Get device
+// (Deprecated) Get device
+//
+// Deprecated: GetMobiledevice is deprecated
 func (a MobileDevicesApi) GetMobiledevice(deviceId string) (*Userdevice, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -188,7 +192,9 @@ func (a MobileDevicesApi) GetMobiledevice(deviceId string) (*Userdevice, *APIRes
 
 // GetMobiledevices invokes GET /api/v2/mobiledevices
 //
-// Get a list of all devices.
+// (Deprecated) Get a list of all devices.
+//
+// Deprecated: GetMobiledevices is deprecated
 func (a MobileDevicesApi) GetMobiledevices(pageSize int, pageNumber int, sortOrder string) (*Directoryuserdeviceslisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -270,7 +276,9 @@ func (a MobileDevicesApi) GetMobiledevices(pageSize int, pageNumber int, sortOrd
 
 // PostMobiledevices invokes POST /api/v2/mobiledevices
 //
-// Create User device
+// (Deprecated, see https://apicentral.genesys.cloud/api-explorer#webmessaging for alternative) Create User device
+//
+// Deprecated: PostMobiledevices is deprecated
 func (a MobileDevicesApi) PostMobiledevices(body Userdevice) (*Userdevice, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -354,7 +362,9 @@ func (a MobileDevicesApi) PostMobiledevices(body Userdevice) (*Userdevice, *APIR
 
 // PutMobiledevice invokes PUT /api/v2/mobiledevices/{deviceId}
 //
-// Update device
+// (Deprecated, see https://apicentral.genesys.cloud/api-explorer#webmessaging for alternative) Update device
+//
+// Deprecated: PutMobiledevice is deprecated
 func (a MobileDevicesApi) PutMobiledevice(deviceId string, body Userdevice) (*Userdevice, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

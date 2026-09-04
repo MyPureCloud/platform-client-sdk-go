@@ -719,6 +719,18 @@ type Viewfilter struct {
 	// SocialVerificationStatus - Filter to indicate if the posts from verified user
 	SocialVerificationStatus *bool `json:"socialVerificationStatus,omitempty"`
 
+	// SocialEngagementLikes - The likes range used to filter the view
+	SocialEngagementLikes *Numericrange `json:"socialEngagementLikes,omitempty"`
+
+	// SocialEngagementShares - The shares range used to filter the view
+	SocialEngagementShares *Numericrange `json:"socialEngagementShares,omitempty"`
+
+	// SocialEngagementComments - The comments range used to filter the view
+	SocialEngagementComments *Numericrange `json:"socialEngagementComments,omitempty"`
+
+	// SocialEngagementViews - The views range used to filter the view
+	SocialEngagementViews *Numericrange `json:"socialEngagementViews,omitempty"`
+
 	// SessionExpired - Filter to indicate for if session is expired
 	SessionExpired *bool `json:"sessionExpired,omitempty"`
 
@@ -1273,6 +1285,14 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		
 		SocialVerificationStatus *bool `json:"socialVerificationStatus,omitempty"`
 		
+		SocialEngagementLikes *Numericrange `json:"socialEngagementLikes,omitempty"`
+		
+		SocialEngagementShares *Numericrange `json:"socialEngagementShares,omitempty"`
+		
+		SocialEngagementComments *Numericrange `json:"socialEngagementComments,omitempty"`
+		
+		SocialEngagementViews *Numericrange `json:"socialEngagementViews,omitempty"`
+		
 		SessionExpired *bool `json:"sessionExpired,omitempty"`
 		
 		ScreenMonitored *bool `json:"screenMonitored,omitempty"`
@@ -1757,6 +1777,14 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		SocialFollowerRange: o.SocialFollowerRange,
 		
 		SocialVerificationStatus: o.SocialVerificationStatus,
+		
+		SocialEngagementLikes: o.SocialEngagementLikes,
+		
+		SocialEngagementShares: o.SocialEngagementShares,
+		
+		SocialEngagementComments: o.SocialEngagementComments,
+		
+		SocialEngagementViews: o.SocialEngagementViews,
 		
 		SessionExpired: o.SessionExpired,
 		
@@ -2906,6 +2934,26 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 		o.SocialVerificationStatus = &SocialVerificationStatus
 	}
     
+	if SocialEngagementLikes, ok := ViewfilterMap["socialEngagementLikes"].(map[string]interface{}); ok {
+		SocialEngagementLikesString, _ := json.Marshal(SocialEngagementLikes)
+		json.Unmarshal(SocialEngagementLikesString, &o.SocialEngagementLikes)
+	}
+	
+	if SocialEngagementShares, ok := ViewfilterMap["socialEngagementShares"].(map[string]interface{}); ok {
+		SocialEngagementSharesString, _ := json.Marshal(SocialEngagementShares)
+		json.Unmarshal(SocialEngagementSharesString, &o.SocialEngagementShares)
+	}
+	
+	if SocialEngagementComments, ok := ViewfilterMap["socialEngagementComments"].(map[string]interface{}); ok {
+		SocialEngagementCommentsString, _ := json.Marshal(SocialEngagementComments)
+		json.Unmarshal(SocialEngagementCommentsString, &o.SocialEngagementComments)
+	}
+	
+	if SocialEngagementViews, ok := ViewfilterMap["socialEngagementViews"].(map[string]interface{}); ok {
+		SocialEngagementViewsString, _ := json.Marshal(SocialEngagementViews)
+		json.Unmarshal(SocialEngagementViewsString, &o.SocialEngagementViews)
+	}
+	
 	if SessionExpired, ok := ViewfilterMap["sessionExpired"].(bool); ok {
 		o.SessionExpired = &SessionExpired
 	}

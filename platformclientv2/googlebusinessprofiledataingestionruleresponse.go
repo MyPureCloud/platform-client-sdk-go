@@ -39,9 +39,6 @@ type Googlebusinessprofiledataingestionruleresponse struct {
 	// IngestionRuleInfo - The Info about ingestion rule.
 	IngestionRuleInfo *Messageinfo `json:"ingestionRuleInfo,omitempty"`
 
-	// Countries - The countries is available only on twitter data ingestion rule. ISO 3166-1 alpha-2 country codes where Data Ingestion Rules should apply. Defaults to worldwide.
-	Countries *[]string `json:"countries,omitempty"`
-
 	// IntegrationId - The Integration Id from which public social posts are ingested. This entity is created using the /conversations/messaging/integrations/open/extensions/googlebusinessprofile resource
 	IntegrationId *string `json:"integrationId,omitempty"`
 
@@ -149,8 +146,6 @@ func (o Googlebusinessprofiledataingestionruleresponse) MarshalJSON() ([]byte, e
 		
 		IngestionRuleInfo *Messageinfo `json:"ingestionRuleInfo,omitempty"`
 		
-		Countries *[]string `json:"countries,omitempty"`
-		
 		IntegrationId *string `json:"integrationId,omitempty"`
 		
 		ExternalSource *Domainentityref `json:"externalSource,omitempty"`
@@ -175,8 +170,6 @@ func (o Googlebusinessprofiledataingestionruleresponse) MarshalJSON() ([]byte, e
 		Platform: o.Platform,
 		
 		IngestionRuleInfo: o.IngestionRuleInfo,
-		
-		Countries: o.Countries,
 		
 		IntegrationId: o.IntegrationId,
 		
@@ -232,11 +225,6 @@ func (o *Googlebusinessprofiledataingestionruleresponse) UnmarshalJSON(b []byte)
 	if IngestionRuleInfo, ok := GooglebusinessprofiledataingestionruleresponseMap["ingestionRuleInfo"].(map[string]interface{}); ok {
 		IngestionRuleInfoString, _ := json.Marshal(IngestionRuleInfo)
 		json.Unmarshal(IngestionRuleInfoString, &o.IngestionRuleInfo)
-	}
-	
-	if Countries, ok := GooglebusinessprofiledataingestionruleresponseMap["countries"].([]interface{}); ok {
-		CountriesString, _ := json.Marshal(Countries)
-		json.Unmarshal(CountriesString, &o.Countries)
 	}
 	
 	if IntegrationId, ok := GooglebusinessprofiledataingestionruleresponseMap["integrationId"].(string); ok {

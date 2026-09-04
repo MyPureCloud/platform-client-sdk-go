@@ -40,6 +40,9 @@ type Conversationresponsesuggestionstopicsuggestioncontext struct {
 
 	// QueryReformulationContext
 	QueryReformulationContext *Conversationresponsesuggestionstopicqueryreformulationcontext `json:"queryReformulationContext,omitempty"`
+
+	// ParticipantType
+	ParticipantType *string `json:"participantType,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -124,6 +127,8 @@ func (o Conversationresponsesuggestionstopicsuggestioncontext) MarshalJSON() ([]
 		Language *string `json:"language,omitempty"`
 		
 		QueryReformulationContext *Conversationresponsesuggestionstopicqueryreformulationcontext `json:"queryReformulationContext,omitempty"`
+		
+		ParticipantType *string `json:"participantType,omitempty"`
 		Alias
 	}{ 
 		QueueId: o.QueueId,
@@ -145,6 +150,8 @@ func (o Conversationresponsesuggestionstopicsuggestioncontext) MarshalJSON() ([]
 		Language: o.Language,
 		
 		QueryReformulationContext: o.QueryReformulationContext,
+		
+		ParticipantType: o.ParticipantType,
 		Alias:    (Alias)(o),
 	})
 }
@@ -197,6 +204,10 @@ func (o *Conversationresponsesuggestionstopicsuggestioncontext) UnmarshalJSON(b 
 		json.Unmarshal(QueryReformulationContextString, &o.QueryReformulationContext)
 	}
 	
+	if ParticipantType, ok := ConversationresponsesuggestionstopicsuggestioncontextMap["participantType"].(string); ok {
+		o.ParticipantType = &ParticipantType
+	}
+    
 
 	return nil
 }

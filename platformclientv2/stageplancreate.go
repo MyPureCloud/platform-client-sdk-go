@@ -7,25 +7,22 @@ import (
 	"strings"
 )
 
-// Continuousforecastgetsessionresponse
-type Continuousforecastgetsessionresponse struct { 
+// Stageplancreate
+type Stageplancreate struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// SessionId - The ID of the latest session, regardless of the session's status
-	SessionId *string `json:"sessionId,omitempty"`
+	// Name - The name of the Stageplan. Valid length between 3 and 256 characters.
+	Name *string `json:"name,omitempty"`
 
-	// LastSuccessfulSessionId - The ID of the last session that has a state of Complete
-	LastSuccessfulSessionId *string `json:"lastSuccessfulSessionId,omitempty"`
+	// Description - The description of the Stageplan. Maximum length of 512 characters.
+	Description *string `json:"description,omitempty"`
 
-	// State - The state of the latest session
-	State *string `json:"state,omitempty"`
-
-	// ErrorCode - The error code if the latest session has a state of Error
-	ErrorCode *string `json:"errorCode,omitempty"`
+	// After - The ID of the Stageplan to place the new Stageplan after. Omit or null to place at the front.
+	After *string `json:"after,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Continuousforecastgetsessionresponse) SetField(field string, fieldValue interface{}) {
+func (o *Stageplancreate) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -46,7 +43,7 @@ func (o *Continuousforecastgetsessionresponse) SetField(field string, fieldValue
 	o.SetFieldNames[field] = true
 }
 
-func (o Continuousforecastgetsessionresponse) MarshalJSON() ([]byte, error) {
+func (o Stageplancreate) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -84,50 +81,42 @@ func (o Continuousforecastgetsessionresponse) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Continuousforecastgetsessionresponse
+	type Alias Stageplancreate
 	
 	return json.Marshal(&struct { 
-		SessionId *string `json:"sessionId,omitempty"`
+		Name *string `json:"name,omitempty"`
 		
-		LastSuccessfulSessionId *string `json:"lastSuccessfulSessionId,omitempty"`
+		Description *string `json:"description,omitempty"`
 		
-		State *string `json:"state,omitempty"`
-		
-		ErrorCode *string `json:"errorCode,omitempty"`
+		After *string `json:"after,omitempty"`
 		Alias
 	}{ 
-		SessionId: o.SessionId,
+		Name: o.Name,
 		
-		LastSuccessfulSessionId: o.LastSuccessfulSessionId,
+		Description: o.Description,
 		
-		State: o.State,
-		
-		ErrorCode: o.ErrorCode,
+		After: o.After,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Continuousforecastgetsessionresponse) UnmarshalJSON(b []byte) error {
-	var ContinuousforecastgetsessionresponseMap map[string]interface{}
-	err := json.Unmarshal(b, &ContinuousforecastgetsessionresponseMap)
+func (o *Stageplancreate) UnmarshalJSON(b []byte) error {
+	var StageplancreateMap map[string]interface{}
+	err := json.Unmarshal(b, &StageplancreateMap)
 	if err != nil {
 		return err
 	}
 	
-	if SessionId, ok := ContinuousforecastgetsessionresponseMap["sessionId"].(string); ok {
-		o.SessionId = &SessionId
+	if Name, ok := StageplancreateMap["name"].(string); ok {
+		o.Name = &Name
 	}
     
-	if LastSuccessfulSessionId, ok := ContinuousforecastgetsessionresponseMap["lastSuccessfulSessionId"].(string); ok {
-		o.LastSuccessfulSessionId = &LastSuccessfulSessionId
+	if Description, ok := StageplancreateMap["description"].(string); ok {
+		o.Description = &Description
 	}
     
-	if State, ok := ContinuousforecastgetsessionresponseMap["state"].(string); ok {
-		o.State = &State
-	}
-    
-	if ErrorCode, ok := ContinuousforecastgetsessionresponseMap["errorCode"].(string); ok {
-		o.ErrorCode = &ErrorCode
+	if After, ok := StageplancreateMap["after"].(string); ok {
+		o.After = &After
 	}
     
 
@@ -135,7 +124,7 @@ func (o *Continuousforecastgetsessionresponse) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Continuousforecastgetsessionresponse) String() string {
+func (o *Stageplancreate) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

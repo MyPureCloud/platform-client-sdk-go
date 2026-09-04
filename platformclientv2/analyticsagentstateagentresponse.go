@@ -47,6 +47,30 @@ type Analyticsagentstateagentresponse struct {
 
 	// IsOutOfOffice - Whether the user is out of office
 	IsOutOfOffice *bool `json:"isOutOfOffice,omitempty"`
+
+	// ManagementUnitId - The id of the user's management unit
+	ManagementUnitId *string `json:"managementUnitId,omitempty"`
+
+	// BusinessUnitId - The id of the user's business unit
+	BusinessUnitId *string `json:"businessUnitId,omitempty"`
+
+	// AdherenceState - The user's adherence state
+	AdherenceState *string `json:"adherenceState,omitempty"`
+
+	// AdherenceImpact - The user's adherence impact
+	AdherenceImpact *string `json:"adherenceImpact,omitempty"`
+
+	// AdherenceDate - The timestamp for when the user's adherence state began. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	AdherenceDate *time.Time `json:"adherenceDate,omitempty"`
+
+	// ScheduledActivityCodeId - The id of the user's scheduled activity code
+	ScheduledActivityCodeId *string `json:"scheduledActivityCodeId,omitempty"`
+
+	// ScheduledActivityCategory - The user's scheduled activity category
+	ScheduledActivityCategory *string `json:"scheduledActivityCategory,omitempty"`
+
+	// ActualActivityCategory - The user's actual activity category
+	ActualActivityCategory *string `json:"actualActivityCategory,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -78,7 +102,7 @@ func (o Analyticsagentstateagentresponse) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "PresenceDate","RoutingStatusDate", }
+		dateTimeFields := []string{ "PresenceDate","RoutingStatusDate","AdherenceDate", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -127,6 +151,14 @@ func (o Analyticsagentstateagentresponse) MarshalJSON() ([]byte, error) {
 		RoutingStatusDate = nil
 	}
 	
+	AdherenceDate := new(string)
+	if o.AdherenceDate != nil {
+		
+		*AdherenceDate = timeutil.Strftime(o.AdherenceDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		AdherenceDate = nil
+	}
+	
 	return json.Marshal(&struct { 
 		UserId *string `json:"userId,omitempty"`
 		
@@ -151,6 +183,22 @@ func (o Analyticsagentstateagentresponse) MarshalJSON() ([]byte, error) {
 		RoutingStatusDate *string `json:"routingStatusDate,omitempty"`
 		
 		IsOutOfOffice *bool `json:"isOutOfOffice,omitempty"`
+		
+		ManagementUnitId *string `json:"managementUnitId,omitempty"`
+		
+		BusinessUnitId *string `json:"businessUnitId,omitempty"`
+		
+		AdherenceState *string `json:"adherenceState,omitempty"`
+		
+		AdherenceImpact *string `json:"adherenceImpact,omitempty"`
+		
+		AdherenceDate *string `json:"adherenceDate,omitempty"`
+		
+		ScheduledActivityCodeId *string `json:"scheduledActivityCodeId,omitempty"`
+		
+		ScheduledActivityCategory *string `json:"scheduledActivityCategory,omitempty"`
+		
+		ActualActivityCategory *string `json:"actualActivityCategory,omitempty"`
 		Alias
 	}{ 
 		UserId: o.UserId,
@@ -176,6 +224,22 @@ func (o Analyticsagentstateagentresponse) MarshalJSON() ([]byte, error) {
 		RoutingStatusDate: RoutingStatusDate,
 		
 		IsOutOfOffice: o.IsOutOfOffice,
+		
+		ManagementUnitId: o.ManagementUnitId,
+		
+		BusinessUnitId: o.BusinessUnitId,
+		
+		AdherenceState: o.AdherenceState,
+		
+		AdherenceImpact: o.AdherenceImpact,
+		
+		AdherenceDate: AdherenceDate,
+		
+		ScheduledActivityCodeId: o.ScheduledActivityCodeId,
+		
+		ScheduledActivityCategory: o.ScheduledActivityCategory,
+		
+		ActualActivityCategory: o.ActualActivityCategory,
 		Alias:    (Alias)(o),
 	})
 }
@@ -237,6 +301,39 @@ func (o *Analyticsagentstateagentresponse) UnmarshalJSON(b []byte) error {
 	
 	if IsOutOfOffice, ok := AnalyticsagentstateagentresponseMap["isOutOfOffice"].(bool); ok {
 		o.IsOutOfOffice = &IsOutOfOffice
+	}
+    
+	if ManagementUnitId, ok := AnalyticsagentstateagentresponseMap["managementUnitId"].(string); ok {
+		o.ManagementUnitId = &ManagementUnitId
+	}
+    
+	if BusinessUnitId, ok := AnalyticsagentstateagentresponseMap["businessUnitId"].(string); ok {
+		o.BusinessUnitId = &BusinessUnitId
+	}
+    
+	if AdherenceState, ok := AnalyticsagentstateagentresponseMap["adherenceState"].(string); ok {
+		o.AdherenceState = &AdherenceState
+	}
+    
+	if AdherenceImpact, ok := AnalyticsagentstateagentresponseMap["adherenceImpact"].(string); ok {
+		o.AdherenceImpact = &AdherenceImpact
+	}
+    
+	if adherenceDateString, ok := AnalyticsagentstateagentresponseMap["adherenceDate"].(string); ok {
+		AdherenceDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", adherenceDateString)
+		o.AdherenceDate = &AdherenceDate
+	}
+	
+	if ScheduledActivityCodeId, ok := AnalyticsagentstateagentresponseMap["scheduledActivityCodeId"].(string); ok {
+		o.ScheduledActivityCodeId = &ScheduledActivityCodeId
+	}
+    
+	if ScheduledActivityCategory, ok := AnalyticsagentstateagentresponseMap["scheduledActivityCategory"].(string); ok {
+		o.ScheduledActivityCategory = &ScheduledActivityCategory
+	}
+    
+	if ActualActivityCategory, ok := AnalyticsagentstateagentresponseMap["actualActivityCategory"].(string); ok {
+		o.ActualActivityCategory = &ActualActivityCategory
 	}
     
 

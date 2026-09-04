@@ -306,7 +306,7 @@
                 {
                     "name": "MessageType",
                     "dataType": "string",
-                    "enum": ["UNKNOWN", "SMS", "TWITTER", "FACEBOOK", "LINE", "WHATSAPP", "WEBMESSAGING", "OPEN", "INSTAGRAM", "APPLE"]
+                    "enum": ["UNKNOWN", "SMS", "TWITTER", "FACEBOOK", "LINE", "WHATSAPP", "WEBMESSAGING", "OPEN", "INSTAGRAM", "APPLE", "LINKEDIN"]
                 }, 
                 {
                     "name": "QueueId",
@@ -443,7 +443,7 @@
                 {
                     "name": "MessageType",
                     "dataType": "string",
-                    "enum": ["UNKNOWN", "SMS", "TWITTER", "FACEBOOK", "LINE", "WHATSAPP", "WEBMESSAGING", "OPEN", "INSTAGRAM", "APPLE"]
+                    "enum": ["UNKNOWN", "SMS", "TWITTER", "FACEBOOK", "LINE", "WHATSAPP", "WEBMESSAGING", "OPEN", "INSTAGRAM", "APPLE", "LINKEDIN"]
                 }, 
                 {
                     "name": "QueueId",
@@ -2528,7 +2528,7 @@
                 {
                     "name": "MessageType",
                     "dataType": "string",
-                    "enum": ["UNKNOWN", "SMS", "TWITTER", "FACEBOOK", "LINE", "WHATSAPP", "WEBMESSAGING", "OPEN", "INSTAGRAM", "APPLE"]
+                    "enum": ["UNKNOWN", "SMS", "TWITTER", "FACEBOOK", "LINE", "WHATSAPP", "WEBMESSAGING", "OPEN", "INSTAGRAM", "APPLE", "LINKEDIN"]
                 }, 
                 {
                     "name": "UserId",
@@ -7004,24 +7004,6 @@
                 }
             ]
         }, 
-        "agentutilizationaggregationsort": { 
-            "properties": [
-                {
-                    "name": "Name",
-                    "description": "Name of the metric used for sorting values.",
-                    "required": true,
-                    "dataType": "string",
-                    "enum": ["oAgentAvailableUtilization", "oAgentMaxUtilization", "oAgentUtilizationPercentage"]
-                }, 
-                {
-                    "name": "Function",
-                    "description": "Aggregation function used for the sort metric.",
-                    "required": true,
-                    "dataType": "string",
-                    "enum": ["average", "count", "max", "min", "sum"]
-                }
-            ]
-        }, 
         "agentutilizationaggregationview": { 
             "properties": [
                 {
@@ -8108,6 +8090,50 @@
                 }
             ]
         }, 
+        "allocationoutputstemplate": { 
+            "properties": [
+                {
+                    "name": "CalculationStartDate",
+                    "description": "The beginning of the allocation results, in ISO-8601 format",
+                    "required": true,
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "CalculationIntervalLengthMinutes",
+                    "description": "Interval length of the response metrics",
+                    "required": true,
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "PlanningGroupAllocationResults",
+                    "description": "Planning group level allocation results",
+                    "required": true,
+                    "dataType": "[]Allocationresultstemplate"
+                }
+            ]
+        }, 
+        "allocationresultstemplate": { 
+            "properties": [
+                {
+                    "name": "PlanningGroupId",
+                    "description": "The ID of the associated planning group",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "AssignedAgentsPerInterval",
+                    "description": "Assigned agent allocation per interval used to generate the performance prediction",
+                    "required": true,
+                    "dataType": "[]float64"
+                }, 
+                {
+                    "name": "HeadcountMultiplierPerInterval",
+                    "description": "Headcount multiplier per interval used to generate the performance prediction",
+                    "required": true,
+                    "dataType": "[]float64"
+                }
+            ]
+        }, 
         "alltimepoints": { 
             "properties": [
                 {
@@ -8732,6 +8758,50 @@
                     "name": "IsOutOfOffice",
                     "description": "Whether the user is out of office",
                     "dataType": "bool"
+                }, 
+                {
+                    "name": "ManagementUnitId",
+                    "description": "The id of the user's management unit",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "BusinessUnitId",
+                    "description": "The id of the user's business unit",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "AdherenceState",
+                    "description": "The user's adherence state",
+                    "dataType": "string",
+                    "enum": ["InAdherence", "OutOfAdherence", "Unscheduled", "Unknown", "Ignored", "Explained"]
+                }, 
+                {
+                    "name": "AdherenceImpact",
+                    "description": "The user's adherence impact",
+                    "dataType": "string",
+                    "enum": ["Positive", "Negative", "Neutral", "Unknown"]
+                }, 
+                {
+                    "name": "AdherenceDate",
+                    "description": "The timestamp for when the user's adherence state began. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z",
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "ScheduledActivityCodeId",
+                    "description": "The id of the user's scheduled activity code",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "ScheduledActivityCategory",
+                    "description": "The user's scheduled activity category",
+                    "dataType": "string",
+                    "enum": ["OnQueueWork", "Break", "Meal", "Meeting", "OffQueueWork", "TimeOff", "Training", "Unavailable", "Unscheduled", "Unknown"]
+                }, 
+                {
+                    "name": "ActualActivityCategory",
+                    "description": "The user's actual activity category",
+                    "dataType": "string",
+                    "enum": ["OnQueueWork", "Break", "Meal", "Meeting", "OffQueueWork", "TimeOff", "Training", "Unavailable", "Unscheduled", "Unknown"]
                 }
             ]
         }, 
@@ -8813,6 +8883,21 @@
                     "name": "IsOutOfOfficeCounts",
                     "description": "List of count by out of office states",
                     "dataType": "[]Agentstateisoutofofficecount"
+                }, 
+                {
+                    "name": "AdherenceStateCounts",
+                    "description": "List of count by adherence state",
+                    "dataType": "[]Agentstateadherencestatecount"
+                }, 
+                {
+                    "name": "ScheduledActivityCategoryCounts",
+                    "description": "List of count by scheduled activity category",
+                    "dataType": "[]Agentstateactivitycategorycount"
+                }, 
+                {
+                    "name": "ActualActivityCategoryCounts",
+                    "description": "List of count by actual activity category",
+                    "dataType": "[]Agentstateactivitycategorycount"
                 }
             ]
         }, 
@@ -35413,7 +35498,7 @@
                 {
                     "name": "MessageType",
                     "dataType": "string",
-                    "enum": ["UNKNOWN", "SMS", "TWITTER", "FACEBOOK", "LINE", "WHATSAPP", "WEBMESSAGING", "OPEN", "INSTAGRAM", "APPLE"]
+                    "enum": ["UNKNOWN", "SMS", "TWITTER", "FACEBOOK", "LINE", "WHATSAPP", "WEBMESSAGING", "OPEN", "INSTAGRAM", "APPLE", "LINKEDIN"]
                 }, 
                 {
                     "name": "ConversationExternalContactIds",
@@ -36721,6 +36806,44 @@
                 }
             ]
         }, 
+        "contactsearchoperation": { 
+            "properties": [
+                {
+                    "name": "SimpleSearch",
+                    "description": "Simple Search operation to execute",
+                    "dataType": "Contactsimplesearch"
+                }
+            ]
+        }, 
+        "contactsearchrequest": { 
+            "properties": [
+                {
+                    "name": "PageNumber",
+                    "description": "Page number (limited to fetching first 1,000 records; pageNumber * pageSize must be <= 1,000)",
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "PageSize",
+                    "description": "Page size (limited to fetching first 1,000 records; pageNumber * pageSize must be <= 1,000)",
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "DivisionIds",
+                    "description": "Which divisions to search, up to 50",
+                    "dataType": "[]string"
+                }, 
+                {
+                    "name": "Expand",
+                    "description": "Which fields, if any, to expand",
+                    "dataType": "[]string"
+                }, 
+                {
+                    "name": "Operation",
+                    "description": "Search operation to execute, currently supports {@code simpleSearch} only.",
+                    "dataType": "Contactsearchoperation"
+                }
+            ]
+        }, 
         "contactsexport": { 
             "properties": [
                 {
@@ -36923,6 +37046,25 @@
                 {
                     "name": "ContactIds",
                     "description": "Contact IDs to be exported.",
+                    "dataType": "[]string"
+                }
+            ]
+        }, 
+        "contactsimplesearch": { 
+            "properties": [
+                {
+                    "name": "Query",
+                    "description": "User supplied search keywords (no special syntax is currently supported)",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "SortOrder",
+                    "description": "The External Contact field to sort by. Any of: [firstName, lastName, middleName, title]. Direction: [asc, desc]. e.g. \"firstName:asc\", \"title:desc\"",
+                    "dataType": "[]string"
+                }, 
+                {
+                    "name": "Ids",
+                    "description": "List of External Contact ids to exact match in search result. Optional filter, up to 100",
                     "dataType": "[]string"
                 }
             ]
@@ -38467,23 +38609,26 @@
             "properties": [
                 {
                     "name": "SessionId",
-                    "description": "Latest session ID of the business unit",
+                    "description": "The ID of the latest session, regardless of the session's status",
+                    "required": true,
                     "dataType": "string"
                 }, 
                 {
                     "name": "LastSuccessfulSessionId",
-                    "description": "Last successful session ID of the business unit",
+                    "description": "The ID of the last session that has a state of Complete",
+                    "required": true,
                     "dataType": "string"
                 }, 
                 {
                     "name": "State",
-                    "description": "State of the latest session",
+                    "description": "The state of the latest session",
+                    "required": true,
                     "dataType": "string",
                     "enum": ["Complete", "Processing", "Error"]
                 }, 
                 {
                     "name": "ErrorCode",
-                    "description": "Failed session error code",
+                    "description": "The error code if the latest session has a state of Error",
                     "dataType": "string"
                 }
             ]
@@ -39164,7 +39309,7 @@
                     "description": "Name of the metric used for sorting values.",
                     "required": true,
                     "dataType": "string",
-                    "enum": ["nBlindTransferred", "nBotInteractions", "nCallbackAttempts", "nCallbackOverSla", "nCallbackScheduled", "nCfcOffered", "nCobrowseSessions", "nConnected", "nConsult", "nConsultTransferred", "nConversations", "nError", "nOffered", "nOutbound", "nOutboundAbandoned", "nOutboundAttempted", "nOutboundConnected", "nOverSla", "nStateTransitionError", "nTakeover", "nTransferred", "oAudioMessageCount", "oExternalAudioMessageCount", "oExternalMediaCount", "oMediaCount", "oMessageCount", "oMessageSegmentCount", "oMessageTurn", "oServiceTarget", "oSkillExpressionApplications", "tAbandon", "tAcd", "tActiveCallback", "tActiveCallbackComplete", "tAcw", "tAgentResponseTime", "tAgentVideoConnected", "tAlert", "tAnswered", "tAverageAgentResponseTime", "tAverageCustomerResponseTime", "tBarging", "tCallbackAbandon", "tCallbackConnect", "tCallbackNotReached", "tCallbackVirtualWait", "tCfcAbandon", "tCfcAcd", "tCfcAnswered", "tCfcFlowOut", "tCoaching", "tCoachingComplete", "tConnected", "tContacting", "tDialing", "tFirstConnect", "tFirstDial", "tFirstEngagement", "tFirstResponse", "tFlowOut", "tHandle", "tHeld", "tHeldComplete", "tIvr", "tMonitoring", "tMonitoringComplete", "tNotResponding", "tPark", "tParkComplete", "tScreenMonitoring", "tSnippetRecord", "tTalk", "tTalkComplete", "tTransmitting", "tUserResponseTime", "tVoicemail"]
+                    "enum": ["nAgentDeclined", "nAlertExpired", "nBlindTransferred", "nBotInteractions", "nCallbackAttempts", "nCallbackOverSla", "nCallbackScheduled", "nCfcOffered", "nCobrowseSessions", "nConnected", "nConsult", "nConsultTransferred", "nConversations", "nError", "nOffered", "nOutbound", "nOutboundAbandoned", "nOutboundAttempted", "nOutboundConnected", "nOverSla", "nStateTransitionError", "nTakeover", "nTransferred", "oAudioMessageCount", "oExternalAudioMessageCount", "oExternalMediaCount", "oMediaCount", "oMessageCount", "oMessageSegmentCount", "oMessageTurn", "oServiceTarget", "oSkillExpressionApplications", "tAbandon", "tAcd", "tActiveCallback", "tActiveCallbackComplete", "tAcw", "tAgentResponseTime", "tAgentVideoConnected", "tAlert", "tAnswered", "tAverageAgentResponseTime", "tAverageCustomerResponseTime", "tBarging", "tCallbackAbandon", "tCallbackConnect", "tCallbackNotReached", "tCallbackVirtualWait", "tCfcAbandon", "tCfcAcd", "tCfcAnswered", "tCfcFlowOut", "tCoaching", "tCoachingComplete", "tConnected", "tContacting", "tDialing", "tFirstConnect", "tFirstDial", "tFirstEngagement", "tFirstResponse", "tFlowOut", "tHandle", "tHeld", "tHeldComplete", "tIvr", "tMonitoring", "tMonitoringComplete", "tNotResponding", "tPark", "tParkComplete", "tScreenMonitoring", "tSnippetRecord", "tTalk", "tTalkComplete", "tTransmitting", "tUserResponseTime", "tVoicemail"]
                 }, 
                 {
                     "name": "Function",
@@ -39182,7 +39327,7 @@
                     "description": "Target metric name",
                     "required": true,
                     "dataType": "string",
-                    "enum": ["nBlindTransferred", "nBotInteractions", "nCallbackAttempts", "nCallbackOverSla", "nCallbackScheduled", "nCfcOffered", "nCobrowseSessions", "nConnected", "nConsult", "nConsultTransferred", "nConversations", "nError", "nOffered", "nOutbound", "nOutboundAbandoned", "nOutboundAttempted", "nOutboundConnected", "nOverSla", "nStateTransitionError", "nTakeover", "nTransferred", "oAudioMessageCount", "oCallbackServiceLevel", "oExternalAudioMessageCount", "oExternalMediaCount", "oMediaCount", "oMessageCount", "oMessageSegmentCount", "oMessageTurn", "oServiceLevel", "oServiceTarget", "oSkillExpressionApplications", "tAbandon", "tAcd", "tActiveCallback", "tActiveCallbackComplete", "tAcw", "tAgentResponseTime", "tAgentVideoConnected", "tAlert", "tAnswered", "tAverageAgentResponseTime", "tAverageCustomerResponseTime", "tBarging", "tCallbackAbandon", "tCallbackConnect", "tCallbackNotReached", "tCallbackVirtualWait", "tCfcAbandon", "tCfcAcd", "tCfcAnswered", "tCfcFlowOut", "tCoaching", "tCoachingComplete", "tConnected", "tContacting", "tDialing", "tFirstConnect", "tFirstDial", "tFirstEngagement", "tFirstResponse", "tFlowOut", "tHandle", "tHeld", "tHeldComplete", "tIvr", "tMonitoring", "tMonitoringComplete", "tNotResponding", "tPark", "tParkComplete", "tScreenMonitoring", "tShortAbandon", "tSnippetRecord", "tTalk", "tTalkComplete", "tTransmitting", "tUserResponseTime", "tVoicemail", "tWait"]
+                    "enum": ["nAgentDeclined", "nAlertExpired", "nBlindTransferred", "nBotInteractions", "nCallbackAttempts", "nCallbackOverSla", "nCallbackScheduled", "nCfcOffered", "nCobrowseSessions", "nConnected", "nConsult", "nConsultTransferred", "nConversations", "nError", "nOffered", "nOutbound", "nOutboundAbandoned", "nOutboundAttempted", "nOutboundConnected", "nOverSla", "nStateTransitionError", "nTakeover", "nTransferred", "oAudioMessageCount", "oCallbackServiceLevel", "oExternalAudioMessageCount", "oExternalMediaCount", "oMediaCount", "oMessageCount", "oMessageSegmentCount", "oMessageTurn", "oServiceLevel", "oServiceTarget", "oSkillExpressionApplications", "tAbandon", "tAcd", "tActiveCallback", "tActiveCallbackComplete", "tAcw", "tAgentResponseTime", "tAgentVideoConnected", "tAlert", "tAnswered", "tAverageAgentResponseTime", "tAverageCustomerResponseTime", "tBarging", "tCallbackAbandon", "tCallbackConnect", "tCallbackNotReached", "tCallbackVirtualWait", "tCfcAbandon", "tCfcAcd", "tCfcAnswered", "tCfcFlowOut", "tCoaching", "tCoachingComplete", "tConnected", "tContacting", "tDialing", "tFirstConnect", "tFirstDial", "tFirstEngagement", "tFirstResponse", "tFlowOut", "tHandle", "tHeld", "tHeldComplete", "tIvr", "tMonitoring", "tMonitoringComplete", "tNotResponding", "tPark", "tParkComplete", "tScreenMonitoring", "tShortAbandon", "tSnippetRecord", "tTalk", "tTalkComplete", "tTransmitting", "tUserResponseTime", "tVoicemail", "tWait"]
                 }, 
                 {
                     "name": "Name",
@@ -43491,7 +43636,7 @@
                     "name": "Metric",
                     "description": "Left hand side for metric predicates",
                     "dataType": "string",
-                    "enum": ["nBlindTransferred", "nBotInteractions", "nCallbackAttempts", "nCallbackOverSla", "nCallbackScheduled", "nCfcOffered", "nCobrowseSessions", "nConnected", "nConsult", "nConsultTransferred", "nConversations", "nError", "nFlow", "nFlowMilestone", "nFlowOutcome", "nFlowOutcomeFailed", "nOffered", "nOutbound", "nOutboundAbandoned", "nOutboundAttempted", "nOutboundConnected", "nOverSla", "nStateTransitionError", "nTakeover", "nTransferred", "oAudioMessageCount", "oExternalAudioMessageCount", "oExternalMediaCount", "oFlowMilestone", "oMediaCount", "oMessageCount", "oMessageSegmentCount", "oMessageTurn", "oSkillExpressionApplications", "tAbandon", "tAcd", "tActiveCallback", "tActiveCallbackComplete", "tAcw", "tAgentResponseTime", "tAgentVideoConnected", "tAlert", "tAnswered", "tAverageAgentResponseTime", "tAverageCustomerResponseTime", "tBarging", "tCallbackAbandon", "tCallbackConnect", "tCallbackNotReached", "tCallbackVirtualWait", "tCfcAbandon", "tCfcAcd", "tCfcAnswered", "tCfcFlowOut", "tCoaching", "tCoachingComplete", "tConnected", "tContacting", "tConversationDuration", "tDialing", "tFirstConnect", "tFirstDial", "tFirstEngagement", "tFirstResponse", "tFlow", "tFlowDisconnect", "tFlowExit", "tFlowOut", "tFlowOutcome", "tHandle", "tHeld", "tHeldComplete", "tIvr", "tMonitoring", "tMonitoringComplete", "tNotResponding", "tPark", "tParkComplete", "tScreenMonitoring", "tShortAbandon", "tSnippetRecord", "tTalk", "tTalkComplete", "tTransmitting", "tUserResponseTime", "tVoicemail"]
+                    "enum": ["nAgentDeclined", "nAlertExpired", "nBlindTransferred", "nBotInteractions", "nCallbackAttempts", "nCallbackOverSla", "nCallbackScheduled", "nCfcOffered", "nCobrowseSessions", "nConnected", "nConsult", "nConsultTransferred", "nConversations", "nError", "nFlow", "nFlowMilestone", "nFlowOutcome", "nFlowOutcomeFailed", "nOffered", "nOutbound", "nOutboundAbandoned", "nOutboundAttempted", "nOutboundConnected", "nOverSla", "nStateTransitionError", "nTakeover", "nTransferred", "oAudioMessageCount", "oExternalAudioMessageCount", "oExternalMediaCount", "oFlowMilestone", "oMediaCount", "oMessageCount", "oMessageSegmentCount", "oMessageTurn", "oSkillExpressionApplications", "tAbandon", "tAcd", "tActiveCallback", "tActiveCallbackComplete", "tAcw", "tAgentResponseTime", "tAgentVideoConnected", "tAlert", "tAnswered", "tAverageAgentResponseTime", "tAverageCustomerResponseTime", "tBarging", "tCallbackAbandon", "tCallbackConnect", "tCallbackNotReached", "tCallbackVirtualWait", "tCfcAbandon", "tCfcAcd", "tCfcAnswered", "tCfcFlowOut", "tCoaching", "tCoachingComplete", "tConnected", "tContacting", "tConversationDuration", "tDialing", "tFirstConnect", "tFirstDial", "tFirstEngagement", "tFirstResponse", "tFlow", "tFlowDisconnect", "tFlowExit", "tFlowOut", "tFlowOutcome", "tHandle", "tHeld", "tHeldComplete", "tIvr", "tMonitoring", "tMonitoringComplete", "tNotResponding", "tPark", "tParkComplete", "tScreenMonitoring", "tShortAbandon", "tSnippetRecord", "tTalk", "tTalkComplete", "tTransmitting", "tUserResponseTime", "tVoicemail"]
                 }, 
                 {
                     "name": "Operator",
@@ -46918,6 +47063,11 @@
                 {
                     "name": "QueryReformulationContext",
                     "dataType": "Conversationintentsuggestionstopicqueryreformulationcontext"
+                }, 
+                {
+                    "name": "ParticipantType",
+                    "dataType": "string",
+                    "enum": ["UNKNOWN", "AGENT", "CUSTOMER"]
                 }
             ]
         }, 
@@ -47187,6 +47337,11 @@
                 {
                     "name": "QueryReformulationContext",
                     "dataType": "Conversationknowledgearticlesuggestionstopicqueryreformulationcontext"
+                }, 
+                {
+                    "name": "ParticipantType",
+                    "dataType": "string",
+                    "enum": ["UNKNOWN", "AGENT", "CUSTOMER"]
                 }
             ]
         }, 
@@ -47401,6 +47556,11 @@
                 {
                     "name": "QueryReformulationContext",
                     "dataType": "Conversationknowledgesearchsuggestionstopicqueryreformulationcontext"
+                }, 
+                {
+                    "name": "ParticipantType",
+                    "dataType": "string",
+                    "enum": ["UNKNOWN", "AGENT", "CUSTOMER"]
                 }
             ]
         }, 
@@ -49787,6 +49947,11 @@
                 {
                     "name": "QueryReformulationContext",
                     "dataType": "Conversationresponsesuggestionstopicqueryreformulationcontext"
+                }, 
+                {
+                    "name": "ParticipantType",
+                    "dataType": "string",
+                    "enum": ["UNKNOWN", "AGENT", "CUSTOMER"]
                 }
             ]
         }, 
@@ -50582,6 +50747,11 @@
                 {
                     "name": "QueryReformulationContext",
                     "dataType": "Conversationscriptsuggestionstopicqueryreformulationcontext"
+                }, 
+                {
+                    "name": "ParticipantType",
+                    "dataType": "string",
+                    "enum": ["UNKNOWN", "AGENT", "CUSTOMER"]
                 }
             ]
         }, 
@@ -51541,7 +51711,7 @@
                 {
                     "name": "MessageType",
                     "dataType": "string",
-                    "enum": ["UNKNOWN", "SMS", "TWITTER", "FACEBOOK", "INSTAGRAM", "LINE", "WHATSAPP", "WEBMESSAGING", "OPEN", "APPLE"]
+                    "enum": ["UNKNOWN", "SMS", "TWITTER", "FACEBOOK", "INSTAGRAM", "LINE", "WHATSAPP", "WEBMESSAGING", "OPEN", "APPLE", "LINKEDIN"]
                 }, 
                 {
                     "name": "MediaType",
@@ -51806,7 +51976,7 @@
                 {
                     "name": "MessageType",
                     "dataType": "string",
-                    "enum": ["UNKNOWN", "SMS", "TWITTER", "FACEBOOK", "INSTAGRAM", "LINE", "WHATSAPP", "WEBMESSAGING", "OPEN", "APPLE"]
+                    "enum": ["UNKNOWN", "SMS", "TWITTER", "FACEBOOK", "INSTAGRAM", "LINE", "WHATSAPP", "WEBMESSAGING", "OPEN", "APPLE", "LINKEDIN"]
                 }, 
                 {
                     "name": "MediaType",
@@ -52118,6 +52288,11 @@
                 {
                     "name": "QueryReformulationContext",
                     "dataType": "Conversationthirdpartyactionsuggestionstopicqueryreformulationcontext"
+                }, 
+                {
+                    "name": "ParticipantType",
+                    "dataType": "string",
+                    "enum": ["UNKNOWN", "AGENT", "CUSTOMER"]
                 }
             ]
         }, 
@@ -56257,20 +56432,17 @@
                 {
                     "name": "Algorithm",
                     "description": "The hashing algorithm for the TOTP verifier.",
-                    "required": true,
                     "dataType": "string",
                     "enum": ["SHA1", "SHA256", "SHA512"]
                 }, 
                 {
                     "name": "Digits",
                     "description": "The number of digits in the TOTP code. Must be between 6 and 12.",
-                    "required": true,
                     "dataType": "int"
                 }, 
                 {
                     "name": "Enabled",
                     "description": "Indicates whether this verifier will be enabled.",
-                    "required": true,
                     "dataType": "bool"
                 }, 
                 {
@@ -56282,19 +56454,16 @@
                 {
                     "name": "Period",
                     "description": "The time period in seconds for the TOTP code.",
-                    "required": true,
                     "dataType": "int"
                 }, 
                 {
                     "name": "SecretSize",
                     "description": "The size of the shared secret in bytes. Must be between 10 and 64.",
-                    "required": true,
                     "dataType": "int"
                 }, 
                 {
                     "name": "VarDefault",
                     "description": "Indicates whether this will be the default verifier.",
-                    "required": true,
                     "dataType": "bool"
                 }
             ]
@@ -57958,7 +58127,7 @@
                 {
                     "name": "MessageType",
                     "dataType": "string",
-                    "enum": ["UNKNOWN", "SMS", "TWITTER", "FACEBOOK", "LINE", "WHATSAPP", "WEBMESSAGING", "OPEN", "INSTAGRAM", "APPLE"]
+                    "enum": ["UNKNOWN", "SMS", "TWITTER", "FACEBOOK", "LINE", "WHATSAPP", "WEBMESSAGING", "OPEN", "INSTAGRAM", "APPLE", "LINKEDIN"]
                 }, 
                 {
                     "name": "InteractingDurationMs",
@@ -58476,7 +58645,7 @@
                 {
                     "name": "MessageType",
                     "dataType": "string",
-                    "enum": ["UNKNOWN", "SMS", "TWITTER", "FACEBOOK", "LINE", "WHATSAPP", "WEBMESSAGING", "OPEN", "INSTAGRAM", "APPLE"]
+                    "enum": ["UNKNOWN", "SMS", "TWITTER", "FACEBOOK", "LINE", "WHATSAPP", "WEBMESSAGING", "OPEN", "INSTAGRAM", "APPLE", "LINKEDIN"]
                 }, 
                 {
                     "name": "ConversationExternalContactIds",
@@ -59196,115 +59365,6 @@
                     "description": "The name of the data ingestion rule. Only populated when expanded.",
                     "readOnly": true,
                     "dataType": "string"
-                }
-            ]
-        }, 
-        "dataingestionruleresponse": { 
-            "properties": [
-                {
-                    "name": "Id",
-                    "description": "ID of the data ingestion rule.",
-                    "dataType": "string"
-                }, 
-                {
-                    "name": "Name",
-                    "description": "The name of the data ingestion rule.",
-                    "dataType": "string"
-                }, 
-                {
-                    "name": "Description",
-                    "description": "A description of the data ingestion rule.",
-                    "dataType": "string"
-                }, 
-                {
-                    "name": "Status",
-                    "description": "The status of the data ingestion rule.",
-                    "dataType": "string",
-                    "enum": ["Active", "Deleted", "Error", "Paused", "Pending", "SystemPaused"]
-                }, 
-                {
-                    "name": "Version",
-                    "description": "The version number of the data ingestion rule.",
-                    "dataType": "int"
-                }, 
-                {
-                    "name": "DateCreated",
-                    "description": "Timestamp indicating when the data ingestion rule was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z",
-                    "readOnly": true,
-                    "dataType": "time.Time"
-                }, 
-                {
-                    "name": "DateModified",
-                    "description": "Timestamp indicating when the data ingestion rule was last updated. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z",
-                    "readOnly": true,
-                    "dataType": "time.Time"
-                }, 
-                {
-                    "name": "Platform",
-                    "description": "The platform of the data ingestion rule.",
-                    "readOnly": true,
-                    "dataType": "string"
-                }, 
-                {
-                    "name": "IngestionRuleInfo",
-                    "description": "The Info about ingestion rule.",
-                    "dataType": "Messageinfo"
-                }, 
-                {
-                    "name": "Countries",
-                    "description": "The countries is available only on twitter data ingestion rule. ISO 3166-1 alpha-2 country codes where Data Ingestion Rules should apply. Defaults to worldwide.",
-                    "readOnly": true,
-                    "dataType": "[]string"
-                }, 
-                {
-                    "name": "SelfUri",
-                    "description": "The URI for this object",
-                    "readOnly": true,
-                    "dataType": "string"
-                }
-            ]
-        }, 
-        "dataingestionruleresponseentitylisting": { 
-            "properties": [
-                {
-                    "name": "Entities",
-                    "dataType": "[]Dataingestionruleresponse"
-                }, 
-                {
-                    "name": "PageSize",
-                    "dataType": "int"
-                }, 
-                {
-                    "name": "PageNumber",
-                    "dataType": "int"
-                }, 
-                {
-                    "name": "Total",
-                    "dataType": "int"
-                }, 
-                {
-                    "name": "LastUri",
-                    "dataType": "string"
-                }, 
-                {
-                    "name": "FirstUri",
-                    "dataType": "string"
-                }, 
-                {
-                    "name": "SelfUri",
-                    "dataType": "string"
-                }, 
-                {
-                    "name": "NextUri",
-                    "dataType": "string"
-                }, 
-                {
-                    "name": "PreviousUri",
-                    "dataType": "string"
-                }, 
-                {
-                    "name": "PageCount",
-                    "dataType": "int"
                 }
             ]
         }, 
@@ -82254,12 +82314,6 @@
                     "dataType": "Messageinfo"
                 }, 
                 {
-                    "name": "Countries",
-                    "description": "The countries is available only on twitter data ingestion rule. ISO 3166-1 alpha-2 country codes where Data Ingestion Rules should apply. Defaults to worldwide.",
-                    "readOnly": true,
-                    "dataType": "[]string"
-                }, 
-                {
                     "name": "IntegrationId",
                     "description": "Id of the Integration when source is owned (Authenticated). This entity is created using the /conversations/messaging/integrations/facebook resource. Optional when configuring non-owned pages.",
                     "dataType": "string"
@@ -82322,12 +82376,6 @@
                     "name": "IngestionRuleInfo",
                     "description": "The Info about ingestion rule.",
                     "dataType": "Messageinfo"
-                }, 
-                {
-                    "name": "Countries",
-                    "description": "The countries is available only on twitter data ingestion rule. ISO 3166-1 alpha-2 country codes where Data Ingestion Rules should apply. Defaults to worldwide.",
-                    "readOnly": true,
-                    "dataType": "[]string"
                 }, 
                 {
                     "name": "IntegrationId",
@@ -84745,7 +84793,7 @@
                 {
                     "name": "MessageType",
                     "dataType": "string",
-                    "enum": ["UNKNOWN", "SMS", "TWITTER", "FACEBOOK", "LINE", "WHATSAPP", "WEBMESSAGING", "OPEN", "INSTAGRAM", "APPLE"]
+                    "enum": ["UNKNOWN", "SMS", "TWITTER", "FACEBOOK", "LINE", "WHATSAPP", "WEBMESSAGING", "OPEN", "INSTAGRAM", "APPLE", "LINKEDIN"]
                 }, 
                 {
                     "name": "FlowType",
@@ -86441,7 +86489,7 @@
                 {
                     "name": "MessageType",
                     "dataType": "string",
-                    "enum": ["UNKNOWN", "SMS", "TWITTER", "FACEBOOK", "LINE", "WHATSAPP", "WEBMESSAGING", "OPEN", "INSTAGRAM", "APPLE"]
+                    "enum": ["UNKNOWN", "SMS", "TWITTER", "FACEBOOK", "LINE", "WHATSAPP", "WEBMESSAGING", "OPEN", "INSTAGRAM", "APPLE", "LINKEDIN"]
                 }, 
                 {
                     "name": "FlowType",
@@ -87021,7 +87069,7 @@
                 {
                     "name": "MessageType",
                     "dataType": "string",
-                    "enum": ["UNKNOWN", "SMS", "TWITTER", "FACEBOOK", "LINE", "WHATSAPP", "WEBMESSAGING", "OPEN", "INSTAGRAM", "APPLE"]
+                    "enum": ["UNKNOWN", "SMS", "TWITTER", "FACEBOOK", "LINE", "WHATSAPP", "WEBMESSAGING", "OPEN", "INSTAGRAM", "APPLE", "LINKEDIN"]
                 }, 
                 {
                     "name": "FlowType",
@@ -88825,6 +88873,114 @@
                 }
             ]
         }, 
+        "genericdataingestionruleresponse": { 
+            "properties": [
+                {
+                    "name": "Id",
+                    "description": "ID of the data ingestion rule.",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Name",
+                    "description": "The name of the data ingestion rule.",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Description",
+                    "description": "A description of the data ingestion rule.",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Status",
+                    "description": "The status of the data ingestion rule.",
+                    "dataType": "string",
+                    "enum": ["Active", "Deleted", "Error", "Paused", "Pending", "SystemPaused"]
+                }, 
+                {
+                    "name": "Version",
+                    "description": "The version number of the data ingestion rule.",
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "DateCreated",
+                    "description": "Timestamp indicating when the data ingestion rule was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z",
+                    "readOnly": true,
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "DateModified",
+                    "description": "Timestamp indicating when the data ingestion rule was last updated. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z",
+                    "readOnly": true,
+                    "dataType": "time.Time"
+                }, 
+                {
+                    "name": "Platform",
+                    "description": "The platform of the data ingestion rule.",
+                    "readOnly": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "IngestionRuleInfo",
+                    "description": "The Info about ingestion rule.",
+                    "dataType": "Messageinfo"
+                }, 
+                {
+                    "name": "Countries",
+                    "description": "ISO 3166-1 alpha-2 country codes where Data Ingestion Rules should apply. Defaults to worldwide.",
+                    "dataType": "[]string"
+                }, 
+                {
+                    "name": "SelfUri",
+                    "description": "The URI for this object",
+                    "readOnly": true,
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "genericdataingestionruleresponseentitylisting": { 
+            "properties": [
+                {
+                    "name": "Entities",
+                    "dataType": "[]Genericdataingestionruleresponse"
+                }, 
+                {
+                    "name": "PageSize",
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "PageNumber",
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "Total",
+                    "dataType": "int"
+                }, 
+                {
+                    "name": "LastUri",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "FirstUri",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "SelfUri",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "NextUri",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "PreviousUri",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "PageCount",
+                    "dataType": "int"
+                }
+            ]
+        }, 
         "genericsaml": { 
             "properties": [
                 {
@@ -89776,12 +89932,6 @@
                     "dataType": "Messageinfo"
                 }, 
                 {
-                    "name": "Countries",
-                    "description": "The countries is available only on twitter data ingestion rule. ISO 3166-1 alpha-2 country codes where Data Ingestion Rules should apply. Defaults to worldwide.",
-                    "readOnly": true,
-                    "dataType": "[]string"
-                }, 
-                {
                     "name": "IntegrationId",
                     "description": "The Integration Id from which public social posts are ingested. This entity is created using the /conversations/messaging/integrations/open/extensions/googlebusinessprofile resource",
                     "dataType": "string"
@@ -89849,12 +89999,6 @@
                     "name": "IngestionRuleInfo",
                     "description": "The Info about ingestion rule.",
                     "dataType": "Messageinfo"
-                }, 
-                {
-                    "name": "Countries",
-                    "description": "The countries is available only on twitter data ingestion rule. ISO 3166-1 alpha-2 country codes where Data Ingestion Rules should apply. Defaults to worldwide.",
-                    "readOnly": true,
-                    "dataType": "[]string"
                 }, 
                 {
                     "name": "IntegrationId",
@@ -95577,12 +95721,6 @@
                     "dataType": "Messageinfo"
                 }, 
                 {
-                    "name": "Countries",
-                    "description": "The countries is available only on twitter data ingestion rule. ISO 3166-1 alpha-2 country codes where Data Ingestion Rules should apply. Defaults to worldwide.",
-                    "readOnly": true,
-                    "dataType": "[]string"
-                }, 
-                {
                     "name": "IntegrationId",
                     "description": "The Integration Id from which public social posts are ingested. This entity is created using the /conversations/messaging/integrations/instagram resource",
                     "dataType": "string"
@@ -95645,12 +95783,6 @@
                     "name": "IngestionRuleInfo",
                     "description": "The Info about ingestion rule.",
                     "dataType": "Messageinfo"
-                }, 
-                {
-                    "name": "Countries",
-                    "description": "The countries is available only on twitter data ingestion rule. ISO 3166-1 alpha-2 country codes where Data Ingestion Rules should apply. Defaults to worldwide.",
-                    "readOnly": true,
-                    "dataType": "[]string"
                 }, 
                 {
                     "name": "IntegrationId",
@@ -98341,7 +98473,7 @@
                 {
                     "name": "MediaType",
                     "dataType": "string",
-                    "enum": ["webchat", "webMessagingOffer", "contentOffer", "architectFlow"]
+                    "enum": ["webMessagingOffer", "contentOffer", "architectFlow"]
                 }, 
                 {
                     "name": "Prompt",
@@ -99548,7 +99680,7 @@
                 {
                     "name": "VarType",
                     "dataType": "string",
-                    "enum": ["Unknown", "ContentOffer", "Webchat"]
+                    "enum": ["Unknown", "ContentOffer"]
                 }
             ]
         }, 
@@ -102251,7 +102383,7 @@
                 {
                     "name": "MediaType",
                     "dataType": "string",
-                    "enum": ["webchat", "webMessagingOffer", "contentOffer", "architectFlow"]
+                    "enum": ["webMessagingOffer", "contentOffer", "architectFlow"]
                 }, 
                 {
                     "name": "Prompt",
@@ -122038,12 +122170,6 @@
                     "dataType": "Messageinfo"
                 }, 
                 {
-                    "name": "Countries",
-                    "description": "The countries is available only on twitter data ingestion rule. ISO 3166-1 alpha-2 country codes where Data Ingestion Rules should apply. Defaults to worldwide.",
-                    "readOnly": true,
-                    "dataType": "[]string"
-                }, 
-                {
                     "name": "ExternalSource",
                     "description": "The external source associated with this open data ingestion rule, which is used when performing identity resolution",
                     "dataType": "Domainentityref"
@@ -122106,12 +122232,6 @@
                     "name": "IngestionRuleInfo",
                     "description": "The Info about ingestion rule.",
                     "dataType": "Messageinfo"
-                }, 
-                {
-                    "name": "Countries",
-                    "description": "The countries is available only on twitter data ingestion rule. ISO 3166-1 alpha-2 country codes where Data Ingestion Rules should apply. Defaults to worldwide.",
-                    "readOnly": true,
-                    "dataType": "[]string"
                 }, 
                 {
                     "name": "ExternalSource",
@@ -125597,7 +125717,7 @@
                 {
                     "name": "MessageType",
                     "dataType": "string",
-                    "enum": ["UNKNOWN", "SMS", "TWITTER", "FACEBOOK", "LINE", "WHATSAPP", "WEBMESSAGING", "OPEN", "INSTAGRAM", "APPLE"]
+                    "enum": ["UNKNOWN", "SMS", "TWITTER", "FACEBOOK", "LINE", "WHATSAPP", "WEBMESSAGING", "OPEN", "INSTAGRAM", "APPLE", "LINKEDIN"]
                 }, 
                 {
                     "name": "OutboundCampaignId",
@@ -130968,6 +131088,10 @@
                     "dataType": "string"
                 }, 
                 {
+                    "name": "AllocationDownloadUrl",
+                    "dataType": "string"
+                }, 
+                {
                     "name": "State",
                     "dataType": "string",
                     "enum": ["Processing", "Complete", "Canceled", "Error"]
@@ -130982,7 +131106,7 @@
             "properties": [
                 {
                     "name": "CalculationStartDate",
-                    "description": "Date as an ISO-8601 string, corresponding to the beginning of the performance prediction results",
+                    "description": "The beginning of the performance prediction results, in ISO-8601 format",
                     "required": true,
                     "dataType": "time.Time"
                 }, 
@@ -131028,6 +131152,10 @@
                 }, 
                 {
                     "name": "DownloadUrl",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "AllocationDownloadUrl",
                     "dataType": "string"
                 }, 
                 {
@@ -131141,7 +131269,7 @@
             "properties": [
                 {
                     "name": "CalculationStartDate",
-                    "description": "Date as an ISO-8601 string, corresponding to the beginning of the performance prediction results",
+                    "description": "The beginning of the performance prediction results, in ISO-8601 format",
                     "required": true,
                     "dataType": "time.Time"
                 }, 
@@ -151027,6 +151155,11 @@
                     "name": "MessageReceipts",
                     "description": "List of message receipts",
                     "dataType": "[]Recordingmessagereceipt"
+                }, 
+                {
+                    "name": "NotificationResponse",
+                    "description": "Notification Response content.",
+                    "dataType": "Recordingnotificationresponse"
                 }
             ]
         }, 
@@ -160824,6 +160957,11 @@
                     "dataType": "string"
                 }, 
                 {
+                    "name": "ExternalContactId",
+                    "description": "The externalContactId of the recipient of the message. Supported for WebMessaging, SMS, and Open messenger types only. For WebMessaging it is required.",
+                    "dataType": "string"
+                }, 
+                {
                     "name": "ToAddressMessengerType",
                     "description": "The recipient messaging address messenger type.",
                     "required": true,
@@ -167114,6 +167252,26 @@
                 }
             ]
         }, 
+        "stageplancreate": { 
+            "properties": [
+                {
+                    "name": "Name",
+                    "description": "The name of the Stageplan. Valid length between 3 and 256 characters.",
+                    "required": true,
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "Description",
+                    "description": "The description of the Stageplan. Maximum length of 512 characters.",
+                    "dataType": "string"
+                }, 
+                {
+                    "name": "After",
+                    "description": "The ID of the Stageplan to place the new Stageplan after. Omit or null to place at the front.",
+                    "dataType": "string"
+                }
+            ]
+        }, 
         "stageplanlisting": { 
             "properties": [
                 {
@@ -167150,6 +167308,15 @@
                     "name": "SelfUri",
                     "description": "The URI for this object",
                     "readOnly": true,
+                    "dataType": "string"
+                }
+            ]
+        }, 
+        "stageplanreposition": { 
+            "properties": [
+                {
+                    "name": "After",
+                    "description": "The ID of the Stageplan to place this Stageplan after. Omit or null to move to the front.",
                     "dataType": "string"
                 }
             ]
@@ -178422,14 +178589,14 @@
                     "dataType": "Messageinfo"
                 }, 
                 {
-                    "name": "Countries",
-                    "description": "ISO 3166-1 alpha-2 country codes where Data Ingestion Rules should apply. Defaults to worldwide.",
-                    "dataType": "[]string"
-                }, 
-                {
                     "name": "SearchTerms",
                     "description": "Search terms for X (formally Twitter).",
                     "dataType": "string"
+                }, 
+                {
+                    "name": "Countries",
+                    "description": "ISO 3166-1 alpha-2 country codes where Data Ingestion Rules should apply. Defaults to worldwide.",
+                    "dataType": "[]string"
                 }, 
                 {
                     "name": "SelfUri",
@@ -178491,14 +178658,14 @@
                     "dataType": "Messageinfo"
                 }, 
                 {
-                    "name": "Countries",
-                    "description": "ISO 3166-1 alpha-2 country codes where Data Ingestion Rules should apply. Defaults to worldwide.",
-                    "dataType": "[]string"
-                }, 
-                {
                     "name": "SearchTerms",
                     "description": "Search terms for X (formally Twitter).",
                     "dataType": "string"
+                }, 
+                {
+                    "name": "Countries",
+                    "description": "ISO 3166-1 alpha-2 country codes where Data Ingestion Rules should apply. Defaults to worldwide.",
+                    "dataType": "[]string"
                 }, 
                 {
                     "name": "SelfUri",
@@ -182745,7 +182912,7 @@
                 {
                     "name": "MessageType",
                     "dataType": "string",
-                    "enum": ["UNKNOWN", "SMS", "TWITTER", "FACEBOOK", "LINE", "WHATSAPP", "WEBMESSAGING", "OPEN", "INSTAGRAM", "APPLE"]
+                    "enum": ["UNKNOWN", "SMS", "TWITTER", "FACEBOOK", "LINE", "WHATSAPP", "WEBMESSAGING", "OPEN", "INSTAGRAM", "APPLE", "LINKEDIN"]
                 }, 
                 {
                     "name": "UserId",
@@ -186090,7 +186257,7 @@
                 {
                     "name": "MessageType",
                     "dataType": "string",
-                    "enum": ["UNKNOWN", "SMS", "TWITTER", "FACEBOOK", "LINE", "WHATSAPP", "WEBMESSAGING", "OPEN", "INSTAGRAM", "APPLE"]
+                    "enum": ["UNKNOWN", "SMS", "TWITTER", "FACEBOOK", "LINE", "WHATSAPP", "WEBMESSAGING", "OPEN", "INSTAGRAM", "APPLE", "LINKEDIN"]
                 }, 
                 {
                     "name": "UserId",
@@ -187368,7 +187535,7 @@
                 {
                     "name": "VarType",
                     "dataType": "string",
-                    "enum": ["ConversationMetrics", "UserPresence", "WorkforceManagement", "OperationalConsole", "Unknown"]
+                    "enum": ["ConversationMetrics", "UserPresence", "WorkforceManagement", "OperationalConsole", "Anomaly", "Unknown"]
                 }
             ]
         }, 
@@ -187487,6 +187654,11 @@
                 {
                     "name": "Topic",
                     "dataType": "string"
+                }, 
+                {
+                    "name": "Characteristic",
+                    "dataType": "string",
+                    "enum": ["Unknown", "Deviation", "Score"]
                 }, 
                 {
                     "name": "ComparisonOperator",
@@ -187628,6 +187800,11 @@
                     "dataType": "string"
                 }, 
                 {
+                    "name": "Characteristic",
+                    "dataType": "string",
+                    "enum": ["Unknown", "Deviation", "Score"]
+                }, 
+                {
                     "name": "ComparisonOperator",
                     "dataType": "string",
                     "enum": ["Gt", "Gte", "Lt", "Lte", "Eq", "Ne", "Unknown"]
@@ -187676,7 +187853,7 @@
                 {
                     "name": "VarType",
                     "dataType": "string",
-                    "enum": ["ConversationMetrics", "UserPresence", "WorkforceManagement", "OperationalConsole", "Unknown"]
+                    "enum": ["ConversationMetrics", "UserPresence", "WorkforceManagement", "OperationalConsole", "Anomaly", "Unknown"]
                 }, 
                 {
                     "name": "Notifications",
@@ -191390,6 +191567,26 @@
                     "dataType": "bool"
                 }, 
                 {
+                    "name": "SocialEngagementLikes",
+                    "description": "The likes range used to filter the view",
+                    "dataType": "Numericrange"
+                }, 
+                {
+                    "name": "SocialEngagementShares",
+                    "description": "The shares range used to filter the view",
+                    "dataType": "Numericrange"
+                }, 
+                {
+                    "name": "SocialEngagementComments",
+                    "description": "The comments range used to filter the view",
+                    "dataType": "Numericrange"
+                }, 
+                {
+                    "name": "SocialEngagementViews",
+                    "description": "The views range used to filter the view",
+                    "dataType": "Numericrange"
+                }, 
+                {
                     "name": "SessionExpired",
                     "description": "Filter to indicate for if session is expired",
                     "dataType": "bool"
@@ -194349,7 +194546,7 @@
                 {
                     "name": "ExceptionType",
                     "dataType": "string",
-                    "enum": ["UnscheduledAttendees", "SessionsNotDeleted"]
+                    "enum": ["UnscheduledAttendees", "SessionsNotDeleted", "InvalidUserIds", "InvalidFacilitatorId", "RuleError", "InvalidOccurrence", "NoScheduleFound", "SessionUsersNotRemoved"]
                 }, 
                 {
                     "name": "Occurrences",
@@ -194456,7 +194653,7 @@
                 {
                     "name": "ExceptionType",
                     "dataType": "string",
-                    "enum": ["UnscheduledAttendees", "SessionsNotDeleted"]
+                    "enum": ["UnscheduledAttendees", "SessionsNotDeleted", "InvalidUserIds", "InvalidFacilitatorId", "RuleError", "InvalidOccurrence", "NoScheduleFound", "SessionUsersNotRemoved"]
                 }, 
                 {
                     "name": "Occurrences",
@@ -201528,18 +201725,28 @@
                     "description": "The name of the workitem attribute whose change will be evaluated as part of the rule.",
                     "required": true,
                     "dataType": "string",
-                    "enum": ["statusId"]
+                    "enum": ["statusId", "priority", "queueId", "assigneeId", "assignmentState", "languageId", "externalTag", "wrapup"]
                 }, 
                 {
                     "name": "NewValue",
-                    "description": "The new value of the attribute. If the attribute is updated to this value this part of the condition will be met.",
-                    "required": true,
+                    "description": "The new value of the attribute. If the attribute is updated to this value this part of the condition will be met. Required for exact-match conditions (when operator is not set).",
                     "dataType": "string"
                 }, 
                 {
                     "name": "OldValue",
                     "description": "The old value of the attribute. If the attribute was updated from this value this part of the condition will be met.",
                     "dataType": "string"
+                }, 
+                {
+                    "name": "Operator",
+                    "description": "The comparison operator used to evaluate the priority attribute against the value. Only supported for the priority attribute.",
+                    "dataType": "string",
+                    "enum": ["EQ", "GT", "LT", "GTE", "LTE"]
+                }, 
+                {
+                    "name": "Value",
+                    "description": "The numeric value compared against the priority attribute using the operator. Required when operator is set. Only supported for the priority attribute.",
+                    "dataType": "int"
                 }
             ]
         }, 
@@ -201550,18 +201757,28 @@
                     "description": "The name of the workitem attribute whose change will be evaluated as part of the rule.",
                     "required": true,
                     "dataType": "string",
-                    "enum": ["statusId"]
+                    "enum": ["statusId", "priority", "queueId", "assigneeId", "assignmentState", "languageId", "externalTag", "wrapup"]
                 }, 
                 {
                     "name": "NewValue",
-                    "description": "The new value of the attribute. If the attribute is updated to this value this part of the condition will be met.",
-                    "required": true,
+                    "description": "The new value of the attribute. If the attribute is updated to this value this part of the condition will be met. Required for exact-match conditions (when operator is not set).",
                     "dataType": "string"
                 }, 
                 {
                     "name": "OldValue",
                     "description": "The old value of the attribute. If the attribute was updated from this value this part of the condition will be met.",
                     "dataType": "string"
+                }, 
+                {
+                    "name": "Operator",
+                    "description": "The comparison operator used to evaluate the priority attribute against the value.",
+                    "dataType": "string",
+                    "enum": ["EQ", "GT", "LT", "GTE", "LTE"]
+                }, 
+                {
+                    "name": "Value",
+                    "description": "The numeric value compared against the priority attribute using the operator. Required when operator is set. Only supported for the priority attribute.",
+                    "dataType": "int"
                 }
             ]
         }, 
@@ -206753,7 +206970,7 @@
                 {
                     "name": "MessageType",
                     "dataType": "string",
-                    "enum": ["UNKNOWN", "SMS", "TWITTER", "FACEBOOK", "LINE", "WHATSAPP", "WEBMESSAGING", "OPEN", "INSTAGRAM", "APPLE"]
+                    "enum": ["UNKNOWN", "SMS", "TWITTER", "FACEBOOK", "LINE", "WHATSAPP", "WEBMESSAGING", "OPEN", "INSTAGRAM", "APPLE", "LINKEDIN"]
                 }, 
                 {
                     "name": "QueueId",
@@ -216975,6 +217192,25 @@
             ],
             "return": "interface{}"
         },
+        "DELETE /api/v2/casemanagement/caseplans/{caseplanId}/stageplans/{stageplanId}": {
+            "className": "CaseManagementApi",
+            "operationId": "deletecasemanagementcaseplanstageplan",
+            "functionName": "DeleteCasemanagementCaseplanStageplan",
+            "signature": "DeleteCasemanagementCaseplanStageplan(caseplanId, stageplanId)",
+            "parameters": [
+                {
+                    "name": "caseplanId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "stageplanId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ],
+            "return": "interface{}"
+        },
         "GET /api/v2/casemanagement/cases/{caseId}": {
             "className": "CaseManagementApi",
             "operationId": "getcasemanagementcase",
@@ -217774,6 +218010,49 @@
                 }
             ],
             "return": "Caseplan"
+        },
+        "POST /api/v2/casemanagement/caseplans/{caseplanId}/stageplans/{stageplanId}/reposition": {
+            "className": "CaseManagementApi",
+            "operationId": "postcasemanagementcaseplanstageplanreposition",
+            "functionName": "PostCasemanagementCaseplanStageplanReposition",
+            "signature": "PostCasemanagementCaseplanStageplanReposition(caseplanId, stageplanId, body)",
+            "parameters": [
+                {
+                    "name": "caseplanId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "stageplanId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Stageplanreposition",
+                    "required": "true"
+                }
+            ],
+            "return": "interface{}"
+        },
+        "POST /api/v2/casemanagement/caseplans/{caseplanId}/stageplans": {
+            "className": "CaseManagementApi",
+            "operationId": "postcasemanagementcaseplanstageplans",
+            "functionName": "PostCasemanagementCaseplanStageplans",
+            "signature": "PostCasemanagementCaseplanStageplans(caseplanId, body)",
+            "parameters": [
+                {
+                    "name": "caseplanId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Stageplancreate",
+                    "required": "true"
+                }
+            ],
+            "return": "Stageplan"
         },
         "POST /api/v2/casemanagement/caseplans/{caseplanId}/versions": {
             "className": "CaseManagementApi",
@@ -228290,6 +228569,20 @@
                 }
             ],
             "return": "Dataschema"
+        },
+        "POST /api/v2/externalcontacts/contacts/search": {
+            "className": "ExternalContactsApi",
+            "operationId": "postexternalcontactscontactssearch",
+            "functionName": "PostExternalcontactsContactsSearch",
+            "signature": "PostExternalcontactsContactsSearch(body)",
+            "parameters": [
+                {
+                    "name": "body",
+                    "type": "Contactsearchrequest",
+                    "required": "true"
+                }
+            ],
+            "return": "Contactlisting"
         },
         "POST /api/v2/externalcontacts/externalsources": {
             "className": "ExternalContactsApi",
@@ -257033,7 +257326,7 @@
                     "required": "false"
                 }
             ],
-            "return": "Dataingestionruleresponseentitylisting"
+            "return": "Genericdataingestionruleresponseentitylisting"
         },
         "GET /api/v2/socialmedia/topics/{topicId}/dataingestionrules/facebook/{facebookIngestionRuleId}": {
             "className": "SocialMediaApi",
@@ -285258,6 +285551,25 @@
             ],
             "return": "interface{}"
         },
+        "DELETE /api/v2/casemanagement/caseplans/{caseplanId}/stageplans/{stageplanId}": {
+            "className": "CaseManagementApi",
+            "operationId": "deletecasemanagementcaseplanstageplan",
+            "functionName": "DeleteCasemanagementCaseplanStageplan",
+            "signature": "DeleteCasemanagementCaseplanStageplan(caseplanId, stageplanId)",
+            "parameters": [
+                {
+                    "name": "caseplanId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "stageplanId",
+                    "type": "string",
+                    "required": "true"
+                }
+            ],
+            "return": "interface{}"
+        },
         "GET /api/v2/casemanagement/cases/{caseId}": {
             "className": "CaseManagementApi",
             "operationId": "getcasemanagementcase",
@@ -286057,6 +286369,49 @@
                 }
             ],
             "return": "Caseplan"
+        },
+        "POST /api/v2/casemanagement/caseplans/{caseplanId}/stageplans/{stageplanId}/reposition": {
+            "className": "CaseManagementApi",
+            "operationId": "postcasemanagementcaseplanstageplanreposition",
+            "functionName": "PostCasemanagementCaseplanStageplanReposition",
+            "signature": "PostCasemanagementCaseplanStageplanReposition(caseplanId, stageplanId, body)",
+            "parameters": [
+                {
+                    "name": "caseplanId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "stageplanId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Stageplanreposition",
+                    "required": "true"
+                }
+            ],
+            "return": "interface{}"
+        },
+        "POST /api/v2/casemanagement/caseplans/{caseplanId}/stageplans": {
+            "className": "CaseManagementApi",
+            "operationId": "postcasemanagementcaseplanstageplans",
+            "functionName": "PostCasemanagementCaseplanStageplans",
+            "signature": "PostCasemanagementCaseplanStageplans(caseplanId, body)",
+            "parameters": [
+                {
+                    "name": "caseplanId",
+                    "type": "string",
+                    "required": "true"
+                },
+                {
+                    "name": "body",
+                    "type": "Stageplancreate",
+                    "required": "true"
+                }
+            ],
+            "return": "Stageplan"
         },
         "POST /api/v2/casemanagement/caseplans/{caseplanId}/versions": {
             "className": "CaseManagementApi",
@@ -296573,6 +296928,20 @@
                 }
             ],
             "return": "Dataschema"
+        },
+        "POST /api/v2/externalcontacts/contacts/search": {
+            "className": "ExternalContactsApi",
+            "operationId": "postexternalcontactscontactssearch",
+            "functionName": "PostExternalcontactsContactsSearch",
+            "signature": "PostExternalcontactsContactsSearch(body)",
+            "parameters": [
+                {
+                    "name": "body",
+                    "type": "Contactsearchrequest",
+                    "required": "true"
+                }
+            ],
+            "return": "Contactlisting"
         },
         "POST /api/v2/externalcontacts/externalsources": {
             "className": "ExternalContactsApi",
@@ -325316,7 +325685,7 @@
                     "required": "false"
                 }
             ],
-            "return": "Dataingestionruleresponseentitylisting"
+            "return": "Genericdataingestionruleresponseentitylisting"
         },
         "GET /api/v2/socialmedia/topics/{topicId}/dataingestionrules/facebook/{facebookIngestionRuleId}": {
             "className": "SocialMediaApi",
