@@ -54,6 +54,9 @@ type Response struct {
 	// Footer - Footer template definition for responseType.Footer.
 	Footer *Footertemplate `json:"footer,omitempty"`
 
+	// Form - Form template definition for responseType.Form.
+	Form *Form `json:"form,omitempty"`
+
 	// AppleInvitation - Apple Messages for Business invitation template definition for responseType.AppleInvitation.
 	AppleInvitation *Appleinvitation `json:"appleInvitation,omitempty"`
 
@@ -160,6 +163,8 @@ func (o Response) MarshalJSON() ([]byte, error) {
 		
 		Footer *Footertemplate `json:"footer,omitempty"`
 		
+		Form *Form `json:"form,omitempty"`
+		
 		AppleInvitation *Appleinvitation `json:"appleInvitation,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -192,6 +197,8 @@ func (o Response) MarshalJSON() ([]byte, error) {
 		Assets: o.Assets,
 		
 		Footer: o.Footer,
+		
+		Form: o.Form,
 		
 		AppleInvitation: o.AppleInvitation,
 		
@@ -271,6 +278,11 @@ func (o *Response) UnmarshalJSON(b []byte) error {
 	if Footer, ok := ResponseMap["footer"].(map[string]interface{}); ok {
 		FooterString, _ := json.Marshal(Footer)
 		json.Unmarshal(FooterString, &o.Footer)
+	}
+	
+	if Form, ok := ResponseMap["form"].(map[string]interface{}); ok {
+		FormString, _ := json.Marshal(Form)
+		json.Unmarshal(FormString, &o.Form)
 	}
 	
 	if AppleInvitation, ok := ResponseMap["appleInvitation"].(map[string]interface{}); ok {

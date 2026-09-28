@@ -7,16 +7,22 @@ import (
 	"strings"
 )
 
-// Actionsurvey
-type Actionsurvey struct { 
+// Programprocessingsettings
+type Programprocessingsettings struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Questions - Questions shown to the user.
-	Questions *[]Journeysurveyquestion `json:"questions,omitempty"`
+	// Program - The ID of the program
+	Program *Baseprogramentity `json:"program,omitempty"`
+
+	// SentimentAnalysisEnabled - Whether sentiment analysis is enabled for the program
+	SentimentAnalysisEnabled *bool `json:"sentimentAnalysisEnabled,omitempty"`
+
+	// AgentEmpathyAnalysisEnabled - Whether agent empathy analysis is enabled for the program
+	AgentEmpathyAnalysisEnabled *bool `json:"agentEmpathyAnalysisEnabled,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Actionsurvey) SetField(field string, fieldValue interface{}) {
+func (o *Programprocessingsettings) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -37,7 +43,7 @@ func (o *Actionsurvey) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Actionsurvey) MarshalJSON() ([]byte, error) {
+func (o Programprocessingsettings) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -75,35 +81,51 @@ func (o Actionsurvey) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Actionsurvey
+	type Alias Programprocessingsettings
 	
 	return json.Marshal(&struct { 
-		Questions *[]Journeysurveyquestion `json:"questions,omitempty"`
+		Program *Baseprogramentity `json:"program,omitempty"`
+		
+		SentimentAnalysisEnabled *bool `json:"sentimentAnalysisEnabled,omitempty"`
+		
+		AgentEmpathyAnalysisEnabled *bool `json:"agentEmpathyAnalysisEnabled,omitempty"`
 		Alias
 	}{ 
-		Questions: o.Questions,
+		Program: o.Program,
+		
+		SentimentAnalysisEnabled: o.SentimentAnalysisEnabled,
+		
+		AgentEmpathyAnalysisEnabled: o.AgentEmpathyAnalysisEnabled,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Actionsurvey) UnmarshalJSON(b []byte) error {
-	var ActionsurveyMap map[string]interface{}
-	err := json.Unmarshal(b, &ActionsurveyMap)
+func (o *Programprocessingsettings) UnmarshalJSON(b []byte) error {
+	var ProgramprocessingsettingsMap map[string]interface{}
+	err := json.Unmarshal(b, &ProgramprocessingsettingsMap)
 	if err != nil {
 		return err
 	}
 	
-	if Questions, ok := ActionsurveyMap["questions"].([]interface{}); ok {
-		QuestionsString, _ := json.Marshal(Questions)
-		json.Unmarshal(QuestionsString, &o.Questions)
+	if Program, ok := ProgramprocessingsettingsMap["program"].(map[string]interface{}); ok {
+		ProgramString, _ := json.Marshal(Program)
+		json.Unmarshal(ProgramString, &o.Program)
 	}
 	
+	if SentimentAnalysisEnabled, ok := ProgramprocessingsettingsMap["sentimentAnalysisEnabled"].(bool); ok {
+		o.SentimentAnalysisEnabled = &SentimentAnalysisEnabled
+	}
+    
+	if AgentEmpathyAnalysisEnabled, ok := ProgramprocessingsettingsMap["agentEmpathyAnalysisEnabled"].(bool); ok {
+		o.AgentEmpathyAnalysisEnabled = &AgentEmpathyAnalysisEnabled
+	}
+    
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Actionsurvey) String() string {
+func (o *Programprocessingsettings) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

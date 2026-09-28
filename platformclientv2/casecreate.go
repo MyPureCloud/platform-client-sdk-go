@@ -20,6 +20,12 @@ type Casecreate struct {
 	// Summary - Overview information for the Case. Valid length between 3 and 512 characters.
 	Summary *string `json:"summary,omitempty"`
 
+	// Description - The description of the Case. Maximum length of 512 characters.
+	Description *string `json:"description,omitempty"`
+
+	// ExternalId - The identifier of the Case in an external system. Minimum length is 1 character. Maximum length of 64 characters.
+	ExternalId *string `json:"externalId,omitempty"`
+
 	// ExternalContactId - The ID of the External Contact associated with the Case.
 	ExternalContactId *string `json:"externalContactId,omitempty"`
 
@@ -105,6 +111,10 @@ func (o Casecreate) MarshalJSON() ([]byte, error) {
 		
 		Summary *string `json:"summary,omitempty"`
 		
+		Description *string `json:"description,omitempty"`
+		
+		ExternalId *string `json:"externalId,omitempty"`
+		
 		ExternalContactId *string `json:"externalContactId,omitempty"`
 		
 		ConversationId *string `json:"conversationId,omitempty"`
@@ -121,6 +131,10 @@ func (o Casecreate) MarshalJSON() ([]byte, error) {
 		OwnerId: o.OwnerId,
 		
 		Summary: o.Summary,
+		
+		Description: o.Description,
+		
+		ExternalId: o.ExternalId,
 		
 		ExternalContactId: o.ExternalContactId,
 		
@@ -152,6 +166,14 @@ func (o *Casecreate) UnmarshalJSON(b []byte) error {
     
 	if Summary, ok := CasecreateMap["summary"].(string); ok {
 		o.Summary = &Summary
+	}
+    
+	if Description, ok := CasecreateMap["description"].(string); ok {
+		o.Description = &Description
+	}
+    
+	if ExternalId, ok := CasecreateMap["externalId"].(string); ok {
+		o.ExternalId = &ExternalId
 	}
     
 	if ExternalContactId, ok := CasecreateMap["externalContactId"].(string); ok {

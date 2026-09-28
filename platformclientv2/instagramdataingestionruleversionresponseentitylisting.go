@@ -23,14 +23,14 @@ type Instagramdataingestionruleversionresponseentitylisting struct {
 	// Total
 	Total *int `json:"total,omitempty"`
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
+
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
 
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
@@ -113,11 +113,11 @@ func (o Instagramdataingestionruleversionresponseentitylisting) MarshalJSON() ([
 		
 		Total *int `json:"total,omitempty"`
 		
-		LastUri *string `json:"lastUri,omitempty"`
-		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
+		
+		LastUri *string `json:"lastUri,omitempty"`
 		
 		NextUri *string `json:"nextUri,omitempty"`
 		
@@ -134,11 +134,11 @@ func (o Instagramdataingestionruleversionresponseentitylisting) MarshalJSON() ([
 		
 		Total: o.Total,
 		
-		LastUri: o.LastUri,
-		
 		FirstUri: o.FirstUri,
 		
 		SelfUri: o.SelfUri,
+		
+		LastUri: o.LastUri,
 		
 		NextUri: o.NextUri,
 		
@@ -176,16 +176,16 @@ func (o *Instagramdataingestionruleversionresponseentitylisting) UnmarshalJSON(b
 		o.Total = &TotalInt
 	}
 	
-	if LastUri, ok := InstagramdataingestionruleversionresponseentitylistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
 	if FirstUri, ok := InstagramdataingestionruleversionresponseentitylistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
     
 	if SelfUri, ok := InstagramdataingestionruleversionresponseentitylistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
+	}
+    
+	if LastUri, ok := InstagramdataingestionruleversionresponseentitylistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
 	}
     
 	if NextUri, ok := InstagramdataingestionruleversionresponseentitylistingMap["nextUri"].(string); ok {

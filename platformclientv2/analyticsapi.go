@@ -3485,8 +3485,6 @@ func (a AnalyticsApi) GetAnalyticsCopilotsAggregatesJobResults(jobId string, cur
 // GetAnalyticsDataextractionDownload invokes GET /api/v2/analytics/dataextraction/downloads/{downloadId}
 //
 // Get analytics data warehouse file download
-//
-// Preview: GetAnalyticsDataextractionDownload is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) GetAnalyticsDataextractionDownload(downloadId string) (*APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3562,8 +3560,6 @@ func (a AnalyticsApi) GetAnalyticsDataextractionDownload(downloadId string) (*AP
 // GetAnalyticsDataextractionDownloadsMetadata invokes GET /api/v2/analytics/dataextraction/downloads/metadata
 //
 // Get metadata on files available for extraction
-//
-// Preview: GetAnalyticsDataextractionDownloadsMetadata is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) GetAnalyticsDataextractionDownloadsMetadata(before string, after string, pageSize string, dataSchema string, dateStart time.Time, dateEnd time.Time) (*Dataextractionfileschemalisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -8180,8 +8176,6 @@ func (a AnalyticsApi) PostAnalyticsCopilotsAggregatesQuery(body Copilotaggregati
 // PostAnalyticsDataextractionDownloadsBulk invokes POST /api/v2/analytics/dataextraction/downloads/bulk
 //
 // Get download URLs for analytics data warehouse files
-//
-// Preview: PostAnalyticsDataextractionDownloadsBulk is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a AnalyticsApi) PostAnalyticsDataextractionDownloadsBulk(body Downloadservicerequest) (*Dataextractionfileurllisting, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

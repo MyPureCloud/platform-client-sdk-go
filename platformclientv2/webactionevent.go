@@ -17,9 +17,6 @@ type Webactionevent struct {
 	// ActionMap - The action map that triggered the action.
 	ActionMap *Actioneventactionmap `json:"actionMap,omitempty"`
 
-	// ActionTarget - Deprecated. The target for engagement actions.
-	ActionTarget *Addressableentityref `json:"actionTarget,omitempty"`
-
 	// TimeToDisposition - Milliseconds elapsed until the action is disposed.
 	TimeToDisposition *int `json:"timeToDisposition,omitempty"`
 
@@ -121,8 +118,6 @@ func (o Webactionevent) MarshalJSON() ([]byte, error) {
 		
 		ActionMap *Actioneventactionmap `json:"actionMap,omitempty"`
 		
-		ActionTarget *Addressableentityref `json:"actionTarget,omitempty"`
-		
 		TimeToDisposition *int `json:"timeToDisposition,omitempty"`
 		
 		ErrorCode *string `json:"errorCode,omitempty"`
@@ -149,8 +144,6 @@ func (o Webactionevent) MarshalJSON() ([]byte, error) {
 		Action: o.Action,
 		
 		ActionMap: o.ActionMap,
-		
-		ActionTarget: o.ActionTarget,
 		
 		TimeToDisposition: o.TimeToDisposition,
 		
@@ -192,11 +185,6 @@ func (o *Webactionevent) UnmarshalJSON(b []byte) error {
 	if ActionMap, ok := WebactioneventMap["actionMap"].(map[string]interface{}); ok {
 		ActionMapString, _ := json.Marshal(ActionMap)
 		json.Unmarshal(ActionMapString, &o.ActionMap)
-	}
-	
-	if ActionTarget, ok := WebactioneventMap["actionTarget"].(map[string]interface{}); ok {
-		ActionTargetString, _ := json.Marshal(ActionTarget)
-		json.Unmarshal(ActionTargetString, &o.ActionTarget)
 	}
 	
 	if TimeToDisposition, ok := WebactioneventMap["timeToDisposition"].(float64); ok {

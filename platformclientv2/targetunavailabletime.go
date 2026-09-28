@@ -7,28 +7,16 @@ import (
 	"strings"
 )
 
-// Patchactiontarget
-type Patchactiontarget struct { 
+// Targetunavailabletime
+type Targetunavailabletime struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
-
-	// Name
-	Name *string `json:"name,omitempty"`
-
-	// ServiceLevel - Service Level of the action target. Chat offers for the target will be throttled with the aim of achieving this service level.
-	ServiceLevel *Servicelevel `json:"serviceLevel,omitempty"`
-
-	// ShortAbandonThreshold - Indicates the non-default short abandon threshold
-	ShortAbandonThreshold *int `json:"shortAbandonThreshold,omitempty"`
-
-	// SelfUri - The URI for this object
-	SelfUri *string `json:"selfUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Patchactiontarget) SetField(field string, fieldValue interface{}) {
+func (o *Targetunavailabletime) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -49,7 +37,7 @@ func (o *Patchactiontarget) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Patchactiontarget) MarshalJSON() ([]byte, error) {
+func (o Targetunavailabletime) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -87,60 +75,26 @@ func (o Patchactiontarget) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Patchactiontarget
+	type Alias Targetunavailabletime
 	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
-		
-		Name *string `json:"name,omitempty"`
-		
-		ServiceLevel *Servicelevel `json:"serviceLevel,omitempty"`
-		
-		ShortAbandonThreshold *int `json:"shortAbandonThreshold,omitempty"`
-		
-		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
-		
-		Name: o.Name,
-		
-		ServiceLevel: o.ServiceLevel,
-		
-		ShortAbandonThreshold: o.ShortAbandonThreshold,
-		
-		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Patchactiontarget) UnmarshalJSON(b []byte) error {
-	var PatchactiontargetMap map[string]interface{}
-	err := json.Unmarshal(b, &PatchactiontargetMap)
+func (o *Targetunavailabletime) UnmarshalJSON(b []byte) error {
+	var TargetunavailabletimeMap map[string]interface{}
+	err := json.Unmarshal(b, &TargetunavailabletimeMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := PatchactiontargetMap["id"].(string); ok {
+	if Id, ok := TargetunavailabletimeMap["id"].(string); ok {
 		o.Id = &Id
-	}
-    
-	if Name, ok := PatchactiontargetMap["name"].(string); ok {
-		o.Name = &Name
-	}
-    
-	if ServiceLevel, ok := PatchactiontargetMap["serviceLevel"].(map[string]interface{}); ok {
-		ServiceLevelString, _ := json.Marshal(ServiceLevel)
-		json.Unmarshal(ServiceLevelString, &o.ServiceLevel)
-	}
-	
-	if ShortAbandonThreshold, ok := PatchactiontargetMap["shortAbandonThreshold"].(float64); ok {
-		ShortAbandonThresholdInt := int(ShortAbandonThreshold)
-		o.ShortAbandonThreshold = &ShortAbandonThresholdInt
-	}
-	
-	if SelfUri, ok := PatchactiontargetMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
 	}
     
 
@@ -148,7 +102,7 @@ func (o *Patchactiontarget) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Patchactiontarget) String() string {
+func (o *Targetunavailabletime) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

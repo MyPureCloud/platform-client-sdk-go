@@ -7,28 +7,16 @@ import (
 	"strings"
 )
 
-// Journeysurveyquestion
-type Journeysurveyquestion struct { 
+// Casedescriptionupdate
+type Casedescriptionupdate struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// VarType - Type of survey question.
-	VarType *string `json:"type,omitempty"`
-
-	// Label - Label of question.
-	Label *string `json:"label,omitempty"`
-
-	// CustomerProperty - The customer property that the answer maps to.
-	CustomerProperty *string `json:"customerProperty,omitempty"`
-
-	// Choices - Choices available to user.
-	Choices *[]string `json:"choices,omitempty"`
-
-	// IsMandatory - Whether answering this question is mandatory.
-	IsMandatory *bool `json:"isMandatory,omitempty"`
+	// Description - The description of the Case. Maximum length of 512 characters.
+	Description *string `json:"description,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Journeysurveyquestion) SetField(field string, fieldValue interface{}) {
+func (o *Casedescriptionupdate) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -49,7 +37,7 @@ func (o *Journeysurveyquestion) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Journeysurveyquestion) MarshalJSON() ([]byte, error) {
+func (o Casedescriptionupdate) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -87,59 +75,26 @@ func (o Journeysurveyquestion) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Journeysurveyquestion
+	type Alias Casedescriptionupdate
 	
 	return json.Marshal(&struct { 
-		VarType *string `json:"type,omitempty"`
-		
-		Label *string `json:"label,omitempty"`
-		
-		CustomerProperty *string `json:"customerProperty,omitempty"`
-		
-		Choices *[]string `json:"choices,omitempty"`
-		
-		IsMandatory *bool `json:"isMandatory,omitempty"`
+		Description *string `json:"description,omitempty"`
 		Alias
 	}{ 
-		VarType: o.VarType,
-		
-		Label: o.Label,
-		
-		CustomerProperty: o.CustomerProperty,
-		
-		Choices: o.Choices,
-		
-		IsMandatory: o.IsMandatory,
+		Description: o.Description,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Journeysurveyquestion) UnmarshalJSON(b []byte) error {
-	var JourneysurveyquestionMap map[string]interface{}
-	err := json.Unmarshal(b, &JourneysurveyquestionMap)
+func (o *Casedescriptionupdate) UnmarshalJSON(b []byte) error {
+	var CasedescriptionupdateMap map[string]interface{}
+	err := json.Unmarshal(b, &CasedescriptionupdateMap)
 	if err != nil {
 		return err
 	}
 	
-	if VarType, ok := JourneysurveyquestionMap["type"].(string); ok {
-		o.VarType = &VarType
-	}
-    
-	if Label, ok := JourneysurveyquestionMap["label"].(string); ok {
-		o.Label = &Label
-	}
-    
-	if CustomerProperty, ok := JourneysurveyquestionMap["customerProperty"].(string); ok {
-		o.CustomerProperty = &CustomerProperty
-	}
-    
-	if Choices, ok := JourneysurveyquestionMap["choices"].([]interface{}); ok {
-		ChoicesString, _ := json.Marshal(Choices)
-		json.Unmarshal(ChoicesString, &o.Choices)
-	}
-	
-	if IsMandatory, ok := JourneysurveyquestionMap["isMandatory"].(bool); ok {
-		o.IsMandatory = &IsMandatory
+	if Description, ok := CasedescriptionupdateMap["description"].(string); ok {
+		o.Description = &Description
 	}
     
 
@@ -147,7 +102,7 @@ func (o *Journeysurveyquestion) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Journeysurveyquestion) String() string {
+func (o *Casedescriptionupdate) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

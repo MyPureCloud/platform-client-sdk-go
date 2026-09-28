@@ -731,6 +731,12 @@ type Viewfilter struct {
 	// SocialEngagementViews - The views range used to filter the view
 	SocialEngagementViews *Numericrange `json:"socialEngagementViews,omitempty"`
 
+	// SocialEngagementSaves - The saves range used to filter the view
+	SocialEngagementSaves *Numericrange `json:"socialEngagementSaves,omitempty"`
+
+	// SocialEngagementReposts - The reposts range used to filter the view
+	SocialEngagementReposts *Numericrange `json:"socialEngagementReposts,omitempty"`
+
 	// SessionExpired - Filter to indicate for if session is expired
 	SessionExpired *bool `json:"sessionExpired,omitempty"`
 
@@ -1293,6 +1299,10 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		
 		SocialEngagementViews *Numericrange `json:"socialEngagementViews,omitempty"`
 		
+		SocialEngagementSaves *Numericrange `json:"socialEngagementSaves,omitempty"`
+		
+		SocialEngagementReposts *Numericrange `json:"socialEngagementReposts,omitempty"`
+		
 		SessionExpired *bool `json:"sessionExpired,omitempty"`
 		
 		ScreenMonitored *bool `json:"screenMonitored,omitempty"`
@@ -1785,6 +1795,10 @@ func (o Viewfilter) MarshalJSON() ([]byte, error) {
 		SocialEngagementComments: o.SocialEngagementComments,
 		
 		SocialEngagementViews: o.SocialEngagementViews,
+		
+		SocialEngagementSaves: o.SocialEngagementSaves,
+		
+		SocialEngagementReposts: o.SocialEngagementReposts,
 		
 		SessionExpired: o.SessionExpired,
 		
@@ -2952,6 +2966,16 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if SocialEngagementViews, ok := ViewfilterMap["socialEngagementViews"].(map[string]interface{}); ok {
 		SocialEngagementViewsString, _ := json.Marshal(SocialEngagementViews)
 		json.Unmarshal(SocialEngagementViewsString, &o.SocialEngagementViews)
+	}
+	
+	if SocialEngagementSaves, ok := ViewfilterMap["socialEngagementSaves"].(map[string]interface{}); ok {
+		SocialEngagementSavesString, _ := json.Marshal(SocialEngagementSaves)
+		json.Unmarshal(SocialEngagementSavesString, &o.SocialEngagementSaves)
+	}
+	
+	if SocialEngagementReposts, ok := ViewfilterMap["socialEngagementReposts"].(map[string]interface{}); ok {
+		SocialEngagementRepostsString, _ := json.Marshal(SocialEngagementReposts)
+		json.Unmarshal(SocialEngagementRepostsString, &o.SocialEngagementReposts)
 	}
 	
 	if SessionExpired, ok := ViewfilterMap["sessionExpired"].(bool); ok {

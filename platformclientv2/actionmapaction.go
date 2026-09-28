@@ -17,15 +17,6 @@ type Actionmapaction struct {
 	// MediaType - Media type of action.
 	MediaType *string `json:"mediaType,omitempty"`
 
-	// ActionTargetId - Deprecated. Action target ID.
-	ActionTargetId *string `json:"actionTargetId,omitempty"`
-
-	// IsPacingEnabled - Deprecated. Whether this action should be throttled.
-	IsPacingEnabled *bool `json:"isPacingEnabled,omitempty"`
-
-	// Props - Deprecated. Additional properties.
-	Props *Actionproperties `json:"props,omitempty"`
-
 	// ArchitectFlowFields - Architect Flow Id and input contract.
 	ArchitectFlowFields *Architectflowfields `json:"architectFlowFields,omitempty"`
 
@@ -103,12 +94,6 @@ func (o Actionmapaction) MarshalJSON() ([]byte, error) {
 		
 		MediaType *string `json:"mediaType,omitempty"`
 		
-		ActionTargetId *string `json:"actionTargetId,omitempty"`
-		
-		IsPacingEnabled *bool `json:"isPacingEnabled,omitempty"`
-		
-		Props *Actionproperties `json:"props,omitempty"`
-		
 		ArchitectFlowFields *Architectflowfields `json:"architectFlowFields,omitempty"`
 		
 		WebMessagingOfferFields *Webmessagingofferfields `json:"webMessagingOfferFields,omitempty"`
@@ -119,12 +104,6 @@ func (o Actionmapaction) MarshalJSON() ([]byte, error) {
 		ActionTemplate: o.ActionTemplate,
 		
 		MediaType: o.MediaType,
-		
-		ActionTargetId: o.ActionTargetId,
-		
-		IsPacingEnabled: o.IsPacingEnabled,
-		
-		Props: o.Props,
 		
 		ArchitectFlowFields: o.ArchitectFlowFields,
 		
@@ -151,19 +130,6 @@ func (o *Actionmapaction) UnmarshalJSON(b []byte) error {
 		o.MediaType = &MediaType
 	}
     
-	if ActionTargetId, ok := ActionmapactionMap["actionTargetId"].(string); ok {
-		o.ActionTargetId = &ActionTargetId
-	}
-    
-	if IsPacingEnabled, ok := ActionmapactionMap["isPacingEnabled"].(bool); ok {
-		o.IsPacingEnabled = &IsPacingEnabled
-	}
-    
-	if Props, ok := ActionmapactionMap["props"].(map[string]interface{}); ok {
-		PropsString, _ := json.Marshal(Props)
-		json.Unmarshal(PropsString, &o.Props)
-	}
-	
 	if ArchitectFlowFields, ok := ActionmapactionMap["architectFlowFields"].(map[string]interface{}); ok {
 		ArchitectFlowFieldsString, _ := json.Marshal(ArchitectFlowFields)
 		json.Unmarshal(ArchitectFlowFieldsString, &o.ArchitectFlowFields)

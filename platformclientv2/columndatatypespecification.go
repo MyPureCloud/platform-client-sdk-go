@@ -14,7 +14,7 @@ type Columndatatypespecification struct {
 	// ColumnName - The column name of a column selected for dynamic queueing
 	ColumnName *string `json:"columnName,omitempty"`
 
-	// ColumnDataType - The data type of the column selected for dynamic queueing (TEXT, NUMERIC or TIMESTAMP)
+	// ColumnDataType - The data type of the column selected for dynamic queueing (TEXT, NUMERIC, TIMESTAMP or DATETIME). DATETIME supports dates from 1000-01-01 to 9999-12-31; TIMESTAMP is limited to 1970-01-01 through 2038-01-19.
 	ColumnDataType *string `json:"columnDataType,omitempty"`
 
 	// Min - The minimum length of the numeric column selected for dynamic queueing

@@ -10592,6 +10592,44 @@
     "return": "Case",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewCaseManagementApiWithConfig(config)\n\nvar caseId string // Case identifier.\nvar body platformclientv2.Casedatedueupdate // Due date update.\n// Update the due date of a Case.\ndata, response, err := apiInstance.PatchCasemanagementCaseDatedue(caseId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchCasemanagementCaseDatedue: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
+  "patchcasemanagementcasedescription": {
+    "operationId": "patchcasemanagementcasedescription",
+    "functionName": "PatchCasemanagementCaseDescription",
+    "signature": "PatchCasemanagementCaseDescription(caseId, body)",
+    "parameters": [
+      {
+        "name": "caseId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Casedescriptionupdate",
+        "required": "true"
+      }
+    ],
+    "return": "Case",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewCaseManagementApiWithConfig(config)\n\nvar caseId string // Case identifier.\nvar body platformclientv2.Casedescriptionupdate // Description update.\n// Update the description of a Case.\ndata, response, err := apiInstance.PatchCasemanagementCaseDescription(caseId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchCasemanagementCaseDescription: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "patchcasemanagementcaseexternalid": {
+    "operationId": "patchcasemanagementcaseexternalid",
+    "functionName": "PatchCasemanagementCaseExternalid",
+    "signature": "PatchCasemanagementCaseExternalid(caseId, body)",
+    "parameters": [
+      {
+        "name": "caseId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Caseexternalidupdate",
+        "required": "true"
+      }
+    ],
+    "return": "Case",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewCaseManagementApiWithConfig(config)\n\nvar caseId string // Case identifier.\nvar body platformclientv2.Caseexternalidupdate // External identifier update.\n// Update the external identifier of a Case.\ndata, response, err := apiInstance.PatchCasemanagementCaseExternalid(caseId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchCasemanagementCaseExternalid: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
   "patchcasemanagementcaseowner": {
     "operationId": "patchcasemanagementcaseowner",
     "functionName": "PatchCasemanagementCaseOwner",
@@ -17767,6 +17805,24 @@
       }
     ],
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewConversationsApiWithConfig(config)\n\nvar conversationId string // conversationId\nvar participantId string // participantId\nvar body platformclientv2.Transferrequest // Transfer request\n// Replace this participant with the specified user and/or address\nresponse, err := apiInstance.PostConversationsMessageParticipantReplace(conversationId, participantId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostConversationsMessageParticipantReplace: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
+  },
+  "postconversationsmessageparticipanttakeover": {
+    "operationId": "postconversationsmessageparticipanttakeover",
+    "functionName": "PostConversationsMessageParticipantTakeover",
+    "signature": "PostConversationsMessageParticipantTakeover(conversationId, participantId)",
+    "parameters": [
+      {
+        "name": "conversationId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "participantId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewConversationsApiWithConfig(config)\n\nvar conversationId string // The id of the conversation being taken over\nvar participantId string // The id of the participant being taken over.\n// The User performing this action will takeover the conversation from the participant specified.\nresponse, err := apiInstance.PostConversationsMessageParticipantTakeover(conversationId, participantId)\nif err != nil {\n\tfmt.Printf(\"Error calling PostConversationsMessageParticipantTakeover: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
   },
   "postconversationsmessages": {
     "operationId": "postconversationsmessages",
@@ -28407,25 +28463,6 @@
     ],
     "return": "Actionmap",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewJourneyApiWithConfig(config)\n\nvar actionMapId string // ID of the action map.\nvar body platformclientv2.Patchactionmap // \n// Update single action map.\ndata, response, err := apiInstance.PatchJourneyActionmap(actionMapId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchJourneyActionmap: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
-  },
-  "patchjourneyactiontarget": {
-    "operationId": "patchjourneyactiontarget",
-    "functionName": "PatchJourneyActiontarget",
-    "signature": "PatchJourneyActiontarget(actionTargetId, body)",
-    "parameters": [
-      {
-        "name": "actionTargetId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "body",
-        "type": "Patchactiontarget",
-        "required": "false"
-      }
-    ],
-    "return": "Actiontarget",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewJourneyApiWithConfig(config)\n\nvar actionTargetId string // ID of the action target.\nvar body platformclientv2.Patchactiontarget // \n// Deprecated. Update a single action target.\ndata, response, err := apiInstance.PatchJourneyActiontarget(actionTargetId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchJourneyActiontarget: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "patchjourneyactiontemplate": {
     "operationId": "patchjourneyactiontemplate",
@@ -44443,7 +44480,7 @@
         "required": "false"
       }
     ],
-    "return": "[]Keyperformanceindicator",
+    "return": "Keyperformanceindicatorentitylisting",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewRoutingApiWithConfig(config)\n\nvar kpiGroup string // The Group of Key Performance Indicators to return\nvar expand []string // Parameter to request additional data to return in KPI payload\n// Get a list of Key Performance Indicators\ndata, response, err := apiInstance.GetRoutingPredictorsKeyperformanceindicators(kpiGroup, expand)\nif err != nil {\n\tfmt.Printf(\"Error calling GetRoutingPredictorsKeyperformanceindicators: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getroutingpredictorskeyperformanceindicatortypes": {
@@ -50148,6 +50185,20 @@
     "return": "Programinsightssettings",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSpeechTextAnalyticsApiWithConfig(config)\n\nvar programId string // The id of the program\n// Get AI Insights settings of a program\ndata, response, err := apiInstance.GetSpeechandtextanalyticsProgramSettingsInsights(programId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetSpeechandtextanalyticsProgramSettingsInsights: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
+  "getspeechandtextanalyticsprogramsettingsprocessing": {
+    "operationId": "getspeechandtextanalyticsprogramsettingsprocessing",
+    "functionName": "GetSpeechandtextanalyticsProgramSettingsProcessing",
+    "signature": "GetSpeechandtextanalyticsProgramSettingsProcessing(programId)",
+    "parameters": [
+      {
+        "name": "programId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Programprocessingsettings",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSpeechTextAnalyticsApiWithConfig(config)\n\nvar programId string // The id of the program\n// Get program processing settings\ndata, response, err := apiInstance.GetSpeechandtextanalyticsProgramSettingsProcessing(programId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetSpeechandtextanalyticsProgramSettingsProcessing: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
   "getspeechandtextanalyticsprogramtranscriptionengines": {
     "operationId": "getspeechandtextanalyticsprogramtranscriptionengines",
     "functionName": "GetSpeechandtextanalyticsProgramTranscriptionengines",
@@ -50276,6 +50327,30 @@
     ],
     "return": "Programinsightssettingsentitylisting",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSpeechTextAnalyticsApiWithConfig(config)\n\nvar pageSize int // The page size for the listing. The max that will be returned is 100.\nvar pageNumber int // The page number for the listing\nvar programIds []string // Comma separated Program IDs to filter by. Maximum of 50 IDs allowed.\n// Get the list of program AI Insights settings for the organization\ndata, response, err := apiInstance.GetSpeechandtextanalyticsProgramsSettingsInsights(pageSize, pageNumber, programIds)\nif err != nil {\n\tfmt.Printf(\"Error calling GetSpeechandtextanalyticsProgramsSettingsInsights: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getspeechandtextanalyticsprogramssettingsprocessing": {
+    "operationId": "getspeechandtextanalyticsprogramssettingsprocessing",
+    "functionName": "GetSpeechandtextanalyticsProgramsSettingsProcessing",
+    "signature": "GetSpeechandtextanalyticsProgramsSettingsProcessing(pageSize, pageNumber, programIds)",
+    "parameters": [
+      {
+        "name": "pageSize",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "pageNumber",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "programIds",
+        "type": "[]string",
+        "required": "false"
+      }
+    ],
+    "return": "Programprocessingsettingsentitylisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSpeechTextAnalyticsApiWithConfig(config)\n\nvar pageSize int // The page size for the listing. The max that will be returned is 100.\nvar pageNumber int // The page number for the listing\nvar programIds []string // Comma separated Program IDs to filter by. Maximum of 50 IDs allowed.\n// Get the list of program processing settings for the organization\ndata, response, err := apiInstance.GetSpeechandtextanalyticsProgramsSettingsProcessing(pageSize, pageNumber, programIds)\nif err != nil {\n\tfmt.Printf(\"Error calling GetSpeechandtextanalyticsProgramsSettingsProcessing: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getspeechandtextanalyticsprogramstopiclinksjob": {
     "operationId": "getspeechandtextanalyticsprogramstopiclinksjob",
@@ -50582,6 +50657,25 @@
     "signature": "GetSpeechandtextanalyticsTranslationsLanguages()",
     "return": "Translatesupportedlanguagelist",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSpeechTextAnalyticsApiWithConfig(config)\n\n// Get supported translation languages\ndata, response, err := apiInstance.GetSpeechandtextanalyticsTranslationsLanguages()\nif err != nil {\n\tfmt.Printf(\"Error calling GetSpeechandtextanalyticsTranslationsLanguages: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "patchspeechandtextanalyticsprogramsettingsprocessing": {
+    "operationId": "patchspeechandtextanalyticsprogramsettingsprocessing",
+    "functionName": "PatchSpeechandtextanalyticsProgramSettingsProcessing",
+    "signature": "PatchSpeechandtextanalyticsProgramSettingsProcessing(programId, body)",
+    "parameters": [
+      {
+        "name": "programId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Processingsettingsrequest",
+        "required": "true"
+      }
+    ],
+    "return": "Programprocessingsettingspatchresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewSpeechTextAnalyticsApiWithConfig(config)\n\nvar programId string // The id of the program\nvar body platformclientv2.Processingsettingsrequest // Program processing settings\n// Update program processing settings\ndata, response, err := apiInstance.PatchSpeechandtextanalyticsProgramSettingsProcessing(programId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchSpeechandtextanalyticsProgramSettingsProcessing: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "patchspeechandtextanalyticssettings": {
     "operationId": "patchspeechandtextanalyticssettings",
@@ -58473,6 +58567,19 @@
     ],
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWebMessagingApiWithConfig(config)\n\nvar deploymentId string // WebMessaging deployment id\nvar tokenId string // Device token id or cookie id\nvar body platformclientv2.Pushdeviceinsertrequest // Request body\n// Add a new device information\nresponse, err := apiInstance.PostWebmessagingDeploymentPushdevice(deploymentId, tokenId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWebmessagingDeploymentPushdevice: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
   },
+  "deleteworkforcemanagementadherenceadjustment": {
+    "operationId": "deleteworkforcemanagementadherenceadjustment",
+    "functionName": "DeleteWorkforcemanagementAdherenceAdjustment",
+    "signature": "DeleteWorkforcemanagementAdherenceAdjustment(adjustmentId)",
+    "parameters": [
+      {
+        "name": "adjustmentId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar adjustmentId string // The ID of the adherence adjustment to delete\n// Delete an adherence adjustment for the current user\nresponse, err := apiInstance.DeleteWorkforcemanagementAdherenceAdjustment(adjustmentId)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteWorkforcemanagementAdherenceAdjustment: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
+  },
   "deleteworkforcemanagementbusinessunit": {
     "operationId": "deleteworkforcemanagementbusinessunit",
     "functionName": "DeleteWorkforcemanagementBusinessunit",
@@ -58503,6 +58610,42 @@
       }
     ],
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit, or 'mine' for the business unit of the logged-in user.\nvar activityCodeId string // The ID of the activity code to delete\n// Deletes an activity code\nresponse, err := apiInstance.DeleteWorkforcemanagementBusinessunitActivitycode(businessUnitId, activityCodeId)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteWorkforcemanagementBusinessunitActivitycode: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
+  },
+  "deleteworkforcemanagementbusinessunitadherenceadjustmentsreasoncode": {
+    "operationId": "deleteworkforcemanagementbusinessunitadherenceadjustmentsreasoncode",
+    "functionName": "DeleteWorkforcemanagementBusinessunitAdherenceAdjustmentsReasoncode",
+    "signature": "DeleteWorkforcemanagementBusinessunitAdherenceAdjustmentsReasoncode(businessUnitId, reasonCodeId)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "reasonCodeId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar reasonCodeId string // The ID of the reason code to delete\n// Delete an adherence adjustment reason code for a business unit\nresponse, err := apiInstance.DeleteWorkforcemanagementBusinessunitAdherenceAdjustmentsReasoncode(businessUnitId, reasonCodeId)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteWorkforcemanagementBusinessunitAdherenceAdjustmentsReasoncode: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
+  },
+  "deleteworkforcemanagementbusinessunitadherenceadjustmentsreasoncodesbulk": {
+    "operationId": "deleteworkforcemanagementbusinessunitadherenceadjustmentsreasoncodesbulk",
+    "functionName": "DeleteWorkforcemanagementBusinessunitAdherenceAdjustmentsReasoncodesBulk",
+    "signature": "DeleteWorkforcemanagementBusinessunitAdherenceAdjustmentsReasoncodesBulk(businessUnitId, ids)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "ids",
+        "type": "[]string",
+        "required": "true"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar ids []string // The IDs of the reason codes to delete\n// Delete adherence adjustment reason codes in bulk for a business unit\nresponse, err := apiInstance.DeleteWorkforcemanagementBusinessunitAdherenceAdjustmentsReasoncodesBulk(businessUnitId, ids)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteWorkforcemanagementBusinessunitAdherenceAdjustmentsReasoncodesBulk: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\n}"
   },
   "deleteworkforcemanagementbusinessunitcapacityplanstaffinggroupallocationshistory": {
     "operationId": "deleteworkforcemanagementbusinessunitcapacityplanstaffinggroupallocationshistory",
@@ -58869,6 +59012,20 @@
     "return": "[]Userscheduleadherence",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar userId []string // User Id(s) for which to fetch current schedule adherence information.  Min 1, Max of 100 userIds per request\n// Get a list of UserScheduleAdherence records for the requested users\ndata, response, err := apiInstance.GetWorkforcemanagementAdherence(userId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementAdherence: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
+  "getworkforcemanagementadherenceadjustment": {
+    "operationId": "getworkforcemanagementadherenceadjustment",
+    "functionName": "GetWorkforcemanagementAdherenceAdjustment",
+    "signature": "GetWorkforcemanagementAdherenceAdjustment(adjustmentId)",
+    "parameters": [
+      {
+        "name": "adjustmentId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Currentagentadherenceadjustment",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar adjustmentId string // The ID of the adherence adjustment\n// Get an adherence adjustment for the current user\ndata, response, err := apiInstance.GetWorkforcemanagementAdherenceAdjustment(adjustmentId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementAdherenceAdjustment: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
   "getworkforcemanagementadherenceexplanation": {
     "operationId": "getworkforcemanagementadherenceexplanation",
     "functionName": "GetWorkforcemanagementAdherenceExplanation",
@@ -58924,6 +59081,25 @@
     ],
     "return": "Wfmhistoricaladherenceresponse",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar jobId string // jobId\n// Query the status of a historical adherence request operation. Only the user who started the operation can query the status\ndata, response, err := apiInstance.GetWorkforcemanagementAdherenceHistoricalJob(jobId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementAdherenceHistoricalJob: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getworkforcemanagementagentadherenceadjustment": {
+    "operationId": "getworkforcemanagementagentadherenceadjustment",
+    "functionName": "GetWorkforcemanagementAgentAdherenceAdjustment",
+    "signature": "GetWorkforcemanagementAgentAdherenceAdjustment(agentId, adjustmentId)",
+    "parameters": [
+      {
+        "name": "agentId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "adjustmentId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Adherenceadjustment",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar agentId string // The ID of the agent\nvar adjustmentId string // The ID of the adherence adjustment\n// Get an adherence adjustment for the requested agent\ndata, response, err := apiInstance.GetWorkforcemanagementAgentAdherenceAdjustment(agentId, adjustmentId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementAgentAdherenceAdjustment: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getworkforcemanagementagentadherenceexplanation": {
     "operationId": "getworkforcemanagementagentadherenceexplanation",
@@ -59151,6 +59327,136 @@
     "return": "Activityplanresponse",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar activityPlanId string // The ID of the activity plan to fetch\n// Get an activity plan\ndata, response, err := apiInstance.GetWorkforcemanagementBusinessunitActivityplan(businessUnitId, activityPlanId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementBusinessunitActivityplan: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
+  "getworkforcemanagementbusinessunitactivityplandeletionsjob": {
+    "operationId": "getworkforcemanagementbusinessunitactivityplandeletionsjob",
+    "functionName": "GetWorkforcemanagementBusinessunitActivityplanDeletionsJob",
+    "signature": "GetWorkforcemanagementBusinessunitActivityplanDeletionsJob(businessUnitId, activityPlanId, jobId)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "activityPlanId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "jobId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Activityplanjobresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar activityPlanId string // The ID of the activity plan associated with the deletion job\nvar jobId string // The ID of the activity plan deletion job\n// Gets an activity plan deletion job\ndata, response, err := apiInstance.GetWorkforcemanagementBusinessunitActivityplanDeletionsJob(businessUnitId, activityPlanId, jobId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementBusinessunitActivityplanDeletionsJob: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getworkforcemanagementbusinessunitactivityplanjobs": {
+    "operationId": "getworkforcemanagementbusinessunitactivityplanjobs",
+    "functionName": "GetWorkforcemanagementBusinessunitActivityplanJobs",
+    "signature": "GetWorkforcemanagementBusinessunitActivityplanJobs(businessUnitId, activityPlanId)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "activityPlanId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Activityplanjobresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar activityPlanId string // The ID of the activity plan associated with the run job\n// Gets the latest job for an activity plan in the business unit\ndata, response, err := apiInstance.GetWorkforcemanagementBusinessunitActivityplanJobs(businessUnitId, activityPlanId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementBusinessunitActivityplanJobs: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getworkforcemanagementbusinessunitactivityplanoccurrencesessionusersdeletionsjob": {
+    "operationId": "getworkforcemanagementbusinessunitactivityplanoccurrencesessionusersdeletionsjob",
+    "functionName": "GetWorkforcemanagementBusinessunitActivityplanOccurrenceSessionUsersDeletionsJob",
+    "signature": "GetWorkforcemanagementBusinessunitActivityplanOccurrenceSessionUsersDeletionsJob(businessUnitId, activityPlanId, occurrenceId, sessionId, jobId)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "activityPlanId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "occurrenceId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "sessionId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "jobId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Activityplanjobresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar activityPlanId string // The ID of the activity plan\nvar occurrenceId string // The ID of the activity plan occurrence\nvar sessionId string // The ID of the activity plan occurrence session\nvar jobId string // The ID of the activity plan occurrence session users deletion job\n// Gets a session users deletion job\ndata, response, err := apiInstance.GetWorkforcemanagementBusinessunitActivityplanOccurrenceSessionUsersDeletionsJob(businessUnitId, activityPlanId, occurrenceId, sessionId, jobId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementBusinessunitActivityplanOccurrenceSessionUsersDeletionsJob: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getworkforcemanagementbusinessunitactivityplanoccurrencesessionsdeletionsjob": {
+    "operationId": "getworkforcemanagementbusinessunitactivityplanoccurrencesessionsdeletionsjob",
+    "functionName": "GetWorkforcemanagementBusinessunitActivityplanOccurrenceSessionsDeletionsJob",
+    "signature": "GetWorkforcemanagementBusinessunitActivityplanOccurrenceSessionsDeletionsJob(businessUnitId, activityPlanId, occurrenceId, jobId)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "activityPlanId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "occurrenceId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "jobId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Activityplanjobresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar activityPlanId string // The ID of the activity plan\nvar occurrenceId string // The ID of the activity plan occurrence\nvar jobId string // The ID of the activity plan sessions deletion job\n// Gets an activity plan sessions deletion job\ndata, response, err := apiInstance.GetWorkforcemanagementBusinessunitActivityplanOccurrenceSessionsDeletionsJob(businessUnitId, activityPlanId, occurrenceId, jobId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementBusinessunitActivityplanOccurrenceSessionsDeletionsJob: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getworkforcemanagementbusinessunitactivityplanoccurrencesdeletionsjob": {
+    "operationId": "getworkforcemanagementbusinessunitactivityplanoccurrencesdeletionsjob",
+    "functionName": "GetWorkforcemanagementBusinessunitActivityplanOccurrencesDeletionsJob",
+    "signature": "GetWorkforcemanagementBusinessunitActivityplanOccurrencesDeletionsJob(businessUnitId, activityPlanId, jobId)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "activityPlanId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "jobId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Activityplanjobresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar activityPlanId string // The ID of the activity plan\nvar jobId string // The ID of the activity plan occurrences deletion job\n// Gets an occurrences deletion job\ndata, response, err := apiInstance.GetWorkforcemanagementBusinessunitActivityplanOccurrencesDeletionsJob(businessUnitId, activityPlanId, jobId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementBusinessunitActivityplanOccurrencesDeletionsJob: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
   "getworkforcemanagementbusinessunitactivityplanrunsjob": {
     "operationId": "getworkforcemanagementbusinessunitactivityplanrunsjob",
     "functionName": "GetWorkforcemanagementBusinessunitActivityplanRunsJob",
@@ -59207,6 +59513,124 @@
     ],
     "return": "Activityplanjoblisting",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\n// Gets the latest job for all activity plans in the business unit\ndata, response, err := apiInstance.GetWorkforcemanagementBusinessunitActivityplansJobs(businessUnitId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementBusinessunitActivityplansJobs: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getworkforcemanagementbusinessunitadherenceadjustmentsbulk": {
+    "operationId": "getworkforcemanagementbusinessunitadherenceadjustmentsbulk",
+    "functionName": "GetWorkforcemanagementBusinessunitAdherenceAdjustmentsBulk",
+    "signature": "GetWorkforcemanagementBusinessunitAdherenceAdjustmentsBulk(businessUnitId, adjustmentIds)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "adjustmentIds",
+        "type": "[]string",
+        "required": "true"
+      }
+    ],
+    "return": "Adherenceadjustmentslisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar adjustmentIds []string // The IDs of the adherence adjustments to fetch\n// Get adherence adjustments in bulk by ID for a business unit\ndata, response, err := apiInstance.GetWorkforcemanagementBusinessunitAdherenceAdjustmentsBulk(businessUnitId, adjustmentIds)\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementBusinessunitAdherenceAdjustmentsBulk: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getworkforcemanagementbusinessunitadherenceadjustmentsqueryjob": {
+    "operationId": "getworkforcemanagementbusinessunitadherenceadjustmentsqueryjob",
+    "functionName": "GetWorkforcemanagementBusinessunitAdherenceAdjustmentsQueryJob",
+    "signature": "GetWorkforcemanagementBusinessunitAdherenceAdjustmentsQueryJob(businessUnitId, jobId)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "jobId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Buadherenceadjustmentsqueryjob",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar jobId string // The ID of the query job\n// Query the status of an async adherence adjustments query job. Only the user who started the operation can query the status\ndata, response, err := apiInstance.GetWorkforcemanagementBusinessunitAdherenceAdjustmentsQueryJob(businessUnitId, jobId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementBusinessunitAdherenceAdjustmentsQueryJob: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getworkforcemanagementbusinessunitadherenceadjustmentsqueryjobs": {
+    "operationId": "getworkforcemanagementbusinessunitadherenceadjustmentsqueryjobs",
+    "functionName": "GetWorkforcemanagementBusinessunitAdherenceAdjustmentsQueryJobs",
+    "signature": "GetWorkforcemanagementBusinessunitAdherenceAdjustmentsQueryJobs(businessUnitId)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Buadherenceadjustmentsqueryjobsreferencelisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\n// Get query job history for the logged in user.\ndata, response, err := apiInstance.GetWorkforcemanagementBusinessunitAdherenceAdjustmentsQueryJobs(businessUnitId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementBusinessunitAdherenceAdjustmentsQueryJobs: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getworkforcemanagementbusinessunitadherenceadjustmentsreasoncode": {
+    "operationId": "getworkforcemanagementbusinessunitadherenceadjustmentsreasoncode",
+    "functionName": "GetWorkforcemanagementBusinessunitAdherenceAdjustmentsReasoncode",
+    "signature": "GetWorkforcemanagementBusinessunitAdherenceAdjustmentsReasoncode(businessUnitId, reasonCodeId)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "reasonCodeId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Adherenceadjustmentsreasoncode",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar reasonCodeId string // The ID of the reason code to fetch\n// Get an adherence adjustment reason code for a business unit\ndata, response, err := apiInstance.GetWorkforcemanagementBusinessunitAdherenceAdjustmentsReasoncode(businessUnitId, reasonCodeId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementBusinessunitAdherenceAdjustmentsReasoncode: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getworkforcemanagementbusinessunitadherenceadjustmentsreasoncodes": {
+    "operationId": "getworkforcemanagementbusinessunitadherenceadjustmentsreasoncodes",
+    "functionName": "GetWorkforcemanagementBusinessunitAdherenceAdjustmentsReasoncodes",
+    "signature": "GetWorkforcemanagementBusinessunitAdherenceAdjustmentsReasoncodes(businessUnitId)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Adherenceadjustmentsreasoncodeslisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\n// Get adherence adjustment reason codes for a business unit\ndata, response, err := apiInstance.GetWorkforcemanagementBusinessunitAdherenceAdjustmentsReasoncodes(businessUnitId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementBusinessunitAdherenceAdjustmentsReasoncodes: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getworkforcemanagementbusinessunitadherenceadjustmentsreasoncodesbulk": {
+    "operationId": "getworkforcemanagementbusinessunitadherenceadjustmentsreasoncodesbulk",
+    "functionName": "GetWorkforcemanagementBusinessunitAdherenceAdjustmentsReasoncodesBulk",
+    "signature": "GetWorkforcemanagementBusinessunitAdherenceAdjustmentsReasoncodesBulk(businessUnitId, ids)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "ids",
+        "type": "[]string",
+        "required": "true"
+      }
+    ],
+    "return": "Adherenceadjustmentsreasoncodeslisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar ids []string // The IDs of the reason codes to fetch\n// Get adherence adjustment reason codes in bulk by ID for a business unit. This API can return deleted reason codes.\ndata, response, err := apiInstance.GetWorkforcemanagementBusinessunitAdherenceAdjustmentsReasoncodesBulk(businessUnitId, ids)\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementBusinessunitAdherenceAdjustmentsReasoncodesBulk: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "getworkforcemanagementbusinessunitadherenceadjustmentssettings": {
+    "operationId": "getworkforcemanagementbusinessunitadherenceadjustmentssettings",
+    "functionName": "GetWorkforcemanagementBusinessunitAdherenceAdjustmentsSettings",
+    "signature": "GetWorkforcemanagementBusinessunitAdherenceAdjustmentsSettings(businessUnitId)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Buadherenceadjustmentssettings",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\n// Get adherence adjustments settings for a business unit\ndata, response, err := apiInstance.GetWorkforcemanagementBusinessunitAdherenceAdjustmentsSettings(businessUnitId)\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementBusinessunitAdherenceAdjustmentsSettings: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "getworkforcemanagementbusinessunitalternativeshiftssettings": {
     "operationId": "getworkforcemanagementbusinessunitalternativeshiftssettings",
@@ -61610,6 +62034,49 @@
     "return": "Agentworkplanbids",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\n// Gets the list of work plan bids that belong to an agent\ndata, response, err := apiInstance.GetWorkforcemanagementWorkplanbids()\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementWorkplanbids: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
+  "patchworkforcemanagementadherenceadjustment": {
+    "operationId": "patchworkforcemanagementadherenceadjustment",
+    "functionName": "PatchWorkforcemanagementAdherenceAdjustment",
+    "signature": "PatchWorkforcemanagementAdherenceAdjustment(adjustmentId, body)",
+    "parameters": [
+      {
+        "name": "adjustmentId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Updateadherenceadjustmentagentrequest",
+        "required": "true"
+      }
+    ],
+    "return": "Currentagentadherenceadjustment",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar adjustmentId string // The ID of the adherence adjustment to update\nvar body platformclientv2.Updateadherenceadjustmentagentrequest // body\n// Update an adherence adjustment for the current user\ndata, response, err := apiInstance.PatchWorkforcemanagementAdherenceAdjustment(adjustmentId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchWorkforcemanagementAdherenceAdjustment: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "patchworkforcemanagementagentadherenceadjustment": {
+    "operationId": "patchworkforcemanagementagentadherenceadjustment",
+    "functionName": "PatchWorkforcemanagementAgentAdherenceAdjustment",
+    "signature": "PatchWorkforcemanagementAgentAdherenceAdjustment(agentId, adjustmentId, body)",
+    "parameters": [
+      {
+        "name": "agentId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "adjustmentId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Updateadherenceadjustmentadminrequest",
+        "required": "true"
+      }
+    ],
+    "return": "Adherenceadjustment",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar agentId string // The ID of the agent\nvar adjustmentId string // The ID of the adherence adjustment\nvar body platformclientv2.Updateadherenceadjustmentadminrequest // body\n// Update an adherence adjustment for the requested agent\ndata, response, err := apiInstance.PatchWorkforcemanagementAgentAdherenceAdjustment(agentId, adjustmentId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchWorkforcemanagementAgentAdherenceAdjustment: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
   "patchworkforcemanagementagentadherenceexplanation": {
     "operationId": "patchworkforcemanagementagentadherenceexplanation",
     "functionName": "PatchWorkforcemanagementAgentAdherenceExplanation",
@@ -61633,6 +62100,25 @@
     ],
     "return": "Adherenceexplanationasyncresponse",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar agentId string // The ID of the agent to query\nvar explanationId string // The ID of the explanation to update\nvar body platformclientv2.Updateadherenceexplanationstatusrequest // The request body\n// Update an adherence explanation\ndata, response, err := apiInstance.PatchWorkforcemanagementAgentAdherenceExplanation(agentId, explanationId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchWorkforcemanagementAgentAdherenceExplanation: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "patchworkforcemanagementagentunavailabletimes": {
+    "operationId": "patchworkforcemanagementagentunavailabletimes",
+    "functionName": "PatchWorkforcemanagementAgentUnavailabletimes",
+    "signature": "PatchWorkforcemanagementAgentUnavailabletimes(agentId, body)",
+    "parameters": [
+      {
+        "name": "agentId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Updateunavailabletimesrequest",
+        "required": "true"
+      }
+    ],
+    "return": "Bulkupdateagentunavailabletimesresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar agentId string // The ID of the agent\nvar body platformclientv2.Updateunavailabletimesrequest // body\n// Update unavailable times for the requested agent\ndata, response, err := apiInstance.PatchWorkforcemanagementAgentUnavailabletimes(agentId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchWorkforcemanagementAgentUnavailabletimes: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "patchworkforcemanagementalternativeshiftstrade": {
     "operationId": "patchworkforcemanagementalternativeshiftstrade",
@@ -61757,6 +62243,87 @@
     ],
     "return": "Activityplanresponse",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar activityPlanId string // The ID of the activity plan to update\nvar body platformclientv2.Updateactivityplanrequest // body\n// Update an activity plan\ndata, response, err := apiInstance.PatchWorkforcemanagementBusinessunitActivityplan(businessUnitId, activityPlanId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchWorkforcemanagementBusinessunitActivityplan: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "patchworkforcemanagementbusinessunitadherenceadjustmentsbulk": {
+    "operationId": "patchworkforcemanagementbusinessunitadherenceadjustmentsbulk",
+    "functionName": "PatchWorkforcemanagementBusinessunitAdherenceAdjustmentsBulk",
+    "signature": "PatchWorkforcemanagementBusinessunitAdherenceAdjustmentsBulk(businessUnitId, body)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Updateadherenceadjustmentsbulkrequest",
+        "required": "true"
+      }
+    ],
+    "return": "Adherenceadjustmentslisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar body platformclientv2.Updateadherenceadjustmentsbulkrequest // body\n// Update adherence adjustments in bulk for a business unit\ndata, response, err := apiInstance.PatchWorkforcemanagementBusinessunitAdherenceAdjustmentsBulk(businessUnitId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchWorkforcemanagementBusinessunitAdherenceAdjustmentsBulk: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "patchworkforcemanagementbusinessunitadherenceadjustmentsreasoncode": {
+    "operationId": "patchworkforcemanagementbusinessunitadherenceadjustmentsreasoncode",
+    "functionName": "PatchWorkforcemanagementBusinessunitAdherenceAdjustmentsReasoncode",
+    "signature": "PatchWorkforcemanagementBusinessunitAdherenceAdjustmentsReasoncode(businessUnitId, reasonCodeId, body)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "reasonCodeId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Updateadherenceadjustmentsreasoncoderequest",
+        "required": "true"
+      }
+    ],
+    "return": "Adherenceadjustmentsreasoncode",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar reasonCodeId string // The ID of the reason code to update\nvar body platformclientv2.Updateadherenceadjustmentsreasoncoderequest // body\n// Update an adherence adjustment reason code for a business unit\ndata, response, err := apiInstance.PatchWorkforcemanagementBusinessunitAdherenceAdjustmentsReasoncode(businessUnitId, reasonCodeId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchWorkforcemanagementBusinessunitAdherenceAdjustmentsReasoncode: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "patchworkforcemanagementbusinessunitadherenceadjustmentsreasoncodesbulk": {
+    "operationId": "patchworkforcemanagementbusinessunitadherenceadjustmentsreasoncodesbulk",
+    "functionName": "PatchWorkforcemanagementBusinessunitAdherenceAdjustmentsReasoncodesBulk",
+    "signature": "PatchWorkforcemanagementBusinessunitAdherenceAdjustmentsReasoncodesBulk(businessUnitId, body)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Updateadherenceadjustmentsreasoncodesbulkrequest",
+        "required": "true"
+      }
+    ],
+    "return": "Adherenceadjustmentsreasoncodeslisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar body platformclientv2.Updateadherenceadjustmentsreasoncodesbulkrequest // body\n// Update adherence adjustment reason codes in bulk for a business unit\ndata, response, err := apiInstance.PatchWorkforcemanagementBusinessunitAdherenceAdjustmentsReasoncodesBulk(businessUnitId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchWorkforcemanagementBusinessunitAdherenceAdjustmentsReasoncodesBulk: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "patchworkforcemanagementbusinessunitadherenceadjustmentssettings": {
+    "operationId": "patchworkforcemanagementbusinessunitadherenceadjustmentssettings",
+    "functionName": "PatchWorkforcemanagementBusinessunitAdherenceAdjustmentsSettings",
+    "signature": "PatchWorkforcemanagementBusinessunitAdherenceAdjustmentsSettings(businessUnitId, body)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Updatebuadherenceadjustmentssettingsrequest",
+        "required": "true"
+      }
+    ],
+    "return": "Buadherenceadjustmentssettings",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar body platformclientv2.Updatebuadherenceadjustmentssettingsrequest // body\n// Update adherence adjustments settings for a business unit\ndata, response, err := apiInstance.PatchWorkforcemanagementBusinessunitAdherenceAdjustmentsSettings(businessUnitId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchWorkforcemanagementBusinessunitAdherenceAdjustmentsSettings: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "patchworkforcemanagementbusinessunitalternativeshiftssettings": {
     "operationId": "patchworkforcemanagementbusinessunitalternativeshiftssettings",
@@ -62527,6 +63094,49 @@
     "return": "Agentworkplanbiddingpreferenceresponse",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar bidId string // The ID of the work plan bid\nvar body platformclientv2.Updateagentworkplanbiddingpreference // body\n// Update an agent's work plan bidding preference\ndata, response, err := apiInstance.PatchWorkforcemanagementWorkplanbidPreferences(bidId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchWorkforcemanagementWorkplanbidPreferences: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
+  "postworkforcemanagementadherenceadjustments": {
+    "operationId": "postworkforcemanagementadherenceadjustments",
+    "functionName": "PostWorkforcemanagementAdherenceAdjustments",
+    "signature": "PostWorkforcemanagementAdherenceAdjustments(body)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Addadherenceadjustmentagentrequest",
+        "required": "true"
+      }
+    ],
+    "return": "Currentagentadherenceadjustment",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar body platformclientv2.Addadherenceadjustmentagentrequest // body\n// Submit an adherence adjustment for the current user\ndata, response, err := apiInstance.PostWorkforcemanagementAdherenceAdjustments(body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementAdherenceAdjustments: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "postworkforcemanagementadherenceadjustmentsquery": {
+    "operationId": "postworkforcemanagementadherenceadjustmentsquery",
+    "functionName": "PostWorkforcemanagementAdherenceAdjustmentsQuery",
+    "signature": "PostWorkforcemanagementAdherenceAdjustmentsQuery(body, before, after, pageSize)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Agentqueryadherenceadjustmentsrequest",
+        "required": "true"
+      },
+      {
+        "name": "before",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "after",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "pageSize",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Currentagentcursoradherenceadjustmentslisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar body platformclientv2.Agentqueryadherenceadjustmentsrequest // body\nvar before string // The cursor that points to the start of the set of entities that has been returned.\nvar after string // The cursor that points to the end of the set of entities that has been returned.\nvar pageSize string // The page size for the listing. The maximum page size is 500.\n// Query adherence adjustments for the current user\ndata, response, err := apiInstance.PostWorkforcemanagementAdherenceAdjustmentsQuery(body, before, after, pageSize)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementAdherenceAdjustmentsQuery: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
   "postworkforcemanagementadherenceexplanations": {
     "operationId": "postworkforcemanagementadherenceexplanations",
     "functionName": "PostWorkforcemanagementAdherenceExplanations",
@@ -62578,6 +63188,40 @@
     ],
     "return": "Wfmhistoricaladherencebulkresponse",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar body platformclientv2.Wfmhistoricaladherencebulkquery // body\n// Request a historical adherence report in bulk\ndata, response, err := apiInstance.PostWorkforcemanagementAdherenceHistoricalBulk(body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementAdherenceHistoricalBulk: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "postworkforcemanagementagentadherenceadjustmentsquery": {
+    "operationId": "postworkforcemanagementagentadherenceadjustmentsquery",
+    "functionName": "PostWorkforcemanagementAgentAdherenceAdjustmentsQuery",
+    "signature": "PostWorkforcemanagementAgentAdherenceAdjustmentsQuery(agentId, body, before, after, pageSize)",
+    "parameters": [
+      {
+        "name": "agentId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Agentqueryadherenceadjustmentsrequest",
+        "required": "true"
+      },
+      {
+        "name": "before",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "after",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "pageSize",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Cursoradherenceadjustmentslisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar agentId string // The ID of the agent\nvar body platformclientv2.Agentqueryadherenceadjustmentsrequest // body\nvar before string // The cursor that points to the start of the set of entities that has been returned.\nvar after string // The cursor that points to the end of the set of entities that has been returned.\nvar pageSize string // The page size for the listing. The maximum page size is 500.\n// Query adherence adjustments for the requested agent\ndata, response, err := apiInstance.PostWorkforcemanagementAgentAdherenceAdjustmentsQuery(agentId, body, before, after, pageSize)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementAgentAdherenceAdjustmentsQuery: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "postworkforcemanagementagentadherenceexplanations": {
     "operationId": "postworkforcemanagementagentadherenceexplanations",
@@ -62877,6 +63521,112 @@
     "return": "Businessunitactivitycode",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit, or 'mine' for the business unit of the logged-in user.\nvar body platformclientv2.Createactivitycoderequest // body\n// Create a new activity code\ndata, response, err := apiInstance.PostWorkforcemanagementBusinessunitActivitycodes(businessUnitId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementBusinessunitActivitycodes: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
+  "postworkforcemanagementbusinessunitactivityplandeletionsjobs": {
+    "operationId": "postworkforcemanagementbusinessunitactivityplandeletionsjobs",
+    "functionName": "PostWorkforcemanagementBusinessunitActivityplanDeletionsJobs",
+    "signature": "PostWorkforcemanagementBusinessunitActivityplanDeletionsJobs(businessUnitId, activityPlanId)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "activityPlanId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Activityplanjobresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar activityPlanId string // The ID of the activity plan to delete\n// Delete an activity plan\ndata, response, err := apiInstance.PostWorkforcemanagementBusinessunitActivityplanDeletionsJobs(businessUnitId, activityPlanId)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementBusinessunitActivityplanDeletionsJobs: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "postworkforcemanagementbusinessunitactivityplanoccurrencesessionusersdeletionsjobs": {
+    "operationId": "postworkforcemanagementbusinessunitactivityplanoccurrencesessionusersdeletionsjobs",
+    "functionName": "PostWorkforcemanagementBusinessunitActivityplanOccurrenceSessionUsersDeletionsJobs",
+    "signature": "PostWorkforcemanagementBusinessunitActivityplanOccurrenceSessionUsersDeletionsJobs(businessUnitId, activityPlanId, occurrenceId, sessionId, body)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "activityPlanId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "occurrenceId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "sessionId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Activityplandeletionsessionuserids",
+        "required": "true"
+      }
+    ],
+    "return": "Activityplanjobresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar activityPlanId string // The ID of the activity plan\nvar occurrenceId string // The ID of the activity plan occurrence\nvar sessionId string // The ID of the activity plan occurrence session\nvar body platformclientv2.Activityplandeletionsessionuserids // body\n// Triggers a job to delete users from a session in the activity plan occurrence\ndata, response, err := apiInstance.PostWorkforcemanagementBusinessunitActivityplanOccurrenceSessionUsersDeletionsJobs(businessUnitId, activityPlanId, occurrenceId, sessionId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementBusinessunitActivityplanOccurrenceSessionUsersDeletionsJobs: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "postworkforcemanagementbusinessunitactivityplanoccurrencesessionsdeletionsjobs": {
+    "operationId": "postworkforcemanagementbusinessunitactivityplanoccurrencesessionsdeletionsjobs",
+    "functionName": "PostWorkforcemanagementBusinessunitActivityplanOccurrenceSessionsDeletionsJobs",
+    "signature": "PostWorkforcemanagementBusinessunitActivityplanOccurrenceSessionsDeletionsJobs(businessUnitId, activityPlanId, occurrenceId, body)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "activityPlanId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "occurrenceId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Activityplandeletionsessionids",
+        "required": "true"
+      }
+    ],
+    "return": "Activityplanjobresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar activityPlanId string // The ID of the activity plan\nvar occurrenceId string // The ID of the activity plan occurrence\nvar body platformclientv2.Activityplandeletionsessionids // body\n// Triggers a job to delete sessions for the activity plan occurrence\ndata, response, err := apiInstance.PostWorkforcemanagementBusinessunitActivityplanOccurrenceSessionsDeletionsJobs(businessUnitId, activityPlanId, occurrenceId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementBusinessunitActivityplanOccurrenceSessionsDeletionsJobs: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "postworkforcemanagementbusinessunitactivityplanoccurrencesdeletionsjobs": {
+    "operationId": "postworkforcemanagementbusinessunitactivityplanoccurrencesdeletionsjobs",
+    "functionName": "PostWorkforcemanagementBusinessunitActivityplanOccurrencesDeletionsJobs",
+    "signature": "PostWorkforcemanagementBusinessunitActivityplanOccurrencesDeletionsJobs(businessUnitId, activityPlanId, body)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "activityPlanId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Activityplandeletionoccurrenceids",
+        "required": "true"
+      }
+    ],
+    "return": "Activityplanoccurrencesdeletionjobresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar activityPlanId string // The ID of the activity plan\nvar body platformclientv2.Activityplandeletionoccurrenceids // body\n// Delete occurrences for the activity plan\ndata, response, err := apiInstance.PostWorkforcemanagementBusinessunitActivityplanOccurrencesDeletionsJobs(businessUnitId, activityPlanId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementBusinessunitActivityplanOccurrencesDeletionsJobs: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
   "postworkforcemanagementbusinessunitactivityplanrunsjobs": {
     "operationId": "postworkforcemanagementbusinessunitactivityplanrunsjobs",
     "functionName": "PostWorkforcemanagementBusinessunitActivityplanRunsJobs",
@@ -62914,6 +63664,97 @@
     ],
     "return": "Activityplanresponse",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar body platformclientv2.Createactivityplanrequest // body\n// Create an activity plan\ndata, response, err := apiInstance.PostWorkforcemanagementBusinessunitActivityplans(businessUnitId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementBusinessunitActivityplans: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "postworkforcemanagementbusinessunitadherenceadjustmentsquery": {
+    "operationId": "postworkforcemanagementbusinessunitadherenceadjustmentsquery",
+    "functionName": "PostWorkforcemanagementBusinessunitAdherenceAdjustmentsQuery",
+    "signature": "PostWorkforcemanagementBusinessunitAdherenceAdjustmentsQuery(businessUnitId, body, before, after, pageSize)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Buqueryadherenceadjustmentsrequest",
+        "required": "true"
+      },
+      {
+        "name": "before",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "after",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "pageSize",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Cursoradherenceadjustmentslisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar body platformclientv2.Buqueryadherenceadjustmentsrequest // body\nvar before string // The cursor that points to the start of the set of entities that has been returned.\nvar after string // The cursor that points to the end of the set of entities that has been returned.\nvar pageSize string // The page size for the listing. The maximum page size is 500.\n// Query adherence adjustments for a business unit. Results will be returned using cursor pagination\ndata, response, err := apiInstance.PostWorkforcemanagementBusinessunitAdherenceAdjustmentsQuery(businessUnitId, body, before, after, pageSize)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementBusinessunitAdherenceAdjustmentsQuery: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "postworkforcemanagementbusinessunitadherenceadjustmentsqueryjobs": {
+    "operationId": "postworkforcemanagementbusinessunitadherenceadjustmentsqueryjobs",
+    "functionName": "PostWorkforcemanagementBusinessunitAdherenceAdjustmentsQueryJobs",
+    "signature": "PostWorkforcemanagementBusinessunitAdherenceAdjustmentsQueryJobs(businessUnitId, body)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Buqueryadherenceadjustmentsrequest",
+        "required": "true"
+      }
+    ],
+    "return": "Buadherenceadjustmentsqueryjob",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar body platformclientv2.Buqueryadherenceadjustmentsrequest // body\n// Creates an async query job for adherence adjustments in a business unit.\ndata, response, err := apiInstance.PostWorkforcemanagementBusinessunitAdherenceAdjustmentsQueryJobs(businessUnitId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementBusinessunitAdherenceAdjustmentsQueryJobs: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "postworkforcemanagementbusinessunitadherenceadjustmentsreasoncodes": {
+    "operationId": "postworkforcemanagementbusinessunitadherenceadjustmentsreasoncodes",
+    "functionName": "PostWorkforcemanagementBusinessunitAdherenceAdjustmentsReasoncodes",
+    "signature": "PostWorkforcemanagementBusinessunitAdherenceAdjustmentsReasoncodes(businessUnitId, body)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Createadherenceadjustmentsreasoncoderequest",
+        "required": "true"
+      }
+    ],
+    "return": "Adherenceadjustmentsreasoncode",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar body platformclientv2.Createadherenceadjustmentsreasoncoderequest // body\n// Create an adherence adjustment reason code for a business unit\ndata, response, err := apiInstance.PostWorkforcemanagementBusinessunitAdherenceAdjustmentsReasoncodes(businessUnitId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementBusinessunitAdherenceAdjustmentsReasoncodes: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
+  },
+  "postworkforcemanagementbusinessunitadherenceadjustmentsreasoncodesbulk": {
+    "operationId": "postworkforcemanagementbusinessunitadherenceadjustmentsreasoncodesbulk",
+    "functionName": "PostWorkforcemanagementBusinessunitAdherenceAdjustmentsReasoncodesBulk",
+    "signature": "PostWorkforcemanagementBusinessunitAdherenceAdjustmentsReasoncodesBulk(businessUnitId, body)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Createadherenceadjustmentsreasoncodesbulkrequest",
+        "required": "true"
+      }
+    ],
+    "return": "Adherenceadjustmentsreasoncodeslisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: https://api.mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...), AuthorizeCodeGrant(...) or AuthorizePKCEGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar body platformclientv2.Createadherenceadjustmentsreasoncodesbulkrequest // body\n// Create adherence adjustment reason codes in bulk for a business unit\ndata, response, err := apiInstance.PostWorkforcemanagementBusinessunitAdherenceAdjustmentsReasoncodesBulk(businessUnitId, body)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementBusinessunitAdherenceAdjustmentsReasoncodesBulk: %v\\n\", err)\n} else {\n\tfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\n}"
   },
   "postworkforcemanagementbusinessunitadherenceexplanationsquery": {
     "operationId": "postworkforcemanagementbusinessunitadherenceexplanationsquery",

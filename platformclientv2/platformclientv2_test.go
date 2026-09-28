@@ -216,8 +216,6 @@ func TestCustomSerialization3(t *testing.T) {
 
 	// Use default serialization on nested struct
 	patchAction := Patchaction{}
-	patchAction.ActionTargetId = String("12345")
-	patchAction.IsPacingEnabled = Bool(false)
 	patchAction.MediaType = nil
 	patchBody.SetField("Action", &patchAction)
 
@@ -227,7 +225,7 @@ func TestCustomSerialization3(t *testing.T) {
 		t.Error(err)
 	}
 	s := string(j)
-	expected := `{"action":{"actionTargetId":"12345","isPacingEnabled":false},"displayName":null,"endDate":"2023-02-01T08:52:04.571291Z","id":"333-333","version":3}`
+	expected := `{"action":{},"displayName":null,"endDate":"2023-02-01T08:52:04.571291Z","id":"333-333","version":3}`
 	if s != expected {
 		t.Log("Patchactionmap did not serialize correctly")
 		t.Logf("Expected: %v", expected)
@@ -251,8 +249,6 @@ func TestCustomSerialization4(t *testing.T) {
 
 	// Use custom serialization on nested struct
 	patchAction := Patchaction{}
-	patchAction.SetField("ActionTargetId", String("12345"))
-	patchAction.IsPacingEnabled = Bool(false)
 	patchAction.SetField("MediaType", nil)
 	patchBody.SetField("Action", &patchAction)
 
@@ -262,7 +258,7 @@ func TestCustomSerialization4(t *testing.T) {
 		t.Error(err)
 	}
 	s := string(j)
-	expected := `{"action":{"actionTargetId":"12345","mediaType":null},"displayName":null,"endDate":null,"id":"444-444","version":4}`
+	expected := `{"action":{"mediaType":null},"displayName":null,"endDate":null,"id":"444-444","version":4}`
 	if s != expected {
 		t.Log("Patchactionmap did not serialize correctly")
 		t.Logf("Expected: %v", expected)

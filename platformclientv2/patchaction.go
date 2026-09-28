@@ -17,15 +17,6 @@ type Patchaction struct {
 	// ActionTemplate - Action template associated with the action map.
 	ActionTemplate *Actionmapactiontemplate `json:"actionTemplate,omitempty"`
 
-	// ActionTargetId - Deprecated. Action target ID.
-	ActionTargetId *string `json:"actionTargetId,omitempty"`
-
-	// IsPacingEnabled - Deprecated. Whether this action should be throttled.
-	IsPacingEnabled *bool `json:"isPacingEnabled,omitempty"`
-
-	// Props - Deprecated. Additional properties.
-	Props *Patchactionproperties `json:"props,omitempty"`
-
 	// ArchitectFlowFields - Architect Flow Id and input contract.
 	ArchitectFlowFields *Architectflowfields `json:"architectFlowFields,omitempty"`
 
@@ -103,12 +94,6 @@ func (o Patchaction) MarshalJSON() ([]byte, error) {
 		
 		ActionTemplate *Actionmapactiontemplate `json:"actionTemplate,omitempty"`
 		
-		ActionTargetId *string `json:"actionTargetId,omitempty"`
-		
-		IsPacingEnabled *bool `json:"isPacingEnabled,omitempty"`
-		
-		Props *Patchactionproperties `json:"props,omitempty"`
-		
 		ArchitectFlowFields *Architectflowfields `json:"architectFlowFields,omitempty"`
 		
 		WebMessagingOfferFields *Patchwebmessagingofferfields `json:"webMessagingOfferFields,omitempty"`
@@ -119,12 +104,6 @@ func (o Patchaction) MarshalJSON() ([]byte, error) {
 		MediaType: o.MediaType,
 		
 		ActionTemplate: o.ActionTemplate,
-		
-		ActionTargetId: o.ActionTargetId,
-		
-		IsPacingEnabled: o.IsPacingEnabled,
-		
-		Props: o.Props,
 		
 		ArchitectFlowFields: o.ArchitectFlowFields,
 		
@@ -149,19 +128,6 @@ func (o *Patchaction) UnmarshalJSON(b []byte) error {
 	if ActionTemplate, ok := PatchactionMap["actionTemplate"].(map[string]interface{}); ok {
 		ActionTemplateString, _ := json.Marshal(ActionTemplate)
 		json.Unmarshal(ActionTemplateString, &o.ActionTemplate)
-	}
-	
-	if ActionTargetId, ok := PatchactionMap["actionTargetId"].(string); ok {
-		o.ActionTargetId = &ActionTargetId
-	}
-    
-	if IsPacingEnabled, ok := PatchactionMap["isPacingEnabled"].(bool); ok {
-		o.IsPacingEnabled = &IsPacingEnabled
-	}
-    
-	if Props, ok := PatchactionMap["props"].(map[string]interface{}); ok {
-		PropsString, _ := json.Marshal(Props)
-		json.Unmarshal(PropsString, &o.Props)
 	}
 	
 	if ArchitectFlowFields, ok := PatchactionMap["architectFlowFields"].(map[string]interface{}); ok {

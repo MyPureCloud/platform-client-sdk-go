@@ -26,14 +26,14 @@ type Scriptentitylisting struct {
 	// TruncatedDivisions
 	TruncatedDivisions *bool `json:"truncatedDivisions,omitempty"`
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
+
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
 
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
@@ -118,11 +118,11 @@ func (o Scriptentitylisting) MarshalJSON() ([]byte, error) {
 		
 		TruncatedDivisions *bool `json:"truncatedDivisions,omitempty"`
 		
-		LastUri *string `json:"lastUri,omitempty"`
-		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
+		
+		LastUri *string `json:"lastUri,omitempty"`
 		
 		NextUri *string `json:"nextUri,omitempty"`
 		
@@ -141,11 +141,11 @@ func (o Scriptentitylisting) MarshalJSON() ([]byte, error) {
 		
 		TruncatedDivisions: o.TruncatedDivisions,
 		
-		LastUri: o.LastUri,
-		
 		FirstUri: o.FirstUri,
 		
 		SelfUri: o.SelfUri,
+		
+		LastUri: o.LastUri,
 		
 		NextUri: o.NextUri,
 		
@@ -187,16 +187,16 @@ func (o *Scriptentitylisting) UnmarshalJSON(b []byte) error {
 		o.TruncatedDivisions = &TruncatedDivisions
 	}
     
-	if LastUri, ok := ScriptentitylistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-    
 	if FirstUri, ok := ScriptentitylistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
     
 	if SelfUri, ok := ScriptentitylistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
+	}
+    
+	if LastUri, ok := ScriptentitylistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
 	}
     
 	if NextUri, ok := ScriptentitylistingMap["nextUri"].(string); ok {

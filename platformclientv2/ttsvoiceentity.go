@@ -17,8 +17,14 @@ type Ttsvoiceentity struct {
 	// Name
 	Name *string `json:"name,omitempty"`
 
+	// DisplayName - The display name of the TTS voice
+	DisplayName *string `json:"displayName,omitempty"`
+
 	// Gender - The gender of the TTS voice
 	Gender *string `json:"gender,omitempty"`
+
+	// VoiceType - The type of the TTS voice
+	VoiceType *string `json:"voiceType,omitempty"`
 
 	// Language - The language supported by the TTS voice
 	Language *string `json:"language,omitempty"`
@@ -28,6 +34,12 @@ type Ttsvoiceentity struct {
 
 	// IsDefault - The voice is the default voice for its language
 	IsDefault *bool `json:"isDefault,omitempty"`
+
+	// SupportedModels - The models supported by the TTS voice
+	SupportedModels *[]string `json:"supportedModels,omitempty"`
+
+	// Provider - The provider of the TTS voice
+	Provider *string `json:"provider,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -100,13 +112,21 @@ func (o Ttsvoiceentity) MarshalJSON() ([]byte, error) {
 		
 		Name *string `json:"name,omitempty"`
 		
+		DisplayName *string `json:"displayName,omitempty"`
+		
 		Gender *string `json:"gender,omitempty"`
+		
+		VoiceType *string `json:"voiceType,omitempty"`
 		
 		Language *string `json:"language,omitempty"`
 		
 		Engine *Ttsengineentity `json:"engine,omitempty"`
 		
 		IsDefault *bool `json:"isDefault,omitempty"`
+		
+		SupportedModels *[]string `json:"supportedModels,omitempty"`
+		
+		Provider *string `json:"provider,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
@@ -115,13 +135,21 @@ func (o Ttsvoiceentity) MarshalJSON() ([]byte, error) {
 		
 		Name: o.Name,
 		
+		DisplayName: o.DisplayName,
+		
 		Gender: o.Gender,
+		
+		VoiceType: o.VoiceType,
 		
 		Language: o.Language,
 		
 		Engine: o.Engine,
 		
 		IsDefault: o.IsDefault,
+		
+		SupportedModels: o.SupportedModels,
+		
+		Provider: o.Provider,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -143,8 +171,16 @@ func (o *Ttsvoiceentity) UnmarshalJSON(b []byte) error {
 		o.Name = &Name
 	}
     
+	if DisplayName, ok := TtsvoiceentityMap["displayName"].(string); ok {
+		o.DisplayName = &DisplayName
+	}
+    
 	if Gender, ok := TtsvoiceentityMap["gender"].(string); ok {
 		o.Gender = &Gender
+	}
+    
+	if VoiceType, ok := TtsvoiceentityMap["voiceType"].(string); ok {
+		o.VoiceType = &VoiceType
 	}
     
 	if Language, ok := TtsvoiceentityMap["language"].(string); ok {
@@ -158,6 +194,15 @@ func (o *Ttsvoiceentity) UnmarshalJSON(b []byte) error {
 	
 	if IsDefault, ok := TtsvoiceentityMap["isDefault"].(bool); ok {
 		o.IsDefault = &IsDefault
+	}
+    
+	if SupportedModels, ok := TtsvoiceentityMap["supportedModels"].([]interface{}); ok {
+		SupportedModelsString, _ := json.Marshal(SupportedModels)
+		json.Unmarshal(SupportedModelsString, &o.SupportedModels)
+	}
+	
+	if Provider, ok := TtsvoiceentityMap["provider"].(string); ok {
+		o.Provider = &Provider
 	}
     
 	if SelfUri, ok := TtsvoiceentityMap["selfUri"].(string); ok {

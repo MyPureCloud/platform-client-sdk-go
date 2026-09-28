@@ -17,6 +17,9 @@ type Testtopicphrasetopic struct {
 	// Strictness - The topic strictness, default value is 72
 	Strictness *string `json:"strictness,omitempty"`
 
+	// MatchingType - The topic matching type Lexical or Semantic, default value is Semantic
+	MatchingType *string `json:"matchingType,omitempty"`
+
 	// Dialect - The topic dialect, default value is en-US
 	Dialect *string `json:"dialect,omitempty"`
 
@@ -91,6 +94,8 @@ func (o Testtopicphrasetopic) MarshalJSON() ([]byte, error) {
 		
 		Strictness *string `json:"strictness,omitempty"`
 		
+		MatchingType *string `json:"matchingType,omitempty"`
+		
 		Dialect *string `json:"dialect,omitempty"`
 		
 		Participants *string `json:"participants,omitempty"`
@@ -99,6 +104,8 @@ func (o Testtopicphrasetopic) MarshalJSON() ([]byte, error) {
 		Phrase: o.Phrase,
 		
 		Strictness: o.Strictness,
+		
+		MatchingType: o.MatchingType,
 		
 		Dialect: o.Dialect,
 		
@@ -121,6 +128,10 @@ func (o *Testtopicphrasetopic) UnmarshalJSON(b []byte) error {
 	
 	if Strictness, ok := TesttopicphrasetopicMap["strictness"].(string); ok {
 		o.Strictness = &Strictness
+	}
+    
+	if MatchingType, ok := TesttopicphrasetopicMap["matchingType"].(string); ok {
+		o.MatchingType = &MatchingType
 	}
     
 	if Dialect, ok := TesttopicphrasetopicMap["dialect"].(string); ok {

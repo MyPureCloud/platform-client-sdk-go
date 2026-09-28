@@ -7,28 +7,19 @@ import (
 	"strings"
 )
 
-// Patchactionproperties
-type Patchactionproperties struct { 
+// Createadherenceadjustmentsreasoncoderequest
+type Createadherenceadjustmentsreasoncoderequest struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// WebchatPrompt - Prompt message shown to user, used for webchat type action.
-	WebchatPrompt *string `json:"webchatPrompt,omitempty"`
+	// Name - The display name of the reason code
+	Name *string `json:"name,omitempty"`
 
-	// WebchatTitleText - Title shown to the user, used for webchat type action.
-	WebchatTitleText *string `json:"webchatTitleText,omitempty"`
-
-	// WebchatAcceptText - Accept button text shown to user, used for webchat type action.
-	WebchatAcceptText *string `json:"webchatAcceptText,omitempty"`
-
-	// WebchatDeclineText - Decline button text shown to user, used for webchat type action.
-	WebchatDeclineText *string `json:"webchatDeclineText,omitempty"`
-
-	// WebchatSurvey - Survey provided to the user, used for webchat type action.
-	WebchatSurvey *Patchactionsurvey `json:"webchatSurvey,omitempty"`
+	// State - The state of the reason code
+	State *string `json:"state,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Patchactionproperties) SetField(field string, fieldValue interface{}) {
+func (o *Createadherenceadjustmentsreasoncoderequest) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -49,7 +40,7 @@ func (o *Patchactionproperties) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Patchactionproperties) MarshalJSON() ([]byte, error) {
+func (o Createadherenceadjustmentsreasoncoderequest) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -87,67 +78,42 @@ func (o Patchactionproperties) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Patchactionproperties
+	type Alias Createadherenceadjustmentsreasoncoderequest
 	
 	return json.Marshal(&struct { 
-		WebchatPrompt *string `json:"webchatPrompt,omitempty"`
+		Name *string `json:"name,omitempty"`
 		
-		WebchatTitleText *string `json:"webchatTitleText,omitempty"`
-		
-		WebchatAcceptText *string `json:"webchatAcceptText,omitempty"`
-		
-		WebchatDeclineText *string `json:"webchatDeclineText,omitempty"`
-		
-		WebchatSurvey *Patchactionsurvey `json:"webchatSurvey,omitempty"`
+		State *string `json:"state,omitempty"`
 		Alias
 	}{ 
-		WebchatPrompt: o.WebchatPrompt,
+		Name: o.Name,
 		
-		WebchatTitleText: o.WebchatTitleText,
-		
-		WebchatAcceptText: o.WebchatAcceptText,
-		
-		WebchatDeclineText: o.WebchatDeclineText,
-		
-		WebchatSurvey: o.WebchatSurvey,
+		State: o.State,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Patchactionproperties) UnmarshalJSON(b []byte) error {
-	var PatchactionpropertiesMap map[string]interface{}
-	err := json.Unmarshal(b, &PatchactionpropertiesMap)
+func (o *Createadherenceadjustmentsreasoncoderequest) UnmarshalJSON(b []byte) error {
+	var CreateadherenceadjustmentsreasoncoderequestMap map[string]interface{}
+	err := json.Unmarshal(b, &CreateadherenceadjustmentsreasoncoderequestMap)
 	if err != nil {
 		return err
 	}
 	
-	if WebchatPrompt, ok := PatchactionpropertiesMap["webchatPrompt"].(string); ok {
-		o.WebchatPrompt = &WebchatPrompt
+	if Name, ok := CreateadherenceadjustmentsreasoncoderequestMap["name"].(string); ok {
+		o.Name = &Name
 	}
     
-	if WebchatTitleText, ok := PatchactionpropertiesMap["webchatTitleText"].(string); ok {
-		o.WebchatTitleText = &WebchatTitleText
+	if State, ok := CreateadherenceadjustmentsreasoncoderequestMap["state"].(string); ok {
+		o.State = &State
 	}
     
-	if WebchatAcceptText, ok := PatchactionpropertiesMap["webchatAcceptText"].(string); ok {
-		o.WebchatAcceptText = &WebchatAcceptText
-	}
-    
-	if WebchatDeclineText, ok := PatchactionpropertiesMap["webchatDeclineText"].(string); ok {
-		o.WebchatDeclineText = &WebchatDeclineText
-	}
-    
-	if WebchatSurvey, ok := PatchactionpropertiesMap["webchatSurvey"].(map[string]interface{}); ok {
-		WebchatSurveyString, _ := json.Marshal(WebchatSurvey)
-		json.Unmarshal(WebchatSurveyString, &o.WebchatSurvey)
-	}
-	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Patchactionproperties) String() string {
+func (o *Createadherenceadjustmentsreasoncoderequest) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

@@ -15,7 +15,7 @@ type Bumanagementunitschedulesummary struct {
 	// ManagementUnit - The management unit to which this summary applies
 	ManagementUnit *Managementunitreference `json:"managementUnit,omitempty"`
 
-	// AgentCount - The number of agents from this management unit that are in the schedule
+	// AgentCount - The number of agents from this management unit that are in the schedule. On update requests, this reflects the number of agents whose schedules were actually modified
 	AgentCount *int `json:"agentCount,omitempty"`
 
 	// StartDate - The start of the schedule change in the management unit. Only populated in schedule update notifications. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z

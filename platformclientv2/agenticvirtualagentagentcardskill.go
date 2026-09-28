@@ -7,16 +7,34 @@ import (
 	"strings"
 )
 
-// Patchactionsurvey
-type Patchactionsurvey struct { 
+// Agenticvirtualagentagentcardskill - A2A agent card skill.
+type Agenticvirtualagentagentcardskill struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Questions - Questions shown to the user.
-	Questions *[]Patchsurveyquestion `json:"questions,omitempty"`
+	// Id - Unique identifier for the skill.
+	Id *string `json:"id,omitempty"`
+
+	// Name - Human-readable name of the skill.
+	Name *string `json:"name,omitempty"`
+
+	// Description - Detailed explanation of what the skill does.
+	Description *string `json:"description,omitempty"`
+
+	// Tags - Keywords for categorization and discovery.
+	Tags *[]string `json:"tags,omitempty"`
+
+	// Examples - Sample prompts or use cases.
+	Examples *[]string `json:"examples,omitempty"`
+
+	// InputModes - Supported input media types.
+	InputModes *[]string `json:"inputModes,omitempty"`
+
+	// OutputModes - Supported output media types.
+	OutputModes *[]string `json:"outputModes,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Patchactionsurvey) SetField(field string, fieldValue interface{}) {
+func (o *Agenticvirtualagentagentcardskill) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -37,7 +55,7 @@ func (o *Patchactionsurvey) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Patchactionsurvey) MarshalJSON() ([]byte, error) {
+func (o Agenticvirtualagentagentcardskill) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -75,27 +93,78 @@ func (o Patchactionsurvey) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Patchactionsurvey
+	type Alias Agenticvirtualagentagentcardskill
 	
 	return json.Marshal(&struct { 
-		Questions *[]Patchsurveyquestion `json:"questions,omitempty"`
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		Tags *[]string `json:"tags,omitempty"`
+		
+		Examples *[]string `json:"examples,omitempty"`
+		
+		InputModes *[]string `json:"inputModes,omitempty"`
+		
+		OutputModes *[]string `json:"outputModes,omitempty"`
 		Alias
 	}{ 
-		Questions: o.Questions,
+		Id: o.Id,
+		
+		Name: o.Name,
+		
+		Description: o.Description,
+		
+		Tags: o.Tags,
+		
+		Examples: o.Examples,
+		
+		InputModes: o.InputModes,
+		
+		OutputModes: o.OutputModes,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Patchactionsurvey) UnmarshalJSON(b []byte) error {
-	var PatchactionsurveyMap map[string]interface{}
-	err := json.Unmarshal(b, &PatchactionsurveyMap)
+func (o *Agenticvirtualagentagentcardskill) UnmarshalJSON(b []byte) error {
+	var AgenticvirtualagentagentcardskillMap map[string]interface{}
+	err := json.Unmarshal(b, &AgenticvirtualagentagentcardskillMap)
 	if err != nil {
 		return err
 	}
 	
-	if Questions, ok := PatchactionsurveyMap["questions"].([]interface{}); ok {
-		QuestionsString, _ := json.Marshal(Questions)
-		json.Unmarshal(QuestionsString, &o.Questions)
+	if Id, ok := AgenticvirtualagentagentcardskillMap["id"].(string); ok {
+		o.Id = &Id
+	}
+    
+	if Name, ok := AgenticvirtualagentagentcardskillMap["name"].(string); ok {
+		o.Name = &Name
+	}
+    
+	if Description, ok := AgenticvirtualagentagentcardskillMap["description"].(string); ok {
+		o.Description = &Description
+	}
+    
+	if Tags, ok := AgenticvirtualagentagentcardskillMap["tags"].([]interface{}); ok {
+		TagsString, _ := json.Marshal(Tags)
+		json.Unmarshal(TagsString, &o.Tags)
+	}
+	
+	if Examples, ok := AgenticvirtualagentagentcardskillMap["examples"].([]interface{}); ok {
+		ExamplesString, _ := json.Marshal(Examples)
+		json.Unmarshal(ExamplesString, &o.Examples)
+	}
+	
+	if InputModes, ok := AgenticvirtualagentagentcardskillMap["inputModes"].([]interface{}); ok {
+		InputModesString, _ := json.Marshal(InputModes)
+		json.Unmarshal(InputModesString, &o.InputModes)
+	}
+	
+	if OutputModes, ok := AgenticvirtualagentagentcardskillMap["outputModes"].([]interface{}); ok {
+		OutputModesString, _ := json.Marshal(OutputModes)
+		json.Unmarshal(OutputModesString, &o.OutputModes)
 	}
 	
 
@@ -103,7 +172,7 @@ func (o *Patchactionsurvey) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Patchactionsurvey) String() string {
+func (o *Agenticvirtualagentagentcardskill) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

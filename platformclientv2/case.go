@@ -27,11 +27,17 @@ type Case struct {
 	// Reference - The reference identifier of the Case.
 	Reference *string `json:"reference,omitempty"`
 
+	// ExternalId - The identifier of the Case in an external system.
+	ExternalId *string `json:"externalId,omitempty"`
+
 	// Caseplan - The Caseplan the Case was created from.
 	Caseplan *Caseplanreference `json:"caseplan,omitempty"`
 
 	// Summary - Overview information for the Case.
 	Summary *string `json:"summary,omitempty"`
+
+	// Description - The description of the Case.
+	Description *string `json:"description,omitempty"`
 
 	// Owner - The owner of the Case.
 	Owner *Caseuserreference `json:"owner,omitempty"`
@@ -192,9 +198,13 @@ func (o Case) MarshalJSON() ([]byte, error) {
 		
 		Reference *string `json:"reference,omitempty"`
 		
+		ExternalId *string `json:"externalId,omitempty"`
+		
 		Caseplan *Caseplanreference `json:"caseplan,omitempty"`
 		
 		Summary *string `json:"summary,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
 		
 		Owner *Caseuserreference `json:"owner,omitempty"`
 		
@@ -237,9 +247,13 @@ func (o Case) MarshalJSON() ([]byte, error) {
 		
 		Reference: o.Reference,
 		
+		ExternalId: o.ExternalId,
+		
 		Caseplan: o.Caseplan,
 		
 		Summary: o.Summary,
+		
+		Description: o.Description,
 		
 		Owner: o.Owner,
 		
@@ -303,6 +317,10 @@ func (o *Case) UnmarshalJSON(b []byte) error {
 		o.Reference = &Reference
 	}
     
+	if ExternalId, ok := CaseMap["externalId"].(string); ok {
+		o.ExternalId = &ExternalId
+	}
+    
 	if Caseplan, ok := CaseMap["caseplan"].(map[string]interface{}); ok {
 		CaseplanString, _ := json.Marshal(Caseplan)
 		json.Unmarshal(CaseplanString, &o.Caseplan)
@@ -310,6 +328,10 @@ func (o *Case) UnmarshalJSON(b []byte) error {
 	
 	if Summary, ok := CaseMap["summary"].(string); ok {
 		o.Summary = &Summary
+	}
+    
+	if Description, ok := CaseMap["description"].(string); ok {
+		o.Description = &Description
 	}
     
 	if Owner, ok := CaseMap["owner"].(map[string]interface{}); ok {

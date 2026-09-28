@@ -23,6 +23,9 @@ type Topicrequest struct {
 	// ProgramIds - The ids of programs associated to the topic
 	ProgramIds *[]string `json:"programIds,omitempty"`
 
+	// MatchingType - The topic matching type Lexical or Semantic, default value is Semantic
+	MatchingType *string `json:"matchingType,omitempty"`
+
 	// Tags - The topic tags
 	Tags *[]string `json:"tags,omitempty"`
 
@@ -107,6 +110,8 @@ func (o Topicrequest) MarshalJSON() ([]byte, error) {
 		
 		ProgramIds *[]string `json:"programIds,omitempty"`
 		
+		MatchingType *string `json:"matchingType,omitempty"`
+		
 		Tags *[]string `json:"tags,omitempty"`
 		
 		Dialect *string `json:"dialect,omitempty"`
@@ -123,6 +128,8 @@ func (o Topicrequest) MarshalJSON() ([]byte, error) {
 		Strictness: o.Strictness,
 		
 		ProgramIds: o.ProgramIds,
+		
+		MatchingType: o.MatchingType,
 		
 		Tags: o.Tags,
 		
@@ -159,6 +166,10 @@ func (o *Topicrequest) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ProgramIdsString, &o.ProgramIds)
 	}
 	
+	if MatchingType, ok := TopicrequestMap["matchingType"].(string); ok {
+		o.MatchingType = &MatchingType
+	}
+    
 	if Tags, ok := TopicrequestMap["tags"].([]interface{}); ok {
 		TagsString, _ := json.Marshal(Tags)
 		json.Unmarshal(TagsString, &o.Tags)

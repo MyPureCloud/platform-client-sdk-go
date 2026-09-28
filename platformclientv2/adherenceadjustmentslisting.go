@@ -7,28 +7,16 @@ import (
 	"strings"
 )
 
-// Patchsurveyquestion
-type Patchsurveyquestion struct { 
+// Adherenceadjustmentslisting
+type Adherenceadjustmentslisting struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// VarType - Type of survey question.
-	VarType *string `json:"type,omitempty"`
-
-	// Label - Label of question.
-	Label *string `json:"label,omitempty"`
-
-	// CustomerProperty - The customer property that the answer maps to.
-	CustomerProperty *string `json:"customerProperty,omitempty"`
-
-	// Choices - Choices available to user.
-	Choices *[]string `json:"choices,omitempty"`
-
-	// IsMandatory - Whether answering this question is mandatory.
-	IsMandatory *bool `json:"isMandatory,omitempty"`
+	// Entities
+	Entities *[]Adherenceadjustment `json:"entities,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Patchsurveyquestion) SetField(field string, fieldValue interface{}) {
+func (o *Adherenceadjustmentslisting) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -49,7 +37,7 @@ func (o *Patchsurveyquestion) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Patchsurveyquestion) MarshalJSON() ([]byte, error) {
+func (o Adherenceadjustmentslisting) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -87,67 +75,35 @@ func (o Patchsurveyquestion) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Patchsurveyquestion
+	type Alias Adherenceadjustmentslisting
 	
 	return json.Marshal(&struct { 
-		VarType *string `json:"type,omitempty"`
-		
-		Label *string `json:"label,omitempty"`
-		
-		CustomerProperty *string `json:"customerProperty,omitempty"`
-		
-		Choices *[]string `json:"choices,omitempty"`
-		
-		IsMandatory *bool `json:"isMandatory,omitempty"`
+		Entities *[]Adherenceadjustment `json:"entities,omitempty"`
 		Alias
 	}{ 
-		VarType: o.VarType,
-		
-		Label: o.Label,
-		
-		CustomerProperty: o.CustomerProperty,
-		
-		Choices: o.Choices,
-		
-		IsMandatory: o.IsMandatory,
+		Entities: o.Entities,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Patchsurveyquestion) UnmarshalJSON(b []byte) error {
-	var PatchsurveyquestionMap map[string]interface{}
-	err := json.Unmarshal(b, &PatchsurveyquestionMap)
+func (o *Adherenceadjustmentslisting) UnmarshalJSON(b []byte) error {
+	var AdherenceadjustmentslistingMap map[string]interface{}
+	err := json.Unmarshal(b, &AdherenceadjustmentslistingMap)
 	if err != nil {
 		return err
 	}
 	
-	if VarType, ok := PatchsurveyquestionMap["type"].(string); ok {
-		o.VarType = &VarType
-	}
-    
-	if Label, ok := PatchsurveyquestionMap["label"].(string); ok {
-		o.Label = &Label
-	}
-    
-	if CustomerProperty, ok := PatchsurveyquestionMap["customerProperty"].(string); ok {
-		o.CustomerProperty = &CustomerProperty
-	}
-    
-	if Choices, ok := PatchsurveyquestionMap["choices"].([]interface{}); ok {
-		ChoicesString, _ := json.Marshal(Choices)
-		json.Unmarshal(ChoicesString, &o.Choices)
+	if Entities, ok := AdherenceadjustmentslistingMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
 	}
 	
-	if IsMandatory, ok := PatchsurveyquestionMap["isMandatory"].(bool); ok {
-		o.IsMandatory = &IsMandatory
-	}
-    
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Patchsurveyquestion) String() string {
+func (o *Adherenceadjustmentslisting) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 
