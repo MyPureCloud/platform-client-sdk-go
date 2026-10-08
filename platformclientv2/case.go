@@ -15,9 +15,6 @@ type Case struct {
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
-	// Name - The name of the Case.
-	Name *string `json:"name,omitempty"`
-
 	// Division - The division to which this entity belongs.
 	Division *Starrabledivision `json:"division,omitempty"`
 
@@ -190,8 +187,6 @@ func (o Case) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
-		Name *string `json:"name,omitempty"`
-		
 		Division *Starrabledivision `json:"division,omitempty"`
 		
 		Version *int `json:"version,omitempty"`
@@ -238,8 +233,6 @@ func (o Case) MarshalJSON() ([]byte, error) {
 		Alias
 	}{ 
 		Id: o.Id,
-		
-		Name: o.Name,
 		
 		Division: o.Division,
 		
@@ -297,10 +290,6 @@ func (o *Case) UnmarshalJSON(b []byte) error {
 	
 	if Id, ok := CaseMap["id"].(string); ok {
 		o.Id = &Id
-	}
-    
-	if Name, ok := CaseMap["name"].(string); ok {
-		o.Name = &Name
 	}
     
 	if Division, ok := CaseMap["division"].(map[string]interface{}); ok {

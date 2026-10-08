@@ -42,9 +42,6 @@ type Journeywebeventsnotificationwebeventsnotification struct {
 	// WebActionEvent
 	WebActionEvent *Journeywebeventsnotificationwebactionmessage `json:"webActionEvent,omitempty"`
 
-	// OutcomeAchievedEvent
-	OutcomeAchievedEvent *Journeywebeventsnotificationoutcomeachievedmessage `json:"outcomeAchievedEvent,omitempty"`
-
 	// SegmentAssignmentEvent
 	SegmentAssignmentEvent *Journeywebeventsnotificationsegmentassignmentmessage `json:"segmentAssignmentEvent,omitempty"`
 }
@@ -140,8 +137,6 @@ func (o Journeywebeventsnotificationwebeventsnotification) MarshalJSON() ([]byte
 		
 		WebActionEvent *Journeywebeventsnotificationwebactionmessage `json:"webActionEvent,omitempty"`
 		
-		OutcomeAchievedEvent *Journeywebeventsnotificationoutcomeachievedmessage `json:"outcomeAchievedEvent,omitempty"`
-		
 		SegmentAssignmentEvent *Journeywebeventsnotificationsegmentassignmentmessage `json:"segmentAssignmentEvent,omitempty"`
 		Alias
 	}{ 
@@ -164,8 +159,6 @@ func (o Journeywebeventsnotificationwebeventsnotification) MarshalJSON() ([]byte
 		WebEvent: o.WebEvent,
 		
 		WebActionEvent: o.WebActionEvent,
-		
-		OutcomeAchievedEvent: o.OutcomeAchievedEvent,
 		
 		SegmentAssignmentEvent: o.SegmentAssignmentEvent,
 		Alias:    (Alias)(o),
@@ -222,11 +215,6 @@ func (o *Journeywebeventsnotificationwebeventsnotification) UnmarshalJSON(b []by
 	if WebActionEvent, ok := JourneywebeventsnotificationwebeventsnotificationMap["webActionEvent"].(map[string]interface{}); ok {
 		WebActionEventString, _ := json.Marshal(WebActionEvent)
 		json.Unmarshal(WebActionEventString, &o.WebActionEvent)
-	}
-	
-	if OutcomeAchievedEvent, ok := JourneywebeventsnotificationwebeventsnotificationMap["outcomeAchievedEvent"].(map[string]interface{}); ok {
-		OutcomeAchievedEventString, _ := json.Marshal(OutcomeAchievedEvent)
-		json.Unmarshal(OutcomeAchievedEventString, &o.OutcomeAchievedEvent)
 	}
 	
 	if SegmentAssignmentEvent, ok := JourneywebeventsnotificationwebeventsnotificationMap["segmentAssignmentEvent"].(map[string]interface{}); ok {

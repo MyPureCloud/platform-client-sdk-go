@@ -7,34 +7,19 @@ import (
 	"strings"
 )
 
-// Journeyoutcomeeventsnotificationmktcampaign
-type Journeyoutcomeeventsnotificationmktcampaign struct { 
+// Guidesessionmessage - A message in the conversation history provided to a guide session turn.
+type Guidesessionmessage struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Content
+	// Role - The role of the message author.
+	Role *string `json:"role,omitempty"`
+
+	// Content - The content of the message.
 	Content *string `json:"content,omitempty"`
-
-	// Medium
-	Medium *string `json:"medium,omitempty"`
-
-	// Name
-	Name *string `json:"name,omitempty"`
-
-	// Source
-	Source *string `json:"source,omitempty"`
-
-	// Term
-	Term *string `json:"term,omitempty"`
-
-	// ClickId
-	ClickId *string `json:"clickId,omitempty"`
-
-	// Network
-	Network *string `json:"network,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Journeyoutcomeeventsnotificationmktcampaign) SetField(field string, fieldValue interface{}) {
+func (o *Guidesessionmessage) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -55,7 +40,7 @@ func (o *Journeyoutcomeeventsnotificationmktcampaign) SetField(field string, fie
 	o.SetFieldNames[field] = true
 }
 
-func (o Journeyoutcomeeventsnotificationmktcampaign) MarshalJSON() ([]byte, error) {
+func (o Guidesessionmessage) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -93,74 +78,34 @@ func (o Journeyoutcomeeventsnotificationmktcampaign) MarshalJSON() ([]byte, erro
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Journeyoutcomeeventsnotificationmktcampaign
+	type Alias Guidesessionmessage
 	
 	return json.Marshal(&struct { 
+		Role *string `json:"role,omitempty"`
+		
 		Content *string `json:"content,omitempty"`
-		
-		Medium *string `json:"medium,omitempty"`
-		
-		Name *string `json:"name,omitempty"`
-		
-		Source *string `json:"source,omitempty"`
-		
-		Term *string `json:"term,omitempty"`
-		
-		ClickId *string `json:"clickId,omitempty"`
-		
-		Network *string `json:"network,omitempty"`
 		Alias
 	}{ 
+		Role: o.Role,
+		
 		Content: o.Content,
-		
-		Medium: o.Medium,
-		
-		Name: o.Name,
-		
-		Source: o.Source,
-		
-		Term: o.Term,
-		
-		ClickId: o.ClickId,
-		
-		Network: o.Network,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Journeyoutcomeeventsnotificationmktcampaign) UnmarshalJSON(b []byte) error {
-	var JourneyoutcomeeventsnotificationmktcampaignMap map[string]interface{}
-	err := json.Unmarshal(b, &JourneyoutcomeeventsnotificationmktcampaignMap)
+func (o *Guidesessionmessage) UnmarshalJSON(b []byte) error {
+	var GuidesessionmessageMap map[string]interface{}
+	err := json.Unmarshal(b, &GuidesessionmessageMap)
 	if err != nil {
 		return err
 	}
 	
-	if Content, ok := JourneyoutcomeeventsnotificationmktcampaignMap["content"].(string); ok {
+	if Role, ok := GuidesessionmessageMap["role"].(string); ok {
+		o.Role = &Role
+	}
+    
+	if Content, ok := GuidesessionmessageMap["content"].(string); ok {
 		o.Content = &Content
-	}
-    
-	if Medium, ok := JourneyoutcomeeventsnotificationmktcampaignMap["medium"].(string); ok {
-		o.Medium = &Medium
-	}
-    
-	if Name, ok := JourneyoutcomeeventsnotificationmktcampaignMap["name"].(string); ok {
-		o.Name = &Name
-	}
-    
-	if Source, ok := JourneyoutcomeeventsnotificationmktcampaignMap["source"].(string); ok {
-		o.Source = &Source
-	}
-    
-	if Term, ok := JourneyoutcomeeventsnotificationmktcampaignMap["term"].(string); ok {
-		o.Term = &Term
-	}
-    
-	if ClickId, ok := JourneyoutcomeeventsnotificationmktcampaignMap["clickId"].(string); ok {
-		o.ClickId = &ClickId
-	}
-    
-	if Network, ok := JourneyoutcomeeventsnotificationmktcampaignMap["network"].(string); ok {
-		o.Network = &Network
 	}
     
 
@@ -168,7 +113,7 @@ func (o *Journeyoutcomeeventsnotificationmktcampaign) UnmarshalJSON(b []byte) er
 }
 
 // String returns a JSON representation of the model
-func (o *Journeyoutcomeeventsnotificationmktcampaign) String() string {
+func (o *Guidesessionmessage) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

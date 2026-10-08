@@ -26,14 +26,14 @@ type Trunkbaseentitylisting struct {
 	// TotalNumberOfEntities - The total organization-wide number of entities.
 	TotalNumberOfEntities *int `json:"totalNumberOfEntities,omitempty"`
 
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
+
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
-
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
 
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
@@ -118,11 +118,11 @@ func (o Trunkbaseentitylisting) MarshalJSON() ([]byte, error) {
 		
 		TotalNumberOfEntities *int `json:"totalNumberOfEntities,omitempty"`
 		
+		LastUri *string `json:"lastUri,omitempty"`
+		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		
-		LastUri *string `json:"lastUri,omitempty"`
 		
 		NextUri *string `json:"nextUri,omitempty"`
 		
@@ -141,11 +141,11 @@ func (o Trunkbaseentitylisting) MarshalJSON() ([]byte, error) {
 		
 		TotalNumberOfEntities: o.TotalNumberOfEntities,
 		
+		LastUri: o.LastUri,
+		
 		FirstUri: o.FirstUri,
 		
 		SelfUri: o.SelfUri,
-		
-		LastUri: o.LastUri,
 		
 		NextUri: o.NextUri,
 		
@@ -188,16 +188,16 @@ func (o *Trunkbaseentitylisting) UnmarshalJSON(b []byte) error {
 		o.TotalNumberOfEntities = &TotalNumberOfEntitiesInt
 	}
 	
+	if LastUri, ok := TrunkbaseentitylistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
+	}
+    
 	if FirstUri, ok := TrunkbaseentitylistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
     
 	if SelfUri, ok := TrunkbaseentitylistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
-	}
-    
-	if LastUri, ok := TrunkbaseentitylistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
 	}
     
 	if NextUri, ok := TrunkbaseentitylistingMap["nextUri"].(string); ok {

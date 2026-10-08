@@ -7,19 +7,25 @@ import (
 	"strings"
 )
 
-// Journeyappeventsnotificationassociatedvalue
-type Journeyappeventsnotificationassociatedvalue struct { 
+// Conversationcontentthumbnail - Thumbnail image metadata for the attachment content.
+type Conversationcontentthumbnail struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// DataType
-	DataType *string `json:"dataType,omitempty"`
+	// Url - URL of the thumbnail image.
+	Url *string `json:"url,omitempty"`
 
-	// Value
-	Value *float32 `json:"value,omitempty"`
+	// Mime - Thumbnail mime type (e.g. image/jpeg).
+	Mime *string `json:"mime,omitempty"`
+
+	// Sha256 - Secure hash of the thumbnail content.
+	Sha256 *string `json:"sha256,omitempty"`
+
+	// ContentSizeBytes - Size in bytes of the thumbnail content.
+	ContentSizeBytes *int `json:"contentSizeBytes,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Journeyappeventsnotificationassociatedvalue) SetField(field string, fieldValue interface{}) {
+func (o *Conversationcontentthumbnail) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -40,7 +46,7 @@ func (o *Journeyappeventsnotificationassociatedvalue) SetField(field string, fie
 	o.SetFieldNames[field] = true
 }
 
-func (o Journeyappeventsnotificationassociatedvalue) MarshalJSON() ([]byte, error) {
+func (o Conversationcontentthumbnail) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -78,43 +84,59 @@ func (o Journeyappeventsnotificationassociatedvalue) MarshalJSON() ([]byte, erro
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Journeyappeventsnotificationassociatedvalue
+	type Alias Conversationcontentthumbnail
 	
 	return json.Marshal(&struct { 
-		DataType *string `json:"dataType,omitempty"`
+		Url *string `json:"url,omitempty"`
 		
-		Value *float32 `json:"value,omitempty"`
+		Mime *string `json:"mime,omitempty"`
+		
+		Sha256 *string `json:"sha256,omitempty"`
+		
+		ContentSizeBytes *int `json:"contentSizeBytes,omitempty"`
 		Alias
 	}{ 
-		DataType: o.DataType,
+		Url: o.Url,
 		
-		Value: o.Value,
+		Mime: o.Mime,
+		
+		Sha256: o.Sha256,
+		
+		ContentSizeBytes: o.ContentSizeBytes,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Journeyappeventsnotificationassociatedvalue) UnmarshalJSON(b []byte) error {
-	var JourneyappeventsnotificationassociatedvalueMap map[string]interface{}
-	err := json.Unmarshal(b, &JourneyappeventsnotificationassociatedvalueMap)
+func (o *Conversationcontentthumbnail) UnmarshalJSON(b []byte) error {
+	var ConversationcontentthumbnailMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationcontentthumbnailMap)
 	if err != nil {
 		return err
 	}
 	
-	if DataType, ok := JourneyappeventsnotificationassociatedvalueMap["dataType"].(string); ok {
-		o.DataType = &DataType
+	if Url, ok := ConversationcontentthumbnailMap["url"].(string); ok {
+		o.Url = &Url
 	}
     
-	if Value, ok := JourneyappeventsnotificationassociatedvalueMap["value"].(float64); ok {
-		ValueFloat32 := float32(Value)
-		o.Value = &ValueFloat32
+	if Mime, ok := ConversationcontentthumbnailMap["mime"].(string); ok {
+		o.Mime = &Mime
 	}
     
+	if Sha256, ok := ConversationcontentthumbnailMap["sha256"].(string); ok {
+		o.Sha256 = &Sha256
+	}
+    
+	if ContentSizeBytes, ok := ConversationcontentthumbnailMap["contentSizeBytes"].(float64); ok {
+		ContentSizeBytesInt := int(ContentSizeBytes)
+		o.ContentSizeBytes = &ContentSizeBytesInt
+	}
+	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Journeyappeventsnotificationassociatedvalue) String() string {
+func (o *Conversationcontentthumbnail) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

@@ -7,19 +7,22 @@ import (
 	"strings"
 )
 
-// Journeywebeventsnotificationassociatedvalue
-type Journeywebeventsnotificationassociatedvalue struct { 
+// Guidesessionturnrequestcontext - Context provided to a guide session turn, including conversation custom attributes and prior conversation history.
+type Guidesessionturnrequestcontext struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// DataType
-	DataType *string `json:"dataType,omitempty"`
+	// CustomConversationAttributes - The Conversation Custom Attributes schemas and records available for this turn.
+	CustomConversationAttributes *[]Customconversationattributeinput `json:"customConversationAttributes,omitempty"`
 
-	// Value
-	Value *float32 `json:"value,omitempty"`
+	// Messages - The conversation history that occurred before this guide session.
+	Messages *[]Guidesessionmessage `json:"messages,omitempty"`
+
+	// KnowledgeQueryDetected - Whether a knowledge query was detected in the previous conversation turns.
+	KnowledgeQueryDetected *bool `json:"knowledgeQueryDetected,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Journeywebeventsnotificationassociatedvalue) SetField(field string, fieldValue interface{}) {
+func (o *Guidesessionturnrequestcontext) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -40,7 +43,7 @@ func (o *Journeywebeventsnotificationassociatedvalue) SetField(field string, fie
 	o.SetFieldNames[field] = true
 }
 
-func (o Journeywebeventsnotificationassociatedvalue) MarshalJSON() ([]byte, error) {
+func (o Guidesessionturnrequestcontext) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -78,35 +81,44 @@ func (o Journeywebeventsnotificationassociatedvalue) MarshalJSON() ([]byte, erro
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Journeywebeventsnotificationassociatedvalue
+	type Alias Guidesessionturnrequestcontext
 	
 	return json.Marshal(&struct { 
-		DataType *string `json:"dataType,omitempty"`
+		CustomConversationAttributes *[]Customconversationattributeinput `json:"customConversationAttributes,omitempty"`
 		
-		Value *float32 `json:"value,omitempty"`
+		Messages *[]Guidesessionmessage `json:"messages,omitempty"`
+		
+		KnowledgeQueryDetected *bool `json:"knowledgeQueryDetected,omitempty"`
 		Alias
 	}{ 
-		DataType: o.DataType,
+		CustomConversationAttributes: o.CustomConversationAttributes,
 		
-		Value: o.Value,
+		Messages: o.Messages,
+		
+		KnowledgeQueryDetected: o.KnowledgeQueryDetected,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Journeywebeventsnotificationassociatedvalue) UnmarshalJSON(b []byte) error {
-	var JourneywebeventsnotificationassociatedvalueMap map[string]interface{}
-	err := json.Unmarshal(b, &JourneywebeventsnotificationassociatedvalueMap)
+func (o *Guidesessionturnrequestcontext) UnmarshalJSON(b []byte) error {
+	var GuidesessionturnrequestcontextMap map[string]interface{}
+	err := json.Unmarshal(b, &GuidesessionturnrequestcontextMap)
 	if err != nil {
 		return err
 	}
 	
-	if DataType, ok := JourneywebeventsnotificationassociatedvalueMap["dataType"].(string); ok {
-		o.DataType = &DataType
+	if CustomConversationAttributes, ok := GuidesessionturnrequestcontextMap["customConversationAttributes"].([]interface{}); ok {
+		CustomConversationAttributesString, _ := json.Marshal(CustomConversationAttributes)
+		json.Unmarshal(CustomConversationAttributesString, &o.CustomConversationAttributes)
 	}
-    
-	if Value, ok := JourneywebeventsnotificationassociatedvalueMap["value"].(float64); ok {
-		ValueFloat32 := float32(Value)
-		o.Value = &ValueFloat32
+	
+	if Messages, ok := GuidesessionturnrequestcontextMap["messages"].([]interface{}); ok {
+		MessagesString, _ := json.Marshal(Messages)
+		json.Unmarshal(MessagesString, &o.Messages)
+	}
+	
+	if KnowledgeQueryDetected, ok := GuidesessionturnrequestcontextMap["knowledgeQueryDetected"].(bool); ok {
+		o.KnowledgeQueryDetected = &KnowledgeQueryDetected
 	}
     
 
@@ -114,7 +126,7 @@ func (o *Journeywebeventsnotificationassociatedvalue) UnmarshalJSON(b []byte) er
 }
 
 // String returns a JSON representation of the model
-func (o *Journeywebeventsnotificationassociatedvalue) String() string {
+func (o *Guidesessionturnrequestcontext) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

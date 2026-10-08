@@ -7,25 +7,28 @@ import (
 	"strings"
 )
 
-// Journeywebeventsnotificationoutcome
-type Journeywebeventsnotificationoutcome struct { 
+// V2wfmcontinuousforecastsessioneventcontinuousforecastsessionnotification
+type V2wfmcontinuousforecastsessioneventcontinuousforecastsessionnotification struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id
-	Id *string `json:"id,omitempty"`
+	// SessionId
+	SessionId *string `json:"sessionId,omitempty"`
 
-	// SelfUri
-	SelfUri *string `json:"selfUri,omitempty"`
+	// LastSuccessfulSessionId
+	LastSuccessfulSessionId *string `json:"lastSuccessfulSessionId,omitempty"`
 
-	// DisplayName
-	DisplayName *string `json:"displayName,omitempty"`
+	// State
+	State *string `json:"state,omitempty"`
 
-	// Version
-	Version *string `json:"version,omitempty"`
+	// ErrorCode
+	ErrorCode *string `json:"errorCode,omitempty"`
+
+	// ForecastDataState
+	ForecastDataState *string `json:"forecastDataState,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Journeywebeventsnotificationoutcome) SetField(field string, fieldValue interface{}) {
+func (o *V2wfmcontinuousforecastsessioneventcontinuousforecastsessionnotification) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -46,7 +49,7 @@ func (o *Journeywebeventsnotificationoutcome) SetField(field string, fieldValue 
 	o.SetFieldNames[field] = true
 }
 
-func (o Journeywebeventsnotificationoutcome) MarshalJSON() ([]byte, error) {
+func (o V2wfmcontinuousforecastsessioneventcontinuousforecastsessionnotification) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -84,50 +87,58 @@ func (o Journeywebeventsnotificationoutcome) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Journeywebeventsnotificationoutcome
+	type Alias V2wfmcontinuousforecastsessioneventcontinuousforecastsessionnotification
 	
 	return json.Marshal(&struct { 
-		Id *string `json:"id,omitempty"`
+		SessionId *string `json:"sessionId,omitempty"`
 		
-		SelfUri *string `json:"selfUri,omitempty"`
+		LastSuccessfulSessionId *string `json:"lastSuccessfulSessionId,omitempty"`
 		
-		DisplayName *string `json:"displayName,omitempty"`
+		State *string `json:"state,omitempty"`
 		
-		Version *string `json:"version,omitempty"`
+		ErrorCode *string `json:"errorCode,omitempty"`
+		
+		ForecastDataState *string `json:"forecastDataState,omitempty"`
 		Alias
 	}{ 
-		Id: o.Id,
+		SessionId: o.SessionId,
 		
-		SelfUri: o.SelfUri,
+		LastSuccessfulSessionId: o.LastSuccessfulSessionId,
 		
-		DisplayName: o.DisplayName,
+		State: o.State,
 		
-		Version: o.Version,
+		ErrorCode: o.ErrorCode,
+		
+		ForecastDataState: o.ForecastDataState,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Journeywebeventsnotificationoutcome) UnmarshalJSON(b []byte) error {
-	var JourneywebeventsnotificationoutcomeMap map[string]interface{}
-	err := json.Unmarshal(b, &JourneywebeventsnotificationoutcomeMap)
+func (o *V2wfmcontinuousforecastsessioneventcontinuousforecastsessionnotification) UnmarshalJSON(b []byte) error {
+	var V2wfmcontinuousforecastsessioneventcontinuousforecastsessionnotificationMap map[string]interface{}
+	err := json.Unmarshal(b, &V2wfmcontinuousforecastsessioneventcontinuousforecastsessionnotificationMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := JourneywebeventsnotificationoutcomeMap["id"].(string); ok {
-		o.Id = &Id
+	if SessionId, ok := V2wfmcontinuousforecastsessioneventcontinuousforecastsessionnotificationMap["sessionId"].(string); ok {
+		o.SessionId = &SessionId
 	}
     
-	if SelfUri, ok := JourneywebeventsnotificationoutcomeMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
+	if LastSuccessfulSessionId, ok := V2wfmcontinuousforecastsessioneventcontinuousforecastsessionnotificationMap["lastSuccessfulSessionId"].(string); ok {
+		o.LastSuccessfulSessionId = &LastSuccessfulSessionId
 	}
     
-	if DisplayName, ok := JourneywebeventsnotificationoutcomeMap["displayName"].(string); ok {
-		o.DisplayName = &DisplayName
+	if State, ok := V2wfmcontinuousforecastsessioneventcontinuousforecastsessionnotificationMap["state"].(string); ok {
+		o.State = &State
 	}
     
-	if Version, ok := JourneywebeventsnotificationoutcomeMap["version"].(string); ok {
-		o.Version = &Version
+	if ErrorCode, ok := V2wfmcontinuousforecastsessioneventcontinuousforecastsessionnotificationMap["errorCode"].(string); ok {
+		o.ErrorCode = &ErrorCode
+	}
+    
+	if ForecastDataState, ok := V2wfmcontinuousforecastsessioneventcontinuousforecastsessionnotificationMap["forecastDataState"].(string); ok {
+		o.ForecastDataState = &ForecastDataState
 	}
     
 
@@ -135,7 +146,7 @@ func (o *Journeywebeventsnotificationoutcome) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Journeywebeventsnotificationoutcome) String() string {
+func (o *V2wfmcontinuousforecastsessioneventcontinuousforecastsessionnotification) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

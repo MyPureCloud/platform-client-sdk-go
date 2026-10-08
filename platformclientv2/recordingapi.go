@@ -1315,7 +1315,7 @@ func (a RecordingApi) GetOrphanrecordingMedia(orphanId string, formatId string, 
 
 // GetOrphanrecordings invokes GET /api/v2/orphanrecordings
 //
-// Gets all orphan recordings
+// Gets all orphan recordings. When querying without 'hasConversation = true', the results are capped at 500 orphan recordings
 func (a RecordingApi) GetOrphanrecordings(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, hasConversation bool, media string) (*Orphanrecordinglisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

@@ -20,6 +20,9 @@ type Rolesettings struct {
 	// AuthorizationGrantDivisionAware - Boolean enabling enforcement of division aware for authorization grant add and delete
 	AuthorizationGrantDivisionAware *bool `json:"authorizationGrantDivisionAware,omitempty"`
 
+	// GenesysOrgPolicyBypass - Boolean enabling skip of attribute-based access control policy enforcement when enabled and the organization is on the Genesys bypass list
+	GenesysOrgPolicyBypass *bool `json:"genesysOrgPolicyBypass,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -93,6 +96,8 @@ func (o Rolesettings) MarshalJSON() ([]byte, error) {
 		
 		AuthorizationGrantDivisionAware *bool `json:"authorizationGrantDivisionAware,omitempty"`
 		
+		GenesysOrgPolicyBypass *bool `json:"genesysOrgPolicyBypass,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -101,6 +106,8 @@ func (o Rolesettings) MarshalJSON() ([]byte, error) {
 		BackfillEnabled: o.BackfillEnabled,
 		
 		AuthorizationGrantDivisionAware: o.AuthorizationGrantDivisionAware,
+		
+		GenesysOrgPolicyBypass: o.GenesysOrgPolicyBypass,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -124,6 +131,10 @@ func (o *Rolesettings) UnmarshalJSON(b []byte) error {
     
 	if AuthorizationGrantDivisionAware, ok := RolesettingsMap["authorizationGrantDivisionAware"].(bool); ok {
 		o.AuthorizationGrantDivisionAware = &AuthorizationGrantDivisionAware
+	}
+    
+	if GenesysOrgPolicyBypass, ok := RolesettingsMap["genesysOrgPolicyBypass"].(bool); ok {
+		o.GenesysOrgPolicyBypass = &GenesysOrgPolicyBypass
 	}
     
 	if SelfUri, ok := RolesettingsMap["selfUri"].(string); ok {

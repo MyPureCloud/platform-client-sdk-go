@@ -14,7 +14,7 @@ type Whatsappembeddedsignupintegrationactivationrequest struct {
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
-	// Name - WhatsApp Integration name
+	// Name - The WhatsApp integration name. Required for Embedded Signup v4 activation; not used in v2.
 	Name *string `json:"name,omitempty"`
 
 	// PhoneNumber - E.164 phone number to associate with the WhatsApp integration. Not required for embedded signup v4 or later.

@@ -16,6 +16,9 @@ type Summarysettingparticipantlabels struct {
 
 	// External - Specify how to refer the external participant of the interaction.
 	External *string `json:"external,omitempty"`
+
+	// VirtualAgent - Specify how to refer the virtual agent of the interaction.
+	VirtualAgent *string `json:"virtualAgent,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Summarysettingparticipantlabels) MarshalJSON() ([]byte, error) {
 		Internal *string `json:"internal,omitempty"`
 		
 		External *string `json:"external,omitempty"`
+		
+		VirtualAgent *string `json:"virtualAgent,omitempty"`
 		Alias
 	}{ 
 		Internal: o.Internal,
 		
 		External: o.External,
+		
+		VirtualAgent: o.VirtualAgent,
 		Alias:    (Alias)(o),
 	})
 }
@@ -106,6 +113,10 @@ func (o *Summarysettingparticipantlabels) UnmarshalJSON(b []byte) error {
     
 	if External, ok := SummarysettingparticipantlabelsMap["external"].(string); ok {
 		o.External = &External
+	}
+    
+	if VirtualAgent, ok := SummarysettingparticipantlabelsMap["virtualAgent"].(string); ok {
+		o.VirtualAgent = &VirtualAgent
 	}
     
 

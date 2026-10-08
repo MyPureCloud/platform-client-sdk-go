@@ -63,7 +63,7 @@ type Messagemediaparticipant struct {
 	// User - The PureCloud user for this participant.
 	User *Domainentityref `json:"user,omitempty"`
 
-	// Queue - The PureCloud queue for this participant.
+	// Queue - The PureCloud queue for this participant. Id and selfUri will be populated, name is optional.
 	Queue *Domainentityref `json:"queue,omitempty"`
 
 	// Team - The PureCloud team for this participant.

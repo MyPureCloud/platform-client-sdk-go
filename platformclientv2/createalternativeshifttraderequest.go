@@ -26,6 +26,9 @@ type Createalternativeshifttraderequest struct {
 
 	// ExpirationDate - The date when the trade will expire in ISO-8601 format. The trade cannot be approved after expiration
 	ExpirationDate *time.Time `json:"expirationDate,omitempty"`
+
+	// ReviewNote - Optional note for supervisors to review during alternative shift trade approval
+	ReviewNote *string `json:"reviewNote,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -108,6 +111,8 @@ func (o Createalternativeshifttraderequest) MarshalJSON() ([]byte, error) {
 		AlternativeShiftTradeGranularity *string `json:"alternativeShiftTradeGranularity,omitempty"`
 		
 		ExpirationDate *string `json:"expirationDate,omitempty"`
+		
+		ReviewNote *string `json:"reviewNote,omitempty"`
 		Alias
 	}{ 
 		JobId: o.JobId,
@@ -119,6 +124,8 @@ func (o Createalternativeshifttraderequest) MarshalJSON() ([]byte, error) {
 		AlternativeShiftTradeGranularity: o.AlternativeShiftTradeGranularity,
 		
 		ExpirationDate: ExpirationDate,
+		
+		ReviewNote: o.ReviewNote,
 		Alias:    (Alias)(o),
 	})
 }
@@ -153,6 +160,10 @@ func (o *Createalternativeshifttraderequest) UnmarshalJSON(b []byte) error {
 		o.ExpirationDate = &ExpirationDate
 	}
 	
+	if ReviewNote, ok := CreatealternativeshifttraderequestMap["reviewNote"].(string); ok {
+		o.ReviewNote = &ReviewNote
+	}
+    
 
 	return nil
 }

@@ -20,7 +20,7 @@ type Contact struct {
 	// MediaType
 	MediaType *string `json:"mediaType,omitempty"`
 
-	// VarType
+	// VarType - The type of this contact entry. Note: the PRIMARY email address cannot be changed via PATCH /api/v2/users/{userId}; submitting a modified value for the PRIMARY entry returns a 400 error.
 	VarType *string `json:"type,omitempty"`
 
 	// Extension - Use internal extension instead of address. Mutually exclusive with the address field.

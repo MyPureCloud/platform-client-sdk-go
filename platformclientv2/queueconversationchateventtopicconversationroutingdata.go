@@ -26,8 +26,8 @@ type Queueconversationchateventtopicconversationroutingdata struct {
 	// ScoredAgents - A collection of agents and their assigned scores for this conversation (0 - 100, higher being better), for use in routing to preferred agents
 	ScoredAgents *[]Queueconversationchateventtopicscoredagent `json:"scoredAgents,omitempty"`
 
-	// SkillExpressionId - A UriReference for a resource
-	SkillExpressionId *Queueconversationchateventtopicurireference `json:"skillExpressionId,omitempty"`
+	// SkillExpressionId - The skill expression to use for routing decisions. If specified, it takes priority over skills.
+	SkillExpressionId *string `json:"skillExpressionId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -103,7 +103,7 @@ func (o Queueconversationchateventtopicconversationroutingdata) MarshalJSON() ([
 		
 		ScoredAgents *[]Queueconversationchateventtopicscoredagent `json:"scoredAgents,omitempty"`
 		
-		SkillExpressionId *Queueconversationchateventtopicurireference `json:"skillExpressionId,omitempty"`
+		SkillExpressionId *string `json:"skillExpressionId,omitempty"`
 		Alias
 	}{ 
 		Queue: o.Queue,
@@ -153,11 +153,10 @@ func (o *Queueconversationchateventtopicconversationroutingdata) UnmarshalJSON(b
 		json.Unmarshal(ScoredAgentsString, &o.ScoredAgents)
 	}
 	
-	if SkillExpressionId, ok := QueueconversationchateventtopicconversationroutingdataMap["skillExpressionId"].(map[string]interface{}); ok {
-		SkillExpressionIdString, _ := json.Marshal(SkillExpressionId)
-		json.Unmarshal(SkillExpressionIdString, &o.SkillExpressionId)
+	if SkillExpressionId, ok := QueueconversationchateventtopicconversationroutingdataMap["skillExpressionId"].(string); ok {
+		o.SkillExpressionId = &SkillExpressionId
 	}
-	
+    
 
 	return nil
 }

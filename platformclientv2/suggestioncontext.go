@@ -34,6 +34,9 @@ type Suggestioncontext struct {
 
 	// QueryStatement - The query statement used when generating the suggestion, if any.
 	QueryStatement *string `json:"queryStatement,omitempty"`
+
+	// Language - The language of the conversation for which the suggestion was generated, in lower case, for example: 'en-us'.
+	Language *string `json:"language,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -114,6 +117,8 @@ func (o Suggestioncontext) MarshalJSON() ([]byte, error) {
 		Message *Addressableentityref `json:"message,omitempty"`
 		
 		QueryStatement *string `json:"queryStatement,omitempty"`
+		
+		Language *string `json:"language,omitempty"`
 		Alias
 	}{ 
 		Queue: o.Queue,
@@ -131,6 +136,8 @@ func (o Suggestioncontext) MarshalJSON() ([]byte, error) {
 		Message: o.Message,
 		
 		QueryStatement: o.QueryStatement,
+		
+		Language: o.Language,
 		Alias:    (Alias)(o),
 	})
 }
@@ -177,6 +184,10 @@ func (o *Suggestioncontext) UnmarshalJSON(b []byte) error {
 	
 	if QueryStatement, ok := SuggestioncontextMap["queryStatement"].(string); ok {
 		o.QueryStatement = &QueryStatement
+	}
+    
+	if Language, ok := SuggestioncontextMap["language"].(string); ok {
+		o.Language = &Language
 	}
     
 

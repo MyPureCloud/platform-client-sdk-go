@@ -31,6 +31,9 @@ type Opencontentattachment struct {
 
 	// Filename - Suggested file name for attachment.
 	Filename *string `json:"filename,omitempty"`
+
+	// Thumbnail - Thumbnail image for the attachment content. Not always available.
+	Thumbnail *Opencontentthumbnail `json:"thumbnail,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -109,6 +112,8 @@ func (o Opencontentattachment) MarshalJSON() ([]byte, error) {
 		Sha256 *string `json:"sha256,omitempty"`
 		
 		Filename *string `json:"filename,omitempty"`
+		
+		Thumbnail *Opencontentthumbnail `json:"thumbnail,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -124,6 +129,8 @@ func (o Opencontentattachment) MarshalJSON() ([]byte, error) {
 		Sha256: o.Sha256,
 		
 		Filename: o.Filename,
+		
+		Thumbnail: o.Thumbnail,
 		Alias:    (Alias)(o),
 	})
 }
@@ -163,6 +170,11 @@ func (o *Opencontentattachment) UnmarshalJSON(b []byte) error {
 		o.Filename = &Filename
 	}
     
+	if Thumbnail, ok := OpencontentattachmentMap["thumbnail"].(map[string]interface{}); ok {
+		ThumbnailString, _ := json.Marshal(Thumbnail)
+		json.Unmarshal(ThumbnailString, &o.Thumbnail)
+	}
+	
 
 	return nil
 }

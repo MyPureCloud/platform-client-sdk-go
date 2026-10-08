@@ -22,6 +22,9 @@ type Shifttradeinitiatingsideresponseitem struct {
 
 	// Shift - The shift offered for trade by the initiating user
 	Shift *Shifttradeshiftresponseitem `json:"shift,omitempty"`
+
+	// ReviewNote - Optional note from the initiating user for shift trade review
+	ReviewNote *string `json:"reviewNote,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +97,8 @@ func (o Shifttradeinitiatingsideresponseitem) MarshalJSON() ([]byte, error) {
 		Schedule *Schedulereferencewithbusinessunit `json:"schedule,omitempty"`
 		
 		Shift *Shifttradeshiftresponseitem `json:"shift,omitempty"`
+		
+		ReviewNote *string `json:"reviewNote,omitempty"`
 		Alias
 	}{ 
 		User: o.User,
@@ -103,6 +108,8 @@ func (o Shifttradeinitiatingsideresponseitem) MarshalJSON() ([]byte, error) {
 		Schedule: o.Schedule,
 		
 		Shift: o.Shift,
+		
+		ReviewNote: o.ReviewNote,
 		Alias:    (Alias)(o),
 	})
 }
@@ -134,6 +141,10 @@ func (o *Shifttradeinitiatingsideresponseitem) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ShiftString, &o.Shift)
 	}
 	
+	if ReviewNote, ok := ShifttradeinitiatingsideresponseitemMap["reviewNote"].(string); ok {
+		o.ReviewNote = &ReviewNote
+	}
+    
 
 	return nil
 }

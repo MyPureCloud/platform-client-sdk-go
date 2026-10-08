@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -7,25 +8,22 @@ import (
 	"strings"
 )
 
-// Journeyappeventsnotificationoutcome
-type Journeyappeventsnotificationoutcome struct { 
+// Customconversationattributeupdate - A single Conversation Custom Attribute value update made during a guide session turn.
+type Customconversationattributeupdate struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id
-	Id *string `json:"id,omitempty"`
+	// Name - The name of the conversation attribute that was updated.
+	Name *string `json:"name,omitempty"`
 
-	// SelfUri
-	SelfUri *string `json:"selfUri,omitempty"`
+	// Value - The value of the conversation attribute after the update. The JSON type depends on the attribute's definition in its schema, for example string, number, or boolean.
+	Value *interface{} `json:"value,omitempty"`
 
-	// DisplayName
-	DisplayName *string `json:"displayName,omitempty"`
-
-	// Version
-	Version *string `json:"version,omitempty"`
+	// DateModified - The date and time the attribute was modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateModified *time.Time `json:"dateModified,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Journeyappeventsnotificationoutcome) SetField(field string, fieldValue interface{}) {
+func (o *Customconversationattributeupdate) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -46,14 +44,14 @@ func (o *Journeyappeventsnotificationoutcome) SetField(field string, fieldValue 
 	o.SetFieldNames[field] = true
 }
 
-func (o Journeyappeventsnotificationoutcome) MarshalJSON() ([]byte, error) {
+func (o Customconversationattributeupdate) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
+		dateTimeFields := []string{ "DateModified", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -84,58 +82,60 @@ func (o Journeyappeventsnotificationoutcome) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Journeyappeventsnotificationoutcome
+	type Alias Customconversationattributeupdate
+	
+	DateModified := new(string)
+	if o.DateModified != nil {
+		
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateModified = nil
+	}
 	
 	return json.Marshal(&struct { 
-		Id *string `json:"id,omitempty"`
+		Name *string `json:"name,omitempty"`
 		
-		SelfUri *string `json:"selfUri,omitempty"`
+		Value *interface{} `json:"value,omitempty"`
 		
-		DisplayName *string `json:"displayName,omitempty"`
-		
-		Version *string `json:"version,omitempty"`
+		DateModified *string `json:"dateModified,omitempty"`
 		Alias
 	}{ 
-		Id: o.Id,
+		Name: o.Name,
 		
-		SelfUri: o.SelfUri,
+		Value: o.Value,
 		
-		DisplayName: o.DisplayName,
-		
-		Version: o.Version,
+		DateModified: DateModified,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Journeyappeventsnotificationoutcome) UnmarshalJSON(b []byte) error {
-	var JourneyappeventsnotificationoutcomeMap map[string]interface{}
-	err := json.Unmarshal(b, &JourneyappeventsnotificationoutcomeMap)
+func (o *Customconversationattributeupdate) UnmarshalJSON(b []byte) error {
+	var CustomconversationattributeupdateMap map[string]interface{}
+	err := json.Unmarshal(b, &CustomconversationattributeupdateMap)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := JourneyappeventsnotificationoutcomeMap["id"].(string); ok {
-		o.Id = &Id
+	if Name, ok := CustomconversationattributeupdateMap["name"].(string); ok {
+		o.Name = &Name
 	}
     
-	if SelfUri, ok := JourneyappeventsnotificationoutcomeMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
+	if Value, ok := CustomconversationattributeupdateMap["value"].(map[string]interface{}); ok {
+		ValueString, _ := json.Marshal(Value)
+		json.Unmarshal(ValueString, &o.Value)
 	}
-    
-	if DisplayName, ok := JourneyappeventsnotificationoutcomeMap["displayName"].(string); ok {
-		o.DisplayName = &DisplayName
+	
+	if dateModifiedString, ok := CustomconversationattributeupdateMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
 	}
-    
-	if Version, ok := JourneyappeventsnotificationoutcomeMap["version"].(string); ok {
-		o.Version = &Version
-	}
-    
+	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Journeyappeventsnotificationoutcome) String() string {
+func (o *Customconversationattributeupdate) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

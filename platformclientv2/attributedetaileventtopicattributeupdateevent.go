@@ -31,6 +31,9 @@ type Attributedetaileventtopicattributeupdateevent struct {
 
 	// Communications
 	Communications *[]Attributedetaileventtopiccommunication `json:"communications,omitempty"`
+
+	// ParticipantStartTime
+	ParticipantStartTime *int `json:"participantStartTime,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -109,6 +112,8 @@ func (o Attributedetaileventtopicattributeupdateevent) MarshalJSON() ([]byte, er
 		ConversationExternalOrganizationIds *[]string `json:"conversationExternalOrganizationIds,omitempty"`
 		
 		Communications *[]Attributedetaileventtopiccommunication `json:"communications,omitempty"`
+		
+		ParticipantStartTime *int `json:"participantStartTime,omitempty"`
 		Alias
 	}{ 
 		EventTime: o.EventTime,
@@ -124,6 +129,8 @@ func (o Attributedetaileventtopicattributeupdateevent) MarshalJSON() ([]byte, er
 		ConversationExternalOrganizationIds: o.ConversationExternalOrganizationIds,
 		
 		Communications: o.Communications,
+		
+		ParticipantStartTime: o.ParticipantStartTime,
 		Alias:    (Alias)(o),
 	})
 }
@@ -166,6 +173,11 @@ func (o *Attributedetaileventtopicattributeupdateevent) UnmarshalJSON(b []byte) 
 	if Communications, ok := AttributedetaileventtopicattributeupdateeventMap["communications"].([]interface{}); ok {
 		CommunicationsString, _ := json.Marshal(Communications)
 		json.Unmarshal(CommunicationsString, &o.Communications)
+	}
+	
+	if ParticipantStartTime, ok := AttributedetaileventtopicattributeupdateeventMap["participantStartTime"].(float64); ok {
+		ParticipantStartTimeInt := int(ParticipantStartTime)
+		o.ParticipantStartTime = &ParticipantStartTimeInt
 	}
 	
 

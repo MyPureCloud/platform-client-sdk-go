@@ -24,6 +24,9 @@ type Updateshifttradejobrequest struct {
 	// AcceptableIntervals - Time frames when the initiating user is willing to accept a shift in exchange. Setting the enclosed list to empty will make this a one sided trade request.
 	AcceptableIntervals *Listwrapperrequireddaterange `json:"acceptableIntervals,omitempty"`
 
+	// ReviewNote - Optional note from the initiating user for shift trade review
+	ReviewNote *Valuewrapperstring `json:"reviewNote,omitempty"`
+
 	// Metadata - Version metadata for the shift trade
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 }
@@ -106,6 +109,8 @@ func (o Updateshifttradejobrequest) MarshalJSON() ([]byte, error) {
 		
 		AcceptableIntervals *Listwrapperrequireddaterange `json:"acceptableIntervals,omitempty"`
 		
+		ReviewNote *Valuewrapperstring `json:"reviewNote,omitempty"`
+		
 		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 		Alias
 	}{ 
@@ -116,6 +121,8 @@ func (o Updateshifttradejobrequest) MarshalJSON() ([]byte, error) {
 		ExpirationDate: o.ExpirationDate,
 		
 		AcceptableIntervals: o.AcceptableIntervals,
+		
+		ReviewNote: o.ReviewNote,
 		
 		Metadata: o.Metadata,
 		Alias:    (Alias)(o),
@@ -147,6 +154,11 @@ func (o *Updateshifttradejobrequest) UnmarshalJSON(b []byte) error {
 	if AcceptableIntervals, ok := UpdateshifttradejobrequestMap["acceptableIntervals"].(map[string]interface{}); ok {
 		AcceptableIntervalsString, _ := json.Marshal(AcceptableIntervals)
 		json.Unmarshal(AcceptableIntervalsString, &o.AcceptableIntervals)
+	}
+	
+	if ReviewNote, ok := UpdateshifttradejobrequestMap["reviewNote"].(map[string]interface{}); ok {
+		ReviewNoteString, _ := json.Marshal(ReviewNote)
+		json.Unmarshal(ReviewNoteString, &o.ReviewNote)
 	}
 	
 	if Metadata, ok := UpdateshifttradejobrequestMap["metadata"].(map[string]interface{}); ok {

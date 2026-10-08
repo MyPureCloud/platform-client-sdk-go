@@ -23,6 +23,9 @@ type Addshifttradejobrequest struct {
 
 	// ExpirationDate - When this shift trade will expire. Date time is represented as an ISO-8601 string
 	ExpirationDate *time.Time `json:"expirationDate,omitempty"`
+
+	// ReviewNote - Optional note from the initiating user for shift trade review
+	ReviewNote *string `json:"reviewNote,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -103,6 +106,8 @@ func (o Addshifttradejobrequest) MarshalJSON() ([]byte, error) {
 		Target *Shifttradetargetrequestitem `json:"target,omitempty"`
 		
 		ExpirationDate *string `json:"expirationDate,omitempty"`
+		
+		ReviewNote *string `json:"reviewNote,omitempty"`
 		Alias
 	}{ 
 		InitiatingShift: o.InitiatingShift,
@@ -112,6 +117,8 @@ func (o Addshifttradejobrequest) MarshalJSON() ([]byte, error) {
 		Target: o.Target,
 		
 		ExpirationDate: ExpirationDate,
+		
+		ReviewNote: o.ReviewNote,
 		Alias:    (Alias)(o),
 	})
 }
@@ -143,6 +150,10 @@ func (o *Addshifttradejobrequest) UnmarshalJSON(b []byte) error {
 		o.ExpirationDate = &ExpirationDate
 	}
 	
+	if ReviewNote, ok := AddshifttradejobrequestMap["reviewNote"].(string); ok {
+		o.ReviewNote = &ReviewNote
+	}
+    
 
 	return nil
 }

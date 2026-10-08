@@ -14,6 +14,9 @@ type Agentupdatealternativeshifttraderequest struct {
 	// State - The new state of this alternative shift trade
 	State *string `json:"state,omitempty"`
 
+	// ReviewNote - Optional note for supervisors to review during alternative shift trade approval
+	ReviewNote *string `json:"reviewNote,omitempty"`
+
 	// Metadata - Version metadata for this alternative shift trade
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 }
@@ -83,10 +86,14 @@ func (o Agentupdatealternativeshifttraderequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		State *string `json:"state,omitempty"`
 		
+		ReviewNote *string `json:"reviewNote,omitempty"`
+		
 		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 		Alias
 	}{ 
 		State: o.State,
+		
+		ReviewNote: o.ReviewNote,
 		
 		Metadata: o.Metadata,
 		Alias:    (Alias)(o),
@@ -102,6 +109,10 @@ func (o *Agentupdatealternativeshifttraderequest) UnmarshalJSON(b []byte) error 
 	
 	if State, ok := AgentupdatealternativeshifttraderequestMap["state"].(string); ok {
 		o.State = &State
+	}
+    
+	if ReviewNote, ok := AgentupdatealternativeshifttraderequestMap["reviewNote"].(string); ok {
+		o.ReviewNote = &ReviewNote
 	}
     
 	if Metadata, ok := AgentupdatealternativeshifttraderequestMap["metadata"].(map[string]interface{}); ok {

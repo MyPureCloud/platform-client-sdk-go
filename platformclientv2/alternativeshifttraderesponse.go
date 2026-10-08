@@ -39,6 +39,9 @@ type Alternativeshifttraderesponse struct {
 	// ExpirationDate - The date when the trade will expire in ISO-8601 format. The trade cannot be approved after expiration
 	ExpirationDate *time.Time `json:"expirationDate,omitempty"`
 
+	// ReviewNote - Optional note from the initiating user for shift trade review
+	ReviewNote *string `json:"reviewNote,omitempty"`
+
 	// State - The state of this alternative shift trade
 	State *string `json:"state,omitempty"`
 
@@ -176,6 +179,8 @@ func (o Alternativeshifttraderesponse) MarshalJSON() ([]byte, error) {
 		
 		ExpirationDate *string `json:"expirationDate,omitempty"`
 		
+		ReviewNote *string `json:"reviewNote,omitempty"`
+		
 		State *string `json:"state,omitempty"`
 		
 		ProcessingStatus *string `json:"processingStatus,omitempty"`
@@ -210,6 +215,8 @@ func (o Alternativeshifttraderesponse) MarshalJSON() ([]byte, error) {
 		WeekDate: WeekDate,
 		
 		ExpirationDate: ExpirationDate,
+		
+		ReviewNote: o.ReviewNote,
 		
 		State: o.State,
 		
@@ -280,6 +287,10 @@ func (o *Alternativeshifttraderesponse) UnmarshalJSON(b []byte) error {
 		o.ExpirationDate = &ExpirationDate
 	}
 	
+	if ReviewNote, ok := AlternativeshifttraderesponseMap["reviewNote"].(string); ok {
+		o.ReviewNote = &ReviewNote
+	}
+    
 	if State, ok := AlternativeshifttraderesponseMap["state"].(string); ok {
 		o.State = &State
 	}

@@ -29,13 +29,13 @@ type Updateuser struct {
 	// PrimaryContactInfo - The address(s) used for primary contact. Updates to the corresponding address in the addresses list will be reflected here.
 	PrimaryContactInfo *[]Contact `json:"primaryContactInfo,omitempty"`
 
-	// Addresses - Email address, phone number, and/or extension for this user. One entry is allowed per media type
+	// Addresses - Email address, phone number, and/or extension for this user. One entry is allowed per media type. The PRIMARY email address cannot be changed through this field; submitting a modified value for the PRIMARY entry returns a 400 error.
 	Addresses *[]Contact `json:"addresses,omitempty"`
 
 	// Title
 	Title *string `json:"title,omitempty"`
 
-	// Username
+	// Username - This value is ignored; the username cannot be changed through this endpoint.
 	Username *string `json:"username,omitempty"`
 
 	// PreferredName - Preferred full name of agent

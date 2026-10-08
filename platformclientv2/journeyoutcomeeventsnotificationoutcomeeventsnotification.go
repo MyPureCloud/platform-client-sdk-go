@@ -36,9 +36,6 @@ type Journeyoutcomeeventsnotificationoutcomeeventsnotification struct {
 	// EventType
 	EventType *string `json:"eventType,omitempty"`
 
-	// OutcomeAchievedEvent
-	OutcomeAchievedEvent *Journeyoutcomeeventsnotificationoutcomeachievedmessage `json:"outcomeAchievedEvent,omitempty"`
-
 	// OutcomeAttributionEventMessage
 	OutcomeAttributionEventMessage *Journeyoutcomeeventsnotificationoutcomeattributionmessage `json:"outcomeAttributionEventMessage,omitempty"`
 }
@@ -130,8 +127,6 @@ func (o Journeyoutcomeeventsnotificationoutcomeeventsnotification) MarshalJSON()
 		
 		EventType *string `json:"eventType,omitempty"`
 		
-		OutcomeAchievedEvent *Journeyoutcomeeventsnotificationoutcomeachievedmessage `json:"outcomeAchievedEvent,omitempty"`
-		
 		OutcomeAttributionEventMessage *Journeyoutcomeeventsnotificationoutcomeattributionmessage `json:"outcomeAttributionEventMessage,omitempty"`
 		Alias
 	}{ 
@@ -150,8 +145,6 @@ func (o Journeyoutcomeeventsnotificationoutcomeeventsnotification) MarshalJSON()
 		Session: o.Session,
 		
 		EventType: o.EventType,
-		
-		OutcomeAchievedEvent: o.OutcomeAchievedEvent,
 		
 		OutcomeAttributionEventMessage: o.OutcomeAttributionEventMessage,
 		Alias:    (Alias)(o),
@@ -200,11 +193,6 @@ func (o *Journeyoutcomeeventsnotificationoutcomeeventsnotification) UnmarshalJSO
 		o.EventType = &EventType
 	}
     
-	if OutcomeAchievedEvent, ok := JourneyoutcomeeventsnotificationoutcomeeventsnotificationMap["outcomeAchievedEvent"].(map[string]interface{}); ok {
-		OutcomeAchievedEventString, _ := json.Marshal(OutcomeAchievedEvent)
-		json.Unmarshal(OutcomeAchievedEventString, &o.OutcomeAchievedEvent)
-	}
-	
 	if OutcomeAttributionEventMessage, ok := JourneyoutcomeeventsnotificationoutcomeeventsnotificationMap["outcomeAttributionEventMessage"].(map[string]interface{}); ok {
 		OutcomeAttributionEventMessageString, _ := json.Marshal(OutcomeAttributionEventMessage)
 		json.Unmarshal(OutcomeAttributionEventMessageString, &o.OutcomeAttributionEventMessage)

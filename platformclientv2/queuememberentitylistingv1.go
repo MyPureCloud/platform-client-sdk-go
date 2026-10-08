@@ -23,14 +23,14 @@ type Queuememberentitylistingv1 struct {
 	// Total
 	Total *int `json:"total,omitempty"`
 
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
+
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
-
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
 
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
@@ -113,11 +113,11 @@ func (o Queuememberentitylistingv1) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
+		LastUri *string `json:"lastUri,omitempty"`
+		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		
-		LastUri *string `json:"lastUri,omitempty"`
 		
 		NextUri *string `json:"nextUri,omitempty"`
 		
@@ -134,11 +134,11 @@ func (o Queuememberentitylistingv1) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
+		LastUri: o.LastUri,
+		
 		FirstUri: o.FirstUri,
 		
 		SelfUri: o.SelfUri,
-		
-		LastUri: o.LastUri,
 		
 		NextUri: o.NextUri,
 		
@@ -176,16 +176,16 @@ func (o *Queuememberentitylistingv1) UnmarshalJSON(b []byte) error {
 		o.Total = &TotalInt
 	}
 	
+	if LastUri, ok := Queuememberentitylistingv1Map["lastUri"].(string); ok {
+		o.LastUri = &LastUri
+	}
+    
 	if FirstUri, ok := Queuememberentitylistingv1Map["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
     
 	if SelfUri, ok := Queuememberentitylistingv1Map["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
-	}
-    
-	if LastUri, ok := Queuememberentitylistingv1Map["lastUri"].(string); ok {
-		o.LastUri = &LastUri
 	}
     
 	if NextUri, ok := Queuememberentitylistingv1Map["nextUri"].(string); ok {

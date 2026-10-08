@@ -28,6 +28,9 @@ type Guidesessionturnresponse struct {
 
 	// Invocations - The invocations for this turn.
 	Invocations *[]Guidesessionturninvocationresponse `json:"invocations,omitempty"`
+
+	// Context - The context for this turn, including conversation custom attribute updates.
+	Context *Guidesessionturnresponsecontext `json:"context,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -104,6 +107,8 @@ func (o Guidesessionturnresponse) MarshalJSON() ([]byte, error) {
 		InvocationId *string `json:"invocationId,omitempty"`
 		
 		Invocations *[]Guidesessionturninvocationresponse `json:"invocations,omitempty"`
+		
+		Context *Guidesessionturnresponsecontext `json:"context,omitempty"`
 		Alias
 	}{ 
 		Response: o.Response,
@@ -117,6 +122,8 @@ func (o Guidesessionturnresponse) MarshalJSON() ([]byte, error) {
 		InvocationId: o.InvocationId,
 		
 		Invocations: o.Invocations,
+		
+		Context: o.Context,
 		Alias:    (Alias)(o),
 	})
 }
@@ -153,6 +160,11 @@ func (o *Guidesessionturnresponse) UnmarshalJSON(b []byte) error {
 	if Invocations, ok := GuidesessionturnresponseMap["invocations"].([]interface{}); ok {
 		InvocationsString, _ := json.Marshal(Invocations)
 		json.Unmarshal(InvocationsString, &o.Invocations)
+	}
+	
+	if Context, ok := GuidesessionturnresponseMap["context"].(map[string]interface{}); ok {
+		ContextString, _ := json.Marshal(Context)
+		json.Unmarshal(ContextString, &o.Context)
 	}
 	
 

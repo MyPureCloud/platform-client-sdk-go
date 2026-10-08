@@ -39,9 +39,6 @@ type Journeyappeventsnotificationappeventsnotification struct {
 	// AppEvent
 	AppEvent *Journeyappeventsnotificationappmessage `json:"appEvent,omitempty"`
 
-	// OutcomeAchievedEvent
-	OutcomeAchievedEvent *Journeyappeventsnotificationoutcomeachievedmessage `json:"outcomeAchievedEvent,omitempty"`
-
 	// SegmentAssignmentEvent
 	SegmentAssignmentEvent *Journeyappeventsnotificationsegmentassignmentmessage `json:"segmentAssignmentEvent,omitempty"`
 
@@ -138,8 +135,6 @@ func (o Journeyappeventsnotificationappeventsnotification) MarshalJSON() ([]byte
 		
 		AppEvent *Journeyappeventsnotificationappmessage `json:"appEvent,omitempty"`
 		
-		OutcomeAchievedEvent *Journeyappeventsnotificationoutcomeachievedmessage `json:"outcomeAchievedEvent,omitempty"`
-		
 		SegmentAssignmentEvent *Journeyappeventsnotificationsegmentassignmentmessage `json:"segmentAssignmentEvent,omitempty"`
 		
 		WebActionEvent *Journeyappeventsnotificationwebactionmessage `json:"webActionEvent,omitempty"`
@@ -162,8 +157,6 @@ func (o Journeyappeventsnotificationappeventsnotification) MarshalJSON() ([]byte
 		EventType: o.EventType,
 		
 		AppEvent: o.AppEvent,
-		
-		OutcomeAchievedEvent: o.OutcomeAchievedEvent,
 		
 		SegmentAssignmentEvent: o.SegmentAssignmentEvent,
 		
@@ -217,11 +210,6 @@ func (o *Journeyappeventsnotificationappeventsnotification) UnmarshalJSON(b []by
 	if AppEvent, ok := JourneyappeventsnotificationappeventsnotificationMap["appEvent"].(map[string]interface{}); ok {
 		AppEventString, _ := json.Marshal(AppEvent)
 		json.Unmarshal(AppEventString, &o.AppEvent)
-	}
-	
-	if OutcomeAchievedEvent, ok := JourneyappeventsnotificationappeventsnotificationMap["outcomeAchievedEvent"].(map[string]interface{}); ok {
-		OutcomeAchievedEventString, _ := json.Marshal(OutcomeAchievedEvent)
-		json.Unmarshal(OutcomeAchievedEventString, &o.OutcomeAchievedEvent)
 	}
 	
 	if SegmentAssignmentEvent, ok := JourneyappeventsnotificationappeventsnotificationMap["segmentAssignmentEvent"].(map[string]interface{}); ok {

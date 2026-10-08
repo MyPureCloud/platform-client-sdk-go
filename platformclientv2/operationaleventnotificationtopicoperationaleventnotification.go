@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -50,6 +51,12 @@ type Operationaleventnotificationtopicoperationaleventnotification struct {
 	// ExternalContactId
 	ExternalContactId *string `json:"externalContactId,omitempty"`
 
+	// EntityModifiedDate
+	EntityModifiedDate *time.Time `json:"entityModifiedDate,omitempty"`
+
+	// EntityModifiedBy
+	EntityModifiedBy *string `json:"entityModifiedBy,omitempty"`
+
 	// Timestamp
 	Timestamp *int `json:"timestamp,omitempty"`
 }
@@ -83,7 +90,7 @@ func (o Operationaleventnotificationtopicoperationaleventnotification) MarshalJS
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
+		dateTimeFields := []string{ "EntityModifiedDate", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -116,6 +123,14 @@ func (o Operationaleventnotificationtopicoperationaleventnotification) MarshalJS
 	_  = timeutil.Timedelta{}
 	type Alias Operationaleventnotificationtopicoperationaleventnotification
 	
+	EntityModifiedDate := new(string)
+	if o.EntityModifiedDate != nil {
+		
+		*EntityModifiedDate = timeutil.Strftime(o.EntityModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		EntityModifiedDate = nil
+	}
+	
 	return json.Marshal(&struct { 
 		EventEntity *Operationaleventnotificationtopicevententity `json:"eventEntity,omitempty"`
 		
@@ -142,6 +157,10 @@ func (o Operationaleventnotificationtopicoperationaleventnotification) MarshalJS
 		PhoneNumber *string `json:"phoneNumber,omitempty"`
 		
 		ExternalContactId *string `json:"externalContactId,omitempty"`
+		
+		EntityModifiedDate *string `json:"entityModifiedDate,omitempty"`
+		
+		EntityModifiedBy *string `json:"entityModifiedBy,omitempty"`
 		
 		Timestamp *int `json:"timestamp,omitempty"`
 		Alias
@@ -171,6 +190,10 @@ func (o Operationaleventnotificationtopicoperationaleventnotification) MarshalJS
 		PhoneNumber: o.PhoneNumber,
 		
 		ExternalContactId: o.ExternalContactId,
+		
+		EntityModifiedDate: EntityModifiedDate,
+		
+		EntityModifiedBy: o.EntityModifiedBy,
 		
 		Timestamp: o.Timestamp,
 		Alias:    (Alias)(o),
@@ -235,6 +258,15 @@ func (o *Operationaleventnotificationtopicoperationaleventnotification) Unmarsha
     
 	if ExternalContactId, ok := OperationaleventnotificationtopicoperationaleventnotificationMap["externalContactId"].(string); ok {
 		o.ExternalContactId = &ExternalContactId
+	}
+    
+	if entityModifiedDateString, ok := OperationaleventnotificationtopicoperationaleventnotificationMap["entityModifiedDate"].(string); ok {
+		EntityModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", entityModifiedDateString)
+		o.EntityModifiedDate = &EntityModifiedDate
+	}
+	
+	if EntityModifiedBy, ok := OperationaleventnotificationtopicoperationaleventnotificationMap["entityModifiedBy"].(string); ok {
+		o.EntityModifiedBy = &EntityModifiedBy
 	}
     
 	if Timestamp, ok := OperationaleventnotificationtopicoperationaleventnotificationMap["timestamp"].(float64); ok {
