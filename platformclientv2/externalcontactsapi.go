@@ -2420,8 +2420,6 @@ func (a ExternalContactsApi) GetExternalcontactsExternalsources(cursor string, l
 // GetExternalcontactsGraphsClusterscan invokes GET /api/v2/externalcontacts/graphs/clusterscans/{scanId}
 //
 // Returns a single cluster scan
-//
-// Preview: GetExternalcontactsGraphsClusterscan is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ExternalContactsApi) GetExternalcontactsGraphsClusterscan(scanId string, expand []string) (*Clusterscan, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2506,8 +2504,6 @@ func (a ExternalContactsApi) GetExternalcontactsGraphsClusterscan(scanId string,
 // GetExternalcontactsGraphsClusterscanCluster invokes GET /api/v2/externalcontacts/graphs/clusterscans/{scanId}/clusters/{clusterId}
 //
 // Returns a single cluster found by a scan
-//
-// Preview: GetExternalcontactsGraphsClusterscanCluster is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ExternalContactsApi) GetExternalcontactsGraphsClusterscanCluster(scanId string, clusterId string) (*Cluster, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2596,8 +2592,6 @@ func (a ExternalContactsApi) GetExternalcontactsGraphsClusterscanCluster(scanId 
 // GetExternalcontactsGraphsClusterscanClusters invokes GET /api/v2/externalcontacts/graphs/clusterscans/{scanId}/clusters
 //
 // Returns a list of clusters found by a scan
-//
-// Preview: GetExternalcontactsGraphsClusterscanClusters is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ExternalContactsApi) GetExternalcontactsGraphsClusterscanClusters(scanId string, limit int, cursor string, divisionIds []string, mergeInfoStatus string) (*Clusterlist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2688,8 +2682,6 @@ func (a ExternalContactsApi) GetExternalcontactsGraphsClusterscanClusters(scanId
 // GetExternalcontactsGraphsClusterscanStatistics invokes GET /api/v2/externalcontacts/graphs/clusterscans/{scanId}/statistics
 //
 // Returns the statistics about a single cluster scan
-//
-// Preview: GetExternalcontactsGraphsClusterscanStatistics is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ExternalContactsApi) GetExternalcontactsGraphsClusterscanStatistics(scanId string) (*Clusterscanstatistics, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2772,8 +2764,6 @@ func (a ExternalContactsApi) GetExternalcontactsGraphsClusterscanStatistics(scan
 // GetExternalcontactsGraphsClusterscans invokes GET /api/v2/externalcontacts/graphs/clusterscans
 //
 // Returns a list of cluster scans
-//
-// Preview: GetExternalcontactsGraphsClusterscans is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ExternalContactsApi) GetExternalcontactsGraphsClusterscans(limit int, cursor string, expand []string) (*Clusterscanlist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2856,13 +2846,11 @@ func (a ExternalContactsApi) GetExternalcontactsGraphsClusterscans(limit int, cu
 // GetExternalcontactsGraphsClusterscansLatest invokes GET /api/v2/externalcontacts/graphs/clusterscans/latest
 //
 // Returns the latest cluster scan
-//
-// Preview: GetExternalcontactsGraphsClusterscansLatest is a preview method and is subject to both breaking and non-breaking changes at any time without notice
-func (a ExternalContactsApi) GetExternalcontactsGraphsClusterscansLatest(expand []string) (*Clusterscan, *APIResponse, error) {
+func (a ExternalContactsApi) GetExternalcontactsGraphsClusterscansLatest(expand []string) (*Latestclusterscan, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/graphs/clusterscans/latest"
-	defaultReturn := new(Clusterscan)
+	defaultReturn := new(Latestclusterscan)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -2917,14 +2905,14 @@ func (a ExternalContactsApi) GetExternalcontactsGraphsClusterscansLatest(expand 
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Clusterscan
+	var successPayload *Latestclusterscan
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
-		if "Clusterscan" == "string" {
+		if "Latestclusterscan" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -2936,8 +2924,6 @@ func (a ExternalContactsApi) GetExternalcontactsGraphsClusterscansLatest(expand 
 // GetExternalcontactsGraphsClusterscansLatestStatistics invokes GET /api/v2/externalcontacts/graphs/clusterscans/latest/statistics
 //
 // Returns the statistics about the latest cluster scan
-//
-// Preview: GetExternalcontactsGraphsClusterscansLatestStatistics is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ExternalContactsApi) GetExternalcontactsGraphsClusterscansLatestStatistics() (*Clusterscanstatistics, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -3014,8 +3000,6 @@ func (a ExternalContactsApi) GetExternalcontactsGraphsClusterscansLatestStatisti
 // GetExternalcontactsGraphsSettings invokes GET /api/v2/externalcontacts/graphs/settings
 //
 // Returns the org-wide settings for ExternalContact graph operations
-//
-// Preview: GetExternalcontactsGraphsSettings is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ExternalContactsApi) GetExternalcontactsGraphsSettings() (*Graphsettings, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -11423,8 +11407,6 @@ func (a ExternalContactsApi) PutExternalcontactsExternalsource(externalSourceId 
 // PutExternalcontactsGraphsClusterscanClusterMerge invokes PUT /api/v2/externalcontacts/graphs/clusterscans/{scanId}/clusters/{clusterId}/merge
 //
 // Merge a single cluster found by a scan
-//
-// Preview: PutExternalcontactsGraphsClusterscanClusterMerge is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ExternalContactsApi) PutExternalcontactsGraphsClusterscanClusterMerge(scanId string, clusterId string) (*Cluster, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -11513,8 +11495,6 @@ func (a ExternalContactsApi) PutExternalcontactsGraphsClusterscanClusterMerge(sc
 // PutExternalcontactsGraphsSettings invokes PUT /api/v2/externalcontacts/graphs/settings
 //
 // Updates the org-wide settings for ExternalContact graph operations
-//
-// Preview: PutExternalcontactsGraphsSettings is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ExternalContactsApi) PutExternalcontactsGraphsSettings(body Graphsettings) (*Graphsettings, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

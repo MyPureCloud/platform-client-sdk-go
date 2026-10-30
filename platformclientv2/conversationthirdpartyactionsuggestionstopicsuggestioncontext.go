@@ -26,6 +26,9 @@ type Conversationthirdpartyactionsuggestionstopicsuggestioncontext struct {
 	// AssistantId
 	AssistantId *string `json:"assistantId,omitempty"`
 
+	// VariationId
+	VariationId *string `json:"variationId,omitempty"`
+
 	// UtteranceId
 	UtteranceId *string `json:"utteranceId,omitempty"`
 
@@ -118,6 +121,8 @@ func (o Conversationthirdpartyactionsuggestionstopicsuggestioncontext) MarshalJS
 		
 		AssistantId *string `json:"assistantId,omitempty"`
 		
+		VariationId *string `json:"variationId,omitempty"`
+		
 		UtteranceId *string `json:"utteranceId,omitempty"`
 		
 		MessageId *string `json:"messageId,omitempty"`
@@ -140,6 +145,8 @@ func (o Conversationthirdpartyactionsuggestionstopicsuggestioncontext) MarshalJS
 		ExternalContactId: o.ExternalContactId,
 		
 		AssistantId: o.AssistantId,
+		
+		VariationId: o.VariationId,
 		
 		UtteranceId: o.UtteranceId,
 		
@@ -181,6 +188,10 @@ func (o *Conversationthirdpartyactionsuggestionstopicsuggestioncontext) Unmarsha
     
 	if AssistantId, ok := ConversationthirdpartyactionsuggestionstopicsuggestioncontextMap["assistantId"].(string); ok {
 		o.AssistantId = &AssistantId
+	}
+    
+	if VariationId, ok := ConversationthirdpartyactionsuggestionstopicsuggestioncontextMap["variationId"].(string); ok {
+		o.VariationId = &VariationId
 	}
     
 	if UtteranceId, ok := ConversationthirdpartyactionsuggestionstopicsuggestioncontextMap["utteranceId"].(string); ok {

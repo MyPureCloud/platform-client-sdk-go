@@ -51,6 +51,12 @@ type Operationaleventnotificationtopicoperationaleventnotification struct {
 	// ExternalContactId
 	ExternalContactId *string `json:"externalContactId,omitempty"`
 
+	// ReferenceId
+	ReferenceId *string `json:"referenceId,omitempty"`
+
+	// ReferenceType
+	ReferenceType *string `json:"referenceType,omitempty"`
+
 	// EntityModifiedDate
 	EntityModifiedDate *time.Time `json:"entityModifiedDate,omitempty"`
 
@@ -158,6 +164,10 @@ func (o Operationaleventnotificationtopicoperationaleventnotification) MarshalJS
 		
 		ExternalContactId *string `json:"externalContactId,omitempty"`
 		
+		ReferenceId *string `json:"referenceId,omitempty"`
+		
+		ReferenceType *string `json:"referenceType,omitempty"`
+		
 		EntityModifiedDate *string `json:"entityModifiedDate,omitempty"`
 		
 		EntityModifiedBy *string `json:"entityModifiedBy,omitempty"`
@@ -190,6 +200,10 @@ func (o Operationaleventnotificationtopicoperationaleventnotification) MarshalJS
 		PhoneNumber: o.PhoneNumber,
 		
 		ExternalContactId: o.ExternalContactId,
+		
+		ReferenceId: o.ReferenceId,
+		
+		ReferenceType: o.ReferenceType,
 		
 		EntityModifiedDate: EntityModifiedDate,
 		
@@ -258,6 +272,14 @@ func (o *Operationaleventnotificationtopicoperationaleventnotification) Unmarsha
     
 	if ExternalContactId, ok := OperationaleventnotificationtopicoperationaleventnotificationMap["externalContactId"].(string); ok {
 		o.ExternalContactId = &ExternalContactId
+	}
+    
+	if ReferenceId, ok := OperationaleventnotificationtopicoperationaleventnotificationMap["referenceId"].(string); ok {
+		o.ReferenceId = &ReferenceId
+	}
+    
+	if ReferenceType, ok := OperationaleventnotificationtopicoperationaleventnotificationMap["referenceType"].(string); ok {
+		o.ReferenceType = &ReferenceType
 	}
     
 	if entityModifiedDateString, ok := OperationaleventnotificationtopicoperationaleventnotificationMap["entityModifiedDate"].(string); ok {

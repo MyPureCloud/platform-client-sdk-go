@@ -41,6 +41,15 @@ type Reschedulingoptionsrunresponse struct {
 
 	// DoNotChangeManuallyEditedShifts - Whether manually edited shifts are allowed to be changed
 	DoNotChangeManuallyEditedShifts *bool `json:"doNotChangeManuallyEditedShifts,omitempty"`
+
+	// ActivitySmoothingType - The activity smoothing type used for this reschedule run
+	ActivitySmoothingType *string `json:"activitySmoothingType,omitempty"`
+
+	// InduceScheduleVariability - Whether schedule variability was induced for this reschedule run
+	InduceScheduleVariability *bool `json:"induceScheduleVariability,omitempty"`
+
+	// UseUnavailableTimesSnapshot - Whether original unavailable times from schedule generation were used instead of the latest saved unavailable times
+	UseUnavailableTimesSnapshot *bool `json:"useUnavailableTimesSnapshot,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -141,6 +150,12 @@ func (o Reschedulingoptionsrunresponse) MarshalJSON() ([]byte, error) {
 		DoNotChangeShiftStartTimes *bool `json:"doNotChangeShiftStartTimes,omitempty"`
 		
 		DoNotChangeManuallyEditedShifts *bool `json:"doNotChangeManuallyEditedShifts,omitempty"`
+		
+		ActivitySmoothingType *string `json:"activitySmoothingType,omitempty"`
+		
+		InduceScheduleVariability *bool `json:"induceScheduleVariability,omitempty"`
+		
+		UseUnavailableTimesSnapshot *bool `json:"useUnavailableTimesSnapshot,omitempty"`
 		Alias
 	}{ 
 		ExistingSchedule: o.ExistingSchedule,
@@ -162,6 +177,12 @@ func (o Reschedulingoptionsrunresponse) MarshalJSON() ([]byte, error) {
 		DoNotChangeShiftStartTimes: o.DoNotChangeShiftStartTimes,
 		
 		DoNotChangeManuallyEditedShifts: o.DoNotChangeManuallyEditedShifts,
+		
+		ActivitySmoothingType: o.ActivitySmoothingType,
+		
+		InduceScheduleVariability: o.InduceScheduleVariability,
+		
+		UseUnavailableTimesSnapshot: o.UseUnavailableTimesSnapshot,
 		Alias:    (Alias)(o),
 	})
 }
@@ -217,6 +238,18 @@ func (o *Reschedulingoptionsrunresponse) UnmarshalJSON(b []byte) error {
     
 	if DoNotChangeManuallyEditedShifts, ok := ReschedulingoptionsrunresponseMap["doNotChangeManuallyEditedShifts"].(bool); ok {
 		o.DoNotChangeManuallyEditedShifts = &DoNotChangeManuallyEditedShifts
+	}
+    
+	if ActivitySmoothingType, ok := ReschedulingoptionsrunresponseMap["activitySmoothingType"].(string); ok {
+		o.ActivitySmoothingType = &ActivitySmoothingType
+	}
+    
+	if InduceScheduleVariability, ok := ReschedulingoptionsrunresponseMap["induceScheduleVariability"].(bool); ok {
+		o.InduceScheduleVariability = &InduceScheduleVariability
+	}
+    
+	if UseUnavailableTimesSnapshot, ok := ReschedulingoptionsrunresponseMap["useUnavailableTimesSnapshot"].(bool); ok {
+		o.UseUnavailableTimesSnapshot = &UseUnavailableTimesSnapshot
 	}
     
 

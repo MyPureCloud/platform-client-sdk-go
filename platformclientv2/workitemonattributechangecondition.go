@@ -14,17 +14,14 @@ type Workitemonattributechangecondition struct {
 	// Attribute - The name of the workitem attribute whose change will be evaluated as part of the rule.
 	Attribute *string `json:"attribute,omitempty"`
 
-	// NewValue - The new value of the attribute. If the attribute is updated to this value this part of the condition will be met. Required for exact-match conditions (when operator is not set).
+	// NewValue - The value the attribute's new value is compared against. Compared for equality unless an operator is supplied. Null matches the attribute having been cleared, on clearable attributes.
 	NewValue *string `json:"newValue,omitempty"`
 
-	// OldValue - The old value of the attribute. If the attribute was updated from this value this part of the condition will be met.
+	// OldValue - The value the attribute is transitioning from. Not permitted for the priority attribute. Omitted or null matches any previous value.
 	OldValue *string `json:"oldValue,omitempty"`
 
-	// Operator - The comparison operator used to evaluate the priority attribute against the value. Only supported for the priority attribute.
+	// Operator - How the attribute's new value is compared against newValue. Required for the priority attribute; not permitted otherwise.
 	Operator *string `json:"operator,omitempty"`
-
-	// Value - The numeric value compared against the priority attribute using the operator. Required when operator is set. Only supported for the priority attribute.
-	Value *int `json:"value,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -97,8 +94,6 @@ func (o Workitemonattributechangecondition) MarshalJSON() ([]byte, error) {
 		OldValue *string `json:"oldValue,omitempty"`
 		
 		Operator *string `json:"operator,omitempty"`
-		
-		Value *int `json:"value,omitempty"`
 		Alias
 	}{ 
 		Attribute: o.Attribute,
@@ -108,8 +103,6 @@ func (o Workitemonattributechangecondition) MarshalJSON() ([]byte, error) {
 		OldValue: o.OldValue,
 		
 		Operator: o.Operator,
-		
-		Value: o.Value,
 		Alias:    (Alias)(o),
 	})
 }
@@ -137,11 +130,6 @@ func (o *Workitemonattributechangecondition) UnmarshalJSON(b []byte) error {
 		o.Operator = &Operator
 	}
     
-	if Value, ok := WorkitemonattributechangeconditionMap["value"].(float64); ok {
-		ValueInt := int(Value)
-		o.Value = &ValueInt
-	}
-	
 
 	return nil
 }

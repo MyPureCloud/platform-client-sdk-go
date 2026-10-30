@@ -7,43 +7,31 @@ import (
 	"strings"
 )
 
-// Directoryuserdeviceslisting
-type Directoryuserdeviceslisting struct { 
+// Selfscheduleoffersjob
+type Selfscheduleoffersjob struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Entities
-	Entities *[]Userdevice `json:"entities,omitempty"`
+	// Id - The globally unique identifier for the object.
+	Id *string `json:"id,omitempty"`
 
-	// PageSize
-	PageSize *int `json:"pageSize,omitempty"`
+	// Status - The status of the job
+	Status *string `json:"status,omitempty"`
 
-	// PageNumber
-	PageNumber *int `json:"pageNumber,omitempty"`
+	// DownloadUrl - URL from which to fetch results for requests. Populated if status == ‘Complete'. The downloaded data will conform to the schema defined in downloadResultTemplate
+	DownloadUrl *string `json:"downloadUrl,omitempty"`
 
-	// Total
-	Total *int `json:"total,omitempty"`
+	// DownloadResultTemplate - Schema template for deserializing lookup offers results returned from the downloadUrl
+	DownloadResultTemplate *Selfscheduleoffersresulttemplate `json:"downloadResultTemplate,omitempty"`
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
+	// VarError - Any error information, only set if the status == 'Error'
+	VarError *Errorbody `json:"error,omitempty"`
 
-	// FirstUri
-	FirstUri *string `json:"firstUri,omitempty"`
-
-	// SelfUri
+	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
-
-	// NextUri
-	NextUri *string `json:"nextUri,omitempty"`
-
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
-
-	// PageCount
-	PageCount *int `json:"pageCount,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Directoryuserdeviceslisting) SetField(field string, fieldValue interface{}) {
+func (o *Selfscheduleoffersjob) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -64,7 +52,7 @@ func (o *Directoryuserdeviceslisting) SetField(field string, fieldValue interfac
 	o.SetFieldNames[field] = true
 }
 
-func (o Directoryuserdeviceslisting) MarshalJSON() ([]byte, error) {
+func (o Selfscheduleoffersjob) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -102,111 +90,76 @@ func (o Directoryuserdeviceslisting) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Directoryuserdeviceslisting
+	type Alias Selfscheduleoffersjob
 	
 	return json.Marshal(&struct { 
-		Entities *[]Userdevice `json:"entities,omitempty"`
+		Id *string `json:"id,omitempty"`
 		
-		PageSize *int `json:"pageSize,omitempty"`
+		Status *string `json:"status,omitempty"`
 		
-		PageNumber *int `json:"pageNumber,omitempty"`
+		DownloadUrl *string `json:"downloadUrl,omitempty"`
 		
-		Total *int `json:"total,omitempty"`
+		DownloadResultTemplate *Selfscheduleoffersresulttemplate `json:"downloadResultTemplate,omitempty"`
 		
-		LastUri *string `json:"lastUri,omitempty"`
-		
-		FirstUri *string `json:"firstUri,omitempty"`
+		VarError *Errorbody `json:"error,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		
-		NextUri *string `json:"nextUri,omitempty"`
-		
-		PreviousUri *string `json:"previousUri,omitempty"`
-		
-		PageCount *int `json:"pageCount,omitempty"`
 		Alias
 	}{ 
-		Entities: o.Entities,
+		Id: o.Id,
 		
-		PageSize: o.PageSize,
+		Status: o.Status,
 		
-		PageNumber: o.PageNumber,
+		DownloadUrl: o.DownloadUrl,
 		
-		Total: o.Total,
+		DownloadResultTemplate: o.DownloadResultTemplate,
 		
-		LastUri: o.LastUri,
-		
-		FirstUri: o.FirstUri,
+		VarError: o.VarError,
 		
 		SelfUri: o.SelfUri,
-		
-		NextUri: o.NextUri,
-		
-		PreviousUri: o.PreviousUri,
-		
-		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Directoryuserdeviceslisting) UnmarshalJSON(b []byte) error {
-	var DirectoryuserdeviceslistingMap map[string]interface{}
-	err := json.Unmarshal(b, &DirectoryuserdeviceslistingMap)
+func (o *Selfscheduleoffersjob) UnmarshalJSON(b []byte) error {
+	var SelfscheduleoffersjobMap map[string]interface{}
+	err := json.Unmarshal(b, &SelfscheduleoffersjobMap)
 	if err != nil {
 		return err
 	}
 	
-	if Entities, ok := DirectoryuserdeviceslistingMap["entities"].([]interface{}); ok {
-		EntitiesString, _ := json.Marshal(Entities)
-		json.Unmarshal(EntitiesString, &o.Entities)
-	}
-	
-	if PageSize, ok := DirectoryuserdeviceslistingMap["pageSize"].(float64); ok {
-		PageSizeInt := int(PageSize)
-		o.PageSize = &PageSizeInt
-	}
-	
-	if PageNumber, ok := DirectoryuserdeviceslistingMap["pageNumber"].(float64); ok {
-		PageNumberInt := int(PageNumber)
-		o.PageNumber = &PageNumberInt
-	}
-	
-	if Total, ok := DirectoryuserdeviceslistingMap["total"].(float64); ok {
-		TotalInt := int(Total)
-		o.Total = &TotalInt
-	}
-	
-	if LastUri, ok := DirectoryuserdeviceslistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
+	if Id, ok := SelfscheduleoffersjobMap["id"].(string); ok {
+		o.Id = &Id
 	}
     
-	if FirstUri, ok := DirectoryuserdeviceslistingMap["firstUri"].(string); ok {
-		o.FirstUri = &FirstUri
+	if Status, ok := SelfscheduleoffersjobMap["status"].(string); ok {
+		o.Status = &Status
 	}
     
-	if SelfUri, ok := DirectoryuserdeviceslistingMap["selfUri"].(string); ok {
+	if DownloadUrl, ok := SelfscheduleoffersjobMap["downloadUrl"].(string); ok {
+		o.DownloadUrl = &DownloadUrl
+	}
+    
+	if DownloadResultTemplate, ok := SelfscheduleoffersjobMap["downloadResultTemplate"].(map[string]interface{}); ok {
+		DownloadResultTemplateString, _ := json.Marshal(DownloadResultTemplate)
+		json.Unmarshal(DownloadResultTemplateString, &o.DownloadResultTemplate)
+	}
+	
+	if VarError, ok := SelfscheduleoffersjobMap["error"].(map[string]interface{}); ok {
+		VarErrorString, _ := json.Marshal(VarError)
+		json.Unmarshal(VarErrorString, &o.VarError)
+	}
+	
+	if SelfUri, ok := SelfscheduleoffersjobMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
     
-	if NextUri, ok := DirectoryuserdeviceslistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
-	}
-    
-	if PreviousUri, ok := DirectoryuserdeviceslistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
-	}
-    
-	if PageCount, ok := DirectoryuserdeviceslistingMap["pageCount"].(float64); ok {
-		PageCountInt := int(PageCount)
-		o.PageCount = &PageCountInt
-	}
-	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Directoryuserdeviceslisting) String() string {
+func (o *Selfscheduleoffersjob) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

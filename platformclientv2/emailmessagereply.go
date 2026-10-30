@@ -50,6 +50,9 @@ type Emailmessagereply struct {
 
 	// MaxEmailSizeBytes - Indicates the maximum allowed size for an email to be send via SMTP server, based on the email domain configuration
 	MaxEmailSizeBytes *int `json:"maxEmailSizeBytes,omitempty"`
+
+	// RecipientWarnings - The recipients that failed validation. Advisory only; recipient policy is enforced at send time.
+	RecipientWarnings *[]Recipientwarning `json:"recipientWarnings,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -148,6 +151,8 @@ func (o Emailmessagereply) MarshalJSON() ([]byte, error) {
 		EmailSizeBytes *int `json:"emailSizeBytes,omitempty"`
 		
 		MaxEmailSizeBytes *int `json:"maxEmailSizeBytes,omitempty"`
+		
+		RecipientWarnings *[]Recipientwarning `json:"recipientWarnings,omitempty"`
 		Alias
 	}{ 
 		To: o.To,
@@ -175,6 +180,8 @@ func (o Emailmessagereply) MarshalJSON() ([]byte, error) {
 		EmailSizeBytes: o.EmailSizeBytes,
 		
 		MaxEmailSizeBytes: o.MaxEmailSizeBytes,
+		
+		RecipientWarnings: o.RecipientWarnings,
 		Alias:    (Alias)(o),
 	})
 }
@@ -245,6 +252,11 @@ func (o *Emailmessagereply) UnmarshalJSON(b []byte) error {
 	if MaxEmailSizeBytes, ok := EmailmessagereplyMap["maxEmailSizeBytes"].(float64); ok {
 		MaxEmailSizeBytesInt := int(MaxEmailSizeBytes)
 		o.MaxEmailSizeBytes = &MaxEmailSizeBytesInt
+	}
+	
+	if RecipientWarnings, ok := EmailmessagereplyMap["recipientWarnings"].([]interface{}); ok {
+		RecipientWarningsString, _ := json.Marshal(RecipientWarnings)
+		json.Unmarshal(RecipientWarningsString, &o.RecipientWarnings)
 	}
 	
 

@@ -60,6 +60,9 @@ type Emailmessagepreview struct {
 	// MaxEmailSizeBytes - Indicates the maximum allowed size for an email to be send via SMTP server, based on the email domain configuration
 	MaxEmailSizeBytes *int `json:"maxEmailSizeBytes,omitempty"`
 
+	// RecipientWarnings - The recipients that failed validation. Advisory only; recipient policy is enforced at send time.
+	RecipientWarnings *[]Recipientwarning `json:"recipientWarnings,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -167,6 +170,8 @@ func (o Emailmessagepreview) MarshalJSON() ([]byte, error) {
 		
 		MaxEmailSizeBytes *int `json:"maxEmailSizeBytes,omitempty"`
 		
+		RecipientWarnings *[]Recipientwarning `json:"recipientWarnings,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -201,6 +206,8 @@ func (o Emailmessagepreview) MarshalJSON() ([]byte, error) {
 		EmailSizeBytes: o.EmailSizeBytes,
 		
 		MaxEmailSizeBytes: o.MaxEmailSizeBytes,
+		
+		RecipientWarnings: o.RecipientWarnings,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -285,6 +292,11 @@ func (o *Emailmessagepreview) UnmarshalJSON(b []byte) error {
 	if MaxEmailSizeBytes, ok := EmailmessagepreviewMap["maxEmailSizeBytes"].(float64); ok {
 		MaxEmailSizeBytesInt := int(MaxEmailSizeBytes)
 		o.MaxEmailSizeBytes = &MaxEmailSizeBytesInt
+	}
+	
+	if RecipientWarnings, ok := EmailmessagepreviewMap["recipientWarnings"].([]interface{}); ok {
+		RecipientWarningsString, _ := json.Marshal(RecipientWarnings)
+		json.Unmarshal(RecipientWarningsString, &o.RecipientWarnings)
 	}
 	
 	if SelfUri, ok := EmailmessagepreviewMap["selfUri"].(string); ok {

@@ -16,6 +16,9 @@ type Csvmappingentry struct {
 
 	// TargetField - Json path to map data to
 	TargetField *string `json:"targetField,omitempty"`
+
+	// ValueFormat - How the CSV cell value is interpreted at the target path. When omitted, the cell is treated as a string.
+	ValueFormat *string `json:"valueFormat,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Csvmappingentry) MarshalJSON() ([]byte, error) {
 		SourceField *string `json:"sourceField,omitempty"`
 		
 		TargetField *string `json:"targetField,omitempty"`
+		
+		ValueFormat *string `json:"valueFormat,omitempty"`
 		Alias
 	}{ 
 		SourceField: o.SourceField,
 		
 		TargetField: o.TargetField,
+		
+		ValueFormat: o.ValueFormat,
 		Alias:    (Alias)(o),
 	})
 }
@@ -106,6 +113,10 @@ func (o *Csvmappingentry) UnmarshalJSON(b []byte) error {
     
 	if TargetField, ok := CsvmappingentryMap["targetField"].(string); ok {
 		o.TargetField = &TargetField
+	}
+    
+	if ValueFormat, ok := CsvmappingentryMap["valueFormat"].(string); ok {
+		o.ValueFormat = &ValueFormat
 	}
     
 

@@ -14,8 +14,11 @@ type Workitemonattributechangeruleupdate struct {
 	// Name - The name of the rule.
 	Name *string `json:"name,omitempty"`
 
-	// Condition - The rules condition. If the condition criteria is met the rules action will be executed.
+	// Condition - The rules condition. If the condition criteria is met the rules action will be executed. Mutually exclusive with match; supplying either replaces the rule's existing match criteria in full.
 	Condition *Workitemonattributechangeconditionupdate `json:"condition,omitempty"`
+
+	// Match - Grouped match criteria combined with logical operators. Mutually exclusive with condition; the supplied object replaces the rule's existing match criteria in full.
+	Match *Workitemonattributechangematch `json:"match,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Workitemonattributechangeruleupdate) MarshalJSON() ([]byte, error) {
 		Name *string `json:"name,omitempty"`
 		
 		Condition *Workitemonattributechangeconditionupdate `json:"condition,omitempty"`
+		
+		Match *Workitemonattributechangematch `json:"match,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
 		
 		Condition: o.Condition,
+		
+		Match: o.Match,
 		Alias:    (Alias)(o),
 	})
 }
@@ -107,6 +114,11 @@ func (o *Workitemonattributechangeruleupdate) UnmarshalJSON(b []byte) error {
 	if Condition, ok := WorkitemonattributechangeruleupdateMap["condition"].(map[string]interface{}); ok {
 		ConditionString, _ := json.Marshal(Condition)
 		json.Unmarshal(ConditionString, &o.Condition)
+	}
+	
+	if Match, ok := WorkitemonattributechangeruleupdateMap["match"].(map[string]interface{}); ok {
+		MatchString, _ := json.Marshal(Match)
+		json.Unmarshal(MatchString, &o.Match)
 	}
 	
 

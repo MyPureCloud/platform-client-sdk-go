@@ -109,6 +109,18 @@ type Acdenddetaileventtopicacdendevent struct {
 
 	// FlowType
 	FlowType *string `json:"flowType,omitempty"`
+
+	// PreferredAgentIds
+	PreferredAgentIds *[]string `json:"preferredAgentIds,omitempty"`
+
+	// OutboundCampaignId
+	OutboundCampaignId *string `json:"outboundCampaignId,omitempty"`
+
+	// OutboundContactListId
+	OutboundContactListId *string `json:"outboundContactListId,omitempty"`
+
+	// OutboundContactId
+	OutboundContactId *string `json:"outboundContactId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -239,6 +251,14 @@ func (o Acdenddetaileventtopicacdendevent) MarshalJSON() ([]byte, error) {
 		UtilizationLabel *string `json:"utilizationLabel,omitempty"`
 		
 		FlowType *string `json:"flowType,omitempty"`
+		
+		PreferredAgentIds *[]string `json:"preferredAgentIds,omitempty"`
+		
+		OutboundCampaignId *string `json:"outboundCampaignId,omitempty"`
+		
+		OutboundContactListId *string `json:"outboundContactListId,omitempty"`
+		
+		OutboundContactId *string `json:"outboundContactId,omitempty"`
 		Alias
 	}{ 
 		EventTime: o.EventTime,
@@ -306,6 +326,14 @@ func (o Acdenddetaileventtopicacdendevent) MarshalJSON() ([]byte, error) {
 		UtilizationLabel: o.UtilizationLabel,
 		
 		FlowType: o.FlowType,
+		
+		PreferredAgentIds: o.PreferredAgentIds,
+		
+		OutboundCampaignId: o.OutboundCampaignId,
+		
+		OutboundContactListId: o.OutboundContactListId,
+		
+		OutboundContactId: o.OutboundContactId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -458,6 +486,23 @@ func (o *Acdenddetaileventtopicacdendevent) UnmarshalJSON(b []byte) error {
     
 	if FlowType, ok := AcdenddetaileventtopicacdendeventMap["flowType"].(string); ok {
 		o.FlowType = &FlowType
+	}
+    
+	if PreferredAgentIds, ok := AcdenddetaileventtopicacdendeventMap["preferredAgentIds"].([]interface{}); ok {
+		PreferredAgentIdsString, _ := json.Marshal(PreferredAgentIds)
+		json.Unmarshal(PreferredAgentIdsString, &o.PreferredAgentIds)
+	}
+	
+	if OutboundCampaignId, ok := AcdenddetaileventtopicacdendeventMap["outboundCampaignId"].(string); ok {
+		o.OutboundCampaignId = &OutboundCampaignId
+	}
+    
+	if OutboundContactListId, ok := AcdenddetaileventtopicacdendeventMap["outboundContactListId"].(string); ok {
+		o.OutboundContactListId = &OutboundContactListId
+	}
+    
+	if OutboundContactId, ok := AcdenddetaileventtopicacdendeventMap["outboundContactId"].(string); ok {
+		o.OutboundContactId = &OutboundContactId
 	}
     
 

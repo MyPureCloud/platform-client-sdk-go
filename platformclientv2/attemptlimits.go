@@ -42,6 +42,9 @@ type Attemptlimits struct {
 	// RecallEntries - Configuration for recall attempts.
 	RecallEntries *map[string]Recallentry `json:"recallEntries,omitempty"`
 
+	// PhoneTypeRecallEntries - Configuration for recall attempts per phone type
+	PhoneTypeRecallEntries *map[string]interface{} `json:"phoneTypeRecallEntries,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -145,6 +148,8 @@ func (o Attemptlimits) MarshalJSON() ([]byte, error) {
 		
 		RecallEntries *map[string]Recallentry `json:"recallEntries,omitempty"`
 		
+		PhoneTypeRecallEntries *map[string]interface{} `json:"phoneTypeRecallEntries,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -167,6 +172,8 @@ func (o Attemptlimits) MarshalJSON() ([]byte, error) {
 		ResetPeriod: o.ResetPeriod,
 		
 		RecallEntries: o.RecallEntries,
+		
+		PhoneTypeRecallEntries: o.PhoneTypeRecallEntries,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -224,6 +231,11 @@ func (o *Attemptlimits) UnmarshalJSON(b []byte) error {
 	if RecallEntries, ok := AttemptlimitsMap["recallEntries"].(map[string]interface{}); ok {
 		RecallEntriesString, _ := json.Marshal(RecallEntries)
 		json.Unmarshal(RecallEntriesString, &o.RecallEntries)
+	}
+	
+	if PhoneTypeRecallEntries, ok := AttemptlimitsMap["phoneTypeRecallEntries"].(map[string]interface{}); ok {
+		PhoneTypeRecallEntriesString, _ := json.Marshal(PhoneTypeRecallEntries)
+		json.Unmarshal(PhoneTypeRecallEntriesString, &o.PhoneTypeRecallEntries)
 	}
 	
 	if SelfUri, ok := AttemptlimitsMap["selfUri"].(string); ok {

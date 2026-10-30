@@ -19,7 +19,7 @@ type Extensionpool struct {
 	Name *string `json:"name,omitempty"`
 
 	// Division - The division to which this entity belongs.
-	Division *Division `json:"division,omitempty"`
+	Division *Writabledivision `json:"division,omitempty"`
 
 	// Description - The resource's description.
 	Description *string `json:"description,omitempty"`
@@ -141,7 +141,7 @@ func (o Extensionpool) MarshalJSON() ([]byte, error) {
 		
 		Name *string `json:"name,omitempty"`
 		
-		Division *Division `json:"division,omitempty"`
+		Division *Writabledivision `json:"division,omitempty"`
 		
 		Description *string `json:"description,omitempty"`
 		

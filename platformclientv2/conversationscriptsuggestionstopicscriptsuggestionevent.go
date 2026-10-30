@@ -41,6 +41,9 @@ type Conversationscriptsuggestionstopicscriptsuggestionevent struct {
 
 	// ActiveIntent
 	ActiveIntent *Conversationscriptsuggestionstopicsuggestedintent `json:"activeIntent,omitempty"`
+
+	// ActiveSentiment
+	ActiveSentiment *Conversationscriptsuggestionstopicactivesentiment `json:"activeSentiment,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -133,6 +136,8 @@ func (o Conversationscriptsuggestionstopicscriptsuggestionevent) MarshalJSON() (
 		Script *Conversationscriptsuggestionstopicsuggestedscript `json:"script,omitempty"`
 		
 		ActiveIntent *Conversationscriptsuggestionstopicsuggestedintent `json:"activeIntent,omitempty"`
+		
+		ActiveSentiment *Conversationscriptsuggestionstopicactivesentiment `json:"activeSentiment,omitempty"`
 		Alias
 	}{ 
 		EventTime: EventTime,
@@ -154,6 +159,8 @@ func (o Conversationscriptsuggestionstopicscriptsuggestionevent) MarshalJSON() (
 		Script: o.Script,
 		
 		ActiveIntent: o.ActiveIntent,
+		
+		ActiveSentiment: o.ActiveSentiment,
 		Alias:    (Alias)(o),
 	})
 }
@@ -208,6 +215,11 @@ func (o *Conversationscriptsuggestionstopicscriptsuggestionevent) UnmarshalJSON(
 	if ActiveIntent, ok := ConversationscriptsuggestionstopicscriptsuggestioneventMap["activeIntent"].(map[string]interface{}); ok {
 		ActiveIntentString, _ := json.Marshal(ActiveIntent)
 		json.Unmarshal(ActiveIntentString, &o.ActiveIntent)
+	}
+	
+	if ActiveSentiment, ok := ConversationscriptsuggestionstopicscriptsuggestioneventMap["activeSentiment"].(map[string]interface{}); ok {
+		ActiveSentimentString, _ := json.Marshal(ActiveSentiment)
+		json.Unmarshal(ActiveSentimentString, &o.ActiveSentiment)
 	}
 	
 

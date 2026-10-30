@@ -32,6 +32,10 @@ func NewUsageApiWithConfig(config *Configuration) *UsageApi {
 // GetOauthClientUsageQueryResult invokes GET /api/v2/oauth/clients/{clientId}/usage/query/results/{executionId}
 //
 // Get the results of a usage query
+//
+// Deprecated - use GET /api/v2/usage/client/{clientId}/aggregates/query/jobs/{jobId} instead.
+//
+// Deprecated: GetOauthClientUsageQueryResult is deprecated
 func (a UsageApi) GetOauthClientUsageQueryResult(executionId string, clientId string) (*Apiusagequeryresult, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -121,7 +125,9 @@ func (a UsageApi) GetOauthClientUsageQueryResult(executionId string, clientId st
 //
 // Get a summary of OAuth client API usage
 //
-// After calling this method, you will then need to poll for the query results based on the returned execution Id
+// Deprecated - use POST /api/v2/usage/client/{clientId}/aggregates/query/jobs instead. After calling this method, you will then need to poll for the query results based on the returned execution Id
+//
+// Deprecated: GetOauthClientUsageSummary is deprecated
 func (a UsageApi) GetOauthClientUsageSummary(clientId string, days string) (*Usageexecutionresult, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -384,6 +390,10 @@ func (a UsageApi) GetUsageClientClientIdAggregatesQueryJob(clientId string, jobI
 // GetUsageQueryExecutionIdResults invokes GET /api/v2/usage/query/{executionId}/results
 //
 // Get the results of a usage query
+//
+// Deprecated - use GET /api/v2/usage/aggregates/query/jobs/{jobId} instead.
+//
+// Deprecated: GetUsageQueryExecutionIdResults is deprecated
 func (a UsageApi) GetUsageQueryExecutionIdResults(executionId string) (*Apiusagequeryresult, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -466,6 +476,10 @@ func (a UsageApi) GetUsageQueryExecutionIdResults(executionId string) (*Apiusage
 // GetUsageSimplesearchExecutionIdResults invokes GET /api/v2/usage/simplesearch/{executionId}/results
 //
 // Get the results of a usage search. Number of records to be returned is limited to 20,000 results.
+//
+// Deprecated - use GET /api/v2/usage/aggregates/query/jobs/{jobId} instead.
+//
+// Deprecated: GetUsageSimplesearchExecutionIdResults is deprecated
 func (a UsageApi) GetUsageSimplesearchExecutionIdResults(executionId string, after string, pageSize int) (*Apiusagequeryresult, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -553,7 +567,9 @@ func (a UsageApi) GetUsageSimplesearchExecutionIdResults(executionId string, aft
 //
 // Query for OAuth client API usage
 //
-// After calling this method, you will then need to poll for the query results based on the returned execution Id
+// Deprecated - use POST /api/v2/usage/client/{clientId}/aggregates/query/jobs instead. After calling this method, you will then need to poll for the query results based on the returned execution Id
+//
+// Deprecated: PostOauthClientUsageQuery is deprecated
 func (a UsageApi) PostOauthClientUsageQuery(clientId string, body Apiusageclientquery) (*Usageexecutionresult, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -823,7 +839,9 @@ func (a UsageApi) PostUsageClientClientIdAggregatesQueryJobs(clientId string, bo
 //
 // Query organization API Usage - 
 //
-// After calling this method, you will then need to poll for the query results based on the returned execution Id
+// Deprecated - use POST /api/v2/usage/aggregates/query/jobs instead. After calling this method, you will then need to poll for the query results based on the returned execution Id
+//
+// Deprecated: PostUsageQuery is deprecated
 func (a UsageApi) PostUsageQuery(body Apiusageorganizationquery) (*Usageexecutionresult, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -909,7 +927,9 @@ func (a UsageApi) PostUsageQuery(body Apiusageorganizationquery) (*Usageexecutio
 //
 // Search organization API Usage
 //
-// After calling this method, you will then need to poll for the query results based on the returned execution Id. The number of records is limited to 20,000 results
+// Deprecated - use POST /api/v2/usage/aggregates/query/jobs instead. After calling this method, you will then need to poll for the query results based on the returned execution Id. The number of records is limited to 20,000 results
+//
+// Deprecated: PostUsageSimplesearch is deprecated
 func (a UsageApi) PostUsageSimplesearch(body Apiusagesimplesearch) (*Usageexecutionresult, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

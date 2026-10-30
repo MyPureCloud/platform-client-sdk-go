@@ -38,7 +38,7 @@ type Agenticvirtualagenttypedefinition struct {
 	// StatusCodes - HTTP 4xx or 5xx status codes this error type can handle. Applies when type is DataActionHttpError.
 	StatusCodes *[]int `json:"statusCodes,omitempty"`
 
-	// DefaultInstruction - Default instruction for how the virtual agent should handle this error type when a tool references it without its own error instruction. Applies when type is DataActionHttpError.
+	// DefaultInstruction - Default instruction for how the virtual agent should handle this error type when a tool references it without its own error instruction. Applies when type is DataActionHttpError or A2AError.
 	DefaultInstruction *string `json:"defaultInstruction,omitempty"`
 
 	// Enum - Allowed enum values. Applies to enum types.

@@ -28,6 +28,9 @@ type Recordingsettings struct {
 
 	// StopRecordingWhenOnlyExternalParticipants - Whether to stop recording in conference when only external participants remain
 	StopRecordingWhenOnlyExternalParticipants *bool `json:"stopRecordingWhenOnlyExternalParticipants,omitempty"`
+
+	// HierarchyAccessControlEnabled - Whether hierarchy access control using the Reports To management chain is enabled for the organization
+	HierarchyAccessControlEnabled *bool `json:"hierarchyAccessControlEnabled,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -104,6 +107,8 @@ func (o Recordingsettings) MarshalJSON() ([]byte, error) {
 		RecordingBatchDownloadUrlTtl *int `json:"recordingBatchDownloadUrlTtl,omitempty"`
 		
 		StopRecordingWhenOnlyExternalParticipants *bool `json:"stopRecordingWhenOnlyExternalParticipants,omitempty"`
+		
+		HierarchyAccessControlEnabled *bool `json:"hierarchyAccessControlEnabled,omitempty"`
 		Alias
 	}{ 
 		MaxSimultaneousStreams: o.MaxSimultaneousStreams,
@@ -117,6 +122,8 @@ func (o Recordingsettings) MarshalJSON() ([]byte, error) {
 		RecordingBatchDownloadUrlTtl: o.RecordingBatchDownloadUrlTtl,
 		
 		StopRecordingWhenOnlyExternalParticipants: o.StopRecordingWhenOnlyExternalParticipants,
+		
+		HierarchyAccessControlEnabled: o.HierarchyAccessControlEnabled,
 		Alias:    (Alias)(o),
 	})
 }
@@ -154,6 +161,10 @@ func (o *Recordingsettings) UnmarshalJSON(b []byte) error {
 	
 	if StopRecordingWhenOnlyExternalParticipants, ok := RecordingsettingsMap["stopRecordingWhenOnlyExternalParticipants"].(bool); ok {
 		o.StopRecordingWhenOnlyExternalParticipants = &StopRecordingWhenOnlyExternalParticipants
+	}
+    
+	if HierarchyAccessControlEnabled, ok := RecordingsettingsMap["hierarchyAccessControlEnabled"].(bool); ok {
+		o.HierarchyAccessControlEnabled = &HierarchyAccessControlEnabled
 	}
     
 

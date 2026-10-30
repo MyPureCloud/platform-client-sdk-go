@@ -355,6 +355,10 @@ func (a OAuthApi) GetOauthClient(clientId string) (*Oauthclient, *APIResponse, e
 // GetOauthClientUsageQueryResult invokes GET /api/v2/oauth/clients/{clientId}/usage/query/results/{executionId}
 //
 // Get the results of a usage query
+//
+// Deprecated - use GET /api/v2/usage/client/{clientId}/aggregates/query/jobs/{jobId} instead.
+//
+// Deprecated: GetOauthClientUsageQueryResult is deprecated
 func (a OAuthApi) GetOauthClientUsageQueryResult(executionId string, clientId string) (*Apiusagequeryresult, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -444,7 +448,9 @@ func (a OAuthApi) GetOauthClientUsageQueryResult(executionId string, clientId st
 //
 // Get a summary of OAuth client API usage
 //
-// After calling this method, you will then need to poll for the query results based on the returned execution Id
+// Deprecated - use POST /api/v2/usage/client/{clientId}/aggregates/query/jobs instead. After calling this method, you will then need to poll for the query results based on the returned execution Id
+//
+// Deprecated: GetOauthClientUsageSummary is deprecated
 func (a OAuthApi) GetOauthClientUsageSummary(clientId string, days string) (*Usageexecutionresult, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -856,7 +862,9 @@ func (a OAuthApi) PostOauthClientSecret(clientId string) (*Oauthclient, *APIResp
 //
 // Query for OAuth client API usage
 //
-// After calling this method, you will then need to poll for the query results based on the returned execution Id
+// Deprecated - use POST /api/v2/usage/client/{clientId}/aggregates/query/jobs instead. After calling this method, you will then need to poll for the query results based on the returned execution Id
+//
+// Deprecated: PostOauthClientUsageQuery is deprecated
 func (a OAuthApi) PostOauthClientUsageQuery(clientId string, body Apiusageclientquery) (*Usageexecutionresult, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

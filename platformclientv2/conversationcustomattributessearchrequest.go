@@ -14,6 +14,12 @@ type Conversationcustomattributessearchrequest struct {
 	// Expand - Expand your search with bulk lookups
 	Expand *[]string `json:"expand,omitempty"`
 
+	// QueryReservedFields - The search criteria for reserved fields
+	QueryReservedFields *[]Conversationcustomattributessearchcriteria `json:"queryReservedFields,omitempty"`
+
+	// QueryCustomAttributes - The search criteria for custom attributes
+	QueryCustomAttributes *[]Conversationcustomattributessearchcriteria `json:"queryCustomAttributes,omitempty"`
+
 	// PageSize - The number of results per page
 	PageSize *int `json:"pageSize,omitempty"`
 
@@ -95,6 +101,10 @@ func (o Conversationcustomattributessearchrequest) MarshalJSON() ([]byte, error)
 	return json.Marshal(&struct { 
 		Expand *[]string `json:"expand,omitempty"`
 		
+		QueryReservedFields *[]Conversationcustomattributessearchcriteria `json:"queryReservedFields,omitempty"`
+		
+		QueryCustomAttributes *[]Conversationcustomattributessearchcriteria `json:"queryCustomAttributes,omitempty"`
+		
 		PageSize *int `json:"pageSize,omitempty"`
 		
 		PageNumber *int `json:"pageNumber,omitempty"`
@@ -107,6 +117,10 @@ func (o Conversationcustomattributessearchrequest) MarshalJSON() ([]byte, error)
 		Alias
 	}{ 
 		Expand: o.Expand,
+		
+		QueryReservedFields: o.QueryReservedFields,
+		
+		QueryCustomAttributes: o.QueryCustomAttributes,
 		
 		PageSize: o.PageSize,
 		
@@ -131,6 +145,16 @@ func (o *Conversationcustomattributessearchrequest) UnmarshalJSON(b []byte) erro
 	if Expand, ok := ConversationcustomattributessearchrequestMap["expand"].([]interface{}); ok {
 		ExpandString, _ := json.Marshal(Expand)
 		json.Unmarshal(ExpandString, &o.Expand)
+	}
+	
+	if QueryReservedFields, ok := ConversationcustomattributessearchrequestMap["queryReservedFields"].([]interface{}); ok {
+		QueryReservedFieldsString, _ := json.Marshal(QueryReservedFields)
+		json.Unmarshal(QueryReservedFieldsString, &o.QueryReservedFields)
+	}
+	
+	if QueryCustomAttributes, ok := ConversationcustomattributessearchrequestMap["queryCustomAttributes"].([]interface{}); ok {
+		QueryCustomAttributesString, _ := json.Marshal(QueryCustomAttributes)
+		json.Unmarshal(QueryCustomAttributesString, &o.QueryCustomAttributes)
 	}
 	
 	if PageSize, ok := ConversationcustomattributessearchrequestMap["pageSize"].(float64); ok {

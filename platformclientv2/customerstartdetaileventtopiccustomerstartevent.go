@@ -79,6 +79,15 @@ type Customerstartdetaileventtopiccustomerstartevent struct {
 
 	// UtilizationLabel
 	UtilizationLabel *string `json:"utilizationLabel,omitempty"`
+
+	// OutboundCampaignId
+	OutboundCampaignId *string `json:"outboundCampaignId,omitempty"`
+
+	// OutboundContactListId
+	OutboundContactListId *string `json:"outboundContactListId,omitempty"`
+
+	// OutboundContactId
+	OutboundContactId *string `json:"outboundContactId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -189,6 +198,12 @@ func (o Customerstartdetaileventtopiccustomerstartevent) MarshalJSON() ([]byte, 
 		DivisionId *string `json:"divisionId,omitempty"`
 		
 		UtilizationLabel *string `json:"utilizationLabel,omitempty"`
+		
+		OutboundCampaignId *string `json:"outboundCampaignId,omitempty"`
+		
+		OutboundContactListId *string `json:"outboundContactListId,omitempty"`
+		
+		OutboundContactId *string `json:"outboundContactId,omitempty"`
 		Alias
 	}{ 
 		EventTime: o.EventTime,
@@ -236,6 +251,12 @@ func (o Customerstartdetaileventtopiccustomerstartevent) MarshalJSON() ([]byte, 
 		DivisionId: o.DivisionId,
 		
 		UtilizationLabel: o.UtilizationLabel,
+		
+		OutboundCampaignId: o.OutboundCampaignId,
+		
+		OutboundContactListId: o.OutboundContactListId,
+		
+		OutboundContactId: o.OutboundContactId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -343,6 +364,18 @@ func (o *Customerstartdetaileventtopiccustomerstartevent) UnmarshalJSON(b []byte
     
 	if UtilizationLabel, ok := CustomerstartdetaileventtopiccustomerstarteventMap["utilizationLabel"].(string); ok {
 		o.UtilizationLabel = &UtilizationLabel
+	}
+    
+	if OutboundCampaignId, ok := CustomerstartdetaileventtopiccustomerstarteventMap["outboundCampaignId"].(string); ok {
+		o.OutboundCampaignId = &OutboundCampaignId
+	}
+    
+	if OutboundContactListId, ok := CustomerstartdetaileventtopiccustomerstarteventMap["outboundContactListId"].(string); ok {
+		o.OutboundContactListId = &OutboundContactListId
+	}
+    
+	if OutboundContactId, ok := CustomerstartdetaileventtopiccustomerstarteventMap["outboundContactId"].(string); ok {
+		o.OutboundContactId = &OutboundContactId
 	}
     
 

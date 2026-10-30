@@ -7,43 +7,28 @@ import (
 	"strings"
 )
 
-// Userdevice
-type Userdevice struct { 
+// Wfmshifttradingupdatetradestatejobeventshifttradingjobcompletenotificationv2
+type Wfmshifttradingupdatetradestatejobeventshifttradingjobcompletenotificationv2 struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Id - The globally unique identifier for the object.
+	// Id
 	Id *string `json:"id,omitempty"`
 
-	// Name
-	Name *string `json:"name,omitempty"`
-
-	// DeviceToken - device token sent by mobile clients.
-	DeviceToken *string `json:"deviceToken,omitempty"`
-
-	// NotificationId - notification id of the device.
-	NotificationId *string `json:"notificationId,omitempty"`
-
-	// Make - make of the device.
-	Make *string `json:"make,omitempty"`
-
-	// Model - Device model
-	Model *string `json:"model,omitempty"`
-
-	// AcceptNotifications - if the device accepts notifications
-	AcceptNotifications *bool `json:"acceptNotifications,omitempty"`
-
-	// VarType - type of the device; ios or android
+	// VarType
 	VarType *string `json:"type,omitempty"`
 
-	// SessionHash
-	SessionHash *string `json:"sessionHash,omitempty"`
+	// Status
+	Status *string `json:"status,omitempty"`
 
-	// SelfUri - The URI for this object
-	SelfUri *string `json:"selfUri,omitempty"`
+	// DownloadUrl
+	DownloadUrl *string `json:"downloadUrl,omitempty"`
+
+	// VarError
+	VarError *Wfmshifttradingupdatetradestatejobeventerrorbody `json:"error,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Userdevice) SetField(field string, fieldValue interface{}) {
+func (o *Wfmshifttradingupdatetradestatejobeventshifttradingjobcompletenotificationv2) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -64,7 +49,7 @@ func (o *Userdevice) SetField(field string, fieldValue interface{}) {
 	o.SetFieldNames[field] = true
 }
 
-func (o Userdevice) MarshalJSON() ([]byte, error) {
+func (o Wfmshifttradingupdatetradestatejobeventshifttradingjobcompletenotificationv2) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -102,106 +87,67 @@ func (o Userdevice) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Userdevice
+	type Alias Wfmshifttradingupdatetradestatejobeventshifttradingjobcompletenotificationv2
 	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
-		Name *string `json:"name,omitempty"`
-		
-		DeviceToken *string `json:"deviceToken,omitempty"`
-		
-		NotificationId *string `json:"notificationId,omitempty"`
-		
-		Make *string `json:"make,omitempty"`
-		
-		Model *string `json:"model,omitempty"`
-		
-		AcceptNotifications *bool `json:"acceptNotifications,omitempty"`
-		
 		VarType *string `json:"type,omitempty"`
 		
-		SessionHash *string `json:"sessionHash,omitempty"`
+		Status *string `json:"status,omitempty"`
 		
-		SelfUri *string `json:"selfUri,omitempty"`
+		DownloadUrl *string `json:"downloadUrl,omitempty"`
+		
+		VarError *Wfmshifttradingupdatetradestatejobeventerrorbody `json:"error,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
 		
-		Name: o.Name,
-		
-		DeviceToken: o.DeviceToken,
-		
-		NotificationId: o.NotificationId,
-		
-		Make: o.Make,
-		
-		Model: o.Model,
-		
-		AcceptNotifications: o.AcceptNotifications,
-		
 		VarType: o.VarType,
 		
-		SessionHash: o.SessionHash,
+		Status: o.Status,
 		
-		SelfUri: o.SelfUri,
+		DownloadUrl: o.DownloadUrl,
+		
+		VarError: o.VarError,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Userdevice) UnmarshalJSON(b []byte) error {
-	var UserdeviceMap map[string]interface{}
-	err := json.Unmarshal(b, &UserdeviceMap)
+func (o *Wfmshifttradingupdatetradestatejobeventshifttradingjobcompletenotificationv2) UnmarshalJSON(b []byte) error {
+	var Wfmshifttradingupdatetradestatejobeventshifttradingjobcompletenotificationv2Map map[string]interface{}
+	err := json.Unmarshal(b, &Wfmshifttradingupdatetradestatejobeventshifttradingjobcompletenotificationv2Map)
 	if err != nil {
 		return err
 	}
 	
-	if Id, ok := UserdeviceMap["id"].(string); ok {
+	if Id, ok := Wfmshifttradingupdatetradestatejobeventshifttradingjobcompletenotificationv2Map["id"].(string); ok {
 		o.Id = &Id
 	}
     
-	if Name, ok := UserdeviceMap["name"].(string); ok {
-		o.Name = &Name
-	}
-    
-	if DeviceToken, ok := UserdeviceMap["deviceToken"].(string); ok {
-		o.DeviceToken = &DeviceToken
-	}
-    
-	if NotificationId, ok := UserdeviceMap["notificationId"].(string); ok {
-		o.NotificationId = &NotificationId
-	}
-    
-	if Make, ok := UserdeviceMap["make"].(string); ok {
-		o.Make = &Make
-	}
-    
-	if Model, ok := UserdeviceMap["model"].(string); ok {
-		o.Model = &Model
-	}
-    
-	if AcceptNotifications, ok := UserdeviceMap["acceptNotifications"].(bool); ok {
-		o.AcceptNotifications = &AcceptNotifications
-	}
-    
-	if VarType, ok := UserdeviceMap["type"].(string); ok {
+	if VarType, ok := Wfmshifttradingupdatetradestatejobeventshifttradingjobcompletenotificationv2Map["type"].(string); ok {
 		o.VarType = &VarType
 	}
     
-	if SessionHash, ok := UserdeviceMap["sessionHash"].(string); ok {
-		o.SessionHash = &SessionHash
+	if Status, ok := Wfmshifttradingupdatetradestatejobeventshifttradingjobcompletenotificationv2Map["status"].(string); ok {
+		o.Status = &Status
 	}
     
-	if SelfUri, ok := UserdeviceMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
+	if DownloadUrl, ok := Wfmshifttradingupdatetradestatejobeventshifttradingjobcompletenotificationv2Map["downloadUrl"].(string); ok {
+		o.DownloadUrl = &DownloadUrl
 	}
     
+	if VarError, ok := Wfmshifttradingupdatetradestatejobeventshifttradingjobcompletenotificationv2Map["error"].(map[string]interface{}); ok {
+		VarErrorString, _ := json.Marshal(VarError)
+		json.Unmarshal(VarErrorString, &o.VarError)
+	}
+	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Userdevice) String() string {
+func (o *Wfmshifttradingupdatetradestatejobeventshifttradingjobcompletenotificationv2) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

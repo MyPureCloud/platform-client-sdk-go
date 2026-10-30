@@ -372,8 +372,6 @@ func (a CaseManagementApi) DeleteCasemanagementCaseplanDataschema(caseplanId str
 // DeleteCasemanagementCaseplanStageplan invokes DELETE /api/v2/casemanagement/caseplans/{caseplanId}/stageplans/{stageplanId}
 //
 // Delete a Stageplan from a draft Caseplan.
-//
-// Preview: DeleteCasemanagementCaseplanStageplan is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a CaseManagementApi) DeleteCasemanagementCaseplanStageplan(caseplanId string, stageplanId string) (*interface{}, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -3780,8 +3778,6 @@ func (a CaseManagementApi) PostCasemanagementCaseplanPublish(caseplanId string) 
 // PostCasemanagementCaseplanStageplanReposition invokes POST /api/v2/casemanagement/caseplans/{caseplanId}/stageplans/{stageplanId}/reposition
 //
 // Reposition a Stageplan within a draft Caseplan.
-//
-// Preview: PostCasemanagementCaseplanStageplanReposition is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a CaseManagementApi) PostCasemanagementCaseplanStageplanReposition(caseplanId string, stageplanId string, body Stageplanreposition) (*interface{}, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3878,8 +3874,6 @@ func (a CaseManagementApi) PostCasemanagementCaseplanStageplanReposition(casepla
 // PostCasemanagementCaseplanStageplans invokes POST /api/v2/casemanagement/caseplans/{caseplanId}/stageplans
 //
 // Create a Stageplan on a draft Caseplan.
-//
-// Preview: PostCasemanagementCaseplanStageplans is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a CaseManagementApi) PostCasemanagementCaseplanStageplans(caseplanId string, body Stageplancreate) (*Stageplan, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

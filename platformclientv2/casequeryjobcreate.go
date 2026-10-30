@@ -20,6 +20,9 @@ type Casequeryjobcreate struct {
 	// Filters - List of filter objects to be used in the search. Use an empty list to run the query with no filters.
 	Filters *[]Casequeryjobfilter `json:"filters,omitempty"`
 
+	// FilterGroups - List of filter groups to be used in the search. The filters within a group are combined using the group operator; groups are combined with each other and with the top-level filters using AND. 
+	FilterGroups *[]Casequeryjobfiltergroup `json:"filterGroups,omitempty"`
+
 	// Sort - Sort order for results.
 	Sort *Casequeryjobsort `json:"sort,omitempty"`
 
@@ -99,6 +102,8 @@ func (o Casequeryjobcreate) MarshalJSON() ([]byte, error) {
 		
 		Filters *[]Casequeryjobfilter `json:"filters,omitempty"`
 		
+		FilterGroups *[]Casequeryjobfiltergroup `json:"filterGroups,omitempty"`
+		
 		Sort *Casequeryjobsort `json:"sort,omitempty"`
 		
 		Attributes *[]string `json:"attributes,omitempty"`
@@ -111,6 +116,8 @@ func (o Casequeryjobcreate) MarshalJSON() ([]byte, error) {
 		PageNumber: o.PageNumber,
 		
 		Filters: o.Filters,
+		
+		FilterGroups: o.FilterGroups,
 		
 		Sort: o.Sort,
 		
@@ -141,6 +148,11 @@ func (o *Casequeryjobcreate) UnmarshalJSON(b []byte) error {
 	if Filters, ok := CasequeryjobcreateMap["filters"].([]interface{}); ok {
 		FiltersString, _ := json.Marshal(Filters)
 		json.Unmarshal(FiltersString, &o.Filters)
+	}
+	
+	if FilterGroups, ok := CasequeryjobcreateMap["filterGroups"].([]interface{}); ok {
+		FilterGroupsString, _ := json.Marshal(FilterGroups)
+		json.Unmarshal(FilterGroupsString, &o.FilterGroups)
 	}
 	
 	if Sort, ok := CasequeryjobcreateMap["sort"].(map[string]interface{}); ok {

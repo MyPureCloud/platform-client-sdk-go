@@ -20,7 +20,7 @@ type Caseplanqueryrequest struct {
 	// DivisionIds - Divisions to filter by. Accepts a list of UUIDs and/or '*'.
 	DivisionIds *[]string `json:"divisionIds,omitempty"`
 
-	// Filters - List of filter objects to be used in the search. Valid filter names are: 'id', 'name', 'divisionId'. Multiple filters are combined with AND logic.
+	// Filters - List of filter objects to be used in the search. Valid filter names are: 'id', 'name', 'divisionId', 'published'. Multiple filters are combined with AND logic.
 	Filters *[]Caseplanfilter `json:"filters,omitempty"`
 
 	// Attributes - List of entity attributes to be retrieved in the result.

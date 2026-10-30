@@ -63,6 +63,9 @@ type Conversationsummarytopicconversationsummaryevent struct {
 	// WrapUpCodes
 	WrapUpCodes *[]Conversationsummarytopicconversationwrapupcode `json:"wrapUpCodes,omitempty"`
 
+	// WrapUpCodePredictionEnabled
+	WrapUpCodePredictionEnabled *bool `json:"wrapUpCodePredictionEnabled,omitempty"`
+
 	// TriggerSource
 	TriggerSource *Conversationsummarytopictriggersource `json:"triggerSource,omitempty"`
 
@@ -190,6 +193,8 @@ func (o Conversationsummarytopicconversationsummaryevent) MarshalJSON() ([]byte,
 		
 		WrapUpCodes *[]Conversationsummarytopicconversationwrapupcode `json:"wrapUpCodes,omitempty"`
 		
+		WrapUpCodePredictionEnabled *bool `json:"wrapUpCodePredictionEnabled,omitempty"`
+		
 		TriggerSource *Conversationsummarytopictriggersource `json:"triggerSource,omitempty"`
 		
 		SummarySourceType *string `json:"summarySourceType,omitempty"`
@@ -238,6 +243,8 @@ func (o Conversationsummarytopicconversationsummaryevent) MarshalJSON() ([]byte,
 		ExtractedEntities: o.ExtractedEntities,
 		
 		WrapUpCodes: o.WrapUpCodes,
+		
+		WrapUpCodePredictionEnabled: o.WrapUpCodePredictionEnabled,
 		
 		TriggerSource: o.TriggerSource,
 		
@@ -341,6 +348,10 @@ func (o *Conversationsummarytopicconversationsummaryevent) UnmarshalJSON(b []byt
 		json.Unmarshal(WrapUpCodesString, &o.WrapUpCodes)
 	}
 	
+	if WrapUpCodePredictionEnabled, ok := ConversationsummarytopicconversationsummaryeventMap["wrapUpCodePredictionEnabled"].(bool); ok {
+		o.WrapUpCodePredictionEnabled = &WrapUpCodePredictionEnabled
+	}
+    
 	if TriggerSource, ok := ConversationsummarytopicconversationsummaryeventMap["triggerSource"].(map[string]interface{}); ok {
 		TriggerSourceString, _ := json.Marshal(TriggerSource)
 		json.Unmarshal(TriggerSourceString, &o.TriggerSource)

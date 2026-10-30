@@ -13,6 +13,9 @@ type Workplanlistresponse struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// Entities
 	Entities *[]Workplanlistitemresponse `json:"entities,omitempty"`
+
+	// DownloadUrl - URL from which to download the work plans. The downloaded data conforms to this same schema, except downloadUrl will be null
+	DownloadUrl *string `json:"downloadUrl,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +82,13 @@ func (o Workplanlistresponse) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		Entities *[]Workplanlistitemresponse `json:"entities,omitempty"`
+		
+		DownloadUrl *string `json:"downloadUrl,omitempty"`
 		Alias
 	}{ 
 		Entities: o.Entities,
+		
+		DownloadUrl: o.DownloadUrl,
 		Alias:    (Alias)(o),
 	})
 }
@@ -98,6 +105,10 @@ func (o *Workplanlistresponse) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(EntitiesString, &o.Entities)
 	}
 	
+	if DownloadUrl, ok := WorkplanlistresponseMap["downloadUrl"].(string); ok {
+		o.DownloadUrl = &DownloadUrl
+	}
+    
 
 	return nil
 }

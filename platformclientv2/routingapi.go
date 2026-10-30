@@ -4645,7 +4645,7 @@ func (a RoutingApi) GetRoutingPredictorsKeyperformanceindicatortypes() ([]Keyper
 // GetRoutingQueue invokes GET /api/v2/routing/queues/{queueId}
 //
 // Get details about this queue.
-func (a RoutingApi) GetRoutingQueue(queueId string, expand []string) (*Queue, *APIResponse, error) {
+func (a RoutingApi) GetRoutingQueue(queueId string, expand []string, forceMemberRecount bool) (*Queue, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}"
@@ -4679,6 +4679,8 @@ func (a RoutingApi) GetRoutingQueue(queueId string, expand []string) (*Queue, *A
 	}
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
+	
+	queryParams["forceMemberRecount"] = a.Configuration.APIClient.ParameterToString(forceMemberRecount, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

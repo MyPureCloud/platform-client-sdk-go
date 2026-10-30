@@ -158,6 +158,9 @@ type Conversationcallbackeventtopiccallbackmediaparticipant struct {
 
 	// AutomatedCallbackConfigId
 	AutomatedCallbackConfigId *string `json:"automatedCallbackConfigId,omitempty"`
+
+	// PublicIpAddress
+	PublicIpAddress *string `json:"publicIpAddress,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -392,6 +395,8 @@ func (o Conversationcallbackeventtopiccallbackmediaparticipant) MarshalJSON() ([
 		CallbackScheduledTime *string `json:"callbackScheduledTime,omitempty"`
 		
 		AutomatedCallbackConfigId *string `json:"automatedCallbackConfigId,omitempty"`
+		
+		PublicIpAddress *string `json:"publicIpAddress,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -491,6 +496,8 @@ func (o Conversationcallbackeventtopiccallbackmediaparticipant) MarshalJSON() ([
 		CallbackScheduledTime: CallbackScheduledTime,
 		
 		AutomatedCallbackConfigId: o.AutomatedCallbackConfigId,
+		
+		PublicIpAddress: o.PublicIpAddress,
 		Alias:    (Alias)(o),
 	})
 }
@@ -724,6 +731,10 @@ func (o *Conversationcallbackeventtopiccallbackmediaparticipant) UnmarshalJSON(b
 	
 	if AutomatedCallbackConfigId, ok := ConversationcallbackeventtopiccallbackmediaparticipantMap["automatedCallbackConfigId"].(string); ok {
 		o.AutomatedCallbackConfigId = &AutomatedCallbackConfigId
+	}
+    
+	if PublicIpAddress, ok := ConversationcallbackeventtopiccallbackmediaparticipantMap["publicIpAddress"].(string); ok {
+		o.PublicIpAddress = &PublicIpAddress
 	}
     
 

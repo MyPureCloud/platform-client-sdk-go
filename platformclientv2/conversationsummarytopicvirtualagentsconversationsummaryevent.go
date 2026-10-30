@@ -63,6 +63,9 @@ type Conversationsummarytopicvirtualagentsconversationsummaryevent struct {
 	// WrapUpCodes
 	WrapUpCodes *[]Conversationsummarytopicvirtualagentsconversationwrapupcode `json:"wrapUpCodes,omitempty"`
 
+	// WrapUpCodePredictionEnabled
+	WrapUpCodePredictionEnabled *bool `json:"wrapUpCodePredictionEnabled,omitempty"`
+
 	// TriggerSource
 	TriggerSource *Conversationsummarytopicvirtualagentstriggersource `json:"triggerSource,omitempty"`
 
@@ -190,6 +193,8 @@ func (o Conversationsummarytopicvirtualagentsconversationsummaryevent) MarshalJS
 		
 		WrapUpCodes *[]Conversationsummarytopicvirtualagentsconversationwrapupcode `json:"wrapUpCodes,omitempty"`
 		
+		WrapUpCodePredictionEnabled *bool `json:"wrapUpCodePredictionEnabled,omitempty"`
+		
 		TriggerSource *Conversationsummarytopicvirtualagentstriggersource `json:"triggerSource,omitempty"`
 		
 		SummarySourceType *string `json:"summarySourceType,omitempty"`
@@ -238,6 +243,8 @@ func (o Conversationsummarytopicvirtualagentsconversationsummaryevent) MarshalJS
 		ExtractedEntities: o.ExtractedEntities,
 		
 		WrapUpCodes: o.WrapUpCodes,
+		
+		WrapUpCodePredictionEnabled: o.WrapUpCodePredictionEnabled,
 		
 		TriggerSource: o.TriggerSource,
 		
@@ -341,6 +348,10 @@ func (o *Conversationsummarytopicvirtualagentsconversationsummaryevent) Unmarsha
 		json.Unmarshal(WrapUpCodesString, &o.WrapUpCodes)
 	}
 	
+	if WrapUpCodePredictionEnabled, ok := ConversationsummarytopicvirtualagentsconversationsummaryeventMap["wrapUpCodePredictionEnabled"].(bool); ok {
+		o.WrapUpCodePredictionEnabled = &WrapUpCodePredictionEnabled
+	}
+    
 	if TriggerSource, ok := ConversationsummarytopicvirtualagentsconversationsummaryeventMap["triggerSource"].(map[string]interface{}); ok {
 		TriggerSourceString, _ := json.Marshal(TriggerSource)
 		json.Unmarshal(TriggerSourceString, &o.TriggerSource)

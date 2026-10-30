@@ -14,6 +14,9 @@ type Wfmtimeoffrequestupdatetopictimeoffrequestupdate struct {
 	// Id
 	Id *string `json:"id,omitempty"`
 
+	// MuId
+	MuId *string `json:"muId,omitempty"`
+
 	// User
 	User *Wfmtimeoffrequestupdatetopicuserreference `json:"user,omitempty"`
 
@@ -143,6 +146,8 @@ func (o Wfmtimeoffrequestupdatetopictimeoffrequestupdate) MarshalJSON() ([]byte,
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
+		MuId *string `json:"muId,omitempty"`
+		
 		User *Wfmtimeoffrequestupdatetopicuserreference `json:"user,omitempty"`
 		
 		IsFullDayRequest *bool `json:"isFullDayRequest,omitempty"`
@@ -187,6 +192,8 @@ func (o Wfmtimeoffrequestupdatetopictimeoffrequestupdate) MarshalJSON() ([]byte,
 		Alias
 	}{ 
 		Id: o.Id,
+		
+		MuId: o.MuId,
 		
 		User: o.User,
 		
@@ -242,6 +249,10 @@ func (o *Wfmtimeoffrequestupdatetopictimeoffrequestupdate) UnmarshalJSON(b []byt
 	
 	if Id, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["id"].(string); ok {
 		o.Id = &Id
+	}
+    
+	if MuId, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["muId"].(string); ok {
+		o.MuId = &MuId
 	}
     
 	if User, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["user"].(map[string]interface{}); ok {

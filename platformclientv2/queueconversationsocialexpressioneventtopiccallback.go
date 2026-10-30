@@ -92,6 +92,9 @@ type Queueconversationsocialexpressioneventtopiccallback struct {
 
 	// QueueMediaSettings - Represents the queue setting for this media.
 	QueueMediaSettings *Queueconversationsocialexpressioneventtopicqueuemediasettings `json:"queueMediaSettings,omitempty"`
+
+	// PublicIpAddress - The reported client IP of the phone for the call.
+	PublicIpAddress *string `json:"publicIpAddress,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -242,6 +245,8 @@ func (o Queueconversationsocialexpressioneventtopiccallback) MarshalJSON() ([]by
 		CallerIdName *string `json:"callerIdName,omitempty"`
 		
 		QueueMediaSettings *Queueconversationsocialexpressioneventtopicqueuemediasettings `json:"queueMediaSettings,omitempty"`
+		
+		PublicIpAddress *string `json:"publicIpAddress,omitempty"`
 		Alias
 	}{ 
 		State: o.State,
@@ -297,6 +302,8 @@ func (o Queueconversationsocialexpressioneventtopiccallback) MarshalJSON() ([]by
 		CallerIdName: o.CallerIdName,
 		
 		QueueMediaSettings: o.QueueMediaSettings,
+		
+		PublicIpAddress: o.PublicIpAddress,
 		Alias:    (Alias)(o),
 	})
 }
@@ -427,6 +434,10 @@ func (o *Queueconversationsocialexpressioneventtopiccallback) UnmarshalJSON(b []
 		json.Unmarshal(QueueMediaSettingsString, &o.QueueMediaSettings)
 	}
 	
+	if PublicIpAddress, ok := QueueconversationsocialexpressioneventtopiccallbackMap["publicIpAddress"].(string); ok {
+		o.PublicIpAddress = &PublicIpAddress
+	}
+    
 
 	return nil
 }

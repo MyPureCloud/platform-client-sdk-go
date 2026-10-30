@@ -70,6 +70,15 @@ type Flowstartdetaileventtopicflowstartevent struct {
 
 	// UtilizationLabel
 	UtilizationLabel *string `json:"utilizationLabel,omitempty"`
+
+	// OutboundCampaignId
+	OutboundCampaignId *string `json:"outboundCampaignId,omitempty"`
+
+	// OutboundContactListId
+	OutboundContactListId *string `json:"outboundContactListId,omitempty"`
+
+	// OutboundContactId
+	OutboundContactId *string `json:"outboundContactId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -174,6 +183,12 @@ func (o Flowstartdetaileventtopicflowstartevent) MarshalJSON() ([]byte, error) {
 		ConversationExternalOrganizationIds *[]string `json:"conversationExternalOrganizationIds,omitempty"`
 		
 		UtilizationLabel *string `json:"utilizationLabel,omitempty"`
+		
+		OutboundCampaignId *string `json:"outboundCampaignId,omitempty"`
+		
+		OutboundContactListId *string `json:"outboundContactListId,omitempty"`
+		
+		OutboundContactId *string `json:"outboundContactId,omitempty"`
 		Alias
 	}{ 
 		EventTime: o.EventTime,
@@ -215,6 +230,12 @@ func (o Flowstartdetaileventtopicflowstartevent) MarshalJSON() ([]byte, error) {
 		ConversationExternalOrganizationIds: o.ConversationExternalOrganizationIds,
 		
 		UtilizationLabel: o.UtilizationLabel,
+		
+		OutboundCampaignId: o.OutboundCampaignId,
+		
+		OutboundContactListId: o.OutboundContactListId,
+		
+		OutboundContactId: o.OutboundContactId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -307,6 +328,18 @@ func (o *Flowstartdetaileventtopicflowstartevent) UnmarshalJSON(b []byte) error 
 	
 	if UtilizationLabel, ok := FlowstartdetaileventtopicflowstarteventMap["utilizationLabel"].(string); ok {
 		o.UtilizationLabel = &UtilizationLabel
+	}
+    
+	if OutboundCampaignId, ok := FlowstartdetaileventtopicflowstarteventMap["outboundCampaignId"].(string); ok {
+		o.OutboundCampaignId = &OutboundCampaignId
+	}
+    
+	if OutboundContactListId, ok := FlowstartdetaileventtopicflowstarteventMap["outboundContactListId"].(string); ok {
+		o.OutboundContactListId = &OutboundContactListId
+	}
+    
+	if OutboundContactId, ok := FlowstartdetaileventtopicflowstarteventMap["outboundContactId"].(string); ok {
+		o.OutboundContactId = &OutboundContactId
 	}
     
 

@@ -55,6 +55,15 @@ type Voicemailstartdetaileventtopicvoicemailstartevent struct {
 
 	// UtilizationLabel
 	UtilizationLabel *string `json:"utilizationLabel,omitempty"`
+
+	// OutboundCampaignId
+	OutboundCampaignId *string `json:"outboundCampaignId,omitempty"`
+
+	// OutboundContactListId
+	OutboundContactListId *string `json:"outboundContactListId,omitempty"`
+
+	// OutboundContactId
+	OutboundContactId *string `json:"outboundContactId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -149,6 +158,12 @@ func (o Voicemailstartdetaileventtopicvoicemailstartevent) MarshalJSON() ([]byte
 		ConversationExternalOrganizationIds *[]string `json:"conversationExternalOrganizationIds,omitempty"`
 		
 		UtilizationLabel *string `json:"utilizationLabel,omitempty"`
+		
+		OutboundCampaignId *string `json:"outboundCampaignId,omitempty"`
+		
+		OutboundContactListId *string `json:"outboundContactListId,omitempty"`
+		
+		OutboundContactId *string `json:"outboundContactId,omitempty"`
 		Alias
 	}{ 
 		EventTime: o.EventTime,
@@ -180,6 +195,12 @@ func (o Voicemailstartdetaileventtopicvoicemailstartevent) MarshalJSON() ([]byte
 		ConversationExternalOrganizationIds: o.ConversationExternalOrganizationIds,
 		
 		UtilizationLabel: o.UtilizationLabel,
+		
+		OutboundCampaignId: o.OutboundCampaignId,
+		
+		OutboundContactListId: o.OutboundContactListId,
+		
+		OutboundContactId: o.OutboundContactId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -252,6 +273,18 @@ func (o *Voicemailstartdetaileventtopicvoicemailstartevent) UnmarshalJSON(b []by
 	
 	if UtilizationLabel, ok := VoicemailstartdetaileventtopicvoicemailstarteventMap["utilizationLabel"].(string); ok {
 		o.UtilizationLabel = &UtilizationLabel
+	}
+    
+	if OutboundCampaignId, ok := VoicemailstartdetaileventtopicvoicemailstarteventMap["outboundCampaignId"].(string); ok {
+		o.OutboundCampaignId = &OutboundCampaignId
+	}
+    
+	if OutboundContactListId, ok := VoicemailstartdetaileventtopicvoicemailstarteventMap["outboundContactListId"].(string); ok {
+		o.OutboundContactListId = &OutboundContactListId
+	}
+    
+	if OutboundContactId, ok := VoicemailstartdetaileventtopicvoicemailstarteventMap["outboundContactId"].(string); ok {
+		o.OutboundContactId = &OutboundContactId
 	}
     
 

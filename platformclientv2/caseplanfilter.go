@@ -11,7 +11,7 @@ import (
 type Caseplanfilter struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Name - Attribute name. Valid values: id, name, divisionId.
+	// Name - Attribute name. Valid values: id, name, divisionId, published. The published filter requires the EQ operator and exactly one value: 'true' (Caseplans that have a published version) or 'false' (Caseplans that have never been published).
 	Name *string `json:"name,omitempty"`
 
 	// Operator - Filter operator.

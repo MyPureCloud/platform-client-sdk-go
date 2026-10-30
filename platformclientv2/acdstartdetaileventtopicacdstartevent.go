@@ -82,6 +82,21 @@ type Acdstartdetaileventtopicacdstartevent struct {
 
 	// SkillExpressionApplied
 	SkillExpressionApplied *bool `json:"skillExpressionApplied,omitempty"`
+
+	// RequestedLanguageId
+	RequestedLanguageId *string `json:"requestedLanguageId,omitempty"`
+
+	// PreferredAgentIds
+	PreferredAgentIds *[]string `json:"preferredAgentIds,omitempty"`
+
+	// OutboundCampaignId
+	OutboundCampaignId *string `json:"outboundCampaignId,omitempty"`
+
+	// OutboundContactListId
+	OutboundContactListId *string `json:"outboundContactListId,omitempty"`
+
+	// OutboundContactId
+	OutboundContactId *string `json:"outboundContactId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -194,6 +209,16 @@ func (o Acdstartdetaileventtopicacdstartevent) MarshalJSON() ([]byte, error) {
 		RequestedRoutingSkillIds *[]string `json:"requestedRoutingSkillIds,omitempty"`
 		
 		SkillExpressionApplied *bool `json:"skillExpressionApplied,omitempty"`
+		
+		RequestedLanguageId *string `json:"requestedLanguageId,omitempty"`
+		
+		PreferredAgentIds *[]string `json:"preferredAgentIds,omitempty"`
+		
+		OutboundCampaignId *string `json:"outboundCampaignId,omitempty"`
+		
+		OutboundContactListId *string `json:"outboundContactListId,omitempty"`
+		
+		OutboundContactId *string `json:"outboundContactId,omitempty"`
 		Alias
 	}{ 
 		EventTime: o.EventTime,
@@ -243,6 +268,16 @@ func (o Acdstartdetaileventtopicacdstartevent) MarshalJSON() ([]byte, error) {
 		RequestedRoutingSkillIds: o.RequestedRoutingSkillIds,
 		
 		SkillExpressionApplied: o.SkillExpressionApplied,
+		
+		RequestedLanguageId: o.RequestedLanguageId,
+		
+		PreferredAgentIds: o.PreferredAgentIds,
+		
+		OutboundCampaignId: o.OutboundCampaignId,
+		
+		OutboundContactListId: o.OutboundContactListId,
+		
+		OutboundContactId: o.OutboundContactId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -355,6 +390,27 @@ func (o *Acdstartdetaileventtopicacdstartevent) UnmarshalJSON(b []byte) error {
 	
 	if SkillExpressionApplied, ok := AcdstartdetaileventtopicacdstarteventMap["skillExpressionApplied"].(bool); ok {
 		o.SkillExpressionApplied = &SkillExpressionApplied
+	}
+    
+	if RequestedLanguageId, ok := AcdstartdetaileventtopicacdstarteventMap["requestedLanguageId"].(string); ok {
+		o.RequestedLanguageId = &RequestedLanguageId
+	}
+    
+	if PreferredAgentIds, ok := AcdstartdetaileventtopicacdstarteventMap["preferredAgentIds"].([]interface{}); ok {
+		PreferredAgentIdsString, _ := json.Marshal(PreferredAgentIds)
+		json.Unmarshal(PreferredAgentIdsString, &o.PreferredAgentIds)
+	}
+	
+	if OutboundCampaignId, ok := AcdstartdetaileventtopicacdstarteventMap["outboundCampaignId"].(string); ok {
+		o.OutboundCampaignId = &OutboundCampaignId
+	}
+    
+	if OutboundContactListId, ok := AcdstartdetaileventtopicacdstarteventMap["outboundContactListId"].(string); ok {
+		o.OutboundContactListId = &OutboundContactListId
+	}
+    
+	if OutboundContactId, ok := AcdstartdetaileventtopicacdstarteventMap["outboundContactId"].(string); ok {
+		o.OutboundContactId = &OutboundContactId
 	}
     
 

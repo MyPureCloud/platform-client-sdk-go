@@ -11,7 +11,7 @@ import (
 type Casequeryjobfilter struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Name - Attribute name. Valid filter names are: 'caseplanId', 'ownerId', 'status', 'priority', 'dateDue', 'externalContactId', 'customerIntentId', 'dateCreated', 'divisionId', 'reference'.
+	// Name - Attribute name. Valid filter names are: 'caseplanId', 'ownerId', 'status', 'priority', 'dateDue', 'externalContactId', 'customerIntentId', 'dateCreated', 'divisionId', 'reference', 'externalId'.
 	Name *string `json:"name,omitempty"`
 
 	// Operator - Filter operator.
@@ -19,6 +19,9 @@ type Casequeryjobfilter struct {
 
 	// Values - List of values to be used in the filter.
 	Values *[]string `json:"values,omitempty"`
+
+	// CaseSensitive - Whether the filter matches letter case exactly. Only valid for 'reference' and 'externalId' filters. Defaults to true.
+	CaseSensitive *bool `json:"caseSensitive,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +92,8 @@ func (o Casequeryjobfilter) MarshalJSON() ([]byte, error) {
 		Operator *string `json:"operator,omitempty"`
 		
 		Values *[]string `json:"values,omitempty"`
+		
+		CaseSensitive *bool `json:"caseSensitive,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -96,6 +101,8 @@ func (o Casequeryjobfilter) MarshalJSON() ([]byte, error) {
 		Operator: o.Operator,
 		
 		Values: o.Values,
+		
+		CaseSensitive: o.CaseSensitive,
 		Alias:    (Alias)(o),
 	})
 }
@@ -120,6 +127,10 @@ func (o *Casequeryjobfilter) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ValuesString, &o.Values)
 	}
 	
+	if CaseSensitive, ok := CasequeryjobfilterMap["caseSensitive"].(bool); ok {
+		o.CaseSensitive = &CaseSensitive
+	}
+    
 
 	return nil
 }

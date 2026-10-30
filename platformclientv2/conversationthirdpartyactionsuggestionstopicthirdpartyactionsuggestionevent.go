@@ -36,11 +36,20 @@ type Conversationthirdpartyactionsuggestionstopicthirdpartyactionsuggestionevent
 	// ActiveIntent
 	ActiveIntent *Conversationthirdpartyactionsuggestionstopicsuggestedintent `json:"activeIntent,omitempty"`
 
+	// ActiveSentiment
+	ActiveSentiment *Conversationthirdpartyactionsuggestionstopicactivesentiment `json:"activeSentiment,omitempty"`
+
 	// Context
 	Context *Conversationthirdpartyactionsuggestionstopicsuggestioncontext `json:"context,omitempty"`
 
+	// ConversationTurns
+	ConversationTurns *[]Conversationthirdpartyactionsuggestionstopicconversationturn `json:"conversationTurns,omitempty"`
+
 	// ThirdPartySuggestion
 	ThirdPartySuggestion *Conversationthirdpartyactionsuggestionstopicthirdpartysuggestion `json:"thirdPartySuggestion,omitempty"`
+
+	// CopilotContext
+	CopilotContext *[]Conversationthirdpartyactionsuggestionstopiccopilotcontextentry `json:"copilotContext,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -130,9 +139,15 @@ func (o Conversationthirdpartyactionsuggestionstopicthirdpartyactionsuggestionev
 		
 		ActiveIntent *Conversationthirdpartyactionsuggestionstopicsuggestedintent `json:"activeIntent,omitempty"`
 		
+		ActiveSentiment *Conversationthirdpartyactionsuggestionstopicactivesentiment `json:"activeSentiment,omitempty"`
+		
 		Context *Conversationthirdpartyactionsuggestionstopicsuggestioncontext `json:"context,omitempty"`
 		
+		ConversationTurns *[]Conversationthirdpartyactionsuggestionstopicconversationturn `json:"conversationTurns,omitempty"`
+		
 		ThirdPartySuggestion *Conversationthirdpartyactionsuggestionstopicthirdpartysuggestion `json:"thirdPartySuggestion,omitempty"`
+		
+		CopilotContext *[]Conversationthirdpartyactionsuggestionstopiccopilotcontextentry `json:"copilotContext,omitempty"`
 		Alias
 	}{ 
 		EventTime: EventTime,
@@ -151,9 +166,15 @@ func (o Conversationthirdpartyactionsuggestionstopicthirdpartyactionsuggestionev
 		
 		ActiveIntent: o.ActiveIntent,
 		
+		ActiveSentiment: o.ActiveSentiment,
+		
 		Context: o.Context,
 		
+		ConversationTurns: o.ConversationTurns,
+		
 		ThirdPartySuggestion: o.ThirdPartySuggestion,
+		
+		CopilotContext: o.CopilotContext,
 		Alias:    (Alias)(o),
 	})
 }
@@ -200,14 +221,29 @@ func (o *Conversationthirdpartyactionsuggestionstopicthirdpartyactionsuggestione
 		json.Unmarshal(ActiveIntentString, &o.ActiveIntent)
 	}
 	
+	if ActiveSentiment, ok := ConversationthirdpartyactionsuggestionstopicthirdpartyactionsuggestioneventMap["activeSentiment"].(map[string]interface{}); ok {
+		ActiveSentimentString, _ := json.Marshal(ActiveSentiment)
+		json.Unmarshal(ActiveSentimentString, &o.ActiveSentiment)
+	}
+	
 	if Context, ok := ConversationthirdpartyactionsuggestionstopicthirdpartyactionsuggestioneventMap["context"].(map[string]interface{}); ok {
 		ContextString, _ := json.Marshal(Context)
 		json.Unmarshal(ContextString, &o.Context)
 	}
 	
+	if ConversationTurns, ok := ConversationthirdpartyactionsuggestionstopicthirdpartyactionsuggestioneventMap["conversationTurns"].([]interface{}); ok {
+		ConversationTurnsString, _ := json.Marshal(ConversationTurns)
+		json.Unmarshal(ConversationTurnsString, &o.ConversationTurns)
+	}
+	
 	if ThirdPartySuggestion, ok := ConversationthirdpartyactionsuggestionstopicthirdpartyactionsuggestioneventMap["thirdPartySuggestion"].(map[string]interface{}); ok {
 		ThirdPartySuggestionString, _ := json.Marshal(ThirdPartySuggestion)
 		json.Unmarshal(ThirdPartySuggestionString, &o.ThirdPartySuggestion)
+	}
+	
+	if CopilotContext, ok := ConversationthirdpartyactionsuggestionstopicthirdpartyactionsuggestioneventMap["copilotContext"].([]interface{}); ok {
+		CopilotContextString, _ := json.Marshal(CopilotContext)
+		json.Unmarshal(CopilotContextString, &o.CopilotContext)
 	}
 	
 

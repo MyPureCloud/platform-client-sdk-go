@@ -14,11 +14,23 @@ type Wfmshifttradingjobcompleteeventwfmversionmetadata struct {
 	// Version
 	Version *int `json:"version,omitempty"`
 
+	// CreatedBy
+	CreatedBy *string `json:"createdBy,omitempty"`
+
+	// DateCreated
+	DateCreated *string `json:"dateCreated,omitempty"`
+
 	// ModifiedBy
 	ModifiedBy *string `json:"modifiedBy,omitempty"`
 
 	// DateModified
 	DateModified *string `json:"dateModified,omitempty"`
+
+	// DeletedBy
+	DeletedBy *string `json:"deletedBy,omitempty"`
+
+	// DateDeleted
+	DateDeleted *string `json:"dateDeleted,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -86,16 +98,32 @@ func (o Wfmshifttradingjobcompleteeventwfmversionmetadata) MarshalJSON() ([]byte
 	return json.Marshal(&struct { 
 		Version *int `json:"version,omitempty"`
 		
+		CreatedBy *string `json:"createdBy,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
 		ModifiedBy *string `json:"modifiedBy,omitempty"`
 		
 		DateModified *string `json:"dateModified,omitempty"`
+		
+		DeletedBy *string `json:"deletedBy,omitempty"`
+		
+		DateDeleted *string `json:"dateDeleted,omitempty"`
 		Alias
 	}{ 
 		Version: o.Version,
 		
+		CreatedBy: o.CreatedBy,
+		
+		DateCreated: o.DateCreated,
+		
 		ModifiedBy: o.ModifiedBy,
 		
 		DateModified: o.DateModified,
+		
+		DeletedBy: o.DeletedBy,
+		
+		DateDeleted: o.DateDeleted,
 		Alias:    (Alias)(o),
 	})
 }
@@ -112,12 +140,28 @@ func (o *Wfmshifttradingjobcompleteeventwfmversionmetadata) UnmarshalJSON(b []by
 		o.Version = &VersionInt
 	}
 	
+	if CreatedBy, ok := WfmshifttradingjobcompleteeventwfmversionmetadataMap["createdBy"].(string); ok {
+		o.CreatedBy = &CreatedBy
+	}
+    
+	if DateCreated, ok := WfmshifttradingjobcompleteeventwfmversionmetadataMap["dateCreated"].(string); ok {
+		o.DateCreated = &DateCreated
+	}
+    
 	if ModifiedBy, ok := WfmshifttradingjobcompleteeventwfmversionmetadataMap["modifiedBy"].(string); ok {
 		o.ModifiedBy = &ModifiedBy
 	}
     
 	if DateModified, ok := WfmshifttradingjobcompleteeventwfmversionmetadataMap["dateModified"].(string); ok {
 		o.DateModified = &DateModified
+	}
+    
+	if DeletedBy, ok := WfmshifttradingjobcompleteeventwfmversionmetadataMap["deletedBy"].(string); ok {
+		o.DeletedBy = &DeletedBy
+	}
+    
+	if DateDeleted, ok := WfmshifttradingjobcompleteeventwfmversionmetadataMap["dateDeleted"].(string); ok {
+		o.DateDeleted = &DateDeleted
 	}
     
 

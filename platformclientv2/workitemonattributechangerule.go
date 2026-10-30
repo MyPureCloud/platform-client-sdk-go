@@ -26,8 +26,11 @@ type Workitemonattributechangerule struct {
 	// Worktype - The Worktype containing the rule.
 	Worktype *Worktypereference `json:"worktype,omitempty"`
 
-	// Condition - The rules condition. If the condition criteria is met the rules action will be executed.
+	// Condition - The rules condition. If the condition criteria is met the rules action will be executed. Mutually exclusive with match; a rule carries exactly one of condition or match.
 	Condition *Workitemonattributechangecondition `json:"condition,omitempty"`
+
+	// Match - Grouped match criteria combined with logical operators. Mutually exclusive with condition; a rule carries exactly one of condition or match.
+	Match *Workitemonattributechangematch `json:"match,omitempty"`
 
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
@@ -108,6 +111,8 @@ func (o Workitemonattributechangerule) MarshalJSON() ([]byte, error) {
 		
 		Condition *Workitemonattributechangecondition `json:"condition,omitempty"`
 		
+		Match *Workitemonattributechangematch `json:"match,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -122,6 +127,8 @@ func (o Workitemonattributechangerule) MarshalJSON() ([]byte, error) {
 		Worktype: o.Worktype,
 		
 		Condition: o.Condition,
+		
+		Match: o.Match,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -160,6 +167,11 @@ func (o *Workitemonattributechangerule) UnmarshalJSON(b []byte) error {
 	if Condition, ok := WorkitemonattributechangeruleMap["condition"].(map[string]interface{}); ok {
 		ConditionString, _ := json.Marshal(Condition)
 		json.Unmarshal(ConditionString, &o.Condition)
+	}
+	
+	if Match, ok := WorkitemonattributechangeruleMap["match"].(map[string]interface{}); ok {
+		MatchString, _ := json.Marshal(Match)
+		json.Unmarshal(MatchString, &o.Match)
 	}
 	
 	if SelfUri, ok := WorkitemonattributechangeruleMap["selfUri"].(string); ok {
