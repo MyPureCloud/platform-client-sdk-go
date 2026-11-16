@@ -15,7 +15,7 @@ type Phrase struct {
 	Text *string `json:"text,omitempty"`
 
 	// Strictness - The phrase strictness, default value is null
-	Strictness *string `json:"strictness,omitempty"`
+	Strictness *int `json:"strictness,omitempty"`
 
 	// Sentiment - The phrase sentiment, default value is Unspecified. Note: Sentiment value for phrases is currently not in use and has no impact to the system.
 	Sentiment *string `json:"sentiment,omitempty"`
@@ -89,7 +89,7 @@ func (o Phrase) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Text *string `json:"text,omitempty"`
 		
-		Strictness *string `json:"strictness,omitempty"`
+		Strictness *int `json:"strictness,omitempty"`
 		
 		Sentiment *string `json:"sentiment,omitempty"`
 		
@@ -118,10 +118,11 @@ func (o *Phrase) UnmarshalJSON(b []byte) error {
 		o.Text = &Text
 	}
     
-	if Strictness, ok := PhraseMap["strictness"].(string); ok {
-		o.Strictness = &Strictness
+	if Strictness, ok := PhraseMap["strictness"].(float64); ok {
+		StrictnessInt := int(Strictness)
+		o.Strictness = &StrictnessInt
 	}
-    
+	
 	if Sentiment, ok := PhraseMap["sentiment"].(string); ok {
 		o.Sentiment = &Sentiment
 	}

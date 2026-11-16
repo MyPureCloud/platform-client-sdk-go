@@ -21,8 +21,11 @@ type Capacityplanresponse struct {
 	// Description - Description of the capacity plan
 	Description *string `json:"description,omitempty"`
 
-	// Forecast - The selected forecast for this capacity plan. Null when main forecast is used in the future
+	// Forecast - The generated forecast for this capacity plan. Null when the capacity plan uses other forecast types
 	Forecast *Bushorttermforecastreference `json:"forecast,omitempty"`
+
+	// ImportedForecast - The externally imported forecast for this capacity plan. Null when the capacity plan uses other forecast types
+	ImportedForecast *Capacityplanimportedforecast `json:"importedForecast,omitempty"`
 
 	// StartBusinessUnitDate - The start date for the capacity plan relative to the business unit time zone in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
 	StartBusinessUnitDate *time.Time `json:"startBusinessUnitDate,omitempty"`
@@ -125,6 +128,8 @@ func (o Capacityplanresponse) MarshalJSON() ([]byte, error) {
 		
 		Forecast *Bushorttermforecastreference `json:"forecast,omitempty"`
 		
+		ImportedForecast *Capacityplanimportedforecast `json:"importedForecast,omitempty"`
+		
 		StartBusinessUnitDate *string `json:"startBusinessUnitDate,omitempty"`
 		
 		EndBusinessUnitDate *string `json:"endBusinessUnitDate,omitempty"`
@@ -143,6 +148,8 @@ func (o Capacityplanresponse) MarshalJSON() ([]byte, error) {
 		Description: o.Description,
 		
 		Forecast: o.Forecast,
+		
+		ImportedForecast: o.ImportedForecast,
 		
 		StartBusinessUnitDate: StartBusinessUnitDate,
 		
@@ -179,6 +186,11 @@ func (o *Capacityplanresponse) UnmarshalJSON(b []byte) error {
 	if Forecast, ok := CapacityplanresponseMap["forecast"].(map[string]interface{}); ok {
 		ForecastString, _ := json.Marshal(Forecast)
 		json.Unmarshal(ForecastString, &o.Forecast)
+	}
+	
+	if ImportedForecast, ok := CapacityplanresponseMap["importedForecast"].(map[string]interface{}); ok {
+		ImportedForecastString, _ := json.Marshal(ImportedForecast)
+		json.Unmarshal(ImportedForecastString, &o.ImportedForecast)
 	}
 	
 	if startBusinessUnitDateString, ok := CapacityplanresponseMap["startBusinessUnitDate"].(string); ok {

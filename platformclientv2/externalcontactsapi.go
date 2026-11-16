@@ -1002,7 +1002,7 @@ func (a ExternalContactsApi) GetExternalcontactsContactIdentifiers(contactId str
 // GetExternalcontactsContactJourneySegments invokes GET /api/v2/externalcontacts/contacts/{contactId}/journey/segments
 //
 // Retrieve segment assignments by external contact ID.
-func (a ExternalContactsApi) GetExternalcontactsContactJourneySegments(contactId string, includeMerged bool, limit int) (*Segmentassignmentlisting, *APIResponse, error) {
+func (a ExternalContactsApi) GetExternalcontactsContactJourneySegments(contactId string, includeMerged bool, limit int, expand []string, segmentIds []string) (*Segmentassignmentlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/contacts/{contactId}/journey/segments"
@@ -1038,6 +1038,10 @@ func (a ExternalContactsApi) GetExternalcontactsContactJourneySegments(contactId
 	queryParams["includeMerged"] = a.Configuration.APIClient.ParameterToString(includeMerged, "")
 	
 	queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, "")
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
+	
+	queryParams["segmentIds"] = a.Configuration.APIClient.ParameterToString(segmentIds, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

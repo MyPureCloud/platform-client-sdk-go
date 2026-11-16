@@ -41,6 +41,12 @@ type Speechtextanalyticsconversationsummary struct {
 
 	// Insights - Insights of the conversation
 	Insights *[]Conversationinsight `json:"insights,omitempty"`
+
+	// CommunicationId - The id of the communication associated with this summary
+	CommunicationId *string `json:"communicationId,omitempty"`
+
+	// Labels - The summary labels
+	Labels *[]Speechtextanalyticssummarylabel `json:"labels,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -133,6 +139,10 @@ func (o Speechtextanalyticsconversationsummary) MarshalJSON() ([]byte, error) {
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
 		Insights *[]Conversationinsight `json:"insights,omitempty"`
+		
+		CommunicationId *string `json:"communicationId,omitempty"`
+		
+		Labels *[]Speechtextanalyticssummarylabel `json:"labels,omitempty"`
 		Alias
 	}{ 
 		SummaryType: o.SummaryType,
@@ -154,6 +164,10 @@ func (o Speechtextanalyticsconversationsummary) MarshalJSON() ([]byte, error) {
 		DateCreated: DateCreated,
 		
 		Insights: o.Insights,
+		
+		CommunicationId: o.CommunicationId,
+		
+		Labels: o.Labels,
 		Alias:    (Alias)(o),
 	})
 }
@@ -205,6 +219,15 @@ func (o *Speechtextanalyticsconversationsummary) UnmarshalJSON(b []byte) error {
 	if Insights, ok := SpeechtextanalyticsconversationsummaryMap["insights"].([]interface{}); ok {
 		InsightsString, _ := json.Marshal(Insights)
 		json.Unmarshal(InsightsString, &o.Insights)
+	}
+	
+	if CommunicationId, ok := SpeechtextanalyticsconversationsummaryMap["communicationId"].(string); ok {
+		o.CommunicationId = &CommunicationId
+	}
+    
+	if Labels, ok := SpeechtextanalyticsconversationsummaryMap["labels"].([]interface{}); ok {
+		LabelsString, _ := json.Marshal(Labels)
+		json.Unmarshal(LabelsString, &o.Labels)
 	}
 	
 

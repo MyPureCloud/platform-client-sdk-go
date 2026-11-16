@@ -21,7 +21,7 @@ type Userpresenceevent struct {
 	// UserId - The User ID of the user associated with this UserPresence
 	UserId *string `json:"userId,omitempty"`
 
-	// SourceId - The id (V4 UUID) of the presence source being updated
+	// SourceId - The id (UUID) of the presence source being updated
 	SourceId *string `json:"sourceId,omitempty"`
 
 	// PresenceDefinitionId - The id (UUID) of the presence definition that the user presence is associated with

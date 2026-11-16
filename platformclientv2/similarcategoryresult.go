@@ -24,6 +24,9 @@ type Similarcategoryresult struct {
 	// DateCreated - Creation date of the category. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
+	// Usage - Places where the category is used. Omitted when usage tracking is off or includeUsage is false or omitted. Otherwise, empty when unused or populated with usage entries.
+	Usage *[]Customerintentusage `json:"usage,omitempty"`
+
 	// Distance - The distance score indicating similarity (lower is more similar)
 	Distance *float64 `json:"distance,omitempty"`
 
@@ -110,6 +113,8 @@ func (o Similarcategoryresult) MarshalJSON() ([]byte, error) {
 		
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
+		Usage *[]Customerintentusage `json:"usage,omitempty"`
+		
 		Distance *float64 `json:"distance,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -122,6 +127,8 @@ func (o Similarcategoryresult) MarshalJSON() ([]byte, error) {
 		Description: o.Description,
 		
 		DateCreated: DateCreated,
+		
+		Usage: o.Usage,
 		
 		Distance: o.Distance,
 		
@@ -152,6 +159,11 @@ func (o *Similarcategoryresult) UnmarshalJSON(b []byte) error {
 	if dateCreatedString, ok := SimilarcategoryresultMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
+	}
+	
+	if Usage, ok := SimilarcategoryresultMap["usage"].([]interface{}); ok {
+		UsageString, _ := json.Marshal(Usage)
+		json.Unmarshal(UsageString, &o.Usage)
 	}
 	
 	if Distance, ok := SimilarcategoryresultMap["distance"].(float64); ok {

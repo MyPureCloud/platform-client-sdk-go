@@ -19,6 +19,9 @@ type Buagentschedulesearchresponse struct {
 
 	// FullDayTimeOffMarkers - Full day time off markers which apply to this agent schedule
 	FullDayTimeOffMarkers *[]Bufulldaytimeoffmarker `json:"fullDayTimeOffMarkers,omitempty"`
+
+	// WorkPlansPerWeek - The work plans per week for this user from the work plan rotation. Null values in the list denotes that user is not part of any work plan for that week
+	WorkPlansPerWeek *[]Workplanreference `json:"workPlansPerWeek,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -89,6 +92,8 @@ func (o Buagentschedulesearchresponse) MarshalJSON() ([]byte, error) {
 		Shifts *[]Buagentscheduleshift `json:"shifts,omitempty"`
 		
 		FullDayTimeOffMarkers *[]Bufulldaytimeoffmarker `json:"fullDayTimeOffMarkers,omitempty"`
+		
+		WorkPlansPerWeek *[]Workplanreference `json:"workPlansPerWeek,omitempty"`
 		Alias
 	}{ 
 		User: o.User,
@@ -96,6 +101,8 @@ func (o Buagentschedulesearchresponse) MarshalJSON() ([]byte, error) {
 		Shifts: o.Shifts,
 		
 		FullDayTimeOffMarkers: o.FullDayTimeOffMarkers,
+		
+		WorkPlansPerWeek: o.WorkPlansPerWeek,
 		Alias:    (Alias)(o),
 	})
 }
@@ -120,6 +127,11 @@ func (o *Buagentschedulesearchresponse) UnmarshalJSON(b []byte) error {
 	if FullDayTimeOffMarkers, ok := BuagentschedulesearchresponseMap["fullDayTimeOffMarkers"].([]interface{}); ok {
 		FullDayTimeOffMarkersString, _ := json.Marshal(FullDayTimeOffMarkers)
 		json.Unmarshal(FullDayTimeOffMarkersString, &o.FullDayTimeOffMarkers)
+	}
+	
+	if WorkPlansPerWeek, ok := BuagentschedulesearchresponseMap["workPlansPerWeek"].([]interface{}); ok {
+		WorkPlansPerWeekString, _ := json.Marshal(WorkPlansPerWeek)
+		json.Unmarshal(WorkPlansPerWeekString, &o.WorkPlansPerWeek)
 	}
 	
 

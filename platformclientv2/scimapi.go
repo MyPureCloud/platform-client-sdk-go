@@ -1733,7 +1733,7 @@ func (a SCIMApi) GetScimV2Users(startIndex int, count int, attributes []string, 
 // PatchScimGroup invokes PATCH /api/v2/scim/groups/{groupId}
 //
 // Modify a group
-func (a SCIMApi) PatchScimGroup(groupId string, body Scimv2patchrequest, ifMatch string) (*Scimv2group, *APIResponse, error) {
+func (a SCIMApi) PatchScimGroup(groupId string, body Scimv2patchrequest, ifMatch string, attributes []string, excludedAttributes []string) (*Scimv2group, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scim/groups/{groupId}"
@@ -1770,6 +1770,10 @@ func (a SCIMApi) PatchScimGroup(groupId string, body Scimv2patchrequest, ifMatch
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["attributes"] = a.Configuration.APIClient.ParameterToString(attributes, "multi")
+	
+	queryParams["excludedAttributes"] = a.Configuration.APIClient.ParameterToString(excludedAttributes, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -1923,7 +1927,7 @@ func (a SCIMApi) PatchScimUser(userId string, body Scimv2patchrequest, ifMatch s
 // PatchScimV2Group invokes PATCH /api/v2/scim/v2/groups/{groupId}
 //
 // Modify a group
-func (a SCIMApi) PatchScimV2Group(groupId string, body Scimv2patchrequest, ifMatch string) (*Scimv2group, *APIResponse, error) {
+func (a SCIMApi) PatchScimV2Group(groupId string, body Scimv2patchrequest, ifMatch string, attributes []string, excludedAttributes []string) (*Scimv2group, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scim/v2/groups/{groupId}"
@@ -1960,6 +1964,10 @@ func (a SCIMApi) PatchScimV2Group(groupId string, body Scimv2patchrequest, ifMat
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["attributes"] = a.Configuration.APIClient.ParameterToString(attributes, "multi")
+	
+	queryParams["excludedAttributes"] = a.Configuration.APIClient.ParameterToString(excludedAttributes, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

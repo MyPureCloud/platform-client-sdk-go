@@ -16,12 +16,6 @@ type Stageplanlisting struct {
 
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
-
-	// SelfUri
-	SelfUri *string `json:"selfUri,omitempty"`
-
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -90,19 +84,11 @@ func (o Stageplanlisting) MarshalJSON() ([]byte, error) {
 		Entities *[]Stageplan `json:"entities,omitempty"`
 		
 		NextUri *string `json:"nextUri,omitempty"`
-		
-		SelfUri *string `json:"selfUri,omitempty"`
-		
-		PreviousUri *string `json:"previousUri,omitempty"`
 		Alias
 	}{ 
 		Entities: o.Entities,
 		
 		NextUri: o.NextUri,
-		
-		SelfUri: o.SelfUri,
-		
-		PreviousUri: o.PreviousUri,
 		Alias:    (Alias)(o),
 	})
 }
@@ -121,14 +107,6 @@ func (o *Stageplanlisting) UnmarshalJSON(b []byte) error {
 	
 	if NextUri, ok := StageplanlistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
-	}
-    
-	if SelfUri, ok := StageplanlistingMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
-	}
-    
-	if PreviousUri, ok := StageplanlistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
 	}
     
 

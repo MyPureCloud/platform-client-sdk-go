@@ -13,7 +13,7 @@ type Bucurrentagentschedulesearchresponse struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// AgentSchedules - The requested agent schedules
-	AgentSchedules *[]Buagentschedulesearchresponse `json:"agentSchedules,omitempty"`
+	AgentSchedules *[]Buschedulesearchagentscheduleresponse `json:"agentSchedules,omitempty"`
 
 	// BusinessUnitTimeZone - The time zone configured for the business unit to which this schedule applies
 	BusinessUnitTimeZone *string `json:"businessUnitTimeZone,omitempty"`
@@ -29,6 +29,9 @@ type Bucurrentagentschedulesearchresponse struct {
 
 	// Updates - The list of updates for the schedule. Only used in notifications
 	Updates *[]Buagentscheduleupdate `json:"updates,omitempty"`
+
+	// VisibilityRange - The schedule visibility range
+	VisibilityRange *Schedulevisibilityrange `json:"visibilityRange,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -110,7 +113,7 @@ func (o Bucurrentagentschedulesearchresponse) MarshalJSON() ([]byte, error) {
 	}
 	
 	return json.Marshal(&struct { 
-		AgentSchedules *[]Buagentschedulesearchresponse `json:"agentSchedules,omitempty"`
+		AgentSchedules *[]Buschedulesearchagentscheduleresponse `json:"agentSchedules,omitempty"`
 		
 		BusinessUnitTimeZone *string `json:"businessUnitTimeZone,omitempty"`
 		
@@ -121,6 +124,8 @@ func (o Bucurrentagentschedulesearchresponse) MarshalJSON() ([]byte, error) {
 		EndDate *string `json:"endDate,omitempty"`
 		
 		Updates *[]Buagentscheduleupdate `json:"updates,omitempty"`
+		
+		VisibilityRange *Schedulevisibilityrange `json:"visibilityRange,omitempty"`
 		Alias
 	}{ 
 		AgentSchedules: o.AgentSchedules,
@@ -134,6 +139,8 @@ func (o Bucurrentagentschedulesearchresponse) MarshalJSON() ([]byte, error) {
 		EndDate: EndDate,
 		
 		Updates: o.Updates,
+		
+		VisibilityRange: o.VisibilityRange,
 		Alias:    (Alias)(o),
 	})
 }
@@ -172,6 +179,11 @@ func (o *Bucurrentagentschedulesearchresponse) UnmarshalJSON(b []byte) error {
 	if Updates, ok := BucurrentagentschedulesearchresponseMap["updates"].([]interface{}); ok {
 		UpdatesString, _ := json.Marshal(Updates)
 		json.Unmarshal(UpdatesString, &o.Updates)
+	}
+	
+	if VisibilityRange, ok := BucurrentagentschedulesearchresponseMap["visibilityRange"].(map[string]interface{}); ok {
+		VisibilityRangeString, _ := json.Marshal(VisibilityRange)
+		json.Unmarshal(VisibilityRangeString, &o.VisibilityRange)
 	}
 	
 

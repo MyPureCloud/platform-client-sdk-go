@@ -26,6 +26,9 @@ type Agenticvirtualagenttoolinput struct {
 	// FallbackToUser - Whether the virtual agent should ask the user for this input value when it is not available from the configured source.
 	FallbackToUser *bool `json:"fallbackToUser,omitempty"`
 
+	// DependencyOnly - Whether this input is used for gating/preconditions only and is not sent with the underlying tool at runtime.
+	DependencyOnly *bool `json:"dependencyOnly,omitempty"`
+
 	// Mapping - Path used to extract this input from a previous tool output. Only valid when source is 'ToolOutput'. The path starts with a tool output type name, may contain only string property names or integer array indexes, and must resolve to a primitive value.
 	Mapping *[]interface{} `json:"mapping,omitempty"`
 }
@@ -103,6 +106,8 @@ func (o Agenticvirtualagenttoolinput) MarshalJSON() ([]byte, error) {
 		
 		FallbackToUser *bool `json:"fallbackToUser,omitempty"`
 		
+		DependencyOnly *bool `json:"dependencyOnly,omitempty"`
+		
 		Mapping *[]interface{} `json:"mapping,omitempty"`
 		Alias
 	}{ 
@@ -115,6 +120,8 @@ func (o Agenticvirtualagenttoolinput) MarshalJSON() ([]byte, error) {
 		Required: o.Required,
 		
 		FallbackToUser: o.FallbackToUser,
+		
+		DependencyOnly: o.DependencyOnly,
 		
 		Mapping: o.Mapping,
 		Alias:    (Alias)(o),
@@ -146,6 +153,10 @@ func (o *Agenticvirtualagenttoolinput) UnmarshalJSON(b []byte) error {
     
 	if FallbackToUser, ok := AgenticvirtualagenttoolinputMap["fallbackToUser"].(bool); ok {
 		o.FallbackToUser = &FallbackToUser
+	}
+    
+	if DependencyOnly, ok := AgenticvirtualagenttoolinputMap["dependencyOnly"].(bool); ok {
+		o.DependencyOnly = &DependencyOnly
 	}
     
 	if Mapping, ok := AgenticvirtualagenttoolinputMap["mapping"].([]interface{}); ok {

@@ -14,15 +14,6 @@ type Caseassociationqueryentitylisting struct {
 	// Entities
 	Entities *[]Caseassociation `json:"entities,omitempty"`
 
-	// NextUri
-	NextUri *string `json:"nextUri,omitempty"`
-
-	// SelfUri
-	SelfUri *string `json:"selfUri,omitempty"`
-
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
-
 	// After
 	After *string `json:"after,omitempty"`
 }
@@ -92,22 +83,10 @@ func (o Caseassociationqueryentitylisting) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Entities *[]Caseassociation `json:"entities,omitempty"`
 		
-		NextUri *string `json:"nextUri,omitempty"`
-		
-		SelfUri *string `json:"selfUri,omitempty"`
-		
-		PreviousUri *string `json:"previousUri,omitempty"`
-		
 		After *string `json:"after,omitempty"`
 		Alias
 	}{ 
 		Entities: o.Entities,
-		
-		NextUri: o.NextUri,
-		
-		SelfUri: o.SelfUri,
-		
-		PreviousUri: o.PreviousUri,
 		
 		After: o.After,
 		Alias:    (Alias)(o),
@@ -126,18 +105,6 @@ func (o *Caseassociationqueryentitylisting) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(EntitiesString, &o.Entities)
 	}
 	
-	if NextUri, ok := CaseassociationqueryentitylistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
-	}
-    
-	if SelfUri, ok := CaseassociationqueryentitylistingMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
-	}
-    
-	if PreviousUri, ok := CaseassociationqueryentitylistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
-	}
-    
 	if After, ok := CaseassociationqueryentitylistingMap["after"].(string); ok {
 		o.After = &After
 	}

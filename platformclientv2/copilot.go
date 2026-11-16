@@ -26,6 +26,9 @@ type Copilot struct {
 	// SummaryGenerationConfig - Copilot generated summary configuration.
 	SummaryGenerationConfig *Summarygenerationconfig `json:"summaryGenerationConfig,omitempty"`
 
+	// EmailSummaryGenerationConfig - Email summary configuration.
+	EmailSummaryGenerationConfig *Emailsummarygenerationconfig `json:"emailSummaryGenerationConfig,omitempty"`
+
 	// WrapupCodePredictionConfig - Copilot generated wrapup code prediction configuration.
 	WrapupCodePredictionConfig *Wrapupcodepredictionconfig `json:"wrapupCodePredictionConfig,omitempty"`
 
@@ -124,6 +127,8 @@ func (o Copilot) MarshalJSON() ([]byte, error) {
 		
 		SummaryGenerationConfig *Summarygenerationconfig `json:"summaryGenerationConfig,omitempty"`
 		
+		EmailSummaryGenerationConfig *Emailsummarygenerationconfig `json:"emailSummaryGenerationConfig,omitempty"`
+		
 		WrapupCodePredictionConfig *Wrapupcodepredictionconfig `json:"wrapupCodePredictionConfig,omitempty"`
 		
 		AnswerGenerationConfig *Answergenerationconfig `json:"answerGenerationConfig,omitempty"`
@@ -150,6 +155,8 @@ func (o Copilot) MarshalJSON() ([]byte, error) {
 		KnowledgeAnswerConfig: o.KnowledgeAnswerConfig,
 		
 		SummaryGenerationConfig: o.SummaryGenerationConfig,
+		
+		EmailSummaryGenerationConfig: o.EmailSummaryGenerationConfig,
 		
 		WrapupCodePredictionConfig: o.WrapupCodePredictionConfig,
 		
@@ -197,6 +204,11 @@ func (o *Copilot) UnmarshalJSON(b []byte) error {
 	if SummaryGenerationConfig, ok := CopilotMap["summaryGenerationConfig"].(map[string]interface{}); ok {
 		SummaryGenerationConfigString, _ := json.Marshal(SummaryGenerationConfig)
 		json.Unmarshal(SummaryGenerationConfigString, &o.SummaryGenerationConfig)
+	}
+	
+	if EmailSummaryGenerationConfig, ok := CopilotMap["emailSummaryGenerationConfig"].(map[string]interface{}); ok {
+		EmailSummaryGenerationConfigString, _ := json.Marshal(EmailSummaryGenerationConfig)
+		json.Unmarshal(EmailSummaryGenerationConfigString, &o.EmailSummaryGenerationConfig)
 	}
 	
 	if WrapupCodePredictionConfig, ok := CopilotMap["wrapupCodePredictionConfig"].(map[string]interface{}); ok {

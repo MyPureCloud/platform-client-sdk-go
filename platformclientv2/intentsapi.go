@@ -350,7 +350,7 @@ func (a IntentsApi) GetIntentsCategories(pageSize int, pageNumber int, queryValu
 // GetIntentsCategory invokes GET /api/v2/intents/categories/{categoryId}
 //
 // Get category for categoryId
-func (a IntentsApi) GetIntentsCategory(categoryId string) (*Intentscategory, *APIResponse, error) {
+func (a IntentsApi) GetIntentsCategory(categoryId string, includeUsage bool) (*Intentscategory, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/intents/categories/{categoryId}"
@@ -382,6 +382,8 @@ func (a IntentsApi) GetIntentsCategory(categoryId string) (*Intentscategory, *AP
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["includeUsage"] = a.Configuration.APIClient.ParameterToString(includeUsage, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -432,7 +434,7 @@ func (a IntentsApi) GetIntentsCategory(categoryId string) (*Intentscategory, *AP
 // GetIntentsCustomerintent invokes GET /api/v2/intents/customerintents/{customerIntentId}
 //
 // Get customer intent for customerIntentId
-func (a IntentsApi) GetIntentsCustomerintent(customerIntentId string) (*Customerintentresponse, *APIResponse, error) {
+func (a IntentsApi) GetIntentsCustomerintent(customerIntentId string, includeUsage bool) (*Customerintentresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/intents/customerintents/{customerIntentId}"
@@ -464,6 +466,8 @@ func (a IntentsApi) GetIntentsCustomerintent(customerIntentId string) (*Customer
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["includeUsage"] = a.Configuration.APIClient.ParameterToString(includeUsage, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

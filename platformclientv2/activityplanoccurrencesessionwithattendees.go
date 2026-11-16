@@ -7,22 +7,28 @@ import (
 	"strings"
 )
 
-// Buagentschedulessearchresponse
-type Buagentschedulessearchresponse struct { 
+// Activityplanoccurrencesessionwithattendees
+type Activityplanoccurrencesessionwithattendees struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// AgentSchedules - The requested agent schedules
-	AgentSchedules *[]Buagentschedulesearchresponse `json:"agentSchedules,omitempty"`
+	// Id - The globally unique identifier for the object.
+	Id *string `json:"id,omitempty"`
 
-	// BusinessUnitTimeZone - The time zone configured for the business unit to which this schedule applies
-	BusinessUnitTimeZone *string `json:"businessUnitTimeZone,omitempty"`
+	// Edited - Whether this session is edited
+	Edited *bool `json:"edited,omitempty"`
 
-	// PublishedSchedules - References to all published week schedules overlapping the start/end date query parameters
-	PublishedSchedules *[]Buagentschedulepublishedschedulereference `json:"publishedSchedules,omitempty"`
+	// Violations - The violations for this session
+	Violations *[]Activityplansessionviolation `json:"violations,omitempty"`
+
+	// Attendees - The attendees associated with this session
+	Attendees *[]Userreference `json:"attendees,omitempty"`
+
+	// SelfUri - The URI for this object
+	SelfUri *string `json:"selfUri,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Buagentschedulessearchresponse) SetField(field string, fieldValue interface{}) {
+func (o *Activityplanoccurrencesessionwithattendees) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -43,7 +49,7 @@ func (o *Buagentschedulessearchresponse) SetField(field string, fieldValue inter
 	o.SetFieldNames[field] = true
 }
 
-func (o Buagentschedulessearchresponse) MarshalJSON() ([]byte, error) {
+func (o Activityplanoccurrencesessionwithattendees) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -81,52 +87,68 @@ func (o Buagentschedulessearchresponse) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Buagentschedulessearchresponse
+	type Alias Activityplanoccurrencesessionwithattendees
 	
 	return json.Marshal(&struct { 
-		AgentSchedules *[]Buagentschedulesearchresponse `json:"agentSchedules,omitempty"`
+		Id *string `json:"id,omitempty"`
 		
-		BusinessUnitTimeZone *string `json:"businessUnitTimeZone,omitempty"`
+		Edited *bool `json:"edited,omitempty"`
 		
-		PublishedSchedules *[]Buagentschedulepublishedschedulereference `json:"publishedSchedules,omitempty"`
+		Violations *[]Activityplansessionviolation `json:"violations,omitempty"`
+		
+		Attendees *[]Userreference `json:"attendees,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
-		AgentSchedules: o.AgentSchedules,
+		Id: o.Id,
 		
-		BusinessUnitTimeZone: o.BusinessUnitTimeZone,
+		Edited: o.Edited,
 		
-		PublishedSchedules: o.PublishedSchedules,
+		Violations: o.Violations,
+		
+		Attendees: o.Attendees,
+		
+		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Buagentschedulessearchresponse) UnmarshalJSON(b []byte) error {
-	var BuagentschedulessearchresponseMap map[string]interface{}
-	err := json.Unmarshal(b, &BuagentschedulessearchresponseMap)
+func (o *Activityplanoccurrencesessionwithattendees) UnmarshalJSON(b []byte) error {
+	var ActivityplanoccurrencesessionwithattendeesMap map[string]interface{}
+	err := json.Unmarshal(b, &ActivityplanoccurrencesessionwithattendeesMap)
 	if err != nil {
 		return err
 	}
 	
-	if AgentSchedules, ok := BuagentschedulessearchresponseMap["agentSchedules"].([]interface{}); ok {
-		AgentSchedulesString, _ := json.Marshal(AgentSchedules)
-		json.Unmarshal(AgentSchedulesString, &o.AgentSchedules)
-	}
-	
-	if BusinessUnitTimeZone, ok := BuagentschedulessearchresponseMap["businessUnitTimeZone"].(string); ok {
-		o.BusinessUnitTimeZone = &BusinessUnitTimeZone
+	if Id, ok := ActivityplanoccurrencesessionwithattendeesMap["id"].(string); ok {
+		o.Id = &Id
 	}
     
-	if PublishedSchedules, ok := BuagentschedulessearchresponseMap["publishedSchedules"].([]interface{}); ok {
-		PublishedSchedulesString, _ := json.Marshal(PublishedSchedules)
-		json.Unmarshal(PublishedSchedulesString, &o.PublishedSchedules)
+	if Edited, ok := ActivityplanoccurrencesessionwithattendeesMap["edited"].(bool); ok {
+		o.Edited = &Edited
+	}
+    
+	if Violations, ok := ActivityplanoccurrencesessionwithattendeesMap["violations"].([]interface{}); ok {
+		ViolationsString, _ := json.Marshal(Violations)
+		json.Unmarshal(ViolationsString, &o.Violations)
 	}
 	
+	if Attendees, ok := ActivityplanoccurrencesessionwithattendeesMap["attendees"].([]interface{}); ok {
+		AttendeesString, _ := json.Marshal(Attendees)
+		json.Unmarshal(AttendeesString, &o.Attendees)
+	}
+	
+	if SelfUri, ok := ActivityplanoccurrencesessionwithattendeesMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+    
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Buagentschedulessearchresponse) String() string {
+func (o *Activityplanoccurrencesessionwithattendees) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

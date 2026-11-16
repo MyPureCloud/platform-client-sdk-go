@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"reflect"
 	"encoding/json"
@@ -35,6 +36,15 @@ type Modifiableruleproperties struct {
 	// Conditions - The set of metric conditions that would trigger an alert.
 	Conditions *Commonruleconditions `json:"conditions,omitempty"`
 
+	// Muted - Flag that indicates if the rule is muted.
+	Muted *bool `json:"muted,omitempty"`
+
+	// DateStartMute - Timestamp of when the mute status of the rule should start. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateStartMute *time.Time `json:"dateStartMute,omitempty"`
+
+	// DateEndMute - Timestamp of when the mute status of the rule should end. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateEndMute *time.Time `json:"dateEndMute,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -68,7 +78,7 @@ func (o Modifiableruleproperties) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{  }
+		dateTimeFields := []string{ "DateStartMute","DateEndMute", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -101,6 +111,22 @@ func (o Modifiableruleproperties) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Modifiableruleproperties
 	
+	DateStartMute := new(string)
+	if o.DateStartMute != nil {
+		
+		*DateStartMute = timeutil.Strftime(o.DateStartMute, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateStartMute = nil
+	}
+	
+	DateEndMute := new(string)
+	if o.DateEndMute != nil {
+		
+		*DateEndMute = timeutil.Strftime(o.DateEndMute, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateEndMute = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -117,6 +143,12 @@ func (o Modifiableruleproperties) MarshalJSON() ([]byte, error) {
 		WaitBetweenNotificationMs *int `json:"waitBetweenNotificationMs,omitempty"`
 		
 		Conditions *Commonruleconditions `json:"conditions,omitempty"`
+		
+		Muted *bool `json:"muted,omitempty"`
+		
+		DateStartMute *string `json:"dateStartMute,omitempty"`
+		
+		DateEndMute *string `json:"dateEndMute,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
@@ -136,6 +168,12 @@ func (o Modifiableruleproperties) MarshalJSON() ([]byte, error) {
 		WaitBetweenNotificationMs: o.WaitBetweenNotificationMs,
 		
 		Conditions: o.Conditions,
+		
+		Muted: o.Muted,
+		
+		DateStartMute: DateStartMute,
+		
+		DateEndMute: DateEndMute,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -182,6 +220,20 @@ func (o *Modifiableruleproperties) UnmarshalJSON(b []byte) error {
 	if Conditions, ok := ModifiablerulepropertiesMap["conditions"].(map[string]interface{}); ok {
 		ConditionsString, _ := json.Marshal(Conditions)
 		json.Unmarshal(ConditionsString, &o.Conditions)
+	}
+	
+	if Muted, ok := ModifiablerulepropertiesMap["muted"].(bool); ok {
+		o.Muted = &Muted
+	}
+    
+	if dateStartMuteString, ok := ModifiablerulepropertiesMap["dateStartMute"].(string); ok {
+		DateStartMute, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateStartMuteString)
+		o.DateStartMute = &DateStartMute
+	}
+	
+	if dateEndMuteString, ok := ModifiablerulepropertiesMap["dateEndMute"].(string); ok {
+		DateEndMute, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateEndMuteString)
+		o.DateEndMute = &DateEndMute
 	}
 	
 	if SelfUri, ok := ModifiablerulepropertiesMap["selfUri"].(string); ok {

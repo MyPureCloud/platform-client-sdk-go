@@ -51,8 +51,14 @@ type Billingcontract struct {
 	// BillingPeriods - List of billing periods for the contract.
 	BillingPeriods *[]Billingcontractperiod `json:"billingPeriods,omitempty"`
 
+	// Organizations - Organizations associated with the contract, deduplicated from plan associations.
+	Organizations *[]Namedentity `json:"organizations,omitempty"`
+
 	// Plans - The collection of prices for the related organizations.
 	Plans *[]Billingplan `json:"plans,omitempty"`
+
+	// Wallets - Wallet balances for the contract.
+	Wallets *[]Billingwallet `json:"wallets,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -172,7 +178,11 @@ func (o Billingcontract) MarshalJSON() ([]byte, error) {
 		
 		BillingPeriods *[]Billingcontractperiod `json:"billingPeriods,omitempty"`
 		
+		Organizations *[]Namedentity `json:"organizations,omitempty"`
+		
 		Plans *[]Billingplan `json:"plans,omitempty"`
+		
+		Wallets *[]Billingwallet `json:"wallets,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -201,7 +211,11 @@ func (o Billingcontract) MarshalJSON() ([]byte, error) {
 		
 		BillingPeriods: o.BillingPeriods,
 		
+		Organizations: o.Organizations,
+		
 		Plans: o.Plans,
+		
+		Wallets: o.Wallets,
 		Alias:    (Alias)(o),
 	})
 }
@@ -274,9 +288,19 @@ func (o *Billingcontract) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(BillingPeriodsString, &o.BillingPeriods)
 	}
 	
+	if Organizations, ok := BillingcontractMap["organizations"].([]interface{}); ok {
+		OrganizationsString, _ := json.Marshal(Organizations)
+		json.Unmarshal(OrganizationsString, &o.Organizations)
+	}
+	
 	if Plans, ok := BillingcontractMap["plans"].([]interface{}); ok {
 		PlansString, _ := json.Marshal(Plans)
 		json.Unmarshal(PlansString, &o.Plans)
+	}
+	
+	if Wallets, ok := BillingcontractMap["wallets"].([]interface{}); ok {
+		WalletsString, _ := json.Marshal(Wallets)
+		json.Unmarshal(WalletsString, &o.Wallets)
 	}
 	
 

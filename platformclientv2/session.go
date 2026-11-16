@@ -138,7 +138,7 @@ type Session struct {
 	// LastScreen - The app screen name where the customer's last app interaction occurred.
 	LastScreen *string `json:"lastScreen,omitempty"`
 
-	// CaseAssociations - Cases associated with the session - conversation only.
+	// CaseAssociations - Cases associated with the session - conversation and campaign only.
 	CaseAssociations *[]Journeycaseassociation `json:"caseAssociations,omitempty"`
 
 	// CaseEntity - The case this session refers to.

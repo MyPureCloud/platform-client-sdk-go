@@ -12,25 +12,25 @@ import (
 type Predictiveroutingcustomkpiattributionevent struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// EventId - A unique (UUID) eventId for this event
+	// EventId - A unique UUID v4 used to identify each attribution event uniquely
 	EventId *string `json:"eventId,omitempty"`
 
-	// EventDateTime - A timestamp as epoch representing the time this event occurred. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	// EventDateTime - The date and time at which the attributed business result was achieved, in UTC, formatted as an ISO-8601 string. For example, 2023-01-07T08:30:00.123Z. Use the time the business result actually occurred or was confirmed, not a later ingestion, synchronisation, reporting, or batch-processing time. When conversationId is supplied, this timestamp must fall within the conversation attribution window, or the event is rejected. This means eventDateTime must be no earlier than the conversation start time, and no later than the conversation end time plus the grace period for the conversation's media type (1 hour for voice, message and email).
 	EventDateTime *time.Time `json:"eventDateTime,omitempty"`
 
-	// ExternalContactId - The UUID of the external contact associated with this event
+	// ExternalContactId - The id of the External Contact of the customer who was involved in the KPI attribution. If this field is populated, we will retrieve the relevant conversation internally - thus this field is not compatible with conversationId. You must chose to use either externalContactId or conversationId but not both on the same event.
 	ExternalContactId *string `json:"externalContactId,omitempty"`
 
-	// ConversationId - The UUID of the conversation associated with this event
+	// ConversationId - The id of the conversation. This field must be omitted if externalContactId is already populated on the event.
 	ConversationId *string `json:"conversationId,omitempty"`
 
-	// AgentId - The UUID of the agent associated with this event
+	// AgentId - The id of the agent who achieved the KPI attribution that is getting the attribution.
 	AgentId *string `json:"agentId,omitempty"`
 
-	// KpiId - The UUID of the KPI associated with this event
+	// KpiId - The id of the relevant revenue KPI within the Genesys Platform - this id can be retrieved from the Revenue KPI Admin UI.
 	KpiId *string `json:"kpiId,omitempty"`
 
-	// AssociatedValue - The value associated with this outcome attribution
+	// AssociatedValue - For Sales Conversion, Retention and Churn KPI type, the numeric value expected is \"1\". For SalesValue KPI type, a numeric value representing the aggregated value of all KPI attributions achieved by an agent during a conversation, we do not allow multiple event uploads for the same conversationId and agentId pair.
 	AssociatedValue *float64 `json:"associatedValue,omitempty"`
 }
 

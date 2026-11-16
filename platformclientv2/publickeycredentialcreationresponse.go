@@ -24,7 +24,7 @@ type Publickeycredentialcreationresponse struct {
 	AuthenticatorAttachment *string `json:"authenticatorAttachment,omitempty"`
 
 	// ClientExtensionResults - Outputs from client-side WebAuthn extensions.
-	ClientExtensionResults *map[string]interface{} `json:"clientExtensionResults,omitempty"`
+	ClientExtensionResults *Clientextensionresults `json:"clientExtensionResults,omitempty"`
 
 	// Response - The authenticator's attestation response.
 	Response *Authenticatorattestationresponse `json:"response,omitempty"`
@@ -101,7 +101,7 @@ func (o Publickeycredentialcreationresponse) MarshalJSON() ([]byte, error) {
 		
 		AuthenticatorAttachment *string `json:"authenticatorAttachment,omitempty"`
 		
-		ClientExtensionResults *map[string]interface{} `json:"clientExtensionResults,omitempty"`
+		ClientExtensionResults *Clientextensionresults `json:"clientExtensionResults,omitempty"`
 		
 		Response *Authenticatorattestationresponse `json:"response,omitempty"`
 		Alias

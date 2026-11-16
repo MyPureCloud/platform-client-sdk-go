@@ -16,6 +16,12 @@ type Whatsappid struct {
 
 	// DisplayName - The displayName of this person's account in WhatsApp. Max: 100 characters.
 	DisplayName *string `json:"displayName,omitempty"`
+
+	// Username - The username of the account.
+	Username *string `json:"username,omitempty"`
+
+	// WhatsAppBusinessScopedIds - The set of Whatsapp Business Scoped Ids that this contact is associated with.
+	WhatsAppBusinessScopedIds *[]Whatsappbusinessscopedid `json:"whatsAppBusinessScopedIds,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +90,19 @@ func (o Whatsappid) MarshalJSON() ([]byte, error) {
 		PhoneNumber *Phonenumber `json:"phoneNumber,omitempty"`
 		
 		DisplayName *string `json:"displayName,omitempty"`
+		
+		Username *string `json:"username,omitempty"`
+		
+		WhatsAppBusinessScopedIds *[]Whatsappbusinessscopedid `json:"whatsAppBusinessScopedIds,omitempty"`
 		Alias
 	}{ 
 		PhoneNumber: o.PhoneNumber,
 		
 		DisplayName: o.DisplayName,
+		
+		Username: o.Username,
+		
+		WhatsAppBusinessScopedIds: o.WhatsAppBusinessScopedIds,
 		Alias:    (Alias)(o),
 	})
 }
@@ -109,6 +123,15 @@ func (o *Whatsappid) UnmarshalJSON(b []byte) error {
 		o.DisplayName = &DisplayName
 	}
     
+	if Username, ok := WhatsappidMap["username"].(string); ok {
+		o.Username = &Username
+	}
+    
+	if WhatsAppBusinessScopedIds, ok := WhatsappidMap["whatsAppBusinessScopedIds"].([]interface{}); ok {
+		WhatsAppBusinessScopedIdsString, _ := json.Marshal(WhatsAppBusinessScopedIds)
+		json.Unmarshal(WhatsAppBusinessScopedIdsString, &o.WhatsAppBusinessScopedIds)
+	}
+	
 
 	return nil
 }

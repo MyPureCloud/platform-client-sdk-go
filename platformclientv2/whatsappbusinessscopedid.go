@@ -10,7 +10,16 @@ import (
 // Whatsappbusinessscopedid - A WhatsAppBusinessScopedId record
 type Whatsappbusinessscopedid struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
-	SetFieldNames map[string]bool `json:"-"`}
+	SetFieldNames map[string]bool `json:"-"`
+	// Bsuid - The Whatsapp Business Scoped Id associated with a WhatsApp User.
+	Bsuid *string `json:"bsuid,omitempty"`
+
+	// Parent - True if this is a parent BSUID, false if it is a regular BSUID.
+	Parent *bool `json:"parent,omitempty"`
+
+	// PortfolioId - The portfolio id associated with the WhatsApp bsuid.
+	PortfolioId *string `json:"portfolioId,omitempty"`
+}
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
 func (o *Whatsappbusinessscopedid) SetField(field string, fieldValue interface{}) {
@@ -74,8 +83,20 @@ func (o Whatsappbusinessscopedid) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Whatsappbusinessscopedid
 	
-	return json.Marshal(&struct { Alias
-	}{ Alias:    (Alias)(o),
+	return json.Marshal(&struct { 
+		Bsuid *string `json:"bsuid,omitempty"`
+		
+		Parent *bool `json:"parent,omitempty"`
+		
+		PortfolioId *string `json:"portfolioId,omitempty"`
+		Alias
+	}{ 
+		Bsuid: o.Bsuid,
+		
+		Parent: o.Parent,
+		
+		PortfolioId: o.PortfolioId,
+		Alias:    (Alias)(o),
 	})
 }
 
@@ -86,6 +107,18 @@ func (o *Whatsappbusinessscopedid) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
+	if Bsuid, ok := WhatsappbusinessscopedidMap["bsuid"].(string); ok {
+		o.Bsuid = &Bsuid
+	}
+    
+	if Parent, ok := WhatsappbusinessscopedidMap["parent"].(bool); ok {
+		o.Parent = &Parent
+	}
+    
+	if PortfolioId, ok := WhatsappbusinessscopedidMap["portfolioId"].(string); ok {
+		o.PortfolioId = &PortfolioId
+	}
+    
 
 	return nil
 }

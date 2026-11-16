@@ -36,6 +36,15 @@ type Commonrule struct {
 	// Conditions - The set of metric conditions that would trigger an alert.
 	Conditions *Commonruleconditions `json:"conditions,omitempty"`
 
+	// Muted - Flag that indicates if the rule is muted.
+	Muted *bool `json:"muted,omitempty"`
+
+	// DateStartMute - Timestamp of when the mute status of the rule should start. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateStartMute *time.Time `json:"dateStartMute,omitempty"`
+
+	// DateEndMute - Timestamp of when the mute status of the rule should end. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateEndMute *time.Time `json:"dateEndMute,omitempty"`
+
 	// VarType - The type of the rule.
 	VarType *string `json:"type,omitempty"`
 
@@ -87,7 +96,7 @@ func (o Commonrule) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "DateCreated","DateLastModified", }
+		dateTimeFields := []string{ "DateStartMute","DateEndMute","DateCreated","DateLastModified", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -119,6 +128,22 @@ func (o Commonrule) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Commonrule
+	
+	DateStartMute := new(string)
+	if o.DateStartMute != nil {
+		
+		*DateStartMute = timeutil.Strftime(o.DateStartMute, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateStartMute = nil
+	}
+	
+	DateEndMute := new(string)
+	if o.DateEndMute != nil {
+		
+		*DateEndMute = timeutil.Strftime(o.DateEndMute, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateEndMute = nil
+	}
 	
 	DateCreated := new(string)
 	if o.DateCreated != nil {
@@ -153,6 +178,12 @@ func (o Commonrule) MarshalJSON() ([]byte, error) {
 		
 		Conditions *Commonruleconditions `json:"conditions,omitempty"`
 		
+		Muted *bool `json:"muted,omitempty"`
+		
+		DateStartMute *string `json:"dateStartMute,omitempty"`
+		
+		DateEndMute *string `json:"dateEndMute,omitempty"`
+		
 		VarType *string `json:"type,omitempty"`
 		
 		InAlarm *bool `json:"inAlarm,omitempty"`
@@ -183,6 +214,12 @@ func (o Commonrule) MarshalJSON() ([]byte, error) {
 		WaitBetweenNotificationMs: o.WaitBetweenNotificationMs,
 		
 		Conditions: o.Conditions,
+		
+		Muted: o.Muted,
+		
+		DateStartMute: DateStartMute,
+		
+		DateEndMute: DateEndMute,
 		
 		VarType: o.VarType,
 		
@@ -241,6 +278,20 @@ func (o *Commonrule) UnmarshalJSON(b []byte) error {
 	if Conditions, ok := CommonruleMap["conditions"].(map[string]interface{}); ok {
 		ConditionsString, _ := json.Marshal(Conditions)
 		json.Unmarshal(ConditionsString, &o.Conditions)
+	}
+	
+	if Muted, ok := CommonruleMap["muted"].(bool); ok {
+		o.Muted = &Muted
+	}
+    
+	if dateStartMuteString, ok := CommonruleMap["dateStartMute"].(string); ok {
+		DateStartMute, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateStartMuteString)
+		o.DateStartMute = &DateStartMute
+	}
+	
+	if dateEndMuteString, ok := CommonruleMap["dateEndMute"].(string); ok {
+		DateEndMute, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateEndMuteString)
+		o.DateEndMute = &DateEndMute
 	}
 	
 	if VarType, ok := CommonruleMap["type"].(string); ok {

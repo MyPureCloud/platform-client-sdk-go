@@ -632,7 +632,7 @@ func (a CaseManagementApi) GetCasemanagementCaseAssociation(caseId string, assoc
 // GetCasemanagementCaseAssociations invokes GET /api/v2/casemanagement/cases/{caseId}/associations
 //
 // Get a list of Case associations for the Case.
-func (a CaseManagementApi) GetCasemanagementCaseAssociations(caseId string, before string, after string, pageSize string) (*Caseassociationlisting, *APIResponse, error) {
+func (a CaseManagementApi) GetCasemanagementCaseAssociations(caseId string, after string, pageSize int) (*Caseassociationlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/casemanagement/cases/{caseId}/associations"
@@ -664,8 +664,6 @@ func (a CaseManagementApi) GetCasemanagementCaseAssociations(caseId string, befo
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, "")
 	
 	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
 	
@@ -1078,7 +1076,7 @@ func (a CaseManagementApi) GetCasemanagementCaseStageStep(caseId string, stageId
 // GetCasemanagementCaseStageSteps invokes GET /api/v2/casemanagement/cases/{caseId}/stages/{stageId}/steps
 //
 // Get a list of Steps.
-func (a CaseManagementApi) GetCasemanagementCaseStageSteps(caseId string, stageId string, before string, after string, pageSize string) (*Steplisting, *APIResponse, error) {
+func (a CaseManagementApi) GetCasemanagementCaseStageSteps(caseId string, stageId string, after string, pageSize int) (*Steplisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/casemanagement/cases/{caseId}/stages/{stageId}/steps"
@@ -1116,8 +1114,6 @@ func (a CaseManagementApi) GetCasemanagementCaseStageSteps(caseId string, stageI
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, "")
 	
 	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
 	
@@ -1172,7 +1168,7 @@ func (a CaseManagementApi) GetCasemanagementCaseStageSteps(caseId string, stageI
 // GetCasemanagementCaseStages invokes GET /api/v2/casemanagement/cases/{caseId}/stages
 //
 // Get a list of Stages.
-func (a CaseManagementApi) GetCasemanagementCaseStages(caseId string, before string, after string, pageSize string) (*Stagelisting, *APIResponse, error) {
+func (a CaseManagementApi) GetCasemanagementCaseStages(caseId string, after string, pageSize int) (*Stagelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/casemanagement/cases/{caseId}/stages"
@@ -1204,8 +1200,6 @@ func (a CaseManagementApi) GetCasemanagementCaseStages(caseId string, before str
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, "")
 	
 	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
 	
@@ -1892,7 +1886,7 @@ func (a CaseManagementApi) GetCasemanagementCaseplanVersionStageplanStepplan(cas
 // GetCasemanagementCaseplanVersionStageplanStepplans invokes GET /api/v2/casemanagement/caseplans/{caseplanId}/versions/{versionId}/stageplans/{stageplanId}/stepplans
 //
 // Get a list of Stepplans.
-func (a CaseManagementApi) GetCasemanagementCaseplanVersionStageplanStepplans(caseplanId string, versionId string, stageplanId string, before string, after string, pageSize string, expands []string) (*Stepplanlisting, *APIResponse, error) {
+func (a CaseManagementApi) GetCasemanagementCaseplanVersionStageplanStepplans(caseplanId string, versionId string, stageplanId string, after string, pageSize int, expands []string) (*Stepplanlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/casemanagement/caseplans/{caseplanId}/versions/{versionId}/stageplans/{stageplanId}/stepplans"
@@ -1936,8 +1930,6 @@ func (a CaseManagementApi) GetCasemanagementCaseplanVersionStageplanStepplans(ca
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, "")
 	
 	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
 	
@@ -1994,7 +1986,7 @@ func (a CaseManagementApi) GetCasemanagementCaseplanVersionStageplanStepplans(ca
 // GetCasemanagementCaseplanVersionStageplans invokes GET /api/v2/casemanagement/caseplans/{caseplanId}/versions/{versionId}/stageplans
 //
 // Get a list of Stageplans.
-func (a CaseManagementApi) GetCasemanagementCaseplanVersionStageplans(caseplanId string, versionId string, before string, after string, pageSize string, expands []string) (*Stageplanlisting, *APIResponse, error) {
+func (a CaseManagementApi) GetCasemanagementCaseplanVersionStageplans(caseplanId string, versionId string, after string, pageSize int, expands []string) (*Stageplanlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/casemanagement/caseplans/{caseplanId}/versions/{versionId}/stageplans"
@@ -2032,8 +2024,6 @@ func (a CaseManagementApi) GetCasemanagementCaseplanVersionStageplans(caseplanId
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, "")
 	
 	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
 	

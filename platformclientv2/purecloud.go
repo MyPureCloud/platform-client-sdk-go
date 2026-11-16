@@ -20,6 +20,12 @@ type Purecloud struct {
 	// Disabled
 	Disabled *bool `json:"disabled,omitempty"`
 
+	// NativeLoginExceptionsEnabled
+	NativeLoginExceptionsEnabled *bool `json:"nativeLoginExceptionsEnabled,omitempty"`
+
+	// NativeLoginExceptionGroupIds
+	NativeLoginExceptionGroupIds *[]string `json:"nativeLoginExceptionGroupIds,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -93,6 +99,10 @@ func (o Purecloud) MarshalJSON() ([]byte, error) {
 		
 		Disabled *bool `json:"disabled,omitempty"`
 		
+		NativeLoginExceptionsEnabled *bool `json:"nativeLoginExceptionsEnabled,omitempty"`
+		
+		NativeLoginExceptionGroupIds *[]string `json:"nativeLoginExceptionGroupIds,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -101,6 +111,10 @@ func (o Purecloud) MarshalJSON() ([]byte, error) {
 		Name: o.Name,
 		
 		Disabled: o.Disabled,
+		
+		NativeLoginExceptionsEnabled: o.NativeLoginExceptionsEnabled,
+		
+		NativeLoginExceptionGroupIds: o.NativeLoginExceptionGroupIds,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -126,6 +140,15 @@ func (o *Purecloud) UnmarshalJSON(b []byte) error {
 		o.Disabled = &Disabled
 	}
     
+	if NativeLoginExceptionsEnabled, ok := PurecloudMap["nativeLoginExceptionsEnabled"].(bool); ok {
+		o.NativeLoginExceptionsEnabled = &NativeLoginExceptionsEnabled
+	}
+    
+	if NativeLoginExceptionGroupIds, ok := PurecloudMap["nativeLoginExceptionGroupIds"].([]interface{}); ok {
+		NativeLoginExceptionGroupIdsString, _ := json.Marshal(NativeLoginExceptionGroupIds)
+		json.Unmarshal(NativeLoginExceptionGroupIdsString, &o.NativeLoginExceptionGroupIds)
+	}
+	
 	if SelfUri, ok := PurecloudMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}

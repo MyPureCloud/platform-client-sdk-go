@@ -18,7 +18,7 @@ type Topicrequest struct {
 	Description *string `json:"description,omitempty"`
 
 	// Strictness - The topic strictness, default value is 72
-	Strictness *string `json:"strictness,omitempty"`
+	Strictness *int `json:"strictness,omitempty"`
 
 	// ProgramIds - The ids of programs associated to the topic
 	ProgramIds *[]string `json:"programIds,omitempty"`
@@ -106,7 +106,7 @@ func (o Topicrequest) MarshalJSON() ([]byte, error) {
 		
 		Description *string `json:"description,omitempty"`
 		
-		Strictness *string `json:"strictness,omitempty"`
+		Strictness *int `json:"strictness,omitempty"`
 		
 		ProgramIds *[]string `json:"programIds,omitempty"`
 		
@@ -157,10 +157,11 @@ func (o *Topicrequest) UnmarshalJSON(b []byte) error {
 		o.Description = &Description
 	}
     
-	if Strictness, ok := TopicrequestMap["strictness"].(string); ok {
-		o.Strictness = &Strictness
+	if Strictness, ok := TopicrequestMap["strictness"].(float64); ok {
+		StrictnessInt := int(Strictness)
+		o.Strictness = &StrictnessInt
 	}
-    
+	
 	if ProgramIds, ok := TopicrequestMap["programIds"].([]interface{}); ok {
 		ProgramIdsString, _ := json.Marshal(ProgramIds)
 		json.Unmarshal(ProgramIdsString, &o.ProgramIds)

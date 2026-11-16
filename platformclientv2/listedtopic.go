@@ -24,8 +24,8 @@ type Listedtopic struct {
 	// Published
 	Published *bool `json:"published,omitempty"`
 
-	// Strictness
-	Strictness *string `json:"strictness,omitempty"`
+	// Strictness - The topic strictness, default value is 72
+	Strictness *int `json:"strictness,omitempty"`
 
 	// MatchingType
 	MatchingType *string `json:"matchingType,omitempty"`
@@ -134,7 +134,7 @@ func (o Listedtopic) MarshalJSON() ([]byte, error) {
 		
 		Published *bool `json:"published,omitempty"`
 		
-		Strictness *string `json:"strictness,omitempty"`
+		Strictness *int `json:"strictness,omitempty"`
 		
 		MatchingType *string `json:"matchingType,omitempty"`
 		
@@ -209,10 +209,11 @@ func (o *Listedtopic) UnmarshalJSON(b []byte) error {
 		o.Published = &Published
 	}
     
-	if Strictness, ok := ListedtopicMap["strictness"].(string); ok {
-		o.Strictness = &Strictness
+	if Strictness, ok := ListedtopicMap["strictness"].(float64); ok {
+		StrictnessInt := int(Strictness)
+		o.Strictness = &StrictnessInt
 	}
-    
+	
 	if MatchingType, ok := ListedtopicMap["matchingType"].(string); ok {
 		o.MatchingType = &MatchingType
 	}

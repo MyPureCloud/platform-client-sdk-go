@@ -24,8 +24,11 @@ type Copycapacityplanrequest struct {
 	// EndBusinessUnitDate - The end date for the capacity plan relative to the business unit time zone in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
 	EndBusinessUnitDate *time.Time `json:"endBusinessUnitDate,omitempty"`
 
-	// Forecast - The selected forecast for this capacity plan. Uses forecast from original capacity plan if not specified
+	// Forecast - The generated forecast for the capacity plan. Uses forecast from original capacity plan if not specified
 	Forecast *Valuewrapperbushorttermforecastreference `json:"forecast,omitempty"`
+
+	// ImportedForecast - The externally imported forecast for the capacity plan. Uses forecast from original capacity plan if not specified
+	ImportedForecast *Valuewrappercapacityplanimportedforecastrequest `json:"importedForecast,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -114,6 +117,8 @@ func (o Copycapacityplanrequest) MarshalJSON() ([]byte, error) {
 		EndBusinessUnitDate *string `json:"endBusinessUnitDate,omitempty"`
 		
 		Forecast *Valuewrapperbushorttermforecastreference `json:"forecast,omitempty"`
+		
+		ImportedForecast *Valuewrappercapacityplanimportedforecastrequest `json:"importedForecast,omitempty"`
 		Alias
 	}{ 
 		Name: o.Name,
@@ -125,6 +130,8 @@ func (o Copycapacityplanrequest) MarshalJSON() ([]byte, error) {
 		EndBusinessUnitDate: EndBusinessUnitDate,
 		
 		Forecast: o.Forecast,
+		
+		ImportedForecast: o.ImportedForecast,
 		Alias:    (Alias)(o),
 	})
 }
@@ -157,6 +164,11 @@ func (o *Copycapacityplanrequest) UnmarshalJSON(b []byte) error {
 	if Forecast, ok := CopycapacityplanrequestMap["forecast"].(map[string]interface{}); ok {
 		ForecastString, _ := json.Marshal(Forecast)
 		json.Unmarshal(ForecastString, &o.Forecast)
+	}
+	
+	if ImportedForecast, ok := CopycapacityplanrequestMap["importedForecast"].(map[string]interface{}); ok {
+		ImportedForecastString, _ := json.Marshal(ImportedForecast)
+		json.Unmarshal(ImportedForecastString, &o.ImportedForecast)
 	}
 	
 

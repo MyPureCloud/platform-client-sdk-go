@@ -20,11 +20,11 @@ type Buagentschedulequeryresponse struct {
 	// FullDayTimeOffMarkers - Full day time off markers which apply to this agent schedule
 	FullDayTimeOffMarkers *[]Bufulldaytimeoffmarker `json:"fullDayTimeOffMarkers,omitempty"`
 
-	// WorkPlan - The work plan for this user
-	WorkPlan *Workplanreference `json:"workPlan,omitempty"`
-
 	// WorkPlansPerWeek - The work plans per week for this user from the work plan rotation. Null values in the list denotes that user is not part of any work plan for that week
 	WorkPlansPerWeek *[]Workplanreference `json:"workPlansPerWeek,omitempty"`
+
+	// WorkPlan - The work plan for this user
+	WorkPlan *Workplanreference `json:"workPlan,omitempty"`
 
 	// Metadata - Versioned entity metadata for this agent schedule
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
@@ -99,9 +99,9 @@ func (o Buagentschedulequeryresponse) MarshalJSON() ([]byte, error) {
 		
 		FullDayTimeOffMarkers *[]Bufulldaytimeoffmarker `json:"fullDayTimeOffMarkers,omitempty"`
 		
-		WorkPlan *Workplanreference `json:"workPlan,omitempty"`
-		
 		WorkPlansPerWeek *[]Workplanreference `json:"workPlansPerWeek,omitempty"`
+		
+		WorkPlan *Workplanreference `json:"workPlan,omitempty"`
 		
 		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 		Alias
@@ -112,9 +112,9 @@ func (o Buagentschedulequeryresponse) MarshalJSON() ([]byte, error) {
 		
 		FullDayTimeOffMarkers: o.FullDayTimeOffMarkers,
 		
-		WorkPlan: o.WorkPlan,
-		
 		WorkPlansPerWeek: o.WorkPlansPerWeek,
+		
+		WorkPlan: o.WorkPlan,
 		
 		Metadata: o.Metadata,
 		Alias:    (Alias)(o),
@@ -143,14 +143,14 @@ func (o *Buagentschedulequeryresponse) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(FullDayTimeOffMarkersString, &o.FullDayTimeOffMarkers)
 	}
 	
-	if WorkPlan, ok := BuagentschedulequeryresponseMap["workPlan"].(map[string]interface{}); ok {
-		WorkPlanString, _ := json.Marshal(WorkPlan)
-		json.Unmarshal(WorkPlanString, &o.WorkPlan)
-	}
-	
 	if WorkPlansPerWeek, ok := BuagentschedulequeryresponseMap["workPlansPerWeek"].([]interface{}); ok {
 		WorkPlansPerWeekString, _ := json.Marshal(WorkPlansPerWeek)
 		json.Unmarshal(WorkPlansPerWeekString, &o.WorkPlansPerWeek)
+	}
+	
+	if WorkPlan, ok := BuagentschedulequeryresponseMap["workPlan"].(map[string]interface{}); ok {
+		WorkPlanString, _ := json.Marshal(WorkPlan)
+		json.Unmarshal(WorkPlanString, &o.WorkPlan)
 	}
 	
 	if Metadata, ok := BuagentschedulequeryresponseMap["metadata"].(map[string]interface{}); ok {

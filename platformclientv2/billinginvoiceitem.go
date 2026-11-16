@@ -34,7 +34,7 @@ type Billinginvoiceitem struct {
 	Organization *Namedentity `json:"organization,omitempty"`
 
 	// Quantity - Quantity of the item.
-	Quantity *int `json:"quantity,omitempty"`
+	Quantity *float32 `json:"quantity,omitempty"`
 
 	// UnitOfMeasure - Unit of Measure.
 	UnitOfMeasure *string `json:"unitOfMeasure,omitempty"`
@@ -141,7 +141,7 @@ func (o Billinginvoiceitem) MarshalJSON() ([]byte, error) {
 		
 		Organization *Namedentity `json:"organization,omitempty"`
 		
-		Quantity *int `json:"quantity,omitempty"`
+		Quantity *float32 `json:"quantity,omitempty"`
 		
 		UnitOfMeasure *string `json:"unitOfMeasure,omitempty"`
 		
@@ -212,10 +212,10 @@ func (o *Billinginvoiceitem) UnmarshalJSON(b []byte) error {
 	}
 	
 	if Quantity, ok := BillinginvoiceitemMap["quantity"].(float64); ok {
-		QuantityInt := int(Quantity)
-		o.Quantity = &QuantityInt
+		QuantityFloat32 := float32(Quantity)
+		o.Quantity = &QuantityFloat32
 	}
-	
+    
 	if UnitOfMeasure, ok := BillinginvoiceitemMap["unitOfMeasure"].(string); ok {
 		o.UnitOfMeasure = &UnitOfMeasure
 	}

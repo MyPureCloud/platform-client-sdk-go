@@ -16,6 +16,12 @@ type Knowledgesearchresult struct {
 
 	// RetrievedReferences - The retrieved references for the search query.
 	RetrievedReferences *[]Knowledgeretrievedreference `json:"retrievedReferences,omitempty"`
+
+	// FailureReason - Reason the search request did not produce an answer or relevant content.
+	FailureReason *string `json:"failureReason,omitempty"`
+
+	// Message - A detailed error message describing the failureReason.
+	Message *string `json:"message,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +90,19 @@ func (o Knowledgesearchresult) MarshalJSON() ([]byte, error) {
 		GeneratedAnswer *string `json:"generatedAnswer,omitempty"`
 		
 		RetrievedReferences *[]Knowledgeretrievedreference `json:"retrievedReferences,omitempty"`
+		
+		FailureReason *string `json:"failureReason,omitempty"`
+		
+		Message *string `json:"message,omitempty"`
 		Alias
 	}{ 
 		GeneratedAnswer: o.GeneratedAnswer,
 		
 		RetrievedReferences: o.RetrievedReferences,
+		
+		FailureReason: o.FailureReason,
+		
+		Message: o.Message,
 		Alias:    (Alias)(o),
 	})
 }
@@ -109,6 +123,14 @@ func (o *Knowledgesearchresult) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(RetrievedReferencesString, &o.RetrievedReferences)
 	}
 	
+	if FailureReason, ok := KnowledgesearchresultMap["failureReason"].(string); ok {
+		o.FailureReason = &FailureReason
+	}
+    
+	if Message, ok := KnowledgesearchresultMap["message"].(string); ok {
+		o.Message = &Message
+	}
+    
 
 	return nil
 }

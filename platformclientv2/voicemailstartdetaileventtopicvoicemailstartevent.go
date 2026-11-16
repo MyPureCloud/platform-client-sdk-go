@@ -64,6 +64,9 @@ type Voicemailstartdetaileventtopicvoicemailstartevent struct {
 
 	// OutboundContactId
 	OutboundContactId *string `json:"outboundContactId,omitempty"`
+
+	// OutboundDivisionId
+	OutboundDivisionId *string `json:"outboundDivisionId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -164,6 +167,8 @@ func (o Voicemailstartdetaileventtopicvoicemailstartevent) MarshalJSON() ([]byte
 		OutboundContactListId *string `json:"outboundContactListId,omitempty"`
 		
 		OutboundContactId *string `json:"outboundContactId,omitempty"`
+		
+		OutboundDivisionId *string `json:"outboundDivisionId,omitempty"`
 		Alias
 	}{ 
 		EventTime: o.EventTime,
@@ -201,6 +206,8 @@ func (o Voicemailstartdetaileventtopicvoicemailstartevent) MarshalJSON() ([]byte
 		OutboundContactListId: o.OutboundContactListId,
 		
 		OutboundContactId: o.OutboundContactId,
+		
+		OutboundDivisionId: o.OutboundDivisionId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -285,6 +292,10 @@ func (o *Voicemailstartdetaileventtopicvoicemailstartevent) UnmarshalJSON(b []by
     
 	if OutboundContactId, ok := VoicemailstartdetaileventtopicvoicemailstarteventMap["outboundContactId"].(string); ok {
 		o.OutboundContactId = &OutboundContactId
+	}
+    
+	if OutboundDivisionId, ok := VoicemailstartdetaileventtopicvoicemailstarteventMap["outboundDivisionId"].(string); ok {
+		o.OutboundDivisionId = &OutboundDivisionId
 	}
     
 

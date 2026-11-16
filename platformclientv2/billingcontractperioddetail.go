@@ -26,9 +26,6 @@ type Billingcontractperioddetail struct {
 
 	// Charges - Represents usage metrics including prepaid, actual, and overage quantities along with associated charges.
 	Charges *[]Billingcharge `json:"charges,omitempty"`
-
-	// Wallets - Represents usage metrics including prepaid, actual, and overage quantities along with associated charges.
-	Wallets *[]Billingwallet `json:"wallets,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -117,8 +114,6 @@ func (o Billingcontractperioddetail) MarshalJSON() ([]byte, error) {
 		Status *string `json:"status,omitempty"`
 		
 		Charges *[]Billingcharge `json:"charges,omitempty"`
-		
-		Wallets *[]Billingwallet `json:"wallets,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -130,8 +125,6 @@ func (o Billingcontractperioddetail) MarshalJSON() ([]byte, error) {
 		Status: o.Status,
 		
 		Charges: o.Charges,
-		
-		Wallets: o.Wallets,
 		Alias:    (Alias)(o),
 	})
 }
@@ -164,11 +157,6 @@ func (o *Billingcontractperioddetail) UnmarshalJSON(b []byte) error {
 	if Charges, ok := BillingcontractperioddetailMap["charges"].([]interface{}); ok {
 		ChargesString, _ := json.Marshal(Charges)
 		json.Unmarshal(ChargesString, &o.Charges)
-	}
-	
-	if Wallets, ok := BillingcontractperioddetailMap["wallets"].([]interface{}); ok {
-		WalletsString, _ := json.Marshal(Wallets)
-		json.Unmarshal(WalletsString, &o.Wallets)
 	}
 	
 

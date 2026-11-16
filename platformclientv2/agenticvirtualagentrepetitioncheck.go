@@ -17,7 +17,7 @@ type Agenticvirtualagentrepetitioncheck struct {
 	// Messages - The number of prior messages of the specified type to compare for repetition.
 	Messages *int `json:"messages,omitempty"`
 
-	// Similarity - The similarity category compared to the Levenshtein result that triggers this check's instruction.
+	// Similarity - The similarity category compared to the comparison result that triggers this check's instruction. VeryLoose, Loose, and Strict require semantic comparison to be enabled for your organization; a request using one of these without that capability enabled fails with 501 Not Implemented.
 	Similarity *string `json:"similarity,omitempty"`
 
 	// Instruction - The instruction added to the virtual agent's turn when message similarity matches the configured category.

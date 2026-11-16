@@ -7,28 +7,19 @@ import (
 	"strings"
 )
 
-// Wfmscheduletopicwfmschedulenotification
-type Wfmscheduletopicwfmschedulenotification struct { 
+// Activityplanoccurrencelisting
+type Activityplanoccurrencelisting struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Status
-	Status *string `json:"status,omitempty"`
+	// Entities
+	Entities *[]Activityplanoccurrencelistitem `json:"entities,omitempty"`
 
-	// OperationId
-	OperationId *string `json:"operationId,omitempty"`
-
-	// DownloadUrl
-	DownloadUrl *string `json:"downloadUrl,omitempty"`
-
-	// PercentComplete
-	PercentComplete *int `json:"percentComplete,omitempty"`
-
-	// EventType
-	EventType *string `json:"eventType,omitempty"`
+	// Schedules - A list of schedules to which the sessions are attached. Reference this by index to resolve the schedule for a particular session
+	Schedules *[]Buschedulesummary `json:"schedules,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
-func (o *Wfmscheduletopicwfmschedulenotification) SetField(field string, fieldValue interface{}) {
+func (o *Activityplanoccurrencelisting) SetField(field string, fieldValue interface{}) {
 	// Get Value object for field
 	target := reflect.ValueOf(o)
 	targetField := reflect.Indirect(target).FieldByName(field)
@@ -49,7 +40,7 @@ func (o *Wfmscheduletopicwfmschedulenotification) SetField(field string, fieldVa
 	o.SetFieldNames[field] = true
 }
 
-func (o Wfmscheduletopicwfmschedulenotification) MarshalJSON() ([]byte, error) {
+func (o Activityplanoccurrencelisting) MarshalJSON() ([]byte, error) {
 	// Special processing to dynamically construct object using only field names that have been set using SetField. This generates payloads suitable for use with PATCH API endpoints.
 	if len(o.SetFieldNames) > 0 {
 		// Get reflection Value
@@ -87,67 +78,44 @@ func (o Wfmscheduletopicwfmschedulenotification) MarshalJSON() ([]byte, error) {
 
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Wfmscheduletopicwfmschedulenotification
+	type Alias Activityplanoccurrencelisting
 	
 	return json.Marshal(&struct { 
-		Status *string `json:"status,omitempty"`
+		Entities *[]Activityplanoccurrencelistitem `json:"entities,omitempty"`
 		
-		OperationId *string `json:"operationId,omitempty"`
-		
-		DownloadUrl *string `json:"downloadUrl,omitempty"`
-		
-		PercentComplete *int `json:"percentComplete,omitempty"`
-		
-		EventType *string `json:"eventType,omitempty"`
+		Schedules *[]Buschedulesummary `json:"schedules,omitempty"`
 		Alias
 	}{ 
-		Status: o.Status,
+		Entities: o.Entities,
 		
-		OperationId: o.OperationId,
-		
-		DownloadUrl: o.DownloadUrl,
-		
-		PercentComplete: o.PercentComplete,
-		
-		EventType: o.EventType,
+		Schedules: o.Schedules,
 		Alias:    (Alias)(o),
 	})
 }
 
-func (o *Wfmscheduletopicwfmschedulenotification) UnmarshalJSON(b []byte) error {
-	var WfmscheduletopicwfmschedulenotificationMap map[string]interface{}
-	err := json.Unmarshal(b, &WfmscheduletopicwfmschedulenotificationMap)
+func (o *Activityplanoccurrencelisting) UnmarshalJSON(b []byte) error {
+	var ActivityplanoccurrencelistingMap map[string]interface{}
+	err := json.Unmarshal(b, &ActivityplanoccurrencelistingMap)
 	if err != nil {
 		return err
 	}
 	
-	if Status, ok := WfmscheduletopicwfmschedulenotificationMap["status"].(string); ok {
-		o.Status = &Status
-	}
-    
-	if OperationId, ok := WfmscheduletopicwfmschedulenotificationMap["operationId"].(string); ok {
-		o.OperationId = &OperationId
-	}
-    
-	if DownloadUrl, ok := WfmscheduletopicwfmschedulenotificationMap["downloadUrl"].(string); ok {
-		o.DownloadUrl = &DownloadUrl
-	}
-    
-	if PercentComplete, ok := WfmscheduletopicwfmschedulenotificationMap["percentComplete"].(float64); ok {
-		PercentCompleteInt := int(PercentComplete)
-		o.PercentComplete = &PercentCompleteInt
+	if Entities, ok := ActivityplanoccurrencelistingMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
 	}
 	
-	if EventType, ok := WfmscheduletopicwfmschedulenotificationMap["eventType"].(string); ok {
-		o.EventType = &EventType
+	if Schedules, ok := ActivityplanoccurrencelistingMap["schedules"].([]interface{}); ok {
+		SchedulesString, _ := json.Marshal(Schedules)
+		json.Unmarshal(SchedulesString, &o.Schedules)
 	}
-    
+	
 
 	return nil
 }
 
 // String returns a JSON representation of the model
-func (o *Wfmscheduletopicwfmschedulenotification) String() string {
+func (o *Activityplanoccurrencelisting) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

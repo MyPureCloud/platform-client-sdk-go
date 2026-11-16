@@ -36,6 +36,12 @@ type Reportingturn struct {
 	// KnowledgeBaseEvents - The knowledge data captured during this reporting turn.
 	KnowledgeBaseEvents *Reportingturnknowledgeevents `json:"knowledgeBaseEvents,omitempty"`
 
+	// BotFlowInvocationEvents - The details related to the invoking and invoked flows of the bot flow session.
+	BotFlowInvocationEvents *[]Reportingturnbotflowinvocationevent `json:"botFlowInvocationEvents,omitempty"`
+
+	// DateInputStarted - Timestamp indicating the datetime when the input came from the user. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateInputStarted *time.Time `json:"dateInputStarted,omitempty"`
+
 	// DateCreated - Timestamp indicating when the original turn was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
@@ -47,6 +53,15 @@ type Reportingturn struct {
 
 	// SessionEndDetails - The details related to end of bot flow session.
 	SessionEndDetails *Sessionenddetails `json:"sessionEndDetails,omitempty"`
+
+	// ToolCalls - Metadata of tool calls carried out in the reporting turn.
+	ToolCalls *[]Reportingturntoolcall `json:"toolCalls,omitempty"`
+
+	// GuardrailEvents - Metadata of any Guardrail events that occurred in the reporting turn.
+	GuardrailEvents *[]Reportingturnguardrailevent `json:"guardrailEvents,omitempty"`
+
+	// ExecutionFrameId - The executionFrameId of the ask action within the reportingTurn.
+	ExecutionFrameId *string `json:"executionFrameId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -78,7 +93,7 @@ func (o Reportingturn) MarshalJSON() ([]byte, error) {
 		val := reflect.ValueOf(o)
 
 		// Known field names that require type overrides
-		dateTimeFields := []string{ "DateCreated","DateCompleted", }
+		dateTimeFields := []string{ "DateInputStarted","DateCreated","DateCompleted", }
 		localDateTimeFields := []string{  }
 		dateFields := []string{  }
 
@@ -110,6 +125,14 @@ func (o Reportingturn) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Reportingturn
+	
+	DateInputStarted := new(string)
+	if o.DateInputStarted != nil {
+		
+		*DateInputStarted = timeutil.Strftime(o.DateInputStarted, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateInputStarted = nil
+	}
 	
 	DateCreated := new(string)
 	if o.DateCreated != nil {
@@ -144,6 +167,10 @@ func (o Reportingturn) MarshalJSON() ([]byte, error) {
 		
 		KnowledgeBaseEvents *Reportingturnknowledgeevents `json:"knowledgeBaseEvents,omitempty"`
 		
+		BotFlowInvocationEvents *[]Reportingturnbotflowinvocationevent `json:"botFlowInvocationEvents,omitempty"`
+		
+		DateInputStarted *string `json:"dateInputStarted,omitempty"`
+		
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
 		DateCompleted *string `json:"dateCompleted,omitempty"`
@@ -151,6 +178,12 @@ func (o Reportingturn) MarshalJSON() ([]byte, error) {
 		AskActionResult *string `json:"askActionResult,omitempty"`
 		
 		SessionEndDetails *Sessionenddetails `json:"sessionEndDetails,omitempty"`
+		
+		ToolCalls *[]Reportingturntoolcall `json:"toolCalls,omitempty"`
+		
+		GuardrailEvents *[]Reportingturnguardrailevent `json:"guardrailEvents,omitempty"`
+		
+		ExecutionFrameId *string `json:"executionFrameId,omitempty"`
 		Alias
 	}{ 
 		UserInput: o.UserInput,
@@ -169,6 +202,10 @@ func (o Reportingturn) MarshalJSON() ([]byte, error) {
 		
 		KnowledgeBaseEvents: o.KnowledgeBaseEvents,
 		
+		BotFlowInvocationEvents: o.BotFlowInvocationEvents,
+		
+		DateInputStarted: DateInputStarted,
+		
 		DateCreated: DateCreated,
 		
 		DateCompleted: DateCompleted,
@@ -176,6 +213,12 @@ func (o Reportingturn) MarshalJSON() ([]byte, error) {
 		AskActionResult: o.AskActionResult,
 		
 		SessionEndDetails: o.SessionEndDetails,
+		
+		ToolCalls: o.ToolCalls,
+		
+		GuardrailEvents: o.GuardrailEvents,
+		
+		ExecutionFrameId: o.ExecutionFrameId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -225,6 +268,16 @@ func (o *Reportingturn) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(KnowledgeBaseEventsString, &o.KnowledgeBaseEvents)
 	}
 	
+	if BotFlowInvocationEvents, ok := ReportingturnMap["botFlowInvocationEvents"].([]interface{}); ok {
+		BotFlowInvocationEventsString, _ := json.Marshal(BotFlowInvocationEvents)
+		json.Unmarshal(BotFlowInvocationEventsString, &o.BotFlowInvocationEvents)
+	}
+	
+	if dateInputStartedString, ok := ReportingturnMap["dateInputStarted"].(string); ok {
+		DateInputStarted, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateInputStartedString)
+		o.DateInputStarted = &DateInputStarted
+	}
+	
 	if dateCreatedString, ok := ReportingturnMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
@@ -244,6 +297,20 @@ func (o *Reportingturn) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(SessionEndDetailsString, &o.SessionEndDetails)
 	}
 	
+	if ToolCalls, ok := ReportingturnMap["toolCalls"].([]interface{}); ok {
+		ToolCallsString, _ := json.Marshal(ToolCalls)
+		json.Unmarshal(ToolCallsString, &o.ToolCalls)
+	}
+	
+	if GuardrailEvents, ok := ReportingturnMap["guardrailEvents"].([]interface{}); ok {
+		GuardrailEventsString, _ := json.Marshal(GuardrailEvents)
+		json.Unmarshal(GuardrailEventsString, &o.GuardrailEvents)
+	}
+	
+	if ExecutionFrameId, ok := ReportingturnMap["executionFrameId"].(string); ok {
+		o.ExecutionFrameId = &ExecutionFrameId
+	}
+    
 
 	return nil
 }

@@ -48,6 +48,27 @@ type Conversationsummary struct {
 	// DateCreated - The created date of the summary. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
+	// LatestCommunication - The most recent communication whose corresponding content was used for generating the summary. This field will be null if not available.
+	LatestCommunication *Entity `json:"latestCommunication,omitempty"`
+
+	// Labels - The summary labels.
+	Labels *[]Conversationsummarylabel `json:"labels,omitempty"`
+
+	// Queue - The queue that handled the conversation, if any.
+	Queue *Addressableentityref `json:"queue,omitempty"`
+
+	// TriggerSource - The configuration source that triggered summarization.
+	TriggerSource *Conversationsummarytriggersource `json:"triggerSource,omitempty"`
+
+	// SummarySourceType - The service used to generate the summary.
+	SummarySourceType *string `json:"summarySourceType,omitempty"`
+
+	// TriggerType - How summarization was triggered, either on-demand by an agent or automatically after the conversation disconnect.
+	TriggerType *string `json:"triggerType,omitempty"`
+
+	// LastEditedBy - The user that last edited the summary, if the summary was edited.
+	LastEditedBy *Conversationsummaryeditedby `json:"lastEditedBy,omitempty"`
+
 	// Participants - The list of participants.
 	Participants *[]Addressableentityref `json:"participants,omitempty"`
 }
@@ -147,6 +168,20 @@ func (o Conversationsummary) MarshalJSON() ([]byte, error) {
 		
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
+		LatestCommunication *Entity `json:"latestCommunication,omitempty"`
+		
+		Labels *[]Conversationsummarylabel `json:"labels,omitempty"`
+		
+		Queue *Addressableentityref `json:"queue,omitempty"`
+		
+		TriggerSource *Conversationsummarytriggersource `json:"triggerSource,omitempty"`
+		
+		SummarySourceType *string `json:"summarySourceType,omitempty"`
+		
+		TriggerType *string `json:"triggerType,omitempty"`
+		
+		LastEditedBy *Conversationsummaryeditedby `json:"lastEditedBy,omitempty"`
+		
 		Participants *[]Addressableentityref `json:"participants,omitempty"`
 		Alias
 	}{ 
@@ -173,6 +208,20 @@ func (o Conversationsummary) MarshalJSON() ([]byte, error) {
 		Resolution: o.Resolution,
 		
 		DateCreated: DateCreated,
+		
+		LatestCommunication: o.LatestCommunication,
+		
+		Labels: o.Labels,
+		
+		Queue: o.Queue,
+		
+		TriggerSource: o.TriggerSource,
+		
+		SummarySourceType: o.SummarySourceType,
+		
+		TriggerType: o.TriggerType,
+		
+		LastEditedBy: o.LastEditedBy,
 		
 		Participants: o.Participants,
 		Alias:    (Alias)(o),
@@ -239,6 +288,39 @@ func (o *Conversationsummary) UnmarshalJSON(b []byte) error {
 	if dateCreatedString, ok := ConversationsummaryMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
+	}
+	
+	if LatestCommunication, ok := ConversationsummaryMap["latestCommunication"].(map[string]interface{}); ok {
+		LatestCommunicationString, _ := json.Marshal(LatestCommunication)
+		json.Unmarshal(LatestCommunicationString, &o.LatestCommunication)
+	}
+	
+	if Labels, ok := ConversationsummaryMap["labels"].([]interface{}); ok {
+		LabelsString, _ := json.Marshal(Labels)
+		json.Unmarshal(LabelsString, &o.Labels)
+	}
+	
+	if Queue, ok := ConversationsummaryMap["queue"].(map[string]interface{}); ok {
+		QueueString, _ := json.Marshal(Queue)
+		json.Unmarshal(QueueString, &o.Queue)
+	}
+	
+	if TriggerSource, ok := ConversationsummaryMap["triggerSource"].(map[string]interface{}); ok {
+		TriggerSourceString, _ := json.Marshal(TriggerSource)
+		json.Unmarshal(TriggerSourceString, &o.TriggerSource)
+	}
+	
+	if SummarySourceType, ok := ConversationsummaryMap["summarySourceType"].(string); ok {
+		o.SummarySourceType = &SummarySourceType
+	}
+    
+	if TriggerType, ok := ConversationsummaryMap["triggerType"].(string); ok {
+		o.TriggerType = &TriggerType
+	}
+    
+	if LastEditedBy, ok := ConversationsummaryMap["lastEditedBy"].(map[string]interface{}); ok {
+		LastEditedByString, _ := json.Marshal(LastEditedBy)
+		json.Unmarshal(LastEditedByString, &o.LastEditedBy)
 	}
 	
 	if Participants, ok := ConversationsummaryMap["participants"].([]interface{}); ok {

@@ -16,6 +16,9 @@ type Outboundblendingsettings struct {
 
 	// CampaignReservationPercentage - The proportion of on-queue agents to reserve for outbound campaign calls. Allowable range 1 - 100 (inclusive).
 	CampaignReservationPercentage *int `json:"campaignReservationPercentage,omitempty"`
+
+	// Active - Whether Enhanced Blending is currently active for the queue. Only populated when getting a single queue with expand=outboundblendingstatus.
+	Active *bool `json:"active,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Outboundblendingsettings) MarshalJSON() ([]byte, error) {
 		Enabled *bool `json:"enabled,omitempty"`
 		
 		CampaignReservationPercentage *int `json:"campaignReservationPercentage,omitempty"`
+		
+		Active *bool `json:"active,omitempty"`
 		Alias
 	}{ 
 		Enabled: o.Enabled,
 		
 		CampaignReservationPercentage: o.CampaignReservationPercentage,
+		
+		Active: o.Active,
 		Alias:    (Alias)(o),
 	})
 }
@@ -109,6 +116,10 @@ func (o *Outboundblendingsettings) UnmarshalJSON(b []byte) error {
 		o.CampaignReservationPercentage = &CampaignReservationPercentageInt
 	}
 	
+	if Active, ok := OutboundblendingsettingsMap["active"].(bool); ok {
+		o.Active = &Active
+	}
+    
 
 	return nil
 }

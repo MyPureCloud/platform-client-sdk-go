@@ -53,6 +53,9 @@ type Billinginvoice struct {
 
 	// Amount - Amount.
 	Amount *float32 `json:"amount,omitempty"`
+
+	// AgreementIds - Agreement IDs billed on this invoice, collected from its invoice lines.
+	AgreementIds *[]string `json:"agreementIds,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -152,6 +155,8 @@ func (o Billinginvoice) MarshalJSON() ([]byte, error) {
 		CustomerInvoiceType *string `json:"customerInvoiceType,omitempty"`
 		
 		Amount *float32 `json:"amount,omitempty"`
+		
+		AgreementIds *[]string `json:"agreementIds,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -181,6 +186,8 @@ func (o Billinginvoice) MarshalJSON() ([]byte, error) {
 		CustomerInvoiceType: o.CustomerInvoiceType,
 		
 		Amount: o.Amount,
+		
+		AgreementIds: o.AgreementIds,
 		Alias:    (Alias)(o),
 	})
 }
@@ -255,6 +262,11 @@ func (o *Billinginvoice) UnmarshalJSON(b []byte) error {
 		o.Amount = &AmountFloat32
 	}
     
+	if AgreementIds, ok := BillinginvoiceMap["agreementIds"].([]interface{}); ok {
+		AgreementIdsString, _ := json.Marshal(AgreementIds)
+		json.Unmarshal(AgreementIdsString, &o.AgreementIds)
+	}
+	
 
 	return nil
 }

@@ -487,7 +487,7 @@ func (a BillingApi) GetBillingContractsInvoiceLines(invoiceId string, before str
 // Retrieve a list of invoices stored in the system.
 //
 // Preview: GetBillingContractsInvoices is a preview method and is subject to both breaking and non-breaking changes at any time without notice
-func (a BillingApi) GetBillingContractsInvoices(before string, after string, pageSize string, dateStart time.Time, dateEnd time.Time, paymentStatus string) (*Billinginvoicelisting, *APIResponse, error) {
+func (a BillingApi) GetBillingContractsInvoices(before string, after string, pageSize string, dateStart time.Time, dateEnd time.Time, paymentStatus string, agreementId string) (*Billinginvoicelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/billing/contracts/invoices"
@@ -525,6 +525,8 @@ func (a BillingApi) GetBillingContractsInvoices(before string, after string, pag
 	queryParams["dateEnd"] = a.Configuration.APIClient.ParameterToString(dateEnd, "")
 	
 	queryParams["paymentStatus"] = a.Configuration.APIClient.ParameterToString(paymentStatus, "")
+	
+	queryParams["agreementId"] = a.Configuration.APIClient.ParameterToString(agreementId, "")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

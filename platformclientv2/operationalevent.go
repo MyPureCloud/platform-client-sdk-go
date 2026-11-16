@@ -56,6 +56,12 @@ type Operationalevent struct {
 
 	// ExternalContactId - The external contact ID associated with the event
 	ExternalContactId *string `json:"externalContactId,omitempty"`
+
+	// ReferenceId - The identifier of an external record that provides additional information or context related to the event
+	ReferenceId *string `json:"referenceId,omitempty"`
+
+	// ReferenceType - The type of external record that referenceId refers to
+	ReferenceType *string `json:"referenceType,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -166,6 +172,10 @@ func (o Operationalevent) MarshalJSON() ([]byte, error) {
 		PhoneNumber *string `json:"phoneNumber,omitempty"`
 		
 		ExternalContactId *string `json:"externalContactId,omitempty"`
+		
+		ReferenceId *string `json:"referenceId,omitempty"`
+		
+		ReferenceType *string `json:"referenceType,omitempty"`
 		Alias
 	}{ 
 		EventDefinition: o.EventDefinition,
@@ -197,6 +207,10 @@ func (o Operationalevent) MarshalJSON() ([]byte, error) {
 		PhoneNumber: o.PhoneNumber,
 		
 		ExternalContactId: o.ExternalContactId,
+		
+		ReferenceId: o.ReferenceId,
+		
+		ReferenceType: o.ReferenceType,
 		Alias:    (Alias)(o),
 	})
 }
@@ -270,6 +284,14 @@ func (o *Operationalevent) UnmarshalJSON(b []byte) error {
     
 	if ExternalContactId, ok := OperationaleventMap["externalContactId"].(string); ok {
 		o.ExternalContactId = &ExternalContactId
+	}
+    
+	if ReferenceId, ok := OperationaleventMap["referenceId"].(string); ok {
+		o.ReferenceId = &ReferenceId
+	}
+    
+	if ReferenceType, ok := OperationaleventMap["referenceType"].(string); ok {
+		o.ReferenceType = &ReferenceType
 	}
     
 

@@ -967,7 +967,7 @@ func (a JourneyApi) GetAnalyticsJourneysAggregatesJobResults(jobId string, curso
 // GetExternalcontactsContactJourneySegments invokes GET /api/v2/externalcontacts/contacts/{contactId}/journey/segments
 //
 // Retrieve segment assignments by external contact ID.
-func (a JourneyApi) GetExternalcontactsContactJourneySegments(contactId string, includeMerged bool, limit int) (*Segmentassignmentlisting, *APIResponse, error) {
+func (a JourneyApi) GetExternalcontactsContactJourneySegments(contactId string, includeMerged bool, limit int, expand []string, segmentIds []string) (*Segmentassignmentlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/contacts/{contactId}/journey/segments"
@@ -1003,6 +1003,10 @@ func (a JourneyApi) GetExternalcontactsContactJourneySegments(contactId string, 
 	queryParams["includeMerged"] = a.Configuration.APIClient.ParameterToString(includeMerged, "")
 	
 	queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, "")
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
+	
+	queryParams["segmentIds"] = a.Configuration.APIClient.ParameterToString(segmentIds, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -3248,7 +3252,7 @@ func (a JourneyApi) GetJourneySegment(segmentId string) (*Journeysegment, *APIRe
 // GetJourneySegments invokes GET /api/v2/journey/segments
 //
 // Retrieve all segments.
-func (a JourneyApi) GetJourneySegments(sortBy string, pageSize int, pageNumber int, isActive bool, segmentIds []string, queryFields []string, queryValue string) (*Segmentlisting, *APIResponse, error) {
+func (a JourneyApi) GetJourneySegments(sortBy string, pageSize int, pageNumber int, isActive bool, segmentIds []string, queryFields []string, queryValue string, displayNames []string) (*Segmentlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/journey/segments"
@@ -3288,6 +3292,8 @@ func (a JourneyApi) GetJourneySegments(sortBy string, pageSize int, pageNumber i
 	queryParams["queryFields"] = a.Configuration.APIClient.ParameterToString(queryFields, "multi")
 	
 	queryParams["queryValue"] = a.Configuration.APIClient.ParameterToString(queryValue, "")
+	
+	queryParams["displayNames"] = a.Configuration.APIClient.ParameterToString(displayNames, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 

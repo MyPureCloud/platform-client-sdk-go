@@ -34,6 +34,9 @@ type Orgauthsettings struct {
 
 	// TokenStorageLocation - The browser storage location used for authentication tokens.
 	TokenStorageLocation *string `json:"tokenStorageLocation,omitempty"`
+
+	// SsoLoginFirst - Indicates whether single sign-on is displayed before Genesys Cloud credentials on the login page.
+	SsoLoginFirst *bool `json:"ssoLoginFirst,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -114,6 +117,8 @@ func (o Orgauthsettings) MarshalJSON() ([]byte, error) {
 		UniversalLogout *bool `json:"universalLogout,omitempty"`
 		
 		TokenStorageLocation *string `json:"tokenStorageLocation,omitempty"`
+		
+		SsoLoginFirst *bool `json:"ssoLoginFirst,omitempty"`
 		Alias
 	}{ 
 		MultifactorAuthenticationRequired: o.MultifactorAuthenticationRequired,
@@ -131,6 +136,8 @@ func (o Orgauthsettings) MarshalJSON() ([]byte, error) {
 		UniversalLogout: o.UniversalLogout,
 		
 		TokenStorageLocation: o.TokenStorageLocation,
+		
+		SsoLoginFirst: o.SsoLoginFirst,
 		Alias:    (Alias)(o),
 	})
 }
@@ -176,6 +183,10 @@ func (o *Orgauthsettings) UnmarshalJSON(b []byte) error {
     
 	if TokenStorageLocation, ok := OrgauthsettingsMap["tokenStorageLocation"].(string); ok {
 		o.TokenStorageLocation = &TokenStorageLocation
+	}
+    
+	if SsoLoginFirst, ok := OrgauthsettingsMap["ssoLoginFirst"].(bool); ok {
+		o.SsoLoginFirst = &SsoLoginFirst
 	}
     
 

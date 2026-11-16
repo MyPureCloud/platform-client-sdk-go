@@ -4005,6 +4005,200 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitActivityplanJo
 	return successPayload, response, err
 }
 
+// GetWorkforcemanagementBusinessunitActivityplanOccurrence invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/activityplans/{activityPlanId}/occurrences/{occurrenceId}
+//
+// Get a specific occurrence for the activity plan
+func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitActivityplanOccurrence(businessUnitId string, activityPlanId string, occurrenceId string) (*Activityplanoccurrenceresponse, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/activityplans/{activityPlanId}/occurrences/{occurrenceId}"
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{activityPlanId}", url.PathEscape(fmt.Sprintf("%v", activityPlanId)), -1)
+	path = strings.Replace(path, "{occurrenceId}", url.PathEscape(fmt.Sprintf("%v", occurrenceId)), -1)
+	defaultReturn := new(Activityplanoccurrenceresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'businessUnitId' is set
+	if &businessUnitId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitActivityplanOccurrence")
+	}
+	// verify the required parameter 'activityPlanId' is set
+	if &activityPlanId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'activityPlanId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitActivityplanOccurrence")
+	}
+	// verify the required parameter 'occurrenceId' is set
+	if &occurrenceId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'occurrenceId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitActivityplanOccurrence")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Activityplanoccurrenceresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Activityplanoccurrenceresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetWorkforcemanagementBusinessunitActivityplanOccurrenceDeletionsJob invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/activityplans/{activityPlanId}/occurrences/{occurrenceId}/deletions/jobs/{jobId}
+//
+// Gets an occurrence deletion job
+func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitActivityplanOccurrenceDeletionsJob(businessUnitId string, activityPlanId string, occurrenceId string, jobId string) (*Activityplanjobresponse, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/activityplans/{activityPlanId}/occurrences/{occurrenceId}/deletions/jobs/{jobId}"
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{activityPlanId}", url.PathEscape(fmt.Sprintf("%v", activityPlanId)), -1)
+	path = strings.Replace(path, "{occurrenceId}", url.PathEscape(fmt.Sprintf("%v", occurrenceId)), -1)
+	path = strings.Replace(path, "{jobId}", url.PathEscape(fmt.Sprintf("%v", jobId)), -1)
+	defaultReturn := new(Activityplanjobresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'businessUnitId' is set
+	if &businessUnitId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitActivityplanOccurrenceDeletionsJob")
+	}
+	// verify the required parameter 'activityPlanId' is set
+	if &activityPlanId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'activityPlanId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitActivityplanOccurrenceDeletionsJob")
+	}
+	// verify the required parameter 'occurrenceId' is set
+	if &occurrenceId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'occurrenceId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitActivityplanOccurrenceDeletionsJob")
+	}
+	// verify the required parameter 'jobId' is set
+	if &jobId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'jobId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitActivityplanOccurrenceDeletionsJob")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Activityplanjobresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Activityplanjobresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // GetWorkforcemanagementBusinessunitActivityplanOccurrenceSessionUsersDeletionsJob invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/activityplans/{activityPlanId}/occurrences/{occurrenceId}/sessions/{sessionId}/users/deletions/jobs/{jobId}
 //
 // Gets a session users deletion job
@@ -4203,6 +4397,94 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitActivityplanOc
 		err = errors.New(response.ErrorMessage)
 	} else if response.HasBody {
 		if "Activityplanjobresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetWorkforcemanagementBusinessunitActivityplanOccurrences invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/activityplans/{activityPlanId}/occurrences
+//
+// Get all occurrences for an activity plan
+func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitActivityplanOccurrences(businessUnitId string, activityPlanId string) (*Activityplanoccurrencelisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/activityplans/{activityPlanId}/occurrences"
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{activityPlanId}", url.PathEscape(fmt.Sprintf("%v", activityPlanId)), -1)
+	defaultReturn := new(Activityplanoccurrencelisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'businessUnitId' is set
+	if &businessUnitId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitActivityplanOccurrences")
+	}
+	// verify the required parameter 'activityPlanId' is set
+	if &activityPlanId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'activityPlanId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitActivityplanOccurrences")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Activityplanoccurrencelisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Activityplanoccurrencelisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -22808,7 +23090,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementAgentschedulesManagementu
 // PostWorkforcemanagementAgentschedulesMine invokes POST /api/v2/workforcemanagement/agentschedules/mine
 //
 // Get published schedule for the current user
-func (a WorkforceManagementApi) PostWorkforcemanagementAgentschedulesMine(body Bugetcurrentagentschedulerequest) (*Bucurrentagentschedulesearchresponse, *APIResponse, error) {
+func (a WorkforceManagementApi) PostWorkforcemanagementAgentschedulesMine(body Bugetcurrentagentschedulerequest, expand []string) (*Bucurrentagentschedulesearchresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/agentschedules/mine"
@@ -22839,6 +23121,8 @@ func (a WorkforceManagementApi) PostWorkforcemanagementAgentschedulesMine(body B
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// Find an replace keys that were altered to avoid clashes with go keywords 
@@ -23256,6 +23540,102 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitActivityplanD
 	if &activityPlanId == nil {
 		// false
 		return defaultReturn, nil, errors.New("Missing required parameter 'activityPlanId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitActivityplanDeletionsJobs")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Activityplanjobresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Activityplanjobresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostWorkforcemanagementBusinessunitActivityplanOccurrenceDeletionsJobs invokes POST /api/v2/workforcemanagement/businessunits/{businessUnitId}/activityplans/{activityPlanId}/occurrences/{occurrenceId}/deletions/jobs
+//
+// Delete an occurrence for the activity plan
+//
+// Triggers a job to delete an occurrence of the activity plan. The activity plan cannot be updated until the job completes
+func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitActivityplanOccurrenceDeletionsJobs(businessUnitId string, activityPlanId string, occurrenceId string) (*Activityplanjobresponse, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/activityplans/{activityPlanId}/occurrences/{occurrenceId}/deletions/jobs"
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	path = strings.Replace(path, "{activityPlanId}", url.PathEscape(fmt.Sprintf("%v", activityPlanId)), -1)
+	path = strings.Replace(path, "{occurrenceId}", url.PathEscape(fmt.Sprintf("%v", occurrenceId)), -1)
+	defaultReturn := new(Activityplanjobresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'businessUnitId' is set
+	if &businessUnitId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitActivityplanOccurrenceDeletionsJobs")
+	}
+	// verify the required parameter 'activityPlanId' is set
+	if &activityPlanId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'activityPlanId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitActivityplanOccurrenceDeletionsJobs")
+	}
+	// verify the required parameter 'occurrenceId' is set
+	if &occurrenceId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'occurrenceId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitActivityplanOccurrenceDeletionsJobs")
 	}
 
 	headerParams := make(map[string]string)
@@ -25096,6 +25476,98 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitCapacityplans
 		err = errors.New(response.ErrorMessage)
 	}
 	return response, err
+}
+
+// PostWorkforcemanagementBusinessunitCapacityplansForecastUploadurls invokes POST /api/v2/workforcemanagement/businessunits/{businessUnitId}/capacityplans/forecast/uploadurls
+//
+// Creates signed upload URLs for importing hourly and daily forecasts for a capacity plan
+//
+// Returns two upload URLs, one for the hourly forecast and one for the daily forecast. Once both uploads are complete, call POST /capacityplans (new capacity plan) or PATCH /capacityplans/{capacityPlanId} (existing capacity plan) or POST /capacityplans/{capacityPlanId}/copy (copy capacity plan) with both upload keys in importedForecast
+func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitCapacityplansForecastUploadurls(businessUnitId string, body Capacityplanforecastimportuploadrequest) (*Capacityplanforecastimportuploadresponse, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/capacityplans/forecast/uploadurls"
+	path = strings.Replace(path, "{businessUnitId}", url.PathEscape(fmt.Sprintf("%v", businessUnitId)), -1)
+	defaultReturn := new(Capacityplanforecastimportuploadresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'businessUnitId' is set
+	if &businessUnitId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitCapacityplansForecastUploadurls")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementBusinessunitCapacityplansForecastUploadurls")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Capacityplanforecastimportuploadresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Capacityplanforecastimportuploadresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
 }
 
 // PostWorkforcemanagementBusinessunitDecisionmetricsUpdate invokes POST /api/v2/workforcemanagement/businessunits/{businessUnitId}/decisionmetrics/update

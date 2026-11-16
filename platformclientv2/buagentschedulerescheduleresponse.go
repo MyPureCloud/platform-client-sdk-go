@@ -20,11 +20,11 @@ type Buagentschedulerescheduleresponse struct {
 	// FullDayTimeOffMarkers - Full day time off markers which apply to this agent schedule
 	FullDayTimeOffMarkers *[]Bufulldaytimeoffmarker `json:"fullDayTimeOffMarkers,omitempty"`
 
-	// WorkPlan - The work plan for this user
-	WorkPlan *Workplanreference `json:"workPlan,omitempty"`
-
 	// WorkPlansPerWeek - The work plans per week for this user from the work plan rotation. Null values in the list denotes that user is not part of any work plan for that week
 	WorkPlansPerWeek *[]Workplanreference `json:"workPlansPerWeek,omitempty"`
+
+	// WorkPlan - The work plan for this user
+	WorkPlan *Workplanreference `json:"workPlan,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -96,9 +96,9 @@ func (o Buagentschedulerescheduleresponse) MarshalJSON() ([]byte, error) {
 		
 		FullDayTimeOffMarkers *[]Bufulldaytimeoffmarker `json:"fullDayTimeOffMarkers,omitempty"`
 		
-		WorkPlan *Workplanreference `json:"workPlan,omitempty"`
-		
 		WorkPlansPerWeek *[]Workplanreference `json:"workPlansPerWeek,omitempty"`
+		
+		WorkPlan *Workplanreference `json:"workPlan,omitempty"`
 		Alias
 	}{ 
 		User: o.User,
@@ -107,9 +107,9 @@ func (o Buagentschedulerescheduleresponse) MarshalJSON() ([]byte, error) {
 		
 		FullDayTimeOffMarkers: o.FullDayTimeOffMarkers,
 		
-		WorkPlan: o.WorkPlan,
-		
 		WorkPlansPerWeek: o.WorkPlansPerWeek,
+		
+		WorkPlan: o.WorkPlan,
 		Alias:    (Alias)(o),
 	})
 }
@@ -136,14 +136,14 @@ func (o *Buagentschedulerescheduleresponse) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(FullDayTimeOffMarkersString, &o.FullDayTimeOffMarkers)
 	}
 	
-	if WorkPlan, ok := BuagentschedulerescheduleresponseMap["workPlan"].(map[string]interface{}); ok {
-		WorkPlanString, _ := json.Marshal(WorkPlan)
-		json.Unmarshal(WorkPlanString, &o.WorkPlan)
-	}
-	
 	if WorkPlansPerWeek, ok := BuagentschedulerescheduleresponseMap["workPlansPerWeek"].([]interface{}); ok {
 		WorkPlansPerWeekString, _ := json.Marshal(WorkPlansPerWeek)
 		json.Unmarshal(WorkPlansPerWeekString, &o.WorkPlansPerWeek)
+	}
+	
+	if WorkPlan, ok := BuagentschedulerescheduleresponseMap["workPlan"].(map[string]interface{}); ok {
+		WorkPlanString, _ := json.Marshal(WorkPlan)
+		json.Unmarshal(WorkPlanString, &o.WorkPlan)
 	}
 	
 

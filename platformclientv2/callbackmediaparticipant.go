@@ -150,6 +150,9 @@ type Callbackmediaparticipant struct {
 	// AutomatedCallbackConfigId - The id of the config for automatically placing the callback (and handling the disposition). If absent, the callback will not be placed automatically but routed to an agent as per normal.
 	AutomatedCallbackConfigId *string `json:"automatedCallbackConfigId,omitempty"`
 
+	// ClientIpAddress - The reported client IP of the phone for the call.
+	ClientIpAddress *string `json:"clientIpAddress,omitempty"`
+
 	// CallbackScheduledTime - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	CallbackScheduledTime *time.Time `json:"callbackScheduledTime,omitempty"`
 }
@@ -389,6 +392,8 @@ func (o Callbackmediaparticipant) MarshalJSON() ([]byte, error) {
 		
 		AutomatedCallbackConfigId *string `json:"automatedCallbackConfigId,omitempty"`
 		
+		ClientIpAddress *string `json:"clientIpAddress,omitempty"`
+		
 		CallbackScheduledTime *string `json:"callbackScheduledTime,omitempty"`
 		Alias
 	}{ 
@@ -483,6 +488,8 @@ func (o Callbackmediaparticipant) MarshalJSON() ([]byte, error) {
 		TimeoutSeconds: o.TimeoutSeconds,
 		
 		AutomatedCallbackConfigId: o.AutomatedCallbackConfigId,
+		
+		ClientIpAddress: o.ClientIpAddress,
 		
 		CallbackScheduledTime: CallbackScheduledTime,
 		Alias:    (Alias)(o),
@@ -705,6 +712,10 @@ func (o *Callbackmediaparticipant) UnmarshalJSON(b []byte) error {
 	
 	if AutomatedCallbackConfigId, ok := CallbackmediaparticipantMap["automatedCallbackConfigId"].(string); ok {
 		o.AutomatedCallbackConfigId = &AutomatedCallbackConfigId
+	}
+    
+	if ClientIpAddress, ok := CallbackmediaparticipantMap["clientIpAddress"].(string); ok {
+		o.ClientIpAddress = &ClientIpAddress
 	}
     
 	if callbackScheduledTimeString, ok := CallbackmediaparticipantMap["callbackScheduledTime"].(string); ok {

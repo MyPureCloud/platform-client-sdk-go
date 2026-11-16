@@ -26,6 +26,9 @@ type Contactidentifier struct {
 
 	// ExternalSource - The External Source ID of the identifier
 	ExternalSource *Externalsource `json:"externalSource,omitempty"`
+
+	// PortfolioId - The portfolio id associated with the identifier. Only applicable to identifiers of type SocialWhatsappBsuid.
+	PortfolioId *string `json:"portfolioId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -108,6 +111,8 @@ func (o Contactidentifier) MarshalJSON() ([]byte, error) {
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
 		ExternalSource *Externalsource `json:"externalSource,omitempty"`
+		
+		PortfolioId *string `json:"portfolioId,omitempty"`
 		Alias
 	}{ 
 		Division: o.Division,
@@ -119,6 +124,8 @@ func (o Contactidentifier) MarshalJSON() ([]byte, error) {
 		DateCreated: DateCreated,
 		
 		ExternalSource: o.ExternalSource,
+		
+		PortfolioId: o.PortfolioId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -153,6 +160,10 @@ func (o *Contactidentifier) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ExternalSourceString, &o.ExternalSource)
 	}
 	
+	if PortfolioId, ok := ContactidentifierMap["portfolioId"].(string); ok {
+		o.PortfolioId = &PortfolioId
+	}
+    
 
 	return nil
 }

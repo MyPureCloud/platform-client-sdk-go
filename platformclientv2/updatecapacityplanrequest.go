@@ -24,8 +24,11 @@ type Updatecapacityplanrequest struct {
 	// EndBusinessUnitDate - The end date for the capacity plan relative to the business unit time zone in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
 	EndBusinessUnitDate *time.Time `json:"endBusinessUnitDate,omitempty"`
 
-	// Forecast - The selected forecast for this capacity plan
+	// Forecast - The generated forecast for this capacity plan. When switching from an imported forecast, provide a value for forecast
 	Forecast *Valuewrapperbushorttermforecastreference `json:"forecast,omitempty"`
+
+	// ImportedForecast - The externally imported forecast for this capacity plan. When switching from a forecast, provide a value for importedForecast
+	ImportedForecast *Valuewrappercapacityplanimportedforecastrequest `json:"importedForecast,omitempty"`
 
 	// FullTimeEquivalentWeeklyHours - The weekly hours used to calculate full time equivalent agents
 	FullTimeEquivalentWeeklyHours *float64 `json:"fullTimeEquivalentWeeklyHours,omitempty"`
@@ -124,6 +127,8 @@ func (o Updatecapacityplanrequest) MarshalJSON() ([]byte, error) {
 		
 		Forecast *Valuewrapperbushorttermforecastreference `json:"forecast,omitempty"`
 		
+		ImportedForecast *Valuewrappercapacityplanimportedforecastrequest `json:"importedForecast,omitempty"`
+		
 		FullTimeEquivalentWeeklyHours *float64 `json:"fullTimeEquivalentWeeklyHours,omitempty"`
 		
 		UseLatestPlanningGroupStaffingGroupAssociation *bool `json:"useLatestPlanningGroupStaffingGroupAssociation,omitempty"`
@@ -140,6 +145,8 @@ func (o Updatecapacityplanrequest) MarshalJSON() ([]byte, error) {
 		EndBusinessUnitDate: EndBusinessUnitDate,
 		
 		Forecast: o.Forecast,
+		
+		ImportedForecast: o.ImportedForecast,
 		
 		FullTimeEquivalentWeeklyHours: o.FullTimeEquivalentWeeklyHours,
 		
@@ -178,6 +185,11 @@ func (o *Updatecapacityplanrequest) UnmarshalJSON(b []byte) error {
 	if Forecast, ok := UpdatecapacityplanrequestMap["forecast"].(map[string]interface{}); ok {
 		ForecastString, _ := json.Marshal(Forecast)
 		json.Unmarshal(ForecastString, &o.Forecast)
+	}
+	
+	if ImportedForecast, ok := UpdatecapacityplanrequestMap["importedForecast"].(map[string]interface{}); ok {
+		ImportedForecastString, _ := json.Marshal(ImportedForecast)
+		json.Unmarshal(ImportedForecastString, &o.ImportedForecast)
 	}
 	
 	if FullTimeEquivalentWeeklyHours, ok := UpdatecapacityplanrequestMap["fullTimeEquivalentWeeklyHours"].(float64); ok {

@@ -79,6 +79,9 @@ type Flowstartdetaileventtopicflowstartevent struct {
 
 	// OutboundContactId
 	OutboundContactId *string `json:"outboundContactId,omitempty"`
+
+	// OutboundDivisionId
+	OutboundDivisionId *string `json:"outboundDivisionId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -189,6 +192,8 @@ func (o Flowstartdetaileventtopicflowstartevent) MarshalJSON() ([]byte, error) {
 		OutboundContactListId *string `json:"outboundContactListId,omitempty"`
 		
 		OutboundContactId *string `json:"outboundContactId,omitempty"`
+		
+		OutboundDivisionId *string `json:"outboundDivisionId,omitempty"`
 		Alias
 	}{ 
 		EventTime: o.EventTime,
@@ -236,6 +241,8 @@ func (o Flowstartdetaileventtopicflowstartevent) MarshalJSON() ([]byte, error) {
 		OutboundContactListId: o.OutboundContactListId,
 		
 		OutboundContactId: o.OutboundContactId,
+		
+		OutboundDivisionId: o.OutboundDivisionId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -340,6 +347,10 @@ func (o *Flowstartdetaileventtopicflowstartevent) UnmarshalJSON(b []byte) error 
     
 	if OutboundContactId, ok := FlowstartdetaileventtopicflowstarteventMap["outboundContactId"].(string); ok {
 		o.OutboundContactId = &OutboundContactId
+	}
+    
+	if OutboundDivisionId, ok := FlowstartdetaileventtopicflowstarteventMap["outboundDivisionId"].(string); ok {
+		o.OutboundDivisionId = &OutboundDivisionId
 	}
     
 

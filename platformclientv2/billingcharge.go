@@ -20,14 +20,17 @@ type Billingcharge struct {
 	// Product - Represents the details of a product.
 	Product *Billingproduct `json:"product,omitempty"`
 
-	// Organizations - List of plans within the organization.
+	// Organizations - Organizations associated with this charge.
 	Organizations *[]Namedentity `json:"organizations,omitempty"`
 
 	// PrepaidQuantity - The quantity of usage that is prepaid.
 	PrepaidQuantity *float32 `json:"prepaidQuantity,omitempty"`
 
-	// FairuseQuantity - The quantity of usage allowed under fair use policies.
-	FairuseQuantity *float32 `json:"fairuseQuantity,omitempty"`
+	// FairuseAllocation - Quantity of usage allowed under fair-use policies.
+	FairuseAllocation *float32 `json:"fairuseAllocation,omitempty"`
+
+	// FairuseAmount - Monetary value of the fair-use allocation, in the same currency as overageCurrency.
+	FairuseAmount *float32 `json:"fairuseAmount,omitempty"`
 
 	// ActualQuantity - The actual quantity of usage.
 	ActualQuantity *float32 `json:"actualQuantity,omitempty"`
@@ -49,6 +52,9 @@ type Billingcharge struct {
 
 	// TokenConversionRate - AI Token Conversion Rate — Units per token conversion ratio.
 	TokenConversionRate *float32 `json:"tokenConversionRate,omitempty"`
+
+	// AiSubItems - Usage that makes up this AI parent bundle, including the bundle's own token usage and each child product's usage converted to tokens; the converted total is the parent's actual quantity.
+	AiSubItems *[]Billingaisubitem `json:"aiSubItems,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -124,7 +130,9 @@ func (o Billingcharge) MarshalJSON() ([]byte, error) {
 		
 		PrepaidQuantity *float32 `json:"prepaidQuantity,omitempty"`
 		
-		FairuseQuantity *float32 `json:"fairuseQuantity,omitempty"`
+		FairuseAllocation *float32 `json:"fairuseAllocation,omitempty"`
+		
+		FairuseAmount *float32 `json:"fairuseAmount,omitempty"`
 		
 		ActualQuantity *float32 `json:"actualQuantity,omitempty"`
 		
@@ -139,6 +147,8 @@ func (o Billingcharge) MarshalJSON() ([]byte, error) {
 		ConvertedTokenCount *float32 `json:"convertedTokenCount,omitempty"`
 		
 		TokenConversionRate *float32 `json:"tokenConversionRate,omitempty"`
+		
+		AiSubItems *[]Billingaisubitem `json:"aiSubItems,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -151,7 +161,9 @@ func (o Billingcharge) MarshalJSON() ([]byte, error) {
 		
 		PrepaidQuantity: o.PrepaidQuantity,
 		
-		FairuseQuantity: o.FairuseQuantity,
+		FairuseAllocation: o.FairuseAllocation,
+		
+		FairuseAmount: o.FairuseAmount,
 		
 		ActualQuantity: o.ActualQuantity,
 		
@@ -166,6 +178,8 @@ func (o Billingcharge) MarshalJSON() ([]byte, error) {
 		ConvertedTokenCount: o.ConvertedTokenCount,
 		
 		TokenConversionRate: o.TokenConversionRate,
+		
+		AiSubItems: o.AiSubItems,
 		Alias:    (Alias)(o),
 	})
 }
@@ -200,9 +214,14 @@ func (o *Billingcharge) UnmarshalJSON(b []byte) error {
 		o.PrepaidQuantity = &PrepaidQuantityFloat32
 	}
     
-	if FairuseQuantity, ok := BillingchargeMap["fairuseQuantity"].(float64); ok {
-		FairuseQuantityFloat32 := float32(FairuseQuantity)
-		o.FairuseQuantity = &FairuseQuantityFloat32
+	if FairuseAllocation, ok := BillingchargeMap["fairuseAllocation"].(float64); ok {
+		FairuseAllocationFloat32 := float32(FairuseAllocation)
+		o.FairuseAllocation = &FairuseAllocationFloat32
+	}
+    
+	if FairuseAmount, ok := BillingchargeMap["fairuseAmount"].(float64); ok {
+		FairuseAmountFloat32 := float32(FairuseAmount)
+		o.FairuseAmount = &FairuseAmountFloat32
 	}
     
 	if ActualQuantity, ok := BillingchargeMap["actualQuantity"].(float64); ok {
@@ -239,6 +258,11 @@ func (o *Billingcharge) UnmarshalJSON(b []byte) error {
 		o.TokenConversionRate = &TokenConversionRateFloat32
 	}
     
+	if AiSubItems, ok := BillingchargeMap["aiSubItems"].([]interface{}); ok {
+		AiSubItemsString, _ := json.Marshal(AiSubItems)
+		json.Unmarshal(AiSubItemsString, &o.AiSubItems)
+	}
+	
 
 	return nil
 }

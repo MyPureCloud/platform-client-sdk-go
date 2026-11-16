@@ -17,6 +17,9 @@ type Agentmuscheduleresult struct {
 
 	// AgentSchedules - The list of agent schedules for the management unit
 	AgentSchedules *[]Agentmuscheduleitem `json:"agentSchedules,omitempty"`
+
+	// VisibilityRange - The schedule visibility range
+	VisibilityRange *Schedulevisibilityrange `json:"visibilityRange,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -93,11 +96,15 @@ func (o Agentmuscheduleresult) MarshalJSON() ([]byte, error) {
 		ReferenceStartDate *string `json:"referenceStartDate,omitempty"`
 		
 		AgentSchedules *[]Agentmuscheduleitem `json:"agentSchedules,omitempty"`
+		
+		VisibilityRange *Schedulevisibilityrange `json:"visibilityRange,omitempty"`
 		Alias
 	}{ 
 		ReferenceStartDate: ReferenceStartDate,
 		
 		AgentSchedules: o.AgentSchedules,
+		
+		VisibilityRange: o.VisibilityRange,
 		Alias:    (Alias)(o),
 	})
 }
@@ -117,6 +124,11 @@ func (o *Agentmuscheduleresult) UnmarshalJSON(b []byte) error {
 	if AgentSchedules, ok := AgentmuscheduleresultMap["agentSchedules"].([]interface{}); ok {
 		AgentSchedulesString, _ := json.Marshal(AgentSchedules)
 		json.Unmarshal(AgentSchedulesString, &o.AgentSchedules)
+	}
+	
+	if VisibilityRange, ok := AgentmuscheduleresultMap["visibilityRange"].(map[string]interface{}); ok {
+		VisibilityRangeString, _ := json.Marshal(VisibilityRange)
+		json.Unmarshal(VisibilityRangeString, &o.VisibilityRange)
 	}
 	
 

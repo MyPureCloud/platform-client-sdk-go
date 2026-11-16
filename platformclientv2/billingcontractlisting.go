@@ -12,7 +12,7 @@ type Billingcontractlisting struct {
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
 	// Entities
-	Entities *[]Billingcontract `json:"entities,omitempty"`
+	Entities *[]Billingcontractsummary `json:"entities,omitempty"`
 
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
@@ -87,7 +87,7 @@ func (o Billingcontractlisting) MarshalJSON() ([]byte, error) {
 	type Alias Billingcontractlisting
 	
 	return json.Marshal(&struct { 
-		Entities *[]Billingcontract `json:"entities,omitempty"`
+		Entities *[]Billingcontractsummary `json:"entities,omitempty"`
 		
 		NextUri *string `json:"nextUri,omitempty"`
 		

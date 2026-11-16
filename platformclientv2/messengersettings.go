@@ -31,6 +31,9 @@ type Messengersettings struct {
 
 	// SessionPersistenceType - The session persistence type for messenger
 	SessionPersistenceType *string `json:"sessionPersistenceType,omitempty"`
+
+	// RichSurveyEnabled - Whether or not rich in-app surveys are enabled for messenger
+	RichSurveyEnabled *bool `json:"richSurveyEnabled,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -109,6 +112,8 @@ func (o Messengersettings) MarshalJSON() ([]byte, error) {
 		HomeScreen *Messengerhomescreen `json:"homeScreen,omitempty"`
 		
 		SessionPersistenceType *string `json:"sessionPersistenceType,omitempty"`
+		
+		RichSurveyEnabled *bool `json:"richSurveyEnabled,omitempty"`
 		Alias
 	}{ 
 		Enabled: o.Enabled,
@@ -124,6 +129,8 @@ func (o Messengersettings) MarshalJSON() ([]byte, error) {
 		HomeScreen: o.HomeScreen,
 		
 		SessionPersistenceType: o.SessionPersistenceType,
+		
+		RichSurveyEnabled: o.RichSurveyEnabled,
 		Alias:    (Alias)(o),
 	})
 }
@@ -166,6 +173,10 @@ func (o *Messengersettings) UnmarshalJSON(b []byte) error {
 	
 	if SessionPersistenceType, ok := MessengersettingsMap["sessionPersistenceType"].(string); ok {
 		o.SessionPersistenceType = &SessionPersistenceType
+	}
+    
+	if RichSurveyEnabled, ok := MessengersettingsMap["richSurveyEnabled"].(bool); ok {
+		o.RichSurveyEnabled = &RichSurveyEnabled
 	}
     
 

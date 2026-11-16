@@ -8148,8 +8148,6 @@ func (a ArchitectApi) GetFlowsOutcomesDivisionviews(pageNumber int, pageSize int
 // GetFlowsValidateJob invokes GET /api/v2/flows/validate/jobs/{jobId}
 //
 // Fetch Architect Validate Job Status
-//
-// Preview: GetFlowsValidateJob is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ArchitectApi) GetFlowsValidateJob(jobId string, expand []string) (*Architectvalidatejobstateresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -11776,8 +11774,6 @@ func (a ArchitectApi) PostFlowsOutcomes(body Flowoutcome) (*Flowoutcome, *APIRes
 // PostFlowsValidateJobs invokes POST /api/v2/flows/validate/jobs
 //
 // Register Architect Validate Job
-//
-// Preview: PostFlowsValidateJobs is a preview method and is subject to both breaking and non-breaking changes at any time without notice
 func (a ArchitectApi) PostFlowsValidateJobs(body Registerarchitectvalidatejob) (*Registerarchitectvalidatejobresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

@@ -15,7 +15,7 @@ type Testtopicphrasephrase struct {
 	Text *string `json:"text,omitempty"`
 
 	// Strictness - The phrase strictness, default value is null
-	Strictness *string `json:"strictness,omitempty"`
+	Strictness *int `json:"strictness,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -83,7 +83,7 @@ func (o Testtopicphrasephrase) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Text *string `json:"text,omitempty"`
 		
-		Strictness *string `json:"strictness,omitempty"`
+		Strictness *int `json:"strictness,omitempty"`
 		Alias
 	}{ 
 		Text: o.Text,
@@ -104,10 +104,11 @@ func (o *Testtopicphrasephrase) UnmarshalJSON(b []byte) error {
 		o.Text = &Text
 	}
     
-	if Strictness, ok := TesttopicphrasephraseMap["strictness"].(string); ok {
-		o.Strictness = &Strictness
+	if Strictness, ok := TesttopicphrasephraseMap["strictness"].(float64); ok {
+		StrictnessInt := int(Strictness)
+		o.Strictness = &StrictnessInt
 	}
-    
+	
 
 	return nil
 }
