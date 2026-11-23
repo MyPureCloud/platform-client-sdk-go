@@ -23,6 +23,12 @@ type Facebookdataingestionruleversionresponseentitylisting struct {
 	// Total
 	Total *int `json:"total,omitempty"`
 
+	// NextUri
+	NextUri *string `json:"nextUri,omitempty"`
+
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
+
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
 
@@ -31,12 +37,6 @@ type Facebookdataingestionruleversionresponseentitylisting struct {
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
-
-	// NextUri
-	NextUri *string `json:"nextUri,omitempty"`
-
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
 
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
@@ -113,15 +113,15 @@ func (o Facebookdataingestionruleversionresponseentitylisting) MarshalJSON() ([]
 		
 		Total *int `json:"total,omitempty"`
 		
+		NextUri *string `json:"nextUri,omitempty"`
+		
+		PreviousUri *string `json:"previousUri,omitempty"`
+		
 		LastUri *string `json:"lastUri,omitempty"`
 		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		
-		NextUri *string `json:"nextUri,omitempty"`
-		
-		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		Alias
@@ -134,15 +134,15 @@ func (o Facebookdataingestionruleversionresponseentitylisting) MarshalJSON() ([]
 		
 		Total: o.Total,
 		
+		NextUri: o.NextUri,
+		
+		PreviousUri: o.PreviousUri,
+		
 		LastUri: o.LastUri,
 		
 		FirstUri: o.FirstUri,
 		
 		SelfUri: o.SelfUri,
-		
-		NextUri: o.NextUri,
-		
-		PreviousUri: o.PreviousUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
@@ -176,6 +176,14 @@ func (o *Facebookdataingestionruleversionresponseentitylisting) UnmarshalJSON(b 
 		o.Total = &TotalInt
 	}
 	
+	if NextUri, ok := FacebookdataingestionruleversionresponseentitylistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
+	}
+    
+	if PreviousUri, ok := FacebookdataingestionruleversionresponseentitylistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
+	}
+    
 	if LastUri, ok := FacebookdataingestionruleversionresponseentitylistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
 	}
@@ -186,14 +194,6 @@ func (o *Facebookdataingestionruleversionresponseentitylisting) UnmarshalJSON(b 
     
 	if SelfUri, ok := FacebookdataingestionruleversionresponseentitylistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
-	}
-    
-	if NextUri, ok := FacebookdataingestionruleversionresponseentitylistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
-	}
-    
-	if PreviousUri, ok := FacebookdataingestionruleversionresponseentitylistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
 	}
     
 	if PageCount, ok := FacebookdataingestionruleversionresponseentitylistingMap["pageCount"].(float64); ok {

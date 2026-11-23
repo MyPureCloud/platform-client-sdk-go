@@ -22,6 +22,18 @@ type Billingproduct struct {
 
 	// UnitOfMeasure - The unit of measure for the product.
 	UnitOfMeasure *string `json:"unitOfMeasure,omitempty"`
+
+	// Category - The category of the product, for example AI bundles.
+	Category *string `json:"category,omitempty"`
+
+	// Capability - The capability the product provides, for example AppFoundry.
+	Capability *string `json:"capability,omitempty"`
+
+	// Platform - The platform code of the product, for example PL003.
+	Platform *string `json:"platform,omitempty"`
+
+	// Family - The product family, for example Genesys Cloud.
+	Family *string `json:"family,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +106,14 @@ func (o Billingproduct) MarshalJSON() ([]byte, error) {
 		Name *string `json:"name,omitempty"`
 		
 		UnitOfMeasure *string `json:"unitOfMeasure,omitempty"`
+		
+		Category *string `json:"category,omitempty"`
+		
+		Capability *string `json:"capability,omitempty"`
+		
+		Platform *string `json:"platform,omitempty"`
+		
+		Family *string `json:"family,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
@@ -103,6 +123,14 @@ func (o Billingproduct) MarshalJSON() ([]byte, error) {
 		Name: o.Name,
 		
 		UnitOfMeasure: o.UnitOfMeasure,
+		
+		Category: o.Category,
+		
+		Capability: o.Capability,
+		
+		Platform: o.Platform,
+		
+		Family: o.Family,
 		Alias:    (Alias)(o),
 	})
 }
@@ -128,6 +156,22 @@ func (o *Billingproduct) UnmarshalJSON(b []byte) error {
     
 	if UnitOfMeasure, ok := BillingproductMap["unitOfMeasure"].(string); ok {
 		o.UnitOfMeasure = &UnitOfMeasure
+	}
+    
+	if Category, ok := BillingproductMap["category"].(string); ok {
+		o.Category = &Category
+	}
+    
+	if Capability, ok := BillingproductMap["capability"].(string); ok {
+		o.Capability = &Capability
+	}
+    
+	if Platform, ok := BillingproductMap["platform"].(string); ok {
+		o.Platform = &Platform
+	}
+    
+	if Family, ok := BillingproductMap["family"].(string); ok {
+		o.Family = &Family
 	}
     
 

@@ -63,6 +63,9 @@ type Emailmessage struct {
 	// MaxEmailSizeBytes - Indicates the maximum allowed size for an email to be send via SMTP server, based on the email domain configuration
 	MaxEmailSizeBytes *int `json:"maxEmailSizeBytes,omitempty"`
 
+	// OverrideHeaders - Custom headers to set on the outbound email.
+	OverrideHeaders *[]Headerentry `json:"overrideHeaders,omitempty"`
+
 	// RecipientWarnings - The recipients that failed validation. Advisory only; recipient policy is enforced at send time.
 	RecipientWarnings *[]Recipientwarning `json:"recipientWarnings,omitempty"`
 
@@ -175,6 +178,8 @@ func (o Emailmessage) MarshalJSON() ([]byte, error) {
 		
 		MaxEmailSizeBytes *int `json:"maxEmailSizeBytes,omitempty"`
 		
+		OverrideHeaders *[]Headerentry `json:"overrideHeaders,omitempty"`
+		
 		RecipientWarnings *[]Recipientwarning `json:"recipientWarnings,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -213,6 +218,8 @@ func (o Emailmessage) MarshalJSON() ([]byte, error) {
 		EmailSizeBytes: o.EmailSizeBytes,
 		
 		MaxEmailSizeBytes: o.MaxEmailSizeBytes,
+		
+		OverrideHeaders: o.OverrideHeaders,
 		
 		RecipientWarnings: o.RecipientWarnings,
 		
@@ -303,6 +310,11 @@ func (o *Emailmessage) UnmarshalJSON(b []byte) error {
 	if MaxEmailSizeBytes, ok := EmailmessageMap["maxEmailSizeBytes"].(float64); ok {
 		MaxEmailSizeBytesInt := int(MaxEmailSizeBytes)
 		o.MaxEmailSizeBytes = &MaxEmailSizeBytesInt
+	}
+	
+	if OverrideHeaders, ok := EmailmessageMap["overrideHeaders"].([]interface{}); ok {
+		OverrideHeadersString, _ := json.Marshal(OverrideHeaders)
+		json.Unmarshal(OverrideHeadersString, &o.OverrideHeaders)
 	}
 	
 	if RecipientWarnings, ok := EmailmessageMap["recipientWarnings"].([]interface{}); ok {

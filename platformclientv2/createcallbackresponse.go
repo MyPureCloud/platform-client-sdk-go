@@ -16,6 +16,9 @@ type Createcallbackresponse struct {
 
 	// CallbackIdentifiers - The list of communication identifiers for the callback participants
 	CallbackIdentifiers *[]Callbackidentifier `json:"callbackIdentifiers,omitempty"`
+
+	// ScheduleEvaluationResult - The outcome of the operating schedule group evaluation. Present only when schedule group validation is enabled for the organization
+	ScheduleEvaluationResult *string `json:"scheduleEvaluationResult,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -84,11 +87,15 @@ func (o Createcallbackresponse) MarshalJSON() ([]byte, error) {
 		Conversation *Domainentityref `json:"conversation,omitempty"`
 		
 		CallbackIdentifiers *[]Callbackidentifier `json:"callbackIdentifiers,omitempty"`
+		
+		ScheduleEvaluationResult *string `json:"scheduleEvaluationResult,omitempty"`
 		Alias
 	}{ 
 		Conversation: o.Conversation,
 		
 		CallbackIdentifiers: o.CallbackIdentifiers,
+		
+		ScheduleEvaluationResult: o.ScheduleEvaluationResult,
 		Alias:    (Alias)(o),
 	})
 }
@@ -110,6 +117,10 @@ func (o *Createcallbackresponse) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(CallbackIdentifiersString, &o.CallbackIdentifiers)
 	}
 	
+	if ScheduleEvaluationResult, ok := CreatecallbackresponseMap["scheduleEvaluationResult"].(string); ok {
+		o.ScheduleEvaluationResult = &ScheduleEvaluationResult
+	}
+    
 
 	return nil
 }

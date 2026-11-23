@@ -22,6 +22,9 @@ type Testexecutionresult struct {
 
 	// Success - Indicates whether or not the test was a success
 	Success *bool `json:"success,omitempty"`
+
+	// DurationMs - Total time in milliseconds taken to execute the test
+	DurationMs *int `json:"durationMs,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +97,8 @@ func (o Testexecutionresult) MarshalJSON() ([]byte, error) {
 		FinalResult *interface{} `json:"finalResult,omitempty"`
 		
 		Success *bool `json:"success,omitempty"`
+		
+		DurationMs *int `json:"durationMs,omitempty"`
 		Alias
 	}{ 
 		Operations: o.Operations,
@@ -103,6 +108,8 @@ func (o Testexecutionresult) MarshalJSON() ([]byte, error) {
 		FinalResult: o.FinalResult,
 		
 		Success: o.Success,
+		
+		DurationMs: o.DurationMs,
 		Alias:    (Alias)(o),
 	})
 }
@@ -133,6 +140,11 @@ func (o *Testexecutionresult) UnmarshalJSON(b []byte) error {
 		o.Success = &Success
 	}
     
+	if DurationMs, ok := TestexecutionresultMap["durationMs"].(float64); ok {
+		DurationMsInt := int(DurationMs)
+		o.DurationMs = &DurationMsInt
+	}
+	
 
 	return nil
 }

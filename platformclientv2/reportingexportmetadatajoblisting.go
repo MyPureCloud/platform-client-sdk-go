@@ -23,6 +23,12 @@ type Reportingexportmetadatajoblisting struct {
 	// Total
 	Total *int `json:"total,omitempty"`
 
+	// NextUri
+	NextUri *string `json:"nextUri,omitempty"`
+
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
+
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
 
@@ -31,12 +37,6 @@ type Reportingexportmetadatajoblisting struct {
 
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
-
-	// NextUri
-	NextUri *string `json:"nextUri,omitempty"`
-
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
 
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
@@ -113,15 +113,15 @@ func (o Reportingexportmetadatajoblisting) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
+		NextUri *string `json:"nextUri,omitempty"`
+		
+		PreviousUri *string `json:"previousUri,omitempty"`
+		
 		LastUri *string `json:"lastUri,omitempty"`
 		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
-		
-		NextUri *string `json:"nextUri,omitempty"`
-		
-		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		Alias
@@ -134,15 +134,15 @@ func (o Reportingexportmetadatajoblisting) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
+		NextUri: o.NextUri,
+		
+		PreviousUri: o.PreviousUri,
+		
 		LastUri: o.LastUri,
 		
 		FirstUri: o.FirstUri,
 		
 		SelfUri: o.SelfUri,
-		
-		NextUri: o.NextUri,
-		
-		PreviousUri: o.PreviousUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
@@ -176,6 +176,14 @@ func (o *Reportingexportmetadatajoblisting) UnmarshalJSON(b []byte) error {
 		o.Total = &TotalInt
 	}
 	
+	if NextUri, ok := ReportingexportmetadatajoblistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
+	}
+    
+	if PreviousUri, ok := ReportingexportmetadatajoblistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
+	}
+    
 	if LastUri, ok := ReportingexportmetadatajoblistingMap["lastUri"].(string); ok {
 		o.LastUri = &LastUri
 	}
@@ -186,14 +194,6 @@ func (o *Reportingexportmetadatajoblisting) UnmarshalJSON(b []byte) error {
     
 	if SelfUri, ok := ReportingexportmetadatajoblistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
-	}
-    
-	if NextUri, ok := ReportingexportmetadatajoblistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
-	}
-    
-	if PreviousUri, ok := ReportingexportmetadatajoblistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
 	}
     
 	if PageCount, ok := ReportingexportmetadatajoblistingMap["pageCount"].(float64); ok {

@@ -17,6 +17,9 @@ type Transfertoexternalcontactrequest struct {
 	// KeepInternalMessageAlive - If true, the digital internal message will NOT be terminated.
 	KeepInternalMessageAlive *bool `json:"keepInternalMessageAlive,omitempty"`
 
+	// AgentIndicatedAddress - The agent indicated address of the transfer initiator. May override the address depending on trunk address priority. Only available for call conversations.
+	AgentIndicatedAddress *string `json:"agentIndicatedAddress,omitempty"`
+
 	// ContactId - The external contact id.
 	ContactId *string `json:"contactId,omitempty"`
 
@@ -91,6 +94,8 @@ func (o Transfertoexternalcontactrequest) MarshalJSON() ([]byte, error) {
 		
 		KeepInternalMessageAlive *bool `json:"keepInternalMessageAlive,omitempty"`
 		
+		AgentIndicatedAddress *string `json:"agentIndicatedAddress,omitempty"`
+		
 		ContactId *string `json:"contactId,omitempty"`
 		
 		PhoneType *string `json:"phoneType,omitempty"`
@@ -99,6 +104,8 @@ func (o Transfertoexternalcontactrequest) MarshalJSON() ([]byte, error) {
 		TransferType: o.TransferType,
 		
 		KeepInternalMessageAlive: o.KeepInternalMessageAlive,
+		
+		AgentIndicatedAddress: o.AgentIndicatedAddress,
 		
 		ContactId: o.ContactId,
 		
@@ -120,6 +127,10 @@ func (o *Transfertoexternalcontactrequest) UnmarshalJSON(b []byte) error {
     
 	if KeepInternalMessageAlive, ok := TransfertoexternalcontactrequestMap["keepInternalMessageAlive"].(bool); ok {
 		o.KeepInternalMessageAlive = &KeepInternalMessageAlive
+	}
+    
+	if AgentIndicatedAddress, ok := TransfertoexternalcontactrequestMap["agentIndicatedAddress"].(string); ok {
+		o.AgentIndicatedAddress = &AgentIndicatedAddress
 	}
     
 	if ContactId, ok := TransfertoexternalcontactrequestMap["contactId"].(string); ok {

@@ -6405,6 +6405,91 @@ func (a TaskManagementApi) PostTaskmanagementWorktypesQuery(body Worktypequeryre
 	return successPayload, response, err
 }
 
+// PutTaskmanagementWorkitemAccessattributes invokes PUT /api/v2/taskmanagement/workitems/{workitemId}/accessattributes
+//
+// Set the access attributes on a workitem
+//
+// Preview: PutTaskmanagementWorkitemAccessattributes is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+func (a TaskManagementApi) PutTaskmanagementWorkitemAccessattributes(workitemId string, body Workitemaccessattributesupdate) (*APIResponse, error) {
+	var httpMethod = "PUT"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/taskmanagement/workitems/{workitemId}/accessattributes"
+	path = strings.Replace(path, "{workitemId}", url.PathEscape(fmt.Sprintf("%v", workitemId)), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'workitemId' is set
+	if &workitemId == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'workitemId' when calling TaskManagementApi->PutTaskmanagementWorkitemAccessattributes")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return nil, errors.New("Missing required parameter 'body' when calling TaskManagementApi->PutTaskmanagementWorkitemAccessattributes")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
 // PutTaskmanagementWorkitemsSchema invokes PUT /api/v2/taskmanagement/workitems/schemas/{schemaId}
 //
 // Update a schema

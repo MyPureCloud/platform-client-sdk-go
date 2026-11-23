@@ -20,6 +20,9 @@ type Createcallrequest struct {
 	// CallerIdName - The caller id name for this outbound call.
 	CallerIdName *string `json:"callerIdName,omitempty"`
 
+	// AgentIndicatedAddress - The caller id for this outbound call when the agent indicated override is configured.
+	AgentIndicatedAddress *string `json:"agentIndicatedAddress,omitempty"`
+
 	// CallFromQueueId - The queue ID to call on behalf of.
 	CallFromQueueId *string `json:"callFromQueueId,omitempty"`
 
@@ -129,6 +132,8 @@ func (o Createcallrequest) MarshalJSON() ([]byte, error) {
 		
 		CallerIdName *string `json:"callerIdName,omitempty"`
 		
+		AgentIndicatedAddress *string `json:"agentIndicatedAddress,omitempty"`
+		
 		CallFromQueueId *string `json:"callFromQueueId,omitempty"`
 		
 		CallQueueId *string `json:"callQueueId,omitempty"`
@@ -161,6 +166,8 @@ func (o Createcallrequest) MarshalJSON() ([]byte, error) {
 		CallerId: o.CallerId,
 		
 		CallerIdName: o.CallerIdName,
+		
+		AgentIndicatedAddress: o.AgentIndicatedAddress,
 		
 		CallFromQueueId: o.CallFromQueueId,
 		
@@ -208,6 +215,10 @@ func (o *Createcallrequest) UnmarshalJSON(b []byte) error {
     
 	if CallerIdName, ok := CreatecallrequestMap["callerIdName"].(string); ok {
 		o.CallerIdName = &CallerIdName
+	}
+    
+	if AgentIndicatedAddress, ok := CreatecallrequestMap["agentIndicatedAddress"].(string); ok {
+		o.AgentIndicatedAddress = &AgentIndicatedAddress
 	}
     
 	if CallFromQueueId, ok := CreatecallrequestMap["callFromQueueId"].(string); ok {

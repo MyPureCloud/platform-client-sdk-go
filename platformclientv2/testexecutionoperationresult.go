@@ -25,6 +25,9 @@ type Testexecutionoperationresult struct {
 
 	// VarError - Error that occurred during the operation
 	VarError *Errorbody `json:"error,omitempty"`
+
+	// DurationMs - Time in milliseconds taken to execute this step
+	DurationMs *int `json:"durationMs,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -99,6 +102,8 @@ func (o Testexecutionoperationresult) MarshalJSON() ([]byte, error) {
 		Result *interface{} `json:"result,omitempty"`
 		
 		VarError *Errorbody `json:"error,omitempty"`
+		
+		DurationMs *int `json:"durationMs,omitempty"`
 		Alias
 	}{ 
 		Step: o.Step,
@@ -110,6 +115,8 @@ func (o Testexecutionoperationresult) MarshalJSON() ([]byte, error) {
 		Result: o.Result,
 		
 		VarError: o.VarError,
+		
+		DurationMs: o.DurationMs,
 		Alias:    (Alias)(o),
 	})
 }
@@ -142,6 +149,11 @@ func (o *Testexecutionoperationresult) UnmarshalJSON(b []byte) error {
 	if VarError, ok := TestexecutionoperationresultMap["error"].(map[string]interface{}); ok {
 		VarErrorString, _ := json.Marshal(VarError)
 		json.Unmarshal(VarErrorString, &o.VarError)
+	}
+	
+	if DurationMs, ok := TestexecutionoperationresultMap["durationMs"].(float64); ok {
+		DurationMsInt := int(DurationMs)
+		o.DurationMs = &DurationMsInt
 	}
 	
 

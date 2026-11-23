@@ -64,6 +64,12 @@ type Callbackmediasettings struct {
 
 	// Site - The identifier of the site to be used for dialing; can be set in place of an edge group.
 	Site *Domainentityref `json:"site,omitempty"`
+
+	// EnableAgentReservation - The property to enable pre-dial agent reservation
+	EnableAgentReservation *bool `json:"enableAgentReservation,omitempty"`
+
+	// MaxCallbackDelayHours - The max amount of time a callback can be scheduled out into the future (in hours); Allowable range 1 - 720 hour(s) (inclusive)
+	MaxCallbackDelayHours *int `json:"maxCallbackDelayHours,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -164,6 +170,10 @@ func (o Callbackmediasettings) MarshalJSON() ([]byte, error) {
 		EdgeGroup *Domainentityref `json:"edgeGroup,omitempty"`
 		
 		Site *Domainentityref `json:"site,omitempty"`
+		
+		EnableAgentReservation *bool `json:"enableAgentReservation,omitempty"`
+		
+		MaxCallbackDelayHours *int `json:"maxCallbackDelayHours,omitempty"`
 		Alias
 	}{ 
 		EnableAutoAnswer: o.EnableAutoAnswer,
@@ -201,6 +211,10 @@ func (o Callbackmediasettings) MarshalJSON() ([]byte, error) {
 		EdgeGroup: o.EdgeGroup,
 		
 		Site: o.Site,
+		
+		EnableAgentReservation: o.EnableAgentReservation,
+		
+		MaxCallbackDelayHours: o.MaxCallbackDelayHours,
 		Alias:    (Alias)(o),
 	})
 }
@@ -292,6 +306,15 @@ func (o *Callbackmediasettings) UnmarshalJSON(b []byte) error {
 	if Site, ok := CallbackmediasettingsMap["site"].(map[string]interface{}); ok {
 		SiteString, _ := json.Marshal(Site)
 		json.Unmarshal(SiteString, &o.Site)
+	}
+	
+	if EnableAgentReservation, ok := CallbackmediasettingsMap["enableAgentReservation"].(bool); ok {
+		o.EnableAgentReservation = &EnableAgentReservation
+	}
+    
+	if MaxCallbackDelayHours, ok := CallbackmediasettingsMap["maxCallbackDelayHours"].(float64); ok {
+		MaxCallbackDelayHoursInt := int(MaxCallbackDelayHours)
+		o.MaxCallbackDelayHours = &MaxCallbackDelayHoursInt
 	}
 	
 

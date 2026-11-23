@@ -17,6 +17,9 @@ type Transfertoagentrequest struct {
 	// KeepInternalMessageAlive - If true, the digital internal message will NOT be terminated.
 	KeepInternalMessageAlive *bool `json:"keepInternalMessageAlive,omitempty"`
 
+	// AgentIndicatedAddress - The agent indicated address of the transfer initiator. May override the address depending on trunk address priority. Only available for call conversations.
+	AgentIndicatedAddress *string `json:"agentIndicatedAddress,omitempty"`
+
 	// UserId - The id of the internal user.
 	UserId *string `json:"userId,omitempty"`
 
@@ -97,6 +100,8 @@ func (o Transfertoagentrequest) MarshalJSON() ([]byte, error) {
 		
 		KeepInternalMessageAlive *bool `json:"keepInternalMessageAlive,omitempty"`
 		
+		AgentIndicatedAddress *string `json:"agentIndicatedAddress,omitempty"`
+		
 		UserId *string `json:"userId,omitempty"`
 		
 		UserName *string `json:"userName,omitempty"`
@@ -109,6 +114,8 @@ func (o Transfertoagentrequest) MarshalJSON() ([]byte, error) {
 		TransferType: o.TransferType,
 		
 		KeepInternalMessageAlive: o.KeepInternalMessageAlive,
+		
+		AgentIndicatedAddress: o.AgentIndicatedAddress,
 		
 		UserId: o.UserId,
 		
@@ -134,6 +141,10 @@ func (o *Transfertoagentrequest) UnmarshalJSON(b []byte) error {
     
 	if KeepInternalMessageAlive, ok := TransfertoagentrequestMap["keepInternalMessageAlive"].(bool); ok {
 		o.KeepInternalMessageAlive = &KeepInternalMessageAlive
+	}
+    
+	if AgentIndicatedAddress, ok := TransfertoagentrequestMap["agentIndicatedAddress"].(string); ok {
+		o.AgentIndicatedAddress = &AgentIndicatedAddress
 	}
     
 	if UserId, ok := TransfertoagentrequestMap["userId"].(string); ok {

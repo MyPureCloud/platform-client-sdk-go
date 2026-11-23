@@ -27,10 +27,10 @@ type Testtopicphrasejob struct {
 	// DateModified - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
-	// ProcessedTranscriptsCount
+	// ProcessedTranscriptsCount - Total count of transcripts processed. 0 until the job is completed
 	ProcessedTranscriptsCount *int `json:"processedTranscriptsCount,omitempty"`
 
-	// MatchedTranscriptsCount
+	// MatchedTranscriptsCount - Count of transcripts that matched the phrase. 0 until the job is completed
 	MatchedTranscriptsCount *int `json:"matchedTranscriptsCount,omitempty"`
 
 	// SelfUri - The URI for this object

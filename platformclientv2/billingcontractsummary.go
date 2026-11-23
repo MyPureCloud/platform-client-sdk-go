@@ -24,6 +24,9 @@ type Billingcontractsummary struct {
 	// CommercialModel - The type of commercial model.
 	CommercialModel *string `json:"commercialModel,omitempty"`
 
+	// BillingFrequency - How the contract is billed. Values include Monthly Pre-pay, Annual Pre-pay and Monthly in Arrears.
+	BillingFrequency *string `json:"billingFrequency,omitempty"`
+
 	// PurchaseOrderNumbers - List of po numbers periods for this contract.
 	PurchaseOrderNumbers *[]string `json:"purchaseOrderNumbers,omitempty"`
 
@@ -154,6 +157,8 @@ func (o Billingcontractsummary) MarshalJSON() ([]byte, error) {
 		
 		CommercialModel *string `json:"commercialModel,omitempty"`
 		
+		BillingFrequency *string `json:"billingFrequency,omitempty"`
+		
 		PurchaseOrderNumbers *[]string `json:"purchaseOrderNumbers,omitempty"`
 		
 		BillToCustomer *Customer `json:"billToCustomer,omitempty"`
@@ -182,6 +187,8 @@ func (o Billingcontractsummary) MarshalJSON() ([]byte, error) {
 		Status: o.Status,
 		
 		CommercialModel: o.CommercialModel,
+		
+		BillingFrequency: o.BillingFrequency,
 		
 		PurchaseOrderNumbers: o.PurchaseOrderNumbers,
 		
@@ -227,6 +234,10 @@ func (o *Billingcontractsummary) UnmarshalJSON(b []byte) error {
     
 	if CommercialModel, ok := BillingcontractsummaryMap["commercialModel"].(string); ok {
 		o.CommercialModel = &CommercialModel
+	}
+    
+	if BillingFrequency, ok := BillingcontractsummaryMap["billingFrequency"].(string); ok {
+		o.BillingFrequency = &BillingFrequency
 	}
     
 	if PurchaseOrderNumbers, ok := BillingcontractsummaryMap["purchaseOrderNumbers"].([]interface{}); ok {

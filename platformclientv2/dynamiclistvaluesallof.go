@@ -17,7 +17,7 @@ type Dynamiclistvaluesallof struct {
 	// Inputs - Array of input mappings for the data action. Maps guide variables to data action input parameters.
 	Inputs *[]Dataactioninput `json:"inputs,omitempty"`
 
-	// FieldMapping
+	// FieldMapping - Maps data action output fields to list values/synonyms.
 	FieldMapping *Fieldmapping `json:"fieldMapping,omitempty"`
 
 	// MatchType - Defines how matching should work at runtime. Only 'Exact' matching is supported for dynamic lists.

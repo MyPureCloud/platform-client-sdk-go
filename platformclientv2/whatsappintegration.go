@@ -66,6 +66,12 @@ type Whatsappintegration struct {
 	// WhatsAppBusinessAccountId - The WhatsApp Business Account Id (WABA Id)
 	WhatsAppBusinessAccountId *string `json:"whatsAppBusinessAccountId,omitempty"`
 
+	// PhoneNumberId - The Meta phone number ID associated with this integration (Embedded Signup v4).
+	PhoneNumberId *string `json:"phoneNumberId,omitempty"`
+
+	// BusinessPortfolioId - The Meta business portfolio ID associated with this integration (Embedded Signup v4).
+	BusinessPortfolioId *string `json:"businessPortfolioId,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -185,6 +191,10 @@ func (o Whatsappintegration) MarshalJSON() ([]byte, error) {
 		
 		WhatsAppBusinessAccountId *string `json:"whatsAppBusinessAccountId,omitempty"`
 		
+		PhoneNumberId *string `json:"phoneNumberId,omitempty"`
+		
+		BusinessPortfolioId *string `json:"businessPortfolioId,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -223,6 +233,10 @@ func (o Whatsappintegration) MarshalJSON() ([]byte, error) {
 		CreateError: o.CreateError,
 		
 		WhatsAppBusinessAccountId: o.WhatsAppBusinessAccountId,
+		
+		PhoneNumberId: o.PhoneNumberId,
+		
+		BusinessPortfolioId: o.BusinessPortfolioId,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -317,6 +331,14 @@ func (o *Whatsappintegration) UnmarshalJSON(b []byte) error {
 	
 	if WhatsAppBusinessAccountId, ok := WhatsappintegrationMap["whatsAppBusinessAccountId"].(string); ok {
 		o.WhatsAppBusinessAccountId = &WhatsAppBusinessAccountId
+	}
+    
+	if PhoneNumberId, ok := WhatsappintegrationMap["phoneNumberId"].(string); ok {
+		o.PhoneNumberId = &PhoneNumberId
+	}
+    
+	if BusinessPortfolioId, ok := WhatsappintegrationMap["businessPortfolioId"].(string); ok {
+		o.BusinessPortfolioId = &BusinessPortfolioId
 	}
     
 	if SelfUri, ok := WhatsappintegrationMap["selfUri"].(string); ok {

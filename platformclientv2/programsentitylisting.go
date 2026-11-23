@@ -20,11 +20,11 @@ type Programsentitylisting struct {
 	// Total
 	Total *int `json:"total,omitempty"`
 
-	// SelfUri
-	SelfUri *string `json:"selfUri,omitempty"`
-
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
+
+	// SelfUri
+	SelfUri *string `json:"selfUri,omitempty"`
 
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
@@ -99,9 +99,9 @@ func (o Programsentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
-		SelfUri *string `json:"selfUri,omitempty"`
-		
 		NextUri *string `json:"nextUri,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		Alias
@@ -112,9 +112,9 @@ func (o Programsentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
-		SelfUri: o.SelfUri,
-		
 		NextUri: o.NextUri,
+		
+		SelfUri: o.SelfUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (Alias)(o),
@@ -143,12 +143,12 @@ func (o *Programsentitylisting) UnmarshalJSON(b []byte) error {
 		o.Total = &TotalInt
 	}
 	
-	if SelfUri, ok := ProgramsentitylistingMap["selfUri"].(string); ok {
-		o.SelfUri = &SelfUri
-	}
-    
 	if NextUri, ok := ProgramsentitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
+	}
+    
+	if SelfUri, ok := ProgramsentitylistingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
 	}
     
 	if PageCount, ok := ProgramsentitylistingMap["pageCount"].(float64); ok {

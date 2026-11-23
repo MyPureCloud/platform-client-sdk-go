@@ -28,6 +28,15 @@ type Meteredassignmentbyagent struct {
 
 	// TimeZone
 	TimeZone *string `json:"timeZone,omitempty"`
+
+	// Percentage - Percentage of eligible conversations to sample for evaluation, from 0.00 to 100.00. If 0.00 or not set, percentage sampling is not used and maxNumberEvaluations applies.
+	Percentage *float32 `json:"percentage,omitempty"`
+
+	// Minimum - Minimum number of evaluations to create when percentage sampling is used.
+	Minimum *int `json:"minimum,omitempty"`
+
+	// AgentConnectedTimeCriteria - Only create evaluations for conversations where the agent's connected time satisfies this duration condition. Connected time runs from when the agent connected until the conversation ended, excluding alerting, dialing and wrap-up.
+	AgentConnectedTimeCriteria *Durationcondition `json:"agentConnectedTimeCriteria,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -104,6 +113,12 @@ func (o Meteredassignmentbyagent) MarshalJSON() ([]byte, error) {
 		TimeInterval *Timeinterval `json:"timeInterval,omitempty"`
 		
 		TimeZone *string `json:"timeZone,omitempty"`
+		
+		Percentage *float32 `json:"percentage,omitempty"`
+		
+		Minimum *int `json:"minimum,omitempty"`
+		
+		AgentConnectedTimeCriteria *Durationcondition `json:"agentConnectedTimeCriteria,omitempty"`
 		Alias
 	}{ 
 		EvaluationContextId: o.EvaluationContextId,
@@ -117,6 +132,12 @@ func (o Meteredassignmentbyagent) MarshalJSON() ([]byte, error) {
 		TimeInterval: o.TimeInterval,
 		
 		TimeZone: o.TimeZone,
+		
+		Percentage: o.Percentage,
+		
+		Minimum: o.Minimum,
+		
+		AgentConnectedTimeCriteria: o.AgentConnectedTimeCriteria,
 		Alias:    (Alias)(o),
 	})
 }
@@ -156,6 +177,21 @@ func (o *Meteredassignmentbyagent) UnmarshalJSON(b []byte) error {
 		o.TimeZone = &TimeZone
 	}
     
+	if Percentage, ok := MeteredassignmentbyagentMap["percentage"].(float64); ok {
+		PercentageFloat32 := float32(Percentage)
+		o.Percentage = &PercentageFloat32
+	}
+	
+	if Minimum, ok := MeteredassignmentbyagentMap["minimum"].(float64); ok {
+		MinimumInt := int(Minimum)
+		o.Minimum = &MinimumInt
+	}
+	
+	if AgentConnectedTimeCriteria, ok := MeteredassignmentbyagentMap["agentConnectedTimeCriteria"].(map[string]interface{}); ok {
+		AgentConnectedTimeCriteriaString, _ := json.Marshal(AgentConnectedTimeCriteria)
+		json.Unmarshal(AgentConnectedTimeCriteriaString, &o.AgentConnectedTimeCriteria)
+	}
+	
 
 	return nil
 }

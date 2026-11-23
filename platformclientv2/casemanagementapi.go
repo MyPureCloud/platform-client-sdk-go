@@ -2953,6 +2953,104 @@ func (a CaseManagementApi) PatchCasemanagementCasePriority(caseId string, body C
 	return successPayload, response, err
 }
 
+// PatchCasemanagementCaseStage invokes PATCH /api/v2/casemanagement/cases/{caseId}/stages/{stageId}
+//
+// Update the attributes of a Stage.
+//
+// Preview: PatchCasemanagementCaseStage is a preview method and is subject to both breaking and non-breaking changes at any time without notice
+func (a CaseManagementApi) PatchCasemanagementCaseStage(caseId string, stageId string, body Stageupdate) (*Stage, *APIResponse, error) {
+	var httpMethod = "PATCH"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/casemanagement/cases/{caseId}/stages/{stageId}"
+	path = strings.Replace(path, "{caseId}", url.PathEscape(fmt.Sprintf("%v", caseId)), -1)
+	path = strings.Replace(path, "{stageId}", url.PathEscape(fmt.Sprintf("%v", stageId)), -1)
+	defaultReturn := new(Stage)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'caseId' is set
+	if &caseId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'caseId' when calling CaseManagementApi->PatchCasemanagementCaseStage")
+	}
+	// verify the required parameter 'stageId' is set
+	if &stageId == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'stageId' when calling CaseManagementApi->PatchCasemanagementCaseStage")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// false
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling CaseManagementApi->PatchCasemanagementCaseStage")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// Find an replace keys that were altered to avoid clashes with go keywords 
+	correctedQueryParams := make(map[string]string)
+	for k, v := range queryParams {
+		if k == "varType" {
+			correctedQueryParams["type"] = v
+			continue
+		}
+		correctedQueryParams[k] = v
+	}
+	queryParams = correctedQueryParams
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Stage
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes, "other")
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else if response.HasBody {
+		if "Stage" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // PatchCasemanagementCaseSummary invokes PATCH /api/v2/casemanagement/cases/{caseId}/summary
 //
 // Update summary of a Case.

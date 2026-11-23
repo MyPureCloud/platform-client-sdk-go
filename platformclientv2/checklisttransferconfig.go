@@ -11,7 +11,7 @@ import (
 type Checklisttransferconfig struct { 
 	// SetFieldNames defines the list of fields to use for controlled JSON serialization
 	SetFieldNames map[string]bool `json:"-"`
-	// Enabled - Whether checklist transfer data is visible to the receiving agent. Defaults to true when not set.
+	// Enabled - Whether checklist transfer data is visible to the receiving agent. Defaults to false when not set; newly created Copilots have this enabled by default.
 	Enabled *bool `json:"enabled,omitempty"`
 }
 

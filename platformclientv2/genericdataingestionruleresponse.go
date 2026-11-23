@@ -42,6 +42,27 @@ type Genericdataingestionruleresponse struct {
 	// Countries - ISO 3166-1 alpha-2 country codes where Data Ingestion Rules should apply. Defaults to worldwide.
 	Countries *[]string `json:"countries,omitempty"`
 
+	// NonOwnedAccount - The non-owned Instagram account for listening. Can be present when source is External.
+	NonOwnedAccount *interface{} `json:"nonOwnedAccount,omitempty"`
+
+	// Hashtags - The hashtags configuration for listening. Can be present when source is External.
+	Hashtags *interface{} `json:"hashtags,omitempty"`
+
+	// IntegrationId - The Integration Id from which public social posts are ingested.
+	IntegrationId *string `json:"integrationId,omitempty"`
+
+	// SearchTerms - Search terms for X (formally Twitter).
+	SearchTerms *string `json:"searchTerms,omitempty"`
+
+	// MessageTypes - Array of message types to fetch when source type is external.
+	MessageTypes *[]string `json:"messageTypes,omitempty"`
+
+	// PageId - The ID of the Facebook page when source is external.
+	PageId *string `json:"pageId,omitempty"`
+
+	// ExternalSource - The external source associated with this data ingestion rule, which is used when performing identity resolution.
+	ExternalSource *Domainentityref `json:"externalSource,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -145,6 +166,20 @@ func (o Genericdataingestionruleresponse) MarshalJSON() ([]byte, error) {
 		
 		Countries *[]string `json:"countries,omitempty"`
 		
+		NonOwnedAccount *interface{} `json:"nonOwnedAccount,omitempty"`
+		
+		Hashtags *interface{} `json:"hashtags,omitempty"`
+		
+		IntegrationId *string `json:"integrationId,omitempty"`
+		
+		SearchTerms *string `json:"searchTerms,omitempty"`
+		
+		MessageTypes *[]string `json:"messageTypes,omitempty"`
+		
+		PageId *string `json:"pageId,omitempty"`
+		
+		ExternalSource *Domainentityref `json:"externalSource,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -167,6 +202,20 @@ func (o Genericdataingestionruleresponse) MarshalJSON() ([]byte, error) {
 		IngestionRuleInfo: o.IngestionRuleInfo,
 		
 		Countries: o.Countries,
+		
+		NonOwnedAccount: o.NonOwnedAccount,
+		
+		Hashtags: o.Hashtags,
+		
+		IntegrationId: o.IntegrationId,
+		
+		SearchTerms: o.SearchTerms,
+		
+		MessageTypes: o.MessageTypes,
+		
+		PageId: o.PageId,
+		
+		ExternalSource: o.ExternalSource,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -223,6 +272,38 @@ func (o *Genericdataingestionruleresponse) UnmarshalJSON(b []byte) error {
 	if Countries, ok := GenericdataingestionruleresponseMap["countries"].([]interface{}); ok {
 		CountriesString, _ := json.Marshal(Countries)
 		json.Unmarshal(CountriesString, &o.Countries)
+	}
+	
+	if NonOwnedAccount, ok := GenericdataingestionruleresponseMap["nonOwnedAccount"].(map[string]interface{}); ok {
+		NonOwnedAccountString, _ := json.Marshal(NonOwnedAccount)
+		json.Unmarshal(NonOwnedAccountString, &o.NonOwnedAccount)
+	}
+	
+	if Hashtags, ok := GenericdataingestionruleresponseMap["hashtags"].(map[string]interface{}); ok {
+		HashtagsString, _ := json.Marshal(Hashtags)
+		json.Unmarshal(HashtagsString, &o.Hashtags)
+	}
+	
+	if IntegrationId, ok := GenericdataingestionruleresponseMap["integrationId"].(string); ok {
+		o.IntegrationId = &IntegrationId
+	}
+    
+	if SearchTerms, ok := GenericdataingestionruleresponseMap["searchTerms"].(string); ok {
+		o.SearchTerms = &SearchTerms
+	}
+    
+	if MessageTypes, ok := GenericdataingestionruleresponseMap["messageTypes"].([]interface{}); ok {
+		MessageTypesString, _ := json.Marshal(MessageTypes)
+		json.Unmarshal(MessageTypesString, &o.MessageTypes)
+	}
+	
+	if PageId, ok := GenericdataingestionruleresponseMap["pageId"].(string); ok {
+		o.PageId = &PageId
+	}
+    
+	if ExternalSource, ok := GenericdataingestionruleresponseMap["externalSource"].(map[string]interface{}); ok {
+		ExternalSourceString, _ := json.Marshal(ExternalSource)
+		json.Unmarshal(ExternalSourceString, &o.ExternalSource)
 	}
 	
 	if SelfUri, ok := GenericdataingestionruleresponseMap["selfUri"].(string); ok {

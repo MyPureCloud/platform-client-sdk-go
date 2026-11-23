@@ -27,6 +27,12 @@ type Testtopicphrasejobs struct {
 	// DateModified - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
+	// ProcessedTranscriptsCount - Total count of transcripts processed. 0 until the job is completed
+	ProcessedTranscriptsCount *int `json:"processedTranscriptsCount,omitempty"`
+
+	// MatchedTranscriptsCount - Count of transcripts that matched the phrase. 0 until the job is completed
+	MatchedTranscriptsCount *int `json:"matchedTranscriptsCount,omitempty"`
+
 	// Action
 	Action *string `json:"action,omitempty"`
 
@@ -126,6 +132,10 @@ func (o Testtopicphrasejobs) MarshalJSON() ([]byte, error) {
 		
 		DateModified *string `json:"dateModified,omitempty"`
 		
+		ProcessedTranscriptsCount *int `json:"processedTranscriptsCount,omitempty"`
+		
+		MatchedTranscriptsCount *int `json:"matchedTranscriptsCount,omitempty"`
+		
 		Action *string `json:"action,omitempty"`
 		
 		EntityType *string `json:"entityType,omitempty"`
@@ -142,6 +152,10 @@ func (o Testtopicphrasejobs) MarshalJSON() ([]byte, error) {
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
+		
+		ProcessedTranscriptsCount: o.ProcessedTranscriptsCount,
+		
+		MatchedTranscriptsCount: o.MatchedTranscriptsCount,
 		
 		Action: o.Action,
 		
@@ -180,6 +194,16 @@ func (o *Testtopicphrasejobs) UnmarshalJSON(b []byte) error {
 	if dateModifiedString, ok := TesttopicphrasejobsMap["dateModified"].(string); ok {
 		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
 		o.DateModified = &DateModified
+	}
+	
+	if ProcessedTranscriptsCount, ok := TesttopicphrasejobsMap["processedTranscriptsCount"].(float64); ok {
+		ProcessedTranscriptsCountInt := int(ProcessedTranscriptsCount)
+		o.ProcessedTranscriptsCount = &ProcessedTranscriptsCountInt
+	}
+	
+	if MatchedTranscriptsCount, ok := TesttopicphrasejobsMap["matchedTranscriptsCount"].(float64); ok {
+		MatchedTranscriptsCountInt := int(MatchedTranscriptsCount)
+		o.MatchedTranscriptsCount = &MatchedTranscriptsCountInt
 	}
 	
 	if Action, ok := TesttopicphrasejobsMap["action"].(string); ok {

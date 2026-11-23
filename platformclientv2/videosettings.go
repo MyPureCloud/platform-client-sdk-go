@@ -22,6 +22,9 @@ type Videosettings struct {
 
 	// User - Video Settings for user
 	User *Uservideosettings `json:"user,omitempty"`
+
+	// Recording - Video chat recording and customer consent settings
+	Recording *Videorecordingsettings `json:"recording,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -94,6 +97,8 @@ func (o Videosettings) MarshalJSON() ([]byte, error) {
 		Agent *Agentvideosettings `json:"agent,omitempty"`
 		
 		User *Uservideosettings `json:"user,omitempty"`
+		
+		Recording *Videorecordingsettings `json:"recording,omitempty"`
 		Alias
 	}{ 
 		Enabled: o.Enabled,
@@ -103,6 +108,8 @@ func (o Videosettings) MarshalJSON() ([]byte, error) {
 		Agent: o.Agent,
 		
 		User: o.User,
+		
+		Recording: o.Recording,
 		Alias:    (Alias)(o),
 	})
 }
@@ -131,6 +138,11 @@ func (o *Videosettings) UnmarshalJSON(b []byte) error {
 	if User, ok := VideosettingsMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if Recording, ok := VideosettingsMap["recording"].(map[string]interface{}); ok {
+		RecordingString, _ := json.Marshal(Recording)
+		json.Unmarshal(RecordingString, &o.Recording)
 	}
 	
 

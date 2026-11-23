@@ -26,6 +26,18 @@ type Whatsappembeddedsignupintegrationrequest struct {
 	// EmbeddedSignupAccessToken - The access token returned from the embedded signup flow. Not required for versions v4 or later.
 	EmbeddedSignupAccessToken *string `json:"embeddedSignupAccessToken,omitempty"`
 
+	// EmbeddedSignupTokenCode - The token exchange code returned from embedded signup (v4 or later).
+	EmbeddedSignupTokenCode *string `json:"embeddedSignupTokenCode,omitempty"`
+
+	// WhatsAppBusinessAccountId - The WhatsApp Business Account Id returned from embedded signup (v4 or later).
+	WhatsAppBusinessAccountId *string `json:"whatsAppBusinessAccountId,omitempty"`
+
+	// PhoneNumberId - The Phone Number Id returned from embedded signup (v4 or later).
+	PhoneNumberId *string `json:"phoneNumberId,omitempty"`
+
+	// BusinessPortfolioId - The Business Portfolio Id returned from embedded signup (v4 or later).
+	BusinessPortfolioId *string `json:"businessPortfolioId,omitempty"`
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 }
@@ -103,6 +115,14 @@ func (o Whatsappembeddedsignupintegrationrequest) MarshalJSON() ([]byte, error) 
 		
 		EmbeddedSignupAccessToken *string `json:"embeddedSignupAccessToken,omitempty"`
 		
+		EmbeddedSignupTokenCode *string `json:"embeddedSignupTokenCode,omitempty"`
+		
+		WhatsAppBusinessAccountId *string `json:"whatsAppBusinessAccountId,omitempty"`
+		
+		PhoneNumberId *string `json:"phoneNumberId,omitempty"`
+		
+		BusinessPortfolioId *string `json:"businessPortfolioId,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		Alias
 	}{ 
@@ -115,6 +135,14 @@ func (o Whatsappembeddedsignupintegrationrequest) MarshalJSON() ([]byte, error) 
 		MessagingSetting: o.MessagingSetting,
 		
 		EmbeddedSignupAccessToken: o.EmbeddedSignupAccessToken,
+		
+		EmbeddedSignupTokenCode: o.EmbeddedSignupTokenCode,
+		
+		WhatsAppBusinessAccountId: o.WhatsAppBusinessAccountId,
+		
+		PhoneNumberId: o.PhoneNumberId,
+		
+		BusinessPortfolioId: o.BusinessPortfolioId,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (Alias)(o),
@@ -148,6 +176,22 @@ func (o *Whatsappembeddedsignupintegrationrequest) UnmarshalJSON(b []byte) error
 	
 	if EmbeddedSignupAccessToken, ok := WhatsappembeddedsignupintegrationrequestMap["embeddedSignupAccessToken"].(string); ok {
 		o.EmbeddedSignupAccessToken = &EmbeddedSignupAccessToken
+	}
+    
+	if EmbeddedSignupTokenCode, ok := WhatsappembeddedsignupintegrationrequestMap["embeddedSignupTokenCode"].(string); ok {
+		o.EmbeddedSignupTokenCode = &EmbeddedSignupTokenCode
+	}
+    
+	if WhatsAppBusinessAccountId, ok := WhatsappembeddedsignupintegrationrequestMap["whatsAppBusinessAccountId"].(string); ok {
+		o.WhatsAppBusinessAccountId = &WhatsAppBusinessAccountId
+	}
+    
+	if PhoneNumberId, ok := WhatsappembeddedsignupintegrationrequestMap["phoneNumberId"].(string); ok {
+		o.PhoneNumberId = &PhoneNumberId
+	}
+    
+	if BusinessPortfolioId, ok := WhatsappembeddedsignupintegrationrequestMap["businessPortfolioId"].(string); ok {
+		o.BusinessPortfolioId = &BusinessPortfolioId
 	}
     
 	if SelfUri, ok := WhatsappembeddedsignupintegrationrequestMap["selfUri"].(string); ok {

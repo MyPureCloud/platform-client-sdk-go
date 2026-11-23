@@ -20,6 +20,9 @@ type Journeyviewelementfilterpredicate struct {
 	// Operator - Optional operator, default is Matches. Valid values: Matches, NotMatches
 	Operator *string `json:"operator,omitempty"`
 
+	// ArrayOperator - Optional operator on how to match array attributes, default is MatchAny. Valid values: MatchAny, MatchAll, MatchOnly
+	ArrayOperator *string `json:"arrayOperator,omitempty"`
+
 	// NoValue - set this to true if no specific value to be considered
 	NoValue *bool `json:"noValue,omitempty"`
 }
@@ -93,6 +96,8 @@ func (o Journeyviewelementfilterpredicate) MarshalJSON() ([]byte, error) {
 		
 		Operator *string `json:"operator,omitempty"`
 		
+		ArrayOperator *string `json:"arrayOperator,omitempty"`
+		
 		NoValue *bool `json:"noValue,omitempty"`
 		Alias
 	}{ 
@@ -101,6 +106,8 @@ func (o Journeyviewelementfilterpredicate) MarshalJSON() ([]byte, error) {
 		Values: o.Values,
 		
 		Operator: o.Operator,
+		
+		ArrayOperator: o.ArrayOperator,
 		
 		NoValue: o.NoValue,
 		Alias:    (Alias)(o),
@@ -125,6 +132,10 @@ func (o *Journeyviewelementfilterpredicate) UnmarshalJSON(b []byte) error {
 	
 	if Operator, ok := JourneyviewelementfilterpredicateMap["operator"].(string); ok {
 		o.Operator = &Operator
+	}
+    
+	if ArrayOperator, ok := JourneyviewelementfilterpredicateMap["arrayOperator"].(string); ok {
+		o.ArrayOperator = &ArrayOperator
 	}
     
 	if NoValue, ok := JourneyviewelementfilterpredicateMap["noValue"].(bool); ok {

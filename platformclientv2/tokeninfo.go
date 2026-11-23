@@ -27,6 +27,9 @@ type Tokeninfo struct {
 	// DateTokenIdles - Date/Time when token is due to expire. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateTokenIdles *time.Time `json:"dateTokenIdles,omitempty"`
 
+	// Amr - The Authentication Methods References (amr, RFC 8176) that produced this token. Typical values are \"pwd\" for a native password login, \"fed\" for a federated SSO sign-in, and \"mfa\" when a second factor was completed. Empty for tokens that were not issued through user authentication (e.g. the client credentials grant).
+	Amr *[]string `json:"amr,omitempty"`
+
 	// OAuthClient
 	OAuthClient *Orgoauthclient `json:"OAuthClient,omitempty"`
 }
@@ -112,6 +115,8 @@ func (o Tokeninfo) MarshalJSON() ([]byte, error) {
 		
 		DateTokenIdles *string `json:"dateTokenIdles,omitempty"`
 		
+		Amr *[]string `json:"amr,omitempty"`
+		
 		OAuthClient *Orgoauthclient `json:"OAuthClient,omitempty"`
 		Alias
 	}{ 
@@ -124,6 +129,8 @@ func (o Tokeninfo) MarshalJSON() ([]byte, error) {
 		ClonedUser: o.ClonedUser,
 		
 		DateTokenIdles: DateTokenIdles,
+		
+		Amr: o.Amr,
 		
 		OAuthClient: o.OAuthClient,
 		Alias:    (Alias)(o),
@@ -160,6 +167,11 @@ func (o *Tokeninfo) UnmarshalJSON(b []byte) error {
 	if dateTokenIdlesString, ok := TokeninfoMap["dateTokenIdles"].(string); ok {
 		DateTokenIdles, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateTokenIdlesString)
 		o.DateTokenIdles = &DateTokenIdles
+	}
+	
+	if Amr, ok := TokeninfoMap["amr"].([]interface{}); ok {
+		AmrString, _ := json.Marshal(Amr)
+		json.Unmarshal(AmrString, &o.Amr)
 	}
 	
 	if OAuthClient, ok := TokeninfoMap["OAuthClient"].(map[string]interface{}); ok {

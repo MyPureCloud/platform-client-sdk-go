@@ -17,6 +17,9 @@ type Consulttransfer struct {
 	// ConsultingUserId - The user ID of the person who wants to talk before completing the transfer. Could be the same of the context user ID
 	ConsultingUserId *string `json:"consultingUserId,omitempty"`
 
+	// AgentIndicatedAddress - The agent indicated address of the transfer initiator. May override the address depending on trunk address priority.
+	AgentIndicatedAddress *string `json:"agentIndicatedAddress,omitempty"`
+
 	// Destination - Destination. Specify one and only one parameter from the list below.
 	Destination *Destination `json:"destination,omitempty"`
 }
@@ -88,12 +91,16 @@ func (o Consulttransfer) MarshalJSON() ([]byte, error) {
 		
 		ConsultingUserId *string `json:"consultingUserId,omitempty"`
 		
+		AgentIndicatedAddress *string `json:"agentIndicatedAddress,omitempty"`
+		
 		Destination *Destination `json:"destination,omitempty"`
 		Alias
 	}{ 
 		SpeakTo: o.SpeakTo,
 		
 		ConsultingUserId: o.ConsultingUserId,
+		
+		AgentIndicatedAddress: o.AgentIndicatedAddress,
 		
 		Destination: o.Destination,
 		Alias:    (Alias)(o),
@@ -113,6 +120,10 @@ func (o *Consulttransfer) UnmarshalJSON(b []byte) error {
     
 	if ConsultingUserId, ok := ConsulttransferMap["consultingUserId"].(string); ok {
 		o.ConsultingUserId = &ConsultingUserId
+	}
+    
+	if AgentIndicatedAddress, ok := ConsulttransferMap["agentIndicatedAddress"].(string); ok {
+		o.AgentIndicatedAddress = &AgentIndicatedAddress
 	}
     
 	if Destination, ok := ConsulttransferMap["destination"].(map[string]interface{}); ok {

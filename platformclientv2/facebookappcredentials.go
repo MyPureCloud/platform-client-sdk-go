@@ -13,6 +13,9 @@ type Facebookappcredentials struct {
 	SetFieldNames map[string]bool `json:"-"`
 	// Id - Genesys Cloud Facebook App Id
 	Id *string `json:"id,omitempty"`
+
+	// ConfigurationId - Facebook Login for Business configuration ID used to launch Embedded Signup v4.
+	ConfigurationId *string `json:"configurationId,omitempty"`
 }
 
 // SetField uses reflection to set a field on the model if the model has a property SetFieldNames, and triggers custom JSON serialization logic to only serialize properties that have been set using this function.
@@ -79,9 +82,13 @@ func (o Facebookappcredentials) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
+		
+		ConfigurationId *string `json:"configurationId,omitempty"`
 		Alias
 	}{ 
 		Id: o.Id,
+		
+		ConfigurationId: o.ConfigurationId,
 		Alias:    (Alias)(o),
 	})
 }
@@ -95,6 +102,10 @@ func (o *Facebookappcredentials) UnmarshalJSON(b []byte) error {
 	
 	if Id, ok := FacebookappcredentialsMap["id"].(string); ok {
 		o.Id = &Id
+	}
+    
+	if ConfigurationId, ok := FacebookappcredentialsMap["configurationId"].(string); ok {
+		o.ConfigurationId = &ConfigurationId
 	}
     
 

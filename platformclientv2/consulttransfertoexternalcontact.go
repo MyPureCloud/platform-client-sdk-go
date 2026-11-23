@@ -17,6 +17,9 @@ type Consulttransfertoexternalcontact struct {
 	// ConsultingUserId - The user ID of the person who wants to talk before completing the transfer. Could be the same of the context user ID
 	ConsultingUserId *string `json:"consultingUserId,omitempty"`
 
+	// AgentIndicatedAddress - The agent indicated address of the transfer initiator. May override the address depending on trunk address priority.
+	AgentIndicatedAddress *string `json:"agentIndicatedAddress,omitempty"`
+
 	// ContactId - The external contact id.
 	ContactId *string `json:"contactId,omitempty"`
 
@@ -91,6 +94,8 @@ func (o Consulttransfertoexternalcontact) MarshalJSON() ([]byte, error) {
 		
 		ConsultingUserId *string `json:"consultingUserId,omitempty"`
 		
+		AgentIndicatedAddress *string `json:"agentIndicatedAddress,omitempty"`
+		
 		ContactId *string `json:"contactId,omitempty"`
 		
 		PhoneType *string `json:"phoneType,omitempty"`
@@ -99,6 +104,8 @@ func (o Consulttransfertoexternalcontact) MarshalJSON() ([]byte, error) {
 		SpeakTo: o.SpeakTo,
 		
 		ConsultingUserId: o.ConsultingUserId,
+		
+		AgentIndicatedAddress: o.AgentIndicatedAddress,
 		
 		ContactId: o.ContactId,
 		
@@ -120,6 +127,10 @@ func (o *Consulttransfertoexternalcontact) UnmarshalJSON(b []byte) error {
     
 	if ConsultingUserId, ok := ConsulttransfertoexternalcontactMap["consultingUserId"].(string); ok {
 		o.ConsultingUserId = &ConsultingUserId
+	}
+    
+	if AgentIndicatedAddress, ok := ConsulttransfertoexternalcontactMap["agentIndicatedAddress"].(string); ok {
+		o.AgentIndicatedAddress = &AgentIndicatedAddress
 	}
     
 	if ContactId, ok := ConsulttransfertoexternalcontactMap["contactId"].(string); ok {
